@@ -170,7 +170,7 @@
             </div>
         </div>
 
-        <div class="bg-ps2card border border-ps2border rounded-2xl p-6">
+        <div id="feedSection" class="bg-ps2card border border-ps2border rounded-2xl p-6 scroll-mt-20">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                 <div>
                     <h2 class="text-lg font-bold text-white">Live Ingestion & Sentiment Stream</h2>
@@ -203,6 +203,9 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Pagination (populated dynamically) -->
+            <div id="pagination" class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-4 border-t border-slate-800 text-xs"></div>
         </div>
 
     </main>
@@ -213,6 +216,10 @@
 
     <script>
         let allFeedData = [];
+
+        const PAGE_SIZE = 100;
+        let tableItems = [];
+        let currentPage = 1;
 
         // Scraped headlines are untrusted: escape them before inserting into HTML.
         const esc = (value) => String(value ?? '').replace(/[&<>"']/g, c => ({
@@ -352,16 +359,22 @@
             });
         }
 
-        function renderTable(items) {
+        function renderTable(items, page = 1) {
             const tbody = document.getElementById('feedTableBody');
             tbody.innerHTML = '';
+
+            tableItems = items;
+            const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
+            currentPage = Math.min(Math.max(1, page), totalPages);
+            renderPagination(totalPages);
 
             if (items.length === 0) {
                 tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-slate-400">No records found.</td></tr>`;
                 return;
             }
 
-            items.forEach(item => {
+            const start = (currentPage - 1) * PAGE_SIZE;
+            items.slice(start, start + PAGE_SIZE).forEach(item => {
                 let sentimentColor = 'bg-emerald-950 text-emerald-400 border-emerald-900';
                 if (item.sentiment < 50) sentimentColor = 'bg-red-950 text-red-400 border-red-900';
                 else if (item.sentiment < 70) sentimentColor = 'bg-amber-950 text-amber-400 border-amber-900';
@@ -391,6 +404,44 @@
                 `;
                 tbody.appendChild(row);
             });
+        }
+
+        // First, last and neighbouring pages, with gaps collapsed into an ellipsis.
+        function pageNumbers(totalPages) {
+            const pages = [];
+            for (let p = 1; p <= totalPages; p++) {
+                if (p === 1 || p === totalPages || Math.abs(p - currentPage) <= 1) pages.push(p);
+                else if (pages[pages.length - 1] !== '…') pages.push('…');
+            }
+            return pages;
+        }
+
+        function renderPagination(totalPages) {
+            const total = tableItems.length;
+            const start = (currentPage - 1) * PAGE_SIZE + 1;
+            const end = Math.min(currentPage * PAGE_SIZE, total);
+            const button = (label, page, { active = false, disabled = false } = {}) => `
+                <button onclick="goToPage(${page})" ${disabled ? 'disabled' : ''}
+                    class="min-w-8 px-2.5 py-1.5 rounded-lg border font-mono-custom transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none ${active
+                        ? 'bg-cyan-500 text-black border-cyan-400 font-bold'
+                        : 'bg-slate-900 text-slate-300 border-slate-700 hover:border-cyan-400 hover:text-cyan-400'}">${label}</button>`;
+
+            document.getElementById('pagination').innerHTML = `
+                <span class="text-slate-400 font-mono-custom">${total ? `Showing ${start}–${end} of ${total}` : '0 records'}</span>
+                ${totalPages > 1 ? `
+                <div class="flex items-center gap-1.5 flex-wrap justify-center">
+                    ${button('<i class="fa-solid fa-chevron-left"></i>', currentPage - 1, { disabled: currentPage === 1 })}
+                    ${pageNumbers(totalPages).map(p => p === '…'
+                        ? '<span class="px-1 text-slate-500">…</span>'
+                        : button(p, p, { active: p === currentPage })).join('')}
+                    ${button('<i class="fa-solid fa-chevron-right"></i>', currentPage + 1, { disabled: currentPage === totalPages })}
+                </div>` : ''}
+            `;
+        }
+
+        function goToPage(page) {
+            renderTable(tableItems, page);
+            document.getElementById('feedSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
         function filterFeedItems() {
