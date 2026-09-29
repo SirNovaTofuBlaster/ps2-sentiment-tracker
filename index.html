@@ -1,420 +1,334 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PS2 Global Sentiment & Remaster Radar</title>
+    <title>PS2 Sentiment & Remaster Tracker</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        ps2blue: '#0d1b2a',
-                        ps2neon: '#00f2fe',
-                        ps2purple: '#4facfe',
-                        ps2dark: '#070b12',
-                        ps2card: '#111927',
-                        ps2border: '#1e293b',
+                        ps2blue: '#003399',
+                        ps2dark: '#0a0f1d',
+                        ps2card: '#131b31',
+                        ps2accent: '#00f0ff'
                     }
                 }
             }
         }
     </script>
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #070b12;
-            color: #f1f5f9;
-        }
-        .font-mono-custom {
-            font-family: 'JetBrains Mono', monospace;
-        }
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #070b12;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #334155;
-        }
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.15); }
-            50% { box-shadow: 0 0 25px rgba(0, 242, 254, 0.35); }
-        }
-        .glow-box {
-            animation: pulseGlow 4s infinite ease-in-out;
-        }
-    </style>
 </head>
-<body class="bg-ps2dark min-h-screen text-slate-100 flex flex-col selection:bg-ps2neon selection:text-black">
+<body class="bg-ps2dark text-gray-100 min-h-screen font-sans selection:bg-ps2accent selection:text-black">
 
-    <header class="border-b border-ps2border bg-ps2card/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <!-- Header / Nav -->
+    <header class="border-b border-blue-900/50 bg-ps2card/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-cyan-400 flex items-center justify-center shadow-lg shadow-cyan-500/20 text-black font-black text-lg tracking-tighter">
-                    PS2
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center shadow-lg shadow-blue-900/50">
+                    <span class="font-black text-xl tracking-wider text-white">PS2</span>
                 </div>
                 <div>
-                    <h1 class="font-bold tracking-tight text-white flex items-center gap-2">
-                        PS2 SENTIMENT & REMASTER RADAR
-                        <span id="dataSourceBadge" class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800 px-2 py-0.5 rounded-full font-mono-custom">Loading Feed...</span>
-                    </h1>
-                    <p class="text-xs text-slate-400">GitHub Actions automated worldwide RSS & Reddit sentiment crawler</p>
+                    <h1 class="text-xl font-black tracking-wide text-white">Sentiment & Remaster Tracker</h1>
+                    <p class="text-xs text-blue-400 font-medium">Global RSS Ingestion & Automated Rumor Detector</p>
                 </div>
             </div>
-            
-            <div class="flex items-center space-x-4">
-                <div class="hidden md:flex items-center space-x-2 bg-slate-900/80 border border-slate-800 px-3 py-1.5 rounded-lg text-xs font-mono-custom">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    <span class="text-slate-300">Last Sync: <span id="lastUpdated" class="text-emerald-400 font-bold">Syncing...</span></span>
-                </div>
-                <button onclick="fetchSentimentData()" class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-black font-semibold text-xs px-4 py-2 rounded-lg shadow-lg shadow-cyan-500/20 transition-all flex items-center gap-2 cursor-pointer">
-                    <i class="fa-solid fa-rotate"></i> Refresh Feed
-                </button>
+            <div class="flex items-center space-x-3 text-xs">
+                <span id="data-status" class="px-3 py-1 rounded-full font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">Checking GitHub Feed...</span>
+                <span id="last-updated" class="text-gray-400 hidden sm:inline">Updated: --</span>
             </div>
         </div>
     </header>
 
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-8 space-y-8">
 
-        <!-- Summary Stat Cards -->
+        <!-- Stats Overview Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <!-- Card 1: Total Mentions -->
-            <div class="bg-ps2card border border-ps2border rounded-2xl p-5 glow-box transition-all hover:border-slate-700">
-                <div class="flex items-center justify-between text-slate-400 mb-2">
-                    <span class="text-xs font-medium uppercase tracking-wider">Total Items Scraped</span>
-                    <i class="fa-solid fa-database text-cyan-400"></i>
-                </div>
-                <div class="flex items-baseline justify-between">
-                    <div id="statTotalItems" class="text-3xl font-black font-mono-custom text-white">0</div>
-                    <span class="text-xs text-emerald-400 font-medium bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-900">Active Pipeline</span>
-                </div>
-                <p class="text-xs text-slate-400 mt-2">Incoming feed records parsed</p>
+            <div class="bg-ps2card border border-blue-900/40 rounded-xl p-5 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 text-blue-500/10 text-7xl font-black">RSS</div>
+                <div class="text-gray-400 text-xs font-semibold uppercase tracking-wider">Active Feeds</div>
+                <div id="stat-feeds" class="text-3xl font-black text-white mt-1">0</div>
+                <div class="text-xs text-blue-400 mt-2 flex items-center">Global gaming sources</div>
             </div>
-
-            <!-- Card 2: Remaster Rumors -->
-            <div class="bg-ps2card border border-ps2border rounded-2xl p-5 glow-box transition-all hover:border-slate-700">
-                <div class="flex items-center justify-between text-slate-400 mb-2">
-                    <span class="text-xs font-medium uppercase tracking-wider">Remaster / Revival Rumors</span>
-                    <i class="fa-solid fa-bolt text-amber-400"></i>
-                </div>
-                <div class="flex items-baseline justify-between">
-                    <div id="statRemasters" class="text-3xl font-black font-mono-custom text-white">0</div>
-                    <span class="text-xs text-amber-400 font-medium bg-amber-950/60 px-2 py-0.5 rounded border border-amber-900">Flagged</span>
-                </div>
-                <p class="text-xs text-slate-400 mt-2">Remake & port keywords detected</p>
+            <div class="bg-ps2card border border-blue-900/40 rounded-xl p-5 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 text-indigo-500/10 text-7xl font-black">LOG</div>
+                <div class="text-gray-400 text-xs font-semibold uppercase tracking-wider">Tracked Headlines</div>
+                <div id="stat-headlines" class="text-3xl font-black text-white mt-1">0</div>
+                <div class="text-xs text-indigo-400 mt-2">Parsed & Analyzed</div>
             </div>
-
-            <!-- Card 3: Active Feeds -->
-            <div class="bg-ps2card border border-ps2border rounded-2xl p-5 glow-box transition-all hover:border-slate-700">
-                <div class="flex items-center justify-between text-slate-400 mb-2">
-                    <span class="text-xs font-medium uppercase tracking-wider">Active Worldwide Feeds</span>
-                    <i class="fa-solid fa-rss text-blue-400"></i>
-                </div>
-                <div class="flex items-baseline justify-between">
-                    <div id="statFeedsCount" class="text-3xl font-black font-mono-custom text-white">6</div>
-                    <span class="text-xs text-blue-400 font-medium bg-blue-950/60 px-2 py-0.5 rounded border border-blue-900">Global Endpoints</span>
-                </div>
-                <p class="text-xs text-slate-400 mt-2">Magazines, RSS & Reddit tracked</p>
+            <div class="bg-ps2card border border-blue-900/40 rounded-xl p-5 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 text-cyan-500/10 text-7xl font-black">REM</div>
+                <div class="text-gray-400 text-xs font-semibold uppercase tracking-wider">Remaster Rumors</div>
+                <div id="stat-remasters" class="text-3xl font-black text-ps2accent mt-1">0</div>
+                <div class="text-xs text-cyan-400 mt-2">Keyword Flagged</div>
             </div>
-
-            <!-- Card 4: Avg Sentiment -->
-            <div class="bg-ps2card border border-ps2border rounded-2xl p-5 glow-box transition-all hover:border-slate-700">
-                <div class="flex items-center justify-between text-slate-400 mb-2">
-                    <span class="text-xs font-medium uppercase tracking-wider">Global Net Sentiment</span>
-                    <i class="fa-solid fa-chart-line text-purple-400"></i>
-                </div>
-                <div class="flex items-baseline justify-between">
-                    <div id="statAvgSentiment" class="text-3xl font-black font-mono-custom text-white">--</div>
-                    <span class="text-xs text-purple-400 font-medium bg-purple-950/60 px-2 py-0.5 rounded border border-purple-900">Score 0-100</span>
-                </div>
-                <p class="text-xs text-slate-400 mt-2">Calculated across database matches</p>
+            <div class="bg-ps2card border border-blue-900/40 rounded-xl p-5 shadow-xl relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 text-emerald-500/10 text-7xl font-black">SEN</div>
+                <div class="text-gray-400 text-xs font-semibold uppercase tracking-wider">Avg Sentiment</div>
+                <div id="stat-sentiment" class="text-3xl font-black text-emerald-400 mt-1">50%</div>
+                <div class="text-xs text-emerald-500 mt-2">Community Tone Index</div>
             </div>
         </div>
 
-        <div class="bg-gradient-to-r from-amber-950/40 via-ps2card to-ps2card border border-amber-500/30 rounded-2xl p-6 relative overflow-hidden">
-            <div class="absolute -right-10 -bottom-10 opacity-15 text-9xl text-amber-400 font-black pointer-events-none">
-                <i class="fa-solid fa-triangle-exclamation"></i>
+        <!-- Filter & Search Controls -->
+        <div class="bg-ps2card border border-blue-900/40 rounded-xl p-4 flex flex-col md:flex-row gap-4 justify-between items-center shadow-lg">
+            <div class="w-full md:w-96 relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                </span>
+                <input type="text" id="search-input" placeholder="Search headlines, games, sources..." 
+                    class="w-full bg-ps2dark border border-blue-900/60 rounded-lg pl-10 pr-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-ps2accent transition">
             </div>
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
-                <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 text-lg">
-                        <i class="fa-solid fa-bullhorn"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                            Remaster & Revival Radar 
-                            <span class="bg-amber-500 text-black text-xs font-bold px-2 py-0.5 rounded-full">Automated Flags</span>
-                        </h2>
-                        <p class="text-xs text-slate-300">Headlines flagged by backend crawler containing keywords like remaster, remake, collection, or port.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Remaster Radar Container -->
-            <div id="remasterRadarContainer" class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                <!-- Populated dynamically -->
+            <div class="flex flex-wrap gap-2 w-full md:w-auto justify-end">
+                <button onclick="setFilter('all')" id="btn-all" class="px-4 py-2 text-xs font-bold rounded-lg bg-blue-600 text-white transition shadow">All Items</button>
+                <button onclick="setFilter('remaster')" id="btn-remaster" class="px-4 py-2 text-xs font-bold rounded-lg bg-ps2card border border-blue-900/60 text-gray-300 hover:bg-blue-900/30 transition">Remaster Rumors Only</button>
+                <button onclick="setFilter('matched')" id="btn-matched" class="px-4 py-2 text-xs font-bold rounded-lg bg-ps2card border border-blue-900/60 text-gray-300 hover:bg-blue-900/30 transition">Matched Games Only</button>
             </div>
         </div>
 
-        <div class="bg-ps2card border border-ps2border rounded-2xl p-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                <div>
-                    <h2 class="text-lg font-bold text-white">Live Ingestion & Sentiment Stream</h2>
-                    <p class="text-xs text-slate-400">Incoming RSS items matched against the PS2 database with sentiment and source verification.</p>
-                </div>
-                <div class="flex items-center gap-3">
-                    <input type="text" id="searchInput" onkeyup="filterFeedItems()" placeholder="Filter by game or headline..." class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400 w-full sm:w-64">
-                    <select id="filterSelect" onchange="filterFeedItems()" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
-                        <option value="all">All Records</option>
-                        <option value="remaster">Remaster Rumors Only</option>
-                        <option value="matched">Matched PS2 Games Only</option>
-                    </select>
-                </div>
+        <!-- Live Stream Table Section -->
+        <div class="bg-ps2card border border-blue-900/40 rounded-xl shadow-xl overflow-hidden">
+            <div class="px-6 py-4 border-b border-blue-900/40 flex justify-between items-center">
+                <h2 class="font-bold text-base text-white flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-ps2accent animate-pulse"></span>
+                    Live Ingestion & Sentiment Stream
+                </h2>
+                <span id="pagination-info" class="text-xs text-gray-400 font-medium">Showing page 1</span>
             </div>
 
-            <!-- Feed Table -->
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="border-b border-slate-800 text-slate-400 text-xs font-mono-custom">
-                            <th class="py-3 px-4">SOURCE / TIMESTAMP</th>
-                            <th class="py-3 px-4">HEADLINE / ARTICLE</th>
-                            <th class="py-3 px-4">MATCHED PS2 GAME</th>
-                            <th class="py-3 px-4">SENTIMENT</th>
-                            <th class="py-3 px-4 text-right">ACTION</th>
+                        <tr class="border-b border-blue-900/40 bg-ps2dark/50 text-gray-400 text-xs uppercase tracking-wider font-semibold">
+                            <th class="px-6 py-3">Headline / Article</th>
+                            <th class="px-6 py-3">Source</th>
+                            <th class="px-6 py-3">Matched PS2 Game</th>
+                            <th class="px-6 py-3 text-center">Remaster Flag</th>
+                            <th class="px-6 py-3 text-center">Sentiment</th>
+                            <th class="px-6 py-3 text-right">Timestamp</th>
                         </tr>
                     </thead>
-                    <tbody id="feedTableBody" class="divide-y divide-slate-800/60 text-xs">
-                        <!-- Populated dynamically -->
+                    <tbody id="feed-table-body" class="divide-y divide-blue-900/20 text-sm">
+                        <!-- Populated by JavaScript -->
                     </tbody>
                 </table>
+            </div>
+
+            <!-- Pagination Controls Footer -->
+            <div class="px-6 py-4 border-t border-blue-900/40 bg-ps2dark/40 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div id="pagination-summary" class="text-xs text-gray-400">
+                    Displaying records 0 - 0 of 0
+                </div>
+                <div class="flex items-center space-x-2" id="pagination-controls">
+                    <!-- Pagination buttons rendered dynamically -->
+                </div>
             </div>
         </div>
 
     </main>
 
-    <footer class="border-t border-ps2border bg-ps2card/50 py-6 mt-12 text-center text-xs text-slate-500">
-        <p>PS2 Global Sentiment & Remaster Tracker • Powered by GitHub Actions & Python Scraper Pipelines</p>
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto px-4 py-8 text-center text-xs text-gray-500 border-t border-blue-900/30 mt-12">
+        PS2 Sentiment & Remaster Tracker &bull; Automated GitHub Actions Pipeline
     </footer>
 
+    <!-- Frontend Logic Script -->
     <script>
-        let allFeedData = [];
+        let allFeedItems = [];
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let currentPage = 1;
+        const rowsPerPage = 100;
 
-        // Fallback mock dataset in case data/sentiment_feed.json hasn't been generated yet by GitHub Actions
-        const fallbackData = {
-            "last_updated": "Mock Mode (Waiting for GitHub Actions run)",
-            "total_tracked_feeds": 6,
-            "items": [
-                {
-                    "headline": "Discussion surging regarding a potential remaster collection for the classic .hack// Quadriology on modern hardware.",
-                    "source": "Gematsu",
-                    "link": "https://www.gematsu.com",
-                    "matched_game": ".hack//Infection",
-                    "match_score": 92,
-                    "is_remaster_rumor": true,
-                    "sentiment": 90,
-                    "timestamp": "2026-06-06 12:00:00"
-                },
-                {
-                    "headline": "Silent Hill 2 original PS2 atmospheric lighting and sound design praised in new retrospective review.",
-                    "source": "Eurogamer",
-                    "link": "https://www.eurogamer.net",
-                    "matched_game": "Silent Hill 2",
-                    "match_score": 98,
-                    "is_remaster_rumor": false,
-                    "sentiment": 85,
-                    "timestamp": "2026-06-06 11:30:00"
-                },
-                {
-                    "headline": "Embracer Group surveys community on Legacy of Kain and Defiance remasters.",
-                    "source": "r/ps2",
-                    "link": "https://reddit.com/r/ps2",
-                    "matched_game": "Legacy of Kain: Defiance",
-                    "match_score": 89,
-                    "is_remaster_rumor": true,
-                    "sentiment": 88,
-                    "timestamp": "2026-06-06 10:15:00"
-                },
-                {
-                    "headline": "Metal Gear Solid 3 Snake Eater ranked among the absolute best stealth action games ever produced.",
-                    "source": "Time Extension",
-                    "link": "https://www.timeextension.com",
-                    "matched_game": "Metal Gear Solid 3: Snake Eater",
-                    "match_score": 95,
-                    "is_remaster_rumor": false,
-                    "sentiment": 94,
-                    "timestamp": "2026-06-06 09:45:00"
-                }
-            ]
-        };
-
-        async function fetchSentimentData() {
-            const badge = document.getElementById('dataSourceBadge');
-            badge.innerText = "Fetching JSON...";
-            badge.className = "text-xs bg-blue-950 text-blue-400 border border-blue-800 px-2 py-0.5 rounded-full font-mono-custom";
-
+        async function fetchFeedData() {
             try {
-                // Fetch from the repository path data/sentiment_feed.json
-                const response = await fetch('data/sentiment_feed.json');
-                if (!response.ok) throw new Error('File not found');
-                
+                const response = await fetch('data/sentiment_feed.json?t=' + new Date().getTime());
+                if (!response.ok) throw new Error("File not found or waiting for workflow");
                 const data = await response.json();
-                allFeedData = data.items || [];
                 
-                badge.innerText = "Live GitHub JSON";
-                badge.className = "text-xs bg-emerald-950 text-emerald-400 border border-emerald-900 px-2 py-0.5 rounded-full font-mono-custom";
+                allFeedItems = data.items || [];
+                document.getElementById('data-status').className = "px-3 py-1 rounded-full font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
+                document.getElementById('data-status').innerText = "Live GitHub Feed Active";
+                document.getElementById('last-updated').innerText = "Updated: " + (data.last_updated || 'Just now');
                 
-                document.getElementById('lastUpdated').innerText = data.last_updated || 'Just now';
-                document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
-                
-                processAndRender(allFeedData);
+                updateDashboardStats(allFeedItems, data.total_tracked_feeds || 12);
+                renderTable();
             } catch (error) {
-                console.warn('Could not load data/sentiment_feed.json directly. Falling back to mock dataset.', error);
+                console.warn("Live JSON not found, switching to intelligent mock simulation:", error);
+                document.getElementById('data-status').className = "px-3 py-1 rounded-full font-semibold bg-blue-500/10 text-ps2accent border border-blue-500/20";
+                document.getElementById('data-status').innerText = "Mock Mode (Waiting for GitHub Actions Run)";
                 
-                badge.innerText = "Fallback Mock Mode";
-                badge.className = "text-xs bg-amber-950 text-amber-400 border border-amber-900 px-2 py-0.5 rounded-full font-mono-custom";
-                
-                allFeedData = fallbackData.items;
-                document.getElementById('lastUpdated').innerText = fallbackData.last_updated;
-                document.getElementById('statFeedsCount').innerText = fallbackData.total_tracked_feeds;
-                
-                processAndRender(allFeedData);
+                allFeedItems = generateMockData();
+                updateDashboardStats(allFeedItems, 12);
+                renderTable();
             }
         }
 
-        function processAndRender(items) {
-            // Stat 1: Total Items
-            document.getElementById('statTotalItems').innerText = items.length;
+        function updateDashboardStats(items, feedCount) {
+            document.getElementById('stat-feeds').innerText = feedCount;
+            document.getElementById('stat-headlines').innerText = items.length;
+            
+            const remasters = items.filter(i => i.is_remaster_rumor).length;
+            document.getElementById('stat-remasters').innerText = remasters;
 
-            // Stat 2: Remaster Rumors
-            const remasters = items.filter(i => i.is_remaster_rumor);
-            document.getElementById('statRemasters').innerText = remasters.length;
-
-            // Stat 3: Avg Sentiment
             if (items.length > 0) {
-                const totalScore = items.reduce((acc, curr) => acc + (curr.sentiment || 50), 0);
-                const avg = Math.round(totalScore / items.length);
-                document.getElementById('statAvgSentiment').innerText = avg + '/100';
-            } else {
-                document.getElementById('statAvgSentiment').innerText = '0/100';
+                const avgSent = Math.round(items.reduce((acc, curr) => acc + curr.sentiment, 0) / items.length);
+                const sentEl = document.getElementById('stat-sentiment');
+                sentEl.innerText = avgSent + '%';
+                sentEl.className = `text-3xl font-black mt-1 ${avgSent >= 50 ? 'text-emerald-400' : 'text-amber-400'}`;
             }
-
-            renderRemasterRadar(remasters);
-            renderTable(items);
         }
 
-        function renderRemasterRadar(remasters) {
-            const container = document.getElementById('remasterRadarContainer');
-            container.innerHTML = '';
-
-            if (remasters.length === 0) {
-                container.innerHTML = '<p class="text-xs text-slate-400 col-span-3">No active remaster rumors detected in current feed window.</p>';
-                return;
-            }
-
-            remasters.slice(0, 3).forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'bg-slate-900/80 border border-amber-500/20 hover:border-amber-500/50 rounded-xl p-4 transition-all';
-                card.innerHTML = `
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-amber-400 font-mono-custom">${item.matched_game || 'PS2 Franchise'}</span>
-                        <span class="text-[10px] bg-amber-950 text-amber-400 border border-amber-900 px-2 py-0.5 rounded">Remaster Flag</span>
-                    </div>
-                    <p class="text-xs text-slate-200 leading-relaxed mb-3">
-                        "${item.headline}"
-                    </p>
-                    <div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-800 pt-2">
-                        <span>Source: ${item.source}</span>
-                        <a href="${item.link}" target="_blank" class="text-cyan-400 hover:underline">Read Article <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
-                    </div>
-                `;
-                container.appendChild(card);
+        function setFilter(filterType) {
+            currentFilter = filterType;
+            currentPage = 1; // Reset to page 1 on filter change
+            
+            ['all', 'remaster', 'matched'].forEach(f => {
+                const btn = document.getElementById(`btn-${f}`);
+                if (f === filterType) {
+                    btn.className = "px-4 py-2 text-xs font-bold rounded-lg bg-blue-600 text-white transition shadow";
+                } else {
+                    btn.className = "px-4 py-2 text-xs font-bold rounded-lg bg-ps2card border border-blue-900/60 text-gray-300 hover:bg-blue-900/30 transition";
+                }
             });
+            renderTable();
         }
 
-        function renderTable(items) {
-            const tbody = document.getElementById('feedTableBody');
+        document.getElementById('search-input').addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase();
+            currentPage = 1; // Reset to page 1 on search
+            renderTable();
+        });
+
+        function renderTable() {
+            const tbody = document.getElementById('feed-table-body');
             tbody.innerHTML = '';
 
-            if (items.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="py-6 text-center text-slate-400">No records found.</td></tr>`;
+            // Filter items
+            const filtered = allFeedItems.filter(item => {
+                const matchesFilter = 
+                    currentFilter === 'all' ? true :
+                    currentFilter === 'remaster' ? item.is_remaster_rumor :
+                    currentFilter === 'matched' ? (item.matched_game !== null) : true;
+
+                const matchesSearch = 
+                    item.headline.toLowerCase().includes(searchQuery) ||
+                    item.source.toLowerCase().includes(searchQuery) ||
+                    (item.matched_game && item.matched_game.toLowerCase().includes(searchQuery));
+
+                return matchesFilter && matchesSearch;
+            });
+
+            // Pagination logic
+            const totalItems = filtered.length;
+            const totalPages = Math.ceil(totalItems / rowsPerPage) || 1;
+            if (currentPage > totalPages) currentPage = totalPages;
+
+            const startIndex = (currentPage - 1) * rowsPerPage;
+            const endIndex = Math.min(startIndex + rowsPerPage, totalItems);
+            const paginatedItems = filtered.slice(startIndex, endIndex);
+
+            // Update summary text
+            document.getElementById('pagination-summary').innerText = 
+                totalItems === 0 ? "Showing 0 records" : `Displaying records ${startIndex + 1} - ${endIndex} of ${totalItems}`;
+            document.getElementById('pagination-info').innerText = `Page ${currentPage} of ${totalPages}`;
+
+            // Render pagination buttons
+            renderPaginationControls(totalPages);
+
+            if (paginatedItems.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="6" class="px-6 py-8 text-center text-gray-500 italic">No matching articles found in current stream.</td></tr>`;
                 return;
             }
 
-            items.forEach(item => {
-                let sentimentColor = 'bg-emerald-950 text-emerald-400 border-emerald-900';
-                if (item.sentiment < 50) sentimentColor = 'bg-red-950 text-red-400 border-red-900';
-                else if (item.sentiment < 70) sentimentColor = 'bg-amber-950 text-amber-400 border-amber-900';
+            paginatedItems.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-blue-950/30 transition";
 
-                let row = document.createElement('tr');
-                row.className = 'hover:bg-slate-800/40 transition-colors border-b border-slate-800/40';
-                row.innerHTML = `
-                    <td class="py-3.5 px-4">
-                        <div class="font-semibold text-white">${item.source}</div>
-                        <div class="text-[10px] text-slate-500 font-mono-custom">${item.timestamp}</div>
+                const sentimentColor = 
+                    item.sentiment >= 70 ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' :
+                    item.sentiment >= 45 ? 'text-blue-400 bg-blue-500/10 border-blue-500/20' :
+                    'text-amber-400 bg-amber-500/10 border-amber-500/20';
+
+                const gameBadge = item.matched_game 
+                    ? `<span class="px-2.5 py-1 rounded-md text-xs font-medium bg-blue-900/40 text-blue-300 border border-blue-700/40">${item.matched_game} <span class="text-[10px] text-gray-400">(${item.match_score}%)</span></span>`
+                    : `<span class="text-xs text-gray-500 italic">Unmatched / General</span>`;
+
+                const remasterBadge = item.is_remaster_rumor
+                    ? `<span class="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">Rumor Flag</span>`
+                    : `<span class="text-xs text-gray-600">-</span>`;
+
+                tr.innerHTML = `
+                    <td class="px-6 py-4 max-w-md">
+                        <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="font-medium text-white hover:text-ps2accent transition line-clamp-2">${item.headline}</a>
                     </td>
-                    <td class="py-3.5 px-4 text-slate-300 max-w-md leading-relaxed">
-                        ${item.is_remaster_rumor ? '<span class="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded mr-1">Remaster</span>' : ''}
-                        ${item.headline}
+                    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-400">${item.source}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${gameBadge}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">${remasterBadge}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                        <span class="px-2.5 py-1 rounded-full text-xs font-bold border ${sentimentColor}">${item.sentiment}%</span>
                     </td>
-                    <td class="py-3.5 px-4 font-mono-custom text-cyan-300">${item.matched_game ? item.matched_game : '<span class="text-slate-500">Unmatched / General</span>'}</td>
-                    <td class="py-3.5 px-4">
-                        <span class="px-2 py-0.5 rounded border text-[11px] font-medium ${sentimentColor}">
-                            Score: ${item.sentiment}/100
-                        </span>
-                    </td>
-                    <td class="py-3.5 px-4 text-right">
-                        <a href="${item.link}" target="_blank" class="text-xs bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-3 py-1.5 rounded-lg transition-all inline-flex items-center gap-1.5">
-                            Source <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
-                        </a>
-                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-right text-xs text-gray-400 font-mono">${item.timestamp}</td>
                 `;
-                tbody.appendChild(row);
+                tbody.appendChild(tr);
             });
         }
 
-        function filterFeedItems() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filterType = document.getElementById('filterSelect').value;
+        function renderPaginationControls(totalPages) {
+            const container = document.getElementById('pagination-controls');
+            container.innerHTML = '';
 
-            const filtered = allFeedData.filter(item => {
-                const matchesQuery = item.headline.toLowerCase().includes(query) || 
-                                     (item.matched_game && item.matched_game.toLowerCase().includes(query)) ||
-                                     item.source.toLowerCase().includes(query);
-                
-                if (!matchesQuery) return false;
+            if (totalPages <= 1) return;
 
-                if (filterType === 'remaster') {
-                    return item.is_remaster_rumor;
-                } else if (filterType === 'matched') {
-                    return item.matched_game !== null && item.matched_game !== undefined;
-                }
-                return true;
-            });
+            // Previous Button
+            const prevBtn = document.createElement('button');
+            prevBtn.innerText = 'Prev';
+            prevBtn.disabled = currentPage === 1;
+            prevBtn.className = `px-3 py-1.5 text-xs font-semibold rounded-lg border transition ${currentPage === 1 ? 'bg-ps2dark text-gray-600 border-blue-900/20 cursor-not-allowed' : 'bg-ps2card text-gray-200 border-blue-900/60 hover:bg-blue-900/40'}`;
+            prevBtn.onclick = () => { if (currentPage > 1) { currentPage--; renderTable(); } };
+            container.appendChild(prevBtn);
 
-            renderTable(filtered);
+            // Page Number Indicator / Quick selector
+            const pageSpan = document.createElement('span');
+            pageSpan.className = 'text-xs text-gray-400 px-2 font-mono';
+            pageSpan.innerText = `${currentPage} / ${totalPages}`;
+            container.appendChild(pageSpan);
+
+            // Next Button
+            const nextBtn = document.createElement('button');
+            nextBtn.innerText = 'Next';
+            nextBtn.disabled = currentPage === totalPages;
+            nextBtn.className = `px-3 py-1.5 text-xs font-semibold rounded-lg border transition ${currentPage === totalPages ? 'bg-ps2dark text-gray-600 border-blue-900/20 cursor-not-allowed' : 'bg-ps2card text-gray-200 border-blue-900/60 hover:bg-blue-900/40'}`;
+            nextBtn.onclick = () => { if (currentPage < totalPages) { currentPage++; renderTable(); } };
+            container.appendChild(nextBtn);
+        }
+
+        function generateMockData() {
+            const sources = ["Gematsu", "Eurogamer", "Time Extension", "PushSquare", "r/ps2", "r/emulation"];
+            const games = ["Silent Hill 2", "Champions of Norrath", "Metal Gear Solid 3: Snake Eater", "Shadow of the Colossus", "Persona 4", "Rule of Rose", "Grand Theft Auto: San Andreas", "Jak and Daxter", "Okami", "Final Fantasy X"];
+            let mock = [];
+            for (let i = 1; i <= 150; i++) {
+                const game = i % 3 === 0 ? games[i % games.length] : null;
+                const isRemaster = i % 5 === 0;
+                mock.push({
+                    headline: isRemaster ? `Rumor: Classic ${game || 'PS2 Title'} might be getting a modern remaster collection!` : `Discussion thread regarding classic retro gameplay mechanics and preservation for item #${i}`,
+                    source: sources[i % sources.length],
+                    link: "#",
+                    matched_game: game,
+                    match_score: game ? 95 : 0,
+                    is_remaster_rumor: isRemaster,
+                    sentiment: 40 + (i % 50),
+                    timestamp: "2026-09-29 12:00"
+                });
+            }
+            return mock;
         }
 
         // Initialize on load
-        window.onload = function() {
-            fetchSentimentData();
-        };
+        fetchFeedData();
     </script>
 </body>
 </html>
-```
-eof
