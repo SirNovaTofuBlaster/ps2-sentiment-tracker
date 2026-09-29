@@ -125,7 +125,7 @@
                     <i class="fa-solid fa-rss text-blue-400"></i>
                 </div>
                 <div class="flex items-baseline justify-between">
-                    <div id="statFeedsCount" class="text-3xl font-black font-mono-custom text-white">6</div>
+                    <div id="statFeedsCount" class="text-3xl font-black font-mono-custom text-white">--</div>
                     <span class="text-xs text-blue-400 font-medium bg-blue-950/60 px-2 py-0.5 rounded border border-blue-900">Global Endpoints</span>
                 </div>
                 <p class="text-xs text-slate-400 mt-2">Magazines, RSS & Reddit tracked</p>
@@ -177,7 +177,7 @@
                     <p class="text-xs text-slate-400">Incoming RSS items matched against the PS2 database with sentiment and source verification.</p>
                 </div>
                 <div class="flex items-center gap-3">
-                    <input type="text" id="searchInput" onkeyup="filterFeedItems()" placeholder="Filter by game or headline..." class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400 w-full sm:w-64">
+                    <input type="text" id="searchInput" oninput="filterFeedItems()" placeholder="Filter by game or headline..." class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400 w-full sm:w-64">
                     <select id="filterSelect" onchange="filterFeedItems()" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
                         <option value="all">All Records</option>
                         <option value="remaster">Remaster Rumors Only</option>
@@ -213,6 +213,12 @@
 
     <script>
         let allFeedData = [];
+
+        // Scraped headlines are untrusted: escape them before inserting into HTML.
+        const esc = (value) => String(value ?? '').replace(/[&<>"']/g, c => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        })[c]);
+        const safeUrl = (url) => /^https?:\/\//i.test(url) ? esc(url) : '#';
 
         // Fallback mock dataset in case data/sentiment_feed.json hasn't been generated yet by GitHub Actions
         const fallbackData = {
@@ -331,15 +337,15 @@
                 card.className = 'bg-slate-900/80 border border-amber-500/20 hover:border-amber-500/50 rounded-xl p-4 transition-all';
                 card.innerHTML = `
                     <div class="flex items-center justify-between mb-2">
-                        <span class="text-xs font-bold text-amber-400 font-mono-custom">${item.matched_game || 'PS2 Franchise'}</span>
+                        <span class="text-xs font-bold text-amber-400 font-mono-custom">${esc(item.matched_game || 'PS2 Franchise')}</span>
                         <span class="text-[10px] bg-amber-950 text-amber-400 border border-amber-900 px-2 py-0.5 rounded">Remaster Flag</span>
                     </div>
                     <p class="text-xs text-slate-200 leading-relaxed mb-3">
-                        "${item.headline}"
+                        "${esc(item.headline)}"
                     </p>
                     <div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-800 pt-2">
-                        <span>Source: ${item.source}</span>
-                        <a href="${item.link}" target="_blank" class="text-cyan-400 hover:underline">Read Article <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                        <span>Source: ${esc(item.source)}</span>
+                        <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">Read Article <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
                     </div>
                 `;
                 container.appendChild(card);
@@ -364,21 +370,21 @@
                 row.className = 'hover:bg-slate-800/40 transition-colors border-b border-slate-800/40';
                 row.innerHTML = `
                     <td class="py-3.5 px-4">
-                        <div class="font-semibold text-white">${item.source}</div>
-                        <div class="text-[10px] text-slate-500 font-mono-custom">${item.timestamp}</div>
+                        <div class="font-semibold text-white">${esc(item.source)}</div>
+                        <div class="text-[10px] text-slate-500 font-mono-custom">${esc(item.timestamp)}</div>
                     </td>
                     <td class="py-3.5 px-4 text-slate-300 max-w-md leading-relaxed">
                         ${item.is_remaster_rumor ? '<span class="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded mr-1">Remaster</span>' : ''}
-                        ${item.headline}
+                        ${esc(item.headline)}
                     </td>
-                    <td class="py-3.5 px-4 font-mono-custom text-cyan-300">${item.matched_game ? item.matched_game : '<span class="text-slate-500">Unmatched / General</span>'}</td>
+                    <td class="py-3.5 px-4 font-mono-custom text-cyan-300">${item.matched_game ? esc(item.matched_game) : '<span class="text-slate-500">Unmatched / General</span>'}</td>
                     <td class="py-3.5 px-4">
                         <span class="px-2 py-0.5 rounded border text-[11px] font-medium ${sentimentColor}">
-                            Score: ${item.sentiment}/100
+                            Score: ${esc(item.sentiment)}/100
                         </span>
                     </td>
                     <td class="py-3.5 px-4 text-right">
-                        <a href="${item.link}" target="_blank" class="text-xs bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-3 py-1.5 rounded-lg transition-all inline-flex items-center gap-1.5">
+                        <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-xs bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-3 py-1.5 rounded-lg transition-all inline-flex items-center gap-1.5">
                             Source <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                         </a>
                     </td>
@@ -416,5 +422,3 @@
     </script>
 </body>
 </html>
-```
-eof
