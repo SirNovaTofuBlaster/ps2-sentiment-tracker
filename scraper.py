@@ -7,20 +7,42 @@ import requests
 from thefuzz import process
 
 RSS_FEEDS = [
-    # Major Global Outlets & Magazines
+    # --- Major Global Outlets & Magazines ---
     "https://www.gematsu.com/feed",
     "https://www.eurogamer.net/feed",
-    "https://www.timeextension.com/feed",  # Dedicated retro gaming magazine
-    "https://www.pushsquare.com/feeds/latest",  # PlayStation-focused network
+    "https://www.timeextension.com/feed",  # Retro gaming magazine
+    "https://www.pushsquare.com/feeds/latest",  # PlayStation network
     "https://www.gamespot.com/feeds/mashup/",
     "https://www.pcgamer.com/rss/",
     "https://nintendoeverything.com/feed",
-    # Communities & Reddit Trackers
+    "https://kotaku.com/rss",
+    "https://www.polygon.com/rss/index.xml",
+    "https://www.vg247.com/feed",
+    "https://www.rockpapershotgun.com/feed/",
+    "https://www.destructoid.com/feed/",
+    "https://gonintendo.com/feed",
+    "https://www.nintendolife.com/feeds/latest",
+
+    # --- Official Platform Blogs ---
+    "https://blog.playstation.com/feed/",
+    "https://news.xbox.com/en-us/feed/",
+
+    # --- Spanish & Portuguese Feeds ---
+    "https://latam.ign.com/feed.xml",
+    "https://www.eurogamer.pt/feed",
+    "https://vandal.elespanol.com/xml.cgi",
+    "https://www.3djuegos.com/universo/rss/",
+    "https://omelete.com.br/rss/",
+    "https://theenemy.com.br/rss",
+
+    # --- Communities & Reddit Trackers ---
     "https://www.reddit.com/r/ps2/.rss",
     "https://www.reddit.com/r/emulation/.rss",
     "https://www.reddit.com/r/psx/.rss",
     "https://www.reddit.com/r/jrpg/.rss",
     "https://www.reddit.com/r/patientgamers/.rss",
+    "https://www.reddit.com/r/retrogaming/.rss",
+    "https://www.reddit.com/r/classicgaming/.rss",
 ]
 
 REMASTER_KEYWORDS = [
