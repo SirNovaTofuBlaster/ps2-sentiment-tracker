@@ -30,9 +30,15 @@ REMASTER_KEYWORDS = [
 def load_ps2_database():
   db_path = "data/ps2_database.json"
   if os.path.exists(db_path):
-    with open(db_path, "r", encoding="utf-8") as f:
-      return json.load(f)
-  # Fallback starter list if full DB isn't added yet
+    try:
+      with open(db_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+        if data:  # Make sure it's not empty
+          return data
+    except json.JSONDecodeError:
+      print("Warning: ps2_database.json is empty or invalid. Using fallback list.")
+
+  # Fallback starter list
   return [
       {"id": 1, "title": ".hack//Infection", "region": "Global"},
       {"id": 2, "title": ".hack//Mutation", "region": "Global"},
@@ -40,7 +46,11 @@ def load_ps2_database():
       {"id": 4, "title": ".hack//Quarantine", "region": "Global"},
       {"id": 5, "title": "Silent Hill 2", "region": "Global"},
       {"id": 6, "title": "Metal Gear Solid 2: Sons of Liberty", "region": "Global"},
-      {"id": 7, "title": "Grand Theft Auto: San Andreas", "region": "Global"},
+      {
+          "id": 7,
+          "title": "Grand Theft Auto: San Andreas",
+          "region": "Global",
+      },
       {"id": 8, "title": "Shadow of the Colossus", "region": "Global"},
       {"id": 9, "title": "Persona 4", "region": "Global"},
       {"id": 10, "title": "Okami", "region": "Global"},
