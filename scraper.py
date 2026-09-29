@@ -10,8 +10,8 @@ RSS_FEEDS = [
     # --- Major Global Outlets & Magazines ---
     "https://www.gematsu.com/feed",
     "https://www.eurogamer.net/feed",
-    "https://www.timeextension.com/feed",  # Retro gaming magazine
-    "https://www.pushsquare.com/feeds/latest",  # PlayStation network
+    "https://www.timeextension.com/feed",
+    "https://www.pushsquare.com/feeds/latest",
     "https://www.gamespot.com/feeds/mashup/",
     "https://www.pcgamer.com/rss/",
     "https://nintendoeverything.com/feed",
@@ -35,14 +35,37 @@ RSS_FEEDS = [
     "https://omelete.com.br/rss/",
     "https://theenemy.com.br/rss",
 
-    # --- Communities & Reddit Trackers ---
+    # --- Dedicated PS2 & Emulation Hubs ---
     "https://www.reddit.com/r/ps2/.rss",
+    "https://www.reddit.com/r/ps2homebrew/.rss",
+    "https://www.reddit.com/r/PCSX2/.rss",
+    "https://www.reddit.com/r/playstation2/.rss",
+
+    # --- Game Collecting, Graded, Sealed & Limited Editions ---
+    "https://www.reddit.com/r/gamecollecting/.rss",
+    "https://www.reddit.com/r/LimitedPrintGames/.rss",
+    "https://www.reddit.com/r/NSCollectors/.rss",
+    "https://www.reddit.com/r/Steelbook/.rss",
+    "https://www.reddit.com/r/gameverifying/.rss",
+
+    # --- High-Traffic General Reddit Trackers & Communities ---
+    "https://www.reddit.com/r/gaming/.rss",
+    "https://www.reddit.com/r/Games/.rss",
+    "https://www.reddit.com/r/pcgaming/.rss",
+    "https://www.reddit.com/r/truegaming/.rss",
+    "https://www.reddit.com/r/ShouldIbuythisgame/.rss",
+    "https://www.reddit.com/r/gamingsuggestions/.rss",
+    "https://www.reddit.com/r/pcmasterrace/.rss",
+    "https://www.reddit.com/r/NintendoSwitch/.rss",
+    "https://www.reddit.com/r/PlayStation/.rss",
+    "https://www.reddit.com/r/xboxone/.rss",
+    "https://www.reddit.com/r/SteamDeck/.rss",
+    "https://www.reddit.com/r/retrogaming/.rss",
+    "https://www.reddit.com/r/classicgaming/.rss",
     "https://www.reddit.com/r/emulation/.rss",
     "https://www.reddit.com/r/psx/.rss",
     "https://www.reddit.com/r/jrpg/.rss",
     "https://www.reddit.com/r/patientgamers/.rss",
-    "https://www.reddit.com/r/retrogaming/.rss",
-    "https://www.reddit.com/r/classicgaming/.rss",
 ]
 
 REMASTER_KEYWORDS = [
@@ -58,6 +81,9 @@ REMASTER_KEYWORDS = [
     "remastered version",
     "director's cut",
     "enhanced",
+    "ps2",
+    "sony",
+    "playstation 2",
 ]
 
 
