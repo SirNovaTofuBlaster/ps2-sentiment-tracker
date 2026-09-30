@@ -1,23 +1,33 @@
-"""Scrapes gaming news and Reddit RSS feeds, matches headlines against the PS2
-library and writes a sentiment snapshot to data/sentiment_feed.json.
+"""Scrapes gaming news, Reddit, YouTube and podcast feeds, matches headlines against
+the PS2 library and writes a sentiment snapshot to data/sentiment_feed.json.
 
-Each run merges new headlines into the previous snapshot (kept for
-RETENTION_DAYS), leaves the file untouched when nothing changed, and exits
-non-zero when too many feeds fail so a bad run never overwrites good data."""
+Sources live in feeds.json (edit it by hand or from the dashboard's Sources panel).
+Each run merges new headlines into the previous snapshot (kept for RETENTION_DAYS),
+leaves the file untouched when nothing changed, and exits non-zero when too many
+news/Reddit feeds fail so a bad run never overwrites good data. Per-feed health is
+written to data/feed_status.json."""
 
 import json
+import os
 import re
 import time
+from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from urllib.parse import urlparse
 
 import feedparser
 import requests
 from rapidfuzz import fuzz, process, utils
 
-DATA_DIR = Path(__file__).parent / "data"
+ROOT = Path(__file__).parent
+DATA_DIR = ROOT / "data"
 DB_PATH = DATA_DIR / "ps2_database.json"
 OUTPUT_PATH = DATA_DIR / "sentiment_feed.json"
+STATUS_PATH = DATA_DIR / "feed_status.json"
+YOUTUBE_IDS_PATH = DATA_DIR / "youtube_channels.json"  # channel link -> channel ID, filled by the scraper
+POLL_STATE_PATH = DATA_DIR / "poll_state.json"  # when each source type with poll_every_hours > 1 was last fetched
+FEEDS_PATH = ROOT / "feeds.json"
 
 # Regional PS2 title indexes (serial -> title). Titles from every source that
 # loads are merged, and the merged set is cached in DB_PATH.
@@ -38,53 +48,32 @@ SHORT_TITLE_MAX_LEN = 8  # normalised titles shorter than this are matched exact
 RETENTION_DAYS = 14
 MAX_ITEMS = 5000
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"
+FETCH_TIME_BUDGET = 600  # seconds; YouTube/podcast feeds not reached by then are skipped this run
+HOST_FAILURE_LIMIT = 3  # consecutive YouTube/podcast host-level failures skip the rest of that host
+POLL_TOLERANCE = timedelta(minutes=20)  # hourly runs drift a little; don't miss a slot by minutes
 
-NEWS_FEEDS = [
-    # --- Major Global Outlets & Magazines ---
-    "https://www.gematsu.com/feed",
-    "https://www.eurogamer.net/feed",
-    "https://www.timeextension.com/feed",
-    "https://www.pushsquare.com/feeds/latest",
-    "https://www.gamespot.com/feeds/mashup/",
-    "https://www.pcgamer.com/rss/",
-    "https://nintendoeverything.com/feed",
-    "https://kotaku.com/rss",
-    "https://www.polygon.com/rss/index.xml",
-    "https://www.vg247.com/feed",
-    "https://www.rockpapershotgun.com/feed/",
-    "https://www.destructoid.com/feed/",
-    "https://www.nintendolife.com/feeds/latest",
-    # --- Official Platform Blogs ---
-    "https://blog.playstation.com/feed/",
-    "https://news.xbox.com/en-us/feed/",
-    # --- Spanish & Portuguese Feeds ---
-    "https://latam.ign.com/feed.xml",
-    "https://www.eurogamer.pt/feed",
-    "https://vandal.elespanol.com/xml.cgi",
-]
+# Sources are configured in feeds.json. News and Reddit are the core feeds: when
+# too many of them fail the run aborts. YouTube and podcast feeds are extras whose
+# failures are only reported, so an outage on either platform can't block updates.
+SOURCE_TYPES = ("news", "reddit", "youtube", "podcast")
+CORE_TYPES = {"news", "reddit"}
+YOUTUBE_FEED_URL = "https://www.youtube.com/feeds/videos.xml?channel_id={}"
+# Reddit allows roughly one unauthenticated request per minute, so subreddits that
+# share a group are fetched as one combined multireddit feed instead of one feed each.
+REDDIT_FEED_URL = "https://www.reddit.com/r/{}/.rss?limit={}"
+SOURCE_PREFIX = {"youtube": "YouTube: ", "podcast": "Podcast: "}
+CHANNEL_ID_PATTERN = re.compile(r"UC[0-9A-Za-z_-]{22}")
+# The dashboard uses this exact pattern too, so a feed link it accepts always loads here:
+# http(s), an ASCII host name with at least one dot, an optional port, printable ASCII after.
+FEED_URL_PATTERN = re.compile(r"https?://(?:[A-Za-z0-9-]+\.)+[A-Za-z0-9-]+(?::[0-9]{1,5})?(?:[/?#][!-~]*)?")
+# YouTube sources can also be added by channel link (the dashboard normalises pasted
+# links to this form); the scraper looks the channel ID up once and remembers it.
+YOUTUBE_CHANNEL_URL_PATTERN = re.compile(r"https://www\.youtube\.com/(?:@|c/|user/)[^/?#\s]+")
+CANONICAL_CHANNEL_PATTERN = re.compile(r'<link rel="canonical" href="https://www\.youtube\.com/channel/(UC[0-9A-Za-z_-]{22})"')
+SUBREDDIT_PATTERN = re.compile(r"[A-Za-z0-9_]{2,21}")
 
-# Reddit allows roughly one unauthenticated request per minute, so subreddits
-# are fetched as a few combined multireddit feeds instead of one feed each.
-SUBREDDIT_GROUPS = [
-    # --- Dedicated PS2 & Emulation Hubs ---
-    ["ps2", "ps2homebrew", "PCSX2", "playstation2"],
-    # --- Collecting, Retro & Emulation ---
-    ["gamecollecting", "LimitedPrintGames", "NSCollectors", "Steelbook", "gameverifying",
-     "retrogaming", "classicgaming", "emulation", "psx"],
-    # --- High-Traffic General Communities ---
-    ["gaming", "Games", "pcgaming", "truegaming", "ShouldIbuythisgame", "gamingsuggestions",
-     "pcmasterrace", "NintendoSwitch", "PlayStation", "xboxone", "SteamDeck", "jrpg",
-     "patientgamers"],
-]
-
-RSS_FEEDS = NEWS_FEEDS + [
-    f"https://www.reddit.com/r/{'+'.join(group)}/.rss?limit={MAX_ENTRIES_PER_FEED}"
-    for group in SUBREDDIT_GROUPS
-]
-TOTAL_SOURCES = len(NEWS_FEEDS) + sum(len(group) for group in SUBREDDIT_GROUPS)
-
-# Posts from these subreddits count as PS2 context on their own.
-PS2_SUBREDDITS = {name.lower() for name in SUBREDDIT_GROUPS[0]}
+# Posts from sources with this role count as PS2 context on their own.
+PS2_ROLE = "ps2"
 PS2_CONTEXT_PATTERN = re.compile(r"\b(?:ps2|ps 2|playstation ?2|pcsx2)\b", re.IGNORECASE)
 
 REMASTER_PATTERN = re.compile(
@@ -268,11 +257,11 @@ class TitleMatcher:
         return f"{len(self.fuzzy_titles)} fuzzy, {len(self.short)} short, {len(self.aliases)} aliases"
 
     @staticmethod
-    def _has_ps2_context(headline, source):
-        return bool(PS2_CONTEXT_PATTERN.search(headline)) or source.lower().removeprefix("r/") in PS2_SUBREDDITS
+    def _has_ps2_context(headline, ps2_source):
+        return bool(PS2_CONTEXT_PATTERN.search(headline)) or ps2_source
 
-    def match(self, headline, source=""):
-        """Returns (title, score) or (None, 0)."""
+    def match(self, headline, ps2_source=False):
+        """Returns (title, score) or (None, 0). ps2_source: the headline comes from a PS2-dedicated source."""
         norm = utils.default_process(headline)
         tokens = norm.split()
         grams = {" ".join(tokens[i:i + n]) for n in range(1, 5) for i in range(len(tokens) - n + 1)}
@@ -285,7 +274,7 @@ class TitleMatcher:
         for gram in ordered:
             if gram in self.short:
                 title, ambiguous = self.short[gram]
-                if ambiguous and not self._has_ps2_context(headline, source):
+                if ambiguous and not self._has_ps2_context(headline, ps2_source):
                     continue
                 return title, 100
 
@@ -311,9 +300,9 @@ def _retry_delay(response):
     return min(seconds + 1, MAX_RATE_LIMIT_WAIT)
 
 
-def fetch_feed(session, url):
+def fetch_feed(session, url, retry_rate_limit=True):
     response = session.get(url, timeout=REQUEST_TIMEOUT)
-    if response.status_code == 429:
+    if response.status_code == 429 and retry_rate_limit:
         wait = _retry_delay(response)
         print(f"  rate limited, retrying in {wait}s")
         time.sleep(wait)
@@ -329,11 +318,43 @@ def analyze_sentiment(text):
     return max(10, min(100, score))
 
 
-def entry_source(entry, feed):
+def entry_source(entry, feed, job):
+    if job["type"] in SOURCE_PREFIX:  # labelled with the configured name, e.g. "YouTube: IGN"
+        return SOURCE_PREFIX[job["type"]] + job["sources"][0]["name"]
     tags = entry.get("tags")
     if "reddit.com" in entry.get("link", "") and tags:
         return f"r/{tags[0]['term']}"
     return feed.feed.get("title", "Unknown source").split(" | ")[0]
+
+
+def entry_feed_key(entry, job):
+    """source_key() of the configured source an entry came from (None if unknown)."""
+    if job["type"] == "reddit":
+        tags = entry.get("tags")
+        term = tags[0].get("term") if tags else None
+        return f"reddit:{term.lower()}" if term else None
+    return source_key(job["sources"][0])
+
+
+def entry_link(entry, kind, shared_links=frozenset()):
+    if kind != "podcast":
+        return entry.get("link", "#")
+    # Many podcast episodes have no page of their own: no link, a link every episode shares
+    # (the show's homepage), or a bare guid instead of a URL. Those use the audio file, so each
+    # episode keeps a distinct, working link (the link is also what tells items apart).
+    link = entry.get("link") or ""
+    if link.startswith(("http://", "https://")) and link not in shared_links:
+        return link
+    enclosure = next((e.get("href") for e in entry.get("enclosures", []) if e.get("href")), None)
+    return enclosure or link or "#"
+
+
+def shared_links(feed, kind):
+    """Episode links that several entries of a podcast feed have in common."""
+    if kind != "podcast":
+        return frozenset()
+    counts = Counter(e.get("link") for e in feed.entries if e.get("link"))
+    return frozenset(link for link, count in counts.items() if count > 1)
 
 
 def entry_timestamp(entry):
@@ -348,15 +369,18 @@ def item_key(item):
     return link if link != "#" else f"{item.get('source', '')}|{item.get('headline', '')}"
 
 
-def analyze_entry(entry, feed, matcher, first_seen):
+def analyze_entry(entry, feed, job, matcher, first_seen, ps2_keys, repeated_links=frozenset()):
     headline = entry.title.strip()
-    source = entry_source(entry, feed)
-    game, score = matcher.match(headline, source)
+    source = entry_source(entry, feed, job)
+    key = entry_feed_key(entry, job)
+    game, score = matcher.match(headline, ps2_source=key in ps2_keys)
     timestamp, dated = entry_timestamp(entry)
     item = {
         "headline": headline,
         "source": source,
-        "link": entry.get("link", "#"),
+        "source_type": job["type"],
+        "feed": key,
+        "link": entry_link(entry, job["type"], repeated_links),
         "matched_game": game,
         "match_score": score,
         "is_remaster_rumor": bool(REMASTER_PATTERN.search(headline)),
@@ -378,39 +402,335 @@ def load_previous_items():
     return [i for i in items if isinstance(i, dict)] if isinstance(items, list) else []
 
 
+# --- Source configuration (feeds.json) ------------------------------------
+
+def source_key(src):
+    """Stable id linking a source to its items and status; the dashboard derives it the same way."""
+    if src["type"] == "youtube":
+        return f"youtube:{src.get('channel_id') or src['channel_url'].lower()}"
+    if src["type"] == "reddit":
+        return f"reddit:{src['subreddit'].lower()}"
+    return src["url"]
+
+
+def _is_weight(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and 0 <= value <= 10
+
+
+def _is_hours(value):
+    # Whole numbers only; 6.0 is accepted because the dashboard's JavaScript can't tell it from 6.
+    if isinstance(value, bool):
+        return False
+    if isinstance(value, float):
+        return value.is_integer() and 1 <= value <= 24
+    return isinstance(value, int) and 1 <= value <= 24
+
+
+def _is_http_url(value):
+    return isinstance(value, str) and bool(FEED_URL_PATTERN.fullmatch(value))
+
+
+def validate_config(config):
+    """Returns a list of problems with a feeds.json document (empty when it is usable)."""
+    if not isinstance(config, dict):
+        return ["the top level must be an object"]
+    roles, sources = config.get("roles"), config.get("sources")
+    if not isinstance(roles, dict) or not roles:
+        return ["'roles' must be a non-empty object"]
+    if not isinstance(sources, list):
+        return ["'sources' must be a list"]
+    problems = [f"role {name!r} needs a 'weight' between 0 and 10"
+                for name, role in roles.items() if not isinstance(role, dict) or not _is_weight(role.get("weight"))]
+    intervals = config.get("poll_every_hours", {})
+    if not isinstance(intervals, dict) or any(kind not in SOURCE_TYPES or not _is_hours(hours)
+                                              for kind, hours in intervals.items()):
+        problems.append("'poll_every_hours' must map source types to whole hours between 1 and 24")
+    seen = set()
+    for i, src in enumerate(sources):
+        where = f"sources[{i}]"
+        if not isinstance(src, dict) or src.get("type") not in SOURCE_TYPES:
+            problems.append(f"{where}: 'type' must be one of {', '.join(SOURCE_TYPES)}")
+            continue
+        kind = src["type"]
+        if not isinstance(src.get("name"), str) or not src["name"].strip():
+            problems.append(f"{where}: missing 'name'")
+        if not isinstance(src.get("enabled"), bool):
+            problems.append(f"{where}: 'enabled' must be true or false")
+        if not isinstance(src.get("role"), str) or src["role"] not in roles:
+            problems.append(f"{where}: unknown role {src.get('role')!r}")
+        if "weight" in src and not _is_weight(src["weight"]):
+            problems.append(f"{where}: 'weight' must be between 0 and 10")
+        if kind == "youtube" and "channel_id" in src:
+            field, valid = "channel_id", isinstance(src["channel_id"], str) and CHANNEL_ID_PATTERN.fullmatch(src["channel_id"])
+        elif kind == "youtube":
+            field, valid = "channel_id/channel_url", (isinstance(src.get("channel_url"), str)
+                                                      and YOUTUBE_CHANNEL_URL_PATTERN.fullmatch(src["channel_url"]))
+        elif kind == "reddit":
+            field, valid = "subreddit/group", (isinstance(src.get("subreddit"), str)
+                                               and SUBREDDIT_PATTERN.fullmatch(src["subreddit"])
+                                               and isinstance(src.get("group"), str) and src["group"].strip())
+        else:
+            field, valid = "url", _is_http_url(src.get("url"))
+        if not valid:
+            problems.append(f"{where}: invalid {field}")
+            continue
+        key = source_key(src)
+        if key in seen:
+            problems.append(f"{where}: duplicate source {key}")
+        seen.add(key)
+    return problems
+
+
+def load_config():
+    """Reads feeds.json; exits with a clear message when it is missing or invalid."""
+    try:
+        config = json.loads(FEEDS_PATH.read_text(encoding="utf-8-sig"))  # tolerate a BOM from hand edits
+    except (OSError, ValueError) as e:
+        raise SystemExit(f"Cannot read {FEEDS_PATH.name}: {e}")
+    problems = validate_config(config)
+    if problems:
+        raise SystemExit(f"{FEEDS_PATH.name} is invalid:\n  " + "\n  ".join(problems))
+    return config
+
+
+def build_jobs(config, youtube_ids=None):
+    """Turns enabled sources into feeds to fetch, core types first. Subreddits that
+    share a group become one multireddit feed (in the order they are listed).
+    youtube_ids maps channel links to IDs (see resolve_youtube_links); a YouTube
+    source added by link is skipped until its ID is known."""
+    jobs, reddit_groups = [], {}
+    for src in config["sources"]:
+        if not src["enabled"]:
+            continue
+        if src["type"] == "reddit":
+            job = reddit_groups.get(src["group"])
+            if job is None:
+                job = reddit_groups[src["group"]] = {"type": "reddit", "sources": []}
+                jobs.append(job)
+            job["sources"].append(src)
+        elif src["type"] == "youtube":
+            channel_id = src.get("channel_id") or (youtube_ids or {}).get(src["channel_url"].lower())
+            if channel_id:
+                jobs.append({"type": "youtube", "sources": [src], "url": YOUTUBE_FEED_URL.format(channel_id)})
+        else:
+            jobs.append({"type": src["type"], "sources": [src], "url": src["url"]})
+    for job in reddit_groups.values():
+        job["url"] = REDDIT_FEED_URL.format("+".join(s["subreddit"] for s in job["sources"]), MAX_ENTRIES_PER_FEED)
+    jobs.sort(key=lambda job: SOURCE_TYPES.index(job["type"]))  # stable: keeps file order within a type
+    return jobs
+
+
+def parse_timestamp(text):
+    try:
+        return datetime.strptime(text, TIMESTAMP_FORMAT).replace(tzinfo=timezone.utc)
+    except (TypeError, ValueError):
+        return None
+
+
+def due_types(config, now, last_polled=None):
+    """Source types to fetch this run. A type with poll_every_hours N is due once about N hours
+    have passed since it was last fetched (data/poll_state.json). GitHub often delays or skips
+    scheduled runs, so fixed UTC hours could be missed for days. FULL_RUN=1 fetches everything."""
+    if os.environ.get("FULL_RUN") == "1":
+        return set(SOURCE_TYPES)
+    intervals = config.get("poll_every_hours", {})
+    due = set()
+    for kind in SOURCE_TYPES:
+        hours = int(intervals.get(kind, 1))
+        last = parse_timestamp((last_polled or {}).get(kind))
+        if hours <= 1 or last is None or now - last >= timedelta(hours=hours) - POLL_TOLERANCE:
+            due.add(kind)
+    return due
+
+
+def load_json_dict(path):
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+    return value if isinstance(value, dict) else {}
+
+
+def save_json_if_changed(path, value, previous):
+    if value != previous:
+        path.write_text(json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def select_entries(feed, kind):
+    if kind in CORE_TYPES:
+        return [e for e in feed.entries[:MAX_ENTRIES_PER_FEED] if e.get("title")]
+    # YouTube/podcast feeds aren't guaranteed newest-first (some podcasts list oldest episodes first).
+    entries = [e for e in feed.entries if e.get("title")]
+    entries.sort(key=lambda e: tuple(e.get("published_parsed") or e.get("updated_parsed") or ()), reverse=True)
+    return entries[:MAX_ENTRIES_PER_FEED]
+
+
+# --- Per-feed health (data/feed_status.json) -------------------------------
+# Only fields that change when something actually happens are stored, so the file
+# (and the hourly commit) stays unchanged on quiet runs.
+
+def feed_error(e):
+    response = getattr(e, "response", None)
+    if response is not None:
+        return f"HTTP {response.status_code}"
+    return type(e).__name__ if isinstance(e, requests.RequestException) else str(e) or type(e).__name__
+
+
+def host_is_down(e):
+    """Connection problems, timeouts, 5xx and 429 mean the host is struggling. Other HTTP errors
+    (404, 410...) concern one feed, so they don't count towards skipping the whole host."""
+    if isinstance(e, (requests.ConnectionError, requests.Timeout)):
+        return True
+    response = getattr(e, "response", None)
+    return response is not None and (response.status_code >= 500 or response.status_code == 429)
+
+
+def newest_by_key(feed, job):
+    """Newest dated entry per source key in a fetched feed."""
+    newest = {}
+    for entry in feed.entries:
+        timestamp, dated = entry_timestamp(entry)
+        key = entry_feed_key(entry, job)
+        if dated and key and timestamp > newest.get(key, ""):
+            newest[key] = timestamp
+    return newest
+
+
+def record_success(status, key, latest):
+    previous_latest = status.get(key, {}).get("latest")
+    status[key] = {"ok": True, "latest": max(filter(None, [previous_latest, latest]), default=None)}
+
+
+def record_failure(status, key, error, now):
+    previous = status.get(key, {})
+    failing_since = previous.get("failing_since") if previous.get("ok") is False else None
+    status[key] = {"ok": False, "error": error, "failing_since": failing_since or now,
+                   "latest": previous.get("latest")}
+
+
+# --- YouTube sources added by channel link ----------------------------------
+
+def fetch_channel_id(session, url):
+    """Reads the channel ID from a channel page such as https://www.youtube.com/@IGN."""
+    # SOCS=CAI skips the cookie-consent page YouTube shows in some regions.
+    response = session.get(url, timeout=REQUEST_TIMEOUT, cookies={"SOCS": "CAI"})
+    response.raise_for_status()
+    match = CANONICAL_CHANNEL_PATTERN.search(response.text)
+    if not match:
+        raise ValueError("no channel ID on the page")
+    return match.group(1)
+
+
+def resolve_youtube_links(config, session, status, now):
+    """Returns {channel link: channel ID} for enabled YouTube sources added by link.
+    IDs are looked up once and remembered in data/youtube_channels.json. A link that
+    can't be resolved, or points at a channel that is already listed, is reported in
+    the feed status and left out of this run."""
+    remembered = load_json_dict(YOUTUBE_IDS_PATH)
+    known = dict(remembered)
+    listed = {s["channel_id"]: s["name"] for s in config["sources"]
+              if s["type"] == "youtube" and s["enabled"] and "channel_id" in s}
+    resolved = {}
+    for src in config["sources"]:
+        if src["type"] != "youtube" or not src["enabled"] or "channel_id" in src:
+            continue
+        link = src["channel_url"].lower()
+        if link not in known:
+            try:
+                known[link] = fetch_channel_id(session, src["channel_url"])
+            except (requests.RequestException, ValueError) as e:
+                print(f"  FAILED to resolve {src['channel_url']}: {e}")
+                record_failure(status, source_key(src), f"channel link: {feed_error(e)}", now)
+                continue
+        channel_id = known[link]
+        if channel_id in listed:
+            record_failure(status, source_key(src), f"already listed as {listed[channel_id]}", now)
+            continue
+        listed[channel_id] = src["name"]
+        resolved[link] = channel_id
+    save_json_if_changed(YOUTUBE_IDS_PATH, known, remembered)
+    return resolved
+
+
 def run_scraper():
     DATA_DIR.mkdir(exist_ok=True)
+    config = load_config()
+    now = datetime.now(timezone.utc)
+    now_text = now.strftime(TIMESTAMP_FORMAT)
+    previous_polls = load_json_dict(POLL_STATE_PATH)
+    due = due_types(config, now, previous_polls)
+    ps2_keys = {source_key(s) for s in config["sources"] if s["enabled"] and s["role"] == PS2_ROLE}
     previous = load_previous_items()
     first_seen = {item_key(i): i["timestamp"] for i in previous if i.get("timestamp")}
+    previous_status = load_json_dict(STATUS_PATH)
+    known_keys = {source_key(s) for s in config["sources"]}
+    status = {k: v for k, v in previous_status.items() if k in known_keys}
 
     items = []
-    failures = 0
+    core_failures = extra_failures = skipped = 0
+    host_failures = defaultdict(int)
+    fetched_types = set()
     with requests.Session() as session:
         session.headers["User-Agent"] = USER_AGENT
         matcher = TitleMatcher(load_ps2_titles(session))
+        youtube_ids = resolve_youtube_links(config, session, status, now_text) if "youtube" in due else {}
+        jobs = build_jobs(config, youtube_ids)
+        core_jobs = [job for job in jobs if job["type"] in CORE_TYPES and job["type"] in due]
 
-        print(f"Scanning {len(RSS_FEEDS)} feeds against PS2 titles ({matcher.summary()})...")
-        for url in RSS_FEEDS:
+        due_jobs = [job for job in jobs if job["type"] in due]
+        print(f"Scanning {len(due_jobs)} of {len(jobs)} feeds (due now: {', '.join(t for t in SOURCE_TYPES if t in due)}) "
+              f"against PS2 titles ({matcher.summary()})...")
+        started = time.monotonic()
+        for job in due_jobs:
+            url, core = job["url"], job["type"] in CORE_TYPES
+            host = urlparse(url).hostname
+            if not core and time.monotonic() - started > FETCH_TIME_BUDGET:
+                skipped += 1
+                print(f"  SKIPPED {url}: fetch time budget used up")
+                continue
+            if not core and host_failures[host] >= HOST_FAILURE_LIMIT:
+                skipped += 1
+                print(f"  SKIPPED {url}: {host} keeps failing")
+                continue
+            fetched_types.add(job["type"])
             try:
-                feed = fetch_feed(session, url)
+                feed = fetch_feed(session, url, retry_rate_limit=core)
+                if feed.get("bozo") and not feed.entries:
+                    raise ValueError("unreadable feed")
             except (requests.RequestException, ValueError) as e:
-                failures += 1
+                if core:
+                    core_failures += 1
+                else:
+                    extra_failures += 1
+                    host_failures[host] = host_failures[host] + 1 if host_is_down(e) else 0
                 print(f"  FAILED {url}: {e}")
+                for src in job["sources"]:
+                    record_failure(status, source_key(src), feed_error(e), now_text)
                 continue
-            if feed.get("bozo") and not feed.entries:
-                failures += 1
-                print(f"  FAILED {url}: unreadable feed")
-                continue
-            entries = [e for e in feed.entries[:MAX_ENTRIES_PER_FEED] if e.get("title")]
-            items.extend(analyze_entry(e, feed, matcher, first_seen) for e in entries)
+            host_failures[host] = 0
+            entries = select_entries(feed, job["type"])
+            repeated = shared_links(feed, job["type"])
+            items.extend(analyze_entry(e, feed, job, matcher, first_seen, ps2_keys, repeated) for e in entries)
+            newest = newest_by_key(feed, job)
+            for src in job["sources"]:
+                record_success(status, source_key(src), newest.get(source_key(src)))
             print(f"  {len(entries):3d} items  {url}")
 
     # Never replace a good snapshot with the result of a mostly-failed run.
-    if not items or failures > len(RSS_FEEDS) // 2:
+    if core_jobs and (not items or core_failures > len(core_jobs) // 2):
         raise SystemExit(
-            f"Aborting: {failures}/{len(RSS_FEEDS)} feeds failed and {len(items)} items were "
+            f"Aborting: {core_failures}/{len(core_jobs)} news/Reddit feeds failed and {len(items)} items were "
             "collected; keeping the previous snapshot."
         )
+    save_json_if_changed(STATUS_PATH, status, previous_status)
+    # Remember when the slower source types (poll_every_hours > 1) were last fetched.
+    intervals = config.get("poll_every_hours", {})
+    polls = {kind: when for kind, when in previous_polls.items() if int(intervals.get(kind, 1)) > 1}
+    polls.update({kind: now_text for kind in fetched_types if int(intervals.get(kind, 1)) > 1})
+    save_json_if_changed(POLL_STATE_PATH, polls, previous_polls)
+    if not items:
+        print("No items collected; leaving snapshot untouched.")
+        return
 
     # Merge into the previous snapshot: new data wins, old items age out.
     merged = {item_key(i): i for i in previous}
@@ -426,11 +746,12 @@ def run_scraper():
 
     output = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
-        "total_tracked_feeds": TOTAL_SOURCES,
+        "total_tracked_feeds": sum(1 for s in config["sources"] if s["enabled"]),
         "items": merged_items,
     }
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"Saved {len(merged_items)} items ({len(items)} fetched this run, {failures} feed failures) to {OUTPUT_PATH}")
+    print(f"Saved {len(merged_items)} items ({len(items)} fetched this run, {core_failures} news/Reddit and "
+          f"{extra_failures} YouTube/podcast feed failures, {skipped} skipped) to {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":
