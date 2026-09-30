@@ -5,6 +5,12 @@ on:
     # Hourly, at an off-peak minute (top-of-hour runs are the most delayed)
     - cron: '17 * * * *'
   workflow_dispatch:
+  push:
+    # Saving sources (from the dashboard or a commit) or changing the scraper rescrapes right away.
+    branches: [main]
+    paths:
+      - feeds.json
+      - scraper.py
 
 permissions:
   contents: write
@@ -25,6 +31,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          # The branch head, not the commit that triggered the run: a run that waited in the
+          # concurrency queue must start from the previous run's data commit, or its push conflicts.
+          ref: ${{ github.ref }}
           fetch-depth: 1
 
       - name: Set up Python
@@ -38,6 +47,10 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run scraper script
+        env:
+          # Manual runs and source/scraper changes fetch every enabled feed now instead of
+          # waiting for each source type's poll_every_hours slot (see feeds.json).
+          FULL_RUN: ${{ github.event_name != 'schedule' && '1' || '' }}
         run: python scraper.py
 
       - name: Commit and push changes if data updated

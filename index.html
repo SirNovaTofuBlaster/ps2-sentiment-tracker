@@ -72,7 +72,7 @@
                         PS2 SENTIMENT & REMASTER RADAR
                         <span id="dataSourceBadge" class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800 px-2 py-0.5 rounded-full font-mono-custom">Loading Feed...</span>
                     </h1>
-                    <p class="text-xs text-slate-400">GitHub Actions automated worldwide RSS & Reddit sentiment crawler</p>
+                    <p class="text-xs text-slate-400">GitHub Actions automated worldwide RSS, Reddit, YouTube & podcast sentiment crawler</p>
                 </div>
             </div>
             
@@ -81,6 +81,12 @@
                     <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     <span class="text-slate-300">Last Sync: <span id="lastUpdated" class="text-emerald-400 font-bold">Syncing...</span></span>
                 </div>
+                <a href="guide.html" target="_blank" rel="noopener noreferrer" title="How to use" aria-label="How to use" class="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-semibold text-xs px-3 py-2 rounded-lg transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-circle-question"></i><span class="hidden lg:inline">How to use</span>
+                </a>
+                <a href="#sourcesSection" title="Sources &amp; Weights" aria-label="Sources and weights" class="bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 font-semibold text-xs px-3 py-2 rounded-lg transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-sliders"></i><span class="hidden lg:inline">Sources</span>
+                </a>
                 <button onclick="fetchSentimentData()" class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-black font-semibold text-xs px-4 py-2 rounded-lg shadow-lg shadow-cyan-500/20 transition-all flex items-center gap-2 cursor-pointer">
                     <i class="fa-solid fa-rotate"></i> Refresh Feed
                 </button>
@@ -128,7 +134,7 @@
                     <div id="statFeedsCount" class="text-3xl font-black font-mono-custom text-white">--</div>
                     <span class="text-xs text-blue-400 font-medium bg-blue-950/60 px-2 py-0.5 rounded border border-blue-900">Global Endpoints</span>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">Magazines, RSS & Reddit tracked</p>
+                <p class="text-xs text-slate-400 mt-2">Magazines, Reddit, YouTube & podcasts tracked</p>
             </div>
 
             <!-- Card 4: Avg Sentiment -->
@@ -141,7 +147,7 @@
                     <div id="statAvgSentiment" class="text-3xl font-black font-mono-custom text-white">--</div>
                     <span class="text-xs text-purple-400 font-medium bg-purple-950/60 px-2 py-0.5 rounded border border-purple-900">Score 0-100</span>
                 </div>
-                <p class="text-xs text-slate-400 mt-2">Calculated across database matches</p>
+                <p class="text-xs text-slate-400 mt-2">Weighted by source role &middot; see Sources &amp; Weights</p>
             </div>
         </div>
 
@@ -176,12 +182,19 @@
                     <h2 class="text-lg font-bold text-white">Live Ingestion & Sentiment Stream</h2>
                     <p class="text-xs text-slate-400">Incoming RSS items matched against the PS2 database with sentiment and source verification.</p>
                 </div>
-                <div class="flex items-center gap-3">
+                <div class="flex flex-wrap items-center gap-3">
                     <input type="text" id="searchInput" oninput="filterFeedItems()" placeholder="Filter by game or headline..." class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400 w-full sm:w-64">
                     <select id="filterSelect" onchange="filterFeedItems()" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
                         <option value="all">All Records</option>
                         <option value="remaster">Remaster Rumors Only</option>
                         <option value="matched">Matched PS2 Games Only</option>
+                    </select>
+                    <select id="typeSelect" onchange="filterFeedItems()" aria-label="Source type" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
+                        <option value="all">All Sources</option>
+                        <option value="news">News Sites</option>
+                        <option value="reddit">Reddit</option>
+                        <option value="youtube">YouTube</option>
+                        <option value="podcast">Podcasts</option>
                     </select>
                 </div>
             </div>
@@ -208,6 +221,78 @@
             <div id="pagination" class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-4 border-t border-slate-800 text-xs"></div>
         </div>
 
+        <!-- Sources & Weights: edits feeds.json (the scraper's source list) -->
+        <div id="sourcesSection" class="bg-ps2card border border-ps2border rounded-2xl p-6 scroll-mt-20">
+            <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 mb-4">
+                <div>
+                    <h2 class="text-lg font-bold text-white flex flex-wrap items-center gap-2">
+                        Sources &amp; Weights
+                        <span id="dirtyBadge" class="hidden bg-amber-500 text-black text-[10px] font-bold px-2 py-0.5 rounded-full">Unsaved changes</span>
+                    </h2>
+                    <p id="sourcesSummary" class="text-xs text-slate-400">Loading feeds.json...</p>
+                    <p class="text-[11px] text-slate-500 mt-1">Changes show on this page right away. Press <b>Save changes</b> to make the scraper use them. New here? Read <a href="guide.html" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">How to use</a>.</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 text-xs">
+                    <button type="button" id="saveBtn" onclick="saveToGitHub()" class="bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-black font-semibold px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"><i class="fa-solid fa-floppy-disk"></i> Save changes</button>
+                    <button type="button" id="discardBtn" onclick="discardChanges()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"><i class="fa-solid fa-rotate-left"></i> Discard</button>
+                    <button type="button" onclick="downloadConfig()" class="bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-download"></i> Download</button>
+                    <button type="button" onclick="runScraperNow()" class="bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-slate-700 px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-play"></i> Run scraper now</button>
+                    <button type="button" onclick="toggleSettings()" aria-controls="settingsPanel" class="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-3 py-2 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-gear"></i> GitHub settings</button>
+                    <a href="guide.html" target="_blank" rel="noopener noreferrer" class="bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-3 py-2 rounded-lg transition-all flex items-center gap-1.5"><i class="fa-solid fa-circle-question"></i> How to use</a>
+                </div>
+            </div>
+
+            <!-- GitHub settings (token never leaves this browser except to api.github.com) -->
+            <form id="settingsPanel" class="hidden bg-slate-900/80 border border-slate-800 rounded-xl p-4 mb-4 text-xs space-y-3" onsubmit="saveSettings(event)">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    <label class="flex flex-col gap-1 text-slate-400">Repository (owner/name)
+                        <input id="settingRepo" type="text" placeholder="owner/ps2-sentiment-tracker" autocomplete="off" class="bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
+                    </label>
+                    <label class="flex flex-col gap-1 text-slate-400">Branch
+                        <input id="settingBranch" type="text" placeholder="main" autocomplete="off" class="bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
+                    </label>
+                    <label class="flex flex-col gap-1 text-slate-400">GitHub token (optional)
+                        <input id="settingToken" type="password" placeholder="github_pat_... or ghp_..." autocomplete="off" class="bg-slate-950 border border-slate-700 text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
+                    </label>
+                </div>
+                <label class="flex items-center gap-2 text-slate-300"><input id="settingRemember" type="checkbox" class="accent-cyan-400"> Remember on this device (otherwise it is forgotten when the tab closes)</label>
+                <p class="text-slate-500 leading-relaxed">You don't need a token: without one, <b>Save changes</b> walks you through saving on GitHub in a few clicks. A token makes saving one click. If the repository is yours, use a <b>fine-grained</b> token for just this repository with <b>Contents</b> set to read and write (add <b>Actions</b> for <b>Run scraper now</b>). A collaborator on someone else's repository needs a <b>classic</b> token with the <b>public_repo</b> scope; that scope covers all your public repositories, so give it a short expiry (it can't start the scraper by hand, which saving does anyway). Tick Remember only on your own computer: it keeps the token for this whole github.io site. Step-by-step: <a href="guide.html#token" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">How to use → Token</a>. The token is only sent to api.github.com, and commits use your GitHub no-reply email.</p>
+                <div class="flex flex-wrap gap-2">
+                    <button type="submit" class="bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-3 py-2 rounded-lg cursor-pointer">Save settings</button>
+                    <button type="button" onclick="forgetToken()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 px-3 py-2 rounded-lg cursor-pointer">Forget token</button>
+                </div>
+            </form>
+
+            <div id="sourcesMessage" role="status" aria-live="polite" class="hidden mb-4 text-xs rounded-lg px-3 py-2 border"></div>
+
+            <!-- Guided save (shown by "Save changes" when no token is set) -->
+            <div id="saveGuide" class="hidden mb-4 text-xs bg-cyan-950/30 border border-cyan-800 rounded-xl p-4 space-y-3"></div>
+
+            <div id="sourceTabs" role="tablist" class="flex flex-wrap gap-2 mb-4 text-xs"></div>
+
+            <div id="sourcesToolbar" class="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
+                <input type="text" id="sourceSearch" oninput="renderSourcesView()" placeholder="Search sources..." aria-label="Search sources" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400 w-full sm:w-64">
+                <select id="sourceShow" onchange="renderSourcesView()" aria-label="Show sources" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
+                    <option value="all">All sources</option>
+                    <option value="enabled">Enabled only</option>
+                    <option value="disabled">Disabled only</option>
+                </select>
+                <select id="sourceSort" onchange="renderSourcesView()" aria-label="Sort sources" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400"></select>
+            </div>
+
+            <div id="sourcesView" class="overflow-x-auto"></div>
+
+            <form id="addSourceForm" class="mt-4 pt-4 border-t border-slate-800 grid grid-cols-1 md:grid-cols-6 gap-3 text-xs" onsubmit="addSource(event)">
+                <input id="addValue" type="text" required autocomplete="off" class="md:col-span-2 bg-slate-900 border border-slate-700 text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400" aria-label="Feed URL, subreddit or channel">
+                <input id="addName" type="text" autocomplete="off" placeholder="Display name" class="bg-slate-900 border border-slate-700 text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400" aria-label="Display name">
+                <input id="addGroup" type="text" list="addGroupOptions" autocomplete="off" placeholder="Group" class="bg-slate-900 border border-slate-700 text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400" aria-label="Group">
+                <datalist id="addGroupOptions"></datalist>
+                <select id="addRole" class="bg-slate-900 border border-slate-700 text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400" aria-label="Role"></select>
+                <button type="submit" id="addBtn" class="bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-3 py-2 rounded-lg transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"><i class="fa-solid fa-plus"></i> Add source</button>
+                <p id="addHint" class="md:col-span-6 text-[11px] text-slate-500"></p>
+            </form>
+        </div>
+
     </main>
 
     <footer class="border-t border-ps2border bg-ps2card/50 py-6 mt-12 text-center text-xs text-slate-500">
@@ -216,6 +301,7 @@
 
     <script>
         let allFeedData = [];
+        let visibleFeedData = [];   // allFeedData minus items from switched-off sources
 
         const PAGE_SIZE = 100;
         let tableItems = [];
@@ -280,6 +366,9 @@
             badge.innerText = "Fetching JSON...";
             badge.className = "text-xs bg-blue-950 text-blue-400 border border-blue-800 px-2 py-0.5 rounded-full font-mono-custom";
 
+            // Unsaved source edits survive a refresh; only the feed health is reloaded then.
+            if (feedConfig) await loadFeedStatus(); else await loadSources();
+
             try {
                 // Fetch from the repository path data/sentiment_feed.json
                 const response = await fetch('data/sentiment_feed.json');
@@ -294,7 +383,7 @@
                 document.getElementById('lastUpdated').innerText = data.last_updated || 'Just now';
                 document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
                 
-                processAndRender(allFeedData);
+                refreshDashboard();
             } catch (error) {
                 console.warn('Could not load data/sentiment_feed.json directly. Falling back to mock dataset.', error);
                 
@@ -305,7 +394,7 @@
                 document.getElementById('lastUpdated').innerText = fallbackData.last_updated;
                 document.getElementById('statFeedsCount').innerText = fallbackData.total_tracked_feeds;
                 
-                processAndRender(allFeedData);
+                refreshDashboard();
             }
         }
 
@@ -317,17 +406,28 @@
             const remasters = items.filter(i => i.is_remaster_rumor);
             document.getElementById('statRemasters').innerText = remasters.length;
 
-            // Stat 3: Avg Sentiment
-            if (items.length > 0) {
-                const totalScore = items.reduce((acc, curr) => acc + (curr.sentiment || 50), 0);
-                const avg = Math.round(totalScore / items.length);
+            // Stat 3: Avg Sentiment, weighted by each item's source weight (Sources & Weights)
+            const totalWeight = items.reduce((acc, curr) => acc + itemWeight(curr), 0);
+            if (totalWeight > 0) {
+                const totalScore = items.reduce((acc, curr) => acc + itemWeight(curr) * (curr.sentiment || 50), 0);
+                const avg = Math.round(totalScore / totalWeight);
                 document.getElementById('statAvgSentiment').innerText = avg + '/100';
             } else {
                 document.getElementById('statAvgSentiment').innerText = '0/100';
             }
+            if (feedConfig) {
+                document.getElementById('statFeedsCount').innerText = feedConfig.sources.filter(s => s.enabled).length;
+            }
 
             renderRemasterRadar(remasters);
-            renderTable(items);
+            filterFeedItems();
+        }
+
+        // Items from switched-off sources are hidden right away, before the scraper drops them.
+        function refreshDashboard() {
+            visibleFeedData = allFeedData.filter(item => !isHiddenItem(item));
+            processAndRender(visibleFeedData);
+            renderSources();
         }
 
         function renderRemasterRadar(remasters) {
@@ -339,7 +439,12 @@
                 return;
             }
 
-            remasters.slice(0, 3).forEach(item => {
+            // Matched PS2 games first, then heavier sources, then the newest.
+            const ranked = [...remasters].sort((a, b) =>
+                (Number(!!b.matched_game) - Number(!!a.matched_game)) || (itemWeight(b) - itemWeight(a)) ||
+                String(b.timestamp).localeCompare(String(a.timestamp)));
+
+            ranked.slice(0, 3).forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'bg-slate-900/80 border border-amber-500/20 hover:border-amber-500/50 rounded-xl p-4 transition-all';
                 card.innerHTML = `
@@ -352,7 +457,7 @@
                     </p>
                     <div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-800 pt-2">
                         <span>Source: ${esc(item.source)}</span>
-                        <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">Read Article <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                        <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">${esc(TYPE_META[itemType(item)].radarAction)} <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
                     </div>
                 `;
                 container.appendChild(card);
@@ -383,8 +488,8 @@
                 row.className = 'hover:bg-slate-800/40 transition-colors border-b border-slate-800/40';
                 row.innerHTML = `
                     <td class="py-3.5 px-4">
-                        <div class="font-semibold text-white">${esc(item.source)}</div>
-                        <div class="text-[10px] text-slate-500 font-mono-custom">${esc(item.timestamp)}</div>
+                        <div class="font-semibold text-white flex items-center gap-1.5"><i class="${TYPE_META[itemType(item)].icon} text-slate-400 text-[11px]" title="${esc(TYPE_META[itemType(item)].label)}"></i>${esc(item.source)}</div>
+                        <div class="text-[10px] text-slate-500 font-mono-custom">${esc(item.timestamp)}${weightBadge(item)}</div>
                     </td>
                     <td class="py-3.5 px-4 text-slate-300 max-w-md leading-relaxed">
                         ${item.is_remaster_rumor ? '<span class="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded mr-1">Remaster</span>' : ''}
@@ -398,7 +503,7 @@
                     </td>
                     <td class="py-3.5 px-4 text-right">
                         <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-xs bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-3 py-1.5 rounded-lg transition-all inline-flex items-center gap-1.5">
-                            Source <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                            ${esc(TYPE_META[itemType(item)].tableAction)} <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                         </a>
                     </td>
                 `;
@@ -447,13 +552,16 @@
         function filterFeedItems() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const filterType = document.getElementById('filterSelect').value;
+            const sourceType = document.getElementById('typeSelect').value;
 
-            const filtered = allFeedData.filter(item => {
+            const filtered = visibleFeedData.filter(item => {
                 const matchesQuery = item.headline.toLowerCase().includes(query) || 
                                      (item.matched_game && item.matched_game.toLowerCase().includes(query)) ||
                                      item.source.toLowerCase().includes(query);
                 
                 if (!matchesQuery) return false;
+
+                if (sourceType !== 'all' && itemType(item) !== sourceType) return false;
 
                 if (filterType === 'remaster') {
                     return item.is_remaster_rumor;
@@ -466,8 +574,925 @@
             renderTable(filtered);
         }
 
+        // ===================== Sources & Weights (feeds.json) =====================
+        // Mirrors scraper.py: each item's "feed" field is the source_key() of the
+        // feeds.json source it came from, so on/off switches and weights apply live.
+        const SOURCE_TYPES = ['news', 'reddit', 'youtube', 'podcast'];
+        const TYPE_META = {
+            news: { label: 'News sites', plural: 'news sites', icon: 'fa-solid fa-newspaper', tableAction: 'Source', radarAction: 'Read Article', defaultRole: 'press' },
+            reddit: { label: 'Reddit', plural: 'subreddits', icon: 'fa-brands fa-reddit-alien', tableAction: 'Source', radarAction: 'Read Article', defaultRole: 'community' },
+            youtube: { label: 'YouTube', plural: 'YouTube channels', icon: 'fa-brands fa-youtube', tableAction: 'Watch', radarAction: 'Watch Video', defaultRole: 'press' },
+            podcast: { label: 'Podcasts', plural: 'podcasts', icon: 'fa-solid fa-podcast', tableAction: 'Listen', radarAction: 'Listen', defaultRole: 'press' },
+        };
+        const CHANNEL_ID_RE = /^UC[0-9A-Za-z_-]{22}$/;
+        const YOUTUBE_URL_RE = /^https:\/\/www\.youtube\.com\/(?:@|c\/|user\/)[^/?#\s]+$/;  // scraper looks the ID up
+        const SUBREDDIT_RE = /^[A-Za-z0-9_]{2,21}$/;
+        const SETTINGS_KEY = 'ps2-sentiment-tracker.github';
+        const ACTIVE_DAYS = 14;   // newest item at most this old: "Active"
+        const QUIET_DAYS = 120;   // older than this: "Stale"
+
+        let feedConfig = null;      // feeds.json, edited in place by this panel
+        let baseConfigText = '';    // feeds.json as last loaded/saved (normalised), to spot unsaved and remote changes
+        let feedStatus = {};        // data/feed_status.json, written by the scraper
+        let sourcesByKey = new Map();
+        let activeSourceTab = 'youtube';
+        let memorySettings = null;  // used when browser storage is unavailable
+        const sortByTab = {};
+        // Saved sources can only be switched off, never removed here; only additions
+        // that haven't been saved yet can be removed again (e.g. a typo).
+        const unsavedAdditions = new Set();
+        let copiedConfigText = null;  // what "Save changes" (without a token) put on the clipboard
+
+        const isWeightValue = (v) => typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= 10;
+        // Same pattern as FEED_URL_PATTERN in scraper.py, so every link saved here loads there.
+        const FEED_URL_RE = /^https?:\/\/(?:[A-Za-z0-9-]+\.)+[A-Za-z0-9-]+(?::[0-9]{1,5})?(?:[\/?#][!-~]*)?$/;
+        const isHttpUrl = (v) => typeof v === 'string' && FEED_URL_RE.test(v);
+        // Tidies a pasted link the way a browser would ("https:/site.com/feed" -> "https://site.com/feed",
+        // non-ASCII host names to their ASCII form) before it is checked and stored.
+        const normalizeUrl = (raw) => {
+            try {
+                return new URL(raw.trim()).href;
+            } catch {
+                return raw.trim();
+            }
+        };
+        const configJson = () => JSON.stringify(feedConfig, null, 2) + '\n';
+        const safeDecode = (text) => {
+            try {
+                return decodeURIComponent(text);
+            } catch {
+                return text;
+            }
+        };
+        const compactNumber = new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 });
+        const fmtCount = (n) => typeof n === 'number' ? compactNumber.format(n) : '—';
+        const cmpStr = (a, b) => (a > b) - (a < b);
+
+        function sourceKey(src) {
+            if (src.type === 'youtube') return `youtube:${src.channel_id || String(src.channel_url).toLowerCase()}`;
+            if (src.type === 'reddit') return `reddit:${String(src.subreddit).toLowerCase()}`;
+            return src.url;
+        }
+
+        function rebuildSourceIndex() {
+            sourcesByKey = new Map((feedConfig?.sources || []).map(src => [sourceKey(src), src]));
+        }
+
+        // Items scraped before feeds.json existed carry no "feed"; Reddit ones can still be mapped.
+        function itemFeedKey(item) {
+            if (item.feed) return item.feed;
+            const source = String(item.source || '');
+            return source.startsWith('r/') ? `reddit:${source.slice(2).toLowerCase()}` : null;
+        }
+
+        function itemType(item) {
+            if (SOURCE_TYPES.includes(item.source_type)) return item.source_type;
+            const source = String(item.source || '');
+            if (source.startsWith('r/')) return 'reddit';
+            if (source.startsWith('YouTube: ')) return 'youtube';
+            if (source.startsWith('Podcast: ')) return 'podcast';
+            return 'news';
+        }
+
+        const sourceForItem = (item) => sourcesByKey.get(itemFeedKey(item));
+        const isHiddenItem = (item) => sourceForItem(item)?.enabled === false;
+
+        // A weight set on the source wins; otherwise its role's weight; unknown sources count 1.
+        function effectiveWeight(src) {
+            if (isWeightValue(src.weight)) return src.weight;
+            const roleWeight = feedConfig?.roles?.[src.role]?.weight;
+            return isWeightValue(roleWeight) ? roleWeight : 1;
+        }
+
+        function itemWeight(item) {
+            const src = sourceForItem(item);
+            return src ? effectiveWeight(src) : 1;
+        }
+
+        function weightBadge(item) {
+            const weight = itemWeight(item);
+            return weight === 1 ? '' : ` <span class="ml-1 px-1 rounded border border-slate-700 text-slate-400" title="Source weight in the sentiment average">&times;${esc(weight)}</span>`;
+        }
+
+        // Same rules as validate_config() in scraper.py.
+        function validateConfig(cfg) {
+            if (!cfg || typeof cfg !== 'object' || Array.isArray(cfg)) return ['the top level must be an object'];
+            const { roles, sources } = cfg;
+            if (!roles || typeof roles !== 'object' || Array.isArray(roles) || !Object.keys(roles).length) return ["'roles' must be a non-empty object"];
+            if (!Array.isArray(sources)) return ["'sources' must be a list"];
+            const problems = Object.entries(roles)
+                .filter(([, role]) => !role || typeof role !== 'object' || !isWeightValue(role.weight))
+                .map(([name]) => `role '${name}' needs a 'weight' between 0 and 10`);
+            const intervals = Object.hasOwn(cfg, 'poll_every_hours') ? cfg.poll_every_hours : {};
+            if (intervals === null || typeof intervals !== 'object' || Array.isArray(intervals) || Object.entries(intervals).some(
+                ([type, hours]) => !SOURCE_TYPES.includes(type) || !Number.isInteger(hours) || hours < 1 || hours > 24)) {
+                problems.push("'poll_every_hours' must map source types to whole hours between 1 and 24");
+            }
+            const seen = new Set();
+            sources.forEach((src, i) => {
+                const where = `sources[${i}]`;
+                if (!src || typeof src !== 'object' || !SOURCE_TYPES.includes(src.type)) {
+                    problems.push(`${where}: 'type' must be one of ${SOURCE_TYPES.join(', ')}`);
+                    return;
+                }
+                if (typeof src.name !== 'string' || !src.name.trim()) problems.push(`${where}: missing 'name'`);
+                if (typeof src.enabled !== 'boolean') problems.push(`${where}: 'enabled' must be true or false`);
+                if (typeof src.role !== 'string' || !Object.hasOwn(roles, src.role)) problems.push(`${where}: unknown role '${src.role}'`);
+                if ('weight' in src && !isWeightValue(src.weight)) problems.push(`${where}: 'weight' must be between 0 and 10`);
+                let field, valid;
+                if (src.type === 'youtube' && 'channel_id' in src) {
+                    field = 'channel_id';
+                    valid = typeof src.channel_id === 'string' && CHANNEL_ID_RE.test(src.channel_id);
+                } else if (src.type === 'youtube') {
+                    field = 'channel_id/channel_url';
+                    valid = typeof src.channel_url === 'string' && YOUTUBE_URL_RE.test(src.channel_url);
+                } else if (src.type === 'reddit') {
+                    field = 'subreddit/group';
+                    valid = typeof src.subreddit === 'string' && SUBREDDIT_RE.test(src.subreddit) && typeof src.group === 'string' && !!src.group.trim();
+                } else {
+                    field = 'url';
+                    valid = isHttpUrl(src.url);
+                }
+                if (!valid) {
+                    problems.push(`${where}: invalid ${field}`);
+                    return;
+                }
+                const key = sourceKey(src);
+                if (seen.has(key)) problems.push(`${where}: duplicate source ${key}`);
+                seen.add(key);
+            });
+            return problems;
+        }
+
+        async function loadSources() {
+            try {
+                const response = await fetch('feeds.json', { cache: 'no-cache' });
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                let config = await response.json();
+                // The website can lag a few minutes behind a save; prefer the committed file when it differs.
+                const settings = readSettings();
+                let fromGitHub = false;
+                if (settings.repo) {
+                    try {
+                        const remote = await fetchRemoteConfig(settings);
+                        const remoteConfig = JSON.parse(remote.text);
+                        if (remote.text !== JSON.stringify(config, null, 2) + '\n' && !validateConfig(remoteConfig).length) {
+                            config = remoteConfig;
+                            fromGitHub = true;
+                        }
+                    } catch {
+                        // Offline, rate-limited or not on GitHub: the website's copy is fine.
+                    }
+                }
+                const problems = validateConfig(config);
+                if (problems.length) throw new Error(problems.slice(0, 3).join('; '));
+                feedConfig = config;
+                baseConfigText = configJson();
+                rebuildSourceIndex();
+                refreshAddFormOptions(true);
+                if (fromGitHub) showSourcesMessage('Showing the list as last saved on GitHub; the website is still catching up with that save.', 'info');
+            } catch (error) {
+                console.warn('Could not load feeds.json; every item counts with weight 1.', error);
+                document.getElementById('sourcesSummary').textContent = `Could not load feeds.json (${error.message}); every item counts with weight 1.`;
+            }
+            await loadFeedStatus();
+            renderSources();
+        }
+
+        async function loadFeedStatus() {
+            try {
+                const response = await fetch('data/feed_status.json', { cache: 'no-cache' });
+                feedStatus = response.ok ? await response.json() : {};
+            } catch {
+                feedStatus = {};
+            }
+            if (!feedStatus || typeof feedStatus !== 'object' || Array.isArray(feedStatus)) feedStatus = {};
+        }
+
+        function onConfigChanged() {
+            rebuildSourceIndex();
+            refreshDashboard();
+        }
+
+        function updateDirtyState() {
+            const dirty = !!feedConfig && configJson() !== baseConfigText;
+            document.getElementById('dirtyBadge').classList.toggle('hidden', !dirty);
+            document.getElementById('discardBtn').disabled = !dirty;
+            return dirty;
+        }
+
+        function renderSources() {
+            renderSourceTabs();
+            renderSourcesSummary();
+            renderSourcesView();
+            refreshAddFormOptions(false);
+            updateDirtyState();
+        }
+
+        function renderSourcesSummary() {
+            if (!feedConfig) return;
+            const enabled = feedConfig.sources.filter(s => s.enabled);
+            const perType = SOURCE_TYPES.map(type => `${enabled.filter(s => s.type === type).length} ${TYPE_META[type].plural}`).join(' · ');
+            const failing = enabled.filter(s => feedStatus[sourceKey(s)]?.ok === false).length;
+            const dates = [...new Set(feedConfig.sources.map(s => s.stats?.checked).filter(Boolean))].sort();
+            const measured = !dates.length ? ''
+                : dates.length === 1 ? ` · subscriber / rating stats as of ${dates[0]}`
+                    : ` · subscriber / rating stats measured ${dates[0]} to ${dates[dates.length - 1]}`;
+            document.getElementById('sourcesSummary').textContent =
+                `${enabled.length} of ${feedConfig.sources.length} sources enabled (${perType})` +
+                (failing ? ` · ${failing} failing` : '') + measured;
+        }
+
+        function renderSourceTabs() {
+            const tabs = document.getElementById('sourceTabs');
+            if (!feedConfig) {
+                tabs.innerHTML = '';
+                return;
+            }
+            const count = (type) => {
+                const list = feedConfig.sources.filter(s => s.type === type);
+                return `${list.filter(s => s.enabled).length}/${list.length}`;
+            };
+            const tab = (key, label, icon) => `
+                <button type="button" role="tab" aria-selected="${activeSourceTab === key}" onclick="setSourceTab('${key}')"
+                    class="px-3 py-1.5 rounded-lg border transition-all cursor-pointer flex items-center gap-1.5 ${activeSourceTab === key
+                        ? 'bg-cyan-500 text-black border-cyan-400 font-bold'
+                        : 'bg-slate-900 text-slate-300 border-slate-700 hover:border-cyan-400 hover:text-cyan-400'}"><i class="${icon}"></i> ${label}</button>`;
+            tabs.innerHTML = SOURCE_TYPES.map(type =>
+                tab(type, `${esc(TYPE_META[type].label)} <span class="font-mono-custom opacity-80">${count(type)}</span>`, TYPE_META[type].icon)
+            ).join('') + tab('weights', 'Weights &amp; schedule', 'fa-solid fa-scale-balanced');
+        }
+
+        function setSourceTab(tab) {
+            activeSourceTab = tab;
+            renderSourcesToolbar();
+            document.getElementById('addSourceForm').reset();
+            refreshAddFormOptions(true);
+            renderSources();
+        }
+
+        const SORT_OPTIONS = {
+            news: [['file', 'Order in feeds.json'], ['activity', 'Newest item'], ['name', 'Name']],
+            reddit: [['file', 'Order in feeds.json'], ['activity', 'Newest post'], ['name', 'Name']],
+            youtube: [['file', 'Group, then subscribers'], ['subscribers', 'Subscribers'], ['views', 'Total views'], ['activity', 'Latest upload'], ['name', 'Name']],
+            podcast: [['file', 'Group, then popularity'], ['ratings', 'Apple ratings'], ['chart', 'Apple chart rank'], ['activity', 'Latest episode'], ['name', 'Name']],
+        };
+        const latestActivity = (src) => feedStatus[sourceKey(src)]?.latest || src.stats?.last_upload || src.stats?.last_episode || '';
+        const chartRank = (src) => Math.min(src.stats?.chart_us ?? Infinity, src.stats?.chart_gb ?? Infinity);
+        const SORTERS = {
+            file: (a, b) => a.index - b.index,
+            subscribers: (a, b) => ((b.src.stats?.subscribers ?? -1) - (a.src.stats?.subscribers ?? -1)) || a.index - b.index,
+            views: (a, b) => ((b.src.stats?.views ?? -1) - (a.src.stats?.views ?? -1)) || a.index - b.index,
+            ratings: (a, b) => ((b.src.stats?.apple_ratings ?? -1) - (a.src.stats?.apple_ratings ?? -1)) || a.index - b.index,
+            chart: (a, b) => (chartRank(a.src) - chartRank(b.src)) || a.index - b.index,
+            activity: (a, b) => cmpStr(latestActivity(b.src), latestActivity(a.src)) || a.index - b.index,
+            name: (a, b) => a.src.name.localeCompare(b.src.name),
+        };
+
+        function renderSourcesToolbar() {
+            const select = document.getElementById('sourceSort');
+            const options = SORT_OPTIONS[activeSourceTab] || [];
+            select.innerHTML = options.map(([value, label]) => `<option value="${value}">${esc(label)}</option>`).join('');
+            select.value = sortByTab[activeSourceTab] || 'file';
+        }
+
+        const TABLE_COLUMNS = {
+            news: [],
+            reddit: [],
+            youtube: [
+                { label: 'SUBSCRIBERS', right: true, cell: s => fmtCount(s.stats?.subscribers) },
+                { label: 'TOTAL VIEWS', right: true, cell: s => fmtCount(s.stats?.views) },
+                { label: 'LAST UPLOAD', cell: s => esc(s.stats?.last_upload || '—') },
+            ],
+            podcast: [
+                { label: 'APPLE RATINGS', right: true, cell: s => s.stats
+                    ? `${fmtCount(s.stats.apple_ratings)}${s.stats.apple_rating ? ` <span class="text-slate-500">&#9733;${esc(s.stats.apple_rating)}</span>` : ''}` : '—' },
+                { label: 'CHART US / UK', cell: s => s.stats
+                    ? `${s.stats.chart_us ? '#' + esc(s.stats.chart_us) : '—'} / ${s.stats.chart_gb ? '#' + esc(s.stats.chart_gb) : '—'}` : '—' },
+                { label: 'LAST EPISODE', cell: s => esc(s.stats?.last_episode || '—') },
+            ],
+        };
+
+        function renderSourcesView() {
+            const view = document.getElementById('sourcesView');
+            const weightsTab = activeSourceTab === 'weights';
+            document.getElementById('sourcesToolbar').classList.toggle('hidden', !feedConfig || weightsTab);
+            document.getElementById('addSourceForm').classList.toggle('hidden', !feedConfig || weightsTab);
+            if (!feedConfig) {
+                view.innerHTML = '';
+                return;
+            }
+            view.innerHTML = weightsTab ? weightsPanelHtml() : sourcesTableHtml();
+        }
+
+        function sourcesTableHtml() {
+            const query = document.getElementById('sourceSearch').value.trim().toLowerCase();
+            const show = document.getElementById('sourceShow').value;
+            const sort = document.getElementById('sourceSort').value;
+            if (sort) sortByTab[activeSourceTab] = sort;
+            let rows = feedConfig.sources.map((src, index) => ({ src, index })).filter(({ src }) => src.type === activeSourceTab);
+            if (show !== 'all') rows = rows.filter(({ src }) => src.enabled === (show === 'enabled'));
+            if (query) {
+                rows = rows.filter(({ src }) => [src.name, src.group, src.url, src.subreddit, src.channel_id, src.stats?.handle, src.role, src.note]
+                    .some(value => String(value ?? '').toLowerCase().includes(query)));
+            }
+            rows.sort(SORTERS[sort] || SORTERS.file);
+            if (!rows.length) return '<p class="text-xs text-slate-400 py-6 text-center">No sources match.</p>';
+            const columns = TABLE_COLUMNS[activeSourceTab];
+            return `
+                <table class="w-full text-left border-collapse text-xs">
+                    <thead>
+                        <tr class="border-b border-slate-800 text-slate-400 font-mono-custom">
+                            <th class="py-2 px-3">ON</th>
+                            <th class="py-2 px-3">SOURCE</th>
+                            <th class="py-2 px-3">ROLE</th>
+                            <th class="py-2 px-3" title="Empty = use the role weight">WEIGHT</th>
+                            ${columns.map(c => `<th class="py-2 px-3 ${c.right ? 'text-right' : ''}">${c.label}</th>`).join('')}
+                            <th class="py-2 px-3">STATUS</th>
+                            <th class="py-2 px-3"><span class="sr-only">Remove</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>${rows.map(({ src, index }) => sourceRowHtml(src, index, columns)).join('')}</tbody>
+                </table>`;
+        }
+
+        function sourceLink(src) {
+            if (src.type === 'youtube') return src.channel_id ? `https://www.youtube.com/channel/${src.channel_id}` : src.channel_url;
+            if (src.type === 'reddit') return `https://www.reddit.com/r/${src.subreddit}/`;
+            if (src.type === 'podcast' && src.stats?.apple_url) return src.stats.apple_url;
+            return src.url;
+        }
+
+        function roleSelectHtml(src) {
+            const options = Object.entries(feedConfig.roles).map(([key, role]) =>
+                `<option value="${esc(key)}" ${key === src.role ? 'selected' : ''}>${esc(role.label || key)} (&times;${esc(role.weight)})</option>`).join('');
+            return `<select data-field="role" aria-label="Role for ${esc(src.name)}" class="max-w-[13rem] bg-slate-950 border border-slate-700 text-white rounded px-2 py-1 outline-none focus:border-cyan-400">${options}</select>`;
+        }
+
+        function sourceRowHtml(src, index, columns) {
+            const handle = src.stats?.handle || (src.channel_url ? safeDecode(src.channel_url.split('/').pop()) : '');
+            const detail = [src.group, handle].filter(Boolean).join(' · ');
+            const feedUrl = src.type === 'news' || src.type === 'podcast'
+                ? `<div class="text-[10px] text-slate-600 font-mono-custom break-all">${esc(src.url)}</div>` : '';
+            const roleWeight = effectiveWeight({ ...src, weight: undefined });
+            return `
+                <tr data-index="${index}" class="border-b border-slate-800/40 hover:bg-slate-800/30 ${src.enabled ? '' : 'opacity-60'}">
+                    <td class="py-2 px-3"><input type="checkbox" data-field="enabled" ${src.enabled ? 'checked' : ''} class="accent-cyan-400 w-4 h-4 cursor-pointer" aria-label="Enable ${esc(src.name)}"></td>
+                    <td class="py-2 px-3 min-w-[14rem]">
+                        <a href="${safeUrl(sourceLink(src))}" target="_blank" rel="noopener noreferrer" class="font-semibold text-white hover:text-cyan-300">${esc(src.name)}</a>
+                        <div class="text-[10px] text-slate-500">${esc(detail)}</div>
+                        ${feedUrl}
+                        ${src.note ? `<div class="text-[10px] text-amber-400/80 mt-0.5">${esc(src.note)}</div>` : ''}
+                    </td>
+                    <td class="py-2 px-3">${roleSelectHtml(src)}</td>
+                    <td class="py-2 px-3"><input type="number" data-field="weight" min="0" max="10" step="0.1" value="${isWeightValue(src.weight) ? esc(src.weight) : ''}" placeholder="${esc(roleWeight)}" title="Empty = use the role weight (${esc(roleWeight)})" aria-label="Weight for ${esc(src.name)}" class="w-16 bg-slate-950 border border-slate-700 text-white rounded px-2 py-1 outline-none focus:border-cyan-400"></td>
+                    ${columns.map(c => `<td class="py-2 px-3 font-mono-custom whitespace-nowrap ${c.right ? 'text-right' : ''}">${c.cell(src)}</td>`).join('')}
+                    <td class="py-2 px-3 whitespace-nowrap">${statusBadgeHtml(src)}</td>
+                    <td class="py-2 px-3 text-right">${unsavedAdditions.has(sourceKey(src))
+                        ? `<button type="button" data-action="remove" title="Remove this unsaved addition" aria-label="Remove ${esc(src.name)}" class="text-slate-500 hover:text-red-400 cursor-pointer"><i class="fa-solid fa-trash-can"></i></button>`
+                        : ''}</td>
+                </tr>`;
+        }
+
+        function daysSince(timestamp) {
+            const ms = Date.parse(String(timestamp).replace(' UTC', 'Z').replace(' ', 'T'));
+            return Number.isFinite(ms) ? Math.max(0, (Date.now() - ms) / 86400000) : null;
+        }
+
+        const fmtAge = (days) => days < 1 ? 'today' : days < 2 ? '1 day ago' : `${Math.floor(days)} days ago`;
+
+        function statusBadgeHtml(src) {
+            const tones = {
+                green: 'bg-emerald-950 text-emerald-400 border-emerald-900',
+                amber: 'bg-amber-950 text-amber-400 border-amber-900',
+                red: 'bg-red-950 text-red-400 border-red-900',
+                slate: 'bg-slate-900 text-slate-400 border-slate-700',
+            };
+            const badge = (text, tone, title = '') => `<span class="px-2 py-0.5 rounded border text-[10px] ${tone}" title="${esc(title)}">${esc(text)}</span>`;
+            if (!src.enabled) return badge('Off', tones.slate);
+            const status = feedStatus[sourceKey(src)];
+            if (!status) return badge('Not checked yet', tones.slate, 'The scraper has not fetched this source yet.');
+            if (status.ok === false) {
+                return badge(`Failing: ${status.error || 'error'}`, tones.red, `Failing since ${status.failing_since || '?'}; newest item ${status.latest || 'never'}`);
+            }
+            const days = status.latest ? daysSince(status.latest) : null;
+            if (days === null) return badge('OK · no dated items', tones.slate);
+            const label = days <= ACTIVE_DAYS ? 'Active' : days <= QUIET_DAYS ? 'Quiet' : 'Stale';
+            const tone = days <= ACTIVE_DAYS ? tones.green : days <= QUIET_DAYS ? tones.amber : tones.red;
+            return badge(`${label} · ${fmtAge(days)}`, tone, `Newest item: ${status.latest}`);
+        }
+
+        function weightsPanelHtml() {
+            const counts = {};
+            feedConfig.sources.forEach(src => {
+                counts[src.role] = counts[src.role] || { total: 0, on: 0 };
+                counts[src.role].total++;
+                if (src.enabled) counts[src.role].on++;
+            });
+            const overrides = feedConfig.sources.filter(src => isWeightValue(src.weight)).length;
+            const polls = feedConfig.poll_every_hours || {};
+            const input = 'bg-slate-950 border border-slate-700 text-white rounded px-2 py-1 outline-none focus:border-cyan-400';
+            return `
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs">
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Role weights</h3>
+                        <p class="text-slate-500 mb-3 leading-relaxed">How much each item counts in the weighted Global Net Sentiment and in the Remaster Radar ranking: 1 = normal, 0.5 = half, 0 = shown but not counted. A weight typed on a single source overrides its role (${overrides} override${overrides === 1 ? '' : 's'} set).</p>
+                        <table class="w-full text-left border-collapse">
+                            <thead><tr class="border-b border-slate-800 text-slate-400 font-mono-custom"><th class="py-2 px-3">ROLE</th><th class="py-2 px-3">WEIGHT</th><th class="py-2 px-3 text-right">ON / TOTAL</th></tr></thead>
+                            <tbody>${Object.entries(feedConfig.roles).map(([key, role]) => `
+                                <tr class="border-b border-slate-800/40">
+                                    <td class="py-2 px-3"><div class="text-white font-semibold">${esc(role.label || key)}</div><div class="text-[10px] text-slate-500 font-mono-custom">${esc(key)}</div></td>
+                                    <td class="py-2 px-3"><input type="number" data-role="${esc(key)}" min="0" max="10" step="0.1" value="${esc(role.weight)}" aria-label="Weight for ${esc(role.label || key)}" class="w-20 ${input}"></td>
+                                    <td class="py-2 px-3 text-right font-mono-custom">${counts[key] ? `${counts[key].on} / ${counts[key].total}` : '0 / 0'}</td>
+                                </tr>`).join('')}</tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-white mb-1">Fetch schedule</h3>
+                        <p class="text-slate-500 mb-3 leading-relaxed">The scraper runs about once an hour (GitHub sometimes delays or skips runs) and fetches a source type once its interval has passed since that type was last fetched. Manual runs and feeds.json saves fetch everything at once.</p>
+                        <table class="w-full text-left border-collapse">
+                            <tbody>${SOURCE_TYPES.map(type => `
+                                <tr class="border-b border-slate-800/40">
+                                    <td class="py-2 px-3 text-white"><i class="${TYPE_META[type].icon} text-slate-400 mr-1.5"></i>${esc(TYPE_META[type].label)}</td>
+                                    <td class="py-2 px-3 text-slate-400">every <input type="number" data-poll="${type}" min="1" max="24" step="1" value="${esc(polls[type] ?? 1)}" aria-label="${esc(TYPE_META[type].label)} interval in hours" class="w-16 mx-1 ${input}"> hour(s)</td>
+                                </tr>`).join('')}</tbody>
+                        </table>
+                    </div>
+                </div>`;
+        }
+
+        function onSourcesViewChange(event) {
+            const target = event.target;
+            if (!feedConfig) return;
+            if (target.dataset.role !== undefined) {
+                const weight = Number(target.value);
+                if (target.value.trim() === '' || !isWeightValue(weight)) {
+                    target.value = feedConfig.roles[target.dataset.role].weight;
+                    return showSourcesMessage('Role weights must be between 0 and 10.', 'error');
+                }
+                feedConfig.roles[target.dataset.role].weight = weight;
+            } else if (target.dataset.poll !== undefined) {
+                const hours = Number(target.value);
+                if (!Number.isInteger(hours) || hours < 1 || hours > 24) {
+                    target.value = feedConfig.poll_every_hours?.[target.dataset.poll] ?? 1;
+                    return showSourcesMessage('Intervals must be whole hours between 1 and 24.', 'error');
+                }
+                feedConfig.poll_every_hours = { ...(feedConfig.poll_every_hours || {}), [target.dataset.poll]: hours };
+            } else {
+                const row = target.closest('tr[data-index]');
+                if (!row) return;
+                const src = feedConfig.sources[Number(row.dataset.index)];
+                if (target.dataset.field === 'enabled') {
+                    src.enabled = target.checked;
+                } else if (target.dataset.field === 'role') {
+                    src.role = target.value;
+                } else if (target.dataset.field === 'weight') {
+                    const raw = target.value.trim();
+                    if (raw === '') {
+                        delete src.weight;
+                    } else if (isWeightValue(Number(raw))) {
+                        src.weight = Number(raw);
+                    } else {
+                        target.value = isWeightValue(src.weight) ? src.weight : '';
+                        return showSourcesMessage('Weights must be between 0 and 10 (empty = use the role weight).', 'error');
+                    }
+                } else {
+                    return;
+                }
+            }
+            onConfigChanged();
+        }
+
+        function onSourcesViewClick(event) {
+            const button = event.target.closest('[data-action="remove"]');
+            if (!button || !feedConfig) return;
+            const index = Number(button.closest('tr[data-index]').dataset.index);
+            const src = feedConfig.sources[index];
+            if (!unsavedAdditions.has(sourceKey(src))) return;
+            unsavedAdditions.delete(sourceKey(src));
+            feedConfig.sources.splice(index, 1);
+            onConfigChanged();
+            showSourcesMessage(`Removed ${src.name} (it was never saved).`, 'info');
+        }
+
+        const ADD_HINTS = {
+            news: ['https://example.com/feed', "paste the site's RSS feed link (often the site address followed by /feed or /rss)."],
+            reddit: ['ps2, r/ps2 or a reddit.com/r/... link', 'subreddits in one group are fetched as one combined feed (Reddit allows about one request per minute), so an existing group is best.'],
+            youtube: ['https://www.youtube.com/@ChannelName', "paste the channel's link, e.g. https://www.youtube.com/@IGN (a channel ID starting with UC works too). The scraper looks the channel up on its next run."],
+            podcast: ['https://podcasts.apple.com/.../id123456789', "paste the show's Apple Podcasts link (the name and feed are filled in for you) or its RSS feed link. Spotify links can't be used: Spotify doesn't publish feeds."],
+        };
+
+        // "@IGN", "youtube.com/@IGN/videos", "https://m.youtube.com/c/Name" ... -> https://www.youtube.com/@IGN
+        function normalizeYouTubeLink(raw) {
+            const text = raw.trim();
+            if (/^@[^/?#\s]+$/.test(text)) return `https://www.youtube.com/${text}`;
+            const match = text.match(/^(?:https?:\/\/)?(?:www\.|m\.)?youtube\.com\/(@[^/?#\s]+|(?:c|user)\/[^/?#\s]+)/i);
+            return match ? `https://www.youtube.com/${match[1].replace(/^(c|user)\//i, prefix => prefix.toLowerCase())}` : null;
+        }
+
+        // Apple's lookup API allows browser requests, so an Apple Podcasts link can be turned into the RSS feed here.
+        async function lookupApplePodcast(appleId) {
+            const response = await fetch(`https://itunes.apple.com/lookup?id=${encodeURIComponent(appleId)}&entity=podcast`);
+            if (!response.ok) throw new Error(`Apple Podcasts answered ${response.status}`);
+            const show = (await response.json()).results?.find(result => result.feedUrl);
+            if (!show) throw new Error('Apple Podcasts lists no RSS feed for that show');
+            return show;
+        }
+
+        function refreshAddFormOptions(resetFields) {
+            if (!feedConfig || activeSourceTab === 'weights') return;
+            const [placeholder, hint] = ADD_HINTS[activeSourceTab];
+            document.getElementById('addValue').placeholder = placeholder;
+            document.getElementById('addName').placeholder = activeSourceTab === 'news' ? 'Name' : 'Name (optional)';
+            document.getElementById('addHint').textContent = `Add to ${TYPE_META[activeSourceTab].label}: ${hint}`;
+            const groups = [...new Set(feedConfig.sources.filter(s => s.type === activeSourceTab).map(s => s.group).filter(Boolean))];
+            document.getElementById('addGroupOptions').innerHTML = groups.map(group => `<option value="${esc(group)}"></option>`).join('');
+            const groupInput = document.getElementById('addGroup');
+            if (resetFields || !groupInput.value) groupInput.value = groups[groups.length - 1] || '';
+            const roleSelect = document.getElementById('addRole');
+            const current = resetFields ? TYPE_META[activeSourceTab].defaultRole : roleSelect.value;
+            roleSelect.innerHTML = Object.entries(feedConfig.roles).map(([key, role]) => `<option value="${esc(key)}">${esc(role.label || key)}</option>`).join('');
+            roleSelect.value = Object.hasOwn(feedConfig.roles, current) ? current : Object.keys(feedConfig.roles)[0];
+        }
+
+        async function addSource(event) {
+            event.preventDefault();
+            if (!feedConfig || activeSourceTab === 'weights') return;
+            const type = activeSourceTab;
+            const raw = document.getElementById('addValue').value.trim();
+            const src = { type, name: document.getElementById('addName').value.trim() };
+            let stats = null;
+            if (type === 'youtube') {
+                // A bare channel ID or a /channel/<ID> link; anything else is treated as a channel link.
+                const channelId = raw.match(/^(?:(?:https?:\/\/)?(?:www\.|m\.)?youtube\.com\/channel\/)?(UC[0-9A-Za-z_-]{22})(?:[/?#]|$)/)?.[1];
+                const link = channelId ? null : normalizeYouTubeLink(raw);
+                if (channelId) {
+                    src.channel_id = channelId;
+                } else if (link) {
+                    const handle = safeDecode(link.split('/').pop());
+                    const known = feedConfig.sources.find(s => s.type === 'youtube' && String(s.stats?.handle || '').toLowerCase() === handle.toLowerCase());
+                    if (known) return showSourcesMessage(`"${known.name}" is already in the list${known.enabled ? '' : ' (switched off: enable it instead)'}.`, 'error');
+                    src.channel_url = link;
+                    src.name = src.name || handle;
+                } else {
+                    return showSourcesMessage("That isn't a YouTube channel link. Open the channel on YouTube and copy its address, e.g. https://www.youtube.com/@IGN (video links don't work).", 'error');
+                }
+            } else if (type === 'reddit') {
+                const subreddit = raw.replace(/^(?:https?:\/\/)?(?:[a-z]+\.)?reddit\.com/i, '').replace(/^\/?r\//i, '').split(/[/?#]/)[0];
+                if (!SUBREDDIT_RE.test(subreddit)) return showSourcesMessage('Enter a subreddit name such as ps2 or r/ps2.', 'error');
+                src.subreddit = subreddit;
+                src.name = src.name || `r/${subreddit}`;
+            } else if (type === 'podcast' && /spotify\.com/i.test(raw)) {
+                return showSourcesMessage("Spotify doesn't publish podcast feeds. Find the show on Apple Podcasts (podcasts.apple.com) and paste that link instead.", 'error');
+            } else if (type === 'podcast' && (/(?:podcasts|itunes)\.apple\.com\/.*\/id\d+/i.test(raw) || /^\d{5,}$/.test(raw))) {
+                const appleId = raw.match(/\/id(\d+)/i)?.[1] || raw;
+                const addButton = document.getElementById('addBtn');
+                addButton.disabled = true;
+                try {
+                    showSourcesMessage('Looking the show up on Apple Podcasts...', 'info');
+                    const show = await lookupApplePodcast(appleId);
+                    src.url = normalizeUrl(String(show.feedUrl));
+                    src.name = src.name || show.collectionName || '';
+                    stats = {
+                        apple_id: String(show.collectionId || appleId),
+                        apple_url: String(show.collectionViewUrl || '').split('?')[0],
+                        checked: new Date().toISOString().slice(0, 10),
+                    };
+                } catch (error) {
+                    return showSourcesMessage(`Couldn't look that show up (${error.message}). You can paste its RSS feed link instead.`, 'error');
+                } finally {
+                    addButton.disabled = false;
+                }
+                if (!isHttpUrl(src.url)) return showSourcesMessage("Apple Podcasts gave an unusable feed link; paste the show's RSS feed link instead.", 'error');
+            } else {
+                const url = normalizeUrl(raw);
+                if (!isHttpUrl(url)) return showSourcesMessage('Paste the full link of the feed, starting with https://', 'error');
+                src.url = url;
+            }
+            if (!src.name) return showSourcesMessage('Give the source a name.', 'error');
+            Object.assign(src, {
+                group: document.getElementById('addGroup').value.trim() || 'Added from dashboard',
+                role: document.getElementById('addRole').value,
+                enabled: true,
+            }, stats ? { stats } : {});
+            const existing = sourcesByKey.get(sourceKey(src));
+            if (existing) return showSourcesMessage(`"${existing.name}" is already in the list${existing.enabled ? '' : ' (switched off: enable it instead)'}.`, 'error');
+            // Keep feeds.json grouped by type: insert after the last source of the same type.
+            const lastOfType = feedConfig.sources.map(s => s.type).lastIndexOf(type);
+            feedConfig.sources.splice(lastOfType === -1 ? feedConfig.sources.length : lastOfType + 1, 0, src);
+            unsavedAdditions.add(sourceKey(src));
+            document.getElementById('addValue').value = '';
+            document.getElementById('addName').value = '';
+            onConfigChanged();
+            showSourcesMessage(`Added ${src.name}. Save to make the scraper pick it up.`, 'success');
+        }
+
+        function discardChanges() {
+            if (!feedConfig || !confirm('Discard all unsaved source changes?')) return;
+            feedConfig = JSON.parse(baseConfigText);
+            unsavedAdditions.clear();
+            onConfigChanged();
+            showSourcesMessage('Unsaved changes discarded.', 'info');
+        }
+
+        function showSourcesMessage(text, tone = 'info', link = null) {
+            const box = document.getElementById('sourcesMessage');
+            const tones = {
+                info: 'bg-slate-900 text-slate-300 border-slate-700',
+                success: 'bg-emerald-950/60 text-emerald-300 border-emerald-900',
+                error: 'bg-red-950/60 text-red-300 border-red-900',
+            };
+            box.className = `mb-4 text-xs rounded-lg px-3 py-2 border ${tones[tone] || tones.info}`;
+            box.innerHTML = esc(text) + (link?.url
+                ? ` <a href="${safeUrl(link.url)}" target="_blank" rel="noopener noreferrer" class="underline font-semibold">${esc(link.label)}</a>` : '');
+        }
+
+        // --- GitHub: settings, save, run -------------------------------------------
+        function detectRepo() {
+            const owner = location.hostname.match(/^([a-z0-9-]+)\.github\.io$/i)?.[1];
+            if (!owner) return '';
+            // A project site lives under /<repo>/; a user site serves its files from the root.
+            const first = location.pathname.split('/').filter(Boolean)[0];
+            return `${owner}/${first && !/\.html?$/i.test(first) ? first : `${owner}.github.io`}`;
+        }
+
+        function readSettings() {
+            let stored = memorySettings;
+            if (!stored) {
+                try {
+                    stored = JSON.parse(localStorage.getItem(SETTINGS_KEY) || sessionStorage.getItem(SETTINGS_KEY) || 'null');
+                } catch {
+                    stored = null;
+                }
+            }
+            stored = stored && typeof stored === 'object' ? stored : {};
+            return { repo: stored.repo || detectRepo(), branch: stored.branch || 'main', token: stored.token || '', remember: !!stored.remember };
+        }
+
+        function writeSettings(settings) {
+            memorySettings = settings;
+            try {
+                (settings.remember ? localStorage : sessionStorage).setItem(SETTINGS_KEY, JSON.stringify(settings));
+                (settings.remember ? sessionStorage : localStorage).removeItem(SETTINGS_KEY);
+            } catch {
+                // Storage blocked: the settings last for this page view only.
+            }
+        }
+
+        const editUrl = (repo, branch) => `https://github.com/${repo}/edit/${branch.split('/').map(encodeURIComponent).join('/')}/feeds.json`;
+
+        function toggleSettings() {
+            const panel = document.getElementById('settingsPanel');
+            const opening = panel.classList.contains('hidden');
+            panel.classList.toggle('hidden');
+            if (opening) {
+                const settings = readSettings();
+                document.getElementById('settingRepo').value = settings.repo;
+                document.getElementById('settingBranch').value = settings.branch;
+                document.getElementById('settingToken').value = settings.token;
+                document.getElementById('settingRemember').checked = settings.remember;
+            }
+        }
+
+        function saveSettings(event) {
+            event.preventDefault();
+            const repo = document.getElementById('settingRepo').value.trim();
+            if (repo && !/^[\w.-]+\/[\w.-]+$/.test(repo)) return showSourcesMessage('Repository must look like owner/name.', 'error');
+            writeSettings({
+                repo,
+                branch: document.getElementById('settingBranch').value.trim() || 'main',
+                token: document.getElementById('settingToken').value.trim(),
+                remember: document.getElementById('settingRemember').checked,
+            });
+            document.getElementById('settingsPanel').classList.add('hidden');
+            showSourcesMessage('GitHub settings saved in this browser.', 'success');
+        }
+
+        function forgetToken() {
+            writeSettings({ ...readSettings(), token: '' });
+            document.getElementById('settingToken').value = '';
+            showSourcesMessage('Token removed from this browser.', 'info');
+        }
+
+        function requireGitHub() {
+            const settings = readSettings();
+            if (settings.repo && settings.token) return settings;
+            showSourcesMessage(settings.repo
+                ? 'Running the scraper by hand needs a GitHub token that may run workflows (see How to use). You rarely need it: saving your changes starts the scraper by itself.'
+                : 'Enter the repository (owner/name) under GitHub settings first.', 'error');
+            if (document.getElementById('settingsPanel').classList.contains('hidden')) toggleSettings();
+            return null;
+        }
+
+        // feeds.json exactly as committed. The website (GitHub Pages) can lag a few minutes behind.
+        async function fetchRemoteConfig({ repo, branch, token }) {
+            const file = await githubApi(`/repos/${repo}/contents/feeds.json?ref=${encodeURIComponent(branch)}`, { token });
+            return { text: JSON.stringify(JSON.parse(decodeBase64Utf8(file.content)), null, 2) + '\n', sha: file.sha };
+        }
+
+        // feeds.json changed on GitHub after this page loaded (someone else's save, or your own
+        // earlier one that the website hasn't caught up with). Returns 'reloaded', 'overwrite' or 'cancelled'.
+        function resolveRemoteChange(remoteText) {
+            if (confirm('feeds.json on GitHub changed after this page loaded (possibly your own save from a few minutes ago: the website takes a few minutes to update). Saving now would undo that change.\n\nOK: load the latest list first (recommended), then redo your changes.\nCancel: more options.')) {
+                feedConfig = JSON.parse(remoteText);
+                baseConfigText = remoteText;
+                unsavedAdditions.clear();
+                closeSaveGuide();
+                onConfigChanged();
+                showSourcesMessage('Loaded the latest list from GitHub. Redo your changes, then press Save changes again.', 'info');
+                return 'reloaded';
+            }
+            if (confirm('Save anyway, replacing the newer feeds.json on GitHub with your version?')) return 'overwrite';
+            showSourcesMessage('Save cancelled.', 'info');
+            return 'cancelled';
+        }
+
+        // Saving without a token: copy the new feeds.json and walk through pasting it into GitHub's editor.
+        async function startGuidedSave(settings) {
+            const { repo, branch } = settings;
+            if (repo) {
+                let remote = null;
+                try {
+                    remote = await fetchRemoteConfig({ repo, branch, token: settings.token });
+                } catch {
+                    // Can't check right now (offline or rate-limited): don't block saving.
+                }
+                if (remote && remote.text !== baseConfigText && resolveRemoteChange(remote.text) !== 'overwrite') return;
+            }
+            copiedConfigText = configJson();
+            let copied = true;
+            try {
+                await navigator.clipboard.writeText(copiedConfigText);
+            } catch {
+                copied = false;
+            }
+            const guide = document.getElementById('saveGuide');
+            guide.innerHTML = saveGuideHtml(repo, branch, copied);
+            guide.classList.remove('hidden');
+            showSourcesMessage(copied ? 'Your changes are copied. Follow the steps below to save them.' : 'Follow the steps below to save your changes.', 'info');
+        }
+
+        function saveGuideHtml(repo, branch, copied) {
+            const key = (label) => `<kbd class="px-1.5 py-0.5 rounded border border-slate-600 bg-slate-900 font-mono-custom">${label}</kbd>`;
+            const button = (label, action) => `<button type="button" onclick="${action}" class="bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-2 py-1 rounded cursor-pointer">${label}</button>`;
+            const open = repo
+                ? `<a href="${safeUrl(editUrl(repo, branch))}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold px-2 py-1 rounded"><i class="fa-brands fa-github"></i> Open feeds.json on GitHub</a> (sign in if GitHub asks).`
+                : `Enter the repository (owner/name) under ${button('GitHub settings', 'toggleSettings()')}, then press Save changes again.`;
+            return `
+                <div class="flex items-start justify-between gap-3">
+                    <h3 class="font-semibold text-white text-sm">Save your changes on GitHub</h3>
+                    <button type="button" onclick="closeSaveGuide()" aria-label="Close" class="text-slate-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <ol class="list-decimal pl-5 space-y-2 text-slate-300 leading-relaxed">
+                    <li>${copied ? 'Your changes are already copied.' : `Copy your changes: ${button('Copy', 'copyConfig()')}`}</li>
+                    <li>${open}</li>
+                    <li>Click inside the file, press ${key('Ctrl')}+${key('A')} to select everything, then ${key('Ctrl')}+${key('V')} to paste (on a Mac: ${key('⌘')}+${key('A')}, ${key('⌘')}+${key('V')}).</li>
+                    <li>Click the green <b>Commit changes...</b> button, then <b>Commit changes</b> in the box that opens.</li>
+                </ol>
+                <p class="text-slate-300">Done: the scraper starts by itself and the dashboard shows the result within a few minutes. ${button("I've saved it", 'markSaved()')} clears the "Unsaved changes" badge.</p>
+                <p class="text-slate-400">GitHub asks you to <b>Fork this repository</b> first? Then your account can't edit it directly: fork, paste, click <b>Propose changes</b> and then <b>Create pull request</b>. Your change applies once the owner accepts it.</p>
+                <p class="text-slate-500">Or ${button('Download feeds.json', 'downloadConfig()')} and send it to the owner. Want one-click saving? <a href="guide.html#token" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">Set up a token</a>.</p>`;
+        }
+
+        function closeSaveGuide() {
+            document.getElementById('saveGuide').classList.add('hidden');
+        }
+
+        // Only what was copied counts as saved: changes made after copying stay unsaved.
+        function markSaved() {
+            if (!feedConfig || copiedConfigText === null) return;
+            baseConfigText = copiedConfigText;
+            const savedKeys = new Set(JSON.parse(copiedConfigText).sources.map(sourceKey));
+            [...unsavedAdditions].filter(key => savedKeys.has(key)).forEach(key => unsavedAdditions.delete(key));
+            copiedConfigText = null;
+            closeSaveGuide();
+            renderSources();
+            const pending = updateDirtyState();
+            showSourcesMessage(pending
+                ? 'Marked what you copied as saved. Changes made after copying are still unsaved: press Save changes again.'
+                : 'Marked as saved. The scraper uses the new list from its next run.', pending ? 'info' : 'success');
+        }
+
+        async function githubApi(path, { method = 'GET', body, token }) {
+            const response = await fetch(`https://api.github.com${path}`, {
+                method,
+                headers: {
+                    Accept: 'application/vnd.github+json',
+                    ...(token ? { Authorization: `Bearer ${token}` } : {}),
+                    'X-GitHub-Api-Version': '2022-11-28',
+                    ...(body ? { 'Content-Type': 'application/json' } : {}),
+                },
+                body: body ? JSON.stringify(body) : undefined,
+            });
+            const data = response.status === 204 ? null : await response.json().catch(() => null);
+            if (!response.ok) throw new Error(`GitHub ${response.status}: ${data?.message || response.statusText}`);
+            return data;
+        }
+
+        function encodeBase64Utf8(text) {
+            const bytes = new TextEncoder().encode(text);
+            let binary = '';
+            for (let i = 0; i < bytes.length; i += 0x8000) binary += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+            return btoa(binary);
+        }
+
+        function decodeBase64Utf8(base64) {
+            const binary = atob(String(base64).replace(/\s/g, ''));
+            return new TextDecoder().decode(Uint8Array.from(binary, c => c.charCodeAt(0)));
+        }
+
+        async function saveToGitHub() {
+            if (!feedConfig) return;
+            const problems = validateConfig(feedConfig);
+            if (problems.length) return showSourcesMessage(`Not saved, feeds.json would be invalid: ${problems.slice(0, 3).join('; ')}`, 'error');
+            if (!updateDirtyState()) return showSourcesMessage('No unsaved changes.', 'info');
+            const settings = readSettings();
+            if (!settings.token || !settings.repo) return startGuidedSave(settings);
+            const { repo, branch, token } = settings;
+            const path = `/repos/${repo}/contents/feeds.json`;
+            const button = document.getElementById('saveBtn');
+            button.disabled = true;
+            try {
+                showSourcesMessage('Saving feeds.json to GitHub...', 'info');
+                const [user, current] = await Promise.all([
+                    githubApi('/user', { token }),
+                    githubApi(`${path}?ref=${encodeURIComponent(branch)}`, { token }),
+                ]);
+                const remoteText = JSON.stringify(JSON.parse(decodeBase64Utf8(current.content)), null, 2) + '\n';
+                if (remoteText !== baseConfigText && resolveRemoteChange(remoteText) !== 'overwrite') return;
+                // Commit as the token's owner with their GitHub no-reply address, never a personal email.
+                const identity = { name: user.login, email: `${user.id}+${user.login}@users.noreply.github.com` };
+                const text = configJson();
+                const result = await githubApi(path, {
+                    method: 'PUT',
+                    token,
+                    body: { message: 'Update feeds.json from the dashboard', content: encodeBase64Utf8(text), sha: current.sha, branch, committer: identity, author: identity },
+                });
+                baseConfigText = text;
+                unsavedAdditions.clear();
+                closeSaveGuide();
+                renderSources();
+                showSourcesMessage('Saved. The scraper starts automatically; new data shows up in a few minutes.', 'success', { url: result?.commit?.html_url, label: 'View commit' });
+            } catch (error) {
+                showSourcesMessage(`Save failed: ${error.message}`, 'error');
+            } finally {
+                button.disabled = false;
+            }
+        }
+
+        async function runScraperNow() {
+            const settings = requireGitHub();
+            if (!settings) return;
+            try {
+                await githubApi(`/repos/${settings.repo}/actions/workflows/scraper.yml/dispatches`, {
+                    method: 'POST', token: settings.token, body: { ref: settings.branch },
+                });
+                showSourcesMessage('Scraper run started (it fetches every enabled source). Refresh the feed in a few minutes.', 'success',
+                    { url: `https://github.com/${settings.repo}/actions/workflows/scraper.yml`, label: 'Watch it on GitHub' });
+            } catch (error) {
+                showSourcesMessage(`Could not start the scraper: ${error.message}`, 'error');
+            }
+        }
+
+        async function copyConfig() {
+            if (!feedConfig) return;
+            const problems = validateConfig(feedConfig);
+            if (problems.length) return showSourcesMessage(`feeds.json would be invalid: ${problems.slice(0, 3).join('; ')}`, 'error');
+            const { repo, branch } = readSettings();
+            try {
+                copiedConfigText = configJson();
+                await navigator.clipboard.writeText(copiedConfigText);
+                showSourcesMessage('feeds.json copied. Paste it over the whole file in the GitHub editor and commit.', 'success',
+                    repo ? { url: editUrl(repo, branch), label: 'Open GitHub editor' } : null);
+            } catch {
+                downloadConfig();
+                showSourcesMessage('Clipboard unavailable here, so feeds.json was downloaded instead.', 'info');
+            }
+        }
+
+        function downloadConfig() {
+            if (!feedConfig) return;
+            const url = URL.createObjectURL(new Blob([configJson()], { type: 'application/json' }));
+            const link = Object.assign(document.createElement('a'), { href: url, download: 'feeds.json' });
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+
+        window.addEventListener('beforeunload', (event) => {
+            if (feedConfig && configJson() !== baseConfigText) {
+                event.preventDefault();
+                event.returnValue = '';
+            }
+        });
+
         // Initialize on load
         window.onload = function() {
+            const sourcesView = document.getElementById('sourcesView');
+            sourcesView.addEventListener('change', onSourcesViewChange);
+            sourcesView.addEventListener('click', onSourcesViewClick);
+            renderSourcesToolbar();
             fetchSentimentData();
         };
     </script>

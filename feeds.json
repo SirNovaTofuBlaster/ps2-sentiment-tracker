@@ -1,0 +1,5004 @@
+{
+  "_about": "Sources scanned by scraper.py; editable from the dashboard's Sources panel. Disable a source instead of deleting it. Stats are a snapshot from the 'checked' date.",
+  "version": 1,
+  "poll_every_hours": {
+    "news": 1,
+    "reddit": 1,
+    "youtube": 1,
+    "podcast": 6
+  },
+  "roles": {
+    "official": {
+      "label": "Official: platforms & publishers",
+      "weight": 1
+    },
+    "press": {
+      "label": "Press & news media",
+      "weight": 1
+    },
+    "community": {
+      "label": "Community (Reddit)",
+      "weight": 1
+    },
+    "ps2": {
+      "label": "PS2-dedicated",
+      "weight": 1.5
+    },
+    "retro": {
+      "label": "Retro: reviews, history & hardware",
+      "weight": 1
+    },
+    "collector": {
+      "label": "Collectors & resellers",
+      "weight": 0.5
+    },
+    "creator": {
+      "label": "Entertainment creators",
+      "weight": 0.5
+    }
+  },
+  "sources": [
+    {
+      "type": "news",
+      "name": "Gematsu",
+      "url": "https://www.gematsu.com/feed",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Eurogamer",
+      "url": "https://www.eurogamer.net/feed",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Time Extension",
+      "url": "https://www.timeextension.com/feed",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Push Square",
+      "url": "https://www.pushsquare.com/feeds/latest",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "GameSpot",
+      "url": "https://www.gamespot.com/feeds/mashup/",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "PC Gamer",
+      "url": "https://www.pcgamer.com/rss/",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Nintendo Everything",
+      "url": "https://nintendoeverything.com/feed",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Kotaku",
+      "url": "https://kotaku.com/rss",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Polygon",
+      "url": "https://www.polygon.com/rss/index.xml",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "VG247",
+      "url": "https://www.vg247.com/feed",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true,
+      "note": "Feed still loads but its newest article is from 2026-06-02 (stale since June)."
+    },
+    {
+      "type": "news",
+      "name": "Rock Paper Shotgun",
+      "url": "https://www.rockpapershotgun.com/feed/",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Destructoid",
+      "url": "https://www.destructoid.com/feed/",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Nintendo Life",
+      "url": "https://www.nintendolife.com/feeds/latest",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "PlayStation.Blog",
+      "url": "https://blog.playstation.com/feed/",
+      "group": "Official Platform Blogs",
+      "role": "official",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Xbox Wire",
+      "url": "https://news.xbox.com/en-us/feed/",
+      "group": "Official Platform Blogs",
+      "role": "official",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "IGN Latinoamérica",
+      "url": "https://latam.ign.com/feed.xml",
+      "group": "Spanish & Portuguese Feeds",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Eurogamer.pt",
+      "url": "https://www.eurogamer.pt/feed",
+      "group": "Spanish & Portuguese Feeds",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "news",
+      "name": "Vandal",
+      "url": "https://vandal.elespanol.com/xml.cgi",
+      "group": "Spanish & Portuguese Feeds",
+      "role": "press",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/ps2",
+      "subreddit": "ps2",
+      "group": "Dedicated PS2 & Emulation Hubs",
+      "role": "ps2",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/ps2homebrew",
+      "subreddit": "ps2homebrew",
+      "group": "Dedicated PS2 & Emulation Hubs",
+      "role": "ps2",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/PCSX2",
+      "subreddit": "PCSX2",
+      "group": "Dedicated PS2 & Emulation Hubs",
+      "role": "ps2",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/playstation2",
+      "subreddit": "playstation2",
+      "group": "Dedicated PS2 & Emulation Hubs",
+      "role": "ps2",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/gamecollecting",
+      "subreddit": "gamecollecting",
+      "group": "Collecting, Retro & Emulation",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/LimitedPrintGames",
+      "subreddit": "LimitedPrintGames",
+      "group": "Collecting, Retro & Emulation",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/NSCollectors",
+      "subreddit": "NSCollectors",
+      "group": "Collecting, Retro & Emulation",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/Steelbook",
+      "subreddit": "Steelbook",
+      "group": "Collecting, Retro & Emulation",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/gameverifying",
+      "subreddit": "gameverifying",
+      "group": "Collecting, Retro & Emulation",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/retrogaming",
+      "subreddit": "retrogaming",
+      "group": "Collecting, Retro & Emulation",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/classicgaming",
+      "subreddit": "classicgaming",
+      "group": "Collecting, Retro & Emulation",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/emulation",
+      "subreddit": "emulation",
+      "group": "Collecting, Retro & Emulation",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/psx",
+      "subreddit": "psx",
+      "group": "Collecting, Retro & Emulation",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/gaming",
+      "subreddit": "gaming",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/Games",
+      "subreddit": "Games",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/pcgaming",
+      "subreddit": "pcgaming",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/truegaming",
+      "subreddit": "truegaming",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/ShouldIbuythisgame",
+      "subreddit": "ShouldIbuythisgame",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/gamingsuggestions",
+      "subreddit": "gamingsuggestions",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/pcmasterrace",
+      "subreddit": "pcmasterrace",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/NintendoSwitch",
+      "subreddit": "NintendoSwitch",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/PlayStation",
+      "subreddit": "PlayStation",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/xboxone",
+      "subreddit": "xboxone",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/SteamDeck",
+      "subreddit": "SteamDeck",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/jrpg",
+      "subreddit": "jrpg",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "reddit",
+      "name": "r/patientgamers",
+      "subreddit": "patientgamers",
+      "group": "High-Traffic General Communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "youtube",
+      "name": "PlayStation",
+      "channel_id": "UC-2Y8dQb0S6DtpxNgAKoJKA",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@PlayStation",
+        "subscribers": 17200000,
+        "views": 6417318786,
+        "videos": 28304,
+        "country": "United States",
+        "joined": "Dec 16, 2005",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Rockstar Games",
+      "channel_id": "UC6VcWc1rAoWdBCM0JxrRQ3A",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@RockstarGames",
+        "subscribers": 13800000,
+        "views": 1773501566,
+        "videos": 429,
+        "country": "United States",
+        "joined": "Feb 17, 2006",
+        "last_upload": "2026-08-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "thegameawards",
+      "channel_id": "UCqDS7KWjAPKv-7ZSlro9OiQ",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@thegameawards",
+        "subscribers": 12400000,
+        "views": 307047971,
+        "videos": 1445,
+        "country": "United States",
+        "joined": "Nov 3, 2014",
+        "last_upload": "2026-09-13",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Nintendo of America",
+      "channel_id": "UCGIY_O-8vW4rfX98KlMkvRg",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@NintendoAmerica",
+        "subscribers": 10200000,
+        "views": 4152897536,
+        "videos": 7690,
+        "country": "United States",
+        "joined": "Dec 27, 2005",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "XBOX",
+      "channel_id": "UCjBp_7RuDBUYbd1LegWEJ8g",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@XBOX",
+        "subscribers": 5860000,
+        "views": 1838680324,
+        "videos": 16100,
+        "country": null,
+        "joined": "Oct 31, 2005",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Ubisoft",
+      "channel_id": "UC0KU8F9jJqSLS11LRXvFWmg",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@Ubisoft",
+        "subscribers": 3990000,
+        "views": 1482957224,
+        "videos": 14452,
+        "country": "France",
+        "joined": "Mar 4, 2006",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "PlayStation Access",
+      "channel_id": "UC6yzV_xgKn8r77FkcmZyMSg",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@PlayStationAccess",
+        "subscribers": 2180000,
+        "views": 803308409,
+        "videos": 5801,
+        "country": "United Kingdom",
+        "joined": "Oct 28, 2010",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Bethesda Softworks",
+      "channel_id": "UCvZHe-SP3xC7DdOk4Ri8QBw",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@bethesda",
+        "subscribers": 2100000,
+        "views": 738549559,
+        "videos": 1456,
+        "country": "United States",
+        "joined": "Sep 18, 2006",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Bandai Namco Entertainment America",
+      "channel_id": "UC_ntXHv-XdKCD7CPynVvnQw",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@BandaiNamcoAmerica",
+        "subscribers": 1530000,
+        "views": 673197835,
+        "videos": 4105,
+        "country": "United States",
+        "joined": "Sep 19, 2006",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Electronic Arts",
+      "channel_id": "UCIHBybdoneVVpaQK7xMz1ww",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": false,
+      "stats": {
+        "handle": "@electronicarts",
+        "subscribers": 857000,
+        "views": 355159428,
+        "videos": 1466,
+        "country": null,
+        "joined": "Sep 27, 2005",
+        "last_upload": "2026-03-03",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2026-03-03."
+    },
+    {
+      "type": "youtube",
+      "name": "Capcom USA",
+      "channel_id": "UCW7h-1mymnJ96akzjrmiIgA",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@CapcomUSA",
+        "subscribers": 381000,
+        "views": 132187201,
+        "videos": 1446,
+        "country": "United States",
+        "joined": "Apr 5, 2010",
+        "last_upload": "2026-09-17",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Square Enix",
+      "channel_id": "UCA5SLTAVA6unn1M-6lbo1NA",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@squareenixna",
+        "subscribers": 372000,
+        "views": 158511914,
+        "videos": 1775,
+        "country": "United States",
+        "joined": "Jul 23, 2011",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Official ATLUS West",
+      "channel_id": "UC7hgDFSPvJVIUx_b8i1cILA",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@atlus",
+        "subscribers": 342000,
+        "views": 140378802,
+        "videos": 1655,
+        "country": "United States",
+        "joined": "Aug 1, 2007",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "SEGA",
+      "channel_id": "UCVkqs_Q88BDmyaWwjYJ8_Ig",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@SEGA",
+        "subscribers": 331000,
+        "views": 263090745,
+        "videos": 7701,
+        "country": "Japan",
+        "joined": "Feb 23, 2006",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Konami",
+      "channel_id": "UCwkUBN7foWU9GcY5cFmso-Q",
+      "group": "Platforms & publishers",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "handle": "@konami",
+        "subscribers": 284000,
+        "views": 59665895,
+        "videos": 516,
+        "country": "United States",
+        "joined": "Oct 23, 2005",
+        "last_upload": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "IGN",
+      "channel_id": "UCKy1dAqELo0zrOtPkf0eTMw",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@IGN",
+        "subscribers": 20000000,
+        "views": 22144903190,
+        "videos": 184187,
+        "country": "United States",
+        "joined": "Sep 18, 2006",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "gameranx",
+      "channel_id": "UCNvzD7Z-g64bPXxGzaQaa4g",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@gameranxTV",
+        "subscribers": 8650000,
+        "views": 4578180764,
+        "videos": 4899,
+        "country": "United States",
+        "joined": "Apr 9, 2012",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "GameSpot",
+      "channel_id": "UCbu2SsF-Or3Rsn3NxqODImw",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@gamespot",
+        "subscribers": 5720000,
+        "views": 4195930796,
+        "videos": 42358,
+        "country": null,
+        "joined": "Apr 8, 2006",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Video Game News",
+      "channel_id": "UCitsvZeConV2Im24BVFH8hg",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@VideoGameNews",
+        "subscribers": 3520000,
+        "views": 2757782165,
+        "videos": 18527,
+        "country": "United States",
+        "joined": "Aug 28, 2014",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Digital Foundry",
+      "channel_id": "UC9PBzalIcEQCsiIkq36PyUA",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@DigitalFoundry",
+        "subscribers": 1530000,
+        "views": 822431441,
+        "videos": 4731,
+        "country": "United States",
+        "joined": "Feb 16, 2008",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Polygon",
+      "channel_id": "UCuVxaQDraOja6xKidcmoufA",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@polygon",
+        "subscribers": 1400000,
+        "views": 693435248,
+        "videos": 4668,
+        "country": "United States",
+        "joined": "Feb 22, 2006",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "ACG",
+      "channel_id": "UCK9_x1DImhU-eolIay5rb2Q",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@ACGreviews",
+        "subscribers": 1210000,
+        "views": 220681290,
+        "videos": 1598,
+        "country": "United States",
+        "joined": "May 14, 2013",
+        "last_upload": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Skill Up",
+      "channel_id": "UCZ7AeeVbyslLM_8-nVy2B8Q",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@SkillUp",
+        "subscribers": 1100000,
+        "views": 349644337,
+        "videos": 1233,
+        "country": "Australia",
+        "joined": "Dec 23, 2015",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Nintendo Life",
+      "channel_id": "UCl7ZXbZUCWI2Hz--OrO4bsA",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@nintendolife",
+        "subscribers": 852000,
+        "views": 331111654,
+        "videos": 4649,
+        "country": "United Kingdom",
+        "joined": "May 14, 2006",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Spawn Wave",
+      "channel_id": "UCoIXnB865l9Ex9zs4OIXTdQ",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@SpawnWave",
+        "subscribers": 771000,
+        "views": 490035737,
+        "videos": 5519,
+        "country": "United States",
+        "joined": "Sep 27, 2016",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Eurogamer",
+      "channel_id": "UCciKycgzURdymx-GRSY2_dA",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@eurogamer",
+        "subscribers": 754000,
+        "views": 372003438,
+        "videos": 6347,
+        "country": "United Kingdom",
+        "joined": "Jun 24, 2007",
+        "last_upload": "2026-08-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Game Informer",
+      "channel_id": "UCK-65DO2oOxxMwphl2tYtcw",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@gameinformer",
+        "subscribers": 748000,
+        "views": 284884376,
+        "videos": 9545,
+        "country": "United States",
+        "joined": "Mar 9, 2006",
+        "last_upload": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Bellular News",
+      "channel_id": "UC3nPaf5MeeDTHA2JN7clidg",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@BellularNews",
+        "subscribers": 545000,
+        "views": 230379215,
+        "videos": 1757,
+        "country": "United Kingdom",
+        "joined": "Jul 6, 2015",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Kotaku",
+      "channel_id": "UCVS9tA3PI8Gard_LrTx0YsQ",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "handle": "@kotaku",
+        "subscribers": 354000,
+        "views": 222554711,
+        "videos": 3362,
+        "country": null,
+        "joined": "Feb 7, 2012",
+        "last_upload": "2024-10-03",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2024-10-03."
+    },
+    {
+      "type": "youtube",
+      "name": "PC Gamer",
+      "channel_id": "UCgaPRP68bbyHnfkPhWWBrNw",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@pcgamer",
+        "subscribers": 333000,
+        "views": 203481178,
+        "videos": 5879,
+        "country": null,
+        "joined": "Mar 17, 2006",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Kinda Funny Games",
+      "channel_id": "UCT6QFE3peNry9PdO5uGj96g",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@KindaFunnyGames",
+        "subscribers": 311000,
+        "views": 215282410,
+        "videos": 9894,
+        "country": "United States",
+        "joined": "Sep 6, 2014",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Juicy News Network",
+      "channel_id": "UC4rD2NGH3LxRNeF6VCDLeiQ",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "handle": "@JNN",
+        "subscribers": 268000,
+        "views": 89687306,
+        "videos": 279,
+        "country": "Canada",
+        "joined": "Dec 17, 2020",
+        "last_upload": "2026-01-29",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2026-01-29."
+    },
+    {
+      "type": "youtube",
+      "name": "Easy Allies",
+      "channel_id": "UCZrxXp1reP8E353rZsB3jaA",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@EasyAllies",
+        "subscribers": 262000,
+        "views": 159559191,
+        "videos": 4813,
+        "country": "United States",
+        "joined": "Feb 10, 2016",
+        "last_upload": "2026-09-27",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Giant Bomb",
+      "channel_id": "UCmeds0MLhjfkjD_5acPnFlQ",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@GiantBomb",
+        "subscribers": 248000,
+        "views": 222312767,
+        "videos": 10908,
+        "country": "United States",
+        "joined": "Feb 2, 2009",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "VG247.com",
+      "channel_id": "UCRl0tzAFRKfNvAQnnfvIR9A",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@MrVg247",
+        "subscribers": 231000,
+        "views": 196959031,
+        "videos": 3330,
+        "country": "United Kingdom",
+        "joined": "Aug 12, 2010",
+        "last_upload": "2026-08-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Rock Paper Shotgun",
+      "channel_id": "UC5bKSAZBvV9AKlBJPG0Py-A",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@rockpapershot",
+        "subscribers": 199000,
+        "views": 49413493,
+        "videos": 1170,
+        "country": "United Kingdom",
+        "joined": "Feb 21, 2012",
+        "last_upload": "2026-08-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Push Square",
+      "channel_id": "UCbI-X9F07inmxYvQKDBOU7Q",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@pushsquare",
+        "subscribers": 172000,
+        "views": 60894776,
+        "videos": 2918,
+        "country": "United Kingdom",
+        "joined": "Jan 28, 2009",
+        "last_upload": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Mithrie - Gaming News",
+      "channel_id": "UCDbiEgV3Y7JQtaftgN7lyPw",
+      "group": "Gaming news & media",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "handle": "@GamingNewsSummary",
+        "subscribers": 121000,
+        "views": 12510815,
+        "videos": 6701,
+        "country": "United Kingdom",
+        "joined": "Jan 26, 2021",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "JonTronShow",
+      "channel_id": "UCdJdEguB1F1CiYe7OEi3SBg",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "handle": "@JonTronShow",
+        "subscribers": 6380000,
+        "views": 1428520931,
+        "videos": 146,
+        "country": "United States",
+        "joined": "Aug 31, 2010",
+        "last_upload": "2025-01-11",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2025-01-11."
+    },
+    {
+      "type": "youtube",
+      "name": "Cinemassacre",
+      "channel_id": "UC0M0rxSz3IF0CsSour1iWmw",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@JamesNintendoNerd",
+        "subscribers": 4030000,
+        "views": 2478672727,
+        "videos": 1937,
+        "country": "United States",
+        "joined": "Apr 6, 2006",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "DidYouKnowGaming",
+      "channel_id": "UCyS4xQE6DK4_p3qXQwJQAyA",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@DidYouKnowGamin",
+        "subscribers": 2370000,
+        "views": 649164840,
+        "videos": 844,
+        "country": "United States",
+        "joined": "May 22, 2012",
+        "last_upload": "2026-08-08",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Summoning Salt",
+      "channel_id": "UCtUbO6rBht0daVIOGML3c8w",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@SummoningSalt",
+        "subscribers": 2150000,
+        "views": 288605856,
+        "videos": 82,
+        "country": "United States",
+        "joined": "Mar 28, 2012",
+        "last_upload": "2026-08-27",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Scott The Woz",
+      "channel_id": "UC4rqhyiTs7XyuODcECvuiiQ",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@ScottTheWoz",
+        "subscribers": 2040000,
+        "views": 816802195,
+        "videos": 292,
+        "country": "United States",
+        "joined": "Nov 7, 2012",
+        "last_upload": "2026-09-05",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "PeanutButterGamer",
+      "channel_id": "UCRBkeMoYX02w-0qVIKNkruw",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@PeanutButterGamer",
+        "subscribers": 2030000,
+        "views": 503820327,
+        "videos": 249,
+        "country": "United States",
+        "joined": "Jan 16, 2009",
+        "last_upload": "2026-08-18",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Ahoy",
+      "channel_id": "UCE1jXbVAGJQEORz9nZqb5bQ",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@XboxAhoy",
+        "subscribers": 1860000,
+        "views": 266278673,
+        "videos": 308,
+        "country": "United Kingdom",
+        "joined": "Oct 17, 2009",
+        "last_upload": "2026-06-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "LGR",
+      "channel_id": "UCLx053rWZxCiYWsBETgdKrQ",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@LGR",
+        "subscribers": 1820000,
+        "views": 614808092,
+        "videos": 1294,
+        "country": "United States",
+        "joined": "Mar 9, 2006",
+        "last_upload": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "The Completionist",
+      "channel_id": "UCPYJR2EIu0_MJaDeSGwkIVw",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@ThatOneVideoGamer",
+        "subscribers": 1380000,
+        "views": 349406073,
+        "videos": 750,
+        "country": "United States",
+        "joined": "Jan 5, 2012",
+        "last_upload": "2026-09-18",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "UpIsNotJump",
+      "channel_id": "UCFLwN7vRu8M057qJF8TsBaA",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@UpIsNotJump",
+        "subscribers": 1160000,
+        "views": 171171754,
+        "videos": 222,
+        "country": "United Kingdom",
+        "joined": "Jun 28, 2006",
+        "last_upload": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Gaming Historian",
+      "channel_id": "UCnbvPS_rXp4PC21PG2k1UVg",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "handle": "@GamingHistorian",
+        "subscribers": 1100000,
+        "views": 151596658,
+        "videos": 145,
+        "country": "United States",
+        "joined": "Jul 17, 2006",
+        "last_upload": "2026-04-03",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2026-04-03."
+    },
+    {
+      "type": "youtube",
+      "name": "Karl Jobst",
+      "channel_id": "UC3ltptWa0xfrDweghW94Acg",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@karljobst",
+        "subscribers": 1050000,
+        "views": 268923927,
+        "videos": 212,
+        "country": "Australia",
+        "joined": "Jul 25, 2010",
+        "last_upload": "2026-08-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "/noclip",
+      "channel_id": "UC0fDG3byEcMtbOqPMymDNbw",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@NoclipDocs",
+        "subscribers": 901000,
+        "views": 88781443,
+        "videos": 239,
+        "country": "United States",
+        "joined": "Sep 5, 2016",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Blue Television Games",
+      "channel_id": "UCw5YkWj0TfjZrQEgG8u9JjQ",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@BlueTelevisionGames",
+        "subscribers": 841000,
+        "views": 739095430,
+        "videos": 2519,
+        "country": "United States",
+        "joined": "Sep 3, 2015",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "RetroGamingNow",
+      "channel_id": "UCTWbP-2W-_6mzWLg2oZmT7Q",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@RetroGamingNow",
+        "subscribers": 718000,
+        "views": 160557762,
+        "videos": 701,
+        "country": null,
+        "joined": "Sep 19, 2012",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Nostalgia Nerd",
+      "channel_id": "UC7qPftDWPw9XuExpSgfkmJQ",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@Nostalgianerd",
+        "subscribers": 593000,
+        "views": 111865247,
+        "videos": 786,
+        "country": "United Kingdom",
+        "joined": "Mar 1, 2014",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "GVMERS",
+      "channel_id": "UCSuhUzpdXg9jme6eN6HA_IA",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@GVMERS",
+        "subscribers": 541000,
+        "views": 72409127,
+        "videos": 168,
+        "country": null,
+        "joined": "Oct 7, 2013",
+        "last_upload": "2026-07-31",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Cinemassacre Clips",
+      "channel_id": "UC25-_5i19rPlLosl_h7G9Ow",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@Cinemassacre",
+        "subscribers": 493000,
+        "views": 174033687,
+        "videos": 1226,
+        "country": "United States",
+        "joined": "Apr 23, 2006",
+        "last_upload": "2026-09-22",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Classic Game Room",
+      "channel_id": "UCh4syoTtvmYlDMeMnwS5dmA",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "handle": "@classicgameroom",
+        "subscribers": 445000,
+        "views": 450595286,
+        "videos": 5285,
+        "country": "United States",
+        "joined": "Feb 10, 2007",
+        "last_upload": "2024-06-21",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2024-06-21."
+    },
+    {
+      "type": "youtube",
+      "name": "Larry Bundy Jr",
+      "channel_id": "UCJVdNvvuvOnthuWVQjYff2w",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@Larry",
+        "subscribers": 435000,
+        "views": 106239010,
+        "videos": 674,
+        "country": "United Kingdom",
+        "joined": "Aug 28, 2010",
+        "last_upload": "2026-09-05",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "SomecallmeJohnny",
+      "channel_id": "UCg83RGdRpwfvoFEuE2zWKZA",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@SomecallmeJohnny",
+        "subscribers": 418000,
+        "views": 237716588,
+        "videos": 809,
+        "country": "United States",
+        "joined": "Mar 4, 2008",
+        "last_upload": "2026-09-23",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "SNES drunk",
+      "channel_id": "UCfBLXTwLoUpDAkHcHizW3Jg",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@SNESdrunk",
+        "subscribers": 340000,
+        "views": 121128428,
+        "videos": 1150,
+        "country": "United States",
+        "joined": "May 31, 2013",
+        "last_upload": "2026-08-18",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Stop Skeletons From Fighting",
+      "channel_id": "UC5Xeb9-FhZXgvw340n7PsCQ",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@StopSkeletonsFromFighting",
+        "subscribers": 336000,
+        "views": 57690060,
+        "videos": 320,
+        "country": "United States",
+        "joined": "Apr 26, 2006",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Game Sack",
+      "channel_id": "UCT6LaAC9VckZYJUzutUW3PQ",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@GameSack",
+        "subscribers": 328000,
+        "views": 132300438,
+        "videos": 564,
+        "country": "United States",
+        "joined": "Mar 27, 2011",
+        "last_upload": "2026-09-27",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "NeoGamer - The Video Game Archive",
+      "channel_id": "UCDC7X5gNh2LxQ2PnN_OKD5g",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@NeoGamer",
+        "subscribers": 281000,
+        "views": 156497276,
+        "videos": 3172,
+        "country": null,
+        "joined": "Jun 26, 2010",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Nerrel",
+      "channel_id": "UCZKyj7wDE51SMbkrRBT6SdA",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@Nerrel",
+        "subscribers": 265000,
+        "views": 47316648,
+        "videos": 99,
+        "country": "United States",
+        "joined": "Nov 27, 2015",
+        "last_upload": "2026-09-16",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Retro Game Mechanics Explained",
+      "channel_id": "UCwRqWnW5ZkVaP_lZF7caZ-g",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "handle": "@RGMechEx",
+        "subscribers": 254000,
+        "views": 25216750,
+        "videos": 69,
+        "country": "United States",
+        "joined": "Sep 13, 2016",
+        "last_upload": "2026-01-26",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2026-01-26."
+    },
+    {
+      "type": "youtube",
+      "name": "Pat the NES Punk",
+      "channel_id": "UC1wdop56K-ORxh37G6-fs7A",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@PatTheNESpunk",
+        "subscribers": 254000,
+        "views": 156716904,
+        "videos": 4298,
+        "country": "United States",
+        "joined": "Jun 20, 2008",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "My Life in Gaming",
+      "channel_id": "UCpvtp7mH0Cdq8FQUxcjDq0Q",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@mylifeingaming",
+        "subscribers": 239000,
+        "views": 43115496,
+        "videos": 813,
+        "country": "United States",
+        "joined": "Sep 24, 2013",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "I Finished A Video Game",
+      "channel_id": "UCVdDUN69YsAXPxh2y71sMtQ",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@IFinishedAVideoGame",
+        "subscribers": 229000,
+        "views": 40141735,
+        "videos": 35,
+        "country": "United Kingdom",
+        "joined": "Aug 29, 2020",
+        "last_upload": "2026-06-10",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "The Retro Collective",
+      "channel_id": "UCLEoyoOKZK0idGqSc6Pi23w",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@TheRetroCollective",
+        "subscribers": 199000,
+        "views": 29629665,
+        "videos": 540,
+        "country": "United Kingdom",
+        "joined": "Jan 1, 2012",
+        "last_upload": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "GameHut",
+      "channel_id": "UCfVFSjHQ57zyxajhhRc7i0g",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "handle": "@GameHut",
+        "subscribers": 149000,
+        "views": 13878929,
+        "videos": 166,
+        "country": "United States",
+        "joined": "Aug 30, 2017",
+        "last_upload": "2025-08-01",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2025-08-01."
+    },
+    {
+      "type": "youtube",
+      "name": "Classic Gaming Quarterly",
+      "channel_id": "UC2i64jLboyVFZwwO6UCKZ6g",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "handle": "@CGQuarterly",
+        "subscribers": 147000,
+        "views": 18788042,
+        "videos": 82,
+        "country": "United States",
+        "joined": "Jul 8, 2013",
+        "last_upload": "2023-12-23",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2023-12-23."
+    },
+    {
+      "type": "youtube",
+      "name": "John Hancock",
+      "channel_id": "UCkDwUy-wt1adtSyd227TNdA",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@johnhancockretro",
+        "subscribers": 141000,
+        "views": 28091047,
+        "videos": 1755,
+        "country": "United States",
+        "joined": "Jul 14, 2006",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Displaced Gamers",
+      "channel_id": "UCWoSKWs8h6lFdiEDAjuIfpA",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@DisplacedGamers",
+        "subscribers": 121000,
+        "views": 12275224,
+        "videos": 124,
+        "country": "United States",
+        "joined": "Dec 4, 2014",
+        "last_upload": "2026-08-11",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Kim Justice",
+      "channel_id": "UC9ZWVL1Elyt2cdiQYjxS_1w",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@Kim_Justice",
+        "subscribers": 98500,
+        "views": 21872104,
+        "videos": 592,
+        "country": "United Kingdom",
+        "joined": "Jul 11, 2006",
+        "last_upload": "2026-09-20",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Video Game Esoterica",
+      "channel_id": "UCn2pQB4jsCTLUtx2NIkCvUg",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@VideoGameEsoterica",
+        "subscribers": 82400,
+        "views": 23933499,
+        "videos": 3484,
+        "country": "United States",
+        "joined": "Sep 29, 2018",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "The Video Game History Foundation",
+      "channel_id": "UCicVsS0zrUPrA3RaOJO5oBg",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@GameHistoryOrg",
+        "subscribers": 64900,
+        "views": 2918667,
+        "videos": 125,
+        "country": "United States",
+        "joined": "Sep 27, 2016",
+        "last_upload": "2026-09-16",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Gary",
+      "channel_id": "UC202eItEazdvnMRK09RTtaw",
+      "group": "Retro: reviews & history",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@GaryRetroGamer",
+        "subscribers": 63700,
+        "views": 39702444,
+        "videos": 429,
+        "country": null,
+        "joined": "Aug 16, 2014",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "The 8-Bit Guy",
+      "channel_id": "UC8uT9cgJorJPWu7ITLGo9Ww",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@The8BitGuy",
+        "subscribers": 1470000,
+        "views": 293502181,
+        "videos": 343,
+        "country": "United States",
+        "joined": "Jul 25, 2006",
+        "last_upload": "2026-06-20",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "ETA PRIME",
+      "channel_id": "UC_0CVCfC_3iuHqmyClu59Uw",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@ETAPRIME",
+        "subscribers": 1400000,
+        "views": 567835484,
+        "videos": 3264,
+        "country": "United States",
+        "joined": "Feb 17, 2011",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "WULFF DEN",
+      "channel_id": "UCr613nJgA50o8DUUT00qHvw",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@WulffDen",
+        "subscribers": 987000,
+        "views": 251026353,
+        "videos": 1708,
+        "country": "United States",
+        "joined": "Sep 9, 2013",
+        "last_upload": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Modern Vintage Gamer",
+      "channel_id": "UCjFaPUcJU1vwk193mnW_w1w",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@ModernVintageGamer",
+        "subscribers": 938000,
+        "views": 239727396,
+        "videos": 647,
+        "country": "United States",
+        "joined": "Dec 27, 2007",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Retro Game Corps",
+      "channel_id": "UCoZQiN0o7f36H7PaW4fVhFw",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@RetroGameCorps",
+        "subscribers": 863000,
+        "views": 200009515,
+        "videos": 946,
+        "country": "United States",
+        "joined": "Aug 9, 2020",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "RGT 85",
+      "channel_id": "UCA5RGaQc-a8tIX_AqTTmWdw",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@RGT85",
+        "subscribers": 536000,
+        "views": 258783614,
+        "videos": 3702,
+        "country": "United States",
+        "joined": "May 8, 2015",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Retro Dodo",
+      "channel_id": "UCRg2tBkpKYDxOKtX3GvLZcQ",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@RetroDodo",
+        "subscribers": 346000,
+        "views": 75910105,
+        "videos": 516,
+        "country": "United Kingdom",
+        "joined": "Dec 29, 2011",
+        "last_upload": "2026-09-23",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "TechDweeb",
+      "channel_id": "UCgRaK4A7yi4ZELCLUjdP_pg",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@TechDweeb",
+        "subscribers": 309000,
+        "views": 46613028,
+        "videos": 661,
+        "country": "Canada",
+        "joined": "Aug 26, 2021",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Adrian's Digital Basement",
+      "channel_id": "UCE5dIscvDxrb7CD5uiJJOiw",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@adriansdigitalbasement",
+        "subscribers": 249000,
+        "views": 57241419,
+        "videos": 628,
+        "country": "United States",
+        "joined": "Dec 2, 2006",
+        "last_upload": "2026-09-27",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Retro Handhelds",
+      "channel_id": "UC3IYhdamzjvEJ9CwkQa4RAw",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@retrohandhelds",
+        "subscribers": 96600,
+        "views": 21089343,
+        "videos": 1021,
+        "country": "United States",
+        "joined": "Jun 28, 2021",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Joey's Retro Handhelds",
+      "channel_id": "UCwUiHJUm1wpSaUXiQt_H12A",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@JoeysRetroHandhelds",
+        "subscribers": 96400,
+        "views": 20882464,
+        "videos": 554,
+        "country": "Canada",
+        "joined": "Mar 31, 2023",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "RetroRGB",
+      "channel_id": "UCLPIbBCKVH2uKGm5C4sOkew",
+      "group": "Retro: hardware & emulation",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "handle": "@RetroRGB",
+        "subscribers": 84400,
+        "views": 14512658,
+        "videos": 1584,
+        "country": "United States",
+        "joined": "Nov 13, 2012",
+        "last_upload": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Odd Tinkering",
+      "channel_id": "UCf_suVrG2dA5BTjJhNLwthQ",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@OddTinkering",
+        "subscribers": 2830000,
+        "views": 442200816,
+        "videos": 165,
+        "country": null,
+        "joined": "May 24, 2017",
+        "last_upload": "2026-08-09",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "TronicsFix",
+      "channel_id": "UCfOrKQtC1tDfGf_fFVb8pYw",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@Tronicsfix",
+        "subscribers": 1780000,
+        "views": 514636057,
+        "videos": 798,
+        "country": "United States",
+        "joined": "May 20, 2015",
+        "last_upload": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "MetalJesusRocks",
+      "channel_id": "UCEFymXY4eFCo_AchSpxwyrg",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@MetalJesusRocks",
+        "subscribers": 948000,
+        "views": 286715293,
+        "videos": 1116,
+        "country": "United States",
+        "joined": "Apr 15, 2006",
+        "last_upload": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "The Retro Future",
+      "channel_id": "UCefAbzsWZE4uXU-mqQMrr4Q",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@TheRetroFuture",
+        "subscribers": 651000,
+        "views": 106280432,
+        "videos": 628,
+        "country": "United Kingdom",
+        "joined": "Mar 7, 2014",
+        "last_upload": "2026-09-18",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Phoenix Resale",
+      "channel_id": "UCYWd5Q-C8M-OeDzKo86CAeg",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@PhoenixResale",
+        "subscribers": 573000,
+        "views": 170555582,
+        "videos": 620,
+        "country": "United States",
+        "joined": "Feb 2, 2020",
+        "last_upload": "2026-09-13",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Retro Jakes",
+      "channel_id": "UCTdwY9mYjI9mbuLJ7Zx2How",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@RetroJakesVideoGames",
+        "subscribers": 493000,
+        "views": 333682571,
+        "videos": 217,
+        "country": "United States",
+        "joined": "Sep 5, 2025",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Macho Nacho Productions",
+      "channel_id": "UC4CsqctrGOn4NTz09sAhXwQ",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@MachoNachoProductions",
+        "subscribers": 444000,
+        "views": 64744057,
+        "videos": 308,
+        "country": "United States",
+        "joined": "Aug 28, 2019",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Chase After The Right Price",
+      "channel_id": "UCPke0SGE7FGIuhnGurf9qQA",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@ChaseAfterTheRightPrice",
+        "subscribers": 418000,
+        "views": 277846026,
+        "videos": 1153,
+        "country": "United States",
+        "joined": "May 29, 2017",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Retro Rick",
+      "channel_id": "UC1tyWJZ-mPWch81I2UW7cQg",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@retrorick",
+        "subscribers": 319000,
+        "views": 72970680,
+        "videos": 578,
+        "country": "United States",
+        "joined": "Oct 19, 2018",
+        "last_upload": "2026-09-22",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Wicked Gamer & Collector",
+      "channel_id": "UCW_sIU3MaWW5cXSjGqNIvbw",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@WickedGamerCollector",
+        "subscribers": 208000,
+        "views": 77856815,
+        "videos": 3321,
+        "country": "Netherlands",
+        "joined": "Aug 30, 2016",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "The Game Chasers",
+      "channel_id": "UC78PzEVn5zWK4No0dPQHVQw",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": false,
+      "stats": {
+        "handle": "@TheGameChasers",
+        "subscribers": 171000,
+        "views": 45626976,
+        "videos": 589,
+        "country": "United States",
+        "joined": "Oct 5, 2010",
+        "last_upload": "2025-07-14",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2025-07-14."
+    },
+    {
+      "type": "youtube",
+      "name": "Pixel Game Squad",
+      "channel_id": "UCRwh3TVQszgmDK6UHzHNdQQ",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@PixelGameSquad",
+        "subscribers": 155000,
+        "views": 44091179,
+        "videos": 878,
+        "country": "United States",
+        "joined": "Sep 6, 2017",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Retro Video Game Pickups",
+      "channel_id": "UC6W4xz9_OdWf2kF_yL7UbEQ",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@RetroVideoGamePickups",
+        "subscribers": 139000,
+        "views": 124752219,
+        "videos": 7122,
+        "country": "United States",
+        "joined": "Mar 31, 2017",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Adam Koralik",
+      "channel_id": "UCFTfkdN3L4aLdryeADiSsIg",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@AdamKoralik",
+        "subscribers": 129000,
+        "views": 38004571,
+        "videos": 1379,
+        "country": "United States",
+        "joined": "Apr 22, 2009",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "PeteDorr",
+      "channel_id": "UCeTvRtfRFyWXdO_ZbyArPjA",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@PeteDorr",
+        "subscribers": 119000,
+        "views": 27784253,
+        "videos": 762,
+        "country": "United States",
+        "joined": "Oct 17, 2006",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "JRPGLife",
+      "channel_id": "UCXbE-Ljd1C9RFe-yEdjTgkQ",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@JRPGLife",
+        "subscribers": 115000,
+        "views": 63762307,
+        "videos": 529,
+        "country": "United States",
+        "joined": "Feb 5, 2020",
+        "last_upload": "2026-09-27",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Memory Card",
+      "channel_id": "UCoxRkuujB7-AwV5DmImIDRg",
+      "group": "Retro: collecting & reselling",
+      "role": "collector",
+      "enabled": true,
+      "stats": {
+        "handle": "@MemoryCard-r5i",
+        "subscribers": 66700,
+        "views": 2650963,
+        "videos": 13,
+        "country": null,
+        "joined": "Oct 7, 2025",
+        "last_upload": "2026-09-15",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "John GodGames",
+      "channel_id": "UCLC3kuN_2emyokGE4WStv6w",
+      "group": "PS2-dedicated",
+      "role": "ps2",
+      "enabled": true,
+      "stats": {
+        "handle": "@JohnGodGames",
+        "subscribers": 729000,
+        "views": 609141822,
+        "videos": 5308,
+        "country": "Czechia",
+        "joined": "Jul 12, 2007",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "xTimelessGaming",
+      "channel_id": "UC7c5IWuVuiYVdKxcQ3Bpvbg",
+      "group": "PS2-dedicated",
+      "role": "ps2",
+      "enabled": true,
+      "stats": {
+        "handle": "@xTimelessGaming",
+        "subscribers": 412000,
+        "views": 325173780,
+        "videos": 4615,
+        "country": "Malaysia",
+        "joined": "Dec 3, 2012",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Retrogamingtommy",
+      "channel_id": "UCrapa0hAEAIfdZxtjODd0Lw",
+      "group": "PS2-dedicated",
+      "role": "ps2",
+      "enabled": true,
+      "stats": {
+        "handle": "@retrogamingtommy",
+        "subscribers": 316000,
+        "views": 196356378,
+        "videos": 681,
+        "country": "Germany",
+        "joined": "Apr 1, 2011",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "ANGEL PS2",
+      "channel_id": "UCgHPug_ZesHYlCA-Jc25VgQ",
+      "group": "PS2-dedicated",
+      "role": "ps2",
+      "enabled": true,
+      "stats": {
+        "handle": "@7_ang",
+        "subscribers": 90200,
+        "views": 64757938,
+        "videos": 6144,
+        "country": null,
+        "joined": "Aug 6, 2018",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "PS2 or Die",
+      "channel_id": "UC81naFdSS2bKzj51XDVltBQ",
+      "group": "PS2-dedicated",
+      "role": "ps2",
+      "enabled": true,
+      "stats": {
+        "handle": "@PS2orDie",
+        "subscribers": 14500,
+        "views": 916606,
+        "videos": 769,
+        "country": "United States",
+        "joined": "Jul 9, 2020",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Jimbo Gaming PlayStation 2 ",
+      "channel_id": "UCXspo7eyvzUh2k9d4JGLNRg",
+      "group": "PS2-dedicated",
+      "role": "ps2",
+      "enabled": true,
+      "stats": {
+        "handle": "@JimboGamingPS2",
+        "subscribers": 9750,
+        "views": 7119556,
+        "videos": 5288,
+        "country": "Indonesia",
+        "joined": "Feb 7, 2015",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "We Review Every PS2 Game Oh God",
+      "channel_id": "UC519lz5DdH7tsIMpfU55FlA",
+      "group": "PS2-dedicated",
+      "role": "ps2",
+      "enabled": false,
+      "stats": {
+        "handle": "@WREPS2GOG",
+        "subscribers": 9270,
+        "views": 417370,
+        "videos": 29,
+        "country": "United States",
+        "joined": "Mar 14, 2019",
+        "last_upload": "2025-10-05",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2025-10-05."
+    },
+    {
+      "type": "youtube",
+      "name": "Dan Gnadt - The PS2 Guy",
+      "channel_id": "UChBb5-4ILVNPsL8xX6a4LpA",
+      "group": "PS2-dedicated",
+      "role": "ps2",
+      "enabled": true,
+      "stats": {
+        "handle": "@dangnadt",
+        "subscribers": 7720,
+        "views": 443360,
+        "videos": 410,
+        "country": "United States",
+        "joined": "Aug 10, 2009",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "PewDiePie",
+      "channel_id": "UC-lHJZR3Gqxm24_Vd_AJ5Yw",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@PewDiePie",
+        "subscribers": 109000000,
+        "views": 29539115521,
+        "videos": 4666,
+        "country": "Japan",
+        "joined": "Apr 29, 2010",
+        "last_upload": "2026-09-22",
+        "checked": "2026-09-30"
+      },
+      "note": "Latest upload (2026-09-22) is titled 'Thank you and Goodbye.'; vlog content."
+    },
+    {
+      "type": "youtube",
+      "name": "PANDA BOI",
+      "channel_id": "UC0Wju2yvRlfwqraLlz5152Q",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@PANDABOI",
+        "subscribers": 62400000,
+        "views": 27523106815,
+        "videos": 1310,
+        "country": "Italy",
+        "joined": "Dec 5, 2020",
+        "last_upload": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Shorts-only channel."
+    },
+    {
+      "type": "youtube",
+      "name": "IShowSpeed",
+      "channel_id": "UCWsDFcIhY2DBi3GB5uykGXA",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@IShowSpeed",
+        "subscribers": 61500000,
+        "views": 10999344361,
+        "videos": 2007,
+        "country": "United States",
+        "joined": "Mar 21, 2016",
+        "last_upload": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "IRL streaming, not game coverage."
+    },
+    {
+      "type": "youtube",
+      "name": "MrBeast Gaming",
+      "channel_id": "UCIPPMRA040LQr5QPyJEbmXA",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@MrBeastGaming",
+        "subscribers": 60200000,
+        "views": 11870384091,
+        "videos": 182,
+        "country": "United States",
+        "joined": "Apr 7, 2020",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "Mikecrack",
+      "channel_id": "UCqJ5zFEED1hWs0KNQCQuYdQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@Mikecrack",
+        "subscribers": 58700000,
+        "views": 22128146846,
+        "videos": 2245,
+        "country": "Spain",
+        "joined": "Jul 13, 2015",
+        "last_upload": "2026-08-31",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "JuegaGerman",
+      "channel_id": "UCYiGq8XF7YQD00x7wAd62Zg",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@JuegaGerman",
+        "subscribers": 56700000,
+        "views": 19112131575,
+        "videos": 2511,
+        "country": "Chile",
+        "joined": "May 18, 2013",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "Jess No Limit",
+      "channel_id": "UCvh1at6xpV1ytYOAzxmqUsA",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@JessNoLimit",
+        "subscribers": 54600000,
+        "views": 7347899526,
+        "videos": 2866,
+        "country": "Indonesia",
+        "joined": "Sep 6, 2017",
+        "last_upload": "2026-09-25",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "Techno Gamerz",
+      "channel_id": "UCX8pnu3DYUnx8qy8V_c6oHg",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@TechnoGamerzOfficial",
+        "subscribers": 53200000,
+        "views": 16540772451,
+        "videos": 1193,
+        "country": "India",
+        "joined": "Aug 13, 2017",
+        "last_upload": "2026-09-16",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "BETER BÖCÜK",
+      "channel_id": "UC6gVx_vALsYT-z_u1djJbBQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@beterbocuk",
+        "subscribers": 51900000,
+        "views": 16499633308,
+        "videos": 2665,
+        "country": "Türkiye",
+        "joined": "Dec 12, 2012",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "Fernanfloo",
+      "channel_id": "UCV4xOVpbcV8SdueDCOxLXtQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@Fernanfloo",
+        "subscribers": 50700000,
+        "views": 11170932725,
+        "videos": 607,
+        "country": "El Salvador",
+        "joined": "May 1, 2011",
+        "last_upload": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "AboFlah",
+      "channel_id": "UCqq5n-Oe-r1EEHI3yvhVJcA",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@AboFlah",
+        "subscribers": 50600000,
+        "views": 9354123897,
+        "videos": 858,
+        "country": "Kuwait",
+        "joined": "Jul 27, 2016",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "Total Gaming",
+      "channel_id": "UC5c9VlYTSvBSCaoMu_GI6gQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@TotalGaming093",
+        "subscribers": 45900000,
+        "views": 5245756396,
+        "videos": 601,
+        "country": "India",
+        "joined": "Oct 9, 2018",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "TheDonato",
+      "channel_id": "UCaHEdZtk6k7SVP-umnzifmQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@thedonato",
+        "subscribers": 43700000,
+        "views": 8626463986,
+        "videos": 4152,
+        "country": "Argentina",
+        "joined": "Feb 16, 2015",
+        "last_upload": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "LankyBox",
+      "channel_id": "UCSf0s2ogUVYpJPuzW1zpAOg",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@LankyBox",
+        "subscribers": 42000000,
+        "views": 35995331692,
+        "videos": 9244,
+        "country": "United States",
+        "joined": "Jul 30, 2016",
+        "last_upload": "2026-02-20",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "elrubiusOMG",
+      "channel_id": "UCXazgXDIYyWH-yXLAkcrFxw",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@elrubiusOMG",
+        "subscribers": 41000000,
+        "views": 8327120060,
+        "videos": 745,
+        "country": null,
+        "joined": "Dec 19, 2011",
+        "last_upload": "2026-08-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "Markiplier",
+      "channel_id": "UC7_YxT-KID8kRbqZo7MyscQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "handle": "@markiplier",
+        "subscribers": 38900000,
+        "views": 23936836519,
+        "videos": 5934,
+        "country": "United States",
+        "joined": "May 26, 2012",
+        "last_upload": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "Dream",
+      "channel_id": "UCTkXRDQl0luXxVQrRQvWS6w",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@dream",
+        "subscribers": 34800000,
+        "views": 4527706943,
+        "videos": 311,
+        "country": "United States",
+        "joined": "Feb 8, 2014",
+        "last_upload": "2026-09-19",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "VEGETTA777",
+      "channel_id": "UCam8T03EOFBsNdR0thrFHdQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@vegetta777",
+        "subscribers": 34700000,
+        "views": 16482975144,
+        "videos": 8978,
+        "country": null,
+        "joined": "Mar 2, 2008",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "Diosdado Juarez",
+      "channel_id": "UC0gnpMXQFvO9YsRZ_2adXPA",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@diosdadojuarez",
+        "subscribers": 32400000,
+        "views": 27711993635,
+        "videos": 3214,
+        "country": "Mexico",
+        "joined": "Jan 10, 2015",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "BigSchool",
+      "channel_id": "UC-Diq5SjWZDol8C0_E_1Y7A",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@BigSchoolMinecraft",
+        "subscribers": 32400000,
+        "views": 14863891674,
+        "videos": 7684,
+        "country": "United States",
+        "joined": "Aug 13, 2019",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "Soy Suco",
+      "channel_id": "UCIpp0Pb8H3K-Htb-WOF9DBw",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@soysuco24",
+        "subscribers": 31300000,
+        "views": 7164710377,
+        "videos": 1511,
+        "country": "Ecuador",
+        "joined": "Aug 4, 2017",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "jacksepticeye",
+      "channel_id": "UCYzPXprvl5Y-Sf0g4vX-m6g",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "handle": "@jacksepticeye",
+        "subscribers": 31200000,
+        "views": 17759463682,
+        "videos": 5345,
+        "country": "Ireland",
+        "joined": "Feb 24, 2007",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "invictor",
+      "channel_id": "UChOQkbLHWi3zSCUjT7Kjd1g",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@invictorgs3",
+        "subscribers": 30300000,
+        "views": 11218189286,
+        "videos": 2999,
+        "country": "Spain",
+        "joined": "May 13, 2013",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "DanTDM",
+      "channel_id": "UCS5Oz6CHmeoF7vSad0qqXfw",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "handle": "@DanTDM",
+        "subscribers": 29100000,
+        "views": 20446927670,
+        "videos": 3815,
+        "country": "United Kingdom",
+        "joined": "Jul 14, 2012",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "VanossGaming",
+      "channel_id": "UCKqH_9mk1waLgBiL2vT5b9g",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "handle": "@VanossGaming",
+        "subscribers": 26000000,
+        "views": 17120358446,
+        "videos": 2304,
+        "country": "United States",
+        "joined": "Sep 15, 2011",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "SSundee",
+      "channel_id": "UCke6I9N4KfC968-yRcd5YRg",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@SSundee",
+        "subscribers": 25500000,
+        "views": 17354057240,
+        "videos": 3824,
+        "country": "United States",
+        "joined": "Nov 27, 2009",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "Aphmau",
+      "channel_id": "UCzYfz8uibvnB7Yc1LjePi4g",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@Aphmau",
+        "subscribers": 25300000,
+        "views": 30410438873,
+        "videos": 5931,
+        "country": "United States",
+        "joined": "Aug 13, 2012",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "CoryxKenshin",
+      "channel_id": "UCiYcA0gJzg855iSKMrX3oHg",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@CoryxKenshin",
+        "subscribers": 24700000,
+        "views": 10075495043,
+        "videos": 1753,
+        "country": "United States",
+        "joined": "Apr 26, 2009",
+        "last_upload": "2026-03-07",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last upload 2026-03-07."
+    },
+    {
+      "type": "youtube",
+      "name": "Ninja",
+      "channel_id": "UCAW-NpUFkMyCNrvRSSGIvDQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@Ninja",
+        "subscribers": 23500000,
+        "views": 2793642003,
+        "videos": 2658,
+        "country": "United States",
+        "joined": "Nov 10, 2011",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "Jelly",
+      "channel_id": "UC0DZmkupLYwc0yDsfocLh0A",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@Jelly",
+        "subscribers": 23300000,
+        "views": 15370730642,
+        "videos": 7047,
+        "country": "United Kingdom",
+        "joined": "May 27, 2014",
+        "last_upload": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "LazarBeam",
+      "channel_id": "UCw1SQ6QRRtfAhrN_cjkrOgA",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@LazarBeam",
+        "subscribers": 23300000,
+        "views": 10247537517,
+        "videos": 1225,
+        "country": "Australia",
+        "joined": "Jan 4, 2015",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "AuthenticGames",
+      "channel_id": "UCIPA6iWNaoetaa1T46RkzXw",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@AuthenticGames",
+        "subscribers": 20200000,
+        "views": 9022834640,
+        "videos": 4842,
+        "country": "Brazil",
+        "joined": "Oct 6, 2011",
+        "last_upload": "2025-04-10",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "Unspeakable",
+      "channel_id": "UCwIWAbIeu0xI0ReKWOcw3eg",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@Unspeakable",
+        "subscribers": 20100000,
+        "views": 12557599103,
+        "videos": 1140,
+        "country": "United States",
+        "joined": "May 1, 2016",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "The Game Theorists",
+      "channel_id": "UCo_IB5145EVNcf8hw1Kku7w",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "handle": "@GameTheory",
+        "subscribers": 19600000,
+        "views": 4753749650,
+        "videos": 930,
+        "country": "United States",
+        "joined": "Aug 22, 2009",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "PrestonPlayz",
+      "channel_id": "UCJZam2u1G0syq3kyqrCXrNw",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@PrestonPlayz",
+        "subscribers": 17900000,
+        "views": 8716957408,
+        "videos": 1215,
+        "country": "United States",
+        "joined": "Mar 13, 2018",
+        "last_upload": "2026-09-26",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "Willyrex",
+      "channel_id": "UC8rNKrqBxJqL9izOOMxBJtw",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@Willyrex",
+        "subscribers": 17300000,
+        "views": 5516017385,
+        "videos": 9097,
+        "country": "Spain",
+        "joined": "Aug 9, 2009",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      },
+      "note": "Non-English; keyword sentiment is English-only."
+    },
+    {
+      "type": "youtube",
+      "name": "Typical Gamer",
+      "channel_id": "UC2wKfjlioOCLP4xQMOWNcgg",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@TypicalGamer",
+        "subscribers": 16100000,
+        "views": 5760612110,
+        "videos": 6598,
+        "country": "Canada",
+        "joined": "Aug 24, 2008",
+        "last_upload": "2026-09-30",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "Kwebbelkop",
+      "channel_id": "UCfLuMSIDmeWRYpuCQL0OJ6A",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@kwebbelkop",
+        "subscribers": 14900000,
+        "views": 7063675988,
+        "videos": 5899,
+        "country": "United States",
+        "joined": "Apr 1, 2008",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "CaptainSparklez",
+      "channel_id": "UCshoKvlZGZ20rVgazZp5vnQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "handle": "@CaptainSparklez",
+        "subscribers": 11400000,
+        "views": 4185542796,
+        "videos": 5880,
+        "country": "United States",
+        "joined": "Jul 20, 2010",
+        "last_upload": "2026-09-17",
+        "checked": "2026-09-30"
+      },
+      "note": "Mostly Minecraft/Roblox/Fortnite; rarely relevant to PS2."
+    },
+    {
+      "type": "youtube",
+      "name": "Smosh Games",
+      "channel_id": "UCJ2ZDzMRgSrxmwphstrm8Ww",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "handle": "@SmoshGames",
+        "subscribers": 8620000,
+        "views": 4309972130,
+        "videos": 4349,
+        "country": "United States",
+        "joined": "Jul 7, 2011",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "videogamedunkey",
+      "channel_id": "UCsvn_Po0SmunchJYOWpOxMg",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "handle": "@videogamedunkey",
+        "subscribers": 7570000,
+        "views": 4354974157,
+        "videos": 1008,
+        "country": "United States",
+        "joined": "Oct 21, 2010",
+        "last_upload": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "youtube",
+      "name": "GameGrumps",
+      "channel_id": "UC9CuvdOVfMPvKCiwdGKL3cQ",
+      "group": "Top gaming creators",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "handle": "@GameGrumps",
+        "subscribers": 5450000,
+        "views": 7430461473,
+        "videos": 10005,
+        "country": "United States",
+        "joined": "Jul 10, 2012",
+        "last_upload": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Beyond",
+      "url": "https://rss.pdrl.fm/a9cb78/feeds.megaphone.fm/ignbeyond",
+      "group": "PlayStation podcasts",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "276268070",
+        "apple_url": "https://podcasts.apple.com/us/podcast/beyond/id276268070",
+        "apple_ratings": 3925,
+        "apple_rating": 4.4,
+        "chart_us": 48,
+        "chart_gb": 158,
+        "episodes": 840,
+        "last_episode": "2026-09-10",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Sacred Symbols: A PlayStation Podcast",
+      "url": "https://feeds.megaphone.fm/STU5682506591",
+      "group": "PlayStation podcasts",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1406231151",
+        "apple_url": "https://podcasts.apple.com/us/podcast/sacred-symbols-a-playstation-podcast/id1406231151",
+        "apple_ratings": 3383,
+        "apple_rating": 4.8,
+        "chart_us": 10,
+        "chart_gb": 8,
+        "episodes": 430,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Official PlayStation Podcast",
+      "url": "https://playstation.libsyn.com/rss",
+      "group": "PlayStation podcasts",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "apple_id": "483223024",
+        "apple_url": "https://podcasts.apple.com/us/podcast/official-playstation-podcast/id483223024",
+        "apple_ratings": 972,
+        "apple_rating": 4.6,
+        "chart_us": 124,
+        "chart_gb": 197,
+        "episodes": 50,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The Trophy Room - A PlayStation Podcast",
+      "url": "https://feed.podbean.com/pstrophyroom/feed.xml",
+      "group": "PlayStation podcasts",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1260212127",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-trophy-room-a-playstation-podcast/id1260212127",
+        "apple_ratings": 384,
+        "apple_rating": 4.8,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 300,
+        "last_episode": "2026-09-23",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "PlayStation Access",
+      "url": "https://feeds.acast.com/public/shows/62309929e9119100173fd370",
+      "group": "PlayStation podcasts",
+      "role": "official",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1615420937",
+        "apple_url": "https://podcasts.apple.com/us/podcast/playstation-access/id1615420937",
+        "apple_ratings": 141,
+        "apple_rating": 4.9,
+        "chart_us": 123,
+        "chart_gb": 16,
+        "episodes": 115,
+        "last_episode": "2026-09-19",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Triangle Squared: A Playstation Podcast",
+      "url": "https://www.podserve.fm/series/rss/826/triangle-squared-a-playstation-podcast.rss",
+      "group": "PlayStation podcasts",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1220271057",
+        "apple_url": "https://podcasts.apple.com/us/podcast/triangle-squared-a-playstation-podcast/id1220271057",
+        "apple_ratings": 48,
+        "apple_rating": 4.4,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 453,
+        "last_episode": "2026-09-23",
+        "checked": "2026-09-30"
+      },
+      "note": "Smaller show; enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Millennium Edition | Nintendo, SEGA, and Games of the 2000s",
+      "url": "https://feeds.acast.com/public/shows/69e6e95d0b4baf3bf24eb30f",
+      "group": "PS2 & PlayStation history",
+      "role": "ps2",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1894975602",
+        "apple_url": "https://podcasts.apple.com/us/podcast/millennium-edition-nintendo-sega-and-games-of-the-2000s/id1894975602",
+        "apple_ratings": 4,
+        "apple_rating": 5,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 12,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Retro PlayStation Podcast",
+      "url": "https://api.riverside.com/hosting/8HBKd4lL.rss",
+      "group": "PS2 & PlayStation history",
+      "role": "ps2",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1896860130",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retro-playstation-podcast/id1896860130",
+        "apple_ratings": 1,
+        "apple_rating": 5,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 9,
+        "last_episode": "2026-09-23",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Get Played",
+      "url": "https://rss.art19.com/get-played",
+      "group": "Gaming news & discussion",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1466286684",
+        "apple_url": "https://podcasts.apple.com/us/podcast/get-played/id1466286684",
+        "apple_ratings": 2218,
+        "apple_rating": 4.6,
+        "chart_us": 1,
+        "chart_gb": 11,
+        "episodes": 194,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "WhatCulture Gaming",
+      "url": "https://feeds.acast.com/public/shows/c78baeb1-14c1-497c-bbfb-350cecd87107",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1433583146",
+        "apple_url": "https://podcasts.apple.com/us/podcast/whatculture-gaming/id1433583146",
+        "apple_ratings": 287,
+        "apple_rating": 4.3,
+        "chart_us": 8,
+        "chart_gb": 1,
+        "episodes": 2128,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Kinda Funny Games Daily: Video Games News Podcast",
+      "url": "https://feeds.megaphone.fm/ROOSTER8838278962",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1247343210",
+        "apple_url": "https://podcasts.apple.com/us/podcast/kinda-funny-games-daily-video-games-news-podcast/id1247343210",
+        "apple_ratings": 4009,
+        "apple_rating": 4.5,
+        "chart_us": 2,
+        "chart_gb": 5,
+        "episodes": 1836,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Button Boys",
+      "url": "https://feeds.megaphone.fm/buttonboys",
+      "group": "Gaming news & discussion",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1827054353",
+        "apple_url": "https://podcasts.apple.com/us/podcast/button-boys/id1827054353",
+        "apple_ratings": 5,
+        "apple_rating": 5,
+        "chart_us": 126,
+        "chart_gb": 2,
+        "episodes": 64,
+        "last_episode": "2026-09-23",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Kinda Funny Gamescast: Video Game Podcast",
+      "url": "https://feeds.megaphone.fm/ROOSTER3727935380",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "957171516",
+        "apple_url": "https://podcasts.apple.com/us/podcast/kinda-funny-gamescast-video-game-podcast/id957171516",
+        "apple_ratings": 2853,
+        "apple_rating": 4.4,
+        "chart_us": 3,
+        "chart_gb": 3,
+        "episodes": 1271,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Game Scoop!",
+      "url": "https://rss.pdrl.fm/817ebc/feeds.megaphone.fm/gamescoop",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "276268226",
+        "apple_url": "https://podcasts.apple.com/us/podcast/game-scoop/id276268226",
+        "apple_ratings": 4108,
+        "apple_rating": 4.7,
+        "chart_us": 4,
+        "chart_gb": 6,
+        "episodes": 767,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Friends Per Second",
+      "url": "https://feeds.megaphone.fm/friendspersecond",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1629844110",
+        "apple_url": "https://podcasts.apple.com/us/podcast/friends-per-second/id1629844110",
+        "apple_ratings": 398,
+        "apple_rating": 4.8,
+        "chart_us": 9,
+        "chart_gb": 4,
+        "episodes": 105,
+        "last_episode": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The Besties",
+      "url": "https://feeds.simplecast.com/Urk3897_",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "505516789",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-besties/id505516789",
+        "apple_ratings": 4855,
+        "apple_rating": 4.9,
+        "chart_us": 5,
+        "chart_gb": 22,
+        "episodes": 520,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "GOONS",
+      "url": "https://feeds.megaphone.fm/GOONSMEDIALLC6622958176",
+      "group": "Gaming news & discussion",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1475597548",
+        "apple_url": "https://podcasts.apple.com/us/podcast/goons/id1475597548",
+        "apple_ratings": 6175,
+        "apple_rating": 4.9,
+        "chart_us": 6,
+        "chart_gb": 25,
+        "episodes": 265,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Giant Bombcast",
+      "url": "https://www.spreaker.com/show/5928697/episodes/feed",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "274450056",
+        "apple_url": "https://podcasts.apple.com/us/podcast/giant-bombcast/id274450056",
+        "apple_ratings": 5686,
+        "apple_rating": 4.7,
+        "chart_us": 7,
+        "chart_gb": 14,
+        "episodes": 864,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "IGN UK Podcast",
+      "url": "https://rss.pdrl.fm/6213a6/feeds.megaphone.fm/ignukpod",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "337004125",
+        "apple_url": "https://podcasts.apple.com/us/podcast/ign-uk-podcast/id337004125",
+        "apple_ratings": 270,
+        "apple_rating": 4.8,
+        "chart_us": 154,
+        "chart_gb": 7,
+        "episodes": 835,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The Back Page: A Video Games Podcast",
+      "url": "https://feeds.acast.com/public/shows/6249ec6c14fbed0013d3ce7e",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1542406765",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-back-page-a-video-games-podcast/id1542406765",
+        "apple_ratings": 48,
+        "apple_rating": 4.9,
+        "chart_us": null,
+        "chart_gb": 9,
+        "episodes": 308,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The Cane and Rinse videogame podcast",
+      "url": "https://caneandrinse.com/feed/podcast/",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "467041704",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-cane-and-rinse-videogame-podcast/id467041704",
+        "apple_ratings": 388,
+        "apple_rating": 4.8,
+        "chart_us": 93,
+        "chart_gb": 10,
+        "episodes": 802,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The Jeff Gerstmann Show - A Podcast About Video Games",
+      "url": "https://feeds.megaphone.fm/QCD5913450294",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1628348754",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-jeff-gerstmann-show-a-podcast-about-video-games/id1628348754",
+        "apple_ratings": 1036,
+        "apple_rating": 4.8,
+        "chart_us": 11,
+        "chart_gb": 12,
+        "episodes": 232,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Fire Escape Cast",
+      "url": "https://www.spreaker.com/show/5008213/episodes/feed",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1562626230",
+        "apple_url": "https://podcasts.apple.com/us/podcast/fire-escape-cast/id1562626230",
+        "apple_ratings": 511,
+        "apple_rating": 4.6,
+        "chart_us": 13,
+        "chart_gb": 17,
+        "episodes": 146,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The MinnMax Show",
+      "url": "https://pinecast.com/feed/the-minnmax-show",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1484599827",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-minnmax-show/id1484599827",
+        "apple_ratings": 2272,
+        "apple_rating": 4.9,
+        "chart_us": 14,
+        "chart_gb": 59,
+        "episodes": 367,
+        "last_episode": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Castle Super Beast",
+      "url": "https://rss.libsyn.com/shows/46822/destinations/156361.xml",
+      "group": "Gaming news & discussion",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "apple_id": "688649759",
+        "apple_url": "https://podcasts.apple.com/us/podcast/castle-super-beast/id688649759",
+        "apple_ratings": 2991,
+        "apple_rating": 4.9,
+        "chart_us": 15,
+        "chart_gb": 56,
+        "episodes": 665,
+        "last_episode": "2026-09-22",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Video Gamers Podcast",
+      "url": "https://feeds.megaphone.fm/AMGAC9705074721",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1501880187",
+        "apple_url": "https://podcasts.apple.com/us/podcast/video-gamers-podcast/id1501880187",
+        "apple_ratings": 1028,
+        "apple_rating": 4.8,
+        "chart_us": 17,
+        "chart_gb": 70,
+        "episodes": 841,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Nintendo Voice Chat",
+      "url": "https://rss.pdrl.fm/52ee62/feeds.megaphone.fm/nvc",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "276268457",
+        "apple_url": "https://podcasts.apple.com/us/podcast/nintendo-voice-chat/id276268457",
+        "apple_ratings": 3433,
+        "apple_rating": 4.6,
+        "chart_us": 33,
+        "chart_gb": 19,
+        "episodes": 786,
+        "last_episode": "2026-09-09",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Gaming illuminaughty",
+      "url": "http://feeds.feedburner.com/GamingIlluminaughtyPodcast",
+      "group": "Gaming news & discussion",
+      "role": "creator",
+      "enabled": true,
+      "stats": {
+        "apple_id": "690393853",
+        "apple_url": "https://podcasts.apple.com/us/podcast/gaming-illuminaughty/id690393853",
+        "apple_ratings": 2160,
+        "apple_rating": 4.9,
+        "chart_us": 19,
+        "chart_gb": null,
+        "episodes": 205,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The Game Informer Show",
+      "url": "https://www.spreaker.com/show/6639255/episodes/feed",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "335246945",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-game-informer-show/id335246945",
+        "apple_ratings": 1422,
+        "apple_rating": 4.5,
+        "chart_us": 20,
+        "chart_gb": 62,
+        "episodes": 89,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Press X to Continue",
+      "url": "https://audioboom.com/channels/5144387.rss",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1781229776",
+        "apple_url": "https://podcasts.apple.com/us/podcast/press-x-to-continue/id1781229776",
+        "apple_ratings": 2,
+        "apple_rating": 5,
+        "chart_us": null,
+        "chart_gb": 20,
+        "episodes": 122,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Unlocked",
+      "url": "https://rss.pdrl.fm/6e460d/feeds.megaphone.fm/ignunlocked",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "276268454",
+        "apple_url": "https://podcasts.apple.com/us/podcast/unlocked/id276268454",
+        "apple_ratings": 2798,
+        "apple_rating": 4.4,
+        "chart_us": 22,
+        "chart_gb": 21,
+        "episodes": 797,
+        "last_episode": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "DLC",
+      "url": "https://audioboom.com/channels/5104635.rss",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "794234509",
+        "apple_url": "https://podcasts.apple.com/us/podcast/dlc/id794234509",
+        "apple_ratings": 1118,
+        "apple_rating": 4.6,
+        "chart_us": 23,
+        "chart_gb": 49,
+        "episodes": 500,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "SpawnCast",
+      "url": "http://feeds.feedburner.com/soundcloud/QbQD",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1211524662",
+        "apple_url": "https://podcasts.apple.com/us/podcast/spawncast/id1211524662",
+        "apple_ratings": 332,
+        "apple_rating": 4.5,
+        "chart_us": 24,
+        "chart_gb": 85,
+        "episodes": 520,
+        "last_episode": "2026-09-27",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Post Games",
+      "url": "https://rss.art19.com/post-games",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1815131711",
+        "apple_url": "https://podcasts.apple.com/us/podcast/post-games/id1815131711",
+        "apple_ratings": 572,
+        "apple_rating": 4.9,
+        "chart_us": 25,
+        "chart_gb": 95,
+        "episodes": 74,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Remap Radio",
+      "url": "https://rss.art19.com/remap-radio",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1690437343",
+        "apple_url": "https://podcasts.apple.com/us/podcast/remap-radio/id1690437343",
+        "apple_ratings": 889,
+        "apple_rating": 4.9,
+        "chart_us": 26,
+        "chart_gb": 26,
+        "episodes": 280,
+        "last_episode": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Game Mess Mornings",
+      "url": "https://www.spreaker.com/show/5928689/episodes/feed",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1614295454",
+        "apple_url": "https://podcasts.apple.com/us/podcast/game-mess-mornings/id1614295454",
+        "apple_ratings": 141,
+        "apple_rating": 4.4,
+        "chart_us": 27,
+        "chart_gb": 57,
+        "episodes": 781,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The Computer Game Show",
+      "url": "https://feed.podbean.com/thecomputergameshow/feed.xml",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1100170036",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-computer-game-show/id1100170036",
+        "apple_ratings": 18,
+        "apple_rating": 4.3,
+        "chart_us": null,
+        "chart_gb": 28,
+        "episodes": 547,
+        "last_episode": "2026-09-30",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "VGC: The Video Game Podcast",
+      "url": "https://feeds.acast.com/public/shows/vgc-a-video-games-podcast",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1672575206",
+        "apple_url": "https://podcasts.apple.com/us/podcast/vgc-the-video-game-podcast/id1672575206",
+        "apple_ratings": 32,
+        "apple_rating": 4.7,
+        "chart_us": null,
+        "chart_gb": 29,
+        "episodes": 244,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "CORE - Core Gaming for Core Gamers",
+      "url": "https://feeds.acast.com/public/shows/6500f421d570420011d0e34b",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1041859215",
+        "apple_url": "https://podcasts.apple.com/us/podcast/core-core-gaming-for-core-gamers/id1041859215",
+        "apple_ratings": 300,
+        "apple_rating": 4.4,
+        "chart_us": 30,
+        "chart_gb": 102,
+        "episodes": 498,
+        "last_episode": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The XB2 — An Xbox & Gaming Podcast",
+      "url": "https://feeds.megaphone.fm/NSR2628308212",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1074822039",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-xb2-an-xbox-gaming-podcast/id1074822039",
+        "apple_ratings": 266,
+        "apple_rating": 4.4,
+        "chart_us": 49,
+        "chart_gb": 30,
+        "episodes": 445,
+        "last_episode": "2026-09-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Axe of the Blood God: An RPG Podcast",
+      "url": "https://feeds.megaphone.fm/LDSPO7715218750",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "969659784",
+        "apple_url": "https://podcasts.apple.com/us/podcast/axe-of-the-blood-god-an-rpg-podcast/id969659784",
+        "apple_ratings": 662,
+        "apple_rating": 4.5,
+        "chart_us": 31,
+        "chart_gb": 135,
+        "episodes": 624,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Into the Aether - A Low Key Video Game Podcast",
+      "url": "https://feeds.transistor.fm/intotheaether",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1415546090",
+        "apple_url": "https://podcasts.apple.com/us/podcast/into-the-aether-a-low-key-video-game-podcast/id1415546090",
+        "apple_ratings": 427,
+        "apple_rating": 4.8,
+        "chart_us": 32,
+        "chart_gb": 39,
+        "episodes": 457,
+        "last_episode": "2026-09-30",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "The Kit & Krysta Podcast",
+      "url": "https://audioboom.com/channels/5081035.rss",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1609805414",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-kit-krysta-podcast/id1609805414",
+        "apple_ratings": 526,
+        "apple_rating": 4.7,
+        "chart_us": 34,
+        "chart_gb": 141,
+        "episodes": 360,
+        "last_episode": "2026-09-24",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Defining Duke: An Xbox Podcast",
+      "url": "https://feeds.megaphone.fm/definingduke",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1545198843",
+        "apple_url": "https://podcasts.apple.com/us/podcast/defining-duke-an-xbox-podcast/id1545198843",
+        "apple_ratings": 882,
+        "apple_rating": 4.8,
+        "chart_us": 37,
+        "chart_gb": 98,
+        "episodes": 300,
+        "last_episode": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Nontendo Podcast",
+      "url": "https://anchor.fm/s/111880bdc/podcast/rss",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1624139141",
+        "apple_url": "https://podcasts.apple.com/us/podcast/nontendo-podcast/id1624139141",
+        "apple_ratings": 690,
+        "apple_rating": 4.6,
+        "chart_us": 39,
+        "chart_gb": 153,
+        "episodes": 189,
+        "last_episode": "2026-09-18",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Pew Pew Bang",
+      "url": "https://pinecast.com/feed/pew-pew-bang",
+      "group": "Gaming news & discussion",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1796213059",
+        "apple_url": "https://podcasts.apple.com/us/podcast/pew-pew-bang/id1796213059",
+        "apple_ratings": 308,
+        "apple_rating": 5,
+        "chart_us": 40,
+        "chart_gb": null,
+        "episodes": 34,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "The Nerd Nest - A Video Game Podcast",
+      "url": "https://anchor.fm/s/8eaf968/podcast/rss",
+      "group": "Gaming news & discussion",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1168326641",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-nerd-nest-a-video-game-podcast/id1168326641",
+        "apple_ratings": 374,
+        "apple_rating": 4.4,
+        "chart_us": 51,
+        "chart_gb": 44,
+        "episodes": 926,
+        "last_episode": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Game Mess Decides",
+      "url": "https://www.spreaker.com/show/5683651/episodes/feed",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1176366805",
+        "apple_url": "https://podcasts.apple.com/us/podcast/game-mess-decides/id1176366805",
+        "apple_ratings": 156,
+        "apple_rating": 4.7,
+        "chart_us": 47,
+        "chart_gb": 177,
+        "episodes": 497,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Summon Sign: A Gaming Conversation",
+      "url": "https://feeds.megaphone.fm/summonsign",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1723904363",
+        "apple_url": "https://podcasts.apple.com/us/podcast/summon-sign-a-gaming-conversation/id1723904363",
+        "apple_ratings": 266,
+        "apple_rating": 4.9,
+        "chart_us": 50,
+        "chart_gb": 118,
+        "episodes": 143,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "The All Things Nintendo Podcast",
+      "url": "https://feeds.megaphone.fm/allthingsnintendo",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1589146741",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-all-things-nintendo-podcast/id1589146741",
+        "apple_ratings": 256,
+        "apple_rating": 4.6,
+        "chart_us": 52,
+        "chart_gb": 52,
+        "episodes": 261,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Dropped Frames",
+      "url": "https://www.omnycontent.com/d/playlist/2a719a76-7cdb-4059-a7a0-af33012f7563/94ffb699-c5c9-4525-bf39-af3801515155/31f23a60-ba51-46ce-98b6-af380151517b/podcast.rss",
+      "group": "Gaming news & discussion",
+      "role": "creator",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1324781499",
+        "apple_url": "https://podcasts.apple.com/us/podcast/dropped-frames/id1324781499",
+        "apple_ratings": 160,
+        "apple_rating": 5,
+        "chart_us": 55,
+        "chart_gb": 53,
+        "episodes": 493,
+        "last_episode": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Jimquisition",
+      "url": "https://feed.podbean.com/jimquisition/feed.xml",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "947398127",
+        "apple_url": "https://podcasts.apple.com/us/podcast/jimquisition/id947398127",
+        "apple_ratings": 622,
+        "apple_rating": 4.6,
+        "chart_us": 196,
+        "chart_gb": 55,
+        "episodes": 597,
+        "last_episode": "2026-09-24",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Inside Games News and Podcasts",
+      "url": "https://anchor.fm/s/12356c9c/podcast/rss",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1494388156",
+        "apple_url": "https://podcasts.apple.com/us/podcast/inside-games-news-and-podcasts/id1494388156",
+        "apple_ratings": 155,
+        "apple_rating": 4.9,
+        "chart_us": 59,
+        "chart_gb": 134,
+        "episodes": 696,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "The Insert Credit Show",
+      "url": "https://insertcredit.podcast.audio/@show/feed.xml",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1651429066",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-insert-credit-show/id1651429066",
+        "apple_ratings": 359,
+        "apple_rating": 4.9,
+        "chart_us": 60,
+        "chart_gb": 74,
+        "episodes": 481,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "The Easy Allies Podcast",
+      "url": "https://feeds.megaphone.fm/IMP2654482957",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1097284330",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-easy-allies-podcast/id1097284330",
+        "apple_ratings": 803,
+        "apple_rating": 4.7,
+        "chart_us": 62,
+        "chart_gb": 128,
+        "episodes": 561,
+        "last_episode": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Vidjagame Apocalypse",
+      "url": "http://feeds.feedburner.com/VidjagameApocalypse",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "600353928",
+        "apple_url": "https://podcasts.apple.com/us/podcast/vidjagame-apocalypse/id600353928",
+        "apple_ratings": 817,
+        "apple_rating": 4.7,
+        "chart_us": 70,
+        "chart_gb": 192,
+        "episodes": 500,
+        "last_episode": "2026-09-26",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Video Game Outsiders",
+      "url": "https://feeds.megaphone.fm/NSR4849377281",
+      "group": "Gaming news & discussion",
+      "role": "press",
+      "enabled": false,
+      "stats": {
+        "apple_id": "79430865",
+        "apple_url": "https://podcasts.apple.com/us/podcast/video-game-outsiders/id79430865",
+        "apple_ratings": 624,
+        "apple_rating": 4.1,
+        "chart_us": 151,
+        "chart_gb": null,
+        "episodes": 179,
+        "last_episode": "2026-09-30",
+        "checked": "2026-09-30"
+      },
+      "note": "Outside the Apple Video Games top 30 (US/UK); enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Retronauts",
+      "url": "https://audioboom.com/channels/5081747.rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "672857593",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retronauts/id672857593",
+        "apple_ratings": 2117,
+        "apple_rating": 4.5,
+        "chart_us": 16,
+        "chart_gb": 42,
+        "episodes": 700,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "KnockBack: The Retro and Nostalgia Podcast",
+      "url": "https://feeds.megaphone.fm/STU6505478744",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1350157623",
+        "apple_url": "https://podcasts.apple.com/us/podcast/knockback-the-retro-and-nostalgia-podcast/id1350157623",
+        "apple_ratings": 1502,
+        "apple_rating": 4.9,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 290,
+        "last_episode": "2026-04-08",
+        "checked": "2026-09-30"
+      },
+      "note": "Inactive: last episode 2026-04-08."
+    },
+    {
+      "type": "podcast",
+      "name": "Watch Out for Fireballs!",
+      "url": "https://www.patreon.com/public-rss/80117?show=800722",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "464108542",
+        "apple_url": "https://podcasts.apple.com/us/podcast/watch-out-for-fireballs/id464108542",
+        "apple_ratings": 1197,
+        "apple_rating": 4.7,
+        "chart_us": 58,
+        "chart_gb": 140,
+        "episodes": 815,
+        "last_episode": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Completely Unnecessary Podcast",
+      "url": "https://anchor.fm/s/37360560/podcast/rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "705355841",
+        "apple_url": "https://podcasts.apple.com/us/podcast/completely-unnecessary-podcast/id705355841",
+        "apple_ratings": 1066,
+        "apple_rating": 4.5,
+        "chart_us": 133,
+        "chart_gb": null,
+        "episodes": 397,
+        "last_episode": "2026-08-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Remember The Game? Retro Gaming Podcast",
+      "url": "https://rss.art19.com/remember-the-game",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1407041447",
+        "apple_url": "https://podcasts.apple.com/us/podcast/remember-the-game-retro-gaming-podcast/id1407041447",
+        "apple_ratings": 422,
+        "apple_rating": 4.6,
+        "chart_us": 38,
+        "chart_gb": 40,
+        "episodes": 439,
+        "last_episode": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "New Game Plus - A Retro Gaming Podcast",
+      "url": "https://anchor.fm/s/1059e8940/podcast/rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1042429619",
+        "apple_url": "https://podcasts.apple.com/us/podcast/new-game-plus-a-retro-gaming-podcast/id1042429619",
+        "apple_ratings": 215,
+        "apple_rating": 4.7,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 620,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Codex History of Video Games with Mike Coletta and Tyler Ostby",
+      "url": "https://rss.libsyn.com/shows/141866/destinations/892730.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1388568002",
+        "apple_url": "https://podcasts.apple.com/us/podcast/codex-history-of-video-games-with-mike-coletta/id1388568002",
+        "apple_ratings": 203,
+        "apple_rating": 4.8,
+        "chart_us": null,
+        "chart_gb": 194,
+        "episodes": 439,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Retrograde Amnesia: Comprehensive JRPG Retrospective",
+      "url": "https://rss.libsyn.com/shows/213656/destinations/1546262.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1480854950",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retrograde-amnesia-comprehensive-jrpg-retrospective/id1480854950",
+        "apple_ratings": 178,
+        "apple_rating": 5,
+        "chart_us": 76,
+        "chart_gb": null,
+        "episodes": 382,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The Retro Hour (Retro Gaming Podcast)",
+      "url": "https://audioboom.com/channels/4970769.rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1073270208",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-retro-hour-retro-gaming-podcast/id1073270208",
+        "apple_ratings": 132,
+        "apple_rating": 4.8,
+        "chart_us": null,
+        "chart_gb": 18,
+        "episodes": 500,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Retro RPG Podcast",
+      "url": "https://retrorpg.net/?feed=podcast",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "331945044",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retro-rpg-podcast/id331945044",
+        "apple_ratings": 131,
+        "apple_rating": 4.1,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 200,
+        "last_episode": "2026-08-26",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Video Game History Hour",
+      "url": "https://anchor.fm/s/370d6ccc/podcast/rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1536393630",
+        "apple_url": "https://podcasts.apple.com/us/podcast/video-game-history-hour/id1536393630",
+        "apple_ratings": 127,
+        "apple_rating": 4.9,
+        "chart_us": 120,
+        "chart_gb": null,
+        "episodes": 156,
+        "last_episode": "2026-09-23",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Play Retro Show",
+      "url": "https://feeds.acast.com/public/shows/6500f7e38c35840011fa822f",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1601321925",
+        "apple_url": "https://podcasts.apple.com/us/podcast/play-retro-show/id1601321925",
+        "apple_ratings": 115,
+        "apple_rating": 4.8,
+        "chart_us": 100,
+        "chart_gb": 185,
+        "episodes": 240,
+        "last_episode": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Retrovaniacs",
+      "url": "https://feed.podbean.com/retrovaniacs/feed.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "998408464",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retrovaniacs/id998408464",
+        "apple_ratings": 109,
+        "apple_rating": 4.8,
+        "chart_us": 148,
+        "chart_gb": null,
+        "episodes": 247,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Retro Gaming RoundUp",
+      "url": "https://rss.libsyn.com/shows/23257/destinations/32444.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "302869307",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retro-gaming-roundup/id302869307",
+        "apple_ratings": 87,
+        "apple_rating": 4.3,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 50,
+        "last_episode": "2026-09-01",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "BoxTrick: A Retro Gaming Podcast",
+      "url": "https://feeds.redcircle.com/b66323ef-3233-41de-86fb-6eebae6cd656",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1286376614",
+        "apple_url": "https://podcasts.apple.com/us/podcast/boxtrick-a-retro-gaming-podcast/id1286376614",
+        "apple_ratings": 85,
+        "apple_rating": 4.5,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 128,
+        "last_episode": "2026-09-11",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "RPGFan's Retro Encounter",
+      "url": "https://feeds.transistor.fm/rpgfan-retro-encounter",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "991828866",
+        "apple_url": "https://podcasts.apple.com/us/podcast/rpgfans-retro-encounter/id991828866",
+        "apple_ratings": 74,
+        "apple_rating": 4.6,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 495,
+        "last_episode": "2026-09-24",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "My Perfect Console with Simon Parkin",
+      "url": "https://feeds.acast.com/public/shows/63b458521043e00011114396",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1665581266",
+        "apple_url": "https://podcasts.apple.com/us/podcast/my-perfect-console-with-simon-parkin/id1665581266",
+        "apple_ratings": 69,
+        "apple_rating": 4.9,
+        "chart_us": 109,
+        "chart_gb": 13,
+        "episodes": 209,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "NEStalgia",
+      "url": "https://anchor.fm/s/5808ab8/podcast/rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1342922798",
+        "apple_url": "https://podcasts.apple.com/us/podcast/nestalgia/id1342922798",
+        "apple_ratings": 67,
+        "apple_rating": 4.9,
+        "chart_us": 189,
+        "chart_gb": null,
+        "episodes": 459,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      },
+      "note": "Single non-PlayStation platform; listed for completeness."
+    },
+    {
+      "type": "podcast",
+      "name": "SEGA Talk Podcast",
+      "url": "http://segabits.com/blog/category/podcast/sega-talk-podcast/feed/",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1167614817",
+        "apple_url": "https://podcasts.apple.com/us/podcast/sega-talk-podcast/id1167614817",
+        "apple_ratings": 57,
+        "apple_rating": 4.7,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 193,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      },
+      "note": "Single non-PlayStation platform; listed for completeness."
+    },
+    {
+      "type": "podcast",
+      "name": "Arcade Attack Retro Gaming Podcast",
+      "url": "https://feed.podbean.com/arcadeattackpodcast/feed.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1174983594",
+        "apple_url": "https://podcasts.apple.com/us/podcast/arcade-attack-retro-gaming-podcast/id1174983594",
+        "apple_ratings": 56,
+        "apple_rating": 4.7,
+        "chart_us": null,
+        "chart_gb": 64,
+        "episodes": 380,
+        "last_episode": "2026-09-29",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Amigos Retro Gaming Network - Amigos: Everything Amiga / ARG Presents / Sprite Castle / Pixel Gaiden",
+      "url": "https://anchor.fm/s/ee9137c/podcast/rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1022434255",
+        "apple_url": "https://podcasts.apple.com/us/podcast/amigos-retro-gaming-network-amigos-everything-amiga/id1022434255",
+        "apple_ratings": 55,
+        "apple_rating": 4.9,
+        "chart_us": null,
+        "chart_gb": 167,
+        "episodes": 1436,
+        "last_episode": "2026-09-27",
+        "checked": "2026-09-30"
+      },
+      "note": "Single non-PlayStation platform; listed for completeness."
+    },
+    {
+      "type": "podcast",
+      "name": "Secret Levels: Retro Game Reviews",
+      "url": "https://rss.buzzsprout.com/166619.rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1365013942",
+        "apple_url": "https://podcasts.apple.com/us/podcast/secret-levels-retro-game-reviews/id1365013942",
+        "apple_ratings": 53,
+        "apple_rating": 4.8,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 291,
+        "last_episode": "2026-09-17",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Retro Blast",
+      "url": "https://rss.libsyn.com/shows/214193/destinations/1551167.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1483354168",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retro-blast/id1483354168",
+        "apple_ratings": 52,
+        "apple_rating": 5,
+        "chart_us": 114,
+        "chart_gb": 78,
+        "episodes": 57,
+        "last_episode": "2026-09-27",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Classic Gaming Today:  A Retro Gaming Podcast",
+      "url": "https://feed.podbean.com/classicgamingtoday/feed.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1646545691",
+        "apple_url": "https://podcasts.apple.com/us/podcast/classic-gaming-today-a-retro-gaming-podcast/id1646545691",
+        "apple_ratings": 51,
+        "apple_rating": 4.9,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 202,
+        "last_episode": "2026-07-27",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Retro Blissed",
+      "url": "http://bicbp-radio.com/retro-blissed?format=rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1125745991",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retro-blissed/id1125745991",
+        "apple_ratings": 47,
+        "apple_rating": 4.8,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 240,
+        "last_episode": "2026-07-01",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Flashback 64 | A Nintendo 64 Podcast",
+      "url": "https://feed.podbean.com/flashback64pod/feed.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1685594885",
+        "apple_url": "https://podcasts.apple.com/us/podcast/flashback-64-a-nintendo-64-podcast/id1685594885",
+        "apple_ratings": 42,
+        "apple_rating": 4.6,
+        "chart_us": 140,
+        "chart_gb": 152,
+        "episodes": 170,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      },
+      "note": "Single non-PlayStation platform; listed for completeness."
+    },
+    {
+      "type": "podcast",
+      "name": "Sprite Castle: A C64/Commodore Game Podcast",
+      "url": "https://podcast.robohara.com/category/spritecastle/feed/",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "apple_id": "827251255",
+        "apple_url": "https://podcasts.apple.com/us/podcast/sprite-castle-a-c64-commodore-game-podcast/id827251255",
+        "apple_ratings": 42,
+        "apple_rating": 4.9,
+        "chart_us": null,
+        "chart_gb": 196,
+        "episodes": 114,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      },
+      "note": "Single non-PlayStation platform; listed for completeness."
+    },
+    {
+      "type": "podcast",
+      "name": "The Dreamcast Junkyard DreamPod",
+      "url": "https://rss.buzzsprout.com/42610.rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "apple_id": "984898837",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-dreamcast-junkyard-dreampod/id984898837",
+        "apple_ratings": 39,
+        "apple_rating": 4.9,
+        "chart_us": null,
+        "chart_gb": 142,
+        "episodes": 162,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      },
+      "note": "Single non-PlayStation platform; listed for completeness."
+    },
+    {
+      "type": "podcast",
+      "name": "Retro Asylum -  The UK's No.1 Retro Gaming Podcast",
+      "url": "https://rss.libsyn.com/shows/70391/destinations/295987.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "474414834",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retro-asylum-the-uks-no-1-retro-gaming-podcast/id474414834",
+        "apple_ratings": 33,
+        "apple_rating": 4.5,
+        "chart_us": null,
+        "chart_gb": 149,
+        "episodes": 309,
+        "last_episode": "2026-09-13",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "The Retro Gamers: A Video Game Podcast",
+      "url": "https://anchor.fm/s/51a3c054/podcast/rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "955251603",
+        "apple_url": "https://podcasts.apple.com/us/podcast/the-retro-gamers-a-video-game-podcast/id955251603",
+        "apple_ratings": 30,
+        "apple_rating": 4.8,
+        "chart_us": null,
+        "chart_gb": 126,
+        "episodes": 439,
+        "last_episode": "2026-09-28",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Retro Hangover",
+      "url": "https://feeds.captivate.fm/retrohangover/",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "996608625",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retro-hangover/id996608625",
+        "apple_ratings": 28,
+        "apple_rating": 4.7,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 300,
+        "last_episode": "2026-09-27",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Nerd Cave Retro",
+      "url": "https://feeds.acast.com/public/shows/6519b599fc8c840012975a4c",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": true,
+      "stats": {
+        "apple_id": "1135304235",
+        "apple_url": "https://podcasts.apple.com/us/podcast/nerd-cave-retro/id1135304235",
+        "apple_ratings": 25,
+        "apple_rating": 4.5,
+        "chart_us": null,
+        "chart_gb": null,
+        "episodes": 596,
+        "last_episode": "2026-09-25",
+        "checked": "2026-09-30"
+      }
+    },
+    {
+      "type": "podcast",
+      "name": "Retro Gaming Discussion Show",
+      "url": "https://rss.libsyn.com/shows/61467/destinations/238917.xml",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "apple_id": "954142242",
+        "apple_url": "https://podcasts.apple.com/us/podcast/retro-gaming-discussion-show/id954142242",
+        "apple_ratings": 21,
+        "apple_rating": 3.9,
+        "chart_us": null,
+        "chart_gb": 119,
+        "episodes": 510,
+        "last_episode": "2026-09-18",
+        "checked": "2026-09-30"
+      },
+      "note": "Smaller show; enable if wanted."
+    },
+    {
+      "type": "podcast",
+      "name": "Our Sinclair: A ZX Spectrum Podcast",
+      "url": "https://anchor.fm/s/e8635b8/podcast/rss",
+      "group": "Retro gaming podcasts",
+      "role": "retro",
+      "enabled": false,
+      "stats": {
+        "apple_id": "1454120857",
+        "apple_url": "https://podcasts.apple.com/us/podcast/our-sinclair-a-zx-spectrum-podcast/id1454120857",
+        "apple_ratings": 6,
+        "apple_rating": 4.8,
+        "chart_us": null,
+        "chart_gb": 38,
+        "episodes": 145,
+        "last_episode": "2026-09-16",
+        "checked": "2026-09-30"
+      },
+      "note": "Single non-PlayStation platform; listed for completeness."
+    }
+  ]
+}
