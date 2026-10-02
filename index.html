@@ -298,29 +298,30 @@
         })[c]);
         const safeUrl = (url) => /^https?:\/\//i.test(url) ? esc(url) : '#';
 
-        /* ---- Price lookup links ---------------------------------------------
+                /* ---- Price lookup links ---------------------------------------------
            No price data is stored or fetched: these are search links only, so
            there is no API key, no licensing question and nothing to keep in
-           sync. Uses the esc()/safeUrl() helpers above.
+           sync. Each link renders as a chip: a Font Awesome brand icon where
+           one exists, otherwise a short monogram.
         -------------------------------------------------------------------- */
         const PRICE_LOOKUPS = [
-            { id: 'pc-pal', region: 'PAL', label: 'PriceCharting',
+            { id: 'pc-pal', region: 'PAL', mark: 'PC',
               hint: 'PriceCharting — PAL PS2 prices',
               url: t => `https://www.pricecharting.com/search-products?type=prices&q=${encodeURIComponent(t + ' pal playstation 2')}` },
-            { id: 'ebay-uk', region: 'PAL', label: 'eBay UK',
+            { id: 'ebay-uk', region: 'PAL', fa: 'fa-brands fa-ebay', sup: 'UK',
               hint: 'eBay UK — current listings, not sold prices',
               url: t => `https://www.ebay.co.uk/sch/i.html?_nkw=${encodeURIComponent(t + ' ps2')}` },
-            { id: 'cex', region: 'PAL', label: 'CeX',
+            { id: 'cex', region: 'PAL', mark: 'CeX',
               hint: "CeX UK — one retailer's current price",
               url: t => `https://uk.webuy.com/search?stext=${encodeURIComponent(t + ' ps2')}` },
             // cexdb.com: confirm the search URL format, then set enabled: true.
-            { id: 'cexdb', region: 'PAL', label: 'CEXDB', enabled: false,
+            { id: 'cexdb', region: 'PAL', mark: 'DB', enabled: false,
               hint: 'CEXDB — CeX price history',
               url: t => `https://cexdb.com/search?q=${encodeURIComponent(t)}` },
-            { id: 'pc-ntsc', region: 'NTSC', label: 'PriceCharting',
+            { id: 'pc-ntsc', region: 'NTSC', mark: 'PC',
               hint: 'PriceCharting — US PS2 prices',
               url: t => `https://www.pricecharting.com/search-products?type=prices&q=${encodeURIComponent(t + ' playstation 2')}` },
-            { id: 'ebay-us', region: 'NTSC', label: 'eBay US',
+            { id: 'ebay-us', region: 'NTSC', fa: 'fa-brands fa-ebay', sup: 'US',
               hint: 'eBay US — current listings, not sold prices',
               url: t => `https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(t + ' ps2')}` },
         ];
@@ -330,15 +331,21 @@
             const clean = String(title ?? '').replace(/\s+/g, ' ').trim();
             if (!clean) return [];
             return PRICE_LOOKUPS.filter(p => p.enabled !== false).map(p =>
-                ({ id: p.id, region: p.region, label: p.label, hint: p.hint, url: p.url(clean) }));
+                ({ id: p.id, region: p.region, mark: p.mark, fa: p.fa, sup: p.sup, hint: p.hint, url: p.url(clean) }));
         }
 
         function priceLookupHtml(title) {
             const links = priceLookupUrls(title);
             if (!links.length) return '';
+            const chip = (l) => {
+                const face = l.fa
+                    ? `<i class="${esc(l.fa)}" aria-hidden="true"></i>`
+                    : `<span class="price-mark">${esc(l.mark)}</span>`;
+                const sup = l.sup ? `<span class="price-sup">${esc(l.sup)}</span>` : '';
+                return `<a class="price-link" href="${safeUrl(l.url)}" target="_blank" rel="noopener noreferrer" title="${esc(l.hint)}" aria-label="${esc(l.hint)}">${face}${sup}</a>`;
+            };
             const group = (region, flag) => {
-                const inner = links.filter(l => l.region === region).map(l =>
-                    `<a class="price-link" href="${safeUrl(l.url)}" target="_blank" rel="noopener noreferrer" title="${esc(l.hint)}">${esc(l.label)}</a>`).join('');
+                const inner = links.filter(l => l.region === region).map(chip).join('');
                 return inner ? `<span class="price-region"><span class="price-flag">${esc(flag)}</span>${inner}</span>` : '';
             };
             return `<span class="price-links" aria-label="Price lookups for ${esc(title)}">${PRICE_REGIONS.map(([r, f]) => group(r, f)).join('')}</span>`;
