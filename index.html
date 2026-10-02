@@ -393,7 +393,7 @@
             }).join('');
         }
 
-                function renderTable(items, page = 1) {
+                        function renderTable(items, page = 1) {
             const tbody = document.getElementById('feedTableBody');
             tbody.innerHTML = '';
             tableItems = items;
@@ -406,8 +406,8 @@
                 return;
             }
 
-                                    const start = (currentPage - 1) * PAGE_SIZE;
-            tbody.innerHTML = items.slice(start, start + PAGE_SIZE).map(item => {
+            const start = (currentPage - 1) * PAGE_SIZE;
+            items.slice(start, start + PAGE_SIZE).forEach(item => {
                 const score = Math.max(0, Math.min(100, Number(item.sentiment) || 0));
                 const tone = score < 50 ? 'score-low' : score < 70 ? 'score-mid' : 'score-high';
                 const meta = TYPE_META[itemType(item)];
@@ -436,6 +436,7 @@
                     </td>`;
                 tbody.appendChild(row);
             });
+        }
 
         // First, last and neighbouring pages, with gaps collapsed into an ellipsis.
         function pageNumbers(totalPages) {
