@@ -181,5 +181,7 @@ body .price-link:hover, body .price-link:focus-visible {
 
 /* Scrollbars, guide page */
 ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 0; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
 body kbd { border-radius: 0; background: var(--inset); border-color: var(--line); color: var(--text); }
 body .steps li::marker { color: var(--accent); }
