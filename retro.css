@@ -57,6 +57,36 @@ body .text-slate-300 { color: var(--text); }
 body .text-slate-400, body .text-slate-500 { color: var(--dim); }
 body .bg-amber-500 { background-color: var(--amber); }
 
+/* Price lookup links (PAL / US search links on matched PS2 games).
+   Search links only: no price data is stored or fetched. */
+body .price-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .3rem .75rem;
+  margin-top: .4rem;
+  font-size: .68rem;
+  line-height: 1.5;
+}
+body .price-region { display: inline-flex; align-items: center; gap: .35rem; }
+body .price-flag {
+  color: var(--dim);
+  border: 1px solid var(--line);
+  padding: 0 .3rem;
+  letter-spacing: .06em;
+  font-weight: 600;
+}
+body .price-link {
+  color: var(--dim);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px dotted var(--line);
+}
+body .price-link:hover, body .price-link:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
 /* Rows, scrollbars, guide page */
 body tr:hover { background-color: rgba(127,214,230,.05); }
 ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 0; }
