@@ -298,6 +298,52 @@
         })[c]);
         const safeUrl = (url) => /^https?:\/\//i.test(url) ? esc(url) : '#';
 
+        /* ---- Price lookup links ---------------------------------------------
+           No price data is stored or fetched: these are search links only, so
+           there is no API key, no licensing question and nothing to keep in
+           sync. Uses the esc()/safeUrl() helpers above.
+        -------------------------------------------------------------------- */
+        const PRICE_LOOKUPS = [
+            { id: 'pc-pal', region: 'PAL', label: 'PriceCharting',
+              hint: 'PriceCharting — PAL PS2 prices',
+              url: t => `https://www.pricecharting.com/search-products?type=prices&q=${encodeURIComponent(t + ' pal playstation 2')}` },
+            { id: 'ebay-uk', region: 'PAL', label: 'eBay UK',
+              hint: 'eBay UK — current listings, not sold prices',
+              url: t => `https://www.ebay.co.uk/sch/i.html?_nkw=${encodeURIComponent(t + ' ps2')}` },
+            { id: 'cex', region: 'PAL', label: 'CeX',
+              hint: "CeX UK — one retailer's current price",
+              url: t => `https://uk.webuy.com/search?stext=${encodeURIComponent(t + ' ps2')}` },
+            // cexdb.com: confirm the search URL format, then set enabled: true.
+            { id: 'cexdb', region: 'PAL', label: 'CEXDB', enabled: false,
+              hint: 'CEXDB — CeX price history',
+              url: t => `https://cexdb.com/search?q=${encodeURIComponent(t)}` },
+            { id: 'pc-ntsc', region: 'NTSC', label: 'PriceCharting',
+              hint: 'PriceCharting — US PS2 prices',
+              url: t => `https://www.pricecharting.com/search-products?type=prices&q=${encodeURIComponent(t + ' playstation 2')}` },
+            { id: 'ebay-us', region: 'NTSC', label: 'eBay US',
+              hint: 'eBay US — current listings, not sold prices',
+              url: t => `https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(t + ' ps2')}` },
+        ];
+        const PRICE_REGIONS = [['PAL', 'PAL'], ['NTSC', 'US']];
+
+        function priceLookupUrls(title) {
+            const clean = String(title ?? '').replace(/\s+/g, ' ').trim();
+            if (!clean) return [];
+            return PRICE_LOOKUPS.filter(p => p.enabled !== false).map(p =>
+                ({ id: p.id, region: p.region, label: p.label, hint: p.hint, url: p.url(clean) }));
+        }
+
+        function priceLookupHtml(title) {
+            const links = priceLookupUrls(title);
+            if (!links.length) return '';
+            const group = (region, flag) => {
+                const inner = links.filter(l => l.region === region).map(l =>
+                    `<a class="price-link" href="${safeUrl(l.url)}" target="_blank" rel="noopener noreferrer" title="${esc(l.hint)}">${esc(l.label)}</a>`).join('');
+                return inner ? `<span class="price-region"><span class="price-flag">${esc(flag)}</span>${inner}</span>` : '';
+            };
+            return `<span class="price-links" aria-label="Price lookups for ${esc(title)}">${PRICE_REGIONS.map(([r, f]) => group(r, f)).join('')}</span>`;
+        }
+
         // Fallback mock dataset in case data/sentiment_feed.json hasn't been generated yet by GitHub Actions
         const fallbackData = {
             "last_updated": "Mock Mode (Waiting for GitHub Actions run)",
@@ -447,6 +493,7 @@
                         <span class="text-slate-300 whitespace-nowrap">${game.count} mention${game.count === 1 ? '' : 's'} · ${pct >= 10 ? Math.round(pct) : pct.toFixed(1)}%</span>
                     </div>
                     <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full ${top ? 'bg-amber-500' : 'bg-cyan-500'}" style="width:${Math.max(pct, 2)}%"></div></div>
+                    ${priceLookupHtml(game.name)}
                 </li>`;
             }).join('');
         }
@@ -516,7 +563,7 @@
                         ${item.is_remaster_rumor ? '<span class="bg-amber-500 text-black text-[10px] font-bold px-1.5 py-0.5 rounded mr-1">Remaster</span>' : ''}
                         ${esc(item.headline)}
                     </td>
-                    <td class="py-3.5 px-4 font-mono-custom text-cyan-300">${item.matched_game ? esc(item.matched_game) : '<span class="text-slate-500">Unmatched / General</span>'}</td>
+                    <td class="py-3.5 px-4 font-mono-custom text-cyan-300">${item.matched_game ? esc(item.matched_game) + priceLookupHtml(item.matched_game) : '<span class="text-slate-500">Unmatched / General</span>'}</td>
                     <td class="py-3.5 px-4">
                         <span class="px-2 py-0.5 rounded border text-[11px] font-medium ${sentimentColor}">
                             Score: ${esc(item.sentiment)}/100
@@ -1516,92 +1563,6 @@
             renderSourcesToolbar();
             fetchSentimentData();
         };
-        /* ---- Price lookup links -------------------------------------------------
-   No price data is stored or fetched. These are search links only, so there
-   is no API key, no licensing question and nothing to keep up to date.
-   Each entry: label, the URL builder, and the region it belongs to.
-------------------------------------------------------------------------- */
-const PRICE_LOOKUPS = [
-  {
-    id: 'pc-pal',
-    region: 'PAL',
-    label: 'PriceCharting',
-    title: 'PriceCharting — PAL PS2',
-    url: t => 'https://www.pricecharting.com/search-products?type=prices&q=' +
-              encodeURIComponent(t + ' pal playstation 2')
-  },
-  {
-    id: 'ebay-uk',
-    region: 'PAL',
-    label: 'eBay UK',
-    title: 'eBay UK — current listings',
-    url: t => 'https://www.ebay.co.uk/sch/i.html?_nkw=' +
-              encodeURIComponent(t + ' ps2')
-  },
-  {
-    id: 'cex',
-    region: 'PAL',
-    label: 'CeX',
-    title: 'CeX UK — current buy price',
-    url: t => 'https://uk.webuy.com/search?stext=' +
-              encodeURIComponent(t + ' ps2')
-  },
-  // cexdb.com: fill in once the search URL format is confirmed, then flip
-  // enabled to true. Leaving it off means it simply doesn't render.
-  {
-    id: 'cexdb',
-    region: 'PAL',
-    label: 'CEXDB',
-    title: 'CEXDB — CeX price history',
-    enabled: false,
-    url: t => 'https://cexdb.com/search?q=' + encodeURIComponent(t)
-  },
-  {
-    id: 'pc-ntsc',
-    region: 'NTSC',
-    label: 'PriceCharting',
-    title: 'PriceCharting — US PS2',
-    url: t => 'https://www.pricecharting.com/search-products?type=prices&q=' +
-              encodeURIComponent(t + ' playstation 2')
-  },
-  {
-    id: 'ebay-us',
-    region: 'NTSC',
-    label: 'eBay US',
-    title: 'eBay US — current listings',
-    url: t => 'https://www.ebay.com/sch/i.html?_nkw=' +
-              encodeURIComponent(t + ' ps2')
-  }
-];
-
-function priceLookupUrls(title) {
-  const clean = String(title == null ? '' : title).replace(/\s+/g, ' ').trim();
-  if (!clean) return [];
-  return PRICE_LOOKUPS
-    .filter(p => p.enabled !== false)
-    .map(p => ({ id: p.id, region: p.region, label: p.label,
-                 title: p.title, url: p.url(clean) }));
-}
-
-function priceLookupHtml(title) {
-  const links = priceLookupUrls(title);
-  if (!links.length) return '';
-  const esc = s => String(s).replace(/[&<>"']/g,
-    c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;',
-            '"': '&quot;', "'": '&#39;' }[c]));
-  const group = region => links.filter(l => l.region === region)
-    .map(l => '<a class="price-link" href="' + esc(l.url) + '"' +
-              ' target="_blank" rel="noopener noreferrer"' +
-              ' title="' + esc(l.title) + '">' + esc(l.label) + '</a>')
-    .join('');
-  const block = (region, flag) => {
-    const inner = group(region);
-    return inner ? '<span class="price-region"><span class="price-flag">' +
-                   flag + '</span>' + inner + '</span>' : '';
-  };
-  return '<span class="price-links">' +
-         block('PAL', 'PAL') + block('NTSC', 'US') + '</span>';
-}
     </script>
 </body>
 </html>
