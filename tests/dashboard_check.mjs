@@ -208,7 +208,7 @@ await check('dashboard renders every view and weights the sentiment average', ()
     assert.equal(el('statTotalItems').innerText, 4);
     assert.equal(el('statFeedsCount').innerText, feeds.sources.filter(s => s.enabled).length);
     // Radar: the matched PS2 game comes first even though its source weighs less.
-    assert.match(el('remasterRadarContainer').children[0].innerHTML, /Okami/);
+    assert.match(el('topGamesList').innerHTML, /Okami/);
     assert.equal(el('feedTableBody').children.length, 4);
     for (const tab of ['news', 'reddit', 'youtube', 'podcast']) {
         vm.runInContext(`setSourceTab('${tab}')`, context);
