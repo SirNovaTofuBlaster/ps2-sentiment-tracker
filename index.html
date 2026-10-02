@@ -415,7 +415,7 @@
             renderSources();
         }
 
-        const TOP_GAMES_COUNT = 5;
+        const TOP_GAMES_COUNT = 10;
 
         // Ranks PS2 games by how many feed items mention them; recalculated on every feed load.
         function renderTopGames(items) {
@@ -1516,6 +1516,92 @@
             renderSourcesToolbar();
             fetchSentimentData();
         };
+        /* ---- Price lookup links -------------------------------------------------
+   No price data is stored or fetched. These are search links only, so there
+   is no API key, no licensing question and nothing to keep up to date.
+   Each entry: label, the URL builder, and the region it belongs to.
+------------------------------------------------------------------------- */
+const PRICE_LOOKUPS = [
+  {
+    id: 'pc-pal',
+    region: 'PAL',
+    label: 'PriceCharting',
+    title: 'PriceCharting — PAL PS2',
+    url: t => 'https://www.pricecharting.com/search-products?type=prices&q=' +
+              encodeURIComponent(t + ' pal playstation 2')
+  },
+  {
+    id: 'ebay-uk',
+    region: 'PAL',
+    label: 'eBay UK',
+    title: 'eBay UK — current listings',
+    url: t => 'https://www.ebay.co.uk/sch/i.html?_nkw=' +
+              encodeURIComponent(t + ' ps2')
+  },
+  {
+    id: 'cex',
+    region: 'PAL',
+    label: 'CeX',
+    title: 'CeX UK — current buy price',
+    url: t => 'https://uk.webuy.com/search?stext=' +
+              encodeURIComponent(t + ' ps2')
+  },
+  // cexdb.com: fill in once the search URL format is confirmed, then flip
+  // enabled to true. Leaving it off means it simply doesn't render.
+  {
+    id: 'cexdb',
+    region: 'PAL',
+    label: 'CEXDB',
+    title: 'CEXDB — CeX price history',
+    enabled: false,
+    url: t => 'https://cexdb.com/search?q=' + encodeURIComponent(t)
+  },
+  {
+    id: 'pc-ntsc',
+    region: 'NTSC',
+    label: 'PriceCharting',
+    title: 'PriceCharting — US PS2',
+    url: t => 'https://www.pricecharting.com/search-products?type=prices&q=' +
+              encodeURIComponent(t + ' playstation 2')
+  },
+  {
+    id: 'ebay-us',
+    region: 'NTSC',
+    label: 'eBay US',
+    title: 'eBay US — current listings',
+    url: t => 'https://www.ebay.com/sch/i.html?_nkw=' +
+              encodeURIComponent(t + ' ps2')
+  }
+];
+
+function priceLookupUrls(title) {
+  const clean = String(title == null ? '' : title).replace(/\s+/g, ' ').trim();
+  if (!clean) return [];
+  return PRICE_LOOKUPS
+    .filter(p => p.enabled !== false)
+    .map(p => ({ id: p.id, region: p.region, label: p.label,
+                 title: p.title, url: p.url(clean) }));
+}
+
+function priceLookupHtml(title) {
+  const links = priceLookupUrls(title);
+  if (!links.length) return '';
+  const esc = s => String(s).replace(/[&<>"']/g,
+    c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;',
+            '"': '&quot;', "'": '&#39;' }[c]));
+  const group = region => links.filter(l => l.region === region)
+    .map(l => '<a class="price-link" href="' + esc(l.url) + '"' +
+              ' target="_blank" rel="noopener noreferrer"' +
+              ' title="' + esc(l.title) + '">' + esc(l.label) + '</a>')
+    .join('');
+  const block = (region, flag) => {
+    const inner = group(region);
+    return inner ? '<span class="price-region"><span class="price-flag">' +
+                   flag + '</span>' + inner + '</span>' : '';
+  };
+  return '<span class="price-links">' +
+         block('PAL', 'PAL') + block('NTSC', 'US') + '</span>';
+}
     </script>
 </body>
 </html>
