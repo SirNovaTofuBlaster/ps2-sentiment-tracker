@@ -176,28 +176,16 @@
             </div>
         </div>
 
-        <div id="feedSection" class="bg-ps2card border border-ps2border rounded-2xl p-6 scroll-mt-20">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+        <div id="topGamesSection" class="bg-ps2card border border-ps2border rounded-2xl p-6">
+            <div class="flex items-start justify-between gap-4 mb-4">
                 <div>
-                    <h2 class="text-lg font-bold text-white">Live Ingestion & Sentiment Stream</h2>
-                    <p class="text-xs text-slate-400">Incoming RSS items matched against the PS2 database with sentiment and source verification.</p>
+                    <h2 class="text-lg font-bold text-white">Most Mentioned Games</h2>
+                    <p id="topGamesSummary" class="text-xs text-slate-400">Counting mentions...</p>
                 </div>
-                <div class="flex flex-wrap items-center gap-3">
-                    <input type="text" id="searchInput" oninput="filterFeedItems()" placeholder="Filter by game or headline..." class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400 w-full sm:w-64">
-                    <select id="filterSelect" onchange="filterFeedItems()" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
-                        <option value="all">All Records</option>
-                        <option value="remaster">Remaster Rumors Only</option>
-                        <option value="matched">Matched PS2 Games Only</option>
-                    </select>
-                    <select id="typeSelect" onchange="filterFeedItems()" aria-label="Source type" class="bg-slate-900 border border-slate-700 text-xs text-white rounded-lg px-3 py-2 outline-none focus:border-cyan-400">
-                        <option value="all">All Sources</option>
-                        <option value="news">News Sites</option>
-                        <option value="reddit">Reddit</option>
-                        <option value="youtube">YouTube</option>
-                        <option value="podcast">Podcasts</option>
-                    </select>
-                </div>
+                <i class="fa-solid fa-ranking-star text-amber-400 text-lg"></i>
             </div>
+            <ol id="topGamesList" class="space-y-3"></ol>
+        </div>
 
             <!-- Feed Table -->
             <div class="overflow-x-auto">
@@ -419,7 +407,7 @@
                 document.getElementById('statFeedsCount').innerText = feedConfig.sources.filter(s => s.enabled).length;
             }
 
-            renderRemasterRadar(remasters);
+            renderTopGames(items);
             filterFeedItems();
         }
 
@@ -430,6 +418,42 @@
             renderSources();
         }
 
+        const TOP_GAMES_COUNT = 5;
+
+        // Ranks PS2 games by how many feed items mention them; recalculated on every feed load.
+        function renderTopGames(items) {
+            const list = document.getElementById('topGamesList');
+            const summary = document.getElementById('topGamesSummary');
+            const games = new Map();
+            items.forEach(item => {
+                if (!item.matched_game) return;
+                const game = games.get(item.matched_game) || { name: item.matched_game, count: 0, remasters: 0 };
+                game.count++;
+                if (item.is_remaster_rumor) game.remasters++;
+                games.set(item.matched_game, game);
+            });
+            const total = [...games.values()].reduce((sum, game) => sum + game.count, 0);
+            if (!total) {
+                summary.textContent = 'No matched PS2 games in the current feed.';
+                list.innerHTML = '<li class="text-xs text-slate-400">Nothing to rank yet.</li>';
+                return;
+            }
+            summary.textContent = `Share of all PS2 game mentions: ${total} mentions across ${games.size} games. Updates every time the feed loads.`;
+            const ranked = [...games.values()].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name)).slice(0, TOP_GAMES_COUNT);
+            list.innerHTML = ranked.map((game, i) => {
+                const pct = game.count / total * 100;
+                const top = i === 0;
+                return `
+                <li class="${top ? 'bg-slate-900/80 border border-amber-500/40 rounded-xl p-3' : 'px-3 py-1'}">
+                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
+                        <span class="${top ? 'text-amber-400 font-bold' : 'text-cyan-300'}">#${i + 1} ${esc(game.name)}${game.remasters ? ` <span class="text-[10px] bg-amber-950 text-amber-400 border border-amber-900 px-1.5 py-0.5 rounded">${game.remasters} remaster</span>` : ''}</span>
+                        <span class="text-slate-300 whitespace-nowrap">${game.count} mention${game.count === 1 ? '' : 's'} · ${pct >= 10 ? Math.round(pct) : pct.toFixed(1)}%</span>
+                    </div>
+                    <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full ${top ? 'bg-amber-500' : 'bg-cyan-500'}" style="width:${Math.max(pct, 2)}%"></div></div>
+                </li>`;
+            }).join('');
+        }
+        
         function renderRemasterRadar(remasters) {
             const container = document.getElementById('remasterRadarContainer');
             container.innerHTML = '';
