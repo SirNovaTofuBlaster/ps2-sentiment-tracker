@@ -1,77 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
-/* Retro theme for index.html and guide.html.
-   Loaded after Tailwind; every rule is prefixed with "body" so it wins on specificity. */
+/* Simple retro theme for index.html and guide.html.
+   Loaded after Tailwind; rules are prefixed with "body" so they win on specificity. */
 
 :root {
-  --bg: #060818;
-  --panel: #0b1030;
-  --inset: #050816;
-  --line: #2b3a9e;
-  --cyan: #5ef0ff;
-  --amber: #ffb000;
-  --green: #5dff7a;
-  --red: #ff5d6c;
-  --text: #dbe6ff;
-  --dim: #8b9bd1;
-  --px: 'Press Start 2P', 'Courier New', monospace;
+  --bg: #0a0e1f;
+  --panel: #101731;
+  --inset: #0a0e1f;
+  --line: #2a3566;
+  --accent: #7fd6e6;
+  --amber: #d9a441;
+  --green: #7bc47f;
+  --red: #d9707a;
+  --text: #d6def5;
+  --dim: #8d97b8;
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
 }
 
 body { font-family: var(--mono); background-color: var(--bg); color: var(--text); }
 body .font-mono-custom { font-family: var(--mono); }
 body input, body select, body button, body textarea { font-family: var(--mono); }
+body h1, body h2, body h3 { font-family: var(--mono); font-weight: 600; }
 
-/* CRT scanlines */
-body::before {
-  content: ""; position: fixed; inset: 0; z-index: 100; pointer-events: none;
-  background: repeating-linear-gradient(to bottom, rgba(0,0,0,.16) 0 1px, transparent 1px 3px);
-}
-
-/* Pixel headings */
-body h1, body h2, body h3 { font-family: var(--px); font-weight: 400; letter-spacing: 0; line-height: 1.7; text-transform: uppercase; }
-body h1 { font-size: .72rem; color: var(--cyan); }
-body h2 { font-size: .78rem; }
-body h3 { font-size: .68rem; }
-body main h2::before { content: "\25BA "; color: var(--cyan); }
-body .text-3xl { font-family: var(--px); font-size: 1.3rem; font-weight: 400; }
-body header .font-black { font-family: var(--px); font-size: .7rem; letter-spacing: 0; }
-
-/* Hard edges, no blur, no glow */
+/* Flat and square: no rounding, blur, glow, gradients or shadows */
 body [class*="rounded"] { border-radius: 0 !important; }
 body [class*="backdrop-blur"] { backdrop-filter: none; }
 body [class*="bg-gradient"] { background-image: none !important; }
-body [class*="shadow"] { box-shadow: 3px 3px 0 #000 !important; }
-body .glow-box { animation: none; }
-body .animate-pulse { animation: blink 1s steps(2, start) infinite; }
-@keyframes blink { 50% { opacity: .15; } }
+body [class*="shadow"] { box-shadow: none !important; }
+body .glow-box, body .animate-pulse { animation: none; }
 
 /* Panels */
-body .bg-ps2card { background-color: var(--panel); border-width: 2px; border-color: var(--line); box-shadow: 4px 4px 0 #000; }
+body .bg-ps2card { background-color: var(--panel); border-color: var(--line); }
 body .border-ps2border, body .border-slate-800, body .border-slate-700 { border-color: var(--line); }
-body .divide-slate-800\/60 > * + * { border-color: rgba(43,58,158,.5); }
-body .border-b.border-slate-800 { border-bottom-width: 2px; }
-body .bg-ps2card\/80 { background-color: var(--panel); border-bottom: 3px solid var(--cyan); }
-body .bg-ps2card\/50 { background-color: var(--panel); border-top: 2px dashed var(--line); }
-body .from-amber-950\/40 { background-color: #1d1400; border-color: var(--amber); }
+body .bg-ps2card\/80 { background-color: var(--panel); border-bottom: 1px solid var(--accent); }
+body .bg-ps2card\/50 { background-color: var(--panel); }
+body .from-amber-950\/40 { background-color: #1a1608; border-color: var(--amber); }
 
-/* Inputs and inset boxes */
+/* Inputs */
 body .bg-slate-900, body .bg-slate-900\/80, body .bg-slate-950 { background-color: var(--inset); }
-body input:focus, body select:focus, body button:focus-visible, body a:focus-visible { outline: 2px dashed var(--cyan); outline-offset: 2px; }
+body input:focus, body select:focus { outline: 1px solid var(--accent); }
 
-/* Primary buttons (were gradients): flat cyan */
-body .from-blue-600 { background-color: var(--cyan); color: #000; border: 2px solid #000; }
-body .from-blue-600:hover { background-color: #fff; }
-body header .from-blue-600.w-10 { border: 0; box-shadow: none !important; }
+/* Buttons: primary is flat accent, secondary is outlined */
+body .from-blue-600 { background-color: var(--accent); color: #0a0e1f; }
+body .from-blue-600:hover { background-color: #a6e6f1; }
+body .bg-slate-800 { background-color: transparent; border-color: var(--line); }
+body .bg-slate-800:hover { background-color: var(--panel); border-color: var(--accent); }
+body .bg-cyan-500, body .bg-cyan-400 { background-color: var(--accent); }
+body .border-cyan-400 { border-color: var(--accent); }
 
-/* Secondary buttons: outlined, invert on hover */
-body .bg-slate-800 { background-color: #101a4a; border-color: var(--cyan); border-width: 2px; }
-body .bg-slate-800:hover, body .bg-slate-800:hover * { background-color: var(--cyan); color: #000; }
-body .bg-cyan-500, body .bg-cyan-400 { background-color: var(--cyan); }
-body .border-cyan-400 { border-color: var(--cyan); }
-
-/* Colour tokens */
-body .text-cyan-400, body .text-cyan-300 { color: var(--cyan); }
+/* Colour tokens, slightly muted */
+body .text-cyan-400, body .text-cyan-300 { color: var(--accent); }
 body .text-emerald-400 { color: var(--green); }
 body .text-amber-400 { color: var(--amber); }
 body .text-red-400 { color: var(--red); }
@@ -79,18 +57,8 @@ body .text-slate-300 { color: var(--text); }
 body .text-slate-400, body .text-slate-500 { color: var(--dim); }
 body .bg-amber-500 { background-color: var(--amber); }
 
-/* Table rows and badges */
-body tr:hover { background-color: rgba(94,240,255,.07); }
-body thead th { text-transform: uppercase; letter-spacing: .05em; color: var(--cyan); }
-body .border.text-xs, body span.border { border-width: 2px; }
-
-/* Square scrollbars */
-::-webkit-scrollbar { width: 10px; height: 10px; }
-::-webkit-scrollbar-track { background: var(--bg); }
+/* Rows, scrollbars, guide page */
+body tr:hover { background-color: rgba(127,214,230,.05); }
 ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 0; }
-::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
-
-/* Guide page */
-body kbd { border-radius: 0; background: var(--inset); border-color: var(--cyan); }
-body .steps li::marker { color: var(--cyan); }
-body footer { font-family: var(--px); font-size: .55rem; line-height: 2; }
+body kbd { border-radius: 0; background: var(--inset); border-color: var(--line); }
+body .steps li::marker { color: var(--accent); }
