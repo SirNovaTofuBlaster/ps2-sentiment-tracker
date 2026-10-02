@@ -393,8 +393,9 @@
             }).join('');
         }
 
-        function renderTable(items, page = 1) {
+                function renderTable(items, page = 1) {
             const tbody = document.getElementById('feedTableBody');
+            tbody.innerHTML = '';
             tableItems = items;
             const totalPages = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
             currentPage = Math.min(Math.max(1, page), totalPages);
@@ -405,13 +406,14 @@
                 return;
             }
 
-            const start = (currentPage - 1) * PAGE_SIZE;
+                                    const start = (currentPage - 1) * PAGE_SIZE;
             tbody.innerHTML = items.slice(start, start + PAGE_SIZE).map(item => {
                 const score = Math.max(0, Math.min(100, Number(item.sentiment) || 0));
                 const tone = score < 50 ? 'score-low' : score < 70 ? 'score-mid' : 'score-high';
                 const meta = TYPE_META[itemType(item)];
-                return `
-                <tr class="border-b border-slate-800/40">
+                const row = document.createElement('tr');
+                row.className = 'border-b border-slate-800/40';
+                row.innerHTML = `
                     <td class="py-3.5 px-4">
                         <div class="text-white flex items-center gap-1.5"><i class="${meta.icon} text-slate-400 text-[11px]" title="${esc(meta.label)}"></i>${esc(item.source)}</div>
                         <div class="text-[10px] text-slate-500 font-mono-custom" title="${esc(item.timestamp)}">${esc(formatLocalTime(item.timestamp, true))}${weightBadge(item)}</div>
@@ -431,10 +433,9 @@
                         <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-xs bg-slate-800 text-cyan-400 border border-slate-700 px-3 py-1.5 transition-all inline-flex items-center gap-1.5">
                             ${esc(meta.tableAction)} <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                         </a>
-                    </td>
-                </tr>`;
-            }).join('');
-        }
+                    </td>`;
+                tbody.appendChild(row);
+            });
 
         // First, last and neighbouring pages, with gaps collapsed into an ellipsis.
         function pageNumbers(totalPages) {
