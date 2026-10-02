@@ -96,20 +96,25 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
 
-        <!-- Summary Stat Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <!-- Card 1: Total Mentions -->
-            <div class="bg-ps2card border border-ps2border rounded-2xl p-5 glow-box transition-all hover:border-slate-700">
-                <div class="flex items-center justify-between text-slate-400 mb-2">
-                    <span class="text-xs font-medium uppercase tracking-wider">Total Items Scraped</span>
-                    <i class="fa-solid fa-database text-cyan-400"></i>
-                </div>
-                <div class="flex items-baseline justify-between">
-                    <div id="statTotalItems" class="text-3xl font-black font-mono-custom text-white">0</div>
-                    <span class="text-xs text-emerald-400 font-medium bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-900">Active Pipeline</span>
-                </div>
-                <p class="text-xs text-slate-400 mt-2">Incoming feed records parsed</p>
+                <!-- Summary stats -->
+        <div class="stat-strip">
+            <div class="stat">
+                <div class="stat-label">Items scraped</div>
+                <div id="statTotalItems" class="stat-value">0</div>
             </div>
+            <div class="stat">
+                <div class="stat-label">Remaster flags</div>
+                <div id="statRemasters" class="stat-value">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Active feeds</div>
+                <div id="statFeedsCount" class="stat-value">--</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">Net sentiment</div>
+                <div id="statAvgSentiment" class="stat-value accent">--</div>
+            </div>
+        </div>
 
             <!-- Card 2: Remaster Rumors -->
             <div class="bg-ps2card border border-ps2border rounded-2xl p-5 glow-box transition-all hover:border-slate-700">
@@ -305,7 +310,7 @@
            one exists, otherwise a short monogram.
         -------------------------------------------------------------------- */
         const PRICE_LOOKUPS = [
-            { id: 'pc-pal', region: 'PAL', mark: 'PC',
+            { id: 'Price Charting-pal', region: 'PAL', mark: 'Price Charting',
               hint: 'PriceCharting — PAL PS2 prices',
               url: t => `https://www.pricecharting.com/search-products?type=prices&q=${encodeURIComponent(t + ' pal playstation 2')}` },
             { id: 'ebay-uk', region: 'PAL', fa: 'fa-brands fa-ebay', sup: 'UK',
@@ -318,7 +323,7 @@
             { id: 'cexdb', region: 'PAL', mark: 'DB', enabled: false,
               hint: 'CEXDB — CeX price history',
               url: t => `https://cexdb.com/search?q=${encodeURIComponent(t)}` },
-            { id: 'pc-ntsc', region: 'NTSC', mark: 'PC',
+            { id: 'Price Charting-ntsc', region: 'NTSC', mark: 'Price Charting',
               hint: 'PriceCharting — US PS2 prices',
               url: t => `https://www.pricecharting.com/search-products?type=prices&q=${encodeURIComponent(t + ' playstation 2')}` },
             { id: 'ebay-us', region: 'NTSC', fa: 'fa-brands fa-ebay', sup: 'US',
@@ -468,7 +473,7 @@
             renderSources();
         }
 
-        const TOP_GAMES_COUNT = 10;
+        const TOP_GAMES_COUNT = 15;
 
         // Ranks PS2 games by how many feed items mention them; recalculated on every feed load.
         function renderTopGames(items) {
@@ -499,7 +504,7 @@
                         <span class="${top ? 'text-amber-400 font-bold' : 'text-cyan-300'}">#${i + 1} ${esc(game.name)}${game.remasters ? ` <span class="text-[10px] bg-amber-950 text-amber-400 border border-amber-900 px-1.5 py-0.5 rounded">${game.remasters} remaster</span>` : ''}</span>
                         <span class="text-slate-300 whitespace-nowrap">${game.count} mention${game.count === 1 ? '' : 's'} · ${pct >= 10 ? Math.round(pct) : pct.toFixed(1)}%</span>
                     </div>
-                    <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full ${top ? 'bg-amber-500' : 'bg-cyan-500'}" style="width:${Math.max(pct, 2)}%"></div></div>
+                    <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full ${top ? 'bg-cyan-500' : 'bg-cyan-500'}" style="width:${Math.max(pct, 2)}%"></div></div>
                     ${priceLookupHtml(game.name)}
                 </li>`;
             }).join('');
@@ -555,9 +560,8 @@
 
             const start = (currentPage - 1) * PAGE_SIZE;
             items.slice(start, start + PAGE_SIZE).forEach(item => {
-                let sentimentColor = 'bg-emerald-950 text-emerald-400 border-emerald-900';
-                if (item.sentiment < 50) sentimentColor = 'bg-red-950 text-red-400 border-red-900';
-                else if (item.sentiment < 70) sentimentColor = 'bg-amber-950 text-amber-400 border-amber-900';
+                                const score = Math.max(0, Math.min(100, Number(item.sentiment) || 0));
+                const scoreTone = score < 50 ? 'score-low' : score < 70 ? 'score-mid' : 'score-high';
 
                 let row = document.createElement('tr');
                 row.className = 'hover:bg-slate-800/40 transition-colors border-b border-slate-800/40';
@@ -572,9 +576,8 @@
                     </td>
                     <td class="py-3.5 px-4 font-mono-custom text-cyan-300">${item.matched_game ? esc(item.matched_game) + priceLookupHtml(item.matched_game) : '<span class="text-slate-500">Unmatched / General</span>'}</td>
                     <td class="py-3.5 px-4">
-                        <span class="px-2 py-0.5 rounded border text-[11px] font-medium ${sentimentColor}">
-                            Score: ${esc(item.sentiment)}/100
-                        </span>
+                        <div class="score-value font-mono-custom">${esc(item.sentiment)}</div>
+                        <div class="score-meter"><div class="score-fill ${scoreTone}" style="width:${score}%"></div></div>
                     </td>
                     <td class="py-3.5 px-4 text-right">
                         <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-xs bg-slate-800 hover:bg-slate-700 text-cyan-400 border border-slate-700 px-3 py-1.5 rounded-lg transition-all inline-flex items-center gap-1.5">
