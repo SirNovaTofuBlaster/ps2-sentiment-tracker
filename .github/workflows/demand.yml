@@ -1,0 +1,33 @@
+name: Demand index
+
+on:
+  schedule:
+    - cron: "41 5 * * *"   # daily; pageviews only update once a day
+  workflow_dispatch:
+
+concurrency:
+  group: demand
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  demand:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python demand.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/demand.json data/wiki_titles.json
+          git diff --staged --quiet || git commit -m "Update demand index"
+          git push
