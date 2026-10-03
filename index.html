@@ -314,7 +314,7 @@
             badge.className = `text-xs border px-2 py-0.5 font-mono-custom ${TONES[tone]}`;
         }
 
-        async function fetchSentimentData() {
+                async function fetchSentimentData() {
             setBadge('Fetching JSON...', 'info');
 
             // Unsaved source edits survive a refresh; only the feed health is reloaded then.
@@ -336,6 +336,7 @@
             sync.innerText = formatLocalTime(data.last_updated) || 'Just now';
             sync.title = data.last_updated ? `Scraper ran at ${data.last_updated}` : '';
             document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
+            await loadDemand();
             refreshDashboard();
         }
 
@@ -355,6 +356,42 @@
             }
             renderTopGames(items);
             filterFeedItems();
+        }
+                // data/demand.json is written by demand.py, daily. The section stays hidden
+        // when the file is missing, so a fork without it looks no different.
+        async function loadDemand() {
+            let data = null;
+            try {
+                const response = await fetch('data/demand.json', { cache: 'no-cache' });
+                if (response.ok) data = await response.json();
+            } catch {
+                data = null;
+            }
+            const section = document.getElementById('demandSection');
+            const games = Array.isArray(data?.games) ? data.games : [];
+            section.classList.toggle('hidden', !games.length);
+            if (!games.length) return;
+
+            document.getElementById('demandSummary').textContent =
+                `Wikipedia interest over ${data.window_days} days blended with mentions here · ${formatLocalTime(data.generated)}`;
+
+            document.getElementById('demandList').innerHTML = games.slice(0, 10).map((game, i) => {
+                const change = typeof game.trend_pct === 'number' ? game.trend_pct : null;
+                const tone = change === null ? 'text-slate-500' : change > 0 ? 'text-emerald-400' : 'text-red-400';
+                const arrow = change === null ? '' : change > 0 ? '▲' : '▼';
+                return `
+                <li class="${i === 0 ? 'bg-slate-900/80 border border-slate-800 p-3' : 'px-3 py-1'}">
+                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
+                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${esc(game.title)}</span>
+                        <span class="whitespace-nowrap">
+                            <span class="${tone}">${arrow} ${change === null ? 'new' : esc(change) + '%'}</span>
+                            <span class="text-slate-500 ml-2">${Number(game.views_30d).toLocaleString()} views · ${esc(game.mentions)} mentions</span>
+                        </span>
+                    </div>
+                    <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full bg-cyan-500" style="width:${Math.max(game.demand, 2)}%"></div></div>
+                    ${priceLookupHtml(game.title)}
+                </li>`;
+            }).join('');
         }
 
         // Items from switched-off sources are hidden right away, before the scraper drops them.
