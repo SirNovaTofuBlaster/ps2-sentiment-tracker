@@ -310,7 +310,10 @@ class TitleMatcher:
         frequency = Counter()
         for norm in self.fuzzy_norms:
             frequency.update(set(norm.split()))
-        ceiling = max(3, int(len(self.fuzzy_norms) * COMMON_TOKEN_SHARE))
+                # 1% of ~3,100 titles is about 31, which excludes words like "silent" or
+        # "hill" that appear across a franchise but still identify it. The cap is
+        # on genuinely generic words ("the", "2", "world"), not on series names.
+        ceiling = max(30, int(len(self.fuzzy_norms) * COMMON_TOKEN_SHARE))
         self.distinctive_tokens = {t for t, n in frequency.items() if n <= ceiling and t not in STOPWORDS}
         self.token_index = defaultdict(set)
         for index, norm in enumerate(self.fuzzy_norms):
@@ -364,8 +367,11 @@ class TitleMatcher:
         grams = {" ".join(tokens[i:i + n])
                  for n in range(2, MAX_GRAM_WORDS + 1)
                  for i in range(len(tokens) - n + 1)}
+                # Length alone, plus at least one word that isn't a stopword: a run like
+        # "back in the day" or "collector s edition" has nothing to anchor on, while
+        # "silent hill 2" does even though "silent" and "hill" recur across a series.
         usable = [g for g in grams
-                  if len(g) >= MIN_GRAM_CHARS and (set(g.split()) & self.distinctive_tokens)]
+                  if len(g) >= MIN_GRAM_CHARS and (set(g.split()) - STOPWORDS)]
         return sorted(usable, key=lambda g: (-len(g), g))
 
     def _fuzzy_matches(self, norm, threshold):
@@ -374,7 +380,7 @@ class TitleMatcher:
             return []
         token_set = set(tokens)
         candidates = set()
-        for token in token_set & self.distinctive_tokens:
+        for token in token_set - STOPWORDS:
             candidates |= self.token_index.get(token, frozenset())
         if not candidates:
             return []
