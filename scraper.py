@@ -49,6 +49,7 @@ MAX_RATE_LIMIT_WAIT = 90  # seconds
 MIN_INDEX_TITLES = 500
 SHORT_TITLE_MAX_LEN = 8  # normalised titles shorter than this are matched exactly, not fuzzily
 MAX_GRAM_WORDS = 6  # longest run of headline words compared against a title
+MIN_GRAM_CHARS = 8  # shorter runs of words match too many titles by accident
 MAX_BODY_TOKENS = 120  # only the start of a summary/description is searched
 COMMON_TOKEN_SHARE = 0.01  # tokens in more than this share of titles don't narrow the search
 RETENTION_DAYS = 14
@@ -268,20 +269,22 @@ def load_ps2_titles(session):
 
 
 class TitleMatcher:
-    """Matches text to PS2 titles: aliases, exact short titles, subtitles, then fuzzy.
+    """Matches text to PS2 titles: aliases, exact short titles, name variants, then fuzzy.
 
-    The fuzzy pass compares runs of words from the text against candidate titles
-    rather than the whole text. rapidfuzz's WRatio scales partial matches down by
-    0.6 once one string is more than eight times the length of the other, so
-    comparing a 90-character headline against "Max Payne" could never clear the
-    threshold however well it matched. Candidates are narrowed first through a
-    token index, so most text costs a few set lookups instead of thousands of
-    string comparisons."""
+    The fuzzy pass compares runs of words from the text against candidate titles.
+    It scores with token_sort_ratio rather than WRatio on purpose: WRatio rewards
+    a good *substring* match, so a generic run of words like "collector s edition"
+    scored 90 against "The Godfather: Collector's Edition" simply by appearing
+    inside it. token_sort_ratio counts what the title has and the text doesn't,
+    so a gram has to account for most of a title to match it.
+
+    Candidates are narrowed through a token index first, so most text costs a few
+    set lookups instead of thousands of string comparisons."""
 
     def __init__(self, titles):
         self.fuzzy_titles, self.fuzzy_norms, self.fuzzy_required = [], [], []
         self.short = {}  # normalised title -> (title, needs_ps2_context)
-        self.variants = {}  # normalised subtitle -> (title, needs_ps2_context)
+        self.variants = {}  # normalised main title / subtitle -> (title, needs_ps2_context)
         seen = set()
         for title in titles:
             norm = normalise(title)
@@ -297,41 +300,22 @@ class TitleMatcher:
                     and norm not in DISTINCTIVE_SHORT
                 self.short[norm] = (title, ambiguous)
         self.aliases = {normalise(k): v for k, v in TITLE_ALIASES.items()}
-        self._build_variants(titles, seen)
         self._build_token_index()
-
-    def _build_variants(self, titles, taken):
-        """Indexes the part after a colon ("Snake Eater", "Sons of Liberty") as a name
-        for its title. A subtitle shared by two different games is dropped as ambiguous;
-        a short one only counts when the text also mentions the PS2."""
-        claims = {}
-        for title in titles:
-            if ":" not in title:
-                continue
-            subtitle = normalise(title.split(":", 1)[1])
-            tokens = subtitle.split()
-            if len(subtitle) < SHORT_TITLE_MAX_LEN or subtitle in taken or subtitle in self.aliases:
-                continue
-            if all(t in STOPWORDS for t in tokens):
-                continue
-            claims.setdefault(subtitle, set()).add(title)
-        for subtitle, owners in claims.items():
-            if len(owners) != 1:
-                continue  # two games share it: not a usable name
-            title = next(iter(owners))
-            self.variants[subtitle] = (title, len(subtitle.split()) < 3)
+        self._build_variants(titles, seen)
 
     def _build_token_index(self):
         """token -> indices of fuzzy titles containing it, skipping tokens so common
-        they wouldn't narrow anything down."""
+        they wouldn't narrow anything down. The distinctive tokens double as the test
+        for whether a run of words is worth comparing at all."""
         frequency = Counter()
         for norm in self.fuzzy_norms:
             frequency.update(set(norm.split()))
         ceiling = max(3, int(len(self.fuzzy_norms) * COMMON_TOKEN_SHARE))
+        self.distinctive_tokens = {t for t, n in frequency.items() if n <= ceiling and t not in STOPWORDS}
         self.token_index = defaultdict(set)
         for index, norm in enumerate(self.fuzzy_norms):
             tokens = set(norm.split()) - STOPWORDS
-            distinctive = {t for t in tokens if frequency[t] <= ceiling}
+            distinctive = tokens & self.distinctive_tokens
             # Every title needs at least one way in; a title made only of common
             # words is indexed under its rarest one.
             if not distinctive and tokens:
@@ -339,23 +323,50 @@ class TitleMatcher:
             for token in distinctive:
                 self.token_index[token].add(index)
 
+    def _build_variants(self, titles, taken):
+        """Indexes both halves of a title with a colon as names for it: "Metal Gear
+        Solid 3" and "Snake Eater" both mean Metal Gear Solid 3: Snake Eater. A half
+        that two different games share ("Prince of Persia", "Silent Hill") is dropped
+        as ambiguous; a short one only counts when the text also mentions the PS2."""
+        claims = {}
+        for title in titles:
+            if ":" not in title:
+                continue
+            head, tail = title.split(":", 1)
+            for part in (head, tail):
+                name = normalise(part)
+                tokens = name.split()
+                if len(name) < SHORT_TITLE_MAX_LEN or name in taken or name in self.aliases:
+                    continue
+                if all(t in STOPWORDS for t in tokens):
+                    continue
+                if not (set(tokens) & self.distinctive_tokens):
+                    continue  # nothing here identifies a particular game
+                claims.setdefault(name, set()).add(title)
+        for name, owners in claims.items():
+            if len(owners) != 1:
+                continue  # two games share it: not a usable name
+            self.variants[name] = (next(iter(owners)), len(name.split()) < 3)
+
     def summary(self):
         return (f"{len(self.fuzzy_titles)} fuzzy, {len(self.short)} short, "
-                f"{len(self.variants)} subtitles, {len(self.aliases)} aliases, "
+                f"{len(self.variants)} variants, {len(self.aliases)} aliases, "
                 f"{len(self.token_index)} index tokens")
 
     @staticmethod
     def _has_ps2_context(text, ps2_source):
         return bool(PS2_CONTEXT_PATTERN.search(text)) or ps2_source
 
-    @staticmethod
-    def _grams(tokens):
-        """Runs of 2..MAX_GRAM_WORDS words, longest first. Single words are left to the
-        alias and short-title passes: on their own they match franchises too loosely."""
+    def _grams(self, tokens):
+        """Runs of 2..MAX_GRAM_WORDS words that are long enough and specific enough to
+        identify a game, longest first. Single words are left to the alias and short-title
+        passes; on their own they match franchises too loosely."""
         grams = {" ".join(tokens[i:i + n])
                  for n in range(2, MAX_GRAM_WORDS + 1)
                  for i in range(len(tokens) - n + 1)}
-        return sorted(grams, key=lambda g: (-len(g), g))
+        usable = [g for g in grams
+                  if len(g) >= MIN_GRAM_CHARS and (set(g.split()) & self.distinctive_tokens)]
+        return sorted(usable, key=lambda g: (-len(g), g))
 
     def _fuzzy_matches(self, norm, threshold):
         tokens = norm.split()
@@ -363,7 +374,7 @@ class TitleMatcher:
             return []
         token_set = set(tokens)
         candidates = set()
-        for token in token_set:
+        for token in token_set & self.distinctive_tokens:
             candidates |= self.token_index.get(token, frozenset())
         if not candidates:
             return []
@@ -371,7 +382,8 @@ class TitleMatcher:
         candidate_norms = [self.fuzzy_norms[i] for i in candidates]
         found = {}
         for gram in self._grams(tokens):
-            hit = process.extractOne(gram, candidate_norms, scorer=fuzz.WRatio, score_cutoff=threshold)
+            hit = process.extractOne(gram, candidate_norms,
+                                     scorer=fuzz.token_sort_ratio, score_cutoff=threshold)
             if not hit:
                 continue
             index = candidates[hit[2]]
@@ -414,7 +426,7 @@ class TitleMatcher:
                 title, needs_context = self.variants[gram]
                 if needs_context and not has_context:
                     continue
-                add(title, 92, "subtitle")
+                add(title, 92, "variant")
         for title, score in self._fuzzy_matches(norm, threshold):
             add(title, score, "fuzzy")
         return results
