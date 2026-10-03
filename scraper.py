@@ -38,13 +38,19 @@ DB_SOURCES = [
     # ("JP", "https://raw.githubusercontent.com/workhorsylegacy/identify_playstation2_games/master/db_playstation2_official_jp.json"),
 ]
 
-USER_AGENT = "ps2-sentiment-tracker/1.0 (+https://github.com/beskay/ps2-sentiment-tracker)"
+# Reddit asks for "<platform>:<app-id>:<version> (by /u/<name>)" and throttles
+# generic agents harder. Put your own Reddit username here.
+USER_AGENT = "python:ps2-sentiment-tracker:1.1 (by /u/SirNovaTofuBlaster)"
 REQUEST_TIMEOUT = 15
 MAX_ENTRIES_PER_FEED = 50
 MATCH_THRESHOLD = 88
+BODY_MATCH_THRESHOLD = 93  # body text is noisier than a headline, so it has to match harder
 MAX_RATE_LIMIT_WAIT = 90  # seconds
 MIN_INDEX_TITLES = 500
 SHORT_TITLE_MAX_LEN = 8  # normalised titles shorter than this are matched exactly, not fuzzily
+MAX_GRAM_WORDS = 6  # longest run of headline words compared against a title
+MAX_BODY_TOKENS = 120  # only the start of a summary/description is searched
+COMMON_TOKEN_SHARE = 0.01  # tokens in more than this share of titles don't narrow the search
 RETENTION_DAYS = 14
 MAX_ITEMS = 5000
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"
@@ -76,22 +82,32 @@ SUBREDDIT_PATTERN = re.compile(r"[A-Za-z0-9_]{2,21}")
 PS2_ROLE = "ps2"
 PS2_CONTEXT_PATTERN = re.compile(r"\b(?:ps2|ps 2|playstation ?2|pcsx2)\b", re.IGNORECASE)
 
-REMASTER_PATTERN = re.compile(
-    r"\b(remaster|remake|reboot|reviv|hd version|director['’]s cut|enhanced"
-    r"|collections?\b|ports?\b|ported\b|returns?\b)",
+# Remaster wording splits in two. Strong terms flag on their own; weak ones are
+# ordinary English ("my PS2 collection", "he returns to the series") and only
+# flag when the item also matched a PS2 game.
+REMASTER_STRONG_PATTERN = re.compile(
+    r"\b(remaster|remake|reboot|reviv|hd version|director['’]s cut|re-?release)",
     re.IGNORECASE,
 )
+REMASTER_WEAK_PATTERN = re.compile(
+    r"\b(collections?\b|ports?\b|ported\b|returns?\b|enhanced)",
+    re.IGNORECASE,
+)
+# Kept so anything matching either half still matches this name.
+REMASTER_PATTERN = re.compile(
+    REMASTER_STRONG_PATTERN.pattern + "|" + REMASTER_WEAK_PATTERN.pattern, re.IGNORECASE
+)
 
-
-def _word_patterns(words):
-    return [re.compile(rf"\b{re.escape(word)}", re.IGNORECASE) for word in words]
-
-
-POSITIVE_WORDS = _word_patterns([
-    "masterpiece", "amazing", "love", "best", "classic", "brilliant", "hype",
-    "return", "remaster", "announce", "revival",
-])
-NEGATIVE_WORDS = _word_patterns(["bug", "worst", "broken", "terrible", "flop", "disaster"])
+# Sentiment is about tone, not subject. Words that describe what a story is
+# about (remaster, announce, revival) used to count as positive, which scored
+# every remaster announcement as good news; they are tracked separately now.
+POSITIVE_STEMS = ("masterpiece", "amazing", "love", "best", "classic", "brilliant",
+                  "great", "favourite", "favorite", "underrated", "gorgeous", "perfect")
+NEGATIVE_STEMS = ("bug", "worst", "broken", "terrible", "flop", "disaster",
+                  "disappoint", "overrated", "awful", "unplayable", "janky")
+HYPE_STEMS = ("hype", "announce", "revival", "remaster", "remake", "confirmed", "leak")
+NEGATORS = {"not", "no", "never", "isn", "aren", "wasn", "doesn", "didn", "won", "hardly", "barely"}
+NEGATION_WINDOW = 3  # tokens before a sentiment word that can flip it
 
 # --- Title cleaning -------------------------------------------------------
 # Index entries that are discs/tools rather than games.
@@ -102,17 +118,34 @@ JUNK_TITLE_PATTERN = re.compile(
 )
 BRACKET_PATTERN = re.compile(r"\s*\[[^\]]*\]")  # "[Platinum]", "[Demo]", "[Der Herr der Ringe]"
 INVERTED_ARTICLE_PATTERN = re.compile(r"^(.+),\s*(The|A|An)$")  # "Thing, The" -> "The Thing"
-NUMERAL_TOKEN = re.compile(r"(?:\d+|[ivx]+)")  # digits and roman numerals
+NUMERAL_TOKEN = re.compile(r"\d+")  # after normalisation every numeral is a digit run
+HTML_TAG_PATTERN = re.compile(r"<[^>]+>")
+
+# Roman numerals are written both ways ("Jak II" vs "Jak 2", "Final Fantasy X"
+# vs "FF10"), so both sides are normalised to digits before anything is compared.
+ROMAN_TO_ARABIC = {
+    "i": "1", "ii": "2", "iii": "3", "iv": "4", "v": "5", "vi": "6", "vii": "7",
+    "viii": "8", "ix": "9", "x": "10", "xi": "11", "xii": "12", "xiii": "13",
+    "xiv": "14", "xv": "15", "xvi": "16", "xvii": "17", "xviii": "18",
+    "xix": "19", "xx": "20",
+}
+
+# Words too common to narrow a search by, on top of the ones measured from the index.
+STOPWORDS = {
+    "the", "a", "an", "of", "and", "or", "in", "on", "at", "to", "for", "with",
+    "is", "it", "its", "this", "that", "from", "by", "as", "be", "was", "are",
+    "game", "games", "ps2", "playstation", "new", "now", "my", "i", "you",
+}
 
 # Short one-word titles that are common English words / names need PS2 context
 # in the headline to count as a match. These distinctive ones do not.
 DISTINCTIVE_SHORT = {"ico", "okami", "vexx", "genji", "kessen"}
 
-# Abbreviations and alternate names that fuzzy matching can't bridge.
+# Abbreviations and alternate names that fuzzy matching can't bridge. Roman/Arabic
+# pairs are handled by normalisation now, so only true abbreviations belong here.
 # Keys are matched against runs of up to 4 words in the headline.
 TITLE_ALIASES = {
     "gta 3": "Grand Theft Auto III",
-    "gta iii": "Grand Theft Auto III",
     "gta vice city": "Grand Theft Auto: Vice City",
     "gta vc": "Grand Theft Auto: Vice City",
     "gta san andreas": "Grand Theft Auto: San Andreas",
@@ -123,7 +156,6 @@ TITLE_ALIASES = {
     "code veronica": "Resident Evil Code: Veronica X",
     "mgs2": "Metal Gear Solid 2: Sons of Liberty",
     "mgs3": "Metal Gear Solid 3: Snake Eater",
-    "snake eater": "Metal Gear Solid 3: Snake Eater",
     "ffx": "Final Fantasy X",
     "ff10": "Final Fantasy X",
     "ffx 2": "Final Fantasy X-2",
@@ -138,10 +170,7 @@ TITLE_ALIASES = {
     "p3fes": "Persona 3 FES",
     "smt nocturne": "Shin Megami Tensei: Nocturne",
     "dq8": "Dragon Quest VIII: Journey of the Cursed King",
-    "dragon quest 8": "Dragon Quest VIII: Journey of the Cursed King",
     "gow2": "God of War II",
-    "god of war 2": "God of War II",
-    "jak 2": "Jak II",
     "jak and daxter": "Jak and Daxter: The Precursor Legacy",
     "rockstar bully": "Bully",
     "canis canem edit": "Bully",
@@ -197,6 +226,15 @@ def clean_title(raw):
     return title or None
 
 
+def normalise(text):
+    """Lower-cases, strips punctuation (rapidfuzz) and turns roman numerals into digits,
+    so "Jak II" and "Jak 2" compare equal on both sides of every match."""
+    base = utils.default_process(text or "")
+    if not base:
+        return ""
+    return " ".join(ROMAN_TO_ARABIC.get(tok, tok) for tok in base.split())
+
+
 def read_cached_titles():
     try:
         raw = json.loads(DB_PATH.read_text(encoding="utf-8"))
@@ -230,65 +268,161 @@ def load_ps2_titles(session):
 
 
 class TitleMatcher:
-    """Matches headlines to PS2 titles: aliases first, then exact short titles, then fuzzy."""
+    """Matches text to PS2 titles: aliases, exact short titles, subtitles, then fuzzy.
+
+    The fuzzy pass compares runs of words from the text against candidate titles
+    rather than the whole text. rapidfuzz's WRatio scales partial matches down by
+    0.6 once one string is more than eight times the length of the other, so
+    comparing a 90-character headline against "Max Payne" could never clear the
+    threshold however well it matched. Candidates are narrowed first through a
+    token index, so most text costs a few set lookups instead of thousands of
+    string comparisons."""
 
     def __init__(self, titles):
         self.fuzzy_titles, self.fuzzy_norms, self.fuzzy_required = [], [], []
         self.short = {}  # normalised title -> (title, needs_ps2_context)
+        self.variants = {}  # normalised subtitle -> (title, needs_ps2_context)
         seen = set()
         for title in titles:
-            norm = utils.default_process(title)
+            norm = normalise(title)
             if not norm or norm in seen:
                 continue
             seen.add(norm)
             if len(norm) >= SHORT_TITLE_MAX_LEN:
                 self.fuzzy_titles.append(title)
                 self.fuzzy_norms.append(norm)
-                self.fuzzy_required.append(
-                    {t for t in norm.split() if NUMERAL_TOKEN.fullmatch(t)}
-                )
+                self.fuzzy_required.append({t for t in norm.split() if NUMERAL_TOKEN.fullmatch(t)})
             else:
                 ambiguous = " " not in norm and not any(c.isdigit() for c in norm) \
                     and norm not in DISTINCTIVE_SHORT
                 self.short[norm] = (title, ambiguous)
-        self.aliases = {utils.default_process(k): v for k, v in TITLE_ALIASES.items()}
+        self.aliases = {normalise(k): v for k, v in TITLE_ALIASES.items()}
+        self._build_variants(titles, seen)
+        self._build_token_index()
+
+    def _build_variants(self, titles, taken):
+        """Indexes the part after a colon ("Snake Eater", "Sons of Liberty") as a name
+        for its title. A subtitle shared by two different games is dropped as ambiguous;
+        a short one only counts when the text also mentions the PS2."""
+        claims = {}
+        for title in titles:
+            if ":" not in title:
+                continue
+            subtitle = normalise(title.split(":", 1)[1])
+            tokens = subtitle.split()
+            if len(subtitle) < SHORT_TITLE_MAX_LEN or subtitle in taken or subtitle in self.aliases:
+                continue
+            if all(t in STOPWORDS for t in tokens):
+                continue
+            claims.setdefault(subtitle, set()).add(title)
+        for subtitle, owners in claims.items():
+            if len(owners) != 1:
+                continue  # two games share it: not a usable name
+            title = next(iter(owners))
+            self.variants[subtitle] = (title, len(subtitle.split()) < 3)
+
+    def _build_token_index(self):
+        """token -> indices of fuzzy titles containing it, skipping tokens so common
+        they wouldn't narrow anything down."""
+        frequency = Counter()
+        for norm in self.fuzzy_norms:
+            frequency.update(set(norm.split()))
+        ceiling = max(3, int(len(self.fuzzy_norms) * COMMON_TOKEN_SHARE))
+        self.token_index = defaultdict(set)
+        for index, norm in enumerate(self.fuzzy_norms):
+            tokens = set(norm.split()) - STOPWORDS
+            distinctive = {t for t in tokens if frequency[t] <= ceiling}
+            # Every title needs at least one way in; a title made only of common
+            # words is indexed under its rarest one.
+            if not distinctive and tokens:
+                distinctive = {min(tokens, key=lambda t: frequency[t])}
+            for token in distinctive:
+                self.token_index[token].add(index)
 
     def summary(self):
-        return f"{len(self.fuzzy_titles)} fuzzy, {len(self.short)} short, {len(self.aliases)} aliases"
+        return (f"{len(self.fuzzy_titles)} fuzzy, {len(self.short)} short, "
+                f"{len(self.variants)} subtitles, {len(self.aliases)} aliases, "
+                f"{len(self.token_index)} index tokens")
 
     @staticmethod
-    def _has_ps2_context(headline, ps2_source):
-        return bool(PS2_CONTEXT_PATTERN.search(headline)) or ps2_source
+    def _has_ps2_context(text, ps2_source):
+        return bool(PS2_CONTEXT_PATTERN.search(text)) or ps2_source
 
-    def match(self, headline, ps2_source=False):
-        """Returns (title, score) or (None, 0). ps2_source: the headline comes from a PS2-dedicated source."""
-        norm = utils.default_process(headline)
+    @staticmethod
+    def _grams(tokens):
+        """Runs of 2..MAX_GRAM_WORDS words, longest first. Single words are left to the
+        alias and short-title passes: on their own they match franchises too loosely."""
+        grams = {" ".join(tokens[i:i + n])
+                 for n in range(2, MAX_GRAM_WORDS + 1)
+                 for i in range(len(tokens) - n + 1)}
+        return sorted(grams, key=lambda g: (-len(g), g))
+
+    def _fuzzy_matches(self, norm, threshold):
+        tokens = norm.split()
+        if len(tokens) < 2:
+            return []
+        token_set = set(tokens)
+        candidates = set()
+        for token in token_set:
+            candidates |= self.token_index.get(token, frozenset())
+        if not candidates:
+            return []
+        candidates = sorted(candidates)
+        candidate_norms = [self.fuzzy_norms[i] for i in candidates]
+        found = {}
+        for gram in self._grams(tokens):
+            hit = process.extractOne(gram, candidate_norms, scorer=fuzz.WRatio, score_cutoff=threshold)
+            if not hit:
+                continue
+            index = candidates[hit[2]]
+            # A title's numbers must appear in the text, so "Final Fantasy X"
+            # doesn't match "Final Fantasy XVI" and "FIFA 25" doesn't match "FIFA 2005".
+            if not self.fuzzy_required[index] <= token_set:
+                continue
+            title = self.fuzzy_titles[index]
+            found[title] = max(found.get(title, 0), round(hit[1]))
+        return sorted(found.items(), key=lambda pair: -pair[1])
+
+    def match_all(self, text, ps2_source=False, threshold=MATCH_THRESHOLD):
+        """Every PS2 title the text mentions, best first, as (title, score, method)."""
+        norm = normalise(text)
+        if not norm:
+            return []
         tokens = norm.split()
         grams = {" ".join(tokens[i:i + n]) for n in range(1, 5) for i in range(len(tokens) - n + 1)}
         ordered = sorted(grams, key=lambda g: (-len(g), g))
+        has_context = self._has_ps2_context(text, ps2_source)
+
+        results, seen = [], set()
+
+        def add(title, score, method):
+            if title not in seen:
+                seen.add(title)
+                results.append((title, score, method))
 
         for gram in ordered:
             if gram in self.aliases:
-                return self.aliases[gram], 100
-
+                add(self.aliases[gram], 100, "alias")
         for gram in ordered:
             if gram in self.short:
                 title, ambiguous = self.short[gram]
-                if ambiguous and not self._has_ps2_context(headline, ps2_source):
+                if ambiguous and not has_context:
                     continue
-                return title, 100
+                add(title, 100, "exact")
+        for gram in ordered:
+            if gram in self.variants:
+                title, needs_context = self.variants[gram]
+                if needs_context and not has_context:
+                    continue
+                add(title, 92, "subtitle")
+        for title, score in self._fuzzy_matches(norm, threshold):
+            add(title, score, "fuzzy")
+        return results
 
-        token_set = set(tokens)
-        candidates = process.extract(
-            norm, self.fuzzy_norms, scorer=fuzz.WRatio, score_cutoff=MATCH_THRESHOLD, limit=5
-        )
-        for _, score, index in candidates:
-            # A title's numbers/roman numerals must appear in the headline, so
-            # "Final Fantasy X" doesn't match "Final Fantasy XVI" and "FIFA 25"
-            # doesn't match "FIFA 2005".
-            if self.fuzzy_required[index] <= token_set:
-                return self.fuzzy_titles[index], round(score)
-        return None, 0
+    def match(self, text, ps2_source=False):
+        """Returns (title, score) or (None, 0) — the best single match, as before."""
+        found = self.match_all(text, ps2_source)
+        return (found[0][0], found[0][1]) if found else (None, 0)
 
 
 def _retry_delay(response):
@@ -311,11 +445,37 @@ def fetch_feed(session, url, retry_rate_limit=True):
     return feedparser.parse(response.content)
 
 
+def _stem_hit(token, stems):
+    return any(token.startswith(stem) for stem in stems)
+
+
 def analyze_sentiment(text):
+    """Tone only. A negator within NEGATION_WINDOW tokens flips a word's sign, so
+    "not a masterpiece" no longer reads as praise."""
+    tokens = re.findall(r"[a-z]+", (text or "").lower())
     score = 50
-    score += 10 * sum(1 for p in POSITIVE_WORDS if p.search(text))
-    score -= 15 * sum(1 for p in NEGATIVE_WORDS if p.search(text))
+    for i, token in enumerate(tokens):
+        negated = any(w in NEGATORS for w in tokens[max(0, i - NEGATION_WINDOW):i])
+        if _stem_hit(token, POSITIVE_STEMS):
+            score += -10 if negated else 10
+        elif _stem_hit(token, NEGATIVE_STEMS):
+            score += 15 if negated else -15
     return max(10, min(100, score))
+
+
+def hype_score(text):
+    """How much announcement/rumour language an item carries, kept out of sentiment
+    so a remaster announcement isn't automatically 'positive'."""
+    tokens = re.findall(r"[a-z]+", (text or "").lower())
+    return sum(1 for token in tokens if _stem_hit(token, HYPE_STEMS))
+
+
+def is_remaster(text, matched):
+    """Strong wording flags on its own; everyday words like "collection" or "returns"
+    only flag alongside a matched PS2 game."""
+    if REMASTER_STRONG_PATTERN.search(text):
+        return True
+    return bool(matched) and bool(REMASTER_WEAK_PATTERN.search(text))
 
 
 def entry_source(entry, feed, job):
@@ -334,6 +494,18 @@ def entry_feed_key(entry, job):
         term = tags[0].get("term") if tags else None
         return f"reddit:{term.lower()}" if term else None
     return source_key(job["sources"][0])
+
+
+def entry_body(entry):
+    """The start of an entry's summary / description / self-post text, stripped of markup.
+    Reddit self-posts, YouTube descriptions and most RSS feeds all carry one, and it
+    names games the title doesn't."""
+    raw = entry.get("summary") or ""
+    if not raw:
+        content = entry.get("content") or []
+        raw = content[0].get("value", "") if content else ""
+    text = HTML_TAG_PATTERN.sub(" ", raw)
+    return " ".join(text.split()[:MAX_BODY_TOKENS])
 
 
 def entry_link(entry, kind, shared_links=frozenset()):
@@ -373,7 +545,17 @@ def analyze_entry(entry, feed, job, matcher, first_seen, ps2_keys, repeated_link
     headline = entry.title.strip()
     source = entry_source(entry, feed, job)
     key = entry_feed_key(entry, job)
-    game, score = matcher.match(headline, ps2_source=key in ps2_keys)
+    ps2_source = key in ps2_keys
+    found = matcher.match_all(headline, ps2_source=ps2_source)
+    matched_in = "title" if found else None
+    if not found:
+        # Nothing in the title: try the body, which is noisier, so it has to match
+        # harder and the item has to be about the PS2 one way or another.
+        body = entry_body(entry)
+        if body and (ps2_source or PS2_CONTEXT_PATTERN.search(f"{headline} {body}")):
+            found = matcher.match_all(body, ps2_source=ps2_source, threshold=BODY_MATCH_THRESHOLD)
+            matched_in = "body" if found else None
+    game, score, method = found[0] if found else (None, 0, None)
     timestamp, dated = entry_timestamp(entry)
     item = {
         "headline": headline,
@@ -382,9 +564,13 @@ def analyze_entry(entry, feed, job, matcher, first_seen, ps2_keys, repeated_link
         "feed": key,
         "link": entry_link(entry, job["type"], repeated_links),
         "matched_game": game,
+        "matched_games": [t for t, _, _ in found],
         "match_score": score,
-        "is_remaster_rumor": bool(REMASTER_PATTERN.search(headline)),
+        "match_method": method,
+        "matched_in": matched_in,
+        "is_remaster_rumor": is_remaster(headline, game),
         "sentiment": analyze_sentiment(headline),
+        "hype": hype_score(headline),
         "timestamp": timestamp,
     }
     if not dated:
@@ -744,14 +930,17 @@ def run_scraper():
         print("No new or changed items; leaving snapshot untouched.")
         return
 
+    matched = sum(1 for i in items if i.get("matched_game"))
+    from_body = sum(1 for i in items if i.get("matched_in") == "body")
     output = {
         "last_updated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
         "total_tracked_feeds": sum(1 for s in config["sources"] if s["enabled"]),
         "items": merged_items,
     }
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    print(f"Saved {len(merged_items)} items ({len(items)} fetched this run, {core_failures} news/Reddit and "
-          f"{extra_failures} YouTube/podcast feed failures, {skipped} skipped) to {OUTPUT_PATH}")
+    print(f"Saved {len(merged_items)} items ({len(items)} fetched this run, {matched} matched a PS2 game "
+          f"({from_body} from body text), {core_failures} news/Reddit and {extra_failures} YouTube/podcast "
+          f"feed failures, {skipped} skipped) to {OUTPUT_PATH}")
 
 
 if __name__ == "__main__":
