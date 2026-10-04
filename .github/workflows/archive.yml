@@ -1,0 +1,32 @@
+name: Archive mentions
+
+on:
+  schedule:
+    - cron: "23 */6 * * *"   # four times a day; the snapshot holds 14 days, so this is ample
+  workflow_dispatch:
+
+concurrency:
+  group: archive
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python archive.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/archive
+          git diff --staged --quiet || git commit -m "Archive PS2 game mentions"
+          git push
