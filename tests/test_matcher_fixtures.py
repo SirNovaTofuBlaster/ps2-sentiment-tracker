@@ -45,6 +45,7 @@ MIN_REVIEWED = 40      # below this the numbers are too noisy to gate on
 # not be found, fix these two functions -- nothing else needs to change.
 # --------------------------------------------------------------------------
 
+import functools
 import inspect
 import re
 
@@ -79,7 +80,9 @@ def _titles_from_source(scraper):
     obj = getattr(scraper, name, None)
     if obj is None:
         # A local: find the module-level call it was assigned from.
-        assigned = re.search(rf"^\s*{re.escape(name)}\s*=\s*([A-Za-z_]\w*)\s*\(\s*\)", source, re.M)
+        # The call may pass arguments -- load_titles(path) -- but any that
+        # matter have defaults, so it is still callable with none.
+        assigned = re.search(rf"^\s*{re.escape(name)}\s*=\s*([A-Za-z_]\w*)\s*\(", source, re.M)
         if not assigned:
             return None
         obj, called = getattr(scraper, assigned.group(1), None), True
@@ -93,27 +96,43 @@ def _titles_from_source(scraper):
     return titles if _looks_like_titles(titles) else None
 
 
-def _titles_by_name(scraper):
-    """Fallback: a module-level list or no-argument function that yields titles."""
+def _title_candidates(scraper):
+    """Every module-level list or no-argument function that yields titles.
+
+    Returns (name, titles) pairs. There is usually more than one: scraper.py
+    keeps a small hand-written FALLBACK_TITLES alongside the real library, and
+    picking the wrong one scores every obscure game as a missed match.
+    """
+    found = []
     for name in sorted(dir(scraper)):
         if not _TITLE_NAME.search(name) or _UNSAFE_NAME.search(name):
             continue
         obj = getattr(scraper, name, None)
         if _looks_like_titles(obj):
-            return obj
-        if callable(obj):
+            found.append((name, list(obj)))
+            continue
+        if callable(obj) and not isinstance(obj, type):
             try:
-                if not inspect.signature(obj).parameters:
-                    titles = obj()
-                    if _looks_like_titles(titles):
-                        return titles
+                # Callable as-is: no parameters, or every one has a default.
+                # The real loader is often load_titles(path="data/...").
+                if any(p.default is inspect.Parameter.empty
+                       and p.kind not in (p.VAR_POSITIONAL, p.VAR_KEYWORD)
+                       for p in inspect.signature(obj).parameters.values()):
+                    continue
+                titles = obj()
             except Exception:
                 continue
-    return None
+            if _looks_like_titles(titles):
+                found.append((f"{name}()", list(titles)))
+    return found
 
 
+@functools.lru_cache(maxsize=1)
 def build_matcher():
-    """Return a TitleMatcher loaded with the same library the scraper uses."""
+    """Return a TitleMatcher loaded with the same library the scraper uses.
+
+    Cached: building it indexes every title, and three callers need it.
+    """
     import scraper
 
     for name in ("build_matcher", "make_matcher", "get_matcher"):
@@ -125,13 +144,20 @@ def build_matcher():
     if Matcher is None:
         raise RuntimeError("scraper.py has no TitleMatcher.")
 
-    titles = _titles_from_source(scraper) or _titles_by_name(scraper)
-    if titles is None:
+    candidates = _title_candidates(scraper)
+    from_source = _titles_from_source(scraper)
+    if from_source is not None:
+        candidates.append(("run_scraper's own list", list(from_source)))
+    if not candidates:
         names = ", ".join(n for n in dir(scraper) if _TITLE_NAME.search(n)) or "(none)"
         raise RuntimeError(
             "Could not find the PS2 title list. Module-level names that looked "
             f"relevant: {names}. Edit build_matcher() in this file."
         )
+
+    # The full library, not a fallback subset: the real one is far larger.
+    build_matcher.source, titles = max(candidates, key=lambda pair: len(pair[1]))
+    build_matcher.considered = {name: len(t) for name, t in candidates}
     return Matcher(titles)
 
 
@@ -254,6 +280,17 @@ class MatcherFixtureTests(unittest.TestCase):
         # Printed whether the tests pass or fail: a green run that tells you
         # nothing is how a matcher regression goes unnoticed.
         r = cls.result
+        # Which title list was loaded, and every one that was considered. A
+        # library far smaller than the scraper's turns every obscure game into
+        # a fake missed match, so this line is checked before the scores are.
+        considered = getattr(build_matcher, "considered", {})
+        if considered:
+            print(f"\n  library: {getattr(build_matcher, 'source', '?')} "
+                  f"({max(considered.values())} titles); considered "
+                  + ", ".join(f"{n}={c}" for n, c in sorted(considered.items())))
+        summary = getattr(build_matcher(), "summary", None)
+        if callable(summary):
+            print(f"  matcher: {summary()}")
         print(f"\n  matcher on {r['items']} labelled headlines:"
               f"  precision {r['precision']:.3f}  recall {r['recall']:.3f}"
               f"  ({r['hits']} right, {r['spurious']} wrong, {r['misses']} missed,"
