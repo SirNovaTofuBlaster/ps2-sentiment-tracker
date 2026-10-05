@@ -330,7 +330,14 @@ class TitleMatcher:
         """Indexes both halves of a title with a colon as names for it: "Metal Gear
         Solid 3" and "Snake Eater" both mean Metal Gear Solid 3: Snake Eater. A half
         that two different games share ("Prince of Persia", "Silent Hill") is dropped
-        as ambiguous; a short one only counts when the text also mentions the PS2."""
+        as ambiguous.
+
+        Every variant needs the text to mention the PS2, however long it is. A half
+        is a fragment of a name rather than the name itself, so on its own it claims
+        far too much: "War on Terror" is Fugitive Hunter in a PS2 context and an
+        ordinary phrase in a GTA 6 article, and "Zone of the Enders" names the PS2
+        game, the GBA one, and the anime. Exempting the longer halves assumed length
+        meant specificity; it does not."""
         claims = {}
         for title in titles:
             if ":" not in title:
@@ -349,7 +356,7 @@ class TitleMatcher:
         for name, owners in claims.items():
             if len(owners) != 1:
                 continue  # two games share it: not a usable name
-            self.variants[name] = (next(iter(owners)), len(name.split()) < 3)
+            self.variants[name] = (next(iter(owners)), True)
 
     def summary(self):
         return (f"{len(self.fuzzy_titles)} fuzzy, {len(self.short)} short, "
