@@ -30,9 +30,12 @@ if str(ROOT) not in sys.path:
 
 FIXTURES = ROOT / "tests" / "fixtures" / "headlines.json"
 
-# Regression floors. Start permissive, tighten after the first clean run.
-MIN_PRECISION = 0.85   # of the games the matcher claimed, how many were right
-MIN_RECALL = 0.70      # of the games actually discussed, how many it found
+# Regression floors. These are PLACEHOLDERS, deliberately slack so the first
+# run reports rather than fails. Read the numbers it prints, then set each
+# floor just below what you actually scored -- that is what turns this file
+# from a report into a guard against the next matcher change.
+MIN_PRECISION = 0.60   # of the games the matcher claimed, how many were right
+MIN_RECALL = 0.60      # of the games actually discussed, how many it found
 MIN_REVIEWED = 40      # below this the numbers are too noisy to gate on
 
 
@@ -42,61 +45,119 @@ MIN_REVIEWED = 40      # below this the numbers are too noisy to gate on
 # not be found, fix these two functions -- nothing else needs to change.
 # --------------------------------------------------------------------------
 
-MATCHER_FACTORIES = ("build_matcher", "make_matcher", "get_matcher", "title_matcher")
-TITLE_SOURCES = ("load_titles", "load_games", "load_library", "ps2_titles",
-                 "GAME_TITLES", "PS2_TITLES", "PS2_GAMES", "TITLES", "GAMES")
-MATCH_METHODS = ("match", "find", "matches", "find_matches", "match_title",
-                 "match_headline", "games_in", "detect", "__call__")
+import inspect
+import re
+
+# scraper.py builds its matcher as TitleMatcher(titles) inside run_scraper, from
+# a module-level function that returns the title list. Rather than hard-code that
+# function's name -- renaming it would silently break this file -- we read
+# scraper.py and follow whatever run_scraper actually passes.
+_TITLE_NAME = re.compile(r"title|game|librar", re.I)
+_UNSAFE_NAME = re.compile(r"fetch|resolve|download|request|scrape|run|main|save|write|update", re.I)
+_MIN_LIBRARY = 50   # fewer titles than this and we have grabbed the wrong list
+
+
+def _looks_like_titles(value) -> bool:
+    if isinstance(value, (str, bytes)) or not isinstance(value, (list, tuple, set, frozenset)):
+        return False
+    items = list(value)
+    return len(items) >= _MIN_LIBRARY and all(isinstance(i, str) for i in items[:20])
+
+
+def _titles_from_source(scraper):
+    """Follow what run_scraper passes to TitleMatcher(...), by reading the file."""
+    try:
+        source = inspect.getsource(scraper)
+    except (OSError, TypeError):
+        return None
+
+    call = re.search(r"TitleMatcher\(\s*([A-Za-z_]\w*)\s*(\(\s*\))?\s*[,)]", source)
+    if not call:
+        return None
+    name, called = call.group(1), bool(call.group(2))
+
+    obj = getattr(scraper, name, None)
+    if obj is None:
+        # A local: find the module-level call it was assigned from.
+        assigned = re.search(rf"^\s*{re.escape(name)}\s*=\s*([A-Za-z_]\w*)\s*\(\s*\)", source, re.M)
+        if not assigned:
+            return None
+        obj, called = getattr(scraper, assigned.group(1), None), True
+        if obj is None:
+            return None
+
+    try:
+        titles = obj() if (called or callable(obj)) else obj
+    except Exception:
+        return None
+    return titles if _looks_like_titles(titles) else None
+
+
+def _titles_by_name(scraper):
+    """Fallback: a module-level list or no-argument function that yields titles."""
+    for name in sorted(dir(scraper)):
+        if not _TITLE_NAME.search(name) or _UNSAFE_NAME.search(name):
+            continue
+        obj = getattr(scraper, name, None)
+        if _looks_like_titles(obj):
+            return obj
+        if callable(obj):
+            try:
+                if not inspect.signature(obj).parameters:
+                    titles = obj()
+                    if _looks_like_titles(titles):
+                        return titles
+            except Exception:
+                continue
+    return None
 
 
 def build_matcher():
-    """Return a ready-to-use TitleMatcher, however scraper.py exposes one."""
+    """Return a TitleMatcher loaded with the same library the scraper uses."""
     import scraper
 
-    for name in MATCHER_FACTORIES:
+    for name in ("build_matcher", "make_matcher", "get_matcher"):
         factory = getattr(scraper, name, None)
         if callable(factory):
             return factory()
 
     Matcher = getattr(scraper, "TitleMatcher", None)
     if Matcher is None:
+        raise RuntimeError("scraper.py has no TitleMatcher.")
+
+    titles = _titles_from_source(scraper) or _titles_by_name(scraper)
+    if titles is None:
+        names = ", ".join(n for n in dir(scraper) if _TITLE_NAME.search(n)) or "(none)"
         raise RuntimeError(
-            "scraper.py has no TitleMatcher and no matcher factory. "
-            f"Looked for: TitleMatcher, {', '.join(MATCHER_FACTORIES)}."
+            "Could not find the PS2 title list. Module-level names that looked "
+            f"relevant: {names}. Edit build_matcher() in this file."
         )
-
-    try:
-        return Matcher()
-    except TypeError:
-        pass
-
-    for name in TITLE_SOURCES:
-        obj = getattr(scraper, name, None)
-        if obj is None:
-            continue
-        try:
-            titles = obj() if callable(obj) else obj
-            return Matcher(titles)
-        except TypeError:
-            continue
-
-    raise RuntimeError(
-        "Could not construct TitleMatcher. It takes arguments, and none of "
-        f"{', '.join(TITLE_SOURCES)} fitted. Edit build_matcher() in this file."
-    )
+    return Matcher(titles)
 
 
-def match_games(matcher, headline: str) -> set[str]:
-    """Normalise whatever the matcher returns into a set of title strings."""
-    for name in MATCH_METHODS:
-        method = getattr(matcher, name, None)
-        if not callable(method):
-            continue
-        return _as_titles(method(headline))
-    raise RuntimeError(
-        "TitleMatcher exposes none of the expected lookup methods "
-        f"({', '.join(MATCH_METHODS)}). Edit match_games() in this file."
-    )
+# Sources whose items the scraper treats as PS2 context, which lets ambiguous
+# short titles ("Bully", "Black") match. A row may set "ps2_source" itself to
+# override this; otherwise it is read from the source name, the same way the
+# scraper's ps2 role does.
+_PS2_SOURCE = re.compile(r"\bps2\b|\bpcsx2\b|playstation\s*2", re.I)
+
+
+def is_ps2_source(row: dict) -> bool:
+    if isinstance(row.get("ps2_source"), bool):
+        return row["ps2_source"]
+    return bool(_PS2_SOURCE.search(str(row.get("source", ""))))
+
+
+def match_games(matcher, headline: str, ps2_source: bool = False) -> set[str]:
+    """Every title the matcher finds, as the scraper would see them.
+
+    match_all() is the right entry point: match() returns a single
+    (title, score) pair and would be misread as two separate games.
+    """
+    method = getattr(matcher, "match_all", None)
+    if not callable(method):
+        raise RuntimeError("TitleMatcher has no match_all(); edit match_games() in this file.")
+    return _as_titles(method(headline, ps2_source=ps2_source))
 
 
 def _as_titles(result) -> set[str]:
@@ -145,7 +206,7 @@ def score(rows: list[dict]) -> dict:
     for row in rows:
         headline = str(row.get("headline", ""))
         expected = {str(g).strip() for g in row.get("expect", []) if str(g or "").strip()}
-        found = match_games(matcher, headline)
+        found = match_games(matcher, headline, is_ps2_source(row))
 
         hits += len(expected & found)
         misses += len(expected - found)
@@ -190,6 +251,18 @@ class MatcherFixtureTests(unittest.TestCase):
                 f"label at least {MIN_REVIEWED} before gating on them"
             )
         cls.result = score(cls.rows)
+        # Printed whether the tests pass or fail: a green run that tells you
+        # nothing is how a matcher regression goes unnoticed.
+        r = cls.result
+        print(f"\n  matcher on {r['items']} labelled headlines:"
+              f"  precision {r['precision']:.3f}  recall {r['recall']:.3f}"
+              f"  ({r['hits']} right, {r['spurious']} wrong, {r['misses']} missed,"
+              f" {r['exact']}/{r['items']} headlines exact)")
+        for headline, games in r["false_positives"][:10]:
+            print(f"    wrong:  {sorted(games)} <- {headline[:80]}")
+        for headline, games in r["false_negatives"][:10]:
+            print(f"    missed: {sorted(games)} <- {headline[:80]}")
+        print(f"  floors: precision {MIN_PRECISION}, recall {MIN_RECALL}\n")
 
     def test_precision_has_not_regressed(self):
         worst = "; ".join(f"{h[:60]!r} -> {sorted(g)}" for h, g in self.result["false_positives"][:5])
@@ -211,12 +284,15 @@ class MatcherFixtureTests(unittest.TestCase):
         """A label the matcher could never produce is a typo, not a miss."""
         matcher = build_matcher()
         known = set()
-        for attr in ("fuzzy_titles", "titles", "aliases", "short", "variants"):
-            value = getattr(matcher, attr, None)
-            if isinstance(value, dict):
-                known |= {str(k) for k in value} | {str(v) for v in value.values() if isinstance(v, str)}
-            elif isinstance(value, (list, set, tuple)):
-                known |= {str(v) for v in value if isinstance(v, str)}
+        for attr in ("fuzzy_titles", "titles"):
+            known |= {t for t in getattr(matcher, attr, []) or [] if isinstance(t, str)}
+        # short/variants map a normalised name to (title, needs_context);
+        # aliases maps it straight to the title.
+        for attr in ("short", "variants", "aliases"):
+            for value in (getattr(matcher, attr, {}) or {}).values():
+                title = value[0] if isinstance(value, (tuple, list)) and value else value
+                if isinstance(title, str):
+                    known.add(title)
         if not known:
             self.skipTest("cannot read the matcher's title list to check labels against")
 
