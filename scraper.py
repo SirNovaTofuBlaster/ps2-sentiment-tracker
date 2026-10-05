@@ -118,8 +118,12 @@ JUNK_TITLE_PATTERN = re.compile(
     re.IGNORECASE,
 )
 BRACKET_PATTERN = re.compile(r"\s*\[[^\]]*\]")  # "[Platinum]", "[Demo]", "[Der Herr der Ringe]"
-INVERTED_ARTICLE_PATTERN = re.compile(r"^(.+),\s*(The|A|An)$")  # "Thing, The" -> "The Thing"
-NUMERAL_TOKEN = re.compile(r"\d+")  # after normalisation every numeral is a digit run
+# "Thing, The" -> "The Thing", and before a subtitle too:
+# "Getaway, The: Black Monday" -> "The Getaway: Black Monday".
+INVERTED_ARTICLE_PATTERN = re.compile(r"^([^:]+?),\s*(The|A|An)(:.*)?$")
+# A word that pins down which entry of a series a title is: "2", "2005", "ex3".
+# After normalisation every numeral is a digit run, roman ones included.
+NUMERAL_TOKEN = re.compile(r"\d")
 HTML_TAG_PATTERN = re.compile(r"<[^>]+>")
 
 # Roman numerals are written both ways ("Jak II" vs "Jak 2", "Final Fantasy X"
@@ -223,7 +227,7 @@ def clean_title(raw):
     title = re.sub(r"\s+", " ", title).lstrip(". ").rstrip()
     match = INVERTED_ARTICLE_PATTERN.match(title)
     if match:
-        title = f"{match.group(2)} {match.group(1)}"
+        title = f"{match.group(2)} {match.group(1)}{match.group(3) or ''}"
     return title or None
 
 
@@ -272,11 +276,19 @@ class TitleMatcher:
     """Matches text to PS2 titles: aliases, exact short titles, name variants, then fuzzy.
 
     The fuzzy pass compares runs of words from the text against candidate titles.
-    It scores with token_sort_ratio rather than WRatio on purpose: WRatio rewards
-    a good *substring* match, so a generic run of words like "collector s edition"
-    scored 90 against "The Godfather: Collector's Edition" simply by appearing
-    inside it. token_sort_ratio counts what the title has and the text doesn't,
-    so a gram has to account for most of a title to match it.
+    It scores with plain ratio, which is strict in the two ways that matter:
+
+    - Length. WRatio rewards a good *substring* match, so a generic run of words
+      like "collector s edition" scored 90 against "The Godfather: Collector's
+      Edition" simply by appearing inside it. ratio counts what the title has and
+      the text doesn't, so a gram has to account for most of a title to match it.
+    - Word order. token_sort_ratio sorts the words before comparing, so "Ace
+      Combat" scored 100 against the unrelated title "Combat Ace" and every Ace
+      Combat headline was filed under it. Titles are written in one order.
+
+    One game is claimed once per text: two database spellings of a title count as
+    one, and a title whose words sit inside a longer matched title is dropped (see
+    _drop_contained).
 
     Candidates are narrowed through a token index first, so most text costs a few
     set lookups instead of thousands of string comparisons."""
@@ -285,19 +297,26 @@ class TitleMatcher:
         self.fuzzy_titles, self.fuzzy_norms, self.fuzzy_required = [], [], []
         self.short = {}  # normalised title -> (title, needs_ps2_context)
         self.variants = {}  # normalised main title / subtitle -> (title, needs_ps2_context)
+        # The index lists some games twice ("Need for Speed Most Wanted" and "Need for
+        # Speed: Most Wanted"). They are one game, reported under one spelling.
+        self.canonical = {}  # normalised title -> the spelling every match of it uses
         seen = set()
         for title in titles:
             norm = normalise(title)
             if not norm or norm in seen:
                 continue
             seen.add(norm)
+            self.canonical[norm] = title
             if len(norm) >= SHORT_TITLE_MAX_LEN:
                 self.fuzzy_titles.append(title)
                 self.fuzzy_norms.append(norm)
-                self.fuzzy_required.append({t for t in norm.split() if NUMERAL_TOKEN.fullmatch(t)})
+                self.fuzzy_required.append({t for t in norm.split() if NUMERAL_TOKEN.search(t)})
             else:
-                ambiguous = " " not in norm and not any(c.isdigit() for c in norm) \
-                    and norm not in DISTINCTIVE_SHORT
+                # A one-word title is ambiguous unless a digit pins it down ("ssx 3").
+                # A title that is *only* a number is the most ambiguous of all:
+                # "XIII" normalises to "13", which is also a date, a count and a version.
+                ambiguous = " " not in norm and norm not in DISTINCTIVE_SHORT \
+                    and (norm.isdigit() or not any(c.isdigit() for c in norm))
                 self.short[norm] = (title, ambiguous)
         self.aliases = {normalise(k): v for k, v in TITLE_ALIASES.items()}
         self._build_token_index()
@@ -382,6 +401,7 @@ class TitleMatcher:
         return sorted(usable, key=lambda g: (-len(g), g))
 
     def _fuzzy_matches(self, norm, threshold):
+        """Fuzzy title matches as (title, score, the run of words that matched), best first."""
         tokens = norm.split()
         if len(tokens) < 2:
             return []
@@ -396,17 +416,78 @@ class TitleMatcher:
         found = {}
         for gram in self._grams(tokens):
             hit = process.extractOne(gram, candidate_norms,
-                                     scorer=fuzz.token_sort_ratio, score_cutoff=threshold)
+                                     scorer=fuzz.ratio, score_cutoff=threshold)
             if not hit:
                 continue
             index = candidates[hit[2]]
-            # A title's numbers must appear in the text, so "Final Fantasy X"
-            # doesn't match "Final Fantasy XVI" and "FIFA 25" doesn't match "FIFA 2005".
+            # A title's numbers must appear in the text, so "Final Fantasy X" doesn't
+            # match "Final Fantasy XVI", "FIFA 25" doesn't match "FIFA 2005" and
+            # "Street Fighter 6" doesn't match "Street Fighter EX3".
             if not self.fuzzy_required[index] <= token_set:
                 continue
             title = self.fuzzy_titles[index]
-            found[title] = max(found.get(title, 0), round(hit[1]))
-        return sorted(found.items(), key=lambda pair: -pair[1])
+            score = round(hit[1])
+            if title not in found or score > found[title][0]:
+                found[title] = (score, gram)
+        return [(title, score, gram)
+                for title, (score, gram) in sorted(found.items(), key=lambda pair: -pair[1][0])]
+
+    @staticmethod
+    def _occurrences(tokens, run):
+        """Every (start, end) at which a run of words appears in the text."""
+        size = len(run)
+        return [(i, i + size) for i in range(len(tokens) - size + 1) if tokens[i:i + size] == run]
+
+    @staticmethod
+    def _widen(tokens, span, run, title_tokens):
+        """Stretches a matched run over as much of its title as the text spells out
+        around it. A subtitle match on "metallica" in "guitar hero metallica ps2"
+        covers all three words, because those are the words of the title it stands for."""
+        best = span
+        size = len(run)
+        for offset in range(len(title_tokens) - size + 1):
+            if title_tokens[offset:offset + size] != run:
+                continue
+            start, end = span
+            before = offset - 1
+            while before >= 0 and start > 0 and tokens[start - 1] == title_tokens[before]:
+                start, before = start - 1, before - 1
+            after = offset + size
+            while after < len(title_tokens) and end < len(tokens) and tokens[end] == title_tokens[after]:
+                end, after = end + 1, after + 1
+            if end - start > best[1] - best[0]:
+                best = (start, end)
+        return best
+
+    def _drop_contained(self, tokens, claims):
+        """Drops a claim whose words sit entirely inside a longer claim's.
+
+        "God of War 2" names one game, but "god of war" is a title of its own and
+        used to be claimed alongside it; so were "Cars" next to "Cars: Mater-National",
+        "Kingdom Hearts" next to "Kingdom Hearts II" and "Test Drive" next to "Test
+        Drive: Eve of Destruction". The longer claim has to be an exact one (an inexact
+        fuzzy match can't vouch for the words around it), and every place the shorter
+        title appears has to be covered: "God of War and God of War II" still names both.
+        """
+        if len(claims) < 2:
+            return claims
+        narrow, wide = [], []
+        for title, score, method, gram in claims:
+            run = gram.split()
+            spans = self._occurrences(tokens, run)
+            narrow.append(spans)
+            exact = method != "fuzzy" or score == 100
+            title_tokens = normalise(title).split()
+            wide.append([self._widen(tokens, span, run, title_tokens) for span in spans] if exact else [])
+        kept = []
+        for i, claim in enumerate(claims):
+            contained = bool(narrow[i]) and all(
+                any(j != i and start <= s and e <= end and end - start > e - s
+                    for j in range(len(claims)) for start, end in wide[j])
+                for s, e in narrow[i])
+            if not contained:
+                kept.append(claim)
+        return kept
 
     def match_all(self, text, ps2_source=False, threshold=MATCH_THRESHOLD):
         """Every PS2 title the text mentions, best first, as (title, score, method)."""
@@ -418,31 +499,32 @@ class TitleMatcher:
         ordered = sorted(grams, key=lambda g: (-len(g), g))
         has_context = self._has_ps2_context(text, ps2_source)
 
-        results, seen = [], set()
+        claims, seen = [], set()  # (title, score, method, the run of words that matched)
 
-        def add(title, score, method):
-            if title not in seen:
-                seen.add(title)
-                results.append((title, score, method))
+        def add(title, score, method, gram):
+            key = normalise(title)  # two spellings of one game are one claim
+            if key not in seen:
+                seen.add(key)
+                claims.append((self.canonical.get(key, title), score, method, gram))
 
         for gram in ordered:
             if gram in self.aliases:
-                add(self.aliases[gram], 100, "alias")
+                add(self.aliases[gram], 100, "alias", gram)
         for gram in ordered:
             if gram in self.short:
                 title, ambiguous = self.short[gram]
                 if ambiguous and not has_context:
                     continue
-                add(title, 100, "exact")
+                add(title, 100, "exact", gram)
         for gram in ordered:
             if gram in self.variants:
                 title, needs_context = self.variants[gram]
                 if needs_context and not has_context:
                     continue
-                add(title, 92, "variant")
-        for title, score in self._fuzzy_matches(norm, threshold):
-            add(title, score, "fuzzy")
-        return results
+                add(title, 92, "variant", gram)
+        for title, score, gram in self._fuzzy_matches(norm, threshold):
+            add(title, score, "fuzzy", gram)
+        return [(title, score, method) for title, score, method, _ in self._drop_contained(tokens, claims)]
 
     def match(self, text, ps2_source=False):
         """Returns (title, score) or (None, 0) — the best single match, as before."""
