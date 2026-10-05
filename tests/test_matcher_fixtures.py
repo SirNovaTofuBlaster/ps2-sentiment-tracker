@@ -30,12 +30,16 @@ if str(ROOT) not in sys.path:
 
 FIXTURES = ROOT / "tests" / "fixtures" / "headlines.json"
 
-# Regression floors. These are PLACEHOLDERS, deliberately slack so the first
-# run reports rather than fails. Read the numbers it prints, then set each
-# floor just below what you actually scored -- that is what turns this file
-# from a report into a guard against the next matcher change.
-MIN_PRECISION = 0.60   # of the games the matcher claimed, how many were right
-MIN_RECALL = 0.60      # of the games actually discussed, how many it found
+# Regression floors, set from the first real measurement (2026-10-05):
+# precision 0.562, recall 0.900 over 41 labelled headlines.
+#
+# They sit below that, not at it, because the corpus is still small: those 41
+# headlines carry only ~10 real game mentions and 16 claims, so one row
+# changing its mind moves recall by a tenth. These floors catch a change that
+# makes the matcher clearly worse; they are not a precision instrument yet.
+# Raise them as the corpus grows and as the known false positives get fixed.
+MIN_PRECISION = 0.50   # of the games the matcher claimed, how many were right
+MIN_RECALL = 0.80      # of the games actually discussed, how many it found
 MIN_REVIEWED = 40      # below this the numbers are too noisy to gate on
 
 
@@ -53,112 +57,39 @@ import re
 # a module-level function that returns the title list. Rather than hard-code that
 # function's name -- renaming it would silently break this file -- we read
 # scraper.py and follow whatever run_scraper actually passes.
-_TITLE_NAME = re.compile(r"title|game|librar", re.I)
-_UNSAFE_NAME = re.compile(r"fetch|resolve|download|request|scrape|run|main|save|write|update", re.I)
-_MIN_LIBRARY = 50   # fewer titles than this and we have grabbed the wrong list
+# scraper.py builds its library in load_ps2_titles(session): the online regional
+# indexes, merged with the local cache, merged with FALLBACK_TITLES. We rebuild
+# that from the cache and the fallback list and skip the network entirely -- the
+# cache is what the fetched indexes are written to, so the only thing a fetch
+# adds is titles published since the last scraper run.
+#
+# This is deliberately exact rather than clever. An earlier version searched the
+# module for anything that looked like a title list and picked FALLBACK_TITLES,
+# which scored every game outside that hand-written list as a missed match.
+TITLE_SOURCES = ("read_cached_titles", "FALLBACK_TITLES")
 
 
-def _looks_like_titles(value) -> bool:
-    if isinstance(value, (str, bytes)) or not isinstance(value, (list, tuple, set, frozenset)):
-        return False
-    items = list(value)
-    return len(items) >= _MIN_LIBRARY and all(isinstance(i, str) for i in items[:20])
-
-
-def _titles_from_source(scraper):
-    """Follow what run_scraper passes to TitleMatcher(...), by reading the file."""
-    try:
-        source = inspect.getsource(scraper)
-    except (OSError, TypeError):
-        return None
-
-    call = re.search(r"TitleMatcher\(\s*([A-Za-z_]\w*)\s*(\(\s*\))?\s*[,)]", source)
-    if not call:
-        return None
-    name, called = call.group(1), bool(call.group(2))
-
-    obj = getattr(scraper, name, None)
-    if obj is None:
-        # A local: find the module-level call it was assigned from.
-        # The call may pass arguments -- load_titles(path) -- but any that
-        # matter have defaults, so it is still callable with none.
-        assigned = re.search(rf"^\s*{re.escape(name)}\s*=\s*([A-Za-z_]\w*)\s*\(", source, re.M)
-        if not assigned:
-            return None
-        obj, called = getattr(scraper, assigned.group(1), None), True
-        if obj is None:
-            return None
-
-    try:
-        titles = obj() if (called or callable(obj)) else obj
-    except Exception:
-        return None
-    return titles if _looks_like_titles(titles) else None
-
-
-def _title_candidates(scraper):
-    """Every module-level list or no-argument function that yields titles.
-
-    Returns (name, titles) pairs. There is usually more than one: scraper.py
-    keeps a small hand-written FALLBACK_TITLES alongside the real library, and
-    picking the wrong one scores every obscure game as a missed match.
-    """
-    found = []
-    for name in sorted(dir(scraper)):
-        if not _TITLE_NAME.search(name) or _UNSAFE_NAME.search(name):
-            continue
-        obj = getattr(scraper, name, None)
-        if _looks_like_titles(obj):
-            found.append((name, list(obj)))
-            continue
-        if callable(obj) and not isinstance(obj, type):
-            try:
-                # Callable as-is: no parameters, or every one has a default.
-                # The real loader is often load_titles(path="data/...").
-                if any(p.default is inspect.Parameter.empty
-                       and p.kind not in (p.VAR_POSITIONAL, p.VAR_KEYWORD)
-                       for p in inspect.signature(obj).parameters.values()):
-                    continue
-                titles = obj()
-            except Exception:
-                continue
-            if _looks_like_titles(titles):
-                found.append((f"{name}()", list(titles)))
-    return found
+def _library(scraper):
+    cached = scraper.read_cached_titles()
+    fallback = set(scraper.FALLBACK_TITLES)
+    if not cached:
+        raise RuntimeError(
+            "data/ps2_database.json is empty or missing, so the only titles "
+            "available are the fallback list. Run the scraper once to build "
+            "the cache, or the numbers here mean nothing."
+        )
+    return sorted(cached | fallback), len(cached), len(fallback)
 
 
 @functools.lru_cache(maxsize=1)
 def build_matcher():
-    """Return a TitleMatcher loaded with the same library the scraper uses.
-
-    Cached: building it indexes every title, and three callers need it.
-    """
+    """A TitleMatcher holding the same library the scraper matches against."""
     import scraper
 
-    for name in ("build_matcher", "make_matcher", "get_matcher"):
-        factory = getattr(scraper, name, None)
-        if callable(factory):
-            return factory()
-
-    Matcher = getattr(scraper, "TitleMatcher", None)
-    if Matcher is None:
-        raise RuntimeError("scraper.py has no TitleMatcher.")
-
-    candidates = _title_candidates(scraper)
-    from_source = _titles_from_source(scraper)
-    if from_source is not None:
-        candidates.append(("run_scraper's own list", list(from_source)))
-    if not candidates:
-        names = ", ".join(n for n in dir(scraper) if _TITLE_NAME.search(n)) or "(none)"
-        raise RuntimeError(
-            "Could not find the PS2 title list. Module-level names that looked "
-            f"relevant: {names}. Edit build_matcher() in this file."
-        )
-
-    # The full library, not a fallback subset: the real one is far larger.
-    build_matcher.source, titles = max(candidates, key=lambda pair: len(pair[1]))
-    build_matcher.considered = {name: len(t) for name, t in candidates}
-    return Matcher(titles)
+    titles, cached, fallback = _library(scraper)
+    build_matcher.source = (f"read_cached_titles() + FALLBACK_TITLES "
+                            f"({cached} cached, {fallback} fallback, {len(titles)} merged)")
+    return scraper.TitleMatcher(titles)
 
 
 # Sources whose items the scraper treats as PS2 context, which lets ambiguous
@@ -283,11 +214,7 @@ class MatcherFixtureTests(unittest.TestCase):
         # Which title list was loaded, and every one that was considered. A
         # library far smaller than the scraper's turns every obscure game into
         # a fake missed match, so this line is checked before the scores are.
-        considered = getattr(build_matcher, "considered", {})
-        if considered:
-            print(f"\n  library: {getattr(build_matcher, 'source', '?')} "
-                  f"({max(considered.values())} titles); considered "
-                  + ", ".join(f"{n}={c}" for n, c in sorted(considered.items())))
+        print(f"\n  library: {getattr(build_matcher, 'source', '?')}")
         summary = getattr(build_matcher(), "summary", None)
         if callable(summary):
             print(f"  matcher: {summary()}")
