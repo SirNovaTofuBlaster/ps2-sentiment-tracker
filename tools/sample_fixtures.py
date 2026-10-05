@@ -1,270 +1,266 @@
 #!/usr/bin/env python3
-"""Precision and recall for the title matcher, against hand-labelled headlines.
+"""Build a labelling draft for the matcher fixture corpus.
 
-The corpus lives in tests/fixtures/headlines.json; build a draft of it with
-tools/sample_fixtures.py and correct the labels by hand. Only entries marked
-"reviewed": true are scored, so a half-labelled file still runs.
+Reads the scraped feed (and any monthly archives), picks a spread of real
+headlines weighted towards the cases the matcher finds hard, and writes
+tests/fixtures/headlines.json pre-filled with whatever the matcher said at
+scrape time.
 
-Scoring is per game mention, not per headline: a headline labelled
-["God of War II", "Shadow of the Colossus"] where the matcher found only the
-first counts as one hit and one miss. Both numbers matter and they pull in
-opposite directions, which is the whole point of having them written down.
+You then correct the "expect" lists by hand and set "reviewed": true. This
+script never calls the matcher, so it can't quietly agree with a bad label --
+the stored match is a starting point, not an answer.
 
-    python -m unittest tests.test_matcher_fixtures -v     # pass/fail
-    python tests/test_matcher_fixtures.py                 # full report
+Re-running is safe: items you have already reviewed keep their labels, and
+only new headlines are added.
 
-Raise the floors below once you have a run you are happy with -- they exist
-to catch a regression, so they should sit just under the current numbers.
+    python tools/sample_fixtures.py                 # ~150 items
+    python tools/sample_fixtures.py --count 200
+    python tools/sample_fixtures.py --seed 7        # a different sample
+    python tools/sample_fixtures.py --stats         # show what it drew from
+
+Run it from the repository root.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
+import random
+import re
 import sys
-import unittest
+from collections import Counter, defaultdict
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
+FEED = ROOT / "data" / "sentiment_feed.json"
+ARCHIVE_DIR = ROOT / "data" / "archive"
+OUT = ROOT / "tests" / "fixtures" / "headlines.json"
 
-FIXTURES = ROOT / "tests" / "fixtures" / "headlines.json"
+# How much of the sample each bucket gets. Deliberately lopsided: the easy
+# cases are already right, so most of the budget goes to the ambiguous ones
+# and to unmatched headlines that look like they should have matched.
+QUOTAS = {
+    "sequel": 0.22,     # matched a numbered title: "Hitman 2", "Black 2"
+    "generic": 0.22,    # matched a short or common-word title: "Fahrenheit", "The Getaway"
+    "near_miss": 0.25,  # no match, but the headline smells like PS2
+    "matched": 0.16,    # matched something unremarkable
+    "unmatched": 0.15,  # no match, no signal: the baseline
+}
 
-# Regression floors. Start permissive, tighten after the first clean run.
-MIN_PRECISION = 0.85   # of the games the matcher claimed, how many were right
-MIN_RECALL = 0.70      # of the games actually discussed, how many it found
-MIN_REVIEWED = 40      # below this the numbers are too noisy to gate on
+MAX_PER_GAME = 3          # stop one popular game eating a whole bucket
+MIN_HEADLINE_CHARS = 20   # skip truncated or junk entries
+
+ROMAN = re.compile(r"\b(?:III|VIII|VII|VI|IV|IX|XII|XI|II|X|V)\b")
+NUMBERED = re.compile(r"\d")
+PS2_HINT = re.compile(
+    r"\b(ps2|ps\s?2|playstation\s?2|remaster(?:ed|s)?|remake|emulat\w*|hd\s+collection|"
+    r"retro|classic(?:s)?|ps\s?plus|backwards?\s+compat\w*)\b",
+    re.IGNORECASE,
+)
+
+# Title words that are ordinary English and so invite false positives.
+COMMON_WORDS = {
+    "the", "a", "an", "and", "of", "in", "on", "to", "for", "with", "black", "white",
+    "red", "blue", "green", "gold", "silver", "war", "god", "king", "legend", "legends",
+    "hero", "heroes", "fight", "fighter", "fighting", "night", "day", "time", "world",
+    "life", "death", "dark", "light", "fire", "ice", "storm", "shadow", "shadows",
+    "soul", "souls", "star", "stars", "sky", "land", "city", "state", "force", "forces",
+    "club", "party", "max", "pro", "live", "online", "arena", "racing", "race", "rally",
+    "run", "rush", "drive", "driver", "driven", "zone", "quest", "story", "stories",
+    "destiny", "fate", "rising", "reborn", "origins", "evolution", "revolution",
+}
 
 
-# --------------------------------------------------------------------------
-# Adapter. scraper.py's matcher API is the only thing this file assumes, and
-# it is all assumed here. If an error below tells you the entry point could
-# not be found, fix these two functions -- nothing else needs to change.
-# --------------------------------------------------------------------------
-
-MATCHER_FACTORIES = ("build_matcher", "make_matcher", "get_matcher", "title_matcher")
-TITLE_SOURCES = ("load_titles", "load_games", "load_library", "ps2_titles",
-                 "GAME_TITLES", "PS2_TITLES", "PS2_GAMES", "TITLES", "GAMES")
-MATCH_METHODS = ("match", "find", "matches", "find_matches", "match_title",
-                 "match_headline", "games_in", "detect", "__call__")
+def norm_headline(text: str) -> str:
+    """Key for dedup: same story from three sites collapses to one entry."""
+    return re.sub(r"[^a-z0-9 ]+", "", str(text or "").lower()).strip()
 
 
-def build_matcher():
-    """Return a ready-to-use TitleMatcher, however scraper.py exposes one."""
-    import scraper
-
-    for name in MATCHER_FACTORIES:
-        factory = getattr(scraper, name, None)
-        if callable(factory):
-            return factory()
-
-    Matcher = getattr(scraper, "TitleMatcher", None)
-    if Matcher is None:
-        raise RuntimeError(
-            "scraper.py has no TitleMatcher and no matcher factory. "
-            f"Looked for: TitleMatcher, {', '.join(MATCHER_FACTORIES)}."
-        )
-
+def read_json(path: Path):
     try:
-        return Matcher()
-    except TypeError:
-        pass
+        with path.open(encoding="utf-8-sig") as handle:
+            return json.load(handle)
+    except FileNotFoundError:
+        return None
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"  ! skipping {path.name}: {exc}", file=sys.stderr)
+        return None
 
-    for name in TITLE_SOURCES:
-        obj = getattr(scraper, name, None)
-        if obj is None:
+
+def games_of(item: dict) -> list[str]:
+    """The matcher's stored verdict, from either the new or old field."""
+    games = item.get("matched_games")
+    if isinstance(games, list):
+        found = [str(g).strip() for g in games if str(g or "").strip()]
+        if found:
+            return sorted(dict.fromkeys(found))
+    single = item.get("matched_game")
+    return [str(single).strip()] if str(single or "").strip() else []
+
+
+def load_items() -> list[dict]:
+    """Every scraped item we can find, newest file last so recent wins on dedup."""
+    items: list[dict] = []
+
+    feed = read_json(FEED)
+    if isinstance(feed, dict) and isinstance(feed.get("items"), list):
+        items.extend(i for i in feed["items"] if isinstance(i, dict))
+        print(f"  {len(items):>5} items from data/sentiment_feed.json")
+    elif feed is None:
+        print("  ! data/sentiment_feed.json not found -- run the scraper first", file=sys.stderr)
+
+    # Monthly archives use short keys (d/g/h/s/t/n/r/m); map them back.
+    for path in sorted(ARCHIVE_DIR.glob("*.json")):
+        archived = read_json(path)
+        rows = archived.get("items") if isinstance(archived, dict) else archived
+        if not isinstance(rows, list):
             continue
-        try:
-            titles = obj() if callable(obj) else obj
-            return Matcher(titles)
-        except TypeError:
+        before = len(items)
+        for row in rows:
+            if not isinstance(row, dict):
+                continue
+            items.append({
+                "headline": row.get("h") or row.get("headline"),
+                "source": row.get("s") or row.get("source"),
+                "matched_game": row.get("g") or row.get("matched_game"),
+                "matched_games": row.get("m") or row.get("matched_games"),
+                "is_remaster_rumor": row.get("r", row.get("is_remaster_rumor")),
+            })
+        print(f"  {len(items) - before:>5} items from data/archive/{path.name}")
+
+    return items
+
+
+def bucket_of(headline: str, games: list[str]) -> str:
+    if games:
+        if any(NUMBERED.search(g) or ROMAN.search(g) for g in games):
+            return "sequel"
+        for game in games:
+            words = [w for w in re.findall(r"[a-z0-9']+", game.lower())]
+            if len(words) <= 2 or sum(w in COMMON_WORDS for w in words) >= max(1, len(words) - 1):
+                return "generic"
+        return "matched"
+    return "near_miss" if PS2_HINT.search(headline) else "unmatched"
+
+
+def build_pool(items: list[dict]) -> dict[str, list[dict]]:
+    """Dedup, bucket, and cap how many entries any one game contributes."""
+    seen: set[str] = set()
+    pool: dict[str, list[dict]] = defaultdict(list)
+    per_game: Counter = Counter()
+
+    for item in items:
+        headline = str(item.get("headline") or "").strip()
+        if len(headline) < MIN_HEADLINE_CHARS:
             continue
-
-    raise RuntimeError(
-        "Could not construct TitleMatcher. It takes arguments, and none of "
-        f"{', '.join(TITLE_SOURCES)} fitted. Edit build_matcher() in this file."
-    )
-
-
-def match_games(matcher, headline: str) -> set[str]:
-    """Normalise whatever the matcher returns into a set of title strings."""
-    for name in MATCH_METHODS:
-        method = getattr(matcher, name, None)
-        if not callable(method):
+        key = norm_headline(headline)
+        if not key or key in seen:
             continue
-        return _as_titles(method(headline))
-    raise RuntimeError(
-        "TitleMatcher exposes none of the expected lookup methods "
-        f"({', '.join(MATCH_METHODS)}). Edit match_games() in this file."
-    )
+        seen.add(key)
 
+        games = games_of(item)
+        if games and any(per_game[g] >= MAX_PER_GAME for g in games):
+            continue
+        for game in games:
+            per_game[game] += 1
 
-def _as_titles(result) -> set[str]:
-    """Accept a string, a list, a list of (title, score) pairs, or a dict."""
-    if result is None:
-        return set()
-    if isinstance(result, str):
-        return {result.strip()} if result.strip() else set()
-    if isinstance(result, dict):
-        return {str(k).strip() for k in result if str(k).strip()}
-    titles = set()
-    for entry in result:
-        if isinstance(entry, str):
-            title = entry
-        elif isinstance(entry, (tuple, list)) and entry:
-            title = entry[0]
-        elif isinstance(entry, dict):
-            title = entry.get("title") or entry.get("game") or entry.get("name")
-        else:
-            title = entry
-        title = str(title or "").strip()
-        if title:
-            titles.add(title)
-    return titles
-
-
-# --------------------------------------------------------------------------
-# Scoring
-# --------------------------------------------------------------------------
-
-def load_corpus() -> list[dict]:
-    with FIXTURES.open(encoding="utf-8-sig") as handle:
-        rows = json.load(handle)
-    if not isinstance(rows, list):
-        raise ValueError("headlines.json must be a JSON list")
-    return [r for r in rows if isinstance(r, dict) and r.get("reviewed")]
-
-
-def score(rows: list[dict]) -> dict:
-    matcher = build_matcher()
-    hits = misses = spurious = 0
-    exact = 0
-    false_positives: list[tuple[str, set[str]]] = []
-    false_negatives: list[tuple[str, set[str]]] = []
-
-    for row in rows:
-        headline = str(row.get("headline", ""))
-        expected = {str(g).strip() for g in row.get("expect", []) if str(g or "").strip()}
-        found = match_games(matcher, headline)
-
-        hits += len(expected & found)
-        misses += len(expected - found)
-        spurious += len(found - expected)
-        if expected == found:
-            exact += 1
-        else:
-            if found - expected:
-                false_positives.append((headline, found - expected))
-            if expected - found:
-                false_negatives.append((headline, expected - found))
-
-    claimed = hits + spurious
-    actual = hits + misses
-    return {
-        "items": len(rows),
-        "exact": exact,
-        "precision": hits / claimed if claimed else 1.0,
-        "recall": hits / actual if actual else 1.0,
-        "hits": hits,
-        "misses": misses,
-        "spurious": spurious,
-        "false_positives": false_positives,
-        "false_negatives": false_negatives,
-    }
-
-
-class MatcherFixtureTests(unittest.TestCase):
-    """Gates matcher changes on labelled real headlines, not on vibes."""
-
-    @classmethod
-    def setUpClass(cls):
-        if not FIXTURES.exists():
-            raise unittest.SkipTest(
-                "tests/fixtures/headlines.json missing; build it with "
-                "tools/sample_fixtures.py"
-            )
-        cls.rows = load_corpus()
-        if len(cls.rows) < MIN_REVIEWED:
-            raise unittest.SkipTest(
-                f"only {len(cls.rows)} reviewed headlines; "
-                f"label at least {MIN_REVIEWED} before gating on them"
-            )
-        cls.result = score(cls.rows)
-
-    def test_precision_has_not_regressed(self):
-        worst = "; ".join(f"{h[:60]!r} -> {sorted(g)}" for h, g in self.result["false_positives"][:5])
-        self.assertGreaterEqual(
-            self.result["precision"], MIN_PRECISION,
-            f"precision {self.result['precision']:.3f} < {MIN_PRECISION} "
-            f"({self.result['spurious']} wrong matches). Examples: {worst}"
-        )
-
-    def test_recall_has_not_regressed(self):
-        worst = "; ".join(f"{h[:60]!r} missed {sorted(g)}" for h, g in self.result["false_negatives"][:5])
-        self.assertGreaterEqual(
-            self.result["recall"], MIN_RECALL,
-            f"recall {self.result['recall']:.3f} < {MIN_RECALL} "
-            f"({self.result['misses']} missed matches). Examples: {worst}"
-        )
-
-    def test_every_expected_title_is_in_the_library(self):
-        """A label the matcher could never produce is a typo, not a miss."""
-        matcher = build_matcher()
-        known = set()
-        for attr in ("fuzzy_titles", "titles", "aliases", "short", "variants"):
-            value = getattr(matcher, attr, None)
-            if isinstance(value, dict):
-                known |= {str(k) for k in value} | {str(v) for v in value.values() if isinstance(v, str)}
-            elif isinstance(value, (list, set, tuple)):
-                known |= {str(v) for v in value if isinstance(v, str)}
-        if not known:
-            self.skipTest("cannot read the matcher's title list to check labels against")
-
-        folded = {t.casefold() for t in known}
-        unknown = sorted({
-            game for row in self.rows for game in row.get("expect", [])
-            if str(game).casefold() not in folded
+        pool[bucket_of(headline, games)].append({
+            "headline": re.sub(r"\s+", " ", headline),
+            "source": str(item.get("source") or "").strip(),
+            "expect": games,
         })
-        self.assertFalse(
-            unknown,
-            "labels name titles the matcher does not know (typo, or a game "
-            f"missing from the library): {unknown[:10]}"
-        )
+
+    return pool
 
 
-def report() -> int:
-    if not FIXTURES.exists():
-        print(f"No corpus yet. Build one:\n  python tools/sample_fixtures.py")
+def draw(pool: dict[str, list[dict]], count: int, rng: random.Random) -> list[dict]:
+    """Take each bucket's quota, then top up from whatever is left over."""
+    picked: list[dict] = []
+    leftovers: list[dict] = []
+
+    for bucket, share in QUOTAS.items():
+        available = pool.get(bucket, [])
+        rng.shuffle(available)
+        want = round(count * share)
+        picked.extend(dict(row, bucket=bucket) for row in available[:want])
+        leftovers.extend(dict(row, bucket=bucket) for row in available[want:])
+
+    if len(picked) < count:
+        rng.shuffle(leftovers)
+        picked.extend(leftovers[: count - len(picked)])
+
+    picked.sort(key=lambda row: (row["bucket"], row["headline"].lower()))
+    return picked[:count]
+
+
+def merge(existing: list[dict], fresh: list[dict]) -> tuple[list[dict], int]:
+    """Keep every label already written; add only genuinely new headlines."""
+    kept = {norm_headline(row.get("headline", "")): row for row in existing}
+    added = 0
+    for row in fresh:
+        key = norm_headline(row["headline"])
+        if key in kept:
+            continue
+        kept[key] = row
+        added += 1
+
+    merged = list(kept.values())
+    merged.sort(key=lambda row: (row.get("bucket", "zz"), row.get("headline", "").lower()))
+    for n, row in enumerate(merged, 1):
+        row["id"] = f"f{n:03d}"
+        row.setdefault("reviewed", False)
+        # Field order, so the file reads the same way every time.
+        for field in ("id", "headline", "source", "bucket", "expect", "reviewed", "note"):
+            if field in row:
+                row[field] = row.pop(field)
+    return merged, added
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--count", type=int, default=150, help="how many headlines to draw (default 150)")
+    parser.add_argument("--seed", type=int, default=20261005, help="sampling seed; change it for a different draw")
+    parser.add_argument("--stats", action="store_true", help="show the bucket sizes and exit")
+    args = parser.parse_args()
+
+    print("Reading scraped data:")
+    items = load_items()
+    if not items:
+        print("\nNothing to sample. Run the scraper, or check you are in the repository root.", file=sys.stderr)
         return 1
 
-    all_rows = json.loads(FIXTURES.read_text(encoding="utf-8-sig"))
-    rows = load_corpus()
-    print(f"Corpus: {len(all_rows)} headlines, {len(rows)} reviewed\n")
-    if not rows:
-        print('Nothing reviewed yet. Correct the "expect" lists and set "reviewed": true.')
+    pool = build_pool(items)
+    print(f"\n{sum(len(v) for v in pool.values())} usable headlines after dedup:")
+    for bucket in QUOTAS:
+        print(f"  {bucket:<10} {len(pool.get(bucket, [])):>5}")
+
+    if args.stats:
+        return 0
+
+    thin = [b for b in QUOTAS if len(pool.get(b, [])) < round(args.count * QUOTAS[b])]
+    if thin:
+        print(f"\nNote: not enough items for {', '.join(thin)}; topping up from other buckets.")
+
+    fresh = draw(pool, args.count, random.Random(args.seed))
+    existing = read_json(OUT) or []
+    if not isinstance(existing, list):
+        print(f"\n{OUT} is not a JSON list; move it aside and re-run.", file=sys.stderr)
         return 1
 
-    result = score(rows)
-    print(f"  precision   {result['precision']:.3f}   (floor {MIN_PRECISION})")
-    print(f"  recall      {result['recall']:.3f}   (floor {MIN_RECALL})")
-    print(f"  exact       {result['exact']}/{result['items']} headlines fully correct")
-    print(f"  {result['hits']} right, {result['spurious']} wrong, {result['misses']} missed\n")
+    merged, added = merge(existing, fresh)
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    with OUT.open("w", encoding="utf-8") as handle:
+        json.dump(merged, handle, indent=2, ensure_ascii=False)
+        handle.write("\n")
 
-    if result["false_positives"]:
-        print(f"False positives ({len(result['false_positives'])}):")
-        for headline, games in result["false_positives"][:15]:
-            print(f"  + {sorted(games)}  <- {headline[:88]}")
-        print()
-    if result["false_negatives"]:
-        print(f"Missed matches ({len(result['false_negatives'])}):")
-        for headline, games in result["false_negatives"][:15]:
-            print(f"  - {sorted(games)}  <- {headline[:88]}")
-        print()
-
-    ok = result["precision"] >= MIN_PRECISION and result["recall"] >= MIN_RECALL
-    print("PASS" if ok else "FAIL (below a floor)")
-    return 0 if ok else 1
+    reviewed = sum(1 for row in merged if row.get("reviewed"))
+    print(f"\nWrote {OUT.relative_to(ROOT)}")
+    print(f"  {len(merged)} headlines, {added} new, {reviewed} already reviewed")
+    print(f"\nNext: open the file, fix each \"expect\" list, set \"reviewed\": true.")
+    print("  expect: [] means no PS2 game is being discussed.")
+    print("  Then: python -m unittest tests.test_matcher_fixtures -v")
+    return 0
 
 
 if __name__ == "__main__":
-    raise SystemExit(report())
+    raise SystemExit(main())
