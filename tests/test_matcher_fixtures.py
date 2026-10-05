@@ -40,6 +40,7 @@ FIXTURES = ROOT / "tests" / "fixtures" / "headlines.json"
 # Raise them as the corpus grows and as the known false positives get fixed.
 MIN_PRECISION = 0.50   # of the games the matcher claimed, how many were right
 MIN_RECALL = 0.80      # of the games actually discussed, how many it found
+FP_SHOWN = 80        # how many wrong/missed rows to print
 MIN_REVIEWED = 40      # below this the numbers are too noisy to gate on
 
 
@@ -222,9 +223,19 @@ class MatcherFixtureTests(unittest.TestCase):
               f"  precision {r['precision']:.3f}  recall {r['recall']:.3f}"
               f"  ({r['hits']} right, {r['spurious']} wrong, {r['misses']} missed,"
               f" {r['exact']}/{r['items']} headlines exact)")
-        for headline, games in r["false_positives"][:10]:
+        # Grouped by the title wrongly claimed, worst offender first. One title
+        # claimed across many headlines is a rule to fix; a long tail of
+        # one-offs is not, and a flat list of 70 hides which is which.
+        from collections import Counter
+        repeat = Counter(g for _, games in r["false_positives"] for g in games)
+        if repeat:
+            print("    worst offenders: " + ", ".join(
+                f"{title} x{n}" for title, n in repeat.most_common(12) if n > 1) or "    (no repeats)")
+        for headline, games in r["false_positives"][:FP_SHOWN]:
             print(f"    wrong:  {sorted(games)} <- {headline[:80]}")
-        for headline, games in r["false_negatives"][:10]:
+        if len(r["false_positives"]) > FP_SHOWN:
+            print(f"    ... and {len(r['false_positives']) - FP_SHOWN} more")
+        for headline, games in r["false_negatives"][:FP_SHOWN]:
             print(f"    missed: {sorted(games)} <- {headline[:80]}")
         print(f"  floors: precision {MIN_PRECISION}, recall {MIN_RECALL}\n")
 
