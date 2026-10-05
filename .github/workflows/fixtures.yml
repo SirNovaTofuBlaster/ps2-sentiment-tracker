@@ -1,0 +1,71 @@
+name: Build fixture draft
+
+# Manual only. Draws a sample of real headlines from the scraped data and
+# commits tests/fixtures/headlines.json so it can be labelled in the browser.
+# Safe to re-run: labels already written are kept, only new headlines are added.
+
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "How many headlines to draw"
+        required: false
+        default: "150"
+      seed:
+        description: "Sampling seed (change it for a different draw)"
+        required: false
+        default: "20261005"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fixtures
+  cancel-in-progress: false
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # The sampler is stdlib-only, so there is nothing to install.
+      - name: Draw the sample
+        env:
+          COUNT: ${{ inputs.count }}
+          SEED: ${{ inputs.seed }}
+        run: python tools/sample_fixtures.py --count "$COUNT" --seed "$SEED"
+
+      - name: Commit the draft
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tests/fixtures/headlines.json
+          if git diff --quiet --cached; then
+            echo "No change to the fixture draft."
+          else
+            git commit -m "Update matcher fixture draft"
+            git push
+          fi
+
+      - name: Summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          path = pathlib.Path("tests/fixtures/headlines.json")
+          rows = json.loads(path.read_text(encoding="utf-8"))
+          reviewed = sum(1 for r in rows if r.get("reviewed"))
+          buckets = {}
+          for r in rows:
+              buckets[r.get("bucket", "?")] = buckets.get(r.get("bucket", "?"), 0) + 1
+          print(f"### Fixture corpus\n")
+          print(f"- **{len(rows)}** headlines, **{reviewed}** reviewed, "
+                f"**{len(rows) - reviewed}** still to label\n")
+          for name, n in sorted(buckets.items()):
+              print(f"- `{name}`: {n}")
+          print(f"\nEdit `tests/fixtures/headlines.json` to label them.")
+          PY
