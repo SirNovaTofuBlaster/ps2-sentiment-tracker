@@ -3,52 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PS2 Global Sentiment & Remaster Radar</title>
+    <title>Spindle — tracking the PlayStation 2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: { extend: { colors: {
-                ps2neon: '#6FD3C7',
-                ps2dark: '#0B0F1A',
-                ps2card: '#121826',
-                ps2border: '#232C42',
+                ps2neon: '#4C8DFF',
+                ps2dark: '#080B12',
+                ps2card: '#10141F',
+                ps2border: '#1E2636',
             } } }
         }
+    </script>
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="retro.css">
 </head>
 <body class="bg-ps2dark min-h-screen flex flex-col selection:bg-ps2neon selection:text-black">
 
-    <header class="border-b border-ps2border bg-ps2card/80 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 from-blue-600 flex items-center justify-center font-black text-lg tracking-tighter">PS2</div>
-                <div>
-                    <h1 class="flex items-center gap-2">
-                        PS2 SENTIMENT &amp; REMASTER RADAR
-                        <span id="dataSourceBadge" class="text-xs border border-slate-700 text-slate-400 px-2 py-0.5 font-mono-custom">Loading Feed...</span>
-                    </h1>
-                    <p class="text-xs text-slate-400">GitHub Actions automated worldwide RSS, Reddit, YouTube &amp; podcast sentiment crawler</p>
+    <header class="brand-bar">
+        <div class="brand-inner">
+
+            <div class="brand-util">
+                <div class="brand-sync">
+                    <span class="brand-dot"></span>
+                    <span>Last sync <span id="lastUpdated" class="text-slate-300">syncing…</span></span>
+                    <span id="dataSourceBadge" class="text-xs border px-2 py-0.5 font-mono-custom text-slate-300 border-slate-700">Loading feed…</span>
+                </div>
+                <div class="brand-actions">
+                    <a href="guide.html" target="_blank" rel="noopener noreferrer" class="brand-btn"><i class="fa-solid fa-circle-question"></i> How it works</a>
+                    <a href="#sourcesSection" class="brand-btn"><i class="fa-solid fa-sliders"></i> Sources</a>
+                    <button type="button" onclick="fetchSentimentData()" class="brand-btn brand-btn-primary"><i class="fa-solid fa-rotate"></i> REFRESH</button>
                 </div>
             </div>
 
-            <div class="flex items-center space-x-4">
-                <div class="hidden md:flex items-center space-x-2 border border-slate-800 px-3 py-1.5 text-xs font-mono-custom">
-                    <span class="text-slate-400">Last sync:</span>
-                    <span id="lastUpdated" class="text-emerald-400">Syncing...</span>
+            <div class="brand-lock">
+                <div class="brand-id">
+                    <svg class="brand-mark" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+                        <circle cx="28" cy="28" r="26" fill="none" stroke="#4C8DFF" stroke-width="2"></circle>
+                        <circle cx="28" cy="28" r="17" fill="none" stroke="#4C8DFF" stroke-width="1" opacity=".5"></circle>
+                        <circle cx="28" cy="28" r="7" fill="none" stroke="#4C8DFF" stroke-width="2"></circle>
+                        <path d="M28 2 A26 26 0 0 1 54 28" fill="none" stroke="#7FADFF" stroke-width="2" stroke-linecap="round"></path>
+                    </svg>
+                    <div>
+                        <h1 class="brand-word">Spindle</h1>
+                        <p class="brand-tag">Tracking the PlayStation 2</p>
+                    </div>
                 </div>
-                <a href="guide.html" target="_blank" rel="noopener noreferrer" aria-label="How to use" class="bg-slate-800 text-slate-300 border border-slate-700 text-xs px-3 py-2 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-circle-question"></i><span class="hidden lg:inline">How to use</span>
-                </a>
-                <a href="#sourcesSection" aria-label="Sources and weights" class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 transition-all flex items-center gap-2">
-                    <i class="fa-solid fa-sliders"></i><span class="hidden lg:inline">Sources</span>
-                </a>
-                <button onclick="fetchSentimentData()" class="from-blue-600 text-xs px-4 py-2 transition-all flex items-center gap-2 cursor-pointer">
-                    <i class="fa-solid fa-rotate"></i> Refresh Feed
-                </button>
+                <p class="brand-blurb">Every hour it reads 219 gaming news sites, subreddits, YouTube channels and podcasts, checks each headline against the PlayStation 2 library, and flags remaster and remake news as it appears. Games it recognises link straight out to what they currently sell for.</p>
             </div>
+
         </div>
     </header>
 
@@ -1303,7 +1308,7 @@
         async function githubApi(path, { method = 'GET', body, token }) {
             const response = await fetch(`https://api.github.com${path}`, {
                 method,
-                headers: {
+                s: {
                     Accept: 'application/vnd.github+json',
                     ...(token ? { Authorization: `Bearer ${token}` } : {}),
                     'X-GitHub-Api-Version': '2022-11-28',
