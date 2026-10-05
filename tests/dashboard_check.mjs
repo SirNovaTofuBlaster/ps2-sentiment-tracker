@@ -488,4 +488,3 @@ await check('a phone gets 25 rows to a page, anything wider keeps 100', () => {
 });
 
 console.log(`dashboard checks passed (${passed})`);
-```[cite: 1]
