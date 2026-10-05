@@ -277,3 +277,172 @@ body .price-link:hover, body .price-link:focus-visible {
 ::-webkit-scrollbar-track { background: var(--bg); }
 body kbd { border-radius: 0; background: var(--inset); border-color: var(--line); color: var(--text); }
 body .steps li::marker { color: var(--accent); }
+
+/* ---- Wide tables --------------------------------------------------------
+   A wide table scrolls inside its own box. The "Remove" column heading is
+   hidden with position:absolute, and an absolutely positioned element escapes
+   a scroll box that isn't itself positioned: it sat 1,000px out to the right
+   and made the whole page slide sideways on a phone. */
+body .overflow-x-auto { position: relative; }
+/* A grid cell is as wide as its longest word unless told otherwise; a long
+   link in the guide pushed the page wider than the screen. */
+body .grid > * { min-width: 0; }
+body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
+
+/* ---- Phones --------------------------------------------------------------
+   Below 640px (Tailwind's "sm") the two tables become stacks of cards, the
+   banner folds into one column, and everything meant to be tapped is at least
+   44px tall. Nothing here changes the layout on a wider screen. */
+@media (max-width: 640px) {
+  /* Banner: name, what it is, the three actions, then the sync line as a status bar */
+  body .brand-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "id" "blurb" "actions" "sync";
+    gap: .9rem;
+    padding: 1.1rem 1rem .85rem;
+  }
+  body .brand-util, body .brand-lock { display: contents; }
+  body .brand-id { grid-area: id; gap: .85rem; }
+  body .brand-mark { width: 42px; height: 42px; }
+  body h1.brand-word { font-size: 1.75rem; }
+  body .brand-tag { margin-top: .4rem; letter-spacing: .1em; }
+  body .brand-blurb { grid-area: blurb; max-width: none; line-height: 1.55; }
+  body .brand-actions { grid-area: actions; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+  body .brand-btn { justify-content: center; min-height: 2.75rem; padding: 0 .4rem; white-space: nowrap; }
+  body .brand-sync { grid-area: sync; padding-top: .8rem; border-top: 1px solid var(--rule); }
+
+  /* Page rhythm */
+  body main { padding-top: 1.25rem; padding-bottom: 1.5rem; }
+  body main.space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.75rem; }
+  body .bg-ps2card { padding-top: 1.6rem; }
+  body .text-\[10px\] { font-size: .69rem; }
+  body .text-\[11px\] { font-size: .75rem; }
+  body tr:hover { background-color: transparent; }  /* hover sticks to the last row touched */
+
+  /* Stat strip: two by two, compact */
+  body .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  body .stat, body .stat:first-child, body .stat:last-child { padding: .95rem 1rem 1rem; }
+  body .stat-label { font-size: .69rem; letter-spacing: .12em; margin-bottom: .5rem; }
+  body .stat-value { font-size: 1.65rem; }
+
+  /* Anything tapped or typed into */
+  body main button, body main a.bg-slate-800, body main .from-blue-600 {
+    min-height: 2.75rem;
+    font-size: .8125rem;
+    justify-content: center;
+  }
+  body main input[type="text"], body main input[type="password"], body main input[type="number"], body main select {
+    min-height: 2.75rem;
+    font-size: 1rem;  /* below 16px, iOS zooms the page when a field is focused */
+  }
+  body main input[type="checkbox"] { width: 1.5rem; height: 1.5rem; }
+  /* Buttons that sit inside a sentence stay closer to the size of the text */
+  body #saveGuide button { min-height: 2.1rem; vertical-align: middle; }
+
+  /* Ranked lists: the count drops under a long title instead of squeezing it */
+  body #demandList > li > div:first-child,
+  body #topGamesList > li > div:first-child { flex-wrap: wrap; row-gap: .25rem; font-size: .8125rem; }
+
+  /* Price chips: tall enough to hit, on one line that swipes sideways. PAL comes
+     first and fits; the US chips run off the right edge, which is the cue to swipe. */
+  body .price-links {
+    flex-wrap: nowrap; overflow-x: auto;
+    gap: 1.1rem; margin-top: .7rem; margin-right: -1rem; padding-right: 1rem;
+    scrollbar-width: none;
+  }
+  body .price-links::-webkit-scrollbar { display: none; }
+  body .price-region { flex: 0 0 auto; gap: .5rem; }
+  body .price-flag { font-size: .69rem; }
+  body .price-link { height: 2.25rem; padding: 0 .8rem; font-size: .75rem; }
+  body .price-link i { font-size: 1rem; }
+  body .price-sup { font-size: .69rem; }
+
+  /* Feed filters: search on its own line, the two menus side by side */
+  body .feed-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; width: 100%; }
+  body .feed-filters > input { grid-column: 1 / -1; }
+  body .feed-filters > select { width: 100%; }
+
+  /* Feed: each row is a card -- where and when, the headline, the game and
+     its prices, then the score beside the link out */
+  body #feedSection table, body #feedSection tbody { display: block; }
+  body #feedSection thead { display: none; }
+  body #feedTableBody > tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas: "source source" "headline headline" "game game" "score action";
+    gap: .6rem 1rem;
+    align-items: center;
+    padding: 1.1rem 0;
+    border-bottom-width: 0;  /* the list already draws one rule between cards */
+  }
+  body #feedTableBody > tr > td { display: block; padding: 0; max-width: none; }
+  body #feedTableBody > tr > td:not([data-col]) { grid-column: 1 / -1; padding: 1.5rem 0; }
+  body #feedTableBody td[data-col="source"] {
+    grid-area: source;
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .7rem;
+    font-size: .8125rem;
+  }
+  body #feedTableBody td[data-col="headline"] { grid-area: headline; font-size: 1rem; line-height: 1.45; color: var(--text); }
+  body #feedTableBody td[data-col="game"] { grid-area: game; font-size: .875rem; }
+  body #feedTableBody td[data-col="game"][data-unmatched] { display: none; }
+  body #feedTableBody td[data-col="score"] { grid-area: score; display: flex; align-items: center; gap: .6rem; }
+  body #feedTableBody td[data-col="score"]::before {
+    content: "Sentiment";
+    font-family: var(--mono); font-size: .69rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim);
+  }
+  body #feedTableBody td[data-col="score"] .score-meter { margin-top: 0; }
+  body #feedTableBody td[data-col="action"] { grid-area: action; }
+  body #feedTableBody td[data-col="action"] > a { min-height: 2.5rem; padding: 0 .9rem; }
+  body #pagination button { min-width: 2.75rem; }
+
+  /* Sources: actions two to a row, tabs on one swipeable line */
+  body .sources-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+  body .sources-actions > #saveBtn { grid-column: 1 / -1; }
+  body #sourceTabs {
+    flex-wrap: nowrap; overflow-x: auto;
+    margin-left: -1rem; margin-right: -1rem; padding: 0 1rem;
+    scrollbar-width: none;
+  }
+  body #sourceTabs::-webkit-scrollbar { display: none; }
+  body #sourceTabs > button { flex: 0 0 auto; white-space: nowrap; }
+  body #sourcesToolbar:not(.hidden) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+  body #sourcesToolbar > input { grid-column: 1 / -1; width: 100%; }
+  body #sourcesToolbar > select { width: 100%; }
+
+  /* Source list: a card per source, in a box of its own so the form to add
+     one stays a short scroll away however long the list is */
+  body #sourcesView:has(.sources-table) {
+    max-height: 72vh; overflow-y: auto;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  body .sources-table, body .sources-table > tbody { display: block; }
+  body .sources-table > thead { display: none; }
+  body .sources-table > tbody > tr {
+    position: relative;
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: .6rem;
+    padding: 1rem 0 1rem 2.6rem;
+  }
+  body .sources-table > tbody > tr > td { display: block; padding: 0; min-width: 0; text-align: left; white-space: normal; }
+  body .sources-table td[data-col="on"] { position: absolute; left: 0; top: 1rem; }
+  body .sources-table td[data-col="source"] { order: 1; flex: 1 1 calc(100% - 3.4rem); }
+  body .sources-table td[data-col="source"] > a { display: inline-block; font-size: .95rem; padding: .4rem 0; }
+  body .sources-table td[data-col="remove"] { order: 2; flex: 0 0 auto; }
+  body .sources-table td[data-col="remove"]:empty { display: none; }
+  body .sources-table td[data-col="role"] { order: 3; flex: 1 1 calc(100% - 5.6rem); }
+  body .sources-table td[data-col="role"] > select { width: 100%; max-width: none; }
+  body .sources-table td[data-col="weight"] { order: 4; flex: 0 0 5rem; }
+  body .sources-table td[data-col="weight"] > input { width: 100%; }
+  body .sources-table td[data-col="stat"] { order: 5; flex: 1 1 28%; font-size: .8125rem; }
+  body .sources-table td[data-col="stat"]::before {
+    content: attr(data-label);
+    display: block; margin-bottom: .2rem;
+    font-size: .62rem; letter-spacing: .12em; color: var(--dim);
+  }
+  body .sources-table td[data-col="status"] { order: 6; flex: 1 1 100%; }
+
+  /* Guide: the contents list and the way back are things you tap */
+  body nav[aria-label="Contents"] li > a { display: inline-block; padding: .4rem 0; }
+  body header a.from-blue-600 { min-height: 2.75rem; }
+}
