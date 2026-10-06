@@ -38,6 +38,10 @@ through its **Sources & Weights** panel.
 | `tools/regression_check.py` | Proves a scraper change leaves news/Reddit output identical to a git ref |
 | `.github/workflows/scraper.yml` | Hourly scrape, plus immediately on pushes that change `feeds.json`/`scraper.py` |
 | `.github/workflows/tests.yml` | The test suite on pushes and pull requests |
+| `ebay_prices.py` | Current eBay asking prices (US and UK) for the games in `ebay_watchlist.json`, through eBay's official API. The only script that uses a key |
+| `ebay_watchlist.json` | The games `ebay_prices.py` looks up (at most 100) |
+| `tests/test_ebay_prices.py` | Offline tests for `ebay_prices.py` and its workflow, including that the key never leaks |
+| `.github/workflows/ebay.yml` | Runs `ebay_prices.py` by hand and publishes the latest snapshot to the `ebay-data` branch |
 
 ## Commands
 
@@ -76,7 +80,14 @@ python -m http.server 8000                # dashboard at http://localhost:8000 (
 6. **`feed_status.json` only holds values that change when something happens.** No "last
    checked" timestamps, or the hourly workflow commits noise.
 7. **UI changes update `guide.html`** so non-technical users keep accurate instructions.
-8. **No API keys or secrets in the scraper**: everything it reads is a public feed.
+8. **No API keys or secrets in the scraper**: everything `scraper.py` reads is a public feed.
+   The one script that uses a key is `ebay_prices.py`. It reads the eBay key from the
+   `EBAY_CLIENT_ID` and `EBAY_CLIENT_SECRET` Actions secrets. The key is never committed,
+   printed, written to a file or sent to the dashboard. It uses only Python's standard
+   library, so the job that holds the key installs nothing: keep it that way. `ebay.yml`
+   runs only when started by hand; any other trigger is the maintainer's decision, and it
+   must never run on pull requests. No other script may use a key without the maintainer's
+   explicit decision.
 9. **Commits use a GitHub no-reply email.** Never put personal email addresses in commits,
    messages or files.
 10. **Don't push, fork or open pull requests without the maintainer's explicit OK.** Pushing
@@ -145,6 +156,22 @@ Before you call something done, prove it; don't assume it.
   - A link one side accepts and the other rejects would stop every scraper run.
   - Podcast episodes can share one `<link>` (the show's homepage), have none, or have a bare guid.
     Links identify items, so those episodes use their audio file.
+- **eBay**
+  - The data comes under eBay's API License Agreement, so only the latest snapshot is kept:
+    `ebay.yml` replaces the `ebay-data` branch with one fresh commit on every run. Never write
+    eBay listing data to `data/` or to `main`, and never print prices in a workflow log.
+    (GitHub can still serve a replaced commit for a while to someone who knows its ID.)
+  - Nobody has been able to test `ebay_prices.py` against the real API from a development
+    machine: the request format follows eBay's documentation. When a run looks wrong, start
+    it with the search check ticked and read the counts it prints.
+  - The API returns listings that are still for sale. They are asking prices, not sold prices,
+    and US (NTSC) and UK (PAL) figures are never combined.
+  - eBay's default allowance is 5,000 searches a day. One lookup is one search, or two when
+    no listing carries the PS2 item specific and it asks again by keyword; a failed search
+    is tried up to three times. eBay returns at most 200 listings per search, and a game
+    with more is marked `truncated`.
+  - A production keyset stays disabled until eBay's marketplace account deletion notifications
+    are subscribed to or opted out of in the developer portal.
 - **Windows**
   - Set `PYTHONIOENCODING=utf-8` before printing titles.
   - `core.autocrlf=true` gives CRLF working files, so the tests normalise line endings.
