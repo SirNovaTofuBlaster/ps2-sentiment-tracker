@@ -155,6 +155,75 @@ Confirmed by this reviewer:
 - **Existing dashboard:** search, filters, pagination, fallback data and the Radar work as before.
 - **Docs:** the guide's instructions match the UI, and every row of SOURCES.md matches feeds.json.
 
+## 2026-10-06: eBay asking prices and the dashboard lists
+
+How `ebay_prices.py`, its workflow and the dashboard changes of 2026-10-06 were checked.
+
+| Check | Result |
+|---|---|
+| Live runs against eBay | Three runs on 2026-10-06 (20:26, 20:40, 20:47 UTC) for 10 pinned games on both sites. All 20 lookups answered each time; the last counted 685 of the 1,167 listings eBay returned |
+| What the first run showed | The request format written from eBay's documentation worked unchanged. A US postcode had to be added before eBay quoted postage for every US listing (it had for about half) |
+| Listing rules against real titles | The 10 cheapest counted listings and up to 5 left-out titles per reason, for every game and site, were read by hand after each run. Run 1 let through soundtracks, cheat discs, a hat and an Xbox copy; run 2 wrongly left out 13 real copies of 172 sampled ("with case and manual", "+ OST", an emoji glued to the name). Both were fixed and the titles became test cases |
+| Rewrite did not change verdicts | After the script was rewritten to price every mentioned game, all 690 real titles from runs 2 and 3 were replayed through the new rules: the only differences were the 13 fixes above |
+| Levels on the real feed | A replay of the last 7 days flagged 12 games as surging: 5 real, 1 the same post in two subreddits, 6 the wrong game matched. Recorded as a known limit |
+| Plan on the real feed | 182 games tracked (10 pinned), 15 one-word titles left out, 364 lookups due on a first run, capped at 500 searches |
+| Not yet run live | Everything added after the third run: pricing all mentioned games, levels, the two-way search for Roman numerals, the price files, and the automatic trigger |
+| Workflow steps | The save-to-main and publish steps were run against a local stand-in repository, including a competing push between checkout and save, and three consecutive publishes (the branch held one commit each time) |
+| Offline tests | 176 Python tests (42 scraper, 9 matcher, 125 eBay) and 24 dashboard checks pass |
+| Rendering | The page was rendered at 1280px and at 427px, with sample price data and without any: no sideways scroll, no script errors, lists fold and open, stripes alternate, "Show fewer" stays on screen in an opened list and folding returns to the section's heading |
+| Do the dashboard checks bite | Twelve one-line breakages of `index.html` and `retro.css` (prices never loaded, a quiet game sorted with the rest, no folding, an unescaped price, hover on touch screens, and so on): the checks failed on every one |
+
+### Independent reviews
+
+Three reviews with fresh context, each told to report only findings backed by a concrete failure.
+
+**First (the 10-game version).** Must-fix findings and what was done:
+
+| Finding | Resolution |
+|---|---|
+| The "2" in "PlayStation 2" satisfied "Silent Hill 2", so every Silent Hill listing counted | The name must appear as words together and in order; a following single number means a sequel or a set |
+| A run where eBay returned nothing for every game was green and published an empty file | Such a run now fails and writes nothing |
+| One success in twenty overwrote a good file | More than half failing fails the run |
+| Log lines appeared out of order | Every line is flushed as it is printed |
+| The job holding the key installed three unpinned packages | The script was rewritten on the standard library; the job installs nothing |
+| `conditions:{USED}` might not match the category's condition names | The search names the condition numbers, and a search check prints counts for both forms |
+| Spaces were sent as "+" | Queries are percent-encoded the way eBay's examples are |
+
+**Second (pricing every mentioned game).** Must-fix findings and what was done:
+
+| Finding | Resolution |
+|---|---|
+| A failing run spent up to 500 searches an hour and recorded none of them | A run whose first ten lookups all fail stops there |
+| Three unanswered lookups discarded everything learned before them | The run stops and keeps what it has; the usual checks decide whether to write |
+| An unreadable month of history was silently replaced by the new rows | A price file that exists but cannot be read stops the run before eBay is asked |
+| The library files one game as "Jak X" and as "Jak X: Combat Racing", and the longer name was treated as another game | The single full name a title has in the library is the same game; expansions and other subtitles are not |
+| "Ultimate Spider-Man" counted as "Spider-Man", "The Ant Bully" as "Bully" | A listing naming another library game that contains this one's name is left out |
+| Dropping the Roman numeral made the search franchise-wide | Both spellings are searched and merged, each listing once |
+| "Getaway" and "The Getaway" were tracked twice | Titles that come to the same name are one game |
+| A pull request could add a workflow with the scraper's name and so start the price job | The job refuses runs started by pull requests or from another repository |
+
+Left for later, by the reviewer's own ranking: dormant games are checked daily for ever; state
+is keyed by a game's display title in `latest.json` (lookups go by a spelling-independent key);
+11 names the scraper can emit from its built-in fallback list are not in `ps2_database.json`.
+
+**Third (the dashboard changes, the docs and the two workflows).** Findings and what was done:
+
+| Finding | Resolution |
+|---|---|
+| On a phone, the last feed card tapped kept its hover tint and broke the stripes | Row hover applies only where the device can hover |
+| A flat six-hour rule dimmed every quiet game, which is checked once a day by design | Each level has its own limit: 3 hours surging, 8 normal and staple, 30 quiet |
+| Dimming a whole line made "search needs tuning" and "none listed" hard to read | Only the price is dimmed |
+| The dashboard check reads `retro.css`, but a change to that file did not start the Tests workflow | `retro.css` added to the workflow's paths |
+| "Show all 25" under a list of 142 games read as "all" | The button says how many more it opens |
+| The mention count on an eBay row differs from Most Mentioned Games (headlines only, 14 days) | The row says "in headlines", and the guide explains the difference |
+| A price file the page could not draw would have stopped the rest of the page loading | Drawing is guarded; the section hides itself |
+| After opening 180 games the only way to fold them was at the far end | "Show fewer" follows the reader; folding returns to the section's heading |
+| Stale counts and wording (219 sources in the banner, SOURCES.md totals, "most days" for a staple) | Corrected against `feeds.json` and the script's settings |
+| Six breakages the checks did not notice | A check added for each |
+
+Left for later: the price history is stored but not drawn; the eBay list has no search box;
+`fixtures.yml`, started by hand only, still pushes without a retry.
+
 ## Re-running the checks
 
 ```sh
@@ -162,6 +231,7 @@ python -m unittest discover -s tests -v   # offline; includes the dashboard chec
 python tools/regression_check.py          # old vs new scraper on identical real feeds (~3 min, network)
 python -m py_compile scraper.py
 FULL_RUN=1 python scraper.py              # in a copy of the repo, not in the checkout you commit from
+python ebay_prices.py --plan              # the price plan on the real feed; needs no key, asks nobody
 ```
 
 For the next change, the checklist in [AGENTS.md](../AGENTS.md#making-a-change-the-skeptical-checklist)
