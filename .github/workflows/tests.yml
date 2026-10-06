@@ -8,8 +8,11 @@ on:
       - feeds.json
       - index.html
       - requirements.txt
+      - ebay_prices.py
+      - ebay_watchlist.json
       - tests/**
       - .github/workflows/tests.yml
+      - .github/workflows/ebay.yml
   pull_request:
   workflow_dispatch:
 
