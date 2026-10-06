@@ -275,6 +275,50 @@ class TitleTests(unittest.TestCase):
         self.assertEqual(self.reason("Kuon PS2 NTSC USA", kuon, GB), "import")
         self.assertIsNone(self.reason("Kuon PS2 NTSC-U", kuon, US))
 
+    def test_titles_seen_on_the_first_real_run_are_sorted_correctly(self):
+        rose, persona, okami, ico = game("Rule of Rose"), game("SMT P4", "Persona 4"), game("Okami"), game("Ico")
+        sh3 = game("Silent Hill 3")
+        left_out = [
+            ("Silent Hill 2 Pyramid Head Hat", SH2, US, "not_a_copy"),
+            ("Silent Hill 2 Restless Dreams Original Xbox CIB? Horror Konami Tested", SH2, US, "other_platform"),
+            ("SILENT HILL 2 Saigo no Uta Konami Dendo SLPM-65631 PS2 Playstation 2 JP", SH2, US, "import"),
+            ("Action Replay Ultimate Cheats For Silent Hill 2 - PS2", SH2, GB, "not_a_copy"),
+            ("Action Replay Ultimate Codes for Silent Hill 3 (PlayStation 2 PS2) CIB Complete", sh3, US, "not_a_copy"),
+            ("Famitsu 2003 XENOSAGA, Fatal Frame 2, Silent Hill 3 Promo DVD", sh3, GB, "not_a_copy"),
+            ("PS2 Silent Hill 2 Special Edition Card Board Case & Silent hill 3 Manual Boxed", sh3, GB, "other_game"),
+            ("Silent Hill PS2 PROMO Collection Silent Hill 2, Silent Hill 3, Silent Hill 4 PS2", sh3, GB, "other_game"),
+            ("Rule of Rose Original Soundtrack OST CD - Atlus - Sony PlayStation 2 PS2 Promo", rose, US, "not_a_copy"),
+            ("Rule of Rose Soundtrack PS2", rose, US, "not_a_copy"),
+            ("Rule of Rose \U0001F339 Original Music Soundtrack Promo CD ATLUS PlayStation 2", rose, US, "not_a_copy"),
+            ("Underground Jampack Summer 2001 Sony PlayStation 2 PS2 Red Faction ATV Kain ICO", ico, US, "not_a_copy"),
+            ("Persona 4 (Sony PlayStation 2 PS2, 2008) JP Version US Seller", persona, US, "import"),
+            ("Atlus Persona 4 Persona Series Sony PlayStation 2,Clean,jap,cib banger game !!", persona, US, "import"),
+            ("Okami (JP PlayStation 2, 2006) CIB", okami, US, "import"),
+            ("Okami PS2 SLES-54439 complete", okami, US, "import"),
+            ("Okami PS2 SLUS-21115 complete", okami, GB, "import"),
+        ]
+        for title, wanted, market, reason in left_out:
+            self.assertEqual(self.reason(title, wanted, market), reason, title)
+        counted = [
+            ("Silent Hill 2 PlayStation 2 PS2 Greatest Hits Disc Only", SH2, US),
+            ("Silent Hill 2 Special 2-Disc Set PlayStation 2 In Very Good Condition PAL UK", SH2, GB),
+            ("Silent Hill 2 Special Edition 2 Disc Set PAL Survival Horror PS2 (15)", SH2, GB),
+            ("Konami Silent Hill 3 PS2 Disc w/ Soundtrack Survival Horror M NTSC-U/C 2003", sh3, US),
+            ("Silent Hill 3 For Ps2, Soundtrack Missing", sh3, US),
+            ("Silent Hill 3 PS2 (Unofficial case with soundtrack)", sh3, US),
+            ("Silent Hill 3 Playstation 2 Game & Manual VG+!! Tested! HTF!! NO SOUNDTRACK", sh3, US),
+            ("Persona 4 PS2 - Manual Included without Original Soundtrack", persona, GB),
+            ("Shin Megami Tensei Persona 4 PS2, Manual and Soundtrack CD", persona, GB),
+            ("Rule of Rose (Sony PlayStation 2, 2006) PS2 Game Disc & Case! No Manual TESTED!", rose, US),
+            ("Rule of Rose PS2 PAL French Cover and Manual Disc in English", rose, GB),
+            ("ICO - PS2 PLAYSTATION GAME 2006 - FULL GAME PROMO-TESTED-DISC ONLY", ico, GB),
+            ("Okami PS2 PAL Disc Only SLES-54439#", okami, GB),
+            ("Okami, Capcom, PlayStation 2 (PS2), 2006, T, NTSC-U/C, Disc Only", okami, US),
+            ("Sony Computer Entertainment Europe Ico PS2 PAL PEGI 7 (2001) 1 Player Puzzle", ico, GB),
+        ]
+        for title, wanted, market in counted:
+            self.assertIsNone(self.reason(title, wanted, market), title)
+
     def test_a_keyword_search_only_counts_titles_that_say_ps2(self):
         rose = game("Rule of Rose")
         self.assertEqual(self.reason("Rule of Rose", rose, keyword=True), "other_game")
@@ -299,6 +343,10 @@ class SummaryTests(Quiet):
         self.assertEqual(result["status"], "ok")
         self.assertEqual((result["on_ebay"], result["fetched"], result["counted"]), (7, 7, 3))
         self.assertEqual(result["skipped"], {"import": 1, "not_a_copy": 2, "other_game": 1})
+        self.assertEqual(result["skipped_examples"], {
+            "import": ["Silent Hill 2 PS2 Japanese version"],
+            "not_a_copy": ["Silent Hill 2 CASE ONLY no game", "Silent Hill 2 PS2 bundle with guide"],
+            "other_game": ["Silent Hill 3 (Sony PlayStation 2, 2003)"]})
         self.assertEqual((result["lowest"], result["median"]), (20.0, 40.0))
         self.assertEqual((result["currency"], result["platform_filter"]), ("USD", "item_specific"))
         self.assertFalse(result["truncated"])
@@ -308,6 +356,13 @@ class SummaryTests(Quiet):
         calm = self.summary(*[listing("Silent Hill 2", p, item_id=i) for i, p in enumerate(prices)])
         wild = self.summary(*[listing("Silent Hill 2", p, item_id=i) for i, p in enumerate(prices[:-1] + [900])])
         self.assertEqual(calm["median"], wild["median"])
+
+    def test_only_a_few_left_out_titles_are_saved_per_reason(self):
+        result = self.summary(*[listing(f"Silent Hill 2 PS2 case only {n}", 5, item_id=n) for n in range(9)],
+                              listing("x" * 300 + " Silent Hill 3 PS2", 5, item_id=99))
+        self.assertEqual(result["skipped"], {"not_a_copy": 9, "other_game": 1})
+        self.assertEqual(len(result["skipped_examples"]["not_a_copy"]), 5)
+        self.assertEqual(len(result["skipped_examples"]["other_game"][0]), 120)
 
     def test_more_listings_than_one_search_returns_is_flagged(self):
         result = self.summary(listing("Silent Hill 2", 20, item_id=1), listing("Silent Hill 2", 30, item_id=2),
