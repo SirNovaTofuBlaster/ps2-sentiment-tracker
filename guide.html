@@ -34,7 +34,7 @@
                 </svg>
                 <div class="min-w-0">
                     <h1 class="truncate">How to use Spindle</h1>
-                    <p class="text-xs text-slate-400 truncate">Sources, weights and saving, step by step</p>
+                    <p class="text-xs text-slate-400 truncate">What you see, sources, weights and saving</p>
                 </div>
             </div>
             <a href="index.html#sourcesSection" class="shrink-0 from-blue-600 text-xs px-3 py-2 flex items-center gap-2">
@@ -51,6 +51,7 @@
                 <li><a class="hover:underline" href="#overview">What the dashboard shows</a></li>
                 <li><a class="hover:underline" href="#prices">The price links</a></li>
                 <li><a class="hover:underline" href="#demand">The Demand Index</a></li>
+                <li><a class="hover:underline" href="#ebay">eBay asking prices</a></li>
                 <li><a class="hover:underline" href="#sources">The Sources &amp; Weights panel</a></li>
                 <li><a class="hover:underline" href="#add">Add a source</a></li>
                 <li><a class="hover:underline" href="#weights">Weights</a></li>
@@ -67,7 +68,9 @@
             <p>Every hour a robot on GitHub reads gaming news sites, Reddit, YouTube channels and podcasts. For every headline, video and episode it checks whether a PlayStation 2 game is mentioned, whether it sounds like remaster or remake news, and how positive the wording is. The dashboard shows the result:</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li><b class="text-white">The four numbers at the top</b>: how many items were collected, how many look like remaster news, how many sources are switched on, and the overall mood from 0 to 100.</li>
-                <li><b class="text-white">Most Mentioned Games</b>: the fifteen PS2 games mentioned most often, with each one's mention count and share of all game mentions. It recalculates whenever the feed loads or you switch a source on or off.</li>
+                <li><b class="text-white">Most Mentioned Games</b>: the PS2 games mentioned most often, with each one's mention count and share of all game mentions. It recalculates whenever the feed loads or you switch a source on or off.</li>
+                <li><b class="text-white">Lists that fold away</b>: Demand Index, Most Mentioned Games and eBay Asking Prices each show their first five games. Press <b class="text-white">Show … more</b> under a list to open the rest (the two ranked lists go up to 25 games, eBay Asking Prices shows every game it tracks), and <b class="text-white">Show fewer</b> to fold it again; on a long list that button follows you down the page. A list stays the way you left it until you reload the page.</li>
+                <li><b class="text-white">Striped rows</b>: every second row of those lists and of the table sits on a slightly lighter blue, so your eye can follow one row across.</li>
                 <li><b class="text-white">The table</b>: everything that was collected. Use the search box and the menus to show only remaster news, only matched PS2 games, or one kind of source.</li>
                 <li><b class="text-white">On a phone</b>: the table becomes a list of cards, 25 to a page, and each game's price links sit on one line that you swipe sideways.</li>
             </ul>
@@ -78,7 +81,7 @@
 
         <section id="prices" class="space-y-3">
             <h2>2. The price links</h2>
-            <p>Every recognised game carries a row of small amber buttons, split into <b class="text-white">PAL</b> (Europe) and <b class="text-white">US</b>. They are <b class="text-white">searches, not prices</b>: nothing is stored here and no number is shown on this page. Clicking one opens that shop or price guide with the game already searched for.</p>
+            <p>Every recognised game carries a row of small amber buttons, split into <b class="text-white">PAL</b> (Europe) and <b class="text-white">US</b>. They are <b class="text-white">searches, not prices</b>: clicking one opens that shop or price guide with the game already searched for. The only actual figures on this page are in <a class="text-cyan-400 hover:underline" href="#ebay">eBay Asking Prices</a>.</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li><b class="text-white">Price Charting</b> tracks what copies have actually sold for, which is the closest thing to a market value. There is a separate PAL and US price for most games, and they can differ a lot.</li>
                 <li><b class="text-white">eBay</b> shows what sellers are <i>asking</i> today, not what anything sold for. Asking prices usually sit well above real ones, and a single graded or sealed copy can make a game look far more expensive than it is.</li>
@@ -94,8 +97,25 @@
             <p class="text-slate-400">It updates once a day, because Wikipedia only publishes its reading figures daily. A game that appears with no percentage simply hasn't enough history yet.</p>
         </section>
 
+        <section id="ebay" class="space-y-3">
+            <h2>4. eBay asking prices</h2>
+            <p>This section only appears once the price job has run; if you don't see it, nothing is wrong. After every run of the robot, a second job asks eBay what used copies of each game are listed for, on <b class="text-white">eBay US</b> and <b class="text-white">eBay UK</b> separately. A US copy and a UK copy are different products, so the two are never mixed.</p>
+            <p>For each site you see the <b class="text-white">median</b> asking price (the middle one, so a single silly listing can't drag it about), the cheapest, how many copies are listed, and how long ago eBay was asked. These are what sellers are <b class="text-white">asking</b> for copies still for sale, <b class="text-white">not what anything sold for</b>: asking prices usually sit above real ones, and loose discs are counted together with complete copies.</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li><b class="text-white">Which games</b>: every game the feed has ever mentioned, as long as it is in the PS2 library. Games with a one-word name that is also an ordinary word, such as <i>Black</i> or <i>Cars</i>, are left out, because a search for the word finds every listing that happens to use it.</li>
+                <li><b class="text-white"><span class="level-tag level-surging" style="margin-left:0">surging</span></b>: a game that is rarely mentioned was suddenly named in headlines by two or more sources within a day. It is checked on every run for the next two days. About half of these turn out to be the robot matching the wrong game, so read it as "worth a look".</li>
+                <li><b class="text-white"><span class="level-tag" style="margin-left:0">staple</span></b>: named on five or more of the last fourteen days, so one more mention is no news. <b class="text-white"><span class="level-tag" style="margin-left:0">quiet</span></b>: not mentioned for two weeks. Staples and everything untagged are checked about every 6 hours, quiet games once a day.</li>
+                <li><b class="text-white">A + after the number of copies</b> means eBay had more listings than it hands over at once (200), so the figures cover the first 200.</li>
+                <li><b class="text-white">A dimmed price</b> has gone longer than usual without a check: over 8 hours, or over 30 for a quiet game. GitHub sometimes runs the jobs late.</li>
+                <li><b class="text-white">"in headlines"</b> counts headlines that named the game in the last two weeks. Most Mentioned Games also counts mentions found in the text under a headline, so the two numbers can differ.</li>
+                <li><b class="text-white">"none listed"</b> means eBay was asked and no copy was counted. <b class="text-white">"search needs tuning"</b> means eBay returned listings but none of them named the game, so there is no figure rather than a wrong one. <b class="text-white">"not checked yet"</b> means its turn hasn't come.</li>
+                <li><b class="text-white">The list is ordered</b> with surging games first, then by how often each is mentioned.</li>
+            </ul>
+            <p class="text-slate-400">Only numbers are kept: the current figures, and a history of how they change, in the <span class="font-mono-custom">data/prices</span> folder on GitHub. To always track a game, give one its own search words, or stop one being priced, the repository's owner edits <span class="font-mono-custom">ebay_watchlist.json</span>.</p>
+        </section>
+
         <section id="sources" class="space-y-3">
-            <h2>4. The Sources &amp; Weights panel</h2>
+            <h2>5. The Sources &amp; Weights panel</h2>
             <p>Click <b class="text-white"><i class="fa-solid fa-sliders"></i> Sources</b> at the top of the dashboard. There is one tab per kind of source (News sites, Reddit, YouTube, Podcasts) and a <b class="text-white">Weights &amp; schedule</b> tab.</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li><b class="text-white">Switch a source on or off</b> with the checkbox at the start of its row. Its items disappear from the dashboard straight away. Nothing is deleted: switch it back on whenever you like.</li>
@@ -107,7 +127,7 @@
         </section>
 
         <section id="add" class="space-y-4">
-            <h2>5. Add a source</h2>
+            <h2>6. Add a source</h2>
             <p>Open the tab for the kind of source, paste the link into the box under the list and press <b class="text-white">Add source</b>. The name is filled in for you where possible. <b class="text-white">Group</b> only sorts the list, and <b class="text-white">Role</b> sets its <a class="text-cyan-400 hover:underline" href="#weights">weight</a>.</p>
             <div class="grid gap-4 sm:grid-cols-2">
                 <div class="bg-ps2card p-4">
@@ -131,7 +151,7 @@
         </section>
 
         <section id="weights" class="space-y-3">
-            <h2>6. Weights</h2>
+            <h2>7. Weights</h2>
             <p>A weight says how much a source's items count towards the <b class="text-white">overall mood</b> figure. It doesn't change a single headline's own score, and it doesn't affect which games are recognised.</p>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse text-xs">
@@ -154,7 +174,7 @@
         </section>
 
         <section id="save" class="space-y-3">
-            <h2>7. Save your changes</h2>
+            <h2>8. Save your changes</h2>
             <p>The list of sources is a file called <span class="font-mono-custom text-cyan-300">feeds.json</span> on GitHub. Saving means putting the new version there, which needs a GitHub account that can edit the repository.</p>
             <ol class="steps list-decimal pl-5 space-y-2">
                 <li>Press <b class="text-white"><i class="fa-solid fa-floppy-disk"></i> Save changes</b>. Your changes are copied and a box with the next steps appears.</li>
@@ -170,7 +190,7 @@
         </section>
 
         <section id="token" class="space-y-3">
-            <h2>8. One-click saving with a token (optional)</h2>
+            <h2>9. One-click saving with a token (optional)</h2>
             <p>A token is a password that lets this page save for you. With one, <b class="text-white">Save changes</b> saves in one click and <b class="text-white">Run scraper now</b> works. Which kind you need depends on who owns the repository:</p>
             <div class="grid gap-4 sm:grid-cols-2">
                 <div class="bg-ps2card p-4">
@@ -198,7 +218,7 @@
         </section>
 
         <section id="status" class="space-y-3">
-            <h2>9. What the status badges mean</h2>
+            <h2>10. What the status badges mean</h2>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse text-xs">
                     <tbody>
@@ -215,12 +235,14 @@
         </section>
 
         <section id="problems" class="space-y-3">
-            <h2>10. If something looks wrong</h2>
+            <h2>11. If something looks wrong</h2>
             <dl class="space-y-3">
                 <div><dt class="text-white font-semibold">A new source still says "Not checked yet"</dt>
                     <dd>The robot runs every hour and right after a save. Wait a few minutes and press <b class="text-white">Refresh Feed</b>. The website itself can take a few minutes to show a new save.</dd></div>
                 <div><dt class="text-white font-semibold">A headline is matched to the wrong game</dt>
                     <dd>It happens: the robot matches words, so a headline about a different game with a similar name can slip through. Wrong matches drop out by themselves within two weeks as old items age out of the feed. If you see the same wrong match again and again, it's worth reporting.</dd></div>
+                <div><dt class="text-white font-semibold">A game in eBay Asking Prices says "search needs tuning"</dt>
+                    <dd>eBay returned listings, but none of them named the game the way the PS2 library spells it, so no figure is shown. It usually means sellers shorten the title. The owner can fix it by adding the game to <span class="font-mono-custom">ebay_watchlist.json</span> with the words sellers actually use.</dd></div>
                 <div><dt class="text-white font-semibold">A YouTube channel says "Failing: channel link..."</dt>
                     <dd>The link didn't lead to a channel. Open it to check. You can also add the channel by its ID: on the channel page open <b>more about this channel → Share channel → Copy channel ID</b> and paste that (it starts with UC).</dd></div>
                 <div><dt class="text-white font-semibold">"Failing: already listed as ..."</dt>
@@ -235,12 +257,12 @@
         </section>
 
         <section id="faq" class="space-y-3">
-            <h2>11. Questions</h2>
+            <h2>12. Questions</h2>
             <dl class="space-y-3">
                 <div><dt class="text-white font-semibold">Why are some of the biggest YouTube channels switched off?</dt>
                     <dd>Most are in other languages (the mood score only understands English) or mostly play Minecraft, Roblox or Fortnite, which says little about PS2 games. They are all in the list, so switch any of them on if you want.</dd></div>
                 <div><dt class="text-white font-semibold">Does this page know any prices?</dt>
-                    <dd>No. The amber buttons are searches that open a shop or price guide with the game already looked up. Nothing is stored here, so no price on this page can be out of date — but equally, you have to click through to see one.</dd></div>
+                    <dd>Only eBay asking prices, in the <a class="text-cyan-400 hover:underline" href="#ebay">eBay Asking Prices</a> section: what sellers want today, with the time each was checked. It knows nothing about what games have sold for. The amber buttons are searches that open a shop or price guide with the game already looked up.</dd></div>
                 <div><dt class="text-white font-semibold">Why is a game high in Most Mentioned but missing from the Demand Index?</dt>
                     <dd>They measure different things. Most Mentioned counts what the sources here are talking about; the Demand Index counts what people are reading about on Wikipedia. A game can be all over the news without anyone looking it up, and the other way round.</dd></div>
                 <div><dt class="text-white font-semibold">Where do the subscriber and rating numbers come from?</dt>
