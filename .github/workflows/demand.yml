@@ -29,5 +29,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/demand.json data/wiki_titles.json
-          git diff --staged --quiet || git commit -m "Update demand index"
-          git push
+          if git diff --staged --quiet; then
+            echo "The demand index has not changed."
+            exit 0
+          fi
+          git commit -m "Update demand index"
+          # Other jobs save to main too (the scraper, the archive, eBay prices). If one of them
+          # got there first, take its commit and try again instead of failing.
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$GITHUB_REF_NAME" && git push; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying..."
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "Push failed after 3 attempts." >&2
+          exit 1
