@@ -1,5 +1,101 @@
 # Changelog
 
+## 2026-10-06: eBay asking prices, a measured matcher, phones, and lists that fold
+
+### What was asked
+
+- Find out how good the game matcher is, and make it better without guessing.
+- Make the site work on a phone (a Pixel 9 Pro).
+- Use the newly approved eBay developer key: price the games the feed mentions on eBay US and
+  UK, check a game more often when it is suddenly being talked about, and keep an archive of
+  the prices as numbers only.
+- Show the prices on the dashboard, let the long lists fold down to five rows, and give every
+  second row a lighter shade.
+
+### What changed
+
+**Matcher: `scraper.py`, `tests/test_matcher_fixtures.py`, `tests/fixtures/headlines.json`**
+- A corpus of 274 real headlines, 268 of them labelled by hand, measures the matcher on every
+  test run: precision 0.635 and recall 0.948 at the time of writing, with floors of 0.60 and
+  0.93 that fail the tests if a change makes it worse.
+- Rules added with the corpus as the judge: word order is part of a title ("Combat Ace" is not
+  "Ace Combat"), a title filed as "Getaway, The: Black Monday" is read as "The Getaway: Black
+  Monday", a word containing a digit has to be in the text, and one game is claimed once per
+  headline.
+- `tools/sample_fixtures.py` and the *fixtures* workflow draw new headlines to label.
+
+**Phones: `index.html`, `retro.css`, `guide.html`**
+- Below 640px the two tables become stacks of cards, the banner folds into one column, the
+  price chips sit on one line that swipes, and pages hold 25 rows instead of 100. Nothing
+  changes on a wider screen.
+
+**eBay asking prices: `ebay_prices.py`, `ebay_watchlist.json`, `.github/workflows/ebay.yml` (new)**
+- Prices every game the feed has ever mentioned that is in the PS2 library, plus the games
+  pinned in `ebay_watchlist.json` (182 in all on the day it was built), on eBay US and eBay UK, through
+  eBay's official Browse API. It asks for used, Buy It Now listings located in that country
+  and keeps the count, the lowest and the median asking price, and the typical postage.
+- Listings that are not a copy of the game are left out: other games in the series, sequels,
+  sets, empty cases, soundtracks, cheat discs, demo discs, job lots, merchandise, copies for
+  another console and imports. The rules were tuned on three live runs and their real titles
+  are now test cases.
+- How often a game is checked follows how it is being mentioned: `surging` (rarely named, then
+  named in headlines by two or more sources within a day) on every run for 48 hours; `normal`
+  and `staple` (named on 5 or more of the last 14 days) every 6 hours; `dormant` once a day.
+- It writes numbers only: `data/prices/latest.json` and a monthly history that gains a row
+  when a game's figures change and at least once a day. Listings with their links are kept
+  for the latest run only, on the `ebay-data` branch.
+- The workflow runs after every scraper run and by hand. It is the only job that holds a key;
+  it installs nothing, always runs the code on `main`, and refuses runs started by pull
+  requests or from another repository.
+
+**Dashboard: `index.html`, `retro.css`, `guide.html`**
+- **eBay Asking Prices** (new section): each tracked game with its median, cheapest and number
+  of copies per site, when it was checked, and a tag when it is surging, a staple or quiet.
+  A price that has gone longer than usual without a check is dimmed. The section is hidden
+  until the price job has run.
+- **Demand Index**, **Most Mentioned Games** and **eBay Asking Prices** show five rows; a
+  button under each opens the rest (up to 25 for the two ranked lists) and folds it again.
+- Every second row of those lists and of the feed table sits on a lighter blue.
+
+**Workflows: `archive.yml`, `demand.yml`, `tests.yml`**
+- The archive and the demand index now take a competing commit and retry instead of failing
+  when another job saved to `main` first, as the scraper already did.
+- The Tests workflow also runs when `retro.css` changes: the dashboard checks read it.
+
+**Docs**
+- [SOURCES.md](../SOURCES.md) counts the three YouTube channels added from the dashboard
+  (159 channels, 114 on; 294 sources, 222 on) and lists them without figures, since they were
+  not part of the 2026-09-30 measurement. The dashboard's banner no longer quotes a number
+  that goes out of date.
+
+### Decisions the maintainer made
+
+- **Numbers from eBay are kept permanently; listings are not.** eBay's API License Agreement
+  limits what may be stored, shown and worked out from its data. The maintainer chose to keep
+  derived figures only and to treat the tracker as a personal tool. Nobody has asked eBay
+  whether this use is permitted.
+- **AGENTS.md rule 8 was reworded**: the scraper stays keyless, and `ebay_prices.py` is the one
+  script that may use a key.
+
+### Behaviour changes to be aware of
+
+- The Demand Index showed 10 games and Most Mentioned Games 15. Both now show 5, with up to
+  25 a click away.
+- The #1 row of those two lists no longer sits in a box; the stripes do that job.
+- The guide's sections are renumbered from 4 onwards to make room for the eBay section.
+
+### Open items
+
+- About half of the first week's "surging" flags were the matcher naming the wrong game.
+  The level is only as good as the matcher.
+- Search words come from library titles. Games that sellers abbreviate show "search needs
+  tuning" until they are pinned with their own search words.
+- A game with more than 200 listings on one site is priced from eBay's first 200.
+- The price history is not drawn anywhere yet; the dashboard shows the latest figures only.
+- The scraper's snapshot holds at most 5,000 items, about 11 days at the current number of
+  sources, so "the last 14 days" in the level rules is at present a little less.
+- The body-text path of the matcher is not measured: the corpus holds headlines only.
+
 ## 2026-09-30: YouTube channels, podcasts and configurable sources
 
 ### What was asked
