@@ -30,14 +30,16 @@ through its **Sources & Weights** panel.
 |---|---|
 | `feeds.json` | Every source (news / reddit / youtube / podcast), roles and weights, `poll_every_hours` |
 | `scraper.py` | Config validation, fetch plan, YouTube link resolution, matching, sentiment, feed health, snapshot merge |
-| `index.html` | Dashboard; its inline script mirrors `validate_config()` and `source_key()` |
+| `index.html` | Dashboard; its inline script mirrors `validate_config()` and `source_key()`. Also reads `data/demand.json` and `data/prices/latest.json`, and hides those sections when the files are missing |
 | `guide.html` | Plain-language user guide; must match the UI |
-| `data/` | Written only by workflows (`data/prices/` by the eBay one, the rest by the scraper's); never edit or commit it by hand |
+| `data/` | Written only by workflows (the scraper's, the archive, the demand index and eBay prices, each its own files); never edit or commit it by hand |
 | `tests/test_scraper.py` | Offline unittest suite; also runs `tests/dashboard_check.mjs` when Node.js exists |
 | `tests/dashboard_check.mjs` | Runs the dashboard script in a Node sandbox with a stub DOM |
 | `tools/regression_check.py` | Proves a scraper change leaves news/Reddit output identical to a git ref |
 | `.github/workflows/scraper.yml` | Hourly scrape, plus immediately on pushes that change `feeds.json`/`scraper.py` |
 | `.github/workflows/tests.yml` | The test suite on pushes and pull requests |
+| `archive.py`, `.github/workflows/archive.yml` | Appends every PS2 game mention to `data/archive/YYYY-MM.json`, four times a day |
+| `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index) from Wikipedia pageviews and mentions, daily |
 | `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |
 | `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words) and titles never to price |
 | `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, and the game's level. Numbers only |
@@ -154,6 +156,10 @@ Before you call something done, prove it; don't assume it.
     (`ref: ${{ github.ref }}`), or its data commit conflicts with the previous run's.
   - GitHub Pages lags a few minutes behind a commit. The dashboard reads `feeds.json` from the
     API when it differs, and checks it again before saving.
+  - Four workflows commit to `main` on their own (scraper, archive, demand, eBay prices). Each
+    one must `git pull --rebase` and retry before giving up, or it fails whenever another got
+    there first, and each stages only the files it wrote. The fixtures workflow commits too,
+    but only when started by hand.
 - **Links**
   - Browsers' URL parser "repairs" links like `https:/site.com/feed` that Python rejects. The
     dashboard stores the repaired link, and both sides check it with the same pattern.
