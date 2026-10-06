@@ -12,9 +12,9 @@ Every source the scraper reads lives in [`feeds.json`](feeds.json). This page is
 |---|---:|---:|
 | News sites | 18 | 18 |
 | Subreddits | 26 | 26 |
-| YouTube channels | 156 | 111 |
+| YouTube channels | 159 | 114 |
 | Podcasts | 91 | 64 |
-| **Total** | **291** | **219** |
+| **Total** | **294** | **222** |
 
 ## YouTube
 
@@ -238,6 +238,16 @@ Small channels, but every upload is about PS2 games, so they count as PS2 contex
 | 6 | [Jimbo Gaming PlayStation 2 ](https://www.youtube.com/channel/UCXspo7eyvzUh2k9d4JGLNRg) | 9.75K | 7,119,556 | 2026-09-30 | on |  |
 | 7 | [We Review Every PS2 Game Oh God](https://www.youtube.com/channel/UC519lz5DdH7tsIMpfU55FlA) | 9.27K | 417,370 | 2025-10-05 | off | Inactive: last upload 2025-10-05. |
 | 8 | [Dan Gnadt - The PS2 Guy](https://www.youtube.com/channel/UChBb5-4ILVNPsL8xX6a4LpA) | 7.72K | 443,360 | 2026-09-29 | on |  |
+
+### Added from the dashboard
+
+Channels added later through **Sources & Weights**. They were not part of the 2026-09-30 measurement, so they have no subscriber or view figures here.
+
+| Channel | Default |
+|---|---|
+| [GetTheGreg](https://www.youtube.com/@GetTheGreg) | on |
+| [Colour Shed Productions](https://www.youtube.com/@ColourShedProductions) | on |
+| [Legally Insane Gamer](https://www.youtube.com/@LegallyInsaneGamer) | on |
 
 ## Podcasts
 
