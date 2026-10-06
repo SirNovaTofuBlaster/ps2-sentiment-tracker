@@ -14,7 +14,7 @@ when `feeds.json` or `scraper.py` changes on `main`.
 |---|---:|---:|
 | News sites | 18 | 18 |
 | Subreddits | 26 | 26 |
-| YouTube channels | 156 | 111 |
+| YouTube channels | 159 | 114 |
 | Podcasts | 91 | 64 |
 
 - [SOURCES.md](SOURCES.md): the ranked lists (subscribers, total views, Apple ratings and chart
@@ -27,6 +27,27 @@ when `feeds.json` or `scraper.py` changes on `main`.
   non-technical users.
 - [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how a run works end to end, how weights are
   applied, and why it is built this way.
+
+## What else runs
+
+Three smaller jobs build on the scraper's snapshot. Each has its own workflow and none of them
+touches `scraper.py`.
+
+| Script | Writes | What for |
+|---|---|---|
+| `archive.py` | `data/archive/` | A permanent record of every PS2 game mention (the snapshot itself only holds about two weeks) |
+| `demand.py` | `data/demand.json` | The dashboard's Demand Index: Wikipedia reading figures blended with mentions |
+| `ebay_prices.py` | `data/prices/` | eBay asking prices (US and UK) for every library game the feed has mentioned |
+
+`ebay_prices.py` is the only part that needs a key: an eBay developer keyset, stored as the
+`EBAY_CLIENT_ID` and `EBAY_CLIENT_SECRET` repository secrets. Without them its workflow fails
+and everything else carries on. It keeps numbers only (copies listed, lowest and median asking
+price), decides how often to check each game from how it is being mentioned, and is described in
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#ebay-asking-prices).
+
+```sh
+python ebay_prices.py --plan   # which games would be priced now and why; needs no key and asks nobody
+```
 
 ## Run locally
 
