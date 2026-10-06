@@ -32,16 +32,18 @@ through its **Sources & Weights** panel.
 | `scraper.py` | Config validation, fetch plan, YouTube link resolution, matching, sentiment, feed health, snapshot merge |
 | `index.html` | Dashboard; its inline script mirrors `validate_config()` and `source_key()` |
 | `guide.html` | Plain-language user guide; must match the UI |
-| `data/` | Written only by the scraper workflow; never edit or commit it by hand |
+| `data/` | Written only by workflows (`data/prices/` by the eBay one, the rest by the scraper's); never edit or commit it by hand |
 | `tests/test_scraper.py` | Offline unittest suite; also runs `tests/dashboard_check.mjs` when Node.js exists |
 | `tests/dashboard_check.mjs` | Runs the dashboard script in a Node sandbox with a stub DOM |
 | `tools/regression_check.py` | Proves a scraper change leaves news/Reddit output identical to a git ref |
 | `.github/workflows/scraper.yml` | Hourly scrape, plus immediately on pushes that change `feeds.json`/`scraper.py` |
 | `.github/workflows/tests.yml` | The test suite on pushes and pull requests |
-| `ebay_prices.py` | Current eBay asking prices (US and UK) for the games in `ebay_watchlist.json`, through eBay's official API. The only script that uses a key |
-| `ebay_watchlist.json` | The games `ebay_prices.py` looks up (at most 100) |
+| `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |
+| `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words) and titles never to price |
+| `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, and the game's level. Numbers only |
+| `data/prices/YYYY-MM.json` | The same numbers over time: a row whenever they change, and at least one a day |
 | `tests/test_ebay_prices.py` | Offline tests for `ebay_prices.py` and its workflow, including that the key never leaks |
-| `.github/workflows/ebay.yml` | Runs `ebay_prices.py` by hand and publishes the latest snapshot to the `ebay-data` branch |
+| `.github/workflows/ebay.yml` | Runs `ebay_prices.py` after every scraper run (and by hand), commits `data/prices/`, and publishes that run's listings to the `ebay-data` branch |
 
 ## Commands
 
@@ -52,6 +54,7 @@ python tools/regression_check.py          # old vs new scraper on identical real
 python -m py_compile scraper.py
 FULL_RUN=1 python scraper.py              # real run; writes data/ (run it in a copy, don't commit it)
 python -m http.server 8000                # dashboard at http://localhost:8000 (check the port is free first)
+python ebay_prices.py --plan              # which games would be priced now and why; needs no key, asks nobody
 ```
 
 ## Rules
@@ -85,9 +88,10 @@ python -m http.server 8000                # dashboard at http://localhost:8000 (
    `EBAY_CLIENT_ID` and `EBAY_CLIENT_SECRET` Actions secrets. The key is never committed,
    printed, written to a file or sent to the dashboard. It uses only Python's standard
    library, so the job that holds the key installs nothing: keep it that way. `ebay.yml`
-   runs only when started by hand; any other trigger is the maintainer's decision, and it
-   must never run on pull requests. No other script may use a key without the maintainer's
-   explicit decision.
+   runs after the scraper workflow and by hand; it must never run on pull requests, must
+   always check out `main` (never the code of the run that triggered it), and the scraper
+   workflow it follows must never gain a pull-request trigger either. No other script may
+   use a key without the maintainer's explicit decision.
 9. **Commits use a GitHub no-reply email.** Never put personal email addresses in commits,
    messages or files.
 10. **Don't push, fork or open pull requests without the maintainer's explicit OK.** Pushing
@@ -157,10 +161,38 @@ Before you call something done, prove it; don't assume it.
   - Podcast episodes can share one `<link>` (the show's homepage), have none, or have a bare guid.
     Links identify items, so those episodes use their audio file.
 - **eBay**
-  - The data comes under eBay's API License Agreement, so only the latest snapshot is kept:
-    `ebay.yml` replaces the `ebay-data` branch with one fresh commit on every run. Never write
-    eBay listing data to `data/` or to `main`, and never print prices in a workflow log.
-    (GitHub can still serve a replaced commit for a while to someone who knows its ID.)
+  - The data comes under eBay's API License Agreement. What is kept, by the maintainer's
+    decision of 2026-10-06:
+    - Listings (titles, links) are kept only for the latest run: `ebay.yml` replaces the
+      `ebay-data` branch with one fresh commit every time. Never write listing titles, links
+      or anything about a seller to `data/` or to `main`. (GitHub can still serve a replaced
+      commit for a while to someone who knows its ID.)
+    - Numbers derived from them (copies listed, lowest, median, typical postage) are kept
+      permanently under `data/prices/`. A test checks nothing else gets in.
+    - Prices are never printed in a workflow log: the log is public and is not ours to prune.
+  - How often a game is checked (the settings are at the top of `ebay_prices.py`): `surging`
+    (a game the feed rarely names, named in headlines by 2+ sources within 24 hours) on every
+    run for 48 hours; `normal` and `staple` (named on 5+ of the last 14 days, never surging)
+    every 6 hours; `dormant` (mentioned once, quiet for 14 days) daily. A run uses at most 500
+    searches and stops for the day at 4,500.
+  - About half of the "surging" flags in the first week were matcher mistakes (the wrong game
+    matched), so treat the level as "worth a look", not as news. It gets better only as the
+    matcher does.
+  - The search words for a game come from its library title, and listings must contain the
+    whole name. That is strict on purpose: better no figure than another game's prices. A
+    title with a Roman numeral is searched both ways ("kingdom hearts ii" and "kingdom hearts
+    2"). A listing that names a different library game containing this one's name ("Ultimate
+    Spider-Man" for "Spider-Man") is left out; `other_games()` decides which names those are.
+  - When eBay returns listings and none of them names the game, the game is marked
+    `unmatched` in `latest.json` and gets no history row: that means "these search words do
+    not find it", not "no copies for sale". Fix it by pinning the game with its own `search`.
+    The listings file on the `ebay-data` branch shows what was returned and why it was left out.
+  - `data/prices/` files are never rebuilt from nothing: if `latest.json` or the month's
+    history cannot be read, the run stops before asking eBay. Restore the file from its git
+    history rather than deleting it.
+  - One-word titles are priced only if they are in `ONE_WORD_TITLES` (names nothing else
+    uses, such as Kuon or Okami) or pinned. "Black", "Cars" and "Gun" would match every
+    listing that uses the word.
   - Nobody has been able to test `ebay_prices.py` against the real API from a development
     machine: the request format follows eBay's documentation. When a run looks wrong, start
     it with the search check ticked and read the counts it prints.
