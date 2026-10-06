@@ -2,8 +2,9 @@
 
 Run:  python -m unittest discover -s tests -v
 A fake stands in for eBay's API, and a throwaway server on this machine checks
-the real request code. Between them they check what the script asks for, what
-it does with the answer, and above all that the key never leaks."""
+the real request code. Between them they check which games get priced and how
+often, what the script asks eBay for, what it does with the answer, what it
+writes, and above all that the key never leaks."""
 
 import base64
 import contextlib
@@ -15,6 +16,7 @@ import tempfile
 import threading
 import time
 import unittest
+from datetime import datetime, timedelta, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from unittest import mock
@@ -29,15 +31,21 @@ CLIENT_SECRET = "PRD-topsecretcertid-4567-89ab"
 BASIC = base64.b64encode(f"{CLIENT_ID}:{CLIENT_SECRET}".encode()).decode()
 TOKEN = "v^1.1#i^1#fake-application-token-zzzz"
 SECRETS = (CLIENT_ID, CLIENT_SECRET, BASIC, TOKEN)
+KEY = {"EBAY_CLIENT_ID": CLIENT_ID, "EBAY_CLIENT_SECRET": CLIENT_SECRET}
 WORKFLOW = ROOT / ".github" / "workflows" / "ebay.yml"
 TESTS_WORKFLOW = ROOT / ".github" / "workflows" / "tests.yml"
+SCRAPER_WORKFLOW = ROOT / ".github" / "workflows" / "scraper.yml"
 
 US = ebay_prices.MARKETS["EBAY_US"]
 GB = ebay_prices.MARKETS["EBAY_GB"]
+NOON = datetime(2026, 10, 6, 12, 0, tzinfo=timezone.utc)
 
 
-def game(title, search=None, exclude=()):
-    return {"title": title, "search": " ".join(ebay_prices.words(search or title)), "exclude": list(exclude)}
+def game(title, search=None, exclude=(), siblings=(), level="normal", pinned=False):
+    name, queries = ebay_prices.search_terms(search or title)
+    return {"title": title, "key": ebay_prices.key_of(title), "search": name, "queries": queries,
+            "exclude": list(exclude), "siblings": list(siblings), "level": level, "pinned": pinned,
+            "mentions": 0, "surging_until": None}
 
 
 SH2 = game("Silent Hill 2")
@@ -89,17 +97,85 @@ def page(*items, total=None, **extra):
     return 200, {"total": len(items) if total is None else total, "itemSummaries": list(items), **extra}
 
 
-def run_main(fake, argv, env=None):
-    """main() against a fake eBay; returns (exit code, everything printed)."""
-    if env is None:
-        env = {"EBAY_CLIENT_ID": CLIENT_ID, "EBAY_CLIENT_SECRET": CLIENT_SECRET}
-    printed = io.StringIO()
-    with mock.patch.object(ebay_prices, "Http", lambda: fake), \
-            mock.patch.object(ebay_prices.time, "sleep", lambda seconds: None), \
-            mock.patch.dict(ebay_prices.os.environ, env, clear=True), \
-            contextlib.redirect_stdout(printed), contextlib.redirect_stderr(printed):
-        code = ebay_prices.main(argv)
-    return code, printed.getvalue()
+def two_copies(params, headers, low=24.99, high=31.5):
+    """A believable answer: two copies of whatever was asked for, in the site's own currency."""
+    currency = "GBP" if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" else "USD"
+    name = params["q"].replace(" ps2", "")
+    return page(listing(f"{name} PS2", low, currency=currency, item_id=1, postage=3.49),
+                listing(f"{name} PS2 boxed", high, currency=currency, item_id=2))
+
+
+def mention(title, hours_ago, source, headline=None, where="title", now=NOON):
+    when = now - timedelta(hours=hours_ago)
+    return {"headline": headline or f"{title} news from {source}", "source": source,
+            "matched_games": [title], "matched_game": title, "matched_in": where,
+            "timestamp": when.strftime(ebay_prices.FEED_TIME_FORMAT)}
+
+
+class Sandbox:
+    """Throwaway copies of every file the script reads or writes, and a clock that can be moved."""
+
+    LIBRARY = ["Silent Hill 2", "Silent Hill 2: Director's Cut", "Silent Hill 3", "Kuon", "Okami", "God Hand",
+               "Kingdom Hearts", "Kingdom Hearts II", "Kingdom Hearts Re:Chain of Memories",
+               "Getaway, The: Black Monday", "Shin Megami Tensei: Persona 4", "Grand Theft Auto: San Andreas",
+               "Jak and Daxter: The Precursor Legacy", "Black", "Combat Ace"]
+
+    def __init__(self, test, pinned=(), never=(), feed=(), archive=()):
+        folder = tempfile.TemporaryDirectory()
+        test.addCleanup(folder.cleanup)
+        self.root = Path(folder.name)
+        self.data = self.root / "data"
+        (self.data / "archive").mkdir(parents=True)
+        self.out = self.root / "out" / "ebay_prices.json"
+        self.now = NOON
+        self.write("ebay_watchlist.json", {"games": list(pinned), "never": list(never)})
+        self.write("data/ps2_database.json", self.LIBRARY)
+        self.feed(feed)
+        if archive:
+            self.write("data/archive/2026-09.json", [{"g": title, "d": "2026-09-01 10:00 UTC", "s": "x", "h": "y"}
+                                                     for title in archive])
+        for name, value in (("WATCHLIST_PATH", self.root / "ebay_watchlist.json"),
+                            ("FEED_PATH", self.data / "sentiment_feed.json"),
+                            ("ARCHIVE_DIR", self.data / "archive"),
+                            ("LIBRARY_PATH", self.data / "ps2_database.json"),
+                            ("PRICES_DIR", self.data / "prices"),
+                            ("utc_now", lambda: self.now)):
+            patcher = mock.patch.object(ebay_prices, name, value)
+            patcher.start()
+            test.addCleanup(patcher.stop)
+        sleeper = mock.patch.object(ebay_prices.time, "sleep", lambda seconds: None)
+        sleeper.start()
+        test.addCleanup(sleeper.stop)
+
+    def write(self, name, value):
+        path = self.root / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(value), encoding="utf-8")
+
+    def feed(self, items):
+        self.write("data/sentiment_feed.json", {"items": list(items)})
+
+    def run(self, fake=None, env=KEY, argv=()):
+        """main() against a fake eBay; returns (exit code, everything printed, the fake)."""
+        fake = fake or FakeHttp(two_copies)
+        printed = io.StringIO()
+        with mock.patch.object(ebay_prices, "Http", lambda: fake), \
+                mock.patch.dict(ebay_prices.os.environ, env, clear=True), \
+                contextlib.redirect_stdout(printed), contextlib.redirect_stderr(printed):
+            code = ebay_prices.main(["--out", str(self.out), *argv])
+        return code, printed.getvalue(), fake
+
+    @property
+    def latest(self):
+        return json.loads((self.data / "prices" / "latest.json").read_text(encoding="utf-8"))
+
+    def history(self, month="2026-10"):
+        path = self.data / "prices" / f"{month}.json"
+        return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+
+    @property
+    def snapshot(self):
+        return json.loads(self.out.read_text(encoding="utf-8"))
 
 
 class Quiet(unittest.TestCase):
@@ -113,6 +189,8 @@ class Quiet(unittest.TestCase):
             patcher.start()
             self.addCleanup(patcher.stop)
 
+
+# ---------------------------------------------------------------------------- the key
 
 class TokenTests(Quiet):
     def test_token_request_is_the_client_credentials_grant(self):
@@ -150,6 +228,8 @@ class TokenTests(Quiet):
         self.assertIsNone(caught.exception.__cause__)
         self.assertTrue(caught.exception.__suppress_context__)
 
+
+# ---------------------------------------------------------------------- asking eBay
 
 class RequestTests(Quiet):
     def test_each_site_is_asked_for_used_buy_it_now_ps2_copies_in_its_own_country(self):
@@ -219,12 +299,44 @@ class RequestTests(Quiet):
         self.assertEqual(len(fake.searches), 3, "no keyword search after a failure")
 
 
+# ------------------------------------------------------------------ words and names
+
 class WordsTests(unittest.TestCase):
-    def test_accents_fold_and_symbols_separate(self):
-        self.assertEqual(ebay_prices.words("\u014ckami\u2122 (PS2)"), ["okami", "ps2"])
-        self.assertEqual(ebay_prices.words("Okami\u2b50\ufe0fComplete"), ["okami", "complete"])
-        self.assertEqual(ebay_prices.words("Pok\u00e9mon: D\u00e9j\u00e0 Vu!"), ["pokemon", "deja", "vu"])
+    def test_accents_fold_apostrophes_vanish_and_symbols_separate(self):
+        self.assertEqual(ebay_prices.words("Ōkami™ (PS2)"), ["okami", "ps2"])
+        self.assertEqual(ebay_prices.words("Okami⭐️Complete"), ["okami", "complete"])
+        self.assertEqual(ebay_prices.words("Pokémon: Déjà Vu!"), ["pokemon", "deja", "vu"])
+        self.assertEqual(ebay_prices.words("Director's Cut / Collector’s"), ["directors", "cut", "collectors"])
         self.assertEqual(ebay_prices.words(None), [])
+
+    def test_two_spellings_of_one_name_compare_equal(self):
+        same = [("Kingdom Hearts II", "kingdom hearts 2"), ("Jak & Daxter", "Jak and Daxter"),
+                ("Final Fantasy XII", "final fantasy 12"), ("Ratchet and Clank", "ratchet clank")]
+        for one, other in same:
+            self.assertEqual(ebay_prices.name_words(one), ebay_prices.name_words(other), one)
+        self.assertEqual(ebay_prices.name_words("Ubisoft XIII"), ebay_prices.name_words("ubisoft 13"))
+        self.assertEqual(ebay_prices.name_words("Mega Man X"), ["mega", "man", "x"], "a lone X or V is a letter")
+
+    def test_one_key_for_a_game_however_the_library_files_it(self):
+        self.assertEqual(ebay_prices.key_of("Getaway, The: Black Monday"), ebay_prices.key_of("The Getaway: Black Monday"))
+        self.assertEqual(ebay_prices.key_of("ICO"), ebay_prices.key_of("Ico"))
+        self.assertEqual(ebay_prices.readable("Godfather, The: Collector's Edition"), "The Godfather: Collector's Edition")
+        self.assertEqual(ebay_prices.readable("Okami"), "Okami")
+
+    def test_search_words_come_from_the_title(self):
+        cases = {
+            "Silent Hill 2": ("silent hill 2", ["silent hill 2"]),
+            "Kingdom Hearts II": ("kingdom hearts 2", ["kingdom hearts ii", "kingdom hearts 2"]),
+            "Jak and Daxter: The Precursor Legacy": ("jak daxter the precursor legacy", ["jak daxter the precursor legacy"]),
+            "Godfather, The: Collector's Edition": ("godfather collectors edition", ["godfather collectors edition"]),
+            "Simpsons, The: Hit & Run": ("simpsons hit run", ["simpsons hit run"]),
+            "Grand Theft Auto III": ("grand theft auto 3", ["grand theft auto iii", "grand theft auto 3"]),
+            "The Thing": ("thing", ["thing"]),
+            "A-Train 6": ("a train 6", ["a train 6"]),
+            "XIII": ("13", ["xiii"]),
+        }
+        for title, expected in cases.items():
+            self.assertEqual(ebay_prices.search_terms(title), expected, title)
 
 
 class TitleTests(unittest.TestCase):
@@ -263,6 +375,63 @@ class TitleTests(unittest.TestCase):
             self.assertIsNone(self.reason(title, hearts), title)
         self.assertEqual(self.reason("Persona 3 FES PS2", game("SMT P4", "Persona 4")), "other_game")
 
+    def test_a_numbered_game_is_found_under_either_way_of_writing_its_number(self):
+        hearts2 = game("Kingdom Hearts II")
+        for title in ("Kingdom Hearts II (Sony PlayStation 2, 2006)", "Kingdom Hearts 2 PS2 complete",
+                      "Kingdom Hearts II: Final Mix+ PS2"):
+            self.assertIsNone(self.reason(title, hearts2), title)
+        for title in ("Kingdom Hearts PS2", "Kingdom Hearts 1 & 2 PS2", "Kingdom Hearts III"):
+            self.assertEqual(self.reason(title, hearts2), "other_game", title)
+        jak = game("Jak and Daxter: The Precursor Legacy")
+        self.assertIsNone(self.reason("Jak & Daxter: The Precursor Legacy PS2", jak))
+        self.assertIsNone(self.reason("Jak and Daxter The Precursor Legacy (PS2)", jak))
+
+    @staticmethod
+    def different(title, library):
+        """The names that must not be counted as `title`, given a library of raw titles."""
+        catalogue = []
+        for other in library:
+            owners = {" ".join(ebay_prices.words(owner + "s")) for owner in re.findall(r"([A-Za-z]+)'s\b", other)}
+            catalogue.append({"name": ebay_prices.search_terms(other)[0], "title": ebay_prices.readable(other),
+                              "possessive": owners})
+        return ebay_prices.other_games(title, ebay_prices.search_terms(title)[0], catalogue)
+
+    def test_another_game_whose_name_contains_this_one_is_left_out(self):
+        library = ["Kingdom Hearts", "Kingdom Hearts II", "Kingdom Hearts Re:Chain of Memories",
+                   "Spider-Man", "Ultimate Spider-Man", "Spider-Man: Friend or Foe", "Spider-Man: The Movie",
+                   "Bully", "Ant Bully, The", "Yakuza", "Wreckless: The Yakuza Missions"]
+        self.assertEqual(self.different("Kingdom Hearts", library),
+                         ["kingdom hearts 2", "kingdom hearts re chain of memories"])
+        self.assertEqual(self.different("Spider-Man", library),
+                         ["spider man friend or foe", "spider man the movie", "ultimate spider man"])
+        self.assertEqual(self.different("Bully", library), ["ant bully"])
+        self.assertEqual(self.different("Yakuza", library), ["wreckless the yakuza missions"])
+        hearts = game("Kingdom Hearts", siblings=self.different("Kingdom Hearts", library))
+        self.assertEqual(self.reason("Kingdom Hearts Re:Chain of Memories PS2", hearts), "other_game")
+        self.assertIsNone(self.reason("Kingdom Hearts PS2 Greatest Hits", hearts))
+        spider = game("Spider-Man", siblings=self.different("Spider-Man", library))
+        self.assertEqual(self.reason("Ultimate Spider-Man PS2", spider), "other_game")
+        self.assertIsNone(self.reason("Spider-Man (Sony PlayStation 2, 2002)", spider))
+
+    def test_the_same_game_under_a_longer_name_is_not_another_game(self):
+        library = ["Silent Hill 2", "Silent Hill 2: Director's Cut", "Splinter Cell", "Tom Clancy's Splinter Cell",
+                   "Tom Clancy's Splinter Cell: Chaos Theory", "Tarzan Untamed", "Disney's Tarzan Untamed",
+                   "Jak X", "Jak X: Combat Racing", "Dynasty Warriors 3", "Dynasty Warriors 3: Xtreme Legends",
+                   "Metal Gear Solid 2", "Metal Gear Solid 2: Sons of Liberty", "Metal Gear Solid 2: Substance",
+                   "Midnight Club", "Midnight Club: Street Racing", "Midnight Club II", "Midnight Club 3: DUB Edition"]
+        self.assertEqual(self.different("Silent Hill 2", library), [], "an edition")
+        self.assertEqual(self.different("Splinter Cell", library), ["tom clancys splinter cell chaos theory"],
+                         "an owner's name in front is the same game; a subtitle after it is not")
+        self.assertEqual(self.different("Tarzan Untamed", library), [], "a brand in front")
+        self.assertEqual(self.different("Jak X", library), [], "the library's one full name for it")
+        self.assertEqual(self.different("Dynasty Warriors 3", library), ["dynasty warriors 3 xtreme legends"],
+                         "an expansion is not the game's full name")
+        self.assertEqual(self.different("Metal Gear Solid 2", library), ["metal gear solid 2 substance"])
+        self.assertEqual(self.different("Midnight Club", library),
+                         ["midnight club 2", "midnight club 3 dub edition"])
+        jak = game("Jak X", siblings=self.different("Jak X", library))
+        self.assertIsNone(self.reason("Jak X: Combat Racing (Sony PlayStation 2, 2005)", jak))
+
     def test_whole_words_decide_what_is_not_a_copy(self):
         okami = game("Okami")
         for title in ("Okami PS2 demo", "Capcom Okami - Sony PlayStation 2 Case & Manual Only", "Okami PS2 job lot",
@@ -285,9 +454,9 @@ class TitleTests(unittest.TestCase):
         self.assertEqual(self.reason("Kuon PS2 NTSC USA", kuon, GB), "import")
         self.assertIsNone(self.reason("Kuon PS2 NTSC-U", kuon, US))
 
-    def test_titles_seen_on_the_first_real_run_are_sorted_correctly(self):
+    def test_titles_seen_on_real_runs_are_sorted_correctly(self):
         rose, persona, okami, ico = game("Rule of Rose"), game("SMT P4", "Persona 4"), game("Okami"), game("Ico")
-        sh3 = game("Silent Hill 3")
+        sh3, god_hand, colossus = game("Silent Hill 3"), game("God Hand"), game("Shadow of the Colossus")
         left_out = [
             ("Silent Hill 2 Pyramid Head Hat", SH2, US, "not_a_copy"),
             ("Silent Hill 2 Restless Dreams Original Xbox CIB? Horror Konami Tested", SH2, US, "other_platform"),
@@ -309,7 +478,6 @@ class TitleTests(unittest.TestCase):
         ]
         for title, wanted, market, reason in left_out:
             self.assertEqual(self.reason(title, wanted, market), reason, title)
-        god_hand, colossus = game("God Hand"), game("Shadow of the Colossus")
         counted = [
             # Left out by the first version of the rules, though each is a real copy.
             ("Silent Hill 2 Complete With Original Case, Manual With Registration Card & Disc", SH2, US),
@@ -317,14 +485,15 @@ class TitleTests(unittest.TestCase):
             ("Silent Hill 2 (PlayStation 2, 2001) PS2 w/ Manual and Case", SH2, US),
             ("Silent Hill 3 + soundtrack Sony Playstation 2 PS2 CIB", sh3, US),
             ("Silent Hill 3 & Soundtrack PS2 complete", sh3, US),
+            ("Silent Hill 3 + Original Soundtrack PS2", sh3, US),
             ("Capcom God Hand Sony PlayStation 2 PS2 w/ Case + Manual M NTSC-U/C 2006", god_hand, US),
             ("God Hand - PlayStation 2 PS2 PAL PEGI 16+ with Case & Manual VG++", god_hand, GB),
             ("ICO /PlayStation 2, 2001/CIB w/Case And Manual Sony", ico, US),
             ("Sony Shadow of the Colossus Greatest Hits PS2 Game Disc Case Manual T NTSC", colossus, US),
             ("Persona 4 PlayStation 2 Complete with Case, Manual, and Bonus Disc", persona, US),
             ("Persona 4 [PS2] - Complete PAL version + OST, pristine condition", persona, GB),
-            ("Okami\u2b50\ufe0fComplete CIB Original\u2b50\ufe0fSony PlayStation 2 PS2 Authentic Black Label", okami, US),
-            ("\u014ckami\u2122 (PlayStation 2) [S-Grade, Complete & Tested] EU Version", okami, GB),
+            ("Okami⭐️Complete CIB Original⭐️Sony PlayStation 2 PS2 Authentic Black Label", okami, US),
+            ("Ōkami™ (PlayStation 2) [S-Grade, Complete & Tested] EU Version", okami, GB),
             ("Silent Hill 2 PlayStation 2 PS2 Greatest Hits Disc Only", SH2, US),
             ("Silent Hill 2 Special 2-Disc Set PlayStation 2 In Very Good Condition PAL UK", SH2, GB),
             ("Silent Hill 2 Special Edition 2 Disc Set PAL Survival Horror PS2 (15)", SH2, GB),
@@ -381,6 +550,10 @@ class SummaryTests(Quiet):
         calm = self.summary(*[listing("Silent Hill 2", p, item_id=i) for i, p in enumerate(prices)])
         wild = self.summary(*[listing("Silent Hill 2", p, item_id=i) for i, p in enumerate(prices[:-1] + [900])])
         self.assertEqual(calm["median"], wild["median"])
+
+    def test_the_median_is_worked_out_in_exact_pennies(self):
+        result = self.summary(listing("Silent Hill 2", 24.99, item_id=1), listing("Silent Hill 2", 31.5, item_id=2))
+        self.assertEqual(result["median"], 28.25)
 
     def test_only_a_few_left_out_titles_are_saved_per_reason(self):
         result = self.summary(*[listing(f"Silent Hill 2 PS2 case only {n}", 5, item_id=n) for n in range(9)],
@@ -444,7 +617,6 @@ class SummaryTests(Quiet):
         self.assertEqual([row["postage"] for row in result["listings"]], [4.0, 0.0, None])
         self.assertEqual((result["postage_known"], result["median_postage"]), (2, 2.0))
         self.assertEqual(result["median"], 30.0, "the median is the item price, postage not added")
-        self.assertNotIn("median_with_postage", result)
         self.assertIsNone(self.summary(listing("Silent Hill 2", 20))["median_postage"])
 
     def test_incomplete_copies_are_counted_and_flagged(self):
@@ -488,6 +660,34 @@ class FallbackTests(Quiet):
             "https://www.ebay.co.uk/sch/i.html?_nkw=kuon%20ps2&_sacat=139973"
             "&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1")
 
+    def test_a_title_with_a_roman_numeral_is_searched_both_ways_and_each_listing_counts_once(self):
+        def answer(params, headers):
+            if params["q"] == "kingdom hearts ii":
+                return page(listing("Kingdom Hearts II PS2", 17, item_id=2), listing("Kingdom Hearts II Greatest Hits PS2", 19, item_id=4))
+            return page(listing("Kingdom Hearts 2 PS2", 15, item_id=1), listing("Kingdom Hearts II Greatest Hits PS2", 19, item_id=4),
+                        listing("Kingdom Hearts 1 & 2 PS2", 9, item_id=3), total=250)
+        fake = FakeHttp(answer)
+        counter = {"searches": 0}
+        result = ebay_prices.check_market(fake, TOKEN, game("Kingdom Hearts II"), "EBAY_US", counter)
+        self.assertEqual([call["params"]["q"] for call in fake.searches], ["kingdom hearts ii", "kingdom hearts 2"])
+        self.assertEqual(counter["searches"], 2)
+        self.assertEqual((result["fetched"], result["counted"], result["lowest"], result["median"]), (4, 3, 15.0, 17.0))
+        self.assertEqual(result["skipped"], {"other_game": 1})
+        self.assertEqual(result["on_ebay"], 2 + 250 - 1, "the listing both searches returned is counted once")
+        self.assertTrue(result["truncated"], "one of the two searches had more than it returned")
+        self.assertTrue(result["search_url"].startswith("https://www.ebay.com/sch/i.html?_nkw=kingdom%20hearts%202%20ps2"))
+
+    def test_listings_that_never_name_the_game_are_unmatched_not_zero_copies(self):
+        fake = FakeHttp(lambda params, headers: page(listing("Jak 3 PS2", 9, item_id=1), listing("Jak II PS2", 8, item_id=2)))
+        jak = game("Jak X")
+        result = ebay_prices.check_market(fake, TOKEN, jak, "EBAY_US", {"searches": 0})
+        self.assertEqual((result["status"], result["fetched"], result["counted"]), ("unmatched", 2, 0))
+        self.assertEqual(ebay_prices.describe(jak, US, result),
+                         "  Jak X [US]: none of the 2 listings eBay returned names this game; it needs its own search words")
+        self.assertEqual(ebay_prices.numbers_of(result, "2026-10-06T12:00Z"), {"checked": "2026-10-06T12:00Z", "unmatched": True})
+        junk_only = ebay_prices.summarise(page(listing("Jak X PS2 case only", 3))[1], jak, US, False)
+        self.assertEqual(junk_only["status"], "none", "the game was found, there is just no copy of it")
+
     def test_an_error_is_reported_with_ebays_own_words_and_no_second_search(self):
         fake = FakeHttp(lambda params, headers: (
             400, {"errors": [{"errorId": 12001, "message": "short", "longMessage": "The aspect filter is invalid."}]}))
@@ -499,6 +699,8 @@ class FallbackTests(Quiet):
         self.assertEqual(len(fake.searches), 1)
 
 
+# ------------------------------------------------------------------- the watchlist
+
 class WatchlistTests(unittest.TestCase):
     def write(self, value):
         folder = tempfile.TemporaryDirectory()
@@ -508,38 +710,45 @@ class WatchlistTests(unittest.TestCase):
         return path
 
     def test_the_committed_watchlist_loads(self):
-        games = ebay_prices.load_watchlist()
-        self.assertTrue(1 <= len(games) <= ebay_prices.MAX_GAMES)
-        for entry in games:
-            self.assertEqual(entry["search"], " ".join(ebay_prices.words(entry["search"])))
-
-    def test_the_most_games_allowed_fits_ebays_daily_allowance_at_one_run_an_hour(self):
-        self.assertLessEqual(ebay_prices.MAX_GAMES * len(ebay_prices.MARKETS) * 24, 5000)
+        pinned, never = ebay_prices.load_watchlist()
+        self.assertLessEqual(len(pinned), ebay_prices.MAX_PINNED)
+        self.assertTrue(all(entry["pinned"] and entry["search"] and entry["queries"] for entry in pinned))
+        self.assertFalse({entry["key"] for entry in pinned} & never, "a game cannot be pinned and never priced")
 
     def test_the_committed_watchlist_names_real_ps2_games(self):
         library_path = ROOT / "data" / "ps2_database.json"
         if not library_path.exists():
             self.skipTest("no cached PS2 library")
-        library = {" ".join(ebay_prices.words(title))
-                   for title in json.loads(library_path.read_text(encoding="utf-8"))}
-        for entry in ebay_prices.load_watchlist():
-            self.assertIn(" ".join(ebay_prices.words(entry["title"])), library, entry["title"])
+        library = {ebay_prices.key_of(title) for title in json.loads(library_path.read_text(encoding="utf-8"))}
+        pinned, never = ebay_prices.load_watchlist()
+        for entry in pinned:
+            self.assertIn(entry["key"], library, entry["title"])
+        self.assertTrue(never <= library, never - library)
 
-    def test_search_words_are_cleaned_before_they_reach_ebay(self):
-        (entry,) = ebay_prices.load_watchlist(self.write(
-            {"games": [{"title": "Jak II: Renegade", "search": "Jak II (Renegade, PAL)", "exclude": ["Demo!", ""]}]}))
-        self.assertEqual(entry, {"title": "Jak II: Renegade", "search": "jak ii renegade pal", "exclude": ["demo"]})
+    def test_a_pinned_game_carries_its_own_search_words(self):
+        pinned, never = ebay_prices.load_watchlist(self.write({
+            "games": [{"title": "Shin Megami Tensei: Persona 4", "search": "Persona 4"},
+                      {"title": "Jak II: Renegade", "search": "Jak II (Renegade, PAL)", "exclude": ["Demo!", ""]}],
+            "never": ["Combat Ace", "Getaway, The: Black Monday"]}))
+        self.assertEqual([(entry["title"], entry["search"], entry["queries"], entry["exclude"]) for entry in pinned], [
+            ("Shin Megami Tensei: Persona 4", "persona 4", ["persona 4"], []),
+            ("Jak II: Renegade", "jak 2 renegade pal", ["jak ii renegade pal", "jak 2 renegade pal"], ["demo"])])
+        self.assertEqual(never, {"combat ace", "the getaway black monday"})
+
+    def test_an_empty_list_of_pinned_games_is_allowed(self):
+        self.assertEqual(ebay_prices.load_watchlist(self.write({"games": []})), ([], set()))
 
     def test_mistakes_get_a_readable_message(self):
         cases = {
             "{not json": "not valid JSON",
-            json.dumps({"games": []}): "at least one game",
+            json.dumps({"about": "x"}): '"games" list',
             json.dumps({"games": [{"name": "Ico"}]}): 'needs a "title"',
             json.dumps({"games": [{"title": "Ico"}, {"title": "ICO"}]}): "listed twice",
             json.dumps({"games": [{"title": "Ico", "search": "!!!"}]}): '"search"',
             json.dumps({"games": [{"title": "Ico", "exclude": "colossus"}]}): '"exclude"',
-            json.dumps({"games": [{"title": "word " * 30}]}): "too long",
-            json.dumps({"games": [{"title": f"Game {n}"} for n in range(101)]}): "daily limit",
+            json.dumps({"games": [{"title": "word " * 30}]}): "shorter",
+            json.dumps({"games": [], "never": "Combat Ace"}): '"never"',
+            json.dumps({"games": [{"title": f"Game {n}"} for n in range(101)]}): "most allowed",
         }
         for text, expected in cases.items():
             with self.assertRaises(ebay_prices.EbayError) as caught:
@@ -551,60 +760,428 @@ class WatchlistTests(unittest.TestCase):
             ebay_prices.load_watchlist(ROOT / "no_such_watchlist.json")
 
 
+# -------------------------------------------------- which games, and how often
+
+class LevelTests(unittest.TestCase):
+    @staticmethod
+    def said(hours_ago, source, headline=None, in_headline=True):
+        return {"key": "kuon", "when": NOON - timedelta(hours=hours_ago), "source": source,
+                "headline": headline or f"kuon story from {source}", "in_headline": in_headline}
+
+    def level(self, mentions, held=None, pinned=False, now=NOON):
+        return ebay_prices.level_of(mentions, now, held, pinned)
+
+    def test_a_quiet_game_named_by_two_sources_in_a_day_is_surging(self):
+        level, named, until = self.level([self.said(20, "r/ps2"), self.said(3, "Eurogamer")])
+        self.assertEqual((level, named), ("surging", 2))
+        self.assertEqual(until, NOON - timedelta(hours=3) + timedelta(hours=48))
+
+    def test_one_earlier_mention_does_not_stop_a_surge_but_two_do(self):
+        recent = [self.said(20, "r/ps2"), self.said(3, "Eurogamer")]
+        self.assertEqual(self.level(recent + [self.said(200, "IGN")])[0], "surging")
+        self.assertEqual(self.level(recent + [self.said(200, "IGN"), self.said(100, "VG247")])[0], "normal")
+
+    def test_what_does_not_count_as_a_surge(self):
+        once = [self.said(3, "Eurogamer")]
+        one_source_twice = [self.said(20, "r/ps2", "first"), self.said(3, "r/ps2", "second")]
+        cross_posted = [self.said(20, "r/ps2", "game appreciation kuon"), self.said(19, "r/playstation2", "game appreciation kuon")]
+        only_in_the_text = [self.said(20, "r/ps2", in_headline=False), self.said(3, "Eurogamer", in_headline=False)]
+        too_far_apart = [self.said(25, "r/ps2"), self.said(3, "Eurogamer"), self.said(40, "IGN")]
+        for mentions in (once, one_source_twice, cross_posted, only_in_the_text, too_far_apart):
+            self.assertEqual(self.level(mentions)[0], "normal", mentions)
+
+    def test_a_surge_is_held_for_two_days_after_the_last_mention_then_ends(self):
+        mentions = [self.said(20, "r/ps2"), self.said(3, "Eurogamer")]
+        level, named, until = self.level(mentions)
+        for hours_later, expected in ((24, "surging"), (44, "surging"), (46, "normal")):
+            later = NOON + timedelta(hours=hours_later)
+            self.assertEqual(ebay_prices.level_of(mentions, later, until)[0], expected, hours_later)
+
+    def test_a_game_named_on_many_days_is_a_staple_and_never_surges(self):
+        daily = [self.said(24 * day + 2, f"source {day}") for day in range(5)]
+        self.assertEqual(self.level(daily), ("staple", 5, None))
+        burst = daily + [self.said(1, "Eurogamer"), self.said(3, "IGN")]
+        self.assertEqual(self.level(burst, held=NOON + timedelta(hours=10))[0], "staple")
+        self.assertEqual(self.level(daily[:4])[0], "normal", "four days is not yet a staple")
+        one_busy_day = [self.said(hour, f"source {hour}") for hour in range(30, 36)]
+        self.assertEqual(self.level(one_busy_day)[0], "normal", "six mentions on one day are not six days")
+        unlabelled = [dict(self.said(20, "r/ps2"), in_headline=True), dict(self.said(3, "IGN"), in_headline=True)]
+        self.assertEqual(self.level(unlabelled)[0], "surging")
+
+    def test_old_mentions_make_a_game_dormant_unless_it_is_pinned(self):
+        old = [self.said(24 * 20, "r/ps2")]
+        self.assertEqual(self.level(old), ("dormant", 0, None))
+        self.assertEqual(self.level([]), ("dormant", 0, None))
+        self.assertEqual(self.level([], pinned=True), ("normal", 0, None))
+
+    def test_a_mention_only_in_the_text_keeps_a_game_normal(self):
+        self.assertEqual(self.level([self.said(50, "r/ps2", in_headline=False)]), ("normal", 0, None))
+
+    def test_a_mention_dated_in_the_future_is_ignored(self):
+        self.assertEqual(self.level([self.said(-5, "r/ps2"), self.said(-6, "IGN")])[0], "dormant")
+
+
+class PlanTests(unittest.TestCase):
+    def plan(self, sandbox, state=None):
+        pinned, never = ebay_prices.load_watchlist()
+        mentions, ever = ebay_prices.load_mentions()
+        library, catalogue = ebay_prices.load_library()
+        return ebay_prices.plan_games(sandbox.now, pinned, never, mentions, ever, library, catalogue, state or {})
+
+    def test_every_mentioned_library_game_is_tracked_and_the_rest_is_explained(self):
+        sandbox = Sandbox(self, pinned=[{"title": "Silent Hill 2"}], never=["Combat Ace"], feed=[
+            mention("Kuon", 5, "r/ps2"), mention("Kingdom Hearts", 30, "IGN"), mention("Black", 2, "r/ps2"),
+            mention("Combat Ace", 2, "IGN"), mention("Halo 2", 2, "IGN"),
+            mention("The Getaway: Black Monday", 2, "r/ps2")], archive=["Okami", "Kuon"])
+        games, left_out = self.plan(sandbox)
+        self.assertEqual({entry["title"]: entry["level"] for entry in games}, {
+            "Getaway, The: Black Monday": "normal", "Kingdom Hearts": "normal", "Kuon": "normal",
+            "Okami": "dormant", "Silent Hill 2": "normal"})
+        self.assertEqual([entry["title"] for entry in games], sorted((entry["title"] for entry in games), key=str.lower))
+        self.assertEqual(left_out, {"one_word": ["Black"], "not_in_library": ["Halo 2"], "never": ["Combat Ace"]})
+        hearts = next(entry for entry in games if entry["title"] == "Kingdom Hearts")
+        self.assertEqual((hearts["search"], hearts["queries"], hearts["pinned"]),
+                         ("kingdom hearts", ["kingdom hearts"], False))
+        self.assertEqual(hearts["siblings"], ["kingdom hearts 2", "kingdom hearts re chain of memories"])
+
+    def test_a_one_word_title_is_tracked_when_it_is_distinctive_or_pinned(self):
+        feed = [mention("Okami", 3, "r/ps2"), mention("Black", 3, "r/ps2")]
+        games, left_out = self.plan(Sandbox(self, feed=feed))
+        self.assertEqual([(entry["title"], entry["pinned"]) for entry in games], [("Okami", False)])
+        self.assertEqual(left_out["one_word"], ["Black"])
+        games, left_out = self.plan(Sandbox(self, pinned=[{"title": "Black", "search": "Black Criterion"}], feed=feed))
+        self.assertEqual([(entry["title"], entry["pinned"], entry["search"]) for entry in games],
+                         [("Black", True, "black criterion"), ("Okami", False, "okami")])
+        self.assertEqual(left_out["one_word"], [])
+
+    def test_every_distinctive_one_word_title_is_a_real_library_title(self):
+        library_path = ROOT / "data" / "ps2_database.json"
+        if not library_path.exists():
+            self.skipTest("no cached PS2 library")
+        one_word = {ebay_prices.search_terms(title)[1][0]
+                    for title in json.loads(library_path.read_text(encoding="utf-8"))}
+        self.assertTrue(ebay_prices.ONE_WORD_TITLES <= one_word, sorted(ebay_prices.ONE_WORD_TITLES - one_word))
+        for ordinary in ("black", "cars", "gift", "gun", "retro", "thing", "driven", "sims"):
+            self.assertNotIn(ordinary, ebay_prices.ONE_WORD_TITLES)
+
+    def test_the_feeds_short_name_for_a_pinned_game_counts_as_that_game(self):
+        feed = [mention("Persona 4", 24 * day + 1, f"source {day}") for day in range(6)]
+        sandbox = Sandbox(self, pinned=[{"title": "Shin Megami Tensei: Persona 4", "search": "Persona 4"}], feed=feed)
+        games, left_out = self.plan(sandbox)
+        self.assertEqual([(entry["title"], entry["level"], entry["mentions"]) for entry in games],
+                         [("Shin Megami Tensei: Persona 4", "staple", 6)])
+        self.assertEqual(left_out["not_in_library"], [])
+
+    def test_two_library_spellings_of_one_game_are_tracked_once(self):
+        sandbox = Sandbox(self, feed=[mention("Getaway, The: Black Monday", 3, "r/ps2"),
+                                      mention("Getaway: Black Monday", 2, "IGN")])
+        sandbox.write("data/ps2_database.json", ["Getaway, The: Black Monday", "Getaway: Black Monday"])
+        games, left_out = self.plan(sandbox)
+        self.assertEqual([(entry["title"], entry["mentions"]) for entry in games], [("Getaway: Black Monday", 2)])
+
+    def test_an_item_that_does_not_say_where_the_name_was_counts_as_a_headline(self):
+        feed = [mention("God Hand", 20, "r/ps2"), mention("God Hand", 3, "IGN")]
+        for item in feed:
+            del item["matched_in"]
+        games, _ = self.plan(Sandbox(self, feed=feed))
+        self.assertEqual((games[0]["level"], games[0]["mentions"]), ("surging", 2))
+
+    def test_a_surge_is_remembered_between_runs(self):
+        sandbox = Sandbox(self, feed=[mention("Kuon", 20, "r/ps2"), mention("Kuon", 3, "Eurogamer")])
+        games, _ = self.plan(sandbox)
+        self.assertEqual((games[0]["level"], games[0]["surging_until"]), ("surging", NOON + timedelta(hours=45)))
+        sandbox.feed([])   # the mentions have gone, but the surge is on record
+        games, _ = self.plan(sandbox, {"games": {"Kuon": {"surging_until": "2026-10-08T09:00Z"}}})
+        self.assertEqual(games, [], "a game no longer mentioned anywhere is not tracked")
+        sandbox.feed([mention("Kuon", 40, "r/ps2")])
+        games, _ = self.plan(sandbox, {"games": {"Kuon": {"surging_until": "2026-10-08T09:00Z"}}})
+        self.assertEqual(games[0]["level"], "surging")
+
+    def test_the_real_feed_can_be_planned(self):
+        if not (ROOT / "data" / "sentiment_feed.json").exists():
+            self.skipTest("no scraped feed")
+        pinned, never = ebay_prices.load_watchlist()
+        mentions, ever = ebay_prices.load_mentions()
+        library, catalogue = ebay_prices.load_library()
+        games, left_out = ebay_prices.plan_games(ebay_prices.utc_now(), pinned, never, mentions, ever, library,
+                                                 catalogue, {})
+        titles = [entry["title"] for entry in games]
+        self.assertEqual(len(titles), len(set(titles)))
+        names = [entry["search"] for entry in games]
+        self.assertEqual(len(names), len(set(names)), "two library spellings of one game are tracked once")
+        for entry in games:
+            self.assertTrue(all(0 < len(query) + 4 <= ebay_prices.MAX_QUERY_CHARS for query in entry["queries"]))
+            self.assertNotIn(entry["search"], entry["siblings"])
+        self.assertTrue({entry["title"] for entry in pinned} <= set(titles))
+        for entry in games:
+            self.assertIn(entry["level"], ebay_prices.CHECK_EVERY_HOURS)
+            self.assertTrue(entry["pinned"] or " " in entry["search"]
+                            or entry["queries"][0] in ebay_prices.ONE_WORD_TITLES, entry["title"])
+
+
+class DueTests(unittest.TestCase):
+    @staticmethod
+    def state(**checked):
+        """state(Kuon=("2026-10-06T06:00Z", None)) -> Kuon was checked on the US site only."""
+        return {"games": {title.replace("_", " "): {label: {"checked": stamp} for label, stamp in zip(("US", "UK"), stamps) if stamp}
+                          for title, stamps in checked.items()}}
+
+    def due(self, games, state=None, now=NOON):
+        return [(entry["title"], market_id) for entry, market_id in ebay_prices.due_lookups(games, state or {}, now)]
+
+    def test_a_game_never_checked_is_due_on_both_sites(self):
+        self.assertEqual(self.due([game("Kuon")]), [("Kuon", "EBAY_GB"), ("Kuon", "EBAY_US")])
+
+    def test_each_level_waits_its_own_time(self):
+        hours = {"normal": 6, "staple": 6, "dormant": 24}
+        self.assertEqual({level: ebay_prices.CHECK_EVERY_HOURS[level] for level in hours}, hours)
+        self.assertEqual(ebay_prices.CHECK_EVERY_HOURS["surging"], 0, "a surging game is checked on every run")
+        for level, wait in hours.items():
+            entry = game("Kuon", level=level)
+            just_checked = (NOON - timedelta(hours=wait - 1)).strftime(ebay_prices.STAMP_FORMAT)
+            long_enough = (NOON - timedelta(hours=wait)).strftime(ebay_prices.STAMP_FORMAT)
+            self.assertEqual(self.due([entry], self.state(Kuon=(just_checked, just_checked))), [], level)
+            self.assertEqual(len(self.due([entry], self.state(Kuon=(long_enough, long_enough)))), 2, level)
+        minute_ago = (NOON - timedelta(minutes=1)).strftime(ebay_prices.STAMP_FORMAT)
+        self.assertEqual(len(self.due([game("Kuon", level="surging")], self.state(Kuon=(minute_ago, minute_ago)))), 2)
+
+    def test_a_check_may_come_half_an_hour_early_so_six_hours_does_not_become_seven(self):
+        entry = game("Kuon")
+        for minutes_ago, expected in ((5 * 60 + 29, 0), (5 * 60 + 31, 2)):
+            stamp = (NOON - timedelta(minutes=minutes_ago)).strftime(ebay_prices.STAMP_FORMAT)
+            self.assertEqual(len(self.due([entry], self.state(Kuon=(stamp, stamp)))), expected, minutes_ago)
+
+    def test_each_site_keeps_its_own_clock(self):
+        hour_ago = (NOON - timedelta(hours=1)).strftime(ebay_prices.STAMP_FORMAT)
+        self.assertEqual(self.due([game("Kuon")], self.state(Kuon=(hour_ago, None))), [("Kuon", "EBAY_GB")])
+
+    def test_surging_games_go_first_then_pinned_then_the_longest_overdue(self):
+        stamp = lambda hours: (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)   # noqa: E731
+        games = [game("Okami"), game("God Hand"), game("Kuon", level="surging"),
+                 game("Silent Hill 2", pinned=True), game("Silent Hill 3")]
+        state = self.state(Okami=(stamp(7), stamp(7)), God_Hand=(stamp(30), stamp(30)), Kuon=(stamp(1), stamp(1)),
+                           Silent_Hill_2=(stamp(6), stamp(6)))
+        order = [title for title, market_id in self.due(games, state) if market_id == "EBAY_US"]
+        self.assertEqual(order, ["Kuon", "Silent Hill 2", "Silent Hill 3", "God Hand", "Okami"])
+
+
+class BudgetTests(Quiet):
+    def lookups(self, count):
+        return [(game(f"Game Number {n}"), "EBAY_US") for n in range(count)]
+
+    def test_a_run_stops_when_its_allowance_of_searches_is_used(self):
+        fake = FakeHttp(two_copies)
+        run = ebay_prices.check_all(fake, CLIENT_ID, CLIENT_SECRET, self.lookups(10), allowance=7)
+        self.assertEqual((len(run["results"]), run["searches"]), (6, 6), "a seventh lookup might need two searches")
+        self.assertIn("allowance", run["stopped"])
+
+    def test_a_run_stops_when_its_time_is_up(self):
+        clock = iter(range(0, 100000, 150))
+        with mock.patch.object(ebay_prices.time, "monotonic", lambda: next(clock)):
+            run = ebay_prices.check_all(FakeHttp(two_copies), CLIENT_ID, CLIENT_SECRET, self.lookups(10), allowance=500)
+        self.assertEqual(len(run["results"]), 2, "the clock passes seven minutes before the third lookup")
+        self.assertIn("time is up", run["stopped"])
+
+    def test_ebay_saying_stop_ends_the_run_but_keeps_what_was_learned(self):
+        calls = {"n": 0}
+
+        def answer(params, headers):
+            calls["n"] += 1
+            return two_copies(params, headers) if calls["n"] <= 3 else (429, {"errors": [{"message": "Limit hit"}]})
+        run = ebay_prices.check_all(FakeHttp(answer), CLIENT_ID, CLIENT_SECRET, self.lookups(10), allowance=500)
+        self.assertEqual((len(run["results"]), run["searches"]), (3, 6))
+        self.assertIn("HTTP 429: Limit hit", run["stopped"])
+
+    def test_the_settings_fit_inside_ebays_daily_allowance(self):
+        self.assertLessEqual(ebay_prices.DAILY_SEARCHES, 5000)
+        self.assertLessEqual(ebay_prices.MAX_SEARCHES_PER_RUN, ebay_prices.DAILY_SEARCHES)
+
+
+# ------------------------------------------------------------------ what gets written
+
+class RecordTests(unittest.TestCase):
+    def setUp(self):
+        self.sandbox = Sandbox(self, pinned=[{"title": "Silent Hill 2"}], feed=[mention("Kuon", 5, "r/ps2")])
+
+    def test_the_first_run_records_every_game_on_both_sites(self):
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        latest = self.sandbox.latest
+        self.assertEqual(list(latest["games"]), ["Kuon", "Silent Hill 2"])
+        self.assertEqual(latest["games"]["Kuon"], {
+            "level": "normal", "mentions": 1,
+            "US": {"checked": "2026-10-06T12:00Z", "copies": 2, "lowest": 24.99, "median": 28.25,
+                   "postage": 3.49, "recorded": "2026-10-06"},
+            "UK": {"checked": "2026-10-06T12:00Z", "copies": 2, "lowest": 24.99, "median": 28.25,
+                   "postage": 3.49, "recorded": "2026-10-06"}})
+        self.assertIs(latest["games"]["Silent Hill 2"]["pinned"], True)
+        self.assertEqual(latest["currencies"], {"US": "USD", "UK": "GBP"})
+        self.assertEqual(latest["searches"], {"day": "2026-10-06", "used": 4})
+        self.assertIn("Not sold prices", latest["what"])
+        self.assertEqual(sorted(self.sandbox.history()), [
+            ["2026-10-06T12:00Z", "Kuon", "UK", 2, 24.99, 28.25],
+            ["2026-10-06T12:00Z", "Kuon", "US", 2, 24.99, 28.25],
+            ["2026-10-06T12:00Z", "Silent Hill 2", "UK", 2, 24.99, 28.25],
+            ["2026-10-06T12:00Z", "Silent Hill 2", "US", 2, 24.99, 28.25]])
+
+    def test_what_is_kept_under_data_is_numbers_only(self):
+        self.sandbox.run()
+        kept = "".join(path.read_text(encoding="utf-8") for path in (self.sandbox.data / "prices").iterdir())
+        for forbidden in ("http", "ebay.com", "ebay.co.uk", "/itm/", "boxed", "Good", "2026-10-05T09", "title",
+                          "url", "seller", "condition"):
+            self.assertNotIn(forbidden, kept, forbidden)
+        for secret in SECRETS:
+            self.assertNotIn(secret, kept)
+        self.assertIn("/itm/", self.sandbox.out.read_text(encoding="utf-8"), "the listings file is where links go")
+
+    def test_nothing_is_asked_again_until_a_game_is_due(self):
+        self.sandbox.run()
+        self.sandbox.now = NOON + timedelta(hours=2)
+        self.sandbox.out.unlink()
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0)
+        self.assertIn("Nothing is due, so eBay was not asked.", printed)
+        self.assertEqual((fake.token_calls, fake.searches), ([], []))
+        self.assertFalse(self.sandbox.out.exists())
+        self.assertEqual(len(self.sandbox.history()), 4)
+
+    def test_unchanged_prices_add_no_rows_the_same_day_and_one_row_the_next(self):
+        self.sandbox.run()
+        self.sandbox.now = NOON + timedelta(hours=7)
+        self.sandbox.run()
+        self.assertEqual(len(self.sandbox.history()), 4, "same day, same numbers: nothing new to record")
+        self.assertEqual(self.sandbox.latest["games"]["Kuon"]["US"]["checked"], "2026-10-06T19:00Z")
+        self.sandbox.now = NOON + timedelta(hours=14)
+        self.sandbox.run()
+        history = self.sandbox.history()
+        self.assertEqual(len(history), 8, "a new day gets its own row even when nothing moved")
+        self.assertEqual(history[-1][0], "2026-10-07T02:00Z")
+        self.assertEqual(self.sandbox.latest["searches"], {"day": "2026-10-07", "used": 4})
+
+    def test_a_changed_price_is_recorded_straight_away(self):
+        self.sandbox.run()
+        self.sandbox.now = NOON + timedelta(hours=7)
+        self.sandbox.run(FakeHttp(lambda params, headers: two_copies(params, headers, low=19.99)))
+        history = self.sandbox.history()
+        self.assertEqual(len(history), 8)
+        self.assertIn(["2026-10-06T19:00Z", "Kuon", "US", 2, 19.99, 25.75], history)
+        self.assertEqual(self.sandbox.latest["searches"], {"day": "2026-10-06", "used": 8})
+
+    def test_a_game_the_search_cannot_find_is_marked_and_kept_out_of_the_history(self):
+        def answer(params, headers):
+            if params["q"].startswith("kuon"):
+                return page(listing("Some other game PS2", 5, currency="GBP" if "GB" in headers["X-EBAY-C-MARKETPLACE-ID"] else "USD"))
+            return two_copies(params, headers)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.sandbox.latest["games"]["Kuon"]["US"], {"checked": "2026-10-06T12:00Z", "unmatched": True})
+        self.assertEqual([row[1] for row in self.sandbox.history()], ["Silent Hill 2", "Silent Hill 2"])
+        self.assertIn("Kuon [US]: none of the 1 listings eBay returned names this game", printed)
+        self.sandbox.now = NOON + timedelta(hours=2)
+        self.assertIn("Nothing is due", self.sandbox.run()[1], "it is still only checked at its usual pace")
+
+    def test_no_copies_for_sale_is_recorded_as_none_not_as_zero_pounds(self):
+        def answer(params, headers):
+            return page() if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" else two_copies(params, headers)
+        self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(self.sandbox.latest["games"]["Kuon"]["UK"], {
+            "checked": "2026-10-06T12:00Z", "copies": 0, "lowest": None, "median": None, "postage": None,
+            "recorded": "2026-10-06"})
+        self.assertIn(["2026-10-06T12:00Z", "Kuon", "UK", 0, None, None], self.sandbox.history())
+
+    def test_a_failed_lookup_keeps_the_old_figures_and_is_tried_again_next_run(self):
+        self.sandbox.run()
+        before = self.sandbox.latest["games"]["Kuon"]["UK"]
+        self.sandbox.now = NOON + timedelta(hours=7)
+
+        def answer(params, headers):
+            if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" and params["q"].startswith("kuon"):
+                return 500, {"errors": [{"message": "oops"}]}
+            return two_copies(params, headers)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.sandbox.latest["games"]["Kuon"]["UK"], before)
+        self.assertEqual(self.sandbox.latest["games"]["Kuon"]["US"]["checked"], "2026-10-06T19:00Z")
+        self.sandbox.now = NOON + timedelta(hours=8)
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual([call["params"]["q"] for call in fake.searches], ["kuon"])
+        self.assertEqual(fake.searches[0]["headers"]["X-EBAY-C-MARKETPLACE-ID"], "EBAY_GB")
+
+    def test_history_is_one_row_per_line_and_months_get_their_own_file(self):
+        self.sandbox.run()
+        text = (self.sandbox.data / "prices" / "2026-10.json").read_text(encoding="utf-8")
+        lines = text.splitlines()
+        self.assertEqual((lines[0], lines[-1], len(lines)), ("[", "]", 6))
+        self.assertTrue(all(line.startswith('  ["2026-10-06T12:00Z",') for line in lines[1:-1]))
+        self.sandbox.now = datetime(2026, 11, 1, 0, 30, tzinfo=timezone.utc)
+        self.sandbox.run()
+        self.assertEqual(len(self.sandbox.history("2026-11")), 4)
+        self.assertEqual(len(self.sandbox.history("2026-10")), 4)
+
+    def test_a_surging_game_is_checked_on_every_run_and_the_log_says_so(self):
+        self.sandbox.feed([mention("Kuon", 20, "r/ps2"), mention("Kuon", 3, "Eurogamer")])
+        code, printed, fake = self.sandbox.run()
+        self.assertIn("  surging: Kuon\n", printed)
+        self.assertIn("  Kuon [US]: 2 of 2 listings counted (surging)\n", printed)
+        self.assertEqual(self.sandbox.latest["games"]["Kuon"]["level"], "surging")
+        self.assertEqual(self.sandbox.latest["games"]["Kuon"]["surging_until"], "2026-10-08T09:00Z")
+        self.assertEqual([call["params"]["q"] for call in fake.searches[:2]], ["kuon", "kuon"], "surging goes first")
+        self.sandbox.now = NOON + timedelta(hours=1)
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual([call["params"]["q"] for call in fake.searches], ["kuon", "kuon"])
+
+
 class EndToEndTests(unittest.TestCase):
     def setUp(self):
-        folder = tempfile.TemporaryDirectory()
-        self.addCleanup(folder.cleanup)
-        self.out = Path(folder.name) / "ebay" / "ebay_prices.json"
-        self.argv = ["--out", str(self.out)]
+        self.sandbox = Sandbox(self, pinned=[{"title": "Silent Hill 2"}], never=["Combat Ace"], feed=[
+            mention("Kuon", 5, "r/ps2"), mention("Black", 5, "r/ps2"), mention("Combat Ace", 5, "IGN"),
+            mention("Halo 2", 5, "IGN")])
 
-    @staticmethod
-    def answer(params, headers):
-        currency = "GBP" if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" else "USD"
-        name = params["q"]
-        return page(listing(f"{name} PS2", 24.99, currency=currency, item_id=1, postage=3.49),
-                    listing(f"{name} PS2 boxed", 31.5, currency=currency, item_id=2))
-
-    def test_a_full_run_writes_one_file_and_never_leaks_the_key(self):
-        fake = FakeHttp(self.answer)
-        code, printed = run_main(fake, self.argv)
+    def test_a_full_run_never_leaks_the_key(self):
+        code, printed, fake = self.sandbox.run()
         self.assertEqual(code, 0, printed)
-        text = self.out.read_text(encoding="utf-8")
-        data = json.loads(text)
-        games = ebay_prices.load_watchlist()
-
+        written = "".join(path.read_text(encoding="utf-8") for path in self.sandbox.root.rglob("*.json"))
         for secret in SECRETS + ("Bearer", "Basic"):
-            self.assertNotIn(secret, text)
+            self.assertNotIn(secret, written)
             self.assertNotIn(secret, printed)
-        self.assertEqual([row["title"] for row in data["games"]], [entry["title"] for entry in games])
-        self.assertEqual(data["searches_used"], len(games) * 2)
         self.assertEqual(len(fake.token_calls), 1)
-        self.assertFalse(data["limit_reached"])
-        self.assertNotIn("limit_message", data)
-        self.assertIn("Not sold prices", data["what"])
-        self.assertRegex(data["fetched_at"], r"^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$")
-        self.assertEqual(data["markets"]["EBAY_GB"], {"label": "UK", "site": "www.ebay.co.uk", "currency": "GBP"})
-        first = data["games"][0]["markets"]
-        self.assertEqual(list(first), ["EBAY_US", "EBAY_GB"])
-        self.assertEqual((first["EBAY_US"]["currency"], first["EBAY_GB"]["currency"]), ("USD", "GBP"))
-        self.assertEqual((first["EBAY_US"]["median"], first["EBAY_US"]["lowest"]), (28.25, 24.99))
-        self.assertNotIn("answered", first["EBAY_US"])
-        self.assertTrue(text.endswith("}\n"))
 
-    def test_the_public_log_holds_counts_but_no_prices(self):
-        code, printed = run_main(FakeHttp(self.answer), self.argv)
-        self.assertIn("Looking up 10 games on 2 eBay sites:", printed)
+    def test_the_listings_file_holds_this_runs_lookups(self):
+        self.sandbox.run()
+        snapshot = self.sandbox.snapshot
+        self.assertEqual([row["title"] for row in snapshot["games"]], ["Silent Hill 2", "Kuon"])
+        self.assertEqual(snapshot["searches_used"], 4)
+        self.assertEqual(snapshot["stopped_early"], "")
+        self.assertRegex(snapshot["fetched_at"], r"^2026-10-06T12:00:00Z$")
+        first = snapshot["games"][0]["markets"]
+        self.assertEqual(list(first), ["EBAY_GB", "EBAY_US"])
+        self.assertEqual(first["EBAY_US"]["listings"][0]["url"], "https://www.ebay.com/itm/1")
+        self.assertNotIn("answered", first["EBAY_US"])
+        self.assertEqual(snapshot["markets"]["EBAY_GB"], {"label": "UK", "site": "www.ebay.co.uk", "currency": "GBP"})
+
+    def test_the_public_log_explains_the_plan_and_holds_counts_but_no_prices(self):
+        code, printed, fake = self.sandbox.run()
+        self.assertIn("Tracking 2 games (1 pinned): 0 surging, 2 normal, 0 staple, 0 dormant.\n", printed)
+        self.assertIn("Left out, one-word name that is also an ordinary word (pin it to track it): 1 (Black).\n", printed)
+        self.assertIn("Left out, not in the PS2 library: 1 (Halo 2).\n", printed)
+        self.assertIn('Left out, on the "never" list: 1 (Combat Ace).\n', printed)
+        self.assertIn("Due now: 4 lookups. This run may use 500 searches.\n", printed)
         self.assertIn("  Silent Hill 2 [US]: 2 of 2 listings counted\n", printed)
-        self.assertIn("  Silent Hill 2 [UK]: 2 of 2 listings counted\n", printed)
-        self.assertIn("20 searches used; 20 of 20 lookups answered.", printed)
-        self.assertNotIn("Search check", printed)
+        self.assertIn("4 searches used; 4 of 4 lookups answered; 0 left for the next run.\n", printed)
+        self.assertIn("Wrote latest.json and added 4 rows to this month's price history.\n", printed)
         for price in ("24.99", "31.5", "28.2", "3.49"):
             self.assertNotIn(price, printed)
 
+    def test_the_plan_can_be_shown_without_the_key_and_without_asking_ebay(self):
+        code, printed, fake = self.sandbox.run(env={}, argv=["--plan"])
+        self.assertEqual(code, 0)
+        self.assertIn("Due now: 4 lookups.", printed)
+        self.assertEqual((fake.token_calls, fake.searches), ([], []))
+        self.assertFalse((self.sandbox.data / "prices").exists())
+
     def test_the_search_check_prints_counts_for_each_variation(self):
         fake = FakeHttp(lambda params, headers: page(listing("Silent Hill 2 PS2", 24.99), total=37))
-        env = {"EBAY_CLIENT_ID": CLIENT_ID, "EBAY_CLIENT_SECRET": CLIENT_SECRET, "EBAY_DIAGNOSE": "true"}
-        code, printed = run_main(fake, self.argv, env=env)
+        code, printed, fake = self.sandbox.run(fake, env={**KEY, "EBAY_DIAGNOSE": "true"})
         self.assertEqual(code, 0, printed)
         self.assertIn('Search check for "Silent Hill 2" (listings eBay reports):', printed)
         for site in ("US", "UK"):
@@ -616,91 +1193,187 @@ class EndToEndTests(unittest.TestCase):
         self.assertTrue(filters[2].startswith("conditions:{USED},"))
         self.assertEqual(filters[3], "buyingOptions:{FIXED_PRICE},itemLocationCountry:US")
         self.assertEqual(fake.searches[1]["params"]["q"], "silent hill 2 ps2")
-        self.assertEqual(json.loads(self.out.read_text(encoding="utf-8"))["searches_used"], 8 + 20)
+        self.assertEqual(self.sandbox.latest["searches"]["used"], 8 + 4)
+        self.assertNotIn("Search check", self.sandbox.run(env={**KEY, "EBAY_DIAGNOSE": ""})[1])
         self.assertNotIn("24.99", printed)
 
     def test_without_the_key_it_says_what_to_do_and_calls_nobody(self):
-        fake = FakeHttp(self.answer)
-        code, printed = run_main(fake, self.argv, env={})
+        code, printed, fake = self.sandbox.run(env={})
         self.assertEqual(code, 1)
         self.assertIn("STOPPED: The eBay key is not set.", printed)
         self.assertIn("New repository secret", printed)
         self.assertEqual((fake.token_calls, fake.searches), ([], []))
-        self.assertFalse(self.out.exists())
+        self.assertFalse((self.sandbox.data / "prices").exists())
 
     def test_a_refused_key_writes_nothing_and_shows_nothing_secret(self):
         echo = f"bad credentials {CLIENT_ID}:{CLIENT_SECRET}"
-        fake = FakeHttp(self.answer, token_answer=(401, {"error_description": echo}))
-        code, printed = run_main(fake, self.argv)
+        code, printed, fake = self.sandbox.run(FakeHttp(two_copies, token_answer=(401, {"error_description": echo})))
         self.assertEqual(code, 1)
         self.assertIn("STOPPED: eBay refused the key (HTTP 401: bad credentials ***:***)", printed)
         for secret in SECRETS:
             self.assertNotIn(secret, printed)
         self.assertEqual(fake.searches, [])
-        self.assertFalse(self.out.exists())
+        self.assertFalse((self.sandbox.data / "prices").exists())
+        self.assertFalse(self.sandbox.out.exists())
 
     def test_when_ebay_stops_answering_the_run_is_abandoned_early(self):
         fake = FakeHttp(lambda params, headers: ebay_prices.NetworkProblem("TimeoutError"))
-        code, printed = run_main(fake, self.argv)
+        code, printed, fake = self.sandbox.run(fake)
         self.assertEqual(code, 1)
-        self.assertIn("STOPPED: eBay did not answer 3 lookups in a row", printed)
-        self.assertEqual(len(fake.searches), 9, "three lookups of three tries each, not all twenty")
-        self.assertFalse(self.out.exists())
+        self.assertIn("Stopped early: eBay did not answer 3 lookups in a row.", printed)
+        self.assertIn("STOPPED: every lookup failed, so nothing was written.", printed)
+        self.assertEqual(len(fake.searches), 9, "three lookups of three tries each, not all four")
+        self.assertFalse((self.sandbox.data / "prices").exists())
 
-    def test_when_most_lookups_fail_the_old_snapshot_is_left_alone(self):
+    def test_what_was_learned_before_ebay_went_quiet_is_kept(self):
+        library = [f"Game Number {n}" for n in range(8)]
+        self.sandbox.write("data/ps2_database.json", library)
+        self.sandbox.write("ebay_watchlist.json", {"games": []})
+        self.sandbox.feed([mention(title, 5, "r/ps2") for title in library])
         calls = {"n": 0}
 
         def answer(params, headers):
             calls["n"] += 1
-            return self.answer(params, headers) if calls["n"] <= 9 else (500, {"errors": [{"message": "oops"}]})
-        code, printed = run_main(FakeHttp(answer), self.argv)
-        self.assertEqual(code, 1)
-        self.assertIn("STOPPED: 11 of 20 lookups failed", printed)
-        self.assertFalse(self.out.exists())
+            return two_copies(params, headers) if calls["n"] <= 9 else ebay_prices.NetworkProblem("TimeoutError")
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        self.assertIn("Stopped early: eBay did not answer 3 lookups in a row.", printed)
+        self.assertIn("9 of 12 lookups answered; 4 left for the next run.", printed)
+        self.assertEqual(len(self.sandbox.history()), 9)
 
-    def test_answers_with_no_listings_at_all_are_treated_as_a_broken_search(self):
-        code, printed = run_main(FakeHttp(lambda params, headers: page()), self.argv)
+    def test_a_run_that_starts_with_ten_failures_gives_up_at_once(self):
+        library = [f"Game Number {n}" for n in range(30)]
+        self.sandbox.write("data/ps2_database.json", library)
+        self.sandbox.write("ebay_watchlist.json", {"games": []})
+        self.sandbox.feed([mention(title, 5, "r/ps2") for title in library])
+        code, printed, fake = self.sandbox.run(FakeHttp(lambda params, headers: (403, {"errors": [{"message": "Forbidden"}]})))
         self.assertEqual(code, 1)
-        self.assertIn("no listings counted, 0 returned (keyword search)", printed)
+        self.assertEqual(len(fake.searches), 10, "ten lookups, not all sixty")
+        self.assertIn("Stopped early: the first 10 lookups all failed or came back empty.", printed)
+        self.assertIn("STOPPED: every lookup failed", printed)
+
+    def test_when_most_lookups_fail_nothing_is_written(self):
+        calls = {"n": 0}
+
+        def answer(params, headers):
+            calls["n"] += 1
+            return two_copies(params, headers) if calls["n"] == 1 else (500, {"errors": [{"message": "oops"}]})
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 1)
+        self.assertIn("STOPPED: 3 of 4 lookups failed", printed)
+        self.assertFalse((self.sandbox.data / "prices").exists())
+        self.assertFalse(self.sandbox.out.exists())
+
+    def test_many_answers_with_no_listings_at_all_are_treated_as_a_broken_search(self):
+        library = [f"Game Number {n}" for n in range(6)]
+        self.sandbox.write("data/ps2_database.json", library)
+        self.sandbox.write("ebay_watchlist.json", {"games": []})
+        self.sandbox.feed([mention(title, 5, "r/ps2") for title in library])
+        code, printed, fake = self.sandbox.run(FakeHttp(lambda params, headers: page()))
+        self.assertEqual(code, 1)
+        self.assertIn("no copies counted, 0 returned (keyword search)", printed)
+        self.assertIn("Stopped early: the first 10 lookups all failed or came back empty.", printed)
         self.assertIn("STOPPED: eBay answered but returned no listings for any game", printed)
-        self.assertFalse(self.out.exists())
+        self.assertEqual(len(fake.searches), 20, "ten lookups of two searches each, then it gives up")
+        self.assertFalse((self.sandbox.data / "prices").exists())
 
-    def test_one_broken_site_does_not_lose_the_other_and_errors_are_scrubbed(self):
+    def test_games_that_had_copies_and_now_return_nothing_at_all_mean_a_broken_search(self):
+        library = [f"Game Number {n}" for n in range(6)]
+        self.sandbox.write("data/ps2_database.json", library)
+        self.sandbox.write("ebay_watchlist.json", {"games": []})
+        self.sandbox.feed([mention(title, 5, "r/ps2") for title in library])
+        self.assertEqual(self.sandbox.run()[0], 0)
+        before = self.sandbox.latest
+        self.sandbox.now = NOON + timedelta(hours=7)
+        code, printed, fake = self.sandbox.run(FakeHttp(lambda params, headers: page()))
+        self.assertEqual(code, 1)
+        self.assertIn("STOPPED: 12 games that had copies listed last time now return nothing at all", printed)
+        self.assertEqual(self.sandbox.latest, before)
+        self.assertEqual(len(self.sandbox.history()), 12)
+
+    def test_a_few_obscure_games_with_no_listings_are_just_recorded(self):
+        code, printed, fake = self.sandbox.run(FakeHttp(lambda params, headers: page()))
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.sandbox.latest["games"]["Kuon"]["US"]["copies"], 0)
+
+    def test_new_games_with_no_listings_do_not_fail_a_run_once_prices_are_known(self):
+        self.assertEqual(self.sandbox.run()[0], 0)
+        library = [f"Game Number {n}" for n in range(8)]
+        self.sandbox.write("data/ps2_database.json", library + Sandbox.LIBRARY)
+        self.sandbox.feed([mention(title, 5, "r/ps2") for title in library])
+        self.sandbox.now = NOON + timedelta(hours=1)
+        code, printed, fake = self.sandbox.run(FakeHttp(lambda params, headers: page()))
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(self.sandbox.latest["games"]["Game Number 7"]["UK"]["copies"], 0)
+        self.assertEqual(self.sandbox.latest["games"]["Silent Hill 2"]["US"]["copies"], 2, "not due, so untouched")
+
+    def test_a_price_file_that_cannot_be_read_stops_the_run_before_ebay_is_asked(self):
+        self.assertEqual(self.sandbox.run()[0], 0)
+        self.sandbox.now = NOON + timedelta(hours=7)
+        prices = self.sandbox.data / "prices"
+        good = {name: (prices / name).read_text(encoding="utf-8") for name in ("latest.json", "2026-10.json")}
+        for name, broken in (("2026-10.json", good["2026-10.json"].replace("\n]", ",\n]")),
+                             ("2026-10.json", "{}"), ("latest.json", "{not json"),
+                             ("latest.json", '{"games": []}'), ("latest.json", '{"searches": {"used": "many"}}')):
+            (prices / name).write_text(broken, encoding="utf-8")
+            code, printed, fake = self.sandbox.run()
+            self.assertEqual(code, 1, (name, broken[:20]))
+            self.assertIn(f"STOPPED: data/prices/{name}", printed)
+            self.assertIn("Nothing was changed.", printed)
+            self.assertEqual((fake.token_calls, fake.searches), ([], []))
+            self.assertEqual((prices / name).read_text(encoding="utf-8"), broken, "left exactly as it was found")
+            (prices / name).write_text(good[name], encoding="utf-8")
+        self.assertEqual(self.sandbox.run()[0], 0)
+        self.assertEqual(len(self.sandbox.history()), 4, "the four earlier rows are still there")
+
+    def test_a_game_keeps_its_figures_when_its_spelling_changes(self):
+        self.sandbox.write("ebay_watchlist.json", {"games": [{"title": "Ico"}]})
+        self.sandbox.write("data/ps2_database.json", ["ICO"])
+        self.sandbox.feed([mention("ICO", 5, "r/ps2")])
+        self.assertEqual(self.sandbox.run()[0], 0)
+        self.assertEqual(list(self.sandbox.latest["games"]), ["Ico"])
+        self.sandbox.write("ebay_watchlist.json", {"games": []})     # unpinned: the library's spelling takes over
+        self.sandbox.now = NOON + timedelta(hours=2)
+        code, printed, fake = self.sandbox.run()
+        self.assertIn("Nothing is due", printed)
+        self.sandbox.now = NOON + timedelta(hours=7)
+        self.assertEqual(self.sandbox.run()[0], 0)
+        self.assertEqual(list(self.sandbox.latest["games"]), ["ICO"])
+        self.assertEqual(len(self.sandbox.history()), 2, "same numbers, same day: no new rows under the new spelling")
+
+    def test_an_error_from_ebay_is_scrubbed_before_it_is_shown_or_saved(self):
         def answer(params, headers):
-            if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB":
+            if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" and params["q"].startswith("kuon"):
                 return 500, {"errors": [{"message": f"Internal error for {headers['Authorization']}"}]}
-            return self.answer(params, headers)
-        code, printed = run_main(FakeHttp(answer), self.argv)
+            return two_copies(params, headers)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
         self.assertEqual(code, 0, printed)
-        text = self.out.read_text(encoding="utf-8")
-        self.assertNotIn(TOKEN, text + printed)
-        markets = json.loads(text)["games"][0]["markets"]
-        self.assertEqual((markets["EBAY_US"]["status"], markets["EBAY_GB"]["status"]), ("ok", "error"))
-        self.assertEqual(markets["EBAY_GB"]["error"], "HTTP 500: Internal error for Bearer ***")
-        self.assertIn("Silent Hill 2 [UK]: FAILED HTTP 500: Internal error for Bearer ***", printed)
+        self.assertNotIn(TOKEN, self.sandbox.out.read_text(encoding="utf-8") + printed)
+        kuon = next(row for row in self.sandbox.snapshot["games"] if row["title"] == "Kuon")
+        self.assertEqual(kuon["markets"]["EBAY_GB"]["error"], "HTTP 500: Internal error for Bearer ***")
+        self.assertIn("Kuon [UK]: FAILED HTTP 500: Internal error for Bearer ***", printed)
 
-    def test_running_out_of_searches_stops_the_run_and_says_so(self):
-        calls = {"n": 0}
+    def test_the_days_allowance_carries_over_between_runs_and_stops_the_day(self):
+        self.sandbox.write("data/prices/latest.json", {"searches": {"day": "2026-10-06", "used": 4497}, "games": {}})
+        code, printed, fake = self.sandbox.run()
+        self.assertIn("This run may use 3 searches.", printed)
+        self.assertEqual(len(fake.searches), 2)
+        self.assertIn("Stopped early: this run's allowance of searches is used.", printed)
+        self.assertIn("2 left for the next run.", printed)
+        self.assertEqual(self.sandbox.latest["searches"], {"day": "2026-10-06", "used": 4499})
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0)
+        self.assertIn("Today's allowance of eBay searches is used up", printed)
+        self.assertEqual(fake.token_calls, [])
+        self.sandbox.now = NOON + timedelta(days=1)
+        code, printed, fake = self.sandbox.run()
+        self.assertIn("This run may use 500 searches.", printed)
 
-        def answer(params, headers):
-            calls["n"] += 1
-            return self.answer(params, headers) if calls["n"] <= 3 else (429, {"errors": [{"message": "Limit hit"}]})
-        fake = FakeHttp(answer)
-        code, printed = run_main(fake, self.argv)
-        self.assertEqual(code, 0, printed)
-        data = json.loads(self.out.read_text(encoding="utf-8"))
-        statuses = [market["status"] for row in data["games"] for market in row["markets"].values()]
-        self.assertTrue(data["limit_reached"])
-        self.assertEqual(data["limit_message"], "HTTP 429: Limit hit")
-        self.assertEqual(statuses[:3], ["ok", "ok", "ok"])
-        self.assertEqual(set(statuses[3:]), {"not_checked"})
-        self.assertEqual(len(fake.searches), 6, "three answers, then one search tried three times")
-        self.assertIn("not checked, eBay's allowance of searches ran out", printed)
-        self.assertIn("eBay's allowance of searches ran out (HTTP 429: Limit hit).", printed)
-
-    def test_by_default_the_file_goes_outside_the_repository(self):
+    def test_by_default_the_listings_file_goes_outside_the_repository(self):
         self.assertNotIn(ROOT, ebay_prices.DEFAULT_OUT.resolve().parents)
 
+
+# ------------------------------------------------------------ the real request code
 
 class _Handler(BaseHTTPRequestHandler):
     seen = []
@@ -712,7 +1385,10 @@ class _Handler(BaseHTTPRequestHandler):
             self.send_header(name, value)
         self.send_header("Content-Length", str(len(payload)))
         self.end_headers()
-        self.wfile.write(payload)
+        try:
+            self.wfile.write(payload)
+        except OSError:
+            pass   # the test hung up on purpose
 
     def _handle(self):
         length = int(self.headers.get("Content-Length") or 0)
@@ -735,12 +1411,17 @@ class _Handler(BaseHTTPRequestHandler):
         pass
 
 
+class _QuietServer(ThreadingHTTPServer):
+    def handle_error(self, request, client_address):
+        pass   # a client that hangs up mid-answer is part of the test, not news
+
+
 class RealRequestTests(unittest.TestCase):
     """The real request code against a server on this machine."""
 
     @classmethod
     def setUpClass(cls):
-        cls.server = ThreadingHTTPServer(("127.0.0.1", 0), _Handler)
+        cls.server = _QuietServer(("127.0.0.1", 0), _Handler)
         cls.base = f"http://127.0.0.1:{cls.server.server_address[1]}"
         threading.Thread(target=cls.server.serve_forever, daemon=True).start()
 
@@ -790,11 +1471,14 @@ class RealRequestTests(unittest.TestCase):
         self.assertLessEqual(ebay_prices.REQUEST_TIMEOUT, 20)
 
 
+# ------------------------------------------------------------------- the workflow
+
 class WorkflowTests(unittest.TestCase):
     def setUp(self):
         text = WORKFLOW.read_text(encoding="utf-8").replace("\r\n", "\n")
         self.lines = [line for line in text.split("\n") if line.strip() and not line.lstrip().startswith("#")]
         self.code = "\n".join(self.lines)
+        self.steps = self.code.split("\n      - ")[1:]
 
     def block(self, key):
         """The lines under a top-level key."""
@@ -803,11 +1487,39 @@ class WorkflowTests(unittest.TestCase):
         end = next((n for n, line in enumerate(rest) if not line.startswith(" ")), len(rest))
         return rest[:end]
 
-    def test_it_only_runs_when_started_by_hand(self):
+    def test_it_runs_after_the_scraper_or_by_hand_and_never_on_pull_requests(self):
         triggers = [line.strip() for line in self.block("on") if re.match(r"^  \S", line)]
-        self.assertEqual(triggers, ["workflow_dispatch:"])
-        for trigger in ("pull_request", "pull_request_target", "issue_comment", "workflow_run", "schedule", "push:"):
+        self.assertEqual(triggers, ["workflow_run:", "workflow_dispatch:"])
+        for trigger in ("pull_request:", "pull_request_target", "issue_comment", "schedule", "push:"):
             self.assertNotIn(trigger, self.code)
+
+    def test_the_workflow_it_follows_is_the_scraper_which_never_runs_on_pull_requests(self):
+        scraper = SCRAPER_WORKFLOW.read_text(encoding="utf-8")
+        name = re.search(r"^name:\s*(.+?)\s*$", scraper, flags=re.MULTILINE).group(1)
+        self.assertIn(f'workflows: ["{name}"]', self.code)
+        self.assertIn("types: [completed]", self.code)
+        self.assertNotIn("pull_request", scraper)
+
+    def test_it_always_runs_the_code_on_main_never_the_code_that_triggered_it(self):
+        checkout = next(step for step in self.steps if step.startswith("uses: actions/checkout"))
+        self.assertIn("ref: main", checkout)
+        self.assertIn("persist-credentials: false", checkout)
+        for borrowed in ("head_sha", "head_branch", "head_ref", "github.sha", "github.ref"):
+            self.assertNotIn(borrowed, self.code)
+
+    def test_a_scraper_run_from_a_pull_request_or_another_repository_cannot_start_it(self):
+        start = self.lines.index("    if: >-")
+        condition = " ".join(line.strip() for line in self.lines[start + 1:start + 4])
+        self.assertEqual(condition, "github.event_name == 'workflow_dispatch' || "
+                                    "(github.event.workflow_run.event != 'pull_request' && "
+                                    "github.event.workflow_run.head_repository.full_name == github.repository)")
+        self.assertEqual(self.code.count("github.event.workflow_run"), 2, "used to decide whether to run, nowhere else")
+
+    def test_one_run_at_a_time_with_limited_rights_and_a_time_limit(self):
+        self.assertEqual(self.block("concurrency"), ["  group: ebay", "  cancel-in-progress: false"])
+        self.assertEqual(self.block("permissions"), ["  contents: write"])
+        self.assertIn("    timeout-minutes: 15", self.lines)
+        self.assertIn("          EBAY_DIAGNOSE: ${{ inputs.diagnose }}", self.lines)
 
     def test_the_key_reaches_one_step_only(self):
         self.assertEqual(self.code.count("secrets."), 2)
@@ -816,12 +1528,10 @@ class WorkflowTests(unittest.TestCase):
             self.assertEqual(line, f"          {name}: ${{{{ secrets.{name} }}}}", "step-level env only")
         env_lines = [line for line in self.lines if line.strip() == "env:"]
         self.assertTrue(all(line == "        env:" for line in env_lines), "no workflow-level or job-level env")
-        steps = self.code.split("\n      - ")
-        holders = [step for step in steps if "secrets.EBAY" in step]
+        holders = [step for step in self.steps if "secrets.EBAY" in step]
         self.assertEqual(len(holders), 1)
         self.assertIn("run: python ebay_prices.py", holders[0])
         self.assertNotIn("git ", holders[0])
-        self.assertNotIn("echo", self.code)
         self.assertNotIn("set -x", self.code)
 
     def test_the_job_that_holds_the_key_installs_nothing(self):
@@ -829,23 +1539,34 @@ class WorkflowTests(unittest.TestCase):
         self.assertNotIn("npm", self.code)
         uses = sorted(line.split("uses:")[1].strip() for line in self.lines if "uses:" in line)
         self.assertEqual(uses, ["actions/checkout@v4", "actions/setup-python@v5"])
-        self.assertIn("persist-credentials: false", self.code)
 
-    def test_ebay_data_goes_to_its_own_replaced_branch_never_to_main_or_data(self):
+    def test_only_the_price_numbers_are_saved_to_main(self):
+        (save,) = [step for step in self.steps if step.startswith("name: Save the price history")]
+        adds = re.findall(r"git add (.+)", save)
+        self.assertEqual(adds, ["data/prices"])
+        self.assertIn('git push -q "$remote" HEAD:main', save)
+        self.assertIn("git pull -q --rebase", save)
+        self.assertNotIn("--force", save)
+        self.assertNotIn("ebay_prices.json", save)
+
+    def test_listings_go_to_their_own_replaced_branch(self):
+        (publish,) = [step for step in self.steps if step.startswith("name: Publish this run's listings")]
         self.assertIn('--out "$RUNNER_TEMP/ebay/ebay_prices.json"', self.code)
-        self.assertIn("git init -q -b ebay-data", self.code)
-        self.assertIn("--force", self.code)
-        self.assertTrue(self.code.rstrip().endswith(" ebay-data"))
-        self.assertNotIn("data/", self.code)
-        self.assertNotIn("main", self.code)
+        self.assertIn("git init -q -b ebay-data", publish)
+        self.assertIn("--force", publish)
+        self.assertTrue(publish.rstrip().endswith(" ebay-data"))
+        self.assertNotIn("data/", publish)
+        self.assertNotIn("main", publish)
 
-    def test_nothing_is_published_after_a_failed_lookup(self):
+    def test_nothing_is_saved_or_published_after_a_failed_run(self):
         self.assertNotIn("always()", self.code)
         self.assertNotIn("continue-on-error", self.code)
-        self.assertNotIn("if:", self.code)
+        self.assertNotIn("\n        if:", self.code, "no step decides for itself whether to run")
+        self.assertEqual(self.code.count("\n    if:"), 1, "only the job-level check on what started the run")
 
     def test_commits_use_the_no_reply_address(self):
-        self.assertIn("41898282+github-actions[bot]@users.noreply.github.com", self.code)
+        self.assertEqual(self.code.count("41898282+github-actions[bot]@users.noreply.github.com"), 2)
+        self.assertEqual(self.code.count("git config user.email"), 2)
 
     def test_the_test_workflow_runs_when_the_price_script_changes(self):
         text = TESTS_WORKFLOW.read_text(encoding="utf-8")
@@ -865,6 +1586,11 @@ class KeyStaysInOnePlaceTests(unittest.TestCase):
         source = (ROOT / "ebay_prices.py").read_text(encoding="utf-8")
         imported = set(re.findall(r"^(?:import|from) ([a-z_0-9]+)", source, flags=re.MULTILINE))
         self.assertTrue(imported <= set(sys.stdlib_module_names), imported - set(sys.stdlib_module_names))
+
+    def test_the_price_script_only_writes_under_data_prices(self):
+        self.assertEqual(ebay_prices.PRICES_DIR, ROOT / "data" / "prices")
+        source = (ROOT / "ebay_prices.py").read_text(encoding="utf-8")
+        self.assertEqual(source.count(".write_text("), 3, "latest.json, a month of history, and the --out file")
 
 
 if __name__ == "__main__":
