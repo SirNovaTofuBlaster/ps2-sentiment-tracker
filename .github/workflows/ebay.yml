@@ -1,15 +1,18 @@
 name: eBay asking prices
 
-# Trial: runs only when started by hand (Actions tab > eBay asking prices > Run workflow).
-# This workflow holds the eBay key. Adding any other trigger (pull requests, pushes, a
-# timetable) is the maintainer's decision, and it must never run on pull requests.
+# Runs after every scraper run, and when started by hand (Actions tab > eBay asking prices >
+# Run workflow). This workflow holds the eBay key, so it must never run on pull requests, and
+# it always runs the code on main, never code from the run that triggered it.
 on:
+  workflow_run:
+    workflows: ["PS2 Sentiment Tracker Scraper"]
+    types: [completed]
   workflow_dispatch:
     inputs:
       diagnose:
         description: "Also print a search check (8 extra searches)"
         type: boolean
-        default: true
+        default: false
 
 concurrency:
   group: ebay
@@ -20,11 +23,18 @@ permissions:
 
 jobs:
   prices:
+    # Started by hand, or by a scraper run that belongs to this repository and was not itself
+    # started by a pull request. (A pull request could add a workflow with the scraper's name.)
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.event != 'pull_request' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           persist-credentials: false
 
       - uses: actions/setup-python@v5
@@ -41,23 +51,57 @@ jobs:
           PYTHONUNBUFFERED: "1"
         run: python ebay_prices.py --out "$RUNNER_TEMP/ebay/ebay_prices.json"
 
-      # eBay data is kept as the latest snapshot only. The ebay-data branch is replaced
-      # with a single fresh commit on every run, so no history of listings builds up on
-      # it, and nothing is written to main or to the data folder.
-      - name: Publish the latest snapshot
+      # The price history is numbers only (copies listed, lowest, median): no listing titles,
+      # no links. It is the one thing this workflow writes to main.
+      - name: Save the price history
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
+          if [ ! -d data/prices ]; then
+            echo "No prices yet; nothing to save."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/prices
+          if git diff --staged --quiet; then
+            echo "No price changes; nothing to save."
+            exit 0
+          fi
+          git commit -q -m "Update eBay price history"
+          remote="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          for attempt in 1 2 3; do
+            if git pull -q --rebase "$remote" main && git push -q "$remote" HEAD:main; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying..."
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "Push failed after 3 attempts." >&2
+          exit 1
+
+      # The listings themselves (titles and links) are kept only as the latest run's file.
+      # The ebay-data branch is replaced with a single fresh commit every time, so no history
+      # of listings builds up on it.
+      - name: Publish this run's listings
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          if [ ! -f "$RUNNER_TEMP/ebay/ebay_prices.json" ]; then
+            echo "Nothing was looked up this run."
+            exit 0
+          fi
           cd "$RUNNER_TEMP/ebay"
           printf '%s\n' \
-            "# Latest eBay asking prices" \
+            "# Latest eBay listings" \
             "" \
             "Written by the eBay asking prices workflow. This branch is replaced on every run" \
-            "and shows the most recent snapshot only. Do not edit it by hand." \
+            "and shows the most recent run only. Do not edit it by hand." \
             > README.md
           git init -q -b ebay-data
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add ebay_prices.json README.md
-          git commit -q -m "Latest eBay asking prices"
+          git commit -q -m "Latest eBay listings"
           git push -q --force "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" ebay-data
