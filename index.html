@@ -51,7 +51,7 @@
                         <p class="brand-tag">Tracking the PlayStation 2</p>
                     </div>
                 </div>
-                <p class="brand-blurb">Every hour it reads 219 gaming news sites, subreddits, YouTube channels and podcasts, checks each headline against the PlayStation 2 library, and flags remaster and remake news as it appears. Games it recognises link straight out to what they currently sell for.</p>
+                <p class="brand-blurb">Every hour it reads more than 200 gaming news sites, subreddits, YouTube channels and podcasts, checks each headline against the PlayStation 2 library, and flags remaster and remake news as it appears. Games it recognises link straight out to what they currently sell for.</p>
             </div>
 
         </div>
@@ -84,7 +84,8 @@
                     <p id="demandSummary" class="text-xs text-slate-400">Loading...</p>
                 </div>
             </div>
-            <ol id="demandList" class="space-y-3"></ol>
+            <ol id="demandList" class="zebra"></ol>
+            <button type="button" id="demandListToggle" onclick="toggleList('demandList')" aria-controls="demandList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
         </div>
         <div id="topGamesSection" class="bg-ps2card p-6">
             <div class="flex items-start justify-between gap-4 mb-4">
@@ -93,7 +94,20 @@
                     <p id="topGamesSummary" class="text-xs text-slate-400">Counting mentions...</p>
                 </div>
             </div>
-            <ol id="topGamesList" class="space-y-3"></ol>
+            <ol id="topGamesList" class="zebra"></ol>
+            <button type="button" id="topGamesListToggle" onclick="toggleList('topGamesList')" aria-controls="topGamesList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
+        </div>
+        <!-- eBay asking prices: data/prices/latest.json, written by ebay_prices.py. Kept in a
+             block of its own, apart from everything that does not come from eBay. -->
+        <div id="pricesSection" class="bg-ps2card p-6 hidden">
+            <div class="flex items-start justify-between gap-4 mb-4">
+                <div>
+                    <h2>eBay Asking Prices</h2>
+                    <p id="pricesSummary" class="text-xs text-slate-400">Loading...</p>
+                </div>
+            </div>
+            <ol id="pricesList" class="zebra"></ol>
+            <button type="button" id="pricesListToggle" onclick="toggleList('pricesList')" aria-controls="pricesList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
         </div>
 
         <div id="feedSection" class="bg-ps2card p-6 scroll-mt-20">
@@ -129,7 +143,7 @@
                             <th class="py-3 px-4 text-right">ACTION</th>
                         </tr>
                     </thead>
-                    <tbody id="feedTableBody" class="divide-y divide-slate-800/60 text-xs"></tbody>
+                    <tbody id="feedTableBody" class="zebra divide-y divide-slate-800/60 text-xs"></tbody>
                 </table>
             </div>
             <div id="pagination" class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-4 border-t border-slate-800 text-xs"></div>
@@ -251,10 +265,11 @@
         }
 
         /* ---- Price lookup links ---------------------------------------------
-           No price data is stored or fetched: these are search links only, so
-           there is no API key, no licensing question and nothing to keep in
-           sync. Each link renders as a chip: a Font Awesome brand icon where
-           one exists, otherwise a short monogram.
+           These chips are search links only: nothing is fetched for them, so
+           there is no key and nothing to keep in sync. (The eBay figures further
+           down are a separate thing: see "eBay asking prices".) Each link renders
+           as a chip: a Font Awesome brand icon where one exists, otherwise a
+           short monogram.
         -------------------------------------------------------------------- */
         const PRICE_LOOKUPS = [
             { id: 'pc-pal', region: 'PAL', mark: 'Price Charting',
@@ -297,6 +312,42 @@
                 return inner ? `<span class="price-region"><span class="price-flag">${esc(flag)}</span>${inner}</span>` : '';
             };
             return `<span class="price-links" aria-label="Price lookups for ${esc(title)}">${PRICE_REGIONS.map(group).join('')}</span>`;
+        }
+
+        /* ---- Lists that fold away ----------------------------------------------
+           The ranked lists show their first five rows; a button under each opens
+           the rest and closes it again. Rows past the fifth carry "list-extra",
+           and the stylesheet hides those while the list has "is-folded".
+        -------------------------------------------------------------------- */
+        const LIST_SHORT = 5;     // rows shown while a list is folded
+        const LIST_LONG = 25;     // the most rows the two ranked lists hold
+        const openLists = {};     // { demandList: true }: stays as you left it when the data reloads
+        const listTotals = {};
+
+        const rowClass = (i) => `px-3 py-3${i >= LIST_SHORT ? ' list-extra' : ''}`;
+
+        function foldList(listId, total) {
+            listTotals[listId] = total;
+            const open = !!openLists[listId];
+            const button = document.getElementById(`${listId}Toggle`);
+            document.getElementById(listId).classList.toggle('is-folded', !open);
+            button.classList.toggle('hidden', total <= LIST_SHORT);
+            button.innerHTML = open
+                ? 'Show fewer <i class="fa-solid fa-chevron-up" aria-hidden="true"></i>'
+                : `Show ${total - LIST_SHORT} more <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>`;
+            button.setAttribute?.('aria-expanded', String(open));
+        }
+
+        function toggleList(listId) {
+            openLists[listId] = !openLists[listId];
+            foldList(listId, listTotals[listId] || 0);
+            // Folding a long list would leave you looking at whatever slid up from below:
+            // go back to the top of its section, heading included, unless that is still on screen.
+            if (!openLists[listId]) {
+                const list = document.getElementById(listId);
+                const section = list.parentElement || list;
+                if (section.getBoundingClientRect?.().top < 0) section.scrollIntoView?.({ block: 'start' });
+            }
         }
 
         // Shown until GitHub Actions has written data/sentiment_feed.json.
@@ -343,6 +394,7 @@
             sync.title = data.last_updated ? `Scraper ran at ${data.last_updated}` : '';
             document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
             await loadDemand();
+            await loadPrices();
             refreshDashboard();
         }
 
@@ -381,12 +433,13 @@
             document.getElementById('demandSummary').textContent =
                 `Wikipedia interest over ${data.window_days} days blended with mentions here · ${formatLocalTime(data.generated)}`;
 
-            document.getElementById('demandList').innerHTML = games.slice(0, 10).map((game, i) => {
+            const shown = games.slice(0, LIST_LONG);
+            document.getElementById('demandList').innerHTML = shown.map((game, i) => {
                 const change = typeof game.trend_pct === 'number' ? game.trend_pct : null;
                 const tone = change === null ? 'text-slate-500' : change > 0 ? 'text-emerald-400' : 'text-red-400';
                 const arrow = change === null ? '' : change > 0 ? '▲' : '▼';
                 return `
-                <li class="${i === 0 ? 'bg-slate-900/80 border border-slate-800 p-3' : 'px-3 py-1'}">
+                <li class="${rowClass(i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
                         <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${esc(game.title)}</span>
                         <span class="whitespace-nowrap">
@@ -398,6 +451,7 @@
                     ${priceLookupHtml(game.title)}
                 </li>`;
             }).join('');
+            foldList('demandList', shown.length);
         }
 
         // Items from switched-off sources are hidden right away, before the scraper drops them.
@@ -406,8 +460,6 @@
             processAndRender(visibleFeedData);
             renderSources();
         }
-
-        const TOP_GAMES_COUNT = 15;
 
         // Ranks PS2 games by how many feed items mention them; recalculated on every feed load.
         function renderTopGames(items) {
@@ -424,15 +476,16 @@
             const total = [...games.values()].reduce((sum, g) => sum + g.count, 0);
             if (!total) {
                 summary.textContent = 'No matched PS2 games in the current feed.';
-                list.innerHTML = '<li class="text-xs text-slate-400">Nothing to rank yet.</li>';
+                list.innerHTML = '<li class="px-3 py-3 text-xs text-slate-400">Nothing to rank yet.</li>';
+                foldList('topGamesList', 0);
                 return;
             }
             summary.textContent = `Share of all PS2 game mentions: ${total} mentions across ${games.size} games.`;
-            const ranked = [...games.values()].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name)).slice(0, TOP_GAMES_COUNT);
+            const ranked = [...games.values()].sort((a, b) => b.count - a.count || a.name.localeCompare(b.name)).slice(0, LIST_LONG);
             list.innerHTML = ranked.map((game, i) => {
                 const pct = game.count / total * 100;
                 return `
-                <li class="${i === 0 ? 'bg-slate-900/80 border border-slate-800 p-3' : 'px-3 py-1'}">
+                <li class="${rowClass(i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
                         <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${esc(game.name)}${game.remasters
                             ? ` <span class="text-[10px] border border-slate-700 text-slate-400 px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}</span>
@@ -442,6 +495,114 @@
                     ${priceLookupHtml(game.name)}
                 </li>`;
             }).join('');
+            foldList('topGamesList', ranked.length);
+        }
+
+        /* ---- eBay asking prices ---------------------------------------------
+           data/prices/latest.json is written by ebay_prices.py after each scrape
+           and holds numbers only: copies listed, lowest and median asking price,
+           when each was checked. The section stays hidden while the file is
+           missing. These are what sellers ask, not what anything sold for.
+        -------------------------------------------------------------------- */
+        const PRICE_SITES = ['US', 'UK'];
+        // "stale" is how many hours may pass before a figure counts as overdue for its level
+        // and is dimmed: a little longer than the gap between that level's checks.
+        const LEVELS = {
+            surging: { rank: 0, stale: 3, tag: 'surging', hint: 'Rarely mentioned, then named by several sources within a day. Checked on every run for two days.' },
+            staple: { rank: 1, stale: 8, tag: 'staple', hint: 'Named on five or more of the last fourteen days, so one more mention is no news. Checked every 6 hours.' },
+            normal: { rank: 1, stale: 8, tag: '', hint: '' },
+            dormant: { rank: 2, stale: 30, tag: 'quiet', hint: 'Not mentioned for two weeks. Checked once a day.' },
+        };
+
+        function money(value, currency, locale) {
+            if (typeof value !== 'number' || !Number.isFinite(value)) return '';
+            const digits = value >= 100 ? 0 : 2;
+            try {
+                return new Intl.NumberFormat(locale, { style: 'currency', currency, minimumFractionDigits: digits, maximumFractionDigits: digits }).format(value);
+            } catch {
+                return `${value.toFixed(digits)} ${currency}`;
+            }
+        }
+
+        // "2026-10-06T12:00Z" -> { text: '3h ago', stale: false }; stale once older than `staleHours`.
+        function priceAge(stamp, now = Date.now(), staleHours = 8) {
+            const then = Date.parse(stamp);
+            if (!Number.isFinite(then)) return { text: '', stale: true };
+            const minutes = Math.max(0, Math.round((now - then) / 60000));
+            const text = minutes < 60 ? `${Math.max(minutes, 1)} min ago`
+                : minutes < 48 * 60 ? `${Math.round(minutes / 60)}h ago`
+                : `${Math.round(minutes / 1440)}d ago`;
+            return { text, stale: minutes > staleHours * 60 };
+        }
+
+        function priceSiteHtml(label, site, currency, now, locale, staleHours) {
+            const flag = `<span class="ebay-flag">${esc(label)}</span>`;
+            if (!site || typeof site !== 'object') {
+                return `<span class="ebay-site is-quiet">${flag}<span class="ebay-note">not checked yet</span></span>`;
+            }
+            const age = priceAge(site.checked, now, staleHours);
+            const when = age.text ? ` <span class="ebay-age" title="${age.stale
+                ? 'Not checked for longer than usual' : 'When eBay was last asked'}">· ${esc(age.text)}</span>` : '';
+            const copies = Number.isFinite(site.copies) ? site.copies : 0;
+            const figures = site.unmatched
+                ? `<span class="ebay-rest"><span class="ebay-note" title="eBay returned listings, but none of them named this game. It needs its own search words.">search needs tuning</span>${when}</span>`
+                : !copies || typeof site.median !== 'number'
+                    ? `<span class="ebay-rest"><span class="ebay-note">none listed</span>${when}</span>`
+                    : `<b class="ebay-median">${esc(money(site.median, currency, locale))}</b><span class="ebay-rest">median · from ${esc(money(site.lowest, currency, locale))} · ${esc(copies)}${site.truncated ? '+' : ''} ${copies === 1 ? 'copy' : 'copies'}${when}</span>`;
+            return `<span class="ebay-site${age.stale ? ' is-stale' : ''}">${flag}${figures}</span>`;
+        }
+
+        // Surging games first, then the most mentioned.
+        function priceRows(data) {
+            const games = data && typeof data.games === 'object' && data.games ? data.games : {};
+            return Object.entries(games)
+                .filter(([, entry]) => entry && typeof entry === 'object')
+                .map(([title, entry]) => ({ title, entry, level: LEVELS[entry.level] ? entry.level : 'normal',
+                    mentions: Number.isFinite(entry.mentions) ? entry.mentions : 0 }))
+                .sort((a, b) => LEVELS[a.level].rank - LEVELS[b.level].rank || b.mentions - a.mentions || a.title.localeCompare(b.title));
+        }
+
+        function renderPrices(data, now = Date.now(), locale) {
+            const rows = priceRows(data);
+            document.getElementById('pricesSection').classList.toggle('hidden', !rows.length);
+            if (!rows.length) return;
+            const currencies = data.currencies && typeof data.currencies === 'object' ? data.currencies : {};
+            const surging = rows.filter(row => row.level === 'surging').length;
+            document.getElementById('pricesSummary').textContent =
+                `What sellers are asking for used copies on eBay right now, not what anything sold for · ${rows.length} games`
+                + (surging ? ` · ${surging} surging` : '');
+            document.getElementById('pricesList').innerHTML = rows.map((row, i) => {
+                const level = LEVELS[row.level];
+                return `
+                <li class="${rowClass(i)}">
+                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
+                        <span class="text-cyan-300">${esc(row.title)}${level.tag
+                            ? ` <span class="level-tag level-${esc(row.level)}" title="${esc(level.hint)}">${esc(level.tag)}</span>` : ''}</span>
+                        <span class="text-slate-500 whitespace-nowrap" title="Headlines naming this game in the last two weeks">${esc(row.mentions)} in headlines</span>
+                    </div>
+                    <div class="ebay-figures">${PRICE_SITES.map(label =>
+                        priceSiteHtml(label, row.entry[label], currencies[label] || (label === 'UK' ? 'GBP' : 'USD'), now, locale, level.stale)).join('')}</div>
+                    ${priceLookupHtml(row.title)}
+                </li>`;
+            }).join('');
+            foldList('pricesList', rows.length);
+        }
+
+        async function loadPrices() {
+            let data = null;
+            try {
+                const response = await fetch('data/prices/latest.json', { cache: 'no-cache' });
+                if (response.ok) data = await response.json();
+            } catch {
+                data = null;
+            }
+            try {
+                renderPrices(data);
+            } catch (error) {
+                // A file this page cannot make sense of must not take the rest of the page with it.
+                console.warn('Could not show data/prices/latest.json.', error);
+                document.getElementById('pricesSection').classList.add('hidden');
+            }
         }
 
                         function renderTable(items, page = 1) {
