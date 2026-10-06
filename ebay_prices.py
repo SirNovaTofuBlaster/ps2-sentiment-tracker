@@ -69,7 +69,9 @@ CONDITION_FILTERS = {
 MARKETS = {
     # "foreign" words mark a copy made for another region, which is a different product.
     # They include the first part of the code printed on the spine: SLES/SCES is Europe, SLUS/SCUS America.
-    "EBAY_US": {"label": "US", "site": "www.ebay.com", "country": "US", "currency": "USD",
+    # "zip" is where postage is quoted to. In the US most sellers let eBay work postage out
+    # from the buyer's address, and without one eBay gives no figure; New York stands in.
+    "EBAY_US": {"label": "US", "site": "www.ebay.com", "country": "US", "currency": "USD", "zip": "10001",
                 "foreign": ("pal", "european", "sles", "sces")},
     "EBAY_GB": {"label": "UK", "site": "www.ebay.co.uk", "country": "GB", "currency": "GBP",
                 "foreign": ("ntsc", "usa", "us version", "slus", "scus")},
@@ -95,12 +97,12 @@ DISC_WORDS = {"disc", "discs", "disk", "disks", "dvd", "cd", "player", "players"
 JUNK_PHRASES = (
     "case only", "box only", "manual only", "cover only", "inlay only", "artwork only",
     "sleeve only", "booklet only", "no game", "no disc", "no disk", "empty case", "empty box",
-    "replacement case", "replacement cover", "case and manual", "manual and case", "case manual",
-    "case inlay", "manual booklet", "reproduction", "repro", "bundle", "lot", "joblot",
+    "replacement case", "replacement cover", "art only", "case inlay", "manual booklet",
+    "reproduction", "repro", "bundle", "lot", "joblot",
     "strategy guide", "official guide", "guide book", "guidebook", "demo disc", "demo",
     "jampack", "jam pack", "press kit", "promo dvd", "famitsu", "magazine",
     "action replay", "gameshark", "game shark", "codebreaker", "code breaker", "cheats", "cheat disc",
-    "ost", "hat", "shirt", "figure", "statue", "plush", "keychain", "artbook", "art book",
+    "hat", "shirt", "figure", "statue", "plush", "keychain", "artbook", "art book",
     "faulty", "not working", "for parts", "spares or repairs", "spares repairs",
 )
 # Words that may sit between a game's name and "soundtrack" when the listing IS the soundtrack.
@@ -175,8 +177,12 @@ def parse(text):
 
 
 def words(text):
-    """Lower-case words with accents and punctuation removed: 'Ōkami (PS2)' -> ['okami', 'ps2']."""
-    plain = unicodedata.normalize("NFKD", str(text or "")).encode("ascii", "ignore").decode("ascii")
+    """Lower-case words with accents and punctuation removed: 'Ōkami™ (PS2)' -> ['okami', 'ps2'].
+
+    Accents are folded into their letter; every other symbol, emoji included,
+    separates words, so "Okami⭐Complete" is two words and not one."""
+    plain = "".join(char for char in unicodedata.normalize("NFD", str(text or ""))
+                    if not unicodedata.combining(char))
     return re.findall(r"[a-z0-9]+", plain.lower())
 
 
@@ -276,13 +282,18 @@ def search_url(market_id, phrase, by_aspect=True, condition="ids"):
     return SEARCH_URL + "?" + urlencode(params, quote_via=quote)   # spaces as %20, never "+"
 
 
+def buyer_location(market):
+    """Where eBay should quote postage to: the site's own country, plus a postcode if one is set."""
+    return f"country={market['country']}" + (f",zip={market['zip']}" if market.get("zip") else "")
+
+
 def search(http_client, token, market_id, phrase, counter, by_aspect=True, condition="ids"):
     """One search, tried up to three times. Returns (HTTP status or 0 for no answer, JSON)."""
     market = MARKETS[market_id]
     headers = {
         "Authorization": f"Bearer {token}",
         "X-EBAY-C-MARKETPLACE-ID": market_id,
-        "X-EBAY-C-ENDUSERCTX": "contextualLocation=" + quote(f"country={market['country']}", safe=""),
+        "X-EBAY-C-ENDUSERCTX": "contextualLocation=" + quote(buyer_location(market), safe=""),
     }
     url = search_url(market_id, phrase, by_aspect, condition)
     status, payload = 0, {}
@@ -390,13 +401,13 @@ def names_another_entry(text, phrase):
     return any(other != number for other in found)
 
 
-def is_the_soundtrack(text, phrase):
-    """True when the listing is the game's soundtrack: "rule of rose original soundtrack cd".
+def is_the_soundtrack(title, phrase):
+    """True when the listing is the game's soundtrack: "Rule of Rose Original Soundtrack CD".
 
-    A copy that comes with, or is missing, its bonus soundtrack names the game
-    first and the soundtrack later ("silent hill 3 ps2 disc w soundtrack"), and
-    is still a copy."""
-    padded = f" {text} "
+    A copy that comes with, or is missing, its bonus soundtrack says so some
+    other way ("Silent Hill 3 + soundtrack", "Silent Hill 3 PS2 disc w/
+    soundtrack", "no soundtrack"), and is still a copy."""
+    padded = f" {' '.join(words(re.sub(r'[+&]', ' and ', str(title or ''))))} "
     at = padded.find(f" {phrase} ")
     rest = padded[at + len(phrase) + 2:].split() if at >= 0 else []
     while rest and rest[0] in SOUNDTRACK_LEAD_INS:
@@ -414,7 +425,7 @@ def reject_reason(item, game, market, keyword_search):
     if has_phrase(text, OTHER_PLATFORMS):
         return "other_platform"
     if has_phrase(text, JUNK_PHRASES) or has_phrase(text, game["exclude"]) \
-            or is_the_soundtrack(text, game["search"]):
+            or is_the_soundtrack(item.get("title"), game["search"]):
         return "not_a_copy"
     if has_phrase(text, IMPORT_PHRASES) or has_phrase(text, market["foreign"]):
         return "import"
