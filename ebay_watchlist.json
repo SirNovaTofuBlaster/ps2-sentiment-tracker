@@ -1,0 +1,15 @@
+{
+  "about": "The games ebay_prices.py looks up on eBay (US and UK). 'title' is the name shown. 'search' is optional: the words a listing must contain, when they differ from the title. 'exclude' is optional: listings containing any of these words are left out. At most 100 games.",
+  "games": [
+    { "title": "Silent Hill 2" },
+    { "title": "Silent Hill 3" },
+    { "title": "Rule of Rose" },
+    { "title": "Haunting Ground" },
+    { "title": "Kuon" },
+    { "title": "God Hand" },
+    { "title": "Ico", "exclude": ["colossus"] },
+    { "title": "Shadow of the Colossus", "exclude": ["ico"] },
+    { "title": "Shin Megami Tensei: Persona 4", "search": "Persona 4" },
+    { "title": "Okami" }
+  ]
+}
