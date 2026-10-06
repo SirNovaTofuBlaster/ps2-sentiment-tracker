@@ -9,6 +9,7 @@
   --inset: #10141F;
   --line: #1E2636;
   --rule: #141A28;
+  --stripe: #101A2E;
   --text: #E8ECF5;
   --body: #C7D0E2;
   --dim: #7E899F;
@@ -271,6 +272,55 @@ body .price-link:hover, body .price-link:focus-visible {
   font-weight: 600;
 }
 
+/* ---- Rows that take turns ------------------------------------------------
+   Every second row of a list or table sits on a lighter blue, so the eye can
+   follow one row across. The rows in between keep the page's own colour. */
+body .zebra > li:nth-child(even), body .zebra > tr:nth-child(even) { background-color: var(--stripe); }
+/* Hover only where there is a pointer: on a touch screen it sticks to the last row tapped,
+   which would look like a broken stripe. Strong enough to show on either kind of row. */
+@media (hover: hover) { body .zebra > tr:hover { background-color: rgba(76, 141, 255, .2); } }
+
+/* ---- Lists that fold away ------------------------------------------------
+   A ranked list shows five rows until its button is pressed. The script marks
+   the rows past the fifth and flips "is-folded"; nothing else is needed here. */
+body .is-folded > .list-extra { display: none; }
+body .list-toggle:not(.hidden) { display: inline-flex; align-items: center; gap: .55rem; }
+body .list-toggle i { font-size: .6rem; }
+/* An opened list can be very long: "Show fewer" follows you down it. */
+body .list-toggle[aria-expanded="true"] { position: sticky; bottom: .75rem; z-index: 5; background-color: var(--bg); }
+
+/* ---- eBay asking prices ---------------------------------------------------
+   One line per eBay site: the median stands out, the rest is quiet. A figure
+   that has gone longer than usual without a check has its price dimmed; the
+   words beside it stay readable. */
+body .ebay-figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem 2.25rem;
+  margin-top: .6rem;
+  font-family: var(--mono);
+  font-size: .72rem;
+  color: var(--dim);
+}
+body .ebay-site { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .55rem; }
+body .ebay-flag { font-size: .62rem; letter-spacing: .1em; color: var(--dim); min-width: 1.25rem; }
+body .ebay-median { font-size: .875rem; font-weight: 600; color: var(--text); }
+body .ebay-age, body .ebay-note { color: var(--mute); }
+body .ebay-age { white-space: nowrap; }
+body .ebay-site.is-stale .ebay-median { opacity: .5; }
+body .ebay-site.is-stale .ebay-age { color: var(--body); }
+body .level-tag {
+  margin-left: .45rem;
+  padding: .1rem .4rem;
+  border: 1px solid var(--line);
+  font-size: .62rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--dim);
+}
+body .level-tag.level-surging { color: var(--green); border-color: var(--green); }
+
 /* Scrollbars, guide page */
 ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 0; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
@@ -342,7 +392,15 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
 
   /* Ranked lists: the count drops under a long title instead of squeezing it */
   body #demandList > li > div:first-child,
-  body #topGamesList > li > div:first-child { flex-wrap: wrap; row-gap: .25rem; font-size: .8125rem; }
+  body #topGamesList > li > div:first-child,
+  body #pricesList > li > div:first-child { flex-wrap: wrap; row-gap: .25rem; font-size: .8125rem; }
+  body .list-toggle:not(.hidden) { display: flex; width: 100%; }
+  /* eBay figures: one site at a time, the median on its own line and the detail under it */
+  body .ebay-figures { flex-direction: column; gap: .6rem; }
+  body .ebay-site { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .1rem .6rem; align-items: baseline; }
+  body .ebay-site > .ebay-rest { grid-column: 2; font-size: .75rem; }
+  body .ebay-flag, body .level-tag { font-size: .69rem; }
+  body .ebay-median { font-size: 1.05rem; }
 
   /* Price chips: tall enough to hit, on one line that swipes sideways. PAL comes
      first and fits; the US chips run off the right edge, which is the cue to swipe. */
@@ -373,7 +431,7 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
     grid-template-areas: "source source" "headline headline" "game game" "score action";
     gap: .6rem 1rem;
     align-items: center;
-    padding: 1.1rem 0;
+    padding: 1.1rem .75rem;  /* room at the sides, now that every second card is tinted */
     border-bottom-width: 0;  /* the list already draws one rule between cards */
   }
   body #feedTableBody > tr > td { display: block; padding: 0; max-width: none; }
