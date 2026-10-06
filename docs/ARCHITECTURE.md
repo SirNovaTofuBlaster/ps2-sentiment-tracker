@@ -90,7 +90,16 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
 
 ## The dashboard
 
-`index.html` loads `data/sentiment_feed.json`, `feeds.json` and `data/feed_status.json`.
+`index.html` loads `data/sentiment_feed.json`, `feeds.json` and `data/feed_status.json`, and, when
+they exist, `data/demand.json` and `data/prices/latest.json`.
+
+- **Three lists fold away.** Demand Index and Most Mentioned Games render up to 25 rows and
+  eBay Asking Prices renders every game it tracks, each marking the rows past the fifth; a
+  class on the list hides those until the button under it is pressed. The stylesheet does the
+  hiding, so the script only flips a class and rewrites the button. An opened list stays open
+  when the data reloads, its "Show fewer" button follows the reader down the list, and folding
+  it returns to the top of its section.
+- **Every second row is tinted** in those lists and in the feed table (`.zebra` in `retro.css`).
 
 - **Weights** (next section) drive the *Global Net Sentiment* card (a weighted average) and the
   order of the *Remaster Radar* (matched PS2 games first, then heavier sources, then the newest).
@@ -154,6 +163,66 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
   non-technical users.
 - **Removing.** Sources that are already saved can only be switched off, never deleted from the
   page. Only an addition that hasn't been saved yet has a remove button, to undo a typo.
+
+## eBay asking prices
+
+`ebay_prices.py` runs after every scraper run (`.github/workflows/ebay.yml`) and is separate
+from the scraper on purpose: it is the only code that holds a key, and it must never be able to
+break a scrape.
+
+```
+ data/sentiment_feed.json ─┐
+ data/archive/*.json ──────┼─► ebay_prices.py ──► data/prices/latest.json ──► index.html
+ data/ps2_database.json ───┤        │         └─► data/prices/YYYY-MM.json    (eBay Asking Prices)
+ ebay_watchlist.json ──────┘        └─► this run's listings ──► ebay-data branch (latest run only)
+```
+
+**Which games.** Every game the feed has ever named (the snapshot plus the archive) that is in
+the PS2 library, plus the games pinned in `ebay_watchlist.json`. A one-word title is tracked
+only if nothing else is called that (`ONE_WORD_TITLES`, such as Kuon and Okami) or it is pinned, because a
+search for "Black" returns every "black label" listing. Titles on the watchlist's `never` list
+are skipped. Two library spellings that come to the same name are one game.
+
+**How often.** Each run gives every game a level from its mentions in the snapshot:
+
+| Level | When | Checked |
+|---|---|---|
+| `surging` | At most 1 headline mention in the rest of the window, then named in headlines by 2 or more sources, under different headlines, within 24 hours | Every run, until 48 hours after the last such mention |
+| `staple` | Named in headlines on 5 or more days of the window; never surging | Every 6 hours |
+| `normal` | Any other mention in the window, or pinned | Every 6 hours |
+| `dormant` | Mentioned before, not in the window | Once a day |
+
+A mention found only in an item's body text keeps a game `normal` but never makes it surge. A
+run uses at most 500 searches and stops for the day at 4,500 of eBay's 5,000; surging games go
+first, then pinned ones, then whatever is longest overdue. What is left waits for the next run.
+
+**What it asks.** eBay's Browse API, with an application token from the client-credentials
+grant, which can read public listings and nothing else. One search per game and site: used
+conditions, Buy It Now, located in that country, in the Video Games category with the PS2
+platform item specific. If nothing carries the item specific it asks again by keyword. A title
+with a Roman numeral is searched both ways ("kingdom hearts ii", "kingdom hearts 2") and the
+results are merged.
+
+**What counts as a copy.** The listing must contain the game's whole name, words together and
+in order, with spellings evened out ("&" and "and", "II" and "2", apostrophes). It is left out
+if it names a different library game containing that name (`other_games()`: "Ultimate
+Spider-Man" for "Spider-Man", "Kingdom Hearts II" for "Kingdom Hearts"), another number in the
+series, another console, an import, or something that is not the game (case only, soundtrack,
+cheat disc, demo, job lot, merchandise). When eBay returns listings and none names the game,
+the game is `unmatched`: no figure, no history row, and a note on the dashboard.
+
+**What is kept.** Under `data/prices/`, numbers only: `latest.json` (per game and site: copies,
+lowest, median, typical postage, when checked; the game's level; the day's search count) and
+`YYYY-MM.json` (a row of time, game, site, copies, lowest, median whenever the three figures
+change, and at least once a day). `latest.json` is also the job's memory: when each game was
+last checked and until when it is surging. Neither file is ever rebuilt from nothing; if one
+cannot be read the run stops before asking eBay. Listings and links go to the `--out` file,
+which the workflow publishes as a single replaced commit on the `ebay-data` branch.
+
+**When it gives up.** A run stops early if eBay does not answer three lookups in a row, if its
+first ten lookups all fail, or if eBay says the allowance is used. Nothing is written when
+more than half the lookups failed, or when games that had copies last time now return nothing
+at all (a broken search, not an empty market).
 
 ## Weights
 
@@ -265,6 +334,14 @@ reason saving without a token is the default and tokens should be short-lived.
 
 ## Known limitations
 
+- eBay figures are asking prices of copies still for sale, never sold prices, and loose discs
+  are counted with complete copies. A game with more than 200 listings on a site is priced
+  from the first 200. Search words come from the library title, so a game sellers abbreviate
+  is `unmatched` until it is pinned with its own search words.
+- The "surging" level inherits the matcher's mistakes: in a replay of one week, 6 of 12 flags
+  were the wrong game matched.
+- The snapshot holds at most 5,000 items (about 11 days on 2026-10-06), so the 14-day window
+  the levels use is currently shorter than its name.
 - Fuzzy matching still maps franchise names to the PS2 entry, e.g. "God of War Laufey" becomes
   *God of War*. Sequel numbers are checked, but new subtitles aren't.
 - Sentiment is a keyword count in English. Non-English titles score a neutral 50.
@@ -332,6 +409,27 @@ reason saving without a token is the default and tokens should be short-lived.
   - the base64 helpers round-trip non-ASCII text
   - the repository is detected from a GitHub Pages address
   - the page and scraper validators agree on 38 configs
+
+- **Matcher** (`test_matcher_fixtures.py`): precision and recall on 268 hand-labelled real
+  headlines must not fall below their floors, and each matching rule has a named test.
+- **eBay prices** (`test_ebay_prices.py`, 125 tests): a fake stands in for eBay's API and a
+  throwaway local server exercises the real request code.
+  - the key, the token and the Basic header never reach the log or any written file; redirects
+    are refused; network errors name only the kind of failure
+  - each site is asked for used Buy It Now PS2 copies in its own country; a failed search is
+    tried three times; a bad request is not retried
+  - real listing titles from the live runs are sorted the way a person would sort them
+  - levels: what is and is not a surge, the 48-hour hold, staples, dormant and pinned games
+  - which lookups are due, in what order, and what the per-run and per-day allowances stop
+  - `data/prices/` holds numbers only; history gains a row on a change or a new day and not
+    otherwise; a failed lookup keeps the old figures; unreadable price files stop the run
+  - the workflow: who can start it, that it runs `main`, that the key reaches one step, that
+    it installs nothing, and that only `data/prices` is committed
+- **Dashboard, added 2026-10-06**: all three lists fold to five rows and open again; the eBay
+  section orders, formats, escapes and hides itself correctly, dims a price only when it is
+  overdue for its level, and a file it cannot draw hides the section instead of stopping the
+  page; prices are fetched from the site with no token; rows name their cells for the phone
+  layout; a phone gets 25 rows to a page.
 
 The *Tests* workflow runs the suite on every push to `main` that touches code, `feeds.json` or
 the tests, and on every pull request.
