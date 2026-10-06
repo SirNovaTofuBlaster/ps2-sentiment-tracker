@@ -153,7 +153,8 @@ class TokenTests(Quiet):
 
 class RequestTests(Quiet):
     def test_each_site_is_asked_for_used_buy_it_now_ps2_copies_in_its_own_country(self):
-        for market_id, country in (("EBAY_US", "US"), ("EBAY_GB", "GB")):
+        for market_id, country, location in (("EBAY_US", "US", "country%3DUS%2Czip%3D10001"),
+                                             ("EBAY_GB", "GB", "country%3DGB")):
             fake = FakeHttp(lambda params, headers: page(listing("Silent Hill 2 PS2", 30)))
             ebay_prices.search(fake, TOKEN, market_id, "silent hill 2", {"searches": 0})
             (call,) = fake.searches
@@ -162,7 +163,7 @@ class RequestTests(Quiet):
             self.assertEqual(call["headers"], {
                 "Authorization": f"Bearer {TOKEN}",
                 "X-EBAY-C-MARKETPLACE-ID": market_id,
-                "X-EBAY-C-ENDUSERCTX": f"contextualLocation=country%3D{country}"})
+                "X-EBAY-C-ENDUSERCTX": f"contextualLocation={location}"})
             self.assertEqual(call["params"], {
                 "q": "silent hill 2",
                 "category_ids": "139973",
@@ -218,6 +219,14 @@ class RequestTests(Quiet):
         self.assertEqual(len(fake.searches), 3, "no keyword search after a failure")
 
 
+class WordsTests(unittest.TestCase):
+    def test_accents_fold_and_symbols_separate(self):
+        self.assertEqual(ebay_prices.words("\u014ckami\u2122 (PS2)"), ["okami", "ps2"])
+        self.assertEqual(ebay_prices.words("Okami\u2b50\ufe0fComplete"), ["okami", "complete"])
+        self.assertEqual(ebay_prices.words("Pok\u00e9mon: D\u00e9j\u00e0 Vu!"), ["pokemon", "deja", "vu"])
+        self.assertEqual(ebay_prices.words(None), [])
+
+
 class TitleTests(unittest.TestCase):
     def reason(self, title, wanted, market=US, keyword=False):
         item = listing(title, 10, currency=market["currency"])
@@ -256,8 +265,9 @@ class TitleTests(unittest.TestCase):
 
     def test_whole_words_decide_what_is_not_a_copy(self):
         okami = game("Okami")
-        for title in ("Okami PS2 demo", "Okami PS2 case and manual", "Okami PS2 job lot",
-                      "Okami PS2 Manual Booklet", "Okami PS2 NO GAME", "Okami PS2 repro cover"):
+        for title in ("Okami PS2 demo", "Capcom Okami - Sony PlayStation 2 Case & Manual Only", "Okami PS2 job lot",
+                      "Okami PS2 Manual Booklet", "Okami PS2 NO GAME", "Okami PS2 repro cover",
+                      "Okami Sony PlayStation 2 (Cover Art Only)", "Okami PS2 Box And Manual ONLY!! PAL"):
             self.assertEqual(self.reason(title, okami), "not_a_copy", title)
         for title in ("Okami PS2 Demolition seller", "Okami PS2 reproduced nowhere", "Okami PS2 pilot"):
             self.assertIsNone(self.reason(title, okami), title)
@@ -299,7 +309,22 @@ class TitleTests(unittest.TestCase):
         ]
         for title, wanted, market, reason in left_out:
             self.assertEqual(self.reason(title, wanted, market), reason, title)
+        god_hand, colossus = game("God Hand"), game("Shadow of the Colossus")
         counted = [
+            # Left out by the first version of the rules, though each is a real copy.
+            ("Silent Hill 2 Complete With Original Case, Manual With Registration Card & Disc", SH2, US),
+            ("PS2 Silent Hill 2 Video Game With Case And Manual + ORIGINAL PURCHASE RECEIPT", SH2, US),
+            ("Silent Hill 2 (PlayStation 2, 2001) PS2 w/ Manual and Case", SH2, US),
+            ("Silent Hill 3 + soundtrack Sony Playstation 2 PS2 CIB", sh3, US),
+            ("Silent Hill 3 & Soundtrack PS2 complete", sh3, US),
+            ("Capcom God Hand Sony PlayStation 2 PS2 w/ Case + Manual M NTSC-U/C 2006", god_hand, US),
+            ("God Hand - PlayStation 2 PS2 PAL PEGI 16+ with Case & Manual VG++", god_hand, GB),
+            ("ICO /PlayStation 2, 2001/CIB w/Case And Manual Sony", ico, US),
+            ("Sony Shadow of the Colossus Greatest Hits PS2 Game Disc Case Manual T NTSC", colossus, US),
+            ("Persona 4 PlayStation 2 Complete with Case, Manual, and Bonus Disc", persona, US),
+            ("Persona 4 [PS2] - Complete PAL version + OST, pristine condition", persona, GB),
+            ("Okami\u2b50\ufe0fComplete CIB Original\u2b50\ufe0fSony PlayStation 2 PS2 Authentic Black Label", okami, US),
+            ("\u014ckami\u2122 (PlayStation 2) [S-Grade, Complete & Tested] EU Version", okami, GB),
             ("Silent Hill 2 PlayStation 2 PS2 Greatest Hits Disc Only", SH2, US),
             ("Silent Hill 2 Special 2-Disc Set PlayStation 2 In Very Good Condition PAL UK", SH2, GB),
             ("Silent Hill 2 Special Edition 2 Disc Set PAL Survival Horror PS2 (15)", SH2, GB),
