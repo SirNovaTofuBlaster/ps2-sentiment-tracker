@@ -4,7 +4,7 @@ Runs separately from scraper.py and never touches it. For every game in
 ebay_watchlist.json, and for each eBay site (US and UK), it asks eBay's
 official Browse API for used, Buy It Now listings located in that country,
 drops listings that are not a copy of that game (other games, empty cases,
-job lots, imports), and writes one JSON file: how many copies are listed, the
+soundtracks, cheat discs, job lots, imports), and writes one JSON file: how many copies are listed, the
 lowest and the median asking price, and links to the ten cheapest listings.
 
 Read the numbers for what they are:
@@ -68,10 +68,11 @@ CONDITION_FILTERS = {
 }
 MARKETS = {
     # "foreign" words mark a copy made for another region, which is a different product.
+    # They include the first part of the code printed on the spine: SLES/SCES is Europe, SLUS/SCUS America.
     "EBAY_US": {"label": "US", "site": "www.ebay.com", "country": "US", "currency": "USD",
-                "foreign": ("pal",)},
+                "foreign": ("pal", "european", "sles", "sces")},
     "EBAY_GB": {"label": "UK", "site": "www.ebay.co.uk", "country": "GB", "currency": "GBP",
-                "foreign": ("ntsc",)},
+                "foreign": ("ntsc", "usa", "us version", "slus", "scus")},
 }
 
 PAGE_LIMIT = 200         # the most eBay returns for one search
@@ -97,10 +98,22 @@ JUNK_PHRASES = (
     "replacement case", "replacement cover", "case and manual", "manual and case", "case manual",
     "case inlay", "manual booklet", "reproduction", "repro", "bundle", "lot", "joblot",
     "strategy guide", "official guide", "guide book", "guidebook", "demo disc", "demo",
-    "press kit", "faulty", "not working", "for parts", "spares or repairs", "spares repairs",
+    "jampack", "jam pack", "press kit", "promo dvd", "famitsu", "magazine",
+    "action replay", "gameshark", "game shark", "codebreaker", "code breaker", "cheats", "cheat disc",
+    "ost", "hat", "shirt", "figure", "statue", "plush", "keychain", "artbook", "art book",
+    "faulty", "not working", "for parts", "spares or repairs", "spares repairs",
 )
-# A copy made for Japan, wherever the seller is.
-IMPORT_PHRASES = ("japan", "japanese", "ntsc j", "jpn", "jp import")
+# Words that may sit between a game's name and "soundtrack" when the listing IS the soundtrack.
+SOUNDTRACK_LEAD_INS = {"original", "official", "music", "game", "video", "promo"}
+SOUNDTRACK_WORDS = {"soundtrack", "soundtracks", "ost"}
+# The seller picked PS2 as the platform, but the title says it is for something else.
+OTHER_PLATFORMS = (
+    "xbox", "gamecube", "dreamcast", "wii", "psp", "vita", "ps1", "psx", "ps3", "ps4", "ps5",
+    "nintendo switch", "pc dvd", "pc cd", "pc game",
+)
+# A copy made for Japan, wherever the seller is. SLPM/SLPS/SCPS start a Japanese spine code.
+IMPORT_PHRASES = ("japan", "japanese", "ntsc j", "jpn", "jp", "jap", "slpm", "slps", "scps")
+SKIPPED_EXAMPLES = 5     # titles saved per reason, so the rules can be checked against real listings
 # Counted, but worth knowing about: the price is for less than a complete copy.
 INCOMPLETE_PHRASES = (
     "disc only", "disk only", "game only", "loose", "no manual", "no case", "no box",
@@ -365,14 +378,43 @@ def names_this_game(text, phrase):
     return True
 
 
+def names_another_entry(text, phrase):
+    """True when a numbered game's title also names another number in the series.
+
+    "silent hill 2 case with silent hill 3 manual" and "silent hill 2, silent
+    hill 3, silent hill 4 promo set" are not one copy of Silent Hill 2."""
+    *stem, number = phrase.split()
+    if not stem or not number.isdigit():
+        return False
+    found = re.findall(rf"(?<![a-z0-9]){re.escape(' '.join(stem))} (\d{{1,2}})(?![a-z0-9])", text)
+    return any(other != number for other in found)
+
+
+def is_the_soundtrack(text, phrase):
+    """True when the listing is the game's soundtrack: "rule of rose original soundtrack cd".
+
+    A copy that comes with, or is missing, its bonus soundtrack names the game
+    first and the soundtrack later ("silent hill 3 ps2 disc w soundtrack"), and
+    is still a copy."""
+    padded = f" {text} "
+    at = padded.find(f" {phrase} ")
+    rest = padded[at + len(phrase) + 2:].split() if at >= 0 else []
+    while rest and rest[0] in SOUNDTRACK_LEAD_INS:
+        rest = rest[1:]
+    return bool(rest) and rest[0] in SOUNDTRACK_WORDS
+
+
 def reject_reason(item, game, market, keyword_search):
     """Why a listing is left out, or None to count it."""
     text = " ".join(words(item.get("title")))
     if keyword_search and not PLATFORM_WORDS.search(text):
         return "other_game"
-    if not names_this_game(text, game["search"]):
+    if not names_this_game(text, game["search"]) or names_another_entry(text, game["search"]):
         return "other_game"
-    if has_phrase(text, JUNK_PHRASES) or has_phrase(text, game["exclude"]):
+    if has_phrase(text, OTHER_PLATFORMS):
+        return "other_platform"
+    if has_phrase(text, JUNK_PHRASES) or has_phrase(text, game["exclude"]) \
+            or is_the_soundtrack(text, game["search"]):
         return "not_a_copy"
     if has_phrase(text, IMPORT_PHRASES) or has_phrase(text, market["foreign"]):
         return "import"
@@ -386,11 +428,13 @@ def reject_reason(item, game, market, keyword_search):
 def summarise(payload, game, market, keyword_search):
     """Turn one search result into the numbers and links that get saved."""
     items = [item for item in payload.get("itemSummaries") or [] if isinstance(item, dict)]
-    skipped, kept = {}, []
+    skipped, examples, kept = {}, {}, []
     for item in items:
         reason = reject_reason(item, game, market, keyword_search)
         if reason:
             skipped[reason] = skipped.get(reason, 0) + 1
+            if len(examples.setdefault(reason, [])) < SKIPPED_EXAMPLES:
+                examples[reason].append(" ".join(str(item.get("title") or "").split())[:120])
             continue
         postage = postage_of(item, market["currency"])
         kept.append({
@@ -414,6 +458,7 @@ def summarise(payload, game, market, keyword_search):
         "truncated": on_ebay > len(items),    # true: the figures below cover the first 200 only
         "counted": len(kept),
         "skipped": dict(sorted(skipped.items())),
+        "skipped_examples": dict(sorted(examples.items())),   # a few left-out titles per reason
     }
     warning = first_message(payload.get("warnings"))
     if warning:
