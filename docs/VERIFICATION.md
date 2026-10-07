@@ -224,6 +224,44 @@ is keyed by a game's display title in `latest.json` (lookups go by a spelling-in
 Left for later: the price history is stored but not drawn; the eBay list has no search box;
 `fixtures.yml`, started by hand only, still pushes without a retry.
 
+## 2026-10-07: prices beside every game, three tabs, the feed's two weeks
+
+How the dashboard changes of 2026-10-07 and the `MAX_ITEMS` change in `scraper.py` were checked.
+
+| Check | Result |
+|---|---|
+| First live run for every game | 2026-10-06, 22:41 UTC: 182 games, 405 searches, every game checked on both sites. 39,283 listings returned, 23,827 counted. 177 games have a figure on at least one site; 22 game-and-site pairs are `unmatched` |
+| Spot checks of that run | The cheapest counted listings and the left-out examples were read for *God of War*, *Kingdom Hearts*, *Monster Hunter* and *Dynasty Warriors 3* on both sites. Two wrong listings counted (a *Devil May Cry 3* copy "with Monster Hunter"; "Xtreme Legends: Dynasty Warriors 3"); recorded as open items |
+| Was the feed stuck at 5,000 | No. The last nine snapshots in the git history were compared: after reaching 5,000, each run added new items and dropped as many (200, 95, 85, 26), and the newest item was always minutes old. The window had shrunk from 14 days to 9.3 |
+| Only one thing changed in `scraper.py` | A comparison of the syntax trees of the old and new file: 40 functions and classes identical, one assignment different (`MAX_ITEMS`) |
+| Not run | `tools/regression_check.py` and a `FULL_RUN=1` scratch run: both need the live feeds, which could not be reached from the machine the change was written on. The regression check collects about a thousand items, so neither limit can affect it |
+| Does anything else assume 5,000 items | `archive.py`, `demand.py`, `ebay_prices.py` and the workflows were read: nothing is sized for it. A 12,000-item feed loads in about 3 seconds in a headless browser and redraws in under 0.3 |
+| Page and price script agree on names | `priceKey()` against `search_terms()` on 3,317 titles (the library, the feed, the price file, awkward spellings): no difference. The reviewer's fuzz of 702,445 strings found differences only on characters no title uses |
+| The right price on the right row | Every distinct game in the feed (144) and the Demand Index (58) was mapped by the page and by `plan_games()`: no disagreement. The mappings that differ in spelling are all the same game. 296 of 346 feed rows naming a game show a median; the 50 without are one-word or never-priced names and three games with nothing countable |
+| Offline tests | 178 Python tests and 28 dashboard checks pass, in UTC and in four other time zones |
+| Do the checks bite | 59 one-line breakages of `index.html`, `retro.css` and `scraper.py` across three rounds. Three were not noticed at first: two got a check, and the third turned out to be a line that did nothing and was removed |
+| Rendering | Real data, at 1280, 768, 427, 360 and 320px, with a price file, without one and with a damaged one: no sideways scroll, no script errors, exactly one page on screen through every tab, link, Back and Forward tried, the tile labels on one line |
+
+### Independent review
+
+One review with fresh context, told to report only findings backed by a concrete failure.
+
+| Finding | Resolution |
+|---|---|
+| The new check on the item label failed in time zones behind or ahead of UTC at certain hours (its fixture had no "UTC") | Fixture corrected; the checks were run in five time zones |
+| The changelog said dropped items do not return; 203 of the 392 the limit had cut are still listed by their sources and come back on the first run | Changelog corrected, with what the tile will read meanwhile |
+| The guide told readers to look an unpriced game up on the prices tab, where 16 of the 19 unpriced games do not appear | Guide and the tab's empty message now say which games are never priced |
+| The search box matched only the evened-out name, so "Kingdom Hearts I" found nothing while "II" was being typed and "The" hid titles | It also matches the text as typed |
+| A failed REFRESH (a 503, a dropped connection) wiped every price and said "No prices yet… Run workflow" | A failed read keeps what is loaded; with nothing loaded the page says the file could not be read |
+| "Items · last 14 days" wrapped on phones and pushed its number out of line | Shortened to "Items · 14 days", kept on one line down to 320px |
+| A fresh load of `index.html#sourcesSection` stopped far above the panel (as it did before this change) | The address is read once more when the first load has finished |
+| Back from another tab left the site | Changing page adds a history entry; Back and Forward go through the address |
+| 14 breakages the checks did not notice (name rule variants, the tab's number, `aria-selected`, the search box's wiring, a missing element, rounding, a 13-day retention) | A check added for each; the sandbox's elements now keep attributes, and one check confirms every element the script asks for exists in the page |
+| The median's tooltip said "Opens the listings" though the link is a plain search | Reworded |
+
+Left as they are: arrow keys do not move between tabs; the name rules differ on characters no
+title uses.
+
 ## Re-running the checks
 
 ```sh
