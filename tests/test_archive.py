@@ -26,7 +26,7 @@ def thread(number, started, games=("Ico",), board="vr"):
     names = " and ".join(games)
     return item(headline=f"Thread on /{board}/ naming {names}", source=f"4chan /{board}/", source_type="4chan",
                 link=f"https://boards.4chan.org/{board}/thread/{number}", matched_game=games[0],
-                matched_games=list(games), sentiment=50, timestamp=started)
+                matched_games=list(games), sentiment=None, timestamp=started)
 
 
 class ArchiveTests(unittest.TestCase):
@@ -72,10 +72,14 @@ class ArchiveTests(unittest.TestCase):
 
     def test_only_what_the_scraper_wrote_is_archived_for_a_thread(self):
         """The archive is permanent, so it must hold nothing a poster wrote: a thread's row is
-        the generated headline, the board, the game and the numbers."""
+        the generated headline, the board, the game and how it was matched. It has no mood
+        score ("n"): a thread is not scored, and a made-up 50 would be kept for good."""
         rows = self.run_with([thread(101, "2026-10-05 09:00 UTC")])
         self.assertEqual(rows, [{"g": "Ico", "d": "2026-10-05 09:00 UTC", "h": "Thread on /vr/ naming Ico",
-                                 "s": "4chan /vr/", "t": "4chan", "n": 50, "r": False, "m": "exact"}])
+                                 "s": "4chan /vr/", "t": "4chan", "r": False, "m": "exact"}])
+        # Every other row keeps its score, and a row without one still gets the neutral 50.
+        rows = self.run_with([item(), item(headline="Ico again", sentiment=None)])
+        self.assertEqual([row["n"] for row in rows if row["t"] == "news"], [70, 50])
 
 
 if __name__ == "__main__":

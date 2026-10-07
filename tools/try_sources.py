@@ -68,8 +68,10 @@ def try_feed(session, job, matcher, ps2_keys):
         + (f", from {stamps[0]} to {stamps[-1]}" if stamps else ""))
     for item in items:
         if item["matched_game"]:
+            # A headline is somebody else's text: on one line, so that it cannot start a line of
+            # its own in the log (GitHub reads lines that begin with "::" as commands).
             say(f"    {item['matched_game']} ({item['matched_in']}, {item['match_method']} {item['match_score']:.0f})"
-                f" <- {item['headline'][:90]}")
+                f" <- {' '.join(item['headline'].split())[:90]}")
     return Counter(item["matched_game"] for item in items if item["matched_game"])
 
 
@@ -82,7 +84,7 @@ def try_board(session, job, matcher, ps2_keys):
     with_subject = [t for t in live if scraper.board_text(t.get("sub"))]
     strict = 0  # what the rule for RSS bodies would keep: the text must also say "PS2"
     for thread in live:
-        text = f"{scraper.board_text(thread.get('sub'))} {scraper.board_text(thread.get('com'))}"
+        text = f"{scraper.board_text(thread.get('sub'))}\n{scraper.board_text(thread.get('com'))}"
         if scraper.PS2_CONTEXT_PATTERN.search(text) and matcher.match_all(" ".join(text.split()[:scraper.MAX_BODY_TOKENS])):
             strict += 1
     # A thread counts on the day it was started, so only those inside the feed's window are kept.
@@ -100,7 +102,7 @@ def try_board(session, job, matcher, ps2_keys):
     loose = Counter()
     for thread in live:
         subject = scraper.board_text(thread.get("sub"))
-        comment = " ".join(scraper.board_text(thread.get("com")).split()[:scraper.MAX_BODY_TOKENS])
+        comment = scraper.first_words(scraper.board_text(thread.get("com")), scraper.MAX_BODY_TOKENS)
         found = (matcher.match_all(subject) if subject else []) or (matcher.match_all(comment) if comment else [])
         loose.update(title for title, _, _ in found)
     kept = Counter(game for item in items for game in item["matched_games"])

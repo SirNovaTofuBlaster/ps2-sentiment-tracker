@@ -8,6 +8,7 @@ leaves the file untouched when nothing changed, and exits non-zero when too many
 news/Reddit feeds fail so a bad run never overwrites good data. Per-feed health is
 written to data/feed_status.json."""
 
+import functools
 import html
 import json
 import os
@@ -90,7 +91,17 @@ BOARD_REQUEST_GAP = 1.1  # seconds between two catalog requests
 # word for word as If-Modified-Since, so anything of another shape is not stored or sent.
 HTTP_DATE_PATTERN = re.compile(r"[A-Z][a-z]{2}, \d{2} [A-Z][a-z]{2} \d{4} \d{2}:\d{2}:\d{2} GMT")
 BOARD_GAMES_NAMED = 3  # a thread's line names this many games and counts the rest
-BOARD_WORD_PATTERN = re.compile(r"[^\W\d_][^\s]*")  # a word that starts with a letter
+BOARD_MAX_AGE = timedelta(days=20 * 365)  # a thread dated outside this (or in the future) has no usable date
+LINE_BREAK_PATTERN = re.compile(r"<br\s*/?>", re.IGNORECASE)
+# How the matcher's normalise() splits text into words. rapidfuzz does it one way when it is
+# compiled (the underscore separates words) and another in pure Python (it does not), so
+# post_words() tries both and keeps whichever agrees with normalise().
+POST_WORD_PATTERNS = (re.compile(r"[^\W_]+"), re.compile(r"\w+"))
+SENTENCE_END_PATTERN = re.compile(r"[.!?\n]")
+# After a name's number these make it a count, not part of the name: "Yakuza 2 days ago".
+TIME_UNITS = {"second", "seconds", "sec", "secs", "minute", "minutes", "min", "mins", "hour", "hours", "hr", "hrs",
+              "day", "days", "week", "weeks", "month", "months", "year", "years", "yr", "yrs", "time", "times"}
+SEQUEL_NUMBERS = range(2, 21)  # "Max Payne 2" is another game than Max Payne; "Okami 2006" is a year
 CHANNEL_ID_PATTERN = re.compile(r"UC[0-9A-Za-z_-]{22}")
 # The dashboard uses this exact pattern too, so a feed link it accepts always loads here:
 # http(s), an ASCII host name with at least one dot, an optional port, printable ASCII after.
@@ -594,8 +605,10 @@ def fetch_board(session, url, modified=None):
     pages = response.json()
     if not isinstance(pages, list):
         raise ValueError("unreadable catalog")
-    threads = [thread for page in pages if isinstance(page, dict)
-               for thread in page.get("threads") or [] if isinstance(thread, dict)]
+    # Anything of the wrong shape is passed over, never iterated: an error other than the two
+    # the run expects from a feed would stop the whole run, news included.
+    threads = [thread for page in pages if isinstance(page, dict) and isinstance(page.get("threads"), list)
+               for thread in page["threads"] if isinstance(thread, dict)]
     return threads, http_date(response.headers.get("Last-Modified"))
 
 
@@ -662,7 +675,21 @@ def entry_body(entry):
     return " ".join(text.split()[:MAX_BODY_TOKENS])
 
 
+def thread_link(entry):
+    """The page of a forum thread itself. A link aggregator (Lemmy) puts the article a post
+    shares in <link> and the discussion in <comments> and <guid>. The discussion is the item
+    here; using the article's address would also give the post the same link as the article's
+    own row from a news feed, and the link is what tells rows apart, so one would replace
+    the other."""
+    for candidate in (entry.get("comments"), entry.get("id")):
+        if isinstance(candidate, str) and candidate.startswith(("http://", "https://")):
+            return candidate
+    return entry.get("link", "#")
+
+
 def entry_link(entry, kind, shared_links=frozenset()):
+    if kind == "forum":
+        return thread_link(entry)
     if kind != "podcast":
         return entry.get("link", "#")
     # Many podcast episodes have no page of their own: no link, a link every episode shares
@@ -735,9 +762,17 @@ def analyze_entry(entry, feed, job, matcher, first_seen, ps2_keys, repeated_link
 
 
 def board_text(raw):
-    """The plain words of a thread's subject or comment: markup out, entities decoded."""
-    text = HTML_TAG_PATTERN.sub(" ", str(raw or "").replace("<wbr>", ""))
-    return " ".join(html.unescape(text).split())
+    """The plain words of a thread's subject or comment: markup out, entities decoded, one
+    line of the post per line (a line's first word is the first word of a sentence)."""
+    text = LINE_BREAK_PATTERN.sub("\n", str(raw or "").replace("<wbr>", ""))
+    text = html.unescape(HTML_TAG_PATTERN.sub(" ", text))
+    return "\n".join(line for line in (" ".join(part.split()) for part in text.splitlines()) if line)
+
+
+def first_words(text, limit):
+    """The text up to the end of its limit-th word."""
+    words = list(re.finditer(r"\S+", text))
+    return text if len(words) <= limit else text[:words[limit - 1].end()]
 
 
 def games_named(titles):
@@ -750,33 +785,145 @@ def games_named(titles):
 
 def thread_timestamp(thread):
     """When a thread was started, or None for a thread to leave alone: the pinned threads at
-    the top of a board (its rules, not a conversation) and anything without a usable time."""
+    the top of a board (its rules, not a conversation) and anything without a usable time.
+    Times are compared as text further on, so a year that is not four digits long, or a date
+    still to come, would sort above everything and never age out."""
     created = thread.get("time")
     if thread.get("sticky") or isinstance(created, bool) or not isinstance(created, int):
         return None
+    now = datetime.now(timezone.utc)
     try:
-        return datetime.fromtimestamp(created, timezone.utc).strftime(TIMESTAMP_FORMAT)
+        started = datetime.fromtimestamp(created, timezone.utc)
     except (OverflowError, OSError, ValueError):
         return None
+    if not now - BOARD_MAX_AGE <= started <= now + timedelta(days=1):
+        return None
+    return started.strftime(TIMESTAMP_FORMAT)
+
+
+def post_words(text):
+    """The words of a text as the matcher reads them, each with how it was written:
+    [(the matcher's word, the word as written, where it starts, where it ends)]. None when
+    the two cannot be lined up (rare scripts), which callers take as "cannot tell"."""
+    tokens = normalise(text).split()
+    for pattern in POST_WORD_PATTERNS:
+        runs = [(found.group(), found.start(), found.end()) for found in pattern.finditer(text)]
+        if [ROMAN_TO_ARABIC.get(raw.lower(), raw.lower()) for raw, _, _ in runs] == tokens:
+            return [(token, raw, start, end) for token, (raw, start, end) in zip(tokens, runs)]
+    return None
+
+
+@functools.lru_cache(maxsize=8192)
+def library_words(title):
+    """post_words() of a title as the library spells it (None when it cannot be lined up)."""
+    words = post_words(title)
+    return tuple(words) if words else None
+
+
+def long_titles(matcher):
+    """{first word: [(words, title)]} for the titles with more words than the matcher's runs
+    hold (MAX_GRAM_WORDS). match_all() can only find those by an inexact match, which posts
+    are not allowed; here they are found whole. Built once per matcher."""
+    index = getattr(matcher, "long_title_index", None)
+    if index is None:
+        index = defaultdict(list)
+        for norm, title in matcher.canonical.items():
+            run = norm.split()
+            if len(run) > MAX_GRAM_WORDS:
+                index[run[0]].append((run, title))
+        matcher.long_title_index = index
+    return index
+
+
+def written_as_a_name(text, words, start, end, title, matcher):
+    """Whether words[start:end], which spell `title` in full, are written as the name of a
+    game rather than as ordinary words that happen to be a title."""
+    span, library = words[start:end], library_words(title)
+    if not library or [word[0] for word in library] != [word[0] for word in span]:
+        return False
+    is_number = [bool(NUMERAL_TOKEN.search(token)) for token, _, _, _ in span]
+    if all(is_number):
+        # A title that is only a number ("XIII") reads as 13, which is also an age, a count
+        # and a date. It names the game only when written the way the library writes it.
+        return [raw.lower() for _, raw, _, _ in span] == [raw.lower() for _, raw, _, _ in library]
+    # A number written as a number settles which game is meant, capitals or not: "silent hill
+    # 2", "kingdom hearts ii". A lone I, V or X does not: it is also a pronoun and a letter.
+    if any(number and not (len(raw) == 1 and raw.isalpha()) for number, (_, raw, _, _) in zip(is_number, span)):
+        following = words[end][0] if end < len(words) else None
+        return not (is_number[-1] and following in TIME_UNITS)  # "yakuza 2 days ago" is counting days
+    # Otherwise the words the library writes with a capital must have one here, each in its
+    # place: "the thing is" does not name The Thing, and "Top tier. Gun..." is not Top Gun.
+    needed = [i for i, (token, raw, _, _) in enumerate(library)
+              if raw[:1].isupper() and token not in STOPWORDS and not is_number[i]]
+    if not needed:
+        # The library writes it without capitals: only its exact spelling marks it.
+        return text[span[0][2]:span[-1][3]].lower() == title.lower()
+    if not any(char.islower() for char in text):
+        return False  # a post written all in capitals: its capitals mark nothing
+    if not all(span[i][1][:1].isupper() for i in needed):
+        return False
+    if len(span) == 1 and matcher.short.get(span[0][0], (None, False))[1]:
+        # One everyday word that is also a title ("Black", "Retro", "Obscure"): the capital
+        # that starts a sentence says nothing, so there it does not count.
+        return start > 0 and not SENTENCE_END_PATTERN.search(text[words[start - 1][3]:span[0][2]])
+    return True
+
+
+def another_entry(text, words, end):
+    """Whether the name ending at words[end] runs straight into a sequel number it does not
+    have. "Max Payne 2" is not Max Payne and "Kingdom Hearts 3" is not Kingdom Hearts; the
+    library's own entry with that number, if there is one, is matched under its own name.
+    "Silent Hill 2, 3 and 4" lists entries and "Okami 10/10" is a score: those are let be."""
+    if end >= len(words) or text[words[end - 1][3]:words[end][2]] != " ":
+        return False
+    _, raw, _, stop = words[end]
+    if raw.isascii() and raw.isdigit():
+        number = int(raw)
+    elif len(raw) > 1 and raw.lower() in ROMAN_TO_ARABIC:
+        number = int(ROMAN_TO_ARABIC[raw.lower()])
+    else:
+        return False
+    return number in SEQUEL_NUMBERS and text[stop:stop + 1] != "/"
 
 
 def games_in_post(text, matcher, ps2_source=False):
-    """The PS2 games a subject or comment on a board names, as match_all() gives them.
+    """The PS2 games a subject or comment on a board names, as (title, score, method).
 
-    Posts are chat, not headlines, so two things a headline gets away with are not allowed
-    here. The name has to be spelt as the library spells it, because a near miss is usually
-    another game: "Dragon Age" is not Dragon Rage, and "Legend of Heroes" is not Legend of
-    Herkules. And a name with no number in it has to be written as a name, with capitals,
-    because plenty of titles are ordinary phrases: "the thing is" does not name The Thing,
-    and a "top gun" is not Top Gun. A short name the matcher knows by heart (its aliases,
-    such as "MGS3") counts however it is written."""
-    capitalised = {token for word in BOARD_WORD_PATTERN.findall(text) if word[0].isupper()
-                   for token in normalise(word).split()}
-    kept = []
-    for title, score, method in matcher.match_all(text, ps2_source=ps2_source, threshold=100):
-        tokens = normalise(title).split()
-        named = [t for t in tokens if t not in STOPWORDS] or tokens
-        if method == "alias" or any(NUMERAL_TOKEN.search(t) for t in tokens) or all(t in capitalised for t in named):
+    Posts are chat, not headlines, so what a headline gets away with is not allowed here:
+
+    - The whole name, spelt as the library spells it. A near miss is usually another game
+      ("Dragon Age" is not Dragon Rage), and half a title is usually no game at all ("the
+      room" is not Silent Hill 4: The Room).
+    - Written as a name (written_as_a_name): with a number written as a number, or with
+      capitals where the library has them. Plenty of titles are ordinary phrases.
+    - Not another entry of the series (another_entry): "Max Payne 2" is not Max Payne.
+
+    A short name the matcher knows by heart (its aliases, such as "MGS3") counts however it
+    is written. Some real mentions are lost to these rules; far fewer wrong ones get in."""
+    candidates = matcher.match_all(text, ps2_source=ps2_source, threshold=100)
+    words = post_words(text)
+    if words is None:
+        return [candidate for candidate in candidates if candidate[2] == "alias"]
+    tokens = [word[0] for word in words]
+
+    def named(title, run, longer=()):
+        for start, end in TitleMatcher._occurrences(tokens, run):
+            if any(a <= start and end <= b and b - a > end - start for a, b in longer):
+                continue  # these words are part of a longer title
+            if written_as_a_name(text, words, start, end, title, matcher) and not another_entry(text, words, end):
+                return True
+        return False
+
+    whole = sorted(((run, title) for token in set(tokens) for run, title in long_titles(matcher).get(token, ())
+                    if TitleMatcher._occurrences(tokens, run)), key=lambda hit: (-len(hit[0]), hit[1]))
+    spans = [span for run, _ in whole for span in TitleMatcher._occurrences(tokens, run)]
+    kept = [(title, 100, "exact") for run, title in whole if named(title, run, spans)]
+    for title, score, method in candidates:
+        if any(title == found for found, _, _ in kept):
+            continue
+        # Half a title (a "variant") is not its name. Anything else is checked where it stands
+        # in the text, which also means it is there word for word.
+        if method == "alias" or (method != "variant" and named(title, normalise(title).split(), spans)):
             kept.append((title, score, method))
     return kept
 
@@ -795,7 +942,7 @@ def analyze_thread(thread, job, matcher, ps2_keys):
     key = source_key(source)
     ps2_source = key in ps2_keys
     subject = board_text(thread.get("sub"))
-    comment = " ".join(board_text(thread.get("com")).split()[:MAX_BODY_TOKENS])
+    comment = first_words(board_text(thread.get("com")), MAX_BODY_TOKENS)
     # A subject is the thread's headline. Most threads have none, and then the comment is all
     # there is: it is read the same way but marked as body text, so that a game named there
     # counts as a mention without counting as a headline (the price checker's "surging" level
@@ -819,7 +966,7 @@ def analyze_thread(thread, job, matcher, ps2_keys):
         "match_method": method,
         "matched_in": matched_in,
         "is_remaster_rumor": False,
-        "sentiment": 50,
+        "sentiment": None,  # not scored: nothing about the post but the games it names is used
         "hype": 0,
         "timestamp": timestamp,
     }
@@ -1204,6 +1351,13 @@ def run_scraper():
     if not items:
         print("No items collected; leaving snapshot untouched.")
         return
+
+    # A forum thread never takes a row away from another source. Rows are told apart by
+    # their link, and a thread can carry the very link of an article or video that has a row
+    # of its own; without this the thread, fetched later, would replace it.
+    owners = {item_key(i): i.get("feed") for i in previous}
+    owners.update((item_key(i), i.get("feed")) for i in items if i.get("source_type") != "forum")
+    items = [i for i in items if i.get("source_type") != "forum" or owners.get(item_key(i), i.get("feed")) == i.get("feed")]
 
     # Merge into the previous snapshot: new data wins, old items age out.
     merged = {item_key(i): i for i in previous}

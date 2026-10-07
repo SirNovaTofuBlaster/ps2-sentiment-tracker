@@ -998,8 +998,9 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
         row({ headline: 'Press headline', source: press.name, source_type: 'news', feed: press.url, sentiment: 90 }),
         row({ headline: 'Ico appreciation thread', source: `Forum: ${forum.name}`, source_type: 'forum', feed: forum.url, sentiment: 70, matched_game: 'Ico',
             link: 'https://forum.example/threads/ico.1/' }),
+        // As the scraper writes it: a thread is not scored, so its sentiment is null.
         row({ headline: 'Thread on /vr/ naming Okami', source: '4chan /vr/', source_type: '4chan', feed: '4chan:vr', matched_game: 'Okami',
-            link: 'https://boards.4chan.org/vr/thread/101' }),
+            link: 'https://boards.4chan.org/vr/thread/101', sentiment: null }),
     ];
     vm.runInContext(`
         feedConfig = JSON.parse(__text); baseConfigText = configJson(); rebuildSourceIndex(); unsavedAdditions.clear();
@@ -1026,8 +1027,8 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     assert.match(boardRow, /title="Source weight in the sentiment average">&times;0<\/span>/);
     assert.match(boardRow, /<td data-col="score"[^>]*><div class="score-value[^"]*" title="Not scored: [^"]+">&ndash;<\/div>\s*<\/td>/, 'no mood is shown for a thread');
     assert.match(forumRow, /<div class="score-value font-mono-custom">70<\/div>/);
-    // A thread has no mood score at all, so no weight can bring its placeholder 50 into the
-    // average: not a weight on the role, not one on the board, and not a board the list has lost.
+    // A thread has no mood score at all, so no weight can bring it into the average as a
+    // neutral 50: not a weight on the role, not one on the board, and not a board the list has lost.
     const mood = (change) => {
         vm.runInContext(`${change}; rebuildSourceIndex(); refreshDashboard()`, context);
         return el('statAvgSentiment').innerText;
