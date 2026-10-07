@@ -22,6 +22,7 @@ import requests
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+import ebay_prices  # noqa: E402
 import scraper  # noqa: E402
 
 CONFIG_TEXT = (ROOT / "feeds.json").read_text(encoding="utf-8")
@@ -540,6 +541,36 @@ class RunScraperTests(unittest.TestCase):
             scraper.run_scraper()
         self.assertTrue(scraper.OUTPUT_PATH.exists())
 
+    def test_the_snapshot_holds_two_weeks_and_its_ceiling_drops_the_oldest_first(self):
+        def earlier(days):
+            return {"headline": f"Story from {days} days ago", "source": "Example News", "source_type": "news",
+                    "link": f"https://news.example/old-{days}", "matched_game": None, "is_remaster_rumor": False,
+                    "sentiment": 50, "timestamp": (NOW - timedelta(days=days)).strftime(scraper.TIMESTAMP_FORMAT)}
+
+        def ages(output):
+            return [item["headline"] for item in output["items"] if item["headline"].startswith("Story from")]
+
+        scraper.DATA_DIR.mkdir(parents=True, exist_ok=True)
+        scraper.OUTPUT_PATH.write_text(json.dumps({"items": [earlier(days) for days in (20, 1, 13.9, 14.1, 5)]}), encoding="utf-8")
+        output, _ = self.run_scraper()
+        self.assertEqual(ages(output), ["Story from 1 days ago", "Story from 5 days ago", "Story from 13.9 days ago"],
+                         "two weeks are kept, newest first; anything older is dropped")
+        fetched = len(output["items"]) - 3
+        self.assertGreater(fetched, 0)
+        stamps = [item["timestamp"] for item in output["items"]]
+        self.assertEqual(stamps, sorted(stamps, reverse=True))
+
+        # Past the ceiling it is the oldest items that go, never the ones just collected.
+        self.fixtures[self.NEWS_URL] = rss("Example News", [("Brand new story", "https://news.example/new", None, NOW)])
+        with mock.patch.object(scraper, "MAX_ITEMS", fetched + 2):
+            output, _ = self.run_scraper()
+        self.assertEqual(len(output["items"]), fetched + 2)
+        self.assertEqual(output["items"][0]["headline"], "Brand new story")
+        self.assertEqual(ages(output), ["Story from 1 days ago"])
+
+        # The ceiling is a safety net: two weeks of a busy day (about 750 items) must fit under it.
+        self.assertGreaterEqual(scraper.MAX_ITEMS, scraper.RETENTION_DAYS * 750)
+
     def test_status_of_removed_sources_is_dropped(self):
         self.run_scraper()
         self.config["sources"] = [s for s in self.config["sources"] if s["type"] != "podcast"]
@@ -605,6 +636,38 @@ class DashboardTests(unittest.TestCase):
             path.write_text(json.dumps(cases), encoding="utf-8")
             verdicts = json.loads(self.node("--validate", str(path)))
         self.assertEqual(verdicts, [not scraper.validate_config(c) for c in cases])
+
+    def test_dashboard_and_price_script_agree_on_which_titles_are_one_game(self):
+        """The dashboard puts eBay's figures beside a game's name by evening the name out with
+        priceKey(); ebay_prices.py decides two titles are one game with search_terms(). If the two
+        drift apart, prices go missing from rows, or land on the wrong game."""
+        titles = {
+            "Kingdom Hearts II", "Kingdom Hearts 2", "Jak & Daxter: The Precursor Legacy", "Jak and Daxter",
+            "Godfather, The: Collector's Edition", "The Getaway", "Getaway, The", "Getaway, The: Black Monday",
+            "The", "A", "An", "and", "The and", "A and B", "A.I. Wars", "the  thing", "An Tóstal",
+            "Thing, A", "Thing, An: Part VI", "Final Fantasy VI", "Final Fantasy VII", "Final Fantasy VIII",
+            "Final Fantasy IX", "Final Fantasy XI", "Resident Evil IV", "Shadow Hearts III",
+            " The Getaway", "Getaway, The ", "The\tThing", "A\u00a0Thing", "An Thing", "the getaway", "Thing,The",
+            "Ōkami™ (PS2)", "Pokémon", "Director’s Cut", "Director's Cut", "Rock`n Roll", "Final Fantasy X-2",
+            "Final Fantasy XII", "Final Fantasy XIII", "Mega Man X8", "Shin Megami Tensei: Persona 4",
+            "  Kingdom   Hearts  II ", "ICO", "Ico", "007: Nightfire", "constructor toString II", "", "   ", "İstanbul",
+            "Okami⭐Complete", "50 Cent: Bulletproof", ".hack//Infection", "Ratchet & Clank: Up Your Arsenal",
+        }
+        library = ROOT / "data" / "ps2_database.json"
+        if library.exists():
+            titles.update(title for title in json.loads(library.read_text(encoding="utf-8")) if isinstance(title, str))
+        watchlist = json.loads((ROOT / "ebay_watchlist.json").read_text(encoding="utf-8"))
+        for game in watchlist["games"]:
+            titles.update(value for value in (game.get("title"), game.get("search")) if isinstance(value, str))
+        titles = sorted(titles)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "titles.json"
+            path.write_text(json.dumps(titles), encoding="utf-8")
+            keys = json.loads(self.node("--price-keys", str(path)))
+        expected = [ebay_prices.search_terms(title)[0] for title in titles]
+        different = [(title, key, want) for title, key, want in zip(titles, keys, expected) if key != want]
+        self.assertEqual(different, [], "index.html priceKey() and ebay_prices.search_terms() disagree")
+        self.assertGreater(len(titles), 30)
 
 
 if __name__ == "__main__":
