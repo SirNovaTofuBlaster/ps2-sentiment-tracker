@@ -30,7 +30,7 @@ through its **Sources & Weights** panel.
 |---|---|
 | `feeds.json` | Every source (news / reddit / youtube / podcast), roles and weights, `poll_every_hours` |
 | `scraper.py` | Config validation, fetch plan, YouTube link resolution, matching, sentiment, feed health, snapshot merge |
-| `index.html` | Dashboard; its inline script mirrors `validate_config()` and `source_key()`. Also reads `data/demand.json` and `data/prices/latest.json`, and hides those sections when the files are missing |
+| `index.html` | Dashboard, three pages in one file (Tracker, Most mentioned, eBay prices); its inline script mirrors `validate_config()`, `source_key()` and the game-name rule of `ebay_prices.py`. Also reads `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.json`, and works without them |
 | `guide.html` | Plain-language user guide; must match the UI |
 | `data/` | Written only by workflows (the scraper's, the archive, the demand index and eBay prices, each its own files); never edit or commit it by hand |
 | `tests/test_scraper.py` | Offline unittest suite; also runs `tests/dashboard_check.mjs` when Node.js exists |
@@ -72,6 +72,7 @@ python ebay_prices.py --plan              # which games would be priced now and 
    - `validate_config()` (scraper.py) and `validateConfig()` (index.html)
    - `source_key()` and `sourceKey()`
    - `FEED_URL_PATTERN` and `FEED_URL_RE`
+   - the name `search_terms()` gives a title (ebay_prices.py) and `priceKey()` (index.html)
 4. **Keep `feeds.json` canonical**: `json.dumps(config, indent=2, ensure_ascii=False) + "\n"`,
    with whole numbers written without `.0`. The dashboard's save reproduces the file byte for
    byte (tested).
@@ -204,6 +205,9 @@ Before you call something done, prove it; don't assume it.
     it with the search check ticked and read the counts it prints.
   - The API returns listings that are still for sale. They are asking prices, not sold prices,
     and US (NTSC) and UK (PAL) figures are never combined.
+  - The dashboard shows a game's medians wherever its name appears, so it has to tie the
+    feed's spelling to the price file's. It does that with `priceKey()`, which must give
+    every title the same name as `search_terms()`; change one and change the other.
   - eBay's default allowance is 5,000 searches a day. One lookup is one search, or two when
     no listing carries the PS2 item specific and it asks again by keyword; a failed search
     is tried up to three times. eBay returns at most 200 listings per search, and a game
