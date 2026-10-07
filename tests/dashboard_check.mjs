@@ -104,6 +104,8 @@ if (process.argv[2] === '--price-keys') {
     process.exit(0);
 }
 
+const esc = (text) => String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
 let passed = 0;
 const check = async (name, fn) => {
     await fn();
@@ -129,9 +131,11 @@ await check('source keys are unique and follow scraper.source_key()', () => {
     const sources = context.__feeds.sources;
     sources.forEach((src, i) => {
         const expected = src.type === 'youtube' ? `youtube:${src.channel_id || src.channel_url.toLowerCase()}`
-            : src.type === 'reddit' ? `reddit:${src.subreddit.toLowerCase()}` : src.url;
+            : src.type === 'reddit' ? `reddit:${src.subreddit.toLowerCase()}`
+                : src.type === '4chan' ? `4chan:${src.board}` : src.url;
         assert.equal(keys[i], expected);
     });
+    assert.ok(sources.some(src => src.type === '4chan') && sources.some(src => src.type === 'forum'), 'every kind of source is covered');
 });
 
 await check('weights: role default, per-source override, legacy and unknown items', () => {
@@ -166,6 +170,9 @@ await check('source type is read from the item or inferred for legacy items', ()
     assert.equal(evalJson("itemType({ source: 'YouTube: IGN' })"), 'youtube');
     assert.equal(evalJson("itemType({ source: 'Podcast: Retronauts' })"), 'podcast');
     assert.equal(evalJson("itemType({ source: 'Gematsu' })"), 'news');
+    assert.equal(evalJson("itemType({ source_type: 'forum', source: 'Forum: Example' })"), 'forum');
+    assert.equal(evalJson("itemType({ source_type: '4chan', source: '4chan /vr/' })"), '4chan');
+    assert.equal(evalJson("itemType({ source_type: 'constructor', source: 'Gematsu' })"), 'news');
 });
 
 await check('invalid configs are rejected', () => {
@@ -178,6 +185,12 @@ await check('invalid configs are rejected', () => {
         "c.sources[0].role = 'nope'",
         'c.poll_every_hours.podcast = 0',
         "c.sources[0].enabled = 'yes'",
+        "c.sources.find(s => s.type === '4chan').board = 'VR'",
+        "c.sources.find(s => s.type === '4chan').board = '/vr/'",
+        "delete c.sources.find(s => s.type === '4chan').board",
+        "c.sources.push({ ...structuredCopy(c.sources.find(s => s.type === '4chan')), name: 'again' })",
+        "c.sources.find(s => s.type === 'forum').url = 'forum.example.com/index.rss'",
+        "c.poll_every_hours['4chan'] = 0",
     ];
     context.structuredCopy = (value) => JSON.parse(JSON.stringify(value));
     for (const mutation of mutations) {
@@ -226,7 +239,9 @@ await check('dashboard renders every view and weights the sentiment average', ()
     // Radar: the matched PS2 game comes first even though its source weighs less.
     assert.match(el('topGamesList').innerHTML, /Okami/);
     assert.equal(el('feedTableBody').children.length, 4);
-    for (const tab of ['news', 'reddit', 'youtube', 'podcast']) {
+    const kinds = evalJson('SOURCE_TYPES');
+    assert.deepEqual([...kinds].sort(), ['4chan', 'forum', 'news', 'podcast', 'reddit', 'youtube']);
+    for (const tab of kinds) {
         vm.runInContext(`setSourceTab('${tab}')`, context);
         const html = el('sourcesView').innerHTML;
         const rows = (html.match(/<tr data-index=/g) || []).length;
@@ -972,6 +987,90 @@ await check('the item count says how far back it goes', () => {
     vm.runInContext('allFeedData = fallbackData.items; refreshDashboard()', context);
     assert.equal(el('statTotalLabel').textContent, 'Items scraped');
     assert.match(read('index.html'), /<div id="statTotalLabel" class="stat-label">Items scraped<\/div>\s*<div id="statTotalItems" class="stat-value">0<\/div>/);
+});
+
+await check('forums and 4chan boards: their rows, their weight and adding one', () => {
+    const feeds = context.__feeds;
+    const press = feeds.sources.find(src => src.enabled && src.role === 'press' && src.type === 'news');
+    const forum = feeds.sources.find(src => src.type === 'forum');
+    const row = (extra) => ({ link: 'https://example.com/', matched_game: null, is_remaster_rumor: false, sentiment: 50, timestamp: '2026-10-07 08:00 UTC', ...extra });
+    context.__items = [
+        row({ headline: 'Press headline', source: press.name, source_type: 'news', feed: press.url, sentiment: 90 }),
+        row({ headline: 'Ico appreciation thread', source: `Forum: ${forum.name}`, source_type: 'forum', feed: forum.url, sentiment: 70, matched_game: 'Ico',
+            link: 'https://forum.example/threads/ico.1/' }),
+        row({ headline: 'Thread on /vr/ naming Okami', source: '4chan /vr/', source_type: '4chan', feed: '4chan:vr', matched_game: 'Okami',
+            link: 'https://boards.4chan.org/vr/thread/101' }),
+    ];
+    vm.runInContext(`
+        feedConfig = JSON.parse(__text); baseConfigText = configJson(); rebuildSourceIndex(); unsavedAdditions.clear();
+        allFeedData = __items;
+        refreshDashboard();
+    `, context);
+    const rows = () => el('feedTableBody').children.map(child => child.innerHTML);
+
+    // A board's rows count for the games they name and for nothing else: the role's weight is 0,
+    // so the mood score is the press item and the forum thread only. (90*1 + 70*1) / 2 = 80
+    assert.equal(feeds.roles.anonymous.weight, 0);
+    assert.ok(feeds.sources.filter(src => src.type === '4chan').every(src => src.role === 'anonymous' && !('weight' in src)));
+    assert.equal(el('statAvgSentiment').innerText, '80/100');
+    assert.equal(el('statTotalItems').innerText, 3);
+    assert.match(el('topGamesList').innerHTML, /#1 Ico[\s\S]*#2 Okami/, 'both count as mentions');
+
+    const [, forumRow, boardRow] = rows();
+    assert.match(forumRow, /fa-solid fa-comments[^>]*title="Forums"><\/i>Forum: /);
+    assert.match(forumRow, /href="https:\/\/forum\.example\/threads\/ico\.1\/"[^>]*>\s*Thread /);
+    // 4chan asks that it be named as the source and linked to.
+    assert.match(boardRow, /fa-solid fa-user-secret[^>]*title="4chan"><\/i>4chan \/vr\//);
+    assert.match(boardRow, /Thread on \/vr\/ naming Okami/);
+    assert.match(boardRow, /href="https:\/\/boards\.4chan\.org\/vr\/thread\/101"[^>]*>\s*Thread /);
+    assert.match(boardRow, /title="Source weight in the sentiment average">&times;0<\/span>/);
+    assert.match(boardRow, /<td data-col="score"[^>]*><div class="score-value[^"]*" title="Not scored: [^"]+">&ndash;<\/div>\s*<\/td>/, 'no mood is shown for a thread');
+    assert.match(forumRow, /<div class="score-value font-mono-custom">70<\/div>/);
+
+    // The feed can be narrowed to either kind.
+    const only = (kind) => { el('typeSelect').value = kind; vm.runInContext('filterFeedItems()', context); return rows().length; };
+    assert.deepEqual([only('4chan'), only('forum'), only('news'), only('all')], [1, 1, 1, 3]);
+    const page = read('index.html');
+    assert.match(page, /<option value="forum">Forums<\/option>\s*<option value="4chan">4chan<\/option>/);
+
+    // Sources & Weights: a tab for each, with the board's own page as its link.
+    vm.runInContext("setSourceTab('4chan')", context);
+    let html = el('sourcesView').innerHTML;
+    assert.equal((html.match(/<tr data-index=/g) || []).length, feeds.sources.filter(src => src.type === '4chan').length);
+    assert.match(html, /<a href="https:\/\/boards\.4chan\.org\/vr\/"[^>]*>\/vr\/ - Retro Games<\/a>/);
+    assert.match(el('addHint').textContent, /^Add to 4chan: only the names of the PS2 games/);
+    const add = (value, name = '') => {
+        el('addValue').value = value; el('addName').value = name;
+        vm.runInContext('addSource({ preventDefault() {} })', context);
+        return el('sourcesMessage').innerHTML;
+    };
+    assert.match(add('vp'), /^Added \/vp\/\./);
+    assert.deepEqual(evalJson("feedConfig.sources.find(s => s.board === 'vp')"),
+        { type: '4chan', name: '/vp/', board: 'vp', group: evalJson("feedConfig.sources.find(s => s.type === '4chan').group"), role: 'anonymous', enabled: true });
+    assert.match(add(' /Tg/ ', 'Traditional Games'), /^Added Traditional Games\./);
+    assert.equal(evalJson("feedConfig.sources.find(s => s.board === 'tg').name"), 'Traditional Games');
+    assert.match(add('https://boards.4chan.org/vrpg/catalog'), /is already in the list/);
+    assert.match(add('boards.4channel.org/vst/thread/123'), /is already in the list/);
+    for (const junk of ['not a board!', 'https://example.com/vr/', 'toolongname', 'v r', '.']) {
+        assert.match(add(junk), /Enter the short name of a board/, junk);
+    }
+    assert.deepEqual(evalJson("feedConfig.sources.filter(s => s.type === '4chan').map(s => s.board).slice(-2)"), ['vp', 'tg'], 'new boards join the other boards');
+
+    vm.runInContext("setSourceTab('forum')", context);
+    html = el('sourcesView').innerHTML;
+    assert.equal((html.match(/<tr data-index=/g) || []).length, feeds.sources.filter(src => src.type === 'forum').length);
+    assert.ok(html.includes(esc(forum.url)), 'the feed link is shown under a forum, as for news sites');
+    assert.equal(el('addName').placeholder, 'Name');
+    assert.match(add('https://forum.example.org/forums/retro.5/index.rss'), /Give the source a name\./);
+    assert.match(add('forum.example.org/index.rss', 'No Scheme'), /Paste the full link of the feed/);
+    assert.match(add('https://forum.example.org/forums/retro.5/index.rss', 'Example Retro'), /^Added Example Retro\./);
+    assert.equal(evalJson("feedConfig.sources.find(s => s.name === 'Example Retro').type"), 'forum');
+    assert.match(add(forum.url, 'Twice'), /is already in the list/);
+
+    assert.deepEqual(evalJson('validateConfig(feedConfig)'), []);
+    vm.runInContext('discardChanges()', context);
+    assert.equal(evalJson("feedConfig.sources.some(s => s.board === 'vp')"), false);
+    el('typeSelect').value = 'all';
 });
 
 console.log(`dashboard checks passed (${passed})`);

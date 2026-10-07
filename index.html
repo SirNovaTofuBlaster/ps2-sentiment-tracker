@@ -851,9 +851,12 @@
                     <td data-col="game"${item.matched_game ? '' : ' data-unmatched'} class="py-3.5 px-4 font-mono-custom text-cyan-300">${item.matched_game
                         ? esc(item.matched_game) + gamePricesHtml(item.matched_game)
                         : '<span class="text-slate-500">Unmatched / General</span>'}</td>
-                    <td data-col="score" class="py-3.5 px-4">
+                    <td data-col="score" class="py-3.5 px-4">${itemType(item) === '4chan'
+                        // Only the games a thread names are read from 4chan, so there is no mood to show.
+                        ? '<div class="score-value font-mono-custom text-slate-500" title="Not scored: only the games a thread names are read from 4chan.">&ndash;</div>'
+                        : `
                         <div class="score-value font-mono-custom">${esc(item.sentiment)}</div>
-                        <div class="score-meter"><div class="score-fill ${tone}" style="width:${score}%"></div></div>
+                        <div class="score-meter"><div class="score-fill ${tone}" style="width:${score}%"></div></div>`}
                     </td>
                     <td data-col="action" class="py-3.5 px-4 text-right">
                         <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-xs bg-slate-800 text-cyan-400 border border-slate-700 px-3 py-1.5 transition-all inline-flex items-center gap-1.5">
