@@ -11,9 +11,12 @@ on:
       - requirements.txt
       - ebay_prices.py
       - ebay_watchlist.json
+      - archive.py
+      - tools/**
       - tests/**
       - .github/workflows/tests.yml
       - .github/workflows/ebay.yml
+      - .github/workflows/live-checks.yml
   pull_request:
   workflow_dispatch:
 

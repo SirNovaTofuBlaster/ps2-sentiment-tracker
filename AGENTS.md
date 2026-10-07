@@ -7,9 +7,10 @@ working on this repository. `CLAUDE.md` loads this file. Non-technical users sho
 ## What this project is
 
 A PS2 sentiment and remaster tracker. `scraper.py`, run by GitHub Actions every hour, reads every
-enabled source in `feeds.json`: news-site RSS, Reddit, YouTube channel feeds and podcast RSS. It
-matches each headline, video title and episode title against the PS2 library, flags
-remaster/remake news and scores sentiment. It writes:
+enabled source in `feeds.json`: news-site RSS, Reddit, forum RSS, 4chan board catalogs, YouTube
+channel feeds and podcast RSS. It matches each headline, thread, video title and episode title
+against the PS2 library, flags remaster/remake news and scores sentiment. From 4chan it keeps
+only which games a thread names (rule 12). It writes:
 
 - `data/sentiment_feed.json`: the snapshot
 - `data/feed_status.json`: per-feed health
@@ -28,14 +29,17 @@ through its **Sources & Weights** panel.
 
 | Path | What it is |
 |---|---|
-| `feeds.json` | Every source (news / reddit / youtube / podcast), roles and weights, `poll_every_hours` |
-| `scraper.py` | Config validation, fetch plan, YouTube link resolution, matching, sentiment, feed health, snapshot merge |
+| `feeds.json` | Every source (news / reddit / forum / 4chan / youtube / podcast), roles and weights, `poll_every_hours` |
+| `scraper.py` | Config validation, fetch plan, YouTube link resolution, matching, sentiment, reading 4chan boards for game names, feed health, snapshot merge |
 | `index.html` | Dashboard, three pages in one file (Tracker, Most mentioned, eBay prices); its inline script mirrors `validate_config()`, `source_key()` and the game-name rule of `ebay_prices.py`. Also reads `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.json`, and works without them |
 | `guide.html` | Plain-language user guide; must match the UI |
 | `data/` | Written only by workflows (the scraper's, the archive, the demand index and eBay prices, each its own files); never edit or commit it by hand |
 | `tests/test_scraper.py` | Offline unittest suite; also runs `tests/dashboard_check.mjs` when Node.js exists |
 | `tests/dashboard_check.mjs` | Runs the dashboard script in a Node sandbox with a stub DOM |
 | `tools/regression_check.py` | Proves a scraper change leaves news/Reddit output identical to a git ref |
+| `tools/try_sources.py` | Tries enabled forums, boards, channels or podcasts against the live sites and prints what the scraper would make of them; writes nothing |
+| `.github/workflows/live-checks.yml` | On pull requests that touch the scraper, `feeds.json` or `tools/`: runs `try_sources.py forum 4chan` and `regression_check.py` from GitHub's servers. Holds no key and can write nothing |
+| `tests/test_archive.py` | Offline tests for `archive.py`: which mentions count as the same mention |
 | `.github/workflows/scraper.yml` | Hourly scrape, plus immediately on pushes that change `feeds.json`/`scraper.py` |
 | `.github/workflows/tests.yml` | The test suite on pushes and pull requests |
 | `archive.py`, `.github/workflows/archive.yml` | Appends every PS2 game mention to `data/archive/YYYY-MM.json`, four times a day |
@@ -53,6 +57,7 @@ through its **Sources & Weights** panel.
 pip install -r requirements.txt
 python -m unittest discover -s tests -v   # offline; includes the dashboard checks when node exists
 python tools/regression_check.py          # old vs new scraper on identical real feeds (network, ~3 min)
+python tools/try_sources.py forum 4chan   # what the live forums and boards give right now; writes nothing
 python -m py_compile scraper.py
 FULL_RUN=1 python scraper.py              # real run; writes data/ (run it in a copy, don't commit it)
 python -m http.server 8000                # dashboard at http://localhost:8000 (check the port is free first)
@@ -66,7 +71,7 @@ python ebay_prices.py --plan              # which games would be priced now and 
    maintainer's explicit decision and an update of that list in the same commit.
 2. **Keep news/Reddit behaviour unchanged unless that is the task.** That means the same URLs,
    subreddits combined per `group` into one multireddit request, and the 429 wait-and-retry for
-   core feeds only. YouTube and podcast failures must never abort a run. After touching
+   core feeds only. Forum, board, YouTube and podcast failures must never abort a run. After touching
    `scraper.py`, `tools/regression_check.py` must print `IDENTICAL`.
 3. **Logic that exists twice stays in sync** (a test checks every pair agrees):
    - `validate_config()` (scraper.py) and `validateConfig()` (index.html)
@@ -102,6 +107,16 @@ python ebay_prices.py --plan              # which games would be priced now and 
 11. **QA without a browser:** unittest, `python -m py_compile scraper.py`, `node --check` on the
     inline scripts, and a curl smoke test of the static files. Use browser automation only when
     a human asks for it.
+12. **Nothing a 4chan poster wrote is ever kept** (the maintainer's decision of 2026-10-07).
+    The boards are read for the names of PS2 games and nothing else. No subject, comment,
+    poster name, file name or anything derived from them may be written to `data/`, shown on
+    the dashboard or printed in a log, except which library titles were matched and how
+    (subject or comment, and by which rule of the matcher); the row's headline is written
+    by the scraper. The rows are not scored for sentiment (`null`) and never count towards
+    it. 4chan's API terms apply: at most one request a second, `If-Modified-Since` on each
+    (the board server's own `Last-Modified` date, kept as `modified` in `feed_status.json`),
+    4chan named as the source with a link, and its name or logo never used to promote the
+    site. A test checks that no poster text reaches the snapshot.
 
 ## Making a change: the skeptical checklist
 
@@ -115,7 +130,9 @@ Before you call something done, prove it; don't assume it.
       `FULL_RUN=1` run in a scratch copy and read the FAILED/SKIPPED lines.
 - [ ] Dashboard touched: extend `tests/dashboard_check.mjs` for the new behaviour. Keep the
       validator parity test passing and update `guide.html`.
-- [ ] Sources added: each one fetched and parsed live, with numbers measured and dated.
+- [ ] Sources added: each one fetched and parsed live, with numbers measured and dated. For
+      a forum or board that means from GitHub's servers: open a pull request and read what
+      *Live checks* reports, because a feed that answers your machine may refuse GitHub's.
 - [ ] Docs match the code: README, SOURCES.md, docs/*, guide.html. Numbers in docs come from
       the files, not from memory.
 - [ ] Get an independent review (a second agent or person) that must back every finding with a
@@ -138,6 +155,40 @@ Before you call something done, prove it; don't assume it.
     hours.
   - Some feeds list the oldest episode first, which is why entries are sorted.
   - Many feeds have no episode page links; the audio enclosure is used instead.
+- **Forums**
+  - Most big forums (XenForo sites such as NeoGAF, GBAtemp and PSX-Place) sit behind
+    Cloudflare and answer GitHub's runners with HTTP 403, under any User-Agent, although the
+    same feed link works from a home connection. On 2026-10-07 four of six candidates failed
+    that way; the two Lemmy communities answered.
+  - A forum is an extra: it is read like a channel's or a show's feed, and its failure
+    never stops a run.
+  - Lemmy puts the article a post shares in `<link>` and the post itself in `<comments>`
+    and `<guid>` (8 of the 20 posts in *Lemmy games* on 2026-10-07 were link posts). Items
+    are told apart by their link, so a forum thread uses its own page (`thread_link()`);
+    with the article's address it replaced the article's own row from the news feed. A
+    forum row that still has another source's link is left out of the run.
+- **4chan**
+  - The catalog holds only the post that opens each thread. Most threads on /v/ and /vr/
+    have no subject, so most names are found in the comment (`matched_in: "body"`).
+  - Headline matching is too loose for posts: the first dry run counted 68 mentions of 50
+    games in the live threads, many of them plainly another game or an ordinary phrase
+    (Dragon Rage, Legend of Herkules, The Thing, Happy Feet). `games_in_post()` asks for
+    the whole name in the library's spelling, written as a name, and not followed by
+    another entry's number; that left 33 mentions of 23 games (28 of 20 in threads young
+    enough to enter the feed). Don't relax it without a new dry run.
+  - Nobody working on the rules for posts could read the boards: they were judged from the
+    game names and counts `try_sources.py` prints, and from made-up posts in the tests.
+  - `normalise()` turns Roman numerals into digits, so the pronoun "I" reads as 1 and the
+    letter "X" as 10. For headlines that has not mattered; in posts it made "can i ninja
+    edit" name *I-Ninja*, which is why a lone I, V or X is not taken as a number there.
+  - Threads on the slow boards stay live for months or years (the oldest on /vmg/ was from
+    2023), so a thread is dated by its start and left out when that is before the 14 days.
+  - A thread's row has the same headline as every other thread about that game on that
+    board. Anything that tells mentions apart by headline needs the start time as well
+    (`archive.py` does this).
+  - Thread links die when 4chan prunes the thread; the row outlives the link.
+  - The job logs cannot be downloaded through the API from every network. `try_sources.py`
+    therefore also attaches its report to the run as notices (`check-runs/<job id>/annotations`).
 - **Reddit**
   - Unauthenticated access allows about one request a minute; quick test loops get 429s.
   - The multireddit uses the "hot" listing, so small subreddits can look quiet.
@@ -157,6 +208,8 @@ Before you call something done, prove it; don't assume it.
     (`ref: ${{ github.ref }}`), or its data commit conflicts with the previous run's.
   - GitHub Pages lags a few minutes behind a commit. The dashboard reads `feeds.json` from the
     API when it differs, and checks it again before saving.
+  - *Live checks* and *Tests* are the only workflows that run on pull requests. Neither holds
+    a key or may write; keep it that way (rule 8).
   - Four workflows commit to `main` on their own (scraper, archive, demand, eBay prices). Each
     one must `git pull --rebase` and retry before giving up, or it fails whenever another got
     there first, and each stages only the files it wrote. The fixtures workflow commits too,

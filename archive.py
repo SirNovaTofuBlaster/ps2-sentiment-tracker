@@ -5,13 +5,14 @@ older is dropped. This script reads that snapshot, keeps only the items where a
 PS2 game was recognised, and appends them to monthly files under data/archive/.
 Those files are never pruned.
 
-Rows are deduplicated on (game, source, headline), so running this often is
-harmless: a run only ever adds mentions the archive doesn't already hold.
+Rows are deduplicated on (game, source, headline), and for 4chan threads also on
+when the thread was started, so running this often is harmless: a run only ever
+adds mentions the archive doesn't already hold.
 
 Keys are short because they repeat on every row:
   d  when the item was published       g  the matched PS2 game
   h  the headline                      s  the source name
-  t  source type (news/reddit/...)     n  sentiment 0-100
+  t  source type (news/reddit/...)     n  sentiment 0-100 (absent on 4chan rows: not scored)
   r  looked like remaster news         m  how the game was matched
   p  prices, once a price source exists (absent until then)
 """
@@ -62,7 +63,13 @@ def month_of(timestamp):
 
 def row_key(row):
     """What makes a mention the same mention across runs. Not the link: podcast
-    episodes share links, and the same story carries different links per outlet."""
+    episodes share links, and the same story carries different links per outlet.
+
+    A 4chan row is the exception. Its headline is written by the scraper from the board and
+    the games named ("Thread on /vr/ naming Ico"), so two threads about one game read the
+    same; when the thread was started is what tells them apart, and that never changes."""
+    if row.get("t") == "4chan":
+        return (row["g"], row["s"], row["h"], row.get("d"))
     return (row["g"], row["s"], row["h"])
 
 
@@ -84,6 +91,8 @@ def rows_from_item(item):
         "n": int(item.get("sentiment") or 50),
         "r": bool(item.get("is_remaster_rumor")),
     }
+    if base["t"] == "4chan":
+        del base["n"]  # these rows are not scored, and a made-up 50 would be kept for good
     method = item.get("match_method")
     rows = []
     for game in games:

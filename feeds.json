@@ -17,7 +17,7 @@
       "weight": 1
     },
     "community": {
-      "label": "Community (Reddit)",
+      "label": "Community (Reddit & forums)",
       "weight": 1
     },
     "ps2": {
@@ -35,6 +35,10 @@
     "creator": {
       "label": "Entertainment creators",
       "weight": 0.5
+    },
+    "anonymous": {
+      "label": "Anonymous boards (4chan)",
+      "weight": 0
     }
   },
   "sources": [
@@ -5023,6 +5027,78 @@
         "checked": "2026-09-30"
       },
       "note": "Single non-PlayStation platform; listed for completeness."
+    },
+    {
+      "type": "forum",
+      "name": "Lemmy games",
+      "url": "https://lemmy.world/feeds/c/games.xml?sort=New",
+      "group": "Forums & communities",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "forum",
+      "name": "Lemmy retrogaming",
+      "url": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
+      "group": "Forums & communities",
+      "role": "retro",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/v/ - Video Games",
+      "board": "v",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vg/ - Video Game Generals",
+      "board": "vg",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vm/ - Video Games/Multiplayer",
+      "board": "vm",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vmg/ - Video Games/Mobile",
+      "board": "vmg",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vr/ - Retro Games",
+      "board": "vr",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vrpg/ - Video Games/RPG",
+      "board": "vrpg",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vst/ - Video Games/Strategy",
+      "board": "vst",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
     }
   ]
 }

@@ -1,5 +1,140 @@
 # Changelog
 
+## 2026-10-07: forums and 4chan's game boards
+
+### What was asked
+
+- Add forums as sources, after seeing a list of what could be added.
+- Track seven 4chan boards (/v/, /vg/, /vm/, /vmg/, /vr/, /vrpg/, /vst/), because PS2 titles
+  come up there: "censor any bad words or derogatory terms and just focus on the game titles
+  being mentioned".
+- The decision after the list: add the forums that work, and from 4chan show the games only.
+
+### What changed
+
+**Sources: `feeds.json`** (303 sources, 231 on; was 294 and 222)
+- Two forums, both communities of lemmy.world read through their RSS feeds: *Lemmy games*
+  and *Lemmy retrogaming*.
+- Seven 4chan boards, under a new role `anonymous` ("Anonymous boards (4chan)", weight 0).
+- The `community` role is now labelled "Community (Reddit & forums)".
+
+**Scraper: `scraper.py`**
+- Two new source types. `forum` is an RSS feed read like the other extras (YouTube,
+  podcasts): newest first, labelled `Forum: <name>`, never waited on when it says "too many
+  requests", and its failure never stops a run. `4chan` is read through 4chan's read-only
+  API, one request per board, at least 1.1 seconds apart. Each request hands back the
+  `Last-Modified` date the board's server gave last time (`If-Modified-Since`), so a board
+  nobody has posted on since is not sent again.
+- **From 4chan only game names are kept.** For each thread whose opening post names a PS2
+  game the snapshot gets one row: the games, the board, when the thread was started and its
+  link. The headline is written by the scraper ("Thread on /vr/ naming Silent Hill 2").
+  Nothing a poster wrote is stored, shown or printed in the log. The text is not scored:
+  `sentiment` is `null` and the remaster flag is never set.
+- **Stricter matching for posts** (`games_in_post()`), judged on the very words that
+  matched:
+  - the whole name, spelt as the library spells it: no near misses, no half-titles, and
+    titles longer than six words are found whole;
+  - written as a name: with a number written as a number ("silent hill 2", "kingdom hearts
+    ii"), or with a capital on every word the library gives one. A lone I, V or X is not
+    taken as a number, a number followed by a unit of time is counting ("yakuza 2 days
+    ago"), one everyday word that is also a title does not count as the first word of a
+    sentence ("Black screen on my PS2"), and a post all in capitals marks nothing with them;
+  - not another entry of the series: "Max Payne 2" and "Kingdom Hearts 3" are not counted
+    for *Max Payne* and *Kingdom Hearts*.
+  The matcher's built-in abbreviations ("mgs3") count however they are written.
+- A thread counts on the day it was started; one started before the feed's 14 days is left
+  out, and so is one whose date is not a plausible one.
+- **A forum thread's link is its own page** (`thread_link()`). Lemmy gives the article a
+  post shares as the post's link; with that, a post about an article had the same link as
+  the article's own row from a news feed, and rows are told apart by their link, so the
+  post replaced the article. The discussion page is used instead, and a forum row that
+  still has another row's link is left out rather than take its place.
+- Forums and boards are fetched before YouTube and podcasts, so the time budget cannot
+  squeeze them out.
+- News and Reddit are untouched: the old and new scraper gave identical output on the same
+  live feeds (see VERIFICATION.md).
+
+**Dashboard: `index.html`, `guide.html`**
+- **Forums** and **4chan** tabs in Sources & Weights, and both in the table's source filter.
+  A board is added by its short name ("vr", "/vr/") or its link; a forum by the RSS feed of
+  one of its boards.
+- A 4chan row shows a dash where the mood score would be and can never count towards the
+  overall mood, whatever weight is set; a board has no weight box.
+- The guide explains the 4chan rows, how to add a forum or a board, and what to expect when
+  a forum refuses the robot or a thread's link has gone.
+
+**Archive: `archive.py`**
+- Two threads about one game on one board have the same generated headline, so 4chan rows
+  are told apart by when the thread was started as well. They carry no mood score (`n`),
+  because they have none. Nothing changes for other rows.
+
+**Tools and workflows: `tools/try_sources.py`, `.github/workflows/live-checks.yml`**
+- `try_sources.py` tries the enabled forums and boards (or any other extras) against the
+  live sites and prints what the scraper would make of them, writing nothing. For boards it
+  prints counts and game names only.
+- *Live checks* runs it, and `tools/regression_check.py`, on every pull request that touches
+  the scraper, `feeds.json` or `tools/`, from GitHub's own servers. It holds no key and can
+  write nothing.
+- `tools/sample_fixtures.py` leaves 4chan rows out when it draws headlines for the matcher's
+  test corpus: their line is written by the scraper from the match itself.
+
+**Tests**
+- 204 Python tests (was 178) and 29 dashboard checks (was 28). New: `tests/test_archive.py`.
+- The test workflow now also runs on pushes that change `archive.py`, `tools/` or
+  `live-checks.yml`.
+
+### What was measured (2026-10-07, from GitHub's servers)
+
+- **Forums.** Six feeds answered when they were first checked, from outside GitHub. From
+  GitHub only the two Lemmy feeds did; NeoGAF, both GBAtemp boards and PSX-Place returned HTTP 403
+  from behind Cloudflare, twice, the second time under a feed reader's name. Those four were
+  taken out again. So "the six that work" became two.
+- **4chan.** All seven boards answered, in each of the check's first eight runs. In the
+  eighth (17:25 UTC, the first with the rules as merged), of 1,138 live threads 29 named a PS2 game in their opening post, and 24 of
+  those were started in the last 14 days: 28 mentions of 20 games. The first dry run, with
+  the rules used for headlines, had counted 68 mentions of 50 games, many of them plainly
+  wrong (Dragon Rage, Legend of Herkules, Happy Feet, The Thing); the rules for posts were
+  written from that list and tightened again after the independent review. The per-board
+  table is in SOURCES.md.
+- **News and Reddit.** The old and the new scraper were run on the same live news and
+  Reddit feeds in every one of those runs. The first three runs failed at the forums that
+  refused; in the fourth to the eighth both steps passed, and the comparison passes only
+  when the output is identical.
+
+### Behaviour changes to be aware of
+
+- The item count and Most Mentioned Games now include forum threads and 4chan rows. On the
+  measured day that was 40 forum threads (the 20 newest of each community) and 24 board rows.
+- Every game a board names becomes a game the eBay job prices, like any other mention. A
+  game named in a thread's subject counts as a headline for the "surging" level; one named
+  only in a comment does not.
+- Series that have long-running threads on /vg/ (Monster Hunter, The Sims, Pro Evolution
+  Soccer) will be counted for the PS2 game of that name on most days. This is the matcher's
+  known habit of giving a series name to its PS2 entry.
+- A 4chan row's button opens the thread on 4chan, unfiltered, and stops working when the
+  thread is deleted there.
+- `data/feed_status.json` gains nine entries. The seven for boards also hold `modified`,
+  the date the board's server gave, and change whenever anything is posted on the board,
+  which on the busy ones is every run.
+
+### Open items
+
+- Replies are not read, only the post that opens a thread. Reading replies would mean one
+  request per thread (hundreds per board) and far more text to keep out.
+- A busy board is sampled: GitHub starts the hourly run hours late on many days, and /v/'s
+  whole catalog turned over in two days.
+- No other forum has been found that both publishes a feed and answers GitHub's servers.
+- Real mentions the rules for posts lose: a name in lower case without a number ("final
+  fantasy x", "okami"), a one-word everyday title that starts a sentence ("Bully is great
+  on PS2"), a sequel called by a short name the library does not have ("Max Payne 2" for
+  *Max Payne 2: The Fall of Max Payne*), and anything in a post written all in capitals.
+- The rules were written and judged from game names and counts alone: the check prints
+  nothing a poster wrote, and nobody working on this could read the boards.
+- Forum threads are matched with the rules for headlines and body text, and the two wrong
+  matches in the Lemmy sample ("Retro", "Hardware: Online Arena") are the matcher taking an
+  everyday word in a post's text for a one-word title once the post mentions the PS2. It
+  does the same on Reddit; it is a matcher task, not changed here.
+
 ## 2026-10-07: prices beside every game, three tabs, and a feed that keeps its two weeks
 
 ### What was asked

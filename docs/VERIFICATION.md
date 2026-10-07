@@ -262,11 +262,53 @@ One review with fresh context, told to report only findings backed by a concrete
 Left as they are: arrow keys do not move between tabs; the name rules differ on characters no
 title uses.
 
+## 2026-10-07: forums and 4chan's game boards
+
+How the two new source types were checked. The live checks ran on GitHub's own runners, as
+the *Live checks* workflow on the pull request, because that is where the scraper runs and
+sites treat those machines differently from a home connection.
+
+| Check | Result |
+|---|---|
+| Do the sources answer where the scraper runs | `tools/try_sources.py forum 4chan` ran on every push to the pull request, eight times between 13:09 and 17:25 UTC. Forums: of the six that had answered from outside GitHub, only the two Lemmy feeds did; NeoGAF, both GBAtemp boards and PSX-Place returned HTTP 403 from behind Cloudflare, also under a feed reader's name. 4chan: all seven boards answered in each of those runs |
+| What the boards give | The eighth run, the first with the rules for posts as merged: 1,138 live threads, 29 naming a PS2 game, 24 of them started in the last 14 days: 28 mentions of 20 games. The headline rules would have counted 32 more mentions; by their names most were another game or an ordinary phrase. The per-board table is in SOURCES.md |
+| News and Reddit output unchanged | `tools/regression_check.py --ref origin/main` ran in the same workflow on the same live feeds. Runs 1 to 3 failed at the refused forums; in runs 4 to 8 both steps passed, and the comparison passes only when the two snapshots are identical |
+| Only what was meant to change in `scraper.py` | A comparison of the syntax trees of the old and new file: 108 functions, methods and settings before, 101 identical, 7 changed (`SOURCE_TYPES`, `SOURCE_PREFIX`, `entry_link`, `source_key`, `validate_config`, `build_jobs`, `run_scraper`) and 28 added. `TitleMatcher` is untouched: the rules for posts sit beside it |
+| Nothing a poster wrote is kept | The test fixtures carry a marker word in the subject, the comment and every other field a poster fills in (name, tripcode, ID, flag, file name, tag, the link's slug, replies). None reaches the snapshot, the health file or the log, with well-formed catalogs and with 14 answers of the wrong shape read by the real reader. The reviewer's fuzz of 4,000 junk catalogs produced 9,495 rows with no marker anywhere, every matched title a library title, every row with exactly the 14 expected fields |
+| The page and the scraper agree on a valid source | The two validators give the same verdict on `feeds.json` and on 66 altered configs, 29 of them about forums and boards; the reviewer tried 63 more (Unicode digits, a trailing newline, non-strings, a board that also has a `url`) without a disagreement |
+| Offline tests | 204 Python tests and 29 dashboard checks pass, here with rapidfuzz in pure Python and on GitHub with its compiled build (the two split words differently at an underscore, which the rules for posts allow for) |
+| Do the checks bite | 54 one-line breakages of `scraper.py`, `archive.py`, `index.html` and the two tools. 53 were noticed. The other one lets `match_all()` return near misses for posts, which changes nothing: a name must also be found word for word where it stands |
+| Not checked | What real posts say: nobody working on this could read the boards, so the rules for posts were judged from game names and counts, and from made-up posts. The dashboard in a browser: its script was run in the Node sandbox only (rule 11) |
+
+### Independent review
+
+One review with fresh context, told to report only findings backed by a concrete failure
+and to prove them by running code in a copy.
+
+| Finding | Resolution |
+|---|---|
+| A forum item replaced a news item with the same link: Lemmy gives the shared article as a post's `<link>`, and the forum, fetched later, won the merge. The news/Reddit comparison cannot see it | A thread's link is its own page (`<comments>`, then `<guid>`), and a forum row never replaces another source's row. Tested in the run that sees both and in a later one. Checked against the live feed: 8 of 20 posts in *Lemmy games* were link posts |
+| `games_in_post()` accepted what the docs said it rejected: half-titles once a post said PS2 ("the room"), "13" for *XIII*, a sentence's first word ("Obscure PS2 games"), capitals elsewhere in the post ("Top tier. Gun..."), numbers that were counting ("Yakuza 2 days ago"), the pronoun "I" as a 1 | The rules were rewritten to judge the words that matched, where they stand; each of these has a test |
+| Correct names were rejected or filed under another game: titles the library writes with a lower-case word, titles longer than six words, a long title counted as the shorter one inside it | Capitals are asked only where the library has them; long titles are found whole and the shorter one is not counted beside them. "Max Payne 2" is no longer counted as *Max Payne* |
+| Rule 12 was tested only for the two data files, and only with a name in the fixtures: five leaks went unnoticed (printing a post, the slug in the link, a file name field, the answer in an error message, the tool printing subjects) | Fixtures carry every poster field; the log and the tool's output are checked as well as the files; all five are now noticed |
+| A catalog with `"threads": 5` stopped the whole run with a `TypeError`, news included | Anything of the wrong shape is passed over |
+| A forum headline with a line break could start a line of its own in the Live checks log, where GitHub reads `::error` as a command | Headlines are printed on one line |
+| Three behaviours no test pinned: the length of the pause between boards, what it is counted from, a forum being an extra | Tested, the pause on a clock that only moves when the scraper sleeps |
+| A thread dated in year 322 or 2300 sorted above everything and never aged out | A thread without a plausible date is left alone |
+| The tests did not run on pushes that change only `archive.py`, `tools/` or `live-checks.yml` | Added to the test workflow's paths |
+| Docs: no entry here; rule 12 forbade fields the rows carry; "If-Modified-Since on each request" though the check tool sends none; a forum "read exactly like a news feed"; a made-up 50 archived for good; a number that could not be traced | This entry; rule 12 reworded; the docs say which reader sends the date; threads carry no score at all (`null`, and no `n` in the archive); numbers re-measured from one run |
+
+Left as they are: the branch's commits were made under an Anthropic no-reply address, not a
+GitHub one (the commit that lands on `main` is GitHub's squash, under the maintainer's
+no-reply address); a browser tab left open on the old page weighs new 4chan rows at 1 until
+it is reloaded.
+
 ## Re-running the checks
 
 ```sh
 python -m unittest discover -s tests -v   # offline; includes the dashboard checks when Node.js is installed
 python tools/regression_check.py          # old vs new scraper on identical real feeds (~3 min, network)
+python tools/try_sources.py forum 4chan   # what the live forums and boards give; writes nothing
 python -m py_compile scraper.py
 FULL_RUN=1 python scraper.py              # in a copy of the repo, not in the checkout you commit from
 python ebay_prices.py --plan              # the price plan on the real feed; needs no key, asks nobody

@@ -1,9 +1,11 @@
 # How it works
 
-The tracker reads gaming news sites, Reddit, YouTube channels and podcasts, matches every
-headline, video title and episode title against the PS2 library, flags remaster/remake chatter,
-scores sentiment and shows the result on a static dashboard. Everything runs on GitHub: a
-workflow scrapes, commits the data, and the page reads the committed files.
+The tracker reads gaming news sites, Reddit, forums, 4chan's game boards, YouTube channels and
+podcasts, matches every headline, thread, video title and episode title against the PS2 library,
+flags remaster/remake chatter, scores sentiment and shows the result on a static dashboard.
+From 4chan it keeps only which games a thread names (see [4chan boards](#4chan-boards)).
+Everything runs on GitHub: a workflow scrapes, commits the data, and the page reads the
+committed files.
 
 ```
                  feeds.json  ◄──────── save (GitHub API or copy/paste) ────────┐
@@ -25,9 +27,9 @@ One file lists every source. The scraper only reads it, and the dashboard edits 
 
 | Field | Meaning |
 |---|---|
-| `type` | `news` (RSS/Atom site feed), `reddit` (one subreddit), `youtube` (one channel) or `podcast` (one show's RSS feed) |
-| `name` | Display name. YouTube and podcast items are labelled `YouTube: <name>` / `Podcast: <name>` |
-| `url` / `subreddit` / `channel_id` / `channel_url` | Where to read it: feed URL for news and podcasts, subreddit name, or a YouTube channel ID (`UC…`). A YouTube channel can instead be given by its link (`channel_url`, e.g. `https://www.youtube.com/@IGN`); the scraper looks the ID up |
+| `type` | `news` (RSS/Atom site feed), `reddit` (one subreddit), `forum` (the RSS feed of one board of a forum), `4chan` (one board), `youtube` (one channel) or `podcast` (one show's RSS feed) |
+| `name` | Display name. Forum, YouTube and podcast items are labelled `Forum: <name>` / `YouTube: <name>` / `Podcast: <name>`; a board's items are labelled `4chan /<board>/` |
+| `url` / `subreddit` / `board` / `channel_id` / `channel_url` | Where to read it: feed URL for news, forums and podcasts, subreddit name, a 4chan board's short name (`vr` for /vr/, 1–6 lowercase letters or digits), or a YouTube channel ID (`UC…`). A YouTube channel can instead be given by its link (`channel_url`, e.g. `https://www.youtube.com/@IGN`); the scraper looks the ID up |
 | `group` | Display grouping. For Reddit it also decides which subreddits share one combined request |
 | `role` | One of the roles below; sets the default weight |
 | `enabled` | `false` keeps the source listed but stops fetching it and hides its items on the dashboard |
@@ -40,7 +42,7 @@ is fetched) and `version`.
 
 Every source has a stable key used to link it to its items and its health entry:
 `youtube:<channel_id>` (or `youtube:<channel link, lowercase>` for a channel added by link),
-`reddit:<subreddit, lowercase>`, or the feed URL for news and podcasts.
+`reddit:<subreddit, lowercase>`, `4chan:<board>`, or the feed URL for news, forums and podcasts.
 The same rule is implemented in `scraper.source_key()` and in the dashboard's `sourceKey()`.
 
 ## A scraper run, step by step
@@ -50,25 +52,30 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
 2. **Load the PS2 title index.** The EU and US serial databases are merged with the cached
    index and the built-in fallback list (this step is unchanged).
 3. **Decide what is due.** The job is scheduled every hour at :17, but GitHub delays or skips
-   scheduled runs. News, Reddit and YouTube (`poll_every_hours` 1) are fetched on every run. A
+   scheduled runs. News, Reddit, forums, boards and YouTube (`poll_every_hours` 1, also the
+   value for a type the file does not list) are fetched on every run. A
    slower type (podcasts: 6) is fetched once that many hours, minus 20 minutes of slack, have
    passed since it was last fetched. That time is recorded in `data/poll_state.json`. Manual runs
    and runs triggered by a push that changes `feeds.json`/`scraper.py` set `FULL_RUN=1` and fetch
    everything. The workflow checks out the branch head, so a run that waited behind another starts
    from that run's data commit.
-4. **Build the fetch list.** News and podcast URLs are used as they are. YouTube channels become
+4. **Build the fetch list.** News, forum and podcast URLs are used as they are. A board becomes
+   `https://a.4cdn.org/<board>/catalog.json`. YouTube channels become
    `https://www.youtube.com/feeds/videos.xml?channel_id=…`. A channel added by link is looked up
    once: the scraper reads the channel page's canonical `/channel/UC…` link and remembers the ID
    in `data/youtube_channels.json`. A link that doesn't resolve, or that points at a channel
    already in the list, is reported as *Failing* and skipped. Subreddits that share a `group`
    become one multireddit URL (`/r/a+b+c/.rss?limit=50`), exactly as before. News and Reddit
-   ("core") come first, then YouTube and podcasts ("extras").
+   ("core") come first, then the "extras": forums and boards (a handful of quick requests),
+   then YouTube and podcasts (hundreds, which can use up the time budget).
 5. **Fetch.** Core feeds wait and retry once when rate limited (HTTP 429), as before. Extras never
    wait. After 3 consecutive host-level failures on one host (connection errors, timeouts, 5xx or
    429, e.g. youtube.com down) the rest of that host is skipped for this run. A dead feed (404,
    410...) doesn't count, because it says nothing about the host. Extras still pending after 10
    minutes are skipped too. Together these keep a platform outage from pushing the job past its
-   15-minute limit.
+   15-minute limit. Boards are asked one at a time, at least 1.1 seconds apart, and each
+   request hands back the date the board's server gave last time (`If-Modified-Since`), so a
+   board nobody has posted on since answers "not modified" and is not sent again.
 6. **Analyse each entry** (up to 50 per feed; YouTube and podcast entries are sorted newest first
    because some podcast feeds list the oldest episode first):
    - *PS2 match*: known abbreviations (`gta sa`, `mgs3`, …), then exact short titles, then fuzzy
@@ -80,6 +87,7 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
      tells items apart, so a podcast episode uses its audio file URL when it has no page link of
      its own: no link, a bare guid, or a link that other episodes in the feed share (e.g. every
      episode of The Besties links to the show's homepage).
+   A board's threads are not analysed this way: see [4chan boards](#4chan-boards).
 7. **Record feed health** in `data/feed_status.json`, one entry per source key:
    `{"ok": true, "latest": "<newest item>"}` or
    `{"ok": false, "error": "HTTP 404", "failing_since": "…", "latest": "…"}`.
@@ -89,6 +97,72 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
    14 days drop out, and the files are only rewritten when something changed. A ceiling of
    12,000 items guards the file's size; two weeks is about 8,400 at the current number of
    sources, so the 14 days are what normally applies.
+
+## 4chan boards
+
+4chan's boards are tracked for one thing: which PS2 games people bring up. The maintainer's
+decision of 2026-10-07 is that **nothing a poster wrote is stored, shown or printed**, so a
+board is handled differently from every other source.
+
+- **What is read.** One request per board to 4chan's read-only API
+  (`a.4cdn.org/<board>/catalog.json`), which returns the post that opens every live thread:
+  an optional subject and a comment. Replies are not read. The API's terms are followed: at
+  most one request a second, `If-Modified-Since` on each request, 4chan named as the source
+  of every row, and a link back to the thread.
+- **What counts as naming a game** (`games_in_post()`). A post is chat, not a headline, so
+  three things a headline gets away with are not allowed. Each is judged on the very words
+  that matched, which is why the reader keeps track of how every word was written
+  (`post_words()`):
+  - *The whole name, spelt as the library spells it.* "Dragon Age" is not *Dragon Rage*,
+    and half a title ("the room", "substance") is not *Silent Hill 4: The Room*, even when
+    the post says PS2. Titles longer than the matcher's six-word runs are found whole
+    (`long_titles()`), and a shorter title inside one is not counted beside it.
+  - *Written as a name* (`written_as_a_name()`): with a number written as a number ("silent
+    hill 2", "kingdom hearts ii"), or with a capital on every word the library gives one
+    ("the thing is" does not name *The Thing*). A lone I, V or X is not taken as a number
+    (it is also a pronoun and a letter). A number followed by a unit of time is counting
+    ("yakuza 2 days ago"). A title that is only a number counts only as the library writes
+    it (*XIII*, not "13"). One everyday word that is also a title does not count as the
+    first word of a sentence or line ("Black screen on my PS2"). A post written all in
+    capitals marks nothing with them.
+  - *Not another entry of the series* (`another_entry()`). A name that runs straight into
+    a sequel number it does not have ("Max Payne 2", "Kingdom Hearts 3") is left to the
+    library title with that number, if there is one. "Silent Hill 2, 3 and 4" and "Okami
+    10/10" are let be.
+
+  The matcher's built-in abbreviations ("mgs3", "gta sa") count however they are written.
+  The subject is read first; only when it names nothing is the comment read (its first 120
+  words, as for any body text). Where the words as written cannot be lined up with the
+  words the matcher read (rare scripts), only the abbreviations count.
+- **What is kept** (`analyze_thread()`). One item per thread that names a game: the games,
+  the board, when the thread was started and the link to it. The `headline` is written by
+  the scraper, "Thread on /vr/ naming Silent Hill 2" (three games at most, then "and 2
+  more"). `sentiment` is `null` and `is_remaster_rumor` is always false, because the text
+  is not scored. `matched_in` is `title` for a subject and `body` for a comment, so
+  a game named only in a comment is a mention but not a headline (the eBay "surging" level
+  goes by headlines). Threads that name no game leave no trace at all.
+- **When it counts.** A thread is dated by when it was started, and that never changes, so
+  the item is stable from run to run. Slow boards keep threads live for months or years; a
+  thread started before the feed's 14 days is left out. Pinned threads (the board's rules)
+  are skipped, and so is a thread whose date is not a plausible one (dates are compared as
+  text, so year 322 or 2300 would never age out).
+- **On the dashboard.** The row shows a dash instead of a score, `itemWeight()` gives every
+  4chan row 0 whatever its role or source weight says, and a board has no weight box. The
+  role `anonymous` (weight 0) exists so that a board has a role like every other source.
+- **In the archive.** Every thread about one game on one board has the same generated
+  headline, so `archive.py` tells 4chan rows apart by the thread's start time as well. The
+  rows have no `n` (mood score), because they were never scored.
+- **Health.** A board's `latest` in `feed_status.json` is its newest thread, whether or not
+  it named a game. Its `modified` is the `Last-Modified` date the board's server gave, kept
+  only to be sent back word for word on the next request; it says when the board changed,
+  not when it was checked, and a failed read drops it so the next one is a full read. A
+  board that cannot be read is reported as *Failing* like any extra.
+
+`tools/try_sources.py` shows what a board or forum would give without writing anything, and
+prints only counts and game names for boards. The *Live checks* workflow runs it on every
+pull request that touches the scraper or `feeds.json`, because sites treat GitHub's servers
+differently from a home connection: four forum feeds that answered a development machine
+returned HTTP 403 there (see [SOURCES.md](../SOURCES.md#forums)).
 
 ## The dashboard
 
@@ -255,10 +329,11 @@ at all (a broken search, not an empty market).
 | `ps2` PS2-dedicated | 1.5 | r/ps2, r/ps2homebrew, r/PCSX2, r/playstation2, PS2 YouTube channels and PS2-history podcasts |
 | `official` Official | 1 | PlayStation.Blog, Xbox Wire, platform and publisher channels, official PlayStation podcasts |
 | `press` Press & news media | 1 | News sites, news channels and news podcasts |
-| `community` Community | 1 | The other subreddits |
+| `community` Community (Reddit & forums) | 1 | The other subreddits and general forums |
 | `retro` Retro | 1 | Retro reviews, history, hardware and emulation |
 | `collector` Collectors & resellers | 0.5 | Game hunting, flipping and restoration channels (Phoenix Resale, Chase After The Right Price, TronicsFix, …) |
 | `creator` Entertainment creators | 0.5 | Big let's-play channels and comedy gaming podcasts |
+| `anonymous` Anonymous boards (4chan) | 0 | The 4chan boards. Their rows have no mood score, so they count 0 whatever is set here |
 
 `effective weight = the source's own weight if set, else its role's weight, else 1`.
 A weight of 0 keeps items visible but leaves them out of the average.
@@ -373,7 +448,20 @@ reason saving without a token is the default and tokens should be short-lived.
   ceiling is now 12,000 and the window refills to 14 days as new items arrive; until it has,
   the eBay levels are worked out from less than two weeks of mentions.
 - Fuzzy matching still maps franchise names to the PS2 entry, e.g. "God of War Laufey" becomes
-  *God of War*. Sequel numbers are checked, but new subtitles aren't.
+  *God of War*. Sequel numbers are checked, but new subtitles aren't. This shows most on
+  4chan's /vg/, whose long-running threads are about a series ("Monster Hunter", "The Sims").
+- 4chan: only the post that opens a thread is read, never the replies. A real mention
+  written in lower case without a number is not counted. A busy board is seen only as it
+  stands when a run happens, and GitHub often starts runs hours late, so threads that come
+  and go in between are never seen. Thread links stop working when 4chan deletes the thread,
+  while the row stays for 14 days.
+- Forums: many sit behind a check that refuses GitHub's runners (HTTP 403), whatever the
+  request says about itself. Only the two that answered from there are listed.
+- Forums: a thread's link is its own page (`thread_link()`: `<comments>`, then a `<guid>`
+  that is an address, then `<link>`). Lemmy puts the article a post shares in `<link>`;
+  used as the item's link it would be the same as the article's own row from a news feed,
+  and rows are told apart by their link. A forum row that still has the link of another
+  source's row is left out of the run rather than replace it.
 - Sentiment is a keyword count in English. Non-English titles score a neutral 50.
 - Subscriber, view, rating and chart numbers in `feeds.json`/`SOURCES.md` are a snapshot from the
   `checked` date. Live activity comes from `feed_status.json`.
@@ -389,7 +477,7 @@ reason saving without a token is the default and tokens should be short-lived.
 
 - **feeds.json**: valid, canonical formatting, unique keys, every original news feed and
   subreddit still present, measured stats dated.
-- **Validation**: 33 kinds of broken config rejected, including:
+- **Validation**: 48 kinds of broken config rejected, including:
   - YouTube video links and un-normalised channel links
   - the malformed feed links from the independent review
   - odd hand edits: a list as role, a huge or `null` interval
@@ -438,7 +526,7 @@ reason saving without a token is the default and tokens should be short-lived.
     a handle that starts with "UC" stays a handle, and saved sources can't be removed
   - the base64 helpers round-trip non-ASCII text
   - the repository is detected from a GitHub Pages address
-  - the page and scraper validators agree on 38 configs
+  - the page and scraper validators agree on 67 configs
 
 - **Matcher** (`test_matcher_fixtures.py`): precision and recall on 268 hand-labelled real
   headlines must not fall below their floors, and each matching rule has a named test.
@@ -467,6 +555,37 @@ reason saving without a token is the default and tokens should be short-lived.
   address, with exactly one on screen; the item count is labelled with how far back it goes; rows name their cells for the phone layout; a phone gets 25 rows to a page.
 - **Page and price script agree on names**: `priceKey()` against `search_terms()` on the whole
   library.
+- **Forums and 4chan boards, added 2026-10-07**:
+  - a forum's threads become items like any other feed, and a forum that refuses the run
+    (HTTP 403) is reported without stopping it
+  - a board gives one row per thread that names a game, and none of the words a poster
+    wrote (a rude one, an ordinary one, the name field) reach the snapshot or the health file
+  - the request: the catalog is flattened, the server's own date is sent back as
+    `If-Modified-Since` (and nothing that is not such a date is sent or stored), a "not
+    modified" answer keeps what was collected and leaves the health file alone, anything
+    that is not a catalog is a failure
+  - `tools/sample_fixtures.py` never draws a 4chan row as a headline to test the matcher on
+  - boards are asked one at a time with the pause between them, in the order listed
+  - a post names a game only when the whole name is there, written as a name, and not
+    followed by another entry's number: about 150 short posts, each rule with the cases it
+    lets through and the ones it stops
+  - threads without a usable number or a plausible time, pinned threads and threads started
+    before the feed's two weeks are left out
+  - every other field a poster fills in (name, tripcode, file name, flag, the link's slug,
+    replies) is in the fixtures as a marker word, and none of them reaches the snapshot,
+    the health file or the log; the same against answers of every wrong shape, read by the
+    real reader
+  - a forum thread that links to an article keeps to its own page and never replaces the
+    article's row, in the run that sees both and in a later one
+  - a forum that fails is never counted towards calling a run off, nor waited on
+  - the pause between boards, on a clock that only moves when the scraper sleeps
+  - `tools/try_sources.py`: for boards, counts and game names only in its output, its
+    notices and its summary page; a forum headline cannot start a line of its own
+  - five boards failing cannot stop a run, and the rest of the host is skipped after three
+  - the dashboard: the rows, the dash for the score, a weight that can never count, the
+    type filter, the two new tabs, adding a board by name or link and a forum by feed link
+  - the archive keeps two threads about one game as two mentions (`tests/test_archive.py`)
+  - the *Live checks* workflow holds no key, can write nothing and cannot start the eBay job
 
 The *Tests* workflow runs the suite on every push to `main` that touches code, `feeds.json` or
 the tests, and on every pull request.

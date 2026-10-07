@@ -12,9 +12,11 @@ Every source the scraper reads lives in [`feeds.json`](feeds.json). This page is
 |---|---:|---:|
 | News sites | 18 | 18 |
 | Subreddits | 26 | 26 |
+| Forums | 2 | 2 |
+| 4chan boards | 7 | 7 |
 | YouTube channels | 159 | 114 |
 | Podcasts | 91 | 64 |
-| **Total** | **294** | **222** |
+| **Total** | **303** | **231** |
 
 ## YouTube
 
@@ -402,6 +404,73 @@ Health on 2026-09-30:
 - **VG247**: the feed loads but its newest article is from 2026-06-02, so it has added nothing since June.
 - **Time Extension**: served behind a Cloudflare check that blocks some networks; it works from GitHub's runners, which is where the scraper runs.
 - **r/Steelbook** and **r/xboxone**: their newest posts in the combined Reddit feed are from 2018 and 2024. They stay listed (switch them off in the dashboard if you like).
+
+## Forums
+
+Added 2026-10-07. A forum is read through the RSS feed of one of its boards, thread titles
+as headlines; a thread's link is its own page, also where the feed gives the article a post
+shares as its link (Lemmy does). Both feeds below were fetched and parsed from GitHub's
+runners on 2026-10-07 (the *Live checks* runs on the pull request that added them).
+
+| Forum | Group | Role | Feed | Measured 2026-10-07 |
+|---|---|---|---|---|
+| Lemmy games | Forums & communities | community | https://lemmy.world/feeds/c/games.xml?sort=New | 20 threads, 2026-10-04 to 2026-10-07; 1 named a PS2 game |
+| Lemmy retrogaming | Forums & communities | retro | https://lemmy.world/feeds/c/retrogaming.xml?sort=New | 20 threads, 2026-09-29 to 2026-10-07; 2 matched a PS2 game, both in the text under the title and both wrong ("Hardware Online Arena", "Retro") |
+
+**Tried and left out.** Four more feeds answered from a development machine and were refused
+from GitHub's runners, which is where the scraper runs. All four sit behind Cloudflare and
+returned HTTP 403 twice on 2026-10-07, the second time when asked under a feed reader's name,
+so they are not in `feeds.json`:
+
+| Forum | Feed | From GitHub's runners |
+|---|---|---|
+| NeoGAF, Gaming Discussion | https://www.neogaf.com/forums/gaming-discussion.2/index.rss | HTTP 403, empty reply |
+| GBAtemp, General Gaming | https://gbatemp.net/forums/general-gaming.167/index.rss | HTTP 403 |
+| GBAtemp, Other Platforms & Oldies | https://gbatemp.net/forums/other-platforms-oldies.202/index.rss | HTTP 403 |
+| PSX-Place, General PS2 Discussion | https://www.psx-place.com/forums/general-ps2-discussion.41/index.rss | HTTP 403, Cloudflare challenge page |
+
+Before adding a forum, put it in `feeds.json` on a branch and open a pull request: *Live
+checks* tries it from GitHub and reports what came back.
+
+## 4chan game boards
+
+Added 2026-10-07. Each board is read through 4chan's read-only API
+(`https://a.4cdn.org/<board>/catalog.json`: the post that opens every live thread, one
+request per board, at most one request a second). **Only the names of the PS2 games a thread
+mentions are kept.** Nothing a poster wrote is stored, shown or printed; the role
+(`anonymous`) has weight 0 and the rows carry no mood score.
+
+Measured from GitHub's runners on 2026-10-07 at about 17:25 UTC (the eighth *Live checks*
+run on the pull request, the first with the rules for posts as merged). A thread counts on the
+day it was started, so only threads started in the last 14 days enter the feed:
+
+| Board | Live threads | With a subject | Started in the last 14 days | Naming a PS2 game | ...and started in the last 14 days |
+|---|---:|---:|---:|---:|---:|
+| [/v/ - Video Games](https://boards.4chan.org/v/) | 200 | 51 | 200 | 5 | 5 |
+| [/vg/ - Video Game Generals](https://boards.4chan.org/vg/) | 200 | 200 | 197 | 11 | 11 |
+| [/vm/ - Video Games/Multiplayer](https://boards.4chan.org/vm/) | 150 | 138 | 51 | 3 | 2 |
+| [/vmg/ - Video Games/Mobile](https://boards.4chan.org/vmg/) | 138 | 124 | 19 | 2 | 0 |
+| [/vr/ - Retro Games](https://boards.4chan.org/vr/) | 150 | 69 | 149 | 5 | 5 |
+| [/vrpg/ - Video Games/RPG](https://boards.4chan.org/vrpg/) | 150 | 96 | 61 | 2 | 1 |
+| [/vst/ - Video Games/Strategy](https://boards.4chan.org/vst/) | 150 | 107 | 31 | 1 | 0 |
+| **Total** | **1,138** | **785** | **708** | **29** | **24** |
+
+- The 24 threads that would enter the feed made 28 mentions of 20 games: Deus Ex and Final
+  Fantasy XI (3 each), Grand Theft Auto: San Andreas, Monster Hunter, Top Gun and Half-Life
+  (2 each), and 14 games once. Of the 29 threads, 12 named the game in the subject and 17
+  only in the comment.
+- Several of those are a series being discussed, not the PS2 game: the matcher gives a
+  series name to the PS2 entry that carries it (Monster Hunter, The Sims, Pro Evolution
+  Soccer, Deus Ex). That is the matcher's known limit, the same as for headlines.
+- The rules for posts left out 32 further mentions that the headline rules would have
+  counted. Going by the names alone (the check prints nothing a poster wrote), most were
+  another game or an ordinary phrase: Dragon Rage, Legend of Herkules, The Thing, Happy
+  Feet, Defender, Special Forces, Weakest Link, Monopoly, Heroes of Might and Magic (a
+  series with numbered entries the PS2 never had). Some will have been real mentions
+  written in lower case or in a shortened form; those are lost.
+- How long a thread lives differs a great deal: the oldest live thread on /v/ was two days
+  old, on /vmg/ over three years. The mobile and strategy boards had 19 and 31 threads
+  started in the last two weeks, and none of them named a PS2 game.
 
 ## How the lists were built
 
