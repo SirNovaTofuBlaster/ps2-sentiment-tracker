@@ -110,28 +110,48 @@ board is handled differently from every other source.
   most one request a second, `If-Modified-Since` on each request, 4chan named as the source
   of every row, and a link back to the thread.
 - **What counts as naming a game** (`games_in_post()`). A post is chat, not a headline, so
-  the matcher is used at its strictest: the name must be spelt as the library spells it
-  (score 100: "Dragon Age" is not *Dragon Rage*), and a name without a number in it must be
-  written with capitals ("the thing is" does not name *The Thing*). A name with a number
-  ("silent hill 2") and the matcher's built-in abbreviations ("mgs3") count however they are
-  written. The subject is read first; only when it names nothing is the comment read (its
-  first 120 words, as for any body text).
+  three things a headline gets away with are not allowed. Each is judged on the very words
+  that matched, which is why the reader keeps track of how every word was written
+  (`post_words()`):
+  - *The whole name, spelt as the library spells it.* "Dragon Age" is not *Dragon Rage*,
+    and half a title ("the room", "substance") is not *Silent Hill 4: The Room*, even when
+    the post says PS2. Titles longer than the matcher's six-word runs are found whole
+    (`long_titles()`), and a shorter title inside one is not counted beside it.
+  - *Written as a name* (`written_as_a_name()`): with a number written as a number ("silent
+    hill 2", "kingdom hearts ii"), or with a capital on every word the library gives one
+    ("the thing is" does not name *The Thing*). A lone I, V or X is not taken as a number
+    (it is also a pronoun and a letter). A number followed by a unit of time is counting
+    ("yakuza 2 days ago"). A title that is only a number counts only as the library writes
+    it (*XIII*, not "13"). One everyday word that is also a title does not count as the
+    first word of a sentence or line ("Black screen on my PS2"). A post written all in
+    capitals marks nothing with them.
+  - *Not another entry of the series* (`another_entry()`). A name that runs straight into
+    a sequel number it does not have ("Max Payne 2", "Kingdom Hearts 3") is left to the
+    library title with that number, if there is one. "Silent Hill 2, 3 and 4" and "Okami
+    10/10" are let be.
+
+  The matcher's built-in abbreviations ("mgs3", "gta sa") count however they are written.
+  The subject is read first; only when it names nothing is the comment read (its first 120
+  words, as for any body text). Where the words as written cannot be lined up with the
+  words the matcher read (rare scripts), only the abbreviations count.
 - **What is kept** (`analyze_thread()`). One item per thread that names a game: the games,
   the board, when the thread was started and the link to it. The `headline` is written by
   the scraper, "Thread on /vr/ naming Silent Hill 2" (three games at most, then "and 2
-  more"). `sentiment` is a placeholder 50 and `is_remaster_rumor` is always false, because
-  the text is not scored. `matched_in` is `title` for a subject and `body` for a comment, so
+  more"). `sentiment` is `null` and `is_remaster_rumor` is always false, because the text
+  is not scored. `matched_in` is `title` for a subject and `body` for a comment, so
   a game named only in a comment is a mention but not a headline (the eBay "surging" level
   goes by headlines). Threads that name no game leave no trace at all.
 - **When it counts.** A thread is dated by when it was started, and that never changes, so
   the item is stable from run to run. Slow boards keep threads live for months or years; a
   thread started before the feed's 14 days is left out. Pinned threads (the board's rules)
-  are skipped.
+  are skipped, and so is a thread whose date is not a plausible one (dates are compared as
+  text, so year 322 or 2300 would never age out).
 - **On the dashboard.** The row shows a dash instead of a score, `itemWeight()` gives every
   4chan row 0 whatever its role or source weight says, and a board has no weight box. The
   role `anonymous` (weight 0) exists so that a board has a role like every other source.
 - **In the archive.** Every thread about one game on one board has the same generated
-  headline, so `archive.py` tells 4chan rows apart by the thread's start time as well.
+  headline, so `archive.py` tells 4chan rows apart by the thread's start time as well. The
+  rows have no `n` (mood score), because they were never scored.
 - **Health.** A board's `latest` in `feed_status.json` is its newest thread, whether or not
   it named a game. Its `modified` is the `Last-Modified` date the board's server gave, kept
   only to be sent back word for word on the next request; it says when the board changed,
@@ -437,6 +457,11 @@ reason saving without a token is the default and tokens should be short-lived.
   while the row stays for 14 days.
 - Forums: many sit behind a check that refuses GitHub's runners (HTTP 403), whatever the
   request says about itself. Only the two that answered from there are listed.
+- Forums: a thread's link is its own page (`thread_link()`: `<comments>`, then a `<guid>`
+  that is an address, then `<link>`). Lemmy puts the article a post shares in `<link>`;
+  used as the item's link it would be the same as the article's own row from a news feed,
+  and rows are told apart by their link. A forum row that still has the link of another
+  source's row is left out of the run rather than replace it.
 - Sentiment is a keyword count in English. Non-English titles score a neutral 50.
 - Subscriber, view, rating and chart numbers in `feeds.json`/`SOURCES.md` are a snapshot from the
   `checked` date. Live activity comes from `feed_status.json`.
@@ -541,10 +566,21 @@ reason saving without a token is the default and tokens should be short-lived.
     that is not a catalog is a failure
   - `tools/sample_fixtures.py` never draws a 4chan row as a headline to test the matcher on
   - boards are asked one at a time with the pause between them, in the order listed
-  - a post names a game only when it is spelt right and written as a name; numbers and the
-    built-in abbreviations are the exceptions
-  - threads without a usable number or time, pinned threads and threads started before the
-    feed's two weeks are left out
+  - a post names a game only when the whole name is there, written as a name, and not
+    followed by another entry's number: about 150 short posts, each rule with the cases it
+    lets through and the ones it stops
+  - threads without a usable number or a plausible time, pinned threads and threads started
+    before the feed's two weeks are left out
+  - every other field a poster fills in (name, tripcode, file name, flag, the link's slug,
+    replies) is in the fixtures as a marker word, and none of them reaches the snapshot,
+    the health file or the log; the same against answers of every wrong shape, read by the
+    real reader
+  - a forum thread that links to an article keeps to its own page and never replaces the
+    article's row, in the run that sees both and in a later one
+  - a forum that fails is never counted towards calling a run off, nor waited on
+  - the pause between boards, on a clock that only moves when the scraper sleeps
+  - `tools/try_sources.py`: for boards, counts and game names only in its output, its
+    notices and its summary page; a forum headline cannot start a line of its own
   - five boards failing cannot stop a run, and the rest of the host is skipped after three
   - the dashboard: the rows, the dash for the score, a weight that can never count, the
     type filter, the two new tabs, adding a board by name or link and a forum by feed link

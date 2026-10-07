@@ -407,13 +407,14 @@ Health on 2026-09-30:
 
 ## Forums
 
-Added 2026-10-07. A forum is read like a news site: one RSS feed per board, thread titles as
-headlines. Both feeds below were fetched and parsed from GitHub's runners on 2026-10-07 (the
-*Live checks* run on the pull request that added them).
+Added 2026-10-07. A forum is read through the RSS feed of one of its boards, thread titles
+as headlines; a thread's link is its own page, also where the feed gives the article a post
+shares as its link (Lemmy does). Both feeds below were fetched and parsed from GitHub's
+runners on 2026-10-07 (the *Live checks* runs on the pull request that added them).
 
 | Forum | Group | Role | Feed | Measured 2026-10-07 |
 |---|---|---|---|---|
-| Lemmy games | Forums & communities | community | https://lemmy.world/feeds/c/games.xml?sort=New | 20 threads, 2026-10-03 to 2026-10-07; 1 named a PS2 game |
+| Lemmy games | Forums & communities | community | https://lemmy.world/feeds/c/games.xml?sort=New | 20 threads, 2026-10-04 to 2026-10-07; 1 named a PS2 game |
 | Lemmy retrogaming | Forums & communities | retro | https://lemmy.world/feeds/c/retrogaming.xml?sort=New | 20 threads, 2026-09-29 to 2026-10-07; 2 matched a PS2 game, both in the text under the title and both wrong ("Hardware Online Arena", "Retro") |
 
 **Tried and left out.** Four more feeds answered from a development machine and were refused
@@ -439,36 +440,36 @@ request per board, at most one request a second). **Only the names of the PS2 ga
 mentions are kept.** Nothing a poster wrote is stored, shown or printed; the role
 (`anonymous`) has weight 0 and the rows carry no mood score.
 
-Measured from GitHub's runners on 2026-10-07 at about 13:35 UTC (the *Live checks* run on
-the pull request). A thread counts on the day it was started, so only threads started in the
-last 14 days enter the feed:
+Measured from GitHub's runners on 2026-10-07 at about 17:25 UTC (the eighth *Live checks*
+run on the pull request, the first with the rules for posts as merged). A thread counts on the
+day it was started, so only threads started in the last 14 days enter the feed:
 
 | Board | Live threads | With a subject | Started in the last 14 days | Naming a PS2 game | ...and started in the last 14 days |
 |---|---:|---:|---:|---:|---:|
-| [/v/ - Video Games](https://boards.4chan.org/v/) | 200 | 59 | 200 | 6 | 6 |
-| [/vg/ - Video Game Generals](https://boards.4chan.org/vg/) | 200 | 200 | 196 | 11 | 11 |
-| [/vm/ - Video Games/Multiplayer](https://boards.4chan.org/vm/) | 150 | 138 | 51 | 5 | 3 |
+| [/v/ - Video Games](https://boards.4chan.org/v/) | 200 | 51 | 200 | 5 | 5 |
+| [/vg/ - Video Game Generals](https://boards.4chan.org/vg/) | 200 | 200 | 197 | 11 | 11 |
+| [/vm/ - Video Games/Multiplayer](https://boards.4chan.org/vm/) | 150 | 138 | 51 | 3 | 2 |
 | [/vmg/ - Video Games/Mobile](https://boards.4chan.org/vmg/) | 138 | 124 | 19 | 2 | 0 |
-| [/vr/ - Retro Games](https://boards.4chan.org/vr/) | 150 | 68 | 149 | 6 | 6 |
-| [/vrpg/ - Video Games/RPG](https://boards.4chan.org/vrpg/) | 150 | 96 | 62 | 3 | 2 |
-| [/vst/ - Video Games/Strategy](https://boards.4chan.org/vst/) | 150 | 107 | 32 | 1 | 0 |
-| **Total** | **1,138** | **792** | **709** | **34** | **28** |
+| [/vr/ - Retro Games](https://boards.4chan.org/vr/) | 150 | 69 | 149 | 5 | 5 |
+| [/vrpg/ - Video Games/RPG](https://boards.4chan.org/vrpg/) | 150 | 96 | 61 | 2 | 1 |
+| [/vst/ - Video Games/Strategy](https://boards.4chan.org/vst/) | 150 | 107 | 31 | 1 | 0 |
+| **Total** | **1,138** | **785** | **708** | **29** | **24** |
 
-- The 28 threads that would enter the feed made 32 mentions of 24 games: Monster Hunter,
-  Deus Ex and Final Fantasy XI (3 each), Grand Theft Auto: San Andreas and Half-Life (2
-  each), and 19 games once. Of the 34 threads, 12 named the game in the subject and 22 only
-  in the comment.
+- The 24 threads that would enter the feed made 28 mentions of 20 games: Deus Ex and Final
+  Fantasy XI (3 each), Grand Theft Auto: San Andreas, Monster Hunter, Top Gun and Half-Life
+  (2 each), and 14 games once. Of the 29 threads, 12 named the game in the subject and 17
+  only in the comment.
 - Several of those are a series being discussed, not the PS2 game: the matcher gives a
   series name to the PS2 entry that carries it (Monster Hunter, The Sims, Pro Evolution
   Soccer, Deus Ex). That is the matcher's known limit, the same as for headlines.
-- The rules for posts (exact spelling; a name without a number written with capitals) left
-  out 31 further mentions that the headline rules would have counted. Going by the names
-  alone (the check prints nothing a poster wrote), most were another game or an ordinary
-  phrase: Dragon Rage, Legend of Herkules, The Thing, Happy Feet, Defender, Special Forces,
-  Weakest Link, Monopoly. Some will have been real mentions written in lower case or in a
-  shortened form; those are lost.
+- The rules for posts left out 32 further mentions that the headline rules would have
+  counted. Going by the names alone (the check prints nothing a poster wrote), most were
+  another game or an ordinary phrase: Dragon Rage, Legend of Herkules, The Thing, Happy
+  Feet, Defender, Special Forces, Weakest Link, Monopoly, Heroes of Might and Magic (a
+  series with numbered entries the PS2 never had). Some will have been real mentions
+  written in lower case or in a shortened form; those are lost.
 - How long a thread lives differs a great deal: the oldest live thread on /v/ was two days
-  old, on /vmg/ over three years. The mobile and strategy boards had 19 and 32 threads
+  old, on /vmg/ over three years. The mobile and strategy boards had 19 and 31 threads
   started in the last two weeks, and none of them named a PS2 game.
 
 ## How the lists were built

@@ -109,9 +109,10 @@ python ebay_prices.py --plan              # which games would be priced now and 
     a human asks for it.
 12. **Nothing a 4chan poster wrote is ever kept** (the maintainer's decision of 2026-10-07).
     The boards are read for the names of PS2 games and nothing else. No subject, comment,
-    poster name, file name or anything derived from them except the matched library titles
-    may be written to `data/`, shown on the dashboard or printed in a log; the row's headline
-    is written by the scraper. The rows are not scored for sentiment and never count towards
+    poster name, file name or anything derived from them may be written to `data/`, shown on
+    the dashboard or printed in a log, except which library titles were matched and how
+    (subject or comment, and by which rule of the matcher); the row's headline is written
+    by the scraper. The rows are not scored for sentiment (`null`) and never count towards
     it. 4chan's API terms apply: at most one request a second, `If-Modified-Since` on each
     (the board server's own `Last-Modified` date, kept as `modified` in `feed_status.json`),
     4chan named as the source with a link, and its name or logo never used to promote the
@@ -159,15 +160,27 @@ Before you call something done, prove it; don't assume it.
     Cloudflare and answer GitHub's runners with HTTP 403, under any User-Agent, although the
     same feed link works from a home connection. On 2026-10-07 four of six candidates failed
     that way; the two Lemmy communities answered.
-  - A forum is an extra: it is read like a news feed, and its failure never stops a run.
+  - A forum is an extra: it is read like a channel's or a show's feed, and its failure
+    never stops a run.
+  - Lemmy puts the article a post shares in `<link>` and the post itself in `<comments>`
+    and `<guid>` (8 of the 20 posts in *Lemmy games* on 2026-10-07 were link posts). Items
+    are told apart by their link, so a forum thread uses its own page (`thread_link()`);
+    with the article's address it replaced the article's own row from the news feed. A
+    forum row that still has another source's link is left out of the run.
 - **4chan**
   - The catalog holds only the post that opens each thread. Most threads on /v/ and /vr/
     have no subject, so most names are found in the comment (`matched_in: "body"`).
   - Headline matching is too loose for posts: the first dry run counted 68 mentions of 50
-    games, many of them plainly another game or an ordinary phrase (Dragon Rage, Legend of
-    Herkules, The Thing, Happy Feet). `games_in_post()` asks for the exact spelling and, for
-    a name without a number, capitals; that left 38 mentions of 26 games. Don't relax it
-    without a new dry run.
+    games in the live threads, many of them plainly another game or an ordinary phrase
+    (Dragon Rage, Legend of Herkules, The Thing, Happy Feet). `games_in_post()` asks for
+    the whole name in the library's spelling, written as a name, and not followed by
+    another entry's number; that left 33 mentions of 23 games (28 of 20 in threads young
+    enough to enter the feed). Don't relax it without a new dry run.
+  - Nobody working on the rules for posts could read the boards: they were judged from the
+    game names and counts `try_sources.py` prints, and from made-up posts in the tests.
+  - `normalise()` turns Roman numerals into digits, so the pronoun "I" reads as 1 and the
+    letter "X" as 10. For headlines that has not mattered; in posts it made "can i ninja
+    edit" name *I-Ninja*, which is why a lone I, V or X is not taken as a number there.
   - Threads on the slow boards stay live for months or years (the oldest on /vmg/ was from
     2023), so a thread is dated by its start and left out when that is before the 14 days.
   - A thread's row has the same headline as every other thread about that game on that
