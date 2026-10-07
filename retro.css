@@ -4,11 +4,13 @@
    Loaded after Tailwind; rules are prefixed with "body" so they win on specificity.
 
    The colours are those of a late-nineties console's start-up screen: a near-black ground
-   and four primaries. Each primary has one job, and only that job:
-     yellow  price links (the one thing in a row that is highlighted)
+   and four primaries, each with its own kind of job:
+     yellow  price links and nothing else: the one thing in a row that is highlighted
      blue    what can be followed: game names, links, buttons
-     red     remaster news and low mood scores
-     teal    live and healthy: the sync dot, the active feeds, good mood scores
+     red     remaster news, and whatever is low or failing (a low mood score, a falling
+             trend, a source that cannot be read, an error)
+     teal    live and well: the sync dot, the sources switched on, a high mood score, a
+             rising trend, a success
    All four meet only in the strip across the top and in the rings of the mark. */
 
 :root {
@@ -17,18 +19,18 @@
   --inset: #16161B;
   --line: #27272E;
   --rule: #1B1B21;
-  --stripe: #101014;
+  --stripe: #17171D;
   --text: #F2F2F4;
   --body: #C9C9CF;
-  --dim: #8E8E98;
-  --mute: #82828C;
+  --dim: #9C9CA6;
+  --mute: #8C8C96;
   --accent: #4FA8E8;
   --accent-hi: #8CC6F2;
   --money: #F5C52E;
   --money-bg: #1D1806;
   --money-line: #6B5514;
   --green: #2DBFA6;  /* teal */
-  --red: #F0454D;
+  --red: #F2555C;
   --red-line: #6E1F24;
   /* The strip and the mark use the primaries at full strength; text uses the lighter
      --red and --accent above, which stay readable on the dark ground. */
@@ -160,10 +162,12 @@ body .bg-ps2card\/80 { background-color: var(--banner); border: 0; border-bottom
 body .bg-ps2card\/50 { background-color: transparent; border-top: 1px solid var(--line); }
 body .border-ps2border, body .border-slate-800, body .border-slate-700 { border-color: var(--line); }
 body .border-slate-800\/40, body .border-slate-800\/60, body .divide-slate-800\/60 > * { border-color: var(--rule); }
+/* Tailwind colours the lines between rows with a selector stronger than the one above. */
+body .divide-slate-800\/60 > :not([hidden]) ~ :not([hidden]) { border-color: var(--rule); }
 body .from-amber-950\/40 { background-color: transparent; border-color: var(--line); }
 
 /* ---- Pages: Tracker | Most mentioned | eBay prices ----------------------
-   Labels on a hairline; the open one is underlined in the accent. */
+   Labels on a hairline; the open one is underlined in red. */
 body .view-tabs { display: flex; gap: 2rem; border-bottom: 1px solid var(--line); }
 body .view-tab {
   display: inline-flex;
@@ -233,6 +237,7 @@ body .bg-slate-900, body .bg-slate-900\/80, body .bg-slate-950 { background-colo
 body input, body select { border-color: var(--line); }
 body input:focus, body select:focus { outline: 1px solid var(--accent); outline-offset: -1px; }
 body input::placeholder { color: var(--mute); }
+body input[type="checkbox"] { accent-color: var(--accent); }  /* not Tailwind's own cyan */
 
 /* Buttons: one filled primary, everything else a hairline */
 body .from-blue-600 { background-color: var(--accent); color: var(--bg); }
@@ -279,7 +284,7 @@ body thead th {
   color: var(--dim);
 }
 body tbody td { padding-top: 1.1rem; padding-bottom: 1.1rem; }
-body tr:hover { background-color: rgba(79, 168, 232, .06); }
+body tr:hover { background-color: rgba(79, 168, 232, .06); }  /* --accent, faintly */
 
 /* Price lookup chips: the only yellow thing in a row */
 body .price-links {
@@ -328,7 +333,7 @@ body .price-link:hover, body .price-link:focus-visible {
 body .zebra > li:nth-child(even), body .zebra > tr:nth-child(even) { background-color: var(--stripe); }
 /* Hover only where there is a pointer: on a touch screen it sticks to the last row tapped,
    which would look like a broken stripe. Strong enough to show on either kind of row. */
-@media (hover: hover) { body .zebra > tr:hover { background-color: rgba(79, 168, 232, .16); } }
+@media (hover: hover) { body .zebra > tr:hover { background-color: rgba(79, 168, 232, .08); } }
 
 /* ---- Lists that fold away ------------------------------------------------
    A ranked list shows its first rows (five, or 25 for Most Mentioned Games) until its
