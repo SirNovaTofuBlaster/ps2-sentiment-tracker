@@ -211,8 +211,8 @@ they exist, `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.js
   data and a change of page keep it. Both buttons hand the keyboard to the line over the
   table (`tabindex="-1"`), since the one that was pressed is far up the page or gone.
 - **The table opens on the items that name a game** (`filterSelect` starts on `matched`).
-  The line over the table (`#feedSummary`, on a row of its own so that its length moves
-  nothing) is written from the rows that are showing, with the box and the menus applied,
+  The line over the table (`#feedSummary`, on a row of its own so that its length does
+  not push the box and the menus about) is written from the rows that are showing, with the box and the menus applied,
   and says how many are left out; *Everything* shows the rest. It never starts with
   "Showing", which is how the line under the table counts the rows of the page. A row
   leads with the item's first game (or the one the table was opened on) and lists up to

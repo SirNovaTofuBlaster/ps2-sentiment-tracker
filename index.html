@@ -959,7 +959,8 @@
             }
 
             const start = (currentPage - 1) * PAGE_SIZE;
-            const query = document.getElementById('searchInput').value.toLowerCase();
+            // (Trimmed: a phone's keyboard leaves a space after a suggested word.)
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
             items.slice(start, start + PAGE_SIZE).forEach(item => {
                 const score = Math.max(0, Math.min(100, Number(item.sentiment) || 0));
                 const tone = score < 50 ? 'score-low' : score < 70 ? 'score-mid' : 'score-high';

@@ -1303,6 +1303,12 @@ await check('games first: what was named in the last day leads, and the table op
             'flex-wrap: wrap; row-gap: .25rem; font-size: .8125rem;'],
     ]);
     assert.match(css, /body main button, body main a\.bg-slate-800, body main \.from-blue-600 \{\s*min-height: 2\.75rem;/);
+    // Everything the stylesheet hides. A rule added here on purpose belongs in this list; one
+    // that hides the new list or the line over the table by where it sits does not.
+    assert.deepEqual([...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(rule => /display:\s*none|visibility:\s*hidden/.test(rule[2])).map(rule => rule[1].replace(/\s+/g, ' ').trim()), [
+        'body .is-folded > .list-extra', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
+        'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
+    ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
     const order = ['class="stat-strip"', 'id="todaySection"', 'id="demandSection"', 'id="feedSection"'].map(mark => page.indexOf(mark));
@@ -1325,6 +1331,8 @@ await check('games first: what was named in the last day leads, and the table op
     vm.runInContext(`renderRecentGames(__edge, ${now})`, context);
     assert.match(el('todayList').innerHTML, />2 remaster<\/span>/);
     assert.match(el('todayList').innerHTML, /<div class="mt-1 text-\[11px\] text-slate-400">One · Two · Three<\/div>/, 'three sources: all named and nothing "more"');
+    vm.runInContext('renderTopGames(__edge)', context);
+    assert.match(el('topGamesList').innerHTML, />2 remaster<\/span>/);
 
     // A quiet day, and a feed that has not moved, each say so instead of showing an empty box.
     vm.runInContext(`renderRecentGames(__items.filter(item => !item.matched_game), ${now})`, context);
@@ -1414,13 +1422,18 @@ await check('games first: what was named in the last day leads, and the table op
     assert.match(cell('Gematsu item 16'), />Zeta Game<[\s\S]*also names Alpha Game</);
     assert.doesNotMatch(cell('Eurogamer item 1'), /also names/);
     assert.match(cell('Polygon item 13'), /data-unmatched[^>]*><span class="text-slate-500">Unmatched \/ General<\/span>/);
-    context.__crowd = [row('r/ps2', 1, ['A<1>', 'B<2>', 'C3', 'D4', 'E5', 'F6', 'G7'])];
+    context.__crowd = [row('r/ps2', 1, ['A<1>', 'B<2>', 'C3', 'D4', 'E5', 'F6', 'The G7 Saga', 'G7 Two'])];
     vm.runInContext('visibleFeedData = __crowd; filterFeedItems();', context);
-    assert.match(tableRows()[0].innerHTML, /text-cyan-300">A&lt;1&gt;<[\s\S]*also names B&lt;2&gt;, C3, D4, E5 and 2 more<\/div>/);
+    assert.match(tableRows()[0].innerHTML, /text-cyan-300">A&lt;1&gt;<[\s\S]*also names B&lt;2&gt;, C3, D4, E5 and 3 more<\/div>/);
     assert.doesNotMatch(tableRows()[0].innerHTML, /A<1>|B<2>/);
-    // A search that found a game far down an item's list shows that game, not "and 2 more".
-    assert.equal(shown('all', 'g7')[0], 1);
-    assert.match(tableRows()[0].innerHTML, /also names G7, B&lt;2&gt;, C3, D4 and 2 more<\/div>/);
+    // A search that found games far down an item's list shows them, in their order, not "and 3
+    // more": typed in capitals, found in the middle of a name, with the space a phone leaves.
+    for (const typed of ['G7', ' g7 ']) {
+        assert.equal(shown('all', typed)[0], 1, typed);
+        assert.match(tableRows()[0].innerHTML, /also names The G7 Saga, G7 Two, B&lt;2&gt;, C3 and 3 more<\/div>/, typed);
+    }
+    vm.runInContext('renderTopGames(__crowd)', context);
+    assert.equal(el('topGamesSummary').textContent, 'Share of all PS2 game mentions: 8 mentions across 8 games.', 'Most Mentioned Games counts every one of them');
     context.__crowd = [row('r/ps2', 1, ['A', 'B', 'C', 'D', 'E'])];
     vm.runInContext('visibleFeedData = __crowd;', context);
     shown('all');
@@ -1461,7 +1474,7 @@ await check('games first: what was named in the last day leads, and the table op
     vm.runInContext('showGameRows(0)', context);
     assert.equal(tableRows().length, 5);
     assert.deepEqual(shown('all', 'kuon'), [1, 'Listing 1 of the 24 items in the feed.']);
-    assert.equal(evalJson('gameFilter'), null);
+    assert.deepEqual([evalJson('gameFilter'), focused], [null, 2], 'typing in the box keeps the keyboard in the box');
 
     // Most Mentioned Games counts the same way: an item that names two games is a mention of each.
     vm.runInContext('renderTopGames(__items)', context);
@@ -1509,6 +1522,19 @@ await check('games first: what was named in the last day leads, and the table op
     assert.deepEqual([evalJson('gameFilter'), tableRows().length], ['Ico', 2]);
     assert.match(el('feedSummary').innerHTML, /^The 2 items in the feed that name Ico\. <button/);
     vm.runInContext('clearGameFilter()', context);
+    // A long feed through the page itself: nothing is cut short on the way to the list, a thread
+    // from 4chan is in it, and a list that was opened stays open through a click and a reload,
+    // which leaves the keyboard where it was.
+    context.__bigLive = [...Array.from({ length: 1200 }, (_, i) => row('Eurogamer', 1 + (i % 20), [`Game ${pad(i % 30)}`], {}, Date.now())),
+        row('4chan /vr/', 2, ['Kuon'], { sentiment: null, source_type: '4chan' }, Date.now())];
+    focused = 0;
+    vm.runInContext("allFeedData = __bigLive; onConfigChanged(); toggleList('todayList'); showGameRows(30);", context);
+    assert.equal(el('todaySummary').textContent, '1,201 items out of 1,201 published in the last 24 hours named a PS2 game: 31 games.');
+    assert.equal(evalJson('gameFilter'), 'Kuon');
+    vm.runInContext('refreshDashboard()', context);
+    assert.equal(el('todayList').classList.contains('is-folded'), false);
+    assert.deepEqual([evalJson('gameFilter'), tableRows().length, focused], ['Kuon', 1, 1]);
+    vm.runInContext("toggleList('todayList'); clearGameFilter()", context);
     // Before the first scrape the stand-in items are shown, and nothing claims the robot is late.
     vm.runInContext('feedConfig = JSON.parse(__text); allFeedData = fallbackData.items; onConfigChanged();', context);
     assert.equal(el('todaySummary').textContent, 'No feed has been loaded, so there is nothing to list yet.');
