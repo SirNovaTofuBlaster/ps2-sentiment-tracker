@@ -342,6 +342,73 @@ Left as they are: *Remaster flags* is red at zero and *Active feeds* is teal wha
 sources' health (it counts the ones switched on); the branch's commit was made under an
 Anthropic no-reply address and lands on `main` as GitHub's squash under the maintainer's.
 
+## 2026-10-07: games first
+
+How the new list on the Tracker and the table's opening view were checked. No browser was
+used (rule 11).
+
+| Check | Result |
+|---|---|
+| What changed | `index.html` (a section, three functions for the list, the table's filter, its summary line and its game column, and which games Most Mentioned Games counts), a few rules in `retro.css`, `guide.html`. `scraper.py`, `feeds.json`, the workflows and everything under `data/` are untouched, so the live checks and the regression check did not apply |
+| Nothing else moved | `git diff origin/main -- index.html` read line by line: outside the new code, the changes are the three handlers on the search box and the menus, the menu's order and default, where the line over the table sits, the table's game cell and the loop in `renderTopGames()`. The second reviewer compared 126 settings of the box and the menus with the page before the change: the same rows and pages, but for the search that now sees every game |
+| Against real data | The page loaded with the snapshot of 2026-10-07 17:44 UTC: in the 24 hours before its newest item 654 items, 53 naming a game, 59 games; the table opens on 412 of 5,586; Most Mentioned Games ranks 209 games |
+| Offline tests | 204 Python tests and 31 dashboard checks pass |
+| Do the checks bite | 159 one-line breakages of the new code (the window, the order, every count and wording, escaping, the click and its undoing, paging and reloading with a game chosen, the wiring into the page, the markup, the stylesheet's rules): all noticed. That is after three rounds: the second reviewer broke the page 73 ways of their own, about 30 of them real and unnoticed, then 27 more, nine of them real and unnoticed. Each of those has a case now but one: a line that follows the browser's language instead of English reads the same on the test machine |
+| Static files | `index.html`, `guide.html`, `retro.css`, `feeds.json` and the snapshot served by `python -m http.server` and fetched with curl: all 200; `node --check` on the inline scripts |
+| Not checked | How it looks, on a desk or a phone. The phone rules were reasoned from the selectors |
+
+### Independent reviews
+
+Two reviews, each with fresh context and no browser, working in a copy, told to report only
+findings backed by a concrete failure. The first ran the page's functions on ten earlier
+snapshots from the repository's history.
+
+| Finding | Resolution |
+|---|---|
+| A click on a game put its name in the search box, so *Final Fantasy X* also showed *Final Fantasy XII*, and *Retro* showed every row from r/retrogaming | The click now shows the items whose games include exactly that name (`gameFilter`); the search box is left empty |
+| The line over the table gave the same count whatever the search box and the second menu left on show | It is written from the rows that are showing |
+| A row showed only an item's first game, so a click on its second game opened rows that seemed to be about something else | A row leads with the game the table was opened on and lists the others |
+| Nothing checked that the page draws the list, or that a switched-off source leaves it; 14 one-line breakages went unnoticed | The check was rewritten; see "Do the checks bite" |
+| The wording said "collected in the last 24 hours" while the code goes by the date of publication | "Published" everywhere, with the reason in the guide and the changelog |
+| The documented order (headline before text, then mentions) was not the order the code used | The code was simplified to one order and the documents say that one |
+| `font: inherit` on the name's button undid the bold of the first name, and the phone rule for buttons applied to it unplanned | Removed; the name keeps the full height on a phone on purpose and the button in the sentence has its own rule |
+| Before the first scrape the list said the robot had found nothing in the last day | It says it is waiting for the first scrape |
+| Three passages in the guide and the architecture notes still described the Tracker without the list | Corrected |
+| A change to the table was not announced to a screen reader | The line over the table is a live region |
+| "Names a game" was decided two ways (`matched_game` in one place, the list in another) | One function, `gamesOf()`, used by all four |
+
+The second review, of the state after those fixes:
+
+| Finding | Resolution |
+|---|---|
+| 15 of the 59 games in the new list were missing from Most Mentioned Games, which counted an item's first game only, while the guide says it ranks every game | It counts every game an item names, like the list and the three scripts; 162 games became 209 on the measured snapshot |
+| The check was weaker than this page said: about 30 real one-line breakages went unnoticed, and the case labelled "a reload" did not reload | Each has a case now, the reload included; the figure above is the new one |
+| A search could find an item by a game that the row then hid behind "and 12 more" | The games the search found are listed first |
+| *Back to every game* destroyed the button that had the keyboard, and a click on a game left the keyboard up in the list | Both hand it to the line over the table |
+| The line's changing length shared a row with the search box and the menus and would have pushed them about (reasoned, not seen) | The line has a row of its own |
+| 654 items could not be reproduced from the snapshot's own time (652) | The documents say what the 24 hours were counted from |
+| "Published is the date the source gave" is not so for a source that gives none | Said in the guide, the changelog and the architecture notes |
+| "Showing the 412 of 5,586" over a table whose footer says "Showing 1–100 of 412" | The line no longer starts with "Showing" |
+| "1 of 1 item that name", and "waiting for the first scrape" when a load had failed | Singular forms throughout; the empty list says no feed has been loaded |
+
+The same reviewer then checked those fixes. Eight of nine held; nothing else had moved in
+126 settings of the box and the menus, and Most Mentioned Games matched a count made
+independently (532 mentions, 209 games, no game's count lower than before).
+
+| Finding | Resolution |
+|---|---|
+| A space after the search words (a phone's keyboard adds one) left the searched game behind "and 12 more" again | The words are trimmed before the games are compared |
+| Three of the earlier breakages were still unnoticed, though this page said none: the list built from part of the feed, 4chan left out of it, and an opened list folding at the next reload after a click | A feed of 1,201 items with a 4chan thread goes through the page itself, and the list is looked at after the reload |
+| Nothing would notice the keyboard being taken from the search box on every keystroke, or on every reload | Both are counted |
+| Nine new breakages unnoticed: a search in capitals, a game found in the middle of a name, a second found game, Most Mentioned Games counting two games of three, a rule hiding the line by its position | Each has a case; the check now holds the full list of what the stylesheet hides |
+| The guide's "so" joined the wrong two things; "moves nothing" was more than is true (the table below still shifts when the line wraps) | Reworded |
+
+Left as they are: the list promotes wrong matches along with right ones, since it is only as
+good as the matcher; a game the table was opened on stays chosen through a reload of the
+data even if no item names it any more, and the line then says so; the line over the table
+is read out again on every keystroke in the search box, which is talkative and was not
+tried with a screen reader.
+
 ## Re-running the checks
 
 ```sh

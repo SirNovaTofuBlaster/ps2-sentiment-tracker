@@ -1,5 +1,81 @@
 # Changelog
 
+## 2026-10-07: games first
+
+### What was asked
+
+- "Reduce the irrelevant noise and push all the titles to the forefront of the page": if a
+  day's scrape finds six PS2 games in a hundred items, put the six on the front and keep the
+  rest at the bottom or away.
+- Whether all the data is being saved.
+
+### What changed
+
+**Dashboard: `index.html`, `retro.css`**
+- **Named in the last 24 hours**, a new list first on the Tracker: every PS2 game named by
+  an item published in the last day, with how many items named it, which sources, and its
+  prices. The game named in the most headlines comes first, and one found only in the text
+  under a headline (marked "in the text only") comes after every game a headline named;
+  then all mentions, then the most recent. It shows ten games and folds the rest away.
+- **A game's name in that list opens the table on exactly the items that name it**, from
+  the whole feed. *Back to every game* over the table, or any change to the search box or
+  a menu, undoes it.
+- **The table opens on the items that name a PS2 game.** A line over the table says how
+  many those are and out of how many, whatever the search box and the menus are set to,
+  and *Everything* in the first menu shows the rest. The menu now reads *PS2 Games Only*,
+  *Remaster News Only*, *Everything*. The line sits on a row of its own, between the menus
+  and the table.
+- **A row names every game its item names**: the first with its prices, the others under it
+  ("also names …", four at most and then a count; a game the search box found comes
+  first). Before, only the first was shown.
+- The search box looks at every game an item names, not only the first.
+- **Most Mentioned Games counts every game an item names**, as the new list does and as the
+  archive, the Demand Index and the eBay prices always have. It used to count an item's
+  first game only, so a game that was only ever named second was missing from the page.
+
+**Guide: `guide.html`**
+- Describes the new list, what the table opens on and where the rest is.
+
+**Tests**
+- 31 dashboard checks (was 30); the check of the eBay medians now covers the new list too.
+  The test sandbox opens with the menus the page opens with.
+
+### What was measured (2026-10-07, the snapshot of 17:44 UTC)
+
+- The 24 hours before its newest item (17:41 UTC): 654 items, 53 naming a PS2 game (32 in a
+  headline, 21 only in the text): 59 games, 25 of them by a headline.
+- Whole feed: 5,586 items, 412 naming a game.
+- Most Mentioned Games: 532 mentions across 209 games, where it showed 412 across 162.
+
+### Behaviour changes to be aware of
+
+- The table no longer shows everything when the page opens: about nine items in ten are
+  behind *Everything*. The item count at the top still counts them all.
+- Nothing is removed from the data. The snapshot, the archive and the prices are written
+  exactly as before; this change is to what the page shows first.
+- Wrong matches are now on the front as well. On the measured day the headline matches
+  included *Retro*, *Tomb Raider: Anniversary* (for "Happy 23rd Anniversary to Backyard
+  Wrestling") and *Battlestar Galactica* (an article about the television series). The list
+  is only as good as the matcher.
+- The numbers on the *Most mentioned* page and on its tab went up (see above), and every
+  share on it changed with them: nothing new was found, more of what was found is counted.
+- "The last 24 hours" goes by the date a source gave an item, not by when the robot fetched
+  it. When a source is first added, its older items do not flood the list; an item whose
+  source dates it more than an hour into the future is left out of the list as well. A
+  source that gives no dates is the exception: its items are dated when first seen.
+- Before any feed has loaded, and when the feed cannot be loaded, the list says so; the two
+  cases look the same to the page.
+- A click on a game shows its items from the whole two weeks, so the table can show more
+  items than the list's count for the last day.
+
+### What is kept, for the record
+
+- Every mention of a PS2 game, permanently: `data/archive/YYYY-MM.json` (576 mentions since
+  2026-09-20 when this was written).
+- eBay's figures, permanently and as numbers only: `data/prices/`.
+- Everything else, the items that name no game, for 14 days in the snapshot and then not at
+  all. That was the decision when the archive was built.
+
 ## 2026-10-07: start-up screen colours
 
 ### What was asked

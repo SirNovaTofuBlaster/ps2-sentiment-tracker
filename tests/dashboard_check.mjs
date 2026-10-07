@@ -28,7 +28,7 @@ function stubElement(id = '') {
         attributes: {},
         setAttribute(name, value) { this.attributes[name] = String(value); },
         getAttribute(name) { return this.attributes[name] ?? null; },
-        addEventListener() {}, scrollIntoView() {}, reset() {}, click() {}, remove() {},
+        addEventListener() {}, scrollIntoView() {}, focus() {}, reset() {}, click() {}, remove() {},
         appendChild(child) { this.children.push(child); },
     };
     // Like the DOM: assigning innerHTML replaces the element's children.
@@ -36,7 +36,10 @@ function stubElement(id = '') {
     return element;
 }
 const elements = new Map();
-const defaults = { filterSelect: 'all', typeSelect: 'all', sourceShow: 'all' };
+// What each menu shows when the page opens: the option marked "selected", else its first.
+const pageSelects = Object.fromEntries([...read('index.html').matchAll(/<select id="(\w+)"[^>]*>([\s\S]*?)<\/select>/g)]
+    .map(([, id, options]) => [id, (options.match(/<option value="([^"]*)" selected>/) || options.match(/<option value="([^"]*)"/) || [])[1]]));
+const defaults = { filterSelect: pageSelects.filterSelect, typeSelect: pageSelects.typeSelect, sourceShow: 'all' };
 const clipboard = { text: null };
 // Stand-in for Apple's podcast lookup API (the only network call the page makes itself).
 const appleShows = {
@@ -105,6 +108,11 @@ if (process.argv[2] === '--price-keys') {
 }
 
 const esc = (text) => String(text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+
+// The page opens on the items that name a game. Most checks below are about the whole feed,
+// so they run with the menu on Everything; the check of the opening view sets it itself.
+assert.equal(el('filterSelect').value, 'matched');
+el('filterSelect').value = 'all';
 
 let passed = 0;
 const check = async (name, fn) => {
@@ -736,7 +744,8 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     assert.doesNotMatch(odd, /<img|"">/);
     showPrices(prices, watchlist);
 
-    // The three places a game's name appears on the Tracker.
+    // The places a game's name appears: Most Mentioned Games, the table, the Demand Index
+    // and the games named in the last day.
     const item = (game) => ({ headline: `${game} news`, source: 'Eurogamer', link: 'https://e.example/', matched_game: game, sentiment: 50, timestamp: '2026-10-01 10:00 UTC' });
     context.__games = [item('Persona 4'), item('Persona 4'), item('Black'), { ...item(''), matched_game: null }];
     vm.runInContext('renderTopGames(__games)', context);
@@ -760,10 +769,17 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     const demand = el('demandList').innerHTML.split('<li ').slice(1);
     assert.deepEqual(demand.map(row => /ebay-quotes/.test(row)), [true, false]);
 
+    const noon = Date.parse('2026-10-01T12:00:00Z');
+    vm.runInContext(`renderRecentGames(__games, ${noon})`, context);
+    const named = el('todayList').innerHTML.split('<li ').slice(1);
+    assert.deepEqual(named.map(row => [/>(?:Persona 4|Black)<\/button>/.exec(row)?.[0], /ebay-quotes/.test(row)]),
+        [['>Persona 4</button>', true], ['>Black</button>', false]]);
+    assert.match(named[0], /<span class="ebay-quotes">[\s\S]*<span class="price-links"/);
+
     // No price file: every list looks as it did before prices existed.
     showPrices(null);
-    vm.runInContext('renderTopGames(__games); renderTable(__games)', context);
-    assert.doesNotMatch(el('topGamesList').innerHTML + el('feedTableBody').children.map(row => row.innerHTML).join(''), /ebay-quote/);
+    vm.runInContext(`renderTopGames(__games); renderTable(__games); renderRecentGames(__games, ${noon})`, context);
+    assert.doesNotMatch(el('topGamesList').innerHTML + el('todayList').innerHTML + el('feedTableBody').children.map(row => row.innerHTML).join(''), /ebay-quote/);
     assert.equal(figures('Silent Hill 2'), '');
 
     const css = read('retro.css');
@@ -1168,8 +1184,8 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.match(page, /<div id="statRemasters" class="stat-value is-news">/);
     assert.match(page, /<div id="statFeedsCount" class="stat-value is-live">/);
     assert.match(page, /<div id="statAvgSentiment" class="stat-value">/);
-    // The tag in the table and the one beside a game's rank are the same tag.
-    assert.equal((script.match(/<span class="remaster-tag /g) || []).length, 2);
+    // The tag in the table, beside a game's rank and beside a game named today is the same tag.
+    assert.equal((script.match(/<span class="remaster-tag /g) || []).length, 3);
     context.__items = [{ headline: 'Okami HD announced', source: 'Eurogamer', link: 'https://e.example/okami', matched_game: 'Okami',
         is_remaster_rumor: true, sentiment: 50, timestamp: '2026-10-07 08:00 UTC' }];
     vm.runInContext('allFeedData = __items; refreshDashboard();', context);
@@ -1204,6 +1220,328 @@ await check('the theme: four colours with one job each, readable on every ground
         assert.ok(!(css + page + guide).toUpperCase().includes(old.toUpperCase()), old);
     }
     vm.runInContext('allFeedData = []; refreshDashboard();', context);
+});
+
+await check('games first: what was named in the last day leads, and the table opens on the items that name a game', () => {
+    const page = read('index.html');
+    const now = Date.parse('2026-10-07T18:00:00Z');
+    const stamp = (ms) => new Date(ms).toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+    let link = 0;
+    const row = (source, hoursAgo, games, extra = {}, base = now) => ({
+        headline: `${source} item ${++link}`, source, link: `https://example.com/${link}`, matched_game: games.find(game => typeof game === 'string') ?? null,
+        matched_games: games, matched_in: games.length ? 'title' : null, is_remaster_rumor: false, sentiment: 50, timestamp: stamp(base - hoursAgo * 3600e3), ...extra });
+    context.__items = [
+        row('Eurogamer', 1, ['Okami'], { is_remaster_rumor: true }),
+        row('r/ps2', 2, ['Okami', 'Ico', 'Okami', 5, '  ']),               // one item, two games; a list with a repeat and junk in it
+        row('YouTube: Some Channel', 3, ['Okami']),
+        row('Destructoid', 4, ['Okami']),
+        row('r/ps2', 5, ['Ico']),
+        row('Eurogamer', 5.5, ['Okami']),                                   // the same source again: named once
+        row('4chan /vr/', 6, ['Kuon'], { sentiment: null, source_type: '4chan' }),
+        row('Forum: Lemmy games', 7, ['Retro'], { matched_in: 'body' }),    // found in the text only, twice:
+        row('r/retrogaming', 8, ['Retro'], { matched_in: 'body' }),         // still below every game a headline named
+        row('Push Square', 8.5, ['Mixed Game']),                            // one headline and two texts: three mentions,
+        row('Push Square', 8.6, ['Mixed Game'], { matched_in: 'body' }),    // but below Ico's two headlines
+        row('Kotaku', 8.7, ['Mixed Game'], { matched_in: 'body' }),
+        row('Polygon', 9, []), row('Kotaku', 10, []), row('VG247', 23.9, []),
+        row('Gematsu', 20, ['Zeta Game', 'Alpha Game']),                    // level on every count and on time: by name
+        row('Eurogamer', 24.1, ['God Hand']),                               // a day and six minutes old: not "the last 24 hours"
+        row('Gematsu', 100, ['Rule of Rose']),
+        row('Kotaku', -0.5, ['Haunting Ground']),                           // a feed whose clock runs half an hour ahead
+        row('Kotaku', -3, ['Silent Hill 2']),                               // three hours ahead is a wrong date, not news
+        { headline: 'An older item with one game and no list', source: 'Push Square', link: 'https://example.com/old', matched_game: 'Black',
+            is_remaster_rumor: false, sentiment: 50, timestamp: stamp(now - 12 * 3600e3) },
+        { headline: 'No date at all', source: 'Push Square', link: 'https://example.com/undated', matched_game: 'Cars', matched_games: ['Cars'] },
+        row('<b>Evil & Co</b>', 13, ['Ratchet & Clank <3']),                // names and sources are somebody else's text
+        row('r/retrogaming', 30, [], { headline: 'Retro handhelds worth buying' }),
+    ];
+    vm.runInContext('feedConfig = JSON.parse(__text); rebuildSourceIndex(); allFeedData = __items; visibleFeedData = __items; gameFilter = null;', context);
+    const recent = evalJson(`recentGames(__items, ${now})`);
+    assert.deepEqual([recent.items, recent.naming], [19, 16], 'nineteen items in the window, sixteen of them naming a game');
+    assert.deepEqual(recent.games.map(game => [game.name, game.headline, game.text]),
+        [['Okami', 5, 0], ['Ico', 2, 0], ['Mixed Game', 1, 2], ['Haunting Ground', 1, 0], ['Kuon', 1, 0], ['Black', 1, 0],
+            ['Ratchet & Clank <3', 1, 0], ['Alpha Game', 1, 0], ['Zeta Game', 1, 0], ['Retro', 0, 2]],
+        'by headlines, then by all mentions, then the most recent, then by name; text-only last whatever its count');
+    assert.deepEqual(recent.games[0].sources, ['Eurogamer', 'r/ps2', 'YouTube: Some Channel', 'Destructoid']);
+    assert.equal(recent.games[0].remasters, 1);
+
+    vm.runInContext(`renderRecentGames(__items, ${now})`, context);
+    assert.equal(el('todaySummary').textContent,
+        '16 items out of 19 published in the last 24 hours named a PS2 game: 10 games. The other 3 items are in the table further down, under Everything.');
+    const rows = el('todayList').innerHTML.split('<li ').slice(1);
+    assert.equal(rows.length, 10);
+    assert.match(rows[0], /onclick="showGameRows\(0\)"[^>]*class="recent-game text-cyan-300 font-bold">Okami<\/button> <span class="remaster-tag [^"]*">1 remaster<\/span>/);
+    assert.match(rows[0], />5 mentions<\/span>/);
+    assert.match(rows[1], /class="recent-game text-cyan-300">Ico<\/button>/, 'only the first name is bold');
+    assert.match(rows[0], /Eurogamer · r\/ps2 · YouTube: Some Channel <span class="text-slate-500">\+1 more<\/span>/, 'three sources named, the rest counted');
+    assert.match(rows[2], />Mixed Game<\/button><\/span>\s*<span[^>]*>3 mentions<\/span>/, 'the count is of every mention, headline or text');
+    assert.match(rows[4], />Kuon<\/button><\/span>\s*<span[^>]*>1 mention<\/span>/);
+    assert.match(rows[4], /4chan \/vr\//);
+    assert.match(rows[9], />Retro<\/button> <span class="[^"]*" title="Named in the text under a headline, not in the headline itself\. These are wrong more often\.">in the text only<\/span>/);
+    assert.match(rows[9], />2 mentions<\/span>/);
+    assert.doesNotMatch(rows.slice(0, 9).join(''), /in the text only/);
+    assert.ok(rows.every(html => /class="price-links"/.test(html)), 'every game carries its price links');
+    assert.match(rows[6], /onclick="showGameRows\(6\)"[^>]*>Ratchet &amp; Clank &lt;3<\/button>/);
+    assert.match(rows[6], /&lt;b&gt;Evil &amp; Co&lt;\/b&gt;/);
+    assert.doesNotMatch(el('todayList').innerHTML, /<b>Evil|Clank <3/, 'nothing from a feed reaches the page as markup');
+    assert.deepEqual([...el('todayList').innerHTML.matchAll(/onclick="showGameRows\((\d+)\)"/g)].map(m => Number(m[1])), [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    assert.doesNotMatch(el('todayList').innerHTML, /God Hand|Rule of Rose|Silent Hill 2|Cars|Polygon|VG247/, 'nothing older, nothing undated, nothing without a game');
+    assert.equal(el('todayListToggle').classList.contains('hidden'), true, 'ten games fit without a button');
+    assert.deepEqual(evalJson('[LIST_FOLD.todayList, RECENT_HOURS]'), [10, 24]);
+    assert.match(rows[4], /<div class="mt-1 text-\[11px\] text-slate-400">4chan \/vr\/<\/div>/, 'one source: its name and nothing after it');
+    // The stylesheet says this about the new parts and nothing more: the first name keeps its
+    // bold (no "font: inherit"), nothing is hidden, a name in the list keeps the height every
+    // button has on a phone and the button in the sentence over the table stays near the text.
+    const css = read('retro.css').replace(/\/\*[\s\S]*?\*\//g, '');
+    const about = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(rule => [rule[1], rule[2]].map(part => part.replace(/\s+/g, ' ').trim()))
+        .filter(([selector]) => /recent-game|#today|#feedSummary/.test(selector));
+    assert.deepEqual(about, [
+        ['body .recent-game', 'background: transparent; border: 0; padding: 0; text-align: left; cursor: pointer;'],
+        ['body .recent-game:hover, body .recent-game:focus-visible', 'text-decoration: underline; text-underline-offset: 3px;'],
+        ['body #feedSummary .recent-game', 'min-height: 2.1rem; vertical-align: middle;'],
+        ['body #todayList > li > div:first-child, body #demandList > li > div:first-child, body #topGamesList > li > div:first-child, body #pricesList > li > div:first-child',
+            'flex-wrap: wrap; row-gap: .25rem; font-size: .8125rem;'],
+    ]);
+    assert.match(css, /body main button, body main a\.bg-slate-800, body main \.from-blue-600 \{\s*min-height: 2\.75rem;/);
+    // Everything the stylesheet hides. A rule added here on purpose belongs in this list; one
+    // that hides the new list or the line over the table by where it sits does not.
+    assert.deepEqual([...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(rule => /display:\s*none|visibility:\s*hidden/.test(rule[2])).map(rule => rule[1].replace(/\s+/g, ' ').trim()), [
+        'body .is-folded > .list-extra', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
+        'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
+    ]);
+
+    // The list sits first on the Tracker, above the Demand Index and the table.
+    const order = ['class="stat-strip"', 'id="todaySection"', 'id="demandSection"', 'id="feedSection"'].map(mark => page.indexOf(mark));
+    assert.ok(order.every((at, i) => at > 0 && (i === 0 || at > order[i - 1])), order.join(' '));
+    assert.match(page, /<div id="todaySection" class="bg-ps2card p-6">\s*<div class="flex items-start justify-between gap-4 mb-4">\s*<div>\s*<h2>Named in the last 24 hours<\/h2>\s*<p id="todaySummary" class="text-xs text-slate-400">Loading\.\.\.<\/p>/);
+    assert.match(page, /<ol id="todayList" class="zebra"><\/ol>\s*<button type="button" id="todayListToggle" onclick="toggleList\('todayList'\)" aria-controls="todayList"/);
+
+    // The edges of the window and of the order, each on a small feed of its own.
+    const edge = (items) => { context.__edge = items; return evalJson(`recentGames(__edge, ${now})`).games; };
+    assert.deepEqual(edge([row('Kotaku', -0.9, ['A']), row('Kotaku', -1.5, ['B']), row('Kotaku', 23.9, ['C']), row('Kotaku', 24, ['D'])]).map(game => game.name), ['A', 'C'],
+        'an hour of grace for a clock that runs ahead and no more; a day and not a minute over');
+    assert.deepEqual(edge([row('A', 5, ['Early']), row('B', 3, ['Late']), row('C', 4, ['Late']), row('D', 2, ['Early'])]).map(game => [game.name, game.latest]),
+        [['Early', stamp(now - 2 * 3600e3)], ['Late', stamp(now - 3 * 3600e3)]], 'a game is as recent as its newest mention, whatever order the items came in');
+    // Which games an item names is decided in one place, for the list, the table and its line.
+    context.__odd = [{ ...row('Kotaku', 1, []), matched_games: ['Listed Only'] }, { ...row('Kotaku', 2, []), matched_game: 'Old Style', matched_games: [] },
+        { ...row('Kotaku', 3, ['No Source']), source: undefined }, row('Kotaku', 4, [])];
+    assert.deepEqual(evalJson('__odd.map(gamesOf)'), [['Listed Only'], ['Old Style'], ['No Source'], []]);
+    assert.deepEqual(edge(context.__odd).map(game => [game.name, game.sources]), [['Listed Only', ['Kotaku']], ['Old Style', ['Kotaku']], ['No Source', []]]);
+    context.__edge = [row('One', 1, ['Solo'], { is_remaster_rumor: true }), row('Two', 2, ['Solo'], { is_remaster_rumor: true }), row('Three', 3, ['Solo'])];
+    vm.runInContext(`renderRecentGames(__edge, ${now})`, context);
+    assert.match(el('todayList').innerHTML, />2 remaster<\/span>/);
+    assert.match(el('todayList').innerHTML, /<div class="mt-1 text-\[11px\] text-slate-400">One · Two · Three<\/div>/, 'three sources: all named and nothing "more"');
+    vm.runInContext('renderTopGames(__edge)', context);
+    assert.match(el('topGamesList').innerHTML, />2 remaster<\/span>/);
+
+    // A quiet day, and a feed that has not moved, each say so instead of showing an empty box.
+    vm.runInContext(`renderRecentGames(__items.filter(item => !item.matched_game), ${now})`, context);
+    assert.equal(el('todaySummary').textContent, 'None of the 3 items published in the last 24 hours names a PS2 game.');
+    assert.match(el('todayList').innerHTML, /No games to show yet\./);
+    assert.deepEqual(evalJson('recentGameNames'), [], 'and no name is left to click');
+    vm.runInContext(`renderRecentGames(__items, ${now + 30 * 86400e3})`, context);
+    assert.match(el('todaySummary').textContent, /^Nothing published in the last 24 hours has come in\./);
+    // Twelve games: ten show, a button opens the other two.
+    context.__many = Array.from({ length: 12 }, (_, i) => row('Eurogamer', 1 + i, [`Game ${i}`]));
+    vm.runInContext(`renderRecentGames(__many, ${now})`, context);
+    assert.equal((el('todayList').innerHTML.match(/list-extra/g) || []).length, 2);
+    assert.match(el('todayListToggle').innerHTML, /^Show 2 more/);
+    assert.equal(el('todayListToggle').classList.contains('hidden'), false);
+    assert.equal(el('todaySummary').textContent, '12 items out of 12 published in the last 24 hours named a PS2 game: 12 games.', 'no "other 0 items"');
+    // A big day: nothing is left out however long the feed or the list, the numbers are written
+    // for reading, and a name past the fold works like any other.
+    const pad = (n) => String(n).padStart(2, '0');
+    context.__big = Array.from({ length: 1200 }, (_, i) => row('Eurogamer', 1 + (i % 20), [`Game ${pad(i % 30)}`]));
+    const big = evalJson(`recentGames(__big, ${now})`);
+    assert.deepEqual([big.items, big.naming, big.games.length, [...new Set(big.games.map(game => game.headline))]], [1200, 1200, 30, [40]]);
+    vm.runInContext(`visibleFeedData = __big; renderRecentGames(__big, ${now})`, context);
+    assert.equal(el('todaySummary').textContent, '1,200 items out of 1,200 published in the last 24 hours named a PS2 game: 30 games.');
+    assert.equal(el('todayList').innerHTML.split('<li ').length - 1, 30);
+    assert.equal((el('todayList').innerHTML.match(/list-extra/g) || []).length, 20);
+    assert.equal(el('todayList').classList.contains('is-folded'), true);
+    vm.runInContext("toggleList('todayList'); showGameRows(29)", context);
+    assert.equal(evalJson('gameFilter'), evalJson('recentGameNames[29]'));
+    assert.equal(el('todayList').classList.contains('is-folded'), false, 'a list that was opened stays open when a name in it is pressed');
+    assert.equal(el('feedTableBody').children.length, 40);
+    vm.runInContext("toggleList('todayList'); clearGameFilter()", context);
+    assert.equal(el('feedSummary').textContent, '1,200 of 1,200 items name a PS2 game.');
+    el('filterSelect').value = 'all';
+    vm.runInContext('onFeedFilterChange()', context);
+    assert.equal(el('feedSummary').textContent, 'Everything: 1,200 items, 1,200 of them naming a PS2 game.');
+    // One game with more items than a page holds: the next page is still that game's.
+    context.__long = [...Array.from({ length: 130 }, (_, i) => row('Eurogamer', 1 + (i % 20), ['Big Game'])), row('Kotaku', 1, ['Small Game'])];
+    vm.runInContext(`visibleFeedData = __long; renderRecentGames(__long, ${now}); showGameRows(0); goToPage(2)`, context);
+    assert.deepEqual([evalJson('gameFilter'), el('feedTableBody').children.length], ['Big Game', 30]);
+    assert.match(el('feedSummary').innerHTML, /^The 130 items in the feed that name Big Game\. <button/);
+    assert.match(el('pagination').innerHTML, /Showing 101–130 of 130/);
+    vm.runInContext(`clearGameFilter(); renderRecentGames(__big, ${now})`, context);
+    assert.equal(el('todayListToggle').classList.contains('hidden'), false);
+    vm.runInContext(`renderRecentGames([], ${now})`, context);
+    assert.equal(el('todayListToggle').classList.contains('hidden'), true, 'an empty list has no button left under it');
+    el('filterSelect').value = 'matched';
+
+    // The table opens on the items that name a game, and its line says what is shown: with the
+    // box and the menus applied, so it never describes rows that are not there.
+    assert.match(page, /<option value="matched" selected>PS2 Games Only<\/option>\s*<option value="remaster">Remaster News Only<\/option>\s*<option value="all">Everything<\/option>/);
+    // The line has a row to itself between the menus and the table, so its length moves nothing;
+    // a change is announced, and it can take the keyboard's place when a button in it goes.
+    assert.match(page, /<\/select>\s*<\/div>\s*<\/div>\s*<p id="feedSummary" tabindex="-1" aria-live="polite" class="text-xs text-slate-400 mb-4">[^<]*<\/p>\s*<div class="overflow-x-auto">\s*<table/);
+    const tableRows = () => el('feedTableBody').children.filter(child => /data-col="source"/.test(child.innerHTML));
+    const shown = (filter, search = '', type = 'all') => {
+        el('filterSelect').value = filter; el('searchInput').value = search; el('typeSelect').value = type;
+        vm.runInContext('onFeedFilterChange()', context);
+        return [tableRows().length, el('feedSummary').textContent];
+    };
+    vm.runInContext(`visibleFeedData = __items; renderRecentGames(__items, ${now})`, context);
+    assert.deepEqual(shown('matched'), [20, '20 of 24 items name a PS2 game. Choose Everything for the other 4.']);
+    assert.deepEqual(shown('all'), [24, 'Everything: 24 items, 20 of them naming a PS2 game.']);
+    assert.deepEqual(shown('remaster'), [1, '1 of 24 items is flagged as remaster news.']);
+    assert.deepEqual(shown('all', 'ico'), [2, 'Listing 2 of the 24 items in the feed.'], 'a search looks at every game an item names, not only the first');
+    assert.deepEqual(shown('matched', 'polygon'), [0, 'Listing 0 of the 20 items that name a PS2 game.']);
+    assert.deepEqual(shown('matched', '', 'reddit'), [3, 'Listing 3 of the 20 items that name a PS2 game.']);
+    assert.deepEqual(shown('matched', '', '4chan'), [1, 'Listing 1 of the 20 items that name a PS2 game.']);
+    assert.deepEqual(shown('remaster', 'nothing like this'), [0, 'Listing 0 of the 1 item flagged as remaster news.']);
+    assert.match(page, /<select id="filterSelect" onchange="onFeedFilterChange\(\)" aria-label="Which items to show"/);
+    vm.runInContext('visibleFeedData = __odd', context);
+    assert.deepEqual(shown('matched'), [3, '3 of 4 items name a PS2 game. Choose Everything for the other 1.']);
+    assert.deepEqual(shown('all', 'old style'), [1, 'Listing 1 of the 4 items in the feed.']);
+    // One of anything is written as one.
+    vm.runInContext('visibleFeedData = __items.slice(0, 1)', context);
+    assert.deepEqual([shown('matched')[1], shown('remaster')[1], shown('all')[1], shown('matched', 'x')[1]],
+        ['1 of 1 item names a PS2 game.', '1 of 1 item is flagged as remaster news.', 'Everything: 1 item, 1 of them naming a PS2 game.', 'Listing 0 of the 1 item that names a PS2 game.']);
+    vm.runInContext('visibleFeedData = __items', context);
+    assert.doesNotMatch(vm.runInContext('filterFeedItems.toString()', context), /`Showing|'Showing/, 'the line under the table says "Showing 1–100 of 412": this one starts another way');
+    for (const control of ['searchInput" oninput', 'filterSelect" onchange', 'typeSelect" onchange']) {
+        assert.ok(page.includes(`id="${control}="onFeedFilterChange()"`), control);
+    }
+
+    // A row names every game its item names: the first leads, the rest follow.
+    shown('all');
+    const cell = (headline) => tableRows().map(child => child.innerHTML).find(html => html.includes(headline)).match(/<td data-col="game"[\s\S]*?<\/td>/)[0];
+    assert.match(cell('r/ps2 item 2'), /text-cyan-300">Okami<span class="price-links"[\s\S]*<div class="[^"]*">also names Ico<\/div>/);
+    assert.match(cell('Gematsu item 16'), />Zeta Game<[\s\S]*also names Alpha Game</);
+    assert.doesNotMatch(cell('Eurogamer item 1'), /also names/);
+    assert.match(cell('Polygon item 13'), /data-unmatched[^>]*><span class="text-slate-500">Unmatched \/ General<\/span>/);
+    context.__crowd = [row('r/ps2', 1, ['A<1>', 'B<2>', 'C3', 'D4', 'E5', 'F6', 'The G7 Saga', 'G7 Two'])];
+    vm.runInContext('visibleFeedData = __crowd; filterFeedItems();', context);
+    assert.match(tableRows()[0].innerHTML, /text-cyan-300">A&lt;1&gt;<[\s\S]*also names B&lt;2&gt;, C3, D4, E5 and 3 more<\/div>/);
+    assert.doesNotMatch(tableRows()[0].innerHTML, /A<1>|B<2>/);
+    // A search that found games far down an item's list shows them, in their order, not "and 3
+    // more": typed in capitals, found in the middle of a name, with the space a phone leaves.
+    for (const typed of ['G7', ' g7 ']) {
+        assert.equal(shown('all', typed)[0], 1, typed);
+        assert.match(tableRows()[0].innerHTML, /also names The G7 Saga, G7 Two, B&lt;2&gt;, C3 and 3 more<\/div>/, typed);
+    }
+    vm.runInContext('renderTopGames(__crowd)', context);
+    assert.equal(el('topGamesSummary').textContent, 'Share of all PS2 game mentions: 8 mentions across 8 games.', 'Most Mentioned Games counts every one of them');
+    context.__crowd = [row('r/ps2', 1, ['A', 'B', 'C', 'D', 'E'])];
+    vm.runInContext('visibleFeedData = __crowd;', context);
+    shown('all');
+    assert.match(tableRows()[0].innerHTML, /also names B, C, D, E<\/div>/, 'four others: all named and nothing "more"');
+    vm.runInContext('visibleFeedData = __items; filterFeedItems();', context);
+
+    // A game's name in the list opens the table on exactly the items that name it, from the
+    // whole feed, whatever the box and the menus said; and the table says so.
+    let scrolled = 0, focused = 0;
+    el('feedSection').scrollIntoView = () => { scrolled++; };
+    el('feedSummary').focus = (how) => { focused += how.preventScroll ? 1 : 100; };
+    el('filterSelect').value = 'remaster'; el('typeSelect').value = 'podcast'; el('searchInput').value = 'something else';
+    vm.runInContext('showGameRows(1)', context);
+    assert.deepEqual([el('searchInput').value, el('filterSelect').value, el('typeSelect').value, scrolled, focused], ['', 'matched', 'all', 1, 1]);
+    assert.deepEqual(tableRows().map(child => child.innerHTML.match(/r\/ps2 item \d+/)[0]), ['r/ps2 item 2', 'r/ps2 item 5']);
+    assert.match(cell('r/ps2 item 2'), /text-cyan-300">Ico<[\s\S]*also names Okami</, 'the game asked for leads its rows');
+    assert.match(cell('r/ps2 item 2'), /aria-label="Price lookups for Ico"/);
+    assert.doesNotMatch(cell('r/ps2 item 2'), /Price lookups for Okami/, 'with its own prices, not the first game\'s');
+    assert.equal(el('feedSummary').innerHTML,
+        'The 2 items in the feed that name Ico. <button type="button" onclick="clearGameFilter()" class="recent-game text-cyan-400 underline">Back to every game</button>');
+    vm.runInContext('showGameRows(1)', context);
+    assert.deepEqual([scrolled, focused], [2, 2], 'pressed again from further up the page, it goes to the table again');
+    vm.runInContext('showGameRows(9)', context);   // Retro: not the subreddit with "retro" in its name, not the headline about handhelds
+    assert.deepEqual(tableRows().map(child => child.innerHTML.match(/(?:Forum: Lemmy games|r\/retrogaming) item \d+/)[0]), ['Forum: Lemmy games item 8', 'r/retrogaming item 9']);
+    vm.runInContext('showGameRows(6)', context);
+    assert.match(el('feedSummary').innerHTML, /^The 1 item in the feed that names Ratchet &amp; Clank &lt;3\. <button/);
+    vm.runInContext('showGameRows(99)', context);
+    assert.equal(evalJson('gameFilter'), 'Ratchet & Clank <3', 'a name that is not there changes nothing');
+    vm.runInContext("gameFilter = 'Gone <b>'; filterFeedItems()", context);
+    assert.match(el('feedSummary').innerHTML, /^No item in the feed names Gone &lt;b&gt; now\. <button/);
+    vm.runInContext('showGameRows(6)', context);
+    // It ends with the button, which hands the keyboard to the line it was in, or with any
+    // change made by hand.
+    focused = 0;
+    vm.runInContext('clearGameFilter()', context);
+    assert.deepEqual([evalJson('gameFilter'), tableRows().length, el('feedSummary').textContent, focused],
+        [null, 20, '20 of 24 items name a PS2 game. Choose Everything for the other 4.', 1]);
+    vm.runInContext('showGameRows(0)', context);
+    assert.equal(tableRows().length, 5);
+    assert.deepEqual(shown('all', 'kuon'), [1, 'Listing 1 of the 24 items in the feed.']);
+    assert.deepEqual([evalJson('gameFilter'), focused], [null, 2], 'typing in the box keeps the keyboard in the box');
+
+    // Most Mentioned Games counts the same way: an item that names two games is a mention of each.
+    vm.runInContext('renderTopGames(__items)', context);
+    assert.equal(el('topGamesSummary').textContent, 'Share of all PS2 game mentions: 22 mentions across 14 games.');
+    assert.equal(el('tabMentionsCount').textContent, '14');
+    const ranked = el('topGamesList').innerHTML.split('<li ').slice(1);
+    assert.match(ranked[0], /#1 Okami[\s\S]*>5 mentions · 23%</);
+    assert.match(ranked.find(html => / Ico</.test(html)), />2 mentions · 9\.1%</, 'named second in one item, first in another');
+    assert.ok(ranked.some(html => / Alpha Game</.test(html)), 'a game only ever named second is ranked too');
+
+    // The page draws all of it by itself, from the sources that are switched on.
+    const feeds = context.__feeds;
+    const [first, second] = feeds.sources.filter(src => src.enabled && src.type === 'news');
+    const live = (src, game, hoursAgo) => row(src.name, hoursAgo, [game], { source_type: 'news', feed: src.url }, Date.now());
+    context.__live = [{ ...live(first, 'Okami', 1), is_remaster_rumor: true }, live(second, 'Ico', 3), live(first, 'Ico', 4), row('Polygon', 2, [], {}, Date.now())];
+    el('todaySummary').textContent = ''; el('todayList').innerHTML = ''; el('feedSummary').textContent = '';
+    el('searchInput').value = ''; el('filterSelect').value = 'matched'; el('typeSelect').value = 'all';
+    vm.runInContext('feedConfig = JSON.parse(__text); allFeedData = __live; onConfigChanged();', context);
+    assert.equal(el('todaySummary').textContent,
+        '3 items out of 4 published in the last 24 hours named a PS2 game: 2 games. The other 1 item is in the table further down, under Everything.');
+    assert.match(el('todayList').innerHTML, />Ico<\/button>[\s\S]*>2 mentions<[\s\S]*>Okami<\/button>/);
+    assert.equal(el('feedSummary').textContent, '3 of 4 items name a PS2 game. Choose Everything for the other 1.');
+    assert.equal(shown('remaster')[1], '1 of 4 items is flagged as remaster news.');
+    // A game is chosen, and then the only source that named it is switched off: the table says so.
+    vm.runInContext('showGameRows(1)', context);
+    assert.equal(evalJson('gameFilter'), 'Okami');
+    vm.runInContext(`feedConfig.sources.find(src => src.url === ${JSON.stringify(first.url)}).enabled = false; onConfigChanged();`, context);
+    assert.equal(el('todaySummary').textContent,
+        '1 item out of 2 published in the last 24 hours named a PS2 game: 1 game. The other 1 item is in the table further down, under Everything.');
+    assert.doesNotMatch(el('todayList').innerHTML, /Okami/, 'a switched-off source leaves the list at once');
+    assert.equal(el('feedSummary').innerHTML,
+        'No item in the feed names Okami now. <button type="button" onclick="clearGameFilter()" class="recent-game text-cyan-400 underline">Back to every game</button>');
+    assert.equal(tableRows().length, 0);
+    vm.runInContext('clearGameFilter()', context);
+    assert.equal(el('feedSummary').textContent, '1 of 2 items names a PS2 game. Choose Everything for the other 1.');
+    assert.equal(shown('remaster')[1], '0 of 2 items are flagged as remaster news.', 'what a switched-off source flagged is not counted');
+    shown('matched');
+    vm.runInContext('showGameRows(0)', context);
+    assert.match(el('feedSummary').innerHTML, /^The 1 item in the feed that names Ico\. <button/, 'and its items are not brought back by a click on the game');
+    assert.equal(tableRows().length, 1);
+    // The choice lasts through a reload of the data, and follows the sources as they change.
+    vm.runInContext('refreshDashboard()', context);
+    assert.deepEqual([evalJson('gameFilter'), tableRows().length], ['Ico', 1]);
+    vm.runInContext(`feedConfig.sources.find(src => src.url === ${JSON.stringify(first.url)}).enabled = true; onConfigChanged();`, context);
+    assert.deepEqual([evalJson('gameFilter'), tableRows().length], ['Ico', 2]);
+    assert.match(el('feedSummary').innerHTML, /^The 2 items in the feed that name Ico\. <button/);
+    vm.runInContext('clearGameFilter()', context);
+    // A long feed through the page itself: nothing is cut short on the way to the list, a thread
+    // from 4chan is in it, and a list that was opened stays open through a click and a reload,
+    // which leaves the keyboard where it was.
+    context.__bigLive = [...Array.from({ length: 1200 }, (_, i) => row('Eurogamer', 1 + (i % 20), [`Game ${pad(i % 30)}`], {}, Date.now())),
+        row('4chan /vr/', 2, ['Kuon'], { sentiment: null, source_type: '4chan' }, Date.now())];
+    focused = 0;
+    vm.runInContext("allFeedData = __bigLive; onConfigChanged(); toggleList('todayList'); showGameRows(30);", context);
+    assert.equal(el('todaySummary').textContent, '1,201 items out of 1,201 published in the last 24 hours named a PS2 game: 31 games.');
+    assert.equal(evalJson('gameFilter'), 'Kuon');
+    vm.runInContext('refreshDashboard()', context);
+    assert.equal(el('todayList').classList.contains('is-folded'), false);
+    assert.deepEqual([evalJson('gameFilter'), tableRows().length, focused], ['Kuon', 1, 1]);
+    vm.runInContext("toggleList('todayList'); clearGameFilter()", context);
+    // Before the first scrape the stand-in items are shown, and nothing claims the robot is late.
+    vm.runInContext('feedConfig = JSON.parse(__text); allFeedData = fallbackData.items; onConfigChanged();', context);
+    assert.equal(el('todaySummary').textContent, 'No feed has been loaded, so there is nothing to list yet.');
+    assert.equal(el('feedSummary').textContent, '2 of 2 items name a PS2 game.', 'no "other 0"');
+
+    el('searchInput').value = ''; el('filterSelect').value = 'all';
+    vm.runInContext('gameFilter = null; allFeedData = []; refreshDashboard();', context);
 });
 
 console.log(`dashboard checks passed (${passed})`);

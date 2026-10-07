@@ -335,8 +335,12 @@ body .zebra > li:nth-child(even), body .zebra > tr:nth-child(even) { background-
    which would look like a broken stripe. Strong enough to show on either kind of row. */
 @media (hover: hover) { body .zebra > tr:hover { background-color: rgba(79, 168, 232, .08); } }
 
+/* A game's name in "Named in the last 24 hours" is a button that opens the table on it. */
+body .recent-game { background: transparent; border: 0; padding: 0; text-align: left; cursor: pointer; }
+body .recent-game:hover, body .recent-game:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+
 /* ---- Lists that fold away ------------------------------------------------
-   A ranked list shows its first rows (five, or 25 for Most Mentioned Games) until its
+   A ranked list shows its first rows (ten, five, or 25 for Most Mentioned Games) until its
    button is pressed. The script marks the rows past that point and flips "is-folded";
    nothing else is needed here. */
 body .is-folded > .list-extra { display: none; }
@@ -467,8 +471,12 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
   body main input[type="checkbox"] { width: 1.5rem; height: 1.5rem; }
   /* Buttons that sit inside a sentence stay closer to the size of the text */
   body #saveGuide button { min-height: 2.1rem; vertical-align: middle; }
+  /* A game's name in "Named in the last 24 hours" is there to be tapped, so it keeps the
+     full height above; "Back to every game" sits in the line over the table. */
+  body #feedSummary .recent-game { min-height: 2.1rem; vertical-align: middle; }
 
   /* Ranked lists: the count drops under a long title instead of squeezing it */
+  body #todayList > li > div:first-child,
   body #demandList > li > div:first-child,
   body #topGamesList > li > div:first-child,
   body #pricesList > li > div:first-child { flex-wrap: wrap; row-gap: .25rem; font-size: .8125rem; }

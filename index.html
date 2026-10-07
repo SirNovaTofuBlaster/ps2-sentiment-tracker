@@ -86,6 +86,17 @@
                 <div id="statAvgSentiment" class="stat-value">--</div>
             </div>
         </div>
+        <div id="todaySection" class="bg-ps2card p-6">
+            <div class="flex items-start justify-between gap-4 mb-4">
+                <div>
+                    <h2>Named in the last 24 hours</h2>
+                    <p id="todaySummary" class="text-xs text-slate-400">Loading...</p>
+                </div>
+            </div>
+            <ol id="todayList" class="zebra"></ol>
+            <button type="button" id="todayListToggle" onclick="toggleList('todayList')" aria-controls="todayList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
+        </div>
+
         <div id="demandSection" class="bg-ps2card p-6 hidden">
             <div class="flex items-start justify-between gap-4 mb-4">
                 <div>
@@ -98,19 +109,16 @@
         </div>
 
         <div id="feedSection" class="bg-ps2card p-6 scroll-mt-20">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-                <div>
-                    <h2>Live Ingestion &amp; Sentiment Stream</h2>
-                    <p class="text-xs text-slate-400">Incoming RSS items matched against the PS2 database.</p>
-                </div>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
+                <h2>Live Ingestion &amp; Sentiment Stream</h2>
                 <div class="feed-filters flex flex-wrap items-center gap-3">
-                    <input type="text" id="searchInput" oninput="filterFeedItems()" placeholder="Filter by game or headline..." class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none w-full sm:w-64">
-                    <select id="filterSelect" onchange="filterFeedItems()" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none">
-                        <option value="all">All Records</option>
-                        <option value="remaster">Remaster Rumors Only</option>
-                        <option value="matched">Matched PS2 Games Only</option>
+                    <input type="text" id="searchInput" oninput="onFeedFilterChange()" placeholder="Filter by game or headline..." class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none w-full sm:w-64">
+                    <select id="filterSelect" onchange="onFeedFilterChange()" aria-label="Which items to show" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none">
+                        <option value="matched" selected>PS2 Games Only</option>
+                        <option value="remaster">Remaster News Only</option>
+                        <option value="all">Everything</option>
                     </select>
-                    <select id="typeSelect" onchange="filterFeedItems()" aria-label="Source type" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none">
+                    <select id="typeSelect" onchange="onFeedFilterChange()" aria-label="Source type" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none">
                         <option value="all">All Sources</option>
                         <option value="news">News Sites</option>
                         <option value="reddit">Reddit</option>
@@ -121,6 +129,7 @@
                     </select>
                 </div>
             </div>
+            <p id="feedSummary" tabindex="-1" aria-live="polite" class="text-xs text-slate-400 mb-4">Incoming items matched against the PS2 database.</p>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
@@ -387,10 +396,14 @@
            A ranked list shows its first rows; a button under it opens the rest
            and closes it again. Rows past that point carry "list-extra", and the
            stylesheet hides those while the list has "is-folded". The Demand
-           Index shares the Tracker with the feed, so it shows five; Most
-           Mentioned Games has a page to itself and shows twenty-five.
+           Index shares the Tracker with the feed, so it shows five; the games
+           named in the last day show ten; Most Mentioned Games has a page to
+           itself and shows twenty-five.
         -------------------------------------------------------------------- */
-        const LIST_FOLD = { demandList: 5, topGamesList: 25 };   // rows shown while each list is folded
+        const LIST_FOLD = { todayList: 10, demandList: 5, topGamesList: 25 };   // rows shown while each list is folded
+        const RECENT_HOURS = 24;  // "named in the last 24 hours"
+        const SOURCES_NAMED = 3;  // a game's line names this many sources and counts the rest
+        const ALSO_NAMED = 4;     // a table row names this many further games and counts the rest
         const LIST_LONG = 25;     // the most rows the Demand Index holds
         const openLists = {};     // { demandList: true }: stays as you left it when the data reloads
         const listTotals = {};
@@ -501,7 +514,120 @@
             if (feedConfig) {
                 document.getElementById('statFeedsCount').innerText = feedConfig.sources.filter(s => s.enabled).length;
             }
+            renderRecentGames(items);
             renderTopGames(items);
+            filterFeedItems();
+        }
+
+        // Every game an item names (the scraper lists them all), falling back to the one
+        // game older items carry.
+        function gamesOf(item) {
+            const games = Array.isArray(item.matched_games) && item.matched_games.length ? item.matched_games : [item.matched_game];
+            return [...new Set(games.filter(game => typeof game === 'string' && game.trim()))];
+        }
+
+        const namesGame = (item) => gamesOf(item).length > 0;
+
+        // The front of the Tracker: the games named by what was published in the last day, and
+        // nothing else. Most of what is collected names no game at all; that stays in the table
+        // below, out of the way. Ordered by how many headlines named the game, so one found only
+        // in the text under a headline (where most wrong matches come from) comes last; then by
+        // all its mentions, then the most recent, then by name.
+        // "Published", not "collected": an item is dated by its source, so the backlog of a
+        // source added today is older than a day and goes straight to the table. (A source
+        // that gives no dates is dated by when its items were first seen, and would not.)
+        function recentGames(items, now = Date.now()) {
+            const since = now - RECENT_HOURS * 3600000;
+            const recent = items.filter(item => {
+                const when = parseUtc(item.timestamp)?.getTime();
+                return when > since && when <= now + 3600000;   // an hour's grace for a clock that runs ahead
+            });
+            const games = new Map();
+            let naming = 0;
+            for (const item of recent) {
+                const names = gamesOf(item);
+                if (names.length) naming++;
+                for (const name of names) {
+                    const game = games.get(name) || { name, headline: 0, text: 0, remasters: 0, latest: '', sources: [] };
+                    game[item.matched_in === 'body' ? 'text' : 'headline']++;
+                    if (item.is_remaster_rumor) game.remasters++;
+                    if (String(item.timestamp) > game.latest) game.latest = String(item.timestamp);
+                    if (item.source && !game.sources.includes(item.source)) game.sources.push(item.source);
+                    games.set(name, game);
+                }
+            }
+            const ranked = [...games.values()].sort((a, b) => b.headline - a.headline
+                || (b.headline + b.text) - (a.headline + a.text)
+                || cmpStr(b.latest, a.latest) || a.name.localeCompare(b.name));
+            return { items: recent.length, naming, games: ranked };
+        }
+
+        function renderRecentGames(items, now = Date.now()) {
+            const list = document.getElementById('todayList');
+            const summary = document.getElementById('todaySummary');
+            const recent = recentGames(items, now);
+            recentGameNames = recent.games.map(game => game.name);
+            const plural = (count, word) => `${count.toLocaleString('en')} ${word}${count === 1 ? '' : 's'}`;
+            if (!recent.games.length) {
+                summary.textContent = allFeedData === fallbackData.items ? 'No feed has been loaded, so there is nothing to list yet.'
+                    : recent.items ? `None of the ${plural(recent.items, 'item')} published in the last ${RECENT_HOURS} hours names a PS2 game.`
+                    : `Nothing published in the last ${RECENT_HOURS} hours has come in. "Last sync" at the top says when the robot last ran.`;
+                list.innerHTML = '<li class="px-3 py-3 text-xs text-slate-400">No games to show yet.</li>';
+                foldList('todayList', 0);
+                return;
+            }
+            const rest = recent.items - recent.naming;
+            summary.textContent = `${plural(recent.naming, 'item')} out of ${recent.items.toLocaleString('en')} published in the last ${RECENT_HOURS} hours named a PS2 game: `
+                + `${plural(recent.games.length, 'game')}.`
+                + (rest ? ` The other ${plural(rest, 'item')} ${rest === 1 ? 'is' : 'are'} in the table further down, under Everything.` : '');
+            list.innerHTML = recent.games.map((game, i) => {
+                const count = game.headline + game.text;
+                const shown = game.sources.slice(0, SOURCES_NAMED).map(esc).join(' · ');
+                const more = game.sources.length - SOURCES_NAMED;
+                return `
+                <li class="${rowClass('todayList', i)}">
+                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
+                        <span><button type="button" onclick="showGameRows(${i})" title="Show the items that name this game" class="recent-game text-cyan-300${i === 0 ? ' font-bold' : ''}">${esc(game.name)}</button>${game.remasters
+                            ? ` <span class="remaster-tag text-[10px] border px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}${game.headline
+                            ? '' : ' <span class="text-[10px] border border-slate-700 text-slate-400 px-1.5 py-0.5 whitespace-nowrap" title="Named in the text under a headline, not in the headline itself. These are wrong more often.">in the text only</span>'}</span>
+                        <span class="text-slate-300 whitespace-nowrap">${count} mention${count === 1 ? '' : 's'}</span>
+                    </div>
+                    <div class="mt-1 text-[11px] text-slate-400">${shown}${more > 0 ? ` <span class="text-slate-500">+${more} more</span>` : ''}</div>
+                    ${gamePricesHtml(game.name)}
+                </li>`;
+            }).join('');
+            foldList('todayList', recent.games.length);
+        }
+
+        // A game's name in that list opens the table on the items that name it: exactly those,
+        // from the whole feed, whatever the box and the menus said. (Putting the name in the
+        // search box would not do: "Final Fantasy X" is also the start of "Final Fantasy XII",
+        // and "Retro" is in the name of a subreddit.)
+        let recentGameNames = [];
+        let gameFilter = null;   // the one game the table is showing, or null
+        function showGameRows(index) {
+            const name = recentGameNames[index];
+            if (!name) return;
+            gameFilter = name;
+            document.getElementById('searchInput').value = '';
+            document.getElementById('filterSelect').value = 'matched';
+            document.getElementById('typeSelect').value = 'all';
+            filterFeedItems();
+            // The keyboard follows the eye: the next Tab starts from the table, not from the list.
+            document.getElementById('feedSummary').focus({ preventScroll: true });
+            document.getElementById('feedSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function clearGameFilter() {
+            gameFilter = null;
+            filterFeedItems();
+            // The button that was pressed is gone with the sentence it was in.
+            document.getElementById('feedSummary').focus({ preventScroll: true });
+        }
+
+        // The search box or a menu changed by hand: the table goes back to every game.
+        function onFeedFilterChange() {
+            gameFilter = null;
             filterFeedItems();
         }
                 // data/demand.json is written by demand.py, daily. The section stays hidden
@@ -552,17 +678,18 @@
 
         // Ranks every PS2 game the feed names by how many items mention it; recalculated on every
         // feed load and whenever a source is switched on or off. Shown on the "Most mentioned" page.
+        // An item that names three games is a mention of each, as it is for the list of the last
+        // day and for archive.py, demand.py and ebay_prices.py.
         function renderTopGames(items) {
             const list = document.getElementById('topGamesList');
             const summary = document.getElementById('topGamesSummary');
             const games = new Map();
-            items.forEach(item => {
-                if (!item.matched_game) return;
-                const game = games.get(item.matched_game) || { name: item.matched_game, count: 0, remasters: 0 };
+            items.forEach(item => gamesOf(item).forEach(name => {
+                const game = games.get(name) || { name, count: 0, remasters: 0 };
                 game.count++;
                 if (item.is_remaster_rumor) game.remasters++;
-                games.set(item.matched_game, game);
-            });
+                games.set(name, game);
+            }));
             const total = [...games.values()].reduce((sum, g) => sum + g.count, 0);
             const badge = document.getElementById('tabMentionsCount');
             badge.textContent = games.size ? String(games.size) : '';
@@ -832,10 +959,20 @@
             }
 
             const start = (currentPage - 1) * PAGE_SIZE;
+            // (Trimmed: a phone's keyboard leaves a space after a suggested word.)
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
             items.slice(start, start + PAGE_SIZE).forEach(item => {
                 const score = Math.max(0, Math.min(100, Number(item.sentiment) || 0));
                 const tone = score < 50 ? 'score-low' : score < 70 ? 'score-mid' : 'score-high';
                 const meta = TYPE_META[itemType(item)];
+                // An item can name several games. The column leads with the first, or with the
+                // one the table was opened on, and lists the others under it: the ones the search
+                // box found first, so that what was searched for is never among the uncounted.
+                const names = gamesOf(item);
+                const lead = gameFilter !== null && names.includes(gameFilter) ? gameFilter : (names[0] ?? null);
+                const rest = names.filter(name => name !== lead);
+                const found = (name) => query !== '' && name.toLowerCase().includes(query);
+                const others = [...rest.filter(found), ...rest.filter(name => !found(name))];
                 const row = document.createElement('tr');
                 row.className = 'border-b border-slate-800/40';
                 row.innerHTML = `
@@ -847,8 +984,10 @@
                         ${item.is_remaster_rumor ? '<span class="remaster-tag border text-[10px] px-1.5 py-0.5 mr-1">Remaster</span>' : ''}
                         ${esc(item.headline)}
                     </td>
-                    <td data-col="game"${item.matched_game ? '' : ' data-unmatched'} class="py-3.5 px-4 font-mono-custom text-cyan-300">${item.matched_game
-                        ? esc(item.matched_game) + gamePricesHtml(item.matched_game)
+                    <td data-col="game"${lead ? '' : ' data-unmatched'} class="py-3.5 px-4 font-mono-custom text-cyan-300">${lead
+                        ? esc(lead) + gamePricesHtml(lead) + (others.length
+                            ? `<div class="mt-1.5 text-[10px] text-slate-400">also names ${others.slice(0, ALSO_NAMED).map(esc).join(', ')}${
+                                others.length > ALSO_NAMED ? ` and ${others.length - ALSO_NAMED} more` : ''}</div>` : '')
                         : '<span class="text-slate-500">Unmatched / General</span>'}</td>
                     <td data-col="score" class="py-3.5 px-4">${itemType(item) === '4chan'
                         // Only the games a thread names are read from 4chan, so there is no mood to show.
@@ -908,14 +1047,47 @@
             const filterType = document.getElementById('filterSelect').value;
             const sourceType = document.getElementById('typeSelect').value;
 
-            renderTable(visibleFeedData.filter(item => {
-                const haystack = `${item.headline} ${item.matched_game || ''} ${item.source}`.toLowerCase();
-                if (!haystack.includes(query)) return false;
-                if (sourceType !== 'all' && itemType(item) !== sourceType) return false;
-                if (filterType === 'remaster') return !!item.is_remaster_rumor;
-                if (filterType === 'matched') return item.matched_game != null;
-                return true;
-            }));
+            const rows = gameFilter !== null
+                ? visibleFeedData.filter(item => gamesOf(item).includes(gameFilter))
+                : visibleFeedData.filter(item => {
+                    const haystack = `${item.headline} ${gamesOf(item).join(' ')} ${item.source}`.toLowerCase();
+                    if (!haystack.includes(query)) return false;
+                    if (sourceType !== 'all' && itemType(item) !== sourceType) return false;
+                    if (filterType === 'remaster') return !!item.is_remaster_rumor;
+                    if (filterType === 'matched') return namesGame(item);
+                    return true;
+                });
+
+            // What is on show and what is not, so that nobody takes the short list for the whole
+            // feed. The number is of the rows actually shown, with the box and the menus applied.
+            const total = visibleFeedData.length;
+            const naming = visibleFeedData.filter(namesGame).length;
+            const flagged = visibleFeedData.filter(item => item.is_remaster_rumor).length;
+            // ("Listing", not "Showing": the line under the table says "Showing 1–100 of 412", which
+            // is about the page of rows, and two sentences that start alike with different numbers
+            // read as a contradiction.)
+            const count = (n) => n.toLocaleString('en');
+            const items = (n) => `${count(n)} item${n === 1 ? '' : 's'}`;
+            const one = (n, single, several) => (n === 1 ? single : several);
+            const narrowed = query !== '' || sourceType !== 'all';
+            const summary = document.getElementById('feedSummary');
+            if (gameFilter !== null) {
+                summary.innerHTML = (rows.length
+                    ? `The ${items(rows.length)} in the feed that ${one(rows.length, 'names', 'name')} ${esc(gameFilter)}. `
+                    : `No item in the feed names ${esc(gameFilter)} now. `)
+                    + '<button type="button" onclick="clearGameFilter()" class="recent-game text-cyan-400 underline">Back to every game</button>';
+            } else if (filterType === 'matched') {
+                summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(naming)} that ${one(naming, 'names', 'name')} a PS2 game.`
+                    : `${count(naming)} of ${items(total)} ${one(naming, 'names', 'name')} a PS2 game.`
+                        + (total - naming ? ` Choose Everything for the other ${count(total - naming)}.` : '');
+            } else if (filterType === 'remaster') {
+                summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(flagged)} flagged as remaster news.`
+                    : `${count(flagged)} of ${items(total)} ${one(flagged, 'is', 'are')} flagged as remaster news.`;
+            } else {
+                summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(total)} in the feed.`
+                    : `Everything: ${items(total)}, ${count(naming)} of them naming a PS2 game.`;
+            }
+            renderTable(rows);
         }
 
         // ===================== Sources & Weights (feeds.json) =====================

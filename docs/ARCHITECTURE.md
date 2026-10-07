@@ -189,7 +189,37 @@ they exist, `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.js
   numerals as digits, "Getaway, The" turned round), and the price index is keyed by that. A
   pinned game's `search` words in `ebay_watchlist.json` are a second key for it. This is the
   rule the script itself uses to decide two titles are one game.
-- **Two lists fold away.** The Demand Index renders up to 25 rows and shows five; Most
+- **Games first.** Most items name no PS2 game (of the 654 published in the day before
+  this was built, 53 named one), so the Tracker leads with the ones that do. *Named in the
+  last 24 hours* (`recentGames()`) lists every game named by an item published in the last
+  day, with an hour's grace for a source whose clock runs ahead. "Published" is the item's
+  `timestamp`: the date its source gave it, or the time the scraper first saw it when the
+  source gives none, so a new source without dates would put its backlog in the list. The
+  order is: most headlines first, so a game found only in body text (`matched_in: "body"`,
+  the source of most wrong matches) comes after every game a headline named; then all
+  mentions, then the most recent, then by name. `gamesOf()` gives the games an item names
+  (`matched_games`, or `matched_game` for older items, repeats and non-names dropped) and is
+  the one definition the list, Most Mentioned Games, the table's menu, its search and its
+  rows share: an item that names three games is a mention of each, as it is for
+  `archive.py`, `demand.py` and `ebay_prices.py`. (Until this change Most Mentioned Games
+  counted an item's first game only, and left out a game that was only ever named second.)
+- **A game's name opens the table on that game.** `showGameRows()` sets `gameFilter`, and
+  the table then shows the items whose games include exactly that name, from the whole
+  feed, with the box and the menus put aside. It is not a text search: "Final Fantasy X"
+  begins "Final Fantasy XII" and "Retro" is in a subreddit's name. *Back to every game*, or
+  any change to the box or a menu (`onFeedFilterChange()`), clears it; a reload of the
+  data and a change of page keep it. Both buttons hand the keyboard to the line over the
+  table (`tabindex="-1"`), since the one that was pressed is far up the page or gone.
+- **The table opens on the items that name a game** (`filterSelect` starts on `matched`).
+  The line over the table (`#feedSummary`, on a row of its own so that its length does
+  not push the box and the menus about) is written from the rows that are showing, with the box and the menus applied,
+  and says how many are left out; *Everything* shows the rest. It never starts with
+  "Showing", which is how the line under the table counts the rows of the page. A row
+  leads with the item's first game (or the one the table was opened on) and lists up to
+  four others under it, the ones the search box found first. Nothing is dropped from the
+  snapshot: this is a view.
+- **Three lists fold away.** The last 24 hours renders every game and shows ten; the Demand
+  Index renders up to 25 rows and shows five; Most
   Mentioned Games renders every game and shows 25 (`LIST_FOLD`). Rows past that point are
   marked, and a class on the list hides them until the button under it is pressed. The stylesheet does the hiding, so the script only flips a class and rewrites the
   button. An opened list stays open when the data reloads, its "Show fewer" button follows the
@@ -545,10 +575,18 @@ reason saving without a token is the default and tokens should be short-lived.
     it installs nothing, and that only `data/prices` is committed
 - **Scraper, added 2026-10-07**: the snapshot keeps two weeks, newest first, and past its
   ceiling it is the oldest items that go.
-- **Dashboard, added 2026-10-06 and 2026-10-07**: the two ranked lists fold (five rows, 25
+- **Dashboard, added 2026-10-07 (games first)**: which items count as the last 24 hours, the
+  order of the games, what each line shows and escapes, the three empty states, the fold at
+  ten, a feed of 1,200 items; that a click on a name shows exactly that game's items, on
+  every page of them, and how it is undone; every wording of the line over the table,
+  down to one item and none; rows that name several games; that Most Mentioned Games
+  counts the same way; that the page draws the list by itself, a switched-off source
+  leaves it at once and a reload keeps the chosen game; every rule in the stylesheet about
+  the new parts.
+- **Dashboard, added 2026-10-06 and 2026-10-07**: the ranked lists fold (five rows, 25
   rows) and open again, and Most Mentioned Games leaves no game out; the eBay prices page orders, formats and escapes its rows, narrows them with the
   search box, dims a price only when it is overdue for its level, and says what to do when
-  there is no price file; the medians appear under a game's name in all three places, find
+  there is no price file; the medians appear under a game's name in all four places, find
   the game under another spelling, and show nothing rather than another game's figure; a
   price file the page cannot draw leaves the rest of the page working; prices are fetched from
   the site with no token, before the lists are drawn; the three pages switch by tab and by
