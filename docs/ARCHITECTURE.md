@@ -86,20 +86,44 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
 8. **Abort rule.** If more than half of the due news/Reddit feeds failed, or nothing was
    collected, the run exits non-zero and writes nothing.
 9. **Merge and save.** New items replace the same link in the previous snapshot, items older than
-   14 days drop out (5000 max), and the files are only rewritten when something changed.
+   14 days drop out, and the files are only rewritten when something changed. A ceiling of
+   12,000 items guards the file's size; two weeks is about 8,400 at the current number of
+   sources, so the 14 days are what normally applies.
 
 ## The dashboard
 
 `index.html` loads `data/sentiment_feed.json`, `feeds.json` and `data/feed_status.json`, and, when
-they exist, `data/demand.json` and `data/prices/latest.json`.
+they exist, `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.json`.
 
-- **Three lists fold away.** Demand Index and Most Mentioned Games render up to 25 rows and
-  eBay Asking Prices renders every game it tracks, each marking the rows past the fifth; a
-  class on the list hides those until the button under it is pressed. The stylesheet does the
-  hiding, so the script only flips a class and rewrites the button. An opened list stays open
-  when the data reloads, its "Show fewer" button follows the reader down the list, and folding
-  it returns to the top of its section.
-- **Every second row is tinted** in those lists and in the feed table (`.zebra` in `retro.css`).
+- **Three pages in one file.** A tab bar switches between *Tracker*, *Most mentioned* and
+  *eBay prices*; each is a wrapper (`viewDashboard`, `viewMentions`, `viewPrices`) and only
+  one is displayed. `#mentions` and `#prices` in the address select the second and third; any
+  other fragment selects the Tracker and scrolls to the part it names, so the header's
+  *Sources* link works from every page. Changing page adds one entry to the browser's
+  history, so Back returns to the page before; links, Back and Forward all go through
+  `showViewFromAddress()`, which also runs once more when the first load has finished.
+- **eBay medians beside every game.** `gamePricesHtml(title)` is what goes under a game's name
+  in the Demand Index, Most Mentioned Games and the feed table: the medians for eBay US and UK
+  when the game is priced (`priceFiguresHtml`), then the lookup chips. Prices are loaded
+  before those lists are drawn. The *eBay prices* page lists every tracked game with the
+  full figures and a search box. A read that fails (anything but a plain 404) keeps the
+  prices already loaded; with nothing loaded, the page says the file could not be read
+  rather than that the job has not run.
+- **Which price belongs to which name.** The price file names a game by its library title;
+  the feed may say "Persona 4" or "Kingdom Hearts 2". `priceKey()` reduces a title to the name
+  `search_terms()` in `ebay_prices.py` gives it (article dropped, "and" dropped, Roman
+  numerals as digits, "Getaway, The" turned round), and the price index is keyed by that. A
+  pinned game's `search` words in `ebay_watchlist.json` are a second key for it. This is the
+  rule the script itself uses to decide two titles are one game.
+- **Two lists fold away.** The Demand Index renders up to 25 rows and shows five; Most
+  Mentioned Games renders every game and shows 25 (`LIST_FOLD`). Rows past that point are
+  marked, and a class on the list hides them until the button under it is pressed. The stylesheet does the hiding, so the script only flips a class and rewrites the
+  button. An opened list stays open when the data reloads, its "Show fewer" button follows the
+  reader down the list, and folding it returns to the top of its section.
+- **Every second row is tinted** in the lists and in the feed table (`.zebra` in `retro.css`).
+- **The item count is a window, not a total.** The first tile is labelled with how far back
+  the feed goes ("Items · 9 days"), worked out from the oldest item, because a count that
+  has levelled off was read as a feed that had stopped.
 
 - **Weights** (next section) drive the *Global Net Sentiment* card (a weighted average) and the
   order of the *Remaster Radar* (matched PS2 games first, then heavier sources, then the newest).
@@ -173,7 +197,7 @@ break a scrape.
 ```
  data/sentiment_feed.json ─┐
  data/archive/*.json ──────┼─► ebay_prices.py ──► data/prices/latest.json ──► index.html
- data/ps2_database.json ───┤        │         └─► data/prices/YYYY-MM.json    (eBay Asking Prices)
+ data/ps2_database.json ───┤        │         └─► data/prices/YYYY-MM.json    (medians beside each game, eBay prices page)
  ebay_watchlist.json ──────┘        └─► this run's listings ──► ebay-data branch (latest run only)
 ```
 
@@ -325,6 +349,11 @@ matches the same pattern. A link that one side accepts and the other rejects wou
 stop every run. A test feeds the same good and broken configs to both validators and requires
 identical verdicts. That set includes the malformed links found in the independent review.
 
+**Game names in two places, tested for agreement.** `priceKey()` in the page and
+`search_terms()` in `ebay_prices.py` must give a title the same name, or a price goes missing
+from a row or lands on the wrong game. A test runs both over every title in the PS2 library,
+the watchlist and a set of awkward spellings, and requires identical answers.
+
 **Security.** Everything written into the page from feeds, config or GitHub/Apple responses is
 HTML-escaped, and links must be http(s). The optional token lives in the browser: session storage
 by default, local storage only with *Remember*, and the local copy is shared by every page of
@@ -340,8 +369,9 @@ reason saving without a token is the default and tokens should be short-lived.
   is `unmatched` until it is pinned with its own search words.
 - The "surging" level inherits the matcher's mistakes: in a replay of one week, 6 of 12 flags
   were the wrong game matched.
-- The snapshot holds at most 5,000 items (about 11 days on 2026-10-06), so the 14-day window
-  the levels use is currently shorter than its name.
+- Until 2026-10-07 the snapshot held at most 5,000 items, which had cut it to nine days. The
+  ceiling is now 12,000 and the window refills to 14 days as new items arrive; until it has,
+  the eBay levels are worked out from less than two weeks of mentions.
 - Fuzzy matching still maps franchise names to the PS2 entry, e.g. "God of War Laufey" becomes
   *God of War*. Sequel numbers are checked, but new subtitles aren't.
 - Sentiment is a keyword count in English. Non-English titles score a neutral 50.
@@ -425,11 +455,18 @@ reason saving without a token is the default and tokens should be short-lived.
     otherwise; a failed lookup keeps the old figures; unreadable price files stop the run
   - the workflow: who can start it, that it runs `main`, that the key reaches one step, that
     it installs nothing, and that only `data/prices` is committed
-- **Dashboard, added 2026-10-06**: all three lists fold to five rows and open again; the eBay
-  section orders, formats, escapes and hides itself correctly, dims a price only when it is
-  overdue for its level, and a file it cannot draw hides the section instead of stopping the
-  page; prices are fetched from the site with no token; rows name their cells for the phone
-  layout; a phone gets 25 rows to a page.
+- **Scraper, added 2026-10-07**: the snapshot keeps two weeks, newest first, and past its
+  ceiling it is the oldest items that go.
+- **Dashboard, added 2026-10-06 and 2026-10-07**: the two ranked lists fold (five rows, 25
+  rows) and open again, and Most Mentioned Games leaves no game out; the eBay prices page orders, formats and escapes its rows, narrows them with the
+  search box, dims a price only when it is overdue for its level, and says what to do when
+  there is no price file; the medians appear under a game's name in all three places, find
+  the game under another spelling, and show nothing rather than another game's figure; a
+  price file the page cannot draw leaves the rest of the page working; prices are fetched from
+  the site with no token, before the lists are drawn; the three pages switch by tab and by
+  address, with exactly one on screen; the item count is labelled with how far back it goes; rows name their cells for the phone layout; a phone gets 25 rows to a page.
+- **Page and price script agree on names**: `priceKey()` against `search_terms()` on the whole
+  library.
 
 The *Tests* workflow runs the suite on every push to `main` that touches code, `feeds.json` or
 the tests, and on every pull request.
