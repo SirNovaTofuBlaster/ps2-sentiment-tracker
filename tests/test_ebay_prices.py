@@ -1538,7 +1538,7 @@ class WorkflowTests(unittest.TestCase):
         self.assertNotIn("pip", self.code)
         self.assertNotIn("npm", self.code)
         uses = sorted(line.split("uses:")[1].strip() for line in self.lines if "uses:" in line)
-        self.assertEqual(uses, ["actions/checkout@v4", "actions/setup-python@v5"])
+        self.assertEqual(uses, ["actions/checkout@v5", "actions/setup-python@v6"])
 
     def test_only_the_price_numbers_are_saved_to_main(self):
         (save,) = [step for step in self.steps if step.startswith("name: Save the price history")]
