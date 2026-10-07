@@ -1,5 +1,89 @@
 # Changelog
 
+## 2026-10-07: prices beside every game, three tabs, and a feed that keeps its two weeks
+
+### What was asked
+
+- The eBay prices were meant to show on every entry that names a game, not as a list in the
+  middle of the page. Keep the list, but give it a tab of its own.
+- Move Most Mentioned Games to a tab of its own too.
+- The site looked as if it had stopped collecting at 5,000 items.
+
+### What changed
+
+**Dashboard: `index.html`, `retro.css`, `guide.html`**
+- **eBay median beside every game.** Wherever a game's name appears (Demand Index, Most
+  Mentioned Games, the feed table) a line under it gives the median asking price on eBay US
+  and eBay UK. Each figure opens that site's listings, and its tooltip says how many copies it
+  covers, the cheapest and when it was checked. A game that is not priced shows no line.
+- **Three pages.** A tab bar under the banner switches between **Tracker** (the numbers, the
+  Demand Index, the feed and the sources), **Most mentioned** (the ranking of games by
+  mentions) and **eBay prices** (every tracked game in full, with a box to find one).
+  `#mentions` and `#prices` in the address open the second and third, so they can be
+  bookmarked, and the browser's Back button returns to the page before. Neither list sits
+  between the Demand Index and the feed any more.
+- **Most Mentioned Games ranks every game**, not the first 25: it shows 25 and a button opens
+  the rest. The number on its tab is how many games the feed names.
+- **The prices page says when it is empty,** and tells "the job has not run yet" from "the
+  file could not be read". Before, the section was hidden until the price job had run, which
+  looked like something missing. A failed refresh keeps the prices already on screen.
+- **One name per game.** The price file uses library titles; the feed says "Persona 4" and
+  "Kingdom Hearts 2". `priceKey()` evens a title out the way `search_terms()` in
+  `ebay_prices.py` does, and `ebay_watchlist.json` is read for the search words of pinned
+  games. A test compares the two functions on the whole PS2 library.
+- **The item count says how far back it goes** ("Items · 9 days") instead of "Items
+  scraped", which read as a running total.
+- An address that names a part of the page (`#sourcesSection`, used by the guide's button)
+  now arrives there on a fresh load; before, the page scrolled before its content existed.
+- Prices are written as `$220` and `£105` for every reader (a UK browser showed `US$220`
+  next to a "US" label).
+
+**Scraper: `scraper.py`**
+- `MAX_ITEMS` is 12,000 (was 5,000). The feed never stopped: on 2026-10-07 each run was still
+  adding items (200, 95, 85 and 26 in the last four) and dropping the same number of the
+  oldest, so the count stayed at exactly 5,000 while the two-week window shrank to nine days.
+  With about 600 items a day, two weeks is roughly 8,400. The ceiling is now a safety net and
+  `RETENTION_DAYS` (14) is the limit that applies. Nothing else in the file changed.
+
+**Tests: `tests/dashboard_check.mjs`, `tests/test_scraper.py`**
+- 28 dashboard checks (was 24) and 178 Python tests (was 176).
+
+### Behaviour changes to be aware of
+
+- The feed grows back to two weeks. Items the old limit pushed out return on the first run if
+  their source still lists them (on 2026-10-07 that was 203 of 392, all YouTube uploads and
+  podcast episodes); the rest of the gap fills over about five days. The tile can therefore
+  read "13 days" or "14 days" at once while days 10 to 14 are still thin.
+  `data/sentiment_feed.json` grows from 2.6 MB to about 4.5 MB.
+- The eBay levels (`staple`, `surging`, `dormant`) are worked out from two weeks of mentions,
+  so they are computed on fuller data once the window has refilled.
+- Prices load before the lists are drawn, and the page now also fetches `ebay_watchlist.json`.
+- eBay figures now sit in the same rows as the Price Charting and CeX search links. They were
+  first kept in a block of their own because eBay's API License Agreement asks for its
+  content to be set apart; the maintainer chose this layout for a personal tool.
+
+### Open items
+
+- `tools/regression_check.py` and a `FULL_RUN=1` scratch run were not done for the
+  `scraper.py` change: both need the live feeds, which the machine the change was written on
+  cannot reach. The change is one number that only matters above 5,000 items (the regression
+  check collects about a thousand), and a comparison of the two files' syntax trees shows
+  nothing else differs. Run both from a machine with network access to close this.
+- The page's name rule and the price script's differ on a few characters no title uses
+  (combining marks outside the Latin accents, some control characters). A fuzz of 700,000
+  strings found no other difference.
+- Arrow keys do not move between the tabs; Tab, Enter and Space do.
+- On the first run for every game (2026-10-06, 22:41 UTC) 177 of 182 games got a figure on at
+  least one site. 22 game-and-site pairs came back "search needs tuning", among them both
+  sites for *The Godfather: Collector's Edition*, *King's Field IV: The Ancient City* and
+  *Virtua Fighter: 10th Anniversary Edition*.
+- Two wrong listings seen in that run's spot checks: a *Devil May Cry 3* copy "with Monster
+  Hunter" (a demo) counted for *Monster Hunter*, and "Xtreme Legends: Dynasty Warriors 3"
+  counted for *Dynasty Warriors 3* because the expansion's name came first.
+- 19 of the 142 games in the feed that day have no figure: 15 have names that come down to
+  one ordinary word ("Black", "The Sims"), one is on the never-price list, and three came back
+  unmatched or with nothing listed.
+
 ## 2026-10-06: eBay asking prices, a measured matcher, phones, and lists that fold
 
 ### What was asked
