@@ -1,6 +1,7 @@
 // Offline checks for the dashboard's inline script in index.html (run by tests/test_scraper.py).
 //   node tests/dashboard_check.mjs                  runs the checks below
 //   node tests/dashboard_check.mjs --validate FILE  prints validateConfig() verdicts for the configs in FILE
+//   node tests/dashboard_check.mjs --price-keys FILE  prints priceKey() for the titles in FILE
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
@@ -24,6 +25,9 @@ function stubElement(id = '') {
             add: (c) => classes.add(c), remove: (c) => classes.delete(c), contains: (c) => classes.has(c),
             toggle: (c, force) => ((force ?? !classes.has(c)) ? classes.add(c) : classes.delete(c)),
         },
+        attributes: {},
+        setAttribute(name, value) { this.attributes[name] = String(value); },
+        getAttribute(name) { return this.attributes[name] ?? null; },
         addEventListener() {}, scrollIntoView() {}, reset() {}, click() {}, remove() {},
         appendChild(child) { this.children.push(child); },
     };
@@ -61,6 +65,7 @@ const fakeFetch = async (url, options = {}) => {
     return reply(404, { message: 'Not Found' });
 };
 const confirmAnswers = [];  // answers for the next confirm() prompts; true when empty
+const addressChanges = [];  // what the page asked the address bar to show
 const context = vm.createContext({
     console, Intl, URL, TextEncoder, TextDecoder, btoa, atob, setTimeout, clearTimeout,
     confirm: () => (confirmAnswers.length ? confirmAnswers.shift() : true),
@@ -75,7 +80,11 @@ const context = vm.createContext({
         createElement: () => stubElement(),
         body: { appendChild() {} },
     },
-    location: { hostname: 'localhost', pathname: '/' },
+    location: { hostname: 'localhost', pathname: '/', search: '', hash: '' },
+    history: { pushState(state, title, address) {
+        addressChanges.push(address);
+        context.location.hash = String(address).startsWith('#') ? address : '';
+    } },
 });
 const el = (id) => context.document.getElementById(id);
 vm.runInContext(script, context);
@@ -85,6 +94,13 @@ const evalJson = (code) => JSON.parse(vm.runInContext(`JSON.stringify(${code})`,
 if (process.argv[2] === '--validate') {
     context.__cases = JSON.parse(readFileSync(process.argv[3], 'utf8'));
     process.stdout.write(JSON.stringify(evalJson('__cases.map(c => validateConfig(c).length === 0)')));
+    process.exit(0);
+}
+
+if (process.argv[2] === '--price-keys') {
+    context.__titles = JSON.parse(readFileSync(process.argv[3], 'utf8'));
+    // Thousands of titles: leave only once the whole answer has been written.
+    await new Promise(done => process.stdout.write(JSON.stringify(evalJson('__titles.map(priceKey)')), done));
     process.exit(0);
 }
 
@@ -487,52 +503,58 @@ await check('a phone gets 25 rows to a page, anything wider keeps 100', () => {
     assert.equal(pageSize({ matchMedia: (query) => ({ matches: query === '(max-width: 640px)' }) }), 25);
 });
 
-await check('ranked lists show five rows until opened, and fold away again', async () => {
-    const feed = (count) => Array.from({ length: count }, (_, n) => ({
-        headline: `Game ${n} news`, source: 'Eurogamer', link: 'https://e.example/', matched_game: `Game ${String(n).padStart(2, '0')}`,
-        sentiment: 50, timestamp: '2026-10-01 10:00 UTC' }));
-    const state = () => ({
-        rows: (el('topGamesList').innerHTML.match(/<li /g) || []).length,
-        extra: (el('topGamesList').innerHTML.match(/<li class="[^"]*list-extra/g) || []).length,
-        folded: el('topGamesList').classList.contains('is-folded'),
-        buttonHidden: el('topGamesListToggle').classList.contains('hidden'),
-        button: el('topGamesListToggle').innerHTML.replace(/ <i .*$/, ''),
-    });
-
-    context.__games = feed(8);
-    vm.runInContext('renderTopGames(__games)', context);
-    assert.deepEqual(state(), { rows: 8, extra: 3, folded: true, buttonHidden: false, button: 'Show 3 more' });
-    vm.runInContext("toggleList('topGamesList')", context);
-    assert.deepEqual(state(), { rows: 8, extra: 3, folded: false, buttonHidden: false, button: 'Show fewer' });
-    // New data arriving does not fold a list the reader has opened.
-    vm.runInContext('renderTopGames(__games)', context);
-    assert.equal(state().folded, false);
-    vm.runInContext("toggleList('topGamesList')", context);
-    assert.deepEqual(state(), { rows: 8, extra: 3, folded: true, buttonHidden: false, button: 'Show 3 more' });
-
-    context.__games = feed(5);
-    vm.runInContext('renderTopGames(__games)', context);
-    assert.deepEqual(state(), { rows: 5, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more' });
-    context.__games = feed(40);
-    vm.runInContext('renderTopGames(__games)', context);
-    assert.deepEqual(state(), { rows: 25, extra: 20, folded: true, buttonHidden: false, button: 'Show 20 more' });
-    context.__games = [];
-    vm.runInContext('renderTopGames(__games)', context);
-    assert.equal(state().buttonHidden, true, 'nothing to rank: no button');
-
-    // The Demand Index folds the same way.
-    const demandFile = (count) => ({ games: Array.from({ length: count }, (_, n) => ({
-        title: `Demand ${String(n).padStart(2, '0')}`, score: 90 - n, views: 1000, edits: 3, mentions: 2 })) });
-    const demandState = async (count) => {
-        const real = context.fetch;
-        context.fetch = async () => ({ ok: true, json: async () => demandFile(count) });
-        try { await vm.runInContext('loadDemand()', context); } finally { context.fetch = real; }
+await check('ranked lists show their first rows until opened, and fold away again', async () => {
+    // The Demand Index shares the Tracker with the feed: five rows, at most 25.
+    const demandFile = (count) => ({ window_days: 28, generated: '2026-10-06 05:41:00 UTC', games: Array.from({ length: count }, (_, n) => ({
+        title: `Demand ${String(n).padStart(2, '0')}`, demand: 90 - n, views_30d: 1000, mentions: 2, trend_pct: 5 })) });
+    const demand = async (count) => {
+        if (count !== undefined) {
+            const real = context.fetch;
+            context.fetch = async () => ({ ok: true, json: async () => demandFile(count) });
+            try { await vm.runInContext('loadDemand()', context); } finally { context.fetch = real; }
+        }
         const html = el('demandList').innerHTML;
         return { rows: (html.match(/<li /g) || []).length, extra: (html.match(/<li class="[^"]*list-extra/g) || []).length,
-            folded: el('demandList').classList.contains('is-folded'), buttonHidden: el('demandListToggle').classList.contains('hidden') };
+            folded: el('demandList').classList.contains('is-folded'), buttonHidden: el('demandListToggle').classList.contains('hidden'),
+            button: el('demandListToggle').innerHTML.replace(/ <i .*$/, '') };
     };
-    assert.deepEqual(await demandState(40), { rows: 25, extra: 20, folded: true, buttonHidden: false });
-    assert.deepEqual(await demandState(4), { rows: 4, extra: 0, folded: true, buttonHidden: true });
+    assert.deepEqual(await demand(8), { rows: 8, extra: 3, folded: true, buttonHidden: false, button: 'Show 3 more' });
+    assert.equal(el('demandListToggle').getAttribute('aria-expanded'), 'false');
+    vm.runInContext("toggleList('demandList')", context);
+    assert.deepEqual(await demand(), { rows: 8, extra: 3, folded: false, buttonHidden: false, button: 'Show fewer' });
+    assert.equal(el('demandListToggle').getAttribute('aria-expanded'), 'true');
+    // New data arriving does not fold a list the reader has opened.
+    assert.equal((await demand(8)).folded, false);
+    vm.runInContext("toggleList('demandList')", context);
+    assert.deepEqual(await demand(), { rows: 8, extra: 3, folded: true, buttonHidden: false, button: 'Show 3 more' });
+    assert.deepEqual(await demand(5), { rows: 5, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more' });
+    assert.deepEqual(await demand(40), { rows: 25, extra: 20, folded: true, buttonHidden: false, button: 'Show 20 more' });
+    assert.deepEqual(await demand(4), { rows: 4, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more' });
+
+    // Most Mentioned Games has a page to itself: 25 rows, and every game behind the button.
+    // Two items for every game, so a count of mentions cannot pass for a count of games.
+    const feed = (count) => Array.from({ length: count * 2 }, (_, n) => ({
+        headline: `Game ${n} news`, source: 'Eurogamer', link: 'https://e.example/', matched_game: `Game ${String(n % count).padStart(3, '0')}`,
+        sentiment: 50, timestamp: '2026-10-01 10:00 UTC' }));
+    const top = (count) => {
+        if (count !== undefined) { context.__games = feed(count); vm.runInContext('renderTopGames(__games)', context); }
+        const html = el('topGamesList').innerHTML;
+        return { rows: (html.match(/<li /g) || []).length, extra: (html.match(/<li class="[^"]*list-extra/g) || []).length,
+            folded: el('topGamesList').classList.contains('is-folded'), buttonHidden: el('topGamesListToggle').classList.contains('hidden'),
+            button: el('topGamesListToggle').innerHTML.replace(/ <i .*$/, ''),
+            badge: el('tabMentionsCount').classList.contains('hidden') ? null : el('tabMentionsCount').textContent };
+    };
+    assert.deepEqual(top(8), { rows: 8, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more', badge: '8' });
+    assert.deepEqual(top(25), { rows: 25, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more', badge: '25' });
+    assert.deepEqual(top(140), { rows: 140, extra: 115, folded: true, buttonHidden: false, button: 'Show 115 more', badge: '140' },
+        'no game is left off the ranking, and the tab says how many there are');
+    assert.match(el('topGamesList').innerHTML, /#140 Game 139/);
+    vm.runInContext("toggleList('topGamesList')", context);
+    assert.deepEqual(top(), { rows: 140, extra: 115, folded: false, buttonHidden: false, button: 'Show fewer', badge: '140' });
+    vm.runInContext("toggleList('topGamesList')", context);
+    assert.equal(top().folded, true);
+    assert.deepEqual(top(0), { rows: 1, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more', badge: null }, 'nothing to rank: a note, no button, no number on the tab');
+    assert.match(el('topGamesList').innerHTML, /Nothing to rank yet\./);
 
     // The stylesheet does the hiding, and stripes every second row of the lists and the feed.
     const css = read('retro.css');
@@ -542,86 +564,207 @@ await check('ranked lists show five rows until opened, and fold away again', asy
         'row hover is only for devices that can hover');
     assert.match(css, /body \.zebra > li:nth-child\(even\), body \.zebra > tr:nth-child\(even\) \{ background-color: var\(--stripe\); \}/);
     const page = read('index.html');
-    for (const id of ['demandList', 'topGamesList', 'pricesList']) {
+    for (const id of ['demandList', 'topGamesList']) {
         assert.match(page, new RegExp(`<ol id="${id}" class="zebra"></ol>\\s*<button type="button" id="${id}Toggle" onclick="toggleList\\('${id}'\\)"`));
     }
+    assert.match(page, /<ol id="pricesList" class="zebra"><\/ol>/);
+    assert.doesNotMatch(page, /pricesListToggle/, 'the price list has a page to itself and shows every game');
     assert.match(page, /<tbody id="feedTableBody" class="zebra /);
 });
 
-await check('eBay prices: surging first, a line per site, and nothing shown without the file', () => {
-    const now = Date.parse('2026-10-06T12:00:00Z');
-    context.__prices = {
-        currencies: { US: 'USD', UK: 'GBP' },
-        games: {
-            'Silent Hill 2': { level: 'staple', mentions: 9, pinned: true,
-                US: { checked: '2026-10-06T10:00Z', copies: 97, lowest: 120, median: 220, postage: 5.99, truncated: true },
-                UK: { checked: '2026-10-06T03:00Z', copies: 47, lowest: 52.7, median: 104.69, postage: 3.29 } },
-            'Gitaroo Man': { level: 'surging', mentions: 2, surging_until: '2026-10-08T09:00Z',
-                US: { checked: '2026-10-06T11:50Z', copies: 1, lowest: 139.5, median: 139.5, postage: null } },
-            'Jak X': { level: 'normal', mentions: 3,
-                US: { checked: '2026-10-06T09:00Z', unmatched: true },
-                UK: { checked: '2026-10-06T09:00Z', copies: 0, lowest: null, median: null, postage: null } },
-            'Okami': { level: 'dormant', mentions: 12,
-                US: { checked: '2026-10-05T20:00Z', copies: 67, lowest: 10.45, median: 34.99, postage: 6.07 } },
-            '<img src=x onerror=alert(1)>': { level: 'made-up', mentions: 'lots', US: 'nonsense' },
-            'Broken entry': null,
-        },
-    };
-    context.__now = now;
-    vm.runInContext("renderPrices(__prices, __now, 'en-GB')", context);
-    const html = el('pricesList').innerHTML;
+const PRICES_NOW = Date.parse('2026-10-06T12:00:00Z');
+const samplePrices = () => ({
+    currencies: { US: 'USD', UK: 'GBP' },
+    games: {
+        'Silent Hill 2': { level: 'staple', mentions: 9, pinned: true,
+            US: { checked: '2026-10-06T10:00Z', copies: 97, lowest: 120, median: 220, postage: 5.99, truncated: true },
+            UK: { checked: '2026-10-06T03:00Z', copies: 47, lowest: 52.7, median: 104.69, postage: 3.29 } },
+        'Gitaroo Man': { level: 'surging', mentions: 2, surging_until: '2026-10-08T09:00Z',
+            US: { checked: '2026-10-06T11:50Z', copies: 1, lowest: 139.5, median: 139.5, postage: null } },
+        'Jak X': { level: 'normal', mentions: 3,
+            US: { checked: '2026-10-06T09:00Z', unmatched: true },
+            UK: { checked: '2026-10-06T09:00Z', copies: 0, lowest: null, median: null, postage: null } },
+        'Okami': { level: 'dormant', mentions: 12,
+            US: { checked: '2026-10-05T20:00Z', copies: 67, lowest: 10.45, median: 34.99, postage: 6.07 } },
+        '<img src=x onerror=alert(1)>': { level: 'made-up', mentions: 'lots', US: 'nonsense' },
+        'Broken entry': null,
+    },
+});
+const showPrices = (data, watchlist) => {
+    context.__prices = data;
+    context.__watchlist = watchlist;
+    context.__now = PRICES_NOW;
+    vm.runInContext("setPrices(__prices, __watchlist); renderPrices(undefined, __now, 'en-GB')", context);
+    return el('pricesList').innerHTML;
+};
+
+await check('eBay prices page: every game, surging first, a line per site', () => {
+    const html = showPrices(samplePrices());
     const order = [...html.matchAll(/<span class="text-cyan-300">([^<]+)/g)].map(match => match[1].trim());
     assert.deepEqual(order, ['Gitaroo Man', 'Silent Hill 2', 'Jak X', '&lt;img src=x onerror=alert(1)&gt;', 'Okami'],
         'surging first, then by mentions, quiet games last however often they were named; a broken entry is dropped');
-    assert.equal(el('pricesSection').classList.contains('hidden'), false);
     assert.match(el('pricesSummary').textContent, /not what anything sold for · 5 games · 1 surging$/);
+    assert.equal(el('pricesEmpty').classList.contains('hidden'), true);
+    assert.deepEqual([el('tabPricesCount').textContent, el('tabPricesCount').classList.contains('hidden')], ['5', false], 'the tab says how many games');
 
     assert.match(html, /<span class="level-tag level-surging" title="[^"]+">surging<\/span>/);
     assert.match(html, /<span class="level-tag level-dormant" title="[^"]+">quiet<\/span>/);
-    assert.match(html, /<b class="ebay-median">US\$220<\/b><span class="ebay-rest">median · from US\$120 · 97\+ copies <span class="ebay-age" title="When eBay was last asked">· 2h ago<\/span>/);
+    assert.match(html, /<b class="ebay-median">\$220<\/b><span class="ebay-rest">median · from \$120 · 97\+ copies <span class="ebay-age" title="When eBay was last asked">· 2h ago<\/span>/);
     assert.match(html, /<b class="ebay-median">£105<\/b><span class="ebay-rest">median · from £52\.70 · 47 copies /);
-    assert.match(html, /US\$140<\/b><span class="ebay-rest">median · from US\$140 · 1 copy <span class="ebay-age"[^>]*>· 10 min ago/);
+    assert.match(html, /\$140<\/b><span class="ebay-rest">median · from \$140 · 1 copy <span class="ebay-age"[^>]*>· 10 min ago/);
     assert.match(html, /search needs tuning<\/span> <span class="ebay-age"/, 'unmatched is not shown as zero copies');
     assert.match(html, /<span class="ebay-note">none listed<\/span>/);
     assert.match(html, /<span class="ebay-site is-quiet"><span class="ebay-flag">UK<\/span><span class="ebay-note">not checked yet<\/span>/);
     assert.match(html, /<span class="ebay-site is-stale"><span class="ebay-flag">UK<\/span><b class="ebay-median">£105<\/b>[^\n]*?title="Not checked for longer than usual">· 9h ago/,
         'a staple is checked every 6 hours, so 9 hours is overdue');
-    assert.match(html, /<span class="ebay-site"><span class="ebay-flag">US<\/span><b class="ebay-median">US\$34\.99<\/b>[^\n]*?title="When eBay was last asked">· 16h ago/,
+    assert.match(html, /<span class="ebay-site"><span class="ebay-flag">US<\/span><b class="ebay-median">\$34\.99<\/b>[^\n]*?title="When eBay was last asked">· 16h ago/,
         'a quiet game is checked once a day, so 16 hours is not');
     assert.match(html, /title="Headlines naming this game in the last two weeks">9 in headlines</);
     assert.doesNotMatch(html, /<img/, 'titles are escaped');
     assert.match(html, /class="price-links"/, 'each game keeps its price lookups, eBay searches included');
+    assert.doesNotMatch(html, /ebay-quotes/, 'the full lines are here already; the short form is for the Tracker');
 
-    // Folding works here too, and every game can be reached.
-    assert.equal(el('pricesList').classList.contains('is-folded'), true);
-    assert.equal(el('pricesListToggle').classList.contains('hidden'), true, 'five games: nothing to unfold');
-
-    // More than five games: the rest are marked for folding and the button offers them.
+    // No folding on this page: every game is listed, and the search box narrows them down.
     const many = { currencies: { US: '<b>', UK: 'GBP' }, games: Object.fromEntries(Array.from({ length: 8 }, (_, n) => [
-        `Game ${n}`, { level: 'normal', mentions: 8 - n, US: { checked: '2026-10-06T11:00Z', copies: 2, lowest: 9.5, median: 12, postage: 3 } }])) };
-    context.__prices = many;
-    vm.runInContext("renderPrices(__prices, __now, 'en-GB')", context);
-    const long = el('pricesList').innerHTML;
-    assert.equal((long.match(/<li class="[^"]*list-extra/g) || []).length, 3);
-    assert.equal(el('pricesListToggle').classList.contains('hidden'), false);
-    assert.equal(el('pricesListToggle').innerHTML.replace(/ <i .*$/, ''), 'Show 3 more');
+        n === 3 ? 'Kingdom Hearts II' : `Game ${n}`,
+        { level: 'normal', mentions: 8 - n, US: { checked: '2026-10-06T11:00Z', copies: 2, lowest: 9.5, median: 12, postage: 3 } }])) };
+    const long = showPrices(many);
+    const titles = (text) => [...text.matchAll(/<span class="text-cyan-300">([^<]+)/g)].map(match => match[1].trim());
+    assert.equal(titles(long).length, 8);
+    assert.doesNotMatch(long, /list-extra/);
     assert.match(long, /<b class="ebay-median">12\.00 &lt;b&gt;<\/b>/, 'a currency code the browser does not know is shown as text, never as markup');
     assert.doesNotMatch(long, /<b>/);
 
-    for (const missing of ['null', '{}', '({ games: [] })', '({ games: {} })']) {
-        vm.runInContext(`renderPrices(${missing})`, context);
-        assert.equal(el('pricesSection').classList.contains('hidden'), true, `hidden for ${missing}`);
+    const find = (text) => {
+        el('pricesSearch').value = text;
+        vm.runInContext('filterPrices()', context);
+        return titles(el('pricesList').innerHTML);
+    };
+    assert.deepEqual(find('game 5'), ['Game 5']);
+    assert.match(el('pricesSummary').textContent, / · 8 games · 1 shown$/);
+    assert.deepEqual(find('  KINGDOM hearts 2 '), ['Kingdom Hearts II'], 'found however the number is written');
+    assert.deepEqual(find('hearts'), ['Kingdom Hearts II']);
+    for (const typing of ['k', 'kingdom h', 'Kingdom Hearts I', 'kingdom hearts ii', 'hearts ii', 'Kingdom-Hearts', 'KINGDOM  HEARTS']) {
+        assert.deepEqual(find(typing), ['Kingdom Hearts II'], `"${typing}" finds it while it is still being typed`);
     }
+    assert.deepEqual(find('game'), ['Game 0', 'Game 1', 'Game 2', 'Game 4', 'Game 5', 'Game 6', 'Game 7']);
+    assert.deepEqual(find('zelda'), []);
+    assert.deepEqual([el('pricesEmpty').classList.contains('hidden'), /^No priced game has that in its name\./.test(el('pricesEmpty').textContent)], [false, true]);
+    assert.match(el('pricesSummary').textContent, / · 8 games · 0 shown$/);
+    for (const nothing of ['', '   ', '&', '!?']) {
+        assert.equal(find(nothing).length, 8, `"${nothing}" is not a search`);
+        assert.doesNotMatch(el('pricesSummary').textContent, /shown/);
+    }
+    assert.equal(el('pricesEmpty').classList.contains('hidden'), true);
+    assert.match(read('index.html'), /<input type="text" id="pricesSearch" oninput="filterPrices\(\)"/, 'typing in the box searches');
+
+    // Without a price file the page says what to do instead of sitting empty.
+    for (const missing of [null, {}, { games: [] }, { games: {} }]) {
+        assert.equal(showPrices(missing), '', `no rows for ${JSON.stringify(missing)}`);
+        assert.equal(el('pricesEmpty').classList.contains('hidden'), false);
+        assert.match(el('pricesEmpty').textContent, /^No prices yet\..*Run workflow\.$/);
+        assert.equal(el('tabPricesCount').classList.contains('hidden'), true);
+    }
+});
+
+await check("eBay medians sit beside a game's name wherever one is shown", async () => {
+    const site = (median, extra = {}) => ({ checked: '2026-10-06T11:00Z', copies: 12, lowest: median / 2, median, postage: 3, ...extra });
+    const prices = samplePrices();
+    Object.assign(prices.games, {
+        'Shin Megami Tensei: Persona 4': { level: 'normal', mentions: 4, pinned: true, US: site(73), UK: { checked: '2026-10-06T11:00Z', unmatched: true } },
+        'Kingdom Hearts II': { level: 'normal', mentions: 2, US: site(15), UK: site(8) },
+        'Getaway, The': { level: 'normal', mentions: 1, UK: site(4.5) },
+        'Jak and Daxter: The Precursor Legacy': { level: 'normal', mentions: 1, US: site(11) },
+        '<b>Bold</b> Game': { level: 'normal', mentions: 1, US: site(9) },
+    });
+    const watchlist = { games: [
+        { title: 'Shin Megami Tensei: Persona 4', search: 'Persona 4' }, { title: 'Okami' }, 'junk', null,
+        { title: 'Not In The File', search: 'Silent Hill 2' },   // a pinned game with no figures yet takes nobody's place
+    ] };
+    showPrices(prices, watchlist);
+    context.__now = PRICES_NOW;
+    const figures = (title) => vm.runInContext(`priceFiguresHtml(${JSON.stringify(title)}, __now, 'en-GB')`, context);
+
+    assert.equal(figures('Silent Hill 2'),
+        '<span class="ebay-quotes"><span class="ebay-quotes-label">eBay median</span>'
+        + '<a class="ebay-quote" href="https://www.ebay.com/sch/i.html?_nkw=Silent%20Hill%202%20ps2" target="_blank" rel="noopener noreferrer"'
+        + ' title="Median asking price of 97+ used copies on eBay US, cheapest $120, checked 2h ago. Opens eBay&#39;s search for this game.">'
+        + '<span class="ebay-flag">US</span><b>$220</b></a>'
+        + '<a class="ebay-quote is-stale" href="https://www.ebay.co.uk/sch/i.html?_nkw=Silent%20Hill%202%20ps2" target="_blank" rel="noopener noreferrer"'
+        + ' title="Median asking price of 47 used copies on eBay UK, cheapest £52.70, checked 9h ago (longer ago than usual). Opens eBay&#39;s search for this game.">'
+        + '<span class="ebay-flag">UK</span><b>£105</b></a></span>');
+
+    // The feed's spelling finds the price file's.
+    const sites = (title) => [...figures(title).matchAll(/<span class="ebay-flag">(\w+)<\/span><b>([^<]+)<\/b>/g)].map(match => `${match[1]} ${match[2]}`);
+    assert.deepEqual(sites('SILENT HILL 2'), ['US $220', 'UK £105']);
+    assert.deepEqual(sites('Persona 4'), ['US $73.00'], "a pinned game's search words name it too; a site with nothing counted is left out");
+    assert.deepEqual(sites('Shin Megami Tensei: Persona 4'), ['US $73.00']);
+    assert.deepEqual(sites('Kingdom Hearts 2'), ['US $15.00', 'UK £8.00']);
+    assert.deepEqual(sites('The Getaway'), ['UK £4.50']);
+    assert.deepEqual(sites('Jak & Daxter: The Precursor Legacy'), ['US $11.00']);
+    assert.deepEqual(sites('Gitaroo Man'), ['US $140'], 'one copy: the wording follows');
+    assert.match(figures('Gitaroo Man'), /of 1 used copy on eBay US, cheapest \$140, checked 10 min ago\./);
+    assert.deepEqual(sites('Okami'), ['US $34.99']);
+    assert.doesNotMatch(figures('Okami'), /is-stale|longer ago/, 'a quiet game is checked once a day, so 16 hours is not overdue');
+    // Nothing is shown rather than something misleading.
+    for (const title of ['Jak X', 'Silent Hill', 'Silent Hill 3', 'Black', 'Not In The File', '', null, undefined, 'constructor', '<img src=x onerror=alert(1)>']) {
+        assert.equal(figures(title), '', `no figures for ${JSON.stringify(title)}`);
+    }
+    const hostile = figures('<b>Bold</b> Game');
+    assert.match(hostile, /_nkw=%3Cb%3EBold%3C%2Fb%3E%20Game%20ps2"/);
+    assert.doesNotMatch(hostile, /<b>Bold/);
+    // Nothing from the price file reaches the page as markup either: not in the figure, not in its tooltip.
+    showPrices({ ...prices, currencies: { US: '"><img src=x onerror=alert(1)>', UK: 'GBP' } }, watchlist);
+    const odd = figures('Kingdom Hearts II');
+    assert.match(odd, /<b>15\.00 &quot;&gt;&lt;img src=x onerror=alert\(1\)&gt;<\/b>/);
+    assert.match(odd, /cheapest 7\.50 &quot;&gt;&lt;img/);
+    assert.doesNotMatch(odd, /<img|"">/);
+    showPrices(prices, watchlist);
+
+    // The three places a game's name appears on the Tracker.
+    const item = (game) => ({ headline: `${game} news`, source: 'Eurogamer', link: 'https://e.example/', matched_game: game, sentiment: 50, timestamp: '2026-10-01 10:00 UTC' });
+    context.__games = [item('Persona 4'), item('Persona 4'), item('Black'), { ...item(''), matched_game: null }];
+    vm.runInContext('renderTopGames(__games)', context);
+    const rows = el('topGamesList').innerHTML.split('<li ').slice(1);
+    assert.equal(rows.length, 2);
+    assert.match(rows[0], /#1 Persona 4[\s\S]*<span class="ebay-quotes">[\s\S]*<span class="price-links"/, 'medians first, then the lookup chips');
+    assert.match(rows[1], /#2 Black/);
+    assert.doesNotMatch(rows[1], /ebay-quotes/, 'a game that is not priced keeps its chips and nothing else');
+    assert.match(rows[1], /class="price-links"/);
+
+    vm.runInContext('renderTable(__games)', context);
+    const cells = el('feedTableBody').children.map(row => row.innerHTML.match(/<td data-col="game"[\s\S]*?<\/td>/)[0]);
+    assert.deepEqual(cells.map(cell => /ebay-quotes/.test(cell)), [true, true, false, false]);
+    assert.match(cells[0], />Persona 4<span class="ebay-quotes">/);
+
+    const real = context.fetch;
+    context.fetch = async () => ({ ok: true, json: async () => ({ window_days: 30, generated: '2026-10-06 05:41:00 UTC', games: [
+        { title: 'Kingdom Hearts II', demand: 80, views_30d: 1000, mentions: 2, trend_pct: 5 },
+        { title: 'Black', demand: 60, views_30d: 900, mentions: 8, trend_pct: null }] }) });
+    try { await vm.runInContext('loadDemand()', context); } finally { context.fetch = real; }
+    const demand = el('demandList').innerHTML.split('<li ').slice(1);
+    assert.deepEqual(demand.map(row => /ebay-quotes/.test(row)), [true, false]);
+
+    // No price file: every list looks as it did before prices existed.
+    showPrices(null);
+    vm.runInContext('renderTopGames(__games); renderTable(__games)', context);
+    assert.doesNotMatch(el('topGamesList').innerHTML + el('feedTableBody').children.map(row => row.innerHTML).join(''), /ebay-quote/);
+    assert.equal(figures('Silent Hill 2'), '');
+
+    const css = read('retro.css');
+    assert.match(css, /body \.ebay-quote\.is-stale b \{ opacity: \.5; \}/);
 });
 
 await check('eBay prices: money and ages read naturally', () => {
     const money = (value, currency) => evalJson(`money(${JSON.stringify(value)}, '${currency}', 'en-GB')`);
-    assert.equal(money(220, 'USD'), 'US$220');
-    assert.equal(money(1299.99, 'USD'), 'US$1,300');
+    assert.equal(money(220, 'USD'), '$220', 'the site is named beside every figure, so no "US$"');
+    assert.equal(money(1299.99, 'USD'), '$1,300');
     assert.equal(money(99.99, 'GBP'), '£99.99');
     assert.equal(money(52.7, 'GBP'), '£52.70');
     assert.equal(money(null, 'GBP'), '');
     assert.equal(evalJson("money('12', 'GBP', 'en-GB')"), '');
+    assert.equal(evalJson("money(12, 'GBP', 'en-US')"), '£12.00');
+    assert.equal(evalJson("money(12, 'USD', 'en-US')"), '$12.00');
 
     const now = Date.parse('2026-10-06T12:00:00Z');
     const age = (stamp, hours) => evalJson(`priceAge(${JSON.stringify(stamp)}, ${now}${hours ? `, ${hours}` : ''})`);
@@ -638,34 +781,197 @@ await check('eBay prices: money and ages read naturally', () => {
     assert.deepEqual(age('2026-10-06T13:00Z'), { text: '1 min ago', stale: false }, 'a clock that is slightly off does not show a negative age');
 });
 
-await check('eBay prices are read from the site itself, with no token', async () => {
+await check('one name for a game however it is spelt, the way ebay_prices.py does it', () => {
+    // tests/test_scraper.py compares priceKey() with ebay_prices.search_terms() on the whole library.
+    const key = (title) => evalJson(`priceKey(${JSON.stringify(title)})`);
+    assert.equal(key('Kingdom Hearts II'), 'kingdom hearts 2');
+    assert.equal(key('Jak & Daxter: The Precursor Legacy'), 'jak daxter the precursor legacy');
+    assert.equal(key("Godfather, The: Collector's Edition"), 'godfather collectors edition');
+    assert.equal(key('The Getaway'), 'getaway');
+    assert.equal(key('Getaway, The'), 'getaway');
+    assert.equal(key('The'), 'the', 'a title that is only an article keeps it');
+    assert.equal(key('Ōkami™ (PS2)'), 'okami ps2');
+    assert.equal(key('Director’s Cut'), 'directors cut');
+    assert.equal(key('Final Fantasy X-2'), 'final fantasy x 2');
+    assert.equal(key('A.I. Wars'), 'a i wars', '"A." is not the article "A"');
+    assert.equal(key('constructor toString II'), 'constructor tostring 2', 'ordinary words that are also JavaScript names');
+    assert.deepEqual([key(''), key(null), key(undefined), key(42)], ['', '', '', '42']);
+});
+
+await check('prices are read from the site itself, with no token, before the lists are drawn', async () => {
     github.requests.length = 0;
     await vm.runInContext('loadPrices()', context);
-    assert.deepEqual(github.requests.map(r => [r.href, r.method, Object.keys(r.headers)]), [['data/prices/latest.json', 'GET', []]]);
-    assert.equal(el('pricesSection').classList.contains('hidden'), true, 'the file is not there in this sandbox');
+    assert.deepEqual(github.requests.map(r => [r.href, r.method, Object.keys(r.headers)]),
+        [['data/prices/latest.json', 'GET', []], ['ebay_watchlist.json', 'GET', []]]);
+    assert.equal(el('pricesEmpty').classList.contains('hidden'), false, 'the file is not there in this sandbox');
+    assert.match(el('pricesEmpty').textContent, /^No prices yet\./);
 
-    // A file the page cannot draw hides the section instead of stopping the page.
     const real = context.fetch;
     const warn = context.console.warn;
     const warnings = [];
     context.console.warn = (...parts) => warnings.push(parts[0]);
-    context.fetch = async () => ({ ok: true, json: async () => ({ games: { 'Silent Hill 2': { level: 'normal', mentions: 1,
-        US: { checked: '2026-10-06T11:00Z', copies: 2, lowest: 9, median: 12 } } } }) });
+    const good = {
+        'data/prices/latest.json': { games: { 'Shin Megami Tensei: Persona 4': { level: 'normal', mentions: 1,
+            US: { checked: '2026-10-06T11:00Z', copies: 2, lowest: 9, median: 12 } } } },
+        'ebay_watchlist.json': { games: [{ title: 'Shin Megami Tensei: Persona 4', search: 'Persona 4' }] },
+    };
+    // What the site answers for each file: a body (200), a status code, 'drop' (no connection) or 'garbage' (not JSON).
+    let answers = {};
+    context.fetch = async (path) => {
+        const answer = path in answers ? answers[path] : 404;
+        if (answer === 'drop') throw new TypeError('Failed to fetch');
+        if (answer === 'garbage') return { ok: true, status: 200, json: async () => { throw new SyntaxError('Unexpected token'); } };
+        if (typeof answer === 'number') return { ok: false, status: answer, json: async () => ({}) };
+        return { ok: true, status: 200, json: async () => answer };
+    };
+    const load = async (next) => { answers = next; await vm.runInContext('loadPrices()', context); };
+    const figure = (title) => vm.runInContext(`priceFiguresHtml(${JSON.stringify(title)}) !== ''`, context);
+    const state = () => ({ short: figure('Persona 4'), full: figure('Shin Megami Tensei: Persona 4'),
+        rows: (el('pricesList').innerHTML.match(/<li /g) || []).length, note: el('pricesEmpty').classList.contains('hidden') ? '' : el('pricesEmpty').textContent.slice(0, 13) });
+    const SHOWN = { short: true, full: true, rows: 1, note: '' };
     try {
-        await vm.runInContext('loadPrices()', context);
-        assert.equal(el('pricesSection').classList.contains('hidden'), false, 'a good file is shown');
+        await load(good);
+        assert.deepEqual(state(), SHOWN, 'a good file is shown, and the watchlist ties the short name to it');
+
+        // A hiccup on REFRESH keeps what is on screen: prices, and the names that find them.
+        for (const trouble of [503, 500, 'drop', 'garbage']) {
+            await load({ ...good, 'data/prices/latest.json': trouble });
+            assert.deepEqual(state(), SHOWN, `prices survive "${trouble}"`);
+            await load({ ...good, 'ebay_watchlist.json': trouble });
+            assert.deepEqual(state(), SHOWN, `the watchlist survives "${trouble}"`);
+        }
+        // The watchlist is a help, not a requirement: without it the library title still finds the price.
+        await load({ 'data/prices/latest.json': good['data/prices/latest.json'] });
+        assert.deepEqual(state(), { ...SHOWN, short: false });
+        // The price file really gone: say so, and say what to do.
+        await load({});
+        assert.deepEqual(state(), { short: false, full: false, rows: 0, note: 'No prices yet' });
+
+        // Nothing loaded yet and the file cannot be read: that is not "no prices yet".
+        for (const trouble of [503, 'drop', 'garbage']) {
+            await load({ 'data/prices/latest.json': trouble });
+            assert.deepEqual(state(), { short: false, full: false, rows: 0, note: 'The price fil' }, `"${trouble}" with nothing loaded`);
+            assert.match(el('pricesEmpty').textContent, /Press REFRESH to try again\./);
+        }
+        await load(good);
+        assert.deepEqual(state(), SHOWN, 'and it recovers on the next try');
+        assert.deepEqual(warnings, []);
+
+        // A file the page cannot draw must not stop the rest of the page.
         context.__realRows = vm.runInContext('priceRows', context);
         vm.runInContext("priceRows = () => { throw new Error('boom'); }", context);
-        await vm.runInContext('loadPrices()', context);
-        assert.equal(el('pricesSection').classList.contains('hidden'), true);
+        await load(good);
         assert.deepEqual(warnings, ['Could not show data/prices/latest.json.']);
+        assert.equal(figure('Shin Megami Tensei: Persona 4'), false);
     } finally {
-        vm.runInContext('priceRows = __realRows', context);
+        vm.runInContext('if (typeof __realRows === "function") priceRows = __realRows', context);
         context.fetch = real;
         context.console.warn = warn;
     }
+    await vm.runInContext('loadPrices()', context);
+    assert.match(el('pricesEmpty').textContent, /^No prices yet\./);
 
-    assert.match(read('index.html'), /await loadDemand\(\);\s*await loadPrices\(\);/, 'prices are loaded with the rest of the page');
+    assert.match(read('index.html'), /await loadPrices\(\);\s*await loadDemand\(\);\s*refreshDashboard\(\);/,
+        'prices are loaded before the lists that show them');
+});
+
+await check('three pages in one: Tracker, Most mentioned and eBay prices', () => {
+    const views = { dashboard: ['viewDashboard', 'tabDashboard'], mentions: ['viewMentions', 'tabMentions'], prices: ['viewPrices', 'tabPrices'] };
+    // Which page is on screen, and which tab says so. Exactly one of each, always.
+    const shown = () => {
+        const open = Object.keys(views).filter(name => !el(views[name][0]).classList.contains('hidden'));
+        const lit = Object.keys(views).filter(name => el(views[name][1]).classList.contains('is-active'));
+        assert.deepEqual(open, lit, 'the lit tab is the page on screen');
+        assert.equal(open.length, 1, 'one page at a time');
+        return open[0];
+    };
+    addressChanges.length = 0;
+    context.location.hash = '';
+    const show = (name) => { vm.runInContext(`showView(${JSON.stringify(name)})`, context); return shown(); };
+    const selected = () => Object.keys(views).map(name => el(views[name][1]).getAttribute('aria-selected')).join(' ');
+    assert.equal(show('prices'), 'prices');
+    assert.equal(selected(), 'false false true', 'a screen reader hears which tab is open');
+    assert.equal(show('prices'), 'prices');
+    assert.equal(show('mentions'), 'mentions');
+    assert.equal(selected(), 'false true false');
+    assert.equal(show('dashboard'), 'dashboard');
+    assert.equal(selected(), 'true false false');
+    assert.equal(show('dashboard'), 'dashboard');
+    assert.deepEqual(addressChanges, ['#prices', '#mentions', '/'],
+        'each change of page is one new entry in the history, so Back returns to the last page and the address can be bookmarked');
+    for (const name of ['nonsense', 'constructor', 'toString', '', null]) assert.equal(show(name), 'dashboard', `"${name}" is not a page`);
+    assert.deepEqual(addressChanges, ['#prices', '#mentions', '/'], 'staying on a page adds nothing to the history');
+    // Leaving a part of the Tracker that the address names ("#sourcesSection") by its own tab clears the name.
+    context.location.hash = '#sourcesSection';
+    assert.equal(show('dashboard'), 'dashboard');
+    assert.deepEqual(addressChanges, ['#prices', '#mentions', '/', '/']);
+
+    // Arriving with an address, or following a link such as the header's "Sources".
+    addressChanges.length = 0;
+    let scrolled = 0;
+    el('sourcesSection').scrollIntoView = () => { scrolled++; };
+    const arrive = (hash) => { context.location.hash = hash; vm.runInContext('showViewFromAddress()', context); return shown(); };
+    assert.equal(arrive('#prices'), 'prices');
+    assert.equal(arrive('#sourcesSection'), 'dashboard', 'a link into the Tracker leaves the other pages');
+    assert.equal(scrolled, 1, 'and goes to the part it names');
+    assert.equal(arrive('#mentions'), 'mentions');
+    assert.equal(arrive('#sourcesSection'), 'dashboard');
+    assert.equal(scrolled, 2);
+    assert.equal(arrive('#prices'), 'prices');
+    for (const hash of ['', '#', '#dashboard', '#constructor', '#__proto__']) assert.equal(arrive(hash), 'dashboard', `"${hash}" opens the Tracker`);
+    assert.deepEqual(addressChanges, [], 'reading the address never rewrites it');
+    context.location.hash = '';
+
+    const page = read('index.html');
+    const at = (text) => { const index = page.indexOf(text); assert.notEqual(index, -1, text); assert.equal(page.indexOf(text, index + 1), -1, `${text} appears once`); return index; };
+    const order = ['id="tabDashboard"', 'id="tabMentions"', 'id="tabPrices"',
+        '<div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">', 'id="demandSection"', 'id="feedSection"', 'id="sourcesSection"',
+        '<div id="viewMentions" role="tabpanel" aria-labelledby="tabMentions" class="hidden ', 'id="topGamesSection"',
+        '<div id="viewPrices" role="tabpanel" aria-labelledby="tabPrices" class="hidden ', 'id="pricesSection"', '</main>'].map(at);
+    assert.deepEqual(order, [...order].sort((a, b) => a - b), 'each list is on its own page, after everything on the Tracker');
+    for (const [name, [panel, tab]] of Object.entries(views)) {
+        assert.match(page, new RegExp(`id="${tab}" role="tab" aria-selected="${name === 'dashboard'}" aria-controls="${panel}" onclick="showView\\('${name}'\\)"`));
+    }
+    assert.match(page, /showViewFromAddress\(\);\s*window\.addEventListener\('hashchange', showViewFromAddress\);\s*window\.addEventListener\('popstate', showViewFromAddress\);/,
+        'links, Back and Forward all go through the address');
+    assert.match(page, /fetchSentimentData\(\)\.finally\(showViewFromAddress\);/, 'a part named in the address is found again once the page has its content');
+
+    // Every element the script asks for by name exists in the page. A missing one would stop
+    // whatever was being drawn, which a sandbox that invents elements cannot notice.
+    const asked = new Set([...script.matchAll(/getElementById\('([A-Za-z][\w-]*)'\)/g)].map(match => match[1]));
+    const missing = [...asked].filter(id => !page.includes(`id="${id}"`));
+    assert.deepEqual(missing, []);
+    assert.ok(asked.size > 40);
+    assert.match(read('retro.css'), /body \.view-tab\.is-active \{[^}]*border-bottom-color: var\(--accent\)/);
+});
+
+await check('the item count says how far back it goes', () => {
+    const now = Date.parse('2026-10-07T09:00:00Z');
+    const label = (stamps) => { context.__items = stamps.map(timestamp => ({ timestamp })); return vm.runInContext(`itemsLabel(__items, ${now})`, context); };
+    assert.equal(label(['2026-10-07 08:00 UTC', '2026-09-28 01:01 UTC', '2026-10-01 10:00 UTC']), 'Items · 9 days', 'from the oldest item, wherever it is in the list');
+    assert.equal(label(['2026-09-23 09:00 UTC']), 'Items · 14 days');
+    assert.equal(label(['2026-09-23 18:00 UTC']), 'Items · 14 days', '13 days and 15 hours is nearer 14 than 13');
+    assert.equal(label(['2026-09-24 00:00 UTC']), 'Items · 13 days');
+    assert.equal(label(['2026-10-07 08:00 UTC']), 'Items · 1 day');
+    assert.equal(label(['2026-10-06 03:00 UTC']), 'Items · 1 day');
+    assert.equal(label([]), 'Items scraped');
+    assert.equal(label(['not a time', undefined]), 'Items scraped');
+    assert.equal(label(['2026-10-09 08:00 UTC']), 'Items scraped', 'a clock that is off never gives a negative span');
+    assert.equal(label(['not a time', '2026-10-04 09:00 UTC']), 'Items · 3 days');
+
+    // The tile itself: the count is what is on screen, the span is the whole feed's.
+    const span = () => `Items · ${Math.max(1, Math.round((Date.now() - Date.parse('2026-06-06T10:15:00Z')) / 86400000))} days`;
+    context.__feed = [
+        { headline: 'A', source: 'Eurogamer', link: 'https://e.example/a', matched_game: null, sentiment: 50, timestamp: '2026-06-06 11:30 UTC' },
+        { headline: 'B', source: 'Eurogamer', link: 'https://e.example/b', matched_game: null, sentiment: 50, timestamp: '2026-06-06 10:15 UTC' }];
+    const before = span();
+    vm.runInContext('allFeedData = __feed; refreshDashboard()', context);
+    assert.equal(el('statTotalItems').innerText, 2);
+    assert.ok([before, span()].includes(el('statTotalLabel').textContent), el('statTotalLabel').textContent);
+    // The stand-in data shown before the first scrape is not a window of anything.
+    vm.runInContext('allFeedData = fallbackData.items; refreshDashboard()', context);
+    assert.equal(el('statTotalLabel').textContent, 'Items scraped');
+    assert.match(read('index.html'), /<div id="statTotalLabel" class="stat-label">Items scraped<\/div>\s*<div id="statTotalItems" class="stat-value">0<\/div>/);
 });
 
 console.log(`dashboard checks passed (${passed})`);
