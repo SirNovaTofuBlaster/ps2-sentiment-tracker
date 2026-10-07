@@ -88,6 +88,7 @@ BOARD_THREAD_URL = "https://boards.4chan.org/{}/thread/{}"
 BOARD_PATTERN = re.compile(r"[a-z0-9]{1,6}")
 BOARD_REQUEST_GAP = 1.1  # seconds between two catalog requests
 BOARD_GAMES_NAMED = 3  # a thread's line names this many games and counts the rest
+BOARD_WORD_PATTERN = re.compile(r"[^\W\d_][^\s]*")  # a word that starts with a letter
 CHANNEL_ID_PATTERN = re.compile(r"UC[0-9A-Za-z_-]{22}")
 # The dashboard uses this exact pattern too, so a feed link it accepts always loads here:
 # http(s), an ASCII host name with at least one dot, an optional port, printable ASCII after.
@@ -747,6 +748,27 @@ def thread_timestamp(thread):
         return None
 
 
+def games_in_post(text, matcher, ps2_source=False):
+    """The PS2 games a subject or comment on a board names, as match_all() gives them.
+
+    Posts are chat, not headlines, so two things a headline gets away with are not allowed
+    here. The name has to be spelt as the library spells it, because a near miss is usually
+    another game: "Dragon Age" is not Dragon Rage, and "Legend of Heroes" is not Legend of
+    Herkules. And a name with no number in it has to be written as a name, with capitals,
+    because plenty of titles are ordinary phrases: "the thing is" does not name The Thing,
+    and a "top gun" is not Top Gun. A short name the matcher knows by heart (its aliases,
+    such as "MGS3") counts however it is written."""
+    capitalised = {token for word in BOARD_WORD_PATTERN.findall(text) if word[0].isupper()
+                   for token in normalise(word).split()}
+    kept = []
+    for title, score, method in matcher.match_all(text, ps2_source=ps2_source, threshold=100):
+        tokens = normalise(title).split()
+        named = [t for t in tokens if t not in STOPWORDS] or tokens
+        if method == "alias" or any(NUMERAL_TOKEN.search(t) for t in tokens) or all(t in capitalised for t in named):
+            kept.append((title, score, method))
+    return kept
+
+
 def analyze_thread(thread, job, matcher, ps2_keys):
     """An item for a thread whose opening post names a PS2 game; None for every other thread.
 
@@ -762,13 +784,13 @@ def analyze_thread(thread, job, matcher, ps2_keys):
     ps2_source = key in ps2_keys
     subject = board_text(thread.get("sub"))
     comment = " ".join(board_text(thread.get("com")).split()[:MAX_BODY_TOKENS])
-    # A subject is a headline. Most threads have none, and then the comment is all there is:
-    # it is read with the same rules, but marked as body text, so that a game named in passing
+    # A subject is the thread's headline. Most threads have none, and then the comment is all
+    # there is: it is read the same way but marked as body text, so that a game named there
     # counts as a mention without counting as a headline (the price checker's "surging" level
     # goes by headlines).
-    found, matched_in = (matcher.match_all(subject, ps2_source=ps2_source), "title") if subject else ([], None)
+    found, matched_in = (games_in_post(subject, matcher, ps2_source), "title") if subject else ([], None)
     if not found and comment:
-        found, matched_in = matcher.match_all(comment, ps2_source=ps2_source), "body"
+        found, matched_in = games_in_post(comment, matcher, ps2_source), "body"
     if not found:
         return None
     game, score, method = found[0]

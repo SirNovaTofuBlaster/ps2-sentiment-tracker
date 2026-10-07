@@ -25,6 +25,7 @@ sys.path.insert(0, str(ROOT))
 import scraper  # noqa: E402
 
 GAMES_SHOWN = 40
+READER_NAME = "ps2-sentiment-tracker/1.1 (RSS reader; +https://github.com/SirNovaTofuBlaster/ps2-sentiment-tracker)"
 ON_GITHUB = os.environ.get("GITHUB_ACTIONS") == "true"
 report = []  # (heading, lines) for each source tried
 
@@ -86,6 +87,17 @@ def try_board(session, job, matcher, ps2_keys):
         f"{stamps[0] if stamps else '?'} to {stamps[-1] if stamps else '?'}")
     say(f"  {len(items)} name a PS2 game: {sum(1 for i in items if i['matched_in'] == 'title')} in the subject, "
         f"{sum(1 for i in items if i['matched_in'] == 'body')} in the comment; {strict} also say PS2")
+    # What the two rules for posts leave out (see scraper.games_in_post): names only.
+    loose = Counter()
+    for thread in live:
+        subject = scraper.board_text(thread.get("sub"))
+        comment = " ".join(scraper.board_text(thread.get("com")).split()[:scraper.MAX_BODY_TOKENS])
+        found = (matcher.match_all(subject) if subject else []) or (matcher.match_all(comment) if comment else [])
+        loose.update(title for title, _, _ in found)
+    kept = Counter(game for item in items for game in item["matched_games"])
+    dropped = loose - kept
+    say(f"  left out by the rules for posts ({sum(dropped.values())} mentions): "
+        + (", ".join(f"{title} x{count}" if count > 1 else title for title, count in dropped.most_common(GAMES_SHOWN)) or "nothing"))
     methods = Counter(f"{i['match_method']}" for i in items)
     say(f"  how they matched: {dict(methods)}; threads naming more than one game: "
         f"{sum(1 for i in items if len(i['matched_games']) > 1)}")
@@ -120,6 +132,15 @@ def main():
             except (requests.RequestException, ValueError) as error:
                 failed.append(job["sources"][0]["name"])
                 say(f"  FAILED: {scraper.feed_error(error)}")
+                if job["type"] != scraper.BOARD_TYPE and scraper.feed_error(error) == "HTTP 403":
+                    # Is it this machine that is refused, or the name the scraper gives? One more
+                    # request under a plain feed-reader name tells the two apart.
+                    try:
+                        again = requests.get(job["url"], timeout=scraper.REQUEST_TIMEOUT, headers={"User-Agent": READER_NAME})
+                        say(f"  as a feed reader: HTTP {again.status_code}, {len(again.content)} bytes, "
+                            f"server {again.headers.get('server', '?')}, cf-mitigated {again.headers.get('cf-mitigated', '-')}")
+                    except requests.RequestException as second:
+                        say(f"  as a feed reader: {scraper.feed_error(second)}")
                 continue
             if job["type"] == scraper.BOARD_TYPE:
                 games.update(found)

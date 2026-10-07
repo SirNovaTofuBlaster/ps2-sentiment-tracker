@@ -98,9 +98,28 @@ def podcast(url, name="Show", role="press", enabled=True):
     return {"type": "podcast", "name": name, "url": url, "group": "Podcasts", "role": role, "enabled": enabled}
 
 
+def forum(url, name="Board", role="community", enabled=True):
+    return {"type": "forum", "name": name, "url": url, "group": "Forums", "role": role, "enabled": enabled}
+
+
+def board(code, role="anonymous", enabled=True):
+    return {"type": "4chan", "name": f"/{code}/", "board": code, "group": "Boards", "role": role, "enabled": enabled}
+
+
+def thread(number, when, subject=None, comment=None, **extra):
+    """One thread of a board's catalog, the way 4chan's API gives it (text is HTML-escaped)."""
+    post = {"no": number, "resto": 0, "time": int(when.timestamp()), "name": "Anonymous", "replies": 3, "images": 1}
+    if subject is not None:
+        post["sub"] = subject
+    if comment is not None:
+        post["com"] = comment
+    return {**post, **extra}
+
+
 def make_config(*sources, **extra):
     roles = {name: {"label": name, "weight": weight} for name, weight in
-             [("official", 1), ("press", 1), ("community", 1), ("ps2", 1.5), ("retro", 1), ("collector", 0.5), ("creator", 0.5)]}
+             [("official", 1), ("press", 1), ("community", 1), ("ps2", 1.5), ("retro", 1), ("collector", 0.5), ("creator", 0.5),
+              ("anonymous", 0)]}
     return {"version": 1, "roles": roles, "sources": list(sources), **extra}
 
 
@@ -169,7 +188,8 @@ class FeedsFileTests(unittest.TestCase):
 class ValidationTests(unittest.TestCase):
     def setUp(self):
         self.config = make_config(news("https://example.com/feed"), subreddit("ps2"), youtube(CH1),
-                                  podcast("https://example.com/pod.rss"), poll_every_hours={"podcast": 6})
+                                  podcast("https://example.com/pod.rss"), forum("https://forum.example.com/index.rss"),
+                                  board("vr"), poll_every_hours={"podcast": 6})
 
     def problems_after(self, change):
         config = copy.deepcopy(self.config)
@@ -207,10 +227,26 @@ class ValidationTests(unittest.TestCase):
             "youtube link not normalised": lambda c: c["sources"].append(youtube_link("youtube.com/@IGN")),
             "youtube link with a path": lambda c: c["sources"].append(youtube_link("https://www.youtube.com/@IGN/videos")),
             "bad id next to a good link": lambda c: c["sources"][2].update(channel_id="nope", channel_url="https://www.youtube.com/@IGN"),
+            "forum url": lambda c: c["sources"][4].update(url="forum.example.com/index.rss"),
+            "forum without a url": lambda c: c["sources"][4].pop("url"),
+            "duplicate forum": lambda c: c["sources"].append(forum("https://forum.example.com/index.rss", name="Again")),
+            **{f"board {code!r}": (lambda code: lambda c: c["sources"][5].update(board=code))(code)
+               for code in ("VR", "/vr/", "v r", "", "toolong", "vr\n", "v-r", 4, None, ["vr"])},
+            "board missing": lambda c: c["sources"][5].pop("board"),
+            "duplicate board": lambda c: c["sources"].append(board("vr")),
         }
         for name, change in cases.items():
             with self.subTest(name):
                 self.assertTrue(self.problems_after(change))
+
+    def test_forums_and_boards_are_accepted(self):
+        for code in ("v", "vg", "vmg", "vrpg", "3", "s4s"):
+            with self.subTest(code):
+                self.assertEqual(self.problems_after(lambda c: c["sources"].append(board(code))), [])
+        self.assertEqual(self.problems_after(lambda c: c["poll_every_hours"].update({"forum": 2, "4chan": 3})), [])
+        self.assertEqual(scraper.source_key(board("vr")), "4chan:vr")
+        self.assertEqual(scraper.source_key(forum("https://forum.example.com/index.rss")), "https://forum.example.com/index.rss")
+        self.assertEqual(self.problems_after(lambda c: c["roles"]["anonymous"].update(weight=0)), [], "a weight of 0 leaves a role out")
 
     def test_youtube_channel_links_are_accepted(self):
         for link in ("https://www.youtube.com/@IGN", "https://www.youtube.com/c/IGN", "https://www.youtube.com/user/IGNentertainment"):
@@ -241,13 +277,18 @@ class BuildJobsTests(unittest.TestCase):
         self.assertEqual([job["url"] for job in scraper.build_jobs(config)], ["https://a.example/feed"])
 
     def test_core_feeds_come_first_and_groups_keep_their_order(self):
-        config = make_config(podcast("https://p.example/rss"), youtube(CH1), subreddit("a", group="G1"),
-                             news("https://n.example/feed"), subreddit("b", group="G2"), subreddit("c", group="G1"))
+        config = make_config(podcast("https://p.example/rss"), youtube(CH1), board("vr"), subreddit("a", group="G1"),
+                             forum("https://f.example/index.rss"), news("https://n.example/feed"), subreddit("b", group="G2"),
+                             board("v"), board("vst", enabled=False), subreddit("c", group="G1"))
         jobs = scraper.build_jobs(config)
-        self.assertEqual([job["type"] for job in jobs], ["news", "reddit", "reddit", "youtube", "podcast"])
+        # Forums and boards are a few quick requests: they go before the hundreds of YouTube and
+        # podcast feeds, which can use up the run's time.
+        self.assertEqual([job["type"] for job in jobs], ["news", "reddit", "reddit", "forum", "4chan", "4chan", "youtube", "podcast"])
         self.assertEqual(jobs[1]["url"], "https://www.reddit.com/r/a+c/.rss?limit=50")
         self.assertEqual(jobs[2]["url"], "https://www.reddit.com/r/b/.rss?limit=50")
-        self.assertEqual(jobs[3]["url"], f"https://www.youtube.com/feeds/videos.xml?channel_id={CH1}")
+        self.assertEqual([job["url"] for job in jobs[3:6]], ["https://f.example/index.rss", "https://a.4cdn.org/vr/catalog.json",
+                                                             "https://a.4cdn.org/v/catalog.json"])
+        self.assertEqual(jobs[6]["url"], f"https://www.youtube.com/feeds/videos.xml?channel_id={CH1}")
 
     def test_youtube_links_wait_for_their_channel_id(self):
         config = make_config(youtube_link("https://www.youtube.com/@Some"))
@@ -266,8 +307,8 @@ class ScheduleTests(unittest.TestCase):
             return scraper.due_types(self.config, self.now, {"podcast": last})
 
     def test_podcasts_wait_for_their_interval(self):
-        self.assertEqual(self.due_after(hours=2), {"news", "reddit", "youtube"})
-        self.assertEqual(self.due_after(hours=5, minutes=30), {"news", "reddit", "youtube"})
+        self.assertEqual(self.due_after(hours=2), set(scraper.SOURCE_TYPES) - {"podcast"})
+        self.assertEqual(self.due_after(hours=5, minutes=30), set(scraper.SOURCE_TYPES) - {"podcast"})
         self.assertEqual(self.due_after(hours=5, minutes=45), set(scraper.SOURCE_TYPES))  # within the tolerance
         self.assertEqual(self.due_after(days=3), set(scraper.SOURCE_TYPES))  # GitHub skipped many runs
 
@@ -346,6 +387,9 @@ class StatusTests(unittest.TestCase):
 class RunScraperTests(unittest.TestCase):
     NEWS_URL = "https://news.example/feed"
     POD_URL = "https://pod.example/rss"
+    FORUM_URL = "https://forum.example/forums/gaming.2/index.rss"
+    VR_URL = "https://a.4cdn.org/vr/catalog.json"
+    V_URL = "https://a.4cdn.org/v/catalog.json"
 
     def setUp(self):
         self.tmp = Path(tempfile.mkdtemp())
@@ -357,6 +401,8 @@ class RunScraperTests(unittest.TestCase):
             subreddit("gaming", group="General"),
             youtube(CH1, name="PS2 Channel", role="ps2"), youtube(CH2, name="Disabled Channel", enabled=False),
             podcast(self.POD_URL, name="Retro Show", role="retro"),
+            forum(self.FORUM_URL, name="Example Forum"),
+            board("vr"), board("v"), board("vst", enabled=False),
         )
         hour = timedelta(hours=1)
         self.fixtures = {
@@ -372,7 +418,25 @@ class RunScraperTests(unittest.TestCase):
             self.POD_URL: rss("Retro Show", [  # oldest first, no episode links
                 ("Episode 1", None, "https://cdn.example/ep1.mp3", NOW - timedelta(days=3)),
                 ("Episode 2: Okami", None, "https://cdn.example/ep2.mp3", NOW - timedelta(days=1))]),
+            self.FORUM_URL: rss("Gaming", [
+                ("Ico appreciation thread", "https://forum.example/threads/ico.1/", None, NOW - hour),
+                ("What are you playing this weekend?", "https://forum.example/threads/weekend.2/", None, NOW - 2 * hour)]),
         }
+        # What 4chan's catalog gives for each board: the opening post of every live thread.
+        # The words in capitals stand for what posters write; none of them may be kept.
+        self.boards = {
+            self.VR_URL: [
+                thread(100, NOW - 6 * hour, subject="Board rules", comment="RULESTEXT about Okami", sticky=1, closed=1),
+                thread(101, NOW - 3 * hour, subject="Silent Hill 2 thread", comment="RUDEWORD you all, the remake is a masterpiece"),
+                thread(102, NOW - 2 * hour, comment="Is Shadow of the Colossus<br><span class=\"quote\">&gt;still worth it</span> SECRETWORD"),
+                thread(103, NOW - hour, subject="comfy thread", comment="OTHERWORD what are you playing"),
+            ],
+            self.V_URL: [
+                thread(900, NOW - 2 * hour, comment="Ico, Okami &amp; Gran Turismo 4. PRIVATEWORD Also Final Fantasy X and Persona 4"),
+                thread(901, NOW - hour, comment="NOTAGAME thread"),
+            ],
+        }
+        self.board_calls = []
         data_dir = self.tmp / "data"
         paths = {"DATA_DIR": data_dir, "DB_PATH": data_dir / "ps2_database.json",
                  "OUTPUT_PATH": data_dir / "sentiment_feed.json", "STATUS_PATH": data_dir / "feed_status.json",
@@ -383,6 +447,8 @@ class RunScraperTests(unittest.TestCase):
             patcher.start()
             self.addCleanup(patcher.stop)
         for patcher in (mock.patch.object(scraper, "fetch_feed", side_effect=self.fake_fetch),
+                        mock.patch.object(scraper, "fetch_board", side_effect=self.fake_board),
+                        mock.patch.object(scraper, "BOARD_REQUEST_GAP", 0),
                         mock.patch.object(scraper, "load_ps2_titles", return_value=scraper.FALLBACK_TITLES),
                         mock.patch.dict(os.environ, {"FULL_RUN": "1"})):
             patcher.start()
@@ -393,6 +459,12 @@ class RunScraperTests(unittest.TestCase):
         if url in self.failures:
             raise self.failures[url]
         return feedparser.parse(self.fixtures[url])
+
+    def fake_board(self, session, url, modified_since=None):
+        self.board_calls.append((url, modified_since))
+        if url in self.failures:
+            raise self.failures[url]
+        return self.boards[url]
 
     def run_scraper(self):
         scraper.FEEDS_PATH.write_text(json.dumps(self.config), encoding="utf-8")
@@ -407,7 +479,7 @@ class RunScraperTests(unittest.TestCase):
 
     def test_all_source_types_end_up_in_the_snapshot(self):
         output, status = self.run_scraper()
-        self.assertEqual(output["total_tracked_feeds"], 6)  # enabled sources; each subreddit counts once
+        self.assertEqual(output["total_tracked_feeds"], 9)  # enabled sources; each subreddit counts once
         news_item = self.item(output, "Silent Hill 2 remake announced", "Example News")
         self.assertEqual((news_item["source_type"], news_item["feed"]), ("news", self.NEWS_URL))
         self.assertEqual(news_item["matched_game"], "Silent Hill 2")
@@ -420,9 +492,89 @@ class RunScraperTests(unittest.TestCase):
                          ("podcast", self.POD_URL, "https://cdn.example/ep2.mp3", "Okami"))
         self.assertEqual(self.item(output, "PCSX2 settings help", "r/PCSX2")["feed"], "reddit:pcsx2")
         self.assertEqual(set(status), {self.NEWS_URL, "reddit:ps2", "reddit:pcsx2", "reddit:gaming",
-                                       f"youtube:{CH1}", self.POD_URL})
+                                       f"youtube:{CH1}", self.POD_URL, self.FORUM_URL, "4chan:vr", "4chan:v"})
         self.assertTrue(all(entry["ok"] for entry in status.values()))
         self.assertEqual(status["reddit:ps2"]["latest"], (NOW - timedelta(hours=1)).strftime(scraper.TIMESTAMP_FORMAT))
+
+    def test_forum_threads_are_items_like_any_other_feed(self):
+        output, status = self.run_scraper()
+        ico = self.item(output, "Ico appreciation thread", "Forum: Example Forum")
+        self.assertEqual((ico["source_type"], ico["feed"], ico["link"], ico["matched_game"]),
+                         ("forum", self.FORUM_URL, "https://forum.example/threads/ico.1/", "Ico"))
+        self.assertIsNone(self.item(output, "What are you playing this weekend?", "Forum: Example Forum")["matched_game"])
+        self.assertEqual(status[self.FORUM_URL], {"ok": True, "latest": (NOW - timedelta(hours=1)).strftime(scraper.TIMESTAMP_FORMAT)})
+        # A forum is an extra: when it is down the run goes on.
+        self.failures[self.FORUM_URL] = http_error(403)
+        output, status = self.run_scraper()
+        self.assertEqual((status[self.FORUM_URL]["ok"], status[self.FORUM_URL]["error"]), (False, "HTTP 403"))
+        self.item(output, "Ico appreciation thread", "Forum: Example Forum")  # what was collected before is kept
+
+    def test_a_board_thread_keeps_the_games_it_names_and_nothing_a_poster_wrote(self):
+        output, status = self.run_scraper()
+        threads = {item["link"]: item for item in output["items"] if item["source_type"] == "4chan"}
+        stamp = lambda hours: (NOW - timedelta(hours=hours)).strftime(scraper.TIMESTAMP_FORMAT)  # noqa: E731
+        self.assertEqual(threads, {
+            "https://boards.4chan.org/vr/thread/101": {
+                "headline": "Thread on /vr/ naming Silent Hill 2", "source": "4chan /vr/", "source_type": "4chan", "feed": "4chan:vr",
+                "link": "https://boards.4chan.org/vr/thread/101", "matched_game": "Silent Hill 2", "matched_games": ["Silent Hill 2"],
+                "match_score": 100, "match_method": threads["https://boards.4chan.org/vr/thread/101"]["match_method"],
+                "matched_in": "title", "is_remaster_rumor": False, "sentiment": 50, "hype": 0, "timestamp": stamp(3)},
+            "https://boards.4chan.org/vr/thread/102": {
+                "headline": "Thread on /vr/ naming Shadow of the Colossus", "source": "4chan /vr/", "source_type": "4chan", "feed": "4chan:vr",
+                "link": "https://boards.4chan.org/vr/thread/102", "matched_game": "Shadow of the Colossus",
+                "matched_games": ["Shadow of the Colossus"], "match_score": 100,
+                "match_method": threads["https://boards.4chan.org/vr/thread/102"]["match_method"],
+                "matched_in": "body", "is_remaster_rumor": False, "sentiment": 50, "hype": 0, "timestamp": stamp(2)},
+            "https://boards.4chan.org/v/thread/900": threads.get("https://boards.4chan.org/v/thread/900"),
+        }, "one row per thread that names a game; the rules thread and the threads naming none are not kept")
+        many = threads["https://boards.4chan.org/v/thread/900"]
+        self.assertEqual(sorted(many["matched_games"]), ["Final Fantasy X", "Gran Turismo 4", "Ico", "Okami", "Persona 4"])
+        self.assertEqual(many["headline"], f"Thread on /v/ naming {', '.join(many['matched_games'][:3])} and 2 more")
+        self.assertEqual((many["matched_in"], many["sentiment"], many["is_remaster_rumor"]), ("body", 50, False))
+
+        # Nothing a poster wrote reaches either file: not the rude word, not an ordinary one.
+        saved = scraper.OUTPUT_PATH.read_text(encoding="utf-8") + scraper.STATUS_PATH.read_text(encoding="utf-8")
+        for word in ("RULESTEXT", "RUDEWORD", "SECRETWORD", "OTHERWORD", "PRIVATEWORD", "NOTAGAME",
+                     "masterpiece", "comfy", "worth", "Anonymous", "quote"):
+            self.assertNotIn(word.lower(), saved.lower(), word)
+        self.assertEqual(status["4chan:vr"], {"ok": True, "latest": stamp(1)}, "the newest thread, whether or not it named a game")
+        self.assertEqual(status["4chan:v"], {"ok": True, "latest": stamp(1)})
+
+    def test_boards_are_read_one_at_a_time_and_only_when_something_changed(self):
+        with mock.patch.object(scraper, "BOARD_REQUEST_GAP", 1.1), mock.patch.object(scraper.time, "sleep") as sleep:
+            self.run_scraper()
+        self.assertEqual(self.board_calls, [(self.VR_URL, None), (self.V_URL, None)], "enabled boards only, in the order listed")
+        gaps = [call.args[0] for call in sleep.call_args_list]
+        self.assertEqual(len(gaps), 1, "one pause, between the two boards")
+        self.assertTrue(1.0 < gaps[0] <= 1.1, gaps)
+
+        # The next run says how recent its newest thread is, and a board with nothing new answers "not modified".
+        self.board_calls.clear()
+        self.boards[self.VR_URL] = None
+        output, status = self.run_scraper()
+        newest = (NOW - timedelta(hours=1)).replace(second=0)
+        self.assertEqual(self.board_calls, [(self.VR_URL, newest), (self.V_URL, newest)])
+        self.assertEqual(status["4chan:vr"], {"ok": True, "latest": newest.strftime(scraper.TIMESTAMP_FORMAT)})
+        self.assertIn("https://boards.4chan.org/vr/thread/101", [item["link"] for item in output["items"]],
+                      "threads already collected stay until they age out")
+
+    def test_a_board_that_cannot_be_read_never_stops_a_run(self):
+        codes = ("vr", "v", "vg", "vm", "vmg")
+        self.config["sources"] = [s for s in self.config["sources"] if s["type"] != "4chan"] + [board(code) for code in codes]
+        for code in codes:
+            self.failures[f"https://a.4cdn.org/{code}/catalog.json"] = requests.ConnectionError("blocked")
+        output, status = self.run_scraper()
+        self.item(output, "Silent Hill 2 remake announced", "Example News")
+        self.assertEqual(len(self.board_calls), scraper.HOST_FAILURE_LIMIT, "after three failures the rest are left for the next run")
+        self.assertEqual((status["4chan:vr"]["ok"], status["4chan:vr"]["error"]), (False, "ConnectionError"))
+        self.assertNotIn("4chan:vmg", status)
+        self.failures.clear()
+        self.failures[self.VR_URL] = ValueError("unreadable catalog")
+        self.boards.update({f"https://a.4cdn.org/{code}/catalog.json": [] for code in codes[2:]})
+        output, status = self.run_scraper()
+        self.assertEqual((status["4chan:vr"]["ok"], status["4chan:vr"]["error"]), (False, "unreadable catalog"))
+        self.assertTrue(status["4chan:v"]["ok"])
+        self.assertIn("https://boards.4chan.org/v/thread/900", [item["link"] for item in output["items"]])
 
     def test_ps2_role_decides_ambiguous_matches(self):
         output, _ = self.run_scraper()
@@ -579,6 +731,86 @@ class RunScraperTests(unittest.TestCase):
         self.assertNotIn(self.POD_URL, status)
 
 
+class BoardTests(unittest.TestCase):
+    """Reading a 4chan board: the request, and turning what it returns into plain words."""
+
+    class Session:
+        def __init__(self, status=200, body=None):
+            self.status, self.body, self.calls = status, body, []
+
+        def get(self, url, timeout=None, headers=None):
+            self.calls.append((url, timeout, headers))
+            response = mock.Mock(status_code=self.status)
+            response.json.return_value = self.body
+            response.raise_for_status.side_effect = None if self.status < 400 else http_error(self.status)
+            return response
+
+    def test_the_catalog_is_flattened_into_threads(self):
+        pages = [{"page": 1, "threads": [{"no": 1}, {"no": 2}]}, {"page": 2, "threads": [{"no": 3}, "junk"]}, "junk", {"page": 3}]
+        session = self.Session(body=pages)
+        self.assertEqual(scraper.fetch_board(session, "https://a.4cdn.org/vr/catalog.json"), [{"no": 1}, {"no": 2}, {"no": 3}])
+        self.assertEqual(session.calls, [("https://a.4cdn.org/vr/catalog.json", scraper.REQUEST_TIMEOUT, {})])
+
+    def test_it_asks_only_for_what_changed(self):
+        session = self.Session(status=304)
+        since = datetime(2026, 10, 7, 12, 30, tzinfo=timezone.utc)
+        self.assertIsNone(scraper.fetch_board(session, "https://a.4cdn.org/vr/catalog.json", since))
+        self.assertEqual(session.calls[0][2], {"If-Modified-Since": "Wed, 07 Oct 2026 12:30:00 GMT"})
+
+    def test_an_answer_that_is_not_a_catalog_is_a_failure(self):
+        for body in ({"error": "nope"}, None, "text"):
+            with self.subTest(body=body), self.assertRaises(ValueError):
+                scraper.fetch_board(self.Session(body=body), "https://a.4cdn.org/vr/catalog.json")
+        with self.assertRaises(requests.HTTPError):
+            scraper.fetch_board(self.Session(status=403), "https://a.4cdn.org/vr/catalog.json")
+
+    def test_markup_and_entities_become_plain_words(self):
+        self.assertEqual(scraper.board_text('Ico &amp; Okami<br><span class="quote">&gt;implying</span> long<wbr>word &#039;s'),
+                         "Ico & Okami >implying longword 's")
+        self.assertEqual([scraper.board_text(value) for value in (None, "", 5)], ["", "", "5"])
+
+    def test_the_line_for_a_thread_names_up_to_three_games(self):
+        names = ["Ico", "Okami", "Kuon", "God Hand", "Black"]
+        self.assertEqual([scraper.games_named(names[:count]) for count in (1, 2, 3, 4, 5)],
+                         ["Ico", "Ico and Okami", "Ico, Okami and Kuon", "Ico, Okami, Kuon and 1 more", "Ico, Okami, Kuon and 2 more"])
+
+    def test_a_post_names_a_game_only_when_it_is_spelt_right_and_written_as_a_name(self):
+        matcher = scraper.TitleMatcher(scraper.FALLBACK_TITLES + ["The Thing", "Top Gun", "Dragon Rage", "Legend of Herkules"])
+        named = lambda text: [title for title, _, _ in scraper.games_in_post(text, matcher)]  # noqa: E731
+        loose = lambda text: [title for title, _, _ in matcher.match_all(text)]  # noqa: E731
+        # A near miss is usually another game. A headline is given the benefit of the doubt; a post is not.
+        for text, wrong in (("Dragon Age general", "Dragon Rage"), ("Legend of Heroes thread", "Legend of Herkules")):
+            self.assertEqual((loose(text), named(text)), ([wrong], []), text)
+        # A title that is also an ordinary phrase counts when it is written as a name.
+        for text in ("the thing is, I never liked it", "What's the thing you hate", "top gun pilots"):
+            self.assertEqual((len(loose(text)), named(text)), (1, []), text)
+        self.assertEqual(named("The Thing is the best horror game"), ["The Thing"])
+        self.assertEqual(named("Was Shadow of the Colossus overrated?"), ["Shadow of the Colossus"])
+        self.assertEqual(named("shadow of the colossus was overrated"), [])
+        self.assertEqual(sorted(named("Ico and Okami")), ["Ico", "Okami"])
+        self.assertEqual(named("ico and okami"), [])
+        # A number settles which game is meant, so capitals are not needed; nor for a name known by heart.
+        self.assertEqual(named("silent hill 2 is kino"), ["Silent Hill 2"])
+        self.assertEqual(named("final fantasy x"), ["Final Fantasy X"])
+        self.assertEqual(named("mgs3 was good"), ["Metal Gear Solid 3: Snake Eater"])
+        self.assertEqual(named("I love Kingdom Hearts and God of War"), ["Kingdom Hearts", "God of War"])
+        self.assertEqual(named(""), [])
+
+    def test_threads_without_a_usable_number_or_time_are_left_alone(self):
+        matcher = scraper.TitleMatcher(scraper.FALLBACK_TITLES)
+        job = {"type": "4chan", "sources": [board("vr")], "url": "https://a.4cdn.org/vr/catalog.json"}
+        good = thread(7, NOW, subject="Okami")
+        self.assertEqual(scraper.analyze_thread(good, job, matcher, set())["matched_game"], "Okami")
+        for change in ({"no": None}, {"no": "7"}, {"no": True}, {"time": None}, {"time": "now"}, {"time": True},
+                       {"time": 10 ** 20}, {"sticky": 1}):
+            with self.subTest(change=change):
+                self.assertIsNone(scraper.analyze_thread({**good, **change}, job, matcher, set()))
+        self.assertIsNone(scraper.analyze_thread(thread(8, NOW), job, matcher, set()), "a thread with no text at all")
+        # An over-long comment is read only at its start, like any other body text.
+        late = thread(9, NOW, comment=" ".join(["word"] * scraper.MAX_BODY_TOKENS) + " Okami")
+        self.assertIsNone(scraper.analyze_thread(late, job, matcher, set()))
+
+
 # --- dashboard (index.html) ----------------------------------------------------------
 
 @unittest.skipUnless(shutil.which("node"), "Node.js is not installed")
@@ -593,7 +825,8 @@ class DashboardTests(unittest.TestCase):
 
     def test_dashboard_and_scraper_validators_agree(self):
         base = make_config(news("https://example.com/feed"), subreddit("ps2"), youtube(CH1),
-                           podcast("https://example.com/pod.rss"), poll_every_hours={"podcast": 6})
+                           podcast("https://example.com/pod.rss"), forum("https://forum.example.com/index.rss"),
+                           board("vr"), poll_every_hours={"podcast": 6})
         changes = [
             lambda c: None,
             lambda c: c["sources"][0].update(url="not a url"),
@@ -625,6 +858,20 @@ class DashboardTests(unittest.TestCase):
             lambda c: c["sources"][0].update(url="https://example.com:8080/feed?x=1#top"),
             lambda c: c["sources"][0].update(role=["press"]),
             lambda c: c.update(poll_every_hours=None),
+            lambda c: c["sources"][4].update(url="forum.example.com/index.rss"),
+            lambda c: c["sources"][4].pop("url"),
+            lambda c: c["sources"].append(forum("https://forum.example.com/index.rss", name="Again")),
+            lambda c: c["sources"].append(forum("https://other.example.com/index.rss", name="Another")),
+            *[(lambda code: lambda c: c["sources"][5].update(board=code))(code)
+              for code in ("v", "vrpg", "s4s", "3", "VR", "/vr/", "v r", "", "toolong", "vr\n", "v-r", "ｖｒ", 4, None, ["vr"], {"a": 1}, True)],
+            lambda c: c["sources"][5].pop("board"),
+            lambda c: c["sources"].append(board("vr")),
+            lambda c: c["sources"].append(board("vg")),
+            lambda c: c["sources"][5].update(url="https://example.com/feed"),
+            lambda c: c["poll_every_hours"].update({"forum": 2, "4chan": 3}),
+            lambda c: c["poll_every_hours"].update({"4chan": 0}),
+            lambda c: c["roles"]["anonymous"].update(weight=0),
+            lambda c: c["sources"][5].update(role="nope"),
         ]
         cases = [CONFIG]
         for change in changes:
