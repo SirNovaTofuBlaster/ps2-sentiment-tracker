@@ -53,7 +53,10 @@ MIN_GRAM_CHARS = 8  # shorter runs of words match too many titles by accident
 MAX_BODY_TOKENS = 120  # only the start of a summary/description is searched
 COMMON_TOKEN_SHARE = 0.01  # tokens in more than this share of titles don't narrow the search
 RETENTION_DAYS = 14
-MAX_ITEMS = 5000
+# A ceiling on the snapshot's size, not the usual limit: RETENTION_DAYS is. It has to hold two
+# weeks of items with room to spare (about 600 a day from 222 sources in October 2026, 750 on a
+# busy day). At 5000 it cut the window to nine days and the dashboard's count stopped moving.
+MAX_ITEMS = 12000
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"
 FETCH_TIME_BUDGET = 600  # seconds; YouTube/podcast feeds not reached by then are skipped this run
 HOST_FAILURE_LIMIT = 3  # consecutive YouTube/podcast host-level failures skip the rest of that host
