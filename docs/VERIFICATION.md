@@ -303,6 +303,45 @@ GitHub one (the commit that lands on `main` is GitHub's squash, under the mainta
 no-reply address); a browser tab left open on the old page weighs new 4chan rows at 1 until
 it is reloaded.
 
+## 2026-10-07: start-up screen colours
+
+How the re-colouring of `retro.css` and the banner change were checked. No browser was used
+(rule 11); the maintainer chose the direction from a separate mock-up.
+
+| Check | Result |
+|---|---|
+| What changed | `retro.css` (the values at the top, the strip, the tag, the tab line, two tints, two overrides of Tailwind), the banner and three class names in `index.html`, wording and the mark in `guide.html`. `scraper.py`, `feeds.json` and the data are untouched, so the live checks did not apply |
+| Readable | Worked out, not eyeballed: every colour that carries text against the page, the banner, a field, a striped row and both kinds of row under the pointer is at least 4.5 to 1. The lowest are the quiet grey and the red on a hovered striped row. The check is part of the test suite |
+| One job per colour | No rule but a price link's uses the yellow, no colour is written out below the list at the top of the stylesheet, and the pages carry no yellow class of their own |
+| Nothing left of the old palette | All 17 old values, one that was written out in a rule, the guide's three older ones and the old tint are searched for in the stylesheet and both pages |
+| Layout | By reading: the strip is a block above the banner's content on both pages, outside the phone grid and the guide's fixed-height row; the three parts left in the phone banner each have their place; the new classes win where they should and the phone rules only change sizes |
+| Offline tests | 204 Python tests and 30 dashboard checks pass |
+| Do the checks bite | 32 one-line breakages of the stylesheet and the two pages, including every one the reviewer slipped past the first version of the check: all noticed |
+| Static files | `index.html`, `guide.html`, `retro.css`, `feeds.json` and the snapshot served by `python -m http.server` and fetched with curl: all 200 |
+| Not checked | How it looks. The contrast figures are arithmetic and the cascade was reasoned from the selectors, with Tailwind's own rules taken from its documentation rather than from a loaded page |
+
+### Independent review
+
+One review with fresh context and no browser, told to report only findings backed by a
+concrete failure.
+
+| Finding | Resolution |
+|---|---|
+| Two of the guide's three mentions still said "amber buttons" | All three say yellow; a check counts them |
+| The new check required more than 200 enabled sources, so switching 31 off from the dashboard would have turned the tests red, and the guide quoted a number again | The number is out of the guide and the check |
+| The stripe was barely there: 1.04 to 1 against the page, where it had been 1.13 | A lighter neutral (1.11 to 1), with a minimum in the check |
+| "Meets the contrast standard on every ground" was false on a hovered row (the quiet grey 4.2, the red tag 4.3) and on switched-off rows | Quiet greys and the red lightened, the pointer's tint made fainter, hovered rows added to the check; the changelog says what is not covered |
+| Ten breakages the first version of the check missed: yellow by another variable, a written-out hex or a Tailwind class; old values outside its short list; a role swapped; the strip hidden; a later rule undoing the tag; a light label on a filled button; a paragraph back under another name | Each is now noticed |
+| The tests did not run on pushes that change only `guide.html` | Added to the workflow's paths |
+| The stylesheet's comment claimed each colour has one job; red and teal also mark failing and healthy, falling and rising | Comment and changelog say what the code does; *Run scraper now*, the one teal button, is blue |
+| The guide's new sentence said games link to "what they sell for" while the guide says the buttons are searches, not prices | Reworded |
+| The changelog said the light direction needed only new values at the top of the stylesheet | Corrected, with what else it needs |
+| Two colours from outside the palette, both older than this change: ticked boxes in Tailwind's cyan, row lines in its slate | Both overridden |
+
+Left as they are: *Remaster flags* is red at zero and *Active feeds* is teal whatever the
+sources' health (it counts the ones switched on); the branch's commit was made under an
+Anthropic no-reply address and lands on `main` as GitHub's squash under the maintainer's.
+
 ## Re-running the checks
 
 ```sh

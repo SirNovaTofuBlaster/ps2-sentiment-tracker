@@ -1,26 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 /* Spindle — theme for index.html and guide.html.
-   Loaded after Tailwind; rules are prefixed with "body" so they win on specificity. */
+   Loaded after Tailwind; rules are prefixed with "body" so they win on specificity.
+
+   The colours are those of a late-nineties console's start-up screen: a near-black ground
+   and four primaries, each with its own kind of job:
+     yellow  price links and nothing else: the one thing in a row that is highlighted
+     blue    what can be followed: game names, links, buttons
+     red     remaster news, and whatever is low or failing (a low mood score, a falling
+             trend, a source that cannot be read, an error)
+     teal    live and well: the sync dot, the sources switched on, a high mood score, a
+             rising trend, a success
+   All four meet only in the strip across the top and in the rings of the mark. */
 
 :root {
-  --bg: #080B12;
-  --banner: #0C1120;
-  --inset: #10141F;
-  --line: #1E2636;
-  --rule: #141A28;
-  --stripe: #101A2E;
-  --text: #E8ECF5;
-  --body: #C7D0E2;
-  --dim: #7E899F;
-  --mute: #4D5872;
-  --accent: #4C8DFF;
-  --accent-hi: #7FADFF;
-  --money: #F0A742;
-  --money-bg: #1B1508;
-  --money-line: #6A4F1C;
-  --green: #5FD3A8;
-  --red: #E8646F;
+  --bg: #0A0A0C;
+  --banner: #111114;
+  --inset: #16161B;
+  --line: #27272E;
+  --rule: #1B1B21;
+  --stripe: #17171D;
+  --text: #F2F2F4;
+  --body: #C9C9CF;
+  --dim: #9C9CA6;
+  --mute: #8C8C96;
+  --accent: #4FA8E8;
+  --accent-hi: #8CC6F2;
+  --money: #F5C52E;
+  --money-bg: #1D1806;
+  --money-line: #6B5514;
+  --green: #2DBFA6;  /* teal */
+  --red: #F2555C;
+  --red-line: #6E1F24;
+  /* The strip and the mark use the primaries at full strength; text uses the lighter
+     --red and --accent above, which stay readable on the dark ground. */
+  --strip-red: #E5303A;
+  --strip-yellow: #F5C52E;
+  --strip-teal: #2DBFA6;
+  --strip-blue: #2F9BE0;
   --mono: 'IBM Plex Mono', 'Courier New', monospace;
   --sans: 'Space Grotesk', system-ui, sans-serif;
 }
@@ -49,6 +66,14 @@ body .glow-box, body .animate-pulse { animation: none; }
 
 /* ---- Banner ------------------------------------------------------------ */
 body .brand-bar { background: var(--banner); border-bottom: 1px solid var(--line); }
+/* Four flat quarters, edge to edge, on both pages. */
+body .brand-bar::before {
+  content: "";
+  display: block;
+  height: 4px;
+  background: linear-gradient(90deg,
+    var(--strip-red) 0 25%, var(--strip-yellow) 25% 50%, var(--strip-teal) 50% 75%, var(--strip-blue) 75% 100%);
+}
 body .brand-inner { max-width: 80rem; margin: 0 auto; padding: 0 2rem; }
 
 body .brand-util {
@@ -119,14 +144,7 @@ body .brand-tag {
   font-size: .69rem;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--accent);
-}
-body .brand-blurb {
-  margin: 0;
-  max-width: 24rem;
-  font-size: .875rem;
-  line-height: 1.65;
-  color: #8E99AF;
+  color: var(--dim);
 }
 @media (max-width: 720px) {
   body h1.brand-word { font-size: 2.1rem; }
@@ -144,10 +162,12 @@ body .bg-ps2card\/80 { background-color: var(--banner); border: 0; border-bottom
 body .bg-ps2card\/50 { background-color: transparent; border-top: 1px solid var(--line); }
 body .border-ps2border, body .border-slate-800, body .border-slate-700 { border-color: var(--line); }
 body .border-slate-800\/40, body .border-slate-800\/60, body .divide-slate-800\/60 > * { border-color: var(--rule); }
+/* Tailwind colours the lines between rows with a selector stronger than the one above. */
+body .divide-slate-800\/60 > :not([hidden]) ~ :not([hidden]) { border-color: var(--rule); }
 body .from-amber-950\/40 { background-color: transparent; border-color: var(--line); }
 
 /* ---- Pages: Tracker | Most mentioned | eBay prices ----------------------
-   Labels on a hairline; the open one is underlined in the accent. */
+   Labels on a hairline; the open one is underlined in red. */
 body .view-tabs { display: flex; gap: 2rem; border-bottom: 1px solid var(--line); }
 body .view-tab {
   display: inline-flex;
@@ -167,7 +187,7 @@ body .view-tab {
 }
 body .view-tab i { font-size: .7rem; }
 body .view-tab:hover, body .view-tab:focus-visible { color: var(--text); }
-body .view-tab.is-active { color: var(--text); border-bottom-color: var(--accent); }
+body .view-tab.is-active { color: var(--text); border-bottom-color: var(--red); }
 body .view-tab-count:not(.hidden) {
   display: inline-block;
   padding: .1rem .4rem;
@@ -205,7 +225,8 @@ body .stat-value {
   color: var(--text);
   letter-spacing: -.02em;
 }
-body .stat-value.accent { color: var(--accent); }
+body .stat-value.is-news { color: var(--red); }    /* remaster flags */
+body .stat-value.is-live { color: var(--green); }  /* active feeds */
 @media (max-width: 820px) {
   body .stat-strip { grid-template-columns: repeat(2, 1fr); }
   body .stat, body .stat:first-child, body .stat:last-child { padding: 1.4rem 1.1rem; }
@@ -216,6 +237,7 @@ body .bg-slate-900, body .bg-slate-900\/80, body .bg-slate-950 { background-colo
 body input, body select { border-color: var(--line); }
 body input:focus, body select:focus { outline: 1px solid var(--accent); outline-offset: -1px; }
 body input::placeholder { color: var(--mute); }
+body input[type="checkbox"] { accent-color: var(--accent); }  /* not Tailwind's own cyan */
 
 /* Buttons: one filled primary, everything else a hairline */
 body .from-blue-600 { background-color: var(--accent); color: var(--bg); }
@@ -225,7 +247,7 @@ body .bg-slate-800:hover { background-color: var(--inset); border-color: var(--a
 body .bg-cyan-500, body .bg-cyan-400 { background-color: var(--accent); }
 body .border-cyan-400 { border-color: var(--accent); }
 
-/* Colour tokens: blue for structure, amber reserved for price */
+/* Colour tokens: blue for what can be followed, yellow reserved for price */
 body .text-cyan-400, body .text-cyan-300 { color: var(--accent); }
 body .text-emerald-400 { color: var(--green); }
 body .text-red-400 { color: var(--red); }
@@ -233,7 +255,7 @@ body .text-slate-300 { color: var(--body); }
 body .text-slate-400 { color: var(--dim); }
 body .text-slate-500, body .text-slate-600 { color: var(--mute); }
 
-/* Amber has one job: tags and badges stay quiet */
+/* Yellow has one job: tags and badges stay quiet */
 body .text-amber-400, body .text-amber-400\/80 { color: var(--dim); }
 body .bg-amber-950, body .bg-amber-950\/60, body .bg-emerald-950, body .bg-emerald-950\/60,
 body .bg-red-950, body .bg-red-950\/60, body .bg-blue-950, body .bg-purple-950, body .bg-cyan-950 {
@@ -242,6 +264,8 @@ body .bg-red-950, body .bg-red-950\/60, body .bg-blue-950, body .bg-purple-950, 
 body .border-amber-900, body .border-emerald-900, body .border-red-900,
 body .border-blue-900, body .border-purple-900, body .border-cyan-800 { border-color: var(--line); }
 body .bg-amber-500 { background-color: transparent; border: 1px solid var(--line); color: var(--dim); }
+/* ...except the one that marks remaster news, which is what the red is for */
+body .remaster-tag { border-color: var(--red-line); color: var(--red); }
 
 /* Sentiment: a number and a 2px meter, not a coloured pill */
 body .score-value { font-size: .95rem; color: var(--text); }
@@ -260,9 +284,9 @@ body thead th {
   color: var(--dim);
 }
 body tbody td { padding-top: 1.1rem; padding-bottom: 1.1rem; }
-body tr:hover { background-color: rgba(76, 141, 255, .05); }
+body tr:hover { background-color: rgba(79, 168, 232, .06); }  /* --accent, faintly */
 
-/* Price lookup chips: the only warm thing on the page */
+/* Price lookup chips: the only yellow thing in a row */
 body .price-links {
   display: flex;
   flex-wrap: wrap;
@@ -304,12 +328,12 @@ body .price-link:hover, body .price-link:focus-visible {
 }
 
 /* ---- Rows that take turns ------------------------------------------------
-   Every second row of a list or table sits on a lighter blue, so the eye can
+   Every second row of a list or table sits on a lighter shade, so the eye can
    follow one row across. The rows in between keep the page's own colour. */
 body .zebra > li:nth-child(even), body .zebra > tr:nth-child(even) { background-color: var(--stripe); }
 /* Hover only where there is a pointer: on a touch screen it sticks to the last row tapped,
    which would look like a broken stripe. Strong enough to show on either kind of row. */
-@media (hover: hover) { body .zebra > tr:hover { background-color: rgba(76, 141, 255, .2); } }
+@media (hover: hover) { body .zebra > tr:hover { background-color: rgba(79, 168, 232, .08); } }
 
 /* ---- Lists that fold away ------------------------------------------------
    A ranked list shows its first rows (five, or 25 for Most Mentioned Games) until its
@@ -394,11 +418,11 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
    banner folds into one column, and everything meant to be tapped is at least
    44px tall. Nothing here changes the layout on a wider screen. */
 @media (max-width: 640px) {
-  /* Banner: name, what it is, the three actions, then the sync line as a status bar */
+  /* Banner: name, the three actions, then the sync line as a status bar */
   body .brand-inner {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "id" "blurb" "actions" "sync";
+    grid-template-areas: "id" "actions" "sync";
     gap: .9rem;
     padding: 1.1rem 1rem .85rem;
   }
@@ -407,7 +431,6 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
   body .brand-mark { width: 42px; height: 42px; }
   body h1.brand-word { font-size: 1.75rem; }
   body .brand-tag { margin-top: .4rem; letter-spacing: .1em; }
-  body .brand-blurb { grid-area: blurb; max-width: none; line-height: 1.55; }
   body .brand-actions { grid-area: actions; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
   body .brand-btn { justify-content: center; min-height: 2.75rem; padding: 0 .4rem; white-space: nowrap; }
   body .brand-sync { grid-area: sync; padding-top: .8rem; border-top: 1px solid var(--rule); }

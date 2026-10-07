@@ -1,5 +1,69 @@
 # Changelog
 
+## 2026-10-07: start-up screen colours
+
+### What was asked
+
+- "The theme is still not sitting right with me": something inspired by the colours of two
+  pictures the maintainer showed, a console maker's logo and its start-up screens (red,
+  yellow, teal and blue, on light grey and on black).
+- A preview first. Two directions were mocked up with the day's real rows, one dark and one
+  light; the dark one was chosen.
+- On the preview: a different line under the name, and the paragraph in the banner taken out
+  and left to the How it works page.
+
+### What changed
+
+**Theme: `retro.css`**
+- A near-black ground in place of the navy, and four colours, each with its own kind of job:
+  - **yellow** for price links and nothing else, still the one highlighted thing in a row;
+  - **blue** for what can be followed: game names, links and buttons;
+  - **red** for remaster news (the tag in the table and beside a game's rank, the *Remaster
+    flags* number, the line under the open page's tab) and for whatever is low or failing:
+    a low mood score, a falling trend, a source that cannot be read, an error;
+  - **teal** for live and well: the sync dot, the *Active feeds* number, a high mood score,
+    a rising trend, a success.
+- All four meet in a strip across the top of both pages and in the rings of the mark. Only
+  the palette is borrowed: no logo, lettering or shape of anyone else's.
+- The quiet text colours are lighter than before, so the small print (ages, notes, hints)
+  now meets the usual contrast standard (4.5 to 1) on the page, the banner, a field, a
+  striped row and a row under the pointer. A switched-off source's row is dimmed as a
+  whole, as before, and does not.
+- Striped rows are a neutral shade lighter than the page; the pointer's tint on a row is
+  fainter than it was, so the red tag stays readable on it.
+- Ticked boxes are the theme's blue (they were Tailwind's own cyan), and the lines between
+  table rows its neutral grey (Tailwind's slate was winning there).
+
+**Dashboard and guide: `index.html`, `guide.html`**
+- The line under the name reads "PS2 news, mentions and prices".
+- The banner no longer carries the paragraph about what the site does. The guide's first
+  section says it, including that every recognised game gets links out to shops and price
+  guides and eBay's asking prices beside its name.
+- *Net sentiment* is no longer tinted. *Run scraper now* is blue like the other buttons.
+- The guide says "yellow buttons" and "a lighter shade" where it said amber and blue.
+
+**Tests**
+- 30 dashboard checks (was 29): every text colour against every ground it sits on, rows
+  under the pointer included; a stripe that can be seen; yellow used by nothing but price
+  links, by any route; the red and teal jobs; the strip; the mark on both pages; the
+  banner's contents; and no colour of the previous palette left behind.
+- The test workflow also runs on pushes that change `guide.html`.
+
+### Behaviour changes to be aware of
+
+- Nothing but colours and the banner changed: layout, type, sizes and the phone layout are
+  as they were. On a phone the banner is one block shorter.
+- A browser may show the previous colours until the page is reloaded.
+
+### Open items
+
+- The light direction of the preview was not built. It would take more than new values at
+  the top of `retro.css`: the pages use Tailwind's `text-white` and `text-black` directly
+  (over a hundred times in the guide), and the mark's colours, both `theme-color` lines and
+  the pointer's tint are written out.
+- Nobody has looked at the result in a browser as part of this change (rule 11): it was
+  checked by the tests and by working the colours out. The preview was a separate mock-up.
+
 ## 2026-10-07: forums and 4chan's game boards
 
 ### What was asked

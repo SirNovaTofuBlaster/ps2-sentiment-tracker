@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0C1120">
+    <meta name="theme-color" content="#111114">
     <title>How to Use Spindle</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: { extend: { colors: {
-                ps2dark: '#0B0F1A',
-                ps2card: '#121826',
-                ps2border: '#232C42',
+                ps2dark: '#0A0A0C',
+                ps2card: '#16161B',
+                ps2border: '#27272E',
             } } }
         }
     </script>
@@ -29,8 +29,10 @@
         <div class="max-w-3xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
             <div class="flex items-center gap-3 min-w-0">
                 <svg width="32" height="32" viewBox="0 0 56 56" aria-hidden="true" class="shrink-0">
-                    <circle cx="28" cy="28" r="26" fill="none" stroke="#4C8DFF" stroke-width="3"></circle>
-                    <circle cx="28" cy="28" r="7" fill="none" stroke="#4C8DFF" stroke-width="3"></circle>
+                    <circle cx="28" cy="28" r="26" fill="none" stroke="#E5303A" stroke-width="3"></circle>
+                    <circle cx="28" cy="28" r="17" fill="none" stroke="#F5C52E" stroke-width="2"></circle>
+                    <circle cx="28" cy="28" r="7" fill="none" stroke="#2F9BE0" stroke-width="3"></circle>
+                    <path d="M28 2 A26 26 0 0 1 54 28" fill="none" stroke="#2DBFA6" stroke-width="3" stroke-linecap="round"></path>
                 </svg>
                 <div class="min-w-0">
                     <h1 class="truncate">How to use Spindle</h1>
@@ -65,14 +67,14 @@
 
         <section id="overview" class="space-y-3">
             <h2>1. What the dashboard shows</h2>
-            <p>Every hour a robot on GitHub reads gaming news sites, Reddit, forums, 4chan's game boards, YouTube channels and podcasts. For every headline, thread, video and episode it checks whether a PlayStation 2 game is mentioned, whether it sounds like remaster or remake news, and how positive the wording is. The dashboard shows the result:</p>
+            <p>Every hour a robot on GitHub reads gaming news sites, Reddit, forums, 4chan's game boards, YouTube channels and podcasts. For every headline, thread, video and episode it checks whether a PlayStation 2 game is mentioned, whether it sounds like remaster or remake news, and how positive the wording is. Every game it recognises gets links out to shops and price guides, and eBay's asking prices beside its name. The dashboard shows the result:</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li><b class="text-white">Three pages</b>, chosen with the tabs under the banner. <b class="text-white">Tracker</b> has the numbers, the Demand Index, the table and the sources. <b class="text-white">Most mentioned</b> ranks every PS2 game the feed names. <b class="text-white">eBay prices</b> is the full list of what used copies are listed for. On a screen wider than a phone, the number on a tab is how many games that page holds. Your browser's Back button returns to the page you were on, and adding <span class="font-mono-custom">#mentions</span> or <span class="font-mono-custom">#prices</span> to the address opens a page directly.</li>
                 <li><b class="text-white">eBay median</b>: under a game's name, wherever one appears (Demand Index, Most Mentioned Games and the table), you see the middle asking price of used copies on eBay US and eBay UK. Click a figure to search that eBay site for the game; hover over it for how many copies it covers and when it was checked. A game with no such line is one that isn't priced: see <a class="text-cyan-400 hover:underline" href="#ebay">eBay asking prices</a>.</li>
                 <li><b class="text-white">The four numbers at the top</b>: how many items the feed holds, how many look like remaster news, how many sources are switched on, and the overall mood from 0 to 100. The first one is not a running total: the robot keeps the last two weeks and drops anything older, so the label says how far back the items go ("Items · 9 days") and the number levels off once two weeks are in. A number that stays the same does not mean the robot has stopped; <b class="text-white">Last sync</b> in the banner is what tells you when it last ran.</li>
                 <li><b class="text-white">Most Mentioned Games</b>, on the <b class="text-white">Most mentioned</b> tab: every PS2 game the feed names, the most mentioned first, with each one's mention count and share of all game mentions. It recalculates whenever the feed loads or you switch a source on or off.</li>
                 <li><b class="text-white">Lists that fold away</b>: the Demand Index shows its first five games and Most Mentioned Games its first 25. Press <b class="text-white">Show … more</b> under a list to open the rest (up to 25 games for the Demand Index, every game for Most Mentioned), and <b class="text-white">Show fewer</b> to fold it again; that button follows you down the list. A list stays the way you left it until you reload the page.</li>
-                <li><b class="text-white">Striped rows</b>: every second row of those lists and of the table sits on a slightly lighter blue, so your eye can follow one row across.</li>
+                <li><b class="text-white">Striped rows</b>: every second row of those lists and of the table sits on a slightly lighter shade, so your eye can follow one row across.</li>
                 <li><b class="text-white">The table</b>: everything that was collected. Use the search box and the menus to show only remaster news, only matched PS2 games, or one kind of source.</li>
                 <li><b class="text-white">On a phone</b>: the table becomes a list of cards, 25 to a page, and each game's price links sit on one line that you swipe sideways.</li>
             </ul>
@@ -89,7 +91,7 @@
 
         <section id="prices" class="space-y-3">
             <h2>2. The price links</h2>
-            <p>Every recognised game carries a row of small amber buttons, split into <b class="text-white">PAL</b> (Europe) and <b class="text-white">US</b>. They are <b class="text-white">searches, not prices</b>: clicking one opens that shop or price guide with the game already searched for. The only actual figures on the dashboard are the <a class="text-cyan-400 hover:underline" href="#ebay">eBay medians</a> shown just above these buttons.</p>
+            <p>Every recognised game carries a row of small yellow buttons, split into <b class="text-white">PAL</b> (Europe) and <b class="text-white">US</b>. They are <b class="text-white">searches, not prices</b>: clicking one opens that shop or price guide with the game already searched for. The only actual figures on the dashboard are the <a class="text-cyan-400 hover:underline" href="#ebay">eBay medians</a> shown just above these buttons.</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li><b class="text-white">Price Charting</b> tracks what copies have actually sold for, which is the closest thing to a market value. There is a separate PAL and US price for most games, and they can differ a lot.</li>
                 <li><b class="text-white">eBay</b> shows what sellers are <i>asking</i> today, not what anything sold for. Asking prices usually sit well above real ones, and a single graded or sealed copy can make a game look far more expensive than it is.</li>
@@ -111,7 +113,7 @@
             <p>The figures show in two places. On the <b class="text-white">Tracker</b> and <b class="text-white">Most mentioned</b> pages, every game that is priced has an <b class="text-white">eBay median</b> line under its name: the middle asking price on each site (the middle one, so a single silly listing can't drag it about). The <b class="text-white">eBay prices</b> tab lists every tracked game in full: the median, the cheapest, how many copies are listed and how long ago eBay was asked, with a box to find a game by name (it finds <i>Kingdom Hearts II</i> whether you type "kingdom hearts 2" or "hearts ii"). Until the price job has run for the first time, that tab says so and no medians are shown anywhere; nothing is wrong.</p>
             <p>These are what sellers are <b class="text-white">asking</b> for copies still for sale, <b class="text-white">not what anything sold for</b>: asking prices usually sit above real ones, and loose discs are counted together with complete copies.</p>
             <ul class="list-disc pl-5 space-y-1">
-                <li><b class="text-white">Which games</b>: every game the feed has ever mentioned, as long as it is in the PS2 library. Games with a one-word name that is also an ordinary word, such as <i>Black</i>, <i>Cars</i> or <i>The Sims</i>, are left out, because a search for the word finds every listing that happens to use it. Those rows keep their amber buttons and simply have no median.</li>
+                <li><b class="text-white">Which games</b>: every game the feed has ever mentioned, as long as it is in the PS2 library. Games with a one-word name that is also an ordinary word, such as <i>Black</i>, <i>Cars</i> or <i>The Sims</i>, are left out, because a search for the word finds every listing that happens to use it. Those rows keep their yellow buttons and simply have no median.</li>
                 <li><b class="text-white">One site only</b>: when just US or just UK is shown under a name, eBay had no copy the robot could count on the other site.</li>
                 <li><b class="text-white">Different spellings</b>: the feed may call a game <i>Persona 4</i> or <i>Kingdom Hearts 2</i> where the price list says <i>Shin Megami Tensei: Persona 4</i> or <i>Kingdom Hearts II</i>. They are treated as the same game.</li>
                 <li><b class="text-white"><span class="level-tag level-surging" style="margin-left:0">surging</span></b>: a game that is rarely mentioned was suddenly named in headlines by two or more sources within a day. It is checked on every run for the next two days. About half of these turn out to be the robot matching the wrong game, so read it as "worth a look".</li>
@@ -292,7 +294,7 @@
                 <div><dt class="text-white font-semibold">Why are some of the biggest YouTube channels switched off?</dt>
                     <dd>Most are in other languages (the mood score only understands English) or mostly play Minecraft, Roblox or Fortnite, which says little about PS2 games. They are all in the list, so switch any of them on if you want.</dd></div>
                 <div><dt class="text-white font-semibold">Does this page know any prices?</dt>
-                    <dd>Only <a class="text-cyan-400 hover:underline" href="#ebay">eBay asking prices</a>: what sellers want today, shown under each game's name and in full on the eBay prices tab. It knows nothing about what games have sold for. The amber buttons are searches that open a shop or price guide with the game already looked up.</dd></div>
+                    <dd>Only <a class="text-cyan-400 hover:underline" href="#ebay">eBay asking prices</a>: what sellers want today, shown under each game's name and in full on the eBay prices tab. It knows nothing about what games have sold for. The yellow buttons are searches that open a shop or price guide with the game already looked up.</dd></div>
                 <div><dt class="text-white font-semibold">Why is a game high in Most Mentioned but missing from the Demand Index?</dt>
                     <dd>They measure different things. Most Mentioned counts what the sources here are talking about; the Demand Index counts what people are reading about on Wikipedia. A game can be all over the news without anyone looking it up, and the other way round.</dd></div>
                 <div><dt class="text-white font-semibold">Why do 4chan rows say only "Thread on /v/ naming …"?</dt>

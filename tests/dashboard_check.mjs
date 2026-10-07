@@ -957,7 +957,7 @@ await check('three pages in one: Tracker, Most mentioned and eBay prices', () =>
     const missing = [...asked].filter(id => !page.includes(`id="${id}"`));
     assert.deepEqual(missing, []);
     assert.ok(asked.size > 40);
-    assert.match(read('retro.css'), /body \.view-tab\.is-active \{[^}]*border-bottom-color: var\(--accent\)/);
+    assert.match(read('retro.css'), /body \.view-tab\.is-active \{[^}]*border-bottom-color: var\(--red\)/);
 });
 
 await check('the item count says how far back it goes', () => {
@@ -1089,6 +1089,121 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     vm.runInContext('discardChanges()', context);
     assert.equal(evalJson("feedConfig.sources.some(s => s.board === 'vp')"), false);
     el('typeSelect').value = 'all';
+});
+
+await check('the theme: four colours with one job each, readable on every ground', () => {
+    const css = read('retro.css');
+    const page = read('index.html');
+    const guide = read('guide.html');
+    const tokens = Object.fromEntries([...css.matchAll(/^\s*--([a-z-]+): (#[0-9A-Fa-f]{6});/gm)].map(m => [m[1], m[2]]));
+
+    // Readable: every colour that carries text, on every ground text sits on (WCAG AA, 4.5 to 1).
+    const luminance = (hex) => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255)
+        .map(c => c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4)
+        .reduce((sum, c, i) => sum + c * [0.2126, 0.7152, 0.0722][i], 0);
+    const contrast = (a, b) => {
+        const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+        return (hi + 0.05) / (lo + 0.05);
+    };
+    for (const ground of ['bg', 'banner', 'inset', 'stripe']) {
+        for (const ink of ['text', 'body', 'dim', 'mute', 'accent', 'accent-hi', 'red', 'green', 'money']) {
+            assert.ok(contrast(tokens[ink], tokens[ground]) >= 4.5, `--${ink} on --${ground}: ${contrast(tokens[ink], tokens[ground]).toFixed(2)}`);
+        }
+    }
+    // A row under the pointer is tinted with the accent; the small print and the red tag sit on it too.
+    const rgb = (hex) => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+    const hex = (parts) => '#' + parts.map(part => Math.round(part).toString(16).padStart(2, '0')).join('');
+    const tints = [...css.matchAll(/tr:hover \{ background-color: rgba\((\d+), (\d+), (\d+), (\.\d+)\); \}/g)]
+        .map(m => ({ colour: [m[1], m[2], m[3]].map(Number), alpha: Number(m[4]) }));
+    assert.equal(tints.length, 2, 'a plain row and a striped table row');
+    for (const tint of tints) {
+        assert.deepEqual(tint.colour, rgb(tokens.accent), 'the tint is the accent');
+        for (const ground of ['bg', 'stripe']) {
+            const under = hex(rgb(tokens[ground]).map((part, i) => part + (tint.colour[i] - part) * tint.alpha));
+            for (const ink of ['text', 'body', 'dim', 'mute', 'accent', 'red', 'green', 'money']) {
+                assert.ok(contrast(tokens[ink], under) >= 4.5, `--${ink} on a hovered row (${under}): ${contrast(tokens[ink], under).toFixed(2)}`);
+            }
+        }
+    }
+    // The stripe has to be seen to be of any use, and must not swallow the fields that sit on it.
+    assert.ok(contrast(tokens.stripe, tokens.bg) >= 1.08, `--stripe against --bg: ${contrast(tokens.stripe, tokens.bg).toFixed(3)}`);
+    assert.ok(contrast(tokens.line, tokens.stripe) >= 1.15, 'a field on a striped row keeps its outline');
+    assert.ok(contrast(tokens.money, tokens['money-bg']) >= 4.5, 'a price link at rest');
+    assert.ok(contrast(tokens.bg, tokens.money) >= 4.5, 'a price link under the pointer: dark on yellow');
+    assert.ok(contrast(tokens.bg, tokens.accent) >= 4.5, 'the filled button: dark on blue');
+    assert.ok(contrast(tokens.bg, tokens['accent-hi']) >= 4.5);
+
+    // Yellow has one job: nothing but a price link is yellow.
+    const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
+    const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
+    assert.ok(yellow.length >= 2, 'at rest and under the pointer');
+    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.price-link\b/.test(part))), yellow.join(' | '));
+    assert.match(css, /body \.price-link:hover, body \.price-link:focus-visible \{\s*background: var\(--money\);\s*border-color: var\(--money\);\s*color: var\(--bg\);/);
+    // ...by no other route either: every colour is named once, at the top, and the strip's
+    // yellow is used by the strip alone; the pages have no yellow of their own.
+    const afterTokens = css.slice(css.indexOf('}', css.indexOf(':root {')) + 1).replace(/\/\*[\s\S]*?\*\//g, '');
+    assert.deepEqual(afterTokens.match(/#[0-9A-Fa-f]{3,8}\b/g), null, 'no colour written out below the list at the top');
+    assert.deepEqual(rules.filter(([, body]) => /var\(--strip-/.test(body)).map(([selector]) => selector), ['body .brand-bar::before']);
+    assert.doesNotMatch(page + guide, /\b(?:text|bg|border|accent)-(?:yellow|orange)-\d/);
+    // The classes the pages colour things with all go through those names.
+    for (const mapping of [
+        'body .text-cyan-400, body .text-cyan-300 { color: var(--accent); }', 'body .text-emerald-400 { color: var(--green); }',
+        'body .text-red-400 { color: var(--red); }', 'body .text-slate-300 { color: var(--body); }', 'body .text-slate-400 { color: var(--dim); }',
+        'body .text-slate-500, body .text-slate-600 { color: var(--mute); }', 'body .text-amber-400, body .text-amber-400\\/80 { color: var(--dim); }',
+        'body input::placeholder { color: var(--mute); }', 'body input[type="checkbox"] { accent-color: var(--accent); }',
+        'body .from-blue-600 { background-color: var(--accent); color: var(--bg); }',
+    ]) assert.ok(css.includes(mapping), mapping);
+    assert.match(css, /body \.brand-btn-primary \{\s*background: var\(--accent\);\s*border-color: var\(--accent\);\s*color: var\(--bg\);/);
+    const named = (part) => rules.filter(([selector]) => selector.includes(part)).map(([selector]) => selector);
+    assert.deepEqual(named('.remaster-tag'), ['body .remaster-tag'], 'one rule, so nothing further down undoes it');
+    assert.deepEqual(named('.stat-value'), ['body .stat-value', 'body .stat-value.is-news', 'body .stat-value.is-live', 'body .stat-value']);
+    // Red marks remaster news (the tag, the number at the top, the open page's line) and a low mood.
+    assert.match(css, /body \.remaster-tag \{ border-color: var\(--red-line\); color: var\(--red\); \}/);
+    assert.match(css, /body \.stat-value\.is-news \{ color: var\(--red\); \}/);
+    assert.match(css, /body \.score-fill\.score-low \{ background: var\(--red\); \}/);
+    // Teal is live and well: the sync dot, the active feeds, a good mood.
+    assert.match(css, /body \.brand-dot \{[^}]*background: var\(--green\)/);
+    assert.match(css, /body \.stat-value\.is-live \{ color: var\(--green\); \}/);
+    assert.match(css, /body \.score-fill\.score-high \{ background: var\(--green\); \}/);
+    assert.match(page, /<div id="statRemasters" class="stat-value is-news">/);
+    assert.match(page, /<div id="statFeedsCount" class="stat-value is-live">/);
+    assert.match(page, /<div id="statAvgSentiment" class="stat-value">/);
+    // The tag in the table and the one beside a game's rank are the same tag.
+    assert.equal((script.match(/<span class="remaster-tag /g) || []).length, 2);
+    context.__items = [{ headline: 'Okami HD announced', source: 'Eurogamer', link: 'https://e.example/okami', matched_game: 'Okami',
+        is_remaster_rumor: true, sentiment: 50, timestamp: '2026-10-07 08:00 UTC' }];
+    vm.runInContext('allFeedData = __items; refreshDashboard();', context);
+    assert.match(el('feedTableBody').children[0].innerHTML, /<span class="remaster-tag border [^"]*">Remaster<\/span>\s*Okami HD announced/);
+    assert.match(el('topGamesList').innerHTML, /<span class="remaster-tag [^"]*">1 remaster<\/span>/);
+
+    // All four meet in the strip across the top of both pages, and in the mark.
+    assert.match(css, /body \.brand-bar::before \{\s*content: "";\s*display: block;\s*height: 4px;\s*background: linear-gradient\(90deg,\s*var\(--strip-red\) 0 25%, var\(--strip-yellow\) 25% 50%, var\(--strip-teal\) 50% 75%, var\(--strip-blue\) 75% 100%\);\s*\}/);
+    assert.deepEqual(named('.brand-bar'), ['body .brand-bar', 'body .brand-bar::before']);
+    for (const [name, html] of [['index.html', page], ['guide.html', guide]]) {
+        assert.match(html, /<header class="brand-bar">/, name);
+        const mark = html.slice(html.indexOf('<header class="brand-bar">')).match(/<svg[\s\S]*?<\/svg>/)[0];
+        assert.deepEqual([...mark.matchAll(/stroke="(#[0-9A-F]{6})"/g)].map(m => m[1]),
+            [tokens['strip-red'], tokens['strip-yellow'], tokens['strip-blue'], tokens['strip-teal']], name);
+        assert.match(html, new RegExp(`<meta name="theme-color" content="${tokens.banner}">`), name);
+    }
+
+    // The banner is the mark, the name and one line; what the site does is on the guide page.
+    assert.match(page, /<h1 class="brand-word">Spindle<\/h1>\s*<p class="brand-tag">PS2 news, mentions and prices<\/p>/);
+    assert.doesNotMatch(page + css, /blurb/);
+    const lockup = page.slice(page.indexOf('<div class="brand-lock">'), page.indexOf('</header>'));
+    assert.equal((lockup.match(/<p\b/g) || []).length, 1, 'one line under the name and no paragraph beside it');
+    assert.match(css, /grid-template-areas: "id" "actions" "sync";/, 'on a phone: the name, the three buttons, the sync line');
+    assert.match(guide, /Every game it recognises gets links out to shops and price guides, and eBay's asking prices beside its name\./);
+    assert.doesNotMatch(guide, /amber/i, 'the guide calls the price buttons by the colour they are');
+    assert.equal((guide.match(/yellow buttons/g) || []).length, 3);
+
+    // Nothing of the palette before this one is left behind.
+    for (const old of ['#080B12', '#0C1120', '#10141F', '#1E2636', '#141A28', '#101A2E', '#E8ECF5', '#C7D0E2', '#7E899F', '#4D5872',
+        '#4C8DFF', '#7FADFF', '#F0A742', '#1B1508', '#6A4F1C', '#5FD3A8', '#E8646F', '#8E99AF', '76, 141, 255',
+        '#0B0F1A', '#121826', '#232C42']) {
+        assert.ok(!(css + page + guide).toUpperCase().includes(old.toUpperCase()), old);
+    }
+    vm.runInContext('allFeedData = []; refreshDashboard();', context);
 });
 
 console.log(`dashboard checks passed (${passed})`);
