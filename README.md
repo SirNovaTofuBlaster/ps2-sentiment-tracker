@@ -1,9 +1,11 @@
 # ps2-sentiment-tracker
 Retro gaming sentiment tracking.
 
-`scraper.py` reads gaming news sites, Reddit, YouTube channels and podcasts (all as RSS/Atom feeds
-listed in [`feeds.json`](feeds.json)), fuzzy-matches every headline, video and episode title
-against the PS2 library, flags remaster/remake chatter and scores sentiment. Results go to
+`scraper.py` reads gaming news sites, Reddit, forums, YouTube channels and podcasts (all as
+RSS/Atom feeds) and 4chan's game boards (through 4chan's read-only API), every one of them
+listed in [`feeds.json`](feeds.json). It fuzzy-matches every headline, thread, video and episode
+title against the PS2 library, flags remaster/remake chatter and scores sentiment. From 4chan it
+keeps only the names of the PS2 games a thread mentions, never anything a poster wrote. Results go to
 `data/sentiment_feed.json`, with per-feed health in `data/feed_status.json`. `index.html` renders
 both as a dashboard. A GitHub Actions workflow reruns the scraper every hour, and straight away
 when `feeds.json` or `scraper.py` changes on `main`.
@@ -14,13 +16,15 @@ when `feeds.json` or `scraper.py` changes on `main`.
 |---|---:|---:|
 | News sites | 18 | 18 |
 | Subreddits | 26 | 26 |
+| Forums | 2 | 2 |
+| 4chan boards | 7 | 7 |
 | YouTube channels | 159 | 114 |
 | Podcasts | 91 | 64 |
 
 - [SOURCES.md](SOURCES.md): the ranked lists (subscribers, total views, Apple ratings and chart
   positions, last activity) and why each source is on or off.
 - The dashboard's **Sources & Weights** panel switches sources on and off, adds new ones (paste a
-  YouTube channel link, an Apple Podcasts link, a feed link or a subreddit) and tunes how much
+  YouTube channel link, an Apple Podcasts link, a feed link, a subreddit or a 4chan board) and tunes how much
   each kind of source counts. **Save changes** commits `feeds.json` through a guided copy/paste
   into GitHub's editor, or in one click with a GitHub token.
 - `guide.html` (the dashboard's **How to use** button) explains all of this step by step for

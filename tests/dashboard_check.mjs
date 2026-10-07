@@ -1074,7 +1074,8 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     vm.runInContext("setSourceTab('forum')", context);
     html = el('sourcesView').innerHTML;
     assert.equal((html.match(/<tr data-index=/g) || []).length, feeds.sources.filter(src => src.type === 'forum').length);
-    assert.ok(html.includes(esc(forum.url)), 'the feed link is shown under a forum, as for news sites');
+    assert.ok(html.includes(`<div class="text-[10px] text-slate-600 font-mono-custom break-all">${esc(forum.url)}</div>`),
+        'the feed link is shown under a forum, as for news sites');
     assert.equal((html.match(/data-field="weight"/g) || []).length, feeds.sources.filter(src => src.type === 'forum').length);
     assert.equal(el('addName').placeholder, 'Name');
     assert.match(add('https://forum.example.org/forums/retro.5/index.rss'), /Give the source a name\./);

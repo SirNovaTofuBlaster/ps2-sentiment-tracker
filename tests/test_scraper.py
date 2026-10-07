@@ -559,6 +559,16 @@ class RunScraperTests(unittest.TestCase):
         self.assertIn("https://boards.4chan.org/vr/thread/101", [item["link"] for item in output["items"]],
                       "threads already collected stay until they age out")
 
+        # A board that failed and then answers "not modified" is working again.
+        self.failures[self.VR_URL] = requests.ConnectionError("blocked")
+        _, status = self.run_scraper()
+        self.assertEqual((status["4chan:vr"]["ok"], status["4chan:vr"]["latest"]), (False, newest.strftime(scraper.TIMESTAMP_FORMAT)))
+        self.failures.clear()
+        self.board_calls.clear()
+        _, status = self.run_scraper()
+        self.assertEqual(self.board_calls[0], (self.VR_URL, newest), "it is still asked only for what is new")
+        self.assertEqual(status["4chan:vr"], {"ok": True, "latest": newest.strftime(scraper.TIMESTAMP_FORMAT)})
+
     def test_a_board_that_cannot_be_read_never_stops_a_run(self):
         codes = ("vr", "v", "vg", "vm", "vmg")
         self.config["sources"] = [s for s in self.config["sources"] if s["type"] != "4chan"] + [board(code) for code in codes]
@@ -788,12 +798,16 @@ class BoardTests(unittest.TestCase):
         self.assertEqual(named("The Thing is the best horror game"), ["The Thing"])
         self.assertEqual(named("Was Shadow of the Colossus overrated?"), ["Shadow of the Colossus"])
         self.assertEqual(named("shadow of the colossus was overrated"), [])
+        self.assertEqual(named("Shadow of the colossus was overrated"), [], "every word of the name, not just one")
         self.assertEqual(sorted(named("Ico and Okami")), ["Ico", "Okami"])
         self.assertEqual(named("ico and okami"), [])
         # A number settles which game is meant, so capitals are not needed; nor for a name known by heart.
         self.assertEqual(named("silent hill 2 is kino"), ["Silent Hill 2"])
         self.assertEqual(named("final fantasy x"), ["Final Fantasy X"])
         self.assertEqual(named("mgs3 was good"), ["Metal Gear Solid 3: Snake Eater"])
+        self.assertEqual(named("gta sa is the best"), ["Grand Theft Auto: San Andreas"], "a short name for a title with no number")
+        # ...but a number does not excuse a misspelling.
+        self.assertEqual((loose("Silent Hil 2 is great"), named("Silent Hil 2 is great")), (["Silent Hill 2"], []))
         self.assertEqual(named("I love Kingdom Hearts and God of War"), ["Kingdom Hearts", "God of War"])
         self.assertEqual(named(""), [])
 

@@ -439,32 +439,37 @@ request per board, at most one request a second). **Only the names of the PS2 ga
 mentions are kept.** Nothing a poster wrote is stored, shown or printed; the role
 (`anonymous`) has weight 0 and the rows carry no mood score.
 
-Measured from GitHub's runners on 2026-10-07 at about 13:25 UTC:
+Measured from GitHub's runners on 2026-10-07 at about 13:35 UTC (the *Live checks* run on
+the pull request). A thread counts on the day it was started, so only threads started in the
+last 14 days enter the feed:
 
-| Board | Live threads | With a subject | Threads naming a PS2 game | Named in subject / in comment |
-|---|---:|---:|---:|---|
-| [/v/ - Video Games](https://boards.4chan.org/v/) | 200 | 59 | 6 | 2 / 4 |
-| [/vg/ - Video Game Generals](https://boards.4chan.org/vg/) | 200 | 200 | 11 | 3 / 8 |
-| [/vm/ - Video Games/Multiplayer](https://boards.4chan.org/vm/) | 150 | 138 | 5 | 2 / 3 |
-| [/vmg/ - Video Games/Mobile](https://boards.4chan.org/vmg/) | 138 | 124 | 2 | 1 / 1 |
-| [/vr/ - Retro Games](https://boards.4chan.org/vr/) | 150 | 68 | 6 | 1 / 5 |
-| [/vrpg/ - Video Games/RPG](https://boards.4chan.org/vrpg/) | 150 | 96 | 3 | 2 / 1 |
-| [/vst/ - Video Games/Strategy](https://boards.4chan.org/vst/) | 150 | 108 | 1 | 1 / 0 |
-| **Total** | **1,138** | **793** | **34** | **12 / 22** |
+| Board | Live threads | With a subject | Started in the last 14 days | Naming a PS2 game | ...and started in the last 14 days |
+|---|---:|---:|---:|---:|---:|
+| [/v/ - Video Games](https://boards.4chan.org/v/) | 200 | 59 | 200 | 6 | 6 |
+| [/vg/ - Video Game Generals](https://boards.4chan.org/vg/) | 200 | 200 | 196 | 11 | 11 |
+| [/vm/ - Video Games/Multiplayer](https://boards.4chan.org/vm/) | 150 | 138 | 51 | 5 | 3 |
+| [/vmg/ - Video Games/Mobile](https://boards.4chan.org/vmg/) | 138 | 124 | 19 | 2 | 0 |
+| [/vr/ - Retro Games](https://boards.4chan.org/vr/) | 150 | 68 | 149 | 6 | 6 |
+| [/vrpg/ - Video Games/RPG](https://boards.4chan.org/vrpg/) | 150 | 96 | 62 | 3 | 2 |
+| [/vst/ - Video Games/Strategy](https://boards.4chan.org/vst/) | 150 | 107 | 32 | 1 | 0 |
+| **Total** | **1,138** | **792** | **709** | **34** | **28** |
 
-- Those 34 threads made 38 mentions of 26 games. Most named: Monster Hunter (5), Deus Ex,
-  Final Fantasy XI and Heroes of Might and Magic (3 each), Grand Theft Auto: San Andreas and
-  Half-Life (2 each).
+- The 28 threads that would enter the feed made 32 mentions of 24 games: Monster Hunter,
+  Deus Ex and Final Fantasy XI (3 each), Grand Theft Auto: San Andreas and Half-Life (2
+  each), and 19 games once. Of the 34 threads, 12 named the game in the subject and 22 only
+  in the comment.
 - Several of those are a series being discussed, not the PS2 game: the matcher gives a
   series name to the PS2 entry that carries it (Monster Hunter, The Sims, Pro Evolution
   Soccer, Deus Ex). That is the matcher's known limit, the same as for headlines.
 - The rules for posts (exact spelling; a name without a number written with capitals) left
-  out 31 further mentions the headline rules would have counted. Read by hand, most were the
-  wrong game or an ordinary phrase ("Dragon Rage" for Dragon Age, "The Thing", "Happy Feet",
-  "Defender", "Special Forces"); a few were real and written in lower case.
+  out 31 further mentions that the headline rules would have counted. Going by the names
+  alone (the check prints nothing a poster wrote), most were another game or an ordinary
+  phrase: Dragon Rage, Legend of Herkules, The Thing, Happy Feet, Defender, Special Forces,
+  Weakest Link, Monopoly. Some will have been real mentions written in lower case or in a
+  shortened form; those are lost.
 - How long a thread lives differs a great deal: the oldest live thread on /v/ was two days
-  old, on /vmg/ over three years. The scraper keeps a row for 14 days from the thread's
-  start, like any other item.
+  old, on /vmg/ over three years. The mobile and strategy boards had 19 and 32 threads
+  started in the last two weeks, and none of them named a PS2 game.
 
 ## How the lists were built
 
