@@ -7,8 +7,12 @@ them. Nothing is written.
 Use it before adding a source, and when one looks wrong: it shows whether the site answers
 from this machine (GitHub's runners are not treated like a home connection), how many
 entries come back and which PS2 games they name. For 4chan boards it prints counts and game
-names only, never anything a poster wrote. Exits non-zero when a source could not be read."""
+names only, never anything a poster wrote. Exits non-zero when a source could not be read.
 
+On GitHub Actions the same report is also added to the run's summary page and attached to
+the run as notices, so it can be read without opening the log."""
+
+import os
 import sys
 import time
 from collections import Counter
@@ -21,6 +25,32 @@ sys.path.insert(0, str(ROOT))
 import scraper  # noqa: E402
 
 GAMES_SHOWN = 40
+ON_GITHUB = os.environ.get("GITHUB_ACTIONS") == "true"
+report = []  # (heading, lines) for each source tried
+
+
+def say(line=""):
+    print(line)
+    if report:
+        report[-1][1].append(line.strip())
+
+
+def publish():
+    """The report again, where GitHub shows it without the log: one notice per source (a
+    step may attach ten, so the forums share one) and a section each on the summary page."""
+    if not ON_GITHUB or not report:
+        return
+    escape = lambda text: text.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")  # noqa: E731
+    forums = [f"{heading}: {' | '.join(lines)}" for heading, lines in report if "[4chan]" not in heading and "[all]" not in heading]
+    notices = ([("Forums", "\n".join(forums))] if forums else []) + [
+        (heading, "\n".join(lines)) for heading, lines in report if "[4chan]" in heading or "[all]" in heading]
+    for heading, body in notices[:10]:
+        print(f"::notice title={escape(heading).replace(',', '%2C').replace(':', '%3A')}::{escape(body)}")
+    summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary:
+        with open(summary, "a", encoding="utf-8") as out:
+            for heading, lines in report:
+                out.write(f"### {heading}\n\n" + "\n".join(f"- {line}" for line in lines if line) + "\n\n")
 
 
 def try_feed(session, job, matcher, ps2_keys):
@@ -31,12 +61,12 @@ def try_feed(session, job, matcher, ps2_keys):
     items = [scraper.analyze_entry(e, feed, job, matcher, {}, ps2_keys, scraper.shared_links(feed, job["type"]))
              for e in entries]
     stamps = sorted(item["timestamp"] for item in items)
-    print(f"  {len(items)} entries, {sum(1 for i in items if i['matched_game'])} naming a PS2 game"
-          + (f", from {stamps[0]} to {stamps[-1]}" if stamps else ""))
+    say(f"  {len(items)} entries, {sum(1 for i in items if i['matched_game'])} naming a PS2 game"
+        + (f", from {stamps[0]} to {stamps[-1]}" if stamps else ""))
     for item in items:
         if item["matched_game"]:
-            print(f"    {item['matched_game']} ({item['matched_in']}, {item['match_method']} {item['match_score']:.0f})"
-                  f" <- {item['headline'][:90]}")
+            say(f"    {item['matched_game']} ({item['matched_in']}, {item['match_method']} {item['match_score']:.0f})"
+                f" <- {item['headline'][:90]}")
     return Counter(item["matched_game"] for item in items if item["matched_game"])
 
 
@@ -52,13 +82,13 @@ def try_board(session, job, matcher, ps2_keys):
         text = f"{scraper.board_text(thread.get('sub'))} {scraper.board_text(thread.get('com'))}"
         if scraper.PS2_CONTEXT_PATTERN.search(text) and matcher.match_all(" ".join(text.split()[:scraper.MAX_BODY_TOKENS])):
             strict += 1
-    print(f"  {len(live)} live threads ({len(with_subject)} with a subject), started from "
-          f"{stamps[0] if stamps else '?'} to {stamps[-1] if stamps else '?'}")
-    print(f"  {len(items)} name a PS2 game: {sum(1 for i in items if i['matched_in'] == 'title')} in the subject, "
-          f"{sum(1 for i in items if i['matched_in'] == 'body')} in the comment; {strict} also say PS2")
+    say(f"  {len(live)} live threads ({len(with_subject)} with a subject), started from "
+        f"{stamps[0] if stamps else '?'} to {stamps[-1] if stamps else '?'}")
+    say(f"  {len(items)} name a PS2 game: {sum(1 for i in items if i['matched_in'] == 'title')} in the subject, "
+        f"{sum(1 for i in items if i['matched_in'] == 'body')} in the comment; {strict} also say PS2")
     methods = Counter(f"{i['match_method']}" for i in items)
-    print(f"  how they matched: {dict(methods)}; threads naming more than one game: "
-          f"{sum(1 for i in items if len(i['matched_games']) > 1)}")
+    say(f"  how they matched: {dict(methods)}; threads naming more than one game: "
+        f"{sum(1 for i in items if len(i['matched_games']) > 1)}")
     return Counter(game for item in items for game in item["matched_games"])
 
 
@@ -76,7 +106,9 @@ def main():
         jobs = [job for job in scraper.build_jobs(config) if job["type"] in wanted]
         print(f"Trying {len(jobs)} sources ({', '.join(sorted(wanted))}) against PS2 titles ({matcher.summary()})")
         for job in jobs:
-            print(f"\n{job['sources'][0]['name']}  [{job['type']}]  {job['url']}")
+            print()
+            report.append((f"{job['sources'][0]['name']} [{job['type']}]", []))
+            print(f"{job['sources'][0]['name']}  [{job['type']}]  {job['url']}")
             try:
                 if job["type"] == scraper.BOARD_TYPE:
                     if last_board is not None:
@@ -87,16 +119,19 @@ def main():
                     found = try_feed(session, job, matcher, ps2_keys)
             except (requests.RequestException, ValueError) as error:
                 failed.append(job["sources"][0]["name"])
-                print(f"  FAILED: {scraper.feed_error(error)}")
+                say(f"  FAILED: {scraper.feed_error(error)}")
                 continue
             if job["type"] == scraper.BOARD_TYPE:
                 games.update(found)
-                print("  games: " + ", ".join(f"{title} x{count}" if count > 1 else title
-                                              for title, count in found.most_common(GAMES_SHOWN))
-                      + (f" and {len(found) - GAMES_SHOWN} more" if len(found) > GAMES_SHOWN else ""))
+                say("  games: " + ", ".join(f"{title} x{count}" if count > 1 else title
+                                            for title, count in found.most_common(GAMES_SHOWN))
+                    + (f" and {len(found) - GAMES_SHOWN} more" if len(found) > GAMES_SHOWN else ""))
     if games:
-        print(f"\nAcross the boards: {sum(games.values())} mentions of {len(games)} games. Most named: "
-              + ", ".join(f"{title} x{count}" for title, count in games.most_common(60)))
+        print()
+        report.append(("Across the boards [all]", []))
+        say(f"{sum(games.values())} mentions of {len(games)} games. Most named: "
+            + ", ".join(f"{title} x{count}" for title, count in games.most_common(60)))
+    publish()
     if failed:
         raise SystemExit(f"\n{len(failed)} of {len(jobs)} sources could not be read: {', '.join(failed)}")
     print(f"\nAll {len(jobs)} sources answered.")

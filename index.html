@@ -51,7 +51,7 @@
                         <p class="brand-tag">Tracking the PlayStation 2</p>
                     </div>
                 </div>
-                <p class="brand-blurb">Every hour it reads more than 200 gaming news sites, subreddits, YouTube channels and podcasts, checks each headline against the PlayStation 2 library, and flags remaster and remake news as it appears. Games it recognises link straight out to what they currently sell for.</p>
+                <p class="brand-blurb">Every hour it reads more than 200 gaming news sites, forums, subreddits, YouTube channels and podcasts, checks each headline against the PlayStation 2 library, and flags remaster and remake news as it appears. Games it recognises link straight out to what they currently sell for.</p>
             </div>
 
         </div>
@@ -115,6 +115,8 @@
                         <option value="all">All Sources</option>
                         <option value="news">News Sites</option>
                         <option value="reddit">Reddit</option>
+                        <option value="forum">Forums</option>
+                        <option value="4chan">4chan</option>
                         <option value="youtube">YouTube</option>
                         <option value="podcast">Podcasts</option>
                     </select>
@@ -917,16 +919,20 @@
         // ===================== Sources & Weights (feeds.json) =====================
         // Mirrors scraper.py: each item's "feed" field is the source_key() of the
         // feeds.json source it came from, so on/off switches and weights apply live.
-        const SOURCE_TYPES = ['news', 'reddit', 'youtube', 'podcast'];
+        const SOURCE_TYPES = ['news', 'reddit', 'forum', '4chan', 'youtube', 'podcast'];
         const TYPE_META = {
             news: { label: 'News sites', plural: 'news sites', icon: 'fa-solid fa-newspaper', tableAction: 'Source', defaultRole: 'press' },
             reddit: { label: 'Reddit', plural: 'subreddits', icon: 'fa-brands fa-reddit-alien', tableAction: 'Source', defaultRole: 'community' },
+            forum: { label: 'Forums', plural: 'forums', icon: 'fa-solid fa-comments', tableAction: 'Thread', defaultRole: 'community' },
+            // 4chan's boards: a row says which games a thread named and nothing a poster wrote.
+            '4chan': { label: '4chan', plural: '4chan boards', icon: 'fa-solid fa-user-secret', tableAction: 'Thread', defaultRole: 'anonymous' },
             youtube: { label: 'YouTube', plural: 'YouTube channels', icon: 'fa-brands fa-youtube', tableAction: 'Watch', defaultRole: 'press' },
             podcast: { label: 'Podcasts', plural: 'podcasts', icon: 'fa-solid fa-podcast', tableAction: 'Listen', defaultRole: 'press' },
         };
         const CHANNEL_ID_RE = /^UC[0-9A-Za-z_-]{22}$/;
         const YOUTUBE_URL_RE = /^https:\/\/www\.youtube\.com\/(?:@|c\/|user\/)[^/?#\s]+$/;  // scraper looks the ID up
         const SUBREDDIT_RE = /^[A-Za-z0-9_]{2,21}$/;
+        const BOARD_RE = /^[a-z0-9]{1,6}$/;   // a 4chan board's short name: "vr" for /vr/
         const SETTINGS_KEY = 'ps2-sentiment-tracker.github';
         const ACTIVE_DAYS = 14;   // newest item at most this old: "Active"
         const QUIET_DAYS = 120;   // older than this: "Stale"
@@ -961,6 +967,7 @@
         function sourceKey(src) {
             if (src.type === 'youtube') return `youtube:${src.channel_id || String(src.channel_url).toLowerCase()}`;
             if (src.type === 'reddit') return `reddit:${String(src.subreddit).toLowerCase()}`;
+            if (src.type === '4chan') return `4chan:${src.board}`;
             return src.url;
         }
 
@@ -1039,6 +1046,9 @@
                 } else if (src.type === 'reddit') {
                     field = 'subreddit/group';
                     valid = typeof src.subreddit === 'string' && SUBREDDIT_RE.test(src.subreddit) && typeof src.group === 'string' && !!src.group.trim();
+                } else if (src.type === '4chan') {
+                    field = 'board';
+                    valid = typeof src.board === 'string' && BOARD_RE.test(src.board);
                 } else {
                     field = 'url';
                     valid = isHttpUrl(src.url);
@@ -1165,6 +1175,8 @@
         const SORT_OPTIONS = {
             news: [['file', 'Order in feeds.json'], ['activity', 'Newest item'], ['name', 'Name']],
             reddit: [['file', 'Order in feeds.json'], ['activity', 'Newest post'], ['name', 'Name']],
+            forum: [['file', 'Order in feeds.json'], ['activity', 'Newest thread'], ['name', 'Name']],
+            '4chan': [['file', 'Order in feeds.json'], ['activity', 'Newest thread'], ['name', 'Name']],
             youtube: [['file', 'Group, then subscribers'], ['subscribers', 'Subscribers'], ['views', 'Total views'], ['activity', 'Latest upload'], ['name', 'Name']],
             podcast: [['file', 'Group, then popularity'], ['ratings', 'Apple ratings'], ['chart', 'Apple chart rank'], ['activity', 'Latest episode'], ['name', 'Name']],
         };
@@ -1190,6 +1202,8 @@
         const TABLE_COLUMNS = {
             news: [],
             reddit: [],
+            forum: [],
+            '4chan': [],
             youtube: [
                 { label: 'SUBSCRIBERS', right: true, cell: s => fmtCount(s.stats?.subscribers) },
                 { label: 'TOTAL VIEWS', right: true, cell: s => fmtCount(s.stats?.views) },
@@ -1220,7 +1234,7 @@
             let rows = feedConfig.sources.map((src, index) => ({ src, index })).filter(({ src }) => src.type === activeSourceTab);
             if (show !== 'all') rows = rows.filter(({ src }) => src.enabled === (show === 'enabled'));
             if (query) {
-                rows = rows.filter(({ src }) => [src.name, src.group, src.url, src.subreddit, src.channel_id, src.stats?.handle, src.role, src.note]
+                rows = rows.filter(({ src }) => [src.name, src.group, src.url, src.subreddit, src.board, src.channel_id, src.stats?.handle, src.role, src.note]
                     .some(value => String(value ?? '').toLowerCase().includes(query)));
             }
             rows.sort(SORTERS[sort] || SORTERS.file);
@@ -1246,6 +1260,7 @@
         function sourceLink(src) {
             if (src.type === 'youtube') return src.channel_id ? `https://www.youtube.com/channel/${src.channel_id}` : src.channel_url;
             if (src.type === 'reddit') return `https://www.reddit.com/r/${src.subreddit}/`;
+            if (src.type === '4chan') return `https://boards.4chan.org/${src.board}/`;
             if (src.type === 'podcast' && src.stats?.apple_url) return src.stats.apple_url;
             return src.url;
         }
@@ -1253,7 +1268,7 @@
         function sourceRowHtml(src, index, columns) {
             const handle = src.stats?.handle || (src.channel_url ? safeDecode(src.channel_url.split('/').pop()) : '');
             const detail = [src.group, handle].filter(Boolean).join(' · ');
-            const feedUrl = src.type === 'news' || src.type === 'podcast'
+            const feedUrl = ['news', 'forum', 'podcast'].includes(src.type)
                 ? `<div class="text-[10px] text-slate-600 font-mono-custom break-all">${esc(src.url)}</div>` : '';
             const roleWeight = effectiveWeight({ ...src, weight: undefined });
             const roles = Object.entries(feedConfig.roles).map(([key, role]) =>
@@ -1394,6 +1409,8 @@
         const ADD_HINTS = {
             news: ['https://example.com/feed', "paste the site's RSS feed link (often the site address followed by /feed or /rss)."],
             reddit: ['ps2, r/ps2 or a reddit.com/r/... link', 'subreddits in one group are fetched as one combined feed (Reddit allows about one request per minute), so an existing group is best.'],
+            forum: ['https://forum.example.com/forums/gaming.2/index.rss', "paste the RSS feed link of one board of the forum (on many forums it is the board's address followed by index.rss). Some forums refuse GitHub's servers; the status column shows it after the next run."],
+            '4chan': ['vr, /vr/ or a boards.4chan.org/vr/ link', 'only the names of the PS2 games a thread mentions are kept, never anything a poster wrote.'],
             youtube: ['https://www.youtube.com/@ChannelName', "paste the channel's link, e.g. https://www.youtube.com/@IGN (a channel ID starting with UC works too). The scraper looks the channel up on its next run."],
             podcast: ['https://podcasts.apple.com/.../id123456789', "paste the show's Apple Podcasts link (the name and feed are filled in for you) or its RSS feed link. Spotify links can't be used: Spotify doesn't publish feeds."],
         };
@@ -1419,7 +1436,7 @@
             if (!feedConfig || activeSourceTab === 'weights') return;
             const [placeholder, hint] = ADD_HINTS[activeSourceTab];
             document.getElementById('addValue').placeholder = placeholder;
-            document.getElementById('addName').placeholder = activeSourceTab === 'news' ? 'Name' : 'Name (optional)';
+            document.getElementById('addName').placeholder = ['news', 'forum'].includes(activeSourceTab) ? 'Name' : 'Name (optional)';
             document.getElementById('addHint').textContent = `Add to ${TYPE_META[activeSourceTab].label}: ${hint}`;
             const groups = [...new Set(feedConfig.sources.filter(s => s.type === activeSourceTab).map(s => s.group).filter(Boolean))];
             document.getElementById('addGroupOptions').innerHTML = groups.map(g => `<option value="${esc(g)}"></option>`).join('');
@@ -1458,6 +1475,12 @@
                 if (!SUBREDDIT_RE.test(subreddit)) return showSourcesMessage('Enter a subreddit name such as ps2 or r/ps2.', 'error');
                 src.subreddit = subreddit;
                 src.name = src.name || `r/${subreddit}`;
+            } else if (type === '4chan') {
+                // "vr", "/vr/", "boards.4chan.org/vr/", "https://boards.4chan.org/vr/catalog"
+                const board = raw.replace(/^(?:https?:\/\/)?(?:boards\.)?(?:4chan|4channel)\.org/i, '').replace(/^\/+/, '').split(/[/?#]/)[0].toLowerCase();
+                if (!BOARD_RE.test(board)) return showSourcesMessage('Enter the short name of a board, such as vr or /vr/.', 'error');
+                src.board = board;
+                src.name = src.name || `/${board}/`;
             } else if (type === 'podcast' && /spotify\.com/i.test(raw)) {
                 return showSourcesMessage("Spotify doesn't publish podcast feeds. Find the show on Apple Podcasts and paste that link instead.", 'error');
             } else if (type === 'podcast' && (/(?:podcasts|itunes)\.apple\.com\/.*\/id\d+/i.test(raw) || /^\d{5,}$/.test(raw))) {
