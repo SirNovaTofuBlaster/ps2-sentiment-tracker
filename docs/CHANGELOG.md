@@ -20,13 +20,18 @@
 - **A game's name in that list opens the table on exactly the items that name it**, from
   the whole feed. *Back to every game* over the table, or any change to the search box or
   a menu, undoes it.
-- **The table opens on the items that name a PS2 game.** The line under its heading says how
-  many are showing and out of how many, whatever the search box and the menus are set to,
+- **The table opens on the items that name a PS2 game.** A line over the table says how
+  many those are and out of how many, whatever the search box and the menus are set to,
   and *Everything* in the first menu shows the rest. The menu now reads *PS2 Games Only*,
-  *Remaster News Only*, *Everything*.
+  *Remaster News Only*, *Everything*. The line sits on a row of its own, between the menus
+  and the table.
 - **A row names every game its item names**: the first with its prices, the others under it
-  ("also names …", four at most and then a count). Before, only the first was shown.
+  ("also names …", four at most and then a count; a game the search box found comes
+  first). Before, only the first was shown.
 - The search box looks at every game an item names, not only the first.
+- **Most Mentioned Games counts every game an item names**, as the new list does and as the
+  archive, the Demand Index and the eBay prices always have. It used to count an item's
+  first game only, so a game that was only ever named second was missing from the page.
 
 **Guide: `guide.html`**
 - Describes the new list, what the table opens on and where the rest is.
@@ -37,9 +42,10 @@
 
 ### What was measured (2026-10-07, the snapshot of 17:44 UTC)
 
-- Last 24 hours: 654 items, 53 naming a PS2 game (32 in a headline, 21 only in the text):
-  59 games, 25 of them by a headline.
+- The 24 hours before its newest item (17:41 UTC): 654 items, 53 naming a PS2 game (32 in a
+  headline, 21 only in the text): 59 games, 25 of them by a headline.
 - Whole feed: 5,586 items, 412 naming a game.
+- Most Mentioned Games: 532 mentions across 209 games, where it showed 412 across 162.
 
 ### Behaviour changes to be aware of
 
@@ -51,11 +57,14 @@
   included *Retro*, *Tomb Raider: Anniversary* (for "Happy 23rd Anniversary to Backyard
   Wrestling") and *Battlestar Galactica* (an article about the television series). The list
   is only as good as the matcher.
-- The new list counts every game an item names; Most Mentioned Games counts an item's first
-  game. A game can show more mentions in the first than its share of the second suggests.
+- The numbers on the *Most mentioned* page and on its tab went up (see above), and every
+  share on it changed with them: nothing new was found, more of what was found is counted.
 - "The last 24 hours" goes by the date a source gave an item, not by when the robot fetched
   it. When a source is first added, its older items do not flood the list; an item whose
-  source dates it more than an hour into the future is left out of the list as well.
+  source dates it more than an hour into the future is left out of the list as well. A
+  source that gives no dates is the exception: its items are dated when first seen.
+- Before any feed has loaded, and when the feed cannot be loaded, the list says so; the two
+  cases look the same to the page.
 - A click on a game shows its items from the whole two weeks, so the table can show more
   items than the list's count for the last day.
 
