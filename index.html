@@ -1005,6 +1005,9 @@
         }
 
         function itemWeight(item) {
+            // A 4chan row has no mood score (only the games it names are read), so it can never
+            // count towards the overall mood, whatever weight its board or role is given.
+            if (itemType(item) === '4chan') return 0;
             const src = sourceForItem(item);
             return src ? effectiveWeight(src) : 1;
         }
@@ -1286,7 +1289,9 @@
                         ${src.note ? `<div class="text-[10px] text-slate-500 mt-0.5">${esc(src.note)}</div>` : ''}
                     </td>
                     <td data-col="role" class="py-2 px-3"><select data-field="role" aria-label="Role for ${esc(src.name)}" class="max-w-[13rem] ${INPUT}">${roles}</select></td>
-                    <td data-col="weight" class="py-2 px-3"><input type="number" data-field="weight" min="0" max="10" step="0.1" value="${isWeightValue(src.weight) ? esc(src.weight) : ''}" placeholder="${esc(roleWeight)}" title="Empty = use the role weight (${esc(roleWeight)})" aria-label="Weight for ${esc(src.name)}" class="w-16 ${INPUT}"></td>
+                    <td data-col="weight" class="py-2 px-3">${src.type === '4chan'
+                        ? '<span class="text-slate-500" title="Not scored, so there is nothing to weigh: only the games a thread names are read from 4chan.">&ndash;</span>'
+                        : `<input type="number" data-field="weight" min="0" max="10" step="0.1" value="${isWeightValue(src.weight) ? esc(src.weight) : ''}" placeholder="${esc(roleWeight)}" title="Empty = use the role weight (${esc(roleWeight)})" aria-label="Weight for ${esc(src.name)}" class="w-16 ${INPUT}">`}</td>
                     ${columns.map(c => `<td data-col="stat" data-label="${esc(c.label)}" class="py-2 px-3 font-mono-custom whitespace-nowrap ${c.right ? 'text-right' : ''}">${c.cell(src)}</td>`).join('')}
                     <td data-col="status" class="py-2 px-3 whitespace-nowrap">${statusBadgeHtml(src)}</td>
                     <td data-col="remove" class="py-2 px-3 text-right">${unsavedAdditions.has(sourceKey(src))

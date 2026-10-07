@@ -7,6 +7,7 @@ built-in fallback list. The dashboard tests need Node.js and are skipped without
 import copy
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -809,6 +810,57 @@ class BoardTests(unittest.TestCase):
         # An over-long comment is read only at its start, like any other body text.
         late = thread(9, NOW, comment=" ".join(["word"] * scraper.MAX_BODY_TOKENS) + " Okami")
         self.assertIsNone(scraper.analyze_thread(late, job, matcher, set()))
+
+    def test_a_thread_counts_on_the_day_it_was_started(self):
+        """Slow boards keep threads live for months. One started before the feed's two weeks
+        is not a new mention, though it still tells how recently the board was active."""
+        matcher = scraper.TitleMatcher(scraper.FALLBACK_TITLES)
+        job = {"type": "4chan", "sources": [board("vst")], "url": "https://a.4cdn.org/vst/catalog.json"}
+        window = timedelta(days=scraper.RETENTION_DAYS)
+        threads = [thread(1, NOW - timedelta(days=400), subject="Okami general"),
+                   thread(2, NOW - window - timedelta(hours=1), subject="Ico"),
+                   thread(3, NOW - window + timedelta(hours=1), subject="Gran Turismo 4"),
+                   thread(4, NOW - timedelta(hours=2), subject="Persona 4"),
+                   thread(5, NOW - timedelta(minutes=5), subject="no game here")]
+        status = {}
+        with mock.patch.object(scraper, "fetch_board", return_value=threads) as fetch:
+            items = scraper.scan_board(object(), job, matcher, status, set())
+        self.assertEqual([(item["link"].rsplit("/", 1)[1], item["matched_game"]) for item in items],
+                         [("3", "Gran Turismo 4"), ("4", "Persona 4")])
+        self.assertEqual(fetch.call_args.args[2], None, "a board never read before is asked for everything")
+        self.assertEqual(status, {"4chan:vst": {"ok": True, "latest": (NOW - timedelta(minutes=5)).strftime(scraper.TIMESTAMP_FORMAT)}})
+
+
+class LiveChecksWorkflowTests(unittest.TestCase):
+    """The one workflow that runs a pull request's own code against the real sites. That is
+    only safe while it holds nothing worth stealing and cannot change anything."""
+
+    def setUp(self):
+        self.text = (ROOT / ".github" / "workflows" / "live-checks.yml").read_text(encoding="utf-8").replace("\r\n", "\n")
+        self.code = "\n".join(line for line in self.text.splitlines() if not line.lstrip().startswith("#"))
+
+    def test_it_holds_no_key_and_can_write_nothing(self):
+        self.assertIn("\npermissions:\n  contents: read\n", self.code)
+        self.assertEqual(self.code.count("permissions:"), 1, "no job widens what the workflow may do")
+        for forbidden in ("secrets.", "EBAY", "pull_request_target", "git push", "git commit", "write"):
+            self.assertNotIn(forbidden, self.code, forbidden)
+
+    def test_it_cannot_start_the_job_that_holds_the_ebay_key(self):
+        """ebay.yml follows the scraper workflow by name; a second workflow under that name
+        would be a pull-request trigger for it."""
+        name = lambda path: re.search(r"^name: *(.+)$", path.read_text(encoding="utf-8"), re.M).group(1).strip()  # noqa: E731
+        names = [name(path) for path in sorted((ROOT / ".github" / "workflows").glob("*.yml"))]
+        self.assertEqual(len(names), len(set(names)), names)
+        ebay = (ROOT / ".github" / "workflows" / "ebay.yml").read_text(encoding="utf-8")
+        self.assertNotIn("Live checks", ebay)
+        self.assertNotIn("pull_request", (ROOT / ".github" / "workflows" / "scraper.yml").read_text(encoding="utf-8"))
+
+    def test_it_tries_the_sources_and_compares_the_scraper_with_main(self):
+        self.assertIn("python tools/try_sources.py forum 4chan", self.code)
+        self.assertIn("python tools/regression_check.py --ref origin/main", self.code)
+        self.assertIn("fetch-depth: 0", self.code)
+        for path in ("scraper.py", "feeds.json", "tools/**"):
+            self.assertIn(f"      - {path}\n", self.code)
 
 
 # --- dashboard (index.html) ----------------------------------------------------------

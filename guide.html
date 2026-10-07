@@ -65,7 +65,7 @@
 
         <section id="overview" class="space-y-3">
             <h2>1. What the dashboard shows</h2>
-            <p>Every hour a robot on GitHub reads gaming news sites, Reddit, YouTube channels and podcasts. For every headline, video and episode it checks whether a PlayStation 2 game is mentioned, whether it sounds like remaster or remake news, and how positive the wording is. The dashboard shows the result:</p>
+            <p>Every hour a robot on GitHub reads gaming news sites, Reddit, forums, 4chan's game boards, YouTube channels and podcasts. For every headline, thread, video and episode it checks whether a PlayStation 2 game is mentioned, whether it sounds like remaster or remake news, and how positive the wording is. The dashboard shows the result:</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li><b class="text-white">Three pages</b>, chosen with the tabs under the banner. <b class="text-white">Tracker</b> has the numbers, the Demand Index, the table and the sources. <b class="text-white">Most mentioned</b> ranks every PS2 game the feed names. <b class="text-white">eBay prices</b> is the full list of what used copies are listed for. On a screen wider than a phone, the number on a tab is how many games that page holds. Your browser's Back button returns to the page you were on, and adding <span class="font-mono-custom">#mentions</span> or <span class="font-mono-custom">#prices</span> to the address opens a page directly.</li>
                 <li><b class="text-white">eBay median</b>: under a game's name, wherever one appears (Demand Index, Most Mentioned Games and the table), you see the middle asking price of used copies on eBay US and eBay UK. Click a figure to search that eBay site for the game; hover over it for how many copies it covers and when it was checked. A game with no such line is one that isn't priced: see <a class="text-cyan-400 hover:underline" href="#ebay">eBay asking prices</a>.</li>
@@ -78,6 +78,12 @@
             </ul>
             <p><b class="text-white">Times are shown in your own time zone.</b> The robot works in UTC, so "Last sync" and the times in the table are converted to wherever you are. Hover over a time to see the original.</p>
             <p><b class="text-white">About the mood score.</b> It reads the wording of a headline, not what the headline is about. Words like "masterpiece" or "underrated" push it up, "broken" or "disappointing" push it down, and "not a masterpiece" counts as criticism rather than praise. Announcements are deliberately neutral: a remaster being announced is news, not good news, so words like "remaster" and "announced" no longer raise the score. It is a rough guide to tone and nothing more.</p>
+            <p id="boards"><b class="text-white">About the 4chan rows.</b> From 4chan the robot takes one thing only: <b class="text-white">which PS2 games a thread names</b>. Nothing a poster wrote is copied, kept or shown. The line you read in the table, such as "Thread on /vr/ naming Silent Hill 2", is written by the robot from the board and the game names. These rows have a dash where the mood score would be, they are never flagged as remaster news, and they never count towards the overall mood. They do count in <b class="text-white">Most Mentioned Games</b>. Three things to know:</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li><b class="text-white">Only the post that starts a thread is read</b>, not the replies under it.</li>
+                <li><b class="text-white">The rules for a name are stricter than for a headline</b>, because posts are chat. The name has to be spelt the way the PS2 library spells it, and a name without a number in it has to be written with capital letters ("Top Gun", not "top gun"). Some real mentions are missed that way; far fewer wrong ones get in.</li>
+                <li><b class="text-white">The Thread button opens the thread on 4chan</b>, where you will see everything posted in it, unfiltered. Threads there are deleted after a few hours or days, so an older row's button leads to a page that no longer exists. The row stays for two weeks like any other.</li>
+            </ul>
             <p><b class="text-white">About the remaster flag.</b> Clear wording — remaster, remake, reboot, director's cut — flags on its own. Everyday words like "collection", "ports" or "returns" only flag when a PS2 game was also recognised in the same headline, because "my PS2 collection" isn't news.</p>
         </section>
 
@@ -121,7 +127,7 @@
 
         <section id="sources" class="space-y-3">
             <h2>5. The Sources &amp; Weights panel</h2>
-            <p>Click <b class="text-white"><i class="fa-solid fa-sliders"></i> Sources</b> at the top of the dashboard. There is one tab per kind of source (News sites, Reddit, YouTube, Podcasts) and a <b class="text-white">Weights &amp; schedule</b> tab.</p>
+            <p>Click <b class="text-white"><i class="fa-solid fa-sliders"></i> Sources</b> at the top of the dashboard. There is one tab per kind of source (News sites, Reddit, Forums, 4chan, YouTube, Podcasts) and a <b class="text-white">Weights &amp; schedule</b> tab.</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li><b class="text-white">Switch a source on or off</b> with the checkbox at the start of its row. Its items disappear from the dashboard straight away. Nothing is deleted: switch it back on whenever you like.</li>
                 <li><b class="text-white">Find a source</b> with the search box, or sort the list, e.g. YouTube by subscribers or total views and podcasts by Apple ratings or chart position.</li>
@@ -148,6 +154,14 @@
                     <p>Paste the site's RSS feed link. Many sites have one at their address followed by <span class="font-mono-custom text-cyan-300">/feed</span> or <span class="font-mono-custom text-cyan-300">/rss</span>; otherwise look for an RSS icon. Give it a name.</p>
                 </div>
                 <div class="bg-ps2card p-4">
+                    <h3 class="mb-1"><i class="fa-solid fa-comments"></i> Forum</h3>
+                    <p>Paste the RSS feed link of one board of the forum and give it a name. On many forums it is the board's address followed by <span class="font-mono-custom text-cyan-300">index.rss</span>. Be ready for it not to work: many big forums refuse visitors that come from GitHub's computers, which is where the robot runs. The status will say "Failing: HTTP 403" after the next run; switch the forum off again if it does.</p>
+                </div>
+                <div class="bg-ps2card p-4">
+                    <h3 class="mb-1"><i class="fa-solid fa-user-secret"></i> 4chan board</h3>
+                    <p>Type the board's short name (<span class="font-mono-custom text-cyan-300">vr</span>, <span class="font-mono-custom text-cyan-300">/vr/</span>) or paste its link. As with the other boards, only the names of the PS2 games its threads mention are kept (see <a class="text-cyan-400 hover:underline" href="#boards">About the 4chan rows</a>). A board has no Weight box, because its rows have no mood score to weigh.</p>
+                </div>
+                <div class="bg-ps2card p-4">
                     <h3 class="mb-1"><i class="fa-brands fa-reddit-alien"></i> Subreddit</h3>
                     <p>Type its name (<span class="font-mono-custom text-cyan-300">ps2</span>, <span class="font-mono-custom text-cyan-300">r/ps2</span>) or paste its link. Keep the suggested group: subreddits in one group are read together, because Reddit only allows about one request a minute.</p>
                 </div>
@@ -163,7 +177,7 @@
                     <thead><tr class="border-b border-slate-800"><th class="py-2 pr-3">WEIGHT</th><th class="py-2">MEANING</th></tr></thead>
                     <tbody>
                         <tr class="border-b border-slate-800/60"><td class="py-2 pr-3 font-mono-custom text-white">1.5</td><td class="py-2">counts one and a half times: PS2-only sources such as r/ps2 and PS2 channels</td></tr>
-                        <tr class="border-b border-slate-800/60"><td class="py-2 pr-3 font-mono-custom text-white">1</td><td class="py-2">normal: news, official channels, Reddit, retro channels</td></tr>
+                        <tr class="border-b border-slate-800/60"><td class="py-2 pr-3 font-mono-custom text-white">1</td><td class="py-2">normal: news, official channels, Reddit, forums, retro channels</td></tr>
                         <tr class="border-b border-slate-800/60"><td class="py-2 pr-3 font-mono-custom text-white">0.5</td><td class="py-2">counts half: collectors and resellers ("INSANE PS2 HAUL!!") and big entertainment channels</td></tr>
                         <tr><td class="py-2 pr-3 font-mono-custom text-white">0</td><td class="py-2">still shown in the table, but doesn't count at all</td></tr>
                     </tbody>
@@ -173,6 +187,7 @@
                 <li><b class="text-white">Change a whole kind of source</b> in the <b class="text-white">Weights &amp; schedule</b> tab, e.g. set <i>Collectors &amp; resellers</i> to 0.2.</li>
                 <li><b class="text-white">Change a single source</b> by typing a number in its <b class="text-white">Weight</b> box. Leave it empty to use its role's weight.</li>
                 <li>The dashboard updates immediately. Save to keep it.</li>
+                <li><b class="text-white">Anonymous boards (4chan)</b> is listed at 0, and whatever number is put there, 4chan rows never count: they have no mood score.</li>
             </ul>
             <p>A PS2-only source does one other thing: the robot treats anything it publishes as being about the PS2, which helps it recognise games with short or ordinary names like <i>Ico</i> or <i>Black</i> that it would otherwise ignore.</p>
             <p>The same tab has the <b class="text-white">fetch schedule</b>: how often each kind of source is read. Podcasts are read about every 6 hours because their feeds are large; everything else about every hour (GitHub sometimes runs the robot a little late).</p>
@@ -258,8 +273,12 @@
                     <dd>The link didn't lead to a channel. Open it to check. You can also add the channel by its ID: on the channel page open <b>more about this channel → Share channel → Copy channel ID</b> and paste that (it starts with UC).</dd></div>
                 <div><dt class="text-white font-semibold">"Failing: already listed as ..."</dt>
                     <dd>That channel is already in the list under another name. Switch the new one off.</dd></div>
-                <div><dt class="text-white font-semibold">A site or podcast says "Failing: HTTP 403" or "HTTP 404"</dt>
-                    <dd>The site blocks the robot or moved its feed. Switch it off, or add its new feed link.</dd></div>
+                <div><dt class="text-white font-semibold">A site, forum or podcast says "Failing: HTTP 403" or "HTTP 404"</dt>
+                    <dd>The site blocks the robot or moved its feed. Switch it off, or add its new feed link. Forums are the usual case for 403: many sit behind a check that turns away GitHub's computers even though the same link opens fine in your browser.</dd></div>
+                <div><dt class="text-white font-semibold">The Thread button on a 4chan row opens a "404 Not Found" page</dt>
+                    <dd>The thread has ended. 4chan deletes threads once they fall off the board, often within hours. The row itself is still right: the game was named there when the robot looked.</dd></div>
+                <div><dt class="text-white font-semibold">A 4chan board seems to mention very few games</dt>
+                    <dd>Expected. The robot reads only the post that opens each thread, only counts names spelt exactly and written as names, and sees a busy board like /v/ only as it stands when a run happens, so threads that come and go between runs are never seen.</dd></div>
                 <div><dt class="text-white font-semibold">"feeds.json was changed on GitHub after this page loaded"</dt>
                     <dd>Someone else saved in the meantime. Reload the page and make your change again, so theirs isn't lost.</dd></div>
                 <div><dt class="text-white font-semibold">"Unsaved changes" doesn't go away</dt>
@@ -276,6 +295,8 @@
                     <dd>Only <a class="text-cyan-400 hover:underline" href="#ebay">eBay asking prices</a>: what sellers want today, shown under each game's name and in full on the eBay prices tab. It knows nothing about what games have sold for. The amber buttons are searches that open a shop or price guide with the game already looked up.</dd></div>
                 <div><dt class="text-white font-semibold">Why is a game high in Most Mentioned but missing from the Demand Index?</dt>
                     <dd>They measure different things. Most Mentioned counts what the sources here are talking about; the Demand Index counts what people are reading about on Wikipedia. A game can be all over the news without anyone looking it up, and the other way round.</dd></div>
+                <div><dt class="text-white font-semibold">Why do 4chan rows say only "Thread on /v/ naming …"?</dt>
+                    <dd>On purpose. Those boards are tracked for the game names people bring up, and for nothing else, so nothing a poster wrote is stored or shown here: no thread titles, no comments, no names. What you see is a line the robot writes itself. See <a class="text-cyan-400 hover:underline" href="#boards">About the 4chan rows</a>.</dd></div>
                 <div><dt class="text-white font-semibold">Where do the subscriber and rating numbers come from?</dt>
                     <dd>They were measured from YouTube and Apple Podcasts when the lists were made. See the ranked lists in <a class="text-cyan-400 hover:underline" data-repo-file="SOURCES.md" href="SOURCES.md">SOURCES.md</a>.</dd></div>
                 <div><dt class="text-white font-semibold">Can I break something?</dt>

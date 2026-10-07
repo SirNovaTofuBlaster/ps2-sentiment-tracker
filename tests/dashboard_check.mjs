@@ -1026,6 +1026,18 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     assert.match(boardRow, /title="Source weight in the sentiment average">&times;0<\/span>/);
     assert.match(boardRow, /<td data-col="score"[^>]*><div class="score-value[^"]*" title="Not scored: [^"]+">&ndash;<\/div>\s*<\/td>/, 'no mood is shown for a thread');
     assert.match(forumRow, /<div class="score-value font-mono-custom">70<\/div>/);
+    // A thread has no mood score at all, so no weight can bring its placeholder 50 into the
+    // average: not a weight on the role, not one on the board, and not a board the list has lost.
+    const mood = (change) => {
+        vm.runInContext(`${change}; rebuildSourceIndex(); refreshDashboard()`, context);
+        return el('statAvgSentiment').innerText;
+    };
+    assert.equal(mood('feedConfig.roles.anonymous.weight = 5'), '80/100');
+    assert.equal(mood("feedConfig.roles.anonymous.weight = 0; feedConfig.sources.find(s => s.board === 'vr').weight = 10"), '80/100');
+    assert.equal(mood("feedConfig.sources = feedConfig.sources.filter(s => s.board !== 'vr')"), '80/100');
+    // ...while a weight on the forum does what it says. (90*1 + 70*3) / 4 = 75
+    assert.equal(mood(`feedConfig = JSON.parse(__text); feedConfig.sources.find(s => s.type === 'forum').weight = 3`), '75/100');
+    assert.equal(mood('feedConfig = JSON.parse(__text)'), '80/100');
 
     // The feed can be narrowed to either kind.
     const only = (kind) => { el('typeSelect').value = kind; vm.runInContext('filterFeedItems()', context); return rows().length; };
@@ -1038,6 +1050,9 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     let html = el('sourcesView').innerHTML;
     assert.equal((html.match(/<tr data-index=/g) || []).length, feeds.sources.filter(src => src.type === '4chan').length);
     assert.match(html, /<a href="https:\/\/boards\.4chan\.org\/vr\/"[^>]*>\/vr\/ - Retro Games<\/a>/);
+    assert.doesNotMatch(html, /data-field="weight"/, 'a board has no weight to set');
+    assert.equal((html.match(/<td data-col="weight"[^>]*><span[^>]*title="Not scored, [^"]+">&ndash;<\/span><\/td>/g) || []).length,
+        feeds.sources.filter(src => src.type === '4chan').length);
     assert.match(el('addHint').textContent, /^Add to 4chan: only the names of the PS2 games/);
     const add = (value, name = '') => {
         el('addValue').value = value; el('addName').value = name;
@@ -1060,6 +1075,7 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     html = el('sourcesView').innerHTML;
     assert.equal((html.match(/<tr data-index=/g) || []).length, feeds.sources.filter(src => src.type === 'forum').length);
     assert.ok(html.includes(esc(forum.url)), 'the feed link is shown under a forum, as for news sites');
+    assert.equal((html.match(/data-field="weight"/g) || []).length, feeds.sources.filter(src => src.type === 'forum').length);
     assert.equal(el('addName').placeholder, 'Name');
     assert.match(add('https://forum.example.org/forums/retro.5/index.rss'), /Give the source a name\./);
     assert.match(add('forum.example.org/index.rss', 'No Scheme'), /Paste the full link of the feed/);

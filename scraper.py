@@ -815,13 +815,20 @@ def analyze_thread(thread, job, matcher, ps2_keys):
 
 def scan_board(session, job, matcher, status, ps2_keys):
     """Items for the threads on one board that name a PS2 game. Also records the board's
-    health, with the newest thread as its latest activity."""
+    health, with the newest thread as its latest activity.
+
+    A thread counts on the day it was started. On a slow board a thread can stay live for
+    months or years, and one started before the feed's window is not a new mention: it is
+    left out here, as an old article still listed in a news feed is left out when the
+    snapshot is trimmed."""
     key = source_key(job["sources"][0])
     threads = fetch_board(session, job["url"], parse_timestamp(status.get(key, {}).get("latest")))
     if threads is None:  # nothing posted since the newest thread already seen
         record_success(status, key, None)
         return []
-    items = [item for item in (analyze_thread(t, job, matcher, ps2_keys) for t in threads) if item]
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).strftime(TIMESTAMP_FORMAT)
+    items = [item for item in (analyze_thread(t, job, matcher, ps2_keys) for t in threads)
+             if item and item["timestamp"] >= cutoff]
     record_success(status, key, max(filter(None, map(thread_timestamp, threads)), default=None))
     return items
 

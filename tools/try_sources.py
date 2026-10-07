@@ -16,6 +16,7 @@ import os
 import sys
 import time
 from collections import Counter
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -25,6 +26,7 @@ sys.path.insert(0, str(ROOT))
 import scraper  # noqa: E402
 
 GAMES_SHOWN = 40
+entering = Counter()  # games named by board threads young enough to enter the feed
 READER_NAME = "ps2-sentiment-tracker/1.1 (RSS reader; +https://github.com/SirNovaTofuBlaster/ps2-sentiment-tracker)"
 ON_GITHUB = os.environ.get("GITHUB_ACTIONS") == "true"
 report = []  # (heading, lines) for each source tried
@@ -83,10 +85,17 @@ def try_board(session, job, matcher, ps2_keys):
         text = f"{scraper.board_text(thread.get('sub'))} {scraper.board_text(thread.get('com'))}"
         if scraper.PS2_CONTEXT_PATTERN.search(text) and matcher.match_all(" ".join(text.split()[:scraper.MAX_BODY_TOKENS])):
             strict += 1
+    # A thread counts on the day it was started, so only those inside the feed's window are kept.
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=scraper.RETENTION_DAYS)).strftime(scraper.TIMESTAMP_FORMAT)
+    recent = [item for item in items if item["timestamp"] >= cutoff]
     say(f"  {len(live)} live threads ({len(with_subject)} with a subject), started from "
-        f"{stamps[0] if stamps else '?'} to {stamps[-1] if stamps else '?'}")
+        f"{stamps[0] if stamps else '?'} to {stamps[-1] if stamps else '?'}; "
+        f"{sum(1 for stamp in stamps if stamp >= cutoff)} of them in the last {scraper.RETENTION_DAYS} days")
     say(f"  {len(items)} name a PS2 game: {sum(1 for i in items if i['matched_in'] == 'title')} in the subject, "
         f"{sum(1 for i in items if i['matched_in'] == 'body')} in the comment; {strict} also say PS2")
+    say(f"  {len(recent)} of those were started in the last {scraper.RETENTION_DAYS} days and would enter the feed: "
+        + (", ".join(f"{title} x{count}" if count > 1 else title for title, count in
+                     Counter(game for item in recent for game in item["matched_games"]).most_common(GAMES_SHOWN)) or "none"))
     # What the two rules for posts leave out (see scraper.games_in_post): names only.
     loose = Counter()
     for thread in live:
@@ -101,6 +110,7 @@ def try_board(session, job, matcher, ps2_keys):
     methods = Counter(f"{i['match_method']}" for i in items)
     say(f"  how they matched: {dict(methods)}; threads naming more than one game: "
         f"{sum(1 for i in items if len(i['matched_games']) > 1)}")
+    entering.update(game for item in recent for game in item["matched_games"])
     return Counter(game for item in items for game in item["matched_games"])
 
 
@@ -152,6 +162,9 @@ def main():
         report.append(("Across the boards [all]", []))
         say(f"{sum(games.values())} mentions of {len(games)} games. Most named: "
             + ", ".join(f"{title} x{count}" for title, count in games.most_common(60)))
+        say(f"In threads started in the last {scraper.RETENTION_DAYS} days, which is what enters the feed: "
+            f"{sum(entering.values())} mentions of {len(entering)} games"
+            + (": " + ", ".join(f"{title} x{count}" for title, count in entering.most_common(60)) if entering else ""))
     publish()
     if failed:
         raise SystemExit(f"\n{len(failed)} of {len(jobs)} sources could not be read: {', '.join(failed)}")
