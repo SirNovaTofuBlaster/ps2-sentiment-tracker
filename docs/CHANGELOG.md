@@ -1,5 +1,61 @@
 # Changelog
 
+## 2026-10-07: games first
+
+### What was asked
+
+- "Reduce the irrelevant noise and push all the titles to the forefront of the page": if a
+  day's scrape finds six PS2 games in a hundred items, put the six on the front and keep the
+  rest at the bottom or away.
+- Whether all the data is being saved.
+
+### What changed
+
+**Dashboard: `index.html`, `retro.css`**
+- **Named in the last 24 hours**, a new list first on the Tracker: every PS2 game that an
+  item from the last day names, with how many items named it, which sources, and its prices.
+  A game named in a headline comes before one found only in the text under it (marked "in
+  the text only"), then the most mentioned, then the most recent. It shows ten games and
+  folds the rest away. A game's name opens the table on the items that name it.
+- **The table opens on the items that name a PS2 game.** The line under its heading says how
+  many that is out of how many, and *Everything* in the first menu shows the rest. The menu
+  now reads *PS2 Games Only*, *Remaster News Only*, *Everything*.
+- The search box looks at every game an item names, not only the first.
+
+**Guide: `guide.html`**
+- Describes the new list, what the table opens on and where the rest is.
+
+**Tests**
+- 31 dashboard checks (was 30). The test sandbox now opens with the menus the page opens
+  with.
+
+### What was measured (2026-10-07, the snapshot of 17:44 UTC)
+
+- Last 24 hours: 654 items, 53 naming a PS2 game (32 in a headline, 21 only in the text):
+  59 games, 25 of them by a headline.
+- Whole feed: 5,586 items, 412 naming a game.
+
+### Behaviour changes to be aware of
+
+- The table no longer shows everything when the page opens: about nine items in ten are
+  behind *Everything*. The item count at the top still counts them all.
+- Nothing is removed from the data. The snapshot, the archive and the prices are written
+  exactly as before; this change is to what the page shows first.
+- Wrong matches are now on the front as well. On the measured day the headline matches
+  included *Retro*, *Tomb Raider: Anniversary* (for "Happy 23rd Anniversary to Backyard
+  Wrestling") and *Battlestar Galactica* (an article about the television series). The list
+  is only as good as the matcher.
+- The new list counts every game an item names; Most Mentioned Games counts an item's first
+  game. A game can show more mentions in the first than its share of the second suggests.
+
+### What is kept, for the record
+
+- Every mention of a PS2 game, permanently: `data/archive/YYYY-MM.json` (576 mentions since
+  2026-09-20 when this was written).
+- eBay's figures, permanently and as numbers only: `data/prices/`.
+- Everything else, the items that name no game, for 14 days in the snapshot and then not at
+  all. That was the decision when the archive was built.
+
 ## 2026-10-07: start-up screen colours
 
 ### What was asked

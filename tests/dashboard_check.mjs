@@ -36,7 +36,10 @@ function stubElement(id = '') {
     return element;
 }
 const elements = new Map();
-const defaults = { filterSelect: 'all', typeSelect: 'all', sourceShow: 'all' };
+// What each menu shows when the page opens: the option marked "selected", else its first.
+const pageSelects = Object.fromEntries([...read('index.html').matchAll(/<select id="(\w+)"[^>]*>([\s\S]*?)<\/select>/g)]
+    .map(([, id, options]) => [id, (options.match(/<option value="([^"]*)" selected>/) || options.match(/<option value="([^"]*)"/) || [])[1]]));
+const defaults = { filterSelect: pageSelects.filterSelect, typeSelect: pageSelects.typeSelect, sourceShow: 'all' };
 const clipboard = { text: null };
 // Stand-in for Apple's podcast lookup API (the only network call the page makes itself).
 const appleShows = {
@@ -88,6 +91,10 @@ const context = vm.createContext({
 });
 const el = (id) => context.document.getElementById(id);
 vm.runInContext(script, context);
+// The page opens on the items that name a game. Most checks below are about the whole feed,
+// so they run with the menu on Everything; the check of the opening view sets it itself.
+assert.equal(el('filterSelect').value, 'matched');
+el('filterSelect').value = 'all';
 // Values cross the sandbox boundary as JSON so assertions don't trip over foreign prototypes.
 const evalJson = (code) => JSON.parse(vm.runInContext(`JSON.stringify(${code})`, context));
 
@@ -1168,8 +1175,8 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.match(page, /<div id="statRemasters" class="stat-value is-news">/);
     assert.match(page, /<div id="statFeedsCount" class="stat-value is-live">/);
     assert.match(page, /<div id="statAvgSentiment" class="stat-value">/);
-    // The tag in the table and the one beside a game's rank are the same tag.
-    assert.equal((script.match(/<span class="remaster-tag /g) || []).length, 2);
+    // The tag in the table, beside a game's rank and beside a game named today is the same tag.
+    assert.equal((script.match(/<span class="remaster-tag /g) || []).length, 3);
     context.__items = [{ headline: 'Okami HD announced', source: 'Eurogamer', link: 'https://e.example/okami', matched_game: 'Okami',
         is_remaster_rumor: true, sentiment: 50, timestamp: '2026-10-07 08:00 UTC' }];
     vm.runInContext('allFeedData = __items; refreshDashboard();', context);
@@ -1203,6 +1210,106 @@ await check('the theme: four colours with one job each, readable on every ground
         '#0B0F1A', '#121826', '#232C42']) {
         assert.ok(!(css + page + guide).toUpperCase().includes(old.toUpperCase()), old);
     }
+    vm.runInContext('allFeedData = []; refreshDashboard();', context);
+});
+
+await check('games first: what was named in the last day leads, and the table opens on the items that name a game', () => {
+    const page = read('index.html');
+    const now = Date.parse('2026-10-07T18:00:00Z');
+    const at = (hoursAgo) => new Date(now - hoursAgo * 3600e3).toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+    let link = 0;
+    const row = (source, hoursAgo, games, extra = {}) => ({
+        headline: `${source} item ${++link}`, source, link: `https://example.com/${link}`, matched_game: games[0] ?? null, matched_games: games,
+        matched_in: games.length ? 'title' : null, is_remaster_rumor: false, sentiment: 50, timestamp: at(hoursAgo), ...extra });
+    context.__items = [
+        row('Eurogamer', 1, ['Okami'], { is_remaster_rumor: true }),
+        row('r/ps2', 2, ['Okami', 'Ico']),                              // one item, two games
+        row('YouTube: Some Channel', 3, ['Okami']),
+        row('Destructoid', 4, ['Okami']),
+        row('r/ps2', 5, ['Ico']),
+        row('4chan /vr/', 6, ['Kuon'], { sentiment: null }),
+        row('Forum: Lemmy games', 7, ['Retro'], { matched_in: 'body' }),  // found in the text only, twice:
+        row('r/retrogaming', 8, ['Retro'], { matched_in: 'body' }),       // still below every game named in a headline
+        row('Polygon', 9, []), row('Kotaku', 10, []), row('VG247', 23.9, []),
+        row('Eurogamer', 24.1, ['God Hand']),                             // a day and six minutes old: not "the last 24 hours"
+        row('Gematsu', 100, ['Rule of Rose']),
+        row('Kotaku', -0.5, ['Haunting Ground']),                         // a feed whose clock runs half an hour ahead
+        row('Kotaku', -3, ['Silent Hill 2']),                             // three hours ahead is a wrong date, not news
+        { headline: 'An older item with one game and no list', source: 'Push Square', link: 'https://example.com/old', matched_game: 'Black',
+            is_remaster_rumor: false, sentiment: 50, timestamp: at(12) },
+        { headline: 'No date at all', source: 'Push Square', link: 'https://example.com/undated', matched_game: 'Cars', matched_games: ['Cars'] },
+    ];
+    vm.runInContext('feedConfig = JSON.parse(__text); rebuildSourceIndex(); allFeedData = __items; visibleFeedData = __items;', context);
+    const recent = evalJson(`recentGames(__items, ${now})`);
+    assert.deepEqual([recent.items, recent.naming], [13, 10], 'thirteen items in the window, ten of them naming a game');
+    assert.deepEqual(recent.games.map(game => [game.name, game.headline, game.text]),
+        [['Okami', 4, 0], ['Ico', 2, 0], ['Haunting Ground', 1, 0], ['Kuon', 1, 0], ['Black', 1, 0], ['Retro', 0, 2]],
+        'headline before text-only whatever the count, then the most mentioned, then the most recent');
+    assert.deepEqual(recent.games[0].sources, ['Eurogamer', 'r/ps2', 'YouTube: Some Channel', 'Destructoid']);
+    assert.equal(recent.games[0].remasters, 1);
+
+    vm.runInContext(`renderRecentGames(__items, ${now})`, context);
+    assert.equal(el('todaySummary').textContent,
+        '10 items out of 13 named a PS2 game: 6 games. The other 3 items are in the table further down, under Everything.');
+    const rows = el('todayList').innerHTML.split('<li ').slice(1);
+    assert.equal(rows.length, 6);
+    assert.match(rows[0], /onclick="showGameRows\(0\)"[^>]*class="recent-game text-cyan-300 font-bold">Okami<\/button> <span class="remaster-tag [^"]*">1 remaster<\/span>/);
+    assert.match(rows[0], />4 mentions<\/span>/);
+    assert.match(rows[0], /Eurogamer · r\/ps2 · YouTube: Some Channel <span class="text-slate-500">\+1 more<\/span>/, 'three sources named, the rest counted');
+    assert.match(rows[3], />Kuon<\/button><\/span>\s*<span[^>]*>1 mention<\/span>/);
+    assert.match(rows[3], /4chan \/vr\//);
+    assert.match(rows[5], />Retro<\/button> <span class="[^"]*" title="Named in the text under a headline[^"]*">in the text only<\/span>/);
+    assert.doesNotMatch(rows.slice(0, 5).join(''), /in the text only/);
+    assert.doesNotMatch(el('todayList').innerHTML, /God Hand|Rule of Rose|Silent Hill 2|Cars|Polygon|VG247/, 'nothing older, nothing undated, nothing without a game');
+    assert.equal(el('todayListToggle').classList.contains('hidden'), true, 'six games fit without a button');
+    assert.equal(evalJson('LIST_FOLD.todayList'), 10);
+
+    // The list sits first on the Tracker, above the Demand Index and the table.
+    const order = ['class="stat-strip"', 'id="todaySection"', 'id="demandSection"', 'id="feedSection"'].map(mark => page.indexOf(mark));
+    assert.ok(order.every((at, i) => at > 0 && (i === 0 || at > order[i - 1])), order.join(' '));
+    assert.match(page, /<ol id="todayList" class="zebra"><\/ol>\s*<button type="button" id="todayListToggle" onclick="toggleList\('todayList'\)" aria-controls="todayList"/);
+    assert.match(read('retro.css'), /body #todayList > li > div:first-child,/, 'on a phone the count drops under a long name here too');
+
+    // A quiet day, and a feed that has not moved, each say so instead of showing an empty box.
+    vm.runInContext(`renderRecentGames(__items.filter(item => !item.matched_game), ${now})`, context);
+    assert.equal(el('todaySummary').textContent, 'None of the 3 items from the last 24 hours names a PS2 game.');
+    assert.match(el('todayList').innerHTML, /No games to show yet\./);
+    vm.runInContext(`renderRecentGames(__items, ${now + 30 * 86400e3})`, context);
+    assert.match(el('todaySummary').textContent, /^Nothing has come in during the last 24 hours\./);
+    // Twelve games: ten show, a button opens the other two.
+    context.__many = Array.from({ length: 12 }, (_, i) => row('Eurogamer', 1 + i, [`Game ${i}`]));
+    vm.runInContext(`renderRecentGames(__many, ${now})`, context);
+    assert.equal((el('todayList').innerHTML.match(/list-extra/g) || []).length, 2);
+    assert.match(el('todayListToggle').innerHTML, /^Show 2 more/);
+    assert.equal(el('todayListToggle').classList.contains('hidden'), false);
+
+    // The table opens on the items that name a game, and says what it is leaving out.
+    assert.match(page, /<option value="matched" selected>PS2 Games Only<\/option>\s*<option value="remaster">Remaster News Only<\/option>\s*<option value="all">Everything<\/option>/);
+    const shown = (filter, search = '') => {
+        el('filterSelect').value = filter; el('searchInput').value = search; el('typeSelect').value = 'all';
+        vm.runInContext('filterFeedItems()', context);
+        return [el('feedTableBody').children.filter(child => /data-col="source"/.test(child.innerHTML)).length, el('feedSummary').textContent];
+    };
+    vm.runInContext(`renderRecentGames(__items, ${now})`, context);
+    assert.deepEqual(shown('matched'), [14, 'Showing the 14 of 17 items that name a PS2 game. Choose Everything for the other 3.']);
+    assert.deepEqual(shown('all'), [17, 'Showing all 17 items; 14 of them name a PS2 game.']);
+    assert.deepEqual(shown('remaster'), [1, 'Showing the 1 of 17 items flagged as remaster news.']);
+    // A search looks at every game an item names, not only the first.
+    assert.equal(shown('all', 'ico')[0], 2);
+    assert.equal(shown('matched', 'polygon')[0], 0);
+
+    // A game's name in the list opens the table on the items that name it, whatever the menus said.
+    el('filterSelect').value = 'remaster'; el('typeSelect').value = 'podcast'; el('searchInput').value = 'something else';
+    vm.runInContext('showGameRows(1)', context);
+    assert.deepEqual([el('searchInput').value, el('filterSelect').value, el('typeSelect').value], ['Ico', 'matched', 'all']);
+    assert.equal(el('feedTableBody').children.length, 2);
+    vm.runInContext('showGameRows(99)', context);
+    assert.equal(el('searchInput').value, 'Ico', 'a name that is not there changes nothing');
+
+    // The whole page draws it: loading the feed fills the list.
+    vm.runInContext('allFeedData = __items; refreshDashboard();', context);
+    assert.match(el('todaySummary').textContent, /named a PS2 game|names a PS2 game|Nothing has come in/);
+    el('searchInput').value = ''; el('filterSelect').value = 'all';
     vm.runInContext('allFeedData = []; refreshDashboard();', context);
 });
 

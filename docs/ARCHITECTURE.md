@@ -189,7 +189,17 @@ they exist, `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.js
   numerals as digits, "Getaway, The" turned round), and the price index is keyed by that. A
   pinned game's `search` words in `ebay_watchlist.json` are a second key for it. This is the
   rule the script itself uses to decide two titles are one game.
-- **Two lists fold away.** The Demand Index renders up to 25 rows and shows five; Most
+- **Games first.** Most items name no PS2 game (53 of the 654 collected in the day before
+  this was built), so the Tracker leads with the ones that do. *Named in the last 24 hours*
+  (`recentGames()`) lists every game an item from the last day names: a game named in a
+  headline before one found only in body text (`matched_in: "body"`, the source of most wrong
+  matches), then by mentions, then by recency. It counts every game in `matched_games`, so
+  its numbers can exceed the Most Mentioned page's, which counts an item's first game. The
+  table opens on the items that name a game (`filterSelect` starts on `matched`) and its
+  summary line says how many that leaves out; *Everything* shows the rest. Nothing is
+  dropped from the snapshot: this is a view.
+- **Three lists fold away.** The last 24 hours renders every game and shows ten; the Demand
+  Index renders up to 25 rows and shows five; Most
   Mentioned Games renders every game and shows 25 (`LIST_FOLD`). Rows past that point are
   marked, and a class on the list hides them until the button under it is pressed. The stylesheet does the hiding, so the script only flips a class and rewrites the
   button. An opened list stays open when the data reloads, its "Show fewer" button follows the
