@@ -48,6 +48,14 @@
 **Tests: `tests/dashboard_check.mjs`, `tests/test_scraper.py`**
 - 28 dashboard checks (was 24) and 178 Python tests (was 176).
 
+**Workflows: all six**
+- `actions/checkout` v4 to v5, `actions/setup-python` v5 to v6 and `actions/setup-node` v4 to
+  v5: the same actions built for Node.js 24, which ends the "Node.js 20 is deprecated" warning
+  on every run. Nothing else about them changes; the newer majors (checkout v6 and v7) alter
+  how credentials are stored and what a `workflow_run` job may check out, and were left alone
+  because the eBay job cannot be tried out before it is live.
+- The tests run on Node.js 22 (was 20, which is no longer supported).
+
 ### Behaviour changes to be aware of
 
 - The feed grows back to two weeks. Items the old limit pushed out return on the first run if
