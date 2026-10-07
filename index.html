@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0C1120">
+    <meta name="theme-color" content="#111114">
     <title>Spindle — tracking the Retro Gaming PS2 Market</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: { extend: { colors: {
-                ps2neon: '#4C8DFF',
-                ps2dark: '#080B12',
-                ps2card: '#10141F',
-                ps2border: '#1E2636',
+                ps2neon: '#4FA8E8',
+                ps2dark: '#0A0A0C',
+                ps2card: '#16161B',
+                ps2border: '#27272E',
             } } }
         }
     </script>
@@ -41,17 +41,16 @@
             <div class="brand-lock">
                 <div class="brand-id">
                     <svg class="brand-mark" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
-                        <circle cx="28" cy="28" r="26" fill="none" stroke="#4C8DFF" stroke-width="2"></circle>
-                        <circle cx="28" cy="28" r="17" fill="none" stroke="#4C8DFF" stroke-width="1" opacity=".5"></circle>
-                        <circle cx="28" cy="28" r="7" fill="none" stroke="#4C8DFF" stroke-width="2"></circle>
-                        <path d="M28 2 A26 26 0 0 1 54 28" fill="none" stroke="#7FADFF" stroke-width="2" stroke-linecap="round"></path>
+                        <circle cx="28" cy="28" r="26" fill="none" stroke="#E5303A" stroke-width="2"></circle>
+                        <circle cx="28" cy="28" r="17" fill="none" stroke="#F5C52E" stroke-width="1.5"></circle>
+                        <circle cx="28" cy="28" r="7" fill="none" stroke="#2F9BE0" stroke-width="2"></circle>
+                        <path d="M28 2 A26 26 0 0 1 54 28" fill="none" stroke="#2DBFA6" stroke-width="2" stroke-linecap="round"></path>
                     </svg>
                     <div>
                         <h1 class="brand-word">Spindle</h1>
-                        <p class="brand-tag">Tracking the PlayStation 2</p>
+                        <p class="brand-tag">PS2 news, mentions and prices</p>
                     </div>
                 </div>
-                <p class="brand-blurb">Every hour it reads more than 200 gaming news sites, forums, subreddits, YouTube channels and podcasts, checks each headline against the PlayStation 2 library, and flags remaster and remake news as it appears. Games it recognises link straight out to what they currently sell for.</p>
             </div>
 
         </div>
@@ -76,15 +75,15 @@
             </div>
             <div class="stat">
                 <div class="stat-label">Remaster flags</div>
-                <div id="statRemasters" class="stat-value">0</div>
+                <div id="statRemasters" class="stat-value is-news">0</div>
             </div>
             <div class="stat">
                 <div class="stat-label">Active feeds</div>
-                <div id="statFeedsCount" class="stat-value">--</div>
+                <div id="statFeedsCount" class="stat-value is-live">--</div>
             </div>
             <div class="stat">
                 <div class="stat-label">Net sentiment</div>
-                <div id="statAvgSentiment" class="stat-value accent">--</div>
+                <div id="statAvgSentiment" class="stat-value">--</div>
             </div>
         </div>
         <div id="demandSection" class="bg-ps2card p-6 hidden">
@@ -582,7 +581,7 @@
                 <li class="${rowClass('topGamesList', i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
                         <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${esc(game.name)}${game.remasters
-                            ? ` <span class="text-[10px] border border-slate-700 text-slate-400 px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}</span>
+                            ? ` <span class="remaster-tag text-[10px] border px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}</span>
                         <span class="text-slate-300 whitespace-nowrap">${game.count} mention${game.count === 1 ? '' : 's'} · ${pct >= 10 ? Math.round(pct) : pct.toFixed(1)}%</span>
                     </div>
                     <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full bg-cyan-500" style="width:${Math.max(pct, 2)}%"></div></div>
@@ -845,7 +844,7 @@
                         <div class="text-[10px] text-slate-500 font-mono-custom" title="${esc(item.timestamp)}">${esc(formatLocalTime(item.timestamp, true))}${weightBadge(item)}</div>
                     </td>
                     <td data-col="headline" class="py-3.5 px-4 text-slate-300 max-w-md leading-relaxed">
-                        ${item.is_remaster_rumor ? '<span class="border border-slate-700 text-slate-400 text-[10px] px-1.5 py-0.5 mr-1">Remaster</span>' : ''}
+                        ${item.is_remaster_rumor ? '<span class="remaster-tag border text-[10px] px-1.5 py-0.5 mr-1">Remaster</span>' : ''}
                         ${esc(item.headline)}
                     </td>
                     <td data-col="game"${item.matched_game ? '' : ' data-unmatched'} class="py-3.5 px-4 font-mono-custom text-cyan-300">${item.matched_game

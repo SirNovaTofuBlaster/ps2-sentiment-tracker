@@ -1,5 +1,54 @@
 # Changelog
 
+## 2026-10-07: start-up screen colours
+
+### What was asked
+
+- "The theme is still not sitting right with me": something inspired by the colours of two
+  pictures the maintainer showed, a console maker's logo and its start-up screens (red,
+  yellow, teal and blue, on light grey and on black).
+- A preview first. Two directions were mocked up with the day's real rows, one dark and one
+  light; the dark one was chosen.
+- On the preview: a different line under the name, and the paragraph in the banner taken out
+  and left to the How it works page.
+
+### What changed
+
+**Theme: `retro.css`**
+- A near-black ground in place of the navy, and four colours with one job each:
+  - **yellow** for price links, still the one highlighted thing in a row;
+  - **blue** for what can be followed: game names, links and buttons;
+  - **red** for remaster news (the tag in the table and beside a game's rank, the *Remaster
+    flags* number, the line under the open page's tab) and for a low mood score;
+  - **teal** for live and healthy: the sync dot, the *Active feeds* number, a high mood score.
+- All four meet in a strip across the top of both pages and in the rings of the mark. Only
+  the palette is borrowed: no logo, lettering or shape of anyone else's.
+- The quietest text colour is lighter than before, so the small print (ages, notes, hints)
+  now meets the usual contrast standard on every ground.
+
+**Dashboard and guide: `index.html`, `guide.html`**
+- The line under the name reads "PS2 news, mentions and prices".
+- The banner no longer carries the paragraph about what the site does. The guide's first
+  section says it, including that every recognised game links out to what it sells for.
+- *Net sentiment* is no longer tinted: it is neither news nor a health reading.
+- The guide says "yellow buttons" and "a lighter shade" where it said amber and blue.
+
+**Tests**
+- 30 dashboard checks (was 29): every text colour against every ground it sits on, yellow
+  used by nothing but price links, the red and teal jobs, the strip, the mark on both pages,
+  the banner's contents, and no colour of the previous palette left behind.
+
+### Behaviour changes to be aware of
+
+- Nothing but colours and the banner changed: layout, type, sizes and the phone layout are
+  as they were. On a phone the banner is one block shorter.
+- A browser may show the previous colours until the page is reloaded.
+
+### Open items
+
+- The light direction of the preview was not built. Switching would be a change of the
+  values at the top of `retro.css`, plus a new look at contrast.
+
 ## 2026-10-07: forums and 4chan's game boards
 
 ### What was asked
