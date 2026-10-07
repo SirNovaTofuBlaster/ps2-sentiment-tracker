@@ -35,6 +35,9 @@ ROOT = Path(__file__).resolve().parent.parent
 FEED = ROOT / "data" / "sentiment_feed.json"
 ARCHIVE_DIR = ROOT / "data" / "archive"
 OUT = ROOT / "tests" / "fixtures" / "headlines.json"
+# A 4chan row's headline is written by the scraper from the games it matched ("Thread on /vr/
+# naming Ico"), so it is no headline to test the matcher on: the label would always agree.
+GENERATED_TYPES = {"4chan"}
 
 # How much of the sample each bucket gets. Deliberately lopsided: the easy
 # cases are already right, so most of the budget goes to the ambiguous ones
@@ -104,7 +107,7 @@ def load_items() -> list[dict]:
 
     feed = read_json(FEED)
     if isinstance(feed, dict) and isinstance(feed.get("items"), list):
-        items.extend(i for i in feed["items"] if isinstance(i, dict))
+        items.extend(i for i in feed["items"] if isinstance(i, dict) and i.get("source_type") not in GENERATED_TYPES)
         print(f"  {len(items):>5} items from data/sentiment_feed.json")
     elif feed is None:
         print("  ! data/sentiment_feed.json not found -- run the scraper first", file=sys.stderr)
@@ -117,7 +120,7 @@ def load_items() -> list[dict]:
             continue
         before = len(items)
         for row in rows:
-            if not isinstance(row, dict):
+            if not isinstance(row, dict) or row.get("t") in GENERATED_TYPES:
                 continue
             items.append({
                 "headline": row.get("h") or row.get("headline"),

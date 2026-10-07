@@ -15,7 +15,6 @@ import re
 import time
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
-from email.utils import format_datetime
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -87,6 +86,9 @@ BOARD_CATALOG_URL = "https://a.4cdn.org/{}/catalog.json"
 BOARD_THREAD_URL = "https://boards.4chan.org/{}/thread/{}"
 BOARD_PATTERN = re.compile(r"[a-z0-9]{1,6}")
 BOARD_REQUEST_GAP = 1.1  # seconds between two catalog requests
+# A Last-Modified date as servers write it ("Wed, 07 Oct 2026 13:31:02 GMT"). It is sent back
+# word for word as If-Modified-Since, so anything of another shape is not stored or sent.
+HTTP_DATE_PATTERN = re.compile(r"[A-Z][a-z]{2}, \d{2} [A-Z][a-z]{2} \d{4} \d{2}:\d{2}:\d{2} GMT")
 BOARD_GAMES_NAMED = 3  # a thread's line names this many games and counts the rest
 BOARD_WORD_PATTERN = re.compile(r"[^\W\d_][^\s]*")  # a word that starts with a letter
 CHANNEL_ID_PATTERN = re.compile(r"UC[0-9A-Za-z_-]{22}")
@@ -572,19 +574,29 @@ def fetch_feed(session, url, retry_rate_limit=True):
     return feedparser.parse(response.content)
 
 
-def fetch_board(session, url, modified_since=None):
-    """The opening post of every live thread on a board (4chan's catalog.json), or None when
-    the board has not changed since `modified_since`."""
-    headers = {"If-Modified-Since": format_datetime(modified_since, usegmt=True)} if modified_since else {}
-    response = session.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
+def http_date(value):
+    """A Last-Modified date safe to store and to send back, or None."""
+    return value if isinstance(value, str) and HTTP_DATE_PATTERN.fullmatch(value) else None
+
+
+def fetch_board(session, url, modified=None):
+    """(the opening post of every live thread on a board, when the board last changed).
+
+    The first is 4chan's catalog.json flattened; the second is the answer's Last-Modified
+    date. Hand that date back as `modified` on the next request and a board where nothing
+    has been posted since answers "not modified" without sending its catalog again: then the
+    threads are None and the date is the one given."""
+    modified = http_date(modified)
+    response = session.get(url, timeout=REQUEST_TIMEOUT, headers={"If-Modified-Since": modified} if modified else {})
     if response.status_code == 304:
-        return None
+        return None, modified
     response.raise_for_status()
     pages = response.json()
     if not isinstance(pages, list):
         raise ValueError("unreadable catalog")
-    return [thread for page in pages if isinstance(page, dict)
-            for thread in page.get("threads") or [] if isinstance(thread, dict)]
+    threads = [thread for page in pages if isinstance(page, dict)
+               for thread in page.get("threads") or [] if isinstance(thread, dict)]
+    return threads, http_date(response.headers.get("Last-Modified"))
 
 
 def _stem_hit(token, stems):
@@ -822,14 +834,19 @@ def scan_board(session, job, matcher, status, ps2_keys):
     left out here, as an old article still listed in a news feed is left out when the
     snapshot is trimmed."""
     key = source_key(job["sources"][0])
-    threads = fetch_board(session, job["url"], parse_timestamp(status.get(key, {}).get("latest")))
-    if threads is None:  # nothing posted since the newest thread already seen
+    threads, modified = fetch_board(session, job["url"], status.get(key, {}).get("modified"))
+    items = []
+    if threads is None:  # nothing has been posted on the board since it was last read
         record_success(status, key, None)
-        return []
-    cutoff = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).strftime(TIMESTAMP_FORMAT)
-    items = [item for item in (analyze_thread(t, job, matcher, ps2_keys) for t in threads)
-             if item and item["timestamp"] >= cutoff]
-    record_success(status, key, max(filter(None, map(thread_timestamp, threads)), default=None))
+    else:
+        cutoff = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).strftime(TIMESTAMP_FORMAT)
+        items = [item for item in (analyze_thread(t, job, matcher, ps2_keys) for t in threads)
+                 if item and item["timestamp"] >= cutoff]
+        record_success(status, key, max(filter(None, map(thread_timestamp, threads)), default=None))
+    if modified:
+        # When the board itself last changed, as its server said: sent back next time. It is
+        # not a "last checked" time, so a board nobody posts on leaves the status file alone.
+        status[key]["modified"] = modified
     return items
 
 

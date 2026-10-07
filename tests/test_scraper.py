@@ -5,6 +5,7 @@ Nothing touches the network: feeds are local fixtures and the PS2 title index is
 built-in fallback list. The dashboard tests need Node.js and are skipped without it."""
 
 import copy
+import importlib.util
 import json
 import os
 import re
@@ -438,6 +439,7 @@ class RunScraperTests(unittest.TestCase):
             ],
         }
         self.board_calls = []
+        self.board_changed = {self.VR_URL: "Wed, 07 Oct 2026 13:31:02 GMT", self.V_URL: "Wed, 07 Oct 2026 13:47:59 GMT"}
         data_dir = self.tmp / "data"
         paths = {"DATA_DIR": data_dir, "DB_PATH": data_dir / "ps2_database.json",
                  "OUTPUT_PATH": data_dir / "sentiment_feed.json", "STATUS_PATH": data_dir / "feed_status.json",
@@ -461,11 +463,14 @@ class RunScraperTests(unittest.TestCase):
             raise self.failures[url]
         return feedparser.parse(self.fixtures[url])
 
-    def fake_board(self, session, url, modified_since=None):
-        self.board_calls.append((url, modified_since))
+    def fake_board(self, session, url, modified=None):
+        """Stands in for fetch_board(): (threads, when the board last changed). A board set to
+        None has had no post since it was last read and answers "not modified"."""
+        self.board_calls.append((url, modified))
         if url in self.failures:
             raise self.failures[url]
-        return self.boards[url]
+        threads = self.boards[url]
+        return (None, modified) if threads is None else (threads, self.board_changed.get(url))
 
     def run_scraper(self):
         scraper.FEEDS_PATH.write_text(json.dumps(self.config), encoding="utf-8")
@@ -538,8 +543,9 @@ class RunScraperTests(unittest.TestCase):
         for word in ("RULESTEXT", "RUDEWORD", "SECRETWORD", "OTHERWORD", "PRIVATEWORD", "NOTAGAME",
                      "masterpiece", "comfy", "worth", "Anonymous", "quote"):
             self.assertNotIn(word.lower(), saved.lower(), word)
-        self.assertEqual(status["4chan:vr"], {"ok": True, "latest": stamp(1)}, "the newest thread, whether or not it named a game")
-        self.assertEqual(status["4chan:v"], {"ok": True, "latest": stamp(1)})
+        self.assertEqual(status["4chan:vr"], {"ok": True, "latest": stamp(1), "modified": "Wed, 07 Oct 2026 13:31:02 GMT"},
+                         "the newest thread, whether or not it named a game, and when the board itself last changed")
+        self.assertEqual(status["4chan:v"], {"ok": True, "latest": stamp(1), "modified": "Wed, 07 Oct 2026 13:47:59 GMT"})
 
     def test_boards_are_read_one_at_a_time_and_only_when_something_changed(self):
         with mock.patch.object(scraper, "BOARD_REQUEST_GAP", 1.1), mock.patch.object(scraper.time, "sleep") as sleep:
@@ -549,25 +555,33 @@ class RunScraperTests(unittest.TestCase):
         self.assertEqual(len(gaps), 1, "one pause, between the two boards")
         self.assertTrue(1.0 < gaps[0] <= 1.1, gaps)
 
-        # The next run says how recent its newest thread is, and a board with nothing new answers "not modified".
+        # The next run hands each board the date its server gave last time, word for word, and
+        # a board nobody has posted on since answers "not modified".
         self.board_calls.clear()
         self.boards[self.VR_URL] = None
+        self.board_changed[self.V_URL] = "Wed, 07 Oct 2026 14:05:10 GMT"
+        before = scraper.STATUS_PATH.read_text(encoding="utf-8")
         output, status = self.run_scraper()
-        newest = (NOW - timedelta(hours=1)).replace(second=0)
-        self.assertEqual(self.board_calls, [(self.VR_URL, newest), (self.V_URL, newest)])
-        self.assertEqual(status["4chan:vr"], {"ok": True, "latest": newest.strftime(scraper.TIMESTAMP_FORMAT)})
+        newest = (NOW - timedelta(hours=1)).strftime(scraper.TIMESTAMP_FORMAT)
+        self.assertEqual(self.board_calls, [(self.VR_URL, "Wed, 07 Oct 2026 13:31:02 GMT"), (self.V_URL, "Wed, 07 Oct 2026 13:47:59 GMT")])
+        self.assertEqual(status["4chan:vr"], json.loads(before)["4chan:vr"], "an unchanged board changes nothing in the status file")
+        self.assertEqual(status["4chan:v"], {"ok": True, "latest": newest, "modified": "Wed, 07 Oct 2026 14:05:10 GMT"})
         self.assertIn("https://boards.4chan.org/vr/thread/101", [item["link"] for item in output["items"]],
                       "threads already collected stay until they age out")
 
-        # A board that failed and then answers "not modified" is working again.
+        # A board that failed is read in full the next time: there is no date to hand back.
         self.failures[self.VR_URL] = requests.ConnectionError("blocked")
         _, status = self.run_scraper()
-        self.assertEqual((status["4chan:vr"]["ok"], status["4chan:vr"]["latest"]), (False, newest.strftime(scraper.TIMESTAMP_FORMAT)))
+        self.assertEqual(status["4chan:vr"], {"ok": False, "error": "ConnectionError", "latest": newest,
+                                              "failing_since": status["4chan:vr"]["failing_since"]})
         self.failures.clear()
         self.board_calls.clear()
-        _, status = self.run_scraper()
-        self.assertEqual(self.board_calls[0], (self.VR_URL, newest), "it is still asked only for what is new")
-        self.assertEqual(status["4chan:vr"], {"ok": True, "latest": newest.strftime(scraper.TIMESTAMP_FORMAT)})
+        self.boards[self.VR_URL] = [thread(104, NOW - timedelta(minutes=30), subject="Okami thread")]
+        output, status = self.run_scraper()
+        self.assertEqual(self.board_calls[0], (self.VR_URL, None))
+        self.assertEqual(status["4chan:vr"], {"ok": True, "latest": (NOW - timedelta(minutes=30)).strftime(scraper.TIMESTAMP_FORMAT),
+                                              "modified": "Wed, 07 Oct 2026 13:31:02 GMT"})
+        self.assertIn("https://boards.4chan.org/vr/thread/104", [item["link"] for item in output["items"]])
 
     def test_a_board_that_cannot_be_read_never_stops_a_run(self):
         codes = ("vr", "v", "vg", "vm", "vmg")
@@ -746,12 +760,12 @@ class BoardTests(unittest.TestCase):
     """Reading a 4chan board: the request, and turning what it returns into plain words."""
 
     class Session:
-        def __init__(self, status=200, body=None):
-            self.status, self.body, self.calls = status, body, []
+        def __init__(self, status=200, body=None, changed="Wed, 07 Oct 2026 13:31:02 GMT"):
+            self.status, self.body, self.changed, self.calls = status, body, changed, []
 
         def get(self, url, timeout=None, headers=None):
             self.calls.append((url, timeout, headers))
-            response = mock.Mock(status_code=self.status)
+            response = mock.Mock(status_code=self.status, headers={} if self.changed is None else {"Last-Modified": self.changed})
             response.json.return_value = self.body
             response.raise_for_status.side_effect = None if self.status < 400 else http_error(self.status)
             return response
@@ -759,14 +773,27 @@ class BoardTests(unittest.TestCase):
     def test_the_catalog_is_flattened_into_threads(self):
         pages = [{"page": 1, "threads": [{"no": 1}, {"no": 2}]}, {"page": 2, "threads": [{"no": 3}, "junk"]}, "junk", {"page": 3}]
         session = self.Session(body=pages)
-        self.assertEqual(scraper.fetch_board(session, "https://a.4cdn.org/vr/catalog.json"), [{"no": 1}, {"no": 2}, {"no": 3}])
+        self.assertEqual(scraper.fetch_board(session, "https://a.4cdn.org/vr/catalog.json"),
+                         ([{"no": 1}, {"no": 2}, {"no": 3}], "Wed, 07 Oct 2026 13:31:02 GMT"))
         self.assertEqual(session.calls, [("https://a.4cdn.org/vr/catalog.json", scraper.REQUEST_TIMEOUT, {})])
 
     def test_it_asks_only_for_what_changed(self):
+        """4chan's API rules ask for If-Modified-Since. It only works with the date the server
+        itself gave: a date of our own making (the newest thread seen, say) is always older than
+        the board's last change, so the board would be sent in full every time."""
+        url, date = "https://a.4cdn.org/vr/catalog.json", "Wed, 07 Oct 2026 12:30:00 GMT"
         session = self.Session(status=304)
-        since = datetime(2026, 10, 7, 12, 30, tzinfo=timezone.utc)
-        self.assertIsNone(scraper.fetch_board(session, "https://a.4cdn.org/vr/catalog.json", since))
-        self.assertEqual(session.calls[0][2], {"If-Modified-Since": "Wed, 07 Oct 2026 12:30:00 GMT"})
+        self.assertEqual(scraper.fetch_board(session, url, date), (None, date), "not modified: no threads, the same date")
+        self.assertEqual(session.calls[0][2], {"If-Modified-Since": date})
+        # Anything that is not a date as servers write it is neither sent nor kept: it would
+        # end up in a request header and in a data file.
+        for bad in ("yesterday", "Wed, 07 Oct 2026 12:30:00 GMT\r\nX-Injected: 1", "2026-10-07 12:30 UTC", "", 5, None,
+                    ["Wed, 07 Oct 2026 12:30:00 GMT"], "wed, 07 oct 2026 12:30:00 gmt", "Wed, 07 Oct 2026 12:30:00 +0000"):
+            with self.subTest(bad=bad):
+                session = self.Session(body=[], changed=bad if isinstance(bad, str) else None)
+                self.assertEqual(scraper.fetch_board(session, url, bad), ([], None))
+                self.assertEqual(session.calls[0][2], {})
+        self.assertEqual(scraper.fetch_board(self.Session(body=[], changed=None), url, date), ([], None), "no date given: none kept")
 
     def test_an_answer_that_is_not_a_catalog_is_a_failure(self):
         for body in ({"error": "nope"}, None, "text"):
@@ -837,12 +864,37 @@ class BoardTests(unittest.TestCase):
                    thread(4, NOW - timedelta(hours=2), subject="Persona 4"),
                    thread(5, NOW - timedelta(minutes=5), subject="no game here")]
         status = {}
-        with mock.patch.object(scraper, "fetch_board", return_value=threads) as fetch:
+        with mock.patch.object(scraper, "fetch_board", return_value=(threads, None)) as fetch:
             items = scraper.scan_board(object(), job, matcher, status, set())
         self.assertEqual([(item["link"].rsplit("/", 1)[1], item["matched_game"]) for item in items],
                          [("3", "Gran Turismo 4"), ("4", "Persona 4")])
         self.assertEqual(fetch.call_args.args[2], None, "a board never read before is asked for everything")
         self.assertEqual(status, {"4chan:vst": {"ok": True, "latest": (NOW - timedelta(minutes=5)).strftime(scraper.TIMESTAMP_FORMAT)}})
+
+
+class FixtureSamplerTests(unittest.TestCase):
+    """tools/sample_fixtures.py draws real headlines for the matcher's test corpus."""
+
+    def test_lines_the_scraper_wrote_itself_are_never_drawn(self):
+        """A 4chan row's headline is made from the games it matched, so as a test of the
+        matcher it would always pass, and it would crowd real headlines out of the sample."""
+        spec = importlib.util.spec_from_file_location("sample_fixtures", ROOT / "tools" / "sample_fixtures.py")
+        sampler = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(sampler)
+        with tempfile.TemporaryDirectory() as tmp:
+            feed, archive = Path(tmp) / "sentiment_feed.json", Path(tmp) / "archive"
+            archive.mkdir()
+            feed.write_text(json.dumps({"items": [
+                {"headline": "Okami HD review roundup", "source": "Example News", "source_type": "news", "matched_game": "Okami"},
+                {"headline": "Thread on /vr/ naming Okami", "source": "4chan /vr/", "source_type": "4chan", "matched_game": "Okami"},
+                {"headline": "A story from before items said where they came from", "source": "Old News"}]}), encoding="utf-8")
+            (archive / "2026-10.json").write_text(json.dumps([
+                {"d": "2026-10-01 10:00 UTC", "g": "Ico", "h": "Ico turns 25", "s": "Example News", "t": "news"},
+                {"d": "2026-10-01 11:00 UTC", "g": "Ico", "h": "Thread on /v/ naming Ico", "s": "4chan /v/", "t": "4chan"}]), encoding="utf-8")
+            with mock.patch.object(sampler, "FEED", feed), mock.patch.object(sampler, "ARCHIVE_DIR", archive), mock.patch("builtins.print"):
+                headlines = sorted(item["headline"] for item in sampler.load_items())
+        self.assertEqual(headlines, ["A story from before items said where they came from", "Ico turns 25", "Okami HD review roundup"])
+        self.assertEqual(sampler.GENERATED_TYPES, {scraper.BOARD_TYPE})
 
 
 class LiveChecksWorkflowTests(unittest.TestCase):

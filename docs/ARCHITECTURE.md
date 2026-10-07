@@ -74,8 +74,8 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
    410...) doesn't count, because it says nothing about the host. Extras still pending after 10
    minutes are skipped too. Together these keep a platform outage from pushing the job past its
    15-minute limit. Boards are asked one at a time, at least 1.1 seconds apart, and each
-   request says how recent the newest thread already seen is (`If-Modified-Since`), so a board
-   with nothing new answers "not modified" and is not read again.
+   request hands back the date the board's server gave last time (`If-Modified-Since`), so a
+   board nobody has posted on since answers "not modified" and is not sent again.
 6. **Analyse each entry** (up to 50 per feed; YouTube and podcast entries are sorted newest first
    because some podcast feeds list the oldest episode first):
    - *PS2 match*: known abbreviations (`gta sa`, `mgs3`, …), then exact short titles, then fuzzy
@@ -133,7 +133,10 @@ board is handled differently from every other source.
 - **In the archive.** Every thread about one game on one board has the same generated
   headline, so `archive.py` tells 4chan rows apart by the thread's start time as well.
 - **Health.** A board's `latest` in `feed_status.json` is its newest thread, whether or not
-  it named a game. A board that cannot be read is reported as *Failing* like any extra.
+  it named a game. Its `modified` is the `Last-Modified` date the board's server gave, kept
+  only to be sent back word for word on the next request; it says when the board changed,
+  not when it was checked, and a failed read drops it so the next one is a full read. A
+  board that cannot be read is reported as *Failing* like any extra.
 
 `tools/try_sources.py` shows what a board or forum would give without writing anything, and
 prints only counts and game names for boards. The *Live checks* workflow runs it on every
@@ -532,8 +535,11 @@ reason saving without a token is the default and tokens should be short-lived.
     (HTTP 403) is reported without stopping it
   - a board gives one row per thread that names a game, and none of the words a poster
     wrote (a rude one, an ordinary one, the name field) reach the snapshot or the health file
-  - the request: the catalog is flattened, `If-Modified-Since` is sent, a "not modified"
-    answer keeps what was collected, anything that is not a catalog is a failure
+  - the request: the catalog is flattened, the server's own date is sent back as
+    `If-Modified-Since` (and nothing that is not such a date is sent or stored), a "not
+    modified" answer keeps what was collected and leaves the health file alone, anything
+    that is not a catalog is a failure
+  - `tools/sample_fixtures.py` never draws a 4chan row as a headline to test the matcher on
   - boards are asked one at a time with the pause between them, in the order listed
   - a post names a game only when it is spelt right and written as a name; numbers and the
     built-in abbreviations are the exceptions

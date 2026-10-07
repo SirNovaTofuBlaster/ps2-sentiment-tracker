@@ -112,7 +112,8 @@ python ebay_prices.py --plan              # which games would be priced now and 
     poster name, file name or anything derived from them except the matched library titles
     may be written to `data/`, shown on the dashboard or printed in a log; the row's headline
     is written by the scraper. The rows are not scored for sentiment and never count towards
-    it. 4chan's API terms apply: at most one request a second, `If-Modified-Since` on each,
+    it. 4chan's API terms apply: at most one request a second, `If-Modified-Since` on each
+    (the board server's own `Last-Modified` date, kept as `modified` in `feed_status.json`),
     4chan named as the source with a link, and its name or logo never used to promote the
     site. A test checks that no poster text reaches the snapshot.
 

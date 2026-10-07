@@ -21,7 +21,9 @@
 **Scraper: `scraper.py`**
 - Two new source types. `forum` is read exactly like a news feed, labelled `Forum: <name>`,
   and is an extra: its failure never stops a run. `4chan` is read through 4chan's read-only
-  API, one request per board, at least 1.1 seconds apart, with `If-Modified-Since`.
+  API, one request per board, at least 1.1 seconds apart. Each request hands back the
+  `Last-Modified` date the board's server gave last time (`If-Modified-Since`), so a board
+  nobody has posted on since is not sent again.
 - **From 4chan only game names are kept.** For each thread whose opening post names a PS2
   game the snapshot gets one row: the games, the board, when the thread was started and its
   link. The headline is written by the scraper ("Thread on /vr/ naming Silent Hill 2").
@@ -56,9 +58,11 @@
 - *Live checks* runs it, and `tools/regression_check.py`, on every pull request that touches
   the scraper, `feeds.json` or `tools/`, from GitHub's own servers. It holds no key and can
   write nothing.
+- `tools/sample_fixtures.py` leaves 4chan rows out when it draws headlines for the matcher's
+  test corpus: their line is written by the scraper from the match itself.
 
 **Tests**
-- 197 Python tests (was 178) and 29 dashboard checks (was 28). New: `tests/test_archive.py`.
+- 198 Python tests (was 178) and 29 dashboard checks (was 28). New: `tests/test_archive.py`.
 
 ### What was measured (2026-10-07, from GitHub's servers)
 
@@ -84,8 +88,9 @@
   known habit of giving a series name to its PS2 entry.
 - A 4chan row's button opens the thread on 4chan, unfiltered, and stops working when the
   thread is deleted there.
-- `data/feed_status.json` gains nine entries, and the seven for boards change whenever a
-  board has a newer thread, which on /v/ is every run.
+- `data/feed_status.json` gains nine entries. The seven for boards also hold `modified`,
+  the date the board's server gave, and change whenever anything is posted on the board,
+  which on the busy ones is every run.
 
 ### Open items
 

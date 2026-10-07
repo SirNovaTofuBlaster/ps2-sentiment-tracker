@@ -74,7 +74,7 @@ def try_feed(session, job, matcher, ps2_keys):
 
 
 def try_board(session, job, matcher, ps2_keys):
-    threads = scraper.fetch_board(session, job["url"])
+    threads, _ = scraper.fetch_board(session, job["url"])
     live = [t for t in threads if scraper.thread_timestamp(t)]
     items = [item for item in (scraper.analyze_thread(t, job, matcher, ps2_keys) for t in threads) if item]
     stamps = sorted(filter(None, map(scraper.thread_timestamp, threads)))
