@@ -17,7 +17,7 @@
       "weight": 1
     },
     "community": {
-      "label": "Community (Reddit)",
+      "label": "Community (Reddit & forums)",
       "weight": 1
     },
     "ps2": {
@@ -35,6 +35,10 @@
     "creator": {
       "label": "Entertainment creators",
       "weight": 0.5
+    },
+    "anonymous": {
+      "label": "Anonymous boards (4chan)",
+      "weight": 0
     }
   },
   "sources": [
@@ -5023,6 +5027,110 @@
         "checked": "2026-09-30"
       },
       "note": "Single non-PlayStation platform; listed for completeness."
+    },
+    {
+      "type": "forum",
+      "name": "NeoGAF Gaming Discussion",
+      "url": "https://www.neogaf.com/forums/gaming-discussion.2/index.rss",
+      "group": "General gaming forums",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "forum",
+      "name": "GBAtemp General Gaming",
+      "url": "https://gbatemp.net/forums/general-gaming.167/index.rss",
+      "group": "General gaming forums",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "forum",
+      "name": "Lemmy games",
+      "url": "https://lemmy.world/feeds/c/games.xml?sort=New",
+      "group": "General gaming forums",
+      "role": "community",
+      "enabled": true
+    },
+    {
+      "type": "forum",
+      "name": "PSX-Place General PS2 Discussion",
+      "url": "https://www.psx-place.com/forums/general-ps2-discussion.41/index.rss",
+      "group": "PS2 & retro forums",
+      "role": "ps2",
+      "enabled": true
+    },
+    {
+      "type": "forum",
+      "name": "GBAtemp Other Platforms & Oldies",
+      "url": "https://gbatemp.net/forums/other-platforms-oldies.202/index.rss",
+      "group": "PS2 & retro forums",
+      "role": "retro",
+      "enabled": true
+    },
+    {
+      "type": "forum",
+      "name": "Lemmy retrogaming",
+      "url": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
+      "group": "PS2 & retro forums",
+      "role": "retro",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/v/ - Video Games",
+      "board": "v",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vg/ - Video Game Generals",
+      "board": "vg",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vm/ - Video Games/Multiplayer",
+      "board": "vm",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vmg/ - Video Games/Mobile",
+      "board": "vmg",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vr/ - Retro Games",
+      "board": "vr",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vrpg/ - Video Games/RPG",
+      "board": "vrpg",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
+    },
+    {
+      "type": "4chan",
+      "name": "/vst/ - Video Games/Strategy",
+      "board": "vst",
+      "group": "4chan game boards",
+      "role": "anonymous",
+      "enabled": true
     }
   ]
 }

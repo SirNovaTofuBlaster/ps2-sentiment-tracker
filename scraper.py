@@ -1,5 +1,6 @@
-"""Scrapes gaming news, Reddit, YouTube and podcast feeds, matches headlines against
-the PS2 library and writes a sentiment snapshot to data/sentiment_feed.json.
+"""Scrapes gaming news, Reddit, forum, YouTube and podcast feeds and 4chan's game boards,
+matches headlines against the PS2 library and writes a sentiment snapshot to
+data/sentiment_feed.json.
 
 Sources live in feeds.json (edit it by hand or from the dashboard's Sources panel).
 Each run merges new headlines into the previous snapshot (kept for RETENTION_DAYS),
@@ -7,12 +8,14 @@ leaves the file untouched when nothing changed, and exits non-zero when too many
 news/Reddit feeds fail so a bad run never overwrites good data. Per-feed health is
 written to data/feed_status.json."""
 
+import html
 import json
 import os
 import re
 import time
 from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
+from email.utils import format_datetime
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -63,15 +66,28 @@ HOST_FAILURE_LIMIT = 3  # consecutive YouTube/podcast host-level failures skip t
 POLL_TOLERANCE = timedelta(minutes=20)  # hourly runs drift a little; don't miss a slot by minutes
 
 # Sources are configured in feeds.json. News and Reddit are the core feeds: when
-# too many of them fail the run aborts. YouTube and podcast feeds are extras whose
-# failures are only reported, so an outage on either platform can't block updates.
-SOURCE_TYPES = ("news", "reddit", "youtube", "podcast")
+# too many of them fail the run aborts. Everything else is an extra whose failures
+# are only reported, so an outage on one platform can't block updates. The order
+# here is the order they are fetched in: forums and boards are a handful of quick
+# requests, so they go before the hundreds of YouTube and podcast feeds that can
+# use up the time budget.
+SOURCE_TYPES = ("news", "reddit", "forum", "4chan", "youtube", "podcast")
 CORE_TYPES = {"news", "reddit"}
 YOUTUBE_FEED_URL = "https://www.youtube.com/feeds/videos.xml?channel_id={}"
 # Reddit allows roughly one unauthenticated request per minute, so subreddits that
 # share a group are fetched as one combined multireddit feed instead of one feed each.
 REDDIT_FEED_URL = "https://www.reddit.com/r/{}/.rss?limit={}"
-SOURCE_PREFIX = {"youtube": "YouTube: ", "podcast": "Podcast: "}
+SOURCE_PREFIX = {"youtube": "YouTube: ", "podcast": "Podcast: ", "forum": "Forum: "}
+# 4chan's boards are read through its read-only JSON API (github.com/4chan/4chan-API): one
+# request per board for the catalog, which holds the opening post of every live thread. Its
+# rules: at most one request a second, send If-Modified-Since, name 4chan as the source and
+# link to it. Nothing a poster wrote is kept or shown: see analyze_thread().
+BOARD_TYPE = "4chan"
+BOARD_CATALOG_URL = "https://a.4cdn.org/{}/catalog.json"
+BOARD_THREAD_URL = "https://boards.4chan.org/{}/thread/{}"
+BOARD_PATTERN = re.compile(r"[a-z0-9]{1,6}")
+BOARD_REQUEST_GAP = 1.1  # seconds between two catalog requests
+BOARD_GAMES_NAMED = 3  # a thread's line names this many games and counts the rest
 CHANNEL_ID_PATTERN = re.compile(r"UC[0-9A-Za-z_-]{22}")
 # The dashboard uses this exact pattern too, so a feed link it accepts always loads here:
 # http(s), an ASCII host name with at least one dot, an optional port, printable ASCII after.
@@ -555,6 +571,21 @@ def fetch_feed(session, url, retry_rate_limit=True):
     return feedparser.parse(response.content)
 
 
+def fetch_board(session, url, modified_since=None):
+    """The opening post of every live thread on a board (4chan's catalog.json), or None when
+    the board has not changed since `modified_since`."""
+    headers = {"If-Modified-Since": format_datetime(modified_since, usegmt=True)} if modified_since else {}
+    response = session.get(url, timeout=REQUEST_TIMEOUT, headers=headers)
+    if response.status_code == 304:
+        return None
+    response.raise_for_status()
+    pages = response.json()
+    if not isinstance(pages, list):
+        raise ValueError("unreadable catalog")
+    return [thread for page in pages if isinstance(page, dict)
+            for thread in page.get("threads") or [] if isinstance(thread, dict)]
+
+
 def _stem_hit(token, stems):
     return any(token.startswith(stem) for stem in stems)
 
@@ -690,6 +721,89 @@ def analyze_entry(entry, feed, job, matcher, first_seen, ps2_keys, repeated_link
     return item
 
 
+def board_text(raw):
+    """The plain words of a thread's subject or comment: markup out, entities decoded."""
+    text = HTML_TAG_PATTERN.sub(" ", str(raw or "").replace("<wbr>", ""))
+    return " ".join(html.unescape(text).split())
+
+
+def games_named(titles):
+    """ "Ico", "Ico and Okami", "Ico, Okami and Kuon", "Ico, Okami, Kuon and 2 more"."""
+    shown, more = titles[:BOARD_GAMES_NAMED], len(titles) - BOARD_GAMES_NAMED
+    if more > 0:
+        return f"{', '.join(shown)} and {more} more"
+    return shown[0] if len(shown) == 1 else f"{', '.join(shown[:-1])} and {shown[-1]}"
+
+
+def thread_timestamp(thread):
+    """When a thread was started, or None for a thread to leave alone: the pinned threads at
+    the top of a board (its rules, not a conversation) and anything without a usable time."""
+    created = thread.get("time")
+    if thread.get("sticky") or isinstance(created, bool) or not isinstance(created, int):
+        return None
+    try:
+        return datetime.fromtimestamp(created, timezone.utc).strftime(TIMESTAMP_FORMAT)
+    except (OverflowError, OSError, ValueError):
+        return None
+
+
+def analyze_thread(thread, job, matcher, ps2_keys):
+    """An item for a thread whose opening post names a PS2 game; None for every other thread.
+
+    Nothing a poster wrote is kept. The item says which games were named, on which board
+    and when, and links to the thread; its headline is written here from the game names.
+    The text is not scored for sentiment and never raises a remaster flag: these boards are
+    counted for the games they mention and for nothing else."""
+    number, timestamp = thread.get("no"), thread_timestamp(thread)
+    if isinstance(number, bool) or not isinstance(number, int) or timestamp is None:
+        return None
+    source = job["sources"][0]
+    key = source_key(source)
+    ps2_source = key in ps2_keys
+    subject = board_text(thread.get("sub"))
+    comment = " ".join(board_text(thread.get("com")).split()[:MAX_BODY_TOKENS])
+    # A subject is a headline. Most threads have none, and then the comment is all there is:
+    # it is read with the same rules, but marked as body text, so that a game named in passing
+    # counts as a mention without counting as a headline (the price checker's "surging" level
+    # goes by headlines).
+    found, matched_in = (matcher.match_all(subject, ps2_source=ps2_source), "title") if subject else ([], None)
+    if not found and comment:
+        found, matched_in = matcher.match_all(comment, ps2_source=ps2_source), "body"
+    if not found:
+        return None
+    game, score, method = found[0]
+    titles = [title for title, _, _ in found]
+    return {
+        "headline": f"Thread on /{source['board']}/ naming {games_named(titles)}",
+        "source": f"4chan /{source['board']}/",
+        "source_type": BOARD_TYPE,
+        "feed": key,
+        "link": BOARD_THREAD_URL.format(source["board"], number),
+        "matched_game": game,
+        "matched_games": titles,
+        "match_score": score,
+        "match_method": method,
+        "matched_in": matched_in,
+        "is_remaster_rumor": False,
+        "sentiment": 50,
+        "hype": 0,
+        "timestamp": timestamp,
+    }
+
+
+def scan_board(session, job, matcher, status, ps2_keys):
+    """Items for the threads on one board that name a PS2 game. Also records the board's
+    health, with the newest thread as its latest activity."""
+    key = source_key(job["sources"][0])
+    threads = fetch_board(session, job["url"], parse_timestamp(status.get(key, {}).get("latest")))
+    if threads is None:  # nothing posted since the newest thread already seen
+        record_success(status, key, None)
+        return []
+    items = [item for item in (analyze_thread(t, job, matcher, ps2_keys) for t in threads) if item]
+    record_success(status, key, max(filter(None, map(thread_timestamp, threads)), default=None))
+    return items
+
+
 def load_previous_items():
     try:
         items = json.loads(OUTPUT_PATH.read_text(encoding="utf-8")).get("items", [])
@@ -706,6 +820,8 @@ def source_key(src):
         return f"youtube:{src.get('channel_id') or src['channel_url'].lower()}"
     if src["type"] == "reddit":
         return f"reddit:{src['subreddit'].lower()}"
+    if src["type"] == BOARD_TYPE:
+        return f"4chan:{src['board']}"
     return src["url"]
 
 
@@ -765,6 +881,8 @@ def validate_config(config):
             field, valid = "subreddit/group", (isinstance(src.get("subreddit"), str)
                                                and SUBREDDIT_PATTERN.fullmatch(src["subreddit"])
                                                and isinstance(src.get("group"), str) and src["group"].strip())
+        elif kind == BOARD_TYPE:
+            field, valid = "board", isinstance(src.get("board"), str) and BOARD_PATTERN.fullmatch(src["board"])
         else:
             field, valid = "url", _is_http_url(src.get("url"))
         if not valid:
@@ -808,6 +926,8 @@ def build_jobs(config, youtube_ids=None):
             channel_id = src.get("channel_id") or (youtube_ids or {}).get(src["channel_url"].lower())
             if channel_id:
                 jobs.append({"type": "youtube", "sources": [src], "url": YOUTUBE_FEED_URL.format(channel_id)})
+        elif src["type"] == BOARD_TYPE:
+            jobs.append({"type": BOARD_TYPE, "sources": [src], "url": BOARD_CATALOG_URL.format(src["board"])})
         else:
             jobs.append({"type": src["type"], "sources": [src], "url": src["url"]})
     for job in reddit_groups.values():
@@ -977,6 +1097,7 @@ def run_scraper():
         print(f"Scanning {len(due_jobs)} of {len(jobs)} feeds (due now: {', '.join(t for t in SOURCE_TYPES if t in due)}) "
               f"against PS2 titles ({matcher.summary()})...")
         started = time.monotonic()
+        last_board_request = None
         for job in due_jobs:
             url, core = job["url"], job["type"] in CORE_TYPES
             host = urlparse(url).hostname
@@ -990,9 +1111,15 @@ def run_scraper():
                 continue
             fetched_types.add(job["type"])
             try:
-                feed = fetch_feed(session, url, retry_rate_limit=core)
-                if feed.get("bozo") and not feed.entries:
-                    raise ValueError("unreadable feed")
+                if job["type"] == BOARD_TYPE:
+                    if last_board_request is not None:  # the API allows one request a second
+                        time.sleep(max(0.0, BOARD_REQUEST_GAP - (time.monotonic() - last_board_request)))
+                    last_board_request = time.monotonic()
+                    feed, named = None, scan_board(session, job, matcher, status, ps2_keys)
+                else:
+                    feed = fetch_feed(session, url, retry_rate_limit=core)
+                    if feed.get("bozo") and not feed.entries:
+                        raise ValueError("unreadable feed")
             except (requests.RequestException, ValueError) as e:
                 if core:
                     core_failures += 1
@@ -1004,6 +1131,10 @@ def run_scraper():
                     record_failure(status, source_key(src), feed_error(e), now_text)
                 continue
             host_failures[host] = 0
+            if feed is None:  # a board: scan_board() has already done the rest
+                items.extend(named)
+                print(f"  {len(named):3d} threads naming a game  {url}")
+                continue
             entries = select_entries(feed, job["type"])
             repeated = shared_links(feed, job["type"])
             items.extend(analyze_entry(e, feed, job, matcher, first_seen, ps2_keys, repeated) for e in entries)
@@ -1049,7 +1180,7 @@ def run_scraper():
     }
     OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"Saved {len(merged_items)} items ({len(items)} fetched this run, {matched} matched a PS2 game "
-          f"({from_body} from body text), {core_failures} news/Reddit and {extra_failures} YouTube/podcast "
+          f"({from_body} from body text), {core_failures} news/Reddit and {extra_failures} other "
           f"feed failures, {skipped} skipped) to {OUTPUT_PATH}")
 
 
