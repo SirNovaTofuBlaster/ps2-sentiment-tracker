@@ -12,22 +12,28 @@
 ### What changed
 
 **Dashboard: `index.html`, `retro.css`**
-- **Named in the last 24 hours**, a new list first on the Tracker: every PS2 game that an
-  item from the last day names, with how many items named it, which sources, and its prices.
-  A game named in a headline comes before one found only in the text under it (marked "in
-  the text only"), then the most mentioned, then the most recent. It shows ten games and
-  folds the rest away. A game's name opens the table on the items that name it.
+- **Named in the last 24 hours**, a new list first on the Tracker: every PS2 game named by
+  an item published in the last day, with how many items named it, which sources, and its
+  prices. The game named in the most headlines comes first, and one found only in the text
+  under a headline (marked "in the text only") comes after every game a headline named;
+  then all mentions, then the most recent. It shows ten games and folds the rest away.
+- **A game's name in that list opens the table on exactly the items that name it**, from
+  the whole feed. *Back to every game* over the table, or any change to the search box or
+  a menu, undoes it.
 - **The table opens on the items that name a PS2 game.** The line under its heading says how
-  many that is out of how many, and *Everything* in the first menu shows the rest. The menu
-  now reads *PS2 Games Only*, *Remaster News Only*, *Everything*.
+  many are showing and out of how many, whatever the search box and the menus are set to,
+  and *Everything* in the first menu shows the rest. The menu now reads *PS2 Games Only*,
+  *Remaster News Only*, *Everything*.
+- **A row names every game its item names**: the first with its prices, the others under it
+  ("also names …", four at most and then a count). Before, only the first was shown.
 - The search box looks at every game an item names, not only the first.
 
 **Guide: `guide.html`**
 - Describes the new list, what the table opens on and where the rest is.
 
 **Tests**
-- 31 dashboard checks (was 30). The test sandbox now opens with the menus the page opens
-  with.
+- 31 dashboard checks (was 30); the check of the eBay medians now covers the new list too.
+  The test sandbox opens with the menus the page opens with.
 
 ### What was measured (2026-10-07, the snapshot of 17:44 UTC)
 
@@ -47,6 +53,11 @@
   is only as good as the matcher.
 - The new list counts every game an item names; Most Mentioned Games counts an item's first
   game. A game can show more mentions in the first than its share of the second suggests.
+- "The last 24 hours" goes by the date a source gave an item, not by when the robot fetched
+  it. When a source is first added, its older items do not flood the list; an item whose
+  source dates it more than an hour into the future is left out of the list as well.
+- A click on a game shows its items from the whole two weeks, so the table can show more
+  items than the list's count for the last day.
 
 ### What is kept, for the record
 

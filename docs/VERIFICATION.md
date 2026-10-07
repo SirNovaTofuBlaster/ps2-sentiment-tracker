@@ -342,6 +342,45 @@ Left as they are: *Remaster flags* is red at zero and *Active feeds* is teal wha
 sources' health (it counts the ones switched on); the branch's commit was made under an
 Anthropic no-reply address and lands on `main` as GitHub's squash under the maintainer's.
 
+## 2026-10-07: games first
+
+How the new list on the Tracker and the table's opening view were checked. No browser was
+used (rule 11).
+
+| Check | Result |
+|---|---|
+| What changed | `index.html` (a section, three functions for the list, the table's filter, its summary line and its game column), a few rules in `retro.css`, `guide.html`. `scraper.py`, `feeds.json`, the workflows and everything under `data/` are untouched, so the live checks and the regression check did not apply |
+| Nothing else moved | `git diff origin/main -- index.html` read line by line: outside the new code, the changes are the three handlers on the search box and the menus, the menu's order and default, and the table's game cell |
+| Against real data | The functions run on the snapshot of 2026-10-07 17:44 UTC: 654 items in the last 24 hours, 53 naming a game, 59 games; the table opens on 412 of 5,586 |
+| Offline tests | 204 Python tests and 31 dashboard checks pass |
+| Do the checks bite | 91 one-line breakages of the new code (the window, the order, every count and wording, escaping, the click and its undoing, the wiring into the page, the phone rules): all noticed |
+| Static files | `index.html`, `guide.html`, `retro.css`, `feeds.json` and the snapshot served by `python -m http.server` and fetched with curl: all 200; `node --check` on the inline scripts |
+| Not checked | How it looks, on a desk or a phone. The phone rules were reasoned from the selectors |
+
+### Independent review
+
+One review with fresh context and no browser, working in a copy, told to report only
+findings backed by a concrete failure. It ran the page's functions on ten earlier snapshots
+from the repository's history.
+
+| Finding | Resolution |
+|---|---|
+| A click on a game put its name in the search box, so *Final Fantasy X* also showed *Final Fantasy XII*, and *Retro* showed every row from r/retrogaming | The click now shows the items whose games include exactly that name (`gameFilter`); the search box is left empty |
+| The line over the table gave the same count whatever the search box and the second menu left on show | It is written from the rows that are showing |
+| A row showed only an item's first game, so a click on its second game opened rows that seemed to be about something else | A row leads with the game the table was opened on and lists the others |
+| Nothing checked that the page draws the list, or that a switched-off source leaves it; 14 one-line breakages went unnoticed | The check was rewritten; see "Do the checks bite" |
+| The wording said "collected in the last 24 hours" while the code goes by the date of publication | "Published" everywhere, with the reason in the guide and the changelog |
+| The documented order (headline before text, then mentions) was not the order the code used | The code was simplified to one order and the documents say that one |
+| `font: inherit` on the name's button undid the bold of the first name, and the phone rule for buttons applied to it unplanned | Removed; the name keeps the full height on a phone on purpose and the button in the sentence has its own rule |
+| Before the first scrape the list said the robot had found nothing in the last day | It says it is waiting for the first scrape |
+| Three passages in the guide and the architecture notes still described the Tracker without the list | Corrected |
+| A change to the table was not announced to a screen reader | The line over the table is a live region |
+| "Names a game" was decided two ways (`matched_game` in one place, the list in another) | One function, `gamesOf()`, used by all four |
+
+Left as they are: the list promotes wrong matches along with right ones, since it is only as
+good as the matcher; a game the table was opened on stays selected through a reload of the
+data even if no item names it any more, and then shows no rows until *Back to every game*.
+
 ## Re-running the checks
 
 ```sh
