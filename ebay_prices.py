@@ -567,6 +567,10 @@ def load_regional_names(path=None):
                                                        for side in ("from", "to")):
                 raise EbayError(f'{name}: rename {position} for {label} needs "from" and "to" names.')
             (old, old_queries), (new, new_queries) = search_terms(rename["from"]), search_terms(rename["to"])
+            if not old_queries or not new_queries or len(new_queries[0]) + len(" ps2") > MAX_QUERY_CHARS \
+                    or (" " not in new and new_queries[0] not in ONE_WORD_TITLES):
+                raise EbayError(f'{name}: rename {position} for {label} ("{rename["to"]}") does not work as eBay '
+                                'search words: use the full name, of two words or more.')
             rules.setdefault(labels[label], []).append((old, old_queries[0], new, new_queries[0]))
     return rules
 
@@ -580,17 +584,22 @@ def renamed(phrase, rules):
     return None
 
 
-def apply_regional_names(games, rules):
+def apply_regional_names(games, rules, catalogue=()):
     """Give each game that goes by another name on a site its search words for that site
-    (game["markets"][market id]); its siblings are renamed the same way."""
+    (game["markets"][market id]). Its other games are those of the name it has there, from the
+    library ("forbidden siren 2" for Forbidden Siren), and its usual ones renamed the same way;
+    never its own name there."""
     for game in games:
         for market_id, market_rules in rules.items():
             phrase = renamed(game["search"], market_rules)
             if phrase is None:
                 continue
             queries = [renamed(query, market_rules) or query for query in game["queries"]]
-            siblings = [renamed(other, market_rules) or other for other in game.get("siblings") or ()]
-            game.setdefault("markets", {})[market_id] = {"search": phrase, "queries": queries, "siblings": siblings}
+            siblings = {renamed(other, market_rules) or other for other in game.get("siblings") or ()}
+            siblings |= set(other_games(game["title"], phrase, catalogue))
+            siblings.discard(phrase)
+            game.setdefault("markets", {})[market_id] = {"search": phrase, "queries": queries,
+                                                         "siblings": sorted(siblings)}
     return games
 
 
@@ -640,12 +649,18 @@ def plan_games(now, pinned, never, mentions, ever, library, catalogue, state):
 
 
 def due_lookups(games, state, now):
-    """(game, market) pairs whose turn has come, most urgent first."""
+    """(game, market) pairs whose turn has come, most urgent first. A game the library also
+    files under the name it has on a site ("Project Zero" beside "Fatal Frame") is looked up
+    there once, for the game the feed knows by the other name; the second is skipped there."""
     previous = prior_games(state)
     due = []
+    renamed_to = {(market_id, words_there["search"]) for game in games
+                  for market_id, words_there in (game.get("markets") or {}).items()}
     for game in games:
         every = CHECK_EVERY_HOURS[game["level"]] * 60
         for market_id, market in MARKETS.items():
+            if market_id not in (game.get("markets") or {}) and (market_id, game["search"]) in renamed_to:
+                continue
             entry = (previous.get(game["key"]) or {}).get(market["label"])
             checked = parse_stamp(entry.get("checked")) if isinstance(entry, dict) else None
             waited = (now - checked).total_seconds() / 60 if checked else None
@@ -1002,7 +1017,7 @@ def diagnose(http_client, token, game, counter, secrets):
     for market_id, market in MARKETS.items():
         for label, by_aspect, condition in variants:
             try:
-                status, payload = search(http_client, token, market_id, game["queries"][0], counter,
+                status, payload = search(http_client, token, market_id, for_market(game, market_id)["queries"][0], counter,
                                          by_aspect=by_aspect, condition=condition)
             except LimitReached as exc:
                 say(redact(f"  [{market['label']}] {label}: {exc}", secrets))
@@ -1223,7 +1238,10 @@ def snapshot_of(run, now):
         row = rows.setdefault(game["title"], {"title": game["title"], "level": game["level"],
                                               "search": game["search"], "queries": game["queries"],
                                               "left_out_if_named": game["siblings"][:20], "markets": {}})
-        row["markets"][market_id] = result
+        there = for_market(game, market_id)
+        row["markets"][market_id] = ({**result, "search_there": there["search"], "queries_there": there["queries"],
+                                      "left_out_if_named_there": there["siblings"][:20]}
+                                     if market_id in (game.get("markets") or {}) else result)
     return {
         "fetched_at": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
         "what": "Asking prices of used Buy It Now listings still for sale on eBay. Not sold prices.",
@@ -1284,7 +1302,7 @@ def main(argv=None):
         mentions, ever = load_mentions()
         library, catalogue = load_library()
         games, left_out = plan_games(now, pinned, never, mentions, ever, library, catalogue, state)
-        apply_regional_names(games, load_regional_names())
+        apply_regional_names(games, load_regional_names(), catalogue)
         lookups = due_lookups(games, state, now)
         used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
         used_today = used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0

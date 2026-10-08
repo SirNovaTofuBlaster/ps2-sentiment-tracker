@@ -1317,7 +1317,10 @@ class RegionalNameTests(unittest.TestCase):
     def test_mistakes_get_a_readable_message(self):
         for value, message in (({"EU": []}, "must map US, UK"), ({"UK": {}}, "must be a list"),
                                ({"UK": [{"from": "Fatal Frame"}]}, 'rename 1 for UK needs "from" and "to"'),
-                               ({"UK": [{"from": "", "to": "x"}]}, 'needs "from" and "to"')):
+                               ({"UK": [{"from": "", "to": "x"}]}, 'needs "from" and "to"'),
+                               ({"UK": [{"from": "Bully", "to": "and"}]}, "does not work as eBay search words"),
+                               ({"UK": [{"from": "Fatal Frame", "to": "Black"}]}, "two words or more"),
+                               ({"UK": [{"from": "Fatal Frame", "to": "x " * 60}]}, "does not work as eBay search words")):
             self.sandbox.write("ebay_watchlist.json", {"games": [], "regional_names": value})
             with self.assertRaises(ebay_prices.EbayError) as raised:
                 self.rules()
@@ -1328,10 +1331,54 @@ class RegionalNameTests(unittest.TestCase):
     def test_the_committed_renames_load_and_rename_real_library_titles(self):
         rules = ebay_prices.load_regional_names(ROOT / "ebay_watchlist.json")["EBAY_GB"]
         for title, uk in (("Fatal Frame 2: Crimson Butterfly", "project zero 2 crimson butterfly"),
-                          ("Bully", "canis canem edit"), ("Dark Cloud 2", "dark chronicle"),
-                          ("Sly Cooper and the Thievius Raccoonus", "sly raccoon"),
-                          ("Shin Megami Tensei: Persona 3 FES", "persona 3 fes")):
+                          ("Dark Cloud 2", "dark chronicle"), ("Sly Cooper and the Thievius Raccoonus", "sly raccoon"),
+                          ("Ace Combat 4: Shattered Skies", "ace combat distant thunder")):
             self.assertEqual(ebay_prices.renamed(ebay_prices.search_terms(title)[0], rules), uk, title)
+        for title in ("Bully", "Shin Megami Tensei: Persona 4", "Ant Bully"):
+            # Bully kept its name across most of Europe, and Persona its full name.
+            self.assertIsNone(ebay_prices.renamed(ebay_prices.search_terms(title)[0], rules), title)
+
+    def test_the_regional_name_is_never_one_of_its_own_other_games(self):
+        catalogue = [{"name": name, "title": title, "possessive": set()} for title, name in (
+            ("Siren", "siren"), ("Forbidden Siren", "forbidden siren"), ("Forbidden Siren 2", "forbidden siren 2"))]
+        game = {"title": "Siren", "search": "siren", "queries": ["siren"],
+                "siblings": ebay_prices.other_games("Siren", "siren", catalogue)}
+        self.assertIn("forbidden siren", game["siblings"], "on eBay US, Forbidden Siren is another game")
+        ebay_prices.apply_regional_names([game], {"EBAY_GB": [("siren", "siren", "forbidden siren", "forbidden siren")]}, catalogue)
+        uk = game["markets"]["EBAY_GB"]
+        self.assertEqual((uk["search"], uk["siblings"]), ("forbidden siren", ["forbidden siren 2"]))
+        listing_ = listing("Forbidden Siren PS2 PAL complete with manual", 30, currency="GBP")
+        self.assertIsNone(ebay_prices.reject_reason(listing_, ebay_prices.for_market(game | {"exclude": []}, "EBAY_GB"),
+                                                    ebay_prices.MARKETS["EBAY_GB"], False))
+
+    def test_a_game_filed_under_both_names_is_looked_up_once_on_that_site(self):
+        fatal = {"title": "Fatal Frame", "key": "fatal frame", "search": "fatal frame", "queries": ["fatal frame"],
+                 "siblings": [], "level": "normal", "pinned": False}
+        zero = {"title": "Project Zero", "key": "project zero", "search": "project zero", "queries": ["project zero"],
+                "siblings": [], "level": "normal", "pinned": False}
+        ebay_prices.apply_regional_names([fatal, zero], {"EBAY_GB": [("fatal frame", "fatal frame", "project zero", "project zero")]})
+        lookups = [(game["title"], market) for game, market in ebay_prices.due_lookups([fatal, zero], {}, NOON)]
+        self.assertEqual(sorted(lookups), [("Fatal Frame", "EBAY_GB"), ("Fatal Frame", "EBAY_US"), ("Project Zero", "EBAY_US")])
+
+    def test_the_search_check_and_the_listings_file_use_the_name_there(self):
+        game = {"title": "Fatal Frame", "search": "fatal frame", "queries": ["fatal frame"], "siblings": ["fatal frame 2"],
+                "level": "normal", "markets": {"EBAY_GB": {"search": "project zero", "queries": ["project zero"],
+                                                            "siblings": ["project zero 2"]}}}
+        asked = []
+
+        def search(http_client, token, market_id, query, counter, **kwargs):
+            asked.append((market_id, query))
+            return 200, {"total": 0, "itemSummaries": []}
+        with mock.patch.object(ebay_prices, "search", search), mock.patch.object(ebay_prices, "say"):
+            ebay_prices.diagnose(None, "t", game, {"searches": 0}, ())
+        self.assertEqual({query for market, query in asked if market == "EBAY_GB"}, {"project zero"})
+        self.assertEqual({query for market, query in asked if market == "EBAY_US"}, {"fatal frame"})
+        snapshot = ebay_prices.snapshot_of({"results": [(game, "EBAY_GB", {"status": "ok"}), (game, "EBAY_US", {"status": "ok"})],
+                                            "searches": 2, "stopped": None}, NOON)
+        row = snapshot["games"][0]
+        self.assertEqual((row["markets"]["EBAY_GB"]["search_there"], row["markets"]["EBAY_GB"]["left_out_if_named_there"]),
+                         ("project zero", ["project zero 2"]))
+        self.assertNotIn("search_there", row["markets"]["EBAY_US"])
 
 
 class EndToEndTests(unittest.TestCase):

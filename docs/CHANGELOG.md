@@ -5,10 +5,13 @@
 - Asked: why *Fatal Frame 2* had no eBay UK price. In Europe the series is *Project Zero*; the
   UK search for "Fatal Frame 2" found no PAL copy (0 copies, against 16 on eBay US).
 - `regional_names` in `ebay_watchlist.json` renames the start of a game's name for one site, and
-  the price job searches eBay UK under that name: 13 rules, among them Fatal Frame → Project
-  Zero, Siren → Forbidden Siren, Bully → Canis Canem Edit, Dark Cloud 2 → Dark Chronicle,
-  Ratchet: Deadlocked → Ratchet: Gladiator, Sly Cooper and the Thievius Raccoonus → Sly Raccoon,
-  Shin Megami Tensei: Nocturne → Lucifer's Call. On the current list five tracked games change.
+  the price job searches eBay UK under that name: 15 rules, among them Fatal Frame → Project
+  Zero, Siren → Forbidden Siren, Dark Cloud 2 → Dark Chronicle, Ratchet: Deadlocked → Ratchet:
+  Gladiator, Sly Cooper and the Thievius Raccoonus → Sly Raccoon, Ace Combat 4 and 5 → Distant
+  Thunder and Squadron Leader, Shin Megami Tensei: Nocturne → Lucifer's Call. Six games tracked
+  today change: Fatal Frame, Fatal Frame 2, Siren, Sly Cooper, Ace Combat 4 and Ace Combat 5.
+- Bully keeps its name: only the UK release was Canis Canem Edit, and eBay UK sells both.
+- A game the library also files under its European name is looked up on eBay UK once.
 - A renamed game's UK bracket compares two different searches for its first week.
 - The dashboard's eBay UK link under a name still searches the US title.
 
