@@ -626,3 +626,11 @@ body .rare-flag { color: var(--body); }
   body .rare-region { flex: 1 1 0; padding: .45rem .3rem; }
   body .rare-region-site { display: none; }   /* the summary under the heading names the site */
 }
+
+/* The PS2 price index, at the top of the eBay prices page */
+body .index-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+body .index-card { border: 1px solid var(--line); padding: .9rem 1rem; display: flex; flex-direction: column; gap: .35rem; }
+body .index-head { display: flex; align-items: baseline; gap: .5rem; font-size: .75rem; }
+body .index-value { font-size: 2rem; line-height: 1.1; color: var(--text); font-variant-numeric: tabular-nums; }
+body .index-moves { display: flex; flex-wrap: wrap; gap: .25rem .9rem; }
+body .index-line { width: 100%; height: 3rem; color: var(--accent); }

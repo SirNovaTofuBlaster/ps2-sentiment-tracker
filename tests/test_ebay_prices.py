@@ -1627,6 +1627,106 @@ class ConsoleTests(unittest.TestCase):
                          "no console shares a name with a list")
 
 
+class PriceIndexTests(unittest.TestCase):
+    """The PS2 price index: 100 on the first day, moved by how each game's median moved."""
+
+    @staticmethod
+    def day(date, prices, site="UK", copies=5, hour="12:00"):
+        return [[f"{date}T{hour}Z", title, site, copies, price - 1, price] for title, price in prices.items()]
+
+    GAMES = {f"Game {n}": 10.0 for n in range(12)}
+
+    def test_it_moves_by_the_geometric_mean_of_each_games_move(self):
+        rows = self.day("2026-10-06", self.GAMES) + self.day("2026-10-07", {title: 11.0 for title in self.GAMES})
+        self.assertEqual(ebay_prices.price_index(rows), {"UK": [["2026-10-06", 100.0, 12], ["2026-10-07", 110.0, 12]]})
+        half = {title: (21.0 if n < 6 else 4.0) for n, title in enumerate(self.GAMES)}   # more than doubled or halved: left out
+        mixed = dict(half, **{"Game 0": 12.0, "Game 1": 12.0, "Game 2": 12.0, "Game 3": 12.0, "Game 4": 12.0,
+                              "Game 5": 12.0, "Game 6": 9.0, "Game 7": 9.0, "Game 8": 9.0, "Game 9": 9.0})
+        rows = self.day("2026-10-06", self.GAMES) + self.day("2026-10-07", mixed)
+        (first, second), = ebay_prices.price_index(rows).values()
+        self.assertEqual(second[2], 10, "the two that halved are left out")
+        self.assertAlmostEqual(second[1], round(100 * (1.2 ** 6 * 0.9 ** 4) ** (1 / 10), 2))
+
+    def test_a_games_figure_for_the_day_is_its_last_one(self):
+        rows = (self.day("2026-10-06", self.GAMES)
+                + self.day("2026-10-07", {title: 15.0 for title in self.GAMES}, hour="23:00")
+                + self.day("2026-10-07", {title: 11.0 for title in self.GAMES}, hour="09:00"))
+        self.assertEqual(ebay_prices.price_index(rows)["UK"][-1], ["2026-10-07", 150.0, 12], "rows are put in time order first")
+
+    def test_games_joining_leaving_thin_or_far_apart_never_move_it(self):
+        rows = (self.day("2026-10-06", self.GAMES)
+                + self.day("2026-10-07", dict(self.GAMES, **{"Newcomer": 500.0}))   # joins: nothing to compare
+                + self.day("2026-10-07", {"Thin": 1.0}) + self.day("2026-10-08", {"Thin": 2.0}, copies=2)
+                + self.day("2026-10-08", {title: 10.0 for title in list(self.GAMES)[:11]}))   # one leaves
+        points = ebay_prices.price_index(rows)["UK"]
+        self.assertEqual([point[1] for point in points], [100.0, 100.0, 100.0])
+        self.assertEqual([point[2] for point in points], [12, 12, 11])
+        later = rows + self.day("2026-10-20", {title: 12.0 for title in self.GAMES})
+        self.assertEqual(ebay_prices.price_index(later)["UK"][-1], ["2026-10-20", 100.0, 0], "too long since: not compared")
+
+    def test_a_day_with_too_few_games_keeps_the_value_and_the_start_needs_enough(self):
+        few = dict(list(self.GAMES.items())[:5])
+        self.assertEqual(ebay_prices.price_index(self.day("2026-10-05", few)), {}, "no start with five games")
+        rows = self.day("2026-10-05", few) + self.day("2026-10-06", self.GAMES) + self.day("2026-10-07", {title: 20.0 for title in few})
+        self.assertEqual(ebay_prices.price_index(rows)["UK"], [["2026-10-06", 100.0, 12], ["2026-10-07", 100.0, 5]])
+
+    def test_each_site_has_its_own_index_and_consoles_are_left_out(self):
+        rows = (self.day("2026-10-06", self.GAMES) + self.day("2026-10-07", {title: 12.0 for title in self.GAMES})
+                + self.day("2026-10-06", self.GAMES, site="US") + self.day("2026-10-07", self.GAMES, site="US")
+                + self.day("2026-10-06", {"PS2 Ocean Blue": 100.0}) + self.day("2026-10-07", {"PS2 Ocean Blue": 150.0}))
+        latest = {"currencies": {"US": "USD", "UK": "GBP"}, "games": {"PS2 Ocean Blue": {"kind": "console"}}}
+        index = ebay_prices.index_file(rows, latest, datetime(2026, 10, 8, tzinfo=timezone.utc))
+        self.assertEqual(index["sites"]["UK"][-1], ["2026-10-07", 120.0, 12])
+        self.assertEqual(index["sites"]["US"][-1], ["2026-10-07", 100.0, 12])
+        self.assertEqual(index["currencies"], {"US": "USD", "UK": "GBP"})
+        self.assertNotIn("Game", json.dumps(index["sites"]), "numbers and dates only")
+
+    def test_a_console_once_left_out_stays_out_whatever_happens_to_the_lists(self):
+        rows = (self.day("2026-10-06", dict(self.GAMES, **{"PS2 Ocean Blue": 100.0}))
+                + self.day("2026-10-07", dict(self.GAMES, **{"PS2 Ocean Blue": 150.0})))
+        now = datetime(2026, 10, 8, tzinfo=timezone.utc)
+        with tempfile.TemporaryDirectory() as folder:
+            listed = Path(folder) / "rare_consoles.json"
+            listed.write_text(json.dumps({"consoles": [{"name": "PS2 Ocean Blue", "price": False}]}), encoding="utf-8")
+            with mock.patch.object(ebay_prices, "CONSOLES_PATH", listed):
+                index = ebay_prices.index_file(rows, {"games": {}}, now)
+            self.assertEqual(index["sites"]["UK"][-1], ["2026-10-07", 100.0, 12], "named in rare_consoles.json, even unpriced")
+            self.assertEqual(index["left_out"], ["ps2 ocean blue"])
+            with mock.patch.object(ebay_prices, "CONSOLES_PATH", Path(folder) / "gone.json"):
+                self.assertEqual(ebay_prices.index_file(rows, {"games": {}}, now, index["left_out"])["sites"]["UK"][-1][1], 100.0,
+                                 "the list unreadable or the console renamed: still left out")
+                self.assertEqual(ebay_prices.index_file(rows, {"games": {}}, now)["sites"]["UK"][-1][2], 13,
+                                 "(without that memory it would count)")
+
+    def test_the_run_writes_it_and_a_damaged_month_leaves_it_as_it_was(self):
+        sandbox = Sandbox(self, feed=[mention(title, 3, "r/ps2") for title in ("Silent Hill 2", "Kuon", "Okami", "God Hand")])
+        sandbox.write("data/prices/2026-09.json", self.day("2026-09-29", self.GAMES) + self.day("2026-09-30", self.GAMES))
+
+        def three_copies(params, headers):
+            currency = "GBP" if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" else "USD"
+            name = params["q"]
+            return page(*(listing(f"{name} PS2", 10 + n, currency=currency, item_id=n) for n in range(3)))
+        code, printed, fake = sandbox.run(FakeHttp(three_copies))
+        self.assertEqual(code, 0, printed)
+        index = json.loads((sandbox.data / "prices" / "index.json").read_text(encoding="utf-8"))
+        self.assertEqual(index["sites"]["UK"], [["2026-09-29", 100.0, 12], ["2026-09-30", 100.0, 12]],
+                         "finished days only: today is still under way")
+        sandbox.now = NOON + timedelta(days=1)
+        sandbox.feed([mention("Silent Hill 2", 1, "r/ps2", now=sandbox.now), mention("Silent Hill 2", 2, "Eurogamer", now=sandbox.now)])
+        code, printed, fake = sandbox.run(FakeHttp(three_copies))
+        index = json.loads((sandbox.data / "prices" / "index.json").read_text(encoding="utf-8"))
+        self.assertEqual(index["sites"]["UK"][-1], ["2026-10-06", 100.0, 0], "yesterday, with too few games to move it")
+        self.assertEqual(index["min_games"], ebay_prices.INDEX_MIN_GAMES)
+        (sandbox.data / "prices" / "2026-09.json").write_text("[", encoding="utf-8")
+        before = (sandbox.data / "prices" / "index.json").read_text(encoding="utf-8")
+        sandbox.now = NOON + timedelta(days=1, hours=7)
+        sandbox.feed([mention("Silent Hill 2", 1, "r/ps2", now=sandbox.now), mention("Silent Hill 2", 2, "Eurogamer", now=sandbox.now)])
+        code, printed, fake = sandbox.run(FakeHttp(three_copies))
+        self.assertEqual(code, 0, printed)
+        self.assertIn("The price index was not updated: data/prices/2026-09.json cannot be read.", printed)
+        self.assertEqual((sandbox.data / "prices" / "index.json").read_text(encoding="utf-8"), before)
+
+
 class RegionalNameTests(unittest.TestCase):
     """A game released in Europe under another name is searched on eBay UK under that name."""
 

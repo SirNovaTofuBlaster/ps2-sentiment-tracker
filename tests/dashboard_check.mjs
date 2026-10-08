@@ -863,7 +863,8 @@ await check('prices are read from the site itself, with no token, before the lis
     github.requests.length = 0;
     await vm.runInContext('loadPrices()', context);
     assert.deepEqual(github.requests.map(r => [r.href, r.method, Object.keys(r.headers)]),
-        [['data/prices/latest.json', 'GET', []], ['ebay_watchlist.json', 'GET', []]]);
+        [['data/prices/latest.json', 'GET', []], ['ebay_watchlist.json', 'GET', []], ['data/prices/index.json', 'GET', []]]);
+    assert.equal(el('indexSection').classList.contains('hidden'), true, 'no index file: no index');
     assert.equal(el('pricesEmpty').classList.contains('hidden'), false, 'the file is not there in this sandbox');
     assert.match(el('pricesEmpty').textContent, /^No prices yet\./);
 
@@ -1832,6 +1833,70 @@ await check('the Rarest page: the rarest consoles, priced on both sites', async 
     assert.equal(el('rareSummary').textContent, 'No list of rare consoles yet.');
     vm.runInContext("showRareRegion('PAL'); setPrices(null, null)", context);
     assert.equal(el('rareHeading').textContent, 'Rarest PS2 Games');
+});
+
+await check('the PS2 price index: the latest value, its moves and a line of every day', async () => {
+    const index = { sites: {
+        UK: [['2026-10-06', 100, 145], ['2026-10-07', 99.87, 135], ['2026-10-08', 101.2, 167], ['2026-10-13', 104.5, 170], ['2026-10-14', 103.9, 160]],
+        US: [['2026-10-06', 100, 162]],
+        EU: [['2026-10-06', 100, 1]],
+    } };
+    context.__index = index;
+    vm.runInContext("renderIndex(__index, 'en-GB')", context);
+    assert.equal(el('indexSection').classList.contains('hidden'), false);
+    assert.equal(el('indexSummary').textContent, "100 = 6 Oct. How used PS2 games' asking prices have moved since, per site, up to the last full day (UTC).");
+    const [us, uk] = el('indexCards').innerHTML.split('class="index-card"').slice(1);
+    const cards = [uk, us];
+    assert.equal(el('indexCards').innerHTML.split('class="index-card"').length, 3, 'the two sites, never a third');
+    assert.match(cards[0], /eBay UK · 14 Oct/);
+    assert.match(cards[0], /<div class="index-value">103\.9<\/div>/);
+    assert.match(cards[0], /is-down">▼ 0\.6% since 13 Oct</, '103.9 against 104.5');
+    assert.match(cards[0], /is-up">▲ 4\.0% since 7 Oct</, 'a week: against 7 Oct, the last day a week or more before (99.87)');
+    assert.match(cards[0], /<polyline points="0\.0,[\d.]+ 60\.0,/);
+    assert.match(cards[0], /160 games compared with their previous day/);
+    assert.match(cards[1], /<div class="index-value">100\.0<\/div>/);
+    assert.doesNotMatch(cards[1], /index-line|ebay-change/, 'one day: nothing to compare and no line');
+    assert.match(cards[1], /162 games priced on its first day/);
+    assert.equal(evalJson("indexChange([['2026-10-07', 100, 1], ['2026-10-08', 100.04, 1]], 1)").change.toFixed(2), '0.04');
+    assert.match(evalJson("indexChangeHtml({ change: 0.04, day: '2026-10-07' }, (day) => day)"), /no change since 2026-10-07/);
+    // A day with too few games kept its value: it says so, and does not claim "no change".
+    context.__kept = { min_games: 10, sites: { UK: [['2026-10-06', 100, 145], ['2026-10-07', 101, 140], ['2026-10-08', 101, 4]] } };
+    vm.runInContext("renderIndex(__kept, 'en-GB')", context);
+    assert.match(el('indexCards').innerHTML, /Only 4 games could be compared that day, too few to move it/);
+    assert.doesNotMatch(el('indexCards').innerHTML, /since 7 Oct/);
+
+    // A broken or hostile file shows nothing rather than nonsense.
+    for (const bad of [null, {}, { sites: [] }, { sites: { UK: 'x' } }, { sites: { UK: [['soon', 100, 1], ['2026-10-07', -5, 1], ['2026-10-08', 'x', 1]] } }]) {
+        context.__bad = bad;
+        vm.runInContext("renderIndex(__bad, 'en-GB')", context);
+        assert.equal(el('indexSection').classList.contains('hidden'), true, JSON.stringify(bad));
+    }
+    context.__hostile = { sites: { UK: [['2026-10-06', 100, '<b>'], ['2026-10-07', 101, '<img src=x>']] } };
+    vm.runInContext("renderIndex(__hostile, 'en-GB')", context);
+    assert.doesNotMatch(el('indexCards').innerHTML, /<b>|<img/);
+
+    // Loaded with the prices; a hiccup keeps what is on screen.
+    const real = context.fetch;
+    let answer = index;
+    context.fetch = async (path) => {
+        if (path !== 'data/prices/index.json') return { ok: false, status: 404, json: async () => ({}) };
+        if (answer === 'drop') throw new TypeError('Failed to fetch');
+        return { ok: true, status: 200, json: async () => answer };
+    };
+    try {
+        await vm.runInContext('loadPrices()', context);
+        assert.equal(el('indexSection').classList.contains('hidden'), false);
+        answer = 'drop';
+        await vm.runInContext('loadPrices()', context);
+        assert.equal(el('indexSection').classList.contains('hidden'), false, 'a hiccup keeps the index');
+    } finally {
+        context.fetch = real;
+    }
+    vm.runInContext('indexData = null; renderIndex()', context);
+    assert.equal(el('indexSection').classList.contains('hidden'), true);
+    const page = read('index.html');
+    assert.ok(page.indexOf('id="indexSection"') > page.indexOf('id="viewPrices"') && page.indexOf('id="indexSection"') < page.indexOf('id="pricesSection"'),
+        'at the top of the eBay prices page');
 });
 
 console.log(`dashboard checks passed (${passed})`);
