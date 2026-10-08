@@ -129,30 +129,38 @@ def digital_row(item):
 
 def archive_digital(items):
     """Adds the snapshot's digital-only news to data/archive/digital/YYYY-MM.json. A story is the
-    same story by source and headline. Returns how many rows were added."""
-    by_month = {}
+    same story by source and headline. A kept story that is still in the snapshot but no longer
+    flagged (the scraper flags the whole snapshot again with every change of its rules) is taken
+    out again; one that has only left the snapshot stays for good. Returns rows added + removed."""
+    by_month, unflagged = {}, set()
     for item in items:
         found = digital_row(item)
         if found:
             by_month.setdefault(found[0], []).append(found[1])
-    added_total = 0
-    for month, new_rows in sorted(by_month.items()):
+        elif item.get("is_digital_only") is False:
+            unflagged.add((str(item.get("source") or "")[:60], shorten(item.get("headline"))))
+    months = set(by_month) | {path.stem for path in DIGITAL_DIR.glob("20??-??.json")} if DIGITAL_DIR.exists() else set(by_month)
+    changed_total = 0
+    for month in sorted(months):
         path = DIGITAL_DIR / f"{month}.json"
         existing = [r for r in load_json(path, []) if isinstance(r, dict)]
-        known = {(r.get("s"), r.get("h")) for r in existing}
+        kept = [r for r in existing if (r.get("s"), r.get("h")) not in unflagged]
+        known = {(r.get("s"), r.get("h")) for r in kept}
         added = []
-        for row in new_rows:
+        for row in by_month.get(month, []):
             if (row["s"], row["h"]) not in known:
                 known.add((row["s"], row["h"]))
                 added.append(row)
-        if not added:
+        removed = len(existing) - len(kept)
+        if not added and not removed:
             continue
         DIGITAL_DIR.mkdir(parents=True, exist_ok=True)
-        merged = sorted(existing + added, key=lambda r: (r.get("d", ""), r.get("s", ""), r.get("h", "")))
+        merged = sorted(kept + added, key=lambda r: (r.get("d", ""), r.get("s", ""), r.get("h", "")))
         write_json(path, merged)
-        added_total += len(added)
-        print(f"  digital-only {month}: +{len(added)} ({len(merged)} total)")
-    if not added_total:
+        changed_total += len(added) + removed
+        print(f"  digital-only {month}: +{len(added)}" + (f", -{removed} no longer flagged" if removed else "")
+              + f" ({len(merged)} total)")
+    if not changed_total:
         return 0
     # Per month and per day, for the dashboard's count without fetching every month.
     months, days, total = [], Counter(), 0
@@ -165,8 +173,8 @@ def archive_digital(items):
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
         "total_stories": total, "months": months, "days": dict(sorted(days.items())),
     })
-    print(f"Archived {added_total} new digital-only stories; {total} in total.")
-    return added_total
+    print(f"Digital-only news: {total} stories kept in all.")
+    return changed_total
 
 
 def archive():
@@ -175,14 +183,14 @@ def archive():
     if not items:
         print("No snapshot to archive.")
         return
-    archive_digital(items)
+    digital_changed = archive_digital(items)
 
     by_month = {}
     for item in items:
         for month, row in rows_from_item(item):
             by_month.setdefault(month, []).append(row)
     if not by_month:
-        print("No PS2 game mentions in the snapshot.")
+        print("No PS2 game mentions in the snapshot." + (" (Digital-only news was archived.)" if digital_changed else ""))
         return
 
     ARCHIVE_DIR.mkdir(parents=True, exist_ok=True)
@@ -207,7 +215,7 @@ def archive():
         print(f"  {month}: +{len(added)} ({len(merged)} total)")
 
     if not added_total:
-        print("Nothing new to archive.")
+        print("No new PS2 game mentions." if digital_changed else "Nothing new to archive.")
         return
 
     # A small index so the dashboard can see what exists without fetching every month.

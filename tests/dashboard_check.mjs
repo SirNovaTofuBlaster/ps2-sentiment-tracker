@@ -1955,7 +1955,7 @@ await check('Digital-Only News: the flagged items, counted over two weeks and th
     assert.match(rows[1], /Sony &lt;b&gt;to ditch discs&lt;\/b&gt;/, 'a headline is text, never markup');
     context.__kept = { total_stories: 41, days: { '2026-10-08': 12, '2026-09-27': 1, 'bad': 3 } };
     vm.runInContext('digitalArchive = __kept; filterFeedItems()', context);
-    assert.match(el('feedSummary').textContent, /Any game, not only PS2\. 41 kept in all since 27 Sept?\.$/, 'the archive counts beyond two weeks');
+    assert.match(el('feedSummary').textContent, /Any game, not only PS2\. 41 archived since 27 Sept? \(the archive is updated every 6 hours\)\.$/, 'the archive counts beyond two weeks');
     vm.runInContext('digitalArchive = null', context);
     el('searchInput').value = 'phantom';
     vm.runInContext('filterFeedItems()', context);

@@ -84,9 +84,6 @@ class ArchiveTests(unittest.TestCase):
         self.assertEqual([row["n"] for row in rows if row["t"] == "news"], [70, 50])
 
 
-if __name__ == "__main__":
-    unittest.main()
-
 class DigitalArchiveTests(unittest.TestCase):
     """Digital-only news, any game, kept for good next to the PS2 mentions."""
 
@@ -128,6 +125,21 @@ class DigitalArchiveTests(unittest.TestCase):
         archive.archive()
         self.assertEqual([row["h"] for row in self.stored()], ["Sony To Ditch Discs"])
 
+    def test_a_story_the_rules_no_longer_flag_leaves_the_archive_once_the_scraper_has_unflagged_it(self):
+        self.snapshot.write_text(json.dumps({"items": [self.digital("Physical media show and tell!"), self.digital("Sony To Ditch Discs")]}),
+                                 encoding="utf-8")
+        archive.archive()
+        unflagged = {**self.digital("Physical media show and tell!"), "is_digital_only": False}
+        self.snapshot.write_text(json.dumps({"items": [unflagged, self.digital("Sony To Ditch Discs")]}), encoding="utf-8")
+        archive.archive()
+        self.assertEqual([row["h"] for row in self.stored()], ["Sony To Ditch Discs"])
+        index = json.loads((self.folder / "archive" / "digital" / "index.json").read_text(encoding="utf-8"))
+        self.assertEqual(index["total_stories"], 1)
+        # A story merely gone from the snapshot (older than two weeks) is never removed: tested above.
+
     def test_a_real_sentiment_of_zero_is_kept_as_zero(self):
         rows = self.run_with([item(sentiment=0), item(headline="No score", sentiment=None)])
         self.assertEqual({row["h"]: row["n"] for row in rows}, {"Ico is twenty-five": 0, "No score": 50})
+
+if __name__ == "__main__":
+    unittest.main()

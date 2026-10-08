@@ -66,7 +66,9 @@ counted. On the snapshot of 2026-10-08 it flagged 22 of 7,279 items. The dashboa
 **Digital-Only News**; `tools/regression_check.py` ignores the field. `archive.py` keeps every
 flagged story for good in `data/archive/digital/YYYY-MM.json` (d, h, s, t and the link `l`; the
 same story is the same source and headline), with `index.json` holding the total, per month and
-per day; the dashboard adds "N kept in all since …" from it. It is read from the snapshot, so it
+per day; the dashboard adds "N archived since …" from it. A kept story that is still in the
+snapshot but no longer flagged (a change of the rules) is taken out again; one that has only
+aged out of the snapshot stays. It is read from the snapshot, so it
 costs no request to Reddit or any other site: Reddit's budget stays spent on the PS2
 subreddits. The PS2 archive's index globs only its own folder, so the two never mix.
 

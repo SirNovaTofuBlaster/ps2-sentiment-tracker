@@ -1551,7 +1551,7 @@
             } catch { /* a hiccup keeps what was loaded */ }
         }
 
-        // "41 kept since 27 Sep", or '' without the archive.
+        // "41 archived since 27 Sep", or '' without the archive.
         function digitalKeptText(data = digitalArchive) {
             const days = data && typeof data.days === 'object' && data.days ? Object.keys(data.days).filter(day => /^\d{4}-\d{2}-\d{2}$/.test(day)).sort() : [];
             if (!data || !days.length) return '';
@@ -1559,7 +1559,7 @@
             try {
                 first = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(`${days[0]}T00:00:00Z`));
             } catch { /* the plain date will do */ }
-            return ` ${data.total_stories.toLocaleString('en')} kept in all since ${first}.`;
+            return ` ${data.total_stories.toLocaleString('en')} archived since ${first} (the archive is updated every 6 hours).`;
         }
 
         function filterFeedItems() {
