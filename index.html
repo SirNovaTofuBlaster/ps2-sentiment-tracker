@@ -256,6 +256,14 @@
         <!-- eBay asking prices, every tracked game: data/prices/latest.json, written by
              ebay_prices.py. The same medians also sit beside each game's name everywhere else. -->
         <div id="viewPrices" role="tabpanel" aria-labelledby="tabPrices" class="hidden space-y-8">
+        <!-- The PS2 price index: data/prices/index.json, worked out by ebay_prices.py from the
+             price history. Hidden until the file exists. -->
+        <div id="indexSection" class="bg-ps2card p-6 hidden">
+            <h2>PS2 Price Index</h2>
+            <p id="indexSummary" class="text-xs text-slate-400 mb-4"></p>
+            <div id="indexCards" class="index-cards"></div>
+            <p class="text-[11px] text-slate-500 mt-4 leading-relaxed">Like a stock market index for PS2 games: it started at 100, and each day it moves by the typical change in the median asking price of the games priced that day and the day before (a game must have at least three copies listed; one whose median doubled or halved overnight is left out, as that is nearly always a change in what the search finds). Games joining or leaving never move it. US and UK are separate, and consoles are not in it. Today's figure changes as the day's checks come in.</p>
+        </div>
         <div id="pricesSection" class="bg-ps2card p-6">
             <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div>
@@ -782,6 +790,7 @@
         let priceIndex = new Map();    // priceKey(title) -> { title, entry, level, mentions }
         let priceWatchlist = null;     // ebay_watchlist.json as loaded, or null
         let priceTrouble = false;      // the price file is there but could not be read or drawn
+        let indexData = null;          // data/prices/index.json as loaded, or null
 
         /* The price file names each game by its library title; the feed and the Demand
            Index may spell the same game another way ("Kingdom Hearts 2" for "Kingdom
@@ -1021,7 +1030,15 @@
                     return { state: 'failed' };
                 }
             };
-            const [prices, watchlist] = await Promise.all([read('data/prices/latest.json'), read('ebay_watchlist.json')]);
+            const [prices, watchlist, index] = await Promise.all([read('data/prices/latest.json'), read('ebay_watchlist.json'),
+                read('data/prices/index.json')]);
+            if (index.state !== 'failed') indexData = index.state === 'ok' ? index.data : null;
+            try {
+                renderIndex();
+            } catch (error) {
+                console.warn('Could not show data/prices/index.json.', error);
+                document.getElementById('indexSection').classList.add('hidden');
+            }
             // A hiccup must not wipe prices that are already on screen.
             if (prices.state === 'failed' && priceData) return;
             if (watchlist.state !== 'failed') priceWatchlist = watchlist.state === 'ok' ? watchlist.data : null;
@@ -1037,6 +1054,76 @@
                 priceTrouble = true;
                 try { renderPrices(null); } catch { /* the page carries on without prices */ }
             }
+        }
+
+        /* ---- The PS2 price index ----------------------------------------------
+           data/prices/index.json: per site, [day, index, games compared] from its first day
+           (100). Shown at the top of the eBay prices page: the latest value, how it moved since
+           the day before and over a week, and a line of every day so far.
+        -------------------------------------------------------------------- */
+        function indexPoints(data, site) {
+            const points = own(data?.sites, site) && Array.isArray(data.sites[site]) ? data.sites[site] : [];
+            return points.filter(point => Array.isArray(point) && /^\d{4}-\d{2}-\d{2}$/.test(String(point[0]))
+                && typeof point[1] === 'number' && Number.isFinite(point[1]) && point[1] > 0)
+                .sort((a, b) => String(a[0]).localeCompare(String(b[0])));
+        }
+
+        // The change in percent from the last point on or before `days` days before the latest one.
+        function indexChange(points, days) {
+            if (points.length < 2) return null;
+            const [lastDay, lastValue] = points[points.length - 1];
+            const cutoff = Date.parse(`${lastDay}T00:00:00Z`) - days * 86400000;
+            const earlier = points.filter(point => Date.parse(`${point[0]}T00:00:00Z`) <= cutoff);
+            if (!earlier.length) return null;
+            const before = earlier[earlier.length - 1][1];
+            return (lastValue / before - 1) * 100;
+        }
+
+        function indexChangeHtml(change, label) {
+            if (change === null) return '';
+            const rounded = Math.round(change * 10) / 10;
+            if (rounded === 0) return `<span class="ebay-change">no change ${esc(label)}</span>`;
+            return `<span class="ebay-change ${rounded > 0 ? 'is-up' : 'is-down'}">${rounded > 0 ? '▲' : '▼'} ${esc(Math.abs(rounded).toFixed(1))}% ${esc(label)}</span>`;
+        }
+
+        // A line of every day so far, scaled to its own lowest and highest value.
+        function indexLineSvg(points) {
+            if (points.length < 2) return '';
+            const values = points.map(point => point[1]);
+            const low = Math.min(...values);
+            const high = Math.max(...values);
+            const span = high - low || 1;
+            const width = 240;
+            const height = 48;
+            const xy = points.map((point, i) => `${(i / (points.length - 1) * width).toFixed(1)},${(height - 4 - (point[1] - low) / span * (height - 8)).toFixed(1)}`);
+            return `<svg class="index-line" viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" aria-hidden="true"><polyline points="${xy.join(' ')}" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></polyline></svg>`;
+        }
+
+        function renderIndex(data = indexData, locale) {
+            const section = document.getElementById('indexSection');
+            const cards = PRICE_SITES.map(site => [site, indexPoints(data, site)]).filter(([, points]) => points.length);
+            section.classList.toggle('hidden', !cards.length);
+            if (!cards.length) return;
+            const shortDay = (day) => {
+                try {
+                    return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(`${day}T00:00:00Z`));
+                } catch {
+                    return day;
+                }
+            };
+            const first = cards.map(([, points]) => points[0][0]).sort()[0];
+            document.getElementById('indexSummary').textContent = `100 = ${shortDay(first)}. How used PS2 games' asking prices have moved since, per site.`;
+            document.getElementById('indexCards').innerHTML = cards.map(([site, points]) => {
+                const [day, value, games] = points[points.length - 1];
+                return `
+                <div class="index-card">
+                    <div class="index-head"><span class="ebay-flag">${esc(site)}</span><span class="text-slate-400">eBay ${esc(site)} · ${esc(shortDay(day))}</span></div>
+                    <div class="index-value">${esc(value.toFixed(1))}</div>
+                    <div class="index-moves">${indexChangeHtml(indexChange(points, 1), 'on the day before')}${indexChangeHtml(indexChange(points, 7), 'in a week')}</div>
+                    ${indexLineSvg(points)}
+                    <div class="text-[11px] text-slate-500">${Number.isInteger(games) ? (points.length > 1 ? `${esc(games)} games compared with the day before` : `${esc(games)} games priced on its first day`) : ''}</div>
+                </div>`;
+            }).join('');
         }
 
         /* ---- The rarest games ------------------------------------------------

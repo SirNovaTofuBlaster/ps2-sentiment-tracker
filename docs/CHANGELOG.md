@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-08: the PS2 Price Index
+
+- Asked: something like the S&P 500 for the PS2 market. A market capitalisation needs to know how
+  many copies exist, which nobody does, so this is a price index instead: how asking prices move.
+- `ebay_prices.py` writes `data/prices/index.json` on every run that writes prices: per site, 100
+  on its first day (6 October 2026), moved each day by the geometric mean of each game's change in
+  median since its previous day. Games joining or leaving never move it; medians from fewer than
+  three copies, and those that doubled or halved overnight, are left out; consoles are not in it.
+  On the history so far it stands at about 99.9 on both sites.
+- Dashboard: the index at the top of the eBay prices page, per site, with the change since the day
+  before and over a week and a line of every day.
+
 ## 2026-10-08: the Rarest page gets consoles
 
 - Asked: a list of the rarest PS2 consoles, official releases only, using Obsolete Sony and

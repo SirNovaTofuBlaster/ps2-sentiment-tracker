@@ -52,6 +52,7 @@ through its **Sources & Weights** panel.
 | `rare_consoles.json` | The Rarest page's consoles: the rarest official PS2 hardware, in tiers, with model numbers, sources and eBay search rules. `ebay_prices.py` prices each daily on both sites (or its `sites`) |
 | `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, the median of a week before (`week`), and the game's level. Numbers only |
 | `data/prices/YYYY-MM.json` | The same numbers over time: a row whenever they change, and at least one a day |
+| `data/prices/index.json` | The PS2 price index per site (100 on its first day), worked out from every month's history on each run that writes `latest.json`: a chained geometric mean of each game's daily change. Days and numbers only |
 | `tests/test_ebay_prices.py` | Offline tests for `ebay_prices.py` and its workflow, including that the key never leaks |
 | `.github/workflows/ebay.yml` | Runs `ebay_prices.py` hourly (started by the scraper's loop), after a scraper run ends, and by hand; commits `data/prices/`, and publishes that run's listings to the `ebay-data` branch |
 

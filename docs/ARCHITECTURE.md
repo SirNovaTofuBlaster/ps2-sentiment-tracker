@@ -411,6 +411,19 @@ from 100), so the bracket adds up with what the reader sees; an overdue figure's
 dimmed with it. Listings and links go to the `--out` file,
 which the workflow publishes as a single replaced commit on the `ebay-data` branch.
 
+**The PS2 price index (added 2026-10-08).** After writing `latest.json`, the run reads every
+month of history and writes `data/prices/index.json`: per site, `[day, index, games compared]`
+from the first day with at least `INDEX_MIN_GAMES` games priced (100). `daily_medians()` takes each
+game's last median of the day with at least `INDEX_MIN_COPIES` copies; `price_index()` moves the
+index each day by the geometric mean of each game's change since its previous priced day, if
+that was at most `INDEX_MAX_GAP_DAYS` before and the change is within ×`INDEX_MAX_MOVE` either
+way; a day with fewer than `INDEX_MIN_GAMES` comparisons keeps the day before's value. This is a
+chained Jevons index, as statistics offices use without quantities: it weighs every game alike,
+and games joining or leaving do not move it. Consoles (`kind: "console"`) are left out. A month
+that cannot be read leaves the old index in place and is named in the log. The dashboard shows
+it at the top of the eBay prices page (`renderIndex()`): the latest value, the change since the
+day before and over a week (`indexChange()`), and an SVG line of every day.
+
 **When it gives up.** A run stops early if eBay does not answer three lookups in a row, if its
 first ten lookups all fail, or if eBay says the allowance is used. Nothing is written when
 more than half the lookups failed, or when games that had copies last time now return nothing
