@@ -1406,6 +1406,20 @@ class RareListTests(unittest.TestCase):
         self.assertEqual(ebay_prices.reject_reason(plush, dict(raiho, allow=[]), US, False), "not_a_copy")
         self.assertEqual(ebay_prices.reject_reason(listing("King Abaddon Raiho Edition strategy guide PS2", 20), raiho, US, False),
                          "not_a_copy", "what is not allowed still leaves a listing out")
+        self.assertEqual(ebay_prices.reject_reason(listing("King Abaddon Raiho Edition Plush only PS2", 20), raiho, US, False),
+                         "not_a_copy", "the extra on its own is not a copy")
+        for title in ("Raiho Edition King Abaddon + Art Book PS2", "King Abaddon Raiho Edition, includes the plush, PS2",
+                      "King Abaddon Raiho Edition & plush PS2"):
+            self.assertIsNone(ebay_prices.reject_reason(listing(title, 150), raiho, US, False), title)
+
+    def test_fifa_13_is_never_another_years_fifa(self):
+        entries, _ = ebay_prices.load_rare(ROOT / "rare_games.json")
+        fifa = next(entry for entry in entries if entry["title"] == "FIFA Soccer 13")
+        game_ = dict(game("FIFA Soccer 13", search="fifa"), require=fifa["require"], exclude=fifa["exclude"])
+        for title, reason in (("FIFA Soccer 13 (Sony PlayStation 2, 2012) CIB", None), ("FIFA 13 PS2 Legacy Edition", None),
+                              ("FIFA 13 and FIFA 14 PS2", "not_a_copy"), ("FIFA Soccer 14 PS2 Complete - 13 available", "not_a_copy"),
+                              ("FIFA 12 PS2", "other_game")):
+            self.assertEqual(ebay_prices.reject_reason(listing(title, 90), game_, US, False), reason, title)
 
     def test_a_shorter_search_still_finds_the_tracked_game_by_its_name_on_that_site(self):
         self.lists(pal=[{"rank": 1, "title": "Project Zero 2: Crimson Butterfly", "search": "project zero 2"}])

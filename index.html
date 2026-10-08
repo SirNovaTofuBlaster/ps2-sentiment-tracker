@@ -1145,7 +1145,7 @@
                     ${typeof entry.other_title === 'string' && entry.other_title.trim()
                         ? `<p class="rare-aka">${esc(RARE_OTHER[region])}: ${esc(entry.other_title)}</p>` : ''}
                     <div class="ebay-figures">${unpriced
-                        ? `<span class="ebay-site is-quiet"><span class="ebay-flag">${esc(label)}</span><span class="ebay-note" title="Not looked up on eBay: its name is an everyday word, so a search would count other games' listings.">not priced</span></span>`
+                        ? `<span class="ebay-site is-quiet"><span class="ebay-flag">${esc(label)}</span><span class="ebay-note" title="Not looked up on eBay: its search words would also count other games' listings (a name that is an everyday word) or cannot be used. The eBay price job's log names the reason.">not priced</span></span>`
                         : priceSiteHtml(label, site, currency, now, locale, LEVELS[prices?.level || 'rare'].stale)}</div>
                     <p class="rare-note">${typeof entry.note === 'string' && entry.note ? `${esc(entry.note)} ` : ''}${sources.length
                         ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>

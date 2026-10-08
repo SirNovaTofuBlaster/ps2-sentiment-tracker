@@ -525,7 +525,7 @@ because the search is the rule's spelling, "sly raccoon", and sellers mostly wri
 | The lists | 100 PAL and 100 US entries, ranked 1–100 by the complete-copy value each states, no game twice in a list, every entry with at least one https source and a date (tested on the committed file) |
 | Search words | Every entry's words checked against its own title with the price job's matcher; 27 corrected so that the words appear together in a typical listing title ("shadow of aku", "spooky swamp"), or given `require` words for editions |
 | On the real plan (`ebay_prices.py --plan`, no key) | 195 entries priced, 5 not (one ordinary word); 43 reuse a game the feed tracks; 133 games priced for the lists alone, 152 lookups a day; nothing else in the plan changes |
-| Offline tests | 157 price-job tests (14 new), 33 dashboard checks (1 new). The scraper's tests need `feedparser`, which could not be installed here: they run in the *Tests* workflow on the pull request |
+| Offline tests | 158 price-job tests (15 new), 33 dashboard checks (1 new). The scraper's tests need `feedparser`, which could not be installed here: they run in the *Tests* workflow on the pull request |
 | Mutations | 12 deliberate breaks of the new price-job code (site filter, `require`, `allow`, one-word rule, reuse, order, mapping, title clash, sibling filter): all caught |
 | Not checked | A live eBay search for the rare games: the first runs after the merge show the counts |
 
@@ -536,7 +536,10 @@ because the search is the rule's spelling, "sly raccoon", and sellers mostly wri
 | One-word names that are ordinary words ("obscure") would count listings of other games described as "rare obscure horror game" | Not priced, as for the feed's games; the page says "not priced". Tengai added to the one-word names that are safe |
 | "Project Zero 2" and "King's Field IV" would be looked up a second time under shorter words | An entry also reuses the tracked game searched under the entry's name on that site (Project Zero 2 now does). King's Field IV stays separate on purpose: the tracked game's words are the US title, which PAL sellers do not write; the docs no longer claim "never twice" |
 | Editions that come with a plush or an art book (Raiho Edition, Magna Carta Deluxe) were always "not a copy" | `allow` lets an entry name the junk phrases its edition comes with |
-| *FIFA Soccer 13* searched as "fifa 13" missed its US title | Searched as "fifa" with "13" required |
+| *FIFA Soccer 13* searched as "fifa 13" missed its US title | Searched as "fifa" with "13" required and the neighbouring years left out |
+| Second look: "fifa" + "13" alone counted "FIFA 13 and FIFA 14" and "FIFA 14 ... 13 available" | 11, 12, 14 and 15 leave a listing out (tested) |
+| Second look: an allowed extra sold on its own ("Limited Edition Art Book") counted as the edition | An allowed extra counts only when the listing says the copy comes with it ("with", "w/", "+", "&", "includes") |
+| Second look: "not priced" always blamed an everyday word | The hint says the job's log names the reason; the guide says "usually" |
 
 ## Re-running the checks
 

@@ -967,6 +967,14 @@ def is_the_soundtrack(title, name_text, phrase):
     return bool(rest) and rest[0] in SOUNDTRACK_WORDS
 
 
+def comes_with(title, phrase):
+    """True when the title says the copy comes with the thing: "w/ Plush", "+ Art Book",
+    "with the art book", "includes artbook"."""
+    pattern = r"\s+".join(re.escape(word) for word in phrase.split())
+    return re.search(rf"(?:\bwith|\bw/|\+|&|\band|\bplus|\bincl\w*)\s*(?:[\w'’-]+\s+){{0,3}}{pattern}\b",
+                     str(title or "").lower()) is not None
+
+
 def reject_reason(item, game, market, keyword_search):
     """Why a listing is left out, or None to count it."""
     text = " ".join(words(item.get("title")))             # for junk words, as the seller wrote them
@@ -979,7 +987,10 @@ def reject_reason(item, game, market, keyword_search):
         return "other_game"
     if has_phrase(text, OTHER_PLATFORMS):
         return "other_platform"
-    junk = [phrase for phrase in JUNK_PHRASES if phrase not in (game.get("allow") or ())]
+    # An edition's extras count only as part of the copy ("Limited Edition with Art Book"), never
+    # sold on their own ("Limited Edition Art Book").
+    junk = [phrase for phrase in JUNK_PHRASES
+            if phrase not in (game.get("allow") or ()) or not comes_with(item.get("title"), phrase)]
     if has_phrase(text, junk) or has_phrase(text, game["exclude"]) \
             or is_the_soundtrack(item.get("title"), name_text, game["search"]):
         return "not_a_copy"
