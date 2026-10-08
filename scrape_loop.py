@@ -25,8 +25,8 @@ import scraper
 
 ROOT = Path(__file__).resolve().parent
 LOOP_MINUTES = 330                       # a round starts no later than this after the loop began...
-ROUND_RESERVE = timedelta(minutes=20)    # ...and only with this much left
-ROUND_TIMEOUT = 1500                     # seconds a round may take (a Reddit round takes about ten minutes)
+ROUND_RESERVE = timedelta(minutes=45)    # ...and only with this much left
+ROUND_TIMEOUT = 2400                     # seconds a round may take (a full round takes about 20 minutes)
 MIN_GAP = 120                            # seconds between two rounds, whatever is due
 MAX_WAIT = 900                           # seconds asleep at most before looking again
 FAILED_WAIT = 900                        # seconds to wait after a round that failed
@@ -79,15 +79,17 @@ def save(force=False):
     global _last_commit
     git("add", "data/")
     changed = set(git("diff", "--staged", "--name-only").stdout.split())
-    if not changed:
-        return False
-    if changed <= BOOKKEEPING and not force and _last_commit is not None and utc_now() - _last_commit < BOOKKEEPING_EVERY:
+    if changed and changed <= BOOKKEEPING and not force and _last_commit is not None \
+            and utc_now() - _last_commit < BOOKKEEPING_EVERY:
         git("reset", "--quiet")   # left in the working tree; the next commit takes them along
+        changed = set()
+    if changed:
+        if git("commit", "--quiet", "-m", COMMIT_MESSAGE).returncode != 0:
+            say("Could not commit the new data.")
+            return False
+        _last_commit = utc_now()
+    elif not unpushed():
         return False
-    if git("commit", "--quiet", "-m", COMMIT_MESSAGE).returncode != 0:
-        say("Could not commit the new data.")
-        return False
-    _last_commit = utc_now()
     for attempt in range(1, PUSH_ATTEMPTS + 1):
         pulled = git("pull", "--rebase", "--quiet", "origin", branch()).returncode == 0
         if pulled and git("push", "--quiet", "origin", f"HEAD:{branch()}").returncode == 0:
@@ -97,6 +99,12 @@ def save(force=False):
         time.sleep(5)
     say("Push failed; the commit goes up with the next round's.")
     return False
+
+
+def unpushed():
+    """Whether there are commits here that an earlier push did not get onto GitHub."""
+    ahead = git("rev-list", "--count", f"origin/{branch()}..HEAD")
+    return ahead.returncode == 0 and ahead.stdout.strip() not in ("", "0")
 
 
 def active_types(config):
@@ -191,6 +199,8 @@ def loop():
             time.sleep(MAX_WAIT)
             continue
         if due_at > now:
+            if due_at + ROUND_RESERVE > stop_at:
+                break   # nothing more falls due in this run's time: hand over now
             time.sleep(min(MAX_WAIT, max(1.0, (due_at - now).total_seconds())))
             continue
         rounds += 1

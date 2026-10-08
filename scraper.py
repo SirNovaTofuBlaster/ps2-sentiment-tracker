@@ -1196,9 +1196,17 @@ def load_json_dict(path):
     return value if isinstance(value, dict) else {}
 
 
+def write_whole(path, text):
+    """Writes a file so that it is either the old version or the new one, never half of it: a
+    round stopped at its time limit must not leave a cut-off file for the next commit."""
+    partial = path.with_name(path.name + ".partial")
+    partial.write_text(text, encoding="utf-8")
+    os.replace(partial, path)
+
+
 def save_json_if_changed(path, value, previous):
     if value != previous:
-        path.write_text(json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
+        write_whole(path, json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n")
 
 
 def select_entries(feed, kind):
@@ -1344,6 +1352,7 @@ def run_scraper():
         print(f"Scanning {len(due_jobs)} of {len(jobs)} feeds (due now: {', '.join(t for t in SOURCE_TYPES if t in due)}) "
               f"against PS2 titles ({matcher.summary()})...")
         extras_started = None  # the time budget is for the extras: Reddit's waits don't use it up
+        reddit_refused = False  # Reddit said "too many requests" even after waiting: ask no more this run
         last_board_request = last_reddit_request = None
         for job in due_jobs:
             url, core = job["url"], job["type"] in CORE_TYPES
@@ -1353,6 +1362,10 @@ def run_scraper():
             if not core and time.monotonic() - extras_started > FETCH_TIME_BUDGET:
                 skipped += 1
                 print(f"  SKIPPED {url}: fetch time budget used up")
+                continue
+            if job["type"] == "reddit" and reddit_refused:
+                core_failures += 1
+                print(f"  SKIPPED {url}: Reddit is limiting requests")
                 continue
             if not core and host_failures[host] >= HOST_FAILURE_LIMIT:
                 skipped += 1
@@ -1379,6 +1392,8 @@ def run_scraper():
                     if feed.get("bozo") and not feed.entries:
                         raise ValueError("unreadable feed")
             except (requests.RequestException, ValueError) as e:
+                if job["type"] == "reddit" and getattr(getattr(e, "response", None), "status_code", None) == 429:
+                    reddit_refused = True
                 if core:
                     core_failures += 1
                 else:
@@ -1401,15 +1416,21 @@ def run_scraper():
                 record_success(status, source_key(src), newest.get(source_key(src)))
             print(f"  {len(entries):3d} items  {url}")
 
-    # The health of each feed, and when each type was last tried, are kept even when the run
-    # is aborted below: a site that refused us is then asked again after its usual interval,
-    # not at once.
+    # Never replace a good snapshot with the result of a mostly-failed run. The news and Reddit
+    # feeds' health, and when those two were tried, are kept even then: a site that refused us
+    # is asked again after its usual interval, not at once. The extras' results are thrown away
+    # with the run, so their status and clocks stay as they were and they are fetched again.
+    aborting = bool(core_jobs) and (not items or core_failures > len(core_jobs) // 2)
+    if aborting:
+        core_keys = {source_key(src) for job in core_jobs for src in job["sources"]}
+        status = {key: value for key, value in status.items() if key in core_keys}
+        status.update({key: value for key, value in previous_status.items() if key not in core_keys and key in known_keys})
+        fetched_types &= CORE_TYPES
     save_json_if_changed(STATUS_PATH, status, previous_status)
     polls = {kind: when for kind, when in previous_polls.items() if kind in SOURCE_TYPES}
     polls.update({kind: now_text for kind in fetched_types})
     save_json_if_changed(POLL_STATE_PATH, polls, previous_polls)
-    # Never replace a good snapshot with the result of a mostly-failed run.
-    if core_jobs and (not items or core_failures > len(core_jobs) // 2):
+    if aborting:
         raise SystemExit(
             f"Aborting: {core_failures}/{len(core_jobs)} news/Reddit feeds failed and {len(items)} items were "
             "collected; keeping the previous snapshot."
@@ -1436,6 +1457,12 @@ def run_scraper():
     if merged_items == previous:
         print("No new or changed items; leaving snapshot untouched.")
         return
+    # Items only ageing out is no news: they go with the next write, rather than each round
+    # rewriting (and committing, and republishing) the whole snapshot to drop a few.
+    before = {item_key(i): i for i in previous}
+    if all(before.get(item_key(i)) == i for i in merged_items) and len(merged_items) < len(previous):
+        print("Only old items aged out; they go with the next new item.")
+        return
 
     matched = sum(1 for i in items if i.get("matched_game"))
     from_body = sum(1 for i in items if i.get("matched_in") == "body")
@@ -1444,7 +1471,7 @@ def run_scraper():
         "total_tracked_feeds": sum(1 for s in config["sources"] if s["enabled"]),
         "items": merged_items,
     }
-    OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    write_whole(OUTPUT_PATH, json.dumps(output, indent=2, ensure_ascii=False) + "\n")
     print(f"Saved {len(merged_items)} items ({len(items)} fetched this run, {matched} matched a PS2 game "
           f"({from_body} from body text), {core_failures} news/Reddit and {extra_failures} other "
           f"feed failures, {skipped} skipped) to {OUTPUT_PATH}")

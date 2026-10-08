@@ -446,6 +446,49 @@ fuzzed the history reader with 20,000 sets of junk rows.
 Left as it is: a game with only a US price comes after the cheapest UK-priced game, however
 dear, because dollars and pounds are never compared; the guide and the list's own line say so.
 
+## 2026-10-08: the scraper keeps running; Reddit by newest posts
+
+How the always-on loop, the per-type clocks and the Reddit change were checked. No browser was
+used (rule 11). The sites are unreachable from the development machine, so everything live was
+measured by *Live checks* from GitHub's servers and read from its notices.
+
+| Check | Result |
+|---|---|
+| What changed | `scrape_loop.py` and `tests/test_scrape_loop.py` (new); `scraper.py` (clocks, Reddit requests, budget clock, abort bookkeeping, ceiling, whole-file writes, cached title index); `.github/workflows/scraper.yml`, `live-checks.yml`; the clocks in `feeds.json`; the schedule menu and run-now request in `index.html`; `tools/`; the guide and docs. `ebay.yml` only in a comment |
+| How often GitHub ran the old schedule | 24 scheduled runs between 2026-10-02 23:48 and 2026-10-08 07:27 UTC, about 130 hours: one every 5½ hours |
+| Reddit, live from GitHub | All 10 new requests answered with 100 posts. The busiest (r/pcmasterrace, r/NintendoSwitch, r/PlayStation) had about 11 new posts an hour and reached back 8.7 hours; the others 21 to 811 hours. About 29 new posts an hour in all |
+| News, live from GitHub | `regression_check.py --types news`: the old and new scraper give identical snapshots from the same live feeds. Reddit's comparison reports "fetch plans differ" (3 requests before, 10 now), which is the change |
+| The loop, offline | On a fake clock for a whole run: 4chan every 14 minutes, news every 28–30, podcasts once; rounds at least 2 minutes apart, 15 after a failure; the eBay job hourly; no round starts without 45 minutes left; the successor at the end, after an error too, never after a cancel, never from another branch |
+| Offline tests | 261 Python tests (221 before this change), 32 dashboard checks |
+| Do the checks bite | Two sets of one-line breakages: 32 of mine and the reviewer's 65 (58 of them still apply to the final code): all noticed |
+| Not checked | A real run of the loop on GitHub: it starts when this is merged. The first hours on `main` are the test, and the Actions page shows each round's lines |
+
+### Independent review
+
+Two rounds by one reviewer with fresh context and no network, working in a copy, told to report
+only findings backed by a concrete failure. It ran the real scraper on a fake clock to time
+rounds, and a real local git remote to test pushing.
+
+| Finding | Resolution |
+|---|---|
+| Reddit's ten waits used up the 10-minute budget of the extras: in a full round 23 of 114 YouTube feeds and no podcasts were read | The budget starts with the first extra |
+| After a 429 two Reddit requests went out a second apart | The gap counts from the end of the request before |
+| A Reddit outage aborted every round and retried Reddit about three times an hour | The round still records news and Reddit as tried, so they wait their interval; and once Reddit refuses after waiting, the round asks it no more |
+| About eight commits an hour, close to GitHub Pages' ten builds | Bookkeeping alone is committed hourly; the snapshot is not rewritten only for items ageing out |
+| No time limit on a round; a run could pass the job's limit; a crash started no successor | 40-minute round limit, 45 minutes reserved, hand-over after an error, not after a cancel |
+| A run on another branch could take over the chain | One loop per branch; only `main` starts the eBay job and a successor |
+| Reddit's newest posts will bring the snapshot near its 12,000 ceiling | Measured (about 700 posts a day); past the ceiling the oldest items naming no game go first; documented |
+| An aborted round marked the extras as fetched although their items were thrown away | Only news and Reddit are marked on an abort |
+| A commit whose push failed was dropped at the hand-over | Unpushed commits go up with the next save |
+| A round stopped while writing could leave a cut-off snapshot | Files are written whole |
+| A full round with several 429s could run past the round's time limit and repeat | 40-minute limit, and Reddit stops after a refusal |
+| Docs: the 15-minute limit, comments, "four commits an hour", "an hourly backup starts one" | Corrected |
+| Twelve, then seven, real breakages went unnoticed by the tests | Each has a test |
+
+Left as they are: a scheduled run cancelled in the queue still starts an eBay run (harmless;
+the eBay job only asks what is due); a type whose every source is a YouTube link that never
+resolves is due every round (none exist).
+
 ## Re-running the checks
 
 ```sh

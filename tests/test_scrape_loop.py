@@ -125,7 +125,7 @@ class LoopTests(unittest.TestCase):
         self.assertEqual(len(podcasts), 1, "every six hours: once in this run")
         last = self.rounds[-1][0]
         self.assertLessEqual(last, START + timedelta(minutes=scrape_loop.LOOP_MINUTES) - scrape_loop.ROUND_RESERVE)
-        self.assertGreater(last, START + timedelta(minutes=300))
+        self.assertGreater(last, START + timedelta(minutes=scrape_loop.LOOP_MINUTES) - scrape_loop.ROUND_RESERVE - timedelta(minutes=15))
 
     def test_rounds_keep_a_gap_and_the_eBay_job_is_asked_for_once_an_hour(self):
         self.run_loop()
@@ -149,7 +149,7 @@ class LoopTests(unittest.TestCase):
     def test_the_last_round_is_not_followed_by_a_pointless_wait(self):
         self.run_loop()
         last_round_end = self.rounds[-1][0] + timedelta(minutes=self.round_minutes)
-        self.assertLess(self.started[-1][0] - last_round_end, timedelta(seconds=scrape_loop.MIN_GAP))
+        self.assertLessEqual(self.started[-1][0] - last_round_end, timedelta(seconds=scrape_loop.MIN_GAP))
 
     def test_after_an_error_the_chain_still_goes_on_but_not_after_a_cancel(self):
         def broken(*args, **kwargs):
@@ -201,10 +201,27 @@ class LoopTests(unittest.TestCase):
 
     def test_a_long_wait_is_taken_in_quarter_hours_so_a_saved_feeds_json_is_seen(self):
         self.config = config(kinds=["podcast"])
+        three_hours_ago = (START - timedelta(hours=3)).strftime(scraper.TIMESTAMP_FORMAT)
+        self.polls_path.write_text(json.dumps({"podcast": three_hours_ago}), encoding="utf-8")
+        self.run_loop()
+        self.assertEqual([self.at(when) for when, _, _ in self.rounds], [162.0], "six hours less the slack after the last fetch")
+        self.assertTrue(self.slept and max(self.slept) <= scrape_loop.MAX_WAIT, max(self.slept))
+
+    def test_nothing_due_before_the_end_means_handing_over_at_once(self):
+        self.config = config(kinds=["podcast"])
         self.polls_path.write_text(json.dumps({"podcast": START.strftime(scraper.TIMESTAMP_FORMAT)}), encoding="utf-8")
         self.run_loop()
-        self.assertTrue(self.slept and max(self.slept) <= scrape_loop.MAX_WAIT, max(self.slept))
-        self.assertEqual(self.rounds, [], "due after this run's last round may start: the successor fetches it")
+        self.assertEqual((self.rounds, self.slept), ([], []))
+        self.assertEqual(self.started, [(START, scrape_loop.SCRAPER_WORKFLOW, {"mode": "continue"})])
+
+    def test_no_round_starts_without_its_reserve(self):
+        self.config = config(kinds=["podcast"])
+        due_late = START + timedelta(minutes=scrape_loop.LOOP_MINUTES) - scrape_loop.ROUND_RESERVE + timedelta(minutes=1)
+        last = due_late + timedelta(minutes=18) - timedelta(hours=6)
+        self.polls_path.write_text(json.dumps({"podcast": last.strftime(scraper.TIMESTAMP_FORMAT)}), encoding="utf-8")
+        with mock.patch.object(scrape_loop, "ROUND_RESERVE", scrape_loop.ROUND_RESERVE):
+            self.run_loop()
+        self.assertEqual(self.rounds, [], "due a minute too late for this run: the successor fetches it")
 
     def test_with_every_source_switched_off_nothing_runs(self):
         self.config = config(enabled=False)
@@ -225,6 +242,11 @@ class StartTests(unittest.TestCase):
                 mock.patch.object(scrape_loop, "say"):
             self.assertFalse(scrape_loop.start("ebay.yml"))
         run.assert_not_called()
+
+    def test_a_missing_gh_is_reported_not_raised(self):
+        with mock.patch.dict(os.environ, {"GH_TOKEN": "t"}), mock.patch.object(scrape_loop, "say"), \
+                mock.patch.object(scrape_loop.subprocess, "run", side_effect=FileNotFoundError("gh")):
+            self.assertFalse(scrape_loop.start("scraper.yml", mode="continue"))
 
     def test_the_successor_is_asked_for_on_this_branch_with_its_mode(self):
         done = mock.Mock(returncode=0, stdout="", stderr="")
@@ -306,8 +328,9 @@ class GitTests(unittest.TestCase):
             clock[0] += timedelta(minutes=15)
             self.calls.clear()
             self.assertFalse(scrape_loop.save())
-            self.assertEqual(self.commands(), ["add data/", "diff --staged --name-only", "reset --quiet"],
-                             "left in the working tree for the next commit")
+            self.assertEqual(self.commands(), ["add data/", "diff --staged --name-only", "reset --quiet",
+                                               "rev-list --count origin/main..HEAD"],
+                             "left in the working tree for the next commit; nothing waiting to go up")
             self.assertTrue(scrape_loop.save(force=True), "the hand-over takes it along")
             clock[0] += timedelta(minutes=59)
             self.assertFalse(scrape_loop.save())
@@ -315,6 +338,16 @@ class GitTests(unittest.TestCase):
             self.assertTrue(scrape_loop.save())
         self.answers["diff"] = (0, "")
         self.assertFalse(scrape_loop.save())
+
+    def test_a_commit_a_push_failed_to_deliver_goes_up_with_the_next_save(self):
+        self.answers["diff"] = (0, "")
+        self.answers["rev-list"] = (0, "1\n")
+        self.assertTrue(scrape_loop.save(force=True))
+        self.assertEqual(self.commands(), ["add data/", "diff --staged --name-only", "rev-list --count origin/main..HEAD",
+                                           "pull --rebase --quiet origin main", "push --quiet origin HEAD:main"])
+
+    def test_only_the_bookkeeping_files_wait(self):
+        self.assertEqual(scrape_loop.BOOKKEEPING, {"data/poll_state.json", "data/feed_status.json"})
 
     def test_branch_is_the_one_the_run_is_on(self):
         with mock.patch.dict(os.environ, {"GITHUB_REF_NAME": "test"}):
@@ -326,10 +359,13 @@ class GitTests(unittest.TestCase):
 class ToolTests(unittest.TestCase):
     def test_the_tools_space_reddit_requests_and_never_touch_the_repositorys_data(self):
         tryer = (ROOT / "tools" / "try_sources.py").read_text(encoding="utf-8")
-        self.assertIn("time.sleep(max(0.0, scraper.REDDIT_REQUEST_GAP - (time.monotonic() - last_reddit)))", tryer)
+        self.assertIn('if job["type"] == "reddit":  # about one unauthenticated request a minute\n'
+                      '                        if last_reddit is not None:\n'
+                      '                            time.sleep(max(0.0, scraper.REDDIT_REQUEST_GAP - (time.monotonic() - last_reddit)))', tryer)
         check = (ROOT / "tools" / "regression_check.py").read_text(encoding="utf-8")
         self.assertIn('for name in ("STATUS_PATH", "YOUTUBE_IDS_PATH", "POLL_STATE_PATH"):  # never the repository\'s data/', check)
         self.assertIn("REDDIT_SPACING = 65", check)
+        self.assertIn('    config.pop("poll_every_hours", None)', check, "an older reference must accept the copied feeds.json")
 
 
 class WorkflowTests(unittest.TestCase):

@@ -771,7 +771,7 @@ class RunScraperTests(unittest.TestCase):
             clock[0] += 700 if "youtube.com" in url else 1   # a YouTube feed that takes over ten minutes
             return self.fake_fetch(session, url, retry_rate_limit)
 
-        with mock.patch.object(scraper, "REDDIT_REQUEST_GAP", 400), mock.patch.object(scraper, "BOARD_REQUEST_GAP", 0), \
+        with mock.patch.object(scraper, "REDDIT_REQUEST_GAP", 700), mock.patch.object(scraper, "BOARD_REQUEST_GAP", 0), \
                 mock.patch.object(scraper, "FETCH_TIME_BUDGET", 600), \
                 mock.patch.object(scraper, "fetch_feed", side_effect=fetch), \
                 mock.patch.object(scraper.time, "monotonic", side_effect=lambda: clock[0]), \
@@ -779,7 +779,7 @@ class RunScraperTests(unittest.TestCase):
                 mock.patch.dict(os.environ, {"FULL_RUN": ""}):
             self.run_scraper()
         fetched = [url for url, _ in self.fetched]
-        self.assertTrue(any("youtube.com" in url for url in fetched), "400 seconds of Reddit waits do not count against the extras")
+        self.assertTrue(any("youtube.com" in url for url in fetched), "700 seconds of Reddit waits do not count against the extras")
         self.assertNotIn(self.POD_URL, fetched, "the podcast came after the budget was used up")
         polls = json.loads(scraper.POLL_STATE_PATH.read_text(encoding="utf-8"))
         self.assertIn("youtube", polls)
@@ -901,11 +901,52 @@ class RunScraperTests(unittest.TestCase):
         with mock.patch("builtins.print"), self.assertRaises(SystemExit):
             scraper.run_scraper()
         self.assertFalse(scraper.OUTPUT_PATH.exists())
-        # What failed, and when each type was tried, are kept: the sites that refused us are asked
-        # again after their usual interval, not straight away.
+        # What failed among news and Reddit, and when they were tried, are kept: the sites that
+        # refused us are asked again after their usual interval, not straight away. The extras'
+        # results went with the run, so they keep their old status and stay due.
         status = json.loads(scraper.STATUS_PATH.read_text(encoding="utf-8"))
         self.assertEqual(status["reddit:ps2"]["ok"], False)
-        self.assertIn("reddit", json.loads(scraper.POLL_STATE_PATH.read_text(encoding="utf-8")))
+        self.assertFalse([key for key in status if key.startswith(("youtube", "4chan")) or key in (self.POD_URL, self.FORUM_URL)])
+        polls = json.loads(scraper.POLL_STATE_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(set(polls), {"news", "reddit"})
+
+    def test_after_reddit_refuses_even_after_waiting_it_is_asked_no_more_this_run(self):
+        refused = requests.Response()
+        refused.status_code = 429
+        first = next(url for url in self.fixtures if "reddit.com" in url)
+        self.failures[first] = requests.HTTPError("429 Client Error", response=refused)
+        scraper.FEEDS_PATH.write_text(json.dumps(self.config), encoding="utf-8")
+        with mock.patch("builtins.print"):
+            try:
+                scraper.run_scraper()
+            except SystemExit:
+                pass
+        reddit = [url for url, _ in self.fetched if "reddit.com" in url]
+        self.assertEqual(reddit, [first], "the second Reddit request is not sent")
+
+    def test_items_only_ageing_out_do_not_rewrite_the_snapshot(self):
+        output, _ = self.run_scraper()
+        old = {**output["items"][0], "link": "https://news.example/very-old", "headline": "Very old",
+               "timestamp": (datetime.now(timezone.utc) - timedelta(days=15)).strftime(scraper.TIMESTAMP_FORMAT)}
+        scraper.OUTPUT_PATH.write_text(json.dumps({**output, "items": output["items"] + [old]}), encoding="utf-8")
+        before = scraper.OUTPUT_PATH.read_text(encoding="utf-8")
+        self.run_scraper()
+        self.assertEqual(scraper.OUTPUT_PATH.read_text(encoding="utf-8"), before, "nothing new: the old item waits for the next write")
+        self.fixtures[self.NEWS_URL] = rss("Example News", [("Something new", "https://news.example/fresh", None, NOW)])
+        output, _ = self.run_scraper()
+        headlines = [item["headline"] for item in output["items"]]
+        self.assertIn("Something new", headlines)
+        self.assertNotIn("Very old", headlines)
+
+    def test_files_are_written_whole(self):
+        scraper.DATA_DIR.mkdir(parents=True, exist_ok=True)
+        target = scraper.DATA_DIR / "whole.json"
+        target.write_text("old", encoding="utf-8")
+        with mock.patch.object(scraper.os, "replace", side_effect=OSError("stopped here")), self.assertRaises(OSError):
+            scraper.write_whole(target, "new")
+        self.assertEqual(target.read_text(encoding="utf-8"), "old", "stopped part-way: the old file is still whole")
+        scraper.write_whole(target, "new")
+        self.assertEqual(target.read_text(encoding="utf-8"), "new")
 
     def test_a_host_that_keeps_failing_is_skipped(self):
         channels = [youtube(channel_id, name=f"Channel {i}") for i, channel_id in enumerate((CH1, CH2, CH3, CH4))]

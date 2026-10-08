@@ -39,6 +39,9 @@
   refused us is asked again after its usual interval, not straight away.
 - Past the 12,000-item ceiling, the oldest items that name no game go first.
 - Rounds after a loop's first reuse the PS2 title index instead of downloading it again.
+- Once Reddit still says "too many requests" after waiting, the rest of that round's Reddit
+  requests are not sent. The snapshot is no longer rewritten only because old items aged out.
+  Data files are written whole, so a round stopped at its time limit leaves nothing cut off.
 
 **Dashboard, guide**
 - The schedule in Sources & Weights is a menu from 15 minutes to 24 hours. The guide describes
@@ -47,7 +50,7 @@
 **Tools and checks**
 - `regression_check.py --types news|reddit` (news must stay identical; it does), never writes
   the repository's `data/`. *Live checks* also tries Reddit and reports how far back each
-  request reaches. 253 Python tests (was 221), with `tests/test_scrape_loop.py` new.
+  request reaches. 261 Python tests (was 221), with `tests/test_scrape_loop.py` new.
 
 ### Behaviour changes to be aware of
 

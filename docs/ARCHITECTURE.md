@@ -76,7 +76,9 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
    before and do not count). A type whose feeds were all skipped is not marked as fetched, so it
    is due again in the next round. Together these keep a platform outage from making a round run
    on and on. Reddit requests are spaced a minute apart, counted from the end of the previous
-   one, so a wait for a 429 is never followed by a request straight away. Boards are asked one at a time, at least 1.1 seconds apart, and each
+   one, so a wait for a 429 is never followed by a request straight away; and once Reddit still
+   answers 429 after the wait, the rest of that round's Reddit requests are not sent (they
+   count as failed). Boards are asked one at a time, at least 1.1 seconds apart, and each
    request hands back the date the board's server gave last time (`If-Modified-Since`), so a
    board nobody has posted on since answers "not modified" and is not sent again.
 6. **Analyse each entry** (up to 50 per feed; YouTube and podcast entries are sorted newest first
@@ -95,9 +97,10 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
    `{"ok": true, "latest": "<newest item>"}` or
    `{"ok": false, "error": "HTTP 404", "failing_since": "…", "latest": "…"}`.
 8. **Abort rule.** If more than half of the due news/Reddit feeds failed, or nothing was
-   collected, the run exits non-zero and leaves the snapshot alone. It still writes the feeds'
-   health and when each type was tried, so a site that refused us is asked again after its
-   usual interval, not in the next round.
+   collected, the run exits non-zero and leaves the snapshot alone. It still writes the news and
+   Reddit feeds' health and when those two were tried, so a site that refused us is asked again
+   after its usual interval, not in the next round. The extras' results go with the aborted run,
+   so their health and clocks are left as they were and they are fetched again next round.
 9. **Merge and save.** New items replace the same link in the previous snapshot, items older than
    14 days drop out, and the files are only rewritten when something changed. A ceiling of
    12,000 items (`MAX_ITEMS`) guards the file's size. Reading Reddit's newest posts brings about
@@ -454,16 +457,18 @@ on that branch and starts a fresh one whose first round fetches everything (`FUL
 hourly schedule and the successor wait for the running loop, so there is only ever one, and
 only a loop on `main` starts the eBay job and a successor. If the chain does break (a run that
 hit the job's time limit), the hourly schedule starts a loop again, but it fires late, so that
-can take a few hours. A round may take `ROUND_TIMEOUT` (25 minutes) before it is stopped; the
-last one starts with at least `ROUND_RESERVE` (20 minutes) to spare, inside the job's limit
-of 355 minutes.
+can take a few hours. A round may take `ROUND_TIMEOUT` (40 minutes) before it is stopped; the
+last one starts with at least `ROUND_RESERVE` (45 minutes) to spare, inside the job's limit
+of 355 minutes. Files are written whole (`write_whole()`: a temporary file, then a rename), so
+a round stopped part-way never leaves a cut-off file to be committed.
 
 Commits: every round rewrites `poll_state.json`, and a busy board's `Last-Modified` date in
 `feed_status.json` changes almost every time it is read. When those two are all that changed,
-they are committed at most once an hour (and at the hand-over); anything else, new items above
-all, is committed at once. News every half hour brings new items nearly every time, so expect
-two to four commits an hour from the loop, plus the eBay job's: under GitHub Pages' soft limit
-of ten builds an hour. On a public repository the runner time is free. Only the first round of
+they are committed at most once an hour (and at the hand-over), and a commit that a push could
+not deliver goes up with the next one. The snapshot is rewritten only for new or changed items:
+items that merely aged past 14 days go with the next write. New items are committed at once;
+news every half hour brings some nearly every time, so expect three to five commits an hour
+from the loop, plus the eBay job's: under GitHub Pages' soft limit of ten builds an hour. On a public repository the runner time is free. Only the first round of
 a loop downloads the PS2 title index; later rounds use the copy it saved
 (`TITLES_FROM_CACHE`).
 
