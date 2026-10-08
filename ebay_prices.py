@@ -164,7 +164,7 @@ ONE_WORD_TITLES = frozenset("""
     jumanji kessen killzone kinetica kuon lemmings madagascar mafia manhunt maximo mercenaries
     metropolismania monopoly mummy nanobreaker okami psychonauts psyvariar punisher ratatouille
     rez robocop rocky scaler scarface shinobi siren skygunner splashdown spyhunter ssx stuntman
-    suffering syberia timesplitters trapt vexx xiii yakuza zathura zoocube
+    suffering syberia tengai timesplitters trapt vexx xiii yakuza zathura zoocube
 """.split())
 # Words that turn a game into an edition of the same game, not into another game.
 EDITION_WORDS = {
@@ -685,8 +685,16 @@ def load_rare(path=None):
             search = row.get("search", title)
             phrase, queries = search_terms(search) if isinstance(search, str) else ("", [])
             require, exclude = phrases(row.get("require")), phrases(row.get("exclude"))
-            if require is None or exclude is None:
-                problems.append(f'{list_name} "{title}": "require" and "exclude" must be lists of words')
+            allow = row.get("allow") or []
+            if require is None or exclude is None or not isinstance(allow, list) \
+                    or not all(isinstance(phrase, str) and phrase in JUNK_PHRASES for phrase in allow):
+                problems.append(f'{list_name} "{title}": "require" and "exclude" must be lists of words, '
+                                '"allow" a list of the junk phrases an edition comes with')
+                continue
+            # One word that is also an ordinary word would count every listing that uses it
+            # ("rare obscure horror game"), as for the games the feed names.
+            if " " not in phrase and phrase not in ONE_WORD_TITLES and not require:
+                problems.append(f'{list_name} "{title}": not priced, "{phrase}" is an ordinary word')
                 continue
             # The words a listing must also contain go into the search, so that eBay finds them.
             queries = [" ".join([query, *[word for word in " ".join(require).split() if word not in query.split()]])
@@ -696,7 +704,7 @@ def load_rare(path=None):
                 continue
             other = row.get("other_title")
             entries.append({"list": list_name, "title": title.strip(), "search": phrase, "queries": queries,
-                            "require": require, "exclude": exclude,
+                            "require": require, "exclude": exclude, "allow": sorted(allow),
                             "other_title": other.strip() if isinstance(other, str) and key_of(other) else None})
     return entries, problems
 
@@ -719,11 +727,12 @@ def add_rare_games(games, rare, catalogue):
         if not entry["require"]:   # an edition is never the same thing as the game the feed tracks
             # Not by its name in the other region: the tracked game is looked for under that name
             # here ("Tokyo Xtreme Racer: Drift 2" on eBay UK, where it was sold as Kaido Racer 2).
-            game = known.get((market_id, entry["search"])) or known.get(("name", search_terms(entry["title"])[0]))
+            name = search_terms(entry["title"])[0]
+            game = known.get((market_id, entry["search"])) or known.get((market_id, name)) or known.get(("name", name))
         if game is None:
             # The same game on both lists is one game, looked up on both sites, leaving out what
             # either list leaves out.
-            identity = (entry["search"], tuple(entry["require"]))
+            identity = (entry["search"], tuple(entry["require"]), tuple(entry["allow"]))
             game = added.get(identity)
             if game is None:
                 key = key_of(entry["title"])
@@ -736,7 +745,7 @@ def add_rare_games(games, rare, catalogue):
                     other for other in other_games(entry["title"], entry["search"], catalogue)
                     if {word for word in other.split() if len(word) > 1} - own]
                 game = {"title": entry["title"], "key": key, "search": entry["search"], "queries": entry["queries"],
-                        "exclude": entry["exclude"], "require": entry["require"], "pinned": False,
+                        "exclude": entry["exclude"], "require": entry["require"], "allow": entry["allow"], "pinned": False,
                         "siblings": siblings, "level": "rare", "mentions": 0, "surging_until": None, "sites": []}
                 added[identity] = game
                 keys.add(key)
@@ -970,7 +979,8 @@ def reject_reason(item, game, market, keyword_search):
         return "other_game"
     if has_phrase(text, OTHER_PLATFORMS):
         return "other_platform"
-    if has_phrase(text, JUNK_PHRASES) or has_phrase(text, game["exclude"]) \
+    junk = [phrase for phrase in JUNK_PHRASES if phrase not in (game.get("allow") or ())]
+    if has_phrase(text, junk) or has_phrase(text, game["exclude"]) \
             or is_the_soundtrack(item.get("title"), name_text, game["search"]):
         return "not_a_copy"
     if has_phrase(text, IMPORT_PHRASES) or has_phrase(text, market["foreign"]):

@@ -1116,10 +1116,15 @@
                 }
             } catch { /* the date is only for the summary */ }
             const currency = currencyOf(label);
+            // The price job names every entry it prices; one it leaves out (a name that is an
+            // everyday word) says so rather than waiting for a check that never comes.
+            const listed = own(priceData?.rare, region) && priceData.rare[region] && typeof priceData.rare[region] === 'object'
+                ? priceData.rare[region] : null;
             let priced = 0;
             list.innerHTML = entries.map((entry, i) => {
                 const prices = rarePrices(entry, region);
                 const site = prices?.entry?.[label];
+                const unpriced = !prices && listed && !own(listed, entry.title);
                 if (site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) && site.copies > 0
                         && typeof site.median === 'number') priced++;
                 const value = entry.value_usd && typeof entry.value_usd === 'object' ? entry.value_usd.cib : null;
@@ -1139,7 +1144,9 @@
                     </div>
                     ${typeof entry.other_title === 'string' && entry.other_title.trim()
                         ? `<p class="rare-aka">${esc(RARE_OTHER[region])}: ${esc(entry.other_title)}</p>` : ''}
-                    <div class="ebay-figures">${priceSiteHtml(label, site, currency, now, locale, LEVELS[prices?.level || 'rare'].stale)}</div>
+                    <div class="ebay-figures">${unpriced
+                        ? `<span class="ebay-site is-quiet"><span class="ebay-flag">${esc(label)}</span><span class="ebay-note" title="Not looked up on eBay: its name is an everyday word, so a search would count other games' listings.">not priced</span></span>`
+                        : priceSiteHtml(label, site, currency, now, locale, LEVELS[prices?.level || 'rare'].stale)}</div>
                     <p class="rare-note">${typeof entry.note === 'string' && entry.note ? `${esc(entry.note)} ` : ''}${sources.length
                         ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>
                 </li>`;

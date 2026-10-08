@@ -12,10 +12,16 @@
   Rule of Rose and Haunting Ground. Kept in the list but flagged: Cart Kings, Hanuman and Ra One
   (Indian PAL releases). White Van Racer is left out: its current value is unclear.
 - `ebay_prices.py`: prices each list once a day on its own site, PAL on eBay UK and US on eBay
-  US, after every other due lookup. A game the feed already tracks is reused (42 of the 200
-  entries today); about 140 games are added with the new level `rare`. Editions need their own
-  words in the listing (`require`). A broken file is reported and never stops the run.
+  US, after every other due lookup. A game the feed already tracks is reused when it is searched
+  there under the entry's words or name (43 entries today); 133 games are added with the new
+  level `rare`, about 150 lookups a day. Editions need their own words in the listing
+  (`require`) and may come with an art book or a plush (`allow`). Five entries whose name is
+  one ordinary word (Obscure on both lists, Buccaneer, Nightshade, Hanuman) are not priced and
+  show "not priced". A broken file is reported and never stops the run.
   `latest.json` gains `rare` (which game holds each entry's figures) and `sites`.
+- Independent review: one-word names counted other games' listings ("rare obscure horror
+  game"), two entries were looked up a second time under shorter words, editions with a plush
+  or art book were all left out, and *FIFA Soccer 13* never matched its US title. All fixed.
 - Dashboard: a *Rarest* tab (`#rare`) with a PAL/US switch, 25 rows folded, guide value, flags,
   the eBay median on the list's site with its weekly bracket, and the sources. On the eBay
   prices page those games carry a *rarest* tag and show only their own site.

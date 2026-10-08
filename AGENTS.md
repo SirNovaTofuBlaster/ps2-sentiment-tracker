@@ -273,7 +273,10 @@ Before you call something done, prove it; don't assume it.
     machine: the request format follows eBay's documentation. When a run looks wrong, start
     it with the search check ticked and read the counts it prints.
   - The Rarest page's games (`rare_games.json`) are priced once a day on their own list's site
-    only; a game the feed already tracks is reused, never looked up twice. Its figures are
+    only. A game the feed already tracks is reused when it is searched there under the entry's
+    words or its name; otherwise the entry is looked up on its own (King's Field IV is, because
+    the tracked game's words do not match how PAL sellers name it). An entry whose search is one
+    ordinary word is not priced at all (Obscure, Buccaneer), like such games in the feed. Its figures are
     asking prices of rare games, so "none listed" and medians of one copy are common. The list
     order is a dated research snapshot (PriceCharting complete-copy values of 2026-10-08), not
     something any job updates; RFGeneration and consolevariations.com ask robots to stay out

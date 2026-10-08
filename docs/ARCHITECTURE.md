@@ -370,19 +370,26 @@ title.
 hundred, `PAL` and `US`, with each entry's sources (see *The rarest games* below).
 `load_rare()` reads it and `add_rare_games()` adds its games to the plan after the regional
 names are applied. An entry is the game the feed already tracks when that game is searched
-under the same words on the list's site, or has the same name; it is then priced as before and
-its figures serve the list. Never by the other region's name: the feed's *Tokyo Xtreme Racer:
+on the list's site under the entry's words or under the entry's name ("Project Zero 2: Crimson
+Butterfly" is the feed's *Fatal Frame 2*), or has the same name; it is then priced as before and
+its figures serve the list. Otherwise the entry is looked up on its own, even when it is the
+same game under other words: the tracked *King's Field IV: The Ancient City* is searched under
+that full name, which PAL sellers of *King's Field IV* do not write. Never by the other region's name: the feed's *Tokyo Xtreme Racer:
 Drift 2* is searched on eBay UK under that name, and the PAL list's *Kaido Racer 2* is not.
 Every other entry becomes a game of level `rare`: checked once a day (`CHECK_EVERY_HOURS`),
 only on its list's site (`RARE_SITES`: PAL on eBay UK, US on eBay US, recorded as `sites` in
 `latest.json`), after every other due lookup. A game on both lists is one game on both sites.
 An entry can name words a listing must also contain (`require`, for an edition such as
 *Scarface ... Collector's Edition*: searched as "scarface collectors", never the tracked
-*Scarface*) and words that leave a listing out (`exclude`, "fes" for *Persona 3*). Library names
+*Scarface*), words that leave a listing out (`exclude`, "fes" for *Persona 3*), and junk phrases
+an edition comes with (`allow`: "art book" for a limited edition, "plush" for the Raiho
+Edition), which then do not mark a listing as "not a copy". An entry searched under one word
+that is not in `ONE_WORD_TITLES` and has no `require` is not priced (Obscure, Buccaneer,
+Nightshade, Hanuman), as for the feed's games; the page shows it as "not priced". Library names
 of the same game ("R.A.D. Robot Alchemic Drive") are not taken for other games. `latest.json`
 gains `rare`: for each list, which title in `games` holds each entry's figures. A file or an
-entry that cannot be used is named in the log and left out; it never stops the run. About 140
-games are priced for the lists alone, under 200 lookups a day.
+entry that cannot be used is named in the log and left out; it never stops the run. 133
+games are priced for the lists alone: about 150 lookups a day.
 
 **What is kept.** Under `data/prices/`, numbers only: `latest.json` (per game and site: copies,
 lowest, median, typical postage, when checked, and `week`, the median of a week before; the

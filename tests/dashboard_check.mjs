@@ -1703,7 +1703,13 @@ await check('the Rarest page: two lists of a hundred, each with its own site\'s 
     assert.match(rowOf(pal, 'Project Zero 2: Crimson Butterfly'), /£55\.00/, 'the price job says which game holds the figures');
     assert.match(rowOf(pal, 'Project Zero 2: Crimson Butterfly'), /US name: Fatal Frame II: Crimson Butterfly/);
     assert.match(rowOf(pal, 'Kuon'), /£300/, 'without a word from the price job, the game of the same name');
-    assert.match(rowOf(pal, 'Gun Club'), /not checked yet/);
+    assert.match(rowOf(pal, 'Gun Club'), /not priced/, 'the price job has the list and left this one out');
+    assert.match(rowOf(pal, 'Ocean Commander'), /not priced/);
+    const mapping = prices.rare;
+    context.__rarePrices.rare = undefined;
+    assert.match(rowOf(draw('PAL'), 'Gun Club'), /not checked yet/, 'before the price job has seen the list');
+    context.__rarePrices.rare = mapping;
+    draw('PAL');
     assert.match(rowOf(pal, 'Cart Kings'), /title="Released for India[^"]*">India<\/span>/);
     assert.equal(evalJson("document.getElementById('rareRegionPAL').getAttribute('aria-pressed')"), 'true');
     assert.match(el('rareSummary').textContent, /PriceCharting, 8 Oct 2026\). Under each game: the median asking price for a used PAL copy on eBay UK today · 100 games · 3 with copies listed$/);

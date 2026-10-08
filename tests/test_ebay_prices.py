@@ -1386,6 +1386,56 @@ class RareListTests(unittest.TestCase):
         self.assertEqual(entry["sites"], ["US", "UK"])
         self.assertEqual((entry["US"]["copies"], entry["UK"]["copies"]), (1, 1))
 
+    def test_a_one_word_name_that_is_an_ordinary_word_is_not_priced(self):
+        self.lists(pal=[{"title": "Obscure"}, {"title": "Kuon"}, {"title": "Obscure Edition", "search": "obscure", "require": ["edition"]}])
+        entries, problems = ebay_prices.load_rare(self.sandbox.root / "rare_games.json")
+        self.assertEqual([entry["title"] for entry in entries], ["Kuon", "Obscure Edition"])
+        self.assertEqual(problems, ['PAL "Obscure": not priced, "obscure" is an ordinary word'])
+        game_ = dict(game("Obscure Edition", search="obscure"), require=["edition"])
+        self.assertEqual(ebay_prices.reject_reason(listing("Kuon PS2 PAL rare obscure horror game", 300, "GBP"), game_, GB, False), "other_game")
+
+    def test_an_edition_may_come_with_an_art_book_or_a_plush(self):
+        self.lists(us=[{"rank": 1, "title": "Raiho Special Edition", "search": "king abaddon", "require": ["raiho"],
+                        "allow": ["plush", "art book"]},
+                       {"rank": 2, "title": "Wrong Thing", "allow": ["anything goes"]}])
+        entries, problems = ebay_prices.load_rare(self.sandbox.root / "rare_games.json")
+        self.assertEqual(len(problems), 1, "only junk phrases can be allowed")
+        raiho = dict(game("Raiho Special Edition", search="king abaddon"), require=["raiho"], allow=entries[0]["allow"])
+        plush = listing("Devil Summoner 2 Raidou Kuzunoha vs King Abaddon Raiho Edition w/ Plush PS2", 150)
+        self.assertIsNone(ebay_prices.reject_reason(plush, raiho, US, False))
+        self.assertEqual(ebay_prices.reject_reason(plush, dict(raiho, allow=[]), US, False), "not_a_copy")
+        self.assertEqual(ebay_prices.reject_reason(listing("King Abaddon Raiho Edition strategy guide PS2", 20), raiho, US, False),
+                         "not_a_copy", "what is not allowed still leaves a listing out")
+
+    def test_a_shorter_search_still_finds_the_tracked_game_by_its_name_on_that_site(self):
+        self.lists(pal=[{"rank": 1, "title": "Project Zero 2: Crimson Butterfly", "search": "project zero 2"}])
+        self.sandbox.write("ebay_watchlist.json", {"games": [], "never": [], "regional_names": {"UK": [{"from": "Fatal Frame", "to": "Project Zero"}]}})
+        self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["Fatal Frame 2: Crimson Butterfly"])
+        self.sandbox.feed([mention("Fatal Frame 2: Crimson Butterfly", 4, "r/ps2")])
+        code, printed, fake = self.sandbox.run()
+        queries = [call["params"]["q"] for call in fake.searches if call["headers"]["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB"]
+        self.assertEqual(queries, ["project zero 2 crimson butterfly"], "one UK lookup, not two")
+        self.assertEqual(self.sandbox.latest["rare"]["PAL"], {"Project Zero 2: Crimson Butterfly": "Fatal Frame 2: Crimson Butterfly"})
+
+    def test_an_entry_never_takes_the_place_of_a_tracked_game_with_its_title(self):
+        games = [game("Scarface")]
+        entry = {"list": "US", "title": "Scarface", "other_title": None, "search": "scarface", "queries": ["scarface collectors"],
+                 "require": ["collectors"], "exclude": [], "allow": []}
+        placed = ebay_prices.add_rare_games(games, [entry], [])
+        self.assertEqual(placed["US"], {}, "left off rather than writing over the tracked game's figures")
+        self.assertEqual([entry["title"] for entry in games], ["Scarface"])
+        self.assertNotIn("require", games[0])
+
+    def test_the_librarys_other_spelling_of_the_same_game_is_not_another_game(self):
+        self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["R.A.D. Robot Alchemic Drive", "Robot Alchemic Drive Turbo"])
+        _, catalogue = ebay_prices.load_library()
+        entry = {"list": "US", "title": "Robot Alchemic Drive", "other_title": None, "search": "robot alchemic drive",
+                 "queries": ["robot alchemic drive"], "require": [], "exclude": [], "allow": []}
+        games = []
+        ebay_prices.add_rare_games(games, [entry], catalogue)
+        self.assertEqual(games[0]["siblings"], ["robot alchemic drive turbo"])
+        self.assertIsNone(ebay_prices.reject_reason(listing("R.A.D. Robot Alchemic Drive PS2 complete", 200), games[0], US, False))
+
     def test_rare_lookups_wait_behind_the_games_the_feed_names(self):
         self.lists(pal=[{"rank": 1, "title": "Sengoku Anthology"}])
         games = [game("Silent Hill 2"), dict(game("Sengoku Anthology", level="rare"), sites=["EBAY_GB"])]
@@ -1396,7 +1446,9 @@ class RareListTests(unittest.TestCase):
     def test_the_committed_lists_are_complete_and_sourced(self):
         raw = json.loads((ROOT / "rare_games.json").read_text(encoding="utf-8"))
         entries, problems = ebay_prices.load_rare(ROOT / "rare_games.json")
-        self.assertEqual(problems, [])
+        self.assertEqual(problems, [f'{name} "{title}": not priced, "{word}" is an ordinary word' for name, title, word in (
+            ("PAL", "Buccaneer", "buccaneer"), ("PAL", "Hanuman: The Boy Warrior", "hanuman"), ("PAL", "Nightshade", "nightshade"),
+            ("PAL", "Obscure", "obscure"), ("US", "Obscure", "obscure"))])
         for name in ("PAL", "US"):
             rows = raw["lists"][name]
             self.assertEqual([row["rank"] for row in rows], list(range(1, 101)), name)
@@ -1411,7 +1463,7 @@ class RareListTests(unittest.TestCase):
                 self.assertTrue(isinstance(cib, (int, float)) and cib > 0, row["title"])
             values = [row["value_usd"]["cib"] for row in rows]
             self.assertEqual(values, sorted(values, reverse=True), f"{name} is ranked by the value it states")
-        self.assertEqual(len(entries), 200)
+        self.assertEqual(len(entries), 195)
 
 
 class RegionalNameTests(unittest.TestCase):
