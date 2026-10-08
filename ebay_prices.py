@@ -115,6 +115,8 @@ SURGE_QUIET_MENTIONS = 1     # ...for a game named at most this often in the res
 SURGE_HOLD_HOURS = 48        # once surging, a game stays surging this long after its last mention
 CHECK_EVERY_HOURS = {"surging": 0, "normal": 6, "staple": 6, "dormant": 24}   # 0 = every run
 EARLY_MINUTES = 30           # a check may come this much early, so "every 6 hours" does not drift to 7
+CHANGE_DAYS = 7              # beside each median, how it compares with the median this long before...
+CHANGE_SLACK_DAYS = 2        # ...as recorded at most this much longer before (a quiet game is checked daily)
 
 # ---- How much of eBay's allowance (5,000 searches a day) a run may use ---------------
 DAILY_SEARCHES = 4500        # stop for the day here, leaving room for runs started by hand
@@ -1096,6 +1098,52 @@ def update_records(state, games, run, now):
     return latest, rows
 
 
+def history_index(rows):
+    """{(title, site): [(time, median), ...]} from history rows, skipping any row that is not
+    in the shape this script writes."""
+    index = {}
+    for row in rows:
+        if not (isinstance(row, list) and len(row) == 6 and isinstance(row[1], str) and isinstance(row[2], str)):
+            continue
+        when = parse_stamp(row[0])
+        if when is not None:
+            index.setdefault((row[1], row[2]), []).append((when, row[5]))
+    return index
+
+
+def week_before(index, title, label, checked):
+    """The median recorded CHANGE_DAYS before a check, for the change shown beside it: the
+    latest history row of that game and site from between CHANGE_DAYS and CHANGE_DAYS +
+    CHANGE_SLACK_DAYS before. None when there is no such row, or when it found no copies."""
+    then = parse_stamp(checked)
+    if then is None:
+        return None
+    newest, oldest = then - timedelta(days=CHANGE_DAYS), then - timedelta(days=CHANGE_DAYS + CHANGE_SLACK_DAYS)
+    rows = [(when, median) for when, median in index.get((title, label), ()) if oldest <= when <= newest]
+    if not rows:
+        return None
+    when, median = max(rows, key=lambda row: row[0])
+    if isinstance(median, bool) or not isinstance(median, (int, float)) or median <= 0:
+        return None
+    return {"checked": when.strftime(STAMP_FORMAT), "median": median}
+
+
+def add_week_before(latest, history):
+    """Give every median in latest.json the median of a week before it, where there is one."""
+    index = history_index(history)
+    for title, entry in latest["games"].items():
+        for market in MARKETS.values():
+            site = entry.get(market["label"])
+            if not isinstance(site, dict):
+                continue
+            site = {key: value for key, value in site.items() if key != "week"}
+            before = week_before(index, title, market["label"], site.get("checked")) if site.get("median") else None
+            if before:
+                site["week"] = before
+            entry[market["label"]] = site
+    return latest
+
+
 def write_latest(path, latest):
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text(json.dumps(latest, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -1165,7 +1213,11 @@ def main(argv=None):
         history_path = PRICES_DIR / f"{now.strftime('%Y-%m')}.json"
         pinned, never = load_watchlist()
         state = load_state(latest_path)
-        read_own(history_path, [])    # fail now, before asking eBay, if the history cannot be added to
+        history = read_own(history_path, [])   # fail now, before asking eBay, if it cannot be added to
+        # The month before, for a week's change early in a month. Only read: a damaged one
+        # costs those changes, not the run.
+        last_month = (now.replace(day=1) - timedelta(days=1)).strftime("%Y-%m")
+        earlier = read_json(PRICES_DIR / f"{last_month}.json", [])
         mentions, ever = load_mentions()
         library, catalogue = load_library()
         games, left_out = plan_games(now, pinned, never, mentions, ever, library, catalogue, state)
@@ -1206,6 +1258,7 @@ def main(argv=None):
         return 1
 
     latest, rows = update_records(state, games, run, now)
+    add_week_before(latest, earlier + history + rows)
     try:
         append_history(history_path, rows)
     except EbayError as exc:

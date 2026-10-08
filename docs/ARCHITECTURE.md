@@ -194,10 +194,13 @@ they exist, `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.js
   last 24 hours* (`recentGames()`) lists every game named by an item published in the last
   day, with an hour's grace for a source whose clock runs ahead. "Published" is the item's
   `timestamp`: the date its source gave it, or the time the scraper first saw it when the
-  source gives none, so a new source without dates would put its backlog in the list. The
-  order is: most headlines first, so a game found only in body text (`matched_in: "body"`,
-  the source of most wrong matches) comes after every game a headline named; then all
-  mentions, then the most recent, then by name. `gamesOf()` gives the games an item names
+  source gives none, so a new source without dates would put its backlog in the list.
+  `recentGames()` orders them by most headlines first, so a game found only in body text
+  (`matched_in: "body"`, the source of most wrong matches) comes after every game a
+  headline named; then all mentions, then the most recent, then by name. The list then
+  shows them most expensive first (`byPrice()`): by the eBay UK median, then by the US
+  median for a game with no UK figure (the two currencies are never compared), then the
+  games with no price, each group keeping the order above. `gamesOf()` gives the games an item names
   (`matched_games`, or `matched_game` for older items, repeats and non-names dropped) and is
   the one definition the list, Most Mentioned Games, the table's menu, its search and its
   rows share: an item that names three games is a mention of each, as it is for
@@ -340,11 +343,18 @@ cheat disc, demo, job lot, merchandise). When eBay returns listings and none nam
 the game is `unmatched`: no figure, no history row, and a note on the dashboard.
 
 **What is kept.** Under `data/prices/`, numbers only: `latest.json` (per game and site: copies,
-lowest, median, typical postage, when checked; the game's level; the day's search count) and
+lowest, median, typical postage, when checked, and `week`, the median of a week before; the
+game's level; the day's search count) and
 `YYYY-MM.json` (a row of time, game, site, copies, lowest, median whenever the three figures
 change, and at least once a day). `latest.json` is also the job's memory: when each game was
 last checked and until when it is surging. Neither file is ever rebuilt from nothing; if one
-cannot be read the run stops before asking eBay. Listings and links go to the `--out` file,
+cannot be read the run stops before asking eBay. `week` is worked out on every run that writes
+`latest.json`, from the history: the latest row of that game and site recorded between 7 and 9
+days before the check (`CHANGE_DAYS`, `CHANGE_SLACK_DAYS`; a quiet game is checked only daily),
+and only when it found copies. Early in a month that row is in the month before, which is read
+but never written; if it cannot be read, those figures go without a `week` and the run goes
+on. The dashboard shows the change in brackets beside the median (`priceChangeHtml()`), in
+the shortened form under a game's name and on the eBay prices page. Listings and links go to the `--out` file,
 which the workflow publishes as a single replaced commit on the `ebay-data` branch.
 
 **When it gives up.** A run stops early if eBay does not answer three lookups in a row, if its

@@ -46,7 +46,7 @@ through its **Sources & Weights** panel.
 | `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index) from Wikipedia pageviews and mentions, daily |
 | `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |
 | `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words) and titles never to price |
-| `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, and the game's level. Numbers only |
+| `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, the median of a week before (`week`), and the game's level. Numbers only |
 | `data/prices/YYYY-MM.json` | The same numbers over time: a row whenever they change, and at least one a day |
 | `tests/test_ebay_prices.py` | Offline tests for `ebay_prices.py` and its workflow, including that the key never leaks |
 | `.github/workflows/ebay.yml` | Runs `ebay_prices.py` after every scraper run (and by hand), commits `data/prices/`, and publishes that run's listings to the `ebay-data` branch |

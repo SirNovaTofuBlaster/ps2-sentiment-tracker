@@ -1544,4 +1544,84 @@ await check('games first: what was named in the last day leads, and the table op
     vm.runInContext('gameFilter = null; allFeedData = []; refreshDashboard();', context);
 });
 
+await check('prices: the last day\'s games are ordered by price, and a median says how it moved in a week', () => {
+    const now = Date.parse('2026-10-14T12:00:00Z');
+    const stamp = (hoursAgo) => new Date(now - hoursAgo * 3600e3).toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+    const item = (game, hoursAgo, where = 'title') => ({ headline: `${game} news`, source: `Source ${hoursAgo}`, link: `https://e.example/${game}/${hoursAgo}`,
+        matched_game: game, matched_games: [game], matched_in: where, is_remaster_rumor: false, sentiment: 50, timestamp: stamp(hoursAgo) });
+    const site = (median, week, extra = {}) => ({ checked: '2026-10-14T10:00Z', copies: 9, lowest: median / 2, median, postage: 3,
+        ...(week === undefined ? {} : { week }), ...extra });
+    const wk = (median) => ({ checked: '2026-10-07T09:00Z', median });
+    const prices = { currencies: { US: 'USD', UK: 'GBP' }, games: {
+        'Cheap UK': { level: 'normal', mentions: 3, UK: site(5, wk(4)), US: site(500) },     // pounds decide, whatever the dollars say
+        'Dear UK': { level: 'normal', mentions: 3, UK: site(80, wk(80)) },
+        'Also Dear UK': { level: 'normal', mentions: 3, UK: site(80) },
+        'Dollars Only': { level: 'normal', mentions: 3, US: site(200, wk(250)), UK: { checked: '2026-10-14T10:00Z', unmatched: true } },
+        'Few Dollars': { level: 'normal', mentions: 3, US: site(10), UK: { checked: '2026-10-14T10:00Z', copies: 0, lowest: null, median: null, postage: null } },
+        'Shin Megami Tensei: Persona 4': { level: 'normal', mentions: 3, UK: site(73.49, wk(71.19)) },
+    } };
+    context.__p = prices;
+    vm.runInContext('setPrices(__p, { games: [{ title: "Shin Megami Tensei: Persona 4", search: "Persona 4" }] })', context);
+    // In the order recentGames() would give: by headlines, then mentions.
+    context.__items = [
+        item('Unpriced Hit', 1), item('Unpriced Hit', 2), item('Unpriced Hit', 3),
+        item('Cheap UK', 1), item('Cheap UK', 2), item('Few Dollars', 1), item('Few Dollars', 2),
+        item('Dear UK', 4), item('Dollars Only', 5), item('Also Dear UK', 6), item('Persona 4', 7),
+        item('Retro', 1, 'body'),
+    ];
+    vm.runInContext(`allFeedData = __items; visibleFeedData = __items; renderRecentGames(__items, ${now})`, context);
+    const names = evalJson('recentGameNames');
+    assert.deepEqual(names, ['Dear UK', 'Also Dear UK', 'Persona 4', 'Cheap UK', 'Dollars Only', 'Few Dollars', 'Unpriced Hit', 'Retro'],
+        'pounds first, dearest at the top (a tie keeps the usual order), then dollars where there are no pounds, then no price');
+    const rows = el('todayList').innerHTML.split('<li ').slice(1);
+    assert.deepEqual(rows.map(html => html.match(/onclick="showGameRows\((\d+)\)"[^>]*>([^<]*)</).slice(1)), names.map((name, i) => [String(i), name]));
+    assert.match(rows[0], /class="recent-game text-cyan-300 font-bold">Dear UK</, 'the dearest is the one in bold');
+    assert.match(el('todaySummary').textContent, /: 8 games\. Most expensive first, by the eBay UK median \(US where there is no UK figure\); games without a price last\.$/);
+    assert.equal(el('todayListToggle').classList.contains('hidden'), true);
+    vm.runInContext('showGameRows(0)', context);
+    assert.equal(evalJson('gameFilter'), 'Dear UK', 'a name opens the game it shows');
+    vm.runInContext('clearGameFilter()', context);
+
+    // The change beside each median, in the list and wherever else a median is shown.
+    assert.match(rows[2], /<span class="ebay-flag">UK<\/span><b>£73\.49<\/b><span class="ebay-change is-up" title="A week before \((?:7 Oct|Oct 7)\) the median was £71\.19: up £2\.30, 3\.2%\.">\(£2\.30 ▲ 3\.2%\)<\/span><\/a>/);
+    assert.match(rows[2], /title="Median asking price of 9 used copies on eBay UK, cheapest £36\.75, checked [^"]*; a week before it was £71\.19\. Opens/);
+    assert.match(rows[0], /<b>£80\.00<\/b><span class="ebay-change" title="A week before \((?:7 Oct|Oct 7)\) the median was £80\.00: the same\.">\(no change\)<\/span>/);
+    assert.match(rows[1], /<b>£80\.00<\/b><\/a>/, 'no figure from a week before: nothing in brackets');
+    assert.match(rows[3], /<b>£5\.00<\/b><span class="ebay-change is-up"[^>]*>\(£1\.00 ▲ 25%\)<\/span>/);
+    assert.match(rows[4], /<b>\$200<\/b><span class="ebay-change is-down" title="A week before \((?:7 Oct|Oct 7)\) the median was \$250: down \$50\.00, 20%\.">\(\$50\.00 ▼ 20%\)<\/span>/);
+
+    const change = (median, week, currency = 'GBP') => {
+        context.__site = { checked: '2026-10-14T10:00Z', copies: 3, median, week };
+        return vm.runInContext(`priceChangeHtml(__site, ${JSON.stringify(currency)}, 'en-GB')`, context);
+    };
+    assert.match(change(100.04, wk(100)), /is-up[^>]*>\(£0\.04 ▲ &lt;0\.1%\)</);
+    assert.match(change(99.5, wk(100)), /is-down[^>]*>\(£0\.50 ▼ 0\.5%\)</);
+    assert.match(change(30, wk(10)), /is-up[^>]*>\(£20\.00 ▲ 200%\)</);
+    assert.match(change(10.1, wk(10)), />\(£0\.10 ▲ 1\.0%\)</, 'pennies are counted as pennies');
+    for (const bad of [undefined, null, 'x', {}, { checked: '2026-10-07T09:00Z' }, { checked: 'last week', median: 10 },
+        { checked: '2026-10-07T09:00Z', median: 0 }, { checked: '2026-10-07T09:00Z', median: '10' }, { checked: '2026-10-07T09:00Z', median: -1 }]) {
+        assert.equal(change(12, bad), '', JSON.stringify(bad));
+    }
+    assert.equal(change(null, wk(10)), '', 'nothing now, nothing to compare');
+    assert.match(change(12, wk(10), '<b>'), />\(2\.00 &lt;b&gt; ▲ 20%\)</);
+    assert.doesNotMatch(change(12, wk(10), '<b>'), /<b>/, 'a currency the browser does not know is text, never markup');
+
+    // The eBay prices page: the change sits beside the median, the rest of the line as before.
+    const pageRows = showPrices(prices).split('<li ').slice(1);
+    const persona = pageRows.find(html => html.includes('Persona 4'));
+    assert.match(persona, /<span class="ebay-site"><span class="ebay-flag">UK<\/span><span class="ebay-now"><b class="ebay-median">£73\.49<\/b> <span class="ebay-change is-up"[^>]*>\(£2\.30 ▲ 3\.2%\)<\/span><\/span><span class="ebay-rest">median · from £36\.75/);
+    const plain = pageRows.find(html => html.includes('Also Dear UK'));
+    assert.match(plain, /<span class="ebay-flag">UK<\/span><b class="ebay-median">£80\.00<\/b><span class="ebay-rest">/);
+
+    // Without prices the list keeps its usual order and says nothing about prices.
+    vm.runInContext(`setPrices(null, null); renderRecentGames(__items, ${now})`, context);
+    assert.deepEqual(evalJson('recentGameNames'), ['Unpriced Hit', 'Cheap UK', 'Few Dollars', 'Dear UK', 'Dollars Only', 'Also Dear UK', 'Persona 4', 'Retro']);
+    assert.doesNotMatch(el('todaySummary').textContent, /expensive/);
+    assert.doesNotMatch(el('todayList').innerHTML, /ebay-change/);
+
+    const css = read('retro.css');
+    assert.match(css, /body \.ebay-change \{ font-size: \.72rem; font-weight: 400; color: var\(--dim\); white-space: nowrap; \}\nbody \.ebay-change\.is-up \{ color: var\(--green\); \}\nbody \.ebay-change\.is-down \{ color: var\(--red\); \}/);
+    vm.runInContext('allFeedData = []; visibleFeedData = []; refreshDashboard();', context);
+});
+
 console.log(`dashboard checks passed (${passed})`);

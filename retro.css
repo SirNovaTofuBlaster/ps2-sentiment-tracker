@@ -387,6 +387,11 @@ body .ebay-quote .ebay-flag { min-width: 0; }
 body .ebay-quote b { font-size: .875rem; font-weight: 600; }
 body .ebay-quote:hover b, body .ebay-quote:focus-visible b { text-decoration: underline; text-underline-offset: 3px; }
 body .ebay-quote.is-stale b { opacity: .5; }
+/* Beside a median, how it compares with a week before: "(£2.30 ▲ 3.2%)". Rising in teal and
+   falling in red, as in the Demand Index; the arrow says it as well as the colour. */
+body .ebay-change { font-size: .72rem; font-weight: 400; color: var(--dim); white-space: nowrap; }
+body .ebay-change.is-up { color: var(--green); }
+body .ebay-change.is-down { color: var(--red); }
 body .level-tag {
   margin-left: .45rem;
   padding: .1rem .4rem;

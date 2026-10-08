@@ -1,5 +1,56 @@
 # Changelog
 
+## 2026-10-08: the last day's games by price, and each median's change over a week
+
+### What was asked
+
+- Sort the games in *Named in the last 24 hours* by price, most expensive at the top and the
+  cheapest at the bottom.
+- Beside a median, in brackets, how much it moved and by what percentage, with an arrow up or
+  down, ready for when the price has been checked again a week later. The example given:
+  Persona 4 £73.49 (£2.30 ▲ and the percentage).
+
+### What changed
+
+**Dashboard: `index.html`, `retro.css`**
+- *Named in the last 24 hours* is ordered by the eBay UK median, dearest first. A game with no
+  UK figure follows, by its US median: dollars and pounds are never compared. Games with no
+  price come last. Within each group, and between games at the same price, the order is the
+  one it had (headlines, then mentions, then the most recent). The line under the heading
+  says so when any game in it is priced.
+- Beside each median, wherever one is shown (under a game's name on the Tracker and Most
+  mentioned pages, and on the eBay prices page): `(£2.30 ▲ 3.2%)` when it went up since a week before, `(£1.10 ▼
+  4.5%)` when it went down, `(no change)` when it is the same. Up in teal and down in red, as
+  in the Demand Index; the arrow carries it without the colour. Hovering shows the week-old
+  figure and its date. Nothing is shown where there is no week-old figure.
+
+**Price job: `ebay_prices.py`**
+- `latest.json` now carries, per game and site, `week`: the median recorded a week before
+  that figure was checked (the latest history row from 7 to 9 days before, only if it found
+  copies), with the time of that row. Numbers only, like everything else under
+  `data/prices/`. It is worked out from the month's history, and from the month before early
+  in a month; that file is only read, and if it cannot be read the run carries on without
+  those figures. No new request to eBay and nothing else changes in what is asked or kept.
+
+**Guide, docs, tests**
+- The guide describes the order and the brackets. 32 dashboard checks (was 31) and six new
+  tests of the price job (210 Python tests, was 204).
+
+### When the brackets appear
+
+- The price history began on 2026-10-06 at 22:41 UTC, so the first brackets appear with the
+  first checks after 2026-10-13 22:41 UTC, as each game comes up for its next check (every 6
+  hours for most, daily for quiet ones). Until then the list is already ordered by price.
+
+### Behaviour changes to be aware of
+
+- The front list no longer puts the most-mentioned game first: a game named once with a dear
+  UK median comes above one named twenty times. Wrong matches with a price (a modern
+  *Monster Hunter* matched to the PS2 one, say) are placed by that price.
+- These are asking prices, so a week's change says what sellers ask now against a week ago,
+  not what copies sold for. A median over a handful of copies can move a lot when one
+  listing comes or goes.
+
 ## 2026-10-07: games first
 
 ### What was asked
