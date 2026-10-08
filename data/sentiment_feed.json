@@ -1,7 +1,25 @@
 {
-  "last_updated": "2026-10-08 13:50:06 UTC",
+  "last_updated": "2026-10-08 14:06:22 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749286201",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-08 13:55 UTC"
+    },
     {
       "headline": "Anyone using Nvidia control panel? Also Issue.",
       "source": "r/pcmasterrace",
@@ -99280,73 +99298,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-24 14:10 UTC"
-    },
-    {
-      "headline": "World of Warcraft Forever: Classic WoW Gets A Massive Tech Upgrade!",
-      "source": "YouTube: Digital Foundry",
-      "source_type": "youtube",
-      "feed": "youtube:UC9PBzalIcEQCsiIkq36PyUA",
-      "link": "https://www.youtube.com/watch?v=hNkvZN2Cn80",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-09-24 14:00 UTC"
-    },
-    {
-      "headline": "Gaming on the Samsung Galaxy Z Fold 8",
-      "source": "YouTube: Retro Game Corps",
-      "source_type": "youtube",
-      "feed": "youtube:UCoZQiN0o7f36H7PaW4fVhFw",
-      "link": "https://www.youtube.com/watch?v=9XwkBIe0q_w",
-      "matched_game": "Retro",
-      "matched_games": [
-        "Retro",
-        "XIII"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-24 14:00 UTC"
-    },
-    {
-      "headline": "you gotta see THE BIRDS at 27:04 | CONTROL Resonant",
-      "source": "YouTube: Markiplier",
-      "source_type": "youtube",
-      "feed": "youtube:UC7_YxT-KID8kRbqZo7MyscQ",
-      "link": "https://www.youtube.com/watch?v=oQ-5vejXO7c",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-24 14:00 UTC"
-    },
-    {
-      "headline": "Watch Out for Fireballs Dispatch: A Moment of Reflection",
-      "source": "Podcast: Watch Out for Fireballs!",
-      "source_type": "podcast",
-      "feed": "https://www.patreon.com/public-rss/80117?show=800722",
-      "link": "https://www.patreon.com/duckfeedtv/posts/watch-out-for-of-170411411",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-24 14:00 UTC"
     }
   ]
 }
