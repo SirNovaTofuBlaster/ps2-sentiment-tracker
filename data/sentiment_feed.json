@@ -1,7 +1,25 @@
 {
-  "last_updated": "2026-10-08 14:48:34 UTC",
+  "last_updated": "2026-10-08 15:16:23 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749290650",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-08 15:12 UTC"
+    },
     {
       "headline": "Thread on /vg/ naming Top Gun",
       "source": "4chan /vg/",
@@ -100785,24 +100803,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-24 16:00 UTC"
-    },
-    {
-      "headline": "Lego Star Wars: The Complete Saga - PC vs. PS3 | Side by Side",
-      "source": "YouTube: NeoGamer - The Video Game Archive",
-      "source_type": "youtube",
-      "feed": "youtube:UCDC7X5gNh2LxQ2PnN_OKD5g",
-      "link": "https://www.youtube.com/watch?v=TvKLRCMgF4k",
-      "matched_game": "LEGO Star Wars",
-      "matched_games": [
-        "LEGO Star Wars"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-24 15:15 UTC"
     }
   ]
 }
