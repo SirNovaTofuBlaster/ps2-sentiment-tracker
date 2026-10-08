@@ -1259,6 +1259,132 @@ class WeekTests(unittest.TestCase):
         self.assertNotIn("week", latest["games"]["Kuon"]["US"], "a check time that cannot be read gets none")
 
 
+class RegionalNameTests(unittest.TestCase):
+    """A game released in Europe under another name is searched on eBay UK under that name."""
+
+    RULES = {"UK": [{"from": "Fatal Frame", "to": "Project Zero"}, {"from": "Siren", "to": "Forbidden Siren"},
+                    {"from": "Ratchet & Clank: Up Your Arsenal", "to": "Ratchet & Clank 3"}]}
+
+    def setUp(self):
+        self.sandbox = Sandbox(self, feed=[mention("Fatal Frame 2: Crimson Butterfly", 5, "r/ps2"),
+                                           mention("Fatal Frame", 4, "r/ps2"), mention("Kuon", 3, "r/ps2")])
+        self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + [
+            "Fatal Frame", "Fatal Frame II: Crimson Butterfly", "Fatal Frame 2: Crimson Butterfly", "Fatal Frame 3: The Tormented"])
+        self.sandbox.write("ebay_watchlist.json", {"games": [], "never": [], "regional_names": self.RULES})
+
+    def rules(self):
+        return ebay_prices.load_regional_names(self.sandbox.root / "ebay_watchlist.json")
+
+    def test_a_name_is_renamed_from_its_start_and_only_as_whole_words(self):
+        rules = self.rules()["EBAY_GB"]
+        self.assertEqual(ebay_prices.renamed("fatal frame 2 crimson butterfly", rules), "project zero 2 crimson butterfly")
+        self.assertEqual(ebay_prices.renamed("fatal frame ii crimson butterfly", rules), "project zero ii crimson butterfly",
+                         "the search as sellers write it, Roman numeral and all")
+        self.assertEqual(ebay_prices.renamed("fatal frame", rules), "project zero")
+        self.assertEqual(ebay_prices.renamed("ratchet clank up your arsenal", rules), "ratchet clank 3")
+        for untouched in ("sirens call", "the fatal frame", "fatal framework", "kuon"):
+            self.assertIsNone(ebay_prices.renamed(untouched, rules), untouched)
+        self.assertEqual(set(self.rules()), {"EBAY_GB"}, "nothing changes on eBay US")
+
+    def test_each_site_is_asked_under_its_own_name_and_counts_its_own_copies(self):
+        def answer(params, headers):
+            uk = headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB"
+            q = params["q"]
+            if uk and q.startswith("project zero 2"):
+                return page(listing("Project Zero II Crimson Butterfly PS2 PAL", 40, currency="GBP", item_id=1),
+                            listing("Project Zero 2 Crimson Butterfly Sony PS2", 50, currency="GBP", item_id=2))
+            if uk and q.startswith("project zero"):
+                return page(listing("Project Zero PS2 complete", 30, currency="GBP", item_id=3),
+                            listing("Project Zero 2 Crimson Butterfly PS2", 45, currency="GBP", item_id=4))
+            if uk and q.startswith("fatal frame"):
+                return page(listing("Fatal Frame NTSC US PS2", 99, currency="GBP", item_id=5))
+            return two_copies(params, headers)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        asked = {(call["headers"]["X-EBAY-C-MARKETPLACE-ID"], call["params"]["q"]) for call in fake.searches}
+        self.assertIn(("EBAY_GB", "project zero 2 crimson butterfly"), asked)
+        self.assertIn(("EBAY_US", "fatal frame 2 crimson butterfly"), asked)
+        self.assertFalse({q for site, q in asked if site == "EBAY_GB" and q.startswith("fatal frame")}, "UK never asked for Fatal Frame")
+        games = self.sandbox.latest["games"]
+        sequel = next(entry for title, entry in games.items() if "Crimson" in title)
+        self.assertEqual((sequel["UK"]["copies"], sequel["UK"]["median"]), (2, 45.0))
+        self.assertEqual(sequel["US"]["copies"], 2)
+        first = games["Fatal Frame"]
+        self.assertEqual((first["UK"]["copies"], first["UK"]["median"]), (1, 30.0), "a listing of the sequel is not a copy of the first game")
+        self.assertIn("Searched on eBay UK under the name it has there: 2 (Fatal Frame as project zero; ", printed)
+        row = next(row for row in self.sandbox.snapshot["games"] if "Crimson" in row["title"])
+        self.assertIn("_nkw=project%20zero%202%20crimson%20butterfly%20ps2", row["markets"]["EBAY_GB"]["search_url"],
+                      "the link to the source is the UK search")
+        self.assertIn("_nkw=fatal%20frame%202", row["markets"]["EBAY_US"]["search_url"])
+        self.assertNotIn("45", printed.split("Searched on eBay UK")[1].split("\n")[0], "names in the log, never prices")
+
+    def test_mistakes_get_a_readable_message(self):
+        for value, message in (({"EU": []}, "must map US, UK"), ({"UK": {}}, "must be a list"),
+                               ({"UK": [{"from": "Fatal Frame"}]}, 'rename 1 for UK needs "from" and "to"'),
+                               ({"UK": [{"from": "", "to": "x"}]}, 'needs "from" and "to"'),
+                               ({"UK": [{"from": "Bully", "to": "and"}]}, "does not work as eBay search words"),
+                               ({"UK": [{"from": "Fatal Frame", "to": "Black"}]}, "two words or more"),
+                               ({"UK": [{"from": "Fatal Frame", "to": "x " * 60}]}, "does not work as eBay search words")):
+            self.sandbox.write("ebay_watchlist.json", {"games": [], "regional_names": value})
+            with self.assertRaises(ebay_prices.EbayError) as raised:
+                self.rules()
+            self.assertIn(message, str(raised.exception))
+        self.sandbox.write("ebay_watchlist.json", {"games": []})
+        self.assertEqual(self.rules(), {}, "the list is optional")
+
+    def test_the_committed_renames_load_and_rename_real_library_titles(self):
+        rules = ebay_prices.load_regional_names(ROOT / "ebay_watchlist.json")["EBAY_GB"]
+        for title, uk in (("Fatal Frame 2: Crimson Butterfly", "project zero 2 crimson butterfly"),
+                          ("Dark Cloud 2", "dark chronicle"), ("Sly Cooper and the Thievius Raccoonus", "sly raccoon"),
+                          ("Ace Combat 4: Shattered Skies", "ace combat distant thunder")):
+            self.assertEqual(ebay_prices.renamed(ebay_prices.search_terms(title)[0], rules), uk, title)
+        for title in ("Bully", "Shin Megami Tensei: Persona 4", "Ant Bully"):
+            # Bully kept its name across most of Europe, and Persona its full name.
+            self.assertIsNone(ebay_prices.renamed(ebay_prices.search_terms(title)[0], rules), title)
+
+    def test_the_regional_name_is_never_one_of_its_own_other_games(self):
+        catalogue = [{"name": name, "title": title, "possessive": set()} for title, name in (
+            ("Siren", "siren"), ("Forbidden Siren", "forbidden siren"), ("Forbidden Siren 2", "forbidden siren 2"))]
+        game = {"title": "Siren", "search": "siren", "queries": ["siren"],
+                "siblings": ebay_prices.other_games("Siren", "siren", catalogue)}
+        self.assertIn("forbidden siren", game["siblings"], "on eBay US, Forbidden Siren is another game")
+        ebay_prices.apply_regional_names([game], {"EBAY_GB": [("siren", "siren", "forbidden siren", "forbidden siren")]}, catalogue)
+        uk = game["markets"]["EBAY_GB"]
+        self.assertEqual((uk["search"], uk["siblings"]), ("forbidden siren", ["forbidden siren 2"]))
+        listing_ = listing("Forbidden Siren PS2 PAL complete with manual", 30, currency="GBP")
+        self.assertIsNone(ebay_prices.reject_reason(listing_, ebay_prices.for_market(game | {"exclude": []}, "EBAY_GB"),
+                                                    ebay_prices.MARKETS["EBAY_GB"], False))
+
+    def test_a_game_filed_under_both_names_is_looked_up_once_on_that_site(self):
+        fatal = {"title": "Fatal Frame", "key": "fatal frame", "search": "fatal frame", "queries": ["fatal frame"],
+                 "siblings": [], "level": "normal", "pinned": False}
+        zero = {"title": "Project Zero", "key": "project zero", "search": "project zero", "queries": ["project zero"],
+                "siblings": [], "level": "normal", "pinned": False}
+        ebay_prices.apply_regional_names([fatal, zero], {"EBAY_GB": [("fatal frame", "fatal frame", "project zero", "project zero")]})
+        lookups = [(game["title"], market) for game, market in ebay_prices.due_lookups([fatal, zero], {}, NOON)]
+        self.assertEqual(sorted(lookups), [("Fatal Frame", "EBAY_GB"), ("Fatal Frame", "EBAY_US"), ("Project Zero", "EBAY_US")])
+
+    def test_the_search_check_and_the_listings_file_use_the_name_there(self):
+        game = {"title": "Fatal Frame", "search": "fatal frame", "queries": ["fatal frame"], "siblings": ["fatal frame 2"],
+                "level": "normal", "markets": {"EBAY_GB": {"search": "project zero", "queries": ["project zero"],
+                                                            "siblings": ["project zero 2"]}}}
+        asked = []
+
+        def search(http_client, token, market_id, query, counter, **kwargs):
+            asked.append((market_id, query))
+            return 200, {"total": 0, "itemSummaries": []}
+        with mock.patch.object(ebay_prices, "search", search), mock.patch.object(ebay_prices, "say"):
+            ebay_prices.diagnose(None, "t", game, {"searches": 0}, ())
+        self.assertEqual({query for market, query in asked if market == "EBAY_GB"}, {"project zero"})
+        self.assertEqual({query for market, query in asked if market == "EBAY_US"}, {"fatal frame"})
+        snapshot = ebay_prices.snapshot_of({"results": [(game, "EBAY_GB", {"status": "ok"}), (game, "EBAY_US", {"status": "ok"})],
+                                            "searches": 2, "stopped": None}, NOON)
+        row = snapshot["games"][0]
+        self.assertEqual((row["markets"]["EBAY_GB"]["search_there"], row["markets"]["EBAY_GB"]["left_out_if_named_there"]),
+                         ("project zero", ["project zero 2"]))
+        self.assertNotIn("search_there", row["markets"]["EBAY_US"])
+
+
 class EndToEndTests(unittest.TestCase):
     def setUp(self):
         self.sandbox = Sandbox(self, pinned=[{"title": "Silent Hill 2"}], never=["Combat Ace"], feed=[

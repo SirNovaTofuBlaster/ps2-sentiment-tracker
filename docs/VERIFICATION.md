@@ -493,6 +493,31 @@ Left as they are: a scheduled run cancelled in the queue still starts an eBay ru
 the eBay job only asks what is due); a type whose every source is a YouTube link that never
 resolves is due every round (none exist).
 
+## 2026-10-08: eBay UK searched under the European name
+
+| Check | Result |
+|---|---|
+| The problem | *Fatal Frame 2: Crimson Butterfly*: eBay US 16 copies, eBay UK 0, because Europe sold it as *Project Zero 2* |
+| On the real plan (`ebay_prices.py --plan`, no key) | Six tracked games are searched under their UK name: Ace Combat 4 and 5, Fatal Frame, Fatal Frame 2, Siren, Sly Cooper |
+| Offline tests | 143 price-job tests, 269 in all |
+| Not checked | A live eBay UK search: the first runs after the merge show the counts |
+
+### Independent review
+
+| Finding | Resolution |
+|---|---|
+| Siren's other games, worked out from its US name, included "forbidden siren": every UK listing of the game was left out as another game | Other games are worked out again from the UK name, and the game's own UK name is never among them |
+| A game the library also lists under its European name would be searched twice on eBay UK | One UK lookup per name |
+| The search check and the listings file showed the US search for UK results | Both use the UK name |
+| Bully: the UK search under Canis Canem Edit would lose the many PAL copies sold as Bully | Rule removed |
+| The Persona rule was no regional name (PAL boxes keep Shin Megami Tensei) | Removed |
+| Ace Combat 4, 5 and Zero and Dragon Quest VIII were missing | Added |
+| A rename to "and", one ordinary word or a very long name crashed or slipped through | Refused with a readable message |
+| Six surviving mutations, two of them real | Tests added for the other games and the UK link |
+
+Left as it is: the library spells Sly Raccoon "Racoon"; listings with either spelling are found
+because the search is the rule's spelling, "sly raccoon", and sellers mostly write that.
+
 ## Re-running the checks
 
 ```sh

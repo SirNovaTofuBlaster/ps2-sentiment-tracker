@@ -251,6 +251,12 @@ Before you call something done, prove it; don't assume it.
     title with a Roman numeral is searched both ways ("kingdom hearts ii" and "kingdom hearts
     2"). A listing that names a different library game containing this one's name ("Ultimate
     Spider-Man" for "Spider-Man") is left out; `other_games()` decides which names those are.
+  - Some games were released in Europe under another name (Fatal Frame is Project Zero, Bully
+    is Canis Canem Edit). Searched under the US name, eBay UK finds no PAL copy (Fatal Frame 2
+    showed 0 copies on 2026-10-08 while eBay US had 16). `regional_names` in
+    `ebay_watchlist.json` renames the start of a game's name per site; the UK search, the name
+    check and the list of other games (`siblings`) all use the renamed words. Add a rule there,
+    with the PAL box title, when a UK figure is missing for a game that sold in Europe.
   - When eBay returns listings and none of them names the game, the game is marked
     `unmatched` in `latest.json` and gets no history row: that means "these search words do
     not find it", not "no copies for sale". Fix it by pinning the game with its own `search`.
