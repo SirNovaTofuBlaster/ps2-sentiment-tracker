@@ -1,7 +1,39 @@
 {
-  "last_updated": "2026-10-08 19:46:22 UTC",
+  "last_updated": "2026-10-08 20:02:41 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Vampire games on Steam are a recession indicator and I have the charts to prove it",
+      "source": "PCGamer latest",
+      "source_type": "news",
+      "feed": "https://www.pcgamer.com/rss/",
+      "link": "https://www.pcgamer.com/games/vampire-games-on-steam-are-a-recession-indicator-and-i-have-the-charts-to-prove-it/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-08 19:55 UTC"
+    },
+    {
+      "headline": "Rainbow Six Siege Mobile Already Has A Shutdown Date Just 7 Months Into Its Full Release",
+      "source": "Kotaku",
+      "source_type": "news",
+      "feed": "https://kotaku.com/rss",
+      "link": "https://kotaku.com/rainbow-six-siege-mobile-already-has-a-shutdown-date-just-7-months-into-its-full-release-2000742717",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-08 19:54 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Spider-Man",
       "source": "4chan /v/",
@@ -19,6 +51,22 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-08 19:43 UTC"
+    },
+    {
+      "headline": "Ben Affleck Has Some Strong Opinions About Fortnite Skins And How Hard The Game Is For Him",
+      "source": "GameSpot - All Content",
+      "source_type": "news",
+      "feed": "https://www.gamespot.com/feeds/mashup/",
+      "link": "https://www.gamespot.com/articles/ben-affleck-has-some-strong-opinions-about-fortnite-skins-and-how-hard-the-game-is-for-him/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-08 19:36 UTC"
     },
     {
       "headline": "PS5 emulation is doing so well we might get to play GTA 6 on PC this year",
@@ -69,16 +117,18 @@
       "timestamp": "2026-10-08 19:23 UTC"
     },
     {
-      "headline": "cyberpunk-2077-pelicula-live-action-paramount-lorenzo-di-bonaventura",
+      "headline": "Cyberpunk 2077 tendrá película live-action en Paramount con productor de Transformers",
       "source": "IGN Latinoamérica",
       "source_type": "news",
       "feed": "https://latam.ign.com/feed.xml",
       "link": "https://latam.ign.com/cyberpunk-2077/114955/cyberpunk-2077-pelicula-live-action-paramount-lorenzo-di-bonaventura",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
+      "matched_game": "Transformers",
+      "matched_games": [
+        "Transformers"
+      ],
+      "match_score": 89,
+      "match_method": "fuzzy",
+      "matched_in": "title",
       "is_remaster_rumor": false,
       "sentiment": 50,
       "hype": 0,
@@ -109172,22 +109222,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-24 21:00 UTC"
-    },
-    {
-      "headline": "Collectors DREAM About Finds Like This!",
-      "source": "YouTube: Pixel Game Squad",
-      "source_type": "youtube",
-      "feed": "youtube:UCRwh3TVQszgmDK6UHzHNdQQ",
-      "link": "https://www.youtube.com/watch?v=OwWwucUx0VE",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-24 20:00 UTC"
     }
   ]
 }
