@@ -1571,6 +1571,34 @@ class ConsoleTests(unittest.TestCase):
         one = {"title": "PS2 Ocean Blue", "key": "ps2 ocean blue", "kind": "console"}
         self.assertEqual(ebay_prices.add_consoles(games, [one, dict(one)]), 1, "nor is one console added twice")
 
+    def test_the_committed_rules_tell_the_console_from_bundles_parts_and_other_colours(self):
+        consoles, _ = ebay_prices.load_consoles(ROOT / "rare_consoles.json")
+
+        def verdict(name_part, title):
+            console = next(entry for entry in consoles if name_part in entry["title"])
+            return ebay_prices.console_reject_reason(listing(title, 100), console, US)
+        for name_part, title, expected in (
+                ("Final Fantasy XII", "Sony PS2 Slim Console SCPH-75003 Bundle Final Fantasy XII Kingdom Hearts", "other_game"),
+                ("Final Fantasy XII", "PS2 Slim SCPH-75000 FF Final Fantasy XII pack Japan", None),
+                ("Prologue", "Sony PS2 Fat Console Black SCPH-50003 + Gran Turismo 4 Prologue + 2 controllers", "other_game"),
+                ("Ceramic White fat", "PS2 Fat Ceramic White SCPH-55000 GT Gran Turismo 4 Prologue pack", "not_a_copy"),
+                ("Ocean Blue", "PS2 Fat Console Black SCPH-39003 with Ocean Blue DualShock 2 controller", "not_a_copy"),
+                ("Ocean Blue", "PS2 Controller Ocean Blue DualShock 2", "not_a_copy"),
+                ("Ocean Blue", "PS2 Ocean Blue SCPH-37000 L boxed with controller", None),
+                ("Midnight Blue", "Sony PS2 Slim Black + Midnight Blue controller", "not_a_copy"),
+                ("Midnight Blue", "PS2 Midnight Blue SCPH-50000 MB/NH with replacement laser fitted", None),
+                ("250 GB", "Sony PSX DESR-7000 Remote Control RMT-P001", "not_a_copy"),
+                ("250 GB", "Sony PSX DESR-7000 with remote and cables", None),
+                ("160 GB", "Sony PSX DESR-5000 power cord AC adapter", "not_a_copy"),
+                ("Bravia", "Sony Bravia KDL-22PX300 remote control", "not_a_copy"),
+                ("Bravia", "Sony Bravia KDL-22PX300 TV with remote, built in PS2", None),
+                ("DTL-T10000", "Sony PS2 DTL-T10000 TOOL hard drive HDD", "not_a_copy"),
+                ("Silver limited edition (US", "PS2 Slim Satin Silver SCPH-79001 limited edition USA", None),
+                ("Pearl White", "PS2 Pearl White console for parts or repair", "not_a_copy"),
+                ("Pearl White", "PS2 Pearl White SCPH-50000 PW custom painted", "not_a_copy"),
+                ("Pearl White", "PS2 Pearl White SCPH-50000 PW and PS3 bundle", "other_platform")):
+            self.assertEqual(verdict(name_part, title), expected, title)
+
     def test_game_searches_are_untouched_by_the_console_settings(self):
         self.assertEqual(ebay_prices.search_url("EBAY_US", "silent hill 2"),
                          ebay_prices.search_url("EBAY_US", "silent hill 2", console=None))

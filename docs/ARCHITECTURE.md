@@ -458,10 +458,13 @@ and the Bravia), every condition but for parts (`CONSOLE_CONDITION_IDS`), Buy It
 location filter (most are sold from Japan), the entry's own queries (at most 3).
 `console_reject_reason()` counts a listing that has every `require` phrase and one `require_any`
 phrase, names no other console and none of `CONSOLE_JUNK` or the entry's `exclude`. A bundle
-counts. Figures, history and the week's change are kept as for games, under the console's name;
+counts. A listing that names a part (`CONSOLE_PARTS`: controller, remote, cable, hard drive...)
+counts only when it says it is a console ("console", "system", an SCPH number) or that the console
+comes with the part ("with remote", "+ controller"), so a coloured controller or a PSX remote is
+never taken for the console. Figures, history and the week's change are kept as for games, under the console's name;
 `kind` keeps them off the eBay prices page and away from names in the feed. Entries with
 `"price": false` (the one-off show unit, two unconfirmed models) say why on the page. 34
-consoles priced, at most 68 lookups a day.
+consoles priced: 64 lookups a day, two searches each.
 
 ## Weights
 

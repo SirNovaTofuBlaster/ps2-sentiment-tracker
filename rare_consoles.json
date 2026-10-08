@@ -914,7 +914,9 @@
      "50000mb"
     ],
     "exclude": [
-     "midnight black"
+     "midnight black",
+     "black console",
+     "slim"
     ],
     "category": "consoles"
    },
@@ -1022,16 +1024,12 @@
    "search": {
     "queries": [
      "scph-75000 ff",
-     "ps2 final fantasy xii console"
+     "ps2 final fantasy xii pack"
     ],
     "require": [],
     "require_any": [
      "75000 ff",
-     "75000ff",
-     "ffxii",
-     "ff12",
-     "final fantasy xii",
-     "final fantasy 12"
+     "75000ff"
     ],
     "exclude": [
      "disc only",
@@ -1182,8 +1180,7 @@
     "require": [],
     "require_any": [
      "55000 gt",
-     "55000gt",
-     "prologue"
+     "55000gt"
     ],
     "exclude": [
      "disc only",
@@ -1575,7 +1572,11 @@
      "37000 l",
      "37000l"
     ],
-    "exclude": [],
+    "exclude": [
+     "black",
+     "silver",
+     "slim"
+    ],
     "category": "consoles"
    },
    "evidence": [
@@ -1692,7 +1693,9 @@
      "75000",
      "77000",
      "79001",
-     "90000"
+     "90000",
+     "55000",
+     "prologue"
     ],
     "category": "consoles"
    },
@@ -1992,8 +1995,7 @@
     ],
     "exclude": [
      "japan",
-     "pal",
-     "satin"
+     "pal"
     ],
     "category": "consoles"
    },

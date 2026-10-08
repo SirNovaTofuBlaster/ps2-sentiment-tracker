@@ -213,12 +213,21 @@ IMPORT_PHRASES = ("japan", "japanese", "ntsc j", "jpn", "jp", "jap", "slpm", "sl
 SKIPPED_EXAMPLES = 5     # titles saved per reason, so the rules can be checked against real listings
 # A console listing with one of these is not a working console of that model.
 CONSOLE_JUNK = (
-    "for parts", "spares", "spares or repairs", "repair", "repairs", "faulty", "not working", "broken",
+    "for parts", "spares", "spares or repair", "spares or repairs", "for repair", "needs repair", "faulty",
+    "not working", "broken",
     "untested", "modded", "modchip", "mod chip", "free mcboot", "fmcb", "skin", "sticker", "decal",
     "shell", "housing", "faceplate", "case only", "box only", "empty box", "manual only", "replica",
     "custom", "painted", "reproduction", "repro", "controller only", "no console", "job lot", "joblot",
-    "replacement", "stand only",
+    "stand only",
 )
+# A listing that names one of these is that part, unless it says the console comes with it
+# ("with controller", "+ remote") or says it is a console.
+CONSOLE_PARTS = (
+    "controller", "controllers", "dualshock", "joypad", "gamepad", "remote", "remote control", "power cord",
+    "power cable", "power supply", "ac adapter", "adapter", "cable", "cables", "hdd", "hard drive", "pcb",
+    "motherboard", "memory card",
+)
+CONSOLE_WORDS = ("console", "consoles", "system", "scph")
 OTHER_CONSOLES = ("ps3", "ps4", "ps5", "psp", "ps vita", "xbox", "wii", "gamecube", "dreamcast", "nintendo switch")
 CONSOLE_CATEGORIES = {"consoles": CONSOLE_CATEGORY_ID, "any": ""}
 MAX_CONSOLE_QUERIES = 3
@@ -1069,6 +1078,9 @@ def console_reject_reason(item, console, market):
         return "other_platform"
     if has_phrase(text, CONSOLE_JUNK) or has_phrase(text, console["exclude"]):
         return "not_a_copy"
+    parts = [part for part in CONSOLE_PARTS if has_phrase(text, [part])]
+    if parts and not has_phrase(text, CONSOLE_WORDS) and not all(comes_with(item.get("title"), part) for part in parts):
+        return "not_a_copy"
     if amount(item.get("price"), market["currency"]) is None:
         return "no_price"
     if listing_url(item, market) is None:
@@ -1499,6 +1511,7 @@ def snapshot_of(run, now):
 
 
 def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_problems=(), consoles=0):
+    games = [game for game in games if game.get("kind") != "console"]   # counted on a line of their own
     levels = {level: sum(1 for game in games if game["level"] == level) for level in CHECK_EVERY_HOURS}
     if not levels["rare"]:
         del levels["rare"]   # only there when rare_games.json adds games

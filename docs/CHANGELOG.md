@@ -13,7 +13,11 @@
 - `ebay_prices.py`: prices 34 of them once a day on eBay US and UK (or the one site of a
   single-country release), in the consoles category, from sellers anywhere, any condition but
   for parts. A listing must name the model or the colour; bundles count, shells, skins,
-  custom paint, mods and broken consoles never do. Game searches are unchanged.
+  custom paint, mods and broken consoles never do, and neither does a part sold alone (a
+  coloured controller, a PSX remote). Game searches are unchanged. About 130 searches a day.
+- Independent review: game-named bundles (an ordinary slim with *Final Fantasy XII*), coloured
+  controllers, remotes and cables, and the US silver slim's own "satin" listings were all
+  mis-sorted; fixed and tested on realistic titles.
 - Dashboard: a third switch on the Rarest page, *Consoles*. Consoles stay off the eBay prices
   page.
 
