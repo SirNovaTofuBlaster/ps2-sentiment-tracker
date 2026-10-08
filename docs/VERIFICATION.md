@@ -459,7 +459,7 @@ measured by *Live checks* from GitHub's servers and read from its notices.
 | Reddit, live from GitHub | All 10 new requests answered with 100 posts. The busiest (r/pcmasterrace, r/NintendoSwitch, r/PlayStation) had about 11 new posts an hour and reached back 8.7 hours; the others 21 to 811 hours. About 29 new posts an hour in all |
 | News, live from GitHub | `regression_check.py --types news`: the old and new scraper give identical snapshots from the same live feeds. Reddit's comparison reports "fetch plans differ" (3 requests before, 10 now), which is the change |
 | The loop, offline | On a fake clock for a whole run: 4chan every 14 minutes, news every 28–30, podcasts once; rounds at least 2 minutes apart, 15 after a failure; the eBay job hourly; no round starts without 45 minutes left; the successor at the end, after an error too, never after a cancel, never from another branch |
-| Offline tests | 261 Python tests (221 before this change), 32 dashboard checks |
+| Offline tests | 262 Python tests (221 before this change), 32 dashboard checks |
 | Do the checks bite | Two sets of one-line breakages: 32 of mine and the reviewer's 65 (58 of them still apply to the final code): all noticed |
 | Not checked | A real run of the loop on GitHub: it starts when this is merged. The first hours on `main` are the test, and the Actions page shows each round's lines |
 

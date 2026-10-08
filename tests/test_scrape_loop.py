@@ -223,6 +223,19 @@ class LoopTests(unittest.TestCase):
             self.run_loop()
         self.assertEqual(self.rounds, [], "due a minute too late for this run: the successor fetches it")
 
+    def test_a_feeds_json_fixed_too_late_waits_for_the_next_run(self):
+        fixed_at = START + timedelta(minutes=scrape_loop.LOOP_MINUTES) - scrape_loop.ROUND_RESERVE + timedelta(minutes=1)
+        good = self.config
+
+        def load_config():
+            if self.clock[0] < fixed_at:
+                raise SystemExit("feeds.json is invalid")
+            return good
+
+        with mock.patch.object(scraper, "load_config", load_config):
+            self.run_loop()
+        self.assertEqual(self.rounds, [], "no round starts without its reserve, whatever kept the loop waiting")
+
     def test_with_every_source_switched_off_nothing_runs(self):
         self.config = config(enabled=False)
         self.run_loop()

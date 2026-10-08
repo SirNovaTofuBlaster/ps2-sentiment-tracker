@@ -50,7 +50,7 @@
 **Tools and checks**
 - `regression_check.py --types news|reddit` (news must stay identical; it does), never writes
   the repository's `data/`. *Live checks* also tries Reddit and reports how far back each
-  request reaches. 261 Python tests (was 221), with `tests/test_scrape_loop.py` new.
+  request reaches. 262 Python tests (was 221), with `tests/test_scrape_loop.py` new.
 
 ### Behaviour changes to be aware of
 
