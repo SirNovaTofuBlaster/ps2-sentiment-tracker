@@ -228,10 +228,15 @@
                     <p id="rareSummary" class="text-xs text-slate-400">Loading...</p>
                 </div>
                 <div class="rare-regions" role="group" aria-label="Which region's list">
-                    <button type="button" id="rareRegionPAL" onclick="showRareRegion('PAL')" aria-pressed="true" class="rare-region is-active">PAL <span class="rare-region-site">eBay UK</span></button>
-                    <button type="button" id="rareRegionUS" onclick="showRareRegion('US')" aria-pressed="false" class="rare-region">US <span class="rare-region-site">eBay US</span></button>
-                    <button type="button" id="rareRegionConsoles" onclick="showRareRegion('Consoles')" aria-pressed="false" class="rare-region">Consoles</button>
+                    <button type="button" id="rareRegionPAL" onclick="showRareRegion('PAL')" aria-pressed="true" class="rare-region is-pal is-active">PAL</button>
+                    <button type="button" id="rareRegionUS" onclick="showRareRegion('US')" aria-pressed="false" class="rare-region is-us">US</button>
+                    <button type="button" id="rareRegionConsoles" onclick="showRareRegion('Consoles')" aria-pressed="false" class="rare-region is-consoles">Consoles</button>
                 </div>
+            </div>
+            <div id="consoleRegions" class="console-regions hidden" role="group" aria-label="Consoles sold in">
+                <button type="button" id="consoleRegionUS" onclick="showConsoleRegion('US')" aria-pressed="false" class="console-region">US</button>
+                <button type="button" id="consoleRegionJP" onclick="showConsoleRegion('JP')" aria-pressed="true" class="console-region is-active">Japan</button>
+                <button type="button" id="consoleRegionPAL" onclick="showConsoleRegion('PAL')" aria-pressed="false" class="console-region">PAL</button>
             </div>
             <ol id="rareList" class="zebra"></ol>
             <button type="button" id="rareListToggle" onclick="toggleList('rareList')" aria-controls="rareList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
@@ -1196,6 +1201,7 @@
                 button.setAttribute?.('aria-pressed', String(name === region));
             }
             document.getElementById('rareHeading').textContent = region === 'Consoles' ? 'Rarest PS2 Consoles' : 'Rarest PS2 Games';
+            document.getElementById('consoleRegions').classList.toggle('hidden', region !== 'Consoles');
             if (region === 'Consoles') return renderRareConsoles(consoleData, now, locale);
             const label = RARE_SITE[region];
             const entries = rareEntries(data, region);
@@ -1272,6 +1278,35 @@
             low: ['unconfirmed', 'Rests on one weak source; the details may be wrong.'],
         };
 
+        // The consoles by where they were sold, each list most expensive first. "regions" in
+        // rare_consoles.json uses JP, US, CA, EU and UK; a console sold in several is in each list.
+        // The price it is sorted by is the eBay median of the site that sells that region's
+        // copies (eBay UK for PAL, eBay US otherwise), then the other site's, then the guide value.
+        const CONSOLE_REGIONS = {
+            US: { label: 'US', from: ['US', 'CA'], sites: ['US', 'UK'] },
+            JP: { label: 'Japan', from: ['JP'], sites: ['US', 'UK'] },
+            PAL: { label: 'PAL', from: ['EU', 'UK'], sites: ['UK', 'US'] },
+        };
+        let consoleRegion = 'JP';
+
+        function showConsoleRegion(region) {
+            consoleRegion = own(CONSOLE_REGIONS, region) ? region : 'JP';
+            renderRare();
+        }
+
+        // [which site gave the price (0, 1) or 2 for none, the price] for sorting a console.
+        function consoleSortPrice(entry, region) {
+            const prices = consolePrices(entry);
+            const sites = CONSOLE_REGIONS[region].sites;
+            for (let i = 0; i < sites.length; i++) {
+                const site = prices?.[sites[i]];
+                if (site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) && site.copies > 0
+                        && typeof site.median === 'number' && Number.isFinite(site.median)) return [i, site.median];
+            }
+            const usd = entry.value && typeof entry.value === 'object' ? entry.value.usd : null;
+            return [2, typeof usd === 'number' && Number.isFinite(usd) ? usd : -1];
+        }
+
         function consolePrices(entry, data = priceData) {
             const games = data && typeof data.games === 'object' && data.games ? data.games : {};
             const found = own(games, entry.name) ? games[entry.name] : null;
@@ -1279,14 +1314,26 @@
         }
 
         function renderRareConsoles(data = consoleData, now = Date.now(), locale) {
+            const region = own(CONSOLE_REGIONS, consoleRegion) ? consoleRegion : 'JP';
+            const area = CONSOLE_REGIONS[region];
+            for (const name of Object.keys(CONSOLE_REGIONS)) {
+                const button = document.getElementById(`consoleRegion${name}`);
+                button.classList.toggle('is-active', name === region);
+                button.setAttribute?.('aria-pressed', String(name === region));
+            }
+            const sortKeys = new Map();
             const entries = (Array.isArray(data?.consoles) ? data.consoles : [])
-                .filter(row => row && typeof row === 'object' && typeof row.name === 'string' && row.name.trim());
+                .filter(row => row && typeof row === 'object' && typeof row.name === 'string' && row.name.trim()
+                    && Array.isArray(row.regions) && row.regions.some(code => area.from.includes(code)))
+                .map(row => (sortKeys.set(row, consoleSortPrice(row, region)), row))
+                .sort((a, b) => sortKeys.get(a)[0] - sortKeys.get(b)[0] || sortKeys.get(b)[1] - sortKeys.get(a)[1]
+                    || (Number.isInteger(a.rank) ? a.rank : 999) - (Number.isInteger(b.rank) ? b.rank : 999));
             const list = document.getElementById('rareList');
             const note = document.getElementById('rareNote');
             if (!entries.length) {
                 document.getElementById('rareSummary').textContent = consoleTrouble
                     ? 'The list of rare consoles could not be read just now. Press REFRESH to try again.'
-                    : 'No list of rare consoles yet.';
+                    : Array.isArray(data?.consoles) && data.consoles.length ? `No rare console from ${area.label} on the list.` : 'No list of rare consoles yet.';
                 list.innerHTML = '';
                 note.textContent = '';
                 foldList('rareList', 0);
@@ -1295,7 +1342,7 @@
             const tiers = data.tiers && typeof data.tiers === 'object' ? data.tiers : {};
             let priced = 0;
             list.innerHTML = entries.map((entry, i) => {
-                const rank = Number.isInteger(entry.rank) ? entry.rank : i + 1;
+                const rank = i + 1;
                 const prices = consolePrices(entry);
                 const sites = Array.isArray(entry.sites) && entry.sites.some(label => PRICE_SITES.includes(label))
                     ? PRICE_SITES.filter(label => entry.sites.includes(label)) : PRICE_SITES;
@@ -1338,10 +1385,10 @@
             }).join('');
             foldList('rareList', entries.length);
             document.getElementById('rareSummary').textContent =
-                `Official Sony hardware only, rarest first. Under each: the median asking price on eBay US and UK today, from sellers anywhere · ${entries.length} consoles · ${priced} prices with copies listed`;
-            note.innerHTML = 'Rarest first: consoles with a known small production run (tier 1), then those never sold in shops or sold by one shop or in one bundle (tier 2), '
-                + 'then single-country limited colours (tier 3), then wider limited runs (tier 4); within a tier, by what collectors pay. '
-                + 'Most of these were sold only in Japan, so most copies on eBay are listed from Japan, with postage to match. '
+                `Official Sony hardware sold in ${area.label}, most expensive first: the eBay ${area.sites[0]} median today, then eBay ${area.sites[1]}, then the guide value · ${entries.length} consoles · ${priced} prices with copies listed`;
+            note.innerHTML = 'Sorted by price. The tier says how rare a console is: a known small production run (tier 1), never sold in shops or sold by one shop or in one bundle (tier 2), '
+                + 'a single country\'s limited colour (tier 3), a wider limited run (tier 4). A console sold in several regions is in each of their lists. '
+                + 'Most of the Japanese ones are listed on eBay from Japan, with postage to match. '
                 + 'A listing counts only if it names the model or its colour and is a working console: no shells, skins, custom paint, mods or parts. '
                 + 'The guide value is PriceCharting\'s, in US dollars, where it has one. The eBay figures are asking prices, checked once a day.';
         }

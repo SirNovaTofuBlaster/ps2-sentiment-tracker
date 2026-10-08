@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-08: Rarest page buttons; consoles by region and price
+
+- Asked: split the consoles by region (US, Japan, PAL) and sort them most expensive first; the
+  games' buttons to say just PAL and US; colourful, modern buttons.
+- The Rarest page's switch is three rounded, coloured buttons: PAL (blue), US (red), Consoles
+  (teal), the lit one filled. Under Consoles, US / Japan / PAL buttons pick where the consoles
+  were sold; each list is sorted by its eBay median (eBay UK for PAL, eBay US otherwise), then the
+  other site's, then the guide value. The tier still shows how rare each is. The theme's rule
+  that yellow belongs to price links is kept.
+
 ## 2026-10-08: the PS2 Price Index
 
 - Asked: something like the S&P 500 for the PS2 market. A market capitalisation needs to know how
