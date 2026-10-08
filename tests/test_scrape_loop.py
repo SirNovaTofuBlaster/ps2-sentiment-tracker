@@ -316,7 +316,9 @@ class GitTests(unittest.TestCase):
         self.calls.clear()
         self.answers["pull"] = (1, "")
         self.assertFalse(scrape_loop.sync())
-        self.assertEqual(self.commands(), ["pull --rebase --autostash --quiet origin main", "rebase --abort"])
+        self.assertEqual(self.commands(), ["pull --rebase --autostash --quiet origin main", "rebase --abort",
+                                           "reset --hard --quiet origin/main"],
+                         "a commit that cannot go on top of GitHub's is dropped, never left to block every round")
 
     def test_new_items_are_committed_from_data_only_and_pushed_on_top_of_main(self):
         self.answers["diff"] = (0, "data/sentiment_feed.json\ndata/poll_state.json\n")

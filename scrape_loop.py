@@ -63,8 +63,12 @@ def sync():
     """Brings in what other jobs committed (the archive, eBay prices, a feeds.json saved from the
     dashboard), so that the next round starts from it and its commit goes on top."""
     if git("pull", "--rebase", "--autostash", "--quiet", "origin", branch()).returncode != 0:
+        # Most likely another run wrote the same files (only possible while an older version of
+        # this workflow is still finishing). What this run has not pushed yet is dropped: the
+        # clocks go back with it, so the next round fetches it again.
         git("rebase", "--abort")
-        say("Could not bring in the latest commits; trying again next round.")
+        git("reset", "--hard", "--quiet", f"origin/{branch()}")
+        say("Could not bring in the latest commits; starting again from GitHub's copy.")
         return False
     return True
 

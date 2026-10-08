@@ -485,6 +485,10 @@ rounds, and a real local git remote to test pushing.
 | Docs: the 15-minute limit, comments, "four commits an hour", "an hourly backup starts one" | Corrected |
 | Twelve, then seven, real breakages went unnoticed by the tests | Each has a test |
 
+Found while preparing the merge: a commit that cannot go on top of GitHub's copy (possible only
+while a run of the old workflow is still finishing) blocked every later round. Now the loop drops
+what it has not pushed and starts again from GitHub's copy; tried against a real git remote.
+
 Left as they are: a scheduled run cancelled in the queue still starts an eBay run (harmless;
 the eBay job only asks what is due); a type whose every source is a YouTube link that never
 resolves is due every round (none exist).
