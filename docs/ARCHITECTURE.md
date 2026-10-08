@@ -194,10 +194,14 @@ they exist, `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.js
   last 24 hours* (`recentGames()`) lists every game named by an item published in the last
   day, with an hour's grace for a source whose clock runs ahead. "Published" is the item's
   `timestamp`: the date its source gave it, or the time the scraper first saw it when the
-  source gives none, so a new source without dates would put its backlog in the list. The
-  order is: most headlines first, so a game found only in body text (`matched_in: "body"`,
-  the source of most wrong matches) comes after every game a headline named; then all
-  mentions, then the most recent, then by name. `gamesOf()` gives the games an item names
+  source gives none, so a new source without dates would put its backlog in the list.
+  `recentGames()` orders them by most headlines first, so a game found only in body text
+  (`matched_in: "body"`, the source of most wrong matches) comes after every game a
+  headline named; then all mentions, then the most recent, then by name. The list then
+  shows them most expensive first (`byPrice()`): by the eBay UK median, then by the US
+  median for a game with no UK figure (the two currencies are never compared), then the
+  games with no price. Games at the same price, and the games with no price, keep the order
+  above. `gamesOf()` gives the games an item names
   (`matched_games`, or `matched_game` for older items, repeats and non-names dropped) and is
   the one definition the list, Most Mentioned Games, the table's menu, its search and its
   rows share: an item that names three games is a mention of each, as it is for
@@ -340,11 +344,23 @@ cheat disc, demo, job lot, merchandise). When eBay returns listings and none nam
 the game is `unmatched`: no figure, no history row, and a note on the dashboard.
 
 **What is kept.** Under `data/prices/`, numbers only: `latest.json` (per game and site: copies,
-lowest, median, typical postage, when checked; the game's level; the day's search count) and
+lowest, median, typical postage, when checked, and `week`, the median of a week before; the
+game's level; the day's search count) and
 `YYYY-MM.json` (a row of time, game, site, copies, lowest, median whenever the three figures
 change, and at least once a day). `latest.json` is also the job's memory: when each game was
 last checked and until when it is surging. Neither file is ever rebuilt from nothing; if one
-cannot be read the run stops before asking eBay. Listings and links go to the `--out` file,
+cannot be read the run stops before asking eBay. `week` is worked out on every run that writes
+`latest.json`, from the history: the latest row of that game and site recorded between 7 and 9
+days before the check (`CHANGE_DAYS`, `CHANGE_SLACK_DAYS`; a quiet game is checked only daily),
+and only when it found copies. History is matched by `key_of(title)`, so a title spelt another
+way from one run to the next ("Ico", "ICO") keeps its history; a value that is not a finite
+positive number is never copied. Early in a month that row is in the month before, which is read
+but never written; if it cannot be read, those figures go without a `week` and the run goes
+on. The dashboard shows the change in brackets beside the median (`priceChangeHtml()`), in
+the shortened form under a game's name and on the eBay prices page. The difference and the
+percentage are worked out from the two prices as they are written (whole pounds or dollars
+from 100), so the bracket adds up with what the reader sees; an overdue figure's bracket is
+dimmed with it. Listings and links go to the `--out` file,
 which the workflow publishes as a single replaced commit on the `ebay-data` branch.
 
 **When it gives up.** A run stops early if eBay does not answer three lookups in a row, if its
@@ -560,7 +576,7 @@ reason saving without a token is the default and tokens should be short-lived.
 
 - **Matcher** (`test_matcher_fixtures.py`): precision and recall on 268 hand-labelled real
   headlines must not fall below their floors, and each matching rule has a named test.
-- **eBay prices** (`test_ebay_prices.py`, 125 tests): a fake stands in for eBay's API and a
+- **eBay prices** (`test_ebay_prices.py`, 136 tests): a fake stands in for eBay's API and a
   throwaway local server exercises the real request code.
   - the key, the token and the Basic header never reach the log or any written file; redirects
     are refused; network errors name only the kind of failure
@@ -573,8 +589,17 @@ reason saving without a token is the default and tokens should be short-lived.
     otherwise; a failed lookup keeps the old figures; unreadable price files stop the run
   - the workflow: who can start it, that it runs `main`, that the key reaches one step, that
     it installs nothing, and that only `data/prices` is committed
+  - the median of a week before (added 2026-10-08): the 7-to-9-day window and both its edges,
+    the newest row in it, an unchanged price kept, nothing a week old yet, none found, the
+    month before on the 1st and in January, a damaged month before, rows in other shapes,
+    another spelling of the title, NaN and Infinity, a figure that no longer holds
 - **Scraper, added 2026-10-07**: the snapshot keeps two weeks, newest first, and past its
   ceiling it is the oldest items that go.
+- **Dashboard, added 2026-10-08 (price order and the week's change)**: the order by UK median,
+  then US, then no price, with ties kept and click targets in step; the line that says so; the
+  bracket's wording up, down and unchanged, its rounding (pennies, whole pounds from 100, a
+  tenth of a per cent, 10 and 100 per cent), its hint and local date, escaping, the figures it
+  refuses, its place on the eBay prices page, and its styles.
 - **Dashboard, added 2026-10-07 (games first)**: which items count as the last 24 hours, the
   order of the games, what each line shows and escapes, the three empty states, the fold at
   ten, a feed of 1,200 items; that a click on a name shows exactly that game's items, on
