@@ -523,9 +523,9 @@ because the search is the rule's spelling, "sly raccoon", and sellers mostly wri
 | Check | Result |
 |---|---|
 | The lists | 100 PAL and 100 US entries, ranked 1–100 by the complete-copy value each states, no game twice in a list, every entry with at least one https source and a date (tested on the committed file) |
-| Search words | Every entry's words checked against its own title with the price job's matcher; 34 corrected so that the words appear together in a typical listing title ("shadow of aku", "spooky swamp"), or given `require` words for editions |
+| Search words | Every entry's words checked against its own title with the price job's matcher; 27 corrected so that the words appear together in a typical listing title ("shadow of aku", "spooky swamp"), or given `require` words for editions |
 | On the real plan (`ebay_prices.py --plan`, no key) | 195 entries priced, 5 not (one ordinary word); 43 reuse a game the feed tracks; 133 games priced for the lists alone, 152 lookups a day; nothing else in the plan changes |
-| Offline tests | 163 price-job tests (19 new), 33 dashboard checks (1 new). The scraper's tests need `feedparser`, which could not be installed here: they run in the *Tests* workflow on the pull request |
+| Offline tests | 157 price-job tests (14 new), 33 dashboard checks (1 new). The scraper's tests need `feedparser`, which could not be installed here: they run in the *Tests* workflow on the pull request |
 | Mutations | 12 deliberate breaks of the new price-job code (site filter, `require`, `allow`, one-word rule, reuse, order, mapping, title clash, sibling filter): all caught |
 | Not checked | A live eBay search for the rare games: the first runs after the merge show the counts |
 
