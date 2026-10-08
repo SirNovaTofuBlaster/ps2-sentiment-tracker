@@ -583,6 +583,24 @@ because the search is the rule's spelling, "sly raccoon", and sellers mostly wri
 | Slow with years of history | Stamps sorted as text, keys cached: 8.4 s → 4.4 s for a year |
 | The page's note described the comparison window too narrowly | Reworded |
 
+## 2026-10-08: Rarest page buttons; consoles by region and price
+
+| Check | Result |
+|---|---|
+| Dashboard checks | 35 pass; the console check now covers each region's list, its price order, the PAL/US labels and the hidden console switch |
+| Price job | Unchanged (172 tests pass) |
+
+### Independent review
+
+| Finding | Resolution |
+|---|---|
+| The console region switch showed under the games lists: a `display: flex` rule beat "hidden" | `:not(.hidden)` on the rule, and a check for it |
+| Without `color-mix` (older browsers) the lit button's label was dark on dark | Plain colours first; tints and glow only inside `@supports` |
+| Dark text on the lit red button fell under 4.5:1 toward the gradient's dark end | The gradient now lightens instead (5.9:1 or better) |
+| "Most expensive first" overstated: consoles with no copies listed follow the priced ones | The guide says so |
+| A console with no known region would vanish from every list | Check that every entry is in at least one list |
+| The guide still said "within a tier, by what collectors pay" | Removed |
+
 ## Re-running the checks
 
 ```sh

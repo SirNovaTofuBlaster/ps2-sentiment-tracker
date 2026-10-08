@@ -610,10 +610,10 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
 body .rare-regions { display: inline-flex; gap: .5rem; align-self: flex-start; }
 body .rare-region, body .console-region {
   --tone: var(--accent);
-  border: 1px solid color-mix(in srgb, var(--tone) 55%, transparent);
+  border: 1px solid var(--tone);
   border-radius: 999px !important;
   color: var(--text);
-  background: color-mix(in srgb, var(--tone) 12%, transparent);
+  background: transparent;
   font-weight: 600;
   letter-spacing: .06em;
   cursor: pointer;
@@ -623,15 +623,24 @@ body .rare-region { padding: .5rem 1.15rem; font-size: .8rem; }
 body .rare-region.is-us { --tone: var(--red); }
 body .rare-region.is-consoles { --tone: var(--green); }
 body .console-region { --tone: var(--green); padding: .35rem .95rem; font-size: .72rem; }
-body .rare-region:hover, body .console-region:hover { background: color-mix(in srgb, var(--tone) 24%, transparent); transform: translateY(-1px); }
-body .rare-region.is-active, body .console-region.is-active {
-  background: linear-gradient(135deg, var(--tone), color-mix(in srgb, var(--tone) 70%, var(--bg)));
-  border-color: var(--tone);
-  color: var(--bg);
-  box-shadow: 0 0 0 1px var(--tone), 0 4px 14px color-mix(in srgb, var(--tone) 45%, transparent);
-}
+body .rare-region:hover, body .console-region:hover { transform: translateY(-1px); }
+/* The lit one: filled with its colour, dark text (5.9:1 or better on all three). */
+body .rare-region.is-active, body .console-region.is-active { background: var(--tone); border-color: var(--tone); color: var(--bg); }
 body .rare-region:focus-visible, body .console-region:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
-body .console-regions { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1rem; }
+/* Tints and glow where the browser can mix colours; without that, the plain look above stands. */
+@supports (background: color-mix(in srgb, red 50%, blue)) {
+  body .rare-region, body .console-region {
+    border-color: color-mix(in srgb, var(--tone) 55%, transparent);
+    background: color-mix(in srgb, var(--tone) 12%, transparent);
+  }
+  body .rare-region:hover, body .console-region:hover { background: color-mix(in srgb, var(--tone) 24%, transparent); }
+  body .rare-region.is-active, body .console-region.is-active {
+    background: linear-gradient(135deg, color-mix(in srgb, var(--tone) 78%, var(--text)), var(--tone));
+    border-color: var(--tone);
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--tone) 45%, transparent);
+  }
+}
+body .console-regions:not(.hidden) { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1rem; }
 body .rare-aka { margin-top: .25rem; font-size: .69rem; color: var(--dim); }
 body .rare-note { margin-top: .4rem; font-size: .69rem; line-height: 1.5; color: var(--dim); }
 body .rare-note a { color: var(--body); text-decoration: underline; text-underline-offset: 2px; }

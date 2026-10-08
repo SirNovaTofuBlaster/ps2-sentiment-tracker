@@ -1840,6 +1840,9 @@ await check('the Rarest page: the rarest consoles, priced on both sites', async 
     vm.runInContext("showRareRegion('PAL')", context);
     assert.equal(el('consoleRegions').classList.contains('hidden'), true, 'the console regions show with the consoles only');
     vm.runInContext("showRareRegion('Consoles')", context);
+    assert.match(read('retro.css'), /body \.console-regions:not\(\.hidden\) \{ display: flex;/, 'a display rule must not overrule "hidden"');
+    assert.ok(consoles.consoles.every(row => Array.isArray(row.regions) && row.regions.some(code => ['US', 'CA', 'JP', 'EU', 'UK'].includes(code))),
+        'every console is in at least one region list');
     const page = read('index.html');
     assert.match(page, />PAL<\/button>\s*<button[^>]*>US<\/button>\s*<button[^>]*>Consoles<\/button>/, 'the buttons say PAL and US, nothing more');
 
