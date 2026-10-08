@@ -1,7 +1,25 @@
 {
-  "last_updated": "2026-10-08 19:34:55 UTC",
+  "last_updated": "2026-10-08 19:46:22 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749306874",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-08 19:43 UTC"
+    },
     {
       "headline": "PS5 emulation is doing so well we might get to play GTA 6 on PC this year",
       "source": "Destructoid",
@@ -109170,38 +109188,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-24 20:00 UTC"
-    },
-    {
-      "headline": "Kinda Funny Fantasy Critic Check-In - Kinda Funny Gamescast",
-      "source": "Podcast: Kinda Funny Gamescast: Video Game Podcast",
-      "source_type": "podcast",
-      "feed": "https://feeds.megaphone.fm/ROOSTER3727935380",
-      "link": "https://clrtpod.com/m/pscrb.fm/rss/p/arttrk.com/p/2D5E6/mgln.ai/e/1246/traffic.megaphone.fm/TBIEA1394820540.mp3",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-24 19:44 UTC"
-    },
-    {
-      "headline": "GTA 6 $400 Collector's Edition Comes With No Game - Kinda Funny Games Daily 09.24.26",
-      "source": "Podcast: Kinda Funny Games Daily: Video Games News Podcast",
-      "source_type": "podcast",
-      "feed": "https://feeds.megaphone.fm/ROOSTER8838278962",
-      "link": "https://clrtpod.com/m/pscrb.fm/rss/p/arttrk.com/p/2D5E6/mgln.ai/e/1246/traffic.megaphone.fm/TBIEA3751263384.mp3",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-24 19:36 UTC"
     }
   ]
 }
