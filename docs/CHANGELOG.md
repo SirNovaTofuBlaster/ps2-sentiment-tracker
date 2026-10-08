@@ -15,14 +15,17 @@
 **Dashboard: `index.html`, `retro.css`**
 - *Named in the last 24 hours* is ordered by the eBay UK median, dearest first. A game with no
   UK figure follows, by its US median: dollars and pounds are never compared. Games with no
-  price come last. Within each group, and between games at the same price, the order is the
-  one it had (headlines, then mentions, then the most recent). The line under the heading
-  says so when any game in it is priced.
+  price come last. Games at the same price, and the games with no price, keep the order they
+  had (headlines, then mentions, then the most recent). The line under the heading says so
+  when any game in it is priced.
 - Beside each median, wherever one is shown (under a game's name on the Tracker and Most
   mentioned pages, and on the eBay prices page): `(£2.30 ▲ 3.2%)` when it went up since a week before, `(£1.10 ▼
   4.5%)` when it went down, `(no change)` when it is the same. Up in teal and down in red, as
   in the Demand Index; the arrow carries it without the colour. Hovering shows the week-old
-  figure and its date. Nothing is shown where there is no week-old figure.
+  figure and its date. Nothing is shown where there is no week-old figure. The difference
+  and the percentage are worked out from the prices as written (whole pounds or dollars from
+  100), so the bracket adds up with what is on screen. An overdue figure's bracket is dimmed
+  with it.
 
 **Price job: `ebay_prices.py`**
 - `latest.json` now carries, per game and site, `week`: the median recorded a week before
@@ -30,11 +33,13 @@
   copies), with the time of that row. Numbers only, like everything else under
   `data/prices/`. It is worked out from the month's history, and from the month before early
   in a month; that file is only read, and if it cannot be read the run carries on without
-  those figures. No new request to eBay and nothing else changes in what is asked or kept.
+  those figures. History is matched whatever the spelling of the title, and only finite
+  positive figures are copied. No new request to eBay and nothing else changes in what is
+  asked or kept.
 
 **Guide, docs, tests**
-- The guide describes the order and the brackets. 32 dashboard checks (was 31) and six new
-  tests of the price job (210 Python tests, was 204).
+- The guide describes the order and the brackets. 32 dashboard checks (was 31) and eleven
+  new tests of the price job (215 Python tests, was 204).
 
 ### When the brackets appear
 
@@ -50,6 +55,10 @@
 - These are asking prices, so a week's change says what sellers ask now against a week ago,
   not what copies sold for. A median over a handful of copies can move a lot when one
   listing comes or goes.
+- When a game's search words are changed (pinning it with its own `search`, say), its bracket
+  compares two different searches for a week.
+- A game with only a US price comes after the cheapest UK-priced game, however dear it is:
+  the two currencies are never compared.
 
 ## 2026-10-07: games first
 

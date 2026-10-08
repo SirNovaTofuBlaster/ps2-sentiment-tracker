@@ -392,6 +392,8 @@ body .ebay-quote.is-stale b { opacity: .5; }
 body .ebay-change { font-size: .72rem; font-weight: 400; color: var(--dim); white-space: nowrap; }
 body .ebay-change.is-up { color: var(--green); }
 body .ebay-change.is-down { color: var(--red); }
+/* An overdue figure is dimmed, and so is how it moved */
+body .ebay-site.is-stale .ebay-change, body .ebay-quote.is-stale .ebay-change { opacity: .5; }
 body .level-tag {
   margin-left: .45rem;
   padding: .1rem .4rem;

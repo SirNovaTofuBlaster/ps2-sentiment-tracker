@@ -409,6 +409,43 @@ data even if no item names it any more, and the line then says so; the line over
 is read out again on every keystroke in the search box, which is talkative and was not
 tried with a screen reader.
 
+## 2026-10-08: the last day's games by price, and each median's change over a week
+
+How the price order on the front list, the brackets beside the medians and the new `week`
+figure in `latest.json` were checked. No browser was used (rule 11), and the price job could
+not be run against eBay from here.
+
+| Check | Result |
+|---|---|
+| What changed | `index.html` (`medianOf()`, `byPrice()`, `weekBefore()`, `priceChangeHtml()`, the list's line, the two places a median is drawn), `retro.css` (the bracket's colours and dimming), `ebay_prices.py` (`history_index()`, `week_before()`, `add_week_before()`, reading the month before), the guide and the docs. `scraper.py`, `feeds.json` and the workflows are untouched |
+| The price job stays safe | It asks eBay nothing new, prints nothing new, and writes only numbers and stamps to `latest.json`; the month before is read and never written; a damaged one, rows in other shapes, NaN and Infinity cost only the brackets. The reviewer found no way for the change to stop a run |
+| Against real data | The front list on the feed snapshot of 2026-10-08 01:04 UTC with that morning's price file: *Metal Gear Solid 3: Subsistence* (£98.98) first, down to *Smuggler's Run* (£4.95); then *Siren*, which has only a US price ($75); then *Retro* and *Black*, which have none. The real history moved a week back gave 380 of the 401 medians a week-old figure, in 0.02 seconds |
+| Offline tests | 215 Python tests and 32 dashboard checks pass |
+| Do the checks bite | 53 one-line breakages of the new code in the page, the stylesheet and the price job: 49 noticed. The other four change nothing that can happen (a tie order that the stable sort already keeps; guards against shapes the price job never writes) |
+| Not checked | How the brackets look, and a real run of the price job a week on: the first `week` figures are due after 2026-10-13 22:41 UTC |
+
+### Independent review
+
+One review with fresh context and no browser, working in a copy, told to report only findings
+backed by a concrete failure. It moved the real history a week back to see real brackets and
+fuzzed the history reader with 20,000 sets of junk rows.
+
+| Finding | Resolution |
+|---|---|
+| Four gaps in the tests let real breaks pass: a window of ten days, an unchanged price dropped, the month before worked out as 31 days back, the unchanged hint unescaped; and three guards could be removed | Each has a test; the mutation pass above includes them |
+| A NaN or Infinity in the history would reach `latest.json`, which no browser can read | Only finite positive figures are copied |
+| From £100 the median is written in whole pounds, so "£150 (£50.50 ▲ 51%)" did not add up | The bracket is worked out from the prices as written |
+| "10.0%" for 9.96 per cent, and "100%" for a fall short of everything | Rounded once; a near-total fall reads ">99%" |
+| The hint's date was in UTC while the page shows local time | Local time |
+| After a change of search words a bracket compares two different searches for a week | Said in the guide and the changelog |
+| A title spelt another way ("Ico", "ICO") lost its history | History is matched by `key_of(title)` |
+| An overdue median was dimmed but its bracket was not | Both are |
+| The guide said "the cheapest last" while US-only and unpriced games follow it; "each group keeps its order" was true only for ties; "from 13 October" was early for most games | Reworded |
+| The test list in the architecture notes and this log had no entry | Both added |
+
+Left as it is: a game with only a US price comes after the cheapest UK-priced game, however
+dear, because dollars and pounds are never compared; the guide and the list's own line say so.
+
 ## Re-running the checks
 
 ```sh

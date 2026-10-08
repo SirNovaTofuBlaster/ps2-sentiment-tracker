@@ -1594,7 +1594,19 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
         context.__site = { checked: '2026-10-14T10:00Z', copies: 3, median, week };
         return vm.runInContext(`priceChangeHtml(__site, ${JSON.stringify(currency)}, 'en-GB')`, context);
     };
-    assert.match(change(100.04, wk(100)), /is-up[^>]*>\(£0\.04 ▲ &lt;0\.1%\)</);
+    // Worked out from the prices as shown: whole pounds from £100, so the bracket adds up.
+    assert.match(change(100.04, wk(100)), /title="A week before \((?:7 Oct|Oct 7)\) the median was £100: the same\.">\(no change\)</);
+    assert.match(change(150.49, wk(99.99)), /is-up[^>]*>\(£50\.01 ▲ 50%\)</);
+    assert.match(change(50.02, wk(50)), /is-up[^>]*>\(£0\.02 ▲ &lt;0\.1%\)</);
+    assert.match(change(50.05, wk(50)), /is-up[^>]*>\(£0\.05 ▲ 0\.1%\)</);
+    assert.match(change(3.3, wk(3)), /is-up[^>]*>\(£0\.30 ▲ 10%\)</, 'ten per cent, not "10.0"');
+    assert.match(change(54.98, wk(50)), /is-up[^>]*>\(£4\.98 ▲ 10%\)</, '9.96 per cent is written as ten too');
+    // The date in the hint is the reader's own, like every other time on the page.
+    const late = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(new Date('2026-10-07T23:30:00Z'));
+    context.__site = { checked: '2026-10-14T23:00Z', copies: 3, median: 12, week: { checked: '2026-10-07T23:30Z', median: 10 } };
+    assert.ok(vm.runInContext("priceChangeHtml(__site, 'GBP', 'en-GB')", context).includes(`A week before (${late}) the median`), late);
+    assert.match(change(0.01, wk(20)), /is-down[^>]*>\(£19\.99 ▼ &gt;99%\)</, 'a fall short of everything is not "100%"');
+    assert.doesNotMatch(change(10, wk(10), '<b>'), /<b>/, 'the hint of an unchanged price is escaped too');
     assert.match(change(99.5, wk(100)), /is-down[^>]*>\(£0\.50 ▼ 0\.5%\)</);
     assert.match(change(30, wk(10)), /is-up[^>]*>\(£20\.00 ▲ 200%\)</);
     assert.match(change(10.1, wk(10)), />\(£0\.10 ▲ 1\.0%\)</, 'pennies are counted as pennies');
@@ -1620,7 +1632,7 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
     assert.doesNotMatch(el('todayList').innerHTML, /ebay-change/);
 
     const css = read('retro.css');
-    assert.match(css, /body \.ebay-change \{ font-size: \.72rem; font-weight: 400; color: var\(--dim\); white-space: nowrap; \}\nbody \.ebay-change\.is-up \{ color: var\(--green\); \}\nbody \.ebay-change\.is-down \{ color: var\(--red\); \}/);
+    assert.match(css, /body \.ebay-change \{ font-size: \.72rem; font-weight: 400; color: var\(--dim\); white-space: nowrap; \}\nbody \.ebay-change\.is-up \{ color: var\(--green\); \}\nbody \.ebay-change\.is-down \{ color: var\(--red\); \}\n\/\* An overdue figure is dimmed, and so is how it moved \*\/\nbody \.ebay-site\.is-stale \.ebay-change, body \.ebay-quote\.is-stale \.ebay-change \{ opacity: \.5; \}/);
     vm.runInContext('allFeedData = []; visibleFeedData = []; refreshDashboard();', context);
 });
 

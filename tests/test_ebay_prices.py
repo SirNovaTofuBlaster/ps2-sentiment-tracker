@@ -1210,6 +1210,54 @@ class WeekTests(unittest.TestCase):
         self.assertNotIn("week", self.kuon())
         self.assertEqual(self.kuon("US")["week"], {"checked": "2026-09-29T12:00Z", "median": 26.0})
 
+    def test_nine_days_is_the_furthest_back_and_the_same_price_is_kept_as_no_change(self):
+        self.sandbox.write("data/prices/2026-09.json", [
+            ["2026-09-27T11:59Z", "Kuon", "UK", 3, 20.0, 99.0],    # nine days and a minute: too old
+            ["2026-09-27T12:00Z", "Kuon", "US", 3, 20.0, 28.25]])  # nine days exactly: used, same as now
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        self.assertNotIn("week", self.kuon())
+        self.assertEqual(self.kuon("US")["week"], {"checked": "2026-09-27T12:00Z", "median": 28.25},
+                         "an unchanged price is kept, for the dashboard to say so")
+
+    def test_the_month_before_is_found_on_the_first_of_a_month_and_in_january(self):
+        for now, month, row_time in ((datetime(2026, 10, 1, 12, 0, tzinfo=timezone.utc), "2026-09", "2026-09-24T12:00Z"),
+                                     (datetime(2027, 1, 5, 12, 0, tzinfo=timezone.utc), "2026-12", "2026-12-29T12:00Z")):
+            with self.subTest(month=month):
+                sandbox = Sandbox(self, feed=[mention("Kuon", 5, "r/ps2", now=now)])
+                sandbox.now = now
+                sandbox.write(f"data/prices/{month}.json", [[row_time, "Kuon", "UK", 3, 20.0, 25.0]])
+                code, printed, fake = sandbox.run()
+                self.assertEqual(code, 0, printed)
+                self.assertEqual(sandbox.latest["games"]["Kuon"]["UK"]["week"], {"checked": row_time, "median": 25.0})
+
+    def test_the_title_may_be_spelt_another_way_from_one_week_to_the_next(self):
+        self.sandbox.write("data/prices/2026-09.json", [["2026-09-29T12:00Z", "KUON", "UK", 3, 20.0, 25.0]])
+        self.sandbox.run()
+        self.assertEqual(self.kuon()["week"]["median"], 25.0)
+
+    def test_figures_no_browser_can_read_never_reach_the_file(self):
+        (self.sandbox.data / "prices").mkdir(parents=True, exist_ok=True)
+        (self.sandbox.data / "prices" / "2026-09.json").write_text(
+            '[["2026-09-29T12:00Z","Kuon","UK",3,20.0,Infinity],["2026-09-29T12:00Z","Kuon","US",3,20.0,NaN]]', encoding="utf-8")
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        text = (self.sandbox.data / "prices" / "latest.json").read_text(encoding="utf-8")
+        self.assertNotIn("Infinity", text)
+        self.assertNotIn("NaN", text)
+
+    def test_a_figure_from_a_week_before_goes_when_it_no_longer_holds_and_odd_entries_pass(self):
+        latest = {"games": {
+            "Kuon": {"UK": {"checked": "2026-10-13T12:00Z", "copies": 2, "median": 30.0,
+                            "week": {"checked": "2026-10-06T12:00Z", "median": 1.0}},
+                     "US": {"checked": "not a time", "copies": 2, "median": 30.0},
+                     "level": "normal"}}}
+        rows = [["2026-10-06T12:00Z", 7, "UK", 3, 20.0, 25.0], ["2026-10-06T12:00Z", "Kuon", 7, 3, 20.0, 25.0],
+                ["2026-10-06T12:00Z", "Kuon", "US", 3, 20.0, 25.0]]
+        ebay_prices.add_week_before(latest, rows)
+        self.assertNotIn("week", latest["games"]["Kuon"]["UK"], "no row for it any more: the old figure goes")
+        self.assertNotIn("week", latest["games"]["Kuon"]["US"], "a check time that cannot be read gets none")
+
 
 class EndToEndTests(unittest.TestCase):
     def setUp(self):

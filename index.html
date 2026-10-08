@@ -848,18 +848,22 @@
         function priceChangeHtml(site, currency, locale) {
             const week = weekBefore(site);
             if (!week) return '';
-            const diff = Math.round((site.median - week.median) * 100) / 100;
+            // Worked out from the figures as they are shown (whole pounds from £100), so that the
+            // bracket adds up with the two prices a reader can see.
+            const shownAs = (value) => (value >= 100 ? Math.round(value) : Math.round(value * 100) / 100);
+            const before = shownAs(week.median);
+            const diff = Math.round((shownAs(site.median) - before) * 100) / 100;
             let day = '';
             try {
-                day = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(Date.parse(week.checked)));
+                day = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short' }).format(new Date(Date.parse(week.checked)));
             } catch { /* the date is only for the hint */ }
             const then = `A week before${day ? ` (${day})` : ''} the median was ${money(week.median, currency, locale)}`;
             if (diff === 0) {
                 return `<span class="ebay-change" title="${esc(then)}: the same.">(no change)</span>`;
             }
-            const pct = Math.abs(diff) / week.median * 100;
-            const shown = pct >= 10 ? String(Math.round(pct)) : pct >= 0.1 ? pct.toFixed(1) : '<0.1';
             const up = diff > 0;
+            const pct = Math.round(Math.abs(diff) / before * 1000) / 10;   // to a tenth, before it is written
+            const shown = !up && pct >= 99.5 ? '>99' : pct >= 10 ? String(Math.round(pct)) : pct >= 0.1 ? pct.toFixed(1) : '<0.1';
             return `<span class="ebay-change ${up ? 'is-up' : 'is-down'}" title="${esc(`${then}: ${up ? 'up' : 'down'} ${money(Math.abs(diff), currency, locale)}, ${shown}%.`)}">`
                 + `(${esc(money(Math.abs(diff), currency, locale))} ${up ? '▲' : '▼'} ${esc(shown)}%)</span>`;
         }

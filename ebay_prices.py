@@ -59,6 +59,7 @@ import argparse
 import base64
 import http.client
 import json
+import math
 import os
 import re
 import statistics
@@ -1099,15 +1100,16 @@ def update_records(state, games, run, now):
 
 
 def history_index(rows):
-    """{(title, site): [(time, median), ...]} from history rows, skipping any row that is not
-    in the shape this script writes."""
+    """{(key, site): [(time, median), ...]} from history rows, skipping any row that is not
+    in the shape this script writes. Keyed by key_of(title), so that a game whose title is
+    spelt another way from one run to the next ("Ico", "ICO") keeps its history."""
     index = {}
     for row in rows:
         if not (isinstance(row, list) and len(row) == 6 and isinstance(row[1], str) and isinstance(row[2], str)):
             continue
         when = parse_stamp(row[0])
         if when is not None:
-            index.setdefault((row[1], row[2]), []).append((when, row[5]))
+            index.setdefault((key_of(row[1]), row[2]), []).append((when, row[5]))
     return index
 
 
@@ -1119,11 +1121,11 @@ def week_before(index, title, label, checked):
     if then is None:
         return None
     newest, oldest = then - timedelta(days=CHANGE_DAYS), then - timedelta(days=CHANGE_DAYS + CHANGE_SLACK_DAYS)
-    rows = [(when, median) for when, median in index.get((title, label), ()) if oldest <= when <= newest]
+    rows = [(when, median) for when, median in index.get((key_of(title), label), ()) if oldest <= when <= newest]
     if not rows:
         return None
     when, median = max(rows, key=lambda row: row[0])
-    if isinstance(median, bool) or not isinstance(median, (int, float)) or median <= 0:
+    if isinstance(median, bool) or not isinstance(median, (int, float)) or not math.isfinite(median) or median <= 0:
         return None
     return {"checked": when.strftime(STAMP_FORMAT), "median": median}
 
