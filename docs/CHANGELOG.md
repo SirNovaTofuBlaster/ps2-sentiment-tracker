@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-10-08: the Rarest page
+
+- Asked: a tab next to the Tracker with the 100 rarest PAL games and the 100 rarest US games,
+  "even if it's shovelware", with their eBay median prices.
+- `rare_games.json` (new): both lists, ranked by PriceCharting's complete-copy value of
+  2026-10-08, because nobody counts copies and price is how collectors measure rarity. Each
+  entry carries its sources (PriceCharting, Racketboy, GIGA, Destructoid, PPE.pl, whynow, Retro
+  Dodo), the other region's name, eBay search words, and flags for thin data, single sources,
+  editions and Indian releases. PAL is led by Sengoku Anthology, Gun Club and Kuon; US by Kuon,
+  Rule of Rose and Haunting Ground. Kept in the list but flagged: Cart Kings, Hanuman and Ra One
+  (Indian PAL releases). White Van Racer is left out: its current value is unclear.
+- `ebay_prices.py`: prices each list once a day on its own site, PAL on eBay UK and US on eBay
+  US, after every other due lookup. A game the feed already tracks is reused when it is searched
+  there under the entry's words or name (43 entries today); 133 games are added with the new
+  level `rare`, about 150 lookups a day. Editions need their own words in the listing
+  (`require`) and may come with an art book or a plush (`allow`). Five entries whose name is
+  one ordinary word (Obscure on both lists, Buccaneer, Nightshade, Hanuman) are not priced and
+  show "not priced". A broken file is reported and never stops the run.
+  `latest.json` gains `rare` (which game holds each entry's figures) and `sites`.
+- Independent review: one-word names counted other games' listings ("rare obscure horror
+  game"), two entries were looked up a second time under shorter words, editions with a plush
+  or art book were all left out, and *FIFA Soccer 13* never matched its US title. All fixed.
+- Dashboard: a *Rarest* tab (`#rare`) with a PAL/US switch, 25 rows folded, guide value, flags,
+  the eBay median on the list's site with its weekly bracket, and the sources. On the eBay
+  prices page those games carry a *rarest* tag and show only their own site.
+- Guide: a new section 5, *The rarest games*; one example corrected (Bully keeps its name on
+  eBay UK).
+
 ## 2026-10-08: eBay UK searched under the European name
 
 - Asked: why *Fatal Frame 2* had no eBay UK price. In Europe the series is *Project Zero*; the

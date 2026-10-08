@@ -135,6 +135,7 @@ class Sandbox:
             self.write("data/archive/2026-09.json", [{"g": title, "d": "2026-09-01 10:00 UTC", "s": "x", "h": "y"}
                                                      for title in archive])
         for name, value in (("WATCHLIST_PATH", self.root / "ebay_watchlist.json"),
+                            ("RARE_PATH", self.root / "rare_games.json"),
                             ("FEED_PATH", self.data / "sentiment_feed.json"),
                             ("ARCHIVE_DIR", self.data / "archive"),
                             ("LIBRARY_PATH", self.data / "ps2_database.json"),
@@ -1257,6 +1258,226 @@ class WeekTests(unittest.TestCase):
         ebay_prices.add_week_before(latest, rows)
         self.assertNotIn("week", latest["games"]["Kuon"]["UK"], "no row for it any more: the old figure goes")
         self.assertNotIn("week", latest["games"]["Kuon"]["US"], "a check time that cannot be read gets none")
+
+
+class RareListTests(unittest.TestCase):
+    """The Rarest page: each list priced once a day on its own region's site only."""
+
+    def setUp(self):
+        self.sandbox = Sandbox(self, feed=[mention("Silent Hill 2", 5, "r/ps2")])
+
+    def lists(self, pal=(), us=()):
+        self.sandbox.write("rare_games.json", {"lists": {"PAL": list(pal), "US": list(us)}})
+
+    def test_without_the_file_nothing_changes(self):
+        self.assertEqual(ebay_prices.load_rare(self.sandbox.root / "rare_games.json"), ([], []))
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        self.assertNotIn("rare", self.sandbox.latest)
+        self.assertNotIn("Rarest", printed)
+
+    def test_a_broken_file_or_entry_is_left_out_and_named_but_never_stops_the_run(self):
+        (self.sandbox.root / "rare_games.json").write_text("{not json", encoding="utf-8")
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        self.assertIn("Rarest page, left out: rare_games.json cannot be read", printed)
+        self.assertEqual(self.sandbox.latest["games"]["Silent Hill 2"]["UK"]["copies"], 2, "the other games are priced")
+        self.lists(pal=[{"title": ""}, {"title": "Gun Club", "exclude": "nra"}, {"title": "Kuon"}])
+        entries, problems = ebay_prices.load_rare(self.sandbox.root / "rare_games.json")
+        self.assertEqual([entry["title"] for entry in entries], ["Kuon"])
+        self.assertEqual(len(problems), 2, problems)
+        self.sandbox.write("rare_games.json", {"lists": {"EU": []}})
+        self.assertEqual(ebay_prices.load_rare(self.sandbox.root / "rare_games.json")[0], [])
+
+    def test_each_list_is_priced_on_its_own_site_once_a_day(self):
+        self.lists(pal=[{"rank": 1, "title": "Sengoku Anthology"}, {"rank": 2, "title": "Kuon"}],
+                   us=[{"rank": 1, "title": "Kuon"}, {"rank": 2, "title": "Chulip"}])
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        asked = {(call["headers"]["X-EBAY-C-MARKETPLACE-ID"], call["params"]["q"]) for call in fake.searches}
+        self.assertIn(("EBAY_GB", "sengoku anthology"), asked)
+        self.assertNotIn(("EBAY_US", "sengoku anthology"), asked, "a PAL rarity is not looked for in America")
+        self.assertIn(("EBAY_US", "chulip"), asked)
+        self.assertNotIn(("EBAY_GB", "chulip"), asked)
+        self.assertTrue({("EBAY_GB", "kuon"), ("EBAY_US", "kuon")} <= asked, "on both lists: both sites")
+        self.assertEqual(sum(1 for site, q in asked if q == "kuon"), 2, "and once each")
+        latest = self.sandbox.latest
+        self.assertEqual(latest["rare"], {"PAL": {"Sengoku Anthology": "Sengoku Anthology", "Kuon": "Kuon"},
+                                          "US": {"Kuon": "Kuon", "Chulip": "Chulip"}})
+        sengoku = latest["games"]["Sengoku Anthology"]
+        self.assertEqual((sengoku["level"], sengoku["sites"], sengoku["UK"]["copies"]), ("rare", ["UK"], 2))
+        self.assertNotIn("US", sengoku)
+        self.assertEqual(latest["games"]["Kuon"]["sites"], ["US", "UK"])
+        self.assertIn("Rarest page: 4 entries, 2 PAL, 2 US; 3 of the games are priced for it alone.", printed)
+        self.assertIn(["2026-10-06T12:00Z", "Sengoku Anthology", "UK", 2, 24.99, 28.25], self.sandbox.history())
+
+        self.sandbox.now = NOON + timedelta(hours=7)
+        code, printed, fake = self.sandbox.run()
+        self.assertFalse({call["params"]["q"] for call in fake.searches} & {"sengoku anthology", "kuon", "chulip"},
+                         "not again the same day")
+        self.assertEqual(self.sandbox.latest["rare"]["PAL"]["Kuon"], "Kuon", "the lists stay in the file between checks")
+        self.sandbox.now = NOON + timedelta(hours=24)
+        code, printed, fake = self.sandbox.run()
+        self.assertIn("sengoku anthology", {call["params"]["q"] for call in fake.searches}, "the next day")
+
+    def test_a_game_the_feed_already_tracks_is_not_looked_up_twice(self):
+        self.lists(pal=[{"rank": 1, "title": "Silent Hill 2"}, {"rank": 2, "title": "Project Zero 2", "search": "project zero 2"}],
+                   us=[{"rank": 1, "title": "Silent Hill 2"}])
+        self.sandbox.write("ebay_watchlist.json", {"games": [], "never": [], "regional_names": {"UK": [{"from": "Fatal Frame", "to": "Project Zero"}]}})
+        self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["Fatal Frame 2"])
+        self.sandbox.feed([mention("Silent Hill 2", 5, "r/ps2"), mention("Fatal Frame 2", 4, "r/ps2")])
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        queries = [(call["headers"]["X-EBAY-C-MARKETPLACE-ID"], call["params"]["q"]) for call in fake.searches]
+        self.assertEqual(queries.count(("EBAY_GB", "silent hill 2")), 1)
+        self.assertEqual(queries.count(("EBAY_GB", "project zero 2")), 1, "the UK name the feed's game is searched under")
+        latest = self.sandbox.latest
+        self.assertEqual(latest["rare"]["PAL"], {"Silent Hill 2": "Silent Hill 2", "Project Zero 2": "Fatal Frame 2"})
+        self.assertNotIn("sites", latest["games"]["Silent Hill 2"], "still priced on both sites")
+        self.assertEqual(latest["games"]["Silent Hill 2"]["level"], "normal")
+        self.assertNotIn("Project Zero 2", latest["games"])
+
+    def test_the_other_regions_name_never_borrows_a_game_searched_under_that_name(self):
+        self.lists(pal=[{"rank": 1, "title": "Kaido Racer 2", "other_title": "Tokyo Xtreme Racer: Drift 2"}])
+        self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["Tokyo Xtreme Racer: Drift 2"])
+        self.sandbox.feed([mention("Tokyo Xtreme Racer: Drift 2", 4, "r/ps2")])
+        code, printed, fake = self.sandbox.run()
+        asked = {(call["headers"]["X-EBAY-C-MARKETPLACE-ID"], call["params"]["q"]) for call in fake.searches}
+        self.assertIn(("EBAY_GB", "kaido racer 2"), asked)
+        self.assertEqual(self.sandbox.latest["rare"]["PAL"], {"Kaido Racer 2": "Kaido Racer 2"})
+
+    def test_an_edition_needs_its_own_words_and_is_never_the_ordinary_game(self):
+        self.lists(us=[{"rank": 1, "title": "Scarface: The World Is Yours Collector's Edition", "search": "scarface",
+                        "require": ["collectors"]},
+                       {"rank": 2, "title": "Shin Megami Tensei: Persona 3", "search": "persona 3", "exclude": ["fes"]}])
+        self.sandbox.feed([mention("Scarface", 3, "r/ps2")])
+        self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["Scarface"])
+
+        def answer(params, headers):
+            if params["q"] == "scarface collectors":
+                return page(listing("Scarface The World Is Yours Collector's Edition PS2", 120, item_id=1),
+                            listing("Scarface PS2 complete", 9, item_id=2))
+            if params["q"] == "persona 3":
+                return page(listing("Shin Megami Tensei Persona 3 PS2", 60, item_id=3),
+                            listing("Persona 3 FES PS2", 40, item_id=4))
+            return two_copies(params, headers)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        games = self.sandbox.latest["games"]
+        edition = games["Scarface: The World Is Yours Collector's Edition"]
+        self.assertEqual((edition["US"]["copies"], edition["US"]["median"]), (1, 120.0))
+        self.assertEqual(games["Shin Megami Tensei: Persona 3"]["US"]["median"], 60.0, "FES is left out")
+        self.assertEqual(self.sandbox.latest["rare"]["US"]["Scarface: The World Is Yours Collector's Edition"],
+                         "Scarface: The World Is Yours Collector's Edition")
+        self.assertEqual(games["Scarface"]["US"]["copies"], 2, "the ordinary game keeps its own figures")
+        self.assertNotIn("120", "\n".join(line for line in printed.splitlines() if "Rarest" in line))
+
+    def test_a_game_on_both_lists_leaves_out_what_either_list_leaves_out(self):
+        self.lists(pal=[{"rank": 1, "title": "Wild Arms 5"}],
+                   us=[{"rank": 1, "title": "Wild Arms 5", "exclude": ["anniversary"]}])
+
+        def answer(params, headers):
+            currency = "GBP" if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" else "USD"
+            return page(listing("Wild Arms 5 PS2", 50, currency=currency, item_id=1),
+                        listing("Wild Arms 5 10th Anniversary Edition PS2", 150, currency=currency, item_id=2))
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        entry = self.sandbox.latest["games"]["Wild Arms 5"]
+        self.assertEqual(entry["sites"], ["US", "UK"])
+        self.assertEqual((entry["US"]["copies"], entry["UK"]["copies"]), (1, 1))
+
+    def test_a_one_word_name_that_is_an_ordinary_word_is_not_priced(self):
+        self.lists(pal=[{"title": "Obscure"}, {"title": "Kuon"}, {"title": "Obscure Edition", "search": "obscure", "require": ["edition"]}])
+        entries, problems = ebay_prices.load_rare(self.sandbox.root / "rare_games.json")
+        self.assertEqual([entry["title"] for entry in entries], ["Kuon", "Obscure Edition"])
+        self.assertEqual(problems, ['PAL "Obscure": not priced, "obscure" is an ordinary word'])
+        game_ = dict(game("Obscure Edition", search="obscure"), require=["edition"])
+        self.assertEqual(ebay_prices.reject_reason(listing("Kuon PS2 PAL rare obscure horror game", 300, "GBP"), game_, GB, False), "other_game")
+
+    def test_an_edition_may_come_with_an_art_book_or_a_plush(self):
+        self.lists(us=[{"rank": 1, "title": "Raiho Special Edition", "search": "king abaddon", "require": ["raiho"],
+                        "allow": ["plush", "art book"]},
+                       {"rank": 2, "title": "Wrong Thing", "allow": ["anything goes"]}])
+        entries, problems = ebay_prices.load_rare(self.sandbox.root / "rare_games.json")
+        self.assertEqual(len(problems), 1, "only junk phrases can be allowed")
+        raiho = dict(game("Raiho Special Edition", search="king abaddon"), require=["raiho"], allow=entries[0]["allow"])
+        plush = listing("Devil Summoner 2 Raidou Kuzunoha vs King Abaddon Raiho Edition w/ Plush PS2", 150)
+        self.assertIsNone(ebay_prices.reject_reason(plush, raiho, US, False))
+        self.assertEqual(ebay_prices.reject_reason(plush, dict(raiho, allow=[]), US, False), "not_a_copy")
+        self.assertEqual(ebay_prices.reject_reason(listing("King Abaddon Raiho Edition strategy guide PS2", 20), raiho, US, False),
+                         "not_a_copy", "what is not allowed still leaves a listing out")
+        self.assertEqual(ebay_prices.reject_reason(listing("King Abaddon Raiho Edition Plush only PS2", 20), raiho, US, False),
+                         "not_a_copy", "the extra on its own is not a copy")
+        for title in ("Raiho Edition King Abaddon + Art Book PS2", "King Abaddon Raiho Edition, includes the plush, PS2",
+                      "King Abaddon Raiho Edition & plush PS2"):
+            self.assertIsNone(ebay_prices.reject_reason(listing(title, 150), raiho, US, False), title)
+
+    def test_fifa_13_is_never_another_years_fifa(self):
+        entries, _ = ebay_prices.load_rare(ROOT / "rare_games.json")
+        fifa = next(entry for entry in entries if entry["title"] == "FIFA Soccer 13")
+        game_ = dict(game("FIFA Soccer 13", search="fifa"), require=fifa["require"], exclude=fifa["exclude"])
+        for title, reason in (("FIFA Soccer 13 (Sony PlayStation 2, 2012) CIB", None), ("FIFA 13 PS2 Legacy Edition", None),
+                              ("FIFA 13 and FIFA 14 PS2", "not_a_copy"), ("FIFA Soccer 14 PS2 Complete - 13 available", "not_a_copy"),
+                              ("FIFA 12 PS2", "other_game")):
+            self.assertEqual(ebay_prices.reject_reason(listing(title, 90), game_, US, False), reason, title)
+
+    def test_a_shorter_search_still_finds_the_tracked_game_by_its_name_on_that_site(self):
+        self.lists(pal=[{"rank": 1, "title": "Project Zero 2: Crimson Butterfly", "search": "project zero 2"}])
+        self.sandbox.write("ebay_watchlist.json", {"games": [], "never": [], "regional_names": {"UK": [{"from": "Fatal Frame", "to": "Project Zero"}]}})
+        self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["Fatal Frame 2: Crimson Butterfly"])
+        self.sandbox.feed([mention("Fatal Frame 2: Crimson Butterfly", 4, "r/ps2")])
+        code, printed, fake = self.sandbox.run()
+        queries = [call["params"]["q"] for call in fake.searches if call["headers"]["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB"]
+        self.assertEqual(queries, ["project zero 2 crimson butterfly"], "one UK lookup, not two")
+        self.assertEqual(self.sandbox.latest["rare"]["PAL"], {"Project Zero 2: Crimson Butterfly": "Fatal Frame 2: Crimson Butterfly"})
+
+    def test_an_entry_never_takes_the_place_of_a_tracked_game_with_its_title(self):
+        games = [game("Scarface")]
+        entry = {"list": "US", "title": "Scarface", "other_title": None, "search": "scarface", "queries": ["scarface collectors"],
+                 "require": ["collectors"], "exclude": [], "allow": []}
+        placed = ebay_prices.add_rare_games(games, [entry], [])
+        self.assertEqual(placed["US"], {}, "left off rather than writing over the tracked game's figures")
+        self.assertEqual([entry["title"] for entry in games], ["Scarface"])
+        self.assertNotIn("require", games[0])
+
+    def test_the_librarys_other_spelling_of_the_same_game_is_not_another_game(self):
+        self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["R.A.D. Robot Alchemic Drive", "Robot Alchemic Drive Turbo"])
+        _, catalogue = ebay_prices.load_library()
+        entry = {"list": "US", "title": "Robot Alchemic Drive", "other_title": None, "search": "robot alchemic drive",
+                 "queries": ["robot alchemic drive"], "require": [], "exclude": [], "allow": []}
+        games = []
+        ebay_prices.add_rare_games(games, [entry], catalogue)
+        self.assertEqual(games[0]["siblings"], ["robot alchemic drive turbo"])
+        self.assertIsNone(ebay_prices.reject_reason(listing("R.A.D. Robot Alchemic Drive PS2 complete", 200), games[0], US, False))
+
+    def test_rare_lookups_wait_behind_the_games_the_feed_names(self):
+        self.lists(pal=[{"rank": 1, "title": "Sengoku Anthology"}])
+        games = [game("Silent Hill 2"), dict(game("Sengoku Anthology", level="rare"), sites=["EBAY_GB"])]
+        order = [(entry["title"], market) for entry, market in ebay_prices.due_lookups(games, {}, NOON)]
+        self.assertEqual(order[-1], ("Sengoku Anthology", "EBAY_GB"))
+        self.assertEqual(len(order), 3)
+
+    def test_the_committed_lists_are_complete_and_sourced(self):
+        raw = json.loads((ROOT / "rare_games.json").read_text(encoding="utf-8"))
+        entries, problems = ebay_prices.load_rare(ROOT / "rare_games.json")
+        self.assertEqual(problems, [f'{name} "{title}": not priced, "{word}" is an ordinary word' for name, title, word in (
+            ("PAL", "Buccaneer", "buccaneer"), ("PAL", "Hanuman: The Boy Warrior", "hanuman"), ("PAL", "Nightshade", "nightshade"),
+            ("PAL", "Obscure", "obscure"), ("US", "Obscure", "obscure"))])
+        for name in ("PAL", "US"):
+            rows = raw["lists"][name]
+            self.assertEqual([row["rank"] for row in rows], list(range(1, 101)), name)
+            self.assertEqual(len({ebay_prices.key_of(row["title"]) for row in rows}), 100, f"{name}: no game twice")
+            for row in rows:
+                self.assertTrue(row["evidence"], row["title"])
+                for proof in row["evidence"]:
+                    self.assertTrue(proof["source"].startswith("https://"), row["title"])
+                    self.assertRegex(proof["date"], r"^20\d\d-\d\d", row["title"])
+                self.assertLessEqual(set(row["flags"]), set(raw["flags"]), row["title"])
+                cib = row["value_usd"]["cib"]
+                self.assertTrue(isinstance(cib, (int, float)) and cib > 0, row["title"])
+            values = [row["value_usd"]["cib"] for row in rows]
+            self.assertEqual(values, sorted(values, reverse=True), f"{name} is ranked by the value it states")
+        self.assertEqual(len(entries), 195)
 
 
 class RegionalNameTests(unittest.TestCase):

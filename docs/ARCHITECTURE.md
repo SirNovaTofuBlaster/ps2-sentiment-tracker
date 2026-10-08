@@ -180,12 +180,13 @@ returned HTTP 403 there (see [SOURCES.md](../SOURCES.md#forums)).
 ## The dashboard
 
 `index.html` loads `data/sentiment_feed.json`, `feeds.json` and `data/feed_status.json`, and, when
-they exist, `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.json`.
+they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json` and
+`rare_games.json`.
 
-- **Three pages in one file.** A tab bar switches between *Tracker*, *Most mentioned* and
-  *eBay prices*; each is a wrapper (`viewDashboard`, `viewMentions`, `viewPrices`) and only
-  one is displayed. `#mentions` and `#prices` in the address select the second and third; any
-  other fragment selects the Tracker and scrolls to the part it names, so the header's
+- **Four pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Most mentioned*
+  and *eBay prices*; each is a wrapper (`viewDashboard`, `viewRare`, `viewMentions`,
+  `viewPrices`) and only one is displayed. `#rare`, `#mentions` and `#prices` in the address
+  select the other three; any other fragment selects the Tracker and scrolls to the part it names, so the header's
   *Sources* link works from every page. Changing page adds one entry to the browser's
   history, so Back returns to the page before; links, Back and Forward all go through
   `showViewFromAddress()`, which also runs once more when the first load has finished.
@@ -336,6 +337,7 @@ are skipped. Two library spellings that come to the same name are one game.
 | `staple` | Named in headlines on 5 or more days of the window; never surging | Every 6 hours |
 | `normal` | Any other mention in the window, or pinned | Every 6 hours |
 | `dormant` | Mentioned before, not in the window | Once a day |
+| `rare` | On the Rarest page and not tracked otherwise | Once a day, on its list's site only |
 
 A mention found only in an item's body text keeps a game `normal` but never makes it surge. A
 run uses at most 500 searches and stops for the day at 4,500 of eBay's 5,000; surging games go
@@ -364,6 +366,31 @@ changes: the game keeps its library title in `latest.json` and the history. The 
 names the renamed games, never a price. The dashboard's own eBay UK search links still use the
 title.
 
+**The Rarest page's games (added 2026-10-08).** `rare_games.json` holds two ranked lists of a
+hundred, `PAL` and `US`, with each entry's sources (see *The rarest games* below).
+`load_rare()` reads it and `add_rare_games()` adds its games to the plan after the regional
+names are applied. An entry is the game the feed already tracks when that game is searched
+on the list's site under the entry's words or under the entry's name ("Project Zero 2: Crimson
+Butterfly" is the feed's *Fatal Frame 2*), or has the same name; it is then priced as before and
+its figures serve the list. Otherwise the entry is looked up on its own, even when it is the
+same game under other words: the tracked *King's Field IV: The Ancient City* is searched under
+that full name, which PAL sellers of *King's Field IV* do not write. Never by the other region's name: the feed's *Tokyo Xtreme Racer:
+Drift 2* is searched on eBay UK under that name, and the PAL list's *Kaido Racer 2* is not.
+Every other entry becomes a game of level `rare`: checked once a day (`CHECK_EVERY_HOURS`),
+only on its list's site (`RARE_SITES`: PAL on eBay UK, US on eBay US, recorded as `sites` in
+`latest.json`), after every other due lookup. A game on both lists is one game on both sites.
+An entry can name words a listing must also contain (`require`, for an edition such as
+*Scarface ... Collector's Edition*: searched as "scarface collectors", never the tracked
+*Scarface*), words that leave a listing out (`exclude`, "fes" for *Persona 3*), and junk phrases
+an edition comes with (`allow`: "art book" for a limited edition, "plush" for the Raiho
+Edition), which then do not mark a listing as "not a copy". An entry searched under one word
+that is not in `ONE_WORD_TITLES` and has no `require` is not priced (Obscure, Buccaneer,
+Nightshade, Hanuman), as for the feed's games; the page shows it as "not priced". Library names
+of the same game ("R.A.D. Robot Alchemic Drive") are not taken for other games. `latest.json`
+gains `rare`: for each list, which title in `games` holds each entry's figures. A file or an
+entry that cannot be used is named in the log and left out; it never stops the run. 133
+games are priced for the lists alone: about 150 lookups a day.
+
 **What is kept.** Under `data/prices/`, numbers only: `latest.json` (per game and site: copies,
 lowest, median, typical postage, when checked, and `week`, the median of a week before; the
 game's level; the day's search count) and
@@ -388,6 +415,28 @@ which the workflow publishes as a single replaced commit on the `ebay-data` bran
 first ten lookups all fail, or if eBay says the allowance is used. Nothing is written when
 more than half the lookups failed, or when games that had copies last time now return nothing
 at all (a broken search, not an empty market).
+
+## The rarest games
+
+`rare_games.json` (added 2026-10-08) is the Rarest page's data: `lists.PAL` and `lists.US`, a
+hundred entries each, ranked by `value_usd.cib`, PriceCharting's market price for a complete
+copy read on `checked`. Nobody counts copies, so price is the measure of rarity collectors use.
+Each entry has `title`, `other_title` (the other region's name, where it differs), `search`
+(and `require`/`exclude`, see *eBay asking prices*), `flags` (`weak`, `one_source`, `edition`,
+`india`, explained in the file's `flags`) and `evidence` (source link, figure, date). The file's
+`method`, `gaps` and `sources` say how it was made and what is missing: the order is complete
+down to about $60 (PAL) and $90 (US); below that a game with no loose price may be missing.
+
+It was built from PriceCharting's console tables sorted by price, Racketboy (2022), GIGA (2026),
+Destructoid (CeX prices, 2025), PPE.pl (2023, 2024), whynow (2022) and Retro Dodo (2020/2024).
+RFGeneration and consolevariations.com were not read: their robots.txt asks robots to stay out.
+Nothing reads PriceCharting automatically; the figures are a dated snapshot.
+
+The page (`renderRare()`) shows one list at a time (PAL or US), 25 rows folded, each with its
+guide value, flags, other name, the eBay median on its own site (`rarePrices()`: the game
+`latest.json`'s `rare` names, else the game of the same `priceKey()`) and its source links (https
+only). `RARE_SITE` in the page and `RARE_SITES` in the script must agree (tested). Without the
+file the page says so; a failed reload keeps the list on screen.
 
 ## Weights
 
@@ -672,7 +721,7 @@ reason saving without a token is the default and tokens should be short-lived.
   there is no price file; the medians appear under a game's name in all four places, find
   the game under another spelling, and show nothing rather than another game's figure; a
   price file the page cannot draw leaves the rest of the page working; prices are fetched from
-  the site with no token, before the lists are drawn; the three pages switch by tab and by
+  the site with no token, before the lists are drawn; the pages switch by tab and by
   address, with exactly one on screen; the item count is labelled with how far back it goes; rows name their cells for the phone layout; a phone gets 25 rows to a page.
 - **Page and price script agree on names**: `priceKey()` against `search_terms()` on the whole
   library.

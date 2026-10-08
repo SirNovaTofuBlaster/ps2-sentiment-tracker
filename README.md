@@ -42,7 +42,7 @@ touches `scraper.py`.
 |---|---|---|
 | `archive.py` | `data/archive/` | A permanent record of every PS2 game mention (the snapshot itself only holds about two weeks) |
 | `demand.py` | `data/demand.json` | The dashboard's Demand Index: Wikipedia reading figures blended with mentions |
-| `ebay_prices.py` | `data/prices/` | eBay asking prices (US and UK) for every library game the feed has mentioned |
+| `ebay_prices.py` | `data/prices/` | eBay asking prices (US and UK) for every library game the feed has mentioned, and for the rarest PAL and US games in `rare_games.json` (the dashboard's Rarest page) |
 
 `ebay_prices.py` is the only part that needs a key: an eBay developer keyset, stored as the
 `EBAY_CLIENT_ID` and `EBAY_CLIENT_SECRET` repository secrets. Without them its workflow fails

@@ -75,6 +75,7 @@ from urllib.parse import quote, urlencode
 
 ROOT = Path(__file__).parent
 WATCHLIST_PATH = ROOT / "ebay_watchlist.json"
+RARE_PATH = ROOT / "rare_games.json"            # the Rarest page's two lists (read only)
 DEFAULT_OUT = Path(tempfile.gettempdir()) / "ebay_prices.json"   # outside the repository on purpose
 DATA_DIR = ROOT / "data"
 FEED_PATH = DATA_DIR / "sentiment_feed.json"      # the scraper's 14-day snapshot (read only)
@@ -114,7 +115,10 @@ SURGE_HOURS = 24             # a surge is judged over this long...
 SURGE_SOURCES = 2            # ...and needs this many different sources, each with its own headline,
 SURGE_QUIET_MENTIONS = 1     # ...for a game named at most this often in the rest of the window
 SURGE_HOLD_HOURS = 48        # once surging, a game stays surging this long after its last mention
-CHECK_EVERY_HOURS = {"surging": 0, "normal": 6, "staple": 6, "dormant": 24}   # 0 = every run
+CHECK_EVERY_HOURS = {"surging": 0, "normal": 6, "staple": 6, "dormant": 24, "rare": 24}   # 0 = every run
+# The Rarest page's lists in rare_games.json, and the one site each is priced on: a rare PAL game
+# is a PAL copy, sold in Britain; a rare US game is an American copy.
+RARE_SITES = {"PAL": "EBAY_GB", "US": "EBAY_US"}
 EARLY_MINUTES = 30           # a check may come this much early, so "every 6 hours" does not drift to 7
 CHANGE_DAYS = 7              # beside each median, how it compares with the median this long before...
 CHANGE_SLACK_DAYS = 2        # ...as recorded at most this much longer before (a quiet game is checked daily)
@@ -160,7 +164,7 @@ ONE_WORD_TITLES = frozenset("""
     jumanji kessen killzone kinetica kuon lemmings madagascar mafia manhunt maximo mercenaries
     metropolismania monopoly mummy nanobreaker okami psychonauts psyvariar punisher ratatouille
     rez robocop rocky scaler scarface shinobi siren skygunner splashdown spyhunter ssx stuntman
-    suffering syberia timesplitters trapt vexx xiii yakuza zathura zoocube
+    suffering syberia tengai timesplitters trapt vexx xiii yakuza zathura zoocube
 """.split())
 # Words that turn a game into an edition of the same game, not into another game.
 EDITION_WORDS = {
@@ -648,6 +652,112 @@ def plan_games(now, pinned, never, mentions, ever, library, catalogue, state):
     return sorted(games.values(), key=lambda game: game["title"].lower()), left_out
 
 
+def load_rare(path=None):
+    """(entries, problems) from rare_games.json: every game on the Rarest page's two lists, with
+    the words to look for. A missing file gives none. A file or an entry that cannot be used is
+    left out and named in the problems, so that it never stops the pricing of every other game."""
+    path = Path(path or RARE_PATH)
+    if not path.exists():
+        return [], []
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError) as exc:
+        return [], [f"{path.name} cannot be read ({type(exc).__name__})"]
+    lists = raw.get("lists") if isinstance(raw, dict) else None
+    if not isinstance(lists, dict) or not lists or set(lists) - set(RARE_SITES) \
+            or not all(isinstance(rows, list) for rows in lists.values()):
+        return [], [f'{path.name} needs "lists" of games for {" and ".join(RARE_SITES)}']
+
+    def phrases(value):
+        if value is None:
+            return []
+        if not isinstance(value, list) or not all(isinstance(text, str) and words(text) for text in value):
+            return None
+        return [" ".join(name_words(text)) for text in value]
+
+    entries, problems = [], []
+    for list_name, rows in lists.items():
+        for position, row in enumerate(rows, 1):
+            title = row.get("title") if isinstance(row, dict) else None
+            if not isinstance(title, str) or not key_of(title):
+                problems.append(f"{list_name} entry {position} has no title")
+                continue
+            search = row.get("search", title)
+            phrase, queries = search_terms(search) if isinstance(search, str) else ("", [])
+            require, exclude = phrases(row.get("require")), phrases(row.get("exclude"))
+            allow = row.get("allow") or []
+            if require is None or exclude is None or not isinstance(allow, list) \
+                    or not all(isinstance(phrase, str) and phrase in JUNK_PHRASES for phrase in allow):
+                problems.append(f'{list_name} "{title}": "require" and "exclude" must be lists of words, '
+                                '"allow" a list of the junk phrases an edition comes with')
+                continue
+            # One word that is also an ordinary word would count every listing that uses it
+            # ("rare obscure horror game"), as for the games the feed names.
+            if " " not in phrase and phrase not in ONE_WORD_TITLES and not require:
+                problems.append(f'{list_name} "{title}": not priced, "{phrase}" is an ordinary word')
+                continue
+            # The words a listing must also contain go into the search, so that eBay finds them.
+            queries = [" ".join([query, *[word for word in " ".join(require).split() if word not in query.split()]])
+                       for query in queries]
+            if not queries or any(len(query) + len(" ps2") > MAX_QUERY_CHARS for query in queries):
+                problems.append(f'{list_name} "{title}": the search words do not work for eBay')
+                continue
+            other = row.get("other_title")
+            entries.append({"list": list_name, "title": title.strip(), "search": phrase, "queries": queries,
+                            "require": require, "exclude": exclude, "allow": sorted(allow),
+                            "other_title": other.strip() if isinstance(other, str) and key_of(other) else None})
+    return entries, problems
+
+
+def add_rare_games(games, rare, catalogue):
+    """Put the Rarest page's games among the games to price. One that is tracked already (the feed
+    has named it) is priced as before, and its figures serve the list too. Any other one is added
+    with the level "rare": looked up once a day, and only on its own list's site. Returns
+    {list: {title on the list: title in latest.json}}, so the page can find each game's figures."""
+    known = {}
+    for game in games:
+        known.setdefault(("name", search_terms(game["title"])[0]), game)
+        for market_id in MARKETS:
+            known.setdefault((market_id, for_market(game, market_id)["search"]), game)
+    keys = {game["key"] for game in games}
+    placed, added = {list_name: {} for list_name in RARE_SITES}, {}
+    for entry in rare:
+        market_id = RARE_SITES[entry["list"]]
+        game = None
+        if not entry["require"]:   # an edition is never the same thing as the game the feed tracks
+            # Not by its name in the other region: the tracked game is looked for under that name
+            # here ("Tokyo Xtreme Racer: Drift 2" on eBay UK, where it was sold as Kaido Racer 2).
+            name = search_terms(entry["title"])[0]
+            game = known.get((market_id, entry["search"])) or known.get((market_id, name)) or known.get(("name", name))
+        if game is None:
+            # The same game on both lists is one game, looked up on both sites, leaving out what
+            # either list leaves out.
+            identity = (entry["search"], tuple(entry["require"]), tuple(entry["allow"]))
+            game = added.get(identity)
+            if game is None:
+                key = key_of(entry["title"])
+                if key in keys:
+                    continue   # its title belongs to another game here; it would take that one's figures
+                # Library names for this very game are not other games: "Project Zero 3 Tormented",
+                # "R.A.D. Robot Alchemic Drive" (single letters are an abbreviation's).
+                own = set(name_words(readable(entry["title"])))
+                siblings = [] if entry["require"] else [
+                    other for other in other_games(entry["title"], entry["search"], catalogue)
+                    if {word for word in other.split() if len(word) > 1} - own]
+                game = {"title": entry["title"], "key": key, "search": entry["search"], "queries": entry["queries"],
+                        "exclude": entry["exclude"], "require": entry["require"], "allow": entry["allow"], "pinned": False,
+                        "siblings": siblings, "level": "rare", "mentions": 0, "surging_until": None, "sites": []}
+                added[identity] = game
+                keys.add(key)
+            if market_id not in game["sites"]:
+                game["sites"].append(market_id)
+            game["exclude"] = sorted(set(game["exclude"]) | set(entry["exclude"]))
+        placed[entry["list"]][entry["title"]] = game["title"]
+    games.extend(added.values())
+    games.sort(key=lambda game: game["title"].lower())
+    return placed
+
+
 def due_lookups(games, state, now):
     """(game, market) pairs whose turn has come, most urgent first. A game the library also
     files under the name it has on a site ("Project Zero" beside "Fatal Frame") is looked up
@@ -659,17 +769,20 @@ def due_lookups(games, state, now):
     for game in games:
         every = CHECK_EVERY_HOURS[game["level"]] * 60
         for market_id, market in MARKETS.items():
-            if market_id not in (game.get("markets") or {}) and (market_id, game["search"]) in renamed_to:
+            if game.get("sites"):                  # a game only on the Rarest page: its own list's site
+                if market_id not in game["sites"]:
+                    continue
+            elif market_id not in (game.get("markets") or {}) and (market_id, game["search"]) in renamed_to:
                 continue
             entry = (previous.get(game["key"]) or {}).get(market["label"])
             checked = parse_stamp(entry.get("checked")) if isinstance(entry, dict) else None
             waited = (now - checked).total_seconds() / 60 if checked else None
             if waited is None or waited >= every - EARLY_MINUTES:
                 overdue = float("inf") if waited is None else waited / max(every, 60)
-                due.append((game["level"] != "surging", not game["pinned"], -overdue,
+                due.append((game["level"] != "surging", not game["pinned"], game["level"] == "rare", -overdue,
                             game["title"].lower(), market_id, game))
-    due.sort(key=lambda row: row[:5])
-    return [(row[5], row[4]) for row in due]
+    due.sort(key=lambda row: row[:6])
+    return [(row[6], row[5]) for row in due]
 
 
 # ======================================================================================
@@ -854,6 +967,14 @@ def is_the_soundtrack(title, name_text, phrase):
     return bool(rest) and rest[0] in SOUNDTRACK_WORDS
 
 
+def comes_with(title, phrase):
+    """True when the title says the copy comes with the thing: "w/ Plush", "+ Art Book",
+    "with the art book", "includes artbook"."""
+    pattern = r"\s+".join(re.escape(word) for word in phrase.split())
+    return re.search(rf"(?:\bwith|\bw/|\+|&|\band|\bplus|\bincl\w*)\s*(?:[\w'’-]+\s+){{0,3}}{pattern}\b",
+                     str(title or "").lower()) is not None
+
+
 def reject_reason(item, game, market, keyword_search):
     """Why a listing is left out, or None to count it."""
     text = " ".join(words(item.get("title")))             # for junk words, as the seller wrote them
@@ -861,11 +982,16 @@ def reject_reason(item, game, market, keyword_search):
     if keyword_search and not PLATFORM_WORDS.search(text):
         return "other_game"
     if not names_this_game(name_text, game["search"]) or names_another_entry(name_text, game["search"]) \
-            or has_phrase(name_text, game.get("siblings") or ()):
+            or has_phrase(name_text, game.get("siblings") or ()) \
+            or not all(has_phrase(name_text, [words_needed]) for words_needed in game.get("require") or ()):
         return "other_game"
     if has_phrase(text, OTHER_PLATFORMS):
         return "other_platform"
-    if has_phrase(text, JUNK_PHRASES) or has_phrase(text, game["exclude"]) \
+    # An edition's extras count only as part of the copy ("Limited Edition with Art Book"), never
+    # sold on their own ("Limited Edition Art Book").
+    junk = [phrase for phrase in JUNK_PHRASES
+            if phrase not in (game.get("allow") or ()) or not comes_with(item.get("title"), phrase)]
+    if has_phrase(text, junk) or has_phrase(text, game["exclude"]) \
             or is_the_soundtrack(item.get("title"), name_text, game["search"]):
         return "not_a_copy"
     if has_phrase(text, IMPORT_PHRASES) or has_phrase(text, market["foreign"]):
@@ -1123,7 +1249,7 @@ def numbers_of(result, stamp):
     return entry
 
 
-def update_records(state, games, run, now):
+def update_records(state, games, run, now, rare_titles=None):
     """(new latest.json, rows to add to this month's history) after a run."""
     stamp, today = now.strftime(STAMP_FORMAT), now.strftime("%Y-%m-%d")
     previous = prior_games(state)
@@ -1139,6 +1265,8 @@ def update_records(state, games, run, now):
             entry["pinned"] = True
         if game["surging_until"]:
             entry["surging_until"] = game["surging_until"].strftime(STAMP_FORMAT)
+        if game.get("sites"):
+            entry["sites"] = [MARKETS[market_id]["label"] for market_id in MARKETS if market_id in game["sites"]]
         old_entry = previous.get(game["key"]) or {}
         for market in MARKETS.values():
             label = market["label"]
@@ -1166,6 +1294,9 @@ def update_records(state, games, run, now):
         "searches": {"day": today, "used": used_today + run["searches"]},
         "games": latest_games,
     }
+    if rare_titles:
+        # Which game in "games" holds the figures of each game on the Rarest page's lists.
+        latest["rare"] = {list_name: dict(titles) for list_name, titles in rare_titles.items()}
     return latest, rows
 
 
@@ -1254,8 +1385,10 @@ def snapshot_of(run, now):
     }
 
 
-def describe_plan(games, left_out, lookups, allowance):
+def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_problems=()):
     levels = {level: sum(1 for game in games if game["level"] == level) for level in CHECK_EVERY_HOURS}
+    if not levels["rare"]:
+        del levels["rare"]   # only there when rare_games.json adds games
     pinned = sum(1 for game in games if game["pinned"])
     say(f"Tracking {len(games)} games ({pinned} pinned): " + ", ".join(
         f"{count} {level}" for level, count in levels.items()) + ".")
@@ -1276,6 +1409,12 @@ def describe_plan(games, left_out, lookups, allowance):
         if renamed_here:
             shown = "; ".join(renamed_here[:12]) + (f" and {len(renamed_here) - 12} more" if len(renamed_here) > 12 else "")
             say(f"Searched on eBay {market['label']} under the name it has there: {len(renamed_here)} ({shown}).")
+    if rare_titles is not None:
+        on_lists = sum(len(titles) for titles in rare_titles.values())
+        say(f"Rarest page: {on_lists} entries, " + ", ".join(f"{len(titles)} {name}" for name, titles in rare_titles.items())
+            + f"; {sum(1 for game in games if game['level'] == 'rare')} of the games are priced for it alone.")
+    for problem in rare_problems:
+        say(f"Rarest page, left out: {problem}.")
     say(f"Due now: {len(lookups)} lookups. This run may use {max(allowance, 0)} searches.")
 
 
@@ -1303,11 +1442,13 @@ def main(argv=None):
         library, catalogue = load_library()
         games, left_out = plan_games(now, pinned, never, mentions, ever, library, catalogue, state)
         apply_regional_names(games, load_regional_names(), catalogue)
+        rare, rare_problems = load_rare()
+        rare_titles = add_rare_games(games, rare, catalogue)
         lookups = due_lookups(games, state, now)
         used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
         used_today = used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0
         allowance = min(MAX_SEARCHES_PER_RUN, DAILY_SEARCHES - used_today)
-        describe_plan(games, left_out, lookups, allowance)
+        describe_plan(games, left_out, lookups, allowance, rare_titles if rare else None, rare_problems)
         if args.plan:
             return 0
         if not lookups:
@@ -1339,7 +1480,7 @@ def main(argv=None):
         say(f"STOPPED: {problem}")
         return 1
 
-    latest, rows = update_records(state, games, run, now)
+    latest, rows = update_records(state, games, run, now, rare_titles if rare else None)
     add_week_before(latest, earlier + history + rows)
     try:
         append_history(history_path, rows)

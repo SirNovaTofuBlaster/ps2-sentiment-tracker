@@ -58,10 +58,11 @@
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
 
-        <!-- Three pages in one: the tracker, the ranking of games by mentions, and the full
-             list of eBay asking prices. -->
+        <!-- Four pages in one: the tracker, the rarest games, the ranking of games by mentions,
+             and the full list of eBay asking prices. -->
         <div class="view-tabs" role="tablist" aria-label="Pages">
             <button type="button" id="tabDashboard" role="tab" aria-selected="true" aria-controls="viewDashboard" onclick="showView('dashboard')" class="view-tab is-active"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Tracker</button>
+            <button type="button" id="tabRare" role="tab" aria-selected="false" aria-controls="viewRare" onclick="showView('rare')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Rarest</button>
             <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
             <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
         </div>
@@ -216,6 +217,26 @@
 
         </div>
 
+        <!-- The rarest PS2 games of each region (rare_games.json), each with today's eBay median
+             on its own region's site (data/prices/latest.json). -->
+        <div id="viewRare" role="tabpanel" aria-labelledby="tabRare" class="hidden space-y-8">
+        <div id="rareSection" class="bg-ps2card p-6">
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                <div>
+                    <h2>Rarest PS2 Games</h2>
+                    <p id="rareSummary" class="text-xs text-slate-400">Loading...</p>
+                </div>
+                <div class="rare-regions" role="group" aria-label="Which region's list">
+                    <button type="button" id="rareRegionPAL" onclick="showRareRegion('PAL')" aria-pressed="true" class="rare-region is-active">PAL <span class="rare-region-site">eBay UK</span></button>
+                    <button type="button" id="rareRegionUS" onclick="showRareRegion('US')" aria-pressed="false" class="rare-region">US <span class="rare-region-site">eBay US</span></button>
+                </div>
+            </div>
+            <ol id="rareList" class="zebra"></ol>
+            <button type="button" id="rareListToggle" onclick="toggleList('rareList')" aria-controls="rareList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
+            <p id="rareNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
+        </div>
+        </div>
+
         <!-- Every PS2 game the feed names, ranked by how often. -->
         <div id="viewMentions" role="tabpanel" aria-labelledby="tabMentions" class="hidden space-y-8">
         <div id="topGamesSection" class="bg-ps2card p-6">
@@ -348,14 +369,16 @@
         // the game is priced, then the lookup chips.
         const gamePricesHtml = (title) => priceFiguresHtml(title) + priceLookupHtml(title);
 
-        /* ---- Three pages in one -------------------------------------------------
-           "Tracker" is the feed and its sources, "Most mentioned" ranks the games
-           the feed names, "eBay prices" is the full price list. Only one is on
-           screen. The address remembers which, so …/#mentions and …/#prices can be
+        /* ---- Four pages in one --------------------------------------------------
+           "Tracker" is the feed and its sources, "Rarest" lists the rarest games of
+           each region, "Most mentioned" ranks the games the feed names, "eBay
+           prices" is the full price list. Only one is on screen. The address
+           remembers which, so …/#rare, …/#mentions and …/#prices can be
            bookmarked, and the header's Sources link still works from any of them.
         -------------------------------------------------------------------- */
         const VIEWS = {
             dashboard: ['viewDashboard', 'tabDashboard'],
+            rare: ['viewRare', 'tabRare'],
             mentions: ['viewMentions', 'tabMentions'],
             prices: ['viewPrices', 'tabPrices'],
         };
@@ -380,7 +403,7 @@
             return view;
         }
 
-        // The address decides the page: "#mentions" and "#prices" are the other two pages;
+        // The address decides the page: "#rare", "#mentions" and "#prices" are the other pages;
         // anything else is the Tracker, scrolled to the part it names ("#sourcesSection")
         // when it names one.
         function showViewFromAddress() {
@@ -398,9 +421,9 @@
            stylesheet hides those while the list has "is-folded". The Demand
            Index shares the Tracker with the feed, so it shows five; the games
            named in the last day show ten; Most Mentioned Games has a page to
-           itself and shows twenty-five.
+           itself and shows twenty-five, as does each list of the rarest games.
         -------------------------------------------------------------------- */
-        const LIST_FOLD = { todayList: 10, demandList: 5, topGamesList: 25 };   // rows shown while each list is folded
+        const LIST_FOLD = { todayList: 10, demandList: 5, topGamesList: 25, rareList: 25 };   // rows shown while each list is folded
         const RECENT_HOURS = 24;  // "named in the last 24 hours"
         const SOURCES_NAMED = 3;  // a game's line names this many sources and counts the rest
         const ALSO_NAMED = 4;     // a table row names this many further games and counts the rest
@@ -479,6 +502,7 @@
             document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
             // Prices first: every list below shows them beside its games.
             await loadPrices();
+            await loadRare();
             await loadDemand();
             refreshDashboard();
         }
@@ -808,7 +832,14 @@
             staple: { rank: 1, stale: 8, tag: 'staple', hint: 'Named on five or more of the last fourteen days, so one more mention is no news. Checked every 6 hours.' },
             normal: { rank: 1, stale: 8, tag: '', hint: '' },
             dormant: { rank: 2, stale: 30, tag: 'quiet', hint: 'Not mentioned for two weeks. Checked once a day.' },
+            rare: { rank: 2, stale: 30, tag: 'rarest', hint: 'On the Rarest page and not named by the feed. Checked once a day, on its own region\'s site only.' },
         };
+
+        // The sites a game is priced on: a game that is only on the Rarest page names its own.
+        function sitesOf(entry) {
+            const named = Array.isArray(entry?.sites) ? PRICE_SITES.filter(label => entry.sites.includes(label)) : [];
+            return named.length ? named : PRICE_SITES;
+        }
 
         // "$220", "£52.70": the site (US, UK) is always named beside the figure, so the
         // plain symbol is enough whatever the reader's own country.
@@ -955,7 +986,8 @@
                 + (surging ? ` · ${surging} surging` : '')
                 + (searching ? ` · ${rows.length} shown` : '');
             empty.textContent = rows.length ? '' : 'No priced game has that in its name. A game is priced once the feed has mentioned it, '
-                + 'unless its name is one ordinary word (Black, Cars, The Sims) or it is not in the PS2 library.';
+                + 'unless its name is one ordinary word (Black, Cars, The Sims) or it is not in the PS2 library. '
+                + 'The games on the Rarest page are priced too.';
             empty.classList.toggle('hidden', rows.length > 0);
             list.innerHTML = rows.map((row) => {
                 const level = LEVELS[row.level];
@@ -966,7 +998,7 @@
                             ? ` <span class="level-tag level-${esc(row.level)}" title="${esc(level.hint)}">${esc(level.tag)}</span>` : ''}</span>
                         <span class="text-slate-500 whitespace-nowrap" title="Headlines naming this game in the last two weeks">${esc(row.mentions)} in headlines</span>
                     </div>
-                    <div class="ebay-figures">${PRICE_SITES.map(label =>
+                    <div class="ebay-figures">${sitesOf(row.entry).map(label =>
                         priceSiteHtml(label, row.entry[label], currencyOf(label, data), now, locale, level.stale)).join('')}</div>
                     ${priceLookupHtml(row.title)}
                 </li>`;
@@ -1002,6 +1034,155 @@
                 priceIndex = new Map();
                 priceTrouble = true;
                 try { renderPrices(null); } catch { /* the page carries on without prices */ }
+            }
+        }
+
+        /* ---- The rarest games ------------------------------------------------
+           rare_games.json holds two lists of a hundred, PAL and US, ranked by what
+           collectors pay for a complete copy: nobody counts how many copies of a
+           game exist, so price is the measure of rarity collectors go by. Each
+           entry carries the sources for its place. ebay_prices.py prices the PAL
+           list on eBay UK and the US list on eBay US once a day; "rare" in
+           latest.json says which game in its "games" holds each entry's figures.
+        -------------------------------------------------------------------- */
+        const RARE_SITE = { PAL: 'UK', US: 'US' };   // as RARE_SITES in ebay_prices.py
+        const RARE_OTHER = { PAL: 'US name', US: 'PAL name' };
+        const RARE_FLAGS = {
+            weak: 'thin data', one_source: 'one source', edition: 'edition', india: 'India',
+        };
+        let rareData = null;         // rare_games.json as loaded, or null
+        let rareTrouble = false;     // the file is there but could not be read
+        let rareRegion = 'PAL';
+
+        const own = (object, key) => Boolean(object) && typeof object === 'object' && Object.prototype.hasOwnProperty.call(object, key);
+
+        // The list for a region, each entry checked enough to be drawn.
+        function rareEntries(data, region) {
+            const rows = own(data?.lists, region) && Array.isArray(data.lists[region]) ? data.lists[region] : [];
+            return rows.filter(row => row && typeof row === 'object' && typeof row.title === 'string' && row.title.trim());
+        }
+
+        // The price file's figures for an entry: the game the price job says holds them, else
+        // the game of the same name.
+        function rarePrices(entry, region, data = priceData) {
+            const games = data && typeof data.games === 'object' && data.games ? data.games : {};
+            const named = own(data?.rare, region) && own(data.rare[region], entry.title) ? data.rare[region][entry.title] : null;
+            if (typeof named === 'string' && own(games, named) && games[named] && typeof games[named] === 'object') {
+                const level = LEVELS[games[named].level] ? games[named].level : 'normal';
+                return { title: named, entry: games[named], level };
+            }
+            return priceIndex.get(priceKey(entry.title)) || null;
+        }
+
+        // "pricecharting.com" for a source's link.
+        function siteName(url) {
+            try {
+                return new URL(url).hostname.replace(/^www\./, '');
+            } catch {
+                return '';
+            }
+        }
+
+        function showRareRegion(region) {
+            rareRegion = own(RARE_SITE, region) ? region : 'PAL';
+            renderRare();
+        }
+
+        function renderRare(data = rareData, now = Date.now(), locale) {
+            const region = rareRegion;
+            const label = RARE_SITE[region];
+            for (const name of Object.keys(RARE_SITE)) {
+                const button = document.getElementById(`rareRegion${name}`);
+                button.classList.toggle('is-active', name === region);
+                button.setAttribute?.('aria-pressed', String(name === region));
+            }
+            const entries = rareEntries(data, region);
+            const list = document.getElementById('rareList');
+            const note = document.getElementById('rareNote');
+            if (!entries.length) {
+                document.getElementById('rareSummary').textContent = rareTrouble
+                    ? 'The list of rare games could not be read just now. Press REFRESH to try again.'
+                    : 'No list of rare games yet.';
+                list.innerHTML = '';
+                note.textContent = '';
+                foldList('rareList', 0);
+                return;
+            }
+            let checkedOn = '';
+            try {
+                if (/^\d{4}-\d{2}-\d{2}$/.test(String(data.checked ?? ''))) {
+                    checkedOn = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+                        .format(new Date(`${data.checked}T00:00:00Z`));
+                }
+            } catch { /* the date is only for the summary */ }
+            const currency = currencyOf(label);
+            // The price job names every entry it prices; one it leaves out (a name that is an
+            // everyday word) says so rather than waiting for a check that never comes.
+            const listed = own(priceData?.rare, region) && priceData.rare[region] && typeof priceData.rare[region] === 'object'
+                ? priceData.rare[region] : null;
+            let priced = 0;
+            list.innerHTML = entries.map((entry, i) => {
+                const prices = rarePrices(entry, region);
+                const site = prices?.entry?.[label];
+                const unpriced = !prices && listed && !own(listed, entry.title);
+                if (site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) && site.copies > 0
+                        && typeof site.median === 'number') priced++;
+                const value = entry.value_usd && typeof entry.value_usd === 'object' ? entry.value_usd.cib : null;
+                const flags = (Array.isArray(entry.flags) ? entry.flags : []).filter(flag => own(RARE_FLAGS, flag));
+                const hint = (flag) => typeof data.flags?.[flag] === 'string' ? data.flags[flag] : '';
+                const sources = [...new Map((Array.isArray(entry.evidence) ? entry.evidence : [])
+                    .filter(proof => proof && /^https:\/\//i.test(String(proof.source ?? '')))
+                    .map(proof => [siteName(proof.source), proof])).values()];
+                const rank = Number.isInteger(entry.rank) ? entry.rank : i + 1;
+                return `
+                <li class="${rowClass('rareList', i)}">
+                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
+                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${esc(rank)} ${esc(entry.title)}${flags.map(flag =>
+                            ` <span class="level-tag rare-flag" title="${esc(hint(flag))}">${esc(RARE_FLAGS[flag])}</span>`).join('')}</span>
+                        ${typeof value === 'number' && Number.isFinite(value)
+                            ? `<span class="text-slate-400 whitespace-nowrap" title="What collectors pay for a complete copy: PriceCharting's market price in US dollars${checkedOn ? `, ${esc(checkedOn)}` : ''}. This is what the list is ranked by.">guide ${esc(money(value, 'USD', locale))}</span>` : ''}
+                    </div>
+                    ${typeof entry.other_title === 'string' && entry.other_title.trim()
+                        ? `<p class="rare-aka">${esc(RARE_OTHER[region])}: ${esc(entry.other_title)}</p>` : ''}
+                    <div class="ebay-figures">${unpriced
+                        ? `<span class="ebay-site is-quiet"><span class="ebay-flag">${esc(label)}</span><span class="ebay-note" title="Not looked up on eBay: its search words would also count other games' listings (a name that is an everyday word) or cannot be used. The eBay price job's log names the reason.">not priced</span></span>`
+                        : priceSiteHtml(label, site, currency, now, locale, LEVELS[prices?.level || 'rare'].stale)}</div>
+                    <p class="rare-note">${typeof entry.note === 'string' && entry.note ? `${esc(entry.note)} ` : ''}${sources.length
+                        ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>
+                </li>`;
+            }).join('');
+            foldList('rareList', entries.length);
+            document.getElementById('rareSummary').textContent =
+                `Ranked by what collectors pay for a complete copy${checkedOn ? ` (PriceCharting, ${checkedOn})` : ''}. `
+                + `Under each game: the median asking price for a used ${region} copy on eBay ${label} today · ${entries.length} games · ${priced} with copies listed`;
+            note.innerHTML = 'Nobody counts how many copies of a game were made or survive, so the price collectors pay is the measure of rarity this list goes by. '
+                + 'The top of each list rests on several sources; lower down most places rest on PriceCharting alone, and the order is less certain. '
+                + '<b>thin data</b>: the guide value rests on one or two sales. <b>edition</b>: a special edition or a set sold under its own name. '
+                + 'The eBay figures are asking prices of copies still for sale, not what anything sold for, and they are checked once a day.';
+        }
+
+        async function loadRare() {
+            let data = null;
+            let failed = false;
+            try {
+                const response = await fetch('rare_games.json', { cache: 'no-cache' });
+                if (response.ok) data = await response.json();
+                else failed = response.status !== 404;
+            } catch {
+                failed = true;
+            }
+            // A hiccup must not wipe a list that is already on screen.
+            if (failed && rareData) return;
+            rareData = data && typeof data === 'object' && !Array.isArray(data) ? data : null;
+            rareTrouble = failed;
+            try {
+                renderRare();
+            } catch (error) {
+                // A file this page cannot make sense of must not take the rest of the page with it.
+                console.warn('Could not show rare_games.json.', error);
+                rareData = null;
+                rareTrouble = true;
+                try { renderRare(null); } catch { /* the page carries on without the list */ }
             }
         }
 
