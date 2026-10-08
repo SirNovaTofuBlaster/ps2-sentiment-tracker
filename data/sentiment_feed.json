@@ -1,7 +1,25 @@
 {
-  "last_updated": "2026-10-08 18:38:09 UTC",
+  "last_updated": "2026-10-08 19:03:22 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Dragon Quest VIII: Journey of the Cursed King",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749303639",
+      "matched_game": "Dragon Quest VIII: Journey of the Cursed King",
+      "matched_games": [
+        "Dragon Quest VIII: Journey of the Cursed King"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-08 18:52 UTC"
+    },
     {
       "headline": "Cyberpunk 2077 live-action film in development at Paramount Pictures",
       "source": "Gematsu",
@@ -107796,24 +107814,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-24 19:25 UTC"
-    },
-    {
-      "headline": "Beating EVERY PS2 Game #145 - Persona 4 (part 3)",
-      "source": "YouTube: PS2 or Die",
-      "source_type": "youtube",
-      "feed": "youtube:UC81naFdSS2bKzj51XDVltBQ",
-      "link": "https://www.youtube.com/watch?v=-KAPlgxhiiI",
-      "matched_game": "Persona 4",
-      "matched_games": [
-        "Persona 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-24 18:43 UTC"
     }
   ]
 }
