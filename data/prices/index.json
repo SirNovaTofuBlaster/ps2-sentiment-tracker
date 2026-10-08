@@ -1,0 +1,74 @@
+{
+ "what": "The PS2 price index: how eBay asking prices of used PS2 games moved, per site, 100 on the first day. Each day moves by the geometric mean of each game's change in median since its previous day, for games priced on both days from at least 3 copies; a median that doubled or halved is left out. Consoles are not in it.",
+ "currencies": {
+  "US": "USD",
+  "UK": "GBP"
+ },
+ "points": "[day, index, games compared with their previous day]; the first day counts the games priced. Finished UTC days only.",
+ "min_games": 10,
+ "sites": {
+  "UK": [
+   [
+    "2026-10-06",
+    100.0,
+    145
+   ],
+   [
+    "2026-10-07",
+    99.87,
+    135
+   ]
+  ],
+  "US": [
+   [
+    "2026-10-06",
+    100.0,
+    162
+   ],
+   [
+    "2026-10-07",
+    100.08,
+    151
+   ]
+  ]
+ },
+ "left_out": [
+  "ps2 aqua blue europe scph 50004 aq",
+  "ps2 aqua japan scph 39000 aq",
+  "ps2 bb pack midnight blue scph 50000 mb nh",
+  "ps2 ceramic white fat scph 50000 cw",
+  "ps2 debugging station test unit fat dtl h10000 dtl h3000x dtl h5000x",
+  "ps2 development tool tool dtl t10000",
+  "ps2 european automobile color collection astral blue",
+  "ps2 european automobile color collection light yellow",
+  "ps2 european automobile color collection metallic silver",
+  "ps2 european automobile color collection snow white",
+  "ps2 european automobile color collection super red",
+  "ps2 gran turismo 3 racing pack scph 35000 gt",
+  "ps2 gran turismo 4 prologue pack ceramic white scph 55000 gt",
+  "ps2 ocean blue scph 37000 l",
+  "ps2 pearl white scph 50000 pw",
+  "ps2 sakura pink scph 39000 sa",
+  "ps2 sakura purple scph 50000 sa",
+  "ps2 satin silver fat europe us scph 5000x ss",
+  "ps2 silver japan spring 2003 scph 39000 s",
+  "ps2 slim ceramic white us singstar bundle",
+  "ps2 slim cinnabar red scph 90000 cr",
+  "ps2 slim debugging station dtl h70000 dtl h75000 series",
+  "ps2 slim final fantasy xii pack scph 75000 ff",
+  "ps2 slim gran turismo 4 racing pack scph 70000 gt",
+  "ps2 slim pink europe uk scph 77003 pk scph 77004 pk",
+  "ps2 slim pink japan scph 77000 pk",
+  "ps2 slim satin silver japan europe 2005 2006 scph 77000 ss etc",
+  "ps2 slim silver limited edition us 2006",
+  "ps2 toys r us satin silver scph 50000 tss",
+  "ps2 toys r us toys blue scph 39000 tb",
+  "ps2 transparent white prototype tokyo game show 2002 display unit",
+  "ps2 z gundam hyaku shiki gold pack scph 55000 gu",
+  "ps2 zen black scph 37000 b",
+  "psx desr 5100s silver limited",
+  "psx dvr with built in ps2 160 gb desr 5000 5100 5500 5700",
+  "psx dvr with built in ps2 250 gb desr 7000 7100 7500 7700",
+  "sony bravia kdl 22px300 tv with built in ps2"
+ ]
+}
