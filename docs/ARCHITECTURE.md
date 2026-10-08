@@ -63,8 +63,12 @@ release", disc drives and cartridges. Not counted: "an all-digital showcase", "d
 "no disc required", "no physical copies left", "ditch the disc: install to HDD". A whole-word "disc" keeps Discord and
 "discovered" out; "Digital Deluxe Edition", the PS5 Digital Edition and Digital Foundry are not
 counted. On the snapshot of 2026-10-08 it flagged 22 of 7,279 items. The dashboard's menu has
-**Digital-Only News**; `tools/regression_check.py` ignores the field. Only PS2 mentions are
-archived, so the count covers the snapshot's two weeks.
+**Digital-Only News**; `tools/regression_check.py` ignores the field. `archive.py` keeps every
+flagged story for good in `data/archive/digital/YYYY-MM.json` (d, h, s, t and the link `l`; the
+same story is the same source and headline), with `index.json` holding the total, per month and
+per day; the dashboard adds "N kept in all since …" from it. It is read from the snapshot, so it
+costs no request to Reddit or any other site: Reddit's budget stays spent on the PS2
+subreddits. The PS2 archive's index globs only its own folder, so the two never mix.
 
 ## A scraper run, step by step
 
