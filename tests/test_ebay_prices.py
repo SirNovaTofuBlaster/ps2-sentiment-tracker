@@ -1312,6 +1312,10 @@ class RegionalNameTests(unittest.TestCase):
         first = games["Fatal Frame"]
         self.assertEqual((first["UK"]["copies"], first["UK"]["median"]), (1, 30.0), "a listing of the sequel is not a copy of the first game")
         self.assertIn("Searched on eBay UK under the name it has there: 2 (Fatal Frame as project zero; ", printed)
+        row = next(row for row in self.sandbox.snapshot["games"] if "Crimson" in row["title"])
+        self.assertIn("_nkw=project%20zero%202%20crimson%20butterfly%20ps2", row["markets"]["EBAY_GB"]["search_url"],
+                      "the link to the source is the UK search")
+        self.assertIn("_nkw=fatal%20frame%202", row["markets"]["EBAY_US"]["search_url"])
         self.assertNotIn("45", printed.split("Searched on eBay UK")[1].split("\n")[0], "names in the log, never prices")
 
     def test_mistakes_get_a_readable_message(self):
