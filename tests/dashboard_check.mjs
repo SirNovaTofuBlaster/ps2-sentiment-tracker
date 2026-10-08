@@ -1343,7 +1343,6 @@ await check('games first: what was named in the last day leads, and the table op
     assert.deepEqual([...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(rule => /display:\s*none|visibility:\s*hidden/.test(rule[2])).map(rule => rule[1].replace(/\s+/g, ' ').trim()), [
         'body .is-folded > .list-extra', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
-        'body .rare-region-site',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
@@ -1799,21 +1798,53 @@ await check('the Rarest page: the rarest consoles, priced on both sites', async 
     assert.equal(el('rareHeading').textContent, 'Rarest PS2 Consoles');
     assert.equal(evalJson("document.getElementById('rareRegionConsoles').getAttribute('aria-pressed')"), 'true');
     assert.equal(evalJson("document.getElementById('rareRegionPAL').getAttribute('aria-pressed')"), 'false');
-    const rows = el('rareList').innerHTML.split('<li ').slice(1);
-    assert.equal(rows.length, consoles.consoles.length);
-    assert.match(rows[0], /#1 /);
-    assert.match(rows[0], /not priced/, 'the one-off display unit is never looked up');
-    assert.match(rows[0], /never sold/);
-    const redRow = rows.find(html => html.includes(esc(red.name)));
-    assert.match(redRow, /<span class="ebay-flag">US<\/span><b class="ebay-median">\$3,500<\/b>/);
-    assert.match(redRow, /<span class="ebay-flag">UK<\/span><b class="ebay-median">£2,800<\/b>/);
-    assert.match(redRow, /tier 1/);
-    assert.match(redRow, /guide \$4,000/);
-    assert.match(redRow, /about 1,998 made/);
-    const pinkRow = rows.find(html => html.includes(esc(pink.name)));
-    assert.equal((pinkRow.match(/ebay-flag/g) || []).length, 1, 'a console sold in one region is priced on its site only');
-    assert.match(el('rareSummary').textContent, / · 3 prices with copies listed$/);
-    assert.equal(rows.filter(html => html.includes('list-extra')).length, Math.max(consoles.consoles.length - 25, 0));
+    const draw = (region) => {
+        vm.runInContext(`showConsoleRegion(${JSON.stringify(region)}); renderRare(rareData, ${now}, 'en-GB')`, context);
+        return el('rareList').innerHTML.split('<li ').slice(1);
+    };
+    const inRegion = (codes) => consoles.consoles.filter(row => row.regions.some(code => codes.includes(code)));
+    const guideOrder = (rows) => rows.map(row => row.value?.usd ?? -1);
+
+    // Japan opens first; each region holds the consoles sold there, most expensive first.
+    let rows = draw('JP');
+    assert.equal(evalJson("document.getElementById('consoleRegionJP').getAttribute('aria-pressed')"), 'true');
+    assert.equal(el('consoleRegions').classList.contains('hidden'), false);
+    assert.equal(rows.length, inRegion(['JP']).length);
+    assert.match(rows[0], new RegExp(`#1 ${esc(red.name).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`), 'the dearest eBay US median first');
+    assert.match(rows[0], /<span class="ebay-flag">US<\/span><b class="ebay-median">\$3,500<\/b>/);
+    assert.match(rows[0], /<span class="ebay-flag">UK<\/span><b class="ebay-median">£2,800<\/b>/);
+    assert.match(rows[0], /tier 1/);
+    assert.match(rows[0], /guide \$4,000/);
+    assert.match(rows[0], /about 1,998 made/);
+    assert.match(rows[1], /#2 /);
+    // The rest have no eBay figure yet: by their guide value, dearest first, those without one last.
+    const unpriced = inRegion(['JP']).filter(row => row !== red).sort((a, b) => (b.value?.usd ?? -1) - (a.value?.usd ?? -1) || a.rank - b.rank);
+    rows.slice(1).forEach((html, i) => assert.ok(html.includes(esc(unpriced[i].name)), `${i + 2}: ${unpriced[i].name}`));
+    assert.deepEqual(guideOrder(unpriced), [...guideOrder(unpriced)].sort((a, b) => b - a));
+    const prototype = rows.find(html => html.includes('not priced'));
+    assert.match(prototype, /never sold/, 'the one-off display unit is never looked up');
+    assert.equal(rows.filter(html => html.includes('list-extra')).length, Math.max(rows.length - 25, 0));
+    assert.match(el('rareSummary').textContent, /^Official Sony hardware sold in Japan, most expensive first: the eBay US median today, then eBay UK, then the guide value · \d+ consoles · 2 prices with copies listed$/);
+
+    rows = draw('PAL');
+    assert.equal(rows.length, inRegion(['EU', 'UK']).length);
+    assert.ok(rows[0].includes(esc(red.name)), 'PAL goes by eBay UK: £2,800 first');
+    assert.ok(rows[1].includes(esc(pink.name)), 'then £80');
+    assert.equal((rows[1].match(/ebay-flag/g) || []).length, 1, 'a console sold in one region is priced on its site only');
+    assert.match(el('rareSummary').textContent, /sold in PAL, most expensive first: the eBay UK median today, then eBay US/);
+    rows = draw('US');
+    assert.equal(rows.length, inRegion(['US', 'CA']).length);
+    assert.ok(!rows.some(html => html.includes(esc(pink.name))), 'a European console is not in the US list');
+    vm.runInContext("showConsoleRegion('constructor')", context);
+    assert.equal(evalJson('consoleRegion'), 'JP');
+    vm.runInContext("showRareRegion('PAL')", context);
+    assert.equal(el('consoleRegions').classList.contains('hidden'), true, 'the console regions show with the consoles only');
+    vm.runInContext("showRareRegion('Consoles')", context);
+    assert.match(read('retro.css'), /body \.console-regions:not\(\.hidden\) \{ display: flex;/, 'a display rule must not overrule "hidden"');
+    assert.ok(consoles.consoles.every(row => Array.isArray(row.regions) && row.regions.some(code => ['US', 'CA', 'JP', 'EU', 'UK'].includes(code))),
+        'every console is in at least one region list');
+    const page = read('index.html');
+    assert.match(page, />PAL<\/button>\s*<button[^>]*>US<\/button>\s*<button[^>]*>Consoles<\/button>/, 'the buttons say PAL and US, nothing more');
 
     // The eBay prices page is for games: consoles stay on the Rarest page.
     vm.runInContext(`renderPrices(undefined, ${now}, 'en-GB')`, context);
@@ -1822,10 +1853,11 @@ await check('the Rarest page: the rarest consoles, priced on both sites', async 
     assert.equal(evalJson(`priceFiguresHtml(${JSON.stringify(red.name)})`), '', 'nor do they show beside names in the feed');
 
     // A hostile file is text, never markup.
-    context.__hostile = { tiers: { 1: '<b>' }, consoles: [{ name: '<img src=x onerror=alert(1)>', tier: '1: x', rank: 1, models: ['<i>'],
+    context.__hostile = { tiers: { 1: '<b>' }, consoles: [{ name: '<img src=x onerror=alert(1)>', tier: '1: x', rank: 1, models: ['<i>'], regions: ['JP', '<b>'],
         why_rare: '<script>', not_retail: true, price: false, not_priced_because: '"><b>', evidence: [{ source: 'javascript:alert(1)' }],
         value: { usd: '9', what: '<b>' } }] };
     vm.runInContext(`renderRareConsoles(__hostile, ${now}, 'en-GB')`, context);
+    assert.match(el('rareList').innerHTML, /&lt;img src=x/, 'drawn, as text');
     const hostile = el('rareList').innerHTML;
     assert.doesNotMatch(hostile, /<img|<script|<i>|<b>|javascript:/);
     assert.doesNotMatch(hostile, /guide/);

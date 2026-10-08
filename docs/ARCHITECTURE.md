@@ -482,7 +482,11 @@ counts only when it says it is a console ("console", "system", an SCPH number) o
 comes with the part ("with remote", "+ controller"), so a coloured controller or a PSX remote is
 never taken for the console. Figures, history and the week's change are kept as for games, under the console's name;
 `kind` keeps them off the eBay prices page and away from names in the feed. Entries with
-`"price": false` (the one-off show unit, two unconfirmed models) say why on the page. 34
+`"price": false` (the one-off show unit, two unconfirmed models) say why on the page. The page
+splits them by `regions` into US (US, CA), Japan (JP) and PAL (EU, UK), a console in each list
+it was sold in, and sorts each list by price (`consoleSortPrice()`): the eBay median of the
+region's own site (UK for PAL, US otherwise), then the other site's, then `value.usd`; the file's
+rarity order is shown as the tier. 34
 consoles priced: 64 lookups a day, two searches each.
 
 ## Weights
