@@ -356,6 +356,14 @@ series, another console, an import, or something that is not the game (case only
 cheat disc, demo, job lot, merchandise). When eBay returns listings and none names the game,
 the game is `unmatched`: no figure, no history row, and a note on the dashboard.
 
+**Regional names (added 2026-10-08).** `load_regional_names()` reads `regional_names` from
+`ebay_watchlist.json`: per site, renames of the start of a game's name ("Fatal Frame" to "Project
+Zero"). `apply_regional_names()` gives each matching game its own search words, queries and
+siblings for that site, and `check_market()` uses them (`for_market()`). Only the search
+changes: the game keeps its library title in `latest.json` and the history. The plan's log line
+names the renamed games, never a price. The dashboard's own eBay UK search links still use the
+title.
+
 **What is kept.** Under `data/prices/`, numbers only: `latest.json` (per game and site: copies,
 lowest, median, typical postage, when checked, and `week`, the median of a week before; the
 game's level; the day's search count) and

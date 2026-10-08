@@ -1,5 +1,5 @@
 {
-  "about": "ebay_prices.py prices every game the feed mentions. 'games' are pinned: always tracked, even when nobody mentions them. For a pinned game, 'search' is optional (the words a listing must contain, when they differ from the title) and so is 'exclude' (listings containing any of these words are left out). 'never' lists titles that must not be priced, such as names the feed keeps matching by mistake. At most 100 pinned games.",
+  "about": "ebay_prices.py prices every game the feed mentions. 'games' are pinned: always tracked, even when nobody mentions them. For a pinned game, 'search' is optional (the words a listing must contain, when they differ from the title) and so is 'exclude' (listings containing any of these words are left out). 'never' lists titles that must not be priced, such as names the feed keeps matching by mistake. At most 100 pinned games. 'regional_names' lists games released in a region under another name: on that eBay site, a game whose name starts with 'from' is searched with 'to' in its place (Fatal Frame 2: Crimson Butterfly is Project Zero 2 on eBay UK).",
   "games": [
     { "title": "Silent Hill 2" },
     { "title": "Silent Hill 3" },
@@ -12,6 +12,23 @@
     { "title": "Shin Megami Tensei: Persona 4", "search": "Persona 4" },
     { "title": "Okami" }
   ],
+  "regional_names": {
+    "UK": [
+      { "from": "Fatal Frame", "to": "Project Zero" },
+      { "from": "Siren", "to": "Forbidden Siren" },
+      { "from": "Bully", "to": "Canis Canem Edit" },
+      { "from": "Dark Cloud 2", "to": "Dark Chronicle" },
+      { "from": "Ratchet: Deadlocked", "to": "Ratchet: Gladiator" },
+      { "from": "Ratchet & Clank: Up Your Arsenal", "to": "Ratchet & Clank 3" },
+      { "from": "Ratchet & Clank: Going Commando", "to": "Ratchet & Clank 2" },
+      { "from": "Sly Cooper and the Thievius Raccoonus", "to": "Sly Raccoon" },
+      { "from": "Sly 3: Honor Among Thieves", "to": "Sly 3" },
+      { "from": "Shin Megami Tensei: Nocturne", "to": "Shin Megami Tensei: Lucifer's Call" },
+      { "from": "Shin Megami Tensei: Persona", "to": "Persona" },
+      { "from": "Hot Shots Golf 3", "to": "Everybody's Golf" },
+      { "from": "Hot Shots Tennis", "to": "Everybody's Tennis" }
+    ]
+  },
   "never": [
     "Combat Ace"
   ]

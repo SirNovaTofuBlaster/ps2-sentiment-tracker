@@ -545,6 +545,60 @@ def level_of(mentions, now, held_until, pinned=False):
     return ("normal" if window or pinned else "dormant"), len(named), None
 
 
+def load_regional_names(path=None):
+    """The names a game goes by on one site when it was released there under another one, from
+    "regional_names" in ebay_watchlist.json: {"UK": [{"from": "Fatal Frame", "to": "Project
+    Zero"}, ...]}. A rule renames the start of a game's name: Fatal Frame 2: Crimson Butterfly
+    is searched on eBay UK as Project Zero 2: Crimson Butterfly. Returns {market id: [(from
+    words, to words), ...]} in the spelling search_terms() gives."""
+    path = path or WATCHLIST_PATH
+    name = Path(path).name
+    raw = read_json(path, {})
+    given = raw.get("regional_names", {})
+    labels = {market["label"]: market_id for market_id, market in MARKETS.items()}
+    if not isinstance(given, dict) or set(given) - set(labels):
+        raise EbayError(f'{name}: "regional_names" must map {", ".join(labels)} to lists of renames.')
+    rules = {}
+    for label, renames in given.items():
+        if not isinstance(renames, list):
+            raise EbayError(f'{name}: "regional_names" for {label} must be a list.')
+        for position, rename in enumerate(renames, 1):
+            if not isinstance(rename, dict) or not all(isinstance(rename.get(side), str) and words(rename[side])
+                                                       for side in ("from", "to")):
+                raise EbayError(f'{name}: rename {position} for {label} needs "from" and "to" names.')
+            (old, old_queries), (new, new_queries) = search_terms(rename["from"]), search_terms(rename["to"])
+            rules.setdefault(labels[label], []).append((old, old_queries[0], new, new_queries[0]))
+    return rules
+
+
+def renamed(phrase, rules):
+    """The phrase with the first rule whose words it starts with applied, or None."""
+    for old, old_plain, new, new_plain in rules:
+        for start, replacement in ((old, new), (old_plain, new_plain)):
+            if phrase == start or phrase.startswith(start + " "):
+                return replacement + phrase[len(start):]
+    return None
+
+
+def apply_regional_names(games, rules):
+    """Give each game that goes by another name on a site its search words for that site
+    (game["markets"][market id]); its siblings are renamed the same way."""
+    for game in games:
+        for market_id, market_rules in rules.items():
+            phrase = renamed(game["search"], market_rules)
+            if phrase is None:
+                continue
+            queries = [renamed(query, market_rules) or query for query in game["queries"]]
+            siblings = [renamed(other, market_rules) or other for other in game.get("siblings") or ()]
+            game.setdefault("markets", {})[market_id] = {"search": phrase, "queries": queries, "siblings": siblings}
+    return games
+
+
+def for_market(game, market_id):
+    """The game as it is looked for on one site: its regional name there, if it has one."""
+    return {**game, **(game.get("markets") or {}).get(market_id, {})}
+
+
 def plan_games(now, pinned, never, mentions, ever, library, catalogue, state):
     """Every game to track, each with its level. Also returns what was left out, and why."""
     games = {game["key"]: dict(game, siblings=[]) for game in pinned}
@@ -895,8 +949,9 @@ def fetch(http_client, token, game, market_id, counter, by_aspect):
 
 
 def check_market(http_client, token, game, market_id, counter):
-    """Look one game up on one eBay site."""
+    """Look one game up on one eBay site, under the name it goes by there."""
     market = MARKETS[market_id]
+    game = for_market(game, market_id)
     base = {"search_url": human_search_url(game, market), "currency": market["currency"]}
 
     status, payload = fetch(http_client, token, game, market_id, counter, by_aspect=True)
@@ -1197,6 +1252,12 @@ def describe_plan(games, left_out, lookups, allowance):
         if titles:
             shown = ", ".join(titles[:12]) + (f" and {len(titles) - 12} more" if len(titles) > 12 else "")
             say(f"Left out, {text}: {len(titles)} ({shown}).")
+    for market_id, market in MARKETS.items():
+        renamed_here = [f"{game['title']} as {game['markets'][market_id]['search']}" for game in games
+                        if market_id in (game.get("markets") or {})]
+        if renamed_here:
+            shown = "; ".join(renamed_here[:12]) + (f" and {len(renamed_here) - 12} more" if len(renamed_here) > 12 else "")
+            say(f"Searched on eBay {market['label']} under the name it has there: {len(renamed_here)} ({shown}).")
     say(f"Due now: {len(lookups)} lookups. This run may use {max(allowance, 0)} searches.")
 
 
@@ -1223,6 +1284,7 @@ def main(argv=None):
         mentions, ever = load_mentions()
         library, catalogue = load_library()
         games, left_out = plan_games(now, pinned, never, mentions, ever, library, catalogue, state)
+        apply_regional_names(games, load_regional_names())
         lookups = due_lookups(games, state, now)
         used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
         used_today = used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0
