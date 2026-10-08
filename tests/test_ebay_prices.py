@@ -1675,11 +1675,28 @@ class PriceIndexTests(unittest.TestCase):
                 + self.day("2026-10-06", self.GAMES, site="US") + self.day("2026-10-07", self.GAMES, site="US")
                 + self.day("2026-10-06", {"PS2 Ocean Blue": 100.0}) + self.day("2026-10-07", {"PS2 Ocean Blue": 150.0}))
         latest = {"currencies": {"US": "USD", "UK": "GBP"}, "games": {"PS2 Ocean Blue": {"kind": "console"}}}
-        index = ebay_prices.index_file(rows, latest)
+        index = ebay_prices.index_file(rows, latest, datetime(2026, 10, 8, tzinfo=timezone.utc))
         self.assertEqual(index["sites"]["UK"][-1], ["2026-10-07", 120.0, 12])
         self.assertEqual(index["sites"]["US"][-1], ["2026-10-07", 100.0, 12])
         self.assertEqual(index["currencies"], {"US": "USD", "UK": "GBP"})
         self.assertNotIn("Game", json.dumps(index["sites"]), "numbers and dates only")
+
+    def test_a_console_once_left_out_stays_out_whatever_happens_to_the_lists(self):
+        rows = (self.day("2026-10-06", dict(self.GAMES, **{"PS2 Ocean Blue": 100.0}))
+                + self.day("2026-10-07", dict(self.GAMES, **{"PS2 Ocean Blue": 150.0})))
+        now = datetime(2026, 10, 8, tzinfo=timezone.utc)
+        with tempfile.TemporaryDirectory() as folder:
+            listed = Path(folder) / "rare_consoles.json"
+            listed.write_text(json.dumps({"consoles": [{"name": "PS2 Ocean Blue", "price": False}]}), encoding="utf-8")
+            with mock.patch.object(ebay_prices, "CONSOLES_PATH", listed):
+                index = ebay_prices.index_file(rows, {"games": {}}, now)
+            self.assertEqual(index["sites"]["UK"][-1], ["2026-10-07", 100.0, 12], "named in rare_consoles.json, even unpriced")
+            self.assertEqual(index["left_out"], ["ps2 ocean blue"])
+            with mock.patch.object(ebay_prices, "CONSOLES_PATH", Path(folder) / "gone.json"):
+                self.assertEqual(ebay_prices.index_file(rows, {"games": {}}, now, index["left_out"])["sites"]["UK"][-1][1], 100.0,
+                                 "the list unreadable or the console renamed: still left out")
+                self.assertEqual(ebay_prices.index_file(rows, {"games": {}}, now)["sites"]["UK"][-1][2], 13,
+                                 "(without that memory it would count)")
 
     def test_the_run_writes_it_and_a_damaged_month_leaves_it_as_it_was(self):
         sandbox = Sandbox(self, feed=[mention(title, 3, "r/ps2") for title in ("Silent Hill 2", "Kuon", "Okami", "God Hand")])
@@ -1692,11 +1709,17 @@ class PriceIndexTests(unittest.TestCase):
         code, printed, fake = sandbox.run(FakeHttp(three_copies))
         self.assertEqual(code, 0, printed)
         index = json.loads((sandbox.data / "prices" / "index.json").read_text(encoding="utf-8"))
-        self.assertEqual(index["sites"]["UK"][:2], [["2026-09-29", 100.0, 12], ["2026-09-30", 100.0, 12]])
-        self.assertEqual(index["sites"]["UK"][-1][0], "2026-10-06", "today, from this run's figures")
+        self.assertEqual(index["sites"]["UK"], [["2026-09-29", 100.0, 12], ["2026-09-30", 100.0, 12]],
+                         "finished days only: today is still under way")
+        sandbox.now = NOON + timedelta(days=1)
+        sandbox.feed([mention("Silent Hill 2", 1, "r/ps2", now=sandbox.now), mention("Silent Hill 2", 2, "Eurogamer", now=sandbox.now)])
+        code, printed, fake = sandbox.run(FakeHttp(three_copies))
+        index = json.loads((sandbox.data / "prices" / "index.json").read_text(encoding="utf-8"))
+        self.assertEqual(index["sites"]["UK"][-1], ["2026-10-06", 100.0, 0], "yesterday, with too few games to move it")
+        self.assertEqual(index["min_games"], ebay_prices.INDEX_MIN_GAMES)
         (sandbox.data / "prices" / "2026-09.json").write_text("[", encoding="utf-8")
         before = (sandbox.data / "prices" / "index.json").read_text(encoding="utf-8")
-        sandbox.now = NOON + timedelta(hours=7)
+        sandbox.now = NOON + timedelta(days=1, hours=7)
         sandbox.feed([mention("Silent Hill 2", 1, "r/ps2", now=sandbox.now), mention("Silent Hill 2", 2, "Eurogamer", now=sandbox.now)])
         code, printed, fake = sandbox.run(FakeHttp(three_copies))
         self.assertEqual(code, 0, printed)

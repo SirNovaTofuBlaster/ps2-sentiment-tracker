@@ -1844,21 +1844,26 @@ await check('the PS2 price index: the latest value, its moves and a line of ever
     context.__index = index;
     vm.runInContext("renderIndex(__index, 'en-GB')", context);
     assert.equal(el('indexSection').classList.contains('hidden'), false);
-    assert.equal(el('indexSummary').textContent, "100 = 6 Oct. How used PS2 games' asking prices have moved since, per site.");
+    assert.equal(el('indexSummary').textContent, "100 = 6 Oct. How used PS2 games' asking prices have moved since, per site, up to the last full day (UTC).");
     const [us, uk] = el('indexCards').innerHTML.split('class="index-card"').slice(1);
     const cards = [uk, us];
     assert.equal(el('indexCards').innerHTML.split('class="index-card"').length, 3, 'the two sites, never a third');
     assert.match(cards[0], /eBay UK · 14 Oct/);
     assert.match(cards[0], /<div class="index-value">103\.9<\/div>/);
-    assert.match(cards[0], /is-down">▼ 0\.6% on the day before</, '103.9 against 104.5');
-    assert.match(cards[0], /is-up">▲ 4\.0% in a week</, 'against 7 Oct, the last day a week or more before: 99.87');
+    assert.match(cards[0], /is-down">▼ 0\.6% since 13 Oct</, '103.9 against 104.5');
+    assert.match(cards[0], /is-up">▲ 4\.0% since 7 Oct</, 'a week: against 7 Oct, the last day a week or more before (99.87)');
     assert.match(cards[0], /<polyline points="0\.0,[\d.]+ 60\.0,/);
-    assert.match(cards[0], /160 games compared with the day before/);
+    assert.match(cards[0], /160 games compared with their previous day/);
     assert.match(cards[1], /<div class="index-value">100\.0<\/div>/);
     assert.doesNotMatch(cards[1], /index-line|ebay-change/, 'one day: nothing to compare and no line');
     assert.match(cards[1], /162 games priced on its first day/);
-    assert.equal(evalJson("indexChange([['2026-10-07', 100, 1], ['2026-10-08', 100.04, 1]], 1)").toFixed(2), '0.04');
-    assert.match(evalJson("indexChangeHtml(0.04, 'on the day before')"), /no change on the day before/);
+    assert.equal(evalJson("indexChange([['2026-10-07', 100, 1], ['2026-10-08', 100.04, 1]], 1)").change.toFixed(2), '0.04');
+    assert.match(evalJson("indexChangeHtml({ change: 0.04, day: '2026-10-07' }, (day) => day)"), /no change since 2026-10-07/);
+    // A day with too few games kept its value: it says so, and does not claim "no change".
+    context.__kept = { min_games: 10, sites: { UK: [['2026-10-06', 100, 145], ['2026-10-07', 101, 140], ['2026-10-08', 101, 4]] } };
+    vm.runInContext("renderIndex(__kept, 'en-GB')", context);
+    assert.match(el('indexCards').innerHTML, /Only 4 games could be compared that day, too few to move it/);
+    assert.doesNotMatch(el('indexCards').innerHTML, /since 7 Oct/);
 
     // A broken or hostile file shows nothing rather than nonsense.
     for (const bad of [null, {}, { sites: [] }, { sites: { UK: 'x' } }, { sites: { UK: [['soon', 100, 1], ['2026-10-07', -5, 1], ['2026-10-08', 'x', 1]] } }]) {

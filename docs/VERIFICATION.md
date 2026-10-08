@@ -563,6 +563,26 @@ because the search is the rule's spelling, "sly raccoon", and sellers mostly wri
 | "repair" and "replacement" left out serviced consoles | Only "for repair", "needs repair", "spares or repair(s)" |
 | The plan counted consoles as games; the docs' lookup figure was wrong | Counted on their own line; 64 lookups a day |
 
+## 2026-10-08: the PS2 Price Index
+
+| Check | Result |
+|---|---|
+| On the real history | UK 100 → 99.87 (7 Oct), US 100 → 100.08; 135–186 games compared a day |
+| Offline tests | 172 price-job tests (9 new), 35 dashboard checks (1 new) |
+| Mutations | 9 deliberate breaks (copies minimum, gap, ×2 limit, too few games, start, arithmetic instead of geometric mean, consoles, last of day, damaged month): all caught after two tests were sharpened |
+| Speed | A synthetic year of history (584,000 rows): about 4 s per run |
+
+### Independent review
+
+| Finding | Resolution |
+|---|---|
+| A day under way moved the index on the games checked first (US 97.45 at 02:00, 99.95 by 08:00) | Finished UTC days only |
+| A console missing from `latest.json` (list unreadable, unpriced, renamed) entered with its whole history | Left out from `latest.json`, `rare_consoles.json` and every key left out before (`left_out`) |
+| A search change under ×2 moves it for good | Documented in the guide and ARCHITECTURE |
+| "on the day before" was wrong across a gap; a kept value read as "no change" | Each move names the day compared with; a kept day says so |
+| Slow with years of history | Stamps sorted as text, keys cached: 8.4 s → 4.4 s for a year |
+| The page's note described the comparison window too narrowly | Reworded |
+
 ## Re-running the checks
 
 ```sh

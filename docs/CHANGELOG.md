@@ -7,8 +7,12 @@
 - `ebay_prices.py` writes `data/prices/index.json` on every run that writes prices: per site, 100
   on its first day (6 October 2026), moved each day by the geometric mean of each game's change in
   median since its previous day. Games joining or leaving never move it; medians from fewer than
-  three copies, and those that doubled or halved overnight, are left out; consoles are not in it.
-  On the history so far it stands at about 99.9 on both sites.
+  three copies, and those that more than doubled or halved, are left out; consoles are not in it.
+  Finished UTC days only. On the history so far it stands at about 99.9 on both sites.
+- Independent review: a day under way showed false moves (US 97.45 at 02:00, 99.95 by 08:00);
+  a console missing from `latest.json` would have entered with its whole history; the moves
+  were labelled "on the day before" even across a gap; a kept value read as "no change". All
+  fixed; the docs now say a small change of search words can nudge the index.
 - Dashboard: the index at the top of the eBay prices page, per site, with the change since the day
   before and over a week and a line of every day.
 

@@ -1486,25 +1486,36 @@ INDEX_MAX_MOVE = 2.0          # a median that doubled or halved is left out of t
 INDEX_MIN_GAMES = 10          # a day with fewer games compared keeps the day before's value
 
 
-def daily_medians(rows, leave_out=()):
-    """{(site, day): {game key: median}} from history rows: each game's last good median of the day."""
-    days = {}
-    for row in sorted((row for row in rows if isinstance(row, list) and len(row) == 6), key=lambda row: str(row[0])):
+STAMP_SHAPE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}Z$")
+
+
+def daily_medians(rows, leave_out=(), before_day=None):
+    """{(site, day): {game key: median}} from history rows: each game's last good median of the
+    day. Only days before `before_day`: a day still under way is not finished."""
+    days, keys = {}, {}
+    rows = [row for row in rows if isinstance(row, list) and len(row) == 6
+            and isinstance(row[0], str) and STAMP_SHAPE.match(row[0])]
+    for row in sorted(rows, key=lambda row: row[0]):   # the stamps sort as text
         when, title, site, copies, _, median = row
-        stamp = parse_stamp(when)
-        if stamp is None or not isinstance(title, str) or not isinstance(site, str) or key_of(title) in leave_out:
+        day = when[:10]
+        if (before_day and day >= before_day) or not isinstance(title, str) or not isinstance(site, str):
+            continue
+        key = keys.get(title)
+        if key is None:
+            key = keys[title] = key_of(title)
+        if key in leave_out:
             continue
         if isinstance(copies, bool) or not isinstance(copies, int) or copies < INDEX_MIN_COPIES:
             continue
         if isinstance(median, bool) or not isinstance(median, (int, float)) or not math.isfinite(median) or median <= 0:
             continue
-        days.setdefault((site, stamp.strftime("%Y-%m-%d")), {})[key_of(title)] = float(median)
+        days.setdefault((site, day), {})[key] = float(median)
     return days
 
 
-def price_index(rows, leave_out=()):
+def price_index(rows, leave_out=(), before_day=None):
     """{site: [[day, index, games compared], ...]} from history rows, oldest day first."""
-    days = daily_medians(rows, leave_out)
+    days = daily_medians(rows, leave_out, before_day)
     index = {}
     for site in sorted({site for site, _ in days}):
         dates = sorted(day for each_site, day in days if each_site == site)
@@ -1530,18 +1541,29 @@ def price_index(rows, leave_out=()):
     return index
 
 
-def index_file(rows, latest):
-    """index.json: the price index of each site, for the dashboard. Numbers and dates only."""
+def index_file(rows, latest, now, left_out=()):
+    """index.json: the price index of each site, for the dashboard, up to yesterday (UTC): a day
+    still under way would move it on whichever games happened to be checked first. Consoles are
+    left out: those in latest.json and rare_consoles.json, and every one left out before
+    (`left_out`, kept in the file), so that a console renamed or dropped from the list never
+    enters it with its whole history."""
     consoles = {key_of(title) for title, entry in latest.get("games", {}).items()
                 if isinstance(entry, dict) and entry.get("kind") == "console"}
+    listed = read_json(CONSOLES_PATH, {}).get("consoles")
+    consoles |= {key_of(row["name"]) for row in listed or [] if isinstance(row, dict) and isinstance(row.get("name"), str)}
+    consoles |= {key for key in left_out if isinstance(key, str)}
+    consoles.discard("")
     return {
         "what": ("The PS2 price index: how eBay asking prices of used PS2 games moved, per site, 100 on the "
                  "first day. Each day moves by the geometric mean of each game's change in median since its "
                  "previous day, for games priced on both days from at least "
                  f"{INDEX_MIN_COPIES} copies; a median that doubled or halved is left out. Consoles are not in it."),
         "currencies": latest.get("currencies", {}),
-        "points": "[day, index, games compared with their previous day]; the first day counts the games priced",
-        "sites": price_index(rows, consoles),
+        "points": ("[day, index, games compared with their previous day]; the first day counts the games priced. "
+                   "Finished UTC days only."),
+        "min_games": INDEX_MIN_GAMES,
+        "sites": price_index(rows, consoles, now.strftime("%Y-%m-%d")),
+        "left_out": sorted(consoles),
     }
 
 
@@ -1706,7 +1728,8 @@ def main(argv=None):
             break
         every_month += rows_of_month
     if every_month is not None:
-        write_latest(PRICES_DIR / INDEX_NAME, index_file(every_month, latest))
+        before = read_json(PRICES_DIR / INDEX_NAME, {}).get("left_out")
+        write_latest(PRICES_DIR / INDEX_NAME, index_file(every_month, latest, now, before if isinstance(before, list) else ()))
     say(f"Wrote {LATEST_NAME} and added {len(rows)} rows to this month's price history.")
     if run["results"]:
         args.out.parent.mkdir(parents=True, exist_ok=True)
