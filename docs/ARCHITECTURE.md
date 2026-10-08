@@ -71,9 +71,12 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
 5. **Fetch.** Core feeds wait and retry once when rate limited (HTTP 429), as before. Extras never
    wait. After 3 consecutive host-level failures on one host (connection errors, timeouts, 5xx or
    429, e.g. youtube.com down) the rest of that host is skipped for this run. A dead feed (404,
-   410...) doesn't count, because it says nothing about the host. Extras still pending after 10
-   minutes are skipped too. Together these keep a platform outage from pushing the job past its
-   15-minute limit. Boards are asked one at a time, at least 1.1 seconds apart, and each
+   410...) doesn't count, because it says nothing about the host. Extras still pending 10 minutes
+   after the first extra was asked for are skipped too (`FETCH_TIME_BUDGET`; Reddit's waits come
+   before and do not count). A type whose feeds were all skipped is not marked as fetched, so it
+   is due again in the next round. Together these keep a platform outage from making a round run
+   on and on. Reddit requests are spaced a minute apart, counted from the end of the previous
+   one, so a wait for a 429 is never followed by a request straight away. Boards are asked one at a time, at least 1.1 seconds apart, and each
    request hands back the date the board's server gave last time (`If-Modified-Since`), so a
    board nobody has posted on since answers "not modified" and is not sent again.
 6. **Analyse each entry** (up to 50 per feed; YouTube and podcast entries are sorted newest first
@@ -92,11 +95,18 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
    `{"ok": true, "latest": "<newest item>"}` or
    `{"ok": false, "error": "HTTP 404", "failing_since": "…", "latest": "…"}`.
 8. **Abort rule.** If more than half of the due news/Reddit feeds failed, or nothing was
-   collected, the run exits non-zero and writes nothing.
+   collected, the run exits non-zero and leaves the snapshot alone. It still writes the feeds'
+   health and when each type was tried, so a site that refused us is asked again after its
+   usual interval, not in the next round.
 9. **Merge and save.** New items replace the same link in the previous snapshot, items older than
    14 days drop out, and the files are only rewritten when something changed. A ceiling of
-   12,000 items guards the file's size; two weeks is about 8,400 at the current number of
-   sources, so the 14 days are what normally applies.
+   12,000 items (`MAX_ITEMS`) guards the file's size. Reading Reddit's newest posts brings about
+   29 posts an hour from the 26 subreddits (measured from GitHub's servers on 2026-10-08), some
+   700 a day where the "hot" listing brought about 250, so two weeks of everything now come close
+   to the ceiling. Past it, the oldest items that name no PS2 game go first (`within_ceiling()`);
+   items naming a game are kept for the full 14 days. The archive, the Demand Index, eBay's
+   levels and every game count are therefore unaffected; the item count, the mood average and
+   the remaster-news count then cover fewer days of items that name no game.
 
 ## 4chan boards
 
@@ -427,8 +437,8 @@ logged and shown as *Failing* instead.
 
 **No rate-limit waits for extras, a per-host breaker and a time budget.** Reddit needs its
 wait-and-retry. For 111 YouTube feeds on one host, waiting 60–90 s per feed would blow the
-15-minute job limit. Failing fast, skipping a host after 3 straight failures and capping extras at
-10 minutes keeps every run bounded.
+job's time limit. Failing fast, skipping a host after 3 straight failures and capping extras at
+10 minutes keeps every round bounded.
 
 **Always running (`scrape_loop.py`, added 2026-10-08).** GitHub starts scheduled runs late or
 not at all: in the first week of October 2026, 24 of about 130 hourly runs happened, about one
@@ -438,14 +448,24 @@ runs `scraper.py` in a process of its own, commits and pushes `data/` if it chan
 at least `MIN_GAP` (2 minutes) before the next round, or `FAILED_WAIT` (15 minutes) after a
 round that failed, so a site refusing us is never hammered. Once an hour it starts the eBay
 prices workflow (`gh workflow run`, with the workflow's own token). At the end it starts its
-successor with `mode=continue`. In the workflow's concurrency group a push or *Run scraper now*
-cancels the running loop and starts a fresh one whose first round fetches everything
-(`FULL_FIRST`); the hourly schedule and the successor wait for the running loop, so there is
-only ever one, and the schedule starts one again if the chain is ever broken. A round that
-fetches nothing new commits nothing; 4chan's `Last-Modified` stamps change in `feed_status.json`
-as boards move, so the busier boards make most rounds commit. That is about four commits an hour,
-inside GitHub Pages' soft limit of ten builds an hour, and on a public repository the runner
-time is free.
+successor with `mode=continue`, also after an error but not after a cancel. The concurrency
+group is per branch (`scraper-<branch>`): a push or *Run scraper now* cancels the running loop
+on that branch and starts a fresh one whose first round fetches everything (`FULL_FIRST`); the
+hourly schedule and the successor wait for the running loop, so there is only ever one, and
+only a loop on `main` starts the eBay job and a successor. If the chain does break (a run that
+hit the job's time limit), the hourly schedule starts a loop again, but it fires late, so that
+can take a few hours. A round may take `ROUND_TIMEOUT` (25 minutes) before it is stopped; the
+last one starts with at least `ROUND_RESERVE` (20 minutes) to spare, inside the job's limit
+of 355 minutes.
+
+Commits: every round rewrites `poll_state.json`, and a busy board's `Last-Modified` date in
+`feed_status.json` changes almost every time it is read. When those two are all that changed,
+they are committed at most once an hour (and at the hand-over); anything else, new items above
+all, is committed at once. News every half hour brings new items nearly every time, so expect
+two to four commits an hour from the loop, plus the eBay job's: under GitHub Pages' soft limit
+of ten builds an hour. On a public repository the runner time is free. Only the first round of
+a loop downloads the PS2 title index; later rounds use the copy it saved
+(`TITLES_FROM_CACHE`).
 
 **Podcasts every 6 hours.** The enabled podcast feeds add up to about 100 MB per fetch, because
 feeds carry every episode ever released. Shows publish daily at most, so fetching every 6 hours
@@ -528,8 +548,9 @@ reason saving without a token is the default and tokens should be short-lived.
   `checked` date. Live activity comes from `feed_status.json`.
 - Reddit is read from the newest posts, three subreddits per request, up to 100 posts each,
   once an hour (since 2026-10-08; before, the combined "hot" listing of a whole group, 50
-  posts). A busy trio that posts more than 100 times an hour still loses the overflow; the
-  *Live checks* report shows how far back each request's 100 posts reach.
+  posts). On 2026-10-08 the busiest request (r/pcmasterrace, r/NintendoSwitch, r/PlayStation)
+  had about 11 new posts an hour and its 100 reached back almost 9 hours; every other request
+  reached back more than 20. The *Live checks* report shows this for every request.
 - On 2026-09-30, VG247's feed had nothing newer than 2026-06-02. Time Extension sits behind a
   Cloudflare check that blocks some networks, though not GitHub's runners. r/Steelbook and
   r/xboxone contribute only old posts.

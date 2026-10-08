@@ -1,5 +1,66 @@
 # Changelog
 
+## 2026-10-08: the scraper keeps running, each source on its own clock; Reddit by newest posts
+
+### What was asked
+
+- "Squeeze more data from the scraper ... so that they are constantly feeding more data to the
+  site ... without being rate banned." The maintainer chose an always-on loop over a schedule
+  every 10 minutes, and agreed to Reddit being read by its newest posts.
+
+### What was measured first
+
+- GitHub started 24 of about 130 hourly scheduled runs between 2026-10-02 and 2026-10-08:
+  about one every 5½ hours. That gap, not the sources, was where most data was lost.
+- 4chan: 27 game threads in 7 days; a thread on /v/ is gone within a couple of hours.
+- Reddit: 3 requests a run of the 50 "hot" posts per group; the busy group filled those 50 in
+  its busiest six hours.
+
+### What changed
+
+**`scrape_loop.py` (new) and `.github/workflows/scraper.yml`**
+- One run of the workflow stays up five and a half hours. It runs `scraper.py` whenever a source
+  type is due, commits the new data, starts the eBay prices job once an hour, and at the end
+  starts the next run itself. The hourly schedule is only a backstop.
+- *Run scraper now* and saving sources replace the running loop with a fresh one that fetches
+  everything first. One loop per branch; only the loop on `main` starts the eBay job and a
+  successor. A cancelled run starts nothing.
+- When only the bookkeeping changed (when each type was fetched, a board's date), it is
+  committed at most once an hour, to stay well under GitHub Pages' ten builds an hour.
+
+**`scraper.py`, `feeds.json`**
+- Clocks: 4chan every 15 minutes, news sites and forums every 30, Reddit and YouTube every
+  hour, podcasts every 6 hours. `poll_every_hours` now also takes 0.25 and 0.5.
+- Reddit: the newest posts, three subreddits a request, up to 100 posts each, a minute apart:
+  10 requests where there were 3. Measured from GitHub's servers: about 29 new posts an hour in
+  all, and every request's 100 posts reach back at least 8½ hours, so hourly misses nothing.
+- The 10-minute budget for YouTube and podcasts starts with the first of them, so Reddit's
+  waits don't use it up. A round that aborts still records what it tried, so a site that
+  refused us is asked again after its usual interval, not straight away.
+- Past the 12,000-item ceiling, the oldest items that name no game go first.
+- Rounds after a loop's first reuse the PS2 title index instead of downloading it again.
+
+**Dashboard, guide**
+- The schedule in Sources & Weights is a menu from 15 minutes to 24 hours. The guide describes
+  the always-running robot and Reddit's rounds.
+
+**Tools and checks**
+- `regression_check.py --types news|reddit` (news must stay identical; it does), never writes
+  the repository's `data/`. *Live checks* also tries Reddit and reports how far back each
+  request reaches. 253 Python tests (was 221), with `tests/test_scrape_loop.py` new.
+
+### Behaviour changes to be aware of
+
+- About 700 Reddit posts a day enter the feed instead of about 250. Most name no game. With
+  them the snapshot comes close to its ceiling, where the oldest items naming no game are
+  dropped first: the item count, the mood average and the remaster-news count may then cover
+  less than two weeks. Every item that names a game is kept for 14 days.
+- The scraper workflow now shows one run lasting about five and a half hours at a time; that is
+  normal. To stop the robot, disable the workflow on GitHub (cancelling a run does stop it, but
+  the hourly backstop starts a new one).
+- A runner busy around the clock is free on a public repository; GitHub's terms ask that
+  Actions serve the project, which publishing this site's data does.
+
 ## 2026-10-08: the last day's games by price, and each median's change over a week
 
 ### What was asked

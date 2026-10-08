@@ -60,6 +60,9 @@ def core_config(new, types=("news", "reddit")):
     """The working tree's feeds.json reduced to its enabled news and Reddit sources (or one of the two)."""
     config = json.loads((ROOT / "feeds.json").read_text(encoding="utf-8"))
     config["sources"] = [s for s in config["sources"] if s["type"] in types and s["enabled"]]
+    # Both runs fetch everything (FULL_RUN), so the clocks don't matter; an older reference may
+    # not accept the quarter- and half-hour ones.
+    config.pop("poll_every_hours", None)
     problems = new.validate_config(config)
     if problems:
         raise SystemExit("feeds.json is invalid: " + "; ".join(problems[:3]))
