@@ -353,6 +353,28 @@ class BuildJobsTests(unittest.TestCase):
         self.assertEqual([job["url"] for job in jobs], [f"https://www.youtube.com/feeds/videos.xml?channel_id={CH2}"])
 
 
+class TitleCacheTests(unittest.TestCase):
+    def test_later_rounds_reuse_the_title_index_instead_of_downloading_it(self):
+        folder = tempfile.TemporaryDirectory()
+        self.addCleanup(folder.cleanup)
+        db = Path(folder.name) / "ps2_database.json"
+        patcher = mock.patch.object(scraper, "DB_PATH", db)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        titles = [f"Game {n}" for n in range(scraper.MIN_INDEX_TITLES)]
+        db.write_text(json.dumps(titles), encoding="utf-8")
+        session = mock.Mock()
+        with mock.patch.dict(os.environ, {"TITLES_FROM_CACHE": "1"}):
+            loaded = scraper.load_ps2_titles(session)
+        session.get.assert_not_called()
+        self.assertTrue(set(titles) <= set(loaded) and set(scraper.FALLBACK_TITLES) <= set(loaded))
+        db.write_text(json.dumps(titles[:10]), encoding="utf-8")
+        session.get.side_effect = requests.ConnectionError("offline")
+        with mock.patch.dict(os.environ, {"TITLES_FROM_CACHE": "1"}), mock.patch("builtins.print"):
+            scraper.load_ps2_titles(session)
+        self.assertTrue(session.get.called, "a cache too small to trust is topped up from the indexes")
+
+
 class CeilingTests(unittest.TestCase):
     def item(self, n, game=None):
         return {"headline": f"item {n}", "matched_game": game, "timestamp": f"2026-01-01 {23 - n // 60:02d}:{59 - n % 60:02d} UTC"}
@@ -739,14 +761,41 @@ class RunScraperTests(unittest.TestCase):
         self.item(output, "Silent Hill 2 remake announced", "Example News")
         self.assertEqual([status[source["url"]]["error"] for source in forums], ["HTTP 403"] * 3)
         self.assertEqual({url: retry for url, retry in self.fetched}, {self.NEWS_URL: True, **{source["url"]: False for source in forums}})
-    def test_reddit_is_asked_about_once_a_minute(self):
+    def test_reddits_waits_leave_the_extras_their_whole_time_budget_and_skipped_types_stay_due(self):
         clock = [1000.0]
 
         def sleep(seconds):
             clock[0] += seconds
 
         def fetch(session, url, retry_rate_limit=True):
-            clock[0] += 2  # each request takes a moment
+            clock[0] += 700 if "youtube.com" in url else 1   # a YouTube feed that takes over ten minutes
+            return self.fake_fetch(session, url, retry_rate_limit)
+
+        with mock.patch.object(scraper, "REDDIT_REQUEST_GAP", 400), mock.patch.object(scraper, "BOARD_REQUEST_GAP", 0), \
+                mock.patch.object(scraper, "FETCH_TIME_BUDGET", 600), \
+                mock.patch.object(scraper, "fetch_feed", side_effect=fetch), \
+                mock.patch.object(scraper.time, "monotonic", side_effect=lambda: clock[0]), \
+                mock.patch.object(scraper.time, "sleep", side_effect=sleep), \
+                mock.patch.dict(os.environ, {"FULL_RUN": ""}):
+            self.run_scraper()
+        fetched = [url for url, _ in self.fetched]
+        self.assertTrue(any("youtube.com" in url for url in fetched), "400 seconds of Reddit waits do not count against the extras")
+        self.assertNotIn(self.POD_URL, fetched, "the podcast came after the budget was used up")
+        polls = json.loads(scraper.POLL_STATE_PATH.read_text(encoding="utf-8"))
+        self.assertIn("youtube", polls)
+        self.assertNotIn("podcast", polls, "a type whose every feed was skipped is still due next round")
+
+    def test_reddit_is_asked_about_once_a_minute(self):
+        clock = [1000.0]
+
+        def sleep(seconds):
+            clock[0] += seconds
+
+        took = iter([63, 2])  # the first request waited out a 429 (Reddit said: in 60 seconds)
+
+        def fetch(session, url, retry_rate_limit=True):
+            if "reddit.com" in url:
+                clock[0] += next(took)
             return self.fake_fetch(session, url, retry_rate_limit)
 
         with mock.patch.object(scraper, "REDDIT_REQUEST_GAP", 61), mock.patch.object(scraper, "BOARD_REQUEST_GAP", 0), \
@@ -756,8 +805,8 @@ class RunScraperTests(unittest.TestCase):
             self.run_scraper()
         reddit = [url for url, _ in self.fetched if "reddit.com" in url]
         self.assertEqual(len(reddit), 2)
-        self.assertEqual([call.args[0] for call in slept.call_args_list if call.args[0] > 1], [59],
-                         "the second request waits out the minute, counted from the first")
+        self.assertEqual([call.args[0] for call in slept.call_args_list if call.args[0] > 1], [61],
+                         "a full minute after the end of the request before, however long that took")
 
     def test_boards_are_read_one_at_a_time_and_only_when_something_changed(self):
         self.assertGreater(REAL_BOARD_GAP, 1.0, "4chan's API allows at most one request a second")
@@ -852,7 +901,11 @@ class RunScraperTests(unittest.TestCase):
         with mock.patch("builtins.print"), self.assertRaises(SystemExit):
             scraper.run_scraper()
         self.assertFalse(scraper.OUTPUT_PATH.exists())
-        self.assertFalse(scraper.STATUS_PATH.exists())
+        # What failed, and when each type was tried, are kept: the sites that refused us are asked
+        # again after their usual interval, not straight away.
+        status = json.loads(scraper.STATUS_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(status["reddit:ps2"]["ok"], False)
+        self.assertIn("reddit", json.loads(scraper.POLL_STATE_PATH.read_text(encoding="utf-8")))
 
     def test_a_host_that_keeps_failing_is_skipped(self):
         channels = [youtube(channel_id, name=f"Channel {i}") for i, channel_id in enumerate((CH1, CH2, CH3, CH4))]

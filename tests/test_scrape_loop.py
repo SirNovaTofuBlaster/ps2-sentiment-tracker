@@ -62,7 +62,7 @@ class LoopTests(unittest.TestCase):
             self.slept.append(seconds)
             self.clock[0] += timedelta(seconds=seconds)
 
-        def run_round(full):
+        def run_round(full, first=False):
             now = self.clock[0]
             polls = scraper.load_json_dict(self.polls_path)
             with mock.patch.dict(os.environ, {"FULL_RUN": "1" if full else ""}):
@@ -84,7 +84,13 @@ class LoopTests(unittest.TestCase):
                 raise self.config
             return self.config
 
-        for name, value in (("utc_now", lambda: self.clock[0]), ("sync", lambda: True), ("save", lambda: True),
+        self.saves = []
+
+        def save(force=False):
+            self.saves.append((self.clock[0], force))
+            return True
+
+        for name, value in (("utc_now", lambda: self.clock[0]), ("sync", lambda: True), ("save", save),
                             ("run_round", run_round), ("start", start)):
             patcher = mock.patch.object(scrape_loop, name, value)
             patcher.start()
@@ -92,7 +98,8 @@ class LoopTests(unittest.TestCase):
         for patcher in (mock.patch.object(scrape_loop.time, "sleep", sleep),
                         mock.patch.object(scraper, "load_config", load_config),
                         mock.patch.object(scraper, "POLL_STATE_PATH", self.polls_path),
-                        mock.patch.object(scrape_loop, "say", lambda text: None)):
+                        mock.patch.object(scrape_loop, "say", lambda text: None),
+                        mock.patch.dict(os.environ, {"GITHUB_REF_NAME": "main"})):
             patcher.start()
             self.addCleanup(patcher.stop)
 
@@ -130,12 +137,39 @@ class LoopTests(unittest.TestCase):
         self.assertIn(len(ebay), (5, 6))
         self.assertTrue(all(inputs == {} for when, workflow, inputs in self.started if workflow == scrape_loop.EBAY_WORKFLOW))
 
-    def test_at_the_end_it_starts_its_successor_to_carry_on(self):
+    def test_at_the_end_it_saves_everything_and_starts_its_successor_to_carry_on(self):
         self.run_loop()
         when, workflow, inputs = self.started[-1]
         self.assertEqual((workflow, inputs), (scrape_loop.SCRAPER_WORKFLOW, {"mode": "continue"}))
-        self.assertLess(when, START + timedelta(minutes=scrape_loop.LOOP_MINUTES + 15))
+        self.assertLessEqual(when, START + timedelta(minutes=scrape_loop.LOOP_MINUTES))
         self.assertEqual(sum(1 for _, workflow, _ in self.started if workflow == scrape_loop.SCRAPER_WORKFLOW), 1)
+        self.assertEqual(self.saves[-1], (when, True), "the bookkeeping goes up with the hand-over")
+        self.assertEqual([force for _, force in self.saves[:-1]], [False] * (len(self.saves) - 1))
+
+    def test_the_last_round_is_not_followed_by_a_pointless_wait(self):
+        self.run_loop()
+        last_round_end = self.rounds[-1][0] + timedelta(minutes=self.round_minutes)
+        self.assertLess(self.started[-1][0] - last_round_end, timedelta(seconds=scrape_loop.MIN_GAP))
+
+    def test_after_an_error_the_chain_still_goes_on_but_not_after_a_cancel(self):
+        def broken(*args, **kwargs):
+            raise RuntimeError("something went wrong")
+        with mock.patch.object(scrape_loop, "run_round", broken), self.assertRaises(RuntimeError):
+            self.run_loop()
+        self.assertEqual(self.started[-1][1:], (scrape_loop.SCRAPER_WORKFLOW, {"mode": "continue"}))
+        self.started.clear()
+
+        def cancelled(*args, **kwargs):
+            raise KeyboardInterrupt
+        with mock.patch.object(scrape_loop, "run_round", cancelled):
+            self.assertEqual(self.run_loop(), 130)
+        self.assertEqual(self.started, [], "a cancelled run was replaced or stopped on purpose: no successor")
+
+    def test_a_run_on_another_branch_starts_neither_the_eBay_job_nor_a_successor(self):
+        with mock.patch.dict(os.environ, {"GITHUB_REF_NAME": "test-branch"}):
+            self.run_loop()
+        self.assertTrue(self.rounds)
+        self.assertEqual(self.started, [])
 
     def test_run_now_fetches_everything_first_whatever_was_fetched_lately(self):
         recent = START.strftime(scraper.TIMESTAMP_FORMAT)
@@ -199,13 +233,103 @@ class StartTests(unittest.TestCase):
             self.assertTrue(scrape_loop.start("scraper.yml", mode="continue"))
         self.assertEqual(run.call_args.args[0], ["gh", "workflow", "run", "scraper.yml", "--ref", "main", "-f", "mode=continue"])
 
-    def test_a_round_is_scraper_py_in_a_process_of_its_own(self):
+    def test_a_round_is_scraper_py_in_a_process_of_its_own_with_a_time_limit(self):
         with mock.patch.object(scrape_loop.subprocess, "run", return_value=mock.Mock(returncode=3)) as run:
-            self.assertEqual(scrape_loop.run_round(True), 3)
-            self.assertEqual(run.call_args.kwargs["env"]["FULL_RUN"], "1")
-            scrape_loop.run_round(False)
-            self.assertEqual(run.call_args.kwargs["env"]["FULL_RUN"], "")
+            self.assertEqual(scrape_loop.run_round(True, first=True), 3)
+            env = run.call_args.kwargs["env"]
+            self.assertEqual((env["FULL_RUN"], env["TITLES_FROM_CACHE"]), ("1", ""), "the first round downloads the title index")
+            scrape_loop.run_round(False, first=False)
+            env = run.call_args.kwargs["env"]
+            self.assertEqual((env["FULL_RUN"], env["TITLES_FROM_CACHE"]), ("", "1"))
         self.assertEqual(run.call_args.args[0][1:], ["scraper.py"])
+        self.assertEqual(run.call_args.kwargs["timeout"], scrape_loop.ROUND_TIMEOUT)
+        expired = scrape_loop.subprocess.TimeoutExpired("scraper.py", 1)
+        with mock.patch.object(scrape_loop.subprocess, "run", side_effect=expired), mock.patch.object(scrape_loop, "say"):
+            self.assertEqual(scrape_loop.run_round(False, first=False), 124)
+        # The last round starts with ROUND_RESERVE left and may run ROUND_TIMEOUT: with five
+        # minutes to hand over, that stays inside the workflow's 355-minute limit.
+        latest_end = (timedelta(minutes=scrape_loop.LOOP_MINUTES) - scrape_loop.ROUND_RESERVE
+                      + timedelta(seconds=scrape_loop.ROUND_TIMEOUT) + timedelta(minutes=5))
+        self.assertLessEqual(latest_end, timedelta(minutes=355))
+
+
+class GitTests(unittest.TestCase):
+    """sync() and save() against a fake git that answers each command as told."""
+
+    def setUp(self):
+        self.calls, self.answers = [], {}
+
+        def git(*args):
+            self.calls.append(args)
+            code, out = self.answers.get(args[0], (0, ""))
+            if callable(code):
+                code = code()
+            return mock.Mock(returncode=code, stdout=out, stderr="")
+
+        for patcher in (mock.patch.object(scrape_loop, "git", git), mock.patch.object(scrape_loop, "say"),
+                        mock.patch.object(scrape_loop.time, "sleep"), mock.patch.object(scrape_loop, "_last_commit", None),
+                        mock.patch.dict(os.environ, {"GITHUB_REF_NAME": "main"})):
+            patcher.start()
+            self.addCleanup(patcher.stop)
+
+    def commands(self):
+        return [" ".join(call) for call in self.calls]
+
+    def test_sync_rebases_with_the_round_set_aside_and_gives_up_cleanly(self):
+        self.assertTrue(scrape_loop.sync())
+        self.assertEqual(self.commands(), ["pull --rebase --autostash --quiet origin main"])
+        self.calls.clear()
+        self.answers["pull"] = (1, "")
+        self.assertFalse(scrape_loop.sync())
+        self.assertEqual(self.commands(), ["pull --rebase --autostash --quiet origin main", "rebase --abort"])
+
+    def test_new_items_are_committed_from_data_only_and_pushed_on_top_of_main(self):
+        self.answers["diff"] = (0, "data/sentiment_feed.json\ndata/poll_state.json\n")
+        self.assertTrue(scrape_loop.save())
+        self.assertEqual(self.commands(), [
+            "add data/", "diff --staged --name-only", f"commit --quiet -m {scrape_loop.COMMIT_MESSAGE}",
+            "pull --rebase --quiet origin main", "push --quiet origin HEAD:main"])
+
+    def test_a_push_that_loses_a_race_is_rebased_and_tried_again(self):
+        self.answers["diff"] = (0, "data/sentiment_feed.json\n")
+        pushes = iter([1, 0])
+        self.answers["push"] = (lambda: next(pushes), "")
+        self.assertTrue(scrape_loop.save())
+        self.assertEqual(self.commands()[3:], ["pull --rebase --quiet origin main", "push --quiet origin HEAD:main", "rebase --abort",
+                                               "pull --rebase --quiet origin main", "push --quiet origin HEAD:main"])
+
+    def test_bookkeeping_alone_goes_up_once_an_hour(self):
+        self.answers["diff"] = (0, "data/poll_state.json\ndata/feed_status.json\n")
+        clock = [START]
+        with mock.patch.object(scrape_loop, "utc_now", lambda: clock[0]):
+            self.assertTrue(scrape_loop.save(), "nothing committed yet in this run: it goes up")
+            clock[0] += timedelta(minutes=15)
+            self.calls.clear()
+            self.assertFalse(scrape_loop.save())
+            self.assertEqual(self.commands(), ["add data/", "diff --staged --name-only", "reset --quiet"],
+                             "left in the working tree for the next commit")
+            self.assertTrue(scrape_loop.save(force=True), "the hand-over takes it along")
+            clock[0] += timedelta(minutes=59)
+            self.assertFalse(scrape_loop.save())
+            clock[0] += timedelta(minutes=2)
+            self.assertTrue(scrape_loop.save())
+        self.answers["diff"] = (0, "")
+        self.assertFalse(scrape_loop.save())
+
+    def test_branch_is_the_one_the_run_is_on(self):
+        with mock.patch.dict(os.environ, {"GITHUB_REF_NAME": "test"}):
+            self.assertEqual(scrape_loop.branch(), "test")
+        with mock.patch.dict(os.environ, {"GITHUB_REF_NAME": ""}):
+            self.assertEqual(scrape_loop.branch(), "main")
+
+
+class ToolTests(unittest.TestCase):
+    def test_the_tools_space_reddit_requests_and_never_touch_the_repositorys_data(self):
+        tryer = (ROOT / "tools" / "try_sources.py").read_text(encoding="utf-8")
+        self.assertIn("time.sleep(max(0.0, scraper.REDDIT_REQUEST_GAP - (time.monotonic() - last_reddit)))", tryer)
+        check = (ROOT / "tools" / "regression_check.py").read_text(encoding="utf-8")
+        self.assertIn('for name in ("STATUS_PATH", "YOUTUBE_IDS_PATH", "POLL_STATE_PATH"):  # never the repository\'s data/', check)
+        self.assertIn("REDDIT_SPACING = 65", check)
 
 
 class WorkflowTests(unittest.TestCase):
@@ -221,7 +345,7 @@ class WorkflowTests(unittest.TestCase):
         self.assertIn("      - scrape_loop.py", self.code, "a change to the loop restarts it")
 
     def test_a_push_or_run_now_replaces_the_loop_and_the_schedule_and_successor_wait(self):
-        self.assertIn("  group: scraper\n  cancel-in-progress: ${{ github.event_name == 'push' || "
+        self.assertIn("  group: scraper-${{ github.ref_name }}\n  cancel-in-progress: ${{ github.event_name == 'push' || "
                       "(github.event_name == 'workflow_dispatch' && inputs.mode != 'continue') }}", self.code)
         self.assertIn("FULL_FIRST: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' "
                       "&& inputs.mode != 'continue')) && '1' || '' }}", self.code)
@@ -231,6 +355,9 @@ class WorkflowTests(unittest.TestCase):
         self.assertRegex(self.code, r"\npermissions:\n  contents: write\n  actions: write +#[^\n]*\n\n")
         self.assertIn("    timeout-minutes: 355", self.code)
         self.assertIn("python scrape_loop.py", self.code)
+        self.assertIn("          ref: ${{ github.ref }}", self.code, "a run that waited starts from the latest data commit")
+        self.assertNotIn("persist-credentials: false", self.code, "the loop pushes with the checkout's credentials")
+        self.assertIn("  push:\n    branches: [main]", self.code)
         self.assertIn("GH_TOKEN: ${{ github.token }}", self.code)
         self.assertNotIn("secrets.", self.code)
         self.assertIn("users.noreply.github.com", self.code)

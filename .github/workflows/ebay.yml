@@ -1,7 +1,8 @@
 name: eBay asking prices
 
-# Runs after every scraper run, and when started by hand (Actions tab > eBay asking prices >
-# Run workflow). This workflow holds the eBay key, so it must never run on pull requests, and
+# Runs once an hour, started by the scraper's loop (scrape_loop.py) through workflow_dispatch,
+# after a scraper run ends, and when started by hand (Actions tab > eBay asking prices > Run
+# workflow). This workflow holds the eBay key, so it must never run on pull requests, and
 # it always runs the code on main, never code from the run that triggered it.
 on:
   workflow_run:

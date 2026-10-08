@@ -29,7 +29,7 @@ DB_PATH = DATA_DIR / "ps2_database.json"
 OUTPUT_PATH = DATA_DIR / "sentiment_feed.json"
 STATUS_PATH = DATA_DIR / "feed_status.json"
 YOUTUBE_IDS_PATH = DATA_DIR / "youtube_channels.json"  # channel link -> channel ID, filled by the scraper
-POLL_STATE_PATH = DATA_DIR / "poll_state.json"  # when each source type with poll_every_hours > 1 was last fetched
+POLL_STATE_PATH = DATA_DIR / "poll_state.json"  # when each source type was last fetched
 FEEDS_PATH = ROOT / "feeds.json"
 
 # Regional PS2 title indexes (serial -> title). Titles from every source that
@@ -61,7 +61,7 @@ RETENTION_DAYS = 14
 # busy day). At 5000 it cut the window to nine days and the dashboard's count stopped moving.
 MAX_ITEMS = 12000
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"
-FETCH_TIME_BUDGET = 600  # seconds; YouTube/podcast feeds not reached by then are skipped this run
+FETCH_TIME_BUDGET = 600  # seconds from the first extra feed; YouTube/podcast feeds not reached by then wait
 HOST_FAILURE_LIMIT = 3  # consecutive YouTube/podcast host-level failures skip the rest of that host
 POLL_TOLERANCE = timedelta(minutes=20)  # at most this early, and at most a twentieth of the interval
 # How often each source type may be fetched (feeds.json "poll_every_hours"): a quarter or half
@@ -290,7 +290,13 @@ def read_cached_titles():
 
 
 def load_ps2_titles(session):
-    """Merges the online indexes, the local cache and the fallback list into one sorted title list."""
+    """Merges the online indexes, the local cache and the fallback list into one sorted title list.
+    With TITLES_FROM_CACHE=1 (every round of scrape_loop.py but its first) a full local cache is
+    used as it is, instead of downloading the indexes again every few minutes."""
+    if os.environ.get("TITLES_FROM_CACHE") == "1":
+        cached = read_cached_titles()
+        if len(cached) >= MIN_INDEX_TITLES:
+            return sorted(cached | set(FALLBACK_TITLES))
     fetched = set()
     for label, url in DB_SOURCES:
         try:
@@ -1337,12 +1343,14 @@ def run_scraper():
         due_jobs = [job for job in jobs if job["type"] in due]
         print(f"Scanning {len(due_jobs)} of {len(jobs)} feeds (due now: {', '.join(t for t in SOURCE_TYPES if t in due)}) "
               f"against PS2 titles ({matcher.summary()})...")
-        started = time.monotonic()
+        extras_started = None  # the time budget is for the extras: Reddit's waits don't use it up
         last_board_request = last_reddit_request = None
         for job in due_jobs:
             url, core = job["url"], job["type"] in CORE_TYPES
             host = urlparse(url).hostname
-            if not core and time.monotonic() - started > FETCH_TIME_BUDGET:
+            if not core and extras_started is None:
+                extras_started = time.monotonic()
+            if not core and time.monotonic() - extras_started > FETCH_TIME_BUDGET:
                 skipped += 1
                 print(f"  SKIPPED {url}: fetch time budget used up")
                 continue
@@ -1362,8 +1370,12 @@ def run_scraper():
                         wait = 0 if last_reddit_request is None else REDDIT_REQUEST_GAP - (time.monotonic() - last_reddit_request)
                         if wait > 0:  # about one unauthenticated request a minute
                             time.sleep(wait)
-                        last_reddit_request = time.monotonic()
-                    feed = fetch_feed(session, url, retry_rate_limit=core)
+                        try:
+                            feed = fetch_feed(session, url, retry_rate_limit=core)
+                        finally:  # counted from the end of the request, a wait for a 429 included
+                            last_reddit_request = time.monotonic()
+                    else:
+                        feed = fetch_feed(session, url, retry_rate_limit=core)
                     if feed.get("bozo") and not feed.entries:
                         raise ValueError("unreadable feed")
             except (requests.RequestException, ValueError) as e:
@@ -1389,17 +1401,19 @@ def run_scraper():
                 record_success(status, source_key(src), newest.get(source_key(src)))
             print(f"  {len(entries):3d} items  {url}")
 
+    # The health of each feed, and when each type was last tried, are kept even when the run
+    # is aborted below: a site that refused us is then asked again after its usual interval,
+    # not at once.
+    save_json_if_changed(STATUS_PATH, status, previous_status)
+    polls = {kind: when for kind, when in previous_polls.items() if kind in SOURCE_TYPES}
+    polls.update({kind: now_text for kind in fetched_types})
+    save_json_if_changed(POLL_STATE_PATH, polls, previous_polls)
     # Never replace a good snapshot with the result of a mostly-failed run.
     if core_jobs and (not items or core_failures > len(core_jobs) // 2):
         raise SystemExit(
             f"Aborting: {core_failures}/{len(core_jobs)} news/Reddit feeds failed and {len(items)} items were "
             "collected; keeping the previous snapshot."
         )
-    save_json_if_changed(STATUS_PATH, status, previous_status)
-    # Remember when each source type was last fetched, so that the next run knows what is due.
-    polls = {kind: when for kind, when in previous_polls.items() if kind in SOURCE_TYPES}
-    polls.update({kind: now_text for kind in fetched_types})
-    save_json_if_changed(POLL_STATE_PATH, polls, previous_polls)
     if not items:
         print("No items collected; leaving snapshot untouched.")
         return

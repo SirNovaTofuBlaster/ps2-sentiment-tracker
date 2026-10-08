@@ -27,10 +27,11 @@ permissions:
   contents: write
   actions: write   # to start the eBay prices job each hour, and this workflow's next run
 
-# One run at a time. A push or "Run scraper now" stops the running loop and starts a fresh one
-# that fetches everything; the schedule and a loop's own successor wait for the running one.
+# One run at a time per branch. A push or "Run scraper now" stops the running loop and starts a
+# fresh one that fetches everything; the schedule and a loop's own successor wait for the
+# running one. A run started on another branch never stops the loop on main.
 concurrency:
-  group: scraper
+  group: scraper-${{ github.ref_name }}
   cancel-in-progress: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.mode != 'continue') }}
 
 env:

@@ -23,6 +23,7 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -36,6 +37,14 @@ import requests
 ROOT = Path(__file__).resolve().parent.parent
 NEW_FIELDS = ("source_type", "feed")
 REDDIT_SPACING = 65  # seconds between Reddit requests (about one unauthenticated request a minute)
+
+
+def notice(title, text):
+    """The result again as a notice on the run, where it can be read without the log."""
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        data = lambda value: value.replace("%", "%25").replace("\r", " ").replace("\n", " ")  # noqa: E731
+        prop = lambda value: data(value).replace(":", "%3A").replace(",", "%2C")  # noqa: E731
+        print(f"::notice title={prop('Regression check ' + title)}::{data(text)}")
 
 
 def load_module(name, source, folder):
@@ -147,6 +156,7 @@ def main():
         print("Fetch plans differ:")
         print("  only in reference:", [u for u in old_urls if u not in new_urls])
         print("  only in working tree:", [u for u in new_urls if u not in old_urls])
+        notice(f"{'/'.join(types)}: fetch plans differ", f"{len(old_urls)} requests before, {len(new_urls)} now")
         sys.exit(1)
     print(f"Both versions fetch the same {len(new_urls)} {'/'.join(types)} feeds.")
 
@@ -167,11 +177,14 @@ def main():
     print(f"remaster flags: {sum(i['is_remaster_rumor'] for i in reference['items'])} vs {sum(i['is_remaster_rumor'] for i in stripped)}")
     if same and reference["total_tracked_feeds"] == current["total_tracked_feeds"]:
         print("IDENTICAL: same items, same order (ignoring fields only the new version writes).")
+        notice(f"{'/'.join(types)}: IDENTICAL", f"{len(current['items'])} items from {len(new_urls)} feeds")
         return
-    for a, b in zip(reference["items"], stripped):
-        if a != b:
-            print("FIRST DIFFERENCE\n  reference:", a, "\n  working:  ", b)
-            break
+    first = next(((a, b) for a, b in zip(reference["items"], stripped) if a != b), None)
+    if first:
+        print("FIRST DIFFERENCE\n  reference:", first[0], "\n  working:  ", first[1])
+    notice(f"{'/'.join(types)}: DIFFERENT",
+           f"{len(reference['items'])} vs {len(current['items'])} items; first difference in: "
+           + (", ".join(key for key in first[0] if first[0].get(key) != first[1].get(key)) if first else "the item count"))
     sys.exit(1)
 
 

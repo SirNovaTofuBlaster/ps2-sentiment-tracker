@@ -276,6 +276,10 @@ await check('dashboard renders every view and weights the sentiment average', ()
         assert.match(menu(type), new RegExp(`<option value="${hours}" selected>`), type);
     }
     assert.match(html, /The scraper runs all the time/);
+    // A type the file gives no clock is fetched hourly, and its menu says so.
+    vm.runInContext("delete feedConfig.poll_every_hours.forum; setSourceTab('weights')", context);
+    assert.match(el('sourcesView').innerHTML, /<select data-poll="forum"[^>]*>[\s\S]*?<option value="1" selected>1 hour<\/option>/);
+    vm.runInContext("discardChanges(); setSourceTab('weights')", context);
     // Choosing 15 minutes is kept, as a number the scraper accepts; anything else is refused.
     context.__event = { target: { dataset: { poll: '4chan' }, value: '0.25' } };
     vm.runInContext('onSourcesViewChange(__event)', context);
