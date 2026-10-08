@@ -1,23 +1,37 @@
 name: PS2 Sentiment Tracker Scraper
 
+# One run of this workflow keeps the scraper going for about five and a half hours
+# (scrape_loop.py): it fetches each source type when its interval has passed (feeds.json,
+# "poll_every_hours"), commits the new data, asks for the eBay prices job once an hour and then
+# starts the next run itself. GitHub starts scheduled runs late or not at all, so the hourly
+# schedule is only a backstop: it starts a loop when none is running, and otherwise waits.
 on:
   schedule:
-    # Hourly, at an off-peak minute (top-of-hour runs are the most delayed)
     - cron: '17 * * * *'
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "now: fetch every source at once, then keep going. continue: carry on where the last run stopped."
+        type: choice
+        options: [now, continue]
+        default: now
   push:
-    # Saving sources (from the dashboard or a commit) or changing the scraper rescrapes right away.
+    # Saving sources (from the dashboard or a commit) or changing the scraper restarts it at once.
     branches: [main]
     paths:
       - feeds.json
       - scraper.py
+      - scrape_loop.py
 
 permissions:
   contents: write
+  actions: write   # to start the eBay prices job each hour, and this workflow's next run
 
+# One run at a time. A push or "Run scraper now" stops the running loop and starts a fresh one
+# that fetches everything; the schedule and a loop's own successor wait for the running one.
 concurrency:
   group: scraper
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.mode != 'continue') }}
 
 env:
   PYTHONUNBUFFERED: '1'
@@ -26,7 +40,7 @@ env:
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 355
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
@@ -46,34 +60,12 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run scraper script
+      - name: Keep the scraper running
         env:
-          # Manual runs and source/scraper changes fetch every enabled feed now instead of
-          # waiting for each source type's poll_every_hours slot (see feeds.json).
-          FULL_RUN: ${{ github.event_name != 'schedule' && '1' || '' }}
-        run: python scraper.py
-
-      - name: Commit and push changes if data updated
+          # A push or "Run scraper now" fetches every enabled source in its first round.
+          FULL_FIRST: ${{ (github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.mode != 'continue')) && '1' || '' }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/
-
-          if git diff --staged --quiet; then
-            echo "No data changes; nothing to commit."
-            exit 0
-          fi
-
-          git commit -m "Auto-update sentiment data [skip ci]"
-
-          for attempt in 1 2 3; do
-            if git pull --rebase origin "$GITHUB_REF_NAME" && git push; then
-              exit 0
-            fi
-            echo "Push attempt $attempt failed; retrying..."
-            git rebase --abort 2>/dev/null || true
-            sleep 5
-          done
-
-          echo "Push failed after 3 attempts." >&2
-          exit 1
+          python scrape_loop.py

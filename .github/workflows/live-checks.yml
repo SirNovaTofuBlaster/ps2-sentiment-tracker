@@ -22,7 +22,7 @@ concurrency:
 jobs:
   live:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v5
         with:
@@ -35,13 +35,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Try the forums and boards
+      - name: Try the forums, boards and Reddit
         env:
           PYTHONUNBUFFERED: "1"
-        run: python tools/try_sources.py forum 4chan
+        # Reddit is asked about once a minute, so this step takes ten minutes or so.
+        run: python tools/try_sources.py forum 4chan reddit
 
-      - name: Old and new scraper on the same live news and Reddit feeds
+      - name: Old and new scraper on the same live news feeds
         if: always()
         env:
           PYTHONUNBUFFERED: "1"
-        run: python tools/regression_check.py --ref origin/main
+        run: python tools/regression_check.py --ref origin/main --types news
+
+      - name: Old and new scraper on the same live Reddit feeds
+        if: always()
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: python tools/regression_check.py --ref origin/main --types reddit

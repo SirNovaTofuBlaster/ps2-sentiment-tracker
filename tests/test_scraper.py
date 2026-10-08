@@ -241,6 +241,12 @@ class ValidationTests(unittest.TestCase):
     def test_valid_config_has_no_problems(self):
         self.assertEqual(scraper.validate_config(self.config), [])
 
+    def test_a_quarter_or_half_of_an_hour_is_a_valid_interval(self):
+        for hours in (0.25, 0.5, 1, 6, 24, 6.0):
+            config = copy.deepcopy(self.config)
+            config["poll_every_hours"]["news"] = hours
+            self.assertEqual(scraper.validate_config(config), [], hours)
+
     def test_rejects_bad_values(self):
         cases = {
             "url": lambda c: c["sources"][0].update(url="not a url"),
@@ -263,6 +269,9 @@ class ValidationTests(unittest.TestCase):
             "duplicate": lambda c: c["sources"].append(copy.deepcopy(c["sources"][0])),
             "interval 0": lambda c: c["poll_every_hours"].update(podcast=0),
             "interval 1.5": lambda c: c["poll_every_hours"].update(podcast=1.5),
+            "interval 0.75": lambda c: c["poll_every_hours"].update(news=0.75),
+            "interval 0.1": lambda c: c["poll_every_hours"].update(news=0.1),
+            "interval 0.5 as text": lambda c: c["poll_every_hours"].update(news="0.5"),
             "interval type": lambda c: c["poll_every_hours"].update(tiktok=1),
             "youtube without id or link": lambda c: c["sources"][2].pop("channel_id"),
             "youtube video link": lambda c: c["sources"].append(youtube_link("https://www.youtube.com/watch?v=abc")),
@@ -311,7 +320,12 @@ class BuildJobsTests(unittest.TestCase):
     def test_original_reddit_groups_become_the_original_multireddit_urls(self):
         sources = [subreddit(name, group=f"group {i}") for i, group in enumerate(ORIGINAL_SUBREDDIT_GROUPS) for name in group]
         urls = [job["url"] for job in scraper.build_jobs(make_config(*sources))]
-        self.assertEqual(urls, [f"https://www.reddit.com/r/{'+'.join(group)}/.rss?limit=50" for group in ORIGINAL_SUBREDDIT_GROUPS])
+        # Each group is asked for three subreddits at a time, in the order listed, newest posts first.
+        expected = [f"https://www.reddit.com/r/{'+'.join(group[i:i + 3])}/new/.rss?limit=100"
+                    for group in ORIGINAL_SUBREDDIT_GROUPS for i in range(0, len(group), 3)]
+        self.assertEqual(urls, expected)
+        self.assertEqual(len(urls), sum(-(-len(group) // 3) for group in ORIGINAL_SUBREDDIT_GROUPS))
+        self.assertTrue(all(job["type"] == "reddit" for job in scraper.build_jobs(make_config(*sources))))
 
     def test_disabled_sources_are_not_fetched(self):
         config = make_config(news("https://a.example/feed"), news("https://b.example/feed", enabled=False),
@@ -326,8 +340,8 @@ class BuildJobsTests(unittest.TestCase):
         # Forums and boards are a few quick requests: they go before the hundreds of YouTube and
         # podcast feeds, which can use up the run's time.
         self.assertEqual([job["type"] for job in jobs], ["news", "reddit", "reddit", "forum", "4chan", "4chan", "youtube", "podcast"])
-        self.assertEqual(jobs[1]["url"], "https://www.reddit.com/r/a+c/.rss?limit=50")
-        self.assertEqual(jobs[2]["url"], "https://www.reddit.com/r/b/.rss?limit=50")
+        self.assertEqual(jobs[1]["url"], "https://www.reddit.com/r/a+c/new/.rss?limit=100")
+        self.assertEqual(jobs[2]["url"], "https://www.reddit.com/r/b/new/.rss?limit=100")
         self.assertEqual([job["url"] for job in jobs[3:6]], ["https://f.example/index.rss", "https://a.4cdn.org/vr/catalog.json",
                                                              "https://a.4cdn.org/v/catalog.json"])
         self.assertEqual(jobs[6]["url"], f"https://www.youtube.com/feeds/videos.xml?channel_id={CH1}")
@@ -337,6 +351,26 @@ class BuildJobsTests(unittest.TestCase):
         self.assertEqual(scraper.build_jobs(config), [])
         jobs = scraper.build_jobs(config, {"https://www.youtube.com/@some": CH2})
         self.assertEqual([job["url"] for job in jobs], [f"https://www.youtube.com/feeds/videos.xml?channel_id={CH2}"])
+
+
+class CeilingTests(unittest.TestCase):
+    def item(self, n, game=None):
+        return {"headline": f"item {n}", "matched_game": game, "timestamp": f"2026-01-01 {23 - n // 60:02d}:{59 - n % 60:02d} UTC"}
+
+    def test_past_the_ceiling_items_without_a_game_go_first_oldest_first(self):
+        items = [self.item(n, "Okami" if n % 4 == 0 else None) for n in range(12)]   # newest first
+        with mock.patch.object(scraper, "MAX_ITEMS", 6):
+            kept = scraper.within_ceiling(items)
+        self.assertEqual([i["headline"] for i in kept], ["item 0", "item 1", "item 2", "item 3", "item 4", "item 8"])
+        self.assertEqual(sum(1 for i in kept if i["matched_game"]), 3, "every item naming a game stays")
+
+    def test_items_naming_games_go_only_when_they_alone_pass_the_ceiling(self):
+        items = [self.item(n, "Okami") for n in range(8)] + [self.item(8)]
+        with mock.patch.object(scraper, "MAX_ITEMS", 5):
+            kept = scraper.within_ceiling(items)
+        self.assertEqual([i["headline"] for i in kept], [f"item {n}" for n in range(5)], "the newest five")
+        with mock.patch.object(scraper, "MAX_ITEMS", 50):
+            self.assertIs(scraper.within_ceiling(items), items, "under the ceiling nothing changes")
 
 
 class ScheduleTests(unittest.TestCase):
@@ -363,6 +397,44 @@ class ScheduleTests(unittest.TestCase):
         last = self.now.strftime(scraper.TIMESTAMP_FORMAT)
         with mock.patch.dict(os.environ, {"FULL_RUN": "1"}):
             self.assertEqual(scraper.due_types(self.config, self.now, {"podcast": last}), set(scraper.SOURCE_TYPES))
+
+    def test_every_type_waits_for_its_own_clock_however_short(self):
+        config = make_config(poll_every_hours={"news": 0.5, "reddit": 1, "forum": 0.5, "4chan": 0.25, "youtube": 1, "podcast": 6})
+
+        def due(minutes_ago):
+            last = (self.now - timedelta(minutes=minutes_ago)).strftime(scraper.TIMESTAMP_FORMAT)
+            with mock.patch.dict(os.environ, {"FULL_RUN": ""}):
+                return scraper.due_types(config, self.now, {kind: last for kind in scraper.SOURCE_TYPES})
+
+        self.assertEqual(due(5), set())
+        self.assertEqual(due(14), set(), "a quarter of an hour may come at most a twentieth early: 14:15")
+        self.assertEqual(due(15), {"4chan"})
+        self.assertEqual(due(28), {"4chan"})
+        self.assertEqual(due(29), {"4chan", "news", "forum"})
+        self.assertEqual(due(56), {"4chan", "news", "forum"})
+        self.assertEqual(due(57), {"4chan", "news", "forum", "reddit", "youtube"})
+        self.assertEqual(due(5 * 60 + 42), set(scraper.SOURCE_TYPES), "six hours, eighteen minutes early at most")
+        self.assertEqual(due(5 * 60 + 41), set(scraper.SOURCE_TYPES) - {"podcast"})
+
+    def test_next_poll_is_the_last_fetch_plus_the_interval_less_the_slack(self):
+        config = make_config(poll_every_hours={"4chan": 0.25, "podcast": 6})
+        polls = {"4chan": "2026-01-01 13:00 UTC", "podcast": "2026-01-01 13:00 UTC", "news": "garbage"}
+        self.assertEqual(scraper.next_poll(config, "4chan", polls), datetime(2026, 1, 1, 13, 14, 15, tzinfo=timezone.utc))
+        self.assertEqual(scraper.next_poll(config, "podcast", polls), datetime(2026, 1, 1, 18, 42, tzinfo=timezone.utc))
+        self.assertEqual(scraper.next_poll(config, "youtube", polls), None)
+        self.assertEqual(scraper.next_poll(config, "news", polls), None, "a stamp that cannot be read is no stamp")
+        self.assertEqual(scraper.poll_interval(config, "youtube"), timedelta(hours=1), "unset means hourly")
+
+    def test_the_slack_is_never_more_than_twenty_minutes(self):
+        config = make_config(poll_every_hours={"podcast": 24})
+        polls = {"podcast": "2026-01-01 13:00 UTC"}
+        self.assertEqual(scraper.next_poll(config, "podcast", polls), datetime(2026, 1, 2, 12, 40, tzinfo=timezone.utc))
+
+    def test_a_reddit_listing_keeps_all_hundred_posts_and_a_news_feed_fifty(self):
+        feed = mock.Mock(entries=[{"title": f"post {n}"} for n in range(120)])
+        self.assertEqual(len(scraper.select_entries(feed, "reddit")), scraper.REDDIT_LIMIT)
+        self.assertEqual(len(scraper.select_entries(feed, "news")), scraper.MAX_ENTRIES_PER_FEED)
+        self.assertEqual((scraper.REDDIT_LIMIT, scraper.MAX_ENTRIES_PER_FEED), (100, 50))
 
     def test_missing_interval_means_every_hour(self):
         with mock.patch.dict(os.environ, {"FULL_RUN": ""}):
@@ -450,10 +522,10 @@ class RunScraperTests(unittest.TestCase):
         self.fixtures = {
             self.NEWS_URL: rss("Example News", [("Silent Hill 2 remake announced", "https://news.example/sh2", None, NOW - hour),
                                                 ("Unrelated news", "https://news.example/other", None, NOW - 2 * hour)]),
-            "https://www.reddit.com/r/ps2+PCSX2/.rss?limit=50": atom("posts", [
+            "https://www.reddit.com/r/ps2+PCSX2/new/.rss?limit=100": atom("posts", [
                 ("Black is still great", "https://www.reddit.com/r/ps2/comments/1/black/", NOW - hour, "ps2"),
                 ("PCSX2 settings help", "https://www.reddit.com/r/PCSX2/comments/2/help/", NOW - 3 * hour, "PCSX2")]),
-            "https://www.reddit.com/r/gaming/.rss?limit=50": atom("posts", [
+            "https://www.reddit.com/r/gaming/new/.rss?limit=100": atom("posts", [
                 ("Black is still great", "https://www.reddit.com/r/gaming/comments/3/black/", NOW - hour, "gaming")]),
             f"https://www.youtube.com/feeds/videos.xml?channel_id={CH1}": atom("PS2 Channel", [
                 ("Black - full playthrough", "https://www.youtube.com/watch?v=abc123", NOW - hour, None)]),
@@ -492,6 +564,7 @@ class RunScraperTests(unittest.TestCase):
         for patcher in (mock.patch.object(scraper, "fetch_feed", side_effect=self.fake_fetch),
                         mock.patch.object(scraper, "fetch_board", side_effect=self.fake_board),
                         mock.patch.object(scraper, "BOARD_REQUEST_GAP", 0),
+                        mock.patch.object(scraper, "REDDIT_REQUEST_GAP", 0),
                         mock.patch.object(scraper, "load_ps2_titles", return_value=scraper.FALLBACK_TITLES),
                         mock.patch.dict(os.environ, {"FULL_RUN": "1"})):
             patcher.start()
@@ -666,6 +739,26 @@ class RunScraperTests(unittest.TestCase):
         self.item(output, "Silent Hill 2 remake announced", "Example News")
         self.assertEqual([status[source["url"]]["error"] for source in forums], ["HTTP 403"] * 3)
         self.assertEqual({url: retry for url, retry in self.fetched}, {self.NEWS_URL: True, **{source["url"]: False for source in forums}})
+    def test_reddit_is_asked_about_once_a_minute(self):
+        clock = [1000.0]
+
+        def sleep(seconds):
+            clock[0] += seconds
+
+        def fetch(session, url, retry_rate_limit=True):
+            clock[0] += 2  # each request takes a moment
+            return self.fake_fetch(session, url, retry_rate_limit)
+
+        with mock.patch.object(scraper, "REDDIT_REQUEST_GAP", 61), mock.patch.object(scraper, "BOARD_REQUEST_GAP", 0), \
+                mock.patch.object(scraper, "fetch_feed", side_effect=fetch), \
+                mock.patch.object(scraper.time, "monotonic", side_effect=lambda: clock[0]), \
+                mock.patch.object(scraper.time, "sleep", side_effect=sleep) as slept:
+            self.run_scraper()
+        reddit = [url for url, _ in self.fetched if "reddit.com" in url]
+        self.assertEqual(len(reddit), 2)
+        self.assertEqual([call.args[0] for call in slept.call_args_list if call.args[0] > 1], [59],
+                         "the second request waits out the minute, counted from the first")
+
     def test_boards_are_read_one_at_a_time_and_only_when_something_changed(self):
         self.assertGreater(REAL_BOARD_GAP, 1.0, "4chan's API allows at most one request a second")
         third = next(source for source in self.config["sources"] if source.get("board") == "vst")
@@ -838,8 +931,15 @@ class RunScraperTests(unittest.TestCase):
             self.assertIn("podcast", json.loads(scraper.POLL_STATE_PATH.read_text(encoding="utf-8")))
             self.fetched.clear()
             self.run_scraper()
+            self.assertEqual(self.fetched, [], "every type was fetched moments ago: nothing is due")
+            # An hour later: the hourly types are due again, podcasts not for five more hours.
+            polls = json.loads(scraper.POLL_STATE_PATH.read_text(encoding="utf-8"))
+            self.assertEqual(set(polls), {"news", "reddit", "forum", "4chan", "youtube", "podcast"}, "every type is remembered")
+            hour_ago = (datetime.now(timezone.utc) - timedelta(hours=1)).strftime(scraper.TIMESTAMP_FORMAT)
+            scraper.POLL_STATE_PATH.write_text(json.dumps({kind: hour_ago for kind in polls}), encoding="utf-8")
+            self.run_scraper()
         second = [url for url, _ in self.fetched]
-        self.assertNotIn(self.POD_URL, second)  # polled minutes ago
+        self.assertNotIn(self.POD_URL, second)  # polled an hour ago
         self.assertIn(self.NEWS_URL, second)
 
     def test_feeds_json_saved_with_a_bom_still_loads(self):
@@ -874,6 +974,17 @@ class RunScraperTests(unittest.TestCase):
         self.assertEqual(len(output["items"]), fetched + 2)
         self.assertEqual(output["items"][0]["headline"], "Brand new story")
         self.assertEqual(ages(output), ["Story from 1 days ago"])
+
+        # An old item that names a game outlasts newer ones that name none.
+        named = {**earlier(10), "headline": "Story from 10 days ago about Okami", "link": "https://news.example/okami",
+                 "matched_game": "Okami", "matched_games": ["Okami"]}
+        scraper.OUTPUT_PATH.write_text(json.dumps({"items": output["items"] + [named]}), encoding="utf-8")
+        self.fixtures[self.NEWS_URL] = rss("Example News", [("Another new story", "https://news.example/new2", None, NOW)])
+        with mock.patch.object(scraper, "MAX_ITEMS", fetched + 2):
+            output, _ = self.run_scraper()
+        self.assertEqual(len(output["items"]), fetched + 2)
+        self.assertIn("Story from 10 days ago about Okami", [item["headline"] for item in output["items"]])
+        self.assertIn("Another new story", [item["headline"] for item in output["items"][:2]])
 
         # The ceiling is a safety net: two weeks of a busy day (about 750 items) must fit under it.
         self.assertGreaterEqual(scraper.MAX_ITEMS, scraper.RETENTION_DAYS * 750)
@@ -1282,6 +1393,8 @@ class DashboardTests(unittest.TestCase):
             lambda c: c["sources"][5].update(url="https://example.com/feed"),
             lambda c: c["poll_every_hours"].update({"forum": 2, "4chan": 3}),
             lambda c: c["poll_every_hours"].update({"4chan": 0}),
+            *[(lambda hours: lambda c: c["poll_every_hours"].update(news=hours))(hours)
+              for hours in (0.25, 0.5, 0.75, 0.1, 0.125, 1.0, 24, 25, 23.5, -0.25, "0.5", None)],
             lambda c: c["roles"]["anonymous"].update(weight=0),
             lambda c: c["sources"][5].update(role="nope"),
         ]

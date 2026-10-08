@@ -6,6 +6,7 @@ the SAME feed content and compares the two snapshots item by item:
     python tools/regression_check.py                 # compare with origin/main
     python tools/regression_check.py --ref HEAD~1    # any git ref
     python tools/regression_check.py --offline       # reuse feeds downloaded by an earlier run
+    python tools/regression_check.py --types news    # only the news feeds (or only reddit)
 
 What is compared: the news and Reddit feeds (the "core" feeds both versions know). If the
 reference scraper still has the feed lists hard-coded (NEWS_FEEDS / SUBREDDIT_GROUPS) those are
@@ -46,10 +47,10 @@ def load_module(name, source, folder):
     return module
 
 
-def core_config(new):
-    """The working tree's feeds.json reduced to its enabled news and Reddit sources."""
+def core_config(new, types=("news", "reddit")):
+    """The working tree's feeds.json reduced to its enabled news and Reddit sources (or one of the two)."""
     config = json.loads((ROOT / "feeds.json").read_text(encoding="utf-8"))
-    config["sources"] = [s for s in config["sources"] if s["type"] in ("news", "reddit") and s["enabled"]]
+    config["sources"] = [s for s in config["sources"] if s["type"] in types and s["enabled"]]
     problems = new.validate_config(config)
     if problems:
         raise SystemExit("feeds.json is invalid: " + "; ".join(problems[:3]))
@@ -95,9 +96,12 @@ def run_offline(module, index, cache, titles, extra_patches):
                mock.patch.object(module, "fetch_feed", side_effect=fake_fetch),
                mock.patch.object(module, "load_ps2_titles", return_value=titles),
                *extra_patches(data)]
-    for name in ("STATUS_PATH", "YOUTUBE_IDS_PATH"):
+    for name in ("STATUS_PATH", "YOUTUBE_IDS_PATH", "POLL_STATE_PATH"):  # never the repository's data/
         if hasattr(module, name):
             patches.append(mock.patch.object(module, name, data / f"{name.lower()}.json"))
+    for name in ("REDDIT_REQUEST_GAP", "BOARD_REQUEST_GAP"):  # the feeds are on disk: no need to wait
+        if hasattr(module, name):
+            patches.append(mock.patch.object(module, name, 0))
     for patch in patches:
         patch.start()
     try:
@@ -115,7 +119,11 @@ def main():
     parser.add_argument("--cache", type=Path, default=Path(tempfile.gettempdir()) / "ps2-regression-feeds",
                         help="folder for downloaded feeds")
     parser.add_argument("--offline", action="store_true", help="only use feeds already in the cache")
+    parser.add_argument("--types", default="news,reddit", help="which core feeds to compare: news, reddit or both")
     args = parser.parse_args()
+    types = tuple(kind.strip() for kind in args.types.split(",") if kind.strip())
+    if not types or set(types) - {"news", "reddit"}:
+        raise SystemExit("--types takes news, reddit or news,reddit")
 
     sys.path.insert(0, str(ROOT))
     import scraper as new  # noqa: E402  (the working tree)
@@ -124,7 +132,7 @@ def main():
     source = subprocess.run(["git", "-C", str(ROOT), "show", f"{args.ref}:scraper.py"], capture_output=True,
                             text=True, encoding="utf-8", check=True).stdout
     old = load_module("scraper_reference", source, work)
-    config = core_config(new)
+    config = core_config(new, types)
     config_path = work / "feeds.json"
     config_path.write_text(json.dumps(config), encoding="utf-8")
 
@@ -140,7 +148,7 @@ def main():
         print("  only in reference:", [u for u in old_urls if u not in new_urls])
         print("  only in working tree:", [u for u in new_urls if u not in old_urls])
         sys.exit(1)
-    print(f"Both versions fetch the same {len(new_urls)} news/Reddit feeds.")
+    print(f"Both versions fetch the same {len(new_urls)} {'/'.join(types)} feeds.")
 
     args.cache.mkdir(parents=True, exist_ok=True)
     index = download(new_urls, args.cache, new.USER_AGENT, args.offline)

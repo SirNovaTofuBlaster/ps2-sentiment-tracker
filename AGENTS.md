@@ -6,7 +6,7 @@ working on this repository. `CLAUDE.md` loads this file. Non-technical users sho
 
 ## What this project is
 
-A PS2 sentiment and remaster tracker. `scraper.py`, run by GitHub Actions every hour, reads every
+A PS2 sentiment and remaster tracker. `scraper.py`, kept running by `scrape_loop.py` in GitHub Actions, reads every
 enabled source in `feeds.json`: news-site RSS, Reddit, forum RSS, 4chan board catalogs, YouTube
 channel feeds and podcast RSS. It matches each headline, thread, video title and episode title
 against the PS2 library, flags remaster/remake news and scores sentiment. From 4chan it keeps
@@ -15,7 +15,7 @@ only which games a thread names (rule 12). It writes:
 - `data/sentiment_feed.json`: the snapshot
 - `data/feed_status.json`: per-feed health
 - `data/youtube_channels.json`: remembered IDs for YouTube channels added by link
-- `data/poll_state.json`: when slower source types (e.g. podcasts) were last fetched
+- `data/poll_state.json`: when each source type was last fetched (each has its own clock)
 
 The static `index.html` dashboard (GitHub Pages) renders those files and edits `feeds.json`
 through its **Sources & Weights** panel.
@@ -29,7 +29,9 @@ through its **Sources & Weights** panel.
 
 | Path | What it is |
 |---|---|
-| `feeds.json` | Every source (news / reddit / forum / 4chan / youtube / podcast), roles and weights, `poll_every_hours` |
+| `feeds.json` | Every source (news / reddit / forum / 4chan / youtube / podcast), roles and weights, `poll_every_hours` (0.25, 0.5 or 1–24) |
+| `scrape_loop.py` | Keeps the scraper running for 5½ hours per workflow run: runs it when a type is due, commits `data/`, starts the eBay job hourly and its own successor |
+| `tests/test_scrape_loop.py` | Offline tests for the loop (fake clock) and `scraper.yml` |
 | `scraper.py` | Config validation, fetch plan, YouTube link resolution, matching, sentiment, reading 4chan boards for game names, feed health, snapshot merge |
 | `index.html` | Dashboard, three pages in one file (Tracker, Most mentioned, eBay prices); its inline script mirrors `validate_config()`, `source_key()` and the game-name rule of `ebay_prices.py`. Also reads `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.json`, and works without them |
 | `guide.html` | Plain-language user guide; must match the UI |
@@ -40,7 +42,7 @@ through its **Sources & Weights** panel.
 | `tools/try_sources.py` | Tries enabled forums, boards, channels or podcasts against the live sites and prints what the scraper would make of them; writes nothing |
 | `.github/workflows/live-checks.yml` | On pull requests that touch the scraper, `feeds.json` or `tools/`: runs `try_sources.py forum 4chan` and `regression_check.py` from GitHub's servers. Holds no key and can write nothing |
 | `tests/test_archive.py` | Offline tests for `archive.py`: which mentions count as the same mention |
-| `.github/workflows/scraper.yml` | Hourly scrape, plus immediately on pushes that change `feeds.json`/`scraper.py` |
+| `.github/workflows/scraper.yml` | Runs `scrape_loop.py`; a push to `feeds.json`/`scraper.py`/`scrape_loop.py` or *Run scraper now* replaces the running loop; an hourly schedule restarts it if the chain breaks |
 | `.github/workflows/tests.yml` | The test suite on pushes and pull requests |
 | `archive.py`, `.github/workflows/archive.yml` | Appends every PS2 game mention to `data/archive/YYYY-MM.json`, four times a day |
 | `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index) from Wikipedia pageviews and mentions, daily |
@@ -49,7 +51,7 @@ through its **Sources & Weights** panel.
 | `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, the median of a week before (`week`), and the game's level. Numbers only |
 | `data/prices/YYYY-MM.json` | The same numbers over time: a row whenever they change, and at least one a day |
 | `tests/test_ebay_prices.py` | Offline tests for `ebay_prices.py` and its workflow, including that the key never leaks |
-| `.github/workflows/ebay.yml` | Runs `ebay_prices.py` after every scraper run (and by hand), commits `data/prices/`, and publishes that run's listings to the `ebay-data` branch |
+| `.github/workflows/ebay.yml` | Runs `ebay_prices.py` hourly (started by the scraper's loop), after a scraper run ends, and by hand; commits `data/prices/`, and publishes that run's listings to the `ebay-data` branch |
 
 ## Commands
 
@@ -89,14 +91,15 @@ python ebay_prices.py --plan              # which games would be priced now and 
    - Podcasts: fetch and parse the RSS URL.
    - Put measured numbers in `stats`, with the `checked` date.
 6. **`feed_status.json` only holds values that change when something happens.** No "last
-   checked" timestamps, or the hourly workflow commits noise.
+   checked" timestamps, or every round of the loop commits noise.
 7. **UI changes update `guide.html`** so non-technical users keep accurate instructions.
 8. **No API keys or secrets in the scraper**: everything `scraper.py` reads is a public feed.
    The one script that uses a key is `ebay_prices.py`. It reads the eBay key from the
    `EBAY_CLIENT_ID` and `EBAY_CLIENT_SECRET` Actions secrets. The key is never committed,
    printed, written to a file or sent to the dashboard. It uses only Python's standard
    library, so the job that holds the key installs nothing: keep it that way. `ebay.yml`
-   runs after the scraper workflow and by hand; it must never run on pull requests, must
+   runs after the scraper workflow, when the scraper's loop asks for it each hour
+   (`workflow_dispatch`), and by hand; it must never run on pull requests, must
    always check out `main` (never the code of the run that triggered it), and the scraper
    workflow it follows must never gain a pull-request trigger either. No other script may
    use a key without the maintainer's explicit decision.
@@ -202,8 +205,13 @@ Before you call something done, prove it; don't assume it.
     that case needs a classic token with `public_repo`.
   - The contents API needs the file's current `sha`.
   - Web-editor commits use the account's email settings.
-  - Scheduled workflow runs are often delayed or skipped: in this repo's history only 3 of about
-    16 hourly runs fired. Never rely on fixed UTC hours; `poll_state.json` tracks elapsed time.
+  - Scheduled workflow runs are often delayed or skipped: in the first week of October 2026,
+    24 of about 130 hourly runs fired. That is why `scrape_loop.py` keeps one run going and
+    hands over to its successor instead of relying on the schedule. Never rely on fixed UTC
+    hours; `poll_state.json` tracks elapsed time.
+  - A workflow's own token can start another workflow only through `workflow_dispatch` (the
+    loop's successor, the hourly eBay job); its pushes start nothing. A run waiting in a
+    concurrency group is replaced by a newer waiting run of the same group.
   - A run that waited in the concurrency queue must check out the branch head
     (`ref: ${{ github.ref }}`), or its data commit conflicts with the previous run's.
   - GitHub Pages lags a few minutes behind a commit. The dashboard reads `feeds.json` from the

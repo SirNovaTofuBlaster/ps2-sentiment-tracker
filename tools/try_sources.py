@@ -123,7 +123,7 @@ def main():
         raise SystemExit(f"Unknown source type: {', '.join(sorted(unknown))}. Known: {', '.join(scraper.SOURCE_TYPES)}")
     config = scraper.load_config()
     ps2_keys = {scraper.source_key(s) for s in config["sources"] if s["enabled"] and s["role"] == scraper.PS2_ROLE}
-    failed, games, last_board = [], Counter(), None
+    failed, games, last_board, last_reddit = [], Counter(), None, None
     with requests.Session() as session:
         session.headers["User-Agent"] = scraper.USER_AGENT
         matcher = scraper.TitleMatcher(scraper.load_ps2_titles(session))
@@ -140,6 +140,10 @@ def main():
                     last_board = time.monotonic()
                     found = try_board(session, job, matcher, ps2_keys)
                 else:
+                    if job["type"] == "reddit":  # about one unauthenticated request a minute
+                        if last_reddit is not None:
+                            time.sleep(max(0.0, scraper.REDDIT_REQUEST_GAP - (time.monotonic() - last_reddit)))
+                        last_reddit = time.monotonic()
                     found = try_feed(session, job, matcher, ps2_keys)
             except (requests.RequestException, ValueError) as error:
                 failed.append(job["sources"][0]["name"])
