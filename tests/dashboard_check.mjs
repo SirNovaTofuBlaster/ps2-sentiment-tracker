@@ -199,6 +199,11 @@ await check('invalid configs are rejected', () => {
         "c.sources.push({ ...structuredCopy(c.sources.find(s => s.type === '4chan')), name: 'again' })",
         "c.sources.find(s => s.type === 'forum').url = 'forum.example.com/index.rss'",
         "c.poll_every_hours['4chan'] = 0",
+        'c.poll_every_hours.news = 0.75',
+        'c.poll_every_hours.news = 0.1',
+        "c.poll_every_hours.news = '0.5'",
+        'c.poll_every_hours.news = 25',
+        'c.poll_every_hours.news = 1.5',
     ];
     context.structuredCopy = (value) => JSON.parse(JSON.stringify(value));
     for (const mutation of mutations) {
@@ -260,7 +265,32 @@ await check('dashboard renders every view and weights the sentiment average', ()
     assert.match(el('sourcesView').innerHTML, /Active · /);
     vm.runInContext(`setSourceTab('weights')`, context);
     assert.match(el('sourcesView').innerHTML, /Role weights/);
-    assert.match(el('sourcesView').innerHTML, /data-poll="podcast"[^>]*value="6"/);
+    // Each type's clock is a menu: 15 or 30 minutes, or 1 to 24 hours, with the file's value chosen.
+    const html = el('sourcesView').innerHTML;
+    const menu = (type) => html.match(new RegExp(`<select data-poll="${type}"[^>]*>([\\s\\S]*?)</select>`))[1];
+    const options = [...menu('podcast').matchAll(/<option value="([^"]+)"( selected)?>([^<]+)<\/option>/g)];
+    assert.deepEqual(options.slice(0, 4).map(m => [m[1], m[3]]), [['0.25', '15 minutes'], ['0.5', '30 minutes'], ['1', '1 hour'], ['2', '2 hours']]);
+    assert.equal(options.length, 26);
+    assert.deepEqual(options.filter(m => m[2]).map(m => m[1]), [String(feeds.poll_every_hours.podcast)]);
+    for (const [type, hours] of Object.entries(feeds.poll_every_hours)) {
+        assert.match(menu(type), new RegExp(`<option value="${hours}" selected>`), type);
+    }
+    assert.match(html, /The scraper runs all the time/);
+    // A type the file gives no clock is fetched hourly, and its menu says so.
+    vm.runInContext("delete feedConfig.poll_every_hours.forum; setSourceTab('weights')", context);
+    assert.match(el('sourcesView').innerHTML, /<select data-poll="forum"[^>]*>(?:(?!<\/select>)[\s\S])*<option value="1" selected>1 hour<\/option>/);
+    vm.runInContext("discardChanges(); setSourceTab('weights')", context);
+    // Choosing 15 minutes is kept, as a number the scraper accepts; anything else is refused.
+    context.__event = { target: { dataset: { poll: '4chan' }, value: '0.25' } };
+    vm.runInContext('onSourcesViewChange(__event)', context);
+    assert.equal(evalJson("feedConfig.poll_every_hours['4chan']"), 0.25);
+    assert.deepEqual(evalJson('validateConfig(feedConfig)'), []);
+    const bad = { dataset: { poll: 'news' }, value: '0.75' };
+    context.__event = { target: bad };
+    vm.runInContext('onSourcesViewChange(__event)', context);
+    assert.equal(bad.value, feeds.poll_every_hours.news, 'the menu goes back to what it was');
+    assert.equal(evalJson('feedConfig.poll_every_hours.news'), feeds.poll_every_hours.news);
+    vm.runInContext('discardChanges()', context);
     assert.match(el('sourcesSummary').textContent, /sources enabled/);
     assert.equal(el('dirtyBadge').classList.contains('hidden'), true);
 });

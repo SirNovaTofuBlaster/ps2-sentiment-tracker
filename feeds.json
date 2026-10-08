@@ -2,8 +2,10 @@
   "_about": "Sources scanned by scraper.py; editable from the dashboard's Sources panel. Disable a source instead of deleting it. Stats are a snapshot from the 'checked' date.",
   "version": 1,
   "poll_every_hours": {
-    "news": 1,
+    "news": 0.5,
     "reddit": 1,
+    "forum": 0.5,
+    "4chan": 0.25,
     "youtube": 1,
     "podcast": 6
   },

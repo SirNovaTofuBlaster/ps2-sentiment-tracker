@@ -936,7 +936,7 @@
                 empty.textContent = priceTrouble
                     ? 'The price file could not be read just now. Press REFRESH to try again. If it stays like this, '
                         + 'data/prices/latest.json on GitHub is damaged and needs restoring from its history.'
-                    : 'No prices yet. They are collected by the "eBay asking prices" job, which runs after each scrape. '
+                    : 'No prices yet. They are collected by the "eBay asking prices" job, which runs every hour. '
                         + 'To fill this page now, open the repository on GitHub and choose Actions, eBay asking prices, Run workflow.';
                 empty.classList.remove('hidden');
                 return;
@@ -1248,6 +1248,14 @@
             return weight === 1 ? '' : ` <span class="ml-1 px-1 border border-slate-700 text-slate-400" title="Source weight in the sentiment average">&times;${esc(weight)}</span>`;
         }
 
+        // How often a source type may be fetched: a quarter or half of an hour, or whole hours
+        // from 1 to 24 (the same rule as _is_hours() in scraper.py).
+        const SUB_HOUR_INTERVALS = [0.25, 0.5];
+        const isPollInterval = (hours) => typeof hours === 'number'
+            && (SUB_HOUR_INTERVALS.includes(hours) || (Number.isInteger(hours) && hours >= 1 && hours <= 24));
+        const POLL_CHOICES = [...SUB_HOUR_INTERVALS, ...Array.from({ length: 24 }, (_, i) => i + 1)];
+        const pollLabel = (hours) => (hours < 1 ? `${hours * 60} minutes` : `${hours} hour${hours === 1 ? '' : 's'}`);
+
         // Same rules as validate_config() in scraper.py.
         function validateConfig(cfg) {
             if (!cfg || typeof cfg !== 'object' || Array.isArray(cfg)) return ['the top level must be an object'];
@@ -1259,8 +1267,8 @@
                 .map(([name]) => `role '${name}' needs a 'weight' between 0 and 10`);
             const intervals = Object.hasOwn(cfg, 'poll_every_hours') ? cfg.poll_every_hours : {};
             if (intervals === null || typeof intervals !== 'object' || Array.isArray(intervals) || Object.entries(intervals).some(
-                ([type, hours]) => !SOURCE_TYPES.includes(type) || !Number.isInteger(hours) || hours < 1 || hours > 24)) {
-                problems.push("'poll_every_hours' must map source types to whole hours between 1 and 24");
+                ([type, hours]) => !SOURCE_TYPES.includes(type) || !isPollInterval(hours))) {
+                problems.push("'poll_every_hours' must map source types to 0.25, 0.5 or whole hours between 1 and 24");
             }
             const seen = new Set();
             sources.forEach((src, i) => {
@@ -1579,12 +1587,13 @@
                     </div>
                     <div>
                         <h3 class="mb-1">Fetch schedule</h3>
-                        <p class="text-slate-500 mb-3 leading-relaxed">The scraper runs about once an hour (GitHub sometimes delays or skips runs) and fetches a source type once its interval has passed. Manual runs and feeds.json saves fetch everything at once.</p>
+                        <p class="text-slate-500 mb-3 leading-relaxed">The scraper runs all the time and fetches each kind of source once its interval has passed. Reddit asks for a few subreddits a minute, so a Reddit round takes several minutes. Run scraper now and saving sources fetch everything at once.</p>
                         <table class="w-full text-left border-collapse">
                             <tbody>${SOURCE_TYPES.map(type => `
                                 <tr class="border-b border-slate-800/40">
                                     <td class="py-2 px-3 text-white"><i class="${TYPE_META[type].icon} text-slate-400 mr-1.5"></i>${esc(TYPE_META[type].label)}</td>
-                                    <td class="py-2 px-3 text-slate-400">every <input type="number" data-poll="${type}" min="1" max="24" step="1" value="${esc(polls[type] ?? 1)}" aria-label="${esc(TYPE_META[type].label)} interval in hours" class="w-16 mx-1 ${INPUT}"> hour(s)</td>
+                                    <td class="py-2 px-3 text-slate-400">every <select data-poll="${type}" aria-label="How often to fetch ${esc(TYPE_META[type].label)}" class="mx-1 ${INPUT}">${POLL_CHOICES.map(hours =>
+                                        `<option value="${hours}"${(polls[type] ?? 1) === hours ? ' selected' : ''}>${pollLabel(hours)}</option>`).join('')}</select></td>
                                 </tr>`).join('')}</tbody>
                         </table>
                     </div>
@@ -1603,9 +1612,9 @@
                 feedConfig.roles[target.dataset.role].weight = weight;
             } else if (target.dataset.poll !== undefined) {
                 const hours = Number(target.value);
-                if (!Number.isInteger(hours) || hours < 1 || hours > 24) {
+                if (!isPollInterval(hours)) {
                     target.value = feedConfig.poll_every_hours?.[target.dataset.poll] ?? 1;
-                    return showSourcesMessage('Intervals must be whole hours between 1 and 24.', 'error');
+                    return showSourcesMessage('Intervals must be 15 or 30 minutes, or whole hours between 1 and 24.', 'error');
                 }
                 feedConfig.poll_every_hours = { ...(feedConfig.poll_every_hours || {}), [target.dataset.poll]: hours };
             } else {
@@ -2017,9 +2026,9 @@
             if (!settings) return;
             try {
                 await githubApi(`/repos/${settings.repo}/actions/workflows/scraper.yml/dispatches`, {
-                    method: 'POST', token: settings.token, body: { ref: settings.branch },
+                    method: 'POST', token: settings.token, body: { ref: settings.branch, inputs: { mode: 'now' } },
                 });
-                showSourcesMessage('Scraper run started (it fetches every enabled source). Refresh the feed in a few minutes.', 'success',
+                showSourcesMessage('Scraper restarted: it fetches every enabled source now, then keeps running. Refresh the feed in a few minutes.', 'success',
                     { url: `https://github.com/${settings.repo}/actions/workflows/scraper.yml`, label: 'Watch it on GitHub' });
             } catch (error) {
                 showSourcesMessage(`Could not start the scraper: ${error.message}`, 'error');

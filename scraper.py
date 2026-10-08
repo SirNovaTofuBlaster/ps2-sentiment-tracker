@@ -29,7 +29,7 @@ DB_PATH = DATA_DIR / "ps2_database.json"
 OUTPUT_PATH = DATA_DIR / "sentiment_feed.json"
 STATUS_PATH = DATA_DIR / "feed_status.json"
 YOUTUBE_IDS_PATH = DATA_DIR / "youtube_channels.json"  # channel link -> channel ID, filled by the scraper
-POLL_STATE_PATH = DATA_DIR / "poll_state.json"  # when each source type with poll_every_hours > 1 was last fetched
+POLL_STATE_PATH = DATA_DIR / "poll_state.json"  # when each source type was last fetched
 FEEDS_PATH = ROOT / "feeds.json"
 
 # Regional PS2 title indexes (serial -> title). Titles from every source that
@@ -61,9 +61,13 @@ RETENTION_DAYS = 14
 # busy day). At 5000 it cut the window to nine days and the dashboard's count stopped moving.
 MAX_ITEMS = 12000
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"
-FETCH_TIME_BUDGET = 600  # seconds; YouTube/podcast feeds not reached by then are skipped this run
+FETCH_TIME_BUDGET = 600  # seconds from the first extra feed; YouTube/podcast feeds not reached by then wait
 HOST_FAILURE_LIMIT = 3  # consecutive YouTube/podcast host-level failures skip the rest of that host
-POLL_TOLERANCE = timedelta(minutes=20)  # hourly runs drift a little; don't miss a slot by minutes
+POLL_TOLERANCE = timedelta(minutes=20)  # at most this early, and at most a twentieth of the interval
+# How often each source type may be fetched (feeds.json "poll_every_hours"): a quarter or half
+# of an hour, or whole hours from 1 to 24. scrape_loop.py keeps the scraper running and starts
+# it whenever a type is due.
+SUB_HOUR_INTERVALS = (0.25, 0.5)
 
 # Sources are configured in feeds.json. News and Reddit are the core feeds: when
 # too many of them fail the run aborts. Everything else is an extra whose failures
@@ -74,9 +78,13 @@ POLL_TOLERANCE = timedelta(minutes=20)  # hourly runs drift a little; don't miss
 SOURCE_TYPES = ("news", "reddit", "forum", "4chan", "youtube", "podcast")
 CORE_TYPES = {"news", "reddit"}
 YOUTUBE_FEED_URL = "https://www.youtube.com/feeds/videos.xml?channel_id={}"
-# Reddit allows roughly one unauthenticated request per minute, so subreddits that
-# share a group are fetched as one combined multireddit feed instead of one feed each.
-REDDIT_FEED_URL = "https://www.reddit.com/r/{}/.rss?limit={}"
+# Reddit allows roughly one unauthenticated request per minute, so subreddits are fetched
+# a few at a time as one combined multireddit feed of their newest posts (not "hot": that
+# listing returned the same 50 popular posts and missed most new ones), a minute apart.
+REDDIT_FEED_URL = "https://www.reddit.com/r/{}/new/.rss?limit={}"
+REDDIT_LIMIT = 100            # the most posts Reddit gives in one listing
+REDDIT_SUBS_PER_REQUEST = 3   # subreddits of one group combined into one request
+REDDIT_REQUEST_GAP = 61       # seconds between two Reddit requests
 SOURCE_PREFIX = {"youtube": "YouTube: ", "podcast": "Podcast: ", "forum": "Forum: "}
 # 4chan's boards are read through its read-only JSON API (github.com/4chan/4chan-API): one
 # request per board for the catalog, which holds the opening post of every live thread. Its
@@ -282,7 +290,13 @@ def read_cached_titles():
 
 
 def load_ps2_titles(session):
-    """Merges the online indexes, the local cache and the fallback list into one sorted title list."""
+    """Merges the online indexes, the local cache and the fallback list into one sorted title list.
+    With TITLES_FROM_CACHE=1 (every round of scrape_loop.py but its first) a full local cache is
+    used as it is, instead of downloading the indexes again every few minutes."""
+    if os.environ.get("TITLES_FROM_CACHE") == "1":
+        cached = read_cached_titles()
+        if len(cached) >= MIN_INDEX_TITLES:
+            return sorted(cached | set(FALLBACK_TITLES))
     fetched = set()
     for label, url in DB_SOURCES:
         try:
@@ -1023,11 +1037,12 @@ def _is_weight(value):
 
 
 def _is_hours(value):
-    # Whole numbers only; 6.0 is accepted because the dashboard's JavaScript can't tell it from 6.
+    # A quarter or half of an hour, or whole hours from 1 to 24; 6.0 is accepted because the
+    # dashboard's JavaScript can't tell it from 6.
     if isinstance(value, bool):
         return False
     if isinstance(value, float):
-        return value.is_integer() and 1 <= value <= 24
+        return value in SUB_HOUR_INTERVALS or (value.is_integer() and 1 <= value <= 24)
     return isinstance(value, int) and 1 <= value <= 24
 
 
@@ -1049,7 +1064,7 @@ def validate_config(config):
     intervals = config.get("poll_every_hours", {})
     if not isinstance(intervals, dict) or any(kind not in SOURCE_TYPES or not _is_hours(hours)
                                               for kind, hours in intervals.items()):
-        problems.append("'poll_every_hours' must map source types to whole hours between 1 and 24")
+        problems.append("'poll_every_hours' must map source types to 0.25, 0.5 or whole hours between 1 and 24")
     seen = set()
     for i, src in enumerate(sources):
         where = f"sources[{i}]"
@@ -1123,8 +1138,16 @@ def build_jobs(config, youtube_ids=None):
             jobs.append({"type": BOARD_TYPE, "sources": [src], "url": BOARD_CATALOG_URL.format(src["board"])})
         else:
             jobs.append({"type": src["type"], "sources": [src], "url": src["url"]})
-    for job in reddit_groups.values():
-        job["url"] = REDDIT_FEED_URL.format("+".join(s["subreddit"] for s in job["sources"]), MAX_ENTRIES_PER_FEED)
+    # Each group is asked for a few subreddits at a time: one listing holds at most
+    # REDDIT_LIMIT posts, and a busy group posts more than that between two fetches.
+    for group in reddit_groups.values():
+        position = jobs.index(group)
+        chunks = [group["sources"][i:i + REDDIT_SUBS_PER_REQUEST]
+                  for i in range(0, len(group["sources"]), REDDIT_SUBS_PER_REQUEST)]
+        jobs[position:position + 1] = [
+            {"type": "reddit", "sources": chunk,
+             "url": REDDIT_FEED_URL.format("+".join(s["subreddit"] for s in chunk), REDDIT_LIMIT)}
+            for chunk in chunks]
     jobs.sort(key=lambda job: SOURCE_TYPES.index(job["type"]))  # stable: keeps file order within a type
     return jobs
 
@@ -1136,18 +1159,31 @@ def parse_timestamp(text):
         return None
 
 
+def poll_interval(config, kind):
+    """How long to wait between two fetches of a source type (feeds.json "poll_every_hours")."""
+    return timedelta(hours=float(config.get("poll_every_hours", {}).get(kind, 1)))
+
+
+def next_poll(config, kind, last_polled=None):
+    """When a source type is next due: an interval after its last fetch, less a little slack
+    (a twentieth of the interval, at most POLL_TOLERANCE). None when it has never been fetched."""
+    last = parse_timestamp((last_polled or {}).get(kind))
+    if last is None:
+        return None
+    interval = poll_interval(config, kind)
+    return last + interval - min(POLL_TOLERANCE, interval / 20)
+
+
 def due_types(config, now, last_polled=None):
-    """Source types to fetch this run. A type with poll_every_hours N is due once about N hours
-    have passed since it was last fetched (data/poll_state.json). GitHub often delays or skips
-    scheduled runs, so fixed UTC hours could be missed for days. FULL_RUN=1 fetches everything."""
+    """Source types to fetch this run: each is due once its poll_every_hours have passed since it
+    was last fetched (data/poll_state.json), however long ago the last run was. FULL_RUN=1
+    fetches everything."""
     if os.environ.get("FULL_RUN") == "1":
         return set(SOURCE_TYPES)
-    intervals = config.get("poll_every_hours", {})
     due = set()
     for kind in SOURCE_TYPES:
-        hours = int(intervals.get(kind, 1))
-        last = parse_timestamp((last_polled or {}).get(kind))
-        if hours <= 1 or last is None or now - last >= timedelta(hours=hours) - POLL_TOLERANCE:
+        when = next_poll(config, kind, last_polled)
+        if when is None or now >= when:
             due.add(kind)
     return due
 
@@ -1160,14 +1196,23 @@ def load_json_dict(path):
     return value if isinstance(value, dict) else {}
 
 
+def write_whole(path, text):
+    """Writes a file so that it is either the old version or the new one, never half of it: a
+    round stopped at its time limit must not leave a cut-off file for the next commit."""
+    partial = path.with_name(path.name + ".partial")
+    partial.write_text(text, encoding="utf-8")
+    os.replace(partial, path)
+
+
 def save_json_if_changed(path, value, previous):
     if value != previous:
-        path.write_text(json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n", encoding="utf-8")
+        write_whole(path, json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n")
 
 
 def select_entries(feed, kind):
     if kind in CORE_TYPES:
-        return [e for e in feed.entries[:MAX_ENTRIES_PER_FEED] if e.get("title")]
+        limit = REDDIT_LIMIT if kind == "reddit" else MAX_ENTRIES_PER_FEED
+        return [e for e in feed.entries[:limit] if e.get("title")]
     # YouTube/podcast feeds aren't guaranteed newest-first (some podcasts list oldest episodes first).
     entries = [e for e in feed.entries if e.get("title")]
     entries.sort(key=lambda e: tuple(e.get("published_parsed") or e.get("updated_parsed") or ()), reverse=True)
@@ -1261,6 +1306,23 @@ def resolve_youtube_links(config, session, status, now):
     return resolved
 
 
+def within_ceiling(items):
+    """The snapshot cut to MAX_ITEMS (items newest first). Past the ceiling, the oldest items that
+    name no PS2 game go first; items naming a game go only when nothing else is left to drop."""
+    if len(items) <= MAX_ITEMS:
+        return items
+    naming = sum(1 for item in items if item.get("matched_game"))
+    room = max(0, MAX_ITEMS - naming)     # how many items without a game can stay
+    kept, others = [], 0
+    for item in items:
+        if item.get("matched_game"):
+            kept.append(item)
+        elif others < room:
+            kept.append(item)
+            others += 1
+    return kept[:MAX_ITEMS]
+
+
 def run_scraper():
     DATA_DIR.mkdir(exist_ok=True)
     config = load_config()
@@ -1289,14 +1351,21 @@ def run_scraper():
         due_jobs = [job for job in jobs if job["type"] in due]
         print(f"Scanning {len(due_jobs)} of {len(jobs)} feeds (due now: {', '.join(t for t in SOURCE_TYPES if t in due)}) "
               f"against PS2 titles ({matcher.summary()})...")
-        started = time.monotonic()
-        last_board_request = None
+        extras_started = None  # the time budget is for the extras: Reddit's waits don't use it up
+        reddit_refused = False  # Reddit said "too many requests" even after waiting: ask no more this run
+        last_board_request = last_reddit_request = None
         for job in due_jobs:
             url, core = job["url"], job["type"] in CORE_TYPES
             host = urlparse(url).hostname
-            if not core and time.monotonic() - started > FETCH_TIME_BUDGET:
+            if not core and extras_started is None:
+                extras_started = time.monotonic()
+            if not core and time.monotonic() - extras_started > FETCH_TIME_BUDGET:
                 skipped += 1
                 print(f"  SKIPPED {url}: fetch time budget used up")
+                continue
+            if job["type"] == "reddit" and reddit_refused:
+                core_failures += 1
+                print(f"  SKIPPED {url}: Reddit is limiting requests")
                 continue
             if not core and host_failures[host] >= HOST_FAILURE_LIMIT:
                 skipped += 1
@@ -1310,10 +1379,21 @@ def run_scraper():
                     last_board_request = time.monotonic()
                     feed, named = None, scan_board(session, job, matcher, status, ps2_keys)
                 else:
-                    feed = fetch_feed(session, url, retry_rate_limit=core)
+                    if job["type"] == "reddit":
+                        wait = 0 if last_reddit_request is None else REDDIT_REQUEST_GAP - (time.monotonic() - last_reddit_request)
+                        if wait > 0:  # about one unauthenticated request a minute
+                            time.sleep(wait)
+                        try:
+                            feed = fetch_feed(session, url, retry_rate_limit=core)
+                        finally:  # counted from the end of the request, a wait for a 429 included
+                            last_reddit_request = time.monotonic()
+                    else:
+                        feed = fetch_feed(session, url, retry_rate_limit=core)
                     if feed.get("bozo") and not feed.entries:
                         raise ValueError("unreadable feed")
             except (requests.RequestException, ValueError) as e:
+                if job["type"] == "reddit" and getattr(getattr(e, "response", None), "status_code", None) == 429:
+                    reddit_refused = True
                 if core:
                     core_failures += 1
                 else:
@@ -1336,18 +1416,25 @@ def run_scraper():
                 record_success(status, source_key(src), newest.get(source_key(src)))
             print(f"  {len(entries):3d} items  {url}")
 
-    # Never replace a good snapshot with the result of a mostly-failed run.
-    if core_jobs and (not items or core_failures > len(core_jobs) // 2):
+    # Never replace a good snapshot with the result of a mostly-failed run. The news and Reddit
+    # feeds' health, and when those two were tried, are kept even then: a site that refused us
+    # is asked again after its usual interval, not at once. The extras' results are thrown away
+    # with the run, so their status and clocks stay as they were and they are fetched again.
+    aborting = bool(core_jobs) and (not items or core_failures > len(core_jobs) // 2)
+    if aborting:
+        core_keys = {source_key(src) for job in core_jobs for src in job["sources"]}
+        status = {key: value for key, value in status.items() if key in core_keys}
+        status.update({key: value for key, value in previous_status.items() if key not in core_keys and key in known_keys})
+        fetched_types &= CORE_TYPES
+    save_json_if_changed(STATUS_PATH, status, previous_status)
+    polls = {kind: when for kind, when in previous_polls.items() if kind in SOURCE_TYPES}
+    polls.update({kind: now_text for kind in fetched_types})
+    save_json_if_changed(POLL_STATE_PATH, polls, previous_polls)
+    if aborting:
         raise SystemExit(
             f"Aborting: {core_failures}/{len(core_jobs)} news/Reddit feeds failed and {len(items)} items were "
             "collected; keeping the previous snapshot."
         )
-    save_json_if_changed(STATUS_PATH, status, previous_status)
-    # Remember when the slower source types (poll_every_hours > 1) were last fetched.
-    intervals = config.get("poll_every_hours", {})
-    polls = {kind: when for kind, when in previous_polls.items() if int(intervals.get(kind, 1)) > 1}
-    polls.update({kind: now_text for kind in fetched_types if int(intervals.get(kind, 1)) > 1})
-    save_json_if_changed(POLL_STATE_PATH, polls, previous_polls)
     if not items:
         print("No items collected; leaving snapshot untouched.")
         return
@@ -1365,10 +1452,16 @@ def run_scraper():
     cutoff = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).strftime(TIMESTAMP_FORMAT)
     merged_items = [i for i in merged.values() if i.get("timestamp", "") >= cutoff]
     merged_items.sort(key=lambda item: item["timestamp"], reverse=True)
-    merged_items = merged_items[:MAX_ITEMS]
+    merged_items = within_ceiling(merged_items)
 
     if merged_items == previous:
         print("No new or changed items; leaving snapshot untouched.")
+        return
+    # Items only ageing out is no news: they go with the next write, rather than each round
+    # rewriting (and committing, and republishing) the whole snapshot to drop a few.
+    before = {item_key(i): i for i in previous}
+    if all(before.get(item_key(i)) == i for i in merged_items) and len(merged_items) < len(previous):
+        print("Only old items aged out; they go with the next new item.")
         return
 
     matched = sum(1 for i in items if i.get("matched_game"))
@@ -1378,7 +1471,7 @@ def run_scraper():
         "total_tracked_feeds": sum(1 for s in config["sources"] if s["enabled"]),
         "items": merged_items,
     }
-    OUTPUT_PATH.write_text(json.dumps(output, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    write_whole(OUTPUT_PATH, json.dumps(output, indent=2, ensure_ascii=False) + "\n")
     print(f"Saved {len(merged_items)} items ({len(items)} fetched this run, {matched} matched a PS2 game "
           f"({from_body} from body text), {core_failures} news/Reddit and {extra_failures} other "
           f"feed failures, {skipped} skipped) to {OUTPUT_PATH}")

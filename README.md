@@ -7,8 +7,9 @@ listed in [`feeds.json`](feeds.json). It fuzzy-matches every headline, thread, v
 title against the PS2 library, flags remaster/remake chatter and scores sentiment. From 4chan it
 keeps only the names of the PS2 games a thread mentions, never anything a poster wrote. Results go to
 `data/sentiment_feed.json`, with per-feed health in `data/feed_status.json`. `index.html` renders
-both as a dashboard. A GitHub Actions workflow reruns the scraper every hour, and straight away
-when `feeds.json` or `scraper.py` changes on `main`.
+both as a dashboard. A GitHub Actions workflow keeps the scraper running all the time
+(`scrape_loop.py`), each kind of source on its own clock, and restarts it straight away when
+`feeds.json` or `scraper.py` changes on `main`.
 
 ## Sources
 
@@ -57,7 +58,7 @@ python ebay_prices.py --plan   # which games would be priced now and why; needs 
 
 ```sh
 pip install -r requirements.txt
-FULL_RUN=1 python scraper.py  # FULL_RUN=1 fetches every enabled source instead of only those due this hour
+FULL_RUN=1 python scraper.py  # FULL_RUN=1 fetches every enabled source instead of only those due now
 python -m http.server         # then open http://localhost:8000
 ```
 

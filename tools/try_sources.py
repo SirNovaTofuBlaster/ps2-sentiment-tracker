@@ -44,8 +44,12 @@ def publish():
     if not ON_GITHUB or not report:
         return
     escape = lambda text: text.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")  # noqa: E731
-    forums = [f"{heading}: {' | '.join(lines)}" for heading, lines in report if "[4chan]" not in heading and "[all]" not in heading]
-    notices = ([("Forums", "\n".join(forums))] if forums else []) + [
+    forums = [f"{heading}: {' | '.join(lines)}" for heading, lines in report
+              if not any(tag in heading for tag in ("[4chan]", "[all]", "[reddit]"))]
+    # Reddit: one notice with how far back each request's listing reaches, counts only.
+    reddit = [f"{heading}: {' | '.join(line for line in lines if line[:1].isdigit() or line.startswith('about') or line.startswith('FAILED'))}"
+              for heading, lines in report if "[reddit]" in heading]
+    notices = ([("Forums", "\n".join(forums))] if forums else []) + ([("Reddit", "\n".join(reddit))] if reddit else []) + [
         (heading, "\n".join(lines)) for heading, lines in report if "[4chan]" in heading or "[all]" in heading]
     for heading, body in notices[:10]:
         print(f"::notice title={escape(heading).replace(',', '%2C').replace(':', '%3A')}::{escape(body)}")
@@ -66,6 +70,12 @@ def try_feed(session, job, matcher, ps2_keys):
     stamps = sorted(item["timestamp"] for item in items)
     say(f"  {len(items)} entries, {sum(1 for i in items if i['matched_game'])} naming a PS2 game"
         + (f", from {stamps[0]} to {stamps[-1]}" if stamps else ""))
+    if job["type"] == "reddit" and len(stamps) > 1:
+        # Is one request an hour enough? The listing holds the newest posts: if they reach back
+        # less than an hour, posts are being missed.
+        span = (scraper.parse_timestamp(stamps[-1]) - scraper.parse_timestamp(stamps[0])).total_seconds() / 3600
+        say(f"about {len(stamps) / max(span, 1 / 60):.1f} posts an hour; the listing reaches back {span:.1f} hours"
+            f" ({'enough' if span >= 1 else 'NOT enough'} for one request an hour)")
     for item in items:
         if item["matched_game"]:
             # A headline is somebody else's text: on one line, so that it cannot start a line of
@@ -123,7 +133,7 @@ def main():
         raise SystemExit(f"Unknown source type: {', '.join(sorted(unknown))}. Known: {', '.join(scraper.SOURCE_TYPES)}")
     config = scraper.load_config()
     ps2_keys = {scraper.source_key(s) for s in config["sources"] if s["enabled"] and s["role"] == scraper.PS2_ROLE}
-    failed, games, last_board = [], Counter(), None
+    failed, games, last_board, last_reddit = [], Counter(), None, None
     with requests.Session() as session:
         session.headers["User-Agent"] = scraper.USER_AGENT
         matcher = scraper.TitleMatcher(scraper.load_ps2_titles(session))
@@ -140,6 +150,10 @@ def main():
                     last_board = time.monotonic()
                     found = try_board(session, job, matcher, ps2_keys)
                 else:
+                    if job["type"] == "reddit":  # about one unauthenticated request a minute
+                        if last_reddit is not None:
+                            time.sleep(max(0.0, scraper.REDDIT_REQUEST_GAP - (time.monotonic() - last_reddit)))
+                        last_reddit = time.monotonic()
                     found = try_feed(session, job, matcher, ps2_keys)
             except (requests.RequestException, ValueError) as error:
                 failed.append(job["sources"][0]["name"])
