@@ -140,6 +140,39 @@ REMASTER_PATTERN = re.compile(
     REMASTER_STRONG_PATTERN.pattern + "|" + REMASTER_WEAK_PATTERN.pattern, re.IGNORECASE
 )
 
+# News about games going digital-only and discs being phased out: the dashboard's "Digital-Only
+# News" view, for gauging how much of it there is. Read from the headline alone, for every item
+# whether or not it names a PS2 game, so the whole snapshot can be flagged again whenever these
+# words change. Wanted: "Phantom Blade Zero Confirmed Digital-Only Despite Promised Physical
+# Release", "... About To Ditch Discs", "No Physical Edition Is Coming", game-key cards, the physical
+# media debate. Not wanted: a physical release announced, a "Digital Deluxe Edition", the PS5
+# Digital Edition, Digital Foundry, Discord ("disc" is matched as a whole word).
+DIGITAL_PLATFORM = r"(?:(?:ps[45]|playstation\s*[45]|xbox(?:\s+series\s+[xs])?|switch\s*2?|nintendo\s+switch\s*2?|pc|console)\s+)?"
+DIGITAL_PHYSICAL = r"(?:physical(?:\s+(?:media|games?|copies|copy|editions?|releases?|versions?|discs?))?|discs?|disc\s+(?:versions?|releases?|editions?|copies|copy)|retail\s+(?:copies|copy|release|version))\b"
+DIGITAL_ONLY_PATTERN = re.compile(
+    r"\bdigital[\s-]*(?:only|exclusive(?:ly)?)\b"
+    r"|\b(?:all|fully|entirely|purely|exclusively|full|100%)[\s-]+digital\b(?![\s-]+(?:deluxe|edition|art|foundry|bundle|comics?))"
+    r"|\bgo(?:es|ing|ne)?\s+(?:all[\s-]+)?digital\b"
+    r"|\bdisc[\s-]?less\b"
+    r"|\bno\s+" + DIGITAL_PLATFORM + DIGITAL_PHYSICAL +
+    r"|\b" + DIGITAL_PHYSICAL + r".{0,40}\bno\s+longer\b" +
+    r"|\bwithout\s+(?:an?\s+)?" + DIGITAL_PHYSICAL +
+    r"|\b(?:skip|skips|skipping|skipped|lack|lacks|lacking|ditch|ditches|ditching|ditched|kill|kills|killing|killed|end|ends|ending|ended|"
+    r"drop|drops|dropping|dropped|scrap|scraps|scrapping|scrapped|abandon\w*|phas(?:e|es|ed|ing)\s+out|discontinu\w*|"
+    r"cancel\w*|pull\w*|stop\w*\s+(?:making|producing|releasing|selling|printing))\s+(?:(?:its|the|a|all|their|any)\s+)*"
+    r"(?:(?:(?:release|production)\s+)?of\s+)?(?:games?\s+on\s+)?" + DIGITAL_PLATFORM + DIGITAL_PHYSICAL +
+    r"|\bend\s+of\s+(?:the\s+)?" + DIGITAL_PHYSICAL +
+    r"|\b" + DIGITAL_PHYSICAL + r"\s+(?:(?:is|are|has\s+been|have\s+been|being|getting)\s+)?(?:cancel\w*|scrapped|pulled|dropped|axed|dead|dying|discontinued|phased\s+out|going\s+away)"
+    r"|\bgame[\s-]?key\s+cards?\b"
+    r"|\bphysical\s+media\b"
+    r"|\bphysical\s+(?:vs\.?|versus|or)\s+digital\b|\bdigital\s+(?:vs\.?|versus|or)\s+physical\b"
+    r"|\bcode[\s-]+in[\s-]+(?:a[\s-]+)?box\b"
+    r"|\b(?:s[oó]lo|solamente|apenas|exclusivamente|somente)\s+(?:em\s+|en\s+)?digital\b"
+    r"|\bsem\s+vers[aã]o\s+(?:em\s+)?(?:disco|f[ií]sica)\b|\bsin\s+(?:versi[oó]n\s+)?(?:f[ií]sica|disco)\b"
+    r"|\bfim\s+dos\s+discos\b|\bfin\s+de\s+los\s+discos\b",
+    re.IGNORECASE)
+
+
 # Sentiment is about tone, not subject. Words that describe what a story is
 # about (remaster, announce, revival) used to count as positive, which scored
 # every remaster announcement as good news; they are tracked separately now.
@@ -651,6 +684,11 @@ def hype_score(text):
     return sum(1 for token in tokens if _stem_hit(token, HYPE_STEMS))
 
 
+def is_digital_only(text):
+    """Whether a headline is about a digital-only release or physical media going away."""
+    return bool(DIGITAL_ONLY_PATTERN.search(text or ""))
+
+
 def is_remaster(text, matched):
     """Strong wording flags on its own; everyday words like "collection" or "returns"
     only flag alongside a matched PS2 game."""
@@ -764,6 +802,7 @@ def analyze_entry(entry, feed, job, matcher, first_seen, ps2_keys, repeated_link
         "match_method": method,
         "matched_in": matched_in,
         "is_remaster_rumor": is_remaster(headline, game),
+        "is_digital_only": is_digital_only(headline),
         "sentiment": analyze_sentiment(headline),
         "hype": hype_score(headline),
         "timestamp": timestamp,
@@ -980,6 +1019,7 @@ def analyze_thread(thread, job, matcher, ps2_keys):
         "match_method": method,
         "matched_in": matched_in,
         "is_remaster_rumor": False,
+        "is_digital_only": False,
         "sentiment": None,  # not scored: nothing about the post but the games it names is used
         "hype": 0,
         "timestamp": timestamp,
@@ -1453,6 +1493,9 @@ def run_scraper():
     merged_items = [i for i in merged.values() if i.get("timestamp", "") >= cutoff]
     merged_items.sort(key=lambda item: item["timestamp"], reverse=True)
     merged_items = within_ceiling(merged_items)
+    # Flagged again from the headline every run, so items saved before the flag existed (or
+    # before its words last changed) are counted too. Copies: `previous` must stay as it was read.
+    merged_items = [{**item, "is_digital_only": is_digital_only(item.get("headline"))} for item in merged_items]
 
     if merged_items == previous:
         print("No new or changed items; leaving snapshot untouched.")

@@ -118,6 +118,7 @@
                         <option value="matched" selected>PS2 Games Only</option>
                         <option value="remaster">Remaster News Only</option>
                         <option value="all">Everything</option>
+                        <option value="digital">Digital-Only News</option>
                     </select>
                     <select id="typeSelect" onchange="onFeedFilterChange()" aria-label="Source type" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none">
                         <option value="all">All Sources</option>
@@ -1472,6 +1473,7 @@
                     </td>
                     <td data-col="headline" class="py-3.5 px-4 text-slate-300 max-w-md leading-relaxed">
                         ${item.is_remaster_rumor ? '<span class="remaster-tag border text-[10px] px-1.5 py-0.5 mr-1">Remaster</span>' : ''}
+                        ${item.is_digital_only === true ? '<span class="digital-tag border text-[10px] px-1.5 py-0.5 mr-1" title="About a digital-only release or discs going away">Digital-only</span>' : ''}
                         ${esc(item.headline)}
                     </td>
                     <td data-col="game"${lead ? '' : ' data-unmatched'} class="py-3.5 px-4 font-mono-custom text-cyan-300">${lead
@@ -1544,6 +1546,7 @@
                     if (!haystack.includes(query)) return false;
                     if (sourceType !== 'all' && itemType(item) !== sourceType) return false;
                     if (filterType === 'remaster') return !!item.is_remaster_rumor;
+                    if (filterType === 'digital') return item.is_digital_only === true;
                     if (filterType === 'matched') return namesGame(item);
                     return true;
                 });
@@ -1553,6 +1556,7 @@
             const total = visibleFeedData.length;
             const naming = visibleFeedData.filter(namesGame).length;
             const flagged = visibleFeedData.filter(item => item.is_remaster_rumor).length;
+            const digital = visibleFeedData.filter(item => item.is_digital_only === true);
             // ("Listing", not "Showing": the line under the table says "Showing 1–100 of 412", which
             // is about the page of rows, and two sentences that start alike with different numbers
             // read as a contradiction.)
@@ -1573,6 +1577,14 @@
             } else if (filterType === 'remaster') {
                 summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(flagged)} flagged as remaster news.`
                     : `${count(flagged)} of ${items(total)} ${one(flagged, 'is', 'are')} flagged as remaster news.`;
+            } else if (filterType === 'digital') {
+                // How much news there is about games going digital-only and discs going away: the
+                // two-week count, and the last seven days of it, so a rise shows.
+                const weekAgo = Date.now() - 7 * 86400000;
+                const lastWeek = digital.filter(item => (parseUtc(item.timestamp)?.getTime() ?? 0) >= weekAgo).length;
+                summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(digital.length)} about digital-only games and discs going away.`
+                    : `${count(digital.length)} of ${items(total)} ${one(digital.length, 'is', 'are')} about digital-only games and discs going away, `
+                        + `${count(lastWeek)} of them in the last 7 days. Any game, not only PS2.`;
             } else {
                 summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(total)} in the feed.`
                     : `Everything: ${items(total)}, ${count(naming)} of them naming a PS2 game.`;
