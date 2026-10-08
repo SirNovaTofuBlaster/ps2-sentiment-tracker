@@ -44,7 +44,7 @@ through its **Sources & Weights** panel.
 | `tests/test_archive.py` | Offline tests for `archive.py`: which mentions count as the same mention |
 | `.github/workflows/scraper.yml` | Runs `scrape_loop.py`; a push to `feeds.json`/`scraper.py`/`scrape_loop.py` or *Run scraper now* replaces the running loop; an hourly schedule restarts it if the chain breaks |
 | `.github/workflows/tests.yml` | The test suite on pushes and pull requests |
-| `archive.py`, `.github/workflows/archive.yml` | Appends every PS2 game mention to `data/archive/YYYY-MM.json`, four times a day |
+| `archive.py`, `.github/workflows/archive.yml` | Appends every PS2 game mention to `data/archive/YYYY-MM.json`, and every digital-only story (any game, with its link) to `data/archive/digital/YYYY-MM.json`, four times a day. Reads the snapshot only: it fetches nothing |
 | `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index) from Wikipedia pageviews and mentions, daily |
 | `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |
 | `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words), titles never to price, and the names games have on eBay UK (`regional_names`) |

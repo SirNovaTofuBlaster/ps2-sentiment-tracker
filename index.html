@@ -520,6 +520,7 @@
             await loadPrices();
             await loadRare();
             await loadDemand();
+            await loadDigitalArchive();
             refreshDashboard();
         }
 
@@ -1534,6 +1535,33 @@
             document.getElementById('feedSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
 
+        // data/archive/digital/index.json: every digital-only story kept since the archive began
+        // (archive.py), so the count is not limited to the feed's two weeks. Null without it.
+        let digitalArchive = null;
+
+        async function loadDigitalArchive() {
+            try {
+                const response = await fetch('data/archive/digital/index.json', { cache: 'no-cache' });
+                if (response.ok) {
+                    const data = await response.json();
+                    digitalArchive = data && Number.isInteger(data.total_stories) && data.total_stories > 0 ? data : null;
+                } else if (response.status === 404) {
+                    digitalArchive = null;
+                }
+            } catch { /* a hiccup keeps what was loaded */ }
+        }
+
+        // "41 archived since 27 Sep", or '' without the archive.
+        function digitalKeptText(data = digitalArchive) {
+            const days = data && typeof data.days === 'object' && data.days ? Object.keys(data.days).filter(day => /^\d{4}-\d{2}-\d{2}$/.test(day)).sort() : [];
+            if (!data || !days.length) return '';
+            let first = days[0];
+            try {
+                first = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(new Date(`${days[0]}T00:00:00Z`));
+            } catch { /* the plain date will do */ }
+            return ` ${data.total_stories.toLocaleString('en')} archived since ${first} (the archive is updated every 6 hours).`;
+        }
+
         function filterFeedItems() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const filterType = document.getElementById('filterSelect').value;
@@ -1584,7 +1612,7 @@
                 const lastWeek = digital.filter(item => (parseUtc(item.timestamp)?.getTime() ?? 0) >= weekAgo).length;
                 summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(digital.length)} about digital-only games and discs going away.`
                     : `${count(digital.length)} of ${items(total)} ${one(digital.length, 'is', 'are')} about digital-only games and discs going away, `
-                        + `${count(lastWeek)} of them in the last 7 days. Any game, not only PS2.`;
+                        + `${count(lastWeek)} of them in the last 7 days. Any game, not only PS2.${digitalKeptText()}`;
             } else {
                 summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(total)} in the feed.`
                     : `Everything: ${items(total)}, ${count(naming)} of them naming a PS2 game.`;

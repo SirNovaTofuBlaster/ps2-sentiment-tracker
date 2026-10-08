@@ -40,7 +40,7 @@ touches `scraper.py`.
 
 | Script | Writes | What for |
 |---|---|---|
-| `archive.py` | `data/archive/` | A permanent record of every PS2 game mention (the snapshot itself only holds about two weeks) |
+| `archive.py` | `data/archive/` | A permanent record of every PS2 game mention, and of every digital-only story under `data/archive/digital/` (the snapshot itself only holds about two weeks) |
 | `demand.py` | `data/demand.json` | The dashboard's Demand Index: Wikipedia reading figures blended with mentions |
 | `ebay_prices.py` | `data/prices/` | eBay asking prices (US and UK) for every library game the feed has mentioned, and for the rarest PAL and US games in `rare_games.json` (the dashboard's Rarest page) |
 

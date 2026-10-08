@@ -601,6 +601,25 @@ because the search is the rule's spelling, "sly raccoon", and sellers mostly wri
 | A console with no known region would vanish from every list | Check that every entry is in at least one list |
 | The guide still said "within a tier, by what collectors pay" | Removed |
 
+## 2026-10-08: digital-only news kept for good
+
+| Check | Result |
+|---|---|
+| PS2 archive unchanged | Old and new `archive.py` on the same snapshot: both month files and the index byte-identical (reviewer's check) |
+| Digital archive | 22 stories on the snapshot of 2026-10-08, none lost to the dedup; nothing else that reads `data/archive/` looks in the new folder |
+| Requests | None added: the archive reads the snapshot only |
+| Offline tests | 9 archive tests (5 new), 36 dashboard checks |
+
+### Independent review
+
+| Finding | Resolution |
+|---|---|
+| The new archive tests did not run when the test file was run directly | `__main__` moved to the end |
+| The "kept" total trails the live count for up to 6 hours, which read as a contradiction | Worded "archived since …, updated every 6 hours" |
+| A false positive removed from the rules stayed in the archive for good | Removed when the snapshot shows it unflagged |
+| Log and commit message spoke of PS2 mentions only | Both mention digital-only news |
+| README and this file not updated | Updated |
+
 ## Re-running the checks
 
 ```sh

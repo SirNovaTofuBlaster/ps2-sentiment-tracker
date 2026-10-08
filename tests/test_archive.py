@@ -36,6 +36,8 @@ class ArchiveTests(unittest.TestCase):
         patches = [mock.patch.object(archive, "SNAPSHOT_PATH", self.snapshot),
                    mock.patch.object(archive, "ARCHIVE_DIR", self.folder / "archive"),
                    mock.patch.object(archive, "INDEX_PATH", self.folder / "archive" / "index.json"),
+                   mock.patch.object(archive, "DIGITAL_DIR", self.folder / "archive" / "digital"),
+                   mock.patch.object(archive, "DIGITAL_INDEX_PATH", self.folder / "archive" / "digital" / "index.json"),
                    mock.patch("builtins.print")]
         for patch in patches:
             patch.start()
@@ -81,6 +83,63 @@ class ArchiveTests(unittest.TestCase):
         rows = self.run_with([item(), item(headline="Ico again", sentiment=None)])
         self.assertEqual([row["n"] for row in rows if row["t"] == "news"], [70, 50])
 
+
+class DigitalArchiveTests(unittest.TestCase):
+    """Digital-only news, any game, kept for good next to the PS2 mentions."""
+
+    setUp = ArchiveTests.setUp
+    run_with = ArchiveTests.run_with
+
+    def digital(self, headline, source="Kotaku", when="2026-10-05 09:00 UTC", **extra):
+        return item(headline=headline, source=source, link=f"https://k.example/{len(headline)}", matched_game=None,
+                    matched_games=[], is_digital_only=True, timestamp=when, **extra)
+
+    def stored(self, month="2026-10"):
+        path = self.folder / "archive" / "digital" / f"{month}.json"
+        return json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+
+    def test_digital_only_stories_are_kept_once_with_their_link_and_counted(self):
+        stories = [self.digital("Sony To Ditch Discs"), self.digital("Phantom Blade Zero Confirmed Digital-Only", source="r/playstation",
+                                                                      when="2026-10-08 20:00 UTC"),
+                   self.digital("Old one", when="2026-09-30 10:00 UTC"), item(headline="Ico news", is_digital_only=False)]
+        self.snapshot.write_text(json.dumps({"items": stories}), encoding="utf-8")
+        archive.archive()
+        archive.archive()   # run again: nothing doubles
+        self.assertEqual(self.stored(), [
+            {"d": "2026-10-05 09:00 UTC", "h": "Sony To Ditch Discs", "s": "Kotaku", "t": "news", "l": "https://k.example/19"},
+            {"d": "2026-10-08 20:00 UTC", "h": "Phantom Blade Zero Confirmed Digital-Only", "s": "r/playstation", "t": "news",
+             "l": "https://k.example/41"}])
+        self.assertEqual(len(self.stored("2026-09")), 1)
+        index = json.loads((self.folder / "archive" / "digital" / "index.json").read_text(encoding="utf-8"))
+        self.assertEqual((index["total_stories"], index["months"]), (3, [{"month": "2026-09", "stories": 1}, {"month": "2026-10", "stories": 2}]))
+        self.assertEqual(index["days"], {"2026-09-30": 1, "2026-10-05": 1, "2026-10-08": 1})
+        self.assertEqual([p.name for p in sorted((self.folder / "archive").glob("*.json"))], ["2026-10.json", "index.json"],
+                         "the PS2 archive holds only the PS2 mention, and its index does not see the digital folder")
+
+    def test_stories_stay_after_they_leave_the_snapshot_and_unflagged_or_undated_ones_are_not_kept(self):
+        self.snapshot.write_text(json.dumps({"items": [self.digital("Sony To Ditch Discs")]}), encoding="utf-8")
+        archive.archive()
+        self.snapshot.write_text(json.dumps({"items": [self.digital("Next one", when="not a date"),
+                                                       item(headline="Flag missing", matched_game=None, matched_games=[])]}),
+                                 encoding="utf-8")
+        archive.archive()
+        self.assertEqual([row["h"] for row in self.stored()], ["Sony To Ditch Discs"])
+
+    def test_a_story_the_rules_no_longer_flag_leaves_the_archive_once_the_scraper_has_unflagged_it(self):
+        self.snapshot.write_text(json.dumps({"items": [self.digital("Physical media show and tell!"), self.digital("Sony To Ditch Discs")]}),
+                                 encoding="utf-8")
+        archive.archive()
+        unflagged = {**self.digital("Physical media show and tell!"), "is_digital_only": False}
+        self.snapshot.write_text(json.dumps({"items": [unflagged, self.digital("Sony To Ditch Discs")]}), encoding="utf-8")
+        archive.archive()
+        self.assertEqual([row["h"] for row in self.stored()], ["Sony To Ditch Discs"])
+        index = json.loads((self.folder / "archive" / "digital" / "index.json").read_text(encoding="utf-8"))
+        self.assertEqual(index["total_stories"], 1)
+        # A story merely gone from the snapshot (older than two weeks) is never removed: tested above.
+
+    def test_a_real_sentiment_of_zero_is_kept_as_zero(self):
+        rows = self.run_with([item(sentiment=0), item(headline="No score", sentiment=None)])
+        self.assertEqual({row["h"]: row["n"] for row in rows}, {"Ico is twenty-five": 0, "No score": 50})
 
 if __name__ == "__main__":
     unittest.main()

@@ -933,7 +933,7 @@ await check('prices are read from the site itself, with no token, before the lis
     await vm.runInContext('loadPrices()', context);
     assert.match(el('pricesEmpty').textContent, /^No prices yet\./);
 
-    assert.match(read('index.html'), /await loadPrices\(\);\s*await loadRare\(\);\s*await loadDemand\(\);\s*refreshDashboard\(\);/,
+    assert.match(read('index.html'), /await loadPrices\(\);\s*await loadRare\(\);\s*await loadDemand\(\);\s*await loadDigitalArchive\(\);\s*refreshDashboard\(\);/,
         'prices are loaded before the lists that show them');
 });
 
@@ -1953,6 +1953,10 @@ await check('Digital-Only News: the flagged items, counted over two weeks and th
     assert.equal(rows.length, 2);
     assert.match(rows[0], /<span class="digital-tag[^"]*"[^>]*>Digital-only<\/span>/);
     assert.match(rows[1], /Sony &lt;b&gt;to ditch discs&lt;\/b&gt;/, 'a headline is text, never markup');
+    context.__kept = { total_stories: 41, days: { '2026-10-08': 12, '2026-09-27': 1, 'bad': 3 } };
+    vm.runInContext('digitalArchive = __kept; filterFeedItems()', context);
+    assert.match(el('feedSummary').textContent, /Any game, not only PS2\. 41 archived since 27 Sept? \(the archive is updated every 6 hours\)\.$/, 'the archive counts beyond two weeks');
+    vm.runInContext('digitalArchive = null', context);
     el('searchInput').value = 'phantom';
     vm.runInContext('filterFeedItems()', context);
     assert.equal(el('feedSummary').textContent, 'Listing 1 of the 2 items about digital-only games and discs going away.');

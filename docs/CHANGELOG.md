@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-08: digital-only news kept for good
+
+- Asked: keep the digital-only news, without spending Reddit requests that PS2 news needs.
+- `archive.py` keeps every story flagged `is_digital_only` in `data/archive/digital/YYYY-MM.json`
+  with its link, and a small `index.json` (total, per month, per day). It reads the snapshot the
+  scraper already wrote, so it adds no request to Reddit or anywhere else, and no subreddit was
+  added for it. On the snapshot of 2026-10-08 that is 22 stories, from 27 September.
+- The dashboard's Digital-Only News line adds "N archived since …".
+- Independent review: a story the rules stop flagging now leaves the archive too; the commit
+  message and log say when digital news was archived; the archive tests run when the file is run
+  directly; README updated.
+- Fixed on the way: a real sentiment of 0 was archived as 50.
+
 ## 2026-10-08: Digital-Only News
 
 - Asked: a view of the live feed for news about games going digital-only, to gauge how much

@@ -32,7 +32,7 @@ jobs:
             echo "Nothing new to archive."
             exit 0
           fi
-          git commit -m "Archive PS2 game mentions"
+          git commit -m "Archive PS2 game mentions and digital-only news"
           # Other jobs save to main too (the scraper, the demand index, eBay prices). If one of
           # them got there first, take its commit and try again instead of failing.
           for attempt in 1 2 3; do
