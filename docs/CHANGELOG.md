@@ -5,12 +5,14 @@
 - Asked: a view of the live feed for news about games going digital-only, to gauge how much
   there is while physical discs are being phased out; any game, from the feeds we have. The
   yardstick: "Phantom Blade Zero Confirmed Digital-Only Despite Promised Physical Release".
-- `scraper.py` flags `is_digital_only` from the headline (`DIGITAL_ONLY_PATTERN`), and flags the
+- `scraper.py` flags `is_digital_only` from the headline (`is_digital_only()`), and flags the
   whole snapshot again on every write. 22 of the 7,279 items in the snapshot of 2026-10-08,
   among them the yardstick (via r/playstation), Kotaku's "About To Ditch Discs", Lemmy's "No
   Physical Edition Is Coming", game-key card news and the Spanish and Portuguese feeds' versions.
 - Dashboard: **Digital-Only News** in the table's menu, with the two-week and seven-day counts,
   and a blue *Digital-only* tag on those rows.
+- Independent review: event and sale wording ("all-digital showcase", "digital only sale") was
+  counted and "won't get a physical release" was missed; both fixed, with 21 more test headlines.
 - News and Reddit fetching, matching, sentiment and remaster flags are unchanged
   (`regression_check.py` ignores the new field).
 

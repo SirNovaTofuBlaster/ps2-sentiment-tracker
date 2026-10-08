@@ -47,8 +47,9 @@ The same rule is implemented in `scraper.source_key()` and in the dashboard's `s
 
 ## Digital-only news (added 2026-10-08)
 
-Every item gets `is_digital_only` from `is_digital_only(headline)` (`DIGITAL_ONLY_PATTERN` in
-`scraper.py`): headlines about a game released digital-only or about discs being phased out,
+Every item gets `is_digital_only` from `is_digital_only(headline)` in `scraper.py`
+(`PHYSICAL_GOING_PATTERN`, and `DIGITAL_WORDING_PATTERN` unless the headline is about an event,
+a sale or an edition, `DIGITAL_EVENT_PATTERN`; a how-to, `DIGITAL_HOWTO_PATTERN`, never counts): headlines about a game released digital-only or about discs being phased out,
 whether or not they name a PS2 game. It reads the headline alone, and every write flags the whole
 snapshot again (copies, so the "nothing changed" check still compares with the file as read), so
 items saved before the flag existed are counted, and a change of its words reaches the whole
@@ -57,7 +58,9 @@ Physical Release" (Power Up Gaming, carried by r/playstation on 2026-10-08). It 
 "digital-only", "all/fully/entirely digital", "going digital", "discless", "no / without / skip /
 lack / ditch / end / stop making ... physical (release, edition, discs)", "physical ... cancelled /
 no longer", game-key cards, code-in-box, "physical media", "physical vs digital", and a few
-Portuguese and Spanish phrasings (two of the news feeds). A whole-word "disc" keeps Discord and
+Portuguese and Spanish phrasings (two of the news feeds), "won't get / will not have a physical
+release", disc drives and cartridges. Not counted: "an all-digital showcase", "digital only sale",
+"no disc required", "no physical copies left", "ditch the disc: install to HDD". A whole-word "disc" keeps Discord and
 "discovered" out; "Digital Deluxe Edition", the PS5 Digital Edition and Digital Foundry are not
 counted. On the snapshot of 2026-10-08 it flagged 22 of 7,279 items. The dashboard's menu has
 **Digital-Only News**; `tools/regression_check.py` ignores the field. Only PS2 mentions are

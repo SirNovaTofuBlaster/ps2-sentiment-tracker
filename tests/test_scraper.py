@@ -515,6 +515,16 @@ class DigitalOnlyTests(unittest.TestCase):
         "Sony's consultation on physical media: better late than never",
         "Phantom Blade Zero sem versão em disco? Loja cancela reservas do jogo",
         "Exjefe de PlayStation no comprende el fin de los discos de Sony",
+        # Found missing by the review of 2026-10-08.
+        "Hollow Knight Silksong won't get a physical release at launch",
+        "Hades 2 will not have a physical edition",
+        "Halo Infinite No Longer Getting Physical Copy",
+        "Physical edition of Silent Hill f cancelled in Europe",
+        "Xbox kills off physical games in Europe",
+        "Next Xbox won't have a disc drive",
+        "Xbox stops manufacturing discs",
+        "Sony no longer making PS5 disc drives",
+        "PS Vita cartridges discontinued",
     )
     NOT_WANTED = (
         "Rise Of The Tomb Raider Switch 2 Limited Run Physical Release Announced",
@@ -528,6 +538,19 @@ class DigitalOnlyTests(unittest.TestCase):
         "New Details Revealed For GTA 6's Jason And Lucia, Including Physical Intimacy",
         "How many physical games do you have in your collection?",
         "Is it better to play ps2 games by using freemcboot or physical copies?",
+        # Found flagged by the review of 2026-10-08.
+        "Summer Game Fest 2026 will be an all-digital showcase",
+        "Nintendo Direct: an all-digital presentation",
+        "Xbox Games Showcase goes digital this year",
+        "E3 goes digital after cancellation",
+        "The Game Awards: digital only event",
+        "PlayStation Store digital only sale starts today",
+        "Persona 3 Reload is digital exclusive on Game Pass",
+        "Digital-exclusive bonus for pre-orders",
+        "Ditch the disc: how to install PS2 games to HDD with OPL",
+        "Free DLC: no disc swap needed anymore",
+        "No disc required: Xbox Play Anywhere",
+        "No physical copies left: Metroid Prime 4 sells out",
         "",
     )
 
