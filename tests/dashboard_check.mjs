@@ -837,7 +837,7 @@ await check('eBay prices: money and ages read naturally', () => {
     assert.deepEqual(age('2026-10-05T07:00Z', 30), { text: '29h ago', stale: false }, 'a quiet game is given a day');
     assert.deepEqual(age('2026-10-03T12:00Z'), { text: '3d ago', stale: true });
     assert.deepEqual(evalJson('Object.fromEntries(Object.entries(LEVELS).map(([name, level]) => [name, level.stale]))'),
-        { surging: 3, staple: 8, normal: 8, dormant: 30 });
+        { surging: 3, staple: 8, normal: 8, dormant: 30, rare: 30 }, 'the rarest games are checked daily, like quiet ones');
     assert.deepEqual(age('not a time'), { text: '', stale: true });
     assert.deepEqual(age('2026-10-06T13:00Z'), { text: '1 min ago', stale: false }, 'a clock that is slightly off does not show a negative age');
 });
@@ -932,12 +932,12 @@ await check('prices are read from the site itself, with no token, before the lis
     await vm.runInContext('loadPrices()', context);
     assert.match(el('pricesEmpty').textContent, /^No prices yet\./);
 
-    assert.match(read('index.html'), /await loadPrices\(\);\s*await loadDemand\(\);\s*refreshDashboard\(\);/,
+    assert.match(read('index.html'), /await loadPrices\(\);\s*await loadRare\(\);\s*await loadDemand\(\);\s*refreshDashboard\(\);/,
         'prices are loaded before the lists that show them');
 });
 
-await check('three pages in one: Tracker, Most mentioned and eBay prices', () => {
-    const views = { dashboard: ['viewDashboard', 'tabDashboard'], mentions: ['viewMentions', 'tabMentions'], prices: ['viewPrices', 'tabPrices'] };
+await check('four pages in one: Tracker, Rarest, Most mentioned and eBay prices', () => {
+    const views = { dashboard: ['viewDashboard', 'tabDashboard'], rare: ['viewRare', 'tabRare'], mentions: ['viewMentions', 'tabMentions'], prices: ['viewPrices', 'tabPrices'] };
     // Which page is on screen, and which tab says so. Exactly one of each, always.
     const shown = () => {
         const open = Object.keys(views).filter(name => !el(views[name][0]).classList.contains('hidden'));
@@ -951,21 +951,23 @@ await check('three pages in one: Tracker, Most mentioned and eBay prices', () =>
     const show = (name) => { vm.runInContext(`showView(${JSON.stringify(name)})`, context); return shown(); };
     const selected = () => Object.keys(views).map(name => el(views[name][1]).getAttribute('aria-selected')).join(' ');
     assert.equal(show('prices'), 'prices');
-    assert.equal(selected(), 'false false true', 'a screen reader hears which tab is open');
+    assert.equal(selected(), 'false false false true', 'a screen reader hears which tab is open');
     assert.equal(show('prices'), 'prices');
     assert.equal(show('mentions'), 'mentions');
-    assert.equal(selected(), 'false true false');
+    assert.equal(selected(), 'false false true false');
+    assert.equal(show('rare'), 'rare');
+    assert.equal(selected(), 'false true false false');
     assert.equal(show('dashboard'), 'dashboard');
-    assert.equal(selected(), 'true false false');
+    assert.equal(selected(), 'true false false false');
     assert.equal(show('dashboard'), 'dashboard');
-    assert.deepEqual(addressChanges, ['#prices', '#mentions', '/'],
+    assert.deepEqual(addressChanges, ['#prices', '#mentions', '#rare', '/'],
         'each change of page is one new entry in the history, so Back returns to the last page and the address can be bookmarked');
     for (const name of ['nonsense', 'constructor', 'toString', '', null]) assert.equal(show(name), 'dashboard', `"${name}" is not a page`);
-    assert.deepEqual(addressChanges, ['#prices', '#mentions', '/'], 'staying on a page adds nothing to the history');
+    assert.deepEqual(addressChanges, ['#prices', '#mentions', '#rare', '/'], 'staying on a page adds nothing to the history');
     // Leaving a part of the Tracker that the address names ("#sourcesSection") by its own tab clears the name.
     context.location.hash = '#sourcesSection';
     assert.equal(show('dashboard'), 'dashboard');
-    assert.deepEqual(addressChanges, ['#prices', '#mentions', '/', '/']);
+    assert.deepEqual(addressChanges, ['#prices', '#mentions', '#rare', '/', '/']);
 
     // Arriving with an address, or following a link such as the header's "Sources".
     addressChanges.length = 0;
@@ -979,14 +981,16 @@ await check('three pages in one: Tracker, Most mentioned and eBay prices', () =>
     assert.equal(arrive('#sourcesSection'), 'dashboard');
     assert.equal(scrolled, 2);
     assert.equal(arrive('#prices'), 'prices');
+    assert.equal(arrive('#rare'), 'rare');
     for (const hash of ['', '#', '#dashboard', '#constructor', '#__proto__']) assert.equal(arrive(hash), 'dashboard', `"${hash}" opens the Tracker`);
     assert.deepEqual(addressChanges, [], 'reading the address never rewrites it');
     context.location.hash = '';
 
     const page = read('index.html');
     const at = (text) => { const index = page.indexOf(text); assert.notEqual(index, -1, text); assert.equal(page.indexOf(text, index + 1), -1, `${text} appears once`); return index; };
-    const order = ['id="tabDashboard"', 'id="tabMentions"', 'id="tabPrices"',
+    const order = ['id="tabDashboard"', 'id="tabRare"', 'id="tabMentions"', 'id="tabPrices"',
         '<div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">', 'id="demandSection"', 'id="feedSection"', 'id="sourcesSection"',
+        '<div id="viewRare" role="tabpanel" aria-labelledby="tabRare" class="hidden ', 'id="rareSection"',
         '<div id="viewMentions" role="tabpanel" aria-labelledby="tabMentions" class="hidden ', 'id="topGamesSection"',
         '<div id="viewPrices" role="tabpanel" aria-labelledby="tabPrices" class="hidden ', 'id="pricesSection"', '</main>'].map(at);
     assert.deepEqual(order, [...order].sort((a, b) => a - b), 'each list is on its own page, after everything on the Tracker');
@@ -1664,6 +1668,108 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
     const css = read('retro.css');
     assert.match(css, /body \.ebay-change \{ font-size: \.72rem; font-weight: 400; color: var\(--dim\); white-space: nowrap; \}\nbody \.ebay-change\.is-up \{ color: var\(--green\); \}\nbody \.ebay-change\.is-down \{ color: var\(--red\); \}\n\/\* An overdue figure is dimmed, and so is how it moved \*\/\nbody \.ebay-site\.is-stale \.ebay-change, body \.ebay-quote\.is-stale \.ebay-change \{ opacity: \.5; \}/);
     vm.runInContext('allFeedData = []; visibleFeedData = []; refreshDashboard();', context);
+});
+
+await check('the Rarest page: two lists of a hundred, each with its own site\'s median', async () => {
+    const rareFile = JSON.parse(read('rare_games.json'));
+    const now = Date.parse('2026-10-08T12:00:00Z');
+    const site = (median, copies = 3) => ({ checked: '2026-10-08T09:00Z', copies, lowest: median - 5, median });
+    const prices = {
+        currencies: { US: 'USD', UK: 'GBP' },
+        games: {
+            'Sengoku Anthology': { level: 'rare', mentions: 0, sites: ['UK'], UK: site(410) },
+            'Fatal Frame 2: Crimson Butterfly': { level: 'normal', mentions: 2, UK: site(55), US: site(150) },
+            Kuon: { level: 'normal', mentions: 1, UK: site(300), US: site(900) },
+        },
+        rare: { PAL: { 'Sengoku Anthology': 'Sengoku Anthology', 'Project Zero 2: Crimson Butterfly': 'Fatal Frame 2: Crimson Butterfly' },
+                US: { 'Fatal Frame II: Crimson Butterfly': 'Fatal Frame 2: Crimson Butterfly' } },
+    };
+    context.__rare = rareFile;
+    context.__rarePrices = prices;
+    const draw = (region) => {
+        vm.runInContext(`setPrices(__rarePrices, null); rareRegion = ${JSON.stringify(region)}; renderRare(__rare, ${now}, 'en-GB')`, context);
+        return el('rareList').innerHTML.split('<li ').slice(1);
+    };
+    const rowOf = (rows, title) => rows.find(html => new RegExp(`#\\d+ ${esc(title).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[< ]`).test(html));
+
+    const pal = draw('PAL');
+    assert.equal(pal.length, 100);
+    assert.equal(pal.filter(html => html.includes('list-extra')).length, 75, 'twenty-five shown, the rest a click away');
+    assert.match(pal[0], /#1 Sengoku Anthology/);
+    assert.match(pal[0], /guide \$860/);
+    assert.match(pal[0], /<span class="ebay-flag">UK<\/span><b class="ebay-median">£410<\/b>/, 'its own site\'s median');
+    assert.doesNotMatch(pal[0], /ebay-flag">US/, 'and only that site');
+    assert.match(pal[0], /Sources: <a href="https:\/\/www\.pricecharting\.com\/[^"]*"[^>]*>pricecharting\.com<\/a>, <a [^>]*>racketboy\.com<\/a>/);
+    assert.match(rowOf(pal, 'Project Zero 2: Crimson Butterfly'), /£55\.00/, 'the price job says which game holds the figures');
+    assert.match(rowOf(pal, 'Project Zero 2: Crimson Butterfly'), /US name: Fatal Frame II: Crimson Butterfly/);
+    assert.match(rowOf(pal, 'Kuon'), /£300/, 'without a word from the price job, the game of the same name');
+    assert.match(rowOf(pal, 'Gun Club'), /not checked yet/);
+    assert.match(rowOf(pal, 'Cart Kings'), /title="Released for India[^"]*">India<\/span>/);
+    assert.equal(evalJson("document.getElementById('rareRegionPAL').getAttribute('aria-pressed')"), 'true');
+    assert.match(el('rareSummary').textContent, /PriceCharting, 8 Oct 2026\). Under each game: the median asking price for a used PAL copy on eBay UK today · 100 games · 3 with copies listed$/);
+
+    const us = draw('US');
+    assert.equal(us.length, 100);
+    assert.match(us[0], /#1 Kuon/);
+    assert.match(us[0], /<span class="ebay-flag">US<\/span><b class="ebay-median">\$900<\/b>/);
+    assert.match(rowOf(us, 'Fatal Frame II: Crimson Butterfly'), /\$150/);
+    assert.equal(evalJson("document.getElementById('rareRegionUS').getAttribute('aria-pressed')"), 'true');
+    vm.runInContext("showRareRegion('constructor')", context);
+    assert.equal(evalJson('rareRegion'), 'PAL', 'only the two lists');
+
+    // A hostile file is text, never markup, and only https sources are links.
+    context.__hostile = { checked: 'soon', lists: { PAL: [null, { title: '<img src=x onerror=alert(1)>', rank: '<b>', note: '<script>',
+        other_title: '<i>', flags: ['weak', '__proto__'], value_usd: { cib: 'lots' },
+        evidence: [{ source: 'javascript:alert(1)', figure: 'x', date: 'y' }, { source: 'https://example.com/a"b', figure: '<b>', date: '"' }] }] } };
+    vm.runInContext(`renderRare(__hostile, ${now}, 'en-GB')`, context);
+    const hostile = el('rareList').innerHTML;
+    assert.doesNotMatch(hostile, /<img|<script|<i>|javascript:|<b>/);
+    assert.match(hostile, /#1 &lt;img/, 'a rank that is not a number gives way to the position');
+    assert.doesNotMatch(hostile, /guide/);
+    assert.equal((hostile.match(/<a /g) || []).length, 1);
+    assert.equal((hostile.match(/rare-flag/g) || []).length, 1);
+    assert.doesNotMatch(el('rareSummary').textContent, /PriceCharting,/, 'no date that is not a date');
+
+    // Loading: a missing file, a hiccup with a list on screen, a file that is not JSON.
+    const real = context.fetch;
+    let answer = 404;
+    context.fetch = async (path) => {
+        assert.equal(path, 'rare_games.json');
+        if (answer === 'drop') throw new TypeError('Failed to fetch');
+        if (answer === 'garbage') return { ok: true, status: 200, json: async () => { throw new SyntaxError('Unexpected token'); } };
+        if (typeof answer === 'number') return { ok: false, status: answer, json: async () => ({}) };
+        return { ok: true, status: 200, json: async () => answer };
+    };
+    try {
+        await vm.runInContext('loadRare()', context);
+        assert.equal(el('rareSummary').textContent, 'No list of rare games yet.');
+        answer = rareFile;
+        await vm.runInContext('loadRare()', context);
+        assert.equal(el('rareList').innerHTML.split('<li ').length - 1, 100);
+        for (const trouble of [503, 'drop', 'garbage']) {
+            answer = trouble;
+            await vm.runInContext('loadRare()', context);
+            assert.equal(el('rareList').innerHTML.split('<li ').length - 1, 100, `the list survives "${trouble}"`);
+        }
+        vm.runInContext('rareData = null', context);
+        answer = 'garbage';
+        await vm.runInContext('loadRare()', context);
+        assert.match(el('rareSummary').textContent, /could not be read just now/);
+    } finally {
+        context.fetch = real;
+    }
+
+    // On the eBay prices page a game priced only for the Rarest page shows only its own site.
+    vm.runInContext(`setPrices(__rarePrices, null); renderPrices(undefined, ${now}, 'en-GB')`, context);
+    const sengoku = el('pricesList').innerHTML.split('<li ').find(html => html.includes('Sengoku Anthology'));
+    assert.match(sengoku, /level-rare[^>]*>rarest</);
+    assert.doesNotMatch(sengoku, /ebay-flag">US/);
+    vm.runInContext('setPrices(null, null); renderPrices(null)', context);
+
+    const page = read('index.html');
+    assert.match(page, /const RARE_SITE = \{ PAL: 'UK', US: 'US' \};/);
+    const python = read('ebay_prices.py');
+    assert.match(python, /RARE_SITES = \{"PAL": "EBAY_GB", "US": "EBAY_US"\}/, 'the page and the price job agree on which site prices which list');
 });
 
 console.log(`dashboard checks passed (${passed})`);

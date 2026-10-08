@@ -33,7 +33,7 @@ through its **Sources & Weights** panel.
 | `scrape_loop.py` | Keeps the scraper running for 5½ hours per workflow run: runs it when a type is due, commits `data/`, starts the eBay job hourly and its own successor |
 | `tests/test_scrape_loop.py` | Offline tests for the loop (fake clock) and `scraper.yml` |
 | `scraper.py` | Config validation, fetch plan, YouTube link resolution, matching, sentiment, reading 4chan boards for game names, feed health, snapshot merge |
-| `index.html` | Dashboard, three pages in one file (Tracker, Most mentioned, eBay prices); its inline script mirrors `validate_config()`, `source_key()` and the game-name rule of `ebay_prices.py`. Also reads `data/demand.json`, `data/prices/latest.json` and `ebay_watchlist.json`, and works without them |
+| `index.html` | Dashboard, four pages in one file (Tracker, Rarest, Most mentioned, eBay prices); its inline script mirrors `validate_config()`, `source_key()` and the game-name rule of `ebay_prices.py`. Also reads `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json` and `rare_games.json`, and works without them |
 | `guide.html` | Plain-language user guide; must match the UI |
 | `data/` | Written only by workflows (the scraper's, the archive, the demand index and eBay prices, each its own files); never edit or commit it by hand |
 | `tests/test_scraper.py` | Offline unittest suite; also runs `tests/dashboard_check.mjs` when Node.js exists |
@@ -47,7 +47,8 @@ through its **Sources & Weights** panel.
 | `archive.py`, `.github/workflows/archive.yml` | Appends every PS2 game mention to `data/archive/YYYY-MM.json`, four times a day |
 | `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index) from Wikipedia pageviews and mentions, daily |
 | `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |
-| `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words) and titles never to price |
+| `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words), titles never to price, and the names games have on eBay UK (`regional_names`) |
+| `rare_games.json` | The Rarest page: the 100 rarest PAL and US games, ranked by PriceCharting's complete-copy value, each with its sources and eBay search words. `ebay_prices.py` prices each list daily on its own site |
 | `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, the median of a week before (`week`), and the game's level. Numbers only |
 | `data/prices/YYYY-MM.json` | The same numbers over time: a row whenever they change, and at least one a day |
 | `tests/test_ebay_prices.py` | Offline tests for `ebay_prices.py` and its workflow, including that the key never leaks |
@@ -80,6 +81,7 @@ python ebay_prices.py --plan              # which games would be priced now and 
    - `source_key()` and `sourceKey()`
    - `FEED_URL_PATTERN` and `FEED_URL_RE`
    - the name `search_terms()` gives a title (ebay_prices.py) and `priceKey()` (index.html)
+   - `RARE_SITES` (ebay_prices.py) and `RARE_SITE` (index.html): which eBay site prices which list
 4. **Keep `feeds.json` canonical**: `json.dumps(config, indent=2, ensure_ascii=False) + "\n"`,
    with whole numbers written without `.0`. The dashboard's save reproduces the file byte for
    byte (tested).
@@ -270,6 +272,12 @@ Before you call something done, prove it; don't assume it.
   - Nobody has been able to test `ebay_prices.py` against the real API from a development
     machine: the request format follows eBay's documentation. When a run looks wrong, start
     it with the search check ticked and read the counts it prints.
+  - The Rarest page's games (`rare_games.json`) are priced once a day on their own list's site
+    only; a game the feed already tracks is reused, never looked up twice. Its figures are
+    asking prices of rare games, so "none listed" and medians of one copy are common. The list
+    order is a dated research snapshot (PriceCharting complete-copy values of 2026-10-08), not
+    something any job updates; RFGeneration and consolevariations.com ask robots to stay out
+    and are not read.
   - The API returns listings that are still for sale. They are asking prices, not sold prices,
     and US (NTSC) and UK (PAL) figures are never combined.
   - The dashboard shows a game's medians wherever its name appears, so it has to tie the
