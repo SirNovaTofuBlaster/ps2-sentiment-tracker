@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-10-09: Rarest page widened and made simpler
+
+- Asked: more sources for the rarest games, and simpler, readable console tiers.
+- `rare_games.json`: a second research pass (cheatcc and unanswered.io 2026 lists, TheGamer,
+  lovemoney, Den of Geek, Potteries Auctions, collector databases and forums, eBay asking
+  prices, and PriceCharting's whole PAL and US catalogues). Evidence added to 56 entries; 9
+  values re-read (Silent Hill 2 PAL down to $133, Coraline PAL $158, The Punisher US $146 and
+  others); 21 games the first pass missed, among them the Australian GTA Complete Collection
+  ($1,901, now PAL #1), the shovelware World Quiz and Monster Eggs, The Getaway Limited
+  Edition, Silent Hill 3 and 4 PAL, the Sega Fun Pack, and the Dragon Ball Z Budokai 3, MGS3
+  Subsistence and RE4 Premium limited editions. Lists now 115 PAL and 106 US; nothing dropped.
+  "one source" now means every source is the same site: 76 PAL, 53 US. Jello is not priced
+  (one ordinary word).
+- Rarest page: the console tiers are words with colours (Ultra rare, Very rare, Rare,
+  Limited) with a one-line key under the list; each console has one short line (model, where,
+  year, how many); the summaries and notes of both lists are shorter.
+
 ## 2026-10-08: digital-only news kept for good
 
 - Asked: keep the digital-only news, without spending Reddit requests that PS2 news needs.

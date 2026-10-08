@@ -48,7 +48,7 @@ through its **Sources & Weights** panel.
 | `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index) from Wikipedia pageviews and mentions, daily |
 | `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |
 | `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words), titles never to price, and the names games have on eBay UK (`regional_names`) |
-| `rare_games.json` | The Rarest page: the 100 rarest PAL and US games, ranked by PriceCharting's complete-copy value, each with its sources and eBay search words. `ebay_prices.py` prices each list daily on its own site |
+| `rare_games.json` | The Rarest page: the rarest PAL and US games (100+ each), ranked by PriceCharting's complete-copy value, each with its sources and eBay search words. `ebay_prices.py` prices each list daily on its own site |
 | `rare_consoles.json` | The Rarest page's consoles: the rarest official PS2 hardware, in tiers, with model numbers, sources and eBay search rules. `ebay_prices.py` prices each daily on both sites (or its `sites`) |
 | `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, the median of a week before (`week`), and the game's level. Numbers only |
 | `data/prices/YYYY-MM.json` | The same numbers over time: a row whenever they change, and at least one a day |

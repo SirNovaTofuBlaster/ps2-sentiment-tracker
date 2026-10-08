@@ -1694,13 +1694,16 @@ await check('the Rarest page: two lists of a hundred, each with its own site\'s 
     const rowOf = (rows, title) => rows.find(html => new RegExp(`#\\d+ ${esc(title).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[< ]`).test(html));
 
     const pal = draw('PAL');
-    assert.equal(pal.length, 100);
-    assert.equal(pal.filter(html => html.includes('list-extra')).length, 75, 'twenty-five shown, the rest a click away');
-    assert.match(pal[0], /#1 Sengoku Anthology/);
-    assert.match(pal[0], /guide \$860/);
-    assert.match(pal[0], /<span class="ebay-flag">UK<\/span><b class="ebay-median">£410<\/b>/, 'its own site\'s median');
-    assert.doesNotMatch(pal[0], /ebay-flag">US/, 'and only that site');
-    assert.match(pal[0], /Sources: <a href="https:\/\/www\.pricecharting\.com\/[^"]*"[^>]*>pricecharting\.com<\/a>, <a [^>]*>racketboy\.com<\/a>/);
+    const palCount = rareFile.lists.PAL.length;
+    assert.equal(pal.length, palCount);
+    assert.equal(pal.filter(html => html.includes('list-extra')).length, palCount - 25, 'twenty-five shown, the rest a click away');
+    const sengoku = rowOf(pal, 'Sengoku Anthology');
+    assert.match(sengoku, /#2 Sengoku Anthology/);
+    assert.match(sengoku, /guide \$860/);
+    assert.match(sengoku, /<span class="ebay-flag">UK<\/span><b class="ebay-median">£410<\/b>/, 'its own site\'s median');
+    assert.doesNotMatch(sengoku, /ebay-flag">US/, 'and only that site');
+    assert.match(sengoku, /Sources: <a href="https:\/\/www\.pricecharting\.com\/[^"]*"[^>]*>pricecharting\.com<\/a>, <a [^>]*>racketboy\.com<\/a>/);
+    assert.match(pal[0], new RegExp(`#1 ${esc(rareFile.lists.PAL[0].title)}`), 'in the order of the file');
     assert.match(rowOf(pal, 'Project Zero 2: Crimson Butterfly'), /£55\.00/, 'the price job says which game holds the figures');
     assert.match(rowOf(pal, 'Project Zero 2: Crimson Butterfly'), /US name: Fatal Frame II: Crimson Butterfly/);
     assert.match(rowOf(pal, 'Kuon'), /£300/, 'without a word from the price job, the game of the same name');
@@ -1713,10 +1716,10 @@ await check('the Rarest page: two lists of a hundred, each with its own site\'s 
     draw('PAL');
     assert.match(rowOf(pal, 'Cart Kings'), /title="Released for India[^"]*">India<\/span>/);
     assert.equal(evalJson("document.getElementById('rareRegionPAL').getAttribute('aria-pressed')"), 'true');
-    assert.match(el('rareSummary').textContent, /PriceCharting, 8 Oct 2026\). Under each game: the median asking price for a used PAL copy on eBay UK today · 100 games · 3 with copies listed$/);
+    assert.equal(el('rareSummary').textContent, `${palCount} PAL games, rarest first by what a complete copy sells for (PriceCharting, 9 Oct 2026). Prices: eBay UK today · 3 with copies for sale`);
 
     const us = draw('US');
-    assert.equal(us.length, 100);
+    assert.equal(us.length, rareFile.lists.US.length);
     assert.match(us[0], /#1 Kuon/);
     assert.match(us[0], /<span class="ebay-flag">US<\/span><b class="ebay-median">\$900<\/b>/);
     assert.match(rowOf(us, 'Fatal Frame II: Crimson Butterfly'), /\$150/);
@@ -1753,11 +1756,11 @@ await check('the Rarest page: two lists of a hundred, each with its own site\'s 
         assert.equal(el('rareSummary').textContent, 'No list of rare games yet.');
         answer = rareFile;
         await vm.runInContext('loadRare()', context);
-        assert.equal(el('rareList').innerHTML.split('<li ').length - 1, 100);
+        assert.equal(el('rareList').innerHTML.split('<li ').length - 1, palCount);
         for (const trouble of [503, 'drop', 'garbage']) {
             answer = trouble;
             await vm.runInContext('loadRare()', context);
-            assert.equal(el('rareList').innerHTML.split('<li ').length - 1, 100, `the list survives "${trouble}"`);
+            assert.equal(el('rareList').innerHTML.split('<li ').length - 1, palCount, `the list survives "${trouble}"`);
         }
         vm.runInContext('rareData = null', context);
         answer = 'garbage';
@@ -1769,9 +1772,9 @@ await check('the Rarest page: two lists of a hundred, each with its own site\'s 
 
     // On the eBay prices page a game priced only for the Rarest page shows only its own site.
     vm.runInContext(`setPrices(__rarePrices, null); renderPrices(undefined, ${now}, 'en-GB')`, context);
-    const sengoku = el('pricesList').innerHTML.split('<li ').find(html => html.includes('Sengoku Anthology'));
-    assert.match(sengoku, /level-rare[^>]*>rarest</);
-    assert.doesNotMatch(sengoku, /ebay-flag">US/);
+    const sengokuPriced = el('pricesList').innerHTML.split('<li ').find(html => html.includes('Sengoku Anthology'));
+    assert.match(sengokuPriced, /level-rare[^>]*>rarest</);
+    assert.doesNotMatch(sengokuPriced, /ebay-flag">US/);
     vm.runInContext('setPrices(null, null); renderPrices(null)', context);
 
     const page = read('index.html');
@@ -1813,9 +1816,12 @@ await check('the Rarest page: the rarest consoles, priced on both sites', async 
     assert.match(rows[0], new RegExp(`#1 ${esc(red.name).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`), 'the dearest eBay US median first');
     assert.match(rows[0], /<span class="ebay-flag">US<\/span><b class="ebay-median">\$3,500<\/b>/);
     assert.match(rows[0], /<span class="ebay-flag">UK<\/span><b class="ebay-median">£2,800<\/b>/);
-    assert.match(rows[0], /tier 1/);
+    assert.match(rows[0], /<span class="rarity-badge rarity-1" title="Fewer than 5,000 made\.">Ultra rare<\/span>/, 'how rare, in words');
+    assert.doesNotMatch(rows[0], /tier \d/);
+    assert.deepEqual([...el('rareNote').innerHTML.matchAll(/rarity-badge rarity-(\d)">([^<]+)</g)].map(m => `${m[1]} ${m[2]}`),
+        ['1 Ultra rare', '2 Very rare', '3 Rare', '4 Limited'], 'a one-line key to the four words');
+    assert.match(rows[0], /SCPH-30000 \+2 · Japan, US, Europe, UK · 2001 · ~1,998 made/, 'one short line; every model in its hint');
     assert.match(rows[0], /guide \$4,000/);
-    assert.match(rows[0], /about 1,998 made/);
     assert.match(rows[1], /#2 /);
     // The rest have no eBay figure yet: by their guide value, dearest first, those without one last.
     const unpriced = inRegion(['JP']).filter(row => row !== red).sort((a, b) => (b.value?.usd ?? -1) - (a.value?.usd ?? -1) || a.rank - b.rank);
@@ -1824,14 +1830,14 @@ await check('the Rarest page: the rarest consoles, priced on both sites', async 
     const prototype = rows.find(html => html.includes('not priced'));
     assert.match(prototype, /never sold/, 'the one-off display unit is never looked up');
     assert.equal(rows.filter(html => html.includes('list-extra')).length, Math.max(rows.length - 25, 0));
-    assert.match(el('rareSummary').textContent, /^Official Sony hardware sold in Japan, most expensive first: the eBay US median today, then eBay UK, then the guide value · \d+ consoles · 2 prices with copies listed$/);
+    assert.match(el('rareSummary').textContent, /^\d+ official consoles sold in Japan, most expensive first \(eBay US price\) · 2 prices with copies for sale$/);
 
     rows = draw('PAL');
     assert.equal(rows.length, inRegion(['EU', 'UK']).length);
     assert.ok(rows[0].includes(esc(red.name)), 'PAL goes by eBay UK: £2,800 first');
     assert.ok(rows[1].includes(esc(pink.name)), 'then £80');
     assert.equal((rows[1].match(/ebay-flag/g) || []).length, 1, 'a console sold in one region is priced on its site only');
-    assert.match(el('rareSummary').textContent, /sold in PAL, most expensive first: the eBay UK median today, then eBay US/);
+    assert.match(el('rareSummary').textContent, /sold in PAL, most expensive first \(eBay UK price\)/);
     rows = draw('US');
     assert.equal(rows.length, inRegion(['US', 'CA']).length);
     assert.ok(!rows.some(html => html.includes(esc(pink.name))), 'a European console is not in the US list');

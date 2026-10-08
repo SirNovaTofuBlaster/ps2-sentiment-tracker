@@ -1263,18 +1263,25 @@
             }).join('');
             foldList('rareList', entries.length);
             document.getElementById('rareSummary').textContent =
-                `Ranked by what collectors pay for a complete copy${checkedOn ? ` (PriceCharting, ${checkedOn})` : ''}. `
-                + `Under each game: the median asking price for a used ${region} copy on eBay ${label} today · ${entries.length} games · ${priced} with copies listed`;
-            note.innerHTML = 'Nobody counts how many copies of a game were made or survive, so the price collectors pay is the measure of rarity this list goes by. '
-                + 'The top of each list rests on several sources; lower down most places rest on PriceCharting alone, and the order is less certain. '
-                + '<b>thin data</b>: the guide value rests on one or two sales. <b>edition</b>: a special edition or a set sold under its own name. '
-                + 'The eBay figures are asking prices of copies still for sale, not what anything sold for, and they are checked once a day.';
+                `${entries.length} ${region} games, rarest first by what a complete copy sells for${checkedOn ? ` (PriceCharting, ${checkedOn})` : ''}. `
+                + `Prices: eBay ${label} today · ${priced} with copies for sale`;
+            note.innerHTML = '<b>Guide</b> = what collectors pay for a complete copy. <b>eBay</b> = what sellers ask today, checked daily. '
+                + 'Tags: <b>thin data</b> few sales behind the guide · <b>one source</b> only PriceCharting lists it · '
+                + '<b>edition</b> a special edition or set · <b>India</b> an Indian release.';
         }
 
         /* The consoles: rare_consoles.json, official Sony hardware only, rarest first (by a
            stated production run, then how restricted the release was, then collector value).
            ebay_prices.py prices each one on both sites (or the one in "sites"), from sellers
            anywhere; its figures are the entry in latest.json's "games" under the console's name. */
+        // How rare a console is, in words: the file's "tier" (1 rarest, 4 least rare).
+        const CONSOLE_RARITY = {
+            1: ['Ultra rare', 'Fewer than 5,000 made.'],
+            2: ['Very rare', 'Never sold in shops, or only through one shop or one bundle.'],
+            3: ['Rare', 'A limited release in one country.'],
+            4: ['Limited', 'A limited release in several countries.'],
+        };
+        const COUNTRY = { JP: 'Japan', US: 'US', CA: 'Canada', EU: 'Europe', UK: 'UK' };
         const CONSOLE_TAGS = {
             not_retail: ['never sold', 'A development or test unit: Sony never sold these in shops.'],
             low: ['unconfirmed', 'Rests on one weak source; the details may be wrong.'],
@@ -1341,7 +1348,6 @@
                 foldList('rareList', 0);
                 return;
             }
-            const tiers = data.tiers && typeof data.tiers === 'object' ? data.tiers : {};
             let priced = 0;
             list.innerHTML = entries.map((entry, i) => {
                 const rank = i + 1;
@@ -1359,14 +1365,18 @@
                     return priceSiteHtml(label, site, currencyOf(label), now, locale, LEVELS.rare.stale);
                 }).join('');
                 const tags = [entry.not_retail === true ? 'not_retail' : null, entry.confidence === 'low' ? 'low' : null].filter(Boolean);
-                const tier = typeof entry.tier === 'string' ? entry.tier.match(/^(\d)/)?.[1] : null;
+                const tier = typeof entry.tier === 'string' ? entry.tier.match(/^([1-4])/)?.[1] : null;
                 const value = entry.value && typeof entry.value === 'object' ? entry.value : null;
                 const usd = typeof value?.usd === 'number' && Number.isFinite(value.usd) ? value.usd : null;
+                // One short line: the model, where, when, how many. Every model number is in its hint.
+                const models = Array.isArray(entry.models) ? entry.models.filter(model => typeof model === 'string') : [];
+                const places = [...new Set((Array.isArray(entry.regions) ? entry.regions : []).filter(code => own(COUNTRY, code)).map(code => COUNTRY[code]))];
+                const year = typeof entry.released === 'string' ? entry.released.match(/\b(?:19|20)\d\d\b/)?.[0] : null;
                 const facts = [
-                    Array.isArray(entry.models) && entry.models.length ? entry.models.filter(model => typeof model === 'string').join(' · ') : '',
-                    Array.isArray(entry.regions) && entry.regions.length ? entry.regions.filter(region => typeof region === 'string').join(', ') : '',
-                    typeof entry.released === 'string' ? entry.released : '',
-                    Number.isFinite(entry.units) ? `about ${entry.units.toLocaleString(locale)} made` : '',
+                    models.length ? models[0].replace(/\s*\(.*$/, '') + (models.length > 1 ? ` +${models.length - 1}` : '') : '',
+                    places.join(', '),
+                    year || '',
+                    Number.isFinite(entry.units) ? `~${entry.units.toLocaleString(locale)} made` : '',
                 ].filter(Boolean);
                 const sources = [...new Map((Array.isArray(entry.evidence) ? entry.evidence : [])
                     .filter(proof => proof && /^https:\/\//i.test(String(proof.source ?? '')))
@@ -1374,12 +1384,12 @@
                 return `
                 <li class="${rowClass('rareList', i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
-                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${esc(rank)} ${esc(entry.name)}${tier && own(tiers, tier)
-                            ? ` <span class="level-tag rare-flag" title="${esc(tiers[tier])}">tier ${esc(tier)}</span>` : ''}${tags.map(tag =>
+                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${esc(rank)} ${esc(entry.name)}${tier
+                            ? ` <span class="rarity-badge rarity-${esc(tier)}" title="${esc(CONSOLE_RARITY[tier][1])}">${esc(CONSOLE_RARITY[tier][0])}</span>` : ''}${tags.map(tag =>
                             ` <span class="level-tag rare-flag" title="${esc(CONSOLE_TAGS[tag][1])}">${esc(CONSOLE_TAGS[tag][0])}</span>`).join('')}</span>
                         ${usd !== null ? `<span class="text-slate-400 whitespace-nowrap" title="${esc(`${value.what ?? ''}${value.date ? ` (${value.date})` : ''}`)}">guide ${esc(money(usd, 'USD', locale))}</span>` : ''}
                     </div>
-                    ${facts.length ? `<p class="rare-aka">${esc(facts.join(' · '))}</p>` : ''}
+                    ${facts.length ? `<p class="rare-aka" title="${esc(models.join(' · '))}">${esc(facts.join(' · '))}</p>` : ''}
                     <div class="ebay-figures">${figures}</div>
                     <p class="rare-note">${typeof entry.why_rare === 'string' && entry.why_rare ? `${esc(entry.why_rare)} ` : ''}${sources.length
                         ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure_or_fact ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>
@@ -1387,12 +1397,10 @@
             }).join('');
             foldList('rareList', entries.length);
             document.getElementById('rareSummary').textContent =
-                `Official Sony hardware sold in ${area.label}, most expensive first: the eBay ${area.sites[0]} median today, then eBay ${area.sites[1]}, then the guide value · ${entries.length} consoles · ${priced} prices with copies listed`;
-            note.innerHTML = 'Sorted by price. The tier says how rare a console is: a known small production run (tier 1), never sold in shops or sold by one shop or in one bundle (tier 2), '
-                + 'a single country\'s limited colour (tier 3), a wider limited run (tier 4). A console sold in several regions is in each of their lists. '
-                + 'Most of the Japanese ones are listed on eBay from Japan, with postage to match. '
-                + 'A listing counts only if it names the model or its colour and is a working console: no shells, skins, custom paint, mods or parts. '
-                + 'The guide value is PriceCharting\'s, in US dollars, where it has one. The eBay figures are asking prices, checked once a day.';
+                `${entries.length} official consoles sold in ${area.label}, most expensive first (eBay ${area.sites[0]} price) · ${priced} prices with copies for sale`;
+            note.innerHTML = Object.values(CONSOLE_RARITY).map(([name, meaning], n) =>
+                `<span class="rarity-badge rarity-${n + 1}">${esc(name)}</span> ${esc(meaning.replace(/\.$/, ''))}`).join(' · ')
+                + '<br>Working, official consoles only: no shells, custom paint or mods. eBay prices are asking prices, checked daily.';
         }
 
         // Reads one of the Rarest page's files: { data, failed }.

@@ -1,8 +1,8 @@
 {
- "what": "The rarest PS2 games by region, for the dashboard's Rarest page. Ranked by what collectors pay for a complete copy (PriceCharting's complete-in-box market price in US dollars, read on the date below), because no one counts how many copies exist: price is the measure of rarity collectors use. ebay_prices.py looks each game up once a day, the PAL list on eBay UK and the US list on eBay US.",
- "checked": "2026-10-08",
+ "what": "The rarest PS2 games by region, for the dashboard's Rarest page. Ranked by what collectors pay for a complete copy (PriceCharting's complete-in-box market price in US dollars, read on 2026-10-08, with values re-read and entries added on 2026-10-09), because no one counts how many copies exist: price is the measure of rarity collectors use. ebay_prices.py looks each game up once a day, the PAL list on eBay UK and the US list on eBay US.",
+ "checked": "2026-10-09",
  "method": "Ranked by PriceCharting's complete-in-box (CIB) market price in USD for a used copy in that region, read on 2026-10-08 (prices drift by a few dollars between page loads). CIB is used because several PAL rarities have no loose price on PriceCharting, so it is the only figure every entry has. Candidates came from PriceCharting's console tables sorted by price (sort=highest-price, paged with &cursor=25/50/75/100/125/150/200). That sort is by loose price, so games with no loose price were added from collector articles and spot checks of individual game pages. Hardware, controllers, hardware/peripheral bundles (gun, guitar, dance mat, flightstick), not-for-resale/promo/demo discs, cheat discs, Linux kit and non-game discs are excluded. Greatest Hits, Platinum, Black Label and cover variants are folded into the base game. Special/limited/deluxe boxes and compilations sold under their own name are separate entries, as the brief allows. Collector articles (Racketboy 2022, GIGA 2026, Destructoid/CeX 2025, PPE.pl 2023/2024, whynow 2022, Retro Dodo 2020) are added as second evidence where they mention the game; their figures are quoted as stated. us_title/pal_title gives the other region's name where I know one; null means none known, not necessarily that none exists. value_usd repeats the PriceCharting figures used for ranking. ebay_search holds the words a listing title should contain. Generic words are flagged in notes; add 'ps2' to those searches.",
- "gaps": "Both lists reach 100, but the lower half is weaker than the top. (1) PriceCharting's price sort is by LOOSE price. Games with no loose price, or with a low loose and a high CIB price, only got in if an article named them or I spot-checked them. Sengoku Anthology, Gun Club, Ocean Commander, Raiden III, Iron Chef, Legend of Sayuki, Ar Tonelico 2 and Fire Pro Wrestling Returns came in that way, and similar PAL titles are probably still missing. Below roughly CIB $60 (PAL) and $90 (US), the order is not exhaustive. (2) Most entries have only one source: PriceCharting's USD market price, which for rare PAL games rests on a handful of sales. Entries flagged 'Weak' rest on one or two sales, or their CIB is several times their loose price. (3) White Van Racer, which the maintainer listed as a known rarity, is left out. PriceCharting gives loose $12.39 / CIB $22.36 (https://www.pricecharting.com/game/pal-playstation-2/white-van-racer, 2026-10-08), against Racketboy's $90–$180 in 2022, so its current value is unclear. Legend of Sayuki, Iron Chef and Hard Knock High are also lower on PriceCharting than in the 2022–2024 articles. (4) Cart Kings, Hanuman: The Boy Warrior and Ra One are Indian-market PAL releases, not Europe/UK/Australia; drop them if India should not count. (5) One PriceCharting page and one search returned HTTP 403 (rate limiting), so the Shin Megami Tensei: Lucifer's Call PAL figure was not obtained. (6) eBay 'sold' listings were not read directly; CeX prices (Destructoid) are UK shop prices, not private sales.",
+ "gaps": "Both lists reach 100, but the lower half is weaker than the top. (1) PriceCharting's price sort is by LOOSE price. Games with no loose price, or with a low loose and a high CIB price, only got in if an article named them or I spot-checked them. Sengoku Anthology, Gun Club, Ocean Commander, Raiden III, Iron Chef, Legend of Sayuki, Ar Tonelico 2 and Fire Pro Wrestling Returns came in that way, and similar PAL titles are probably still missing. Below roughly CIB $60 (PAL) and $90 (US), the order is not exhaustive. (2) Most entries have only one source: PriceCharting's USD market price, which for rare PAL games rests on a handful of sales. Entries flagged 'Weak' rest on one or two sales, or their CIB is several times their loose price. (3) White Van Racer, which the maintainer listed as a known rarity, is left out. PriceCharting gives loose $12.39 / CIB $22.36 (https://www.pricecharting.com/game/pal-playstation-2/white-van-racer, 2026-10-08), against Racketboy's $90–$180 in 2022, so its current value is unclear. Legend of Sayuki, Iron Chef and Hard Knock High are also lower on PriceCharting than in the 2022–2024 articles. (4) Cart Kings, Hanuman: The Boy Warrior and Ra One are Indian-market PAL releases, not Europe/UK/Australia; drop them if India should not count. (5) One PriceCharting page and one search returned HTTP 403 (rate limiting), so the Shin Megami Tensei: Lucifer's Call PAL figure was not obtained. (6) eBay 'sold' listings were not read directly; CeX prices (Destructoid) are UK shop prices, not private sales. Update of 2026-10-09: Access: WebFetch only opened URLs that a search returned or that were already approved (PriceCharting, Racketboy and the input's articles); typed URLs on new sites (GameValueNow, eBay UK sold searches, CGC, dafunda, hackernoon) were refused as 'provenance required', and ebay.de item pages errored. So there is no GameValueNow, VideoGamePricing, CeX product-page or eBay UK sold-listing evidence. Direct curl to PriceCharting is blocked by the proxy (403). eBay.com catalogue figures are ASKING prices of active listings, not sales. Candidate scan: the PriceCharting console tables in popularity order were paged with &cursor=50 to 3250 (PAL, 3,292 items) and 50 to 2750 (US, 2,775 items). Each page was cut off before its end and US cursor=1050 and 1100 failed repeatedly, so perhaps a fifth of each catalogue was not seen; more missing titles are likely. Excluded from candidates as the method requires: promos/not-for-resale/press kits/demos (e.g. PAL Project Zero 3 promo $643.56, MGS3 press kit $471.28, Silent Hill 2 promo $260.01; US God of War retailer kits), hardware or peripheral bundles (gun, guitar, mic, EyeToy, Fanatec wheel, consoles, Tony Hawk's Underground [Digital Pix Pack] $369.50, which looks like a camera bundle), and the US Turok Evolution [EB Games] cover variant ($197.50, 1 sale). PAL Guilty Gear XX Accent Core Plus [Collector's Edition] shows CIB $388.04, but its only sale is a Wii collector's edition misfiled on the PS2 page, so it was left out. PAL Urban Constructor (CIB $96.91 > new $58.59) and PAL Sly 2 (loose $20.29, CIB $81.10) look like data errors and were left out; PAL 'Forbidden Siren: Viviendo la Pesadilla' ($80.20) is a Spanish variant of PAL #51 Siren. PAL titles seen at CIB $55-70 with only a table figure: Splinter Cell Trilogy [LE] $68.24, Castlevania: Lament of Innocence $67.71, Games Galaxy 2 $67.08, Wipeout Fusion [LE] $65.80, Wacky Zoo GP $64.29, Everblue $63.36, Taito Legends Double Pack $61.26, Bloody Roar 3 $61.14, NFS Most Wanted [Black Edition] $59.61, Gladiator: Sword of Vengeance [LE pack] $59.01, Lord of the Rings Collection $58.88, Ico [LE] $58.75, Naruto Shippuden: Ultimate Ninja 5 $56.43, World Heroes Anthology $56.30, Suikoden V $55.61; also Aliens in the Attic $74.17, Yakuza 2 $73.94, Springdale $73.72, Godfather [Coffin Box] $74.38, 50 Cent: Bulletproof [LE] $74.85, Auto Modellista $70.60. Gap (5) in the input is resolved: Shin Megami Tensei: Lucifer's Call PAL is loose $18.64 / CIB $27.51 on PriceCharting (2026-10-09), so it is not a rarity. White Van Racer PAL re-read: CIB $22.36 with 22 CIB sales falling from $277.20 (2021) to about $21 (2026); leaving it out is supported. Racketboy's US editions .hack//G.U. Rebirth Special Edition (CIB $68.88) and Ed Edd n Eddy with bonus disc ($74.95) are below the US cut-off; Star Wars Bounty Hunter [Limited Edition] is $16.14 (unanswered.io's $300 'Action Pack' is probably another product). India flags: Digit (2011-04-29) calls Cart Kings an 'India specific' PS2/PSP game at MRP Rs. 499 (PS2); Engadget (2009-03-26) reports SCEE publishing Hanuman: Boy Warrior as the first Indian game on PS2 (English and Hindi). Neither gives a collector value. Not confirmed: any independent figure for World Quiz, Monster Eggs, Jello, Saint & Sinner, Kirikou, Shinobi/Tekken 4 special editions, Sega Fun Pack or Super Fighter; PriceCharting values drift by a few dollars between page loads and some by much more (see corrections).",
  "sources": {
   "PriceCharting PAL PS2 (by price)": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
   "PriceCharting NTSC-U PS2 (by price)": "https://www.pricecharting.com/console/playstation-2?sort=highest-price",
@@ -12,7 +12,34 @@
   "PPE.pl (2024-01-21)": "https://www.ppe.pl/publicystyka/334368/10-najdrozszych-gier-z-ps2-stare-tytuly-z-rynku-europejskiego-za-ktore-kolekcjonerzy-placa-ogromne-sumy.html",
   "PPE.pl (2023-08-06)": "https://www.ppe.pl/publicystyka/324395/10-najdrozszych-obecnie-gier-na-ps2-rzadkie-europejskie-produkcje-na-ktore-poluja-kolekcjonerzy.html",
   "whynow: 14 of the rarest PlayStation 2 games (2022)": "https://whynow.co.uk/read/14-of-the-rarest-playstation-2-games",
-  "Retro Dodo: 10 rarest PS2 games (2020, modified 2024)": "https://retrododo.com/rare-ps2-games/"
+  "Retro Dodo: 10 rarest PS2 games (2020, modified 2024)": "https://retrododo.com/rare-ps2-games/",
+  "cheatcc: The Most Expensive PlayStation 2 Games Collectors Are Hunting Today (2026-08-10)": "https://www.cheatcc.com/?p=210910",
+  "cheatcc: The Most Expensive PlayStation 2 Games Collectors Pay For Today (2026-08-24)": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+  "unanswered.io: rarest and most valuable PS2 games (2026-07-25, updated 2026-07-31)": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+  "TheGamer: rarest PS2 games and their value (undated)": "https://www.thegamer.com/rarest-ps2-games-value-price/",
+  "Slickdeals: rarest and most valuable PlayStation games (2022-01-03)": "https://daily.slickdeals.net/tech/rarest-most-valuable-playstation-games",
+  "Of Zen and Computing: most expensive PlayStation games (2025-09-03)": "https://www.ofzenandcomputing.com/most-expensive-playstation-games/",
+  "GameSkinny: 11 most expensive horror games (2018-10-09)": "https://www.gameskinny.com/listicle/11-most-expensive-horror-games-of-all-time/",
+  "Money Inc: five most expensive PS2 games (2018-08-21)": "https://moneyinc.com/most-expensive-ps2-games-of-all-time/",
+  "Den of Geek: the 10 rarest PlayStation 2 games (2008-05-14, UK)": "https://www.denofgeek.com/?p=158747",
+  "lovemoney: 20 retro video games worth £1,000s (2026-08-17)": "https://www.lovemoney.com/gallerylist/574121/do-you-own-any-of-these-20-retro-video-games-that-could-be-worth-1000s-today",
+  "VGCollect forum: The Price of PS2 Games Are Exploding (2020-07-20)": "https://vgcollect.com/forum/index.php/topic,10972.0.html",
+  "shmups.system11.org forum: A Sengoku tale (2016-07-30)": "https://shmups.system11.org/viewtopic.php?p=1201738",
+  "r/ps2 (via redlib mirror): I realised I have rare games (2024-02-22)": "https://lr.in.psf.lt/r/ps2/comments/1ax14js/i_realised_i_have_rare_games",
+  "Sports Gamers Online: 10 incredibly expensive sports games (2024-10-21)": "https://www.sportsgamersonline.com/games/10-incredibly-expensive-sports-games/amp/",
+  "Games Asylum: not all outdated football games are worthless (2018-05-17, UK)": "https://www.gamesasylum.com/?p=36690",
+  "Film Stories: Gregory Horror Show is 20 years old (2023-08-07, UK)": "https://filmstories.co.uk/news/gregory-horror-show-cult-classic-ps2-game-is-20-years-old-today/",
+  "Potteries Auctions: PlayStation 2 value guide (2026-04-01, UK auction house)": "https://www.potteriesauctions.com/news/playstation-2-value-guide-value-your-ps2-games-consoles",
+  "Collectors Edition game DB: Resident Evil 4 Premium Edition (NTSC)": "https://collectorsedition.org/game-db/resident-evil-4-premium-edition-ps2-ntsc",
+  "Collectors Edition game DB: Dragon Ball Z Budokai 3 Limited Edition (NTSC)": "https://collectorsedition.org/?p=15009",
+  "Keep It Classic (Las Vegas shop): Forever Kingdom CIB": "https://keepitclassiclv.com/products/sony-ps2-forever-kingdom-cib",
+  "Retrofix Games (Missoula shop): GTA Stories Double Pack": "https://retrofixgames.com/products/grand-theft-auto-stories-double-pack-liberty-city-stories-vice-city-stories-ps2",
+  "PriceCharting PAL PS2 table, popularity order, paged with &cursor=50..3250 (2026-10-09)": "https://www.pricecharting.com/console/pal-playstation-2?view=table",
+  "PriceCharting NTSC-U PS2 table, popularity order, paged with &cursor=50..2750 (2026-10-09)": "https://www.pricecharting.com/console/playstation-2?view=table",
+  "eBay.com catalogue and browse pages (active asking prices, not sales)": "https://www.ebay.com/p/",
+  "Engadget: Hanuman becomes first Indian-developed game (2009-03-26)": "https://www.engadget.com/2009-03-26-hanunman-becomes-first-indian-developed-game-exclusive-to-ps2.html",
+  "Digit: Sony launches Cart Kings for PS2 and PSP (2011-04-29)": "https://www.digit.in/news/gaming/sony-launches-cart-kings-for-ps2-and-psp-featuring-tinkle-characters-6694.html",
+  "Already in the input and re-read for this pass: GIGA, Destructoid (CeX), whynow, Retro Dodo, Racketboy, PPE.pl": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA"
  },
  "flags": {
   "weak": "The guide value rests on one or two sales, or the complete price is several times the loose price.",
@@ -24,6 +51,37 @@
   "PAL": [
    {
     "rank": 1,
+    "title": "Grand Theft Auto Complete Collection",
+    "search": "grand theft auto complete collection",
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "value_usd": {
+     "loose": null,
+     "cib": 1900.95
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "edition"
+    ],
+    "note": "Australia-only box set (EB Games).",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/grand-theft-auto-complete-collection",
+      "figure": "CIB $1,900.95 (table showed $1,801.66 the same day); 5 CIB sales $579.66-$3,156.37 (2024-10-24 to 2025-10-25); notes 'Australian region exclusive at EB Games'",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://www.lovemoney.com/gallerylist/574121/do-you-own-any-of-these-20-retro-video-games-that-could-be-worth-1000s-today",
+      "figure": "Boxed £2,234.07; loose £1,718.52 (Australia-only release)",
+      "date": "2026-08-17"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 2,
     "title": "Sengoku Anthology",
     "search": "sengoku anthology",
     "value_usd": {
@@ -56,7 +114,31 @@
     ]
    },
    {
-    "rank": 2,
+    "rank": 3,
+    "title": "World Quiz",
+    "search": "world quiz",
+    "value_usd": {
+     "loose": null,
+     "cib": 709.42
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "weak",
+     "one_source",
+     "india"
+    ],
+    "note": "Indian release; two sales.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/world-quiz",
+      "figure": "CIB $709.42 from 2 sales: $294.01 (2025-07-17) and $709.42 (2026-07-15), both 'PAL India Exclusive'; SCEE, 2009, quiz for exam students",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 4,
     "title": "Gun Club",
     "search": "gun club",
     "value_usd": {
@@ -84,7 +166,7 @@
     ]
    },
    {
-    "rank": 3,
+    "rank": 5,
     "title": "Kuon",
     "search": "kuon",
     "value_usd": {
@@ -112,11 +194,39 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$200–$470 (Additional PAL Releases of Value)",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://whynow.co.uk/read/14-of-the-rarest-playstation-2-games",
+      "figure": "£260 for a complete PAL copy",
+      "date": "2022-04-13"
      }
     ]
    },
    {
-    "rank": 4,
+    "rank": 6,
+    "title": "Monster Eggs",
+    "search": "monster eggs",
+    "value_usd": {
+     "loose": null,
+     "cib": 584.62
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "weak",
+     "one_source"
+    ],
+    "note": "Phoenix Games budget title, mostly Italian copies.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/monster-eggs",
+      "figure": "CIB $584.62; 4 CIB sales $390.18-$900.76 (2024-05-17 to 2026-03-25), several Italian; Phoenix budget label, 2007",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 7,
     "title": "Ocean Commander",
     "search": "ocean commander",
     "value_usd": {
@@ -145,11 +255,16 @@
       "source": "https://whynow.co.uk/read/14-of-the-rarest-playstation-2-games",
       "figure": "about £250 (condition not stated)",
       "date": "2022-04-13"
+     },
+     {
+      "source": "https://retrododo.com/rare-ps2-games/",
+      "figure": "$380 for an Italian PS2 release in mint condition",
+      "date": "2020-05-15 (modified 2024-03-04)"
      }
     ]
    },
    {
-    "rank": 5,
+    "rank": 8,
     "title": "Michigan: Report from Hell",
     "search": "michigan report from hell",
     "value_usd": {
@@ -177,11 +292,16 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$340–$530 (Valuable PAL Imports)",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://retrododo.com/rare-ps2-games/",
+      "figure": "Normal boxed copies about $300; 'rare PAL variants closer to $650'",
+      "date": "2020-05-15 (modified 2024-03-04)"
      }
     ]
    },
    {
-    "rank": 6,
+    "rank": 9,
     "title": "Zombie Hunters 2",
     "search": "zombie hunters 2",
     "value_usd": {
@@ -206,7 +326,7 @@
     ]
    },
    {
-    "rank": 7,
+    "rank": 10,
     "title": "Cart Kings",
     "search": "cart kings",
     "value_usd": {
@@ -215,6 +335,7 @@
     },
     "flags": [
      "weak",
+     "one_source",
      "india"
     ],
     "note": "Indian-market PAL release (not Europe/UK/Australia); PriceCharting's figures rest on two 2026 sales.",
@@ -232,7 +353,7 @@
     ]
    },
    {
-    "rank": 8,
+    "rank": 11,
     "title": "The Silent Hill Collection",
     "search": "silent hill collection",
     "value_usd": {
@@ -258,18 +379,25 @@
       "source": "https://www.ppe.pl/publicystyka/324395/10-najdrozszych-obecnie-gier-na-ps2-rzadkie-europejskie-produkcje-na-ktore-poluja-kolekcjonerzy.html",
       "figure": "about 500–600 zł at auction (condition not stated)",
       "date": "2023-08-06"
+     },
+     {
+      "source": "https://www.denofgeek.com/?p=158747",
+      "figure": "'around £55' on Amazon.co.uk (UK, condition not stated)",
+      "date": "2008-05-14"
      }
     ]
    },
    {
-    "rank": 9,
+    "rank": 12,
     "title": "Buccaneer",
     "search": "buccaneer",
     "value_usd": {
      "loose": 189.9,
      "cib": 345.82
     },
-    "flags": [],
+    "flags": [
+     "one_source"
+    ],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
@@ -284,7 +412,30 @@
     ]
    },
    {
-    "rank": 10,
+    "rank": 13,
+    "title": "Jello",
+    "search": "jello",
+    "value_usd": {
+     "loose": null,
+     "cib": 338.23
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "weak",
+     "one_source"
+    ],
+    "note": "Phoenix Games puzzle game, Italian; three sales.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/jello",
+      "figure": "CIB $338.23; 3 CIB sales $232.52-$422.84 (2025-07-21 to 2026-04-08), all Italian Phoenix copies",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 14,
     "title": "Silent Hill: Shattered Memories",
     "search": "silent hill shattered memories",
     "value_usd": {
@@ -307,11 +458,22 @@
       "source": "https://www.destructoid.com/top-10-most-expensive-ps2-games-in-the-uk-ranked/",
       "figure": "£465 at CeX",
       "date": "2025-01-21"
+     },
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/silent-hill-shattered-memories-bbfc",
+      "figure": "PriceCharting lists the UK BBFC-rated print separately: loose none, CIB $576.52, 4 CIB sales $517.72-$664.64 (2026-04-28 to 2026-06-24). The PAL entry's $308.36 is the non-BBFC copy.",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/silent-hill-shattered-memories-bbfc",
+      "figure": "CIB $576.52; 4 CIB sales $517.72-$664.64 (2026-04/06)",
+      "date": "read 2026-10-09"
      }
-    ]
+    ],
+    "note": "PriceCharting lists the UK print with the BBFC rating separately, at CIB $576.52 (4 sales); it is folded in here."
    },
    {
-    "rank": 11,
+    "rank": 15,
     "title": "Samurai Western",
     "search": "samurai western",
     "value_usd": {
@@ -344,7 +506,7 @@
     ]
    },
    {
-    "rank": 12,
+    "rank": 16,
     "title": "Haunting Ground",
     "search": "haunting ground",
     "value_usd": {
@@ -366,7 +528,7 @@
     ]
    },
    {
-    "rank": 13,
+    "rank": 17,
     "title": "Rule of Rose",
     "search": "rule of rose",
     "value_usd": {
@@ -403,7 +565,7 @@
     ]
    },
    {
-    "rank": 14,
+    "rank": 18,
     "title": "Finkles World",
     "search": "finkles world",
     "value_usd": {
@@ -411,7 +573,8 @@
      "cib": 246.82
     },
     "flags": [
-     "weak"
+     "weak",
+     "one_source"
     ],
     "note": "Phoenix Games budget title; PriceCharting's price is a single sale (2025-05-14, Italian copy).",
     "evidence": [
@@ -428,7 +591,64 @@
     ]
    },
    {
-    "rank": 15,
+    "rank": 19,
+    "title": "Ultimate Spider-Man Limited Edition",
+    "search": "ultimate spider-man limited edition",
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "value_usd": {
+     "loose": 89.63,
+     "cib": 244.05
+    },
+    "flags": [
+     "one_source",
+     "edition"
+    ],
+    "note": "Special edition sold under its own name; the standard edition is not rare.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price&cursor=25",
+      "figure": "PriceCharting market price, USD: loose $89.42; complete (CIB) $217.18",
+      "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?view=table&cursor=250",
+      "figure": "Ultimate Spiderman [Limited Edition] loose $89.63, CIB $244.05",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "value_checked": "2026-10-09"
+   },
+   {
+    "rank": 20,
+    "title": "Kirikou et les Bêtes Sauvages",
+    "search": "kirikou",
+    "require": [
+     "sauvages"
+    ],
+    "value_usd": {
+     "loose": null,
+     "cib": 235.34
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "weak",
+     "one_source"
+    ],
+    "note": "French-only licensed game; one sale.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/kirikou-et-les-betes-sauvages",
+      "figure": "CIB $235.34 from one French sale (2025-06-01)",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 21,
     "title": "Armored Core: Last Raven",
     "search": "armored core last raven",
     "value_usd": {
@@ -460,27 +680,30 @@
     ]
    },
    {
-    "rank": 16,
+    "rank": 22,
     "title": "Manhunt 2",
     "search": "manhunt 2",
     "value_usd": {
      "loose": 85.96,
      "cib": 219.53
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "note": "Only PriceCharting found; CIB is 2.5 times loose.",
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price&cursor=25",
       "figure": "PriceCharting market price, USD: loose $85.96; complete (CIB) $219.53",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.ebay.com/p/1004335978",
+      "figure": "eBay catalogue page for the PAL (PEGI 18) release: related active listings CIB $139.99 and $150.00, disc only $79.99-$100.00, new $474.95 (asking prices, not sales)",
+      "date": "read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 17,
+    "rank": 23,
     "title": "Blood Will Tell",
     "search": "blood will tell",
     "value_usd": {
@@ -502,32 +725,30 @@
     ]
    },
    {
-    "rank": 18,
-    "title": "Ultimate Spider-Man Limited Edition",
-    "search": "ultimate spider-man limited edition",
-    "allow": [
-     "art book",
-     "artbook"
-    ],
+    "rank": 24,
+    "title": "Saint & Sinner",
+    "search": "saint sinner",
     "value_usd": {
-     "loose": 89.42,
-     "cib": 217.18
+     "loose": null,
+     "cib": 208.22
     },
+    "value_checked": "2026-10-09",
     "flags": [
-     "one_source",
-     "edition"
+     "weak",
+     "one_source"
     ],
-    "note": "Special edition sold under its own name; the standard edition is not rare.",
+    "note": "Phoenix Games budget title.",
     "evidence": [
      {
-      "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price&cursor=25",
-      "figure": "PriceCharting market price, USD: loose $89.42; complete (CIB) $217.18",
-      "date": "2026-10-08"
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/saint-&-sinner",
+      "figure": "CIB $208.22; 3 CIB sales $96.01-$317.46 (2023-07-22 to 2025-02-06); Phoenix, 2006",
+      "date": "read 2026-10-09"
      }
-    ]
+    ],
+    "added": "2026-10-09"
    },
    {
-    "rank": 19,
+    "rank": 25,
     "title": "Silent Hill Origins",
     "search": "silent hill origins",
     "value_usd": {
@@ -546,7 +767,7 @@
     ]
    },
    {
-    "rank": 20,
+    "rank": 26,
     "title": "Baroque",
     "search": "baroque",
     "value_usd": {
@@ -565,7 +786,7 @@
     ]
    },
    {
-    "rank": 21,
+    "rank": 27,
     "title": ".hack//Quarantine",
     "search": "hack quarantine",
     "value_usd": {
@@ -592,7 +813,7 @@
     ]
    },
    {
-    "rank": 22,
+    "rank": 28,
     "title": "Project Zero 3: The Tormented",
     "other_title": "Fatal Frame III: The Tormented",
     "search": "project zero 3",
@@ -600,19 +821,22 @@
      "loose": 129.28,
      "cib": 188.72
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
       "figure": "PriceCharting market price, USD: loose $129.28; complete (CIB) $188.72",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.ebay.com/itm/157684062408",
+      "figure": "Active eBay listing 'Project Zero 3 Factory Sealed ... PAL': GBP 268.56 or best offer (asking price for a sealed copy, not a sale)",
+      "date": "listing updated 2026-09-14; read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 23,
+    "rank": 29,
     "title": "Forbidden Siren 2",
     "search": "forbidden siren 2",
     "value_usd": {
@@ -634,7 +858,45 @@
     ]
    },
    {
-    "rank": 24,
+    "rank": 30,
+    "title": "The Getaway [Limited Edition]",
+    "other_title": "The Getaway",
+    "search": "getaway",
+    "require": [
+     "limited"
+    ],
+    "exclude": [
+     "black monday"
+    ],
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "value_usd": {
+     "loose": null,
+     "cib": 183.22
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "edition"
+    ],
+    "note": "Numbered UK limited edition.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/the-getaway-limited-edition",
+      "figure": "CIB $183.22; CIB sale $259.22 (2026-03-18, 'Limited Edition 976/1000'); sealed $577.28 (2026-04-19)",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://www.destructoid.com/top-10-most-expensive-ps2-games-in-the-uk-ranked/",
+      "figure": "'The Getaway (Limited Edition)': £250 at CeX (UK shop, mint)",
+      "date": "2025-01-21"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 31,
     "title": "King's Field IV",
     "other_title": "King's Field: The Ancient City",
     "search": "king's field iv",
@@ -654,27 +916,7 @@
     ]
    },
    {
-    "rank": 25,
-    "title": "Silent Hill 2",
-    "search": "silent hill 2",
-    "value_usd": {
-     "loose": 79.99,
-     "cib": 172.44
-    },
-    "flags": [
-     "one_source"
-    ],
-    "note": "PriceCharting also lists 'Silent Hill 2: Director's Cut [Platinum]' (loose $64.76, CIB $86.85) and '[Collector's Edition]' ($55.24 / $135.39); those are folded into this entry.",
-    "evidence": [
-     {
-      "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
-      "figure": "PriceCharting market price, USD: loose $79.99; complete (CIB) $172.44",
-      "date": "2026-10-08"
-     }
-    ]
-   },
-   {
-    "rank": 26,
+    "rank": 32,
     "title": "God Hand",
     "search": "god hand",
     "value_usd": {
@@ -696,7 +938,7 @@
     ]
    },
    {
-    "rank": 27,
+    "rank": 33,
     "title": "Wild Arms 5",
     "search": "wild arms 5",
     "value_usd": {
@@ -717,7 +959,7 @@
     ]
    },
    {
-    "rank": 28,
+    "rank": 34,
     "title": "Zombie Hunters",
     "search": "zombie hunters",
     "value_usd": {
@@ -737,7 +979,7 @@
     ]
    },
    {
-    "rank": 29,
+    "rank": 35,
     "title": "Homura",
     "search": "homura",
     "value_usd": {
@@ -756,7 +998,40 @@
     ]
    },
    {
-    "rank": 30,
+    "rank": 36,
+    "title": "Coraline",
+    "search": "coraline",
+    "value_usd": {
+     "loose": 117.74,
+     "cib": 157.79
+    },
+    "flags": [],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
+      "figure": "PriceCharting market price, USD: loose $116.29; complete (CIB) $117.74",
+      "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
+      "figure": "PAL 70–150 EUR complete",
+      "date": "2026-10-05 (price data as of July 2026)"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
+      "figure": "Coraline loose $117.74, CIB $157.79",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
+      "figure": "PAL complete 70-150 EUR; very good copies over 150 EUR",
+      "date": "2026-10-05"
+     }
+    ],
+    "value_checked": "2026-10-09"
+   },
+   {
+    "rank": 37,
     "title": "Raw Danger",
     "other_title": "Raw Danger!",
     "search": "raw danger",
@@ -776,7 +1051,7 @@
     ]
    },
    {
-    "rank": 31,
+    "rank": 38,
     "title": "Teenage Mutant Ninja Turtles 3: Mutant Nightmare",
     "search": "turtles 3 mutant nightmare",
     "value_usd": {
@@ -797,7 +1072,35 @@
     ]
    },
    {
-    "rank": 32,
+    "rank": 39,
+    "title": "Hard Knock High",
+    "search": "hard knock high",
+    "value_usd": {
+     "loose": 75.41,
+     "cib": 145.99
+    },
+    "flags": [],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
+      "figure": "PriceCharting market price, USD: loose $75.41; complete (CIB) $128.07",
+      "date": "2026-10-08"
+     },
+     {
+      "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
+      "figure": "$150–$180 (Additional PAL Releases of Value)",
+      "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?view=table&cursor=100",
+      "figure": "Hard Knock High loose $75.41, CIB $145.99",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "value_checked": "2026-10-09"
+   },
+   {
+    "rank": 40,
     "title": "Dragon Blaze",
     "search": "dragon blaze",
     "value_usd": {
@@ -819,7 +1122,7 @@
     ]
    },
    {
-    "rank": 33,
+    "rank": 41,
     "title": "Snow White and the 7 Clever Boys",
     "search": "Snow White and the 7 Clever Boys",
     "value_usd": {
@@ -841,26 +1144,84 @@
     ]
    },
    {
-    "rank": 34,
+    "rank": 42,
+    "title": "Silent Hill 3",
+    "search": "silent hill 3",
+    "value_usd": {
+     "loose": 106.81,
+     "cib": 140.11
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "one_source"
+    ],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/silent-hill-3",
+      "figure": "Loose $106.81, CIB $140.11, about 1 CIB sale a day; latest CIB $95.40-$171.89 (2026-09-30 to 2026-10-05)",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 43,
     "title": "Shin Megami Tensei: Persona 3 FES",
     "search": "persona 3 fes",
     "value_usd": {
      "loose": 106.88,
      "cib": 137.45
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
       "figure": "PriceCharting market price, USD: loose $106.88; complete (CIB) $137.45",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.potteriesauctions.com/news/playstation-2-value-guide-value-your-ps2-games-consoles",
+      "figure": "Named with Rule of Rose and Kuon as one of three 'High-Value Examples' by a UK auction house; no figure given",
+      "date": "2026-04-01"
      }
     ]
    },
    {
-    "rank": 35,
+    "rank": 44,
+    "title": "Silent Hill 2",
+    "search": "silent hill 2",
+    "value_usd": {
+     "loose": 79.99,
+     "cib": 133.01
+    },
+    "flags": [],
+    "note": "PriceCharting also lists 'Silent Hill 2: Director's Cut [Platinum]' (loose $64.76, CIB $86.85) and '[Collector's Edition]' ($55.24 / $135.39); those are folded into this entry.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
+      "figure": "PriceCharting market price, USD: loose $79.99; complete (CIB) $172.44",
+      "date": "2026-10-08"
+     },
+     {
+      "source": "https://lr.in.psf.lt/r/ps2/comments/1ax14js/i_realised_i_have_rare_games",
+      "figure": "Commenter: PAL special edition 'by the prices (100$+) on eBay I consider it rare'; another commenter says copies go for roughly 40-60",
+      "date": "2024-02-22"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?q=edition&view=table",
+      "figure": "Table: Silent Hill 2 loose $79.99, CIB $133.01; Silent Hill 2 [Collector's Edition] loose $55.24, CIB $135.39",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://lr.in.psf.lt/r/ps2/comments/1ax14js/i_realised_i_have_rare_games",
+      "figure": "'100$+ on eBay' vs 'roughly 40-60'",
+      "date": "2024-02-22"
+     }
+    ],
+    "value_checked": "2026-10-09"
+   },
+   {
+    "rank": 45,
     "title": "Kaido Racer 2",
     "other_title": "Tokyo Xtreme Racer: Drift 2",
     "search": "kaido racer 2",
@@ -880,48 +1241,29 @@
     ]
    },
    {
-    "rank": 36,
+    "rank": 46,
     "title": "Gregory Horror Show",
     "search": "gregory horror show",
     "value_usd": {
      "loose": 94.67,
      "cib": 128.37
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
       "figure": "PriceCharting market price, USD: loose $94.67; complete (CIB) $128.37",
       "date": "2026-10-08"
-     }
-    ]
-   },
-   {
-    "rank": 37,
-    "title": "Hard Knock High",
-    "search": "hard knock high",
-    "value_usd": {
-     "loose": 75.41,
-     "cib": 128.07
-    },
-    "flags": [],
-    "evidence": [
-     {
-      "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
-      "figure": "PriceCharting market price, USD: loose $75.41; complete (CIB) $128.07",
-      "date": "2026-10-08"
      },
      {
-      "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
-      "figure": "$150–$180 (Additional PAL Releases of Value)",
-      "date": "2022-11-25 (prices 'current as of November 2022')"
+      "source": "https://filmstories.co.uk/news/gregory-horror-show-cult-classic-ps2-game-is-20-years-old-today/",
+      "figure": "'a much sought-after cult classic'; original PAL copies sell for £40 to £150 (Europe-only Western release, never reached North America)",
+      "date": "2023-08-07"
      }
     ]
    },
    {
-    "rank": 38,
+    "rank": 47,
     "title": "Kaido Racer",
     "other_title": "Tokyo Xtreme Racer: Drift",
     "search": "kaido racer",
@@ -941,7 +1283,7 @@
     ]
    },
    {
-    "rank": 39,
+    "rank": 48,
     "title": "Project Zero 2: Crimson Butterfly",
     "other_title": "Fatal Frame II: Crimson Butterfly",
     "search": "project zero 2",
@@ -961,7 +1303,7 @@
     ]
    },
    {
-    "rank": 40,
+    "rank": 49,
     "title": "10.000 Bullets",
     "search": "10 000 bullets",
     "value_usd": {
@@ -981,7 +1323,7 @@
     ]
    },
    {
-    "rank": 41,
+    "rank": 50,
     "title": "Shin Megami Tensei: Devil Summoner: Raidou Kuzunoha vs. the Soulless Army",
     "search": "soulless army",
     "value_usd": {
@@ -1003,7 +1345,7 @@
     ]
    },
    {
-    "rank": 42,
+    "rank": 51,
     "title": "Echo Night: Beyond",
     "search": "echo night beyond",
     "value_usd": {
@@ -1025,7 +1367,7 @@
     ]
    },
    {
-    "rank": 43,
+    "rank": 52,
     "title": "Raiden III",
     "search": "raiden iii",
     "value_usd": {
@@ -1053,29 +1395,34 @@
     ]
    },
    {
-    "rank": 44,
-    "title": "Coraline",
-    "search": "coraline",
+    "rank": 53,
+    "title": "Pro Evolution Soccer 2014",
+    "search": "pro evolution soccer 2014",
     "value_usd": {
-     "loose": 116.29,
-     "cib": 117.74
+     "loose": 47.02,
+     "cib": 117.51
     },
-    "flags": [],
+    "value_checked": "2026-10-09",
+    "flags": [
+     "weak"
+    ],
+    "note": "The last PAL PES on PS2; the guide value leans on one high sale.",
     "evidence": [
      {
-      "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
-      "figure": "PriceCharting market price, USD: loose $116.29; complete (CIB) $117.74",
-      "date": "2026-10-08"
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/pro-evolution-soccer-2014",
+      "figure": "CIB $117.51 but the 5 latest CIB sales were $27.33-$98.51 (2026-03-10 to 2026-06-03)",
+      "date": "read 2026-10-09"
      },
      {
-      "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
-      "figure": "PAL 70–150 EUR complete",
-      "date": "2026-10-05 (price data as of July 2026)"
+      "source": "https://www.gamesasylum.com/?p=36690",
+      "figure": "£32 on Amazon, £28 at CeX (UK)",
+      "date": "2018-05-17"
      }
-    ]
+    ],
+    "added": "2026-10-09"
    },
    {
-    "rank": 45,
+    "rank": 54,
     "title": "Hanuman: The Boy Warrior",
     "search": "hanuman",
     "value_usd": {
@@ -1096,7 +1443,7 @@
     ]
    },
    {
-    "rank": 46,
+    "rank": 55,
     "title": "Dragon Sisters",
     "search": "dragon sisters",
     "value_usd": {
@@ -1116,7 +1463,7 @@
     ]
    },
    {
-    "rank": 47,
+    "rank": 56,
     "title": "Bloody Roar 4",
     "search": "bloody roar 4",
     "value_usd": {
@@ -1135,7 +1482,42 @@
     ]
    },
    {
-    "rank": 48,
+    "rank": 57,
+    "title": "Dragon Ball Z: Budokai 3 [Limited Edition Collectable Tin]",
+    "other_title": "Dragon Ball Z: Budokai 3",
+    "search": "budokai 3",
+    "require": [
+     "tin"
+    ],
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "value_usd": {
+     "loose": null,
+     "cib": 107.71
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "edition"
+    ],
+    "note": "Australian tin edition.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/dragon-ball-z-budokai-3-limited-edition-collectable-tin",
+      "figure": "CIB $107.71; 2 sales: $107.71 (2026-04-29) and $69.02 (2026-10-04), both 'AUS exclusive' tin",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
+      "figure": "PAL collector's tin about 108 USD (citing PriceCharting)",
+      "date": "2026-10-05"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 58,
     "title": "Armored Core: Nine Breaker",
     "search": "armored core nine breaker",
     "value_usd": {
@@ -1154,7 +1536,7 @@
     ]
    },
    {
-    "rank": 49,
+    "rank": 59,
     "title": "Castlevania: Curse of Darkness",
     "search": "castlevania curse of darkness",
     "value_usd": {
@@ -1173,7 +1555,7 @@
     ]
    },
    {
-    "rank": 50,
+    "rank": 60,
     "title": "Shadow Hearts",
     "search": "shadow hearts",
     "exclude": [
@@ -1196,7 +1578,7 @@
     ]
    },
    {
-    "rank": 51,
+    "rank": 61,
     "title": "Forbidden Siren",
     "other_title": "Siren",
     "search": "forbidden siren",
@@ -1216,7 +1598,7 @@
     ]
    },
    {
-    "rank": 52,
+    "rank": 62,
     "title": "Altered Beast",
     "search": "altered beast",
     "value_usd": {
@@ -1236,7 +1618,7 @@
     ]
    },
    {
-    "rank": 53,
+    "rank": 63,
     "title": "Harry Potter Collection",
     "search": "harry potter collection",
     "value_usd": {
@@ -1257,7 +1639,7 @@
     ]
    },
    {
-    "rank": 54,
+    "rank": 64,
     "title": "Ar Tonelico: Melody of Elemia",
     "search": "ar tonelico melody of elemia",
     "value_usd": {
@@ -1276,7 +1658,7 @@
     ]
    },
    {
-    "rank": 55,
+    "rank": 65,
     "title": "Nightshade",
     "search": "nightshade",
     "value_usd": {
@@ -1295,7 +1677,33 @@
     ]
    },
    {
-    "rank": 56,
+    "rank": 66,
+    "title": "Resident Evil Survivor 2: Code Veronica",
+    "other_title": "Resident Evil Gun Survivor 2: Code Veronica",
+    "search": "survivor 2",
+    "require": [
+     "resident evil"
+    ],
+    "value_usd": {
+     "loose": null,
+     "cib": 96.25
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "one_source"
+    ],
+    "note": "PAL-only release.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?view=table&cursor=50",
+      "figure": "Table: 'Resident Evil Gun Survivor 2: Code Veronica' loose none, CIB $96.25, new $231.00",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 67,
     "title": ".hack//Outbreak",
     "search": "hack outbreak",
     "value_usd": {
@@ -1314,7 +1722,7 @@
     ]
    },
    {
-    "rank": 57,
+    "rank": 68,
     "title": "Drakengard 2",
     "search": "drakengard 2",
     "value_usd": {
@@ -1333,7 +1741,7 @@
     ]
    },
    {
-    "rank": 58,
+    "rank": 69,
     "title": "Obscure",
     "search": "obscure",
     "exclude": [
@@ -1354,11 +1762,17 @@
       "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
       "figure": "German PAL 20–40 EUR complete; British PAL 70–130+ EUR (condition not stated)",
       "date": "2026-10-05 (price data as of July 2026)"
+     },
+     {
+      "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
+      "figure": "German PAL complete 20-40 EUR; British PAL 70 to over 130 EUR",
+      "date": "2026-10-05"
      }
-    ]
+    ],
+    "note": "German copies sell for 20–40 EUR complete, British ones for 70–130 EUR (GIGA); eBay UK mostly sees British copies."
    },
    {
-    "rank": 59,
+    "rank": 70,
     "title": "Growlanser: Heritage of War",
     "search": "growlanser heritage of war",
     "value_usd": {
@@ -1377,7 +1791,7 @@
     ]
    },
    {
-    "rank": 60,
+    "rank": 71,
     "title": "Sol Divide",
     "search": "sol divide",
     "value_usd": {
@@ -1396,7 +1810,28 @@
     ]
    },
    {
-    "rank": 61,
+    "rank": 72,
+    "title": "Silent Hill 4: The Room",
+    "search": "silent hill 4",
+    "value_usd": {
+     "loose": 68.73,
+     "cib": 88.31
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "one_source"
+    ],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/silent-hill-4-the-room",
+      "figure": "Loose $68.73, CIB $88.31, about 3 CIB sales a week; latest CIB $101.86-$108.57",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 73,
     "title": "Iron Chef",
     "search": "iron chef",
     "value_usd": {
@@ -1419,7 +1854,7 @@
     ]
    },
    {
-    "rank": 62,
+    "rank": 74,
     "title": "Evil Dead: Regeneration",
     "search": "evil dead regeneration",
     "value_usd": {
@@ -1439,7 +1874,7 @@
     ]
    },
    {
-    "rank": 63,
+    "rank": 75,
     "title": "Shin Megami Tensei: Persona 3",
     "search": "persona 3",
     "exclude": [
@@ -1449,19 +1884,22 @@
      "loose": 67.85,
      "cib": 86.13
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
       "figure": "PriceCharting market price, USD: loose $67.85; complete (CIB) $86.13",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.denofgeek.com/?p=158747",
+      "figure": "£15 on eBay or £20 on Amazon.co.uk (UK, 2008; old figure, condition not stated)",
+      "date": "2008-05-14"
      }
     ]
    },
    {
-    "rank": 64,
+    "rank": 76,
     "title": "Clock Tower 3",
     "search": "clock tower 3",
     "value_usd": {
@@ -1480,7 +1918,7 @@
     ]
    },
    {
-    "rank": 65,
+    "rank": 77,
     "title": "Obscure II",
     "other_title": "Obscure: The Aftermath",
     "search": "obscure ii",
@@ -1500,26 +1938,29 @@
     ]
    },
    {
-    "rank": 66,
+    "rank": 78,
     "title": "Space Channel 5: Part 2",
     "search": "space channel 5 part 2",
     "value_usd": {
      "loose": 68.09,
      "cib": 84.4
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
       "figure": "PriceCharting market price, USD: loose $68.09; complete (CIB) $84.40",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.denofgeek.com/?p=158747",
+      "figure": "£85 from Amazon.co.uk; £50 on eBay (UK, condition not stated)",
+      "date": "2008-05-14"
      }
     ]
    },
    {
-    "rank": 67,
+    "rank": 79,
     "title": "Harry Potter and the Philosopher's Stone",
     "other_title": "Harry Potter and the Sorcerer's Stone",
     "search": "philosophers stone",
@@ -1542,7 +1983,7 @@
     ]
    },
    {
-    "rank": 68,
+    "rank": 80,
     "title": "Curse: The Eye of Isis",
     "search": "eye of isis",
     "value_usd": {
@@ -1561,7 +2002,7 @@
     ]
    },
    {
-    "rank": 69,
+    "rank": 81,
     "title": "Samurai Jack: The Shadow of Aku",
     "search": "shadow of aku",
     "value_usd": {
@@ -1580,7 +2021,7 @@
     ]
    },
    {
-    "rank": 70,
+    "rank": 82,
     "title": "Neo Contra",
     "search": "neo contra",
     "value_usd": {
@@ -1599,7 +2040,7 @@
     ]
    },
    {
-    "rank": 71,
+    "rank": 83,
     "title": "Legend of Sayuki",
     "search": "legend of sayuki",
     "value_usd": {
@@ -1629,7 +2070,7 @@
     ]
    },
    {
-    "rank": 72,
+    "rank": 84,
     "title": "Ghost Vibration",
     "search": "ghost vibration",
     "value_usd": {
@@ -1648,7 +2089,7 @@
     ]
    },
    {
-    "rank": 73,
+    "rank": 85,
     "title": "Samurai Warriors 2: Xtreme Legends",
     "search": "samurai warriors 2 xtreme legends",
     "value_usd": {
@@ -1667,7 +2108,29 @@
     ]
    },
    {
-    "rank": 74,
+    "rank": 86,
+    "title": "Project Zero",
+    "other_title": "Fatal Frame",
+    "search": "project zero",
+    "value_usd": {
+     "loose": 74.59,
+     "cib": 78.06
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "one_source"
+    ],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/project-zero",
+      "figure": "Game page: loose $70.47, CIB $70.50 (table: $74.59 / $78.06); latest CIB $78.64-$113.51",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 87,
     "title": "Steambot Chronicles",
     "search": "steambot chronicles",
     "value_usd": {
@@ -1686,7 +2149,31 @@
     ]
    },
    {
-    "rank": 75,
+    "rank": 88,
+    "title": "Giga Wing Generations",
+    "search": "giga wing generations",
+    "value_usd": {
+     "loose": null,
+     "cib": 75.19
+    },
+    "value_checked": "2026-10-09",
+    "flags": [],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?view=table&cursor=1650",
+      "figure": "Table: loose none, CIB $75.19",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
+      "figure": "Japanese release (Gigawing Generations) $70-$120 - a different region's copy, cited only as rarity context",
+      "date": "2022-11-25"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 89,
     "title": "Splatter Master",
     "search": "splatter master",
     "value_usd": {
@@ -1706,26 +2193,29 @@
     ]
    },
    {
-    "rank": 76,
+    "rank": 90,
     "title": "Tengai",
     "search": "tengai",
     "value_usd": {
      "loose": 38.27,
      "cib": 74.63
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price&cursor=100",
       "figure": "PriceCharting market price, USD: loose $38.27; complete (CIB) $74.63",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://shmups.system11.org/viewtopic.php?p=1201738",
+      "figure": "Forum post: Tengai (PAL release of Sengoku Blade) 'runs for 100 euro or more on Ebay'; a reply recalls buying it for about £10 in 2008",
+      "date": "2016-07-30"
      }
     ]
    },
    {
-    "rank": 77,
+    "rank": 91,
     "title": "Ar Tonelico 2: Melody of Metafalica",
     "other_title": "Ar Tonelico II: Melody of Metafalica",
     "search": "ar tonelico 2",
@@ -1745,7 +2235,7 @@
     ]
    },
    {
-    "rank": 78,
+    "rank": 92,
     "title": "Stella Deus: The Gate of Eternity",
     "search": "stella deus",
     "value_usd": {
@@ -1764,7 +2254,7 @@
     ]
    },
    {
-    "rank": 79,
+    "rank": 93,
     "title": "Shinobido: Way of the Ninja",
     "search": "shinobido way of the ninja",
     "value_usd": {
@@ -1783,7 +2273,29 @@
     ]
    },
    {
-    "rank": 80,
+    "rank": 94,
+    "title": "Grand Theft Auto: Vice City Stories",
+    "search": "vice city stories",
+    "value_usd": {
+     "loose": 20.6,
+     "cib": 72.28
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "one_source"
+    ],
+    "note": "Late PS2 port (2007).",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/pal-playstation-2/grand-theft-auto-vice-city-stories",
+      "figure": "CIB $72.28, about 3 CIB sales a week; latest CIB $69.24-$88.02",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 95,
     "title": "Def Jam: Fight for NY",
     "search": "def jam fight for ny",
     "value_usd": {
@@ -1802,7 +2314,7 @@
     ]
    },
    {
-    "rank": 81,
+    "rank": 96,
     "title": "Ribbit King",
     "search": "ribbit king",
     "value_usd": {
@@ -1821,7 +2333,7 @@
     ]
    },
    {
-    "rank": 82,
+    "rank": 97,
     "title": "Sword of Etheria",
     "search": "sword of etheria",
     "value_usd": {
@@ -1840,7 +2352,7 @@
     ]
    },
    {
-    "rank": 83,
+    "rank": 98,
     "title": "Red Ninja: End of Honor",
     "search": "red ninja end of honor",
     "value_usd": {
@@ -1859,7 +2371,7 @@
     ]
    },
    {
-    "rank": 84,
+    "rank": 99,
     "title": "Ra One: The Game",
     "search": "ra one",
     "value_usd": {
@@ -1880,7 +2392,7 @@
     ]
    },
    {
-    "rank": 85,
+    "rank": 100,
     "title": "Teenage Mutant Ninja Turtles 2: Battle Nexus",
     "search": "turtles 2 battle nexus",
     "value_usd": {
@@ -1899,7 +2411,7 @@
     ]
    },
    {
-    "rank": 86,
+    "rank": 101,
     "title": "Armored Core 3",
     "search": "armored core 3",
     "exclude": [
@@ -1921,7 +2433,7 @@
     ]
    },
    {
-    "rank": 87,
+    "rank": 102,
     "title": "Magna Carta",
     "other_title": "Magna Carta: Tears of Blood",
     "search": "magna carta",
@@ -1941,7 +2453,7 @@
     ]
    },
    {
-    "rank": 88,
+    "rank": 103,
     "title": "Ape Escape 3",
     "search": "ape escape 3",
     "value_usd": {
@@ -1960,7 +2472,7 @@
     ]
    },
    {
-    "rank": 89,
+    "rank": 104,
     "title": "Wild Arms 4",
     "search": "wild arms 4",
     "value_usd": {
@@ -1979,7 +2491,7 @@
     ]
    },
    {
-    "rank": 90,
+    "rank": 105,
     "title": "Metal Gear Solid 3: Subsistence",
     "search": "metal gear solid 3 subsistence",
     "value_usd": {
@@ -1998,7 +2510,7 @@
     ]
    },
    {
-    "rank": 91,
+    "rank": 106,
     "title": "Monster Attack",
     "search": "monster attack",
     "value_usd": {
@@ -2017,7 +2529,7 @@
     ]
    },
    {
-    "rank": 92,
+    "rank": 107,
     "title": "Mr. Moskeeto",
     "other_title": "Mister Mosquito",
     "search": "mr moskeeto",
@@ -2037,7 +2549,7 @@
     ]
    },
    {
-    "rank": 93,
+    "rank": 108,
     "title": "Persona 4",
     "other_title": "Shin Megami Tensei: Persona 4",
     "search": "persona 4",
@@ -2058,7 +2570,7 @@
     ]
    },
    {
-    "rank": 94,
+    "rank": 109,
     "title": "Armored Core: Nexus",
     "search": "armored core nexus",
     "value_usd": {
@@ -2077,7 +2589,7 @@
     ]
    },
    {
-    "rank": 95,
+    "rank": 110,
     "title": "Fire Pro Wrestling Returns",
     "search": "fire pro wrestling returns",
     "value_usd": {
@@ -2097,7 +2609,7 @@
     ]
    },
    {
-    "rank": 96,
+    "rank": 111,
     "title": "Secret Agent Clank",
     "search": "secret agent clank",
     "value_usd": {
@@ -2116,7 +2628,7 @@
     ]
    },
    {
-    "rank": 97,
+    "rank": 112,
     "title": "Ruff Trigger: The Vanocore Conspiracy",
     "search": "ruff trigger",
     "value_usd": {
@@ -2135,7 +2647,7 @@
     ]
    },
    {
-    "rank": 98,
+    "rank": 113,
     "title": "Shadow Hearts: Covenant",
     "search": "shadow hearts covenant",
     "value_usd": {
@@ -2154,7 +2666,7 @@
     ]
    },
    {
-    "rank": 99,
+    "rank": 114,
     "title": "Wipeout Pulse",
     "search": "wipeout pulse",
     "value_usd": {
@@ -2173,7 +2685,7 @@
     ]
    },
    {
-    "rank": 100,
+    "rank": 115,
     "title": "Scooby-Doo! and the Spooky Swamp",
     "search": "spooky swamp",
     "value_usd": {
@@ -2222,6 +2734,21 @@
       "source": "https://retrododo.com/rare-ps2-games/",
       "figure": "$900 (condition not stated)",
       "date": "2020-05-15 (page modified 2024-03-04)"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$756, CIB ~$1,750, sealed ~$2,200-$2,290 (region not stated; US listing context)",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "About $1,600 complete in box; $1,971+ sealed",
+      "date": "2026-07-31"
+     },
+     {
+      "source": "https://www.ofzenandcomputing.com/most-expensive-playstation-games/",
+      "figure": "'around $550 complete in box'",
+      "date": "2025-09-03"
      }
     ]
    },
@@ -2254,11 +2781,52 @@
       "source": "https://retrododo.com/rare-ps2-games/",
       "figure": "recent sales over $400",
       "date": "2020-05-15 (page modified 2024-03-04)"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$728, CIB ~$1,075, sealed ~$1,200-$1,500",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "CIB average $822; $1,550+ sealed",
+      "date": "2026-07-31"
      }
     ]
    },
    {
     "rank": 3,
+    "title": "Sega Fun Pack: Shadow the Hedgehog & Sonic Mega Collection Plus",
+    "search": "fun pack",
+    "require": [
+     "shadow"
+    ],
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "value_usd": {
+     "loose": null,
+     "cib": 750.0
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "weak",
+     "one_source",
+     "edition"
+    ],
+    "note": "Two-game box sold under its own name; three sales.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/playstation-2/sega-fun-pack-shadow-of-the-hedgehog-and-sonic-collection-pack",
+      "figure": "CIB $750.00; 3 CIB sales: $1,000.00 (2025-05-11), $1,000.00 (2026-05-28), $500.00 (2026-07-17)",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 4,
     "title": "Haunting Ground",
     "search": "haunting ground",
     "value_usd": {
@@ -2281,11 +2849,21 @@
       "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
       "figure": "~575 USD complete",
       "date": "2026-10-05 (price data as of July 2026)"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$449, CIB ~$610, sealed ~$745-$988",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "About $479 CIB; approaching $710 sealed",
+      "date": "2026-07-31"
      }
     ]
    },
    {
-    "rank": 4,
+    "rank": 5,
     "title": "Obscure",
     "search": "obscure",
     "exclude": [
@@ -2311,11 +2889,21 @@
       "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
       "figure": "~450 USD complete",
       "date": "2026-10-05 (price data as of July 2026)"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$380; sealed over $800",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "About $407 CIB; $850 sealed",
+      "date": "2026-07-31"
      }
     ]
    },
    {
-    "rank": 5,
+    "rank": 6,
     "title": "Silent Hill: Shattered Memories",
     "search": "silent hill shattered memories",
     "value_usd": {
@@ -2333,11 +2921,21 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$200–$400 ($500–$700 sealed)",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$310-$334, CIB ~$435-$510, sealed ~$660-$725",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "Near $472 CIB; $665 sealed",
+      "date": "2026-07-31"
      }
     ]
    },
    {
-    "rank": 6,
+    "rank": 7,
     "title": "Bully Collector's Edition",
     "search": "bully collector's edition",
     "allow": [
@@ -2366,7 +2964,7 @@
     ]
    },
    {
-    "rank": 7,
+    "rank": 8,
     "title": "Futurama",
     "search": "futurama",
     "value_usd": {
@@ -2389,11 +2987,21 @@
       "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
       "figure": "~416 USD complete",
       "date": "2026-10-05 (price data as of July 2026)"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$215-$250, CIB ~$305-$458, sealed ~$900-$1,100+",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "$327 CIB; $1,105 sealed",
+      "date": "2026-07-31"
      }
     ]
    },
    {
-    "rank": 8,
+    "rank": 9,
     "title": "Blood Will Tell",
     "search": "blood will tell",
     "value_usd": {
@@ -2421,11 +3029,21 @@
       "source": "https://retrododo.com/rare-ps2-games/",
       "figure": "$300 boxed",
       "date": "2020-05-15 (page modified 2024-03-04)"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "CIB average $369; over $600 sealed",
+      "date": "2026-07-31"
+     },
+     {
+      "source": "https://www.ofzenandcomputing.com/most-expensive-playstation-games/",
+      "figure": "$350 (condition not stated)",
+      "date": "2025-09-03"
      }
     ]
    },
    {
-    "rank": 9,
+    "rank": 10,
     "title": ".hack//Quarantine",
     "search": "hack quarantine",
     "value_usd": {
@@ -2448,11 +3066,21 @@
       "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
       "figure": "~391 USD complete (citing PriceCharting)",
       "date": "2026-10-05 (price data as of July 2026)"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$300, CIB ~$430, sealed ~$455",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "$285 CIB",
+      "date": "2026-07-31"
      }
     ]
    },
    {
-    "rank": 10,
+    "rank": 11,
     "title": "Silent Hill 3",
     "search": "silent hill 3",
     "value_usd": {
@@ -2470,11 +3098,26 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$95–$225",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$195, CIB ~$353, sealed ~$700",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "$306 CIB; $615 sealed",
+      "date": "2026-07-31"
+     },
+     {
+      "source": "https://vgcollect.com/forum/index.php/topic,10972.0.html",
+      "figure": "Forum post: 'SH3 is pushing $120'",
+      "date": "2020-07-20"
      }
     ]
    },
    {
-    "rank": 11,
+    "rank": 12,
     "title": "Coraline",
     "search": "coraline",
     "value_usd": {
@@ -2496,7 +3139,7 @@
     ]
    },
    {
-    "rank": 12,
+    "rank": 13,
     "title": "Chulip",
     "search": "chulip",
     "value_usd": {
@@ -2518,7 +3161,7 @@
     ]
    },
    {
-    "rank": 13,
+    "rank": 14,
     "title": "Xenosaga Episode III: Also sprach Zarathustra",
     "search": "xenosaga episode iii",
     "value_usd": {
@@ -2537,11 +3180,21 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "standard cover $175–$275; lenticular cover $225–$400",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$212-$440, CIB ~$300-$475, sealed ~$404-$685",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://daily.slickdeals.net/tech/rarest-most-valuable-playstation-games",
+      "figure": "Current average price $288 (sealed, complete and loose averaged)",
+      "date": "2022-01-03"
      }
     ]
    },
    {
-    "rank": 14,
+    "rank": 15,
     "title": "Robot Alchemic Drive",
     "search": "robot alchemic drive",
     "value_usd": {
@@ -2564,7 +3217,7 @@
     ]
    },
    {
-    "rank": 15,
+    "rank": 16,
     "title": "The Guy Game",
     "search": "guy game",
     "value_usd": {
@@ -2586,7 +3239,51 @@
     ]
    },
    {
-    "rank": 16,
+    "rank": 17,
+    "title": "Dragon Ball Z: Budokai 3 Limited Edition",
+    "other_title": "Dragon Ball Z: Budokai 3",
+    "search": "budokai 3",
+    "require": [
+     "limited"
+    ],
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "value_usd": {
+     "loose": 19.74,
+     "cib": 258.69
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "edition"
+    ],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/playstation-2/dragon-ball-z-budokai-3-limited-edition",
+      "figure": "CIB $258.69, about 6 sales a year; latest CIB $230.79-$562.50 (2025-08-30 to 2026-09-05)",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
+      "figure": "US Limited Edition complete set about 231 USD; new over 1,000 USD (citing PriceCharting)",
+      "date": "2026-10-05"
+     },
+     {
+      "source": "https://www.ebay.com/p/31003577",
+      "figure": "eBay.com catalogue: active listings $575.00-$1,250.00, mostly new (asking prices)",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://collectorsedition.org/?p=15009",
+      "figure": "Contents: Broly chibi figure and bonus DVD; NTSC, Atari, 2004-11-16 (no value)",
+      "date": "entry updated 2013-02-23"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 18,
     "title": "Steambot Chronicles",
     "search": "steambot chronicles",
     "value_usd": {
@@ -2604,11 +3301,50 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$100–$200",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.cheatcc.com/?p=210910",
+      "figure": "Sealed around $200 (no loose or CIB figure)",
+      "date": "2026-08-10"
      }
     ]
    },
    {
-    "rank": 17,
+    "rank": 19,
+    "title": "Metal Gear Solid 3: Subsistence Limited Edition",
+    "other_title": "Metal Gear Solid 3: Subsistence",
+    "search": "subsistence",
+    "require": [
+     "limited"
+    ],
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "value_usd": {
+     "loose": 78.28,
+     "cib": 235.0
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "edition"
+    ],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/playstation-2/metal-gear-solid-3-subsistence-limited-edition",
+      "figure": "CIB $235.00, about 1 sale a week; latest CIB-titled sales $134.50-$360.46 (2026-08-15 to 2026-10-01)",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://www.denofgeek.com/?p=158747",
+      "figure": "'Metal Gear Solid 3: Subsistence (Limited Edition)': $195 (£100) on Amazon.com",
+      "date": "2008-05-14"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 20,
     "title": "God Hand",
     "search": "god hand",
     "value_usd": {
@@ -2631,11 +3367,16 @@
       "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
       "figure": "~220 USD complete",
       "date": "2026-10-05 (price data as of July 2026)"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Sealed ~$320",
+      "date": "2026-08-24"
      }
     ]
    },
    {
-    "rank": 18,
+    "rank": 21,
     "title": "Gitaroo Man",
     "search": "gitaroo man",
     "value_usd": {
@@ -2657,7 +3398,7 @@
     ]
    },
    {
-    "rank": 19,
+    "rank": 22,
     "title": "Samurai Western",
     "search": "samurai western",
     "value_usd": {
@@ -2675,11 +3416,21 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$70–$190",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Sealed ~$275",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://www.thegamer.com/rarest-ps2-games-value-price/",
+      "figure": "Around $130 for a new copy",
+      "date": "undated (read 2026-10-09)"
      }
     ]
    },
    {
-    "rank": 20,
+    "rank": 23,
     "title": "MS Saga: A New Dawn",
     "search": "ms saga",
     "value_usd": {
@@ -2697,11 +3448,52 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$90–$170",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.cheatcc.com/?p=210910",
+      "figure": "Sealed around $170 (no loose or CIB figure)",
+      "date": "2026-08-10"
      }
     ]
    },
    {
-    "rank": 21,
+    "rank": 24,
+    "title": "Grand Theft Auto Stories Double Pack",
+    "search": "stories double pack",
+    "value_usd": {
+     "loose": 89.0,
+     "cib": 212.5
+    },
+    "flags": [
+     "edition"
+    ],
+    "note": "Two-game compilation (Liberty City Stories and Vice City Stories). Value unsettled: PriceCharting $212.50 on 2026-10-09, a US retro shop $99.99 complete.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
+      "figure": "PriceCharting market price, USD: loose $89.00; complete (CIB) $164.99",
+      "date": "2026-10-08"
+     },
+     {
+      "source": "https://retrofixgames.com/products/grand-theft-auto-stories-double-pack-liberty-city-stories-vice-city-stories-ps2",
+      "figure": "Retrofix Games (Missoula shop): complete copy $99.99 (stock status unclear) - well under PriceCharting's figure",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?view=table&cursor=50",
+      "figure": "GTA Stories Double Pack loose $70.07, CIB $212.50",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://retrofixgames.com/products/grand-theft-auto-stories-double-pack-liberty-city-stories-vice-city-stories-ps2",
+      "figure": "Complete $99.99",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "value_checked": "2026-10-09"
+   },
+   {
+    "rank": 25,
     "title": "Silent Hill 2",
     "search": "silent hill 2",
     "value_usd": {
@@ -2720,50 +3512,71 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "Greatest Hits $80–$200; Black Label $72–$200",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.cheatcc.com/?p=210910",
+      "figure": "Loose ~$121, CIB ~$185, sealed ~$950",
+      "date": "2026-08-10"
+     },
+     {
+      "source": "https://daily.slickdeals.net/tech/rarest-most-valuable-playstation-games",
+      "figure": "Current average price $179",
+      "date": "2022-01-03"
      }
     ]
    },
    {
-    "rank": 22,
+    "rank": 26,
     "title": "Samurai Champloo: Sidetracked",
     "search": "samurai champloo sidetracked",
     "value_usd": {
      "loose": 84.87,
      "cib": 200.0
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "note": "PriceCharting's CIB is 2.4 times loose.",
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
       "figure": "PriceCharting market price, USD: loose $84.87; complete (CIB) $200.00",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.ebay.com/p/52410438",
+      "figure": "eBay.com catalogue: active listings CIB $249.99, no manual $139.99-$194.99, sealed $450.00 (asking prices)",
+      "date": "read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 23,
+    "rank": 27,
     "title": "Silent Hill 4: The Room",
     "search": "silent hill 4",
     "value_usd": {
      "loose": 137.5,
      "cib": 199.99
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price",
       "figure": "PriceCharting market price, USD: loose $137.50; complete (CIB) $199.99",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose $134; sealed $412",
+      "date": "2026-08-24"
+     },
+     {
+      "source": "https://vgcollect.com/forum/index.php/topic,10972.0.html",
+      "figure": "Forum post: 'SH4 is around $90'",
+      "date": "2020-07-20"
      }
     ]
    },
    {
-    "rank": 24,
+    "rank": 28,
     "title": "Growlanser: Generations Deluxe Edition",
     "search": "growlanser generations deluxe",
     "allow": [
@@ -2788,11 +3601,16 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$190–$260 (Collectors/Limited Editions)",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.thegamer.com/rarest-ps2-games-value-price/",
+      "figure": "Close to $100 for the deluxe edition with extras",
+      "date": "undated (read 2026-10-09)"
      }
     ]
    },
    {
-    "rank": 25,
+    "rank": 29,
     "title": "Def Jam: Fight for NY",
     "search": "def jam fight for ny",
     "value_usd": {
@@ -2811,11 +3629,21 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "Greatest Hits $110–$245; Black Label $85–$220",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.cheatcc.com/?p=210910",
+      "figure": "Loose ~$157, CIB ~$200, sealed ~$826",
+      "date": "2026-08-10"
+     },
+     {
+      "source": "https://daily.slickdeals.net/tech/rarest-most-valuable-playstation-games",
+      "figure": "Current average price $270",
+      "date": "2022-01-03"
      }
     ]
    },
    {
-    "rank": 26,
+    "rank": 30,
     "title": "Silent Hill Origins",
     "search": "silent hill origins",
     "value_usd": {
@@ -2837,7 +3665,7 @@
     ]
    },
    {
-    "rank": 27,
+    "rank": 31,
     "title": "Echo Night: Beyond",
     "search": "echo night beyond",
     "value_usd": {
@@ -2860,11 +3688,56 @@
       "source": "https://www.giga.de/games/die-ps2-hatte-ueber-4-000-spiele-aber-nur-eine-handvoll-ist-heute-richtig-geld-wert--01KXDHE476HFWJQY87H3DT9ZFA",
       "figure": "~195 USD complete",
       "date": "2026-10-05 (price data as of July 2026)"
+     },
+     {
+      "source": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "figure": "$500+ sealed",
+      "date": "2026-07-31"
      }
     ]
    },
    {
-    "rank": 28,
+    "rank": 32,
+    "title": "Resident Evil 4 Premium Edition",
+    "other_title": "Resident Evil 4",
+    "search": "resident evil 4",
+    "require": [
+     "premium"
+    ],
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "value_usd": {
+     "loose": 75.0,
+     "cib": 177.35
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "edition"
+    ],
+    "note": "About 60,100 made (Collectors Edition database).",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/playstation-2/resident-evil-4-premium-edition",
+      "figure": "CIB $177.35 (table $185.00), about 3 sales a week; latest CIB $122.02-$245.00",
+      "date": "read 2026-10-09"
+     },
+     {
+      "source": "https://collectorsedition.org/game-db/resident-evil-4-premium-edition-ps2-ntsc",
+      "figure": "SteelBook, making-of DVD, Ada Wong laser cel, prologue book, numbered certificate; 'total production of 60,100 units'",
+      "date": "entry updated 2011-02-10"
+     },
+     {
+      "source": "https://www.ebay.com/p/50568501",
+      "figure": "eBay.com catalogue: about 22 active listings $70.87-$8,999 (graded), most $100-$300 (asking prices)",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 33,
     "title": "Wild Arms 5: 10th Anniversary Edition",
     "search": "wild arms 5 10th anniversary",
     "value_usd": {
@@ -2889,26 +3762,29 @@
     ]
    },
    {
-    "rank": 29,
+    "rank": 34,
     "title": "Mobile Suit Gundam: Gundam vs. Zeta Gundam",
     "search": "gundam vs zeta gundam",
     "value_usd": {
      "loose": 118.8,
      "cib": 172.72
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price",
       "figure": "PriceCharting market price, USD: loose $118.80; complete (CIB) $172.72",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://vgcollect.com/forum/index.php/topic,10972.0.html",
+      "figure": "Forum post names it, with Wild Arms: Alter Code F, as going for 'quite a hefty' price (no figure)",
+      "date": "2020-07-20"
      }
     ]
    },
    {
-    "rank": 30,
+    "rank": 35,
     "title": "Dragon Ball Z: Trilogy",
     "search": "dragon ball z trilogy",
     "value_usd": {
@@ -2933,7 +3809,7 @@
     ]
    },
    {
-    "rank": 31,
+    "rank": 36,
     "title": "Wild Arms 5",
     "search": "wild arms 5",
     "exclude": [
@@ -2954,32 +3830,73 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$108–$190",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://moneyinc.com/most-expensive-ps2-games-of-all-time/",
+      "figure": "'more than $100' (Western release; condition not stated)",
+      "date": "2018-08-21"
      }
     ]
    },
    {
-    "rank": 32,
-    "title": "Grand Theft Auto Stories Double Pack",
-    "search": "stories double pack",
-    "value_usd": {
-     "loose": 89.0,
-     "cib": 164.99
-    },
-    "flags": [
-     "one_source",
-     "edition"
+    "rank": 37,
+    "title": "Shadow Hearts",
+    "search": "shadow hearts",
+    "exclude": [
+     "covenant",
+     "new world"
     ],
-    "note": "Two-game compilation (Liberty City Stories and Vice City Stories).",
+    "value_usd": {
+     "loose": 91.5,
+     "cib": 160.13
+    },
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
-      "figure": "PriceCharting market price, USD: loose $89.00; complete (CIB) $164.99",
+      "figure": "PriceCharting market price, USD: loose $93.43; complete (CIB) $134.51",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
+      "figure": "$87–$155",
+      "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?q=special+edition&view=table",
+      "figure": "Shadow Hearts loose $91.50, CIB $160.13",
+      "date": "read 2026-10-09"
      }
-    ]
+    ],
+    "value_checked": "2026-10-09"
    },
    {
-    "rank": 33,
+    "rank": 38,
+    "title": "Red Ninja: End of Honor",
+    "search": "red ninja end of honor",
+    "value_usd": {
+     "loose": 70.0,
+     "cib": 155.87
+    },
+    "flags": [
+     "one_source"
+    ],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
+      "figure": "PriceCharting market price, USD: loose $70.00; complete (CIB) $122.50",
+      "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?view=table&cursor=200",
+      "figure": "Red Ninja End of Honor loose $70.00, CIB $155.87",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "value_checked": "2026-10-09"
+   },
+   {
+    "rank": 39,
     "title": "Shin Megami Tensei: Devil Summoner 2 Raiho Special Edition",
     "search": "king abaddon",
     "require": [
@@ -3012,12 +3929,34 @@
     ]
    },
    {
-    "rank": 34,
+    "rank": 40,
     "title": "Resident Evil Outbreak File 2",
     "search": "resident evil outbreak file 2",
     "value_usd": {
      "loose": 94.38,
      "cib": 149.55
+    },
+    "flags": [],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
+      "figure": "PriceCharting market price, USD: loose $94.38; complete (CIB) $149.55",
+      "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.ebay.com/p/44144355",
+      "figure": "eBay.com catalogue (56 active listings): CIB roughly $139.99-$254.99, disc only roughly $80.99-$100.00, sealed $249.95 (asking prices)",
+      "date": "read 2026-10-09"
+     }
+    ]
+   },
+   {
+    "rank": 41,
+    "title": "The Punisher",
+    "search": "punisher",
+    "value_usd": {
+     "loose": 92.93,
+     "cib": 146.49
     },
     "flags": [
      "one_source"
@@ -3025,13 +3964,19 @@
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
-      "figure": "PriceCharting market price, USD: loose $94.38; complete (CIB) $149.55",
+      "figure": "PriceCharting market price, USD: loose $84.99; complete (CIB) $109.99",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?q=special+edition&view=table",
+      "figure": "The Punisher loose $92.93, CIB $146.49",
+      "date": "read 2026-10-09"
      }
-    ]
+    ],
+    "value_checked": "2026-10-09"
    },
    {
-    "rank": 35,
+    "rank": 42,
     "title": "Tekken 5 Ultimate Collector's Edition",
     "search": "tekken 5 ultimate collector's edition",
     "allow": [
@@ -3060,27 +4005,30 @@
     ]
    },
    {
-    "rank": 36,
+    "rank": 43,
     "title": "Samurai Jack: The Shadow of Aku",
     "search": "shadow of aku",
     "value_usd": {
      "loose": 50.71,
      "cib": 143.07
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "note": "PriceCharting's CIB is 2.8 times loose.",
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=150",
       "figure": "PriceCharting market price, USD: loose $50.71; complete (CIB) $143.07",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.ebay.com/p/6481247",
+      "figure": "eBay.com catalogue (NTSC-U/C): active CIB listings $189.50-$199.95, sealed $419.98-$499.95 (asking prices)",
+      "date": "read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 37,
+    "rank": 44,
     "title": "Dragon Ball Z: Budokai Tenkaichi 3",
     "search": "budokai tenkaichi 3",
     "value_usd": {
@@ -3104,50 +4052,61 @@
       "source": "https://retrododo.com/rare-ps2-games/",
       "figure": "$180+ for a copy in great condition",
       "date": "2020-05-15 (page modified 2024-03-04)"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Loose ~$97; sealed $713 (average)",
+      "date": "2026-08-24"
      }
     ]
    },
    {
-    "rank": 38,
+    "rank": 45,
     "title": "Ghost in the Shell: Stand Alone Complex",
     "search": "ghost in the shell stand alone complex",
     "value_usd": {
      "loose": 51.09,
      "cib": 138.75
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "note": "PriceCharting's CIB is 2.7 times loose.",
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=150",
       "figure": "PriceCharting market price, USD: loose $51.09; complete (CIB) $138.75",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.ebay.com/p/30851038",
+      "figure": "eBay.com catalogue: active CIB listings $159.00-$249.99, sealed graded $649.99 (asking prices)",
+      "date": "read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 39,
+    "rank": 46,
     "title": "Predator: Concrete Jungle",
     "search": "predator concrete jungle",
     "value_usd": {
      "loose": 96.55,
      "cib": 136.31
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
       "figure": "PriceCharting market price, USD: loose $96.55; complete (CIB) $136.31",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.ebay.com/b/Action-Adventure-Predator-Concrete-Jungle-Video-Games/139973/bn_80360018",
+      "figure": "eBay.com browse page: active CIB listings $144.44-$279.99, disc only $80.00-$110.00, sealed $499.99-$900.00 (asking prices)",
+      "date": "read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 40,
+    "rank": 47,
     "title": "Mana Khemia 2: Fall of Alchemy Alchemic Art Collection",
     "search": "mana khemia 2",
     "require": [
@@ -3175,7 +4134,7 @@
     ]
    },
    {
-    "rank": 41,
+    "rank": 48,
     "title": "Resident Evil Essentials",
     "search": "resident evil essentials",
     "value_usd": {
@@ -3196,33 +4155,7 @@
     ]
    },
    {
-    "rank": 42,
-    "title": "Shadow Hearts",
-    "search": "shadow hearts",
-    "exclude": [
-     "covenant",
-     "new world"
-    ],
-    "value_usd": {
-     "loose": 93.43,
-     "cib": 134.51
-    },
-    "flags": [],
-    "evidence": [
-     {
-      "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
-      "figure": "PriceCharting market price, USD: loose $93.43; complete (CIB) $134.51",
-      "date": "2026-10-08"
-     },
-     {
-      "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
-      "figure": "$87–$155",
-      "date": "2022-11-25 (prices 'current as of November 2022')"
-     }
-    ]
-   },
-   {
-    "rank": 43,
+    "rank": 49,
     "title": "Fatal Frame II: Crimson Butterfly",
     "other_title": "Project Zero 2: Crimson Butterfly",
     "search": "fatal frame 2",
@@ -3230,19 +4163,22 @@
      "loose": 86.75,
      "cib": 133.31
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
       "figure": "PriceCharting market price, USD: loose $86.75; complete (CIB) $133.31",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.ebay.com/p/11258",
+      "figure": "eBay.com catalogue (SLUS-20766): active CIB listings $127.98-$168.88, disc only $89.99 (asking prices)",
+      "date": "read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 44,
+    "rank": 50,
     "title": "Manhunt 2",
     "search": "manhunt 2",
     "value_usd": {
@@ -3261,26 +4197,54 @@
     ]
    },
    {
-    "rank": 45,
-    "title": "FIFA 14",
-    "search": "fifa 14",
+    "rank": 51,
+    "title": "Grand Theft Auto: Vice City Stories",
+    "search": "vice city stories",
     "value_usd": {
-     "loose": 106.89,
-     "cib": 130.0
+     "loose": 71.38,
+     "cib": 130.58
     },
     "flags": [
      "one_source"
     ],
     "evidence": [
      {
+      "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=100",
+      "figure": "PriceCharting market price, USD: loose $73.46; complete (CIB) $112.32",
+      "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?q=special+edition&view=table",
+      "figure": "Grand Theft Auto Vice City Stories loose $71.38, CIB $130.58",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "value_checked": "2026-10-09"
+   },
+   {
+    "rank": 52,
+    "title": "FIFA 14",
+    "search": "fifa 14",
+    "value_usd": {
+     "loose": 106.89,
+     "cib": 130.0
+    },
+    "flags": [],
+    "evidence": [
+     {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price",
       "figure": "PriceCharting market price, USD: loose $106.89; complete (CIB) $130.00",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.sportsgamersonline.com/games/10-incredibly-expensive-sports-games/amp/",
+      "figure": "North American version 'about $120 complete in the box' (sold in Mexico and South America); PAL version about $40",
+      "date": "2024-10-21"
      }
     ]
    },
    {
-    "rank": 46,
+    "rank": 53,
     "title": "Wild Arms: Alter Code F",
     "search": "wild arms alter code f",
     "value_usd": {
@@ -3298,11 +4262,21 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$140–$230",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://www.thegamer.com/rarest-ps2-games-value-price/",
+      "figure": "Around $130 new; about $57 loose disc",
+      "date": "undated (read 2026-10-09)"
+     },
+     {
+      "source": "https://www.cheatcc.com/articles/the-most-expensive-playstation-2-games-collectors-pay/",
+      "figure": "Sealed ~$300",
+      "date": "2026-08-24"
      }
     ]
    },
    {
-    "rank": 47,
+    "rank": 54,
     "title": "Fatal Frame III: The Tormented",
     "other_title": "Project Zero 3: The Tormented",
     "search": "fatal frame 3",
@@ -3322,7 +4296,7 @@
     ]
    },
    {
-    "rank": 48,
+    "rank": 55,
     "title": "Fatal Frame",
     "other_title": "Project Zero",
     "search": "fatal frame",
@@ -3342,66 +4316,53 @@
     ]
    },
    {
-    "rank": 49,
+    "rank": 56,
     "title": "Forever Kingdom",
     "search": "forever kingdom",
     "value_usd": {
      "loose": 56.99,
      "cib": 127.57
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "note": "PriceCharting's CIB is 2.2 times loose.",
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=100",
       "figure": "PriceCharting market price, USD: loose $56.99; complete (CIB) $127.57",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://keepitclassiclv.com/products/sony-ps2-forever-kingdom-cib",
+      "figure": "Keep It Classic (Las Vegas retro shop): CIB $125.00, in stock, inspected October 2026",
+      "date": "read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 50,
+    "rank": 57,
     "title": "Eternal Poison",
     "search": "eternal poison",
     "value_usd": {
      "loose": 48.3,
      "cib": 127.07
     },
-    "flags": [
-     "one_source"
-    ],
+    "flags": [],
     "note": "PriceCharting's CIB is 2.6 times loose.",
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=150",
       "figure": "PriceCharting market price, USD: loose $48.30; complete (CIB) $127.07",
       "date": "2026-10-08"
-     }
-    ]
-   },
-   {
-    "rank": 51,
-    "title": "Red Ninja: End of Honor",
-    "search": "red ninja end of honor",
-    "value_usd": {
-     "loose": 70.0,
-     "cib": 122.5
-    },
-    "flags": [
-     "one_source"
-    ],
-    "evidence": [
+     },
      {
-      "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
-      "figure": "PriceCharting market price, USD: loose $70.00; complete (CIB) $122.50",
-      "date": "2026-10-08"
+      "source": "https://www.ebay.com/itm/286078819870",
+      "figure": "eBay.com: 13 active listings $85.00-$595.00 (featured sealed copy $199.99); asking prices, not sales",
+      "date": "read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 52,
+    "rank": 58,
     "title": "Graffiti Kingdom",
     "search": "graffiti kingdom",
     "value_usd": {
@@ -3420,7 +4381,7 @@
     ]
    },
    {
-    "rank": 53,
+    "rank": 59,
     "title": "Armored Core: Nine Breaker",
     "search": "armored core nine breaker",
     "value_usd": {
@@ -3439,7 +4400,7 @@
     ]
    },
    {
-    "rank": 54,
+    "rank": 60,
     "title": "Scarface: The World Is Yours Collector's Edition",
     "search": "scarface",
     "require": [
@@ -3467,7 +4428,7 @@
     ]
    },
    {
-    "rank": 55,
+    "rank": 61,
     "title": "Drakengard 2",
     "search": "drakengard 2",
     "value_usd": {
@@ -3486,7 +4447,7 @@
     ]
    },
    {
-    "rank": 56,
+    "rank": 62,
     "title": "King's Field: The Ancient City",
     "other_title": "King's Field IV",
     "search": "kings field",
@@ -3509,7 +4470,7 @@
     ]
    },
    {
-    "rank": 57,
+    "rank": 63,
     "title": "Shadow Hearts: Covenant",
     "search": "shadow hearts covenant",
     "value_usd": {
@@ -3528,7 +4489,7 @@
     ]
    },
    {
-    "rank": 58,
+    "rank": 64,
     "title": "Digimon Rumble Arena 2",
     "search": "digimon rumble arena 2",
     "value_usd": {
@@ -3547,7 +4508,7 @@
     ]
    },
    {
-    "rank": 59,
+    "rank": 65,
     "title": "Suikoden V",
     "search": "suikoden v",
     "value_usd": {
@@ -3569,26 +4530,7 @@
     ]
    },
    {
-    "rank": 60,
-    "title": "Grand Theft Auto: Vice City Stories",
-    "search": "vice city stories",
-    "value_usd": {
-     "loose": 73.46,
-     "cib": 112.32
-    },
-    "flags": [
-     "one_source"
-    ],
-    "evidence": [
-     {
-      "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=100",
-      "figure": "PriceCharting market price, USD: loose $73.46; complete (CIB) $112.32",
-      "date": "2026-10-08"
-     }
-    ]
-   },
-   {
-    "rank": 61,
+    "rank": 66,
     "title": "Shin Megami Tensei: Devil Summoner 2: Raidou Kuzunoha vs. King Abaddon",
     "search": "king abaddon",
     "exclude": [
@@ -3613,7 +4555,7 @@
     ]
    },
    {
-    "rank": 62,
+    "rank": 67,
     "title": "Ar Tonelico: Melody of Elemia Limited Edition",
     "search": "ar tonelico",
     "require": [
@@ -3648,7 +4590,7 @@
     ]
    },
    {
-    "rank": 63,
+    "rank": 68,
     "title": "Ar Tonelico II: Melody of Metafalica Limited Edition",
     "search": "ar tonelico 2",
     "require": [
@@ -3676,7 +4618,7 @@
     ]
    },
    {
-    "rank": 64,
+    "rank": 69,
     "title": "Grand Theft Auto: San Andreas Special Edition",
     "search": "san andreas special edition",
     "allow": [
@@ -3701,26 +4643,7 @@
     ]
    },
    {
-    "rank": 65,
-    "title": "The Punisher",
-    "search": "punisher",
-    "value_usd": {
-     "loose": 84.99,
-     "cib": 109.99
-    },
-    "flags": [
-     "one_source"
-    ],
-    "evidence": [
-     {
-      "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
-      "figure": "PriceCharting market price, USD: loose $84.99; complete (CIB) $109.99",
-      "date": "2026-10-08"
-     }
-    ]
-   },
-   {
-    "rank": 66,
+    "rank": 70,
     "title": "Fallout: Brotherhood of Steel",
     "search": "fallout brotherhood of steel",
     "value_usd": {
@@ -3739,7 +4662,7 @@
     ]
    },
    {
-    "rank": 67,
+    "rank": 71,
     "title": "WWE SmackDown vs. Raw Superstar Series",
     "search": "smackdown vs raw superstar series",
     "value_usd": {
@@ -3760,7 +4683,7 @@
     ]
    },
    {
-    "rank": 68,
+    "rank": 72,
     "title": "Victorious Boxers 2: Fighting Spirit",
     "search": "victorious boxers 2",
     "value_usd": {
@@ -3779,7 +4702,7 @@
     ]
    },
    {
-    "rank": 69,
+    "rank": 73,
     "title": "Shin Megami Tensei: Digital Devil Saga Deluxe Box",
     "search": "digital devil saga deluxe",
     "allow": [
@@ -3804,7 +4727,7 @@
     ]
    },
    {
-    "rank": 70,
+    "rank": 74,
     "title": "Onimusha: The Essentials",
     "search": "onimusha",
     "require": [
@@ -3832,7 +4755,7 @@
     ]
    },
    {
-    "rank": 71,
+    "rank": 75,
     "title": "X-Files: Resist or Serve",
     "search": "x-files resist or serve",
     "value_usd": {
@@ -3851,7 +4774,7 @@
     ]
    },
    {
-    "rank": 72,
+    "rank": 76,
     "title": "Clock Tower 3",
     "search": "clock tower 3",
     "value_usd": {
@@ -3870,7 +4793,7 @@
     ]
    },
    {
-    "rank": 73,
+    "rank": 77,
     "title": "Armored Core: Nexus",
     "search": "armored core nexus",
     "value_usd": {
@@ -3889,7 +4812,7 @@
     ]
    },
    {
-    "rank": 74,
+    "rank": 78,
     "title": "Ar Tonelico II: Melody of Metafalica",
     "other_title": "Ar Tonelico 2: Melody of Metafalica",
     "search": "ar tonelico 2",
@@ -3912,7 +4835,7 @@
     ]
    },
    {
-    "rank": 75,
+    "rank": 79,
     "title": "Need for Speed: Collector's Series",
     "search": "need for speed collector's series",
     "value_usd": {
@@ -3933,7 +4856,7 @@
     ]
    },
    {
-    "rank": 76,
+    "rank": 80,
     "title": "The Warriors",
     "search": "warriors",
     "require": [
@@ -3956,7 +4879,7 @@
     ]
    },
    {
-    "rank": 77,
+    "rank": 81,
     "title": "Marc Ecko's Getting Up: Contents Under Pressure Limited Edition",
     "search": "contents under pressure",
     "require": [
@@ -3984,7 +4907,7 @@
     ]
    },
    {
-    "rank": 78,
+    "rank": 82,
     "title": "Resident Evil: Dead Aim",
     "search": "resident evil dead aim",
     "value_usd": {
@@ -4004,7 +4927,32 @@
     ]
    },
    {
-    "rank": 79,
+    "rank": 83,
+    "title": "Mana Khemia 2: Fall of Alchemy",
+    "search": "mana khemia 2",
+    "exclude": [
+     "art collection"
+    ],
+    "value_usd": {
+     "loose": 83.3,
+     "cib": 97.71
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "one_source"
+    ],
+    "note": "The standard edition.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?view=table&cursor=750",
+      "figure": "Table: loose $83.30, CIB $97.71",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 84,
     "title": "Shin Megami Tensei: Persona 3",
     "search": "persona 3",
     "exclude": [
@@ -4017,17 +4965,52 @@
     "flags": [
      "one_source"
     ],
-    "note": "PriceCharting also lists a '[Limited Edition]' (loose $64.99, CIB $106.95), folded into this entry.",
+    "note": "PriceCharting also lists a '[Limited Edition]' (loose $64.99, CIB $106.95), folded into this entry. PriceCharting also lists a '[Limited Edition]' (art book and CD, CIB $106.89): the same launch box, folded in here.",
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=150",
       "figure": "PriceCharting market price, USD: loose $48.40; complete (CIB) $97.50",
       "date": "2026-10-08"
+     },
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?view=table&cursor=550",
+      "figure": "Persona 3 [Limited Edition] loose $64.99, CIB $106.89; Persona 3 (cursor=250) loose $48.40, CIB $100.00",
+      "date": "read 2026-10-09"
      }
     ]
    },
    {
-    "rank": 80,
+    "rank": 85,
+    "title": "Mortal Kombat: Armageddon Premium Edition",
+    "other_title": "Mortal Kombat: Armageddon",
+    "search": "armageddon",
+    "require": [
+     "premium"
+    ],
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "value_usd": {
+     "loose": null,
+     "cib": 97.28
+    },
+    "value_checked": "2026-10-09",
+    "flags": [
+     "one_source",
+     "edition"
+    ],
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/playstation-2?view=table&cursor=2700",
+      "figure": "Table: 'Mortal Kombat Armageddon [Premium Edition Shao Khan]' loose none, CIB $97.28",
+      "date": "read 2026-10-09"
+     }
+    ],
+    "added": "2026-10-09"
+   },
+   {
+    "rank": 86,
     "title": "Drakengard",
     "search": "drakengard",
     "value_usd": {
@@ -4046,7 +5029,7 @@
     ]
    },
    {
-    "rank": 81,
+    "rank": 87,
     "title": "Pro Evolution Soccer 2013",
     "search": "pro evolution soccer 2013",
     "value_usd": {
@@ -4065,7 +5048,7 @@
     ]
    },
    {
-    "rank": 82,
+    "rank": 88,
     "title": "Marvel vs. Capcom 2",
     "search": "marvel vs capcom 2",
     "value_usd": {
@@ -4083,11 +5066,16 @@
       "source": "https://racketboy.com/retro/the-rarest-and-most-valuable-ps2-games",
       "figure": "$120–$240",
       "date": "2022-11-25 (prices 'current as of November 2022')"
+     },
+     {
+      "source": "https://daily.slickdeals.net/tech/rarest-most-valuable-playstation-games",
+      "figure": "Current average price $302",
+      "date": "2022-01-03"
      }
     ]
    },
    {
-    "rank": 83,
+    "rank": 89,
     "title": "Tsugunai: Atonement",
     "search": "tsugunai atonement",
     "value_usd": {
@@ -4106,7 +5094,7 @@
     ]
    },
    {
-    "rank": 84,
+    "rank": 90,
     "title": "Cold Fear",
     "search": "cold fear",
     "value_usd": {
@@ -4125,7 +5113,7 @@
     ]
    },
    {
-    "rank": 85,
+    "rank": 91,
     "title": "The Sopranos: Road to Respect Limited Edition",
     "search": "sopranos road to respect limited",
     "allow": [
@@ -4150,7 +5138,7 @@
     ]
    },
    {
-    "rank": 86,
+    "rank": 92,
     "title": "Bloody Roar 4",
     "search": "bloody roar 4",
     "value_usd": {
@@ -4169,7 +5157,7 @@
     ]
    },
    {
-    "rank": 87,
+    "rank": 93,
     "title": "Baroque",
     "search": "baroque",
     "value_usd": {
@@ -4189,7 +5177,7 @@
     ]
    },
    {
-    "rank": 88,
+    "rank": 94,
     "title": "Dual Hearts",
     "search": "dual hearts",
     "value_usd": {
@@ -4208,7 +5196,7 @@
     ]
    },
    {
-    "rank": 89,
+    "rank": 95,
     "title": "Mister Mosquito",
     "other_title": "Mr. Moskeeto",
     "search": "mister mosquito",
@@ -4228,7 +5216,7 @@
     ]
    },
    {
-    "rank": 90,
+    "rank": 96,
     "title": "FIFA Soccer 13",
     "other_title": "FIFA 13",
     "search": "fifa",
@@ -4257,7 +5245,7 @@
     ]
    },
    {
-    "rank": 91,
+    "rank": 97,
     "title": "Growlanser: Heritage of War Limited Edition",
     "search": "growlanser heritage of war limited",
     "allow": [
@@ -4282,7 +5270,7 @@
     ]
    },
    {
-    "rank": 92,
+    "rank": 98,
     "title": "Wizardry: Tale of the Forsaken Land",
     "search": "wizardry tale of the forsaken land",
     "value_usd": {
@@ -4301,7 +5289,7 @@
     ]
    },
    {
-    "rank": 93,
+    "rank": 99,
     "title": "Armored Core: Last Raven",
     "search": "armored core last raven",
     "value_usd": {
@@ -4320,7 +5308,7 @@
     ]
    },
    {
-    "rank": 94,
+    "rank": 100,
     "title": "Guilty Gear XX Accent Core Plus",
     "search": "accent core plus",
     "value_usd": {
@@ -4339,7 +5327,7 @@
     ]
    },
    {
-    "rank": 95,
+    "rank": 101,
     "title": "Shadow Hearts: From the New World",
     "search": "from the new world",
     "require": [
@@ -4361,7 +5349,7 @@
     ]
    },
    {
-    "rank": 96,
+    "rank": 102,
     "title": "Sakura Wars: So Long, My Love",
     "search": "sakura wars so long my love",
     "value_usd": {
@@ -4380,7 +5368,7 @@
     ]
    },
    {
-    "rank": 97,
+    "rank": 103,
     "title": "Magna Carta: Tears of Blood Deluxe Box Set",
     "search": "magna carta",
     "require": [
@@ -4408,7 +5396,7 @@
     ]
    },
    {
-    "rank": 98,
+    "rank": 104,
     "title": "Ar Tonelico: Melody of Elemia",
     "search": "ar tonelico melody of elemia",
     "exclude": [
@@ -4430,7 +5418,7 @@
     ]
    },
    {
-    "rank": 99,
+    "rank": 105,
     "title": "PaRappa the Rapper 2",
     "search": "parappa the rapper 2",
     "value_usd": {
@@ -4449,7 +5437,7 @@
     ]
    },
    {
-    "rank": 100,
+    "rank": 106,
     "title": "Siren",
     "other_title": "Forbidden Siren",
     "search": "siren",
