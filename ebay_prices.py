@@ -76,6 +76,7 @@ from urllib.parse import quote, urlencode
 ROOT = Path(__file__).parent
 WATCHLIST_PATH = ROOT / "ebay_watchlist.json"
 RARE_PATH = ROOT / "rare_games.json"            # the Rarest page's two lists (read only)
+CONSOLES_PATH = ROOT / "rare_consoles.json"     # the Rarest page's consoles (read only)
 DEFAULT_OUT = Path(tempfile.gettempdir()) / "ebay_prices.json"   # outside the repository on purpose
 DATA_DIR = ROOT / "data"
 FEED_PATH = DATA_DIR / "sentiment_feed.json"      # the scraper's 14-day snapshot (read only)
@@ -90,6 +91,9 @@ SCOPE = "https://api.ebay.com/oauth/api_scope"   # public data only; cannot act 
 USER_AGENT = "python:ps2-sentiment-tracker-ebay:1.0 (+https://github.com/SirNovaTofuBlaster/ps2-sentiment-tracker)"
 
 CATEGORY_ID = "139973"                     # eBay's "Video Games" category, same number on both sites
+CONSOLE_CATEGORY_ID = "139971"             # eBay's "Video Game Consoles", same number on both sites
+# Every condition but "for parts or not working": a rare console is often sold new or refurbished.
+CONSOLE_CONDITION_IDS = "1000|1500|2000|2010|2020|2030|2500|2750|3000|4000|5000|6000"
 PLATFORM_ASPECT = "Sony PlayStation 2"     # the "Platform" item specific sellers pick
 USED_CONDITION_IDS = "2750|3000|4000|5000|6000"   # like new, used, very good, good, acceptable
 CONDITION_FILTERS = {
@@ -207,6 +211,27 @@ OTHER_PLATFORMS = (
 # A copy made for Japan, wherever the seller is. SLPM/SLPS/SCPS start a Japanese spine code.
 IMPORT_PHRASES = ("japan", "japanese", "ntsc j", "jpn", "jp", "jap", "slpm", "slps", "scps")
 SKIPPED_EXAMPLES = 5     # titles saved per reason, so the rules can be checked against real listings
+# A console listing with one of these is not a working console of that model.
+CONSOLE_JUNK = (
+    "for parts", "spares", "spares or repair", "spares or repairs", "for repair", "needs repair", "faulty",
+    "not working", "broken",
+    "untested", "modded", "modchip", "mod chip", "free mcboot", "fmcb", "skin", "sticker", "decal",
+    "shell", "housing", "faceplate", "case only", "box only", "empty box", "manual only", "replica",
+    "custom", "painted", "reproduction", "repro", "controller only", "no console", "job lot", "joblot",
+    "stand only",
+)
+# A listing that names one of these is that part, unless it says the console comes with it
+# ("with controller", "+ remote") or says it is a console.
+CONSOLE_PARTS = (
+    "controller", "controllers", "dualshock", "joypad", "gamepad", "remote", "remote control", "power cord",
+    "power cable", "power supply", "ac adapter", "adapter", "cable", "cables", "hdd", "hard drive", "pcb",
+    "motherboard", "memory card",
+)
+CONSOLE_WORDS = ("console", "consoles", "system", "scph")
+OTHER_CONSOLES = ("ps3", "ps4", "ps5", "psp", "ps vita", "xbox", "wii", "gamecube", "dreamcast", "nintendo switch")
+CONSOLE_CATEGORIES = {"consoles": CONSOLE_CATEGORY_ID, "any": ""}
+MAX_CONSOLE_QUERIES = 3
+
 # Counted, but worth knowing about: the price is for less than a complete copy.
 INCOMPLETE_PHRASES = (
     "disc only", "disk only", "game only", "loose", "no manual", "no case", "no box",
@@ -758,6 +783,65 @@ def add_rare_games(games, rare, catalogue):
     return placed
 
 
+def load_consoles(path=None):
+    """(consoles, problems) from rare_consoles.json, each ready to price. A missing file gives
+    none; a file or an entry that cannot be used is named in the problems and left out. An
+    entry with "price": false is left out without a word: the page says why."""
+    path = Path(path or CONSOLES_PATH)
+    if not path.exists():
+        return [], []
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8-sig"))
+    except (OSError, ValueError) as exc:
+        return [], [f"{path.name} cannot be read ({type(exc).__name__})"]
+    rows = raw.get("consoles") if isinstance(raw, dict) else None
+    if not isinstance(rows, list):
+        return [], [f'{path.name} needs a "consoles" list']
+    labels = {market["label"]: market_id for market_id, market in MARKETS.items()}
+
+    def phrases(value):
+        if not isinstance(value, list) or not all(isinstance(text, str) and words(text) for text in value):
+            return None
+        return [" ".join(words(text)) for text in value]
+
+    consoles, problems = [], []
+    for position, row in enumerate(rows, 1):
+        name = row.get("name") if isinstance(row, dict) else None
+        if not isinstance(name, str) or not key_of(name):
+            problems.append(f"console {position} has no name")
+            continue
+        if row.get("price", True) is False:
+            continue
+        spec = row.get("search") if isinstance(row.get("search"), dict) else {}
+        queries = spec.get("queries")
+        require, require_any, exclude = (phrases(spec.get(field, [])) for field in ("require", "require_any", "exclude"))
+        sites = row.get("sites", list(labels))
+        if not isinstance(queries, list) or not 1 <= len(queries) <= MAX_CONSOLE_QUERIES \
+                or not all(isinstance(query, str) and words(query) and len(query) <= MAX_QUERY_CHARS for query in queries) \
+                or None in (require, require_any, exclude) or not (require or require_any) \
+                or spec.get("category", "consoles") not in CONSOLE_CATEGORIES \
+                or not isinstance(sites, list) or not sites or not all(site in labels for site in sites):
+            problems.append(f'console "{name}": its "search" or "sites" cannot be used')
+            continue
+        consoles.append({
+            "title": name.strip(), "key": key_of(name), "kind": "console",
+            "search": " ".join(words(queries[0])), "queries": [" ".join(query.lower().split()) for query in queries],
+            "require": require, "require_any": require_any, "exclude": exclude,
+            "category": CONSOLE_CATEGORIES[spec.get("category", "consoles")],
+            "sites": [market_id for market_id in MARKETS if MARKETS[market_id]["label"] in sites],
+            "siblings": [], "pinned": False, "level": "rare", "mentions": 0, "surging_until": None})
+    return consoles, problems
+
+
+def add_consoles(games, consoles):
+    """Put the consoles among the things to price; one whose name a game has is left out."""
+    keys = {game["key"] for game in games}
+    added = [console for console in consoles if console["key"] not in keys and not keys.add(console["key"])]
+    games.extend(added)
+    games.sort(key=lambda game: game["title"].lower())
+    return len(added)
+
+
 def due_lookups(games, state, now):
     """(game, market) pairs whose turn has come, most urgent first. A game the library also
     files under the name it has on a site ("Project Zero" beside "Fatal Frame") is looked up
@@ -814,9 +898,17 @@ def get_token(http_client, client_id, client_secret):
     return token, basic
 
 
-def search_url(market_id, query, by_aspect=True, condition="ids"):
-    """The search request for one game on one site, encoded the way eBay's examples are."""
+def search_url(market_id, query, by_aspect=True, condition="ids", console=None):
+    """The search request for one game on one site, encoded the way eBay's examples are. For a
+    console (`console` is its category, or "" for every category): any condition but for parts,
+    from sellers anywhere (most rare consoles are sold from Japan), and the words as given."""
     market = MARKETS[market_id]
+    if console is not None:
+        params = {"q": query, "filter": f"conditionIds:{{{CONSOLE_CONDITION_IDS}}},buyingOptions:{{FIXED_PRICE}}",
+                  "limit": str(PAGE_LIMIT)}
+        if console:
+            params["category_ids"] = console
+        return SEARCH_URL + "?" + urlencode(params, quote_via=quote)
     filters = [CONDITION_FILTERS[condition], "buyingOptions:{FIXED_PRICE}",
                f"itemLocationCountry:{market['country']}"]
     params = {
@@ -835,7 +927,7 @@ def buyer_location(market):
     return f"country={market['country']}" + (f",zip={market['zip']}" if market.get("zip") else "")
 
 
-def search(http_client, token, market_id, query, counter, by_aspect=True, condition="ids"):
+def search(http_client, token, market_id, query, counter, by_aspect=True, condition="ids", console=None):
     """One search, tried up to three times. Returns (HTTP status or 0 for no answer, JSON)."""
     market = MARKETS[market_id]
     headers = {
@@ -843,7 +935,7 @@ def search(http_client, token, market_id, query, counter, by_aspect=True, condit
         "X-EBAY-C-MARKETPLACE-ID": market_id,
         "X-EBAY-C-ENDUSERCTX": "contextualLocation=" + quote(buyer_location(market), safe=""),
     }
-    url = search_url(market_id, query, by_aspect, condition)
+    url = search_url(market_id, query, by_aspect, condition, console)
     status, payload = 0, {}
     for pause in (0,) + RETRY_PAUSES:
         if pause:
@@ -975,8 +1067,31 @@ def comes_with(title, phrase):
                      str(title or "").lower()) is not None
 
 
+def console_reject_reason(item, console, market):
+    """Why a listing is left out of a console's figures, or None to count it. The title must
+    have every "require" phrase and one of "require_any" (the model, the colour's name)."""
+    text = " ".join(words(item.get("title")))
+    if not all(has_phrase(text, [phrase]) for phrase in console["require"]) \
+            or (console["require_any"] and not has_phrase(text, console["require_any"])):
+        return "other_game"
+    if has_phrase(text, OTHER_CONSOLES):
+        return "other_platform"
+    if has_phrase(text, CONSOLE_JUNK) or has_phrase(text, console["exclude"]):
+        return "not_a_copy"
+    parts = [part for part in CONSOLE_PARTS if has_phrase(text, [part])]
+    if parts and not has_phrase(text, CONSOLE_WORDS) and not all(comes_with(item.get("title"), part) for part in parts):
+        return "not_a_copy"
+    if amount(item.get("price"), market["currency"]) is None:
+        return "no_price"
+    if listing_url(item, market) is None:
+        return "no_link"
+    return None
+
+
 def reject_reason(item, game, market, keyword_search):
     """Why a listing is left out, or None to count it."""
+    if game.get("kind") == "console":
+        return console_reject_reason(item, game, market)
     text = " ".join(words(item.get("title")))             # for junk words, as the seller wrote them
     name_text = " ".join(name_words(item.get("title")))   # for the game's name, spellings evened out
     if keyword_search and not PLATFORM_WORDS.search(text):
@@ -1061,18 +1176,21 @@ def summarise(payload, game, market, keyword_search):
 
 def human_search_url(game, market):
     """The same search on eBay's own site, so every number links back to its source."""
+    if game.get("kind") == "console":
+        return (f"https://{market['site']}/sch/i.html?_nkw={quote(game['queries'][0])}"
+                f"&_sacat={game['category'] or 0}&LH_BIN=1")
     return (f"https://{market['site']}/sch/i.html?_nkw={quote(game['queries'][-1] + ' ps2')}"
             f"&_sacat={CATEGORY_ID}&LH_ItemCondition={quote(USED_CONDITION_IDS)}&LH_BIN=1&LH_PrefLoc=1")
 
 
-def fetch(http_client, token, game, market_id, counter, by_aspect):
+def fetch(http_client, token, game, market_id, counter, by_aspect, console=None):
     """Run the game's searches on one site and merge them, each listing once.
     Returns (status, payload): the first failure as it came, or 200 and the merged listings."""
     merged, total, truncated, warning = {}, 0, False, ""
     for position, query in enumerate(game["queries"]):
         if position:
             time.sleep(REQUEST_PAUSE)
-        status, payload = search(http_client, token, market_id, query, counter, by_aspect=by_aspect)
+        status, payload = search(http_client, token, market_id, query, counter, by_aspect=by_aspect, console=console)
         if status != 200:
             return status, payload
         items = [item for item in payload.get("itemSummaries") or [] if isinstance(item, dict)]
@@ -1094,6 +1212,11 @@ def check_market(http_client, token, game, market_id, counter):
     market = MARKETS[market_id]
     game = for_market(game, market_id)
     base = {"search_url": human_search_url(game, market), "currency": market["currency"]}
+    if game.get("kind") == "console":
+        status, payload = fetch(http_client, token, game, market_id, counter, by_aspect=False, console=game["category"])
+        if status != 200:
+            return {**base, "status": "error", "answered": status != 0, "error": error_text(status, payload)}
+        return {**base, **summarise(payload, game, market, False)}
 
     status, payload = fetch(http_client, token, game, market_id, counter, by_aspect=True)
     keyword_search = False
@@ -1267,6 +1390,8 @@ def update_records(state, games, run, now, rare_titles=None):
             entry["surging_until"] = game["surging_until"].strftime(STAMP_FORMAT)
         if game.get("sites"):
             entry["sites"] = [MARKETS[market_id]["label"] for market_id in MARKETS if market_id in game["sites"]]
+        if game.get("kind") == "console":
+            entry["kind"] = "console"
         old_entry = previous.get(game["key"]) or {}
         for market in MARKETS.values():
             label = market["label"]
@@ -1385,7 +1510,8 @@ def snapshot_of(run, now):
     }
 
 
-def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_problems=()):
+def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_problems=(), consoles=0):
+    games = [game for game in games if game.get("kind") != "console"]   # counted on a line of their own
     levels = {level: sum(1 for game in games if game["level"] == level) for level in CHECK_EVERY_HOURS}
     if not levels["rare"]:
         del levels["rare"]   # only there when rare_games.json adds games
@@ -1412,7 +1538,9 @@ def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_pr
     if rare_titles is not None:
         on_lists = sum(len(titles) for titles in rare_titles.values())
         say(f"Rarest page: {on_lists} entries, " + ", ".join(f"{len(titles)} {name}" for name, titles in rare_titles.items())
-            + f"; {sum(1 for game in games if game['level'] == 'rare')} of the games are priced for it alone.")
+            + f"; {sum(1 for game in games if game['level'] == 'rare' and game.get('kind') != 'console')} of the games are priced for it alone.")
+    if consoles:
+        say(f"Rarest page: {consoles} consoles priced.")
     for problem in rare_problems:
         say(f"Rarest page, left out: {problem}.")
     say(f"Due now: {len(lookups)} lookups. This run may use {max(allowance, 0)} searches.")
@@ -1444,11 +1572,14 @@ def main(argv=None):
         apply_regional_names(games, load_regional_names(), catalogue)
         rare, rare_problems = load_rare()
         rare_titles = add_rare_games(games, rare, catalogue)
+        consoles, console_problems = load_consoles()
+        consoles_priced = add_consoles(games, consoles)
+        rare_problems = rare_problems + console_problems
         lookups = due_lookups(games, state, now)
         used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
         used_today = used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0
         allowance = min(MAX_SEARCHES_PER_RUN, DAILY_SEARCHES - used_today)
-        describe_plan(games, left_out, lookups, allowance, rare_titles if rare else None, rare_problems)
+        describe_plan(games, left_out, lookups, allowance, rare_titles if rare else None, rare_problems, consoles_priced)
         if args.plan:
             return 0
         if not lookups:

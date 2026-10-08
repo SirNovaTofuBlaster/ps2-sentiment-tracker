@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-10-08: the Rarest page gets consoles
+
+- Asked: a list of the rarest PS2 consoles, official releases only, using Obsolete Sony and
+  consolevariations.com. consolevariations.com asks robots to stay out (robots.txt), so it was
+  not read; Wikipedia (English and Japanese), Obsolete Sony, Sony's press releases, PriceCharting
+  and articles were.
+- `rare_consoles.json` (new): 37 consoles in four tiers, led by the 2001 car-paint colours
+  (about 666 of each per region), the Toys"R"Us Japan blue, the development units and the
+  Bravia TV with a PS2 inside. Each with model numbers, regions, units where known, value and
+  sources.
+- `ebay_prices.py`: prices 34 of them once a day on eBay US and UK (or the one site of a
+  single-country release), in the consoles category, from sellers anywhere, any condition but
+  for parts. A listing must name the model or the colour; bundles count, shells, skins,
+  custom paint, mods and broken consoles never do, and neither does a part sold alone (a
+  coloured controller, a PSX remote). Game searches are unchanged. About 130 searches a day.
+- Independent review: game-named bundles (an ordinary slim with *Final Fantasy XII*), coloured
+  controllers, remotes and cables, and the US silver slim's own "satin" listings were all
+  mis-sorted; fixed and tested on realistic titles.
+- Dashboard: a third switch on the Rarest page, *Consoles*. Consoles stay off the eBay prices
+  page.
+
 ## 2026-10-08: the Rarest page
 
 - Asked: a tab next to the Tracker with the 100 rarest PAL games and the 100 rarest US games,

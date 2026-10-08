@@ -541,6 +541,28 @@ because the search is the rule's spelling, "sly raccoon", and sellers mostly wri
 | Second look: an allowed extra sold on its own ("Limited Edition Art Book") counted as the edition | An allowed extra counts only when the listing says the copy comes with it ("with", "w/", "+", "&", "includes") |
 | Second look: "not priced" always blamed an everyday word | The hint says the job's log names the reason; the guide says "usually" |
 
+## 2026-10-08: the Rarest page gets consoles
+
+| Check | Result |
+|---|---|
+| The list | 37 consoles, ranks 1–37, every entry with an https source; 34 priced, 3 not on purpose with the reason shown (tested) |
+| Game pipeline | Game search URLs byte-identical to `main` for both sites, every filter (reviewer's check, and a test) |
+| Console matching | 19 realistic titles (rare console, ordinary bundle, coloured controller, remote, cable, hard drive, repair, custom paint, other console) sorted as intended by the committed rules (tested) |
+| Offline tests | 165 price-job tests, 34 dashboard checks |
+| Mutations | 9 deliberate breaks of the console code (require_any, junk, exclude, other consoles, location filter, kind, price false, entry with no words, name clash): all caught |
+| Not checked | Real eBay titles for these consoles: the first runs after the merge show the counts |
+
+### Independent review
+
+| Finding | Resolution |
+|---|---|
+| The FFXII pack and the GT4 Prologue pack counted ordinary consoles sold with those games | Only the model codes (75000 FF, 55000 GT) qualify; Ceramic White leaves out 55000 and Prologue |
+| Ocean Blue and Midnight Blue counted a black console sold with a coloured controller, and a controller alone | Parts rule (`CONSOLE_PARTS`), and "black" left out for those colours |
+| The PSX recorders, the Bravia and the development tool counted remotes, cords and hard drives | The same parts rule |
+| The US silver slim left out "Satin Silver" listings, its own colour's name | "satin" no longer left out |
+| "repair" and "replacement" left out serviced consoles | Only "for repair", "needs repair", "spares or repair(s)" |
+| The plan counted consoles as games; the docs' lookup figure was wrong | Counted on their own line; 64 lookups a day |
+
 ## Re-running the checks
 
 ```sh

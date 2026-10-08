@@ -1342,6 +1342,7 @@ await check('games first: what was named in the last day leads, and the table op
     assert.deepEqual([...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(rule => /display:\s*none|visibility:\s*hidden/.test(rule[2])).map(rule => rule[1].replace(/\s+/g, ' ').trim()), [
         'body .is-folded > .list-extra', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
+        'body .rare-region-site',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
@@ -1740,7 +1741,8 @@ await check('the Rarest page: two lists of a hundred, each with its own site\'s 
     const real = context.fetch;
     let answer = 404;
     context.fetch = async (path) => {
-        assert.equal(path, 'rare_games.json');
+        assert.ok(['rare_games.json', 'rare_consoles.json'].includes(path), path);
+        if (path === 'rare_consoles.json') return { ok: false, status: 404, json: async () => ({}) };
         if (answer === 'drop') throw new TypeError('Failed to fetch');
         if (answer === 'garbage') return { ok: true, status: 200, json: async () => { throw new SyntaxError('Unexpected token'); } };
         if (typeof answer === 'number') return { ok: false, status: answer, json: async () => ({}) };
@@ -1776,6 +1778,60 @@ await check('the Rarest page: two lists of a hundred, each with its own site\'s 
     assert.match(page, /const RARE_SITE = \{ PAL: 'UK', US: 'US' \};/);
     const python = read('ebay_prices.py');
     assert.match(python, /RARE_SITES = \{"PAL": "EBAY_GB", "US": "EBAY_US"\}/, 'the page and the price job agree on which site prices which list');
+});
+
+await check('the Rarest page: the rarest consoles, priced on both sites', async () => {
+    const consoles = JSON.parse(read('rare_consoles.json'));
+    const now = Date.parse('2026-10-08T12:00:00Z');
+    const site = (median, copies = 2) => ({ checked: '2026-10-08T09:00Z', copies, lowest: median - 10, median });
+    const red = consoles.consoles.find(row => row.name.includes('Super Red'));
+    const pink = consoles.consoles.find(row => Array.isArray(row.sites) && row.sites.length === 1 && row.price !== false);
+    const prices = { currencies: { US: 'USD', UK: 'GBP' }, games: {
+        [red.name]: { level: 'rare', mentions: 0, kind: 'console', sites: ['US', 'UK'], US: site(3500), UK: site(2800) },
+        [pink.name]: { level: 'rare', mentions: 0, kind: 'console', sites: pink.sites, [pink.sites[0]]: site(80) },
+        Kuon: { level: 'normal', mentions: 1, UK: site(300), US: site(900) },
+    } };
+    context.__consoles = consoles;
+    context.__consolePrices = prices;
+    vm.runInContext(`setPrices(__consolePrices, null); consoleData = __consoles; showRareRegion('Consoles')`, context);
+    vm.runInContext(`renderRare(rareData, ${now}, 'en-GB')`, context);
+    assert.equal(el('rareHeading').textContent, 'Rarest PS2 Consoles');
+    assert.equal(evalJson("document.getElementById('rareRegionConsoles').getAttribute('aria-pressed')"), 'true');
+    assert.equal(evalJson("document.getElementById('rareRegionPAL').getAttribute('aria-pressed')"), 'false');
+    const rows = el('rareList').innerHTML.split('<li ').slice(1);
+    assert.equal(rows.length, consoles.consoles.length);
+    assert.match(rows[0], /#1 /);
+    assert.match(rows[0], /not priced/, 'the one-off display unit is never looked up');
+    assert.match(rows[0], /never sold/);
+    const redRow = rows.find(html => html.includes(esc(red.name)));
+    assert.match(redRow, /<span class="ebay-flag">US<\/span><b class="ebay-median">\$3,500<\/b>/);
+    assert.match(redRow, /<span class="ebay-flag">UK<\/span><b class="ebay-median">£2,800<\/b>/);
+    assert.match(redRow, /tier 1/);
+    assert.match(redRow, /guide \$4,000/);
+    assert.match(redRow, /about 1,998 made/);
+    const pinkRow = rows.find(html => html.includes(esc(pink.name)));
+    assert.equal((pinkRow.match(/ebay-flag/g) || []).length, 1, 'a console sold in one region is priced on its site only');
+    assert.match(el('rareSummary').textContent, / · 3 prices with copies listed$/);
+    assert.equal(rows.filter(html => html.includes('list-extra')).length, Math.max(consoles.consoles.length - 25, 0));
+
+    // The eBay prices page is for games: consoles stay on the Rarest page.
+    vm.runInContext(`renderPrices(undefined, ${now}, 'en-GB')`, context);
+    assert.doesNotMatch(el('pricesList').innerHTML, /Super Red/);
+    assert.match(el('pricesList').innerHTML, /Kuon/);
+    assert.equal(evalJson(`priceFiguresHtml(${JSON.stringify(red.name)})`), '', 'nor do they show beside names in the feed');
+
+    // A hostile file is text, never markup.
+    context.__hostile = { tiers: { 1: '<b>' }, consoles: [{ name: '<img src=x onerror=alert(1)>', tier: '1: x', rank: 1, models: ['<i>'],
+        why_rare: '<script>', not_retail: true, price: false, not_priced_because: '"><b>', evidence: [{ source: 'javascript:alert(1)' }],
+        value: { usd: '9', what: '<b>' } }] };
+    vm.runInContext(`renderRareConsoles(__hostile, ${now}, 'en-GB')`, context);
+    const hostile = el('rareList').innerHTML;
+    assert.doesNotMatch(hostile, /<img|<script|<i>|<b>|javascript:/);
+    assert.doesNotMatch(hostile, /guide/);
+    vm.runInContext("consoleData = null; consoleTrouble = false; renderRare()", context);
+    assert.equal(el('rareSummary').textContent, 'No list of rare consoles yet.');
+    vm.runInContext("showRareRegion('PAL'); setPrices(null, null)", context);
+    assert.equal(el('rareHeading').textContent, 'Rarest PS2 Games');
 });
 
 console.log(`dashboard checks passed (${passed})`);
