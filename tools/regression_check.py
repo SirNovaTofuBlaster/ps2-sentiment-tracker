@@ -35,7 +35,7 @@ import feedparser
 import requests
 
 ROOT = Path(__file__).resolve().parent.parent
-NEW_FIELDS = ("source_type", "feed")
+NEW_FIELDS = ("source_type", "feed", "is_digital_only")
 REDDIT_SPACING = 65  # seconds between Reddit requests (about one unauthenticated request a minute)
 
 

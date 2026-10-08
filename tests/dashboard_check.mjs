@@ -1417,7 +1417,7 @@ await check('games first: what was named in the last day leads, and the table op
 
     // The table opens on the items that name a game, and its line says what is shown: with the
     // box and the menus applied, so it never describes rows that are not there.
-    assert.match(page, /<option value="matched" selected>PS2 Games Only<\/option>\s*<option value="remaster">Remaster News Only<\/option>\s*<option value="all">Everything<\/option>/);
+    assert.match(page, /<option value="matched" selected>PS2 Games Only<\/option>\s*<option value="remaster">Remaster News Only<\/option>\s*<option value="all">Everything<\/option>\s*<option value="digital">Digital-Only News<\/option>\s*<\/select>/);
     // The line has a row to itself between the menus and the table, so its length moves nothing;
     // a change is announced, and it can take the keyboard's place when a button in it goes.
     assert.match(page, /<\/select>\s*<\/div>\s*<\/div>\s*<p id="feedSummary" tabindex="-1" aria-live="polite" class="text-xs text-slate-400 mb-4">[^<]*<\/p>\s*<div class="overflow-x-auto">\s*<table/);
@@ -1929,6 +1929,39 @@ await check('the PS2 price index: the latest value, its moves and a line of ever
     const page = read('index.html');
     assert.ok(page.indexOf('id="indexSection"') > page.indexOf('id="viewPrices"') && page.indexOf('id="indexSection"') < page.indexOf('id="pricesSection"'),
         'at the top of the eBay prices page');
+});
+
+await check('Digital-Only News: the flagged items, counted over two weeks and the last seven days', () => {
+    const at = (days) => new Date(Date.now() - days * 86400000).toISOString().slice(0, 16).replace('T', ' ') + ' UTC';
+    context.__feed = [
+        { headline: 'Phantom Blade Zero Confirmed Digital-Only Despite Promised Physical Release - Power Up Gaming', source: 'r/playstation',
+          link: 'https://r.example/pbz', matched_game: null, is_digital_only: true, sentiment: 50, timestamp: at(1) },
+        { headline: 'Sony <b>to ditch discs</b>', source: 'Kotaku', link: 'https://k.example/discs', matched_game: null,
+          is_digital_only: true, sentiment: 50, timestamp: at(10) },
+        { headline: 'Rise Of The Tomb Raider Physical Release Announced', source: 'Nintendo Life', link: 'https://n.example/lrg',
+          matched_game: null, is_digital_only: false, sentiment: 50, timestamp: at(2) },
+        { headline: 'Older item saved before the flag', source: 'Kotaku', link: 'https://k.example/old', matched_game: null, sentiment: 50, timestamp: at(3) },
+    ];
+    vm.runInContext('allFeedData = __feed; refreshDashboard()', context);
+    el('filterSelect').value = 'digital';
+    el('searchInput').value = '';
+    el('typeSelect').value = 'all';
+    vm.runInContext('filterFeedItems()', context);
+    assert.equal(el('feedSummary').textContent,
+        '2 of 4 items are about digital-only games and discs going away, 1 of them in the last 7 days. Any game, not only PS2.');
+    const rows = el('feedTableBody').children.map(row => row.innerHTML);
+    assert.equal(rows.length, 2);
+    assert.match(rows[0], /<span class="digital-tag[^"]*"[^>]*>Digital-only<\/span>/);
+    assert.match(rows[1], /Sony &lt;b&gt;to ditch discs&lt;\/b&gt;/, 'a headline is text, never markup');
+    el('searchInput').value = 'phantom';
+    vm.runInContext('filterFeedItems()', context);
+    assert.equal(el('feedSummary').textContent, 'Listing 1 of the 2 items about digital-only games and discs going away.');
+    el('filterSelect').value = 'all';
+    el('searchInput').value = '';
+    vm.runInContext('filterFeedItems()', context);
+    assert.equal((el('feedTableBody').children.map(row => row.innerHTML).join('').match(/digital-tag/g) || []).length, 2,
+        'the tag shows in every view');
+    vm.runInContext('allFeedData = []; refreshDashboard()', context);
 });
 
 console.log(`dashboard checks passed (${passed})`);

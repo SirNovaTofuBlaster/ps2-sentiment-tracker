@@ -266,6 +266,7 @@ body .border-blue-900, body .border-purple-900, body .border-cyan-800 { border-c
 body .bg-amber-500 { background-color: transparent; border: 1px solid var(--line); color: var(--dim); }
 /* ...except the one that marks remaster news, which is what the red is for */
 body .remaster-tag { border-color: var(--red-line); color: var(--red); }
+body .digital-tag { border-color: var(--accent); color: var(--accent-hi); }
 
 /* Sentiment: a number and a 2px meter, not a coloured pill */
 body .score-value { font-size: .95rem; color: var(--text); }

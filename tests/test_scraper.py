@@ -493,6 +493,77 @@ class EntryHelperTests(unittest.TestCase):
         self.assertEqual(matcher.match("Black on PS2 is still great")[0], "Black")
 
 
+class DigitalOnlyTests(unittest.TestCase):
+    """The words that put a headline in the dashboard's "Digital-Only News" view."""
+
+    WANTED = (
+        # The maintainer's yardstick, as r/playstation carried it on 2026-10-08 (from powerupgaming.co.uk).
+        "Phantom Blade Zero Confirmed Digital-Only Despite Promised Physical Release - Power Up Gaming",
+        "Phantom Blade Zero Seems To Be Skipping Physical Release As Pre-orders Go Live",
+        "Phantom Blade Zero may lack PS5 disc on release date with physical pre-orders missing",
+        "Phantom Blade Zero Pre-Orders Are Entirely Digital, Prompting Concern That It's Not Getting A Physical Release",
+        "Phantom Blade Zero PlayStation 5 Pulled From Playasia Listings, as Retailer Says No Physical Edition Is Coming",
+        "Physical discs will no longer be produced for all PlayStation consoles from the end of next year",
+        "PlayStation ends physical disc production",
+        "Sony's PlayStation to stop releasing games on physical discs",
+        "Physical Sales Of Wolverine Estimated To Be Surprisingly High For A Company That's About To Ditch Discs",
+        "GTA 6 will be all digital for launch and beyond, Rockstar insists on code in box version",
+        "Xbox is going all-digital next generation",
+        "PS6 will be a discless console",
+        "Spending On Physical Games In The U.S. Is…Up? Thanks To Game-Key Cards",
+        "Marvel's Wolverine Physical vs Digital ratio! 35% Physical / 65% Digital",
+        "Sony's consultation on physical media: better late than never",
+        "Phantom Blade Zero sem versão em disco? Loja cancela reservas do jogo",
+        "Exjefe de PlayStation no comprende el fin de los discos de Sony",
+        # Found missing by the review of 2026-10-08.
+        "Hollow Knight Silksong won't get a physical release at launch",
+        "Hades 2 will not have a physical edition",
+        "Halo Infinite No Longer Getting Physical Copy",
+        "Physical edition of Silent Hill f cancelled in Europe",
+        "Xbox kills off physical games in Europe",
+        "Next Xbox won't have a disc drive",
+        "Xbox stops manufacturing discs",
+        "Sony no longer making PS5 disc drives",
+        "PS Vita cartridges discontinued",
+    )
+    NOT_WANTED = (
+        "Rise Of The Tomb Raider Switch 2 Limited Run Physical Release Announced",
+        "Psikyo Memories Shmup Collection Jets Off February 2027, Physical Editions Coming For PS5 And Nintendo Switch 2",
+        "Cyberpunk 2077 Digital Deluxe Edition is on sale",
+        "PS5 Digital Edition gets a price cut",
+        "Digital Foundry: Gears of War E-Day tech analysis",
+        "Sega's official Sonic Discord swarmed by 50,000 people",
+        "Metal Gear Solid 2 Has Its First Ever Boss Skip Discovered After Two Decades",
+        "Final Fantasy 7 Revelation no disco era o desejo do diretor",
+        "New Details Revealed For GTA 6's Jason And Lucia, Including Physical Intimacy",
+        "How many physical games do you have in your collection?",
+        "Is it better to play ps2 games by using freemcboot or physical copies?",
+        # Found flagged by the review of 2026-10-08.
+        "Summer Game Fest 2026 will be an all-digital showcase",
+        "Nintendo Direct: an all-digital presentation",
+        "Xbox Games Showcase goes digital this year",
+        "E3 goes digital after cancellation",
+        "The Game Awards: digital only event",
+        "PlayStation Store digital only sale starts today",
+        "Persona 3 Reload is digital exclusive on Game Pass",
+        "Digital-exclusive bonus for pre-orders",
+        "Ditch the disc: how to install PS2 games to HDD with OPL",
+        "Free DLC: no disc swap needed anymore",
+        "No disc required: Xbox Play Anywhere",
+        "No physical copies left: Metroid Prime 4 sells out",
+        "",
+    )
+
+    def test_digital_only_and_disc_phase_out_headlines_are_caught(self):
+        for headline in self.WANTED:
+            self.assertTrue(scraper.is_digital_only(headline), headline)
+
+    def test_physical_releases_editions_and_lookalike_words_are_not(self):
+        for headline in self.NOT_WANTED:
+            self.assertFalse(scraper.is_digital_only(headline), headline)
+        self.assertFalse(scraper.is_digital_only(None))
+
+
 class StatusTests(unittest.TestCase):
     def test_latest_only_moves_forward(self):
         status = {}
@@ -660,13 +731,13 @@ class RunScraperTests(unittest.TestCase):
                 "headline": "Thread on /vr/ naming Silent Hill 2", "source": "4chan /vr/", "source_type": "4chan", "feed": "4chan:vr",
                 "link": "https://boards.4chan.org/vr/thread/101", "matched_game": "Silent Hill 2", "matched_games": ["Silent Hill 2"],
                 "match_score": 100, "match_method": threads["https://boards.4chan.org/vr/thread/101"]["match_method"],
-                "matched_in": "title", "is_remaster_rumor": False, "sentiment": None, "hype": 0, "timestamp": stamp(3)},
+                "matched_in": "title", "is_remaster_rumor": False, "is_digital_only": False, "sentiment": None, "hype": 0, "timestamp": stamp(3)},
             "https://boards.4chan.org/vr/thread/102": {
                 "headline": "Thread on /vr/ naming Shadow of the Colossus", "source": "4chan /vr/", "source_type": "4chan", "feed": "4chan:vr",
                 "link": "https://boards.4chan.org/vr/thread/102", "matched_game": "Shadow of the Colossus",
                 "matched_games": ["Shadow of the Colossus"], "match_score": 100,
                 "match_method": threads["https://boards.4chan.org/vr/thread/102"]["match_method"],
-                "matched_in": "body", "is_remaster_rumor": False, "sentiment": None, "hype": 0, "timestamp": stamp(2)},
+                "matched_in": "body", "is_remaster_rumor": False, "is_digital_only": False, "sentiment": None, "hype": 0, "timestamp": stamp(2)},
             "https://boards.4chan.org/v/thread/900": threads.get("https://boards.4chan.org/v/thread/900"),
         }, "one row per thread that names a game; the rules thread and the threads naming none are not kept")
         many = threads["https://boards.4chan.org/v/thread/900"]
@@ -1035,6 +1106,22 @@ class RunScraperTests(unittest.TestCase):
         second = [url for url, _ in self.fetched]
         self.assertNotIn(self.POD_URL, second)  # polled an hour ago
         self.assertIn(self.NEWS_URL, second)
+
+    def test_digital_only_news_is_flagged_on_new_and_old_items_alike(self):
+        self.fixtures[self.NEWS_URL] = rss("Example News", [
+            ("Phantom Blade Zero Confirmed Digital-Only Despite Promised Physical Release", "https://news.example/pbz", None, NOW),
+            ("Rise Of The Tomb Raider Limited Run Physical Release Announced", "https://news.example/lrg", None, NOW)])
+        scraper.DATA_DIR.mkdir(parents=True, exist_ok=True)
+        saved = {"headline": "Sony To Ditch Discs Next Year", "source": "Example News", "source_type": "news",
+                 "link": "https://news.example/discs", "matched_game": None, "is_remaster_rumor": False, "sentiment": 50,
+                 "timestamp": (NOW - timedelta(days=2)).strftime(scraper.TIMESTAMP_FORMAT)}
+        scraper.OUTPUT_PATH.write_text(json.dumps({"items": [saved]}), encoding="utf-8")
+        output, _ = self.run_scraper()
+        self.assertTrue(self.item(output, "Phantom Blade Zero Confirmed Digital-Only Despite Promised Physical Release", "Example News")["is_digital_only"])
+        self.assertFalse(self.item(output, "Rise Of The Tomb Raider Limited Run Physical Release Announced", "Example News")["is_digital_only"])
+        self.assertTrue(self.item(output, "Sony To Ditch Discs Next Year", "Example News")["is_digital_only"],
+                        "an item saved before the flag existed is flagged too")
+        self.assertTrue(all(isinstance(item["is_digital_only"], bool) for item in output["items"]))
 
     def test_feeds_json_saved_with_a_bom_still_loads(self):
         scraper.FEEDS_PATH.write_text(json.dumps(self.config), encoding="utf-8-sig")
