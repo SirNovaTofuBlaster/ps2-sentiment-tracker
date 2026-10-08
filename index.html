@@ -218,17 +218,19 @@
         </div>
 
         <!-- The rarest PS2 games of each region (rare_games.json), each with today's eBay median
-             on its own region's site (data/prices/latest.json). -->
+             on its own region's site, and the rarest official consoles (rare_consoles.json), each
+             with its medians on both sites (data/prices/latest.json). -->
         <div id="viewRare" role="tabpanel" aria-labelledby="tabRare" class="hidden space-y-8">
         <div id="rareSection" class="bg-ps2card p-6">
             <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div>
-                    <h2>Rarest PS2 Games</h2>
+                    <h2 id="rareHeading">Rarest PS2 Games</h2>
                     <p id="rareSummary" class="text-xs text-slate-400">Loading...</p>
                 </div>
                 <div class="rare-regions" role="group" aria-label="Which region's list">
                     <button type="button" id="rareRegionPAL" onclick="showRareRegion('PAL')" aria-pressed="true" class="rare-region is-active">PAL <span class="rare-region-site">eBay UK</span></button>
                     <button type="button" id="rareRegionUS" onclick="showRareRegion('US')" aria-pressed="false" class="rare-region">US <span class="rare-region-site">eBay US</span></button>
+                    <button type="button" id="rareRegionConsoles" onclick="showRareRegion('Consoles')" aria-pressed="false" class="rare-region">Consoles</button>
                 </div>
             </div>
             <ol id="rareList" class="zebra"></ol>
@@ -947,7 +949,7 @@
         function priceRows(data) {
             const games = data && typeof data.games === 'object' && data.games ? data.games : {};
             return Object.entries(games)
-                .filter(([, entry]) => entry && typeof entry === 'object')
+                .filter(([, entry]) => entry && typeof entry === 'object' && entry.kind !== 'console')   // consoles: the Rarest page
                 .map(([title, entry]) => ({ title, entry, level: LEVELS[entry.level] ? entry.level : 'normal',
                     mentions: Number.isFinite(entry.mentions) ? entry.mentions : 0 }))
                 .sort((a, b) => LEVELS[a.level].rank - LEVELS[b.level].rank || b.mentions - a.mentions || a.title.localeCompare(b.title));
@@ -1046,12 +1048,15 @@
            latest.json says which game in its "games" holds each entry's figures.
         -------------------------------------------------------------------- */
         const RARE_SITE = { PAL: 'UK', US: 'US' };   // as RARE_SITES in ebay_prices.py
+        const RARE_VIEWS = ['PAL', 'US', 'Consoles'];
         const RARE_OTHER = { PAL: 'US name', US: 'PAL name' };
         const RARE_FLAGS = {
             weak: 'thin data', one_source: 'one source', edition: 'edition', india: 'India',
         };
         let rareData = null;         // rare_games.json as loaded, or null
         let rareTrouble = false;     // the file is there but could not be read
+        let consoleData = null;      // rare_consoles.json as loaded, or null
+        let consoleTrouble = false;
         let rareRegion = 'PAL';
 
         const own = (object, key) => Boolean(object) && typeof object === 'object' && Object.prototype.hasOwnProperty.call(object, key);
@@ -1084,18 +1089,20 @@
         }
 
         function showRareRegion(region) {
-            rareRegion = own(RARE_SITE, region) ? region : 'PAL';
+            rareRegion = RARE_VIEWS.includes(region) ? region : 'PAL';
             renderRare();
         }
 
         function renderRare(data = rareData, now = Date.now(), locale) {
             const region = rareRegion;
-            const label = RARE_SITE[region];
-            for (const name of Object.keys(RARE_SITE)) {
+            for (const name of RARE_VIEWS) {
                 const button = document.getElementById(`rareRegion${name}`);
                 button.classList.toggle('is-active', name === region);
                 button.setAttribute?.('aria-pressed', String(name === region));
             }
+            document.getElementById('rareHeading').textContent = region === 'Consoles' ? 'Rarest PS2 Consoles' : 'Rarest PS2 Games';
+            if (region === 'Consoles') return renderRareConsoles(consoleData, now, locale);
+            const label = RARE_SITE[region];
             const entries = rareEntries(data, region);
             const list = document.getElementById('rareList');
             const note = document.getElementById('rareNote');
@@ -1161,27 +1168,127 @@
                 + 'The eBay figures are asking prices of copies still for sale, not what anything sold for, and they are checked once a day.';
         }
 
-        async function loadRare() {
-            let data = null;
-            let failed = false;
-            try {
-                const response = await fetch('rare_games.json', { cache: 'no-cache' });
-                if (response.ok) data = await response.json();
-                else failed = response.status !== 404;
-            } catch {
-                failed = true;
+        /* The consoles: rare_consoles.json, official Sony hardware only, rarest first (by a
+           stated production run, then how restricted the release was, then collector value).
+           ebay_prices.py prices each one on both sites (or the one in "sites"), from sellers
+           anywhere; its figures are the entry in latest.json's "games" under the console's name. */
+        const CONSOLE_TAGS = {
+            not_retail: ['never sold', 'A development or test unit: Sony never sold these in shops.'],
+            low: ['unconfirmed', 'Rests on one weak source; the details may be wrong.'],
+        };
+
+        function consolePrices(entry, data = priceData) {
+            const games = data && typeof data.games === 'object' && data.games ? data.games : {};
+            const found = own(games, entry.name) ? games[entry.name] : null;
+            return found && typeof found === 'object' && found.kind === 'console' ? found : null;
+        }
+
+        function renderRareConsoles(data = consoleData, now = Date.now(), locale) {
+            const entries = (Array.isArray(data?.consoles) ? data.consoles : [])
+                .filter(row => row && typeof row === 'object' && typeof row.name === 'string' && row.name.trim());
+            const list = document.getElementById('rareList');
+            const note = document.getElementById('rareNote');
+            if (!entries.length) {
+                document.getElementById('rareSummary').textContent = consoleTrouble
+                    ? 'The list of rare consoles could not be read just now. Press REFRESH to try again.'
+                    : 'No list of rare consoles yet.';
+                list.innerHTML = '';
+                note.textContent = '';
+                foldList('rareList', 0);
+                return;
             }
+            const tiers = data.tiers && typeof data.tiers === 'object' ? data.tiers : {};
+            let priced = 0;
+            list.innerHTML = entries.map((entry, i) => {
+                const rank = Number.isInteger(entry.rank) ? entry.rank : i + 1;
+                const prices = consolePrices(entry);
+                const sites = Array.isArray(entry.sites) && entry.sites.some(label => PRICE_SITES.includes(label))
+                    ? PRICE_SITES.filter(label => entry.sites.includes(label)) : PRICE_SITES;
+                const figures = sites.map(label => {
+                    if (entry.price === false) {
+                        const why = typeof entry.not_priced_because === 'string' ? entry.not_priced_because : '';
+                        return `<span class="ebay-site is-quiet"><span class="ebay-flag">${esc(label)}</span><span class="ebay-note" title="${esc(`Not looked up on eBay${why ? `: ${why}` : ''}.`)}">not priced</span></span>`;
+                    }
+                    const site = prices?.[label];
+                    if (site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) && site.copies > 0
+                            && typeof site.median === 'number') priced++;
+                    return priceSiteHtml(label, site, currencyOf(label), now, locale, LEVELS.rare.stale);
+                }).join('');
+                const tags = [entry.not_retail === true ? 'not_retail' : null, entry.confidence === 'low' ? 'low' : null].filter(Boolean);
+                const tier = typeof entry.tier === 'string' ? entry.tier.match(/^(\d)/)?.[1] : null;
+                const value = entry.value && typeof entry.value === 'object' ? entry.value : null;
+                const usd = typeof value?.usd === 'number' && Number.isFinite(value.usd) ? value.usd : null;
+                const facts = [
+                    Array.isArray(entry.models) && entry.models.length ? entry.models.filter(model => typeof model === 'string').join(' · ') : '',
+                    Array.isArray(entry.regions) && entry.regions.length ? entry.regions.filter(region => typeof region === 'string').join(', ') : '',
+                    typeof entry.released === 'string' ? entry.released : '',
+                    Number.isFinite(entry.units) ? `about ${entry.units.toLocaleString(locale)} made` : '',
+                ].filter(Boolean);
+                const sources = [...new Map((Array.isArray(entry.evidence) ? entry.evidence : [])
+                    .filter(proof => proof && /^https:\/\//i.test(String(proof.source ?? '')))
+                    .map(proof => [siteName(proof.source), proof])).values()];
+                return `
+                <li class="${rowClass('rareList', i)}">
+                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
+                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${esc(rank)} ${esc(entry.name)}${tier && own(tiers, tier)
+                            ? ` <span class="level-tag rare-flag" title="${esc(tiers[tier])}">tier ${esc(tier)}</span>` : ''}${tags.map(tag =>
+                            ` <span class="level-tag rare-flag" title="${esc(CONSOLE_TAGS[tag][1])}">${esc(CONSOLE_TAGS[tag][0])}</span>`).join('')}</span>
+                        ${usd !== null ? `<span class="text-slate-400 whitespace-nowrap" title="${esc(`${value.what ?? ''}${value.date ? ` (${value.date})` : ''}`)}">guide ${esc(money(usd, 'USD', locale))}</span>` : ''}
+                    </div>
+                    ${facts.length ? `<p class="rare-aka">${esc(facts.join(' · '))}</p>` : ''}
+                    <div class="ebay-figures">${figures}</div>
+                    <p class="rare-note">${typeof entry.why_rare === 'string' && entry.why_rare ? `${esc(entry.why_rare)} ` : ''}${sources.length
+                        ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure_or_fact ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>
+                </li>`;
+            }).join('');
+            foldList('rareList', entries.length);
+            document.getElementById('rareSummary').textContent =
+                `Official Sony hardware only, rarest first. Under each: the median asking price on eBay US and UK today, from sellers anywhere · ${entries.length} consoles · ${priced} prices with copies listed`;
+            note.innerHTML = 'Rarest first: consoles with a known small production run (tier 1), then those never sold in shops or sold by one shop or in one bundle (tier 2), '
+                + 'then single-country limited colours (tier 3), then wider limited runs (tier 4); within a tier, by what collectors pay. '
+                + 'Most of these were sold only in Japan, so most copies on eBay are listed from Japan, with postage to match. '
+                + 'A listing counts only if it names the model or its colour and is a working console: no shells, skins, custom paint, mods or parts. '
+                + 'The guide value is PriceCharting\'s, in US dollars, where it has one. The eBay figures are asking prices, checked once a day.';
+        }
+
+        // Reads one of the Rarest page's files: { data, failed }.
+        async function readRareFile(path) {
+            try {
+                const response = await fetch(path, { cache: 'no-cache' });
+                if (response.ok) {
+                    const data = await response.json();
+                    return { data: data && typeof data === 'object' && !Array.isArray(data) ? data : null, failed: false };
+                }
+                return { data: null, failed: response.status !== 404 };
+            } catch {
+                return { data: null, failed: true };
+            }
+        }
+
+        async function loadRare() {
+            const [games, consoles] = await Promise.all([readRareFile('rare_games.json'), readRareFile('rare_consoles.json')]);
             // A hiccup must not wipe a list that is already on screen.
-            if (failed && rareData) return;
-            rareData = data && typeof data === 'object' && !Array.isArray(data) ? data : null;
+            if (!(consoles.failed && consoleData)) {
+                consoleData = consoles.data;
+                consoleTrouble = consoles.failed;
+            }
+            const failed = games.failed;
+            const data = games.data;
+            if (failed && rareData) {
+                try { renderRare(); } catch { /* the games list stays as it was */ }
+                return;
+            }
+            rareData = data;
             rareTrouble = failed;
             try {
                 renderRare();
             } catch (error) {
                 // A file this page cannot make sense of must not take the rest of the page with it.
-                console.warn('Could not show rare_games.json.', error);
+                console.warn('Could not show the Rarest page.', error);
                 rareData = null;
                 rareTrouble = true;
+                consoleData = null;
+                consoleTrouble = true;
                 try { renderRare(null); } catch { /* the page carries on without the list */ }
             }
         }

@@ -621,3 +621,8 @@ body .rare-aka { margin-top: .25rem; font-size: .69rem; color: var(--dim); }
 body .rare-note { margin-top: .4rem; font-size: .69rem; line-height: 1.5; color: var(--dim); }
 body .rare-note a { color: var(--body); text-decoration: underline; text-underline-offset: 2px; }
 body .rare-flag { color: var(--body); }
+@media (max-width: 640px) {
+  body .rare-regions { align-self: stretch; }
+  body .rare-region { flex: 1 1 0; padding: .45rem .3rem; }
+  body .rare-region-site { display: none; }   /* the summary under the heading names the site */
+}

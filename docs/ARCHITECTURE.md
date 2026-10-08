@@ -180,8 +180,8 @@ returned HTTP 403 there (see [SOURCES.md](../SOURCES.md#forums)).
 ## The dashboard
 
 `index.html` loads `data/sentiment_feed.json`, `feeds.json` and `data/feed_status.json`, and, when
-they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json` and
-`rare_games.json`.
+they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`,
+`rare_games.json` and `rare_consoles.json`.
 
 - **Four pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Most mentioned*
   and *eBay prices*; each is a wrapper (`viewDashboard`, `viewRare`, `viewMentions`,
@@ -437,6 +437,31 @@ guide value, flags, other name, the eBay median on its own site (`rarePrices()`:
 `latest.json`'s `rare` names, else the game of the same `priceKey()`) and its source links (https
 only). `RARE_SITE` in the page and `RARE_SITES` in the script must agree (tested). Without the
 file the page says so; a failed reload keeps the list on screen.
+
+### The rarest consoles
+
+`rare_consoles.json` (added 2026-10-08): 37 official PS2 consoles and Sony devices with a PS2
+inside, ranked in four tiers (a stated run of 5,000 or fewer; never sold in shops or through one
+shop or bundle; one country's limited colour; wider limited runs), and by PriceCharting value
+within a tier. Each entry has its model numbers, regions, release, `units` when a source states
+them, `why_rare`, `not_retail` for development units, `confidence`, `value` (PriceCharting, USD,
+dated) and `evidence`. Built from Wikipedia (English and Japanese), Obsolete Sony, Sony's press
+releases, PriceCharting's systems tables, GamePro.de, hardware.com.br, TechSpot, AV Watch and
+collector forums; consolevariations.com was not read (robots.txt). Its `gaps` lists what is
+unconfirmed: the car-paint colours' Japanese and European model numbers, several production
+figures, and no UK prices.
+
+`load_consoles()` turns each priced entry into a thing to price of `kind: "console"`, level
+`rare`, on both sites or its `sites`. `check_market()` sends it through `search_url(...,
+console=category)`: the consoles category (`CONSOLE_CATEGORY_ID`, or every category for the PSX
+and the Bravia), every condition but for parts (`CONSOLE_CONDITION_IDS`), Buy It Now, no
+location filter (most are sold from Japan), the entry's own queries (at most 3).
+`console_reject_reason()` counts a listing that has every `require` phrase and one `require_any`
+phrase, names no other console and none of `CONSOLE_JUNK` or the entry's `exclude`. A bundle
+counts. Figures, history and the week's change are kept as for games, under the console's name;
+`kind` keeps them off the eBay prices page and away from names in the feed. Entries with
+`"price": false` (the one-off show unit, two unconfirmed models) say why on the page. 34
+consoles priced, at most 68 lookups a day.
 
 ## Weights
 

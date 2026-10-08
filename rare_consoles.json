@@ -1,0 +1,2210 @@
+{
+ "what": "The rarest official PS2 consoles, for the dashboard's Rarest page. Official Sony hardware only: retail models, limited colours, commemorative and promotional editions, Sony devices with a PS2 inside, and development units (marked not_retail). No custom paint, shells or mods. ebay_prices.py looks each one up once a day on eBay US and eBay UK (or the one site in \"sites\"), from sellers anywhere.",
+ "checked": "2026-10-08",
+ "method": "Web research on 2026-10-08 with WebSearch and WebFetch. Model numbers, dates and limits taken from Sony press releases (sonyinteractive.com, sony.mediaroom.com, SCEE release), Japanese and English Wikipedia, Obsolete Sony, news articles and collector forums. Prices are PriceCharting's current figures (US, PAL and Japanese PS2 'Systems' tables, all in USD) read on 2026-10-08; no eBay UK/GBP prices were gathered, so gbp is null throughout. consolevariations.com and rfgeneration.com were not fetched (robots.txt); search snippets from them were only used to find candidate names. Ranking: (1) stated production numbers under ~10,000 first; (2) never-sold, single-retailer or single-bundle units; (3) single-country limited colours and Japan-only retail devices; (4) multi-country or large-run limited colours. Within tiers 2-4 (after the hand-ordered dev units, Bravia and PSX silver) entries are sorted by PriceCharting value, max(loose, CIB/2). Stated large runs (Ocean Blue, Zen Black 500,000) are ranked by value. Each entry's 'tier' and 'rank_basis' say which rule placed it. ebay_search: 'queries' are search strings; a listing title should contain every 'require' word and at least one 'require_any' word, and none of 'exclude'. 'controller' alone is not excluded because console listings often say 'with controller'.",
+ "gaps": "Not confirmed: the Japanese colour suffixes of the five Automobile consoles and the European SCPH-30004 R model number (only a US 'SCPH-30001 R' unit is attested); whether the 666-per-region figure is exact (one forum says 2,000 per colour); Ocean Blue/Zen Black run sizes (500,000 vs 50,000–250,000; Japanese Wikipedia calls them regular colours); the 5,000 figure for Toys Blue (one source); exact model numbers for the US 2006 silver slim, the US white slim and the PAL Aqua/Satin Silver fat units; pink slims reported for Oceania/Asia (model numbers not found). No production counts exist for any Japanese spring/summer colour, the FFXII and Gundam packs, the PSX silver or the dev units. Left out: Nickelodeon Kids' Choice Awards PS2 (PriceCharting lists 'SCPH-39001', 2003, no sales, no description) and a Haribo PS2 (consolevariations title only), because nothing showed they were Sony-made; the Need for Speed Most Wanted car-shaped PS2 (a custom case built for EA, unofficial); the Audiovox VOD10PS2 in-car unit (contains a PS2 but is made by Audiovox, not Sony); the US 'GT3 Racing Pack', 'Combo Pack', 'Online Pack' and other bundles whose console is standard. Value data is PriceCharting only, in USD; no eBay UK or GBP figures were collected, and PriceCharting's rarest rows rest on very few sales.",
+ "sources": {
+  "Wikipedia – PlayStation 2 models": "https://en.wikipedia.org/wiki/PlayStation_2_models",
+  "Japanese Wikipedia – PlayStation 2": "https://ja.wikipedia.org/wiki/PlayStation_2",
+  "Wikipedia – PSX (digital video recorder)": "https://en.wikipedia.org/wiki/PSX_(digital_video_recorder)",
+  "Obsolete Sony – Complete list of official PS2 models": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+  "PriceCharting – PS2 systems (US)": "https://www.pricecharting.com/console/playstation-2?genre-name=Systems",
+  "PriceCharting – PS2 systems (PAL)": "https://www.pricecharting.com/console/pal-playstation-2?genre-name=Systems",
+  "PriceCharting – PS2 systems (Japan)": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+  "Sony – Limited spring colours 2003": "https://sonyinteractive.com/en/?p=3005320",
+  "Sony – Spring 2004 colours": "https://sonyinteractive.com/en/?p=3005093",
+  "Sony – Pearl White 2004": "https://sonyinteractive.com/en/?p=3005158",
+  "Sony – Cinnabar Red 2008": "https://sonyinteractive.com/en/?p=3005534",
+  "SCEA – Limited edition silver 2006": "https://sony.mediaroom.com/2006-10-30-Sony-Computer-Entertainment-America-Releases-Limited-Edition-Silver-PlayStation-2-Computer-Entertainment-System-for-129.99",
+  "SCEE – Pink PS2 press release (archived)": "https://morguefile.wiki/wiki/Press_Release:_Sony_Computer_Entertainment_Europe_Announces_Introduction_of_Pink_PlayStation_2",
+  "hardware.com.br – European Automobile Color": "https://www.hardware.com.br/artigos/european-automobile-color-o-dia-em-que-a-sony-lancou-5-cores-do-ps2-que-se-transformaram-em-uma-obsessao-pelos-colecionadores/amp/",
+  "GamePro.de – Toys Blue PS2": "https://www.gamepro.de/artikel/seltene-hellblaue-ps2,3410266.html",
+  "GamePro.de – transparent white PS2": "https://www.gamepro.de/artikel/ps2-transparent-weiss,3411633.html",
+  "Collectors Edition forum – Automobile thread": "https://collectorsedition.org/forums/archive/index.php/t-7255.html",
+  "Collectors Edition forum – UK limited PS2 list": "https://collectorsedition.org/forums/showthread.php?p=14865",
+  "AV Watch – PSX 2004 lineup": "https://av.watch.impress.co.jp/docs/20040616/sony.htm",
+  "TechSpot – Bravia with PS2": "https://www.techspot.com/news/103543-remember-when-sony-released-bravia-tv-playstation-2.html"
+ },
+ "tiers": {
+  "1": "A one-off, or a stated run of 5,000 or fewer.",
+  "2": "Never sold in shops, or sold through one retailer or in one bundle.",
+  "3": "Limited to one country, or sold only in Japan.",
+  "4": "Limited across several countries, or made in large numbers."
+ },
+ "consoles": [
+  {
+   "rank": 1,
+   "name": "PS2 transparent white prototype (Tokyo Game Show 2002 display unit)",
+   "models": [
+    "unknown (thought to be SCPH-37000 era)"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2002 (shown, never sold)",
+   "units": null,
+   "why_rare": "A clear-white fat PS2 shown in a glass case at TGS 2002 and never put on sale; no other examples are known publicly.",
+   "not_retail": true,
+   "confidence": "low",
+   "tier": "1: one-off or stated run of 5,000 or fewer",
+   "rank_basis": "Display/prototype unit never sold; effectively one-off. Placed first on restriction, though it will almost never appear on eBay.",
+   "value": null,
+   "price": false,
+   "not_priced_because": "one display unit: anything listed under these words is a custom shell",
+   "evidence": [
+    {
+     "source": "https://www.gamepro.de/artikel/ps2-transparent-weiss,3411633.html",
+     "figure_or_fact": "Transparent white fat PS2 shown at TGS 2002 in a glass case, never sold in stores; likely 2002 colour series SCPH-37000",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.hardware.com.br/games/uma-das-versoes-mais-bonitas-e-raras-do-ps2/",
+     "figure_or_fact": "Mentions a translucent white model shown at TGS 2002",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 2,
+   "name": "PS2 European Automobile Color Collection – Super Red",
+   "models": [
+    "SCPH-30000 (Japan; colour-specific suffix not confirmed)",
+    "SCPH-30001 R (US/Canada)",
+    "SCPH-30004 R (Europe; model number inferred from PAL SCPH-3000x numbering, not confirmed for these units)"
+   ],
+   "regions": [
+    "JP",
+    "US",
+    "EU",
+    "UK"
+   ],
+   "released": "2001-12 (Japan, orders from 2001-11-08); 2002 (US, Europe)",
+   "units": 1998,
+   "units_note": "666 per region (600 singles + 66 in five-colour sets) × 3 regions; one collector thread claims 2,000 per colour",
+   "why_rare": "Glossy car-paint colour sold by order through Sony's own channels and as contest prizes, about 666 units per region.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "1: one-off or stated run of 5,000 or fewer",
+   "rank_basis": "666 per colour per region (stated); highest PriceCharting CIB figure of the five.",
+   "value": {
+    "usd": 4000.0,
+    "gbp": null,
+    "what": "CIB, PriceCharting US 'PlayStation 2 Automobile Super Red Console' (no loose price; PriceCharting PAL/JP give none)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 super red",
+     "ps2 automobile red"
+    ],
+    "require": [
+     "red"
+    ],
+    "require_any": [
+     "automobile",
+     "automotive",
+     "666",
+     "super red"
+    ],
+    "exclude": [
+     "slim"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "European Automobile Color Collection, SCPH-30000, orders from 2001-11-08 via PlayStation.com Japan, ¥50,000 each / ¥250,000 set; 666 (600 singles + 66 five-colour sets); marks 20 million shipped",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.hardware.com.br/artigos/european-automobile-color-o-dia-em-que-a-sony-lancou-5-cores-do-ps2-que-se-transformaram-em-uma-obsessao-pelos-colecionadores/amp/",
+     "figure_or_fact": "Announced TGS 2001; per region 600 units per colour + 66 five-colour kits = 666 of each colour per region (Japan, Americas, Europe), 9,990 total; US price $314.99, later $199.99",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/showthread.php?p=14865",
+     "figure_or_fact": "UK collector list: 'Limited to only 666 of each colour per region'",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/archive/index.php/t-7255.html",
+     "figure_or_fact": "Collector thread: 666 per region (PAL, NTSC-U, JP); a US unit labelled 'SPCH-30001 R', serial W0001081 (Snow White)",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/playstation-2?genre-name=Systems",
+     "figure_or_fact": "Automobile Super Red Console: CIB $4,000.00, new $9,600.00",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/archive/index.php/t-13649.html",
+     "figure_or_fact": "Seller: 'There were only 666 of this colour made for North America'; won in a contest",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 3,
+   "name": "PS2 European Automobile Color Collection – Snow White",
+   "models": [
+    "SCPH-30000 (Japan; colour-specific suffix not confirmed)",
+    "SCPH-30001 R (US/Canada)",
+    "SCPH-30004 R (Europe; model number inferred from PAL SCPH-3000x numbering, not confirmed for these units)"
+   ],
+   "regions": [
+    "JP",
+    "US",
+    "EU",
+    "UK"
+   ],
+   "released": "2001-12 (Japan, orders from 2001-11-08); 2002 (US, Europe)",
+   "units": 1998,
+   "units_note": "666 per region (600 singles + 66 in five-colour sets) × 3 regions; one collector thread claims 2,000 per colour",
+   "why_rare": "Glossy car-paint colour sold by order through Sony's own channels and as contest prizes, about 666 units per region.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "1: one-off or stated run of 5,000 or fewer",
+   "rank_basis": "666 per colour per region (stated); second-highest CIB value.",
+   "value": {
+    "usd": 1688.49,
+    "gbp": null,
+    "what": "loose, PriceCharting US 'White Automotive Edition' (CIB $3,868.26; PAL CIB $2,504.17 in USD)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 snow white",
+     "ps2 automobile white"
+    ],
+    "require": [
+     "white"
+    ],
+    "require_any": [
+     "automobile",
+     "automotive",
+     "666"
+    ],
+    "exclude": [
+     "slim"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "European Automobile Color Collection, SCPH-30000, orders from 2001-11-08 via PlayStation.com Japan, ¥50,000 each / ¥250,000 set; 666 (600 singles + 66 five-colour sets); marks 20 million shipped",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.hardware.com.br/artigos/european-automobile-color-o-dia-em-que-a-sony-lancou-5-cores-do-ps2-que-se-transformaram-em-uma-obsessao-pelos-colecionadores/amp/",
+     "figure_or_fact": "Announced TGS 2001; per region 600 units per colour + 66 five-colour kits = 666 of each colour per region (Japan, Americas, Europe), 9,990 total; US price $314.99, later $199.99",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/showthread.php?p=14865",
+     "figure_or_fact": "UK collector list: 'Limited to only 666 of each colour per region'",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/archive/index.php/t-7255.html",
+     "figure_or_fact": "Collector thread: 666 per region (PAL, NTSC-U, JP); a US unit labelled 'SPCH-30001 R', serial W0001081 (Snow White)",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/playstation-2?genre-name=Systems",
+     "figure_or_fact": "White Automotive Edition: loose $1,688.49, CIB $3,868.26",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/pal-playstation-2?genre-name=Systems",
+     "figure_or_fact": "PAL White Automotive Edition: CIB $2,504.17",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 4,
+   "name": "PS2 European Automobile Color Collection – Astral Blue",
+   "models": [
+    "SCPH-30000 (Japan; colour-specific suffix not confirmed)",
+    "SCPH-30001 R (US/Canada)",
+    "SCPH-30004 R (Europe; model number inferred from PAL SCPH-3000x numbering, not confirmed for these units)"
+   ],
+   "regions": [
+    "JP",
+    "US",
+    "EU",
+    "UK"
+   ],
+   "released": "2001-12 (Japan, orders from 2001-11-08); 2002 (US, Europe)",
+   "units": 1998,
+   "units_note": "666 per region (600 singles + 66 in five-colour sets) × 3 regions; one collector thread claims 2,000 per colour",
+   "why_rare": "Glossy car-paint colour sold by order through Sony's own channels and as contest prizes, about 666 units per region.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "1: one-off or stated run of 5,000 or fewer",
+   "rank_basis": "666 per colour per region (stated); values close to Light Yellow.",
+   "value": {
+    "usd": 1492.61,
+    "gbp": null,
+    "what": "loose, PriceCharting US 'PlayStation 2 Console [Astral Blue]' (another US row 'Blue Automotive Edition' loose $1,999.99; PAL loose $2,321.00 in USD)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 astral blue",
+     "ps2 automobile blue"
+    ],
+    "require": [
+     "blue"
+    ],
+    "require_any": [
+     "automobile",
+     "automotive",
+     "666",
+     "astral blue"
+    ],
+    "exclude": [
+     "slim"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "European Automobile Color Collection, SCPH-30000, orders from 2001-11-08 via PlayStation.com Japan, ¥50,000 each / ¥250,000 set; 666 (600 singles + 66 five-colour sets); marks 20 million shipped",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.hardware.com.br/artigos/european-automobile-color-o-dia-em-que-a-sony-lancou-5-cores-do-ps2-que-se-transformaram-em-uma-obsessao-pelos-colecionadores/amp/",
+     "figure_or_fact": "Announced TGS 2001; per region 600 units per colour + 66 five-colour kits = 666 of each colour per region (Japan, Americas, Europe), 9,990 total; US price $314.99, later $199.99",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/showthread.php?p=14865",
+     "figure_or_fact": "UK collector list: 'Limited to only 666 of each colour per region'",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/archive/index.php/t-7255.html",
+     "figure_or_fact": "Collector thread: 666 per region (PAL, NTSC-U, JP); a US unit labelled 'SPCH-30001 R', serial W0001081 (Snow White)",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/playstation-2?genre-name=Systems",
+     "figure_or_fact": "Astral Blue: loose $1,492.61, CIB $1,940.39; Blue Automotive Edition loose $1,999.99, CIB $2,800.00",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/pal-playstation-2?genre-name=Systems",
+     "figure_or_fact": "PAL Blue Automotive Edition: loose/CIB $2,321.00",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 5,
+   "name": "PS2 European Automobile Color Collection – Light Yellow",
+   "models": [
+    "SCPH-30000 (Japan; colour-specific suffix not confirmed)",
+    "SCPH-30001 R (US/Canada)",
+    "SCPH-30004 R (Europe; model number inferred from PAL SCPH-3000x numbering, not confirmed for these units)"
+   ],
+   "regions": [
+    "JP",
+    "US",
+    "EU",
+    "UK"
+   ],
+   "released": "2001-12 (Japan, orders from 2001-11-08); 2002 (US, Europe)",
+   "units": 1998,
+   "units_note": "666 per region (600 singles + 66 in five-colour sets) × 3 regions; one collector thread claims 2,000 per colour",
+   "why_rare": "Glossy car-paint colour sold by order through Sony's own channels and as contest prizes, about 666 units per region.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "1: one-off or stated run of 5,000 or fewer",
+   "rank_basis": "666 per colour per region (stated); PAL units cheaper than US.",
+   "value": {
+    "usd": 1999.99,
+    "gbp": null,
+    "what": "loose, PriceCharting US 'Yellow Automotive Edition' (CIB $2,341.66; PAL loose $1,026.40 in USD)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 light yellow",
+     "ps2 automobile yellow"
+    ],
+    "require": [
+     "yellow"
+    ],
+    "require_any": [
+     "automobile",
+     "automotive",
+     "666",
+     "light yellow"
+    ],
+    "exclude": [
+     "slim"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "European Automobile Color Collection, SCPH-30000, orders from 2001-11-08 via PlayStation.com Japan, ¥50,000 each / ¥250,000 set; 666 (600 singles + 66 five-colour sets); marks 20 million shipped",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.hardware.com.br/artigos/european-automobile-color-o-dia-em-que-a-sony-lancou-5-cores-do-ps2-que-se-transformaram-em-uma-obsessao-pelos-colecionadores/amp/",
+     "figure_or_fact": "Announced TGS 2001; per region 600 units per colour + 66 five-colour kits = 666 of each colour per region (Japan, Americas, Europe), 9,990 total; US price $314.99, later $199.99",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/showthread.php?p=14865",
+     "figure_or_fact": "UK collector list: 'Limited to only 666 of each colour per region'",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/archive/index.php/t-7255.html",
+     "figure_or_fact": "Collector thread: 666 per region (PAL, NTSC-U, JP); a US unit labelled 'SPCH-30001 R', serial W0001081 (Snow White)",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/playstation-2?genre-name=Systems",
+     "figure_or_fact": "Yellow Automotive Edition: loose $1,999.99, CIB $2,341.66",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/pal-playstation-2?genre-name=Systems",
+     "figure_or_fact": "PAL Yellow Automotive Edition: loose $1,026.40, CIB $1,334.32",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://orbispatches.com/gaming-faq/how-rare-is-the-yellow-ps2",
+     "figure_or_fact": "Aggregated FAQ: '2,000 made globally', often over $1,000 (unsourced)",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 6,
+   "name": "PS2 European Automobile Color Collection – Metallic Silver",
+   "models": [
+    "SCPH-30000 (Japan; colour-specific suffix not confirmed)",
+    "SCPH-30001 R (US/Canada)",
+    "SCPH-30004 R (Europe; model number inferred from PAL SCPH-3000x numbering, not confirmed for these units)"
+   ],
+   "regions": [
+    "JP",
+    "US",
+    "EU",
+    "UK"
+   ],
+   "released": "2001-12 (Japan, orders from 2001-11-08); 2002 (US, Europe)",
+   "units": 1998,
+   "units_note": "666 per region (600 singles + 66 in five-colour sets) × 3 regions; one collector thread claims 2,000 per colour",
+   "why_rare": "Glossy car-paint colour sold by order through Sony's own channels and as contest prizes, about 666 units per region.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "1: one-off or stated run of 5,000 or fewer",
+   "rank_basis": "666 per colour per region (stated); lowest value of the five because ordinary silver PS2s are easily confused with it.",
+   "value": {
+    "usd": 340.04,
+    "gbp": null,
+    "what": "loose, PriceCharting US 'Silver Automotive Edition' (CIB $1,238.86; PAL CIB $1,358.32; JP 'Automobile Silver' loose $246.50). Low loose figures may include mislabelled ordinary silver PS2s",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 metallic silver",
+     "ps2 automobile silver"
+    ],
+    "require": [
+     "silver"
+    ],
+    "require_any": [
+     "automobile",
+     "automotive",
+     "666"
+    ],
+    "exclude": [
+     "slim",
+     "satin"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "European Automobile Color Collection, SCPH-30000, orders from 2001-11-08 via PlayStation.com Japan, ¥50,000 each / ¥250,000 set; 666 (600 singles + 66 five-colour sets); marks 20 million shipped",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.hardware.com.br/artigos/european-automobile-color-o-dia-em-que-a-sony-lancou-5-cores-do-ps2-que-se-transformaram-em-uma-obsessao-pelos-colecionadores/amp/",
+     "figure_or_fact": "Announced TGS 2001; per region 600 units per colour + 66 five-colour kits = 666 of each colour per region (Japan, Americas, Europe), 9,990 total; US price $314.99, later $199.99",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/showthread.php?p=14865",
+     "figure_or_fact": "UK collector list: 'Limited to only 666 of each colour per region'",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://collectorsedition.org/forums/archive/index.php/t-7255.html",
+     "figure_or_fact": "Collector thread: 666 per region (PAL, NTSC-U, JP); a US unit labelled 'SPCH-30001 R', serial W0001081 (Snow White)",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/playstation-2?genre-name=Systems",
+     "figure_or_fact": "Silver Automotive Edition: loose $340.04, CIB $1,238.86",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/pal-playstation-2?genre-name=Systems",
+     "figure_or_fact": "European Automobile Collection [Metallic Silver]: CIB $1,358.32",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Automobile Silver Console: loose $246.50",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 7,
+   "name": "PS2 Toys\"R\"Us Toys Blue (SCPH-39000 TB)",
+   "models": [
+    "SCPH-39000 TB"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2002-12-03",
+   "units": 5000,
+   "why_rare": "Light-blue fat PS2 sold only by Toys\"R\"Us Japan alongside the Ratchet & Clank action pack.",
+   "not_retail": false,
+   "confidence": "medium",
+   "tier": "1: one-off or stated run of 5,000 or fewer",
+   "rank_basis": "Stated 5,000 units (one source) and a single-shop release; next-lowest stated figure after the Automobile colours.",
+   "value": null,
+   "search": {
+    "queries": [
+     "scph-39000 tb",
+     "ps2 toys r us blue"
+    ],
+    "require": [],
+    "require_any": [
+     "39000 tb",
+     "39000tb",
+     "toys r us",
+     "toysrus",
+     "toys blue"
+    ],
+    "exclude": [
+     "slim"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-39000 TB 'Toys Blue', 2002-12-03, ¥26,799, Toys\"R\"Us exclusive",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.gamepro.de/artikel/seltene-hellblaue-ps2,3410266.html",
+     "figure_or_fact": "'nur 5.000 Einheiten produziert'; Japan-only via Toys\"R\"Us, Dec 2002",
+     "date": "2024-03-15"
+    },
+    {
+     "source": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+     "figure_or_fact": "SCPH-39000TB, Japan, December 2002, linked to Ratchet & Clank pack",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 8,
+   "name": "PS2 Development Tool \"TOOL\" (DTL-T10000)",
+   "models": [
+    "DTL-T10000",
+    "DTL-T10000H"
+   ],
+   "regions": [
+    "JP",
+    "US",
+    "EU"
+   ],
+   "released": "2000",
+   "units": null,
+   "why_rare": "Rack-sized development kit leased only to licensed developers; serial numbers trace each unit.",
+   "not_retail": true,
+   "confidence": "high",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Never sold at retail; highest value of the non-retail units. No production figure.",
+   "value": {
+    "usd": 1789.17,
+    "gbp": null,
+    "what": "loose, PriceCharting 'Playstation 2 Development Tool' (CIB $4,486.81; sales 2026-01-29 $2,000, 2026-02-28 $2,900)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 dtl-t10000",
+     "ps2 development tool"
+    ],
+    "require": [],
+    "require_any": [
+     "dtl t10000",
+     "dtl t10000h"
+    ],
+    "exclude": [
+     "cd r",
+     "dvd r",
+     "game disc"
+    ],
+    "category": "any"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "DTL-T10000: development unit over three times the retail size, supplied only to approved companies",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/game/playstation-2/playstation-2-development-tool",
+     "figure_or_fact": "Loose $1,789.17, CIB $4,486.81; sales 2024-2026",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 9,
+   "name": "PS2 Slim debugging station (DTL-H70000 / DTL-H75000 series)",
+   "models": [
+    "DTL-H70000",
+    "DTL-H75000A"
+   ],
+   "regions": [
+    "JP",
+    "US",
+    "EU"
+   ],
+   "released": "2004–2006",
+   "units": null,
+   "why_rare": "Slimline debug unit for developers; Japanese Wikipedia notes very few were distributed.",
+   "not_retail": true,
+   "confidence": "medium",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Never sold; stated to be very few, rarer than fat debug units. No price evidence of its own.",
+   "value": null,
+   "search": {
+    "queries": [
+     "ps2 dtl-h70000",
+     "ps2 dtl-h75000"
+    ],
+    "require": [],
+    "require_any": [
+     "dtl h70000",
+     "dtl h75000",
+     "dtl h75000a",
+     "dtl h90000"
+    ],
+    "exclude": [],
+    "category": "any"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "DTL-H70000: slim design, no spec changes from earlier dev units, very few distributed",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/game/playstation-2/playstation-2-test-debug-unit",
+     "figure_or_fact": "eBay titles in PriceCharting's 'Test Debug Unit' history include DTL-H75000A",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 10,
+   "name": "Sony Bravia KDL-22PX300 TV with built-in PS2",
+   "models": [
+    "KDL-22PX300"
+   ],
+   "regions": [
+    "UK",
+    "EU"
+   ],
+   "released": "2010-12",
+   "units": null,
+   "why_rare": "22-inch Bravia TV with a PS2 inside, sold mainly through UK retailer Richer Sounds for a short time.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Short single-country retail run; value over $1,200 loose.",
+   "value": {
+    "usd": 1273.67,
+    "gbp": null,
+    "what": "loose, PriceCharting 'Sony Bravia [KDL-22PX300]' (one sale 2025-11-08; CIB $1,655.77)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "kdl-22px300",
+     "sony bravia ps2 tv"
+    ],
+    "require": [],
+    "require_any": [
+     "kdl 22px300",
+     "kdl22px300",
+     "22px300"
+    ],
+    "exclude": [
+     "stand",
+     "remote only",
+     "power supply only",
+     "pcb",
+     "board only"
+    ],
+    "category": "any"
+   },
+   "evidence": [
+    {
+     "source": "https://en.wikipedia.org/wiki/PlayStation_2_models",
+     "figure_or_fact": "Sony BRAVIA KDL22PX300 (Europe, 2010), 22-inch 720p TV with built-in PS2",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "Released in Europe 2010-12-03",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.techspot.com/news/103543-remember-when-sony-released-bravia-tv-playstation-2.html",
+     "figure_or_fact": "UK only via Sony/Richer Sounds, launch £200; eBay asks $1,400–$2,600",
+     "date": "2024-06-25"
+    },
+    {
+     "source": "https://www.pricecharting.com/game/playstation-2/sony-bravia-kdl-22px300",
+     "figure_or_fact": "Loose $1,273.67 (sale 2025-11-08), CIB $1,655.77",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 11,
+   "name": "PS2 debugging station / TEST unit, fat (DTL-H10000, DTL-H3000x, DTL-H5000x)",
+   "models": [
+    "DTL-H10000",
+    "DTL-H30000",
+    "DTL-H30001",
+    "DTL-H30002",
+    "DTL-H30101",
+    "DTL-H50000",
+    "DTL-H50001"
+   ],
+   "regions": [
+    "JP",
+    "US",
+    "EU"
+   ],
+   "released": "2000–2004",
+   "units": null,
+   "why_rare": "Debug consoles sold only to licensed developers for testing builds; leaked units are traceable by serial.",
+   "not_retail": true,
+   "confidence": "high",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Never sold at retail, but far more common than TOOL kits (regular sales about every two months).",
+   "value": {
+    "usd": 599.95,
+    "gbp": null,
+    "what": "loose, PriceCharting 'Playstation 2 Test Debug Unit' (sales 2026-02 to 2026-08 $585–$850); 'Debugging Station' DTL-H50001 row loose $1,931.57 on mixed sales",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 dtl-h debug",
+     "ps2 debugging station"
+    ],
+    "require": [],
+    "require_any": [
+     "dtl h10000",
+     "dtl h30000",
+     "dtl h30001",
+     "dtl h30002",
+     "dtl h30101",
+     "dtl h30102",
+     "dtl h50000",
+     "dtl h50001",
+     "dtl h50002"
+    ],
+    "exclude": [
+     "slim",
+     "controller",
+     "memory card"
+    ],
+    "category": "any"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "DTL-H10000/H30000/H50000 dev units, not sold to the public; H50000 testing became mandatory",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://computinghistory.org.uk/det/29224/Sony-PlayStation-2-Debugging-Station",
+     "figure_or_fact": "DTL-H10000 sold exclusively to licensed developers, 2000",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/game/playstation-2/playstation-2-test-debug-unit",
+     "figure_or_fact": "Loose $599.95; sales 2026-02-07 $585.80 to 2026-06-05 $850",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/game/playstation-2/playstation-2-debugging-station",
+     "figure_or_fact": "DTL-H50001 Debugging Station loose $1,931.57 (sales mix several models)",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 12,
+   "name": "PSX DESR-5100S (silver limited)",
+   "models": [
+    "DESR-5100S"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2004-07-01",
+   "units": null,
+   "why_rare": "Quantity-limited silver-topped version of the 160 GB PSX recorder with a built-in PS2.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Stated limited quantity (no figure), Japan-only, of a device that sold poorly; no price evidence found.",
+   "value": null,
+   "search": {
+    "queries": [
+     "psx desr-5100s",
+     "sony psx silver"
+    ],
+    "require": [],
+    "require_any": [
+     "desr 5100s"
+    ],
+    "exclude": [
+     "remote only"
+    ],
+    "category": "any"
+   },
+   "evidence": [
+    {
+     "source": "https://av.watch.impress.co.jp/docs/20040616/sony.htm",
+     "figure_or_fact": "'台数限定のシルバーモデル' (quantity-limited silver model) of DESR-5100, from 2004-07-01",
+     "date": "2004-06-16"
+    },
+    {
+     "source": "https://en.wikipedia.org/wiki/PSX_(digital_video_recorder)",
+     "figure_or_fact": "DESR-5100S silver, 160 GB, 2004-07-01",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 13,
+   "name": "PS2 Z Gundam Hyaku-Shiki Gold Pack (SCPH-55000 GU)",
+   "models": [
+    "SCPH-55000 GU"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2003-12-04",
+   "units": null,
+   "why_rare": "Gold-coloured fat PS2 sold only in a Japanese Mobile Suit Z Gundam bundle with a stand designed by Kunio Okawara.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Single-bundle Japanese release; CIB value ~$755 is the highest of the Japanese colour editions.",
+   "value": {
+    "usd": 123.51,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Gundam Hyakushiki Gold Pack' (CIB $754.95)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "scph-55000 gu",
+     "ps2 hyaku shiki gold"
+    ],
+    "require": [
+     "gold"
+    ],
+    "require_any": [
+     "55000 gu",
+     "55000gu",
+     "hyaku shiki",
+     "hyakushiki",
+     "gundam"
+    ],
+    "exclude": [],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-55000 GU, 2003-12-04, ¥35,000, Zeta Gundam Hyakushiki Gold Pack",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://review.kakaku.com/review/20504010058/",
+     "figure_or_fact": "Release 2003-12-04, MSRP ¥35,000",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+     "figure_or_fact": "SCPH-55000GU Z Gundam Hyaku-Shiki Gold Edition, licensed Bandai collaboration",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Loose $123.51, CIB $754.95",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 14,
+   "name": "PS2 BB Pack Midnight Blue (SCPH-50000 MB/NH)",
+   "models": [
+    "SCPH-50000 MB/NH"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2003-06-12",
+   "units": null,
+   "units_note": "sakuracentral.net claims about 100,000; unconfirmed",
+   "why_rare": "Dark-blue fat PS2 sold only in Japan's BB Pack with the BB Unit (network adapter + 40 GB hard disk).",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Single-bundle Japan-only release; CIB value over $500.",
+   "value": {
+    "usd": 115.93,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Playstation 2 BB Midnight Blue Console' (CIB $521.37)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 midnight blue",
+     "scph-50000 mb"
+    ],
+    "require": [],
+    "require_any": [
+     "midnight blue",
+     "50000 mb",
+     "50000mb"
+    ],
+    "exclude": [
+     "midnight black"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-50000 MB/NH, 2003-06-12, ¥35,000, with BB Unit",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+     "figure_or_fact": "Midnight Blue sold only in the broadband bundle, never as a standalone console",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://sakuracentral.net/released-only-in-japan-the-midnight-blue-ps2/",
+     "figure_or_fact": "About 100,000 units, Japan only (unsourced)",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Loose $115.93, CIB $521.37",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 15,
+   "name": "PS2 Toys\"R\"Us Satin Silver (SCPH-50000 TSS)",
+   "models": [
+    "SCPH-50000 TSS"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2003-11-19",
+   "units": null,
+   "why_rare": "Satin-silver fat PS2 sold only through Toys\"R\"Us Japan.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Single-shop Japanese release; moderate value because it looks like ordinary satin silver units.",
+   "value": {
+    "usd": 174.5,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Playstation 2 System SCPH-50000 TSS Satin Silver' (CIB $278.00)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "scph-50000 tss",
+     "ps2 toys r us satin silver"
+    ],
+    "require": [],
+    "require_any": [
+     "50000 tss",
+     "50000tss",
+     "tss",
+     "toys r us",
+     "toysrus"
+    ],
+    "exclude": [],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-50000 TSS, 2003-11-19, ¥19,799, Toys\"R\"Us exclusive",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+     "figure_or_fact": "Distributed through Toys\"R\"Us beginning 2003-11-19",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Loose $174.50, CIB $278.00",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 16,
+   "name": "PS2 Slim Final Fantasy XII Pack (SCPH-75000 FF)",
+   "models": [
+    "SCPH-75000 FF"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2006-03-16",
+   "units": null,
+   "why_rare": "Charcoal-black slim printed with FFXII's Judge Master crest, sold only in a Japanese Square Enix bundle.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Single-bundle Japanese release; value ~$134 loose.",
+   "value": {
+    "usd": 134.47,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'PlayStation 2 Slim Final Fantasy XII Edition' (CIB $290.07)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "scph-75000 ff",
+     "ps2 final fantasy xii console"
+    ],
+    "require": [],
+    "require_any": [
+     "75000 ff",
+     "75000ff",
+     "ffxii",
+     "ff12",
+     "final fantasy xii",
+     "final fantasy 12"
+    ],
+    "exclude": [
+     "disc only",
+     "game only",
+     "guide"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-75000 FF, 2006-03-16, open price, Judge Master emblem",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.gamespot.com/articles/final-fantasy-xii-ps2-bundle-coming-to-japan/1100-6142032/",
+     "figure_or_fact": "Charcoal black slim imprinted with a symbol from the game; on sale March 16",
+     "date": "2006-01-06"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Loose $134.47, CIB $290.07",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 17,
+   "name": "PS2 Gran Turismo 3 Racing Pack (SCPH-35000 GT)",
+   "models": [
+    "SCPH-35000 GT"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2001-06-08",
+   "units": null,
+   "why_rare": "Bundle-only fat PS2 with its own model number; Japanese Wikipedia lists the console as charcoal black.",
+   "not_retail": false,
+   "confidence": "medium",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Single-bundle Japanese release, but the console is near-identical to standard units; low value.",
+   "value": {
+    "usd": 101.9,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'PlayStation 2 Racing Pack' (CIB $225.00); not certain this row is the GT3 pack",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "scph-35000 gt",
+     "ps2 gt3 racing pack"
+    ],
+    "require": [],
+    "require_any": [
+     "35000"
+    ],
+    "exclude": [
+     "slim"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-35000 GT, 2001-06-08, ¥39,800, with Gran Turismo 3",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "'PlayStation 2 Racing Pack' loose $101.90, CIB $225.00",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 18,
+   "name": "PS2 Slim Gran Turismo 4 Racing Pack (SCPH-70000 GT)",
+   "models": [
+    "SCPH-70000 GT"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2004-12-28",
+   "units": null,
+   "why_rare": "Bundle-only slim with its own model number; console is charcoal black.",
+   "not_retail": false,
+   "confidence": "medium",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Single-bundle Japanese release of a near-standard console; low value.",
+   "value": {
+    "usd": 139.97,
+    "gbp": null,
+    "what": "CIB, PriceCharting JP 'Playstation 2 Console [Gran Turismo 4 Racing Pack]' (no loose price)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "scph-70000 gt",
+     "ps2 gt4 racing pack"
+    ],
+    "require": [],
+    "require_any": [
+     "70000 gt",
+     "70000gt",
+     "gt4 racing pack",
+     "gran turismo 4 racing pack"
+    ],
+    "exclude": [],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-70000 GT, 2004-12-28, ¥23,800, with Gran Turismo 4",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "GT4 Racing Pack CIB $139.97",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 19,
+   "name": "PS2 Gran Turismo 4 Prologue pack, Ceramic White (SCPH-55000 GT)",
+   "models": [
+    "SCPH-55000 GT"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2003-12-04",
+   "units": null,
+   "why_rare": "Ceramic-white fat PS2 sold only in the Japanese GT4 Prologue bundle.",
+   "not_retail": false,
+   "confidence": "medium",
+   "tier": "2: never sold at retail, single retailer or single bundle",
+   "rank_basis": "Single-bundle Japanese release; no separate price evidence (PriceCharting's 'Racing Pack' rows don't name this one).",
+   "value": null,
+   "search": {
+    "queries": [
+     "scph-55000 gt",
+     "ps2 gt4 prologue console"
+    ],
+    "require": [],
+    "require_any": [
+     "55000 gt",
+     "55000gt",
+     "prologue"
+    ],
+    "exclude": [
+     "disc only",
+     "game only"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-55000 GT, Ceramic White, 2003-12-04, ¥22,000, with GT4 Prologue",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://twinfinite.net/guides/30-of-the-rarest-limited-edition-consoles/",
+     "figure_or_fact": "Limited-edition ceramic white console released with Gran Turismo Prologue",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 20,
+   "name": "PSX DVR with built-in PS2, 250 GB (DESR-7000 / 7100 / 7500 / 7700)",
+   "models": [
+    "DESR-7000",
+    "DESR-7100",
+    "DESR-7500",
+    "DESR-7700"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2003-12-13 to 2005-04",
+   "units": null,
+   "why_rare": "Sony's Japan-only DVR/DVD recorder with a full PS2 inside; sold poorly and was discontinued in 2005.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Japan-only, expensive, poor seller; values $180–$440 loose.",
+   "value": {
+    "usd": 442.32,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Sony PSX System [250GB]' (CIB $738.82; DESR-7000 row loose $182.45)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "sony psx desr-7000",
+     "sony psx desr-7700"
+    ],
+    "require": [],
+    "require_any": [
+     "desr 7000",
+     "desr 7100",
+     "desr 7500",
+     "desr 7700",
+     "desr7000",
+     "desr7100",
+     "desr7500",
+     "desr7700"
+    ],
+    "exclude": [
+     "remote only"
+    ],
+    "category": "any"
+   },
+   "evidence": [
+    {
+     "source": "https://en.wikipedia.org/wiki/PSX_(digital_video_recorder)",
+     "figure_or_fact": "DESR-7000 ¥99,800 (2003-12-13), 7100 (2004-07-01), 7500 (2004-12), 7700 (2005-04); discontinued 2005",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "PSX [250GB] loose $442.32; DESR-7000 loose $182.45, CIB $669.00",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 21,
+   "name": "PSX DVR with built-in PS2, 160 GB (DESR-5000 / 5100 / 5500 / 5700)",
+   "models": [
+    "DESR-5000",
+    "DESR-5100",
+    "DESR-5500",
+    "DESR-5700"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2003-12-13 to 2005-04",
+   "units": null,
+   "units_note": "100,000 sold in the first week (Wikipedia); no total",
+   "why_rare": "Cheaper PSX model; Japan-only, sold poorly after launch week.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Japan-only, larger volume than the 250 GB models.",
+   "value": {
+    "usd": 354.19,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Sony PSX DESR-5700' (DESR-5100 loose $148.34; 'Sony PSX System' loose $250.00)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "sony psx desr-5000",
+     "sony psx desr-5700"
+    ],
+    "require": [],
+    "require_any": [
+     "desr 5000",
+     "desr 5100",
+     "desr 5500",
+     "desr 5700",
+     "desr5000",
+     "desr5100",
+     "desr5500",
+     "desr5700"
+    ],
+    "exclude": [
+     "desr 5100s",
+     "remote only"
+    ],
+    "category": "any"
+   },
+   "evidence": [
+    {
+     "source": "https://en.wikipedia.org/wiki/PSX_(digital_video_recorder)",
+     "figure_or_fact": "DESR-5000 ¥79,800 (2003-12-13); 100,000 sold first week then poor sales",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "DESR-5700 loose $354.19; DESR-5100 loose $148.34",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 22,
+   "name": "PS2 Zen Black (SCPH-37000 B)",
+   "models": [
+    "SCPH-37000 B"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2002-08-01",
+   "units": 500000,
+   "units_note": "'Limited to 500,000 units' per Obsolete Sony; Japanese Wikipedia lists it as a regular colour",
+   "why_rare": "Translucent smoke-black fat PS2 from Japan's 2002 colour series, never sold elsewhere.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Japan-only; highest loose value of the Japanese colours, though a stated 500,000 run.",
+   "value": {
+    "usd": 346.8,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Playstation 2 Console [Zen Black]' (CIB $498.28)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 zen black",
+     "scph-37000 b"
+    ],
+    "require": [],
+    "require_any": [
+     "zen",
+     "37000 b",
+     "37000b"
+    ],
+    "exclude": [],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+     "figure_or_fact": "Zen Black released in Japan 2002-08-01, 'also limited to 500,000 units'",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-37000 B Zen Black, ¥30,000, 2002-08-01",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Loose $346.80, CIB $498.28",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 23,
+   "name": "PS2 Slim Pink (Japan, SCPH-77000 PK)",
+   "models": [
+    "SCPH-77000 PK"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2006-11-22",
+   "units": null,
+   "why_rare": "Production-limited pink slim for Japan.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Japan-only production-limited slim; CIB ~$500. Kept separate from the European pink (different model, different market).",
+   "value": {
+    "usd": 499.99,
+    "gbp": null,
+    "what": "CIB, PriceCharting JP 'Pink Slim Playstation 2 System' (no loose price)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "scph-77000 pk",
+     "ps2 slim pink japan"
+    ],
+    "require": [
+     "pink"
+    ],
+    "require_any": [
+     "77000",
+     "japan",
+     "japanese",
+     "ntsc j"
+    ],
+    "exclude": [],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-77000 PK, 2006-11-22, production-limited",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Pink Slim CIB $499.99",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 24,
+   "name": "PS2 Sakura (pink, SCPH-39000 SA)",
+   "models": [
+    "SCPH-39000 SA"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2003-02-20",
+   "units": null,
+   "why_rare": "Pale-pink fat PS2 sold for a limited spring 2003 period in Japan for 50 million units shipped.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Time-limited Japan-only colour; second-highest loose value of the spring colours.",
+   "value": {
+    "usd": 231.9,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Playstation 2 System [Sakura Pink]' (CIB $469.00)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 sakura",
+     "scph-39000 sa"
+    ],
+    "require": [],
+    "require_any": [
+     "sakura",
+     "39000 sa"
+    ],
+    "exclude": [
+     "50000",
+     "slim"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://sonyinteractive.com/en/?p=3005320",
+     "figure_or_fact": "SCPH-39000 SA Sakura, 2003-02-20, ¥25,000, 'limited period of time in spring for the Japanese market'",
+     "date": "2003-01-30"
+    },
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-39000 SA Sakura, spring 2003 limited",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Sakura Pink loose $231.90, CIB $469.00",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 25,
+   "name": "PS2 Slim Cinnabar Red (SCPH-90000 CR)",
+   "models": [
+    "SCPH-90000 CR"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2008-07-03",
+   "units": null,
+   "why_rare": "Last new PS2 colour, a limited offer for the Japanese market only.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Japan-only limited slim colour; loose value ~$220.",
+   "value": {
+    "usd": 219.62,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Cinnabar Red Slim Playstation 2 System' (CIB $349.99)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 cinnabar red",
+     "scph-90000 cr"
+    ],
+    "require": [],
+    "require_any": [
+     "cinnabar",
+     "90000 cr",
+     "90000cr"
+    ],
+    "exclude": [],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://sonyinteractive.com/en/?p=3005534",
+     "figure_or_fact": "SCPH-90000 CR, 2008-07-03, ¥16,000, 'as a limited offer for the Japanese market'",
+     "date": "2008-06-03"
+    },
+    {
+     "source": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+     "figure_or_fact": "Called the last newly introduced PS2 console worldwide",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Loose $219.62, CIB $349.99",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 26,
+   "name": "PS2 Ocean Blue (SCPH-37000 L)",
+   "models": [
+    "SCPH-37000 L"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2002-07-18",
+   "units": 500000,
+   "units_note": "500,000 per Obsolete Sony and GamePro.de; hardware.com.br says 50,000–250,000; Japanese Wikipedia lists it as a regular colour",
+   "why_rare": "Translucent blue fat PS2 from Japan's 2002 colour series, never sold outside Japan.",
+   "not_retail": false,
+   "confidence": "medium",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Japan-only but a large run (figures disagree); value ~$139 loose.",
+   "value": {
+    "usd": 139.0,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Playstation 2 Ocean Blue' (CIB $391.98)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 ocean blue",
+     "scph-37000 l"
+    ],
+    "require": [],
+    "require_any": [
+     "ocean",
+     "37000 l",
+     "37000l"
+    ],
+    "exclude": [],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+     "figure_or_fact": "Released 2002-07-18, 'Limited to 500,000 units'",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.gamepro.de/artikel/ps2-transparent-weiss,3411633.html",
+     "figure_or_fact": "2002 colour series limited to 500,000 units",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.hardware.com.br/games/uma-das-versoes-mais-bonitas-e-raras-do-ps2/",
+     "figure_or_fact": "Between 50,000 and 250,000 produced",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Loose $139.00, CIB $391.98",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 27,
+   "name": "PS2 Pearl White (SCPH-50000 PW)",
+   "models": [
+    "SCPH-50000 PW"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2004-07-15",
+   "units": null,
+   "why_rare": "Pearlescent fat PS2 sold as a summer-2004 limited-time colour in Japan only.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Japan-only, time-limited; value ~$145 loose.",
+   "value": {
+    "usd": 145.5,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Playstation 2 Pearl White' (CIB $200.01)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 pearl white",
+     "scph-50000 pw"
+    ],
+    "require": [],
+    "require_any": [
+     "pearl"
+    ],
+    "exclude": [
+     "slim"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://sonyinteractive.com/en/?p=3005158",
+     "figure_or_fact": "SCPH-50000 PW, 2004-07-15, ¥19,800, 'Limited Time Offer for the Summer Season in Japan'",
+     "date": "2004-07-01"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Loose $145.50, CIB $200.01",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 28,
+   "name": "PS2 Ceramic White fat (SCPH-50000 CW)",
+   "models": [
+    "SCPH-50000 CW"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2004-03-18",
+   "units": null,
+   "why_rare": "White fat PS2 sold as a spring-2004 limited-time colour in Japan.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Japan-only, time-limited; value ~$144 loose. Hard to tell apart in eBay titles from later white slims.",
+   "value": {
+    "usd": 143.81,
+    "gbp": null,
+    "what": "loose, PriceCharting JP 'Ceramic White Playstation 2 System' (CIB $186.95)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 ceramic white fat",
+     "scph-50000 cw"
+    ],
+    "require": [
+     "white"
+    ],
+    "require_any": [
+     "ceramic",
+     "50000 cw",
+     "50000cw"
+    ],
+    "exclude": [
+     "slim",
+     "70000",
+     "70004",
+     "75000",
+     "77000",
+     "79001",
+     "90000"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://sonyinteractive.com/en/?p=3005093",
+     "figure_or_fact": "SCPH-50000 CW from 2004-03-18, 'limited time offer during spring 2004'",
+     "date": "2004-03-09"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Loose $143.81, CIB $186.95",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 29,
+   "name": "PS2 Aqua (Japan, SCPH-39000 AQ)",
+   "models": [
+    "SCPH-39000 AQ"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2003-02-20",
+   "units": null,
+   "why_rare": "Light metallic-blue fat PS2 sold for a limited spring 2003 period in Japan.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Time-limited Japan-only colour; modest value.",
+   "value": {
+    "usd": 260.0,
+    "gbp": null,
+    "what": "CIB, PriceCharting JP 'Playstation 2 System [Aqua]' (no loose price)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "scph-39000 aq",
+     "ps2 aqua japan"
+    ],
+    "require": [
+     "aqua"
+    ],
+    "require_any": [
+     "39000",
+     "japan",
+     "japanese",
+     "ntsc j"
+    ],
+    "exclude": [
+     "50004",
+     "pal"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://sonyinteractive.com/en/?p=3005320",
+     "figure_or_fact": "SCPH-39000 AQ Aqua, 2003-02-20, ¥25,000, limited spring period, Japan only",
+     "date": "2003-01-30"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Aqua: CIB $260.00",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 30,
+   "name": "PS2 Silver (Japan spring 2003, SCPH-39000 S)",
+   "models": [
+    "SCPH-39000 S"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2003-02-13",
+   "units": null,
+   "why_rare": "Silver fat PS2 sold for a limited spring 2003 period in Japan for 50 million units shipped.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Time-limited Japan-only colour; no separate price found (easily confused with Automobile Metallic Silver and satin silver).",
+   "value": null,
+   "search": {
+    "queries": [
+     "scph-39000 s",
+     "ps2 silver scph-39000"
+    ],
+    "require": [
+     "39000"
+    ],
+    "require_any": [
+     "silver"
+    ],
+    "exclude": [
+     "automobile",
+     "automotive",
+     "satin"
+    ],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://sonyinteractive.com/en/?p=3005320",
+     "figure_or_fact": "SCPH-39000 S Silver, 2003-02-13, ¥25,000, limited spring period",
+     "date": "2003-01-30"
+    },
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-39000 S, spring 2003 limited",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 31,
+   "name": "PS2 Sakura (purple, SCPH-50000 SA)",
+   "models": [
+    "SCPH-50000 SA"
+   ],
+   "regions": [
+    "JP"
+   ],
+   "released": "2004-03-25",
+   "units": null,
+   "why_rare": "Second Sakura colour (lilac/purple) sold as a spring-2004 limited-time colour in Japan.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "3: single-country limited or Japan-only retail",
+   "rank_basis": "Time-limited Japan-only colour; no separate price found.",
+   "value": null,
+   "search": {
+    "queries": [
+     "scph-50000 sa",
+     "ps2 sakura scph-50000"
+    ],
+    "require": [
+     "50000"
+    ],
+    "require_any": [
+     "sakura",
+     "50000 sa"
+    ],
+    "exclude": [],
+    "category": "consoles"
+   },
+   "evidence": [
+    {
+     "source": "https://sonyinteractive.com/en/?p=3005093",
+     "figure_or_fact": "SCPH-50000 SA SAKURA, 2004-03-25, spring-time only",
+     "date": "2004-03-09"
+    },
+    {
+     "source": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+     "figure_or_fact": "SCPH-50000SA Sakura Purple, distinct from the 2003 SCPH-39000SA",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 32,
+   "name": "PS2 Aqua Blue (Europe, SCPH-50004 AQ)",
+   "models": [
+    "SCPH-50004 AQ",
+    "SCPH-50003 AQ (UK; not confirmed)"
+   ],
+   "regions": [
+    "EU",
+    "UK"
+   ],
+   "released": "2004-03",
+   "units": null,
+   "why_rare": "Strictly limited aqua fat PS2 for PAL territories, the European follow-up to the Japanese Aqua.",
+   "not_retail": false,
+   "confidence": "medium",
+   "tier": "4: multi-country limited or large run",
+   "rank_basis": "Multi-country limited release; value ~$193 loose.",
+   "value": {
+    "usd": 193.37,
+    "gbp": null,
+    "what": "loose, PriceCharting PAL 'Playstation 2 System [Aqua Blue]' (CIB $412.55), in USD",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 aqua blue",
+     "ps2 aqua pal"
+    ],
+    "require": [
+     "aqua"
+    ],
+    "require_any": [
+     "aqua blue",
+     "50004",
+     "pal"
+    ],
+    "exclude": [
+     "39000",
+     "japan",
+     "japanese"
+    ],
+    "category": "consoles"
+   },
+   "sites": [
+    "UK"
+   ],
+   "evidence": [
+    {
+     "source": "https://www.gamesmarket.global/scee-kuendigt-neue-ps2-sonderedition-an-339f43e96094ca62c28183ebb7a2a7b7/",
+     "figure_or_fact": "SCEE 'Aqua' special edition, early March 2004, all PAL territories, €199/£139, strictly limited",
+     "date": "2004-02-06"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/pal-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Aqua Blue loose $193.37, CIB $412.55",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 33,
+   "name": "PS2 Slim Ceramic White (US SingStar bundle)",
+   "models": [
+    "unconfirmed (SCPH-7900x CW)"
+   ],
+   "regions": [
+    "US"
+   ],
+   "released": "c. 2007–2008",
+   "units": null,
+   "why_rare": "White slim sold in the US mainly in SingStar bundles.",
+   "not_retail": false,
+   "confidence": "low",
+   "tier": "4: multi-country limited or large run",
+   "rank_basis": "Bundle-mostly US release; low value; model number and date not confirmed.",
+   "value": {
+    "usd": 116.35,
+    "gbp": null,
+    "what": "loose, PriceCharting US 'White Slim Playstation 2 System' (CIB $282.45; SingStar bundle CIB $254.86)",
+    "date": "2026-10-08"
+   },
+   "price": false,
+   "not_priced_because": "its model number is not confirmed, so the search would count ordinary consoles",
+   "evidence": [
+    {
+     "source": "https://obsoletesony.substack.com/p/complete-list-of-all-official-playstation",
+     "figure_or_fact": "SCPH-70000CW Slim Ceramic White; in the US mainly sold through SingStar bundles",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/playstation-2?genre-name=Systems",
+     "figure_or_fact": "White Slim loose $116.35, CIB $282.45; Ceramic White SingStar Bundle CIB $254.86",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 34,
+   "name": "PS2 Slim Silver limited edition (US 2006)",
+   "models": [
+    "SCPH-79001 SS (per eBay listings; not confirmed by Sony)"
+   ],
+   "regions": [
+    "US",
+    "CA"
+   ],
+   "released": "2006-10-30",
+   "units": null,
+   "why_rare": "Silver slim with matching controller sold in North America 'while supplies last'.",
+   "not_retail": false,
+   "confidence": "medium",
+   "tier": "4: multi-country limited or large run",
+   "rank_basis": "Single-country limited run, but in large volume; low value.",
+   "value": {
+    "usd": 124.45,
+    "gbp": null,
+    "what": "loose, PriceCharting US 'Slim Playstation 2 System [Silver]' (CIB $196.01)",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 slim silver scph-79001",
+     "silver ps2 slim"
+    ],
+    "require": [
+     "silver"
+    ],
+    "require_any": [
+     "79001",
+     "77001",
+     "limited"
+    ],
+    "exclude": [
+     "japan",
+     "pal",
+     "satin"
+    ],
+    "category": "consoles"
+   },
+   "sites": [
+    "US"
+   ],
+   "evidence": [
+    {
+     "source": "https://sony.mediaroom.com/2006-10-30-Sony-Computer-Entertainment-America-Releases-Limited-Edition-Silver-PlayStation-2-Computer-Entertainment-System-for-129.99",
+     "figure_or_fact": "Limited edition silver PS2 with silver controller, $129.99, while supplies last",
+     "date": "2006-10-30"
+    },
+    {
+     "source": "https://www.gamespot.com/articles/silver-ps2-comes-to-us/1100-6160708/",
+     "figure_or_fact": "Silver PS2 $129.99, available while supplies last",
+     "date": "2006-10-30"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/playstation-2?genre-name=Systems",
+     "figure_or_fact": "Silver slim loose $124.45, CIB $196.01",
+     "date": "read 2026-10-08"
+    }
+   ]
+  },
+  {
+   "rank": 35,
+   "name": "PS2 Slim Pink (Europe/UK, SCPH-77003 PK / SCPH-77004 PK)",
+   "models": [
+    "SCPH-77003 PK",
+    "SCPH-77004 PK"
+   ],
+   "regions": [
+    "EU",
+    "UK"
+   ],
+   "released": "2006-11-08",
+   "units": null,
+   "why_rare": "Limited-edition pink slim sold through selected European retailers, in the UK bundled with SingStar Pop.",
+   "not_retail": false,
+   "confidence": "high",
+   "tier": "4: multi-country limited or large run",
+   "rank_basis": "Multi-country limited release with large volume; cheap loose. Wikipedia also reports a pink slim in Oceania and parts of Asia (model numbers not confirmed).",
+   "value": {
+    "usd": 91.21,
+    "gbp": null,
+    "what": "loose, PriceCharting PAL 'Slim Playstation 2 System [Pink]' (CIB $142.04; sealed 'Slim Starter Pack [Pink]' CIB $364.96), in USD",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 slim pink",
+     "pink ps2 console"
+    ],
+    "require": [
+     "pink"
+    ],
+    "require_any": [
+     "slim",
+     "77003",
+     "77004"
+    ],
+    "exclude": [
+     "controller",
+     "memory card",
+     "pad",
+     "japan",
+     "japanese",
+     "77000"
+    ],
+    "category": "consoles"
+   },
+   "sites": [
+    "UK"
+   ],
+   "evidence": [
+    {
+     "source": "https://morguefile.wiki/wiki/Press_Release:_Sony_Computer_Entertainment_Europe_Announces_Introduction_of_Pink_PlayStation_2",
+     "figure_or_fact": "SCEE press release 2006-08-21: SCPH-77003 PK (UK/Ireland), SCPH-77004 PK (EU), limited edition, from 8 November, UK £129.99 with SingStar Pop",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.hwsetup.it/news/reader.php?objid=3419",
+     "figure_or_fact": "Limited edition pink PS2 from 8 November at selected European retailers",
+     "date": "2006-08-22"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/pal-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Pink slim loose $91.21, CIB $142.04",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.thegamer.com/rarest-limited-edition-playstation-consoles-worth/",
+     "figure_or_fact": "Sealed pink slim starter pack up to $1,250",
+     "date": "2020-02-04"
+    }
+   ]
+  },
+  {
+   "rank": 36,
+   "name": "PS2 Satin Silver fat (Europe/US, SCPH-5000x SS)",
+   "models": [
+    "SCPH-50003 SS (per eBay catalogue)",
+    "SCPH-50004 SS (not confirmed)"
+   ],
+   "regions": [
+    "EU",
+    "UK",
+    "US"
+   ],
+   "released": "2004",
+   "units": null,
+   "why_rare": "Satin-silver fat PS2 sold for a limited time outside Japan (UK collectors list it as a limited edition).",
+   "not_retail": false,
+   "confidence": "low",
+   "tier": "4: multi-country limited or large run",
+   "rank_basis": "Multi-region; common on the second-hand market; release dates and exact model numbers not confirmed.",
+   "value": {
+    "usd": 78.6,
+    "gbp": null,
+    "what": "loose, PriceCharting PAL 'PlayStation 2 Satin Silver' (CIB $152.43; Prestige 2-controller pack loose $166.36), in USD",
+    "date": "2026-10-08"
+   },
+   "price": false,
+   "not_priced_because": "its model number is not confirmed, so the search would count ordinary consoles",
+   "evidence": [
+    {
+     "source": "https://collectorsedition.org/forums/showthread.php?p=14865",
+     "figure_or_fact": "UK list: Satin Silver described as a limited edition, distinct from the Automobile silver",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/pal-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Satin Silver loose $78.60, CIB $152.43",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.thegamer.com/rarest-limited-edition-playstation-consoles-worth/",
+     "figure_or_fact": "'PlayStation 2 Satin Silver' up to $1,000 (no model given)",
+     "date": "2020-02-04"
+    }
+   ]
+  },
+  {
+   "rank": 37,
+   "name": "PS2 Slim Satin Silver (Japan/Europe 2005–2006, SCPH-77000 SS etc.)",
+   "models": [
+    "SCPH-77000 SS",
+    "SCPH-70004 SS",
+    "SCPH-75004 SS (per eBay listings)"
+   ],
+   "regions": [
+    "JP",
+    "EU",
+    "UK"
+   ],
+   "released": "2005-05-13 (Europe); 2006-11-22 (Japan SCPH-77000 SS)",
+   "units": null,
+   "why_rare": "Initially production-limited in Japan, then made a standard colour; in Europe a regular alternative colour.",
+   "not_retail": false,
+   "confidence": "medium",
+   "tier": "4: multi-country limited or large run",
+   "rank_basis": "Included for completeness: barely rare; lowest value on the list.",
+   "value": {
+    "usd": 67.09,
+    "gbp": null,
+    "what": "loose, PriceCharting PAL 'Slim Playstation 2 System [Silver]' (JP 'Slim Playstation 2 Silver' loose $80.02), in USD",
+    "date": "2026-10-08"
+   },
+   "search": {
+    "queries": [
+     "ps2 slim satin silver",
+     "ps2 slim silver"
+    ],
+    "require": [
+     "silver"
+    ],
+    "require_any": [
+     "slim"
+    ],
+    "exclude": [
+     "79001",
+     "ntsc u",
+     "usa"
+    ],
+    "category": "consoles"
+   },
+   "sites": [
+    "UK"
+   ],
+   "evidence": [
+    {
+     "source": "https://ja.wikipedia.org/wiki/PlayStation_2",
+     "figure_or_fact": "SCPH-77000 SS initially production-limited, later standard at users' request",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://gamedeveloper.com/game-platforms/sony-to-release-new-silver-ps2-in-europe",
+     "figure_or_fact": "Silver slim in Europe from 13 May 2005, £114.99, sold alongside black",
+     "date": "2005-04-29"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/pal-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Silver slim loose $67.09",
+     "date": "read 2026-10-08"
+    },
+    {
+     "source": "https://www.pricecharting.com/console/jp-playstation-2?genre-name=Systems",
+     "figure_or_fact": "Silver slim loose $80.02",
+     "date": "read 2026-10-08"
+    }
+   ]
+  }
+ ]
+}

@@ -136,6 +136,7 @@ class Sandbox:
                                                      for title in archive])
         for name, value in (("WATCHLIST_PATH", self.root / "ebay_watchlist.json"),
                             ("RARE_PATH", self.root / "rare_games.json"),
+                            ("CONSOLES_PATH", self.root / "rare_consoles.json"),
                             ("FEED_PATH", self.data / "sentiment_feed.json"),
                             ("ARCHIVE_DIR", self.data / "archive"),
                             ("LIBRARY_PATH", self.data / "ps2_database.json"),
@@ -1478,6 +1479,124 @@ class RareListTests(unittest.TestCase):
             values = [row["value_usd"]["cib"] for row in rows]
             self.assertEqual(values, sorted(values, reverse=True), f"{name} is ranked by the value it states")
         self.assertEqual(len(entries), 195)
+
+
+class ConsoleTests(unittest.TestCase):
+    """The Rarest page's consoles: priced once a day on both sites, from sellers anywhere."""
+
+    PEARL = {"rank": 1, "name": "PS2 Pearl White (SCPH-50000 PW)",
+             "search": {"queries": ["ps2 pearl white", "scph-50000 pw"], "require_any": ["pearl", "50000 pw"],
+                        "exclude": ["slim"], "category": "consoles"}}
+
+    def setUp(self):
+        self.sandbox = Sandbox(self, feed=[mention("Silent Hill 2", 5, "r/ps2")])
+
+    def consoles(self, *rows):
+        self.sandbox.write("rare_consoles.json", {"consoles": list(rows)})
+
+    def test_without_the_file_nothing_changes(self):
+        self.assertEqual(ebay_prices.load_consoles(self.sandbox.root / "rare_consoles.json"), ([], []))
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(set(self.sandbox.latest["games"]), {"Silent Hill 2"})
+
+    def test_entries_that_cannot_be_used_are_named_and_left_out(self):
+        self.consoles(self.PEARL, {"rank": 2, "name": "No Words", "search": {"queries": ["ps2 thing"]}},
+                      {"rank": 3, "name": "Prototype", "price": False},
+                      {"rank": 4, "name": "Bad Site", "sites": ["JP"], "search": {"queries": ["x y"], "require": ["y"]}},
+                      {"rank": 5, "name": "Bad Category", "search": {"queries": ["x y"], "require": ["y"], "category": "tvs"}},
+                      {"rank": 6, "name": "Too Many", "search": {"queries": ["a b", "c d", "e f", "g h"], "require": ["b"]}},
+                      {"name": ""})
+        consoles, problems = ebay_prices.load_consoles(self.sandbox.root / "rare_consoles.json")
+        self.assertEqual([console["title"] for console in consoles], ["PS2 Pearl White (SCPH-50000 PW)"])
+        self.assertEqual(len(problems), 5, problems)
+        self.assertFalse(any("Prototype" in problem for problem in problems), "not priced on purpose is no problem")
+        (self.sandbox.root / "rare_consoles.json").write_text("[", encoding="utf-8")
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        self.assertIn("Rarest page, left out: rare_consoles.json cannot be read", printed)
+
+    def test_a_console_is_searched_among_consoles_from_sellers_anywhere_on_both_sites(self):
+        self.consoles(self.PEARL, dict(self.PEARL, rank=2, name="PS2 Slim Pink (Europe)", sites=["UK"],
+                                       search={"queries": ["ps2 slim pink"], "require": ["pink"], "require_any": ["slim"],
+                                               "category": "any"}))
+
+        def answer(params, headers):
+            uk = headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB"
+            currency = "GBP" if uk else "USD"
+            if "pearl" in params["q"] or "50000" in params["q"]:
+                return page(listing("Sony PS2 Pearl White SCPH-50000 PW console Japan boxed", 180, currency, item_id=1),
+                            listing("PS2 Pearl White console with 2 controllers bundle", 140, currency, item_id=2),
+                            listing("PS2 Pearl White custom shell housing", 30, currency, item_id=3),
+                            listing("PS2 Pearl White for parts not working", 20, currency, item_id=4),
+                            listing("PS2 Slim Pearl White", 90, currency, item_id=5),
+                            listing("PS3 Pearl White", 99, currency, item_id=6),
+                            listing("PS2 black SCPH-50000", 40, currency, item_id=7))
+            return page(listing("PS2 Slim Pink console PAL", 70, currency, item_id=8))
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        pearl = [call for call in fake.searches if "pearl" in call["params"]["q"] or "50000" in call["params"]["q"]]
+        self.assertEqual({call["headers"]["X-EBAY-C-MARKETPLACE-ID"] for call in pearl}, {"EBAY_US", "EBAY_GB"})
+        self.assertEqual(len(pearl), 4, "two searches on each site, once")
+        for call in pearl:
+            self.assertEqual(call["params"]["category_ids"], ebay_prices.CONSOLE_CATEGORY_ID)
+            self.assertNotIn("itemLocationCountry", call["params"]["filter"], "sellers anywhere: most are in Japan")
+            self.assertNotIn("aspect_filter", call["params"])
+            self.assertIn("buyingOptions:{FIXED_PRICE}", call["params"]["filter"])
+            self.assertNotIn("7000", call["params"]["filter"], "never for parts")
+        pink = [call for call in fake.searches if call["params"]["q"] == "ps2 slim pink"]
+        self.assertEqual([call["headers"]["X-EBAY-C-MARKETPLACE-ID"] for call in pink], ["EBAY_GB"])
+        self.assertNotIn("category_ids", pink[0]["params"], "a console with \"category\": \"any\" is looked for everywhere")
+        games = self.sandbox.latest["games"]
+        entry = games["PS2 Pearl White (SCPH-50000 PW)"]
+        self.assertEqual((entry["kind"], entry["level"], entry["sites"]), ("console", "rare", ["US", "UK"]))
+        self.assertEqual((entry["US"]["copies"], entry["US"]["median"]), (2, 160.0), "a bundle with controllers is a console")
+        self.assertEqual(games["PS2 Slim Pink (Europe)"]["sites"], ["UK"])
+        self.assertIn("Rarest page: 2 consoles priced.", printed)
+        self.assertNotIn("160", printed, "never a price in the log")
+        self.assertIn(["2026-10-06T12:00Z", "PS2 Pearl White (SCPH-50000 PW)", "UK", 2, 140.0, 160.0], self.sandbox.history())
+        row = next(row for row in self.sandbox.snapshot["games"] if row["title"].startswith("PS2 Pearl"))
+        self.assertIn("_nkw=ps2%20pearl%20white&_sacat=139971&LH_BIN=1", row["markets"]["EBAY_US"]["search_url"])
+
+        self.sandbox.now = NOON + timedelta(hours=7)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertFalse([call for call in fake.searches if "pearl" in call["params"]["q"]], "once a day")
+
+    def test_a_console_never_takes_a_games_name_and_figures(self):
+        games = [game("Silent Hill 2")]
+        consoles, _ = ebay_prices.load_consoles(self.sandbox.root / "missing.json")
+        clash = {"title": "Silent Hill 2", "key": "silent hill 2", "kind": "console"}
+        self.assertEqual(ebay_prices.add_consoles(games, [clash, dict(clash)]), 0)
+        self.assertEqual([entry.get("kind") for entry in games], [None])
+        one = {"title": "PS2 Ocean Blue", "key": "ps2 ocean blue", "kind": "console"}
+        self.assertEqual(ebay_prices.add_consoles(games, [one, dict(one)]), 1, "nor is one console added twice")
+
+    def test_game_searches_are_untouched_by_the_console_settings(self):
+        self.assertEqual(ebay_prices.search_url("EBAY_US", "silent hill 2"),
+                         ebay_prices.search_url("EBAY_US", "silent hill 2", console=None))
+        self.assertIn("aspect_filter", ebay_prices.search_url("EBAY_US", "silent hill 2"))
+        self.assertIn("itemLocationCountry", ebay_prices.search_url("EBAY_US", "silent hill 2"))
+
+    def test_the_committed_list_is_sourced_and_every_priced_entry_can_be_searched(self):
+        raw = json.loads((ROOT / "rare_consoles.json").read_text(encoding="utf-8"))
+        consoles, problems = ebay_prices.load_consoles(ROOT / "rare_consoles.json")
+        self.assertEqual(problems, [])
+        rows = raw["consoles"]
+        self.assertEqual([row["rank"] for row in rows], list(range(1, len(rows) + 1)))
+        self.assertEqual(len(consoles), sum(1 for row in rows if row.get("price", True)))
+        self.assertGreaterEqual(len(consoles), 30)
+        for row in rows:
+            self.assertTrue(row["evidence"], row["name"])
+            for proof in row["evidence"]:
+                self.assertTrue(proof["source"].startswith("https://"), row["name"])
+            if row.get("price") is False:
+                self.assertTrue(row["not_priced_because"], row["name"])
+            value = row.get("value")
+            if value and value.get("usd") is not None:
+                self.assertGreater(value["usd"], 0)
+                self.assertTrue(value["what"] and value["date"], row["name"])
+        self.assertFalse({row["name"] for row in rows} & set(json.loads((ROOT / "rare_games.json").read_text(encoding="utf-8"))["lists"]),
+                         "no console shares a name with a list")
 
 
 class RegionalNameTests(unittest.TestCase):
