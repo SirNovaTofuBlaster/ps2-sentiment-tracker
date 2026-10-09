@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-09 11:45:16 UTC",
+  "last_updated": "2026-10-09 12:01:22 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749347356",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-09 11:54 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/583898734",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-09 11:52 UTC"
+    },
     {
       "headline": "Car Park Capital now available in Early Access",
       "source": "Forum: Lemmy games",
@@ -128539,23 +128577,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-25 13:00 UTC"
-    },
-    {
-      "headline": "NCR Rewind Ep. 40",
-      "source": "Podcast: Nerd Cave Retro",
-      "source_type": "podcast",
-      "feed": "https://feeds.acast.com/public/shows/6519b599fc8c840012975a4c",
-      "link": "https://shows.acast.com/nerdcaveretro-1/episodes/ncr-rewind-ep-40",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-25 12:00 UTC"
     }
   ]
 }
