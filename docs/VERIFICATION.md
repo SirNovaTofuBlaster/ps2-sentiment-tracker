@@ -620,6 +620,25 @@ because the search is the rule's spelling, "sly raccoon", and sellers mostly wri
 | Log and commit message spoke of PS2 mentions only | Both mention digital-only news |
 | README and this file not updated | Updated |
 
+## 2026-10-09: Rarest page widened and made simpler
+
+| Check | Result |
+|---|---|
+| Lists | 115 PAL, 106 US, ranked by the value each states; every source an https link with a date; "one source" matches the evidence (tested) |
+| Pricing plan | 110 PAL and 105 US entries priced, 5 left out on purpose (one ordinary word); nothing looked up twice |
+| Offline tests | 172 price-job tests, 9 archive tests, 36 dashboard checks |
+
+### Independent review
+
+| Finding | Resolution |
+|---|---|
+| "Limited" said "several countries" beside US-only consoles; "Ultra rare" said "fewer than 5,000" beside one of exactly 5,000; the PSX recorders were called a limited release | Words match the file's tiers |
+| Vice City Stories counted the Stories double pack | "double pack" and "liberty city" left out |
+| Australia-only releases would show "none listed" with no reason | New "Australia" tag; the GTA set is searched as "complete collection" + "grand theft auto" |
+| eBay asking prices counted as a second source; one note contradicted its flag | Not counted; note fixed |
+| Red and blue badges clashed with the page's US and PAL colours | Shades of white instead |
+| "+2" and "~" meant nothing on a phone; the summary hid the guide-value fallback | "and 2 more models", "about"; the summary says it |
+
 ## Re-running the checks
 
 ```sh
