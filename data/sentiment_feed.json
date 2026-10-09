@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-09 08:51:09 UTC",
+  "last_updated": "2026-10-09 09:07:23 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749342036",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-09 09:04 UTC"
+    },
     {
       "headline": "Blackout-ish PC Build",
       "source": "r/pcmasterrace",
@@ -126235,57 +126254,6 @@
       "sentiment": 60,
       "hype": 1,
       "timestamp": "2026-09-25 09:15 UTC"
-    },
-    {
-      "headline": "Will Playstation 180 Its Physical Disc Decision?",
-      "source": "Podcast: WhatCulture Gaming",
-      "source_type": "podcast",
-      "feed": "https://feeds.acast.com/public/shows/c78baeb1-14c1-497c-bbfb-350cecd87107",
-      "link": "https://shows.acast.com/whatculturegaming/episodes/will-playstation-180-its-physical-disc-decision",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-25 09:00 UTC"
-    },
-    {
-      "headline": "Gateway Games: The Best Way Into Every Genre [REMASTERED] – Gaming Podcast",
-      "source": "Podcast: Video Gamers Podcast",
-      "source_type": "podcast",
-      "feed": "https://feeds.megaphone.fm/AMGAC9705074721",
-      "link": "https://traffic.megaphone.fm/AMGAC6809602905.mp3",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 1,
-      "timestamp": "2026-09-25 09:00 UTC"
-    },
-    {
-      "headline": "Supporter Q&A #427",
-      "source": "YouTube: RetroRGB",
-      "source_type": "youtube",
-      "feed": "youtube:UCLPIbBCKVH2uKGm5C4sOkew",
-      "link": "https://www.youtube.com/watch?v=Fxq7G8kakCk",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-25 08:59 UTC"
     }
   ]
 }
