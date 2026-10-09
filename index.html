@@ -1153,7 +1153,7 @@
         const RARE_VIEWS = ['PAL', 'US', 'Consoles'];
         const RARE_OTHER = { PAL: 'US name', US: 'PAL name' };
         const RARE_FLAGS = {
-            weak: 'thin data', one_source: 'one source', edition: 'edition', india: 'India',
+            weak: 'thin data', one_source: 'one source', edition: 'edition', india: 'India', australia: 'Australia',
         };
         let rareData = null;         // rare_games.json as loaded, or null
         let rareTrouble = false;     // the file is there but could not be read
@@ -1267,7 +1267,7 @@
                 + `Prices: eBay ${label} today · ${priced} with copies for sale`;
             note.innerHTML = '<b>Guide</b> = what collectors pay for a complete copy. <b>eBay</b> = what sellers ask today, checked daily. '
                 + 'Tags: <b>thin data</b> few sales behind the guide · <b>one source</b> only PriceCharting lists it · '
-                + '<b>edition</b> a special edition or set · <b>India</b> an Indian release.';
+                + '<b>edition</b> a special edition or set · <b>India</b>, <b>Australia</b> released only there.';
         }
 
         /* The consoles: rare_consoles.json, official Sony hardware only, rarest first (by a
@@ -1276,10 +1276,10 @@
            anywhere; its figures are the entry in latest.json's "games" under the console's name. */
         // How rare a console is, in words: the file's "tier" (1 rarest, 4 least rare).
         const CONSOLE_RARITY = {
-            1: ['Ultra rare', 'Fewer than 5,000 made.'],
+            1: ['Ultra rare', '5,000 or fewer made, or a one-off.'],
             2: ['Very rare', 'Never sold in shops, or only through one shop or one bundle.'],
-            3: ['Rare', 'A limited release in one country.'],
-            4: ['Limited', 'A limited release in several countries.'],
+            3: ['Rare', 'Sold in one country only, mostly Japan.'],
+            4: ['Limited', 'A limited edition, or a larger run.'],
         };
         const COUNTRY = { JP: 'Japan', US: 'US', CA: 'Canada', EU: 'Europe', UK: 'UK' };
         const CONSOLE_TAGS = {
@@ -1373,10 +1373,11 @@
                 const places = [...new Set((Array.isArray(entry.regions) ? entry.regions : []).filter(code => own(COUNTRY, code)).map(code => COUNTRY[code]))];
                 const year = typeof entry.released === 'string' ? entry.released.match(/\b(?:19|20)\d\d\b/)?.[0] : null;
                 const facts = [
-                    models.length ? models[0].replace(/\s*\(.*$/, '') + (models.length > 1 ? ` +${models.length - 1}` : '') : '',
+                    models.length ? (/\d/.test(models[0]) ? models[0].replace(/\s*\(.*$/, '') : models[0])
+                        + (models.length > 1 ? ` and ${models.length - 1} more model${models.length > 2 ? 's' : ''}` : '') : '',
                     places.join(', '),
                     year || '',
-                    Number.isFinite(entry.units) ? `~${entry.units.toLocaleString(locale)} made` : '',
+                    Number.isFinite(entry.units) ? `about ${entry.units.toLocaleString(locale)} made` : '',
                 ].filter(Boolean);
                 const sources = [...new Map((Array.isArray(entry.evidence) ? entry.evidence : [])
                     .filter(proof => proof && /^https:\/\//i.test(String(proof.source ?? '')))
@@ -1397,7 +1398,7 @@
             }).join('');
             foldList('rareList', entries.length);
             document.getElementById('rareSummary').textContent =
-                `${entries.length} official consoles sold in ${area.label}, most expensive first (eBay ${area.sites[0]} price) · ${priced} prices with copies for sale`;
+                `${entries.length} official consoles sold in ${area.label}, most expensive first by eBay ${area.sites[0]} price; those with none for sale follow, by guide value · ${priced} prices with copies for sale`;
             note.innerHTML = Object.values(CONSOLE_RARITY).map(([name, meaning], n) =>
                 `<span class="rarity-badge rarity-${n + 1}">${esc(name)}</span> ${esc(meaning.replace(/\.$/, ''))}`).join(' · ')
                 + '<br>Working, official consoles only: no shells, custom paint or mods. eBay prices are asking prices, checked daily.';

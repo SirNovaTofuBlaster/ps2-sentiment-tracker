@@ -1476,6 +1476,11 @@ class RareListTests(unittest.TestCase):
                     self.assertTrue(proof["source"].startswith("https://"), row["title"])
                     self.assertRegex(proof["date"], r"20\d\d-\d\d", row["title"])
                 self.assertLessEqual(set(row["flags"]), set(raw["flags"]), row["title"])
+                # "one source" unless two different sites back the value; an eBay asking price is
+                # what the page already shows, so it never counts as backing.
+                sites = {re.sub(r"^www\.", "", urlsplit(proof["source"]).hostname or "") for proof in row["evidence"]}
+                sites = {site for site in sites if not re.match(r"(?:[a-z]+\.)?ebay\.", site)}
+                self.assertEqual("one_source" in row["flags"], len(sites) < 2, row["title"])
                 cib = row["value_usd"]["cib"]
                 self.assertTrue(isinstance(cib, (int, float)) and cib > 0, row["title"])
             values = [row["value_usd"]["cib"] for row in rows]

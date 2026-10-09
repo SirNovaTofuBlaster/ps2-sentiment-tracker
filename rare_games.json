@@ -45,14 +45,15 @@
   "weak": "The guide value rests on one or two sales, or the complete price is several times the loose price.",
   "one_source": "Only PriceCharting gives a figure for it.",
   "edition": "A special edition or a compilation sold under its own name.",
-  "india": "Released for India, not Europe: rarely listed on eBay UK."
+  "india": "Released for India, not Europe: rarely listed on eBay UK.",
+  "australia": "Released for Australia only: rarely listed on eBay UK."
  },
  "lists": {
   "PAL": [
    {
     "rank": 1,
     "title": "Grand Theft Auto Complete Collection",
-    "search": "grand theft auto complete collection",
+    "search": "complete collection",
     "allow": [
      "art book",
      "artbook"
@@ -63,7 +64,8 @@
     },
     "value_checked": "2026-10-09",
     "flags": [
-     "edition"
+     "edition",
+     "australia"
     ],
     "note": "Australia-only box set (EB Games).",
     "evidence": [
@@ -78,7 +80,10 @@
       "date": "2026-08-17"
      }
     ],
-    "added": "2026-10-09"
+    "added": "2026-10-09",
+    "require": [
+     "grand theft auto"
+    ]
    },
    {
     "rank": 2,
@@ -687,8 +692,10 @@
      "loose": 85.96,
      "cib": 219.53
     },
-    "flags": [],
-    "note": "Only PriceCharting found; CIB is 2.5 times loose.",
+    "flags": [
+     "one_source"
+    ],
+    "note": "CIB is 2.5 times loose.",
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price&cursor=25",
@@ -821,7 +828,9 @@
      "loose": 129.28,
      "cib": 188.72
     },
-    "flags": [],
+    "flags": [
+     "one_source"
+    ],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/pal-playstation-2?sort=highest-price",
@@ -1499,7 +1508,8 @@
     },
     "value_checked": "2026-10-09",
     "flags": [
-     "edition"
+     "edition",
+     "australia"
     ],
     "note": "Australian tin edition.",
     "evidence": [
@@ -2292,7 +2302,11 @@
       "date": "read 2026-10-09"
      }
     ],
-    "added": "2026-10-09"
+    "added": "2026-10-09",
+    "exclude": [
+     "double pack",
+     "liberty city"
+    ]
    },
    {
     "rank": 95,
@@ -3533,7 +3547,9 @@
      "loose": 84.87,
      "cib": 200.0
     },
-    "flags": [],
+    "flags": [
+     "one_source"
+    ],
     "note": "PriceCharting's CIB is 2.4 times loose.",
     "evidence": [
      {
@@ -3936,7 +3952,9 @@
      "loose": 94.38,
      "cib": 149.55
     },
-    "flags": [],
+    "flags": [
+     "one_source"
+    ],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
@@ -4012,7 +4030,9 @@
      "loose": 50.71,
      "cib": 143.07
     },
-    "flags": [],
+    "flags": [
+     "one_source"
+    ],
     "note": "PriceCharting's CIB is 2.8 times loose.",
     "evidence": [
      {
@@ -4068,7 +4088,9 @@
      "loose": 51.09,
      "cib": 138.75
     },
-    "flags": [],
+    "flags": [
+     "one_source"
+    ],
     "note": "PriceCharting's CIB is 2.7 times loose.",
     "evidence": [
      {
@@ -4091,7 +4113,9 @@
      "loose": 96.55,
      "cib": 136.31
     },
-    "flags": [],
+    "flags": [
+     "one_source"
+    ],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
@@ -4163,7 +4187,9 @@
      "loose": 86.75,
      "cib": 133.31
     },
-    "flags": [],
+    "flags": [
+     "one_source"
+    ],
     "evidence": [
      {
       "source": "https://www.pricecharting.com/console/playstation-2?sort=highest-price&cursor=50",
@@ -4219,7 +4245,11 @@
       "date": "read 2026-10-09"
      }
     ],
-    "value_checked": "2026-10-09"
+    "value_checked": "2026-10-09",
+    "exclude": [
+     "double pack",
+     "liberty city"
+    ]
    },
    {
     "rank": 52,
@@ -4346,7 +4376,9 @@
      "loose": 48.3,
      "cib": 127.07
     },
-    "flags": [],
+    "flags": [
+     "one_source"
+    ],
     "note": "PriceCharting's CIB is 2.6 times loose.",
     "evidence": [
      {

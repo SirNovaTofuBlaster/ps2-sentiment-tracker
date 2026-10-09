@@ -646,11 +646,12 @@ body .rare-aka { margin-top: .25rem; font-size: .69rem; color: var(--dim); }
 body .rare-note { margin-top: .4rem; font-size: .69rem; line-height: 1.5; color: var(--dim); }
 body .rare-note a { color: var(--body); text-decoration: underline; text-underline-offset: 2px; }
 body .rare-flag { color: var(--body); }
-/* How rare a console is: one colour per step, rarest the strongest */
+/* How rare a console is: shades of the text colour, rarest the boldest. (Red, blue and teal
+   already mean US, PAL and consoles on this page.) */
 body .rarity-badge {
   margin-left: .45rem;
   padding: .1rem .5rem;
-  border: 1px solid var(--line);
+  border: 1px solid var(--dim);
   border-radius: 999px !important;
   font-size: .62rem;
   letter-spacing: .06em;
@@ -659,10 +660,10 @@ body .rarity-badge {
   font-family: inherit;
 }
 body .rare-note .rarity-badge { margin-left: 0; }
-body .rarity-badge.rarity-1 { color: var(--bg); background: var(--red); border-color: var(--red); }
-body .rarity-badge.rarity-2 { color: var(--red); border-color: var(--red); }
-body .rarity-badge.rarity-3 { color: var(--accent-hi); border-color: var(--accent); }
-body .rarity-badge.rarity-4 { color: var(--dim); }
+body .rarity-badge.rarity-1 { color: var(--bg); background: var(--text); border-color: var(--text); font-weight: 700; }
+body .rarity-badge.rarity-2 { color: var(--text); border-color: var(--text); font-weight: 700; }
+body .rarity-badge.rarity-3 { color: var(--body); border-color: var(--body); }
+body .rarity-badge.rarity-4 { color: var(--dim); border-style: dashed; }
 @media (max-width: 640px) {
   body .rare-regions { align-self: stretch; }
   body .rare-region { flex: 1 1 0; padding: .5rem .3rem; }

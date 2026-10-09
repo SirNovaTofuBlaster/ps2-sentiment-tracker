@@ -11,11 +11,16 @@
   ($1,901, now PAL #1), the shovelware World Quiz and Monster Eggs, The Getaway Limited
   Edition, Silent Hill 3 and 4 PAL, the Sega Fun Pack, and the Dragon Ball Z Budokai 3, MGS3
   Subsistence and RE4 Premium limited editions. Lists now 115 PAL and 106 US; nothing dropped.
-  "one source" now means every source is the same site: 76 PAL, 53 US. Jello is not priced
-  (one ordinary word).
+  "one source" now means fewer than two different sites back the value (an eBay asking price
+  never counts): 78 PAL, 60 US. Jello is not priced (one ordinary word). Two Australia-only
+  releases carry a new "Australia" tag, as Indian releases carry "India".
 - Rarest page: the console tiers are words with colours (Ultra rare, Very rare, Rare,
-  Limited) with a one-line key under the list; each console has one short line (model, where,
-  year, how many); the summaries and notes of both lists are shorter.
+  Limited) in shades of white rather than the page's red/blue/teal, with a one-line key under the
+  list; each console has one short line (model, where, year, how many); the summaries and notes of
+  both lists are shorter.
+- Independent review: the four words now say what the tiers mean ("5,000 or fewer, or a
+  one-off"; "one country only, mostly Japan"; "a limited edition, or a larger run"); Vice City
+  Stories leaves out the double pack; eBay asking prices no longer count as a second source.
 
 ## 2026-10-08: digital-only news kept for good
 
