@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-10 01:07:50 UTC",
+  "last_updated": "2026-10-10 01:19:23 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749390720",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-10 01:13 UTC"
+    },
     {
       "headline": "Seeing this at random facebook post,do you agree?",
       "source": "r/pcmasterrace",
@@ -143371,23 +143390,6 @@
       "sentiment": 35,
       "hype": 0,
       "timestamp": "2026-09-26 01:19 UTC"
-    },
-    {
-      "headline": "Tv choice",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1wqdbly/tv_choice/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-26 01:08 UTC"
     }
   ]
 }
