@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-10 19:43:38 UTC",
+  "last_updated": "2026-10-10 19:45:51 UTC",
   "total_tracked_feeds": 231,
   "items": [
     {
@@ -169,6 +169,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-10 19:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Thing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749436571",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-10 19:35 UTC"
     },
