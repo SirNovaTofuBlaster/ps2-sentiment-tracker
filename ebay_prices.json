@@ -1,0 +1,1514 @@
+{
+  "fetched_at": "2026-10-11T04:32:33Z",
+  "what": "Asking prices of used Buy It Now listings still for sale on eBay. Not sold prices.",
+  "source": "eBay Browse API",
+  "markets": {
+    "EBAY_US": {
+      "label": "US",
+      "site": "www.ebay.com",
+      "currency": "USD"
+    },
+    "EBAY_GB": {
+      "label": "UK",
+      "site": "www.ebay.co.uk",
+      "currency": "GBP"
+    }
+  },
+  "searches_used": 12,
+  "stopped_early": "",
+  "games": [
+    {
+      "title": "Ico",
+      "level": "surging",
+      "search": "ico",
+      "queries": [
+        "ico"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=ico%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 66,
+          "fetched": 66,
+          "truncated": false,
+          "counted": 37,
+          "skipped": {
+            "import": 3,
+            "not_a_copy": 21,
+            "other_game": 5
+          },
+          "skipped_examples": {
+            "import": [
+              "ICO Best Version PlayStation 2 Sony - Retro Game - NTSC-J - PS2, Asia",
+              "ICO Sony Playstation 2 Game PS2 Japanese NTSC-J",
+              "ICO, Biohazard 4 & Veronica, Metal Gear 1&2 PlayStation 2 PS2 NTSC-J Discs Only"
+            ],
+            "not_a_copy": [
+              "Official PlayStation 2 Magazine UK Demo Disc PS2 PAL - ICO",
+              "Ico Demo Playstation PS2 Video Game PAL Cardboard Sleeve",
+              "Ico Demo Playstation 2 PS2 Video Game PAL UK Cardboard Sleeve Version",
+              "ICO Demo PS2 - SLED-50844",
+              "ICO Demo PS2 - SCED-50844"
+            ],
+            "other_game": [
+              "Sony Playstation 2 Games, With Free Postage",
+              "PBPX-95514 Sony PS2 - UK PAL VGC with Sleeve - High Quality Packing - Tracked",
+              "PBPX-95514 Sony PS2 - UK PAL VGC with Sleeve - High Quality Packing - Tracked",
+              "Shadow of The Colossus Limited Ed. PS2 UK Version Complete Art Cards + Manual",
+              "RS3: Racing Simulation for Sony Playstation 2 (PS2)"
+            ]
+          },
+          "lowest": 14.99,
+          "median": 44.99,
+          "postage_known": 37,
+          "median_postage": 2.7,
+          "incomplete_hint": 6,
+          "listings": [
+            {
+              "title": "ICO - PS2 PLAYSTATION GAME 2006 - FULL GAME PROMO-TESTED-DISC ONLY",
+              "price": 14.99,
+              "postage": 3.38,
+              "condition": "Very Good",
+              "listed": "2026-09-24T06:30:00.000Z",
+              "url": "https://www.ebay.co.uk/itm/158332323763"
+            },
+            {
+              "title": "ICO - PS2 PLAYSTATION GAME 2006 - FULL GAME PROMO-TESTED-DISC ONLY",
+              "price": 16.15,
+              "postage": 15.0,
+              "condition": "Acceptable",
+              "listed": "2026-06-26T09:59:12.000Z",
+              "url": "https://www.ebay.co.uk/itm/206374229889"
+            },
+            {
+              "title": "PlayStation 2 ICO Game (Promo Copy) No Manual Included",
+              "price": 17.0,
+              "postage": 2.94,
+              "condition": "Very Good",
+              "listed": "2026-04-13T14:13:40.000Z",
+              "url": "https://www.ebay.co.uk/itm/178045915388"
+            },
+            {
+              "title": "Video Game ICO Disc Only Sony PlayStation 2 PS2",
+              "price": 21.38,
+              "postage": 0.0,
+              "condition": "Acceptable",
+              "listed": "2025-10-12T06:44:09.000Z",
+              "url": "https://www.ebay.co.uk/itm/286873030878"
+            },
+            {
+              "title": "ICO - PS2 – UK PAL - Game Disc & Manual - Tested",
+              "price": 21.45,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-02-21T21:48:27.000Z",
+              "url": "https://www.ebay.co.uk/itm/287156418036"
+            },
+            {
+              "title": "Ico PS2 PlayStation 2 | PAL | Disc Only | VGC",
+              "price": 21.99,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2026-08-24T07:17:55.000Z",
+              "url": "https://www.ebay.co.uk/itm/398318202026"
+            },
+            {
+              "title": "Ico - PlayStation 2 PS2 PAL NO MANUAL",
+              "price": 24.99,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-09-24T13:08:36.000Z",
+              "url": "https://www.ebay.co.uk/itm/800709345376"
+            },
+            {
+              "title": "Ico PS2 PROMO Game Rare PlayStation 2 Ico PROMO (FULL GAME) PAL REGION.",
+              "price": 25.0,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2026-09-05T07:00:01.000Z",
+              "url": "https://www.ebay.co.uk/itm/267772324239"
+            },
+            {
+              "title": "Sony Computer Entertainment Europe Ico PS2 PAL PEGI 7 (2001) 1 Player Puzzle",
+              "price": 26.7,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2026-09-24T20:40:44.000Z",
+              "url": "https://www.ebay.co.uk/itm/158334652923"
+            },
+            {
+              "title": "ICO: Limited Edition (PlayStation 2, 2001) - Includes manual",
+              "price": 27.74,
+              "postage": 2.94,
+              "condition": "Good",
+              "listed": "2026-08-25T12:57:19.000Z",
+              "url": "https://www.ebay.co.uk/itm/117376781479"
+            }
+          ]
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=ico%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 87,
+          "fetched": 87,
+          "truncated": false,
+          "counted": 52,
+          "skipped": {
+            "import": 15,
+            "not_a_copy": 11,
+            "other_game": 8,
+            "other_platform": 1
+          },
+          "skipped_examples": {
+            "import": [
+              "ICO PlayStation 2 the Best (Japan) (Region Locked) JPN",
+              "Ico (PlayStation 2 the Best) Sony PlayStation 2 JPN (Region Locked)",
+              "Ico (Sony PlayStation 2, 2001) - European Version",
+              "ICO PlayStation 2 PS2 Japan JPN(Region Locked)",
+              "ICO PlayStation 2 PS2 The Best Series NTSC-J (Japan) JPN(Region Locked)"
+            ],
+            "not_a_copy": [
+              "ICO & Shadow of the Colossus PS2 2 Game Lot w/ Manuals Black Label Tested",
+              "ICO (Sony PlayStation 2, 2001) PS2 Black Label Box only (No manual or game)",
+              "Playstation Underground Jampack Summer 2001 PS2 Sony ICO Klonoa Soul Reaver Vtg",
+              "Playstation 2 PS2 Games Lot Metal Gear Solid Ico and More!",
+              "Ico Demo Disc Not For Resale NFR Playstation 2 Ps2 Lot Demo Disc Kiosk 2.4"
+            ],
+            "other_game": [
+              "💥💥Sony Playstation 2 PS2 GAMES (H-L) - PICK & CHOOSE💥💥",
+              "PS2 Road Rage Metal Slug Armored Core WWE Sly Final Fantasy Video Games - U Pick",
+              "Japanese Playstation 2 Games Lot",
+              "ps2 MaxPlay Classic Games Volume 1 PAL UK VERSION *Pls Read Description* *RARE*",
+              "PlayStation 2 PS2 Game PS Japan Import Sold Individually Updated 11/20/24 #1"
+            ],
+            "other_platform": [
+              "God of War III Shadow of the Colossus Ico Collection PS3 Game Lot 2 Sony Games"
+            ]
+          },
+          "lowest": 17.77,
+          "median": 42.44,
+          "postage_known": 52,
+          "median_postage": 5.93,
+          "incomplete_hint": 13,
+          "listings": [
+            {
+              "title": "Ico game PS2 Disc Only Tested Working Authentic PlayStation 2",
+              "price": 17.77,
+              "postage": 6.5,
+              "condition": "Good",
+              "listed": "2026-06-03T00:11:36.000Z",
+              "url": "https://www.ebay.com/itm/366451638256"
+            },
+            {
+              "title": "Ico (Sony Playstation 2, 2001) PS2 Disc Only TESTED",
+              "price": 18.0,
+              "postage": 8.65,
+              "condition": "Very Good",
+              "listed": "2026-07-25T17:40:46.000Z",
+              "url": "https://www.ebay.com/itm/377369729439"
+            },
+            {
+              "title": "TESTED Ico Sony PS2 Black Label SCUS-97113 Disc Case No Manual No Cover",
+              "price": 18.99,
+              "postage": 10.2,
+              "condition": "Good",
+              "listed": "2026-10-08T03:00:28.000Z",
+              "url": "https://www.ebay.com/itm/168774585654"
+            },
+            {
+              "title": "Ico (Sony PlayStation 2, 2001) PS2 Black Label Disc Only - Tested",
+              "price": 19.95,
+              "postage": 6.49,
+              "condition": "Very Good",
+              "listed": "2026-09-09T21:05:06.000Z",
+              "url": "https://www.ebay.com/itm/188909861006"
+            },
+            {
+              "title": "Ico - Sony PlayStation 2 *Tested & Working* PS2",
+              "price": 19.99,
+              "postage": 5.83,
+              "condition": "Good",
+              "listed": "2026-10-06T21:22:34.000Z",
+              "url": "https://www.ebay.com/itm/147622525883"
+            },
+            {
+              "title": "Ico (Sony PlayStation 2, 2001) PS2 Black Label Disc Only - UNTESTED",
+              "price": 19.99,
+              "postage": 5.93,
+              "condition": "Acceptable",
+              "listed": "2026-03-30T00:38:24.000Z",
+              "url": "https://www.ebay.com/itm/406812993638"
+            },
+            {
+              "title": "Ico - Sony PlayStation 2 - Disc Only",
+              "price": 20.0,
+              "postage": 5.5,
+              "condition": "Good",
+              "listed": "2026-08-09T15:26:26.000Z",
+              "url": "https://www.ebay.com/itm/336734209075"
+            },
+            {
+              "title": "Ico (PlayStation 2 PS2) - DISC ONLY",
+              "price": 21.97,
+              "postage": 8.4,
+              "condition": "Good",
+              "listed": "2026-07-15T13:37:57.000Z",
+              "url": "https://www.ebay.com/itm/168537694703"
+            },
+            {
+              "title": "ICO (PlayStation 2, 2001) PS2 - DISC ONLY - Authentic NTSC U/C SCUS-97113",
+              "price": 24.8,
+              "postage": 5.8,
+              "condition": "Good",
+              "listed": "2026-06-21T00:06:02.000Z",
+              "url": "https://www.ebay.com/itm/227397545389"
+            },
+            {
+              "title": "Ico Sony PlayStation 2 PS2 Disc Only",
+              "price": 26.0,
+              "postage": 5.83,
+              "condition": "Good",
+              "listed": "2026-06-07T00:12:00.000Z",
+              "url": "https://www.ebay.com/itm/188476282228"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Crazy Taxi",
+      "level": "surging",
+      "search": "crazy taxi",
+      "queries": [
+        "crazy taxi"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=crazy%20taxi%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 196,
+          "fetched": 196,
+          "truncated": false,
+          "counted": 168,
+          "skipped": {
+            "not_a_copy": 13,
+            "other_game": 15
+          },
+          "skipped_examples": {
+            "not_a_copy": [
+              "Sony pS2 Game Bundle Gran Turismo 3 &4, Crazy Taxi, GT Racer . Tested",
+              "Sony PlayStation 2 Game Bundle X3 PAL PS2 Games Crazy Taxi Midnight Club 2",
+              "Sony PlayStation 2 Ps2 - Rare Crazy Taxi Not For Resale Bundle Only",
+              "4 PS2 Game Bundle : Grand Turismo Concept Crazy Taxi Extreme G Racing RC Revenge",
+              "Sony PlayStation 2 Ps2 - Rare Crazy Taxi Not For Resale Bundle Copy - PAL UK"
+            ],
+            "other_game": [
+              "PS2 GAMES",
+              "Sony Playstation 2 Disc Pick Your Own Multi Buy",
+              "Choose Your Own PS2 game (Titles starting with A-L) - With Combined Postage",
+              "Playstation 2 game collection choose your title",
+              "Sony Ps2 / Playstation 2 Games / CIB Pick Your Games MULTIBUY DISCOUNTS"
+            ]
+          },
+          "lowest": 2.45,
+          "median": 7.52,
+          "postage_known": 168,
+          "median_postage": 2.7,
+          "incomplete_hint": 6,
+          "listings": [
+            {
+              "title": "Crazy Taxi Platinum (Sony PlayStation 2) PAL Racing/Action Game - Acclaim",
+              "price": 2.45,
+              "postage": 2.7,
+              "condition": "Acceptable",
+              "listed": "2026-09-06T13:25:48.000Z",
+              "url": "https://www.ebay.co.uk/itm/398365787925"
+            },
+            {
+              "title": "Crazy Taxi Platinum Playstation 2 (PS2)- no manual",
+              "price": 3.88,
+              "postage": 2.94,
+              "condition": "Good",
+              "listed": "2025-04-16T01:07:35.000Z",
+              "url": "https://www.ebay.co.uk/itm/116562465768"
+            },
+            {
+              "title": "Crazy Taxi (Sony PlayStation 2, 2001)",
+              "price": 3.94,
+              "postage": 3.4,
+              "condition": "Good",
+              "listed": "2026-07-12T09:15:40.000Z",
+              "url": "https://www.ebay.co.uk/itm/278175313384"
+            },
+            {
+              "title": "Crazy Taxi Platinum (PS2)",
+              "price": 4.25,
+              "postage": 2.72,
+              "condition": "Acceptable",
+              "listed": "2025-03-05T20:47:11.000Z",
+              "url": "https://www.ebay.co.uk/itm/135601166832"
+            },
+            {
+              "title": "Crazy Taxi (Playstation 2) I5",
+              "price": 4.28,
+              "postage": 3.95,
+              "condition": "Good",
+              "listed": "2026-09-21T09:24:45.000Z",
+              "url": "https://www.ebay.co.uk/itm/278395049278"
+            },
+            {
+              "title": "Crazy Taxi Sony PlayStation 2 Platinum",
+              "price": 4.3,
+              "postage": 2.7,
+              "condition": "Very Good",
+              "listed": "2026-09-04T13:30:47.000Z",
+              "url": "https://www.ebay.co.uk/itm/178467332020"
+            },
+            {
+              "title": "Crazy Taxi (Sony Playstation 2 PS2, 2001) DISC ONLY - Tested",
+              "price": 4.37,
+              "postage": 2.94,
+              "condition": "Acceptable",
+              "listed": "2026-10-03T11:35:08.000Z",
+              "url": "https://www.ebay.co.uk/itm/366708128126"
+            },
+            {
+              "title": "Crazy Taxi (Playstation 2/PS2, Complete with Box & Manual)",
+              "price": 4.38,
+              "postage": 3.38,
+              "condition": "Good",
+              "listed": "2026-09-26T19:51:24.000Z",
+              "url": "https://www.ebay.co.uk/itm/137782846325"
+            },
+            {
+              "title": "Acclaim Crazy Taxi Sony PlayStation 2 PS2 PAL ELSPA 3+ SLES-50215-P",
+              "price": 4.38,
+              "postage": 2.7,
+              "condition": "Very Good",
+              "listed": "2026-08-22T17:54:37.000Z",
+              "url": "https://www.ebay.co.uk/itm/307140987220"
+            },
+            {
+              "title": "Crazy Taxi Videogame - PS2 Playstation 2 - Good condition - Tested",
+              "price": 4.49,
+              "postage": 3.65,
+              "condition": "Very Good",
+              "listed": "2026-07-23T18:23:02.000Z",
+              "url": "https://www.ebay.co.uk/itm/366561191142"
+            }
+          ]
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=crazy%20taxi%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 443,
+          "fetched": 200,
+          "truncated": true,
+          "counted": 179,
+          "skipped": {
+            "import": 3,
+            "not_a_copy": 15,
+            "other_game": 3
+          },
+          "skipped_examples": {
+            "import": [
+              "Crazy Taxi PlayStation 2 PS2 JPN (Region Locked) SLPH 62102",
+              "Crazy Taxi PlayStation 2 NTSC-J (Region Locked) JPN",
+              "Crazy Taxi (PlayStation 2, 2001) PAL - Complete w/Manual"
+            ],
+            "not_a_copy": [
+              "PlayStation 2 PS2 6 Racing Game Lot - Crazy Taxi, Wipeout Fusion, HSX, & More!",
+              "Crazy Taxi - Sony PlayStation 2 - Disc And Manual Only - Tested",
+              "PS2 Games lot pre-owned Crazy Taxi & Mercenaries 2",
+              "LEGO Star Wars Crazy Taxi Midway Arcade 4 Game Lot Sony PlayStation 2 PS2 CIB",
+              "Crazy Taxi PlayStation 2 PS2 Game Black Label Complete + Official Strategy Guide"
+            ],
+            "other_game": [
+              "Crazy Taxi 1 Black Label Sony Playstation 2 PS2 EX+NM disc COMPLETE+reg card-!",
+              "🎮Sony PlayStation 2 PS2 Games with Case A to L Buy 4 Get 1 FREE ✅ TESTED 🎮",
+              "PS2 Game Lot! Pick & Choose! Tons of Classic Retro Games!"
+            ]
+          },
+          "lowest": 4.99,
+          "median": 12.99,
+          "postage_known": 179,
+          "median_postage": 5.99,
+          "incomplete_hint": 26,
+          "listings": [
+            {
+              "title": "Sony Playstation 2 PS2 Crazy Taxi Disc Only Cleaned Tested Black Label",
+              "price": 4.99,
+              "postage": 6.99,
+              "condition": "Good",
+              "listed": "2026-07-13T15:26:26.000Z",
+              "url": "https://www.ebay.com/itm/127972609977"
+            },
+            {
+              "title": "Crazy Taxi - PS2 Game Only - Tested And Working",
+              "price": 4.99,
+              "postage": 7.0,
+              "condition": "Good",
+              "listed": "2026-09-18T20:06:56.000Z",
+              "url": "https://www.ebay.com/itm/800682109959"
+            },
+            {
+              "title": "Crazy Taxi (Sony PlayStation 2, 2002) PS2 - DISC ONLY",
+              "price": 5.0,
+              "postage": 5.99,
+              "condition": "Acceptable",
+              "listed": "2025-03-14T22:48:04.000Z",
+              "url": "https://www.ebay.com/itm/146450388776"
+            },
+            {
+              "title": "Crazy Taxi (Sony PlayStation 2, PS2, 2002) Complete With Manual",
+              "price": 5.98,
+              "postage": 9.35,
+              "condition": "Good",
+              "listed": "2025-09-26T03:15:35.000Z",
+              "url": "https://www.ebay.com/itm/317334480315"
+            },
+            {
+              "title": "Crazy Taxi (PlayStation 2) Disc Only",
+              "price": 5.99,
+              "postage": 6.34,
+              "condition": "Good",
+              "listed": "2026-09-09T14:41:45.000Z",
+              "url": "https://www.ebay.com/itm/158275051239"
+            },
+            {
+              "title": "Crazy Taxi Greatest Hits (Sony PlayStation 2, 2002)",
+              "price": 5.99,
+              "postage": 9.5,
+              "condition": "Very Good",
+              "listed": "2026-09-29T09:59:46.000Z",
+              "url": "https://www.ebay.com/itm/278419704475"
+            },
+            {
+              "title": "Crazy Taxi (Sony PlayStation 2, 2002) Disc Only. Tested",
+              "price": 6.99,
+              "postage": 6.43,
+              "condition": "Very Good",
+              "listed": "2026-08-22T23:03:06.000Z",
+              "url": "https://www.ebay.com/itm/278303910679"
+            },
+            {
+              "title": "LOOSE Crazy Taxi - Sony PlayStation 2 Tested Working",
+              "price": 7.0,
+              "postage": 7.05,
+              "condition": "Very Good",
+              "listed": "2026-01-18T22:47:58.000Z",
+              "url": "https://www.ebay.com/itm/376876349450"
+            },
+            {
+              "title": "Crazy Taxi Sony PlayStation 2 Arcade Racing Video Game Acclaim T-Teen",
+              "price": 7.2,
+              "postage": 8.26,
+              "condition": "Like New",
+              "listed": "2025-08-10T03:13:36.000Z",
+              "url": "https://www.ebay.com/itm/205663144138"
+            },
+            {
+              "title": "Crazy Taxi Greatest Hits (Sony PlayStation 2, 2002) No Manual/ TESTED AND WORKS",
+              "price": 7.99,
+              "postage": 8.17,
+              "condition": "Very Good",
+              "listed": "2026-03-10T00:26:14.000Z",
+              "url": "https://www.ebay.com/itm/127730000853"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Dragon Rage",
+      "level": "surging",
+      "search": "dragon rage",
+      "queries": [
+        "dragon rage"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=dragon%20rage%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 31,
+          "fetched": 31,
+          "truncated": false,
+          "counted": 28,
+          "skipped": {
+            "other_game": 3
+          },
+          "skipped_examples": {
+            "other_game": [
+              "PS2 GAMES",
+              "VARIOUS PLAYSTATION 2 PS2 GAMES PICK-A-GAME** **UPDATED** 16/09/26",
+              "Sony PlayStation 2 PS2 Discs ONLY Select Your Games from Drop Down D-G List"
+            ]
+          },
+          "lowest": 2.0,
+          "median": 6.0,
+          "postage_known": 28,
+          "median_postage": 0.0,
+          "incomplete_hint": 4,
+          "listings": [
+            {
+              "title": "Dragon Rage (PlayStation 2)",
+              "price": 2.0,
+              "postage": 1.8,
+              "condition": "Acceptable",
+              "listed": "2026-01-01T14:04:04.000Z",
+              "url": "https://www.ebay.co.uk/itm/177732123525"
+            },
+            {
+              "title": "Dragon Rage - Sony PS2 Game PlayStation 2 (Bx39)",
+              "price": 2.77,
+              "postage": 3.0,
+              "condition": "Very Good",
+              "listed": "2025-01-14T19:39:18.000Z",
+              "url": "https://www.ebay.co.uk/itm/286264505818"
+            },
+            {
+              "title": "Dragon Rage Game - Playstation 2 / PS2 – Disc Only – Tested",
+              "price": 3.38,
+              "postage": 0.0,
+              "condition": "Acceptable",
+              "listed": "2026-05-16T14:54:14.000Z",
+              "url": "https://www.ebay.co.uk/itm/306942605667"
+            },
+            {
+              "title": "Dragon Rage PS2 PAL - Disc Only",
+              "price": 3.42,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-06-14T21:24:25.000Z",
+              "url": "https://www.ebay.co.uk/itm/227388396194"
+            },
+            {
+              "title": "Dragon Rage for Sony Playstation 2 PS2 - PAL",
+              "price": 4.37,
+              "postage": 2.99,
+              "condition": "Good",
+              "listed": "2024-09-09T07:55:01.000Z",
+              "url": "https://www.ebay.co.uk/itm/176566991929"
+            },
+            {
+              "title": "Dragon Rage PlayStation 2 PS2 Game",
+              "price": 4.91,
+              "postage": 1.8,
+              "condition": "Good",
+              "listed": "2025-09-27T13:54:10.000Z",
+              "url": "https://www.ebay.co.uk/itm/187602250471"
+            },
+            {
+              "title": "Dragon Rage PlayStation 2 PS2 Game",
+              "price": 4.91,
+              "postage": 2.94,
+              "condition": "Good",
+              "listed": "2025-02-26T12:42:07.000Z",
+              "url": "https://www.ebay.co.uk/itm/297060954550"
+            },
+            {
+              "title": "playstation 2 ps 2 Dragon Rage",
+              "price": 4.99,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2025-11-18T05:00:01.000Z",
+              "url": "https://www.ebay.co.uk/itm/267470114129"
+            },
+            {
+              "title": "Dragon Rage (Sony Playstation 2) Disc Only, PAL, Tested",
+              "price": 5.01,
+              "postage": 0.0,
+              "condition": "Acceptable",
+              "listed": "2024-04-21T15:29:33.000Z",
+              "url": "https://www.ebay.co.uk/itm/196357181449"
+            },
+            {
+              "title": "Dragon Rage - Playstation 2 - PS2 - FREE POSTAGE",
+              "price": 5.4,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-06-17T15:53:05.000Z",
+              "url": "https://www.ebay.co.uk/itm/188525002915"
+            }
+          ]
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=dragon%20rage%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 149,
+          "fetched": 149,
+          "truncated": false,
+          "counted": 139,
+          "skipped": {
+            "not_a_copy": 5,
+            "other_game": 5
+          },
+          "skipped_examples": {
+            "not_a_copy": [
+              "Dragon Rage - PlayStation 2 PS2 - Art and Manual ONLY",
+              "Dragon Rage PS2 PlayStation 2 Tested Replacement Case No Manual ••",
+              "LOT OF 2 DISC ONLY: Dragon Rage + DEVIL MAY CRY (PS2) GAME ONLY /LIGHT SCRATCHES",
+              "4 Ps 2 Games Lot Splinter Cell Socom II Navy Seals Stuntman Dragon Rage",
+              "Dragon Rage (Sony PlayStation 2 ) Manual Only . NO GAME"
+            ],
+            "other_game": [
+              "Sony PlayStation 2 PS2 Games Pick Your Game Tested OEM Authentic",
+              "PlayStation 2 Game Lot | Buy 3 Get 1 Free | Free Ship $25+ | Resurfaced",
+              "PlayStation 2 (PS2) Games - Sold Individually",
+              "$10.99 EACH!! SINGLE PlayStation PS2 Video Game Pick a Title *TESTED,AUTHENTIC*",
+              "LOT of 4 PLAYSTATION 2 GAMES WITH MANUAL TESTED"
+            ]
+          },
+          "lowest": 3.28,
+          "median": 9.99,
+          "postage_known": 139,
+          "median_postage": 5.99,
+          "incomplete_hint": 19,
+          "listings": [
+            {
+              "title": "Dragon Rage (PS2, 2002, Standard Edition)",
+              "price": 3.28,
+              "postage": 8.65,
+              "condition": "Very Good",
+              "listed": "2025-11-09T15:37:48.000Z",
+              "url": "https://www.ebay.com/itm/236448438065"
+            },
+            {
+              "title": "Dragon Rage (Sony PlayStation 2 PS2, 2001) DISC ONLY",
+              "price": 4.0,
+              "postage": 10.2,
+              "condition": "Good",
+              "listed": "2024-10-15T19:30:07.000Z",
+              "url": "https://www.ebay.com/itm/167025994398"
+            },
+            {
+              "title": "Dragon Rage 3DO (Sony Playstation 2 PS2, 2001) Case and Disc Tested and Working",
+              "price": 4.0,
+              "postage": 8.55,
+              "condition": "Good",
+              "listed": "2024-08-29T04:12:04.000Z",
+              "url": "https://www.ebay.com/itm/387338731139"
+            },
+            {
+              "title": "Dragon Rage (Sony PlayStation 2, 2001) CIB",
+              "price": 4.12,
+              "postage": 10.2,
+              "condition": "Very Good",
+              "listed": "2026-10-02T21:27:36.000Z",
+              "url": "https://www.ebay.com/itm/168756822134"
+            },
+            {
+              "title": "Dragon Rage Playstation 2 PS2 Game Disc w/ Case",
+              "price": 4.5,
+              "postage": 9.5,
+              "condition": "Good",
+              "listed": "2019-12-24T03:20:41.000Z",
+              "url": "https://www.ebay.com/itm/352905531448"
+            },
+            {
+              "title": "--DISC ONLY-- Dragon Rage (PS2, 2001)",
+              "price": 4.68,
+              "postage": 8.24,
+              "condition": "Very Good",
+              "listed": "2026-05-15T01:40:10.000Z",
+              "url": "https://www.ebay.com/itm/287332216501"
+            },
+            {
+              "title": "Dragon Rage (Sony PlayStation 2, 2001)",
+              "price": 4.75,
+              "postage": 5.8,
+              "condition": "Very Good",
+              "listed": "2024-08-24T23:24:36.000Z",
+              "url": "https://www.ebay.com/itm/395616467776"
+            },
+            {
+              "title": "Dragon Rage For PS2 (Sony PlayStation 2, 2001) 3DO - CIB Complete - US Seller",
+              "price": 4.76,
+              "postage": 6.17,
+              "condition": "Very Good",
+              "listed": "2026-06-30T20:38:11.000Z",
+              "url": "https://www.ebay.com/itm/198465729448"
+            },
+            {
+              "title": "dragon rage ps2 Game Only, Untracked",
+              "price": 4.99,
+              "postage": 0.0,
+              "condition": "Acceptable",
+              "listed": "2026-06-03T20:08:54.000Z",
+              "url": "https://www.ebay.com/itm/227371446321"
+            },
+            {
+              "title": "Dragon Rage - 2001 Playstation 2 PS2 - Disc Only Tested Works",
+              "price": 5.0,
+              "postage": 7.52,
+              "condition": "Good",
+              "listed": "2024-10-22T15:25:20.000Z",
+              "url": "https://www.ebay.com/itm/135314820882"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Final Fantasy X",
+      "level": "surging",
+      "search": "final fantasy x",
+      "queries": [
+        "final fantasy x"
+      ],
+      "left_out_if_named": [
+        "final fantasy x 2"
+      ],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=final%20fantasy%20x%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 637,
+          "fetched": 200,
+          "truncated": true,
+          "counted": 106,
+          "skipped": {
+            "import": 4,
+            "not_a_copy": 8,
+            "other_game": 78,
+            "other_platform": 4
+          },
+          "skipped_examples": {
+            "import": [
+              "Final Fantasy X 10 - JP PlayStation 2 PS2 Video Game P419",
+              "Final Fantasy X - Sony Playstation 2 / PS2 (Japan)",
+              "Final Fantasy X 10 - JP PlayStation 2 PS2 Video Game P420",
+              "Sony PlayStation 2 Final Fantasy X(10) 2 Disc Edition Japan Region"
+            ],
+            "not_a_copy": [
+              "Final Fantasy X X-2 XII PS2 PlayStation 2 Game Bundle Complete Manual 10 10-2 12",
+              "Final Fantasy X + X-2 PS2 PlayStation 2 Disc Only Game Bundle | PAL | VGC",
+              "PS2 Final Fantasy X & X-2 Bundle Complete With Bonus DVD PAL Tested Working",
+              "Play Station 2 Bundle Of 3 Final Fantasy X X-2 XII PS2 GamesPAL PEGI 12",
+              "Official PlayStation 2 Magazine UK Demo Disc PS2 PAL - Final Fantasy X"
+            ],
+            "other_game": [
+              "Final Fantasy X-2 Nla",
+              "Final Fantasy X-2 (PS2) PEGI 12+ Adventure: Role Playing FREE Shipping, Save £s",
+              "PlayStation 2 Final Fantasy X2 Unlimited Saga Complete",
+              "PS2 Final Fantasy 10 & 10 2 ( X & X-2) Both Tested And Working",
+              "Final Fantasy X-2 Sony PlayStation 2 PAL PEGI 12"
+            ],
+            "other_platform": [
+              "Final Fantasy X/X-2 HD Remaster (PS3)",
+              "Final Fantasy X/X-2 HD Remaster Limited Edition - Playstation 3 - PS3",
+              "Final Fantasy X/X-2 HD Remaster Limited Edition - Playstation 3 - PS3",
+              "Final Fantasy X / X-2 HD remaster - Sony Playstation Vita - CIB"
+            ]
+          },
+          "lowest": 2.77,
+          "median": 8.25,
+          "postage_known": 105,
+          "median_postage": 2.7,
+          "incomplete_hint": 5,
+          "listings": [
+            {
+              "title": "Final Fantasy X PS2 PAL - Disc Only",
+              "price": 2.77,
+              "postage": 2.7,
+              "condition": "Acceptable",
+              "listed": "2026-06-06T18:43:46.000Z",
+              "url": "https://www.ebay.co.uk/itm/398034463552"
+            },
+            {
+              "title": "Final Fantasy X PlayStation New Complete With Manual",
+              "price": 2.99,
+              "postage": 1.85,
+              "condition": "Very Good",
+              "listed": "2026-05-31T21:32:59.000Z",
+              "url": "https://www.ebay.co.uk/itm/800102487047"
+            },
+            {
+              "title": "Final Fantasy X Platinum PS2 Playstation 2 Game with Manual (2002) PAL",
+              "price": 3.31,
+              "postage": 3.38,
+              "condition": "Good",
+              "listed": "2026-09-21T21:29:21.000Z",
+              "url": "https://www.ebay.co.uk/itm/298696081448"
+            },
+            {
+              "title": "Final Fantasy X Platinum Sony PlayStation 2 (PS2)",
+              "price": 3.31,
+              "postage": 2.72,
+              "condition": "Very Good",
+              "listed": "2026-08-10T13:19:50.000Z",
+              "url": "https://www.ebay.co.uk/itm/366596859123"
+            },
+            {
+              "title": "Final Fantasy x + Beyond Final Fantasy PS2 Discs Only",
+              "price": 3.84,
+              "postage": 2.94,
+              "condition": "Good",
+              "listed": "2026-09-22T13:00:01.000Z",
+              "url": "https://www.ebay.co.uk/itm/168705511946"
+            },
+            {
+              "title": "Squaresoft Final Fantasy X Platinum PS2 PAL PEGI 12 Role Playing Manual",
+              "price": 3.84,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2026-09-29T02:59:33.000Z",
+              "url": "https://www.ebay.co.uk/itm/336815534759"
+            },
+            {
+              "title": "Final Fantasy X (Sony PlayStation 2, 2002)",
+              "price": 3.94,
+              "postage": 3.4,
+              "condition": "Good",
+              "listed": "2026-07-13T19:23:04.000Z",
+              "url": "https://www.ebay.co.uk/itm/278178651481"
+            },
+            {
+              "title": "Final Fantasy X PS2 Platinum Tested Complete PlayStation 2 PAL",
+              "price": 3.99,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2026-06-22T08:28:10.000Z",
+              "url": "https://www.ebay.co.uk/itm/257580346324"
+            },
+            {
+              "title": "Final Fantasy X (Sony PlayStation 2 PS2) Disc Only Tested",
+              "price": 3.99,
+              "postage": 2.99,
+              "condition": "Good",
+              "listed": "2026-09-26T21:28:08.000Z",
+              "url": "https://www.ebay.co.uk/itm/307200926343"
+            },
+            {
+              "title": "Final Fantasy X (Sony PlayStation 2, 2002) Including Manual",
+              "price": 4.0,
+              "postage": 2.94,
+              "condition": "Acceptable",
+              "listed": "2026-10-06T08:57:54.000Z",
+              "url": "https://www.ebay.co.uk/itm/960023034178"
+            }
+          ]
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=final%20fantasy%20x%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 4072,
+          "fetched": 200,
+          "truncated": true,
+          "counted": 102,
+          "skipped": {
+            "import": 20,
+            "not_a_copy": 9,
+            "other_game": 67,
+            "other_platform": 2
+          },
+          "skipped_examples": {
+            "import": [
+              "Final Fantasy X PlayStation 2 Japanese REGION LOCK",
+              "Final Fantasy X (Sony PlayStation 2, 2001) - Japanese Version",
+              "Final Fantasy X Mega Hits NTSC-J (SLPS 72501) Sony PlayStation 2 PS2 JPN",
+              "Final Fantasy X PlayStation 2 NTSC-J (Region Locked) JPN",
+              "Final Fantasy X Mega Hits (NTSC-J) Sony PlayStation 2 PS2 JPN"
+            ],
+            "not_a_copy": [
+              "Final Fantasy X & X-2 Bundle CIB (Sony PlayStation 2) Tested & Working",
+              "Final Fantasy X , X-2 , XII, DVD Bundle - (Sony Playstation 2, PS2) CIB Tested!",
+              "Final Fantasy X, X-2, XII Bundle - Sony PlayStation 2, Cib Tested Great Shape!",
+              "Final Fantasy X X-2 Lot (PlayStation 2, 2002) PS2 Complete Tested CIB FREE SHIP",
+              "Final Fantasy X and X-2: PS2 2 Disc Lot with FFX Manual Tested Working"
+            ],
+            "other_game": [
+              "Final Fantasy X-2 PS2 (PlayStation 2) - CIB w/ Manual - Black Label - Tested)",
+              "Final Fantasy X-2 (PlayStation 2 PS2) NO TRACKING - DISC ONLY 3435",
+              "Final Fantasy X-2 PS2 Black Label CIB Tested",
+              "Final Fantasy X-2 PS2 PlayStation 2 Complete CIB w/ Manual Square Enix Untested",
+              "Final Fantasy X-2 (Sony PlayStation 2, PS2) Black Label - Complete"
+            ],
+            "other_platform": [
+              "Final Fantasy X/X-2 (PlayStation 3, PS3) Complete w/Manual Tested GC",
+              "Final Fantasy X|X-2 HD Remaster Limited Edition (Sony PlayStation 3 / PS3, 2014)"
+            ]
+          },
+          "lowest": 4.99,
+          "median": 13.15,
+          "postage_known": 102,
+          "median_postage": 5.99,
+          "incomplete_hint": 20,
+          "listings": [
+            {
+              "title": "Final Fantasy X Greatest Hits PS2 T NTSC-U/C Square Enix (not original case)",
+              "price": 4.99,
+              "postage": 6.07,
+              "condition": "Good",
+              "listed": "2026-08-15T15:06:32.000Z",
+              "url": "https://www.ebay.com/itm/237007876926"
+            },
+            {
+              "title": "Square Enix Final Fantasy X Greatest Hits Manual Included PS2 NTSC-U/C T Teen",
+              "price": 5.5,
+              "postage": 6.07,
+              "condition": "Very Good",
+              "listed": "2026-10-04T14:57:04.000Z",
+              "url": "https://www.ebay.com/itm/298732377030"
+            },
+            {
+              "title": "Final Fantasy X Greatest Hits (PlayStation 2 PS2) No manual / TESTED AND WORKING",
+              "price": 5.99,
+              "postage": 5.99,
+              "condition": "Good",
+              "listed": "2026-10-09T20:54:35.000Z",
+              "url": "https://www.ebay.com/itm/860027403726"
+            },
+            {
+              "title": "Final Fantasy X FFX Complete with Manual CIB Playstation 2 PS2 Tested!",
+              "price": 6.0,
+              "postage": 6.8,
+              "condition": "Very Good",
+              "listed": "2026-03-23T23:35:28.000Z",
+              "url": "https://www.ebay.com/itm/117104576552"
+            },
+            {
+              "title": "Square Enix Final Fantasy X Greatest Hits (PS2) T Rated, NTSC-U/C, Manual",
+              "price": 6.0,
+              "postage": 5.69,
+              "condition": "Good",
+              "listed": "2026-10-07T22:34:22.000Z",
+              "url": "https://www.ebay.com/itm/137823514202"
+            },
+            {
+              "title": "Square Enix Final Fantasy X Greatest Hits - Sony PlayStation 2 PS2",
+              "price": 6.0,
+              "postage": 5.69,
+              "condition": "Good",
+              "listed": "2026-10-08T22:00:03.000Z",
+              "url": "https://www.ebay.com/itm/206612811828"
+            },
+            {
+              "title": "Final Fantasy X PS2 Greatest Hits CIB",
+              "price": 6.0,
+              "postage": 10.0,
+              "condition": "Good",
+              "listed": "2026-10-10T16:09:46.000Z",
+              "url": "https://www.ebay.com/itm/227561095470"
+            },
+            {
+              "title": "PlayStation 2 Final Fantasy x Game With Box No Manual",
+              "price": 6.0,
+              "postage": 5.99,
+              "condition": "Very Good",
+              "listed": "2026-08-12T15:57:46.000Z",
+              "url": "https://www.ebay.com/itm/318710935679"
+            },
+            {
+              "title": "Squaresoft Final Fantasy X PS2 NTSC-U/C T-Teen (2001) Manual Included",
+              "price": 6.0,
+              "postage": 6.07,
+              "condition": "Very Good",
+              "listed": "2026-10-09T10:47:36.000Z",
+              "url": "https://www.ebay.com/itm/407278096279"
+            },
+            {
+              "title": "Square Enix Final Fantasy X Greatest Hits (PS2) T NTSC-U/C Role Playing",
+              "price": 6.5,
+              "postage": 5.99,
+              "condition": "Good",
+              "listed": "2026-10-05T18:51:15.000Z",
+              "url": "https://www.ebay.com/itm/237108140633"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Prince of Persia: The Two Thrones",
+      "level": "normal",
+      "search": "prince of persia the two thrones",
+      "queries": [
+        "prince of persia the two thrones"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=prince%20of%20persia%20the%20two%20thrones%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 158,
+          "fetched": 158,
+          "truncated": false,
+          "counted": 135,
+          "skipped": {
+            "not_a_copy": 1,
+            "other_game": 22
+          },
+          "skipped_examples": {
+            "not_a_copy": [
+              "PlayStation 2 Games Bundle - Onimusha 2 & Prince of Persia The Two Thrones"
+            ],
+            "other_game": [
+              "Prince of Persia: The Sands of Time & The Two Thrones - Xbox Original + Manual",
+              "Prince of Persia - Warrior Within & The Two Thrones - Sony PlayStation 2 PS2",
+              "prince of Persia The Sands Of Time & The Two Thrones",
+              "Prince of Persia PS2 Games Bundle! The Two Thrones & The Sands of Time (PS2,PAL)",
+              "PS2 Prince of Persia Bundle - Warrior Within & The Two Thrones - PlayStation 2"
+            ]
+          },
+          "lowest": 1.85,
+          "median": 5.44,
+          "postage_known": 135,
+          "median_postage": 2.7,
+          "incomplete_hint": 10,
+          "listings": [
+            {
+              "title": "Prince of Persia: The Two Thrones (Sony PlayStation 2, 2005) - PAL",
+              "price": 1.85,
+              "postage": 4.99,
+              "condition": "Very Good",
+              "listed": "2026-10-02T00:19:11.000Z",
+              "url": "https://www.ebay.co.uk/itm/147613443372"
+            },
+            {
+              "title": "Prince Of Persia: The Two Thrones - PS2 Boxed But No Instructions",
+              "price": 1.88,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2025-05-04T13:31:36.000Z",
+              "url": "https://www.ebay.co.uk/itm/197283659193"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones, The Two Thrones, PS2, Playstation 2 Game.",
+              "price": 1.9,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2025-04-23T15:03:16.000Z",
+              "url": "https://www.ebay.co.uk/itm/306265647299"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones PlayStation 2, 2005, PAL",
+              "price": 1.92,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2025-07-24T13:15:36.000Z",
+              "url": "https://www.ebay.co.uk/itm/297492608207"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones PlayStation 2 PAL",
+              "price": 2.0,
+              "postage": 2.72,
+              "condition": "Very Good",
+              "listed": "2026-08-03T15:20:10.000Z",
+              "url": "https://www.ebay.co.uk/itm/278243506131"
+            },
+            {
+              "title": "Prince of Persia The Two Thrones Sony PlayStation 2 PS2 PAL PEGI 16 Ubisoft",
+              "price": 2.24,
+              "postage": 3.38,
+              "condition": "Very Good",
+              "listed": "2026-09-07T18:45:10.000Z",
+              "url": "https://www.ebay.co.uk/itm/257729953594"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones PlayStation 2",
+              "price": 2.24,
+              "postage": 2.7,
+              "condition": "Very Good",
+              "listed": "2026-01-03T18:29:48.000Z",
+              "url": "https://www.ebay.co.uk/itm/397459442571"
+            },
+            {
+              "title": "Ubisoft Prince of Persia: The Two Thrones PS2 Complete With Manual SLES-53777",
+              "price": 2.61,
+              "postage": 2.72,
+              "condition": "Good",
+              "listed": "2026-08-04T17:34:19.000Z",
+              "url": "https://www.ebay.co.uk/itm/188743302546"
+            },
+            {
+              "title": "Ubisoft Prince of Persia: The Two Thrones PS2 PAL PEGI 16 Manual Included",
+              "price": 2.75,
+              "postage": 1.99,
+              "condition": "Good",
+              "listed": "2026-09-19T15:12:26.000Z",
+              "url": "https://www.ebay.co.uk/itm/377508608365"
+            },
+            {
+              "title": "Prince of Persia The Two Thrones PS2 Playstation 2",
+              "price": 2.77,
+              "postage": 3.38,
+              "condition": "Good",
+              "listed": "2024-05-22T23:02:34.000Z",
+              "url": "https://www.ebay.co.uk/itm/285872446541"
+            }
+          ]
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=prince%20of%20persia%20the%20two%20thrones%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 351,
+          "fetched": 200,
+          "truncated": true,
+          "counted": 187,
+          "skipped": {
+            "import": 1,
+            "not_a_copy": 5,
+            "other_game": 7
+          },
+          "skipped_examples": {
+            "import": [
+              "Prince Of Persia The Two Thrones PS2 Sony PlayStation 2 PAL REGION EUROPEAN"
+            ],
+            "not_a_copy": [
+              "Prince of Persia: The Two Thrones (Sony PlayStation 2) Case And Manual Only",
+              "Prince Of Persia The Two Thrones Case & Manual Only PS2",
+              "Lot of 2 Playstation 2 Prince of Persia The Two Thrones & Rise of the Kasai Game",
+              "Prince of Persia The Two Thrones (PS2, 2005) Disc and Manual Only",
+              "Prince of Persia The Two Thrones and Warrior Within Lot Ps2"
+            ],
+            "other_game": [
+              "Prince of Persia Two Thrones & Robin Hood Defender Of The Crown PlayStation PS2",
+              "Sony PlayStation 2 Games Cleaned Tested Disc In Case No Manual - U Pick & Choose",
+              "PS2 Prince of Persia The Sands of Time & The Two Thrones CIB PlayStation 2 Games",
+              "Prince of Persia Sands of Time & The Two Thrones (PlayStation 2) Discs Only",
+              "PlayStation 2 (PS2) games used and tested"
+            ]
+          },
+          "lowest": 2.0,
+          "median": 9.99,
+          "postage_known": 187,
+          "median_postage": 5.99,
+          "incomplete_hint": 28,
+          "listings": [
+            {
+              "title": "Prince of Persia: The Two Thrones PS2 Black Label Disc Only Scratched!!!",
+              "price": 2.0,
+              "postage": 5.8,
+              "condition": "Acceptable",
+              "listed": "2025-01-05T20:56:29.000Z",
+              "url": "https://www.ebay.com/itm/176774228227"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones (Game Only) Playstation 2",
+              "price": 2.5,
+              "postage": 5.68,
+              "condition": "Very Good",
+              "listed": "2024-09-09T11:33:38.000Z",
+              "url": "https://www.ebay.com/itm/315739859505"
+            },
+            {
+              "title": "Prince of Persia The Two Thrones Sony PS2 PlayStation 2 Disc Only",
+              "price": 2.99,
+              "postage": 6.17,
+              "condition": "Good",
+              "listed": "2026-03-13T02:01:05.000Z",
+              "url": "https://www.ebay.com/itm/397707438479"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones Sony PlayStation 2 Used Video Game Disc Only",
+              "price": 3.0,
+              "postage": 6.0,
+              "condition": "Acceptable",
+              "listed": "2026-10-10T12:07:23.000Z",
+              "url": "https://www.ebay.com/itm/147629307399"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones PlayStation 2 LOOSE DISC ONLY TESTED WORKING",
+              "price": 3.5,
+              "postage": 6.17,
+              "condition": "Very Good",
+              "listed": "2026-10-03T20:44:07.000Z",
+              "url": "https://www.ebay.com/itm/820200471212"
+            },
+            {
+              "title": "Prince of Persia The Two Thrones Sony PlayStation 2 PS2 Tested",
+              "price": 3.58,
+              "postage": 9.5,
+              "condition": "Acceptable",
+              "listed": "2025-02-27T03:45:47.000Z",
+              "url": "https://www.ebay.com/itm/396251549139"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones PS2 Complete With Manual CIB",
+              "price": 4.0,
+              "postage": 7.89,
+              "condition": "Acceptable",
+              "listed": "2026-09-30T08:30:01.000Z",
+              "url": "https://www.ebay.com/itm/257774076122"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones (Sony PlayStation 2, 2005)",
+              "price": 4.46,
+              "postage": 6.74,
+              "condition": "Very Good",
+              "listed": "2026-05-13T13:50:31.000Z",
+              "url": "https://www.ebay.com/itm/397943744555"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones (Sony PlayStation 2, 2005) Disc Only",
+              "price": 4.5,
+              "postage": 6.17,
+              "condition": "Good",
+              "listed": "2026-01-30T02:07:01.000Z",
+              "url": "https://www.ebay.com/itm/287109239038"
+            },
+            {
+              "title": "Prince of Persia: The Two Thrones (Sony PlayStation 2, 2005) DISC ONLY",
+              "price": 4.99,
+              "postage": 5.99,
+              "condition": "Very Good",
+              "listed": "2026-01-28T05:02:32.000Z",
+              "url": "https://www.ebay.com/itm/177814859743"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Reservoir Dogs",
+      "level": "normal",
+      "search": "reservoir dogs",
+      "queries": [
+        "reservoir dogs"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=reservoir%20dogs%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 15,
+          "fetched": 15,
+          "truncated": false,
+          "counted": 12,
+          "skipped": {
+            "other_game": 3
+          },
+          "skipped_examples": {
+            "other_game": [
+              "Playstation 2 PS2 Games Bundle Fast Dispatch Fast Delivery",
+              "Sony PlayStation 2 PS2 Discs ONLY Select Your Games from Drop Down O-R List",
+              "The Simpsons Road Rage PlayStation 2 Disc Only Racing Action Game"
+            ]
+          },
+          "lowest": 8.54,
+          "median": 22.49,
+          "postage_known": 12,
+          "median_postage": 0.0,
+          "incomplete_hint": 2,
+          "listings": [
+            {
+              "title": "Video Game Reservoir Dogs Disc Only Sony PlayStation 2 PS2",
+              "price": 8.54,
+              "postage": 0.0,
+              "condition": "Acceptable",
+              "listed": "2025-10-14T05:59:19.000Z",
+              "url": "https://www.ebay.co.uk/itm/286876786788"
+            },
+            {
+              "title": "Reservoir Dogs Sony PS2 Good Condition No Manual PAL",
+              "price": 11.99,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-10-06T17:07:46.000Z",
+              "url": "https://www.ebay.co.uk/itm/227555485450"
+            },
+            {
+              "title": "Reservoir Dogs UK PAL Version Playstation 2 PS2 Game (Unplayed) Free P&P",
+              "price": 16.15,
+              "postage": 2.7,
+              "condition": "Like New",
+              "listed": "2026-08-08T11:35:41.000Z",
+              "url": "https://www.ebay.co.uk/itm/407129238610"
+            },
+            {
+              "title": "RESERVOIR DOGS PLAYSTATION 2 PS2 18+ Eidos Lions Gate Tarantino Gangster Mob",
+              "price": 17.21,
+              "postage": 1.9,
+              "condition": "Very Good",
+              "listed": "2026-10-01T20:23:33.000Z",
+              "url": "https://www.ebay.co.uk/itm/237100918668"
+            },
+            {
+              "title": "Reservoir Dogs Original Game For PS2 Sony PlayStation 2 PAL Complete With Manual",
+              "price": 21.5,
+              "postage": 2.94,
+              "condition": "Very Good",
+              "listed": "2026-08-26T23:26:05.000Z",
+              "url": "https://www.ebay.co.uk/itm/117379990372"
+            },
+            {
+              "title": "Reservoir Dogs (Sony PlayStation 2, 2006) 18+ FREE SHIPPING",
+              "price": 21.98,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2025-10-02T04:21:03.000Z",
+              "url": "https://www.ebay.co.uk/itm/376591012061"
+            },
+            {
+              "title": "Reservoir Dogs Playstation PS2 Video Game Manual PAL",
+              "price": 22.99,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-10-10T11:06:00.000Z",
+              "url": "https://www.ebay.co.uk/itm/257783644612"
+            },
+            {
+              "title": "Reservoir Dogs UK PAL Version Playstation 2 PS2 Game (Unplayed) Free P&P",
+              "price": 24.99,
+              "postage": 0.0,
+              "condition": "Like New",
+              "listed": "2026-01-10T12:09:04.000Z",
+              "url": "https://www.ebay.co.uk/itm/257302088750"
+            },
+            {
+              "title": "Reservoir Dogs PS2 PlayStation 2 Video Game Original UK Release",
+              "price": 26.99,
+              "postage": 0.0,
+              "condition": "Like New",
+              "listed": "2024-02-17T20:00:01.000Z",
+              "url": "https://www.ebay.co.uk/itm/256414456933"
+            },
+            {
+              "title": "RESERVOIR DOGS PLAYSTATION 2 PS2 PS 2 RATED 18",
+              "price": 39.99,
+              "postage": 3.7,
+              "condition": "Good",
+              "listed": "2026-10-01T17:10:43.000Z",
+              "url": "https://www.ebay.co.uk/itm/168751370117"
+            }
+          ]
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=reservoir%20dogs%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 21,
+          "fetched": 21,
+          "truncated": false,
+          "counted": 19,
+          "skipped": {
+            "import": 1,
+            "not_a_copy": 1
+          },
+          "skipped_examples": {
+            "import": [
+              "Reservoir Dogs - PlayStation 2 PS2 - PAL REGION - EUROPEAN VERSION"
+            ],
+            "not_a_copy": [
+              "Reservoir Dogs 2006 Sony PlayStation 2 PS2 Video Game Disc And Manual Only"
+            ]
+          },
+          "lowest": 11.24,
+          "median": 19.99,
+          "postage_known": 19,
+          "median_postage": 5.97,
+          "incomplete_hint": 15,
+          "listings": [
+            {
+              "title": "Reservoir Dogs (Sony PlayStation 2, 2006)",
+              "price": 11.24,
+              "postage": 8.24,
+              "condition": "Good",
+              "listed": "2023-08-11T13:29:46.000Z",
+              "url": "https://www.ebay.com/itm/285425541082"
+            },
+            {
+              "title": "Reservoir Dogs PS2 PlayStation 2 Disc Only Game 2006",
+              "price": 12.74,
+              "postage": 5.58,
+              "condition": "Good",
+              "listed": "2026-10-08T23:53:08.000Z",
+              "url": "https://www.ebay.com/itm/307221842083"
+            },
+            {
+              "title": "Reservoir Dogs (Sony PlayStation 2, 2006) Disc Only",
+              "price": 14.99,
+              "postage": 7.95,
+              "condition": "Acceptable",
+              "listed": "2026-05-10T16:16:06.000Z",
+              "url": "https://www.ebay.com/itm/227338402461"
+            },
+            {
+              "title": "Reservoir Dogs PS2 PlayStation 2 Disc Only Game 2006",
+              "price": 15.0,
+              "postage": 8.8,
+              "condition": "Good",
+              "listed": "2026-05-27T15:59:33.000Z",
+              "url": "https://www.ebay.com/itm/236841090106"
+            },
+            {
+              "title": "Reservoir Dogs (Sony PlayStation 2, 2006). DISC ONLY!!",
+              "price": 16.49,
+              "postage": 5.83,
+              "condition": "Very Good",
+              "listed": "2026-03-10T18:19:11.000Z",
+              "url": "https://www.ebay.com/itm/127731639409"
+            },
+            {
+              "title": "Reservoir Dogs (Playstation 2) PS2 Rental Case/ Art",
+              "price": 17.99,
+              "postage": 5.83,
+              "condition": "Very Good",
+              "listed": "2026-09-16T14:50:45.000Z",
+              "url": "https://www.ebay.com/itm/227524378395"
+            },
+            {
+              "title": "Reservoir Dogs (PlayStation 2, 2006) In Case - With Manual - Tested and Working",
+              "price": 19.95,
+              "postage": 8.49,
+              "condition": "Good",
+              "listed": "2026-08-12T21:44:17.000Z",
+              "url": "https://www.ebay.com/itm/178400741394"
+            },
+            {
+              "title": "Reservoir Dogs (PlayStation 2, 2006) - Disc Only",
+              "price": 19.95,
+              "postage": 6.34,
+              "condition": "Good",
+              "listed": "2026-09-07T14:00:01.000Z",
+              "url": "https://www.ebay.com/itm/318831126407"
+            },
+            {
+              "title": "Reservoir Dogs (Sony PlayStation 2, 2006) Disc Only- TESTED & WORKS",
+              "price": 19.99,
+              "postage": 6.5,
+              "condition": "Good",
+              "listed": "2026-10-04T04:09:45.000Z",
+              "url": "https://www.ebay.com/itm/128113640200"
+            },
+            {
+              "title": "Reservoir Dogs (Sony PlayStation 2, 2006) DISK ONLY! Tested & Working!",
+              "price": 19.99,
+              "postage": 10.2,
+              "condition": "Good",
+              "listed": "2026-10-09T07:57:00.000Z",
+              "url": "https://www.ebay.com/itm/147627268388"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
