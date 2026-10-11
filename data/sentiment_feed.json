@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-11 09:33:37 UTC",
+  "last_updated": "2026-10-11 09:45:22 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749471924",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-11 09:36 UTC"
+    },
     {
       "headline": "The old ways are best",
       "source": "Forum: Lemmy retrogaming",
@@ -165840,25 +165859,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-27 10:30 UTC"
-    },
-    {
-      "headline": "Midnight Club on PSP! | ColourShed",
-      "source": "YouTube: Colour Shed Productions",
-      "source_type": "youtube",
-      "feed": "youtube:https://www.youtube.com/@colourshedproductions",
-      "link": "https://www.youtube.com/watch?v=_fcmC3kT_CY",
-      "matched_game": "Midnight Club",
-      "matched_games": [
-        "Midnight Club"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-27 09:34 UTC"
     }
   ]
 }
