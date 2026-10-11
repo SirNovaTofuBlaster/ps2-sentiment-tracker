@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-11 22:51:40 UTC",
+  "last_updated": "2026-10-11 23:03:22 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749511396",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-11 22:56 UTC"
+    },
     {
       "headline": "Yahtzee is still out there being mean about videogames, and good for him",
       "source": "PCGamer latest",
@@ -177636,25 +177655,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-28 00:48 UTC"
-    },
-    {
-      "headline": "Late September PS2 History Silent Hill 2 & More!",
-      "source": "YouTube: Dan Gnadt - The PS2 Guy",
-      "source_type": "youtube",
-      "feed": "youtube:UChBb5-4ILVNPsL8xX6a4LpA",
-      "link": "https://www.youtube.com/shorts/7AsNaX9cfeA",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-27 23:00 UTC"
     }
   ]
 }
