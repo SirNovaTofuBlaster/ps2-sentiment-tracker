@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-11 17:50:23 UTC",
+  "last_updated": "2026-10-11 18:04:23 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749494817",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-11 17:53 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Dynasty Warriors 3",
       "source": "4chan /v/",
@@ -173445,40 +173464,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-27 18:09 UTC"
-    },
-    {
-      "headline": "The Physical Media Apocalypse Has Begun",
-      "source": "YouTube: JRPGLife",
-      "source_type": "youtube",
-      "feed": "youtube:UCXbE-Ljd1C9RFe-yEdjTgkQ",
-      "link": "https://www.youtube.com/watch?v=04tQWc8CYlA",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-27 18:00 UTC"
-    },
-    {
-      "headline": "Top 5 Disliked Mechanics From Games We Like | The Flight",
-      "source": "Podcast: Retro Hangover",
-      "source_type": "podcast",
-      "feed": "https://feeds.captivate.fm/retrohangover/",
-      "link": "https://retrohangover.captivate.fm/episode/top-5-disliked-mechanics-from-games-we-like-the-flight",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-27 18:00 UTC"
     }
   ]
 }
