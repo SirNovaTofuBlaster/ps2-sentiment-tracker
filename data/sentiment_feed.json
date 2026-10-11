@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-11 00:28:37 UTC",
+  "last_updated": "2026-10-11 00:31:29 UTC",
   "total_tracked_feeds": 231,
   "items": [
     {
@@ -1694,6 +1694,25 @@
       "match_score": 0,
       "match_method": null,
       "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-10 22:25 UTC"
+    },
+    {
+      "headline": "Why You Will Never Forget Square's PS2 Debut The Bouncer",
+      "source": "Podcast: Millennium Edition | Nintendo, SEGA, and Games of the 2000s",
+      "source_type": "podcast",
+      "feed": "https://feeds.acast.com/public/shows/69e6e95d0b4baf3bf24eb30f",
+      "link": "https://shows.acast.com/millennium-edition-gamecube-dreamcast/episodes/6acabb528f340788891f29bb",
+      "matched_game": "The Bouncer",
+      "matched_games": [
+        "The Bouncer"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
