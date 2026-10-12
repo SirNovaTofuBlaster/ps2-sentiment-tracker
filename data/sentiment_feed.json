@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-12 18:16:40 UTC",
+  "last_updated": "2026-10-12 18:18:53 UTC",
   "total_tracked_feeds": 231,
   "items": [
     {
@@ -86,6 +86,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 18:11 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Persona 4",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584245154",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-12 18:05 UTC"
     },
     {
       "headline": "After almost 3 decades, StarCraft Brood War finally gets good netcode (rollback)",
@@ -192359,19 +192378,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-09-28 18:27 UTC"
-    },
-    {
-      "headline": "New God of War Laufey Gameplay REVEALED! - Kinda Funny Games Daily 09.28.26",
-      "source": "YouTube: Kinda Funny Games",
-      "source_type": "youtube",
-      "feed": "youtube:UCT6QFE3peNry9PdO5uGj96g",
-      "link": "https://www.youtube.com/watch?v=GSz6wWAWSqw",
-      "matched_game": "God of War",
-      "match_score": 90,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-09-28 18:17 UTC",
-      "is_digital_only": false
     }
   ]
 }
