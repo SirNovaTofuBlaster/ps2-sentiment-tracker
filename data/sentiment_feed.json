@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-13 00:03:03 UTC",
+  "last_updated": "2026-10-13 00:14:23 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Monster Hunter",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584280694",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-13 00:09 UTC"
+    },
     {
       "headline": "Gave my son my laptop and I dont know what to do now",
       "source": "r/pcmasterrace",
@@ -197341,49 +197360,6 @@
       "sentiment": 50,
       "timestamp": "2026-09-29 00:22 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "I can't stop comparing the dialogue from the original, messy FF7 localization and its vastly improved fan translation",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/final-fantasy/i-cant-stop-comparing-the-dialogue-from-the-original-messy-ff7-localization-and-its-vastly-improved-fan-translation/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-09-29 00:05 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Random: \"Motherbrain\" Returns As Ubisoft's GenAI Gaming Initiative",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/09/random-motherbrain-returns-as-ubisofts-genai-gaming-initiative",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": true,
-      "sentiment": 60,
-      "timestamp": "2026-09-29 00:05 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "What Is Going On With This Disk Drive?",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1wsv6y6/what_is_going_on_with_this_disk_drive/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-29 00:05 UTC"
     }
   ]
 }
