@@ -720,7 +720,7 @@ reason saving without a token is the default and tokens should be short-lived.
 - The "surging" level inherits the matcher's mistakes: in a replay of one week, 6 of 12 flags
   were the wrong game matched.
 - Until 2026-10-07 the snapshot held at most 5,000 items, which had cut it to nine days. The
-  ceiling is now 12,000 and the window refills to 14 days as new items arrive; until it has,
+  ceiling is now 30,000 (12,000 from 2026-10-07 to 2026-10-13) and the window refills to 14 days as new items arrive; until it has,
   the eBay levels are worked out from less than two weeks of mentions.
 - Fuzzy matching still maps franchise names to the PS2 entry, e.g. "God of War Laufey" becomes
   *God of War*. Sequel numbers are checked, but new subtitles aren't. This shows most on
