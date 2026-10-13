@@ -66,6 +66,10 @@ jobs:
           if not blocks:
               blocks = [text[-3000:]]
           for block in blocks[:10]:
-              body = block.strip()[:3000].replace("%", "%25").replace("\r", "").replace("\n", "%0A")
+              block = block.strip()
+              first = block.split("\n", 1)[0]
+              # The test's name, then the end of what it printed, where the reason is.
+              body = block if len(block) <= 3000 else f"{first}\n...\n{block[-2800:]}"
+              body = body.replace("%", "%25").replace("\r", "").replace("\n", "%0A")
               print(f"::error title=Test failure::{body}")
           EOF
