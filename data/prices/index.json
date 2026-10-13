@@ -120,5 +120,107 @@
   "psx dvr with built in ps2 160 gb desr 5000 5100 5500 5700",
   "psx dvr with built in ps2 250 gb desr 7000 7100 7500 7700",
   "sony bravia kdl 22px300 tv with built in ps2"
- ]
+ ],
+ "rare": {
+  "what": "The Rarest page's two lists, each on its own eBay site: an index of their asking prices (100 on the first day 80% of the list had a price, moving on days with 10+ games priced from 2+ copies on both days, chained like the PS2 index) and a market cap: each game's latest median within 7 days x the copies rare_games.json estimates were sold x 0.65 still in existence, summed on the first day, then moved like a stock index by the games priced on both days (a game joining or leaving does not move it). 'core' leaves out games estimated at 100,000 copies or more. The copies are estimates, so the cap is a rough size, not a count.",
+  "points": "[day, index, games compared, market cap, core market cap, games in the cap]",
+  "survival": 0.65,
+  "core_below": 100000,
+  "lists": {
+   "PAL": {
+    "site": "UK",
+    "currency": "GBP",
+    "games": 110,
+    "points": [
+     [
+      "2026-10-08",
+      100.0,
+      12,
+      230470497,
+      148578622,
+      90
+     ],
+     [
+      "2026-10-09",
+      99.84,
+      79,
+      230566723,
+      148720673,
+      96
+     ],
+     [
+      "2026-10-10",
+      99.96,
+      84,
+      231154294,
+      153488225,
+      96
+     ],
+     [
+      "2026-10-11",
+      100.74,
+      85,
+      231099684,
+      154671002,
+      96
+     ],
+     [
+      "2026-10-12",
+      103.5,
+      85,
+      235202712,
+      157312857,
+      96
+     ]
+    ]
+   },
+   "US": {
+    "site": "US",
+    "currency": "USD",
+    "games": 105,
+    "points": [
+     [
+      "2026-10-08",
+      100.0,
+      22,
+      1150249614,
+      355981788,
+      97
+     ],
+     [
+      "2026-10-09",
+      98.78,
+      89,
+      1101725190,
+      350423014,
+      103
+     ],
+     [
+      "2026-10-10",
+      98.34,
+      95,
+      1097599194,
+      347747170,
+      103
+     ],
+     [
+      "2026-10-11",
+      97.92,
+      95,
+      1100523504,
+      343726684,
+      104
+     ],
+     [
+      "2026-10-12",
+      98.01,
+      94,
+      1095563192,
+      346130998,
+      104
+     ]
+    ]
+   }
+  }
+ }
 }
