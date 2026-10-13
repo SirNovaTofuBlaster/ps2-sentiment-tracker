@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-13 19:59:58 UTC",
+  "last_updated": "2026-10-13 20:11:23 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749629747",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-13 20:04 UTC"
+    },
     {
       "headline": "Single-player games about repairing and restoring things, with minimal resource grinding?",
       "source": "r/gamingsuggestions",
@@ -201944,26 +201963,6 @@
       "hype": 0,
       "timestamp": "2026-09-29 20:31 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Kingdom Hearts 358/2 Days – Cane and Rinse No.733",
-      "source": "Podcast: The Cane and Rinse videogame podcast",
-      "source_type": "podcast",
-      "feed": "https://caneandrinse.com/feed/podcast/",
-      "link": "https://caneandrinse.com/kingdom-hearts-358-2/",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts",
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-29 19:59 UTC"
     }
   ]
 }
