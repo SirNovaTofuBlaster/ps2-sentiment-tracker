@@ -664,7 +664,8 @@ await check('eBay prices page: every game, surging first, a line per site', () =
     assert.match(html, /<span class="level-tag level-dormant" title="[^"]+">quiet<\/span>/);
     assert.match(html, /<b class="ebay-median">\$220<\/b><span class="ebay-rest">median · from \$120 · 97\+ copies <span class="ebay-age" title="When eBay was last asked">· 2h ago<\/span>/);
     assert.match(html, /<b class="ebay-median">£105<\/b><span class="ebay-rest">median · from £52\.70 · 47 copies /);
-    assert.match(html, /\$140<\/b><span class="ebay-rest">median · from \$140 · 1 copy <span class="ebay-age"[^>]*>· 10 min ago/);
+    assert.match(html, /\$140<\/b><span class="ebay-rest">median · from \$140 · 1 copy <span class="level-tag few-copies"[^>]*>few copies<\/span> <span class="ebay-age"[^>]*>· 10 min ago/);
+    assert.doesNotMatch(html, /97\+ copies <span class="level-tag few-copies"/, 'many copies are no warning');
     assert.match(html, /search needs tuning<\/span> <span class="ebay-age"/, 'unmatched is not shown as zero copies');
     assert.match(html, /<span class="ebay-note">none listed<\/span>/);
     assert.match(html, /<span class="ebay-site is-quiet"><span class="ebay-flag">UK<\/span><span class="ebay-note">not checked yet<\/span>/);
@@ -1652,6 +1653,20 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
     assert.equal(change(null, wk(10)), '', 'nothing now, nothing to compare');
     assert.match(change(12, wk(10), '<b>'), />\(2\.00 &lt;b&gt; ▲ 20%\)</);
     assert.doesNotMatch(change(12, wk(10), '<b>'), /<b>/, 'a currency the browser does not know is text, never markup');
+
+    // The median of complete copies, when some copies say they are not complete.
+    const siteLine = (site) => {
+        context.__site = { checked: '2026-10-14T10:00Z', lowest: 20, median: 30, ...site };
+        return vm.runInContext("priceSiteHtml('UK', __site, 'GBP', Date.parse('2026-10-14T11:00Z'), 'en-GB', 48)", context);
+    };
+    assert.match(siteLine({ copies: 5, complete: { copies: 3, median: 42 } }),
+        /5 copies · <span class="ebay-complete" title="Median of the 3 copies whose listing[^"]*">complete £42\.00 \(3\)<\/span> <span class="ebay-age"/);
+    for (const bad of [undefined, null, 'x', {}, { copies: 5, median: 42 }, { copies: 3, median: '42' }, { copies: 0, median: 42 },
+        { copies: 1.5, median: 42 }, { copies: 3, median: Infinity }]) {
+        assert.doesNotMatch(siteLine({ copies: 5, complete: bad }), /ebay-complete/, JSON.stringify(bad));
+    }
+    assert.match(siteLine({ copies: 2 }), /2 copies <span class="level-tag few-copies" title="Only 2 copies are for sale/);
+    assert.doesNotMatch(siteLine({ copies: 3 }), /few-copies/);
 
     // The eBay prices page: the change sits beside the median, the rest of the line as before.
     const pageRows = showPrices(prices).split('<li ').slice(1);

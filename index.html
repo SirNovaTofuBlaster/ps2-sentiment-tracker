@@ -917,6 +917,18 @@
                 + `(${esc(money(Math.abs(diff), currency, locale))} ${up ? '▲' : '▼'} ${esc(shown)}%)</span>`;
         }
 
+        // At or below this many copies a median is a seller's asking price, not a market.
+        const FEW_COPIES = 2;
+
+        // " · complete £45 (3)": the median of the copies that do not say they are incomplete
+        // (disc only, no manual...), when ebay_prices.py found some that do. Nothing otherwise.
+        function completeHtml(site, copies, currency, locale) {
+            const complete = site.complete && typeof site.complete === 'object' ? site.complete : null;
+            if (!complete || typeof complete.median !== 'number' || !Number.isFinite(complete.median)
+                    || !Number.isInteger(complete.copies) || complete.copies < 1 || complete.copies >= copies) return '';
+            return ` · <span class="ebay-complete" title="${esc(`Median of the ${complete.copies} ${complete.copies === 1 ? 'copy' : 'copies'} whose listing does not say disc only, no manual or no case: closer to what a complete copy costs.`)}">complete ${esc(money(complete.median, currency, locale))} (${esc(complete.copies)})</span>`;
+        }
+
         function priceSiteHtml(label, site, currency, now, locale, staleHours) {
             const flag = `<span class="ebay-flag">${esc(label)}</span>`;
             if (!site || typeof site !== 'object') {
@@ -931,7 +943,8 @@
                 : !copies || typeof site.median !== 'number'
                     ? `<span class="ebay-rest"><span class="ebay-note">none listed</span>${when}</span>`
                     : `${weekBefore(site) ? '<span class="ebay-now">' : ''}<b class="ebay-median">${esc(money(site.median, currency, locale))}</b>${
-                        weekBefore(site) ? ` ${priceChangeHtml(site, currency, locale)}</span>` : ''}<span class="ebay-rest">median · from ${esc(money(site.lowest, currency, locale))} · ${esc(copies)}${site.truncated ? '+' : ''} ${copies === 1 ? 'copy' : 'copies'}${when}</span>`;
+                        weekBefore(site) ? ` ${priceChangeHtml(site, currency, locale)}</span>` : ''}<span class="ebay-rest">median · from ${esc(money(site.lowest, currency, locale))} · ${esc(copies)}${site.truncated ? '+' : ''} ${copies === 1 ? 'copy' : 'copies'}${completeHtml(site, copies, currency, locale)}${copies <= FEW_COPIES
+                        ? ` <span class="level-tag few-copies" title="Only ${esc(copies)} ${copies === 1 ? 'copy is' : 'copies are'} for sale, so this median is one or two sellers' asking prices, not a market price.">few copies</span>` : ''}${when}</span>`;
             return `<span class="ebay-site${age.stale ? ' is-stale' : ''}">${flag}${figures}</span>`;
         }
 

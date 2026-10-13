@@ -629,6 +629,31 @@ class SummaryTests(Quiet):
         self.assertEqual((result["counted"], result["incomplete_hint"]), (3, 2))
         self.assertNotIn("incomplete", result["listings"][0])
 
+    def test_the_median_of_complete_copies_leaves_out_the_ones_that_say_they_are_not(self):
+        result = self.summary(
+            listing("Silent Hill 2 PS2 disc only", 12, item_id=1),
+            listing("Silent Hill 2 PS2 no manual", 18, item_id=2),
+            listing("Silent Hill 2 PS2 complete", 35, item_id=3),
+            listing("Silent Hill 2 PS2 CIB", 41, item_id=4))
+        self.assertEqual((result["complete_counted"], result["complete_median"]), (2, 38.0))
+        self.assertEqual(result["median"], 26.5, "the ordinary median still counts every copy")
+        whole = ebay_prices.numbers_of(result, "2026-10-06T12:00Z")
+        self.assertEqual(whole["complete"], {"copies": 2, "median": 38.0})
+        plain = self.summary(listing("Silent Hill 2 PS2", 20, item_id=1), listing("Silent Hill 2 PS2", 30, item_id=2))
+        self.assertNotIn("complete", ebay_prices.numbers_of(plain, "2026-10-06T12:00Z"),
+                         "nothing to add when no copy says it is incomplete")
+
+    def test_graded_and_sealed_copies_are_left_out(self):
+        result = self.summary(
+            listing("Silent Hill 2 PS2 WATA 9.4 A+", 900, item_id=1),
+            listing("Silent Hill 2 PS2 Factory Sealed", 400, item_id=2),
+            listing("Silent Hill 2 PS2 VGA graded 85", 650, item_id=3),
+            listing("Silent Hill 2 PS2 complete", 40, item_id=4))
+        self.assertEqual(result["counted"], 1)
+        self.assertEqual(result["skipped"], {"graded_or_sealed": 3})
+        self.assertEqual(result["median"], 40.0)
+        self.assertIsNone(self.summary(listing("Silent Hill 2 PS2 resealable case", 30))["skipped"].get("graded_or_sealed"))
+
     def test_nothing_for_sale_is_not_the_same_as_an_error(self):
         result = self.summary()
         self.assertEqual((result["status"], result["counted"], result["fetched"]), ("none", 0, 0))

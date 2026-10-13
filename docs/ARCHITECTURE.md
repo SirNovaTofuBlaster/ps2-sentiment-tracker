@@ -130,10 +130,11 @@ subreddits. The PS2 archive's index globs only its own folder, so the two never 
    so their health and clocks are left as they were and they are fetched again next round.
 9. **Merge and save.** New items replace the same link in the previous snapshot, items older than
    14 days drop out, and the files are only rewritten when something changed. A ceiling of
-   12,000 items (`MAX_ITEMS`) guards the file's size. Reading Reddit's newest posts brings about
-   29 posts an hour from the 26 subreddits (measured from GitHub's servers on 2026-10-08), some
-   700 a day where the "hot" listing brought about 250, so two weeks of everything now come close
-   to the ceiling. Past it, the oldest items that name no PS2 game go first (`within_ceiling()`);
+   30,000 items (`MAX_ITEMS`) guards the file's size. Reading Reddit's newest posts brings about
+   29 posts an hour from the 26 subreddits (measured from GitHub's servers on 2026-10-08), and the
+   whole feed 1,100-1,550 items a day, so two weeks come to about 18,000; the earlier ceiling of
+   12,000 was full by 2026-10-13. At about 585 bytes an item the file reaches some 17 MB at the
+   ceiling; GitHub Pages sends it compressed (7.0 MB went as 0.9 MB on 2026-10-13). Past it, the oldest items that name no PS2 game go first (`within_ceiling()`);
    items naming a game are kept for the full 14 days. The archive, the Demand Index, eBay's
    levels and every game count are therefore unaffected; the item count, the mood average and
    the remaster-news count then cover fewer days of items that name no game.

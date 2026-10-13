@@ -406,6 +406,8 @@ body .level-tag {
   color: var(--dim);
 }
 body .level-tag.level-surging { color: var(--green); border-color: var(--green); }
+body .level-tag.few-copies { color: var(--red); border-color: var(--red); }
+body .ebay-complete { color: var(--body); }
 
 /* Scrollbars, guide page */
 ::-webkit-scrollbar-thumb { background: var(--line); border-radius: 0; }

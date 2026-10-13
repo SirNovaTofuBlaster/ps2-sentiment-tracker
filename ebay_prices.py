@@ -233,6 +233,13 @@ OTHER_CONSOLES = ("ps3", "ps4", "ps5", "psp", "ps vita", "xbox", "wii", "gamecub
 CONSOLE_CATEGORIES = {"consoles": CONSOLE_CATEGORY_ID, "any": ""}
 MAX_CONSOLE_QUERIES = 3
 
+# A graded or factory-sealed copy is another product, priced several times a used one; listed
+# among used copies by mistake it would pull a rare game's median far up.
+GRADED_OR_SEALED = (
+    "graded", "wata", "vga", "cgc", "ukg", "factory sealed", "new sealed", "sealed new", "still sealed",
+    "brand new sealed", "sealed brand new", "mint sealed", "sealed mint",
+)
+
 # Counted, but worth knowing about: the price is for less than a complete copy.
 INCOMPLETE_PHRASES = (
     "disc only", "disk only", "game only", "loose", "no manual", "no case", "no box",
@@ -1110,6 +1117,8 @@ def reject_reason(item, game, market, keyword_search):
     if has_phrase(text, junk) or has_phrase(text, game["exclude"]) \
             or is_the_soundtrack(item.get("title"), name_text, game["search"]):
         return "not_a_copy"
+    if has_phrase(text, GRADED_OR_SEALED):
+        return "graded_or_sealed"
     if has_phrase(text, IMPORT_PHRASES) or has_phrase(text, market["foreign"]):
         return "import"
     if amount(item.get("price"), market["currency"]) is None:
@@ -1170,6 +1179,11 @@ def summarise(payload, game, market, keyword_search):
             "postage_known": len(postages),
             "median_postage": middle(postages) if postages else None,
             "incomplete_hint": sum(1 for row in kept if row["incomplete"]),
+            # The copies that do not say they lack something (disc only, no manual): the figure
+            # to set beside a collector's value for a complete copy.
+            "complete_counted": sum(1 for row in kept if not row["incomplete"]),
+            "complete_median": middle([row["price"] for row in kept if not row["incomplete"]])
+                               if any(not row["incomplete"] for row in kept) else None,
             "listings": [{k: v for k, v in row.items() if k != "incomplete"} for row in kept[:LISTINGS_KEPT]],
         })
     return result
@@ -1370,6 +1384,9 @@ def numbers_of(result, stamp):
              "postage": result.get("median_postage")}
     if result["truncated"]:
         entry["truncated"] = True
+    # Only when some copies say they are incomplete; otherwise it is the median itself.
+    if result.get("complete_median") is not None and 0 < result.get("complete_counted", 0) < result["counted"]:
+        entry["complete"] = {"copies": result["complete_counted"], "median": result["complete_median"]}
     return entry
 
 
