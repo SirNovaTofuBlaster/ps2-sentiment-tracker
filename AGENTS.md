@@ -33,7 +33,7 @@ through its **Sources & Weights** panel.
 | `scrape_loop.py` | Keeps the scraper running for 5½ hours per workflow run: runs it when a type is due, commits `data/`, starts the eBay job hourly and its own successor |
 | `tests/test_scrape_loop.py` | Offline tests for the loop (fake clock) and `scraper.yml` |
 | `scraper.py` | Config validation, fetch plan, YouTube link resolution, matching, sentiment, reading 4chan boards for game names, feed health, snapshot merge |
-| `index.html` | Dashboard, four pages in one file (Tracker, Rarest, Most mentioned, eBay prices); its inline script mirrors `validate_config()`, `source_key()` and the game-name rule of `ebay_prices.py`. Also reads `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json` and `rare_games.json`, and works without them |
+| `index.html` | Dashboard, four pages in one file (Tracker, Rarest, Most mentioned, eBay prices); its inline script mirrors `validate_config()`, `source_key()` and the game-name rule of `ebay_prices.py`. Also reads `data/demand.json`, `data/prices/latest.json`, `index.json` and `series.json` there, `ebay_watchlist.json` and `rare_games.json`, and works without them; draws charts with TradingView's Lightweight Charts, or a plain line without it |
 | `guide.html` | Plain-language user guide; must match the UI |
 | `data/` | Written only by workflows (the scraper's, the archive, the demand index and eBay prices, each its own files); never edit or commit it by hand |
 | `tests/test_scraper.py` | Offline unittest suite; also runs `tests/dashboard_check.mjs` when Node.js exists |
@@ -48,11 +48,12 @@ through its **Sources & Weights** panel.
 | `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index) from Wikipedia pageviews and mentions, daily |
 | `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |
 | `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words), titles never to price, and the names games have on eBay UK (`regional_names`) |
-| `rare_games.json` | The Rarest page: the rarest PAL and US games (100+ each), ranked by PriceCharting's complete-copy value, each with its sources and eBay search words. `ebay_prices.py` prices each list daily on its own site |
+| `rare_games.json` | The Rarest page: the rarest PAL and US games (100+ each), ranked by PriceCharting's complete-copy value, each with its sources, eBay search words and an estimate of copies sold (`copies`; how it was made is at the top). `ebay_prices.py` prices each list daily on its own site |
 | `rare_consoles.json` | The Rarest page's consoles: the rarest official PS2 hardware, in tiers, with model numbers, sources and eBay search rules. `ebay_prices.py` prices each daily on both sites (or its `sites`) |
 | `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, the median of a week before (`week`), and the game's level. Numbers only |
 | `data/prices/YYYY-MM.json` | The same numbers over time: a row whenever they change, and at least one a day |
-| `data/prices/index.json` | The PS2 price index per site (100 on its first day), worked out from every month's history on each run that writes `latest.json`: a chained geometric mean of each game's daily change. Days and numbers only |
+| `data/prices/index.json` | The PS2 price index per site (100 on its first day), worked out from every month's history on each run that writes `latest.json`: a chained geometric mean of each game's daily change. Also `rare`: each Rarest list's index and market cap (median × the copies `rare_games.json` estimates). Days and numbers only |
+| `data/prices/series.json` | Each game's daily median and copies per site over the last 90 days, for its price chart; read by the dashboard only when a chart opens |
 | `tests/test_ebay_prices.py` | Offline tests for `ebay_prices.py` and its workflow, including that the key never leaks |
 | `.github/workflows/ebay.yml` | Runs `ebay_prices.py` hourly (started by the scraper's loop), after a scraper run ends, and by hand; commits `data/prices/`, and publishes that run's listings to the `ebay-data` branch |
 
@@ -283,6 +284,13 @@ Before you call something done, prove it; don't assume it.
     order is a dated research snapshot (PriceCharting complete-copy values of 2026-10-08), not
     something any job updates; RFGeneration and consolevariations.com ask robots to stay out
     and are not read.
+  - The market cap's copies are estimates, not print runs: publishers almost never gave PS2
+    print runs for Europe or America (research of 2026-10-13: Kuon about 12,000 US and 8,000
+    PAL, from VGChartz-level figures). Most entries are reference-class guesses; change an
+    entry's `copies` only with a source. Mainstream games on the lists dominate any total,
+    which is why there is a `core` cap without them.
+  - The charts load TradingView's Lightweight Charts from jsDelivr at a pinned version. The
+    page must work without it (the Node tests have no library): keep the SVG fallback.
   - Consoles (`rare_consoles.json`) are searched differently from games: in eBay's consoles
     category (or every category for the PSX and the Bravia TV), any condition but for parts,
     from sellers anywhere, and a listing must have the entry's `require` words and one of its

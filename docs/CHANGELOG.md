@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-10-13: rare-list charts, market cap, price history, and a bigger feed
+
+- Asked: are the rare games still priced (yes: daily, PAL on eBay UK, US on eBay US); more
+  accurate rare prices; the feed's 12,000-item ceiling raised; TradingView-style charts tracking
+  the PAL and US rare lists' price and market cap, with print runs estimated to weigh the cap;
+  BitSkins-style price charts per game.
+- `scraper.py`: `MAX_ITEMS` 12,000 → 30,000. The busiest days seen (2026-10-08) brought about
+  1,550 items, so two weeks need about 21,700; the snapshot grows to about 7 MB (under 1 MB
+  compressed). News/Reddit output otherwise unchanged.
+- `ebay_prices.py`: graded and factory-sealed copies are left out (`graded_or_sealed`); when
+  some copies say they are incomplete, `latest.json` also keeps the median of the others
+  (`complete`). The dashboard shows it, and a red "few copies" tag at one or two copies.
+- `rare_games.json`: every entry has `copies` (low/mid/high copies sold in its region, with how
+  it was estimated); the top-level `copies` holds the method, survival shares, the figures found
+  and the reference classes. Kuon: about 12,000 US and 8,000 PAL. Most entries are estimates.
+- `index.json` gains `rare`: each list's index and market cap (all, and without games of
+  100,000+ copies), from 8 October. The cap starts as Σ median × copies × 65% and then moves
+  like a stock index, so games joining or leaving do not move it. New `data/prices/series.json`: 90 days of each game's
+  daily median and copies.
+- Dashboard: a chart above the PAL and US lists (index or market cap, all or core, 1W/1M/3M/All,
+  line or area, log scale, crosshair read-out), and a "chart" button on Rarest and eBay prices
+  rows opening the game's price history with copies-for-sale bars. Drawn with TradingView's
+  Lightweight Charts 4.2.0, or a plain line when it cannot load. `guide.html` explains both and
+  the market cap's assumptions.
+
 ## 2026-10-09: Rarest page widened and made simpler
 
 - Asked: more sources for the rarest games, and simpler, readable console tiers.

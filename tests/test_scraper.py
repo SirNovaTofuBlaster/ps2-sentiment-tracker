@@ -1169,6 +1169,7 @@ class RunScraperTests(unittest.TestCase):
 
         # The ceiling is a safety net: two weeks of a busy day (about 750 items) must fit under it.
         self.assertGreaterEqual(scraper.MAX_ITEMS, scraper.RETENTION_DAYS * 750)
+        self.assertGreaterEqual(scraper.MAX_ITEMS, scraper.RETENTION_DAYS * 1550, "two weeks of the busiest days seen (2026-10-08)")
 
     def test_status_of_removed_sources_is_dropped(self):
         self.run_scraper()

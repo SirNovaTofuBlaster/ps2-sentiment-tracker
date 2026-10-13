@@ -130,10 +130,11 @@ subreddits. The PS2 archive's index globs only its own folder, so the two never 
    so their health and clocks are left as they were and they are fetched again next round.
 9. **Merge and save.** New items replace the same link in the previous snapshot, items older than
    14 days drop out, and the files are only rewritten when something changed. A ceiling of
-   12,000 items (`MAX_ITEMS`) guards the file's size. Reading Reddit's newest posts brings about
-   29 posts an hour from the 26 subreddits (measured from GitHub's servers on 2026-10-08), some
-   700 a day where the "hot" listing brought about 250, so two weeks of everything now come close
-   to the ceiling. Past it, the oldest items that name no PS2 game go first (`within_ceiling()`);
+   30,000 items (`MAX_ITEMS`) guards the file's size. Reading Reddit's newest posts brings about
+   29 posts an hour from the 26 subreddits (measured from GitHub's servers on 2026-10-08), and the
+   whole feed 1,100-1,550 items a day, so two weeks come to about 18,000; the earlier ceiling of
+   12,000 was full by 2026-10-13. At about 585 bytes an item the file reaches some 17 MB at the
+   ceiling; GitHub Pages sends it compressed (7.0 MB went as 0.9 MB on 2026-10-13). Past it, the oldest items that name no PS2 game go first (`within_ceiling()`);
    items naming a game are kept for the full 14 days. The archive, the Demand Index, eBay's
    levels and every game count are therefore unaffected; the item count, the mood average and
    the remaster-news count then cover fewer days of items that name no game.
@@ -457,6 +458,58 @@ that cannot be read leaves the old index in place and is named in the log. The d
 it at the top of the eBay prices page (`renderIndex()`): the latest value, the change since the
 day before and over a week (`indexChange()`), and an SVG line of every day.
 
+**Complete copies, graded and sealed (added 2026-10-13).** `reject_reason()` leaves out a
+listing whose title says graded (WATA, "VGA graded", CGC, UKG) or factory sealed
+(`GRADED_OR_SEALED`, reason `graded_or_sealed`), unless it says "not graded"; "VGA" alone (a
+cable) and "new sealed" (a replacement case) are not enough: those sell at many times a used copy, and one of them moved a rare
+game's median by hundreds. Copies whose title says they are incomplete (`INCOMPLETE_PHRASES`)
+are still counted, but `summarise()` also works out the median of the rest
+(`complete_median`), and `latest.json` keeps it as `complete: {copies, median}` when at least one
+copy is incomplete and at least one is not (otherwise it would only repeat the median). The
+dashboard shows it after the copies (`completeHtml()`), and a red "few copies" tag when only
+one or two copies are listed (`FEW_COPIES`). eBay's Browse API gives only listings still for
+sale; sold prices are in the Marketplace Insights API, which eBay grants only on application.
+
+**The Rarest page's index and market cap (added 2026-10-13).** `index_file()` adds `rare`:
+per list, on its own site (`RARE_SITES`), `[day, index, games compared, market cap, core market
+cap, games in the cap]`. `rare_members()` takes each list's games from `latest.json`'s `rare`,
+with the `copies.mid` estimate of their entry in `rare_games.json`. `rare_index()` chains the
+index as `price_index()` does but over those games only, from medians of
+`RARE_INDEX_MIN_COPIES` (2) copies, moving on days with `RARE_INDEX_MIN_GAMES` comparisons. The
+market cap starts as the sum over the list of each game's latest median (one copy is enough;
+carried for `CAP_CARRY_DAYS`, 7) x its `mid` copies x the middle `survival.in_existence` share
+(0.65), and then moves like a stock index with a divisor: each day by the ratio of
+Σ median x copies today to the same sum the day before, over the games priced on both days
+(a move beyond x`INDEX_MAX_MOVE` left out). In the review the plain sum rose 21.6% from 8 to 9
+October PAL while the 90 games priced on both days moved 0.0%: six games had joined.
+`core` leaves out games with a `mid` of `core_below` (100,000) or more. Both lines start on the
+first day `CAP_START_SHARE` (80%) of the list had a price, with the index rebased to 100 there.
+A `rare_games.json` that `rare_index()` cannot use is named in the log and leaves `rare` empty
+(`rare_lists()`); the PS2 index is written all the same.
+
+`rare_games.json`'s `copies` (top level) says how the estimates were made: almost no publisher
+gave Western PS2 print runs, so each entry's `copies` is a reference-class estimate (`class`:
+`us_niche_jp`, `pal_budget`, `india`, `limited_edition`, `us_mainstream`... or `documented` when a
+figure for the game itself was found), with `low`/`mid`/`high`, `confidence` and `basis`. The
+sources and the figures behind each class are in `documented` and `reference_classes`; `limits`
+lists what could not be found. Sums of `mid` copies sold: about 4.1 million PAL and 9.8 million US
+(1.5 and 3.0 million without the games of 100,000 or more).
+
+**Each game's history (added 2026-10-13).** `series_file()` writes `data/prices/series.json`:
+per game and site, the last median and copies of each finished day over `SERIES_DAYS` (90), as
+`[days after start, median, copies]`, one game per line (about 1 MB at 90 days). `start` is fixed
+(`SERIES_EPOCH`), so a point's numbers never change as the window moves on. The dashboard
+reads it only when a game's chart is opened.
+
+**The charts.** The dashboard draws both kinds with TradingView's Lightweight Charts 4.2.0
+(Apache 2.0; its credit line sits under each chart and its logo in the corner), loaded from
+jsDelivr at that fixed version the first time a chart is drawn (`loadChartLibrary()`). Without
+it (a blocked CDN, the Node tests) `drawChart()` draws a plain SVG line, and loads the library in
+the background to redraw. `renderRareChart()` draws the list's index or market cap above the PAL
+and US lists; `openGameChart()` opens a dialog with a game's median line and bars of copies for
+sale, from the "chart" buttons on the Rarest and eBay prices rows. Range (1W, 1M, 3M, All),
+line or area, and a log scale are `rareChart` and `gameChart` settings (`setChart()`).
+
 **When it gives up.** A run stops early if eBay does not answer three lookups in a row, if its
 first ten lookups all fail, or if eBay says the allowance is used. Nothing is written when
 more than half the lookups failed, or when games that had copies last time now return nothing
@@ -481,7 +534,8 @@ Nothing reads PriceCharting automatically; the figures are a dated snapshot.
 The page (`renderRare()`) shows one list at a time (PAL or US), 25 rows folded, each with its
 guide value, flags, other name, the eBay median on its own site (`rarePrices()`: the game
 `latest.json`'s `rare` names, else the game of the same `priceKey()`) and its source links (https
-only). `RARE_SITE` in the page and `RARE_SITES` in the script must agree (tested). Without the
+only), with the list's chart above it (see *eBay asking prices*). `RARE_SITE` in the page and
+`RARE_SITES` in the script must agree (tested). Without the
 file the page says so; a failed reload keeps the list on screen.
 
 ### The rarest consoles
@@ -666,7 +720,7 @@ reason saving without a token is the default and tokens should be short-lived.
 - The "surging" level inherits the matcher's mistakes: in a replay of one week, 6 of 12 flags
   were the wrong game matched.
 - Until 2026-10-07 the snapshot held at most 5,000 items, which had cut it to nine days. The
-  ceiling is now 12,000 and the window refills to 14 days as new items arrive; until it has,
+  ceiling is now 30,000 (12,000 from 2026-10-07 to 2026-10-13) and the window refills to 14 days as new items arrive; until it has,
   the eBay levels are worked out from less than two weeks of mentions.
 - Fuzzy matching still maps franchise names to the PS2 entry, e.g. "God of War Laufey" becomes
   *God of War*. Sequel numbers are checked, but new subtitles aren't. This shows most on

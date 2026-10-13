@@ -57,9 +57,11 @@ MAX_BODY_TOKENS = 120  # only the start of a summary/description is searched
 COMMON_TOKEN_SHARE = 0.01  # tokens in more than this share of titles don't narrow the search
 RETENTION_DAYS = 14
 # A ceiling on the snapshot's size, not the usual limit: RETENTION_DAYS is. It has to hold two
-# weeks of items with room to spare (about 600 a day from 222 sources in October 2026, 750 on a
-# busy day). At 5000 it cut the window to nine days and the dashboard's count stopped moving.
-MAX_ITEMS = 12000
+# weeks of items with room to spare. At 5000 it cut the window to nine days; at 12000 it was full
+# by 2026-10-13, when Reddit's newest posts brought 1,100-1,550 items a day (two weeks: about
+# 18,000, 21,700 on the busiest days). The file is about 600 bytes an item, and GitHub Pages sends
+# it compressed (about a tenth of that).
+MAX_ITEMS = 30000
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"
 FETCH_TIME_BUDGET = 600  # seconds from the first extra feed; YouTube/podcast feeds not reached by then wait
 HOST_FAILURE_LIMIT = 3  # consecutive YouTube/podcast host-level failures skip the rest of that host

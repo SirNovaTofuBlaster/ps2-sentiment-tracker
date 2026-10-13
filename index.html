@@ -234,6 +234,15 @@
                     <button type="button" id="rareRegionConsoles" onclick="showRareRegion('Consoles')" aria-pressed="false" class="rare-region is-consoles">Consoles</button>
                 </div>
             </div>
+            <!-- The list's index and market cap (index.json's "rare"), drawn by renderRareChart(). -->
+            <div id="rareChart" class="chart-panel hidden">
+                <div id="rareChartStats" class="chart-stats"></div>
+                <div id="rareChartTools" class="chart-tools" role="toolbar" aria-label="Chart tools"></div>
+                <div id="rareChartLegend" class="chart-legend" aria-live="polite"></div>
+                <div id="rareChartCanvas" class="chart-canvas"></div>
+                <p class="chart-credit">Charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> Lightweight Charts™</p>
+                <p id="rareChartNote" class="chart-note"></p>
+            </div>
             <div id="consoleRegions" class="console-regions hidden" role="group" aria-label="Consoles sold in">
                 <button type="button" id="consoleRegionUS" onclick="showConsoleRegion('US')" aria-pressed="false" class="console-region">US</button>
                 <button type="button" id="consoleRegionJP" onclick="showConsoleRegion('JP')" aria-pressed="true" class="console-region is-active">Japan</button>
@@ -284,6 +293,21 @@
         </div>
 
     </main>
+
+    <!-- One game's price history, opened from a "chart" button (openGameChart()). -->
+    <div id="gameChart" class="chart-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="gameChartTitle" onclick="if (event.target === this) closeGameChart()">
+        <div class="chart-dialog bg-ps2card">
+            <div class="chart-dialog-head">
+                <h3 id="gameChartTitle"></h3>
+                <button type="button" class="chart-close" onclick="closeGameChart()" aria-label="Close the chart">close</button>
+            </div>
+            <div id="gameChartTools" class="chart-tools" role="toolbar" aria-label="Chart tools"></div>
+            <div id="gameChartLegend" class="chart-legend" aria-live="polite"></div>
+            <div id="gameChartCanvas" class="chart-canvas"></div>
+            <p class="chart-credit">Charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> Lightweight Charts™</p>
+            <p id="gameChartNote" class="chart-note"></p>
+        </div>
+    </div>
 
     <footer class="border-t border-ps2border py-6 mt-12 text-center text-xs text-slate-500">
         <p>PS2 Global Sentiment &amp; Remaster Tracker • Powered by GitHub Actions &amp; Python Scraper Pipelines</p>
@@ -917,6 +941,18 @@
                 + `(${esc(money(Math.abs(diff), currency, locale))} ${up ? '▲' : '▼'} ${esc(shown)}%)</span>`;
         }
 
+        // At or below this many copies a median is a seller's asking price, not a market.
+        const FEW_COPIES = 2;
+
+        // " · complete £45 (3)": the median of the copies that do not say they are incomplete
+        // (disc only, no manual...), when ebay_prices.py found some that do. Nothing otherwise.
+        function completeHtml(site, copies, currency, locale) {
+            const complete = site.complete && typeof site.complete === 'object' ? site.complete : null;
+            if (!complete || typeof complete.median !== 'number' || !Number.isFinite(complete.median)
+                    || !Number.isInteger(complete.copies) || complete.copies < 1 || complete.copies >= copies) return '';
+            return ` · <span class="ebay-complete" title="${esc(`Median of the ${complete.copies} ${complete.copies === 1 ? 'copy' : 'copies'} whose listing does not say disc only, no manual or no case: closer to what a complete copy costs.`)}">complete ${esc(money(complete.median, currency, locale))} (${esc(complete.copies)})</span>`;
+        }
+
         function priceSiteHtml(label, site, currency, now, locale, staleHours) {
             const flag = `<span class="ebay-flag">${esc(label)}</span>`;
             if (!site || typeof site !== 'object') {
@@ -931,7 +967,8 @@
                 : !copies || typeof site.median !== 'number'
                     ? `<span class="ebay-rest"><span class="ebay-note">none listed</span>${when}</span>`
                     : `${weekBefore(site) ? '<span class="ebay-now">' : ''}<b class="ebay-median">${esc(money(site.median, currency, locale))}</b>${
-                        weekBefore(site) ? ` ${priceChangeHtml(site, currency, locale)}</span>` : ''}<span class="ebay-rest">median · from ${esc(money(site.lowest, currency, locale))} · ${esc(copies)}${site.truncated ? '+' : ''} ${copies === 1 ? 'copy' : 'copies'}${when}</span>`;
+                        weekBefore(site) ? ` ${priceChangeHtml(site, currency, locale)}</span>` : ''}<span class="ebay-rest">median · from ${esc(money(site.lowest, currency, locale))} · ${esc(copies)}${site.truncated ? '+' : ''} ${copies === 1 ? 'copy' : 'copies'}${completeHtml(site, copies, currency, locale)}${copies <= FEW_COPIES
+                        ? ` <span class="level-tag few-copies" title="Only ${esc(copies)} ${copies === 1 ? 'copy is' : 'copies are'} for sale, so this median is one or two sellers' asking prices, not a market price.">few copies</span>` : ''}${when}</span>`;
             return `<span class="ebay-site${age.stale ? ' is-stale' : ''}">${flag}${figures}</span>`;
         }
 
@@ -1014,7 +1051,7 @@
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
                         <span class="text-cyan-300">${esc(row.title)}${level.tag
                             ? ` <span class="level-tag level-${esc(row.level)}" title="${esc(level.hint)}">${esc(level.tag)}</span>` : ''}</span>
-                        <span class="text-slate-500 whitespace-nowrap" title="Headlines naming this game in the last two weeks">${esc(row.mentions)} in headlines</span>
+                        <span class="whitespace-nowrap"><span class="text-slate-500" title="Headlines naming this game in the last two weeks">${esc(row.mentions)} in headlines</span> ${chartButtonHtml(row.title, sitesOf(row.entry).includes('UK') ? 'UK' : sitesOf(row.entry)[0])}</span>
                     </div>
                     <div class="ebay-figures">${sitesOf(row.entry).map(label =>
                         priceSiteHtml(label, row.entry[label], currencyOf(label, data), now, locale, level.stale)).join('')}</div>
@@ -1040,6 +1077,7 @@
             const [prices, watchlist, index] = await Promise.all([read('data/prices/latest.json'), read('ebay_watchlist.json'),
                 read('data/prices/index.json')]);
             if (index.state !== 'failed') indexData = index.state === 'ok' ? index.data : null;
+            seriesData = null;   // read again when a chart next opens
             try {
                 renderIndex();
             } catch (error) {
@@ -1204,6 +1242,13 @@
             }
             document.getElementById('rareHeading').textContent = region === 'Consoles' ? 'Rarest PS2 Consoles' : 'Rarest PS2 Games';
             document.getElementById('consoleRegions').classList.toggle('hidden', region !== 'Consoles');
+            try {
+                renderRareChart(region, indexData, locale);
+            } catch (error) {
+                // A chart that cannot be drawn must not take the list with it.
+                console.warn('Could not draw the rare list chart.', error);
+                document.getElementById('rareChart').classList.add('hidden');
+            }
             if (region === 'Consoles') return renderRareConsoles(consoleData, now, locale);
             const label = RARE_SITE[region];
             const entries = rareEntries(data, region);
@@ -1249,8 +1294,9 @@
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
                         <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${esc(rank)} ${esc(entry.title)}${flags.map(flag =>
                             ` <span class="level-tag rare-flag" title="${esc(hint(flag))}">${esc(RARE_FLAGS[flag])}</span>`).join('')}</span>
-                        ${typeof value === 'number' && Number.isFinite(value)
-                            ? `<span class="text-slate-400 whitespace-nowrap" title="What collectors pay for a complete copy: PriceCharting's market price in US dollars${checkedOn ? `, ${esc(checkedOn)}` : ''}. This is what the list is ranked by.">guide ${esc(money(value, 'USD', locale))}</span>` : ''}
+                        <span class="whitespace-nowrap">${typeof value === 'number' && Number.isFinite(value)
+                            ? `<span class="text-slate-400" title="What collectors pay for a complete copy: PriceCharting's market price in US dollars${checkedOn ? `, ${esc(checkedOn)}` : ''}. This is what the list is ranked by.">guide ${esc(money(value, 'USD', locale))}</span>` : ''}${prices
+                            ? ` ${chartButtonHtml(prices.title, label)}` : ''}</span>
                     </div>
                     ${typeof entry.other_title === 'string' && entry.other_title.trim()
                         ? `<p class="rare-aka">${esc(RARE_OTHER[region])}: ${esc(entry.other_title)}</p>` : ''}
@@ -1402,6 +1448,334 @@
             note.innerHTML = Object.values(CONSOLE_RARITY).map(([name, meaning], n) =>
                 `<span class="rarity-badge rarity-${n + 1}">${esc(name)}</span> ${esc(meaning.replace(/\.$/, ''))}`).join(' · ')
                 + '<br>Working, official consoles only: no shells, custom paint or mods. eBay prices are asking prices, checked daily.';
+        }
+
+        /* ---- Price charts ------------------------------------------------------
+           Two kinds, drawn with TradingView's Lightweight Charts (Apache 2.0, loaded from
+           jsDelivr at a fixed version when a chart is first shown):
+           - the Rarest page's PAL and US lists: an index of their asking prices and their
+             market cap (index.json's "rare", worked out by ebay_prices.py);
+           - one game's median asking price per day, with how many copies were for sale
+             under it (data/prices/series.json, read the first time a game's chart opens).
+           Without the library (blocked, offline, the tests) each chart is a plain line drawn
+           here, so the figures are never lost with it.
+        -------------------------------------------------------------------- */
+        const CHART_LIBRARY = 'https://cdn.jsdelivr.net/npm/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js';
+        const CHART_RANGES = { '1W': 7, '1M': 31, '3M': 92, All: 0 };
+        const rareChart = { measure: 'index', scope: 'all', range: 'All', style: 'area', log: false };
+        const gameChart = { title: '', sites: [], site: '', range: 'All', style: 'area', log: false };
+        const liveCharts = {};          // holder id -> the library's chart, removed before the next one
+        let chartLoading = null;        // the library's script, while it loads
+        let seriesData = null;          // data/prices/series.json as loaded, or null
+        let seriesLoading = null;
+        const chartTargets = [];        // [title, site] behind each "chart" button, one per pair
+        const chartTargetIndex = new Map();
+
+        const chartLibrary = () => (typeof window === 'object' && window && window.LightweightCharts) || null;
+
+        function loadChartLibrary() {
+            if (chartLibrary()) return Promise.resolve(chartLibrary());
+            if (chartLoading) return chartLoading;
+            chartLoading = new Promise((resolve, reject) => {
+                const head = document.head;
+                if (!head || typeof head.appendChild !== 'function') return reject(new Error('no page to load the chart library into'));
+                const tag = document.createElement('script');
+                tag.src = CHART_LIBRARY;
+                tag.async = true;
+                tag.onload = () => (chartLibrary() ? resolve(chartLibrary()) : reject(new Error('chart library missing')));
+                tag.onerror = () => reject(new Error('chart library not loaded'));
+                head.appendChild(tag);
+            }).catch(error => {
+                chartLoading = null;     // try again with the next chart
+                throw error;
+            });
+            return chartLoading;
+        }
+
+        // The theme's colours, read from retro.css, so a chart matches the page.
+        function chartColours() {
+            const read = (name) => {
+                try {
+                    return getComputedStyle(document.documentElement).getPropertyValue(`--${name}`).trim();
+                } catch {
+                    return '';
+                }
+            };
+            const colours = Object.fromEntries(['bg', 'inset', 'line', 'rule', 'dim', 'body', 'accent', 'mono'].map(name => [name, read(name)]));
+            return Object.values(colours).every(Boolean) ? colours : null;
+        }
+
+        // "#4FA8E8" at a given opacity.
+        function seeThrough(colour, alpha) {
+            const match = /^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(colour);
+            return match ? `rgba(${parseInt(match[1], 16)}, ${parseInt(match[2], 16)}, ${parseInt(match[3], 16)}, ${alpha})` : colour;
+        }
+
+        // The points of the chosen range: the last `days` days up to the latest point.
+        function inRange(points, range) {
+            const days = CHART_RANGES[range];
+            if (!days || !points.length) return points;
+            const cutoff = Date.parse(`${points[points.length - 1].time}T00:00:00Z`) - days * 86400000;
+            return points.filter(point => Date.parse(`${point.time}T00:00:00Z`) >= cutoff);
+        }
+
+        // "£286M", "$1.1B": a market cap in a few characters.
+        function moneyShort(value, currency, locale) {
+            if (typeof value !== 'number' || !Number.isFinite(value)) return '';
+            try {
+                return new Intl.NumberFormat(locale, { style: 'currency', currency, currencyDisplay: 'narrowSymbol',
+                    notation: 'compact', minimumFractionDigits: 0, maximumFractionDigits: 1 }).format(value);
+            } catch {
+                return `${Math.round(value)} ${currency}`;
+            }
+        }
+
+        function shortDate(day, locale) {
+            try {
+                return new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' })
+                    .format(new Date(`${day}T00:00:00Z`));
+            } catch {
+                return day;
+            }
+        }
+
+        // The buttons above a chart. `groups`: [[setting, [[value, label, hint]...]]...]; a
+        // setting with one entry is an on/off switch.
+        function chartToolsHtml(name, state, groups) {
+            return groups.map(([setting, choices]) => `<span class="chart-group" role="group">${choices.map(([value, label, hint]) => {
+                const on = choices.length === 1 ? state[setting] === true : state[setting] === value;
+                return `<button type="button" class="chart-tool${on ? ' is-active' : ''}" aria-pressed="${on}" title="${esc(hint)}"`
+                    + ` onclick="setChart('${name}', '${setting}', ${choices.length === 1 ? 'null' : `'${value}'`})">${esc(label)}</button>`;
+            }).join('')}</span>`).join('');
+        }
+
+        function setChart(name, setting, value) {
+            const state = name === 'game' ? gameChart : rareChart;
+            if (!Object.prototype.hasOwnProperty.call(state, setting)) return;
+            state[setting] = value === null ? !state[setting] : value;
+            if (name === 'game') renderGameChart();
+            else renderRareChart();
+        }
+
+        // A line of the points without the library: an SVG scaled to its lowest and highest
+        // value, with both written beside it and the first and last day under it.
+        function chartSvg(points, format, locale) {
+            if (points.length < 2) return '';
+            const values = points.map(point => point.value);
+            const low = Math.min(...values);
+            const high = Math.max(...values);
+            const span = high - low || 1;
+            const xy = points.map((point, i) => `${(i / (points.length - 1) * 600).toFixed(1)},${(212 - (point.value - low) / span * 200).toFixed(1)}`);
+            return `<div class="chart-plain"><span class="chart-plain-high">${esc(format(high))}</span>`
+                + `<svg viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true"><polyline points="${xy.join(' ')}" fill="none" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></polyline></svg>`
+                + `<span class="chart-plain-low">${esc(format(low))}</span>`
+                + `<span class="chart-plain-days"><span>${esc(shortDate(points[0].time, locale))}</span><span>${esc(shortDate(points[points.length - 1].time, locale))}</span></span></div>`;
+        }
+
+        // Draws `spec` into the element `holderId`: { points: [{ time, value }], bars (optional,
+        // the same days), format(value), style, log, onHover(i or null) }.
+        function drawChart(holderId, spec, locale) {
+            const holder = document.getElementById(holderId);
+            if (liveCharts[holderId]) {
+                try { liveCharts[holderId].remove(); } catch { /* already gone */ }
+                delete liveCharts[holderId];
+            }
+            holder.innerHTML = '';
+            if (!spec.points.length) {
+                holder.innerHTML = '<p class="chart-empty">No figures for this range yet.</p>';
+                return;
+            }
+            const library = chartLibrary();
+            const colours = library ? chartColours() : null;
+            if (!library || !colours) {
+                holder.innerHTML = spec.points.length > 1 ? chartSvg(spec.points, spec.format, locale)
+                    : '<p class="chart-empty">One day so far: the line starts with the second.</p>';
+                if (!library) loadChartLibrary().then(() => spec.redraw?.()).catch(() => { /* the plain line stays */ });
+                return;
+            }
+            const chart = library.createChart(holder, {
+                autoSize: true,
+                layout: { background: { type: 'solid', color: colours.inset }, textColor: colours.dim, fontFamily: colours.mono, attributionLogo: true },
+                grid: { vertLines: { color: colours.rule }, horzLines: { color: colours.rule } },
+                rightPriceScale: { borderColor: colours.line, mode: spec.log ? 1 : 0 },
+                timeScale: { borderColor: colours.line },
+                crosshair: { mode: 0 },
+            });
+            liveCharts[holderId] = chart;
+            const format = { type: 'custom', formatter: spec.format, minMove: 0.01 };
+            const line = spec.style === 'area'
+                ? chart.addAreaSeries({ lineColor: colours.accent, topColor: seeThrough(colours.accent, 0.16), bottomColor: seeThrough(colours.accent, 0.16),
+                    lineWidth: 2, priceFormat: format })
+                : chart.addLineSeries({ color: colours.accent, lineWidth: 2, priceFormat: format });
+            line.setData(spec.points);
+            if (spec.bars) {
+                const bars = chart.addHistogramSeries({ priceScaleId: 'copies', color: seeThrough(colours.dim, 0.35),
+                    priceFormat: { type: 'volume' }, lastValueVisible: false, priceLineVisible: false });
+                chart.priceScale('copies').applyOptions({ scaleMargins: { top: 0.8, bottom: 0 } });
+                bars.setData(spec.bars);
+            }
+            chart.timeScale().fitContent();
+            chart.subscribeCrosshairMove(param => {
+                const at = Number.isFinite(param?.logical) ? Math.round(param.logical) : -1;
+                const i = at >= 0 && at < spec.points.length ? at : null;
+                spec.onHover?.(param?.point ? i : null);
+            });
+        }
+
+        // The Rarest page's chart, above the PAL or the US list.
+        function rarePoints(region, data = indexData) {
+            const list = own(data?.rare?.lists, region) ? data.rare.lists[region] : null;
+            const points = list && Array.isArray(list.points) ? list.points : [];
+            return {
+                list,
+                rows: points.filter(point => Array.isArray(point) && /^\d{4}-\d{2}-\d{2}$/.test(String(point[0]))
+                    && [1, 3, 4].every(i => typeof point[i] === 'number' && Number.isFinite(point[i]) && point[i] > 0))
+                    .sort((a, b) => String(a[0]).localeCompare(String(b[0]))),
+            };
+        }
+
+        function renderRareChart(region = rareRegion, data = indexData, locale) {
+            const panel = document.getElementById('rareChart');
+            const { list, rows } = region === 'Consoles' ? { list: null, rows: [] } : rarePoints(region, data);
+            panel.classList.toggle('hidden', !rows.length);
+            if (!rows.length) {
+                if (liveCharts.rareChartCanvas) drawChart('rareChartCanvas', { points: [] }, locale);
+                return;
+            }
+            const currency = typeof list.currency === 'string' && /^[A-Z]{3}$/.test(list.currency) ? list.currency : currencyOf(RARE_SITE[region]);
+            const cap = rareChart.measure === 'cap';
+            const column = cap ? (rareChart.scope === 'core' ? 4 : 3) : 1;
+            const all = rows.map(point => ({ time: point[0], value: point[column] }));
+            const points = inRange(all, rareChart.range);
+            const format = cap ? (value) => moneyShort(value, currency, locale) : (value) => value.toFixed(2);
+            const last = rows[rows.length - 1];
+            const first = rows.find(point => point[0] === points[0]?.time) || rows[0];
+            const move = (now, then) => {
+                const change = (now / then - 1) * 100;
+                const rounded = Math.round(change * 10) / 10;
+                return rounded === 0 ? '<span class="ebay-change">0.0%</span>'
+                    : `<span class="ebay-change ${rounded > 0 ? 'is-up' : 'is-down'}">${rounded > 0 ? '▲' : '▼'} ${esc(Math.abs(rounded).toFixed(1))}%</span>`;
+            };
+            const site = typeof list.site === 'string' ? list.site : RARE_SITE[region];
+            const games = Number.isInteger(list.games) ? list.games : null;
+            document.getElementById('rareChartStats').innerHTML = `
+                <div class="chart-stat"><span class="chart-stat-name">${esc(region)} rare index</span><b>${esc(last[1].toFixed(2))}</b> ${move(last[1], first[1])}</div>
+                <div class="chart-stat"><span class="chart-stat-name">Market cap</span><b>${esc(moneyShort(last[3], currency, locale))}</b> ${move(last[3], first[3])}</div>
+                <div class="chart-stat"><span class="chart-stat-name">Without big sellers</span><b>${esc(moneyShort(last[4], currency, locale))}</b> ${move(last[4], first[4])}</div>`;
+            document.getElementById('rareChartTools').innerHTML = chartToolsHtml('rare', rareChart, [
+                ['measure', [['index', 'Index', 'How asking prices of the list moved: 100 on its first day'],
+                    ['cap', 'Market cap', 'Every game\'s median x the copies thought to exist']]],
+                ...(cap ? [['scope', [['all', 'All games', 'Every game on the list'],
+                    ['core', 'Without big sellers', 'Leaves out games thought to have sold 100,000 copies or more']]]] : []),
+                ['range', Object.keys(CHART_RANGES).map(range => [range, range, range === 'All' ? 'Every day so far' : `The last ${CHART_RANGES[range]} days`])],
+                ['style', [['line', 'Line', 'A line'], ['area', 'Area', 'A line with the area under it filled']]],
+                ['log', [['log', 'Log', 'Log scale: equal steps are equal percentage moves']]],
+            ]);
+            const legend = document.getElementById('rareChartLegend');
+            const say = (i) => {
+                const point = points[i ?? points.length - 1];
+                const row = rows.find(each => each[0] === point.time);
+                legend.innerHTML = `${esc(shortDate(point.time, locale))} · <b>${esc(format(point.value))}</b>`
+                    + (!row ? '' : cap ? (Number.isInteger(row[5]) ? ` · ${esc(row[5])}${games ? ` of ${esc(games)}` : ''} games priced` : '')
+                        : Number.isInteger(row[2]) ? ` · ${esc(row[2])} games compared with their day before` : '');
+            };
+            say(null);
+            const spec = { points, format, style: rareChart.style, log: rareChart.log, onHover: say, redraw: () => renderRareChart() };
+            drawChart('rareChartCanvas', spec, locale);
+            const survival = typeof data?.rare?.survival === 'number' ? Math.round(data.rare.survival * 100) : null;
+            document.getElementById('rareChartNote').innerHTML = cap
+                ? `Market cap = each game's eBay ${esc(site)} median × the copies thought to have been sold in ${esc(region === 'PAL' ? 'PAL countries' : 'North America')}`
+                    + `${survival ? ` × ${esc(survival)}% still around` : ''}. Nobody publishes print runs for these games, so the copies are estimates `
+                    + '(Kuon: about 12,000 US, 8,000 PAL): read it as a rough size, not a count. Like a stock index, it moves only with the games priced on both days, so a game joining or leaving does not move it. Asking prices, not sales.'
+                : `100 = ${esc(shortDate(rows[0][0], locale))}. How the asking prices of this list moved on eBay ${esc(site)}, each game against its own day before.`;
+        }
+
+        // ---- One game's price chart: opened from the "chart" button beside its prices.
+        function chartButtonHtml(title, site) {
+            const key = JSON.stringify([title, site]);
+            if (!chartTargetIndex.has(key)) chartTargetIndex.set(key, chartTargets.push([title, site]) - 1);
+            const i = chartTargetIndex.get(key);
+            return `<button type="button" class="chart-open" onclick="openGameChart(${i})" title="${esc(`Price history of ${title}`)}" aria-label="${esc(`Price chart: ${title}`)}">chart</button>`;
+        }
+
+        async function loadSeries() {
+            if (seriesData) return seriesData;
+            if (!seriesLoading) {
+                seriesLoading = fetch('data/prices/series.json', { cache: 'no-cache' })
+                    .then(response => (response.ok ? response.json() : null))
+                    .then(data => (seriesData = data && typeof data === 'object' && data.games && typeof data.games === 'object' ? data : null))
+                    .catch(() => null)
+                    .finally(() => { seriesLoading = null; });
+            }
+            return seriesLoading;
+        }
+
+        // [{ time, value, copies }] for a game on a site, from series.json.
+        function gamePoints(data, title, site) {
+            const start = Date.parse(`${data?.start}T00:00:00Z`);
+            const rows = own(data?.games, title) && own(data.games[title], site) && Array.isArray(data.games[title][site]) ? data.games[title][site] : [];
+            if (!Number.isFinite(start)) return [];
+            return rows.filter(row => Array.isArray(row) && Number.isInteger(row[0]) && row[0] >= 0
+                && typeof row[1] === 'number' && Number.isFinite(row[1]) && row[1] > 0)
+                .sort((a, b) => a[0] - b[0])
+                .map(row => ({ time: new Date(start + row[0] * 86400000).toISOString().slice(0, 10), value: row[1],
+                    copies: Number.isInteger(row[2]) ? row[2] : 0 }));
+        }
+
+        async function openGameChart(i) {
+            const target = chartTargets[i];
+            if (!target) return;
+            const [title, site] = target;
+            Object.assign(gameChart, { title, site, sites: [site] });
+            document.getElementById('gameChart').classList.remove('hidden');
+            document.getElementById('gameChartTitle').textContent = title;
+            document.getElementById('gameChartCanvas').innerHTML = '<p class="chart-empty">Loading...</p>';
+            const data = await loadSeries();
+            if (gameChart.title !== title) return;    // another game was opened meanwhile
+            gameChart.sites = PRICE_SITES.filter(label => gamePoints(data, title, label).length);
+            if (!gameChart.sites.includes(gameChart.site) && gameChart.sites.length) gameChart.site = gameChart.sites[0];
+            renderGameChart(data);
+        }
+
+        function closeGameChart() {
+            document.getElementById('gameChart').classList.add('hidden');
+            if (liveCharts.gameChartCanvas) drawChart('gameChartCanvas', { points: [] });
+            gameChart.title = '';
+        }
+
+        function renderGameChart(data = seriesData, locale) {
+            const { title, site } = gameChart;
+            if (!title) return;
+            const all = data ? gamePoints(data, title, site) : [];
+            const points = inRange(all, gameChart.range);
+            const currency = currencyOf(site);
+            const format = (value) => money(value, currency, locale);
+            document.getElementById('gameChartTools').innerHTML = chartToolsHtml('game', gameChart, [
+                ...(gameChart.sites.length > 1 ? [['site', gameChart.sites.map(label => [label, `eBay ${label}`, `Asking prices on eBay ${label}`])]] : []),
+                ['range', Object.keys(CHART_RANGES).map(range => [range, range, range === 'All' ? 'Every day kept (90)' : `The last ${CHART_RANGES[range]} days`])],
+                ['style', [['line', 'Line', 'A line'], ['area', 'Area', 'A line with the area under it filled']]],
+                ['log', [['log', 'Log', 'Log scale: equal steps are equal percentage moves']]],
+            ]);
+            const legend = document.getElementById('gameChartLegend');
+            const note = document.getElementById('gameChartNote');
+            if (!data) {
+                legend.textContent = '';
+                note.textContent = 'The price history could not be read just now, or the price job has not written it yet.';
+                drawChart('gameChartCanvas', { points: [] }, locale);
+                return;
+            }
+            const say = (i) => {
+                const point = points[i ?? points.length - 1];
+                legend.innerHTML = point ? `eBay ${esc(site)} · ${esc(shortDate(point.time, locale))} · median <b>${esc(format(point.value))}</b>`
+                    + ` · ${esc(point.copies)} ${point.copies === 1 ? 'copy' : 'copies'} for sale` : '';
+            };
+            say(null);
+            note.textContent = all.length
+                ? 'The median asking price of used copies on each day it was checked (the last check of the day); the bars are how many copies were for sale. Asking prices, not sales. A median of one or two copies is one seller\'s price.'
+                : `No figures on eBay ${site} yet: the game has had no copy for sale when it was checked, or has not been checked.`;
+            drawChart('gameChartCanvas', { points: points.map(({ time, value }) => ({ time, value })),
+                bars: points.map(({ time, copies }) => ({ time, value: copies })),
+                format, style: gameChart.style, log: gameChart.log, onHover: say, redraw: () => renderGameChart() }, locale);
         }
 
         // Reads one of the Rarest page's files: { data, failed }.
@@ -2555,6 +2929,9 @@
             showViewFromAddress();
             window.addEventListener('hashchange', showViewFromAddress);
             window.addEventListener('popstate', showViewFromAddress);
+            document.addEventListener?.('keydown', (event) => {
+                if (event.key === 'Escape' && !document.getElementById('gameChart').classList.contains('hidden')) closeGameChart();
+            });
             // Once more when the page has its content: only then is a part named in the
             // address ("#sourcesSection") where it will stay.
             fetchSentimentData().finally(showViewFromAddress);
