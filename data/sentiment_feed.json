@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-13 21:53:30 UTC",
+  "last_updated": "2026-10-13 22:05:22 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749635807",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-13 22:01 UTC"
+    },
     {
       "headline": "Battlefield 6 recebe microtransação de 30€ para desbloquear todas as armas e veículos",
       "source": "Eurogamer.pt Latest Articles Feed",
@@ -202928,39 +202947,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-09-29 23:31 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Test Drive: Eve of Destruction / Driven to Destruction - PS2 Gameplay 4k 2160p / HD Textures (PCSX2)",
-      "source": "YouTube: John GodGames",
-      "source_type": "youtube",
-      "feed": "youtube:UCLC3kuN_2emyokGE4WStv6w",
-      "link": "https://www.youtube.com/watch?v=MYfjMVcTeZ8",
-      "matched_game": "Test Drive: Eve of Destruction",
-      "matched_games": [
-        "Test Drive: Eve of Destruction",
-        "Driven to Destruction"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-29 22:00 UTC"
-    },
-    {
-      "headline": "I wrote about the 20 hours of suffering I'd gone through in Burnout Dominator.",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wtnepp/i_wrote_about_the_20_hours_of_suffering_id_gone/",
-      "matched_game": "Burnout",
-      "match_score": 100,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-09-29 21:56 UTC",
       "is_digital_only": false
     }
   ]
