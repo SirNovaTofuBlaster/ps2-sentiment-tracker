@@ -1989,4 +1989,95 @@ await check('Digital-Only News: the flagged items, counted over two weeks and th
     vm.runInContext('allFeedData = []; refreshDashboard()', context);
 });
 
+await check('the Rarest charts: index and market cap per list, a game\'s history, and a plain line without the library', async () => {
+    const index = { rare: { survival: 0.65, lists: {
+        PAL: { site: 'UK', currency: 'GBP', games: 110, points: [
+            ['2026-10-08', 100, 90, 230000000, 148000000, 90], ['2026-10-09', 99.84, 79, 280000000, 162000000, 96],
+            ['2026-10-12', 103.5, 85, 286000000, 171000000, 96], ['bad', 1, 1, 1, 1, 1], ['2026-10-13', 0, 1, 1, 1, 1]] },
+        US: { site: 'US', currency: 'USD', games: 105, points: [] },
+    } } };
+    context.__rareIndex = index;
+    vm.runInContext("rareChart.measure = 'index'; rareChart.range = 'All'; renderRareChart('PAL', __rareIndex, 'en-GB')", context);
+    assert.equal(el('rareChart').classList.contains('hidden'), false);
+    const stats = el('rareChartStats').innerHTML;
+    assert.match(stats, /PAL rare index<\/span><b>103\.50<\/b> <span class="ebay-change is-up">▲ 3\.5%<\/span>/);
+    assert.match(stats, /Market cap<\/span><b>£286M<\/b> <span class="ebay-change is-up">▲ 24\.3%<\/span>/);
+    assert.match(stats, /Without big sellers<\/span><b>£171M<\/b>/);
+    assert.match(el('rareChartLegend').innerHTML, /12 Oct 2026 · <b>103\.50<\/b> · 96 of 110 games priced/);
+    // Without the library, a plain line of the three good days, its range written beside it.
+    const plain = el('rareChartCanvas').innerHTML;
+    assert.match(plain, /<polyline points="0\.0,203\.3 300\.0,212\.0 600\.0,12\.0"/);
+    assert.match(plain, /chart-plain-high">103\.50<.*chart-plain-low">99\.84</s);
+    assert.match(el('rareChartNote').innerHTML, /^100 = 8 Oct 2026\. How the asking prices of this list moved on eBay UK/);
+    const tools = el('rareChartTools').innerHTML;
+    for (const label of ['Index', 'Market cap', '1W', '1M', '3M', 'All', 'Line', 'Area', 'Log']) assert.match(tools, new RegExp(`>${label}</button>`), label);
+    assert.doesNotMatch(tools, /Without big sellers/, 'the market cap\'s choice of games only with the market cap');
+    assert.match(tools, /class="chart-tool is-active" aria-pressed="true"[^>]*onclick="setChart\('rare', 'measure', 'index'\)">Index</);
+
+    vm.runInContext("indexData = __rareIndex; rareRegion = 'PAL'; setChart('rare', 'measure', 'cap')", context);
+    assert.match(el('rareChartLegend').innerHTML, /<b>£286M<\/b>/);
+    assert.match(el('rareChartTools').innerHTML, /onclick="setChart\('rare', 'scope', 'core'\)">Without big sellers</);
+    assert.match(el('rareChartNote').innerHTML, /Market cap = each game's eBay UK median × the copies thought to have been sold in PAL countries × 65% still around\. .*Kuon: about 12,000 US, 8,000 PAL/);
+    vm.runInContext("setChart('rare', 'scope', 'core')", context);
+    assert.match(el('rareChartLegend').innerHTML, /<b>£171M<\/b>/);
+    vm.runInContext("setChart('rare', 'range', '1W')", context);
+    assert.equal(/points="([^"]*)"/.exec(el('rareChartCanvas').innerHTML)[1].split(' ').length, 3, 'the 8th is within a week of the 12th');
+    context.__days = ['2026-09-01', '2026-09-20', '2026-10-05', '2026-10-06', '2026-10-13'].map(time => ({ time, value: 1 }));
+    assert.deepEqual(evalJson("inRange(__days, '1W').map(p => p.time)"), ['2026-10-06', '2026-10-13']);
+    assert.deepEqual(evalJson("inRange(__days, '1M').map(p => p.time)"), ['2026-09-20', '2026-10-05', '2026-10-06', '2026-10-13']);
+    assert.equal(evalJson("inRange(__days, 'All').length"), 5);
+    vm.runInContext("setChart('rare', 'log', null)", context);
+    assert.equal(evalJson('rareChart.log'), true, 'a switch turns on and off');
+    vm.runInContext("setChart('rare', 'constructor', 'x')", context);
+    assert.equal(evalJson('rareChart.constructor === Object'), true, 'only its own settings');
+    vm.runInContext("Object.assign(rareChart, { measure: 'index', scope: 'all', range: 'All', log: false })", context);
+
+    // No points (the US list today, the consoles, an old index.json): no chart at all.
+    for (const [region, data] of [['US', index], ['Consoles', index], ['PAL', {}], ['PAL', null], ['PAL', { rare: { lists: { PAL: { points: 'x' } } } }]]) {
+        context.__data = data;
+        vm.runInContext(`renderRareChart(${JSON.stringify(region)}, __data, 'en-GB')`, context);
+        assert.equal(el('rareChart').classList.contains('hidden'), true, `${region} ${JSON.stringify(data)}`);
+    }
+
+    // A game's chart: from series.json, per site, with the copies under each day.
+    const series = { start: '2026-10-06', games: { Kuon: { US: [[0, 1100, 2], [2, 950, 4], ['x', 1, 1], [3, -1, 1]], UK: [[1, 800, 1]] } } };
+    context.__series = series;
+    assert.deepEqual(evalJson("gamePoints(__series, 'Kuon', 'US')"), [
+        { time: '2026-10-06', value: 1100, copies: 2 }, { time: '2026-10-08', value: 950, copies: 4 }]);
+    assert.deepEqual(evalJson("gamePoints(__series, 'constructor', 'US')"), []);
+    assert.deepEqual(evalJson("gamePoints({ games: __series.games }, 'Kuon', 'US')"), [], 'no start, no days');
+    const button = evalJson("chartButtonHtml('Kuon', 'US')");
+    assert.equal(button, evalJson("chartButtonHtml('Kuon', 'US')"), 'one button number per game and site');
+    const n = Number(/openGameChart\((\d+)\)/.exec(button)[1]);
+    assert.match(evalJson(`chartButtonHtml('<b>"', 'UK')`), /title="Price history of &lt;b&gt;&quot;"/);
+    vm.runInContext(`seriesData = __series; openGameChart(${n})`, context);
+    await new Promise(done => setTimeout(done, 0));
+    assert.equal(el('gameChart').classList.contains('hidden'), false);
+    assert.equal(el('gameChartTitle').textContent, 'Kuon');
+    assert.match(el('gameChartLegend').innerHTML, /^eBay US · (?:8 Oct|Oct 8,) 2026 · median <b>\$950<\/b> · 4 copies for sale$/);
+    assert.match(el('gameChartTools').innerHTML, />eBay US<\/button>.*>eBay UK<\/button>/s, 'both sites have figures: both offered');
+    vm.runInContext("setChart('game', 'site', 'UK')", context);
+    assert.match(el('gameChartLegend').innerHTML, /^eBay UK · (?:7 Oct|Oct 7,) 2026 · median <b>£800<\/b> · 1 copy for sale$/);
+    assert.match(el('gameChartCanvas').innerHTML, /One day so far/);
+    vm.runInContext('closeGameChart()', context);
+    assert.equal(el('gameChart').classList.contains('hidden'), true);
+    // A game with no history yet, and a history file that cannot be read.
+    const other = Number(/openGameChart\((\d+)\)/.exec(evalJson("chartButtonHtml('Okami', 'UK')"))[1]);
+    vm.runInContext(`openGameChart(${other})`, context);
+    await new Promise(done => setTimeout(done, 0));
+    assert.match(el('gameChartNote').textContent, /^No figures on eBay UK yet/);
+    vm.runInContext(`seriesData = null; openGameChart(${other})`, context);
+    for (let i = 0; i < 5; i++) await new Promise(done => setTimeout(done, 0));
+    assert.match(el('gameChartNote').textContent, /could not be read just now/, 'series.json is a 404 here');
+    vm.runInContext('closeGameChart(); openGameChart(9999)', context);
+    assert.equal(el('gameChart').classList.contains('hidden'), true, 'an unknown button opens nothing');
+
+    // Every list row with a price offers its chart.
+    const page = read('index.html');
+    assert.match(page, /\$\{prices\s*\? ` \$\{chartButtonHtml\(prices\.title, label\)\}` : ''\}/);
+    assert.match(page, /chartButtonHtml\(row\.title, sitesOf\(row\.entry\)\.includes\('UK'\) \? 'UK' : sitesOf\(row\.entry\)\[0\]\)/);
+    assert.match(page, /lightweight-charts@\d+\.\d+\.\d+\/dist\/lightweight-charts\.standalone\.production\.js/, 'a fixed version');
+    assert.equal((page.match(/Charts by <a href="https:\/\/www\.tradingview\.com\/"/g) || []).length, 2, 'the library\'s credit under both charts');
+});
+
 console.log(`dashboard checks passed (${passed})`);

@@ -458,6 +458,51 @@ that cannot be read leaves the old index in place and is named in the log. The d
 it at the top of the eBay prices page (`renderIndex()`): the latest value, the change since the
 day before and over a week (`indexChange()`), and an SVG line of every day.
 
+**Complete copies, graded and sealed (added 2026-10-13).** `reject_reason()` leaves out a
+listing whose title says graded (WATA, VGA, CGC, UKG) or factory sealed (`GRADED_OR_SEALED`,
+reason `graded_or_sealed`): those sell at many times a used copy, and one of them moved a rare
+game's median by hundreds. Copies whose title says they are incomplete (`INCOMPLETE_PHRASES`)
+are still counted, but `summarise()` also works out the median of the rest
+(`complete_median`), and `latest.json` keeps it as `complete: {copies, median}` when at least one
+copy is incomplete and at least one is not (otherwise it would only repeat the median). The
+dashboard shows it after the copies (`completeHtml()`), and a red "few copies" tag when only
+one or two copies are listed (`FEW_COPIES`). eBay's Browse API gives only listings still for
+sale; sold prices are in the Marketplace Insights API, which eBay grants only on application.
+
+**The Rarest page's index and market cap (added 2026-10-13).** `index_file()` adds `rare`:
+per list, on its own site (`RARE_SITES`), `[day, index, games compared, market cap, core market
+cap, games in the cap]`. `rare_members()` takes each list's games from `latest.json`'s `rare`,
+with the `copies.mid` estimate of their entry in `rare_games.json`. `rare_index()` chains the
+index as `price_index()` does but over those games only, from medians of
+`RARE_INDEX_MIN_COPIES` (2) copies, moving on days with `RARE_INDEX_MIN_GAMES` comparisons. The
+market cap is the sum over the list of each game's latest median (one copy is enough; carried
+for `CAP_CARRY_DAYS`, 7) x its `mid` copies x the middle `survival.in_existence` share (0.65);
+`core` leaves out games with a `mid` of `core_below` (100,000) or more. Both lines start on the
+first day at least half the list had a price (before the lists were priced on their own, the cap
+grew only because games joined), with the index rebased to 100 there.
+
+`rare_games.json`'s `copies` (top level) says how the estimates were made: almost no publisher
+gave Western PS2 print runs, so each entry's `copies` is a reference-class estimate (`class`:
+`us_niche_jp`, `pal_budget`, `india`, `limited_edition`, `us_mainstream`... or `documented` when a
+figure for the game itself was found), with `low`/`mid`/`high`, `confidence` and `basis`. The
+sources and the figures behind each class are in `documented` and `reference_classes`; `limits`
+lists what could not be found. Sums of `mid` copies sold: about 4.1 million PAL and 9.8 million US
+(1.5 and 3.0 million without the games of 100,000 or more).
+
+**Each game's history (added 2026-10-13).** `series_file()` writes `data/prices/series.json`:
+per game and site, the last median and copies of each finished day over `SERIES_DAYS` (90), as
+`[days after start, median, copies]`, one game per line (about 1 MB at 90 days). The dashboard
+reads it only when a game's chart is opened.
+
+**The charts.** The dashboard draws both kinds with TradingView's Lightweight Charts 4.2.0
+(Apache 2.0; its credit line sits under each chart and its logo in the corner), loaded from
+jsDelivr at that fixed version the first time a chart is drawn (`loadChartLibrary()`). Without
+it (a blocked CDN, the Node tests) `drawChart()` draws a plain SVG line, and loads the library in
+the background to redraw. `renderRareChart()` draws the list's index or market cap above the PAL
+and US lists; `openGameChart()` opens a dialog with a game's median line and bars of copies for
+sale, from the "chart" buttons on the Rarest and eBay prices rows. Range (1W, 1M, 3M, All),
+line or area, and a log scale are `rareChart` and `gameChart` settings (`setChart()`).
+
 **When it gives up.** A run stops early if eBay does not answer three lookups in a row, if its
 first ten lookups all fail, or if eBay says the allowance is used. Nothing is written when
 more than half the lookups failed, or when games that had copies last time now return nothing
@@ -482,7 +527,8 @@ Nothing reads PriceCharting automatically; the figures are a dated snapshot.
 The page (`renderRare()`) shows one list at a time (PAL or US), 25 rows folded, each with its
 guide value, flags, other name, the eBay median on its own site (`rarePrices()`: the game
 `latest.json`'s `rare` names, else the game of the same `priceKey()`) and its source links (https
-only). `RARE_SITE` in the page and `RARE_SITES` in the script must agree (tested). Without the
+only), with the list's chart above it (see *eBay asking prices*). `RARE_SITE` in the page and
+`RARE_SITES` in the script must agree (tested). Without the
 file the page says so; a failed reload keeps the list on screen.
 
 ### The rarest consoles

@@ -1759,6 +1759,108 @@ class PriceIndexTests(unittest.TestCase):
         self.assertEqual((sandbox.data / "prices" / "index.json").read_text(encoding="utf-8"), before)
 
 
+class RareIndexTests(unittest.TestCase):
+    """The Rarest page's index and market cap, one per list, on the list's own site."""
+
+    day = staticmethod(PriceIndexTests.day)
+    GAMES = {f"Rare {n}": 100.0 for n in range(12)}
+
+    def rare_file(self, copies=1000, core_below=100000, survival=(0.45, 0.5, 0.85)):
+        entries = [{"title": title, "copies": {"low": 1, "mid": copies, "high": copies * 2}} for title in self.GAMES]
+        entries.append({"title": "Big Seller", "copies": {"mid": 500000}})
+        entries.append({"title": "No Estimate"})
+        return {"lists": {"PAL": entries, "US": []},
+                "copies": {"survival": {"in_existence": list(survival)}, "core_below": core_below}}
+
+    LATEST = {"games": {}, "rare": {"PAL": dict({title: title for title in GAMES}, **{"Big Seller": "Big Seller",
+                                                                                         "No Estimate": "No Estimate"}),
+                                    "US": {}}}
+
+    def test_the_cap_is_median_times_copies_times_survival_and_core_leaves_out_big_sellers(self):
+        rows = (self.day("2026-10-06", dict(self.GAMES, **{"Big Seller": 20.0, "No Estimate": 900.0}))
+                + self.day("2026-10-07", {title: 110.0 for title in self.GAMES})
+                + self.day("2026-10-06", {"Rare 0": 5000.0}, site="US"))   # another site: not this list's
+        made = ebay_prices.rare_index(rows, self.LATEST, self.rare_file(), "2026-10-08")
+        pal = made["lists"]["PAL"]
+        self.assertEqual((pal["site"], pal["currency"], pal["games"]), ("UK", "GBP", 13))
+        self.assertEqual(pal["points"][0], ["2026-10-06", 100.0, 13, round(12 * 100 * 1000 * 0.5 + 20 * 500000 * 0.5),
+                                            12 * 100 * 1000 * 0.5, 13])
+        self.assertEqual(pal["points"][1], ["2026-10-07", 110.0, 12, round(12 * 110 * 1000 * 0.5 + 20 * 500000 * 0.5),
+                                            12 * 110 * 1000 * 0.5, 13], "the big seller's last price is carried")
+        self.assertEqual(made["lists"]["US"]["points"], [])
+        self.assertEqual(made["survival"], 0.5)
+
+    def test_a_price_is_carried_a_week_then_dropped_and_one_copy_counts_for_the_cap_only(self):
+        rows = (self.day("2026-10-01", self.GAMES)
+                + self.day("2026-10-02", {"Rare 0": 300.0}, copies=1)
+                + self.day("2026-10-10", {"Rare 1": 100.0}))
+        points = ebay_prices.rare_index(rows, self.LATEST, self.rare_file(), "2026-10-11")["lists"]["PAL"]["points"]
+        self.assertEqual([point[0] for point in points], ["2026-10-01", "2026-10-02", "2026-10-10"])
+        self.assertEqual(points[1][3], round((11 * 100 + 300) * 1000 * 0.5), "one copy: in the cap")
+        self.assertEqual(points[1][1], 100.0, "but not a move of the index")
+        self.assertEqual((points[2][3], points[2][5]), (round(100 * 1000 * 0.5), 1), "eight days old: dropped")
+
+    def test_the_lines_start_when_half_the_list_has_a_price(self):
+        few = dict(list(self.GAMES.items())[:4])
+        rows = self.day("2026-10-05", few) + self.day("2026-10-06", self.GAMES) + self.day("2026-10-07", {t: 120.0 for t in self.GAMES})
+        points = ebay_prices.rare_index(rows, self.LATEST, self.rare_file(), "2026-10-08")["lists"]["PAL"]["points"]
+        self.assertEqual([point[:2] for point in points], [["2026-10-06", 100.0], ["2026-10-07", 120.0]])
+
+    def test_today_is_left_out_and_nothing_but_numbers_is_written(self):
+        rows = self.day("2026-10-06", self.GAMES) + self.day("2026-10-07", self.GAMES)
+        made = ebay_prices.rare_index(rows, self.LATEST, self.rare_file(), "2026-10-07")
+        self.assertEqual([point[0] for point in made["lists"]["PAL"]["points"]], ["2026-10-06"])
+        self.assertNotIn("Rare 0", json.dumps(made))
+
+    def test_a_missing_or_odd_file_gives_empty_lists_not_a_crash(self):
+        rows = self.day("2026-10-06", self.GAMES)
+        for odd in ({}, {"lists": "x"}, {"lists": {"PAL": ["x", {"title": 3}]}}, {"copies": {"survival": "x"}}, []):
+            made = ebay_prices.rare_index(rows, self.LATEST, odd, "2026-10-08")
+            self.assertEqual(made["lists"]["PAL"]["points"], [], repr(odd))
+        made = ebay_prices.rare_index(rows, self.LATEST, self.rare_file(survival=(0, 7, 0)), "2026-10-08")
+        self.assertEqual(made["survival"], ebay_prices.CAP_SURVIVAL, "a share above one is not used")
+
+    def test_the_committed_list_has_an_estimate_for_every_entry(self):
+        raw = json.loads((ROOT / "rare_games.json").read_text(encoding="utf-8"))
+        for name, entries in raw["lists"].items():
+            for entry in entries:
+                copies = entry.get("copies")
+                self.assertIsInstance(copies, dict, entry["title"])
+                self.assertTrue(0 < copies["low"] <= copies["mid"] <= copies["high"], entry["title"])
+                self.assertIn(copies["confidence"], ("low", "medium", "high"), entry["title"])
+                self.assertTrue(copies.get("basis"), entry["title"])
+        survival = raw["copies"]["survival"]["in_existence"]
+        self.assertTrue(0 < survival[0] <= survival[1] <= survival[2] <= 1)
+
+
+class SeriesTests(unittest.TestCase):
+    """series.json: each game's daily median, for its chart."""
+
+    def test_the_last_figure_of_each_finished_day_per_site_in_days_after_the_start(self):
+        rows = [["2026-10-06T09:00Z", "Kuon", "US", 3, 800, 1000],
+                ["2026-10-06T21:00Z", "Kuon", "US", 2, 900, 1100],
+                ["2026-10-08T09:00Z", "Kuon", "US", 4, 700, 950],
+                ["2026-10-08T09:00Z", "Kuon", "UK", 0, None, None],
+                ["2026-10-07T09:00Z", "Okami", "UK", 9, 20, 30],
+                ["2026-10-09T09:00Z", "Kuon", "US", 4, 700, 999],      # today: not finished
+                ["2026-06-01T09:00Z", "Kuon", "US", 4, 700, 1]]      # too old
+        series = ebay_prices.series_file(rows, datetime(2026, 10, 9, 12, tzinfo=timezone.utc))
+        self.assertEqual(series["start"], "2026-10-06")
+        self.assertEqual(series["games"], {"Kuon": {"US": [[0, 1100, 2], [2, 950, 4]]}, "Okami": {"UK": [[1, 30, 9]]}})
+
+    def test_the_file_is_json_with_one_game_per_line(self):
+        rows = [["2026-10-06T09:00Z", "Kuon", "US", 3, 800, 1000], ["2026-10-06T09:00Z", "Ōkami", "UK", 3, 8, 10]]
+        with tempfile.TemporaryDirectory() as folder:
+            path = Path(folder) / "series.json"
+            series = ebay_prices.series_file(rows, datetime(2026, 10, 9, tzinfo=timezone.utc))
+            ebay_prices.write_series(path, series)
+            text = path.read_text(encoding="utf-8")
+            self.assertEqual(json.loads(text), series)
+            self.assertEqual(sum(1 for line in text.splitlines() if line.startswith('  "')), 2)
+            ebay_prices.write_series(path, ebay_prices.series_file([], datetime(2026, 10, 9, tzinfo=timezone.utc)))
+            self.assertEqual(json.loads(path.read_text(encoding="utf-8"))["games"], {})
+
+
 class RegionalNameTests(unittest.TestCase):
     """A game released in Europe under another name is searched on eBay UK under that name."""
 
@@ -2344,7 +2446,8 @@ class KeyStaysInOnePlaceTests(unittest.TestCase):
     def test_the_price_script_only_writes_under_data_prices(self):
         self.assertEqual(ebay_prices.PRICES_DIR, ROOT / "data" / "prices")
         source = (ROOT / "ebay_prices.py").read_text(encoding="utf-8")
-        self.assertEqual(source.count(".write_text("), 3, "latest.json, a month of history, and the --out file")
+        self.assertEqual(source.count(".write_text("), 4, "latest.json (and index.json), a month of history, series.json and the --out file")
+        self.assertIn("write_series(PRICES_DIR / SERIES_NAME,", source)
 
 
 if __name__ == "__main__":
