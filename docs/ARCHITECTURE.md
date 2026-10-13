@@ -459,8 +459,9 @@ it at the top of the eBay prices page (`renderIndex()`): the latest value, the c
 day before and over a week (`indexChange()`), and an SVG line of every day.
 
 **Complete copies, graded and sealed (added 2026-10-13).** `reject_reason()` leaves out a
-listing whose title says graded (WATA, VGA, CGC, UKG) or factory sealed (`GRADED_OR_SEALED`,
-reason `graded_or_sealed`): those sell at many times a used copy, and one of them moved a rare
+listing whose title says graded (WATA, "VGA graded", CGC, UKG) or factory sealed
+(`GRADED_OR_SEALED`, reason `graded_or_sealed`), unless it says "not graded"; "VGA" alone (a
+cable) and "new sealed" (a replacement case) are not enough: those sell at many times a used copy, and one of them moved a rare
 game's median by hundreds. Copies whose title says they are incomplete (`INCOMPLETE_PHRASES`)
 are still counted, but `summarise()` also works out the median of the rest
 (`complete_median`), and `latest.json` keeps it as `complete: {copies, median}` when at least one
@@ -475,11 +476,16 @@ cap, games in the cap]`. `rare_members()` takes each list's games from `latest.j
 with the `copies.mid` estimate of their entry in `rare_games.json`. `rare_index()` chains the
 index as `price_index()` does but over those games only, from medians of
 `RARE_INDEX_MIN_COPIES` (2) copies, moving on days with `RARE_INDEX_MIN_GAMES` comparisons. The
-market cap is the sum over the list of each game's latest median (one copy is enough; carried
-for `CAP_CARRY_DAYS`, 7) x its `mid` copies x the middle `survival.in_existence` share (0.65);
+market cap starts as the sum over the list of each game's latest median (one copy is enough;
+carried for `CAP_CARRY_DAYS`, 7) x its `mid` copies x the middle `survival.in_existence` share
+(0.65), and then moves like a stock index with a divisor: each day by the ratio of
+Σ median x copies today to the same sum the day before, over the games priced on both days
+(a move beyond x`INDEX_MAX_MOVE` left out). In the review the plain sum rose 21.6% from 8 to 9
+October PAL while the 90 games priced on both days moved 0.0%: six games had joined.
 `core` leaves out games with a `mid` of `core_below` (100,000) or more. Both lines start on the
-first day at least half the list had a price (before the lists were priced on their own, the cap
-grew only because games joined), with the index rebased to 100 there.
+first day `CAP_START_SHARE` (80%) of the list had a price, with the index rebased to 100 there.
+A `rare_games.json` that `rare_index()` cannot use is named in the log and leaves `rare` empty
+(`rare_lists()`); the PS2 index is written all the same.
 
 `rare_games.json`'s `copies` (top level) says how the estimates were made: almost no publisher
 gave Western PS2 print runs, so each entry's `copies` is a reference-class estimate (`class`:
@@ -491,7 +497,8 @@ lists what could not be found. Sums of `mid` copies sold: about 4.1 million PAL 
 
 **Each game's history (added 2026-10-13).** `series_file()` writes `data/prices/series.json`:
 per game and site, the last median and copies of each finished day over `SERIES_DAYS` (90), as
-`[days after start, median, copies]`, one game per line (about 1 MB at 90 days). The dashboard
+`[days after start, median, copies]`, one game per line (about 1 MB at 90 days). `start` is fixed
+(`SERIES_EPOCH`), so a point's numbers never change as the window moves on. The dashboard
 reads it only when a game's chart is opened.
 
 **The charts.** The dashboard draws both kinds with TradingView's Lightweight Charts 4.2.0

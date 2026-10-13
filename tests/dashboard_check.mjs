@@ -2003,7 +2003,7 @@ await check('the Rarest charts: index and market cap per list, a game\'s history
     assert.match(stats, /PAL rare index<\/span><b>103\.50<\/b> <span class="ebay-change is-up">▲ 3\.5%<\/span>/);
     assert.match(stats, /Market cap<\/span><b>£286M<\/b> <span class="ebay-change is-up">▲ 24\.3%<\/span>/);
     assert.match(stats, /Without big sellers<\/span><b>£171M<\/b>/);
-    assert.match(el('rareChartLegend').innerHTML, /12 Oct 2026 · <b>103\.50<\/b> · 96 of 110 games priced/);
+    assert.match(el('rareChartLegend').innerHTML, /12 Oct 2026 · <b>103\.50<\/b> · 85 games compared with their day before$/);
     // Without the library, a plain line of the three good days, its range written beside it.
     const plain = el('rareChartCanvas').innerHTML;
     assert.match(plain, /<polyline points="0\.0,203\.3 300\.0,212\.0 600\.0,12\.0"/);
@@ -2015,7 +2015,7 @@ await check('the Rarest charts: index and market cap per list, a game\'s history
     assert.match(tools, /class="chart-tool is-active" aria-pressed="true"[^>]*onclick="setChart\('rare', 'measure', 'index'\)">Index</);
 
     vm.runInContext("indexData = __rareIndex; rareRegion = 'PAL'; setChart('rare', 'measure', 'cap')", context);
-    assert.match(el('rareChartLegend').innerHTML, /<b>£286M<\/b>/);
+    assert.match(el('rareChartLegend').innerHTML, /<b>£286M<\/b> · 96 of 110 games priced$/);
     assert.match(el('rareChartTools').innerHTML, /onclick="setChart\('rare', 'scope', 'core'\)">Without big sellers</);
     assert.match(el('rareChartNote').innerHTML, /Market cap = each game's eBay UK median × the copies thought to have been sold in PAL countries × 65% still around\. .*Kuon: about 12,000 US, 8,000 PAL/);
     vm.runInContext("setChart('rare', 'scope', 'core')", context);

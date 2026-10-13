@@ -1676,7 +1676,8 @@
                 const point = points[i ?? points.length - 1];
                 const row = rows.find(each => each[0] === point.time);
                 legend.innerHTML = `${esc(shortDate(point.time, locale))} · <b>${esc(format(point.value))}</b>`
-                    + (row && Number.isInteger(row[5]) ? ` · ${esc(row[5])}${games ? ` of ${esc(games)}` : ''} games priced` : '');
+                    + (!row ? '' : cap ? (Number.isInteger(row[5]) ? ` · ${esc(row[5])}${games ? ` of ${esc(games)}` : ''} games priced` : '')
+                        : Number.isInteger(row[2]) ? ` · ${esc(row[2])} games compared with their day before` : '');
             };
             say(null);
             const spec = { points, format, style: rareChart.style, log: rareChart.log, onHover: say, redraw: () => renderRareChart() };
@@ -1685,7 +1686,7 @@
             document.getElementById('rareChartNote').innerHTML = cap
                 ? `Market cap = each game's eBay ${esc(site)} median × the copies thought to have been sold in ${esc(region === 'PAL' ? 'PAL countries' : 'North America')}`
                     + `${survival ? ` × ${esc(survival)}% still around` : ''}. Nobody publishes print runs for these games, so the copies are estimates `
-                    + '(Kuon: about 12,000 US, 8,000 PAL): read it as a rough size, not a count. Asking prices, not sales.'
+                    + '(Kuon: about 12,000 US, 8,000 PAL): read it as a rough size, not a count. Like a stock index, it moves only with the games priced on both days, so a game joining or leaving does not move it. Asking prices, not sales.'
                 : `100 = ${esc(shortDate(rows[0][0], locale))}. How the asking prices of this list moved on eBay ${esc(site)}, each game against its own day before.`;
         }
 

@@ -652,3 +652,58 @@ python ebay_prices.py --plan              # the price plan on the real feed; nee
 
 For the next change, the checklist in [AGENTS.md](../AGENTS.md#making-a-change-the-skeptical-checklist)
 lists what to prove before calling it done.
+
+## 2026-10-13: rare-list charts, market cap, price history, feed ceiling
+
+**By the author.**
+- `python -m unittest tests.test_ebay_prices`: 183 tests, all pass. New tests cover:
+  - graded and sealed copies, and the titles that must not count as them;
+  - the complete-copy median;
+  - the rare index and market cap: the sum, the carry-forward, the start, the joining and
+    leaving, the ×2 rule, and odd files;
+  - `series.json`;
+  - the four files the script writes.
+- `node tests/dashboard_check.mjs`: 37 checks, all pass. New checks cover:
+  - the Rarest chart's figures, tools, settings, range and legend, without the library;
+  - a game's chart: the sites, a missing history, an unknown button, and escaping;
+  - the complete-copy and "few copies" figures;
+  - the library's pinned version and its credit line.
+- `tests/test_scraper.py` with the stubbed `feedparser`/`rapidfuzz` gives the same 3 failures
+  and 47 errors as `main`, all from the stubs. The full suite runs in CI.
+- On production history (to 2026-10-12):
+  - PAL rare index 103.5; cap £235M; core £157M; 96 of 110 games priced.
+  - US rare index 98.0; cap $1.10B; core $346M; 104 of 105 games priced.
+  - `series.json` is 74 KB for 7 days.
+- Lightweight Charts could not be loaded here, because jsDelivr is blocked from this machine.
+  Every option and method used was checked against the v4.2.0 source:
+  - `createChart` with `autoSize`;
+  - `layout.attributionLogo`;
+  - `addAreaSeries`, `addLineSeries` and `addHistogramSeries`;
+  - `priceScale(id).applyOptions`;
+  - `subscribeCrosshairMove` with `logical`;
+  - price-scale mode 1 (log).
+
+**Independent review** (a second agent, scratch copy, every finding with a scenario):
+1. **High.** The market cap's moves were mostly games joining. From 8 to 9 October PAL, the
+   sum rose 21.6% while the 90 games priced on both days moved 0.0%. Fixed: after its first
+   day the cap moves like a stock index, over the games priced on both days, and a move beyond
+   ×2 is left out. It starts when 80% of the list is priced. The guide no longer says its
+   moves are pure price changes; it says they are weighted by copies.
+2. **Medium.** `copies.survival.in_existence` given as a number or a dict crashed the job after
+   `latest.json` was written. Fixed: the share is checked, and `rare_lists()` catches anything
+   else and leaves `rare` empty, keeping the PS2 index. Both are tested.
+3. **Medium-low.** `series.json` counted days from its oldest point, so every point would
+   change number daily once 90 days existed. Fixed: a fixed start (`SERIES_EPOCH`).
+4. **Low.** "not graded", "VGA cable" and "new sealed replacement case" were left out as graded
+   or sealed. Fixed:
+   - "vga" now needs "graded";
+   - "new sealed" is dropped;
+   - "not graded" and "never graded" pass.
+   This is tested.
+5. **Low.** In Index mode, the legend gave games priced where it should give games compared.
+   Fixed and tested.
+
+Suspicions the review checked and found fine: the index maths, the keys (Project Zero → Fatal
+Frame), rule 8 (no prices in the log, numbers and library titles only, standard library), the
+library API, escaping, two charts opened at once, missing or odd files, and the CSS.
+

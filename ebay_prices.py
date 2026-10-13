@@ -87,6 +87,7 @@ LATEST_NAME = "latest.json"
 INDEX_NAME = "index.json"                         # the PS2 price index, worked out from the history
 SERIES_NAME = "series.json"                       # each game's daily median, for its chart on the dashboard
 SERIES_DAYS = 90
+SERIES_EPOCH = "2026-10-01"                      # series.json counts days from here, so old points never change
 
 TOKEN_URL = "https://api.ebay.com/identity/v1/oauth2/token"
 SEARCH_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search"
@@ -237,10 +238,12 @@ MAX_CONSOLE_QUERIES = 3
 
 # A graded or factory-sealed copy is another product, priced several times a used one; listed
 # among used copies by mistake it would pull a rare game's median far up.
+# "vga" alone is also a cable, and "new sealed" a replacement case, so neither is on the list.
 GRADED_OR_SEALED = (
-    "graded", "wata", "vga", "cgc", "ukg", "factory sealed", "new sealed", "sealed new", "still sealed",
+    "graded", "wata", "vga graded", "cgc", "ukg", "factory sealed", "sealed new", "still sealed",
     "brand new sealed", "sealed brand new", "mint sealed", "sealed mint",
 )
+NOT_GRADED = ("not graded", "never graded")
 
 # Counted, but worth knowing about: the price is for less than a complete copy.
 INCOMPLETE_PHRASES = (
@@ -1119,7 +1122,7 @@ def reject_reason(item, game, market, keyword_search):
     if has_phrase(text, junk) or has_phrase(text, game["exclude"]) \
             or is_the_soundtrack(item.get("title"), name_text, game["search"]):
         return "not_a_copy"
-    if has_phrase(text, GRADED_OR_SEALED):
+    if has_phrase(text, GRADED_OR_SEALED) and not has_phrase(text, NOT_GRADED):
         return "graded_or_sealed"
     if has_phrase(text, IMPORT_PHRASES) or has_phrase(text, market["foreign"]):
         return "import"
@@ -1571,6 +1574,7 @@ RARE_INDEX_MIN_GAMES = 10
 CAP_CARRY_DAYS = 7
 CAP_SURVIVAL = 0.65            # used when rare_games.json gives no share of copies still in existence
 CAP_CORE_BELOW = 100000        # "core" leaves out games estimated at this many copies or more
+CAP_START_SHARE = 0.8          # both lines start on the first day this share of the list has a price
 
 
 def rare_members(latest, rare_file):
@@ -1600,8 +1604,9 @@ def rare_index(rows, latest, rare_file, before_day):
     """{list: {"site", "currency", "games", "points": [[day, index or None, games compared, cap,
     core cap, games in the cap], ...]}} for the Rarest page, finished days only."""
     model = rare_file.get("copies") if isinstance(rare_file, dict) and isinstance(rare_file.get("copies"), dict) else {}
-    share = ((model.get("survival") or {}).get("in_existence") or [None, None])[1:2] if isinstance(model.get("survival"), dict) else []
-    survival = share[0] if share and isinstance(share[0], (int, float)) and 0 < share[0] <= 1 else CAP_SURVIVAL
+    shares = model.get("survival", {}).get("in_existence") if isinstance(model.get("survival"), dict) else None
+    middle = shares[1] if isinstance(shares, list) and len(shares) >= 2 else None
+    survival = middle if isinstance(middle, (int, float)) and not isinstance(middle, bool) and 0 < middle <= 1 else CAP_SURVIVAL
     core_below = model.get("core_below") if isinstance(model.get("core_below"), int) and model["core_below"] > 0 else CAP_CORE_BELOW
     out = {}
     for list_name, members in rare_members(latest, rare_file).items():
@@ -1612,7 +1617,7 @@ def rare_index(rows, latest, rare_file, before_day):
             rows, before_day=before_day, min_copies=RARE_INDEX_MIN_COPIES, only=keys).items() if where == site}
         prices = {day: games for (where, day), games in daily_medians(
             rows, before_day=before_day, min_copies=1, only=keys).items() if where == site}
-        points, value, last_seen, held = [], None, {}, {}
+        points, value, last_seen, held, live_before = [], None, {}, {}, {}
         for day in sorted(set(moves) | set(prices)):
             when = datetime.strptime(day, "%Y-%m-%d")
             today = moves.get(day, {})
@@ -1634,25 +1639,41 @@ def rare_index(rows, latest, rare_file, before_day):
             for key, median in prices.get(day, {}).items():
                 held[key] = (when, median)
             live = {key: median for key, (seen, median) in held.items() if (when - seen).days <= CAP_CARRY_DAYS}
-            cap = sum(median * members[key] * survival for key, median in live.items())
-            core = sum(median * members[key] * survival for key, median in live.items() if members[key] < core_below)
-            points.append([day, round(value, 2) if value is not None else None, compared, round(cap), round(core), len(live)])
+            # [this day's sum, the move of the games priced the day before too] for all, then core
+            caps = []
+            for keep in (lambda key: True, lambda key: members[key] < core_below):
+                total = sum(median * members[key] * survival for key, median in live.items() if keep(key))
+                both = [key for key in live if keep(key) and key in live_before
+                        and 1 / INDEX_MAX_MOVE <= live[key] / live_before[key] <= INDEX_MAX_MOVE]
+                then = sum(live_before[key] * members[key] for key in both)
+                caps.append((total, sum(live[key] * members[key] for key in both) / then if then else 1.0))
+            live_before = live
+            points.append([day, round(value, 2) if value is not None else None, compared, caps[0], caps[1], len(live)])
         # Before half the list had a price (the days before the list was priced on its own), the
         # cap would climb only because games joined: both lines start on the first day after.
-        start = next((i for i, point in enumerate(points) if point[5] * 2 >= len(members) and point[1] is not None), len(points))
+        start = next((i for i, point in enumerate(points) if point[5] >= CAP_START_SHARE * len(members) and point[1] is not None),
+                     len(points))
         points = points[start:]
         if points:
             base = points[0][1]
-            for point in points:
+            # The cap starts at the first day's sum and then moves like a stock index: by how
+            # the games priced on both days moved, so a game joining or leaving never moves it.
+            cap, core = points[0][3][0], points[0][4][0]
+            for i, point in enumerate(points):
+                if i:
+                    cap *= point[3][1]
+                    core *= point[4][1]
                 point[1] = round(point[1] / base * 100, 2)
+                point[3], point[4] = round(cap), round(core)
         out[list_name] = {"site": site, "currency": market["currency"], "games": len(members), "points": points}
     return {
         "what": ("The Rarest page's two lists, each on its own eBay site: an index of their asking prices "
-                 f"(100 on the first day half the list had a price, moving on days with {RARE_INDEX_MIN_GAMES}+ games "
+                 f"(100 on the first day {CAP_START_SHARE:.0%} of the list had a price, moving on days with {RARE_INDEX_MIN_GAMES}+ games "
                  f"priced from {RARE_INDEX_MIN_COPIES}+ copies on both days, chained like the PS2 index) and a market cap: each game's latest median within "
-                 f"{CAP_CARRY_DAYS} days x the copies rare_games.json estimates were sold x {survival:g} still in existence. "
-                 f"'core' leaves out games estimated at {core_below:,} copies or more. The copies are estimates, "
-                 "so the cap is a rough size, not a count."),
+                 f"{CAP_CARRY_DAYS} days x the copies rare_games.json estimates were sold x {survival:g} still in existence, "
+                 "summed on the first day, then moved like a stock index by the games priced on both days (a game "
+                 f"joining or leaving does not move it). 'core' leaves out games estimated at {core_below:,} copies or more. "
+                 "The copies are estimates, so the cap is a rough size, not a count."),
         "points": "[day, index, games compared, market cap, core market cap, games in the cap]",
         "survival": survival,
         "core_below": core_below,
@@ -1683,8 +1704,17 @@ def index_file(rows, latest, now, left_out=()):
         "min_games": INDEX_MIN_GAMES,
         "sites": price_index(rows, consoles, now.strftime("%Y-%m-%d")),
         "left_out": sorted(consoles),
-        "rare": rare_index(rows, latest, read_json(RARE_PATH, {}), now.strftime("%Y-%m-%d")),
+        "rare": rare_lists(rows, latest, now),
     }
+
+
+def rare_lists(rows, latest, now):
+    """rare_index(), or nothing when rare_games.json is not as expected: never the PS2 index's loss."""
+    try:
+        return rare_index(rows, latest, read_json(RARE_PATH, {}), now.strftime("%Y-%m-%d"))
+    except (TypeError, ValueError, KeyError, AttributeError, ZeroDivisionError) as error:
+        say(f"The Rarest lists' index was left out: rare_games.json is not as expected ({type(error).__name__}).")
+        return {}
 
 
 def series_file(rows, now, days=SERIES_DAYS):
@@ -1697,14 +1727,14 @@ def series_file(rows, now, days=SERIES_DAYS):
                        and isinstance(row[0], str) and STAMP_SHAPE.match(row[0])), key=lambda row: row[0]):
         when, title, site, copies, _, median = row
         day = when[:10]
-        if not first <= day < today or not isinstance(title, str) or not isinstance(site, str):
+        if not max(first, SERIES_EPOCH) <= day < today or not isinstance(title, str) or not isinstance(site, str):
             continue
         if isinstance(copies, bool) or not isinstance(copies, int) or copies < 1:
             continue
         if isinstance(median, bool) or not isinstance(median, (int, float)) or not math.isfinite(median) or median <= 0:
             continue
         last[(title, site, day)] = (median, copies)
-    start = min((day for _, _, day in last), default=first)
+    start = SERIES_EPOCH
     zero = datetime.strptime(start, "%Y-%m-%d")
     games = {}
     for (title, site, day), (median, copies) in sorted(last.items()):
@@ -1714,7 +1744,7 @@ def series_file(rows, now, days=SERIES_DAYS):
         "what": ("Each game's eBay median asking price per day (the last check of the day), per site, over the "
                  f"last {days} finished UTC days. Days with no copies for sale are left out."),
         "start": start,
-        "points": "[days after start, median, copies]",
+        "points": "[days after start (which never changes), median, copies]",
         "games": games,
     }
 

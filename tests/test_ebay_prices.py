@@ -643,6 +643,11 @@ class SummaryTests(Quiet):
         self.assertNotIn("complete", ebay_prices.numbers_of(plain, "2026-10-06T12:00Z"),
                          "nothing to add when no copy says it is incomplete")
 
+    def test_a_cable_a_new_case_or_not_graded_is_not_a_graded_or_sealed_copy(self):
+        for title in ("Kuon PS2 CIB not graded", "Silent Hill 2 PS2 complete in new sealed replacement case",
+                      "Silent Hill 2 PS2 comes with VGA cable", "Silent Hill 2 PS2 ungraded", "Silent Hill 2 PS2 resealed case"):
+            self.assertNotEqual(self.summary(listing(title, 30))["skipped"].get("graded_or_sealed"), 1, title)
+
     def test_graded_and_sealed_copies_are_left_out(self):
         result = self.summary(
             listing("Silent Hill 2 PS2 WATA 9.4 A+", 900, item_id=1),
@@ -1790,15 +1795,21 @@ class RareIndexTests(unittest.TestCase):
         self.assertEqual(made["lists"]["US"]["points"], [])
         self.assertEqual(made["survival"], 0.5)
 
-    def test_a_price_is_carried_a_week_then_dropped_and_one_copy_counts_for_the_cap_only(self):
+    def test_a_price_is_carried_a_week_and_the_cap_moves_only_with_games_priced_on_both_days(self):
         rows = (self.day("2026-10-01", self.GAMES)
-                + self.day("2026-10-02", {"Rare 0": 300.0}, copies=1)
-                + self.day("2026-10-10", {"Rare 1": 100.0}))
-        points = ebay_prices.rare_index(rows, self.LATEST, self.rare_file(), "2026-10-11")["lists"]["PAL"]["points"]
-        self.assertEqual([point[0] for point in points], ["2026-10-01", "2026-10-02", "2026-10-10"])
-        self.assertEqual(points[1][3], round((11 * 100 + 300) * 1000 * 0.5), "one copy: in the cap")
-        self.assertEqual(points[1][1], 100.0, "but not a move of the index")
-        self.assertEqual((points[2][3], points[2][5]), (round(100 * 1000 * 0.5), 1), "eight days old: dropped")
+                + self.day("2026-10-02", {"Rare 0": 150.0, "Big Seller": 40.0}, copies=1)
+                + self.day("2026-10-03", {"Rare 1": 300.0})
+                + self.day("2026-10-11", {"Rare 2": 110.0}))
+        points = ebay_prices.rare_index(rows, self.LATEST, self.rare_file(), "2026-10-12")["lists"]["PAL"]["points"]
+        self.assertEqual([point[0] for point in points], ["2026-10-01", "2026-10-02", "2026-10-03", "2026-10-11"])
+        self.assertEqual(points[0][3], 12 * 100 * 1000 * 0.5)
+        self.assertEqual((points[1][3], points[1][5]), (round((11 * 100 + 150) * 1000 * 0.5), 13),
+                         "one copy is enough for the cap; the big seller joins without moving it")
+        self.assertEqual(points[1][1], 100.0, "but one copy is no move of the index")
+        self.assertEqual(points[2][3], points[1][3], "a median that tripled is taken for a change of search, not the market")
+        self.assertEqual(points[3][5], 1, "prices older than a week are dropped")
+        self.assertEqual(points[3][3], round(points[1][3] * 1.1), "leaving does not move it; the one game left moved 10%")
+        self.assertEqual(points[3][4], round(points[1][4] * 1.1))
 
     def test_the_lines_start_when_half_the_list_has_a_price(self):
         few = dict(list(self.GAMES.items())[:4])
@@ -1819,6 +1830,14 @@ class RareIndexTests(unittest.TestCase):
             self.assertEqual(made["lists"]["PAL"]["points"], [], repr(odd))
         made = ebay_prices.rare_index(rows, self.LATEST, self.rare_file(survival=(0, 7, 0)), "2026-10-08")
         self.assertEqual(made["survival"], ebay_prices.CAP_SURVIVAL, "a share above one is not used")
+        for odd in (0.65, {"a": 1}, [0.5], "0.65", [0, True, 1], None):
+            made = ebay_prices.rare_index(rows, self.LATEST, {"copies": {"survival": {"in_existence": odd}}}, "2026-10-08")
+            self.assertEqual(made["survival"], ebay_prices.CAP_SURVIVAL, repr(odd))
+        with mock.patch.object(ebay_prices, "rare_index", side_effect=TypeError("x")), mock.patch.object(ebay_prices, "say") as said:
+            index = ebay_prices.index_file(rows, {"games": {}}, datetime(2026, 10, 8, tzinfo=timezone.utc))
+        self.assertEqual(index["rare"], {})
+        self.assertIn("UK", index["sites"], "the PS2 index is written all the same")
+        said.assert_called_once()
 
     def test_the_committed_list_has_an_estimate_for_every_entry(self):
         raw = json.loads((ROOT / "rare_games.json").read_text(encoding="utf-8"))
@@ -1845,8 +1864,8 @@ class SeriesTests(unittest.TestCase):
                 ["2026-10-09T09:00Z", "Kuon", "US", 4, 700, 999],      # today: not finished
                 ["2026-06-01T09:00Z", "Kuon", "US", 4, 700, 1]]      # too old
         series = ebay_prices.series_file(rows, datetime(2026, 10, 9, 12, tzinfo=timezone.utc))
-        self.assertEqual(series["start"], "2026-10-06")
-        self.assertEqual(series["games"], {"Kuon": {"US": [[0, 1100, 2], [2, 950, 4]]}, "Okami": {"UK": [[1, 30, 9]]}})
+        self.assertEqual(series["start"], "2026-10-01", "a fixed start: a point's number never changes")
+        self.assertEqual(series["games"], {"Kuon": {"US": [[5, 1100, 2], [7, 950, 4]]}, "Okami": {"UK": [[6, 30, 9]]}})
 
     def test_the_file_is_json_with_one_game_per_line(self):
         rows = [["2026-10-06T09:00Z", "Kuon", "US", 3, 800, 1000], ["2026-10-06T09:00Z", "Ōkami", "UK", 3, 8, 10]]

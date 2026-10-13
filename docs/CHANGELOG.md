@@ -16,7 +16,8 @@
   it was estimated); the top-level `copies` holds the method, survival shares, the figures found
   and the reference classes. Kuon: about 12,000 US and 8,000 PAL. Most entries are estimates.
 - `index.json` gains `rare`: each list's index and market cap (all, and without games of
-  100,000+ copies), from 8 October. New `data/prices/series.json`: 90 days of each game's
+  100,000+ copies), from 8 October. The cap starts as Σ median × copies × 65% and then moves
+  like a stock index, so games joining or leaving do not move it. New `data/prices/series.json`: 90 days of each game's
   daily median and copies.
 - Dashboard: a chart above the PAL and US lists (index or market cap, all or core, 1W/1M/3M/All,
   line or area, log scale, crosshair read-out), and a "chart" button on Rarest and eBay prices
