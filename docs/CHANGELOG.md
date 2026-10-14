@@ -8,6 +8,9 @@
   with 50+ copies, a median within 10% and copies within 30% over the last 6 days is checked every 48
   hours instead of 6. Any check that breaks the pattern returns it to 6 hours. Surging, dormant, rare
   and pinned games are unchanged.
+- Follow-up fix: `latest.json` marks a figure `steady: true` when it was on the 48-hour clock, and the
+  dashboard calls it overdue only after 56 hours (otherwise every steady price would have been dimmed
+  after 8). Tested in both `test_ebay_prices.py` and `dashboard_check.mjs`.
 - Replay on 9 days of real history: about 205 of 581 game-site pairs qualify (about 700 fewer
   lookups a day); 2 of 482 flagged moments saw a move over 10% within two days. See
   docs/VERIFICATION.md. `tests/test_ebay_prices.py` has `SteadyTests`.

@@ -837,6 +837,13 @@ await check('eBay prices: money and ages read naturally', () => {
     assert.deepEqual(age('2026-10-06T08:59Z', 3), { text: '3h ago', stale: true }, 'a surging game is overdue sooner');
     assert.deepEqual(age('2026-10-05T07:00Z', 30), { text: '29h ago', stale: false }, 'a quiet game is given a day');
     assert.deepEqual(age('2026-10-03T12:00Z'), { text: '3d ago', stale: true });
+    // A steady figure is checked every 48 hours, so it is overdue only after 56.
+    assert.equal(evalJson("staleFor({ steady: true }, 8)"), 56);
+    assert.equal(evalJson("staleFor({ steady: true }, 30)"), 56);
+    assert.equal(evalJson("staleFor({ steady: true }, 3)"), 56);
+    assert.equal(evalJson("staleFor({ steady: 'yes' }, 8)"), 8, 'only true counts');
+    assert.equal(evalJson("staleFor({}, 8)"), 8);
+    assert.equal(evalJson("staleFor(null, 8)"), 8);
     assert.deepEqual(evalJson('Object.fromEntries(Object.entries(LEVELS).map(([name, level]) => [name, level.stale]))'),
         { surging: 3, staple: 8, normal: 8, dormant: 30, rare: 30 }, 'the rarest games are checked daily, like quiet ones');
     assert.deepEqual(age('not a time'), { text: '', stale: true });

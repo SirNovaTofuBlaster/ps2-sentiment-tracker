@@ -908,6 +908,7 @@ def due_lookups(games, state, now, history=()):
                   for market_id, words_there in (game.get("markets") or {}).items()}
     for game in games:
         every = CHECK_EVERY_HOURS[game["level"]] * 60
+        game["steady_on"] = []          # the sites on which it waits 48 hours, so the dashboard knows
         for market_id, market in MARKETS.items():
             if game.get("sites"):                  # a game only on the Rarest page: its own list's site
                 if market_id not in game["sites"]:
@@ -921,6 +922,7 @@ def due_lookups(games, state, now, history=()):
             if (game["level"] in ("normal", "staple") and not game["pinned"] and checked
                     and is_steady(steady_rows.get((game["key"], market["label"]), ()), now)):
                 wait = STEADY_EVERY_HOURS * 60
+                game["steady_on"].append(market["label"])
             if waited is None or waited >= wait - EARLY_MINUTES:
                 overdue = float("inf") if waited is None else waited / max(every, 60)
                 due.append((game["level"] != "surging", not game["pinned"], game["level"] == "rare", -overdue,
@@ -1477,6 +1479,8 @@ def update_records(state, games, run, now, rare_titles=None):
                 if not (unchanged and old.get("recorded") == today):
                     rows.append([stamp, game["title"], label, *figures])   # changed, or the day's first check
                 new["recorded"] = today                                     # the day of its latest history row
+                if label in game.get("steady_on", ()):
+                    new["steady"] = True        # checked every 48 hours, so the dashboard must not call it overdue
             entry[label] = new
         latest_games[game["title"]] = entry
 
