@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-14 16:20:10 UTC",
+  "last_updated": "2026-10-14 16:36:23 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584454204",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 16:23 UTC"
+    },
     {
       "headline": "Deck Clip Export: a Decky plugin that exports full Steam game recordings to MP4 and sends them to your phone or PC",
       "source": "r/SteamDeck",
@@ -221155,23 +221174,6 @@
       "sentiment": 50,
       "timestamp": "2026-09-30 16:42 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Valve is Making Steam Sales Algorithmic",
-      "source": "Podcast: Game Mess Mornings",
-      "source_type": "podcast",
-      "feed": "https://www.spreaker.com/show/5928689/episodes/feed",
-      "link": "https://www.spreaker.com/episode/valve-is-making-steam-sales-algorithmic--75461796",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-09-30 16:34 UTC"
     }
   ]
 }
