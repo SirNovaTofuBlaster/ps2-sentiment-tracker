@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14: 4chan replies are read for game names
+
+- The catalog's `last_replies` now count: a thread that only a reply names enters the feed (`matched_in: "body"`), and a thread that names a game also lists the games its replies name.
+- A thread that names a game and has replies the catalog did not show has its file read (`fetch_thread()`, `read_replies()`): busiest first, 12 per board per run, 120 s, one request a second with `If-Modified-Since`,
+  and not again until its reply count changes. `feed_status.json` keeps, per such thread, only the titles, reply count and `Last-Modified`. Only PS2 library titles are kept; rule 12 is unchanged in what is stored.
+
 ## 2026-10-14: the Library folds regional names, again
 
 - `build_covers.py` finds more of the library's spellings of one game: "FIFA Soccer 07" / "FIFA Football 07" / "FIFA 07", "PES 2008: Pro Evolution Soccer" / "Pro Evolution Soccer 2008", the translated names of FIFA World Cup 2002,

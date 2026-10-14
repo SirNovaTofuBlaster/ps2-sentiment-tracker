@@ -147,9 +147,16 @@ board is handled differently from every other source.
 
 - **What is read.** One request per board to 4chan's read-only API
   (`a.4cdn.org/<board>/catalog.json`), which returns the post that opens every live thread:
-  an optional subject and a comment. Replies are not read. The API's terms are followed: at
-  most one request a second, `If-Modified-Since` on each request, 4chan named as the source
-  of every row, and a link back to the thread.
+  an optional subject and a comment, plus the last few replies (`last_replies`), which are read for game
+  names too (a thread that only a reply names counts as `matched_in: "body"`). A thread that names a
+  game and has more replies than the catalog showed gets its own file read
+  (`a.4cdn.org/<board>/thread/<no>.json`, `read_replies()`): the busiest first, at most
+  `BOARD_THREAD_READS` (12) per board per run and `BOARD_THREAD_BUDGET` (120 s), and only again when its
+  reply count has grown. Only PS2 library titles come out of a reply, by the same strict rule. What is
+  kept per read thread, in the board's `feed_status.json` entry (`threads`), is the titles, the reply count
+  and the file's `Last-Modified` date; notes of threads no longer in the catalog are dropped. The API's
+  terms are followed: at most one request a second (catalog and thread files together),
+  `If-Modified-Since` on each request, 4chan named as the source of every row, and a link back to the thread.
 - **What counts as naming a game** (`games_in_post()`). A post is chat, not a headline, so
   three things a headline gets away with are not allowed. Each is judged on the very words
   that matched, which is why the reader keeps track of how every word was written
@@ -739,7 +746,8 @@ reason saving without a token is the default and tokens should be short-lived.
 - Fuzzy matching still maps franchise names to the PS2 entry, e.g. "God of War Laufey" becomes
   *God of War*. Sequel numbers are checked, but new subtitles aren't. This shows most on
   4chan's /vg/, whose long-running threads are about a series ("Monster Hunter", "The Sims").
-- 4chan: only the post that opens a thread is read, never the replies. A real mention
+- 4chan: the opening post, the replies the catalog shows and, for threads that name a game, up to 12 whole
+  threads per board per run are read; a game named only in a reply deep in a thread nobody opened is missed. A real mention
   written in lower case without a number is not counted. A busy board is seen only as it
   stands when a run happens, and GitHub often starts runs hours late, so threads that come
   and go in between are never seen. Thread links stop working when 4chan deletes the thread,

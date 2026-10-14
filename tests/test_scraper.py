@@ -125,7 +125,7 @@ def thread(number, when, subject=None, comment=None, **extra):
     """One thread of a board's catalog, the way 4chan's API gives it (text is HTML-escaped)."""
     post = {"no": number, "resto": 0, "time": int(when.timestamp()), "replies": 3, "images": 1, **POSTER_FIELDS,
             "last_replies": [{"no": number + 1, "resto": number, "time": int(when.timestamp()) + 60,
-                              "name": "REPLYNAME", "com": "REPLYWORD about Okami and Silent Hill 2"}]}
+                              "name": "REPLYNAME", "com": "REPLYWORD about nothing much"}]}
     if subject is not None:
         post["sub"] = subject
     if comment is not None:
@@ -690,6 +690,8 @@ class RunScraperTests(unittest.TestCase):
             ],
         }
         self.board_calls = []
+        self.thread_files = {}   # thread file address -> replies (4chan's posts after the first) the file holds
+        self.thread_calls = []
         self.board_changed = {self.VR_URL: "Wed, 07 Oct 2026 13:31:02 GMT", self.V_URL: "Wed, 07 Oct 2026 13:47:59 GMT"}
         data_dir = self.tmp / "data"
         paths = {"DATA_DIR": data_dir, "DB_PATH": data_dir / "ps2_database.json",
@@ -702,6 +704,7 @@ class RunScraperTests(unittest.TestCase):
             self.addCleanup(patcher.stop)
         for patcher in (mock.patch.object(scraper, "fetch_feed", side_effect=self.fake_fetch),
                         mock.patch.object(scraper, "fetch_board", side_effect=self.fake_board),
+                        mock.patch.object(scraper, "fetch_thread", side_effect=self.fake_thread),
                         mock.patch.object(scraper, "BOARD_REQUEST_GAP", 0),
                         mock.patch.object(scraper, "REDDIT_REQUEST_GAP", 0),
                         mock.patch.object(scraper, "load_ps2_titles", return_value=scraper.FALLBACK_TITLES),
@@ -723,6 +726,12 @@ class RunScraperTests(unittest.TestCase):
             raise self.failures[url]
         threads = self.boards[url]
         return (None, modified) if threads is None else (threads, self.board_changed.get(url))
+
+    def fake_thread(self, session, url, modified=None):
+        """Stands in for fetch_thread(): a thread without a file set up answers "not modified"."""
+        self.thread_calls.append((url, modified))
+        posts = self.thread_files.get(url)
+        return (None, modified) if posts is None else (posts, "Wed, 14 Oct 2026 10:00:00 GMT")
 
     def run_scraper(self):
         scraper.FEEDS_PATH.write_text(json.dumps(self.config), encoding="utf-8")
@@ -803,6 +812,18 @@ class RunScraperTests(unittest.TestCase):
         self.assertEqual(status["4chan:vr"], {"ok": True, "latest": stamp(1), "modified": "Wed, 07 Oct 2026 13:31:02 GMT"},
                          "the newest thread, whether or not it named a game, and when the board itself last changed")
         self.assertEqual(status["4chan:v"], {"ok": True, "latest": stamp(1), "modified": "Wed, 07 Oct 2026 13:47:59 GMT"})
+
+    def test_games_named_in_a_threads_replies_are_kept_and_nothing_else(self):
+        url = "https://a.4cdn.org/vr/thread/101.json"
+        self.thread_files[url] = [{"no": 5, "name": "REPLYNAME", "com": "REPLYWORD Okami is better, so is Ico"}]
+        output, status = self.run_scraper()
+        row = next(i for i in output["items"] if i["link"] == "https://boards.4chan.org/vr/thread/101")
+        self.assertEqual(row["matched_games"], ["Silent Hill 2", "Okami", "Ico"])
+        self.assertEqual(status["4chan:vr"]["threads"],
+                         {"101": {"replies": 3, "games": ["Okami", "Ico"], "modified": "Wed, 14 Oct 2026 10:00:00 GMT"}})
+        saved = scraper.OUTPUT_PATH.read_text(encoding="utf-8") + scraper.STATUS_PATH.read_text(encoding="utf-8")
+        for word in ("replyword", "replyname", "better"):
+            self.assertNotIn(word, (saved + self.log).lower(), word)
 
     def test_a_board_that_answers_nonsense_leaks_nothing_and_stops_nothing(self):
         """The real reader against answers of every wrong shape, each carrying a poster's words
@@ -1425,11 +1446,11 @@ class BoardTests(unittest.TestCase):
         matcher = scraper.TitleMatcher(scraper.FALLBACK_TITLES)
         job = {"type": "4chan", "sources": [board("vst")], "url": "https://a.4cdn.org/vst/catalog.json"}
         window = timedelta(days=scraper.RETENTION_DAYS)
-        threads = [thread(1, NOW - timedelta(days=400), subject="Okami general"),
-                   thread(2, NOW - window - timedelta(hours=1), subject="Ico"),
-                   thread(3, NOW - window + timedelta(hours=1), subject="Gran Turismo 4"),
-                   thread(4, NOW - timedelta(hours=2), subject="Persona 4"),
-                   thread(5, NOW - timedelta(minutes=5), subject="no game here")]
+        threads = [thread(1, NOW - timedelta(days=400), subject="Okami general", replies=1),
+                   thread(2, NOW - window - timedelta(hours=1), subject="Ico", replies=1),
+                   thread(3, NOW - window + timedelta(hours=1), subject="Gran Turismo 4", replies=1),
+                   thread(4, NOW - timedelta(hours=2), subject="Persona 4", replies=1),
+                   thread(5, NOW - timedelta(minutes=5), subject="no game here", replies=1)]
         status = {}
         with mock.patch.object(scraper, "fetch_board", return_value=(threads, None)) as fetch:
             items = scraper.scan_board(object(), job, matcher, status, set())
@@ -1437,6 +1458,101 @@ class BoardTests(unittest.TestCase):
                          [("3", "Gran Turismo 4"), ("4", "Persona 4")])
         self.assertEqual(fetch.call_args.args[2], None, "a board never read before is asked for everything")
         self.assertEqual(status, {"4chan:vst": {"ok": True, "latest": (NOW - timedelta(minutes=5)).strftime(scraper.TIMESTAMP_FORMAT)}})
+
+
+class BoardReplyTests(unittest.TestCase):
+    """Replies are read for the names of PS2 games and for nothing else (rule 12)."""
+
+    def setUp(self):
+        self.matcher = scraper.TitleMatcher(scraper.FALLBACK_TITLES)
+        self.job = {"type": "4chan", "sources": [board("vr")], "url": "https://a.4cdn.org/vr/catalog.json"}
+        patcher = mock.patch.object(scraper, "BOARD_REQUEST_GAP", 0)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def reply(self, text, number=2):
+        return {"no": number, "resto": 1, "time": int(NOW.timestamp()), "name": "REPLYNAME", "com": text}
+
+    def test_the_replies_the_catalog_carries_count_and_are_body_text(self):
+        t = thread(1, NOW, subject="no game here",
+                   last_replies=[self.reply("REPLYWORD try Okami"), self.reply("and Silent Hill 2", 3)])
+        item = scraper.analyze_thread(t, self.job, self.matcher, set())
+        self.assertEqual((item["matched_in"], item["matched_games"]), ("body", ["Okami", "Silent Hill 2"]))
+        self.assertNotIn("REPLYWORD", json.dumps(item))
+        self.assertNotIn("REPLYNAME", json.dumps(item))
+
+    def test_a_named_thread_gains_the_games_of_its_other_replies(self):
+        t = thread(1, NOW, subject="Okami")
+        item = scraper.analyze_thread(t, self.job, self.matcher, set(), ["Ico", "Okami", 5])
+        self.assertEqual((item["matched_in"], item["matched_games"]), ("title", ["Okami", "Ico"]))
+        self.assertIsNone(scraper.analyze_thread(thread(2, NOW, subject="no game"), self.job, self.matcher, set(), ["Ico"]),
+                          "a thread that names no game is not read further")
+
+    def scan(self, threads, status, answers):
+        calls = []
+
+        def fake(session, url, modified=None):
+            calls.append((url, modified))
+            answer = answers[url]
+            if isinstance(answer, Exception):
+                raise answer
+            return answer
+
+        with mock.patch.object(scraper, "fetch_board", return_value=(threads, None)), \
+                mock.patch.object(scraper, "fetch_thread", side_effect=fake):
+            return scraper.scan_board(object(), self.job, self.matcher, status, set()), calls
+
+    def test_flagged_threads_are_read_busiest_first_and_only_games_are_kept(self):
+        url = lambda n: f"https://a.4cdn.org/vr/thread/{n}.json"
+        threads = [thread(1, NOW, subject="Okami", replies=40), thread(2, NOW, subject="Ico", replies=90),
+                   thread(3, NOW, subject="no game", replies=500), thread(4, NOW, subject="Persona 4", replies=1)]
+        status = {}
+        items, calls = self.scan(threads, status, {
+            url(1): ([self.reply("REPLYWORD Silent Hill 2")], "Wed, 14 Oct 2026 10:00:00 GMT"),
+            url(2): ([self.reply("REPLYWORD nothing")], None)})
+        self.assertEqual([u for u, _ in calls], [url(2), url(1)], "busiest first; unnamed and fully shown threads are not asked for")
+        self.assertEqual({i["link"].rsplit("/", 1)[1]: i["matched_games"] for i in items},
+                         {"1": ["Okami", "Silent Hill 2"], "2": ["Ico"], "4": ["Persona 4"]})
+        self.assertEqual(status["4chan:vr"]["threads"], {
+            "1": {"replies": 40, "games": ["Silent Hill 2"], "modified": "Wed, 14 Oct 2026 10:00:00 GMT"},
+            "2": {"replies": 90, "games": []}})
+        self.assertNotIn("REPLYWORD", json.dumps(status))
+
+    def test_a_thread_is_asked_for_again_only_when_it_grew_and_a_304_keeps_what_was_known(self):
+        url = "https://a.4cdn.org/vr/thread/1.json"
+        status = {"4chan:vr": {"threads": {"1": {"replies": 40, "games": ["Ico"], "modified": "Wed, 14 Oct 2026 10:00:00 GMT"}}}}
+        items, calls = self.scan([thread(1, NOW, subject="Okami", replies=40)], status, {})
+        self.assertEqual(calls, [])
+        self.assertEqual(items[0]["matched_games"], ["Okami", "Ico"])
+        items, calls = self.scan([thread(1, NOW, subject="Okami", replies=45)], status, {url: (None, "x")})
+        self.assertEqual(calls, [(url, "Wed, 14 Oct 2026 10:00:00 GMT")])
+        self.assertEqual(items[0]["matched_games"], ["Okami", "Ico"])
+        self.assertEqual(status["4chan:vr"]["threads"]["1"]["replies"], 45)
+
+    def test_a_thread_that_cannot_be_read_never_stops_the_board_and_pruned_threads_are_forgotten(self):
+        url = "https://a.4cdn.org/vr/thread/1.json"
+        status = {"4chan:vr": {"threads": {"99": {"replies": 5, "games": ["Ico"]}}}}
+        items, calls = self.scan([thread(1, NOW, subject="Okami", replies=40)], status,
+                                 {url: requests.ConnectionError("down")})
+        self.assertEqual([i["matched_games"] for i in items], [["Okami"]])
+        self.assertNotIn("threads", status["4chan:vr"], "a pruned thread's note is dropped")
+
+    def test_only_a_limited_number_of_threads_is_read_per_run(self):
+        threads = [thread(n, NOW, subject="Okami", replies=10 + n) for n in range(1, scraper.BOARD_THREAD_READS + 6)]
+        answers = {f"https://a.4cdn.org/vr/thread/{t['no']}.json": ([], None) for t in threads}
+        _, calls = self.scan(threads, {}, answers)
+        self.assertEqual(len(calls), scraper.BOARD_THREAD_READS)
+
+    def test_fetch_thread_reads_replies_only_and_sends_if_modified_since(self):
+        session = FakeSession({"u": {"body": {"posts": [{"no": 1, "com": "OP"}, {"no": 2, "com": "reply"}, "junk"]},
+                                      "headers": {"Last-Modified": "Wed, 14 Oct 2026 10:00:00 GMT"}},
+                               "n": {"status": 304}, "bad": {"body": {"posts": "x"}}})
+        posts, modified = scraper.fetch_thread(session, "u", "Wed, 14 Oct 2026 09:00:00 GMT")
+        self.assertEqual(([p["no"] for p in posts], modified), ([2], "Wed, 14 Oct 2026 10:00:00 GMT"))
+        self.assertEqual(session.calls[0][1], {"If-Modified-Since": "Wed, 14 Oct 2026 09:00:00 GMT"})
+        self.assertEqual(scraper.fetch_thread(session, "n", "Wed, 14 Oct 2026 09:00:00 GMT")[0], None)
+        with self.assertRaises(ValueError):
+            scraper.fetch_thread(session, "bad")
 
 
 class TrySourcesTests(unittest.TestCase):
