@@ -2,11 +2,12 @@
  "what": "Asking prices of used Buy It Now copies of PS2 games on eBay, by site. Numbers only: copies listed, lowest and median price before postage, typical postage. Not sold prices.",
  "currencies": {
   "US": "USD",
-  "UK": "GBP"
+  "UK": "GBP",
+  "DE": "EUR"
  },
  "searches": {
   "day": "2026-10-14",
-  "used": 1062
+  "used": 1418
  },
  "games": {
   ".hack//Outbreak": {
@@ -66,6 +67,14 @@
     "median": 154.99,
     "postage": 0.0,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 199.9,
+    "median": 199.9,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "7 Sins": {
@@ -90,6 +99,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 44.55
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 23.29,
+    "median": 29.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Ace Combat 4: Shattered Skies": {
@@ -123,6 +140,14 @@
      "median": 23.75
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 22.99,
+    "median": 22.99,
+    "postage": 0.9,
+    "recorded": "2026-10-14"
    }
   },
   "Ace Combat 5: The Unsung War": {
@@ -152,6 +177,18 @@
      "median": 15.57
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 6,
+    "lowest": 14.95,
+    "median": 27.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 5,
+     "median": 37.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Ace Combat Zero: The Belkan War": {
@@ -159,7 +196,7 @@
    "mentions": 3,
    "surging_until": "2026-10-15T11:55Z",
    "US": {
-    "checked": "2026-10-14T09:58Z",
+    "checked": "2026-10-14T10:50Z",
     "copies": 15,
     "lowest": 49.95,
     "median": 69.8,
@@ -171,11 +208,19 @@
     "recorded": "2026-10-14"
    },
    "UK": {
-    "checked": "2026-10-14T09:58Z",
+    "checked": "2026-10-14T10:50Z",
     "copies": 4,
     "lowest": 19.36,
     "median": 31.74,
     "postage": 1.35,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 30.0,
+    "median": 39.99,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -192,6 +237,18 @@
     "lowest": 5.94,
     "median": 7.04,
     "postage": 2.7,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 5,
+    "lowest": 5.99,
+    "median": 15.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 4,
+     "median": 12.99
+    },
     "recorded": "2026-10-14"
    }
   },
@@ -221,6 +278,18 @@
      "median": 8.12
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 14,
+    "lowest": 3.99,
+    "median": 9.27,
+    "postage": 0.9,
+    "complete": {
+     "copies": 12,
+     "median": 9.48
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Alarm for Cobra 11 Vol.2: Hot Pursuit": {
@@ -245,6 +314,10 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.95
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Alien Homind": {
@@ -261,6 +334,14 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Alone in the Dark": {
@@ -288,6 +369,14 @@
      "copies": 45,
      "median": 9.99
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 70,
+    "lowest": 2.0,
+    "median": 9.11,
+    "postage": 1.8,
     "recorded": "2026-10-14"
    }
   },
@@ -332,6 +421,14 @@
      "median": 27.48
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 28.0,
+    "median": 34.59,
+    "postage": 1.35,
+    "recorded": "2026-10-14"
    }
   },
   "Ape Escape 3": {
@@ -355,6 +452,14 @@
     "lowest": 44.99,
     "median": 89.99,
     "postage": 3.11,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 99.99,
+    "median": 99.99,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -380,6 +485,10 @@
     "median": 244.99,
     "postage": 0.0,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Ar Tonelico 2: Melody of Metafalica": {
@@ -486,6 +595,14 @@
      "median": 10.0
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 11,
+    "lowest": 10.9,
+    "median": 17.95,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Arena Football: EA Sports": {
@@ -502,6 +619,14 @@
    },
    "UK": {
     "checked": "2026-10-14T09:58Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "copies": 0,
     "lowest": null,
     "median": null,
@@ -626,6 +751,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 25.58
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 10.5,
+    "median": 12.75,
+    "postage": 0.9,
+    "recorded": "2026-10-14"
    }
   },
   "Army Men: RTS": {
@@ -654,6 +787,10 @@
      "median": 13.24
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Astro Boy": {
@@ -686,6 +823,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 22.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 17.99,
+    "median": 29.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Atari Anthology": {
@@ -714,6 +859,14 @@
      "copies": 23,
      "median": 8.39
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 13,
+    "lowest": 10.0,
+    "median": 22.99,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -744,6 +897,10 @@
      "checked": "2026-10-06T22:41Z",
      "median": 12.9
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "ATV Off-Road Fury": {
@@ -777,6 +934,10 @@
      "checked": "2026-10-06T22:41Z",
      "median": 22.98
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Backyard Baseball": {
@@ -806,6 +967,14 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 19.0,
+    "median": 19.0,
+    "postage": 3.0,
+    "recorded": "2026-10-14"
    }
   },
   "Backyard Wrestling: Don't Try This At Home": {
@@ -832,6 +1001,18 @@
     "complete": {
      "copies": 15,
      "median": 12.99
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 7.99,
+    "median": 8.23,
+    "postage": 0.0,
+    "complete": {
+     "copies": 3,
+     "median": 8.0
     },
     "recorded": "2026-10-14"
    }
@@ -871,6 +1052,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 14.95
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 16,
+    "lowest": 10.0,
+    "median": 17.78,
+    "postage": 0.9,
+    "recorded": "2026-10-14"
    }
   },
   "Bard's Tale": {
@@ -895,6 +1084,18 @@
     "median": 12.48,
     "postage": 0.0,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 34,
+    "lowest": 4.44,
+    "median": 6.99,
+    "postage": 1.8,
+    "complete": {
+     "copies": 33,
+     "median": 6.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Baroque": {
@@ -915,6 +1116,14 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 175.0,
+    "median": 175.0,
+    "postage": 6.19,
+    "recorded": "2026-10-14"
    }
   },
   "Batman Begins": {
@@ -941,6 +1150,18 @@
     "complete": {
      "copies": 38,
      "median": 10.8
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 13,
+    "lowest": 10.5,
+    "median": 19.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 12,
+     "median": 17.99
     },
     "recorded": "2026-10-14"
    }
@@ -972,6 +1193,14 @@
      "median": 5.99
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 38,
+    "lowest": 4.24,
+    "median": 8.9,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Battlestar Galactica": {
@@ -996,6 +1225,14 @@
     "median": 15.57,
     "postage": 0.0,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 6.99,
+    "median": 9.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Beatdown: Fists of Vengeance": {
@@ -1012,6 +1249,10 @@
     "median": 38.14,
     "postage": 0.0,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Beyond Good and Evil": {
@@ -1038,6 +1279,18 @@
     "complete": {
      "copies": 58,
      "median": 10.77
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 37,
+    "lowest": 4.0,
+    "median": 10.0,
+    "postage": 1.8,
+    "complete": {
+     "copies": 33,
+     "median": 10.0
     },
     "recorded": "2026-10-14"
    }
@@ -1067,6 +1320,14 @@
      "copies": 52,
      "median": 5.44
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 9,
+    "lowest": 5.79,
+    "median": 11.8,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -1105,6 +1366,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 10.8
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 23.99,
+    "median": 25.0,
+    "postage": 2.0,
+    "recorded": "2026-10-14"
    }
   },
   "Blood Will Tell": {
@@ -1153,6 +1422,18 @@
     "median": 104.84,
     "postage": 0.0,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 12.9,
+    "median": 26.47,
+    "postage": 0.0,
+    "complete": {
+     "copies": 11,
+     "median": 26.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Bloody Roar 4": {
@@ -1176,6 +1457,18 @@
     "lowest": 104.7,
     "median": 129.99,
     "postage": 0.0,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 50.0,
+    "median": 94.44,
+    "postage": 0.9,
+    "complete": {
+     "copies": 7,
+     "median": 98.88
+    },
     "recorded": "2026-10-14"
    }
   },
@@ -1213,6 +1506,10 @@
      "checked": "2026-10-06T22:41Z",
      "median": 25.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Bully": {
@@ -1251,6 +1548,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 15.88
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 45.0,
+    "median": 45.0,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Bully Collector's Edition": {
@@ -1304,6 +1609,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 20,
+    "lowest": 4.9,
+    "median": 10.0,
+    "postage": 1.8,
+    "complete": {
+     "copies": 19,
+     "median": 10.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Burnout 2: Point of Impact": {
@@ -1331,6 +1648,14 @@
      "copies": 105,
      "median": 6.52
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 45,
+    "lowest": 3.0,
+    "median": 9.9,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -1370,6 +1695,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 9.61
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 7.49,
+    "median": 16.57,
+    "postage": 0.0,
+    "complete": {
+     "copies": 7,
+     "median": 16.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Burnout 3: Takedown": {
@@ -1397,6 +1734,18 @@
     "complete": {
      "copies": 74,
      "median": 10.44
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 6.08,
+    "median": 16.07,
+    "postage": 0.0,
+    "complete": {
+     "copies": 11,
+     "median": 16.19
     },
     "recorded": "2026-10-14"
    }
@@ -1428,6 +1777,18 @@
      "median": 8.45
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 30,
+    "lowest": 4.0,
+    "median": 9.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 28,
+     "median": 9.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Buzz! The Big Quiz": {
@@ -1448,6 +1809,14 @@
      "copies": 153,
      "median": 5.45
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 4.89,
+    "median": 4.89,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -1487,6 +1856,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.45
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 41,
+    "lowest": 2.5,
+    "median": 9.59,
+    "postage": 1.8,
+    "complete": {
+     "copies": 35,
+     "median": 9.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Cars Race-O-Rama": {
@@ -1509,6 +1890,14 @@
     "copies": 6,
     "lowest": 18.0,
     "median": 33.33,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 10.99,
+    "median": 14.9,
     "postage": 0.0,
     "recorded": "2026-10-14"
    }
@@ -1573,6 +1962,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 39.58
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 12.5,
+    "median": 23.02,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Champions: Return to Arms": {
@@ -1609,6 +2006,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 28.77
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 21,
+    "lowest": 6.2,
+    "median": 19.85,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Chaos Legion": {
@@ -1637,6 +2042,14 @@
      "median": 18.99
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 17,
+    "lowest": 10.0,
+    "median": 17.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Chulip": {
@@ -1661,6 +2074,14 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Clock Tower 3": {
@@ -1697,6 +2118,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 79.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 6,
+    "lowest": 89.99,
+    "median": 199.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Cold Fear": {
@@ -1741,6 +2170,18 @@
      "median": 4.91
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 19,
+    "lowest": 3.69,
+    "median": 7.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 18,
+     "median": 7.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Coraline": {
@@ -1776,6 +2217,14 @@
    },
    "UK": {
     "checked": "2026-10-14T05:21Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "copies": 0,
     "lowest": null,
     "median": null,
@@ -1817,6 +2266,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 12.68
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 6,
+    "lowest": 5.0,
+    "median": 12.45,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Crash Bandicoot: The Wrath of Cortex": {
@@ -1847,6 +2304,14 @@
      "median": 8.66
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 9.0,
+    "median": 10.0,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Crash Tag Team Racing": {
@@ -1874,6 +2339,18 @@
     "complete": {
      "copies": 49,
      "median": 11.33
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 16,
+    "lowest": 15.0,
+    "median": 29.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 13,
+     "median": 31.34
     },
     "recorded": "2026-10-14"
    }
@@ -1904,6 +2381,14 @@
      "copies": 63,
      "median": 10.8
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 14,
+    "lowest": 9.9,
+    "median": 17.24,
+    "postage": 1.8,
     "recorded": "2026-10-14"
    }
   },
@@ -1942,6 +2427,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 7.05
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 16,
+    "lowest": 5.99,
+    "median": 12.89,
+    "postage": 0.0,
+    "complete": {
+     "copies": 14,
+     "median": 12.89
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Crisis Zone": {
@@ -1964,6 +2461,18 @@
     "complete": {
      "copies": 11,
      "median": 14.0
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 17,
+    "lowest": 13.0,
+    "median": 21.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 15,
+     "median": 21.99
     },
     "recorded": "2026-10-14"
    }
@@ -2010,6 +2519,15 @@
      "median": 6.52
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 14,
+    "lowest": 5.0,
+    "median": 7.99,
+    "postage": 1.9,
+    "truncated": true,
+    "recorded": "2026-10-14"
    }
   },
   "Dark Cloud": {
@@ -2047,6 +2565,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 36.22
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 34.95,
+    "median": 47.47,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Dark Cloud 2": {
@@ -2076,6 +2602,14 @@
      "median": 31.95
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 19,
+    "lowest": 20.0,
+    "median": 34.95,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Dave Mirra Freestyle BMX 2": {
@@ -2101,6 +2635,14 @@
     "median": 7.8,
     "postage": 2.7,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 14.49,
+    "median": 14.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Dead or Alive 2: Hardcore": {
@@ -2125,6 +2667,10 @@
     "median": 9.73,
     "postage": 3.33,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Def Jam: Fight for NY": {
@@ -2185,6 +2731,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 8.34
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 26,
+    "lowest": 6.9,
+    "median": 9.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 25,
+     "median": 9.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Deutsch Rock-Pop": {
@@ -2201,6 +2759,19 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 152,
+    "lowest": 2.0,
+    "median": 7.5,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 146,
+     "median": 7.83
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Devil May Cry": {
@@ -2239,6 +2810,19 @@
      "checked": "2026-10-06T22:41Z",
      "median": 8.54
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 29,
+    "lowest": 3.99,
+    "median": 11.0,
+    "postage": 1.6,
+    "truncated": true,
+    "complete": {
+     "copies": 28,
+     "median": 11.45
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Devil May Cry 2": {
@@ -2269,6 +2853,18 @@
      "median": 9.68
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 10,
+    "lowest": 5.99,
+    "median": 19.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 9,
+     "median": 23.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Devil May Cry 3": {
@@ -2296,6 +2892,18 @@
     "complete": {
      "copies": 22,
      "median": 20.75
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 91,
+    "lowest": 4.0,
+    "median": 9.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 88,
+     "median": 9.9
     },
     "recorded": "2026-10-14"
    }
@@ -2345,6 +2953,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 21.5
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 10,
+    "lowest": 7.95,
+    "median": 20.0,
+    "postage": 3.4,
+    "recorded": "2026-10-14"
    }
   },
   "Disaster Report": {
@@ -2381,6 +2997,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 28.15
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Disney's Extreme Skate Adventure": {
@@ -2417,6 +3041,14 @@
      "checked": "2026-10-07T00:48Z",
      "median": 15.57
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 4.0,
+    "median": 34.9,
+    "postage": 2.7,
+    "recorded": "2026-10-14"
    }
   },
   "Disney's Tarzan Untamed": {
@@ -2441,6 +3073,10 @@
    "UK": {
     "checked": "2026-10-14T06:33Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Disney-Pixar's Cars: Mater-National": {
@@ -2461,6 +3097,10 @@
      "checked": "2026-10-06T22:41Z",
      "median": 21.94
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Dokapon Kingdom": {
@@ -2485,6 +3125,10 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Donald Duck Goin' Quackers": {
@@ -2509,6 +3153,14 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Dragon Ball Z: Budokai 3 [Limited Edition Collectable Tin]": {
@@ -2558,6 +3210,18 @@
     "lowest": 42.49,
     "median": 74.25,
     "postage": 2.71,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 33,
+    "lowest": 21.9,
+    "median": 32.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 32,
+     "median": 32.99
+    },
     "recorded": "2026-10-14"
    }
   },
@@ -2614,6 +3278,14 @@
     "median": 26.7,
     "postage": 2.79,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Dragon Quest: The Journey of the Cursed King": {
@@ -2649,6 +3321,14 @@
      "copies": 24,
      "median": 6.26
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 5.0,
+    "median": 10.97,
+    "postage": 1.8,
     "recorded": "2026-10-14"
    }
   },
@@ -2701,6 +3381,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 35.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 30.0,
+    "median": 45.5,
+    "postage": 1.45,
+    "complete": {
+     "copies": 7,
+     "median": 46.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Drakengard 2": {
@@ -2741,6 +3433,14 @@
     "median": 11.44,
     "postage": 2.0,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 9.9,
+    "median": 24.9,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Driver: Parallel Lines": {
@@ -2767,6 +3467,18 @@
     "complete": {
      "copies": 34,
      "median": 12.94
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 8.99,
+    "median": 17.49,
+    "postage": 0.0,
+    "complete": {
+     "copies": 11,
+     "median": 17.99
     },
     "recorded": "2026-10-14"
    }
@@ -2821,6 +3533,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 9.13
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 11,
+    "lowest": 6.39,
+    "median": 9.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 10,
+     "median": 11.49
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Dynasty Warriors: Gundam 2": {
@@ -2841,6 +3565,14 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Ecco the Dolphin: Defender of the Future": {
@@ -2873,6 +3605,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 12.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 11.89,
+    "median": 14.29,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Echo Night: Beyond": {
@@ -2909,6 +3649,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 183.73
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 87.99,
+    "median": 92.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Eternal Poison": {
@@ -2964,6 +3712,19 @@
      "median": 3.31
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 58,
+    "lowest": 1.95,
+    "median": 5.9,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 55,
+     "median": 5.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Fallout: Brotherhood of Steel": {
@@ -2999,6 +3760,10 @@
     "median": 18.21,
     "postage": 2.82,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Fatal Frame": {
@@ -3035,6 +3800,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 69.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 25,
+    "lowest": 32.0,
+    "median": 41.99,
+    "postage": 4.0,
+    "recorded": "2026-10-14"
    }
   },
   "Fatal Frame 2: Crimson Butterfly": {
@@ -3062,6 +3835,14 @@
      "copies": 12,
      "median": 125.5
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 199.99,
+    "median": 199.99,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -3123,6 +3904,18 @@
      "median": 4.37
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 3.0,
+    "median": 4.82,
+    "postage": 2.4,
+    "complete": {
+     "copies": 3,
+     "median": 4.49
+    },
+    "recorded": "2026-10-14"
    }
   },
   "FIFA Soccer 13": {
@@ -3167,6 +3960,18 @@
      "median": 5.33
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 33,
+    "lowest": 1.95,
+    "median": 8.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 31,
+     "median": 8.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Fighting Fury": {
@@ -3191,6 +3996,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.45
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 5,
+    "lowest": 16.39,
+    "median": 19.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Final Fantasy X": {
@@ -3229,6 +4042,19 @@
      "checked": "2026-10-06T22:41Z",
      "median": 8.53
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 104,
+    "lowest": 1.0,
+    "median": 9.9,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 100,
+     "median": 9.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Final Fantasy XI": {
@@ -3258,6 +4084,10 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Final Fantasy XII": {
@@ -3296,6 +4126,19 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 152,
+    "lowest": 2.99,
+    "median": 6.99,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 148,
+     "median": 6.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Finkles World": {
@@ -3355,6 +4198,18 @@
      "median": 16.15
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 10.99,
+    "median": 16.49,
+    "postage": 0.9,
+    "complete": {
+     "copies": 7,
+     "median": 17.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Forbidden Siren": {
@@ -3386,6 +4241,14 @@
     "lowest": 99.99,
     "median": 167.1,
     "postage": 4.52,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 149.95,
+    "median": 154.93,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -3430,6 +4293,18 @@
      "median": 10.8
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 16,
+    "lowest": 4.1,
+    "median": 8.3,
+    "postage": 0.95,
+    "complete": {
+     "copies": 15,
+     "median": 8.59
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Frogger: Ancient Shadow": {
@@ -3449,6 +4324,10 @@
    },
    "UK": {
     "checked": "2026-10-14T05:21Z",
+    "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "unmatched": true
    }
   },
@@ -3502,6 +4381,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 10.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 24,
+    "lowest": 14.99,
+    "median": 27.99,
+    "postage": 0.78,
+    "complete": {
+     "copies": 23,
+     "median": 27.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Genji: Dawn of the Samurai": {
@@ -3525,6 +4416,14 @@
     "lowest": 7.59,
     "median": 12.45,
     "postage": 1.25,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
     "recorded": "2026-10-14"
    }
   },
@@ -3564,6 +4463,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 80,
+    "lowest": 2.6,
+    "median": 7.6,
+    "postage": 1.8,
+    "complete": {
+     "copies": 76,
+     "median": 7.6
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Getaway: Black Monday": {
@@ -3600,6 +4511,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 9.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 24,
+    "lowest": 4.54,
+    "median": 10.48,
+    "postage": 1.8,
+    "complete": {
+     "copies": 23,
+     "median": 10.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Ghost in the Shell: Stand Alone Complex": {
@@ -3642,6 +4565,14 @@
      "copies": 13,
      "median": 20.96
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 23.0,
+    "median": 32.95,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -3705,6 +4636,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 45.38
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 57.18,
+    "median": 59.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 6,
+     "median": 59.97
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Go Go Golf": {
@@ -3728,6 +4671,14 @@
      "copies": 45,
      "median": 3.45
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 8.99,
+    "median": 8.99,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -3762,6 +4713,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 179.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 11,
+    "lowest": 114.9,
+    "median": 178.94,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "God of War": {
@@ -3799,6 +4758,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 27.77
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 47,
+    "lowest": 12.9,
+    "median": 19.0,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "God of War II": {
@@ -3836,6 +4803,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 26.7
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 47,
+    "lowest": 12.39,
+    "median": 21.0,
+    "postage": 1.8,
+    "complete": {
+     "copies": 46,
+     "median": 20.5
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Godfather, The: Collector's Edition": {
@@ -3847,6 +4826,10 @@
    },
    "UK": {
     "checked": "2026-10-14T05:21Z",
+    "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "unmatched": true
    }
   },
@@ -3872,6 +4855,14 @@
      "median": 4.68
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 5.59,
+    "median": 7.97,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Graffiti Kingdom": {
@@ -3892,6 +4883,14 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 12.99,
+    "median": 12.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Gran Turismo 3 A-Spec": {
@@ -3930,6 +4929,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 4.35
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 118,
+    "lowest": 1.0,
+    "median": 5.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 113,
+     "median": 5.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Gran Turismo 4": {
@@ -3968,6 +4979,19 @@
      "checked": "2026-10-06T22:41Z",
      "median": 7.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 69,
+    "lowest": 1.95,
+    "median": 8.49,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 63,
+     "median": 8.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Gran Turismo: Concept 2002 Tokyo-Geneva": {
@@ -3992,6 +5016,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.51
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 29,
+    "lowest": 3.0,
+    "median": 6.79,
+    "postage": 1.8,
+    "complete": {
+     "copies": 26,
+     "median": 6.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Grand Theft Auto Complete Collection": {
@@ -4041,6 +5077,19 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.52
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 48,
+    "lowest": 5.99,
+    "median": 13.25,
+    "postage": 5.35,
+    "truncated": true,
+    "complete": {
+     "copies": 47,
+     "median": 12.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Grand Theft Auto Stories Double Pack": {
@@ -4093,6 +5142,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 11.43
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 35,
+    "lowest": 5.0,
+    "median": 14.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 34,
+     "median": 13.5
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Grand Theft Auto: San Andreas": {
@@ -4131,6 +5192,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 10.8
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 57,
+    "lowest": 2.1,
+    "median": 15.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 48,
+     "median": 16.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Grand Theft Auto: San Andreas Special Edition": {
@@ -4170,6 +5243,14 @@
     "median": 120.3,
     "postage": 4.52,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 119.0,
+    "median": 164.0,
+    "postage": 8.18,
+    "recorded": "2026-10-14"
    }
   },
   "Grand Theft Auto: Vice City": {
@@ -4208,6 +5289,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.73
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 50,
+    "lowest": 7.9,
+    "median": 14.99,
+    "postage": 1.6,
+    "complete": {
+     "copies": 48,
+     "median": 14.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Grand Theft Auto: Vice City Stories": {
@@ -4328,6 +5421,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 63.09
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Guitar Hero": {
@@ -4366,6 +5467,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 7.24
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 34,
+    "lowest": 2.0,
+    "median": 10.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Guitar Hero III: Legends of Rock": {
@@ -4403,6 +5512,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.45
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 19,
+    "lowest": 4.99,
+    "median": 10.0,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Guitar Hero: Metallica": {
@@ -4439,6 +5556,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 59.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 11,
+    "lowest": 16.8,
+    "median": 24.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Gun Club": {
@@ -4476,6 +5601,18 @@
     "complete": {
      "copies": 28,
      "median": 21.5
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 27,
+    "lowest": 10.0,
+    "median": 20.0,
+    "postage": 1.8,
+    "complete": {
+     "copies": 24,
+     "median": 22.95
     },
     "recorded": "2026-10-14"
    }
@@ -4521,6 +5658,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.96
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 23,
+    "lowest": 3.79,
+    "median": 5.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 22,
+     "median": 5.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Harry Potter and the Philosopher's Stone": {
@@ -4584,6 +5733,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 219.55
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 11,
+    "lowest": 180.0,
+    "median": 219.99,
+    "postage": 5.79,
+    "recorded": "2026-10-14"
    }
   },
   "Headhunter: Redemption": {
@@ -4607,6 +5764,14 @@
     "lowest": 2.24,
     "median": 5.46,
     "postage": 2.7,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 25,
+    "lowest": 2.99,
+    "median": 7.9,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -4646,6 +5811,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 4.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 63,
+    "lowest": 1.0,
+    "median": 8.9,
+    "postage": 1.99,
+    "complete": {
+     "copies": 59,
+     "median": 8.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Hitman: Blood Money": {
@@ -4683,6 +5860,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.51
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 47,
+    "lowest": 1.0,
+    "median": 6.32,
+    "postage": 3.5,
+    "complete": {
+     "copies": 41,
+     "median": 6.4
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Homura": {
@@ -4734,6 +5923,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 11.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 10,
+    "lowest": 7.69,
+    "median": 8.69,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Hustle, The: Detroit Streets: Kat's Story": {
@@ -4745,6 +5942,14 @@
    },
    "UK": {
     "checked": "2026-10-14T05:21Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "copies": 0,
     "lowest": null,
     "median": null,
@@ -4787,6 +5992,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 47.5
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 19,
+    "lowest": 12.89,
+    "median": 35.99,
+    "postage": 4.0,
+    "complete": {
+     "copies": 18,
+     "median": 37.5
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Indigo Prophecy": {
@@ -4810,6 +6027,14 @@
     "lowest": 2.99,
     "median": 2.99,
     "postage": 2.72,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
     "recorded": "2026-10-14"
    }
   },
@@ -4854,6 +6079,18 @@
      "median": 29.99
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 15.0,
+    "median": 23.25,
+    "postage": 0.0,
+    "complete": {
+     "copies": 10,
+     "median": 29.73
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Jak 3": {
@@ -4881,6 +6118,18 @@
     "complete": {
      "copies": 56,
      "median": 8.66
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 69,
+    "lowest": 3.0,
+    "median": 9.1,
+    "postage": 0.0,
+    "complete": {
+     "copies": 65,
+     "median": 9.1
     },
     "recorded": "2026-10-14"
    }
@@ -4920,6 +6169,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 8.66
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 44,
+    "lowest": 3.0,
+    "median": 7.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 39,
+     "median": 7.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Jak II": {
@@ -4948,6 +6209,19 @@
     "complete": {
      "copies": 97,
      "median": 7.54
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 34,
+    "lowest": 5.0,
+    "median": 9.93,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 33,
+     "median": 9.95
     },
     "recorded": "2026-10-14"
    }
@@ -4987,6 +6261,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 10.07
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 28,
+    "lowest": 5.0,
+    "median": 17.94,
+    "postage": 0.0,
+    "complete": {
+     "copies": 25,
+     "median": 18.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Jak X: Combat Racing": {
@@ -5020,6 +6306,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 7.59
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 30.0,
+    "median": 30.0,
+    "postage": 5.0,
+    "recorded": "2026-10-14"
    }
   },
   "James Bond 007: Everything or Nothing": {
@@ -5047,6 +6341,18 @@
     "complete": {
      "copies": 55,
      "median": 6.52
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 12.3,
+    "median": 15.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 2,
+     "median": 13.65
     },
     "recorded": "2026-10-14"
    }
@@ -5077,6 +6383,10 @@
      "median": 6.52
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Juiced": {
@@ -5114,6 +6424,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 26,
+    "lowest": 4.99,
+    "median": 8.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 23,
+     "median": 8.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Just Cause": {
@@ -5150,6 +6472,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 4.91
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 34,
+    "lowest": 2.95,
+    "median": 7.95,
+    "postage": 0.0,
+    "complete": {
+     "copies": 32,
+     "median": 7.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Kaido Racer": {
@@ -5205,6 +6539,14 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 47.0,
+    "median": 47.0,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Kidz Sports Basketball": {
@@ -5221,6 +6563,14 @@
     "median": 8.8,
     "postage": 1.35,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 3.8,
+    "median": 8.33,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Killzone": {
@@ -5258,6 +6608,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.5
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 80,
+    "lowest": 1.5,
+    "median": 9.95,
+    "postage": 4.89,
+    "complete": {
+     "copies": 76,
+     "median": 9.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "King's Field IV": {
@@ -5285,6 +6647,14 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "King's Field: The Ancient City": {
@@ -5338,6 +6708,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 8.66
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 45,
+    "lowest": 5.23,
+    "median": 11.95,
+    "postage": 0.0,
+    "complete": {
+     "copies": 43,
+     "median": 11.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Kingdom Hearts II": {
@@ -5376,6 +6758,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 9.02
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 25,
+    "lowest": 6.99,
+    "median": 15.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 24,
+     "median": 16.45
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Kingdom Hearts Re:Chain of Memories": {
@@ -5397,6 +6791,14 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Kirikou et les Bêtes Sauvages": {
@@ -5448,6 +6850,18 @@
      "checked": "2026-10-07T00:48Z",
      "median": 73.41
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 39.49,
+    "median": 46.58,
+    "postage": 0.9,
+    "complete": {
+     "copies": 3,
+     "median": 43.15
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Kung Fu Panda": {
@@ -5468,6 +6882,14 @@
     "median": 10.01,
     "postage": 1.55,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 42,
+    "lowest": 4.36,
+    "median": 6.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Kuon": {
@@ -5501,6 +6923,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 822.7
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 495.0,
+    "median": 549.5,
+    "postage": 6.19,
+    "recorded": "2026-10-14"
    }
   },
   "L.A. Rush": {
@@ -5537,6 +6967,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 4.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 39,
+    "lowest": 2.99,
+    "median": 5.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 37,
+     "median": 5.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Legaia 2: Duel Saga": {
@@ -5563,6 +7005,18 @@
     "complete": {
      "copies": 11,
      "median": 21.5
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 15,
+    "lowest": 6.99,
+    "median": 13.79,
+    "postage": 1.8,
+    "complete": {
+     "copies": 14,
+     "median": 12.9
     },
     "recorded": "2026-10-14"
    }
@@ -5592,6 +7046,14 @@
      "copies": 55,
      "median": 5.49
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 34,
+    "lowest": 3.99,
+    "median": 7.45,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -5644,6 +7106,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 11.49
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 32,
+    "lowest": 7.9,
+    "median": 15.4,
+    "postage": 0.0,
+    "complete": {
+     "copies": 30,
+     "median": 15.8
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Legend of Spyro, The: The Eternal Night": {
@@ -5680,6 +7154,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 13.94
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 18,
+    "lowest": 11.0,
+    "median": 16.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "LEGO Batman": {
@@ -5717,6 +7199,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.4
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 13,
+    "lowest": 1.7,
+    "median": 9.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "LEGO Indiana Jones: The Original Adventures": {
@@ -5754,6 +7244,10 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.59
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "LEGO Star Wars": {
@@ -5776,6 +7270,18 @@
     "postage": 2.7,
     "truncated": true,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 21,
+    "lowest": 5.2,
+    "median": 8.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 18,
+     "median": 9.53
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Looney Tunes: Acme Arsenal": {
@@ -5802,6 +7308,18 @@
     "complete": {
      "copies": 21,
      "median": 8.65
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 11,
+    "lowest": 4.41,
+    "median": 9.99,
+    "postage": 1.8,
+    "complete": {
+     "copies": 10,
+     "median": 10.5
     },
     "recorded": "2026-10-14"
    }
@@ -5832,6 +7350,14 @@
      "copies": 22,
      "median": 5.22
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 4.39,
+    "median": 5.99,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -5865,6 +7391,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 63.95
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 29.5,
+    "median": 54.75,
+    "postage": 5.1,
+    "recorded": "2026-10-14"
    }
   },
   "Magna Carta: Tears of Blood Deluxe Box Set": {
@@ -5950,6 +7484,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 31.9
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Manhunt 2": {
@@ -5974,6 +7516,14 @@
     "median": 208.7,
     "postage": 5.88,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Marc Ecko's Getting Up: Contents Under Pressure": {
@@ -5997,6 +7547,14 @@
     "lowest": 30.86,
     "median": 30.86,
     "postage": 2.94,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
     "recorded": "2026-10-14"
    }
   },
@@ -6033,6 +7591,14 @@
     "median": 20.0,
     "postage": 0.0,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 5,
+    "lowest": 22.89,
+    "median": 24.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Marvel vs. Capcom 2": {
@@ -6085,6 +7651,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 11.87
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 28.5,
+    "median": 33.75,
+    "postage": 0.9,
+    "recorded": "2026-10-14"
    }
   },
   "Matrix, The: Path of Neo": {
@@ -6121,6 +7695,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 8.65
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 19,
+    "lowest": 8.07,
+    "median": 14.99,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Max Payne": {
@@ -6158,6 +7740,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 7.37
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 49.99,
+    "median": 49.99,
+    "postage": 4.99,
+    "recorded": "2026-10-14"
    }
   },
   "Medal of Honor Collection": {
@@ -6178,6 +7768,10 @@
     "median": 59.99,
     "postage": 0.0,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Medal of Honor Frontline": {
@@ -6216,6 +7810,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 3.5
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 92,
+    "lowest": 2.0,
+    "median": 8.99,
+    "postage": 4.25,
+    "complete": {
+     "copies": 88,
+     "median": 9.15
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Medal of Honor: Rising Sun": {
@@ -6246,6 +7852,18 @@
      "median": 4.33
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 61,
+    "lowest": 3.9,
+    "median": 8.95,
+    "postage": 3.0,
+    "complete": {
+     "copies": 59,
+     "median": 8.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Medal of Honour: Frontline": {
@@ -6266,6 +7884,10 @@
      "median": 4.9
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Mercenaries": {
@@ -6303,6 +7925,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.69
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 11,
+    "lowest": 6.0,
+    "median": 9.99,
+    "postage": 4.99,
+    "complete": {
+     "copies": 10,
+     "median": 10.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Metal Gear Solid 2": {
@@ -6341,6 +7975,19 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.81
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 99,
+    "lowest": 1.99,
+    "median": 9.0,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 94,
+     "median": 9.25
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Metal Gear Solid 2: Sons of Liberty": {
@@ -6371,6 +8018,18 @@
      "median": 6.52
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 104,
+    "lowest": 4.95,
+    "median": 9.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 97,
+     "median": 9.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Metal Gear Solid 2: Substance": {
@@ -6398,6 +8057,14 @@
      "copies": 22,
      "median": 42.5
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 10,
+    "lowest": 14.99,
+    "median": 29.45,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -6436,6 +8103,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 10.8
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 94,
+    "lowest": 3.99,
+    "median": 14.31,
+    "postage": 1.8,
+    "complete": {
+     "copies": 90,
+     "median": 14.72
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Metal Gear Solid 3: Subsistence": {
@@ -6459,6 +8138,14 @@
     "lowest": 37.1,
     "median": 92.15,
     "postage": 3.16,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 34.99,
+    "median": 39.4,
+    "postage": 5.44,
     "recorded": "2026-10-14"
    }
   },
@@ -6495,6 +8182,10 @@
    "UK": {
     "checked": "2026-10-13T12:24Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Miami Vice": {
@@ -6502,7 +8193,7 @@
    "mentions": 2,
    "surging_until": "2026-10-14T20:43Z",
    "US": {
-    "checked": "2026-10-14T09:58Z",
+    "checked": "2026-10-14T10:50Z",
     "copies": 0,
     "lowest": null,
     "median": null,
@@ -6510,7 +8201,7 @@
     "recorded": "2026-10-14"
    },
    "UK": {
-    "checked": "2026-10-14T09:58Z",
+    "checked": "2026-10-14T10:50Z",
     "copies": 7,
     "lowest": 9.72,
     "median": 38.88,
@@ -6519,6 +8210,14 @@
      "copies": 5,
      "median": 44.99
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
     "recorded": "2026-10-14"
    }
   },
@@ -6563,6 +8262,14 @@
      "median": 6.31
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 25,
+    "lowest": 3.5,
+    "median": 7.89,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Midnight Club": {
@@ -6600,6 +8307,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.76
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 36,
+    "lowest": 2.99,
+    "median": 8.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 35,
+     "median": 8.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Midnight Club 3: DUB Edition": {
@@ -6628,6 +8347,14 @@
      "median": 21.5
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 22,
+    "lowest": 3.92,
+    "median": 15.0,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Midnight Club 3: DUB Edition Remix": {
@@ -6655,6 +8382,14 @@
      "copies": 12,
      "median": 43.72
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 10,
+    "lowest": 16.95,
+    "median": 24.05,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -6696,6 +8431,10 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Mobile Suit Gundam: Gundam vs. Zeta Gundam": {
@@ -6735,6 +8474,18 @@
     "lowest": 4.37,
     "median": 11.52,
     "postage": 0.0,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 36,
+    "lowest": 3.99,
+    "median": 6.97,
+    "postage": 0.0,
+    "complete": {
+     "copies": 35,
+     "median": 6.98
+    },
     "recorded": "2026-10-14"
    }
   },
@@ -6802,6 +8553,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 35.02
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 13,
+    "lowest": 4.0,
+    "median": 69.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 11,
+     "median": 69.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Mortal Kombat: Armageddon": {
@@ -6830,6 +8593,14 @@
      "copies": 22,
      "median": 27.77
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 39.95,
+    "median": 45.0,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -6887,6 +8658,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 14.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 25,
+    "lowest": 10.0,
+    "median": 16.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Mortal Kombat: Shaolin Monks": {
@@ -6913,6 +8692,18 @@
     "complete": {
      "copies": 22,
      "median": 29.97
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 6,
+    "lowest": 24.99,
+    "median": 28.38,
+    "postage": 3.0,
+    "complete": {
+     "copies": 5,
+     "median": 29.75
     },
     "recorded": "2026-10-14"
    }
@@ -6961,6 +8752,10 @@
    "UK": {
     "checked": "2026-10-13T19:28Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "NBA '09: The Inside": {
@@ -6981,6 +8776,14 @@
    "UK": {
     "checked": "2026-10-14T05:21Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "NBA Street": {
@@ -7008,6 +8811,18 @@
     "complete": {
      "copies": 29,
      "median": 10.8
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 28,
+    "lowest": 1.95,
+    "median": 9.4,
+    "postage": 1.7,
+    "complete": {
+     "copies": 26,
+     "median": 9.9
     },
     "recorded": "2026-10-14"
    }
@@ -7046,6 +8861,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 18.09
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 89,
+    "lowest": 4.9,
+    "median": 28.99,
+    "postage": 1.8,
+    "complete": {
+     "copies": 85,
+     "median": 28.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Need for Speed ProStreet": {
@@ -7074,6 +8901,18 @@
     "complete": {
      "copies": 98,
      "median": 4.99
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 75,
+    "lowest": 3.0,
+    "median": 7.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 74,
+     "median": 7.9
     },
     "recorded": "2026-10-14"
    }
@@ -7114,6 +8953,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 9.09
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 48,
+    "lowest": 12.5,
+    "median": 19.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 46,
+     "median": 19.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Need for Speed Underground 2": {
@@ -7152,6 +9003,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 17.22
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 32,
+    "lowest": 11.99,
+    "median": 27.34,
+    "postage": 0.9,
+    "complete": {
+     "copies": 29,
+     "median": 28.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Need for Speed: Collector's Series": {
@@ -7204,6 +9067,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 24.91
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 17,
+    "lowest": 10.0,
+    "median": 19.99,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Neo Contra": {
@@ -7232,6 +9103,18 @@
      "median": 99.0
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 69.0,
+    "median": 99.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 2,
+     "median": 84.5
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Network Adapter Start-Up Disc": {
@@ -7256,6 +9139,14 @@
    "UK": {
     "checked": "2026-10-14T06:33Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "NFL 2K3": {
@@ -7280,6 +9171,14 @@
     "lowest": 4.38,
     "median": 7.44,
     "postage": 0.8,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 3.29,
+    "median": 5.99,
+    "postage": 0.9,
     "recorded": "2026-10-14"
    }
   },
@@ -7306,6 +9205,14 @@
    "UK": {
     "checked": "2026-10-14T06:33Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Obscure II": {
@@ -7373,6 +9280,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 7.97
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 16,
+    "lowest": 4.75,
+    "median": 9.75,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Okage: Shadow King": {
@@ -7396,6 +9311,14 @@
     "lowest": null,
     "median": null,
     "postage": null,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 25.0,
+    "median": 25.0,
+    "postage": 6.19,
     "recorded": "2026-10-14"
    }
   },
@@ -7434,6 +9357,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 26.7
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 15,
+    "lowest": 14.9,
+    "median": 23.74,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Onimusha: The Essentials": {
@@ -7486,6 +9417,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 4.38
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 3.7,
+    "median": 8.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Over the Hedge": {
@@ -7512,6 +9451,18 @@
     "complete": {
      "copies": 80,
      "median": 4.4
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 5.99,
+    "median": 7.99,
+    "postage": 1.99,
+    "complete": {
+     "copies": 2,
+     "median": 11.5
     },
     "recorded": "2026-10-14"
    }
@@ -7550,6 +9501,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 83.9
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 5,
+    "lowest": 49.99,
+    "median": 65.0,
+    "postage": 3.99,
+    "recorded": "2026-10-14"
    }
   },
   "Peter Pan": {
@@ -7568,6 +9527,18 @@
     "complete": {
      "copies": 41,
      "median": 6.99
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 19,
+    "lowest": 3.99,
+    "median": 6.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 18,
+     "median": 7.4
     },
     "recorded": "2026-10-14"
    }
@@ -7606,6 +9577,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 7.59
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 25,
+    "lowest": 4.5,
+    "median": 6.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 24,
+     "median": 6.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Pirates: The Legend of Black Kat": {
@@ -7642,6 +9625,18 @@
      "checked": "2026-10-07T00:48Z",
      "median": 13.97
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 11,
+    "lowest": 7.9,
+    "median": 8.99,
+    "postage": 1.8,
+    "complete": {
+     "copies": 9,
+     "median": 9.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Pitfall: The Lost Expedition": {
@@ -7678,6 +9673,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 10.8
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 13.99,
+    "median": 13.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Predator: Concrete Jungle": {
@@ -7723,6 +9726,14 @@
      "median": 4.91
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 8.09,
+    "median": 8.09,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Prince of Persia: The Two Thrones": {
@@ -7750,6 +9761,18 @@
     "complete": {
      "copies": 124,
      "median": 5.44
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 42,
+    "lowest": 2.49,
+    "median": 6.99,
+    "postage": 1.8,
+    "complete": {
+     "copies": 41,
+     "median": 6.99
     },
     "recorded": "2026-10-14"
    }
@@ -7780,6 +9803,19 @@
     "complete": {
      "copies": 41,
      "median": 4.38
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 37,
+    "lowest": 1.95,
+    "median": 4.9,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 35,
+     "median": 4.9
     },
     "recorded": "2026-10-14"
    }
@@ -8625,6 +10661,18 @@
      "median": 39.99
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 9,
+    "lowest": 28.99,
+    "median": 44.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 8,
+     "median": 44.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Ra One: The Game": {
@@ -8659,6 +10707,14 @@
    },
    "UK": {
     "checked": "2026-10-14T07:45Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "copies": 0,
     "lowest": null,
     "median": null,
@@ -8709,6 +10765,18 @@
      "median": 11.87
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 31,
+    "lowest": 9.99,
+    "median": 25.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 30,
+     "median": 27.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Ratchet & Clank: Going Commando": {
@@ -8738,6 +10806,14 @@
      "copies": 8,
      "median": 20.91
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 21,
+    "lowest": 11.99,
+    "median": 19.99,
+    "postage": 1.8,
     "recorded": "2026-10-14"
    }
   },
@@ -8769,6 +10845,18 @@
      "median": 10.99
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 112,
+    "lowest": 3.0,
+    "median": 9.99,
+    "postage": 1.8,
+    "complete": {
+     "copies": 107,
+     "median": 9.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Ratchet: Deadlocked": {
@@ -8797,6 +10885,14 @@
      "copies": 41,
      "median": 14.0
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 42,
+    "lowest": 7.0,
+    "median": 12.0,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -8830,6 +10926,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 196.22
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Rayman M": {
@@ -8854,6 +10958,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 4.91
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 22,
+    "lowest": 4.49,
+    "median": 6.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 20,
+     "median": 6.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Ready 2 Rumble Boxing: Round 2": {
@@ -8890,6 +11006,14 @@
      "checked": "2026-10-07T00:48Z",
      "median": 7.32
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 6.99,
+    "median": 7.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Red Dead Revolver": {
@@ -8926,6 +11050,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 16.09
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 18,
+    "lowest": 7.0,
+    "median": 18.38,
+    "postage": 0.0,
+    "complete": {
+     "copies": 17,
+     "median": 18.85
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Red Faction": {
@@ -8956,6 +11092,18 @@
      "median": 4.09
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 47,
+    "lowest": 2.99,
+    "median": 7.89,
+    "postage": 3.5,
+    "complete": {
+     "copies": 43,
+     "median": 7.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Red Faction 2": {
@@ -8984,6 +11132,18 @@
     "complete": {
      "copies": 79,
      "median": 4.38
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 55,
+    "lowest": 2.99,
+    "median": 5.9,
+    "postage": 1.6,
+    "complete": {
+     "copies": 54,
+     "median": 5.9
     },
     "recorded": "2026-10-14"
    }
@@ -9034,6 +11194,14 @@
      "median": 25.99
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 69.99,
+    "median": 74.99,
+    "postage": 7.09,
+    "recorded": "2026-10-14"
    }
   },
   "Resident Evil 4": {
@@ -9072,6 +11240,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 27.17
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 86,
+    "lowest": 3.99,
+    "median": 17.45,
+    "postage": 3.75,
+    "complete": {
+     "copies": 82,
+     "median": 17.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Resident Evil 4 Premium Edition": {
@@ -9113,6 +11293,18 @@
     "complete": {
      "copies": 73,
      "median": 16.15
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 51,
+    "lowest": 10.71,
+    "median": 23.79,
+    "postage": 3.6,
+    "complete": {
+     "copies": 49,
+     "median": 23.79
     },
     "recorded": "2026-10-14"
    }
@@ -9157,6 +11349,18 @@
     "complete": {
      "copies": 83,
      "median": 50.31
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 80,
+    "lowest": 10.0,
+    "median": 25.0,
+    "postage": 3.7,
+    "complete": {
+     "copies": 79,
+     "median": 25.0
     },
     "recorded": "2026-10-14"
    }
@@ -9252,6 +11456,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 15.07
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 6,
+    "lowest": 16.99,
+    "median": 25.5,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Robot Alchemic Drive": {
@@ -9304,6 +11516,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 58.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 9,
+    "lowest": 5.99,
+    "median": 9.99,
+    "postage": 1.55,
+    "complete": {
+     "copies": 8,
+     "median": 10.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Robotech: Invasion": {
@@ -9324,6 +11548,18 @@
     "median": 10.38,
     "postage": 0.95,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 14,
+    "lowest": 4.0,
+    "median": 7.19,
+    "postage": 0.0,
+    "complete": {
+     "copies": 13,
+     "median": 7.39
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Rogue Galaxy": {
@@ -9350,6 +11586,18 @@
     "complete": {
      "copies": 11,
      "median": 39.99
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 20,
+    "lowest": 14.95,
+    "median": 40.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 18,
+     "median": 42.5
     },
     "recorded": "2026-10-14"
    }
@@ -9379,6 +11627,14 @@
      "copies": 25,
      "median": 8.08
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 7.89,
+    "median": 8.97,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -9432,6 +11688,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 260.7
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 250.0,
+    "median": 259.0,
+    "postage": 6.19,
+    "recorded": "2026-10-14"
    }
   },
   "Saint & Sinner": {
@@ -9548,6 +11812,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 179.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 89.99,
+    "median": 159.99,
+    "postage": 5.19,
+    "complete": {
+     "copies": 2,
+     "median": 194.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Scaler": {
@@ -9580,6 +11856,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 6.52
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 5.0,
+    "median": 14.0,
+    "postage": 3.1,
+    "complete": {
+     "copies": 1,
+     "median": 22.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Scarface: The World Is Yours": {
@@ -9616,6 +11904,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 35.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 15,
+    "lowest": 29.9,
+    "median": 39.99,
+    "postage": 4.99,
+    "recorded": "2026-10-14"
    }
   },
   "Scarface: The World Is Yours Collector's Edition": {
@@ -9700,6 +11996,14 @@
    "UK": {
     "checked": "2026-10-14T06:33Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Sengoku Anthology": {
@@ -9743,6 +12047,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 92.14
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 15,
+    "lowest": 19.0,
+    "median": 145.0,
+    "postage": 1.9,
+    "complete": {
+     "copies": 14,
+     "median": 147.5
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Shadow Hearts: Covenant": {
@@ -9810,6 +12126,14 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Shadow of the Colossus": {
@@ -9847,6 +12171,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 49.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 21,
+    "lowest": 33.0,
+    "median": 55.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 20,
+     "median": 57.48
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Shadow the Hedgehog": {
@@ -9873,6 +12209,18 @@
     "complete": {
      "copies": 146,
      "median": 9.76
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 27,
+    "lowest": 11.99,
+    "median": 17.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 26,
+     "median": 17.95
     },
     "recorded": "2026-10-14"
    }
@@ -9911,6 +12259,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 140.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 5,
+    "lowest": 69.0,
+    "median": 79.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Shin Megami Tensei: Devil Summoner 2 Raiho Special Edition": {
@@ -9995,6 +12351,14 @@
      "median": 31.9
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 13,
+    "lowest": 15.0,
+    "median": 34.9,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Shin Megami Tensei: Persona 3": {
@@ -10071,6 +12435,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 74.25
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 18.0,
+    "median": 69.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Shinobido: Way of the Ninja": {
@@ -10124,6 +12496,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 102.62
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 50,
+    "lowest": 50.11,
+    "median": 79.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 48,
+     "median": 79.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Silent Hill 2: Director's Cut": {
@@ -10148,6 +12532,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 94.63
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 11,
+    "lowest": 57.95,
+    "median": 79.99,
+    "postage": 7.0,
+    "complete": {
+     "copies": 10,
+     "median": 80.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Silent Hill 3": {
@@ -10181,6 +12577,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 119.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 19,
+    "lowest": 54.99,
+    "median": 84.99,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Silent Hill 4: The Room": {
@@ -10217,6 +12621,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 94.3
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 41,
+    "lowest": 29.99,
+    "median": 49.0,
+    "postage": 6.68,
+    "recorded": "2026-10-14"
    }
   },
   "Silent Hill Origins": {
@@ -10301,6 +12713,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 26.7
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 25.0,
+    "median": 49.99,
+    "postage": 0.9,
+    "complete": {
+     "copies": 11,
+     "median": 49.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "SingStar '80s": {
@@ -10329,6 +12753,18 @@
     "complete": {
      "copies": 115,
      "median": 4.13
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 84,
+    "lowest": 1.5,
+    "median": 8.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 82,
+     "median": 9.0
     },
     "recorded": "2026-10-14"
    }
@@ -10363,6 +12799,14 @@
      "median": 100.53
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 13,
+    "lowest": 39.0,
+    "median": 94.99,
+    "postage": 2.9,
+    "recorded": "2026-10-14"
    }
   },
   "Sky Odyssey": {
@@ -10386,6 +12830,18 @@
     "lowest": 4.38,
     "median": 9.69,
     "postage": 2.6,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 5.99,
+    "median": 7.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 10,
+     "median": 7.99
+    },
     "recorded": "2026-10-14"
    }
   },
@@ -10420,6 +12876,14 @@
      "median": 63.09
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 26.9,
+    "median": 32.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Smuggler's Run": {
@@ -10448,6 +12912,14 @@
      "copies": 85,
      "median": 4.99
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 4.24,
+    "median": 7.89,
+    "postage": 1.8,
     "recorded": "2026-10-14"
    }
   },
@@ -10517,6 +12989,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.0
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 36,
+    "lowest": 2.0,
+    "median": 9.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Sonic Unleashed": {
@@ -10553,6 +13033,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 8.66
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 15,
+    "lowest": 8.0,
+    "median": 10.0,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Sony Bravia KDL-22PX300 TV with built-in PS2": {
@@ -10616,6 +13104,14 @@
      "checked": "2026-10-07T00:48Z",
      "median": 6.7
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 17,
+    "lowest": 3.99,
+    "median": 8.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Space Channel 5: Part 2": {
@@ -10635,6 +13131,14 @@
     "lowest": 29.99,
     "median": 53.85,
     "postage": 0.0,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 6,
+    "lowest": 45.99,
+    "median": 49.99,
+    "postage": 2.0,
     "recorded": "2026-10-14"
    }
   },
@@ -10664,6 +13168,14 @@
      "median": 7.79
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 18.99,
+    "median": 18.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Spawn: Armageddon": {
@@ -10687,6 +13199,18 @@
     "lowest": 34.99,
     "median": 71.49,
     "postage": 2.74,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 6,
+    "lowest": 10.0,
+    "median": 71.45,
+    "postage": 0.0,
+    "complete": {
+     "copies": 5,
+     "median": 69.9
+    },
     "recorded": "2026-10-14"
    }
   },
@@ -10726,6 +13250,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.45
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 24,
+    "lowest": 4.18,
+    "median": 9.95,
+    "postage": 1.8,
+    "complete": {
+     "copies": 22,
+     "median": 10.94
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Spider-Man 2": {
@@ -10754,6 +13290,18 @@
     "complete": {
      "copies": 69,
      "median": 8.45
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 40,
+    "lowest": 5.99,
+    "median": 9.99,
+    "postage": 1.8,
+    "complete": {
+     "copies": 39,
+     "median": 9.99
     },
     "recorded": "2026-10-14"
    }
@@ -10792,6 +13340,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 5.98
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 5.75,
+    "median": 5.75,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Splashdown: Rides Gone Wild": {
@@ -10811,6 +13367,10 @@
    },
    "UK": {
     "checked": "2026-10-14T07:45Z",
+    "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "unmatched": true
    }
   },
@@ -10865,6 +13425,19 @@
      "checked": "2026-10-07T07:20Z",
      "median": 3.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 113,
+    "lowest": 2.04,
+    "median": 6.9,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 107,
+     "median": 6.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Spyro: The Eternal Night": {
@@ -10893,6 +13466,10 @@
     "median": 64.99,
     "postage": 0.0,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "SSX": {
@@ -10931,6 +13508,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.44
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 15,
+    "lowest": 5.0,
+    "median": 8.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "SSX 3": {
@@ -10953,6 +13538,18 @@
     "postage": 2.7,
     "truncated": true,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 6.0,
+    "median": 14.45,
+    "postage": 0.9,
+    "complete": {
+     "copies": 10,
+     "median": 14.45
+    },
+    "recorded": "2026-10-14"
    }
   },
   "SSX Tricky": {
@@ -10981,6 +13578,14 @@
      "median": 16.99
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 14.9,
+    "median": 18.55,
+    "postage": 2.25,
+    "recorded": "2026-10-14"
    }
   },
   "Star Academy": {
@@ -10996,6 +13601,10 @@
    },
    "UK": {
     "checked": "2026-10-14T07:45Z",
+    "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "unmatched": true
    }
   },
@@ -11025,6 +13634,14 @@
      "copies": 51,
      "median": 17.27
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 23,
+    "lowest": 7.99,
+    "median": 15.0,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -11058,6 +13675,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 29.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 9.9,
+    "median": 14.89,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Star Wars Battlefront II": {
@@ -11096,6 +13721,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 5.45
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 37,
+    "lowest": 7.36,
+    "median": 13.5,
+    "postage": 0.0,
+    "complete": {
+     "copies": 35,
+     "median": 13.5
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Steambot Chronicles": {
@@ -11171,6 +13808,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 16.24
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 5,
+    "lowest": 38.99,
+    "median": 44.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Suikoden V": {
@@ -11223,6 +13868,18 @@
      "checked": "2026-10-07T00:48Z",
      "median": 5.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 32,
+    "lowest": 2.9,
+    "median": 6.95,
+    "postage": 0.0,
+    "complete": {
+     "copies": 30,
+     "median": 6.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Sword of Etheria": {
@@ -11275,6 +13932,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 7.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 24,
+    "lowest": 11.9,
+    "median": 19.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 20,
+     "median": 19.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Teenage Mutant Ninja Turtles 2: Battle Nexus": {
@@ -11342,6 +14011,19 @@
      "checked": "2026-10-07T07:20Z",
      "median": 9.25
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 78,
+    "lowest": 2.99,
+    "median": 8.9,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 71,
+     "median": 8.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Tekken 5": {
@@ -11379,6 +14061,19 @@
      "checked": "2026-10-07T07:20Z",
      "median": 19.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 51,
+    "lowest": 2.1,
+    "median": 10.0,
+    "postage": 0.0,
+    "truncated": true,
+    "complete": {
+     "copies": 46,
+     "median": 10.25
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Tekken 5 Ultimate Collector's Edition": {
@@ -11432,6 +14127,18 @@
      "checked": "2026-10-07T00:48Z",
      "median": 7.54
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 61,
+    "lowest": 4.99,
+    "median": 8.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 57,
+     "median": 9.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Tengai": {
@@ -11480,6 +14187,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 8.26
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 6.99,
+    "median": 8.49,
+    "postage": 1.0,
+    "complete": {
+     "copies": 7,
+     "median": 7.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Test Drive: Eve of Destruction": {
@@ -11496,6 +14215,14 @@
    "UK": {
     "checked": "2026-10-13T19:28Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "The Getaway [Limited Edition]": {
@@ -11555,6 +14282,14 @@
      "median": 20.75
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "The Italian Job": {
@@ -11591,6 +14326,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 4.38
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 39,
+    "lowest": 2.99,
+    "median": 6.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 37,
+     "median": 6.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "The Lord of the Rings: Aragorn's Quest": {
@@ -11623,6 +14370,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 89.09
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "The Mummy": {
@@ -11660,6 +14415,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 8.81
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 6.45,
+    "median": 7.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "The Mummy Returns": {
@@ -11696,6 +14459,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 6.43
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "The Punisher": {
@@ -11732,6 +14503,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 47.74
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "The Silent Hill Collection": {
@@ -11747,6 +14526,14 @@
     "lowest": 281.5,
     "median": 349.99,
     "postage": 6.7,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 190.0,
+    "median": 200.0,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -11786,6 +14573,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 9.72
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 7.19,
+    "median": 11.1,
+    "postage": 0.0,
+    "complete": {
+     "copies": 1,
+     "median": 15.0
+    },
+    "recorded": "2026-10-14"
    }
   },
   "The Sopranos: Road to Respect Limited Edition": {
@@ -11855,6 +14654,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 3.95
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 1.95,
+    "median": 5.99,
+    "postage": 1.8,
+    "complete": {
+     "copies": 11,
+     "median": 5.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "TimeSplitters 2": {
@@ -11893,6 +14704,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 6.52
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 36,
+    "lowest": 4.99,
+    "median": 9.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 34,
+     "median": 9.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Tokyo Xtreme Racer Drift": {
@@ -11918,6 +14741,14 @@
    "UK": {
     "checked": "2026-10-14T07:45Z",
     "unmatched": true
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Tom & Jerry: War of the Whiskers": {
@@ -11954,6 +14785,14 @@
      "checked": "2026-10-07T00:48Z",
      "median": 10.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 1,
+    "lowest": 28.75,
+    "median": 28.75,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "Tomb Raider: Anniversary": {
@@ -11992,6 +14831,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 8.93
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 69,
+    "lowest": 5.95,
+    "median": 9.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 67,
+     "median": 9.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Tony Hawk's American Wasteland": {
@@ -12029,6 +14880,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 7.05
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 63,
+    "lowest": 3.9,
+    "median": 6.99,
+    "postage": 1.6,
+    "complete": {
+     "copies": 61,
+     "median": 6.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Tony Hawk's Underground": {
@@ -12067,6 +14930,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 6.52
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 25,
+    "lowest": 4.99,
+    "median": 10.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 23,
+     "median": 10.99
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Tony Hawk's Underground 2": {
@@ -12105,6 +14980,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 9.89
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 19,
+    "lowest": 6.0,
+    "median": 12.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 18,
+     "median": 12.98
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Top Gun": {
@@ -12129,6 +15016,14 @@
     "lowest": 4.98,
     "median": 11.99,
     "postage": 0.46,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 17,
+    "lowest": 4.95,
+    "median": 6.99,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -12166,6 +15061,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 49.95
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 5,
+    "lowest": 24.9,
+    "median": 39.9,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Trigger Man": {
@@ -12199,6 +15102,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 14.84
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 5,
+    "lowest": 6.9,
+    "median": 11.5,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Tsugunai: Atonement": {
@@ -12243,6 +15154,14 @@
      "median": 5.4
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 9,
+    "lowest": 9.99,
+    "median": 11.89,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "UEFA Champions League": {
@@ -12257,6 +15176,14 @@
     "copies": 15,
     "lowest": 2.24,
     "median": 5.45,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 14,
+    "lowest": 4.72,
+    "median": 5.99,
     "postage": 0.0,
     "recorded": "2026-10-14"
    }
@@ -12302,6 +15229,14 @@
      "median": 52.7
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 7,
+    "lowest": 39.99,
+    "median": 49.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "V-Rally 3": {
@@ -12328,6 +15263,18 @@
     "complete": {
      "copies": 78,
      "median": 4.9
+    },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 70,
+    "lowest": 1.95,
+    "median": 5.9,
+    "postage": 0.0,
+    "complete": {
+     "copies": 68,
+     "median": 5.9
     },
     "recorded": "2026-10-14"
    }
@@ -12366,6 +15313,14 @@
      "checked": "2026-10-07T00:48Z",
      "median": 19.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 14,
+    "lowest": 11.29,
+    "median": 23.95,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Van Helsing": {
@@ -12402,6 +15357,18 @@
      "checked": "2026-10-06T22:41Z",
      "median": 7.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 12,
+    "lowest": 9.99,
+    "median": 12.49,
+    "postage": 0.9,
+    "complete": {
+     "copies": 11,
+     "median": 12.49
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Victorious Boxers 2: Fighting Spirit": {
@@ -12445,6 +15412,14 @@
      "median": 26.65
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 16,
+    "lowest": 10.0,
+    "median": 19.47,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Virtua Fighter 4": {
@@ -12482,6 +15457,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 6.52
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 57,
+    "lowest": 3.0,
+    "median": 8.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 54,
+     "median": 8.47
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Virtua Fighter: 10th Anniversary Edition": {
@@ -12498,6 +15485,14 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "WALL-E": {
@@ -12526,6 +15521,14 @@
      "median": 6.25
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 6.95,
+    "median": 7.99,
+    "postage": 0.9,
+    "recorded": "2026-10-14"
    }
   },
   "Way of the Samurai 2": {
@@ -12549,6 +15552,18 @@
     "lowest": 29.99,
     "median": 66.99,
     "postage": 0.0,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 14.95,
+    "median": 29.99,
+    "postage": 0.9,
+    "complete": {
+     "copies": 7,
+     "median": 29.99
+    },
     "recorded": "2026-10-14"
    }
   },
@@ -12577,6 +15592,14 @@
      "copies": 16,
      "median": 38.12
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 58.99,
+    "median": 59.99,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -12607,6 +15630,14 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Wild Arms 4": {
@@ -12689,6 +15720,14 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
    }
   },
   "Winning Eleven 6": {
@@ -12704,6 +15743,14 @@
    },
    "UK": {
     "checked": "2026-10-14T07:45Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "copies": 0,
     "lowest": null,
     "median": null,
@@ -12733,6 +15780,10 @@
      "checked": "2026-10-07T07:20Z",
      "median": 13.98
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "Winx Club": {
@@ -12751,6 +15802,14 @@
     "copies": 4,
     "lowest": 47.99,
     "median": 69.91,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 2,
+    "lowest": 39.9,
+    "median": 39.95,
     "postage": 0.0,
     "recorded": "2026-10-14"
    }
@@ -12796,6 +15855,14 @@
      "median": 6.98
     },
     "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 19,
+    "lowest": 3.04,
+    "median": 8.9,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Wizadry: Tale of the Forsaken": {
@@ -12811,6 +15878,14 @@
    },
    "UK": {
     "checked": "2026-10-14T07:45Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
     "copies": 0,
     "lowest": null,
     "median": null,
@@ -12851,6 +15926,10 @@
      "checked": "2026-10-07T07:20Z",
      "median": 149.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "unmatched": true
    }
   },
   "World Destruction League: Thunder Tanks": {
@@ -12887,6 +15966,18 @@
      "checked": "2026-10-07T00:48Z",
      "median": 7.37
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 9,
+    "lowest": 6.49,
+    "median": 14.99,
+    "postage": 0.0,
+    "complete": {
+     "copies": 8,
+     "median": 11.95
+    },
+    "recorded": "2026-10-14"
    }
   },
   "World Quiz": {
@@ -12925,6 +16016,14 @@
      "copies": 3,
      "median": 64.99
     },
+    "recorded": "2026-10-14"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 8,
+    "lowest": 5.4,
+    "median": 9.93,
+    "postage": 0.0,
     "recorded": "2026-10-14"
    }
   },
@@ -12977,6 +16076,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 10.8
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 11.59,
+    "median": 17.32,
+    "postage": 1.35,
+    "recorded": "2026-10-14"
    }
   },
   "WWE SmackDown! vs. RAW": {
@@ -13015,6 +16122,15 @@
      "checked": "2026-10-07T07:20Z",
      "median": 4.59
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 32,
+    "lowest": 4.0,
+    "median": 6.0,
+    "postage": 0.0,
+    "truncated": true,
+    "recorded": "2026-10-14"
    }
   },
   "WWE SmackDown! vs. RAW 2006": {
@@ -13053,6 +16169,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 6.51
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 36,
+    "lowest": 3.83,
+    "median": 6.49,
+    "postage": 1.8,
+    "recorded": "2026-10-14"
    }
   },
   "X-Files: Resist or Serve": {
@@ -13089,6 +16213,14 @@
     "median": 20.5,
     "postage": 0.0,
     "recorded": "2026-10-13"
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 4,
+    "lowest": 18.9,
+    "median": 21.47,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "X-Men Origins: Wolverine": {
@@ -13117,6 +16249,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 99.99
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 6,
+    "lowest": 16.0,
+    "median": 19.36,
+    "postage": 4.99,
+    "recorded": "2026-10-14"
    }
   },
   "X-Men: The Official Game": {
@@ -13154,6 +16294,14 @@
      "checked": "2026-10-06T22:41Z",
      "median": 5.97
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 3,
+    "lowest": 16.99,
+    "median": 23.99,
+    "postage": 0.0,
+    "recorded": "2026-10-14"
    }
   },
   "Xenosaga Episode III: Also sprach Zarathustra": {
@@ -13206,6 +16354,14 @@
      "checked": "2026-10-07T07:20Z",
      "median": 5.15
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 39,
+    "lowest": 4.0,
+    "median": 7.19,
+    "postage": 0.8,
+    "recorded": "2026-10-14"
    }
   },
   "Yakuza": {
@@ -13243,6 +16399,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 37.84
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 16,
+    "lowest": 6.0,
+    "median": 33.6,
+    "postage": 1.0,
+    "complete": {
+     "copies": 15,
+     "median": 34.9
+    },
+    "recorded": "2026-10-14"
    }
   },
   "Zombie Hunters": {
@@ -13306,6 +16474,18 @@
      "checked": "2026-10-07T07:20Z",
      "median": 12.01
     }
+   },
+   "DE": {
+    "checked": "2026-10-14T10:50Z",
+    "copies": 32,
+    "lowest": 4.29,
+    "median": 11.0,
+    "postage": 0.0,
+    "complete": {
+     "copies": 31,
+     "median": 11.99
+    },
+    "recorded": "2026-10-14"
    }
   }
  },
