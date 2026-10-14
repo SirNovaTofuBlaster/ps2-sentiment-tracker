@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-14 23:30:44 UTC",
+  "last_updated": "2026-10-14 23:44:47 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /vmg/ naming Suikoden V",
+      "source": "4chan /vmg/",
+      "source_type": "4chan",
+      "feed": "4chan:vmg",
+      "link": "https://boards.4chan.org/vmg/thread/2230538",
+      "matched_game": "Suikoden V",
+      "matched_games": [
+        "Suikoden V"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 23:38 UTC"
+    },
     {
       "headline": "This hobby is heartbreaking",
       "source": "r/pcmasterrace",
@@ -84,6 +103,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-14 23:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4 and Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749703046",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-14 23:18 UTC"
     },
@@ -229953,19 +229992,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-09-30 23:44 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "'We Want to Find a Way': SEGA Eager to Bring Sakura Wars Games to Modern Consoles",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/we-want-to-find-a-way-sega-eager-to-bring-sakura-wars-games-to-modern-consoles",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-09-30 23:30 UTC",
       "is_digital_only": false
     }
   ]
