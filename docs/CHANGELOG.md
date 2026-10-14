@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: eBay France
+
+- Asked: the next European site after Germany. `EBAY_FR` in `MARKETS`: euros, once a day, keyword
+  search only, the UK's regional names, French junk and incomplete-copy words (not yet checked on live
+  listings). `index.html`: FR beside DE everywhere (price chips link, chart button, dim time, euros).
+  `guide.html` updated. Tests: `FranceTests`, and the Node check now covers each extra site's clock.
+
 ## 2026-10-14: eBay Germany
 
 - Asked: add the European eBay sites one at a time, starting with Germany (the probe on 2026-10-14

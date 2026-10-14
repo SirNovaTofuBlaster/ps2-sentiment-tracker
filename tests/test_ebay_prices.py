@@ -40,6 +40,7 @@ SCRAPER_WORKFLOW = ROOT / ".github" / "workflows" / "scraper.yml"
 US = ebay_prices.MARKETS["EBAY_US"]
 GB = ebay_prices.MARKETS["EBAY_GB"]
 DE = ebay_prices.MARKETS["EBAY_DE"]
+FR = ebay_prices.MARKETS["EBAY_FR"]
 # Most tests here were written for the first two sites and count lookups, searches and columns for
 # exactly those. They run in that world; the sites added since are tested on their own (GermanyTests,
 # ExtraSiteGroundworkTests), which put the site back for the length of the test.
@@ -1196,6 +1197,63 @@ class GermanyTests(unittest.TestCase):
         sandbox.now = NOON + timedelta(hours=25)
         code, printed, fake = sandbox.run(FakeHttp(answer))
         self.assertIn("Kuon [DE]", printed)
+
+
+class FranceTests(unittest.TestCase):
+    """eBay France as defined in ebay_prices.py, switched on for the length of each test."""
+
+    def setUp(self):
+        patcher = mock.patch.dict(ebay_prices.MARKETS, {"EBAY_FR": FR})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_the_definition_is_sound(self):
+        self.assertEqual((FR["label"], FR["site"], FR["country"], FR["currency"]), ("FR", "www.ebay.fr", "FR", "EUR"))
+        self.assertTrue(FR["extra"] and FR["keyword_only"])
+        self.assertEqual((FR["min_every_hours"], FR["names_like"]), (24, "UK"))
+        for field in ("foreign", "junk", "incomplete"):
+            phrases = FR[field]
+            self.assertEqual(len(phrases), len(set(phrases)), field)
+            for phrase in phrases:
+                self.assertEqual(phrase, " ".join(ebay_prices.words(phrase)), f"{field} {phrase!r} is not in words() form")
+
+    def test_french_sellers_junk_is_left_out_and_a_normal_copy_counts(self):
+        entry = game("Kuon")
+        for title in ("Kuon PS2 boîtier seul", "Kuon PS2 notice seule", "Kuon PS2 sans jeu", "Kuon PS2 défectueux",
+                      "Kuon PS2 ne fonctionne pas", "Kuon PS2 pour pièces", "Kuon PS2 guide officiel"):
+            self.assertEqual(ebay_prices.reject_reason(listing(title, 12, "EUR"), entry, FR, False), "not_a_copy", title)
+        self.assertIsNone(ebay_prices.reject_reason(listing("Kuon PS2 PAL complet avec notice", 30, "EUR"), entry, FR, False))
+        self.assertEqual(ebay_prices.reject_reason(listing("Kuon PS2 NTSC USA", 30, "EUR"), entry, FR, False), "import")
+
+    def test_a_copy_without_its_manual_is_counted_but_marked_incomplete(self):
+        result = ebay_prices.summarise(page(listing("Kuon PS2 sans notice", 20, "EUR"))[1], game("Kuon"), FR, False)
+        self.assertEqual((result["counted"], result["incomplete_hint"]), (1, 1))
+
+    def test_it_runs_after_the_first_two_sites_and_on_its_own_clock(self):
+        stamp = lambda hours: (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)   # noqa: E731
+        entry = game("Kuon")
+        self.assertEqual([m for _, m in ebay_prices.due_lookups([entry], {}, NOON)], ["EBAY_GB", "EBAY_US", "EBAY_FR"])
+        state = {"games": {"Kuon": {"FR": {"checked": stamp(7)}}}}
+        self.assertNotIn("EBAY_FR", [m for _, m in ebay_prices.due_lookups([entry], state, NOON)])
+        state["games"]["Kuon"]["FR"]["checked"] = stamp(24)
+        self.assertIn("EBAY_FR", [m for _, m in ebay_prices.due_lookups([entry], state, NOON)])
+
+    def test_both_new_sites_together_are_priced_in_euros_and_searched_by_keyword(self):
+        with mock.patch.dict(ebay_prices.MARKETS, {"EBAY_DE": DE}):
+            sandbox = Sandbox(self, feed=[mention("Kuon", 5, "r/ps2")])
+
+            def answer(params, headers):
+                currency = {"EBAY_GB": "GBP", "EBAY_DE": "EUR", "EBAY_FR": "EUR"}.get(headers["X-EBAY-C-MARKETPLACE-ID"], "USD")
+                name = params["q"].replace(" ps2", "")
+                return page(listing(f"{name} PS2", 20, currency=currency, item_id=1),
+                            listing(f"{name} PS2 complet", 30, currency=currency, item_id=2))
+            code, printed, fake = sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        self.assertEqual(sandbox.latest["currencies"], {"US": "USD", "UK": "GBP", "DE": "EUR", "FR": "EUR"})
+        self.assertEqual(sandbox.latest["games"]["Kuon"]["FR"]["median"], 25.0)
+        for search in fake.searches:
+            if search["headers"]["X-EBAY-C-MARKETPLACE-ID"] in ("EBAY_DE", "EBAY_FR"):
+                self.assertNotIn("aspect_filter", search["params"])
 
 
 class DueTests(unittest.TestCase):
