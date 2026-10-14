@@ -334,8 +334,8 @@ Before you call something done, prove it; don't assume it.
     network. It reads no state and writes no file. A site is added to `MARKETS` only after those
     counts, and the code that loops over `MARKETS` (and the dashboard's site labels) must be
     checked first: adding a market there prices every tracked game on it.
-  - Germany (`EBAY_DE`, switched on 2026-10-14; France, Italy and Spain follow one at a time; Poland is
-    left off): an `extra` site in `MARKETS`. It is priced in euros, once a day (`min_every_hours`: 24, its
+  - Germany (`EBAY_DE`) and France (`EBAY_FR`), both switched on 2026-10-14; Italy and Spain follow one at a time; Poland is
+    left off: an `extra` site in `MARKETS`. It is priced in euros, once a day (`min_every_hours`: 24, its
     own clock, so it cannot slow the first two), after every lookup on the US and UK, and a run is
     judged on the US and UK alone, so a failing German site cannot discard their answers. It is searched
     by keyword only (`keyword_only`: the probe counted listings by "ps2" and the category, and nobody
@@ -344,7 +344,7 @@ Before you call something done, prove it; don't assume it.
     sellers list games and not yet checked against live ones: read the first run's skip counts on the
     `ebay-data` branch and fix the lists. Consoles stay off it unless they name it. To add the next site:
     a `MARKETS` entry like Germany's, one `PRICE_LOOKUPS` link and the three constants in index.html, the
-    guide, and `GermanyTests`-style tests; the Node check compares the two lists.
+    guide, and `FranceTests`-style tests; the Node check compares the two lists.
   - A production keyset stays disabled until eBay's marketplace account deletion notifications
     are subscribed to or opted out of in the developer portal.
 - **Euros**

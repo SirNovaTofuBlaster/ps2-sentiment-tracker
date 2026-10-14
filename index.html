@@ -378,6 +378,9 @@
             { id: 'ebay-de', region: 'PAL', fa: 'fa-brands fa-ebay', sup: 'DE',
               hint: 'eBay Germany — current listings, not sold prices',
               url: t => `https://www.ebay.de/sch/i.html?_nkw=${encodeURIComponent(t + ' ps2')}` },
+            { id: 'ebay-fr', region: 'PAL', fa: 'fa-brands fa-ebay', sup: 'FR',
+              hint: 'eBay France — current listings, not sold prices',
+              url: t => `https://www.ebay.fr/sch/i.html?_nkw=${encodeURIComponent(t + ' ps2')}` },
             { id: 'cex', region: 'PAL', mark: 'CeX',
               hint: "CeX UK — one retailer's current price",
               url: t => `https://uk.webuy.com/search?stext=${encodeURIComponent(t + ' ps2')}` },
@@ -825,11 +828,11 @@
            appears, and the "eBay prices" page lists every tracked game in full.
            Without the file nothing is shown beside the names and that page says so.
         -------------------------------------------------------------------- */
-        const PRICE_SITES = ['US', 'UK', 'DE'];   // as MARKETS in ebay_prices.py
-        const PRICE_SEARCH = { US: 'ebay-us', UK: 'ebay-uk', DE: 'ebay-de' };
+        const PRICE_SITES = ['US', 'UK', 'DE', 'FR'];   // as MARKETS in ebay_prices.py
+        const PRICE_SEARCH = { US: 'ebay-us', UK: 'ebay-uk', DE: 'ebay-de', FR: 'ebay-fr' };
         // A site added later is checked less often (min_every_hours in ebay_prices.py), so its
         // figures are overdue later: the hours a figure there may be old before it is dimmed.
-        const SITE_STALE_HOURS = { DE: 30 };   // the PRICE_LOOKUPS entry a figure links to
+        const SITE_STALE_HOURS = { DE: 30, FR: 30 };   // the PRICE_LOOKUPS entry a figure links to
         let priceData = null;          // data/prices/latest.json as loaded, or null
         let priceIndex = new Map();    // priceKey(title) -> { title, entry, level, mentions }
         let priceWatchlist = null;     // ebay_watchlist.json as loaded, or null
@@ -878,7 +881,7 @@
 
         const currencyOf = (label, data = priceData) => {
             const stated = data?.currencies?.[label];
-            return typeof stated === 'string' && stated ? stated : label === 'UK' ? 'GBP' : label === 'DE' ? 'EUR' : 'USD';
+            return typeof stated === 'string' && stated ? stated : label === 'UK' ? 'GBP' : label === 'DE' || label === 'FR' ? 'EUR' : 'USD';
         };
         // "stale" is how many hours may pass before a figure counts as overdue for its level
         // and is dimmed: a little longer than the gap between that level's checks.

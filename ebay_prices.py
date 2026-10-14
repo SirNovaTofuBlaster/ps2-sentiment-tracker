@@ -140,6 +140,17 @@ MARKETS = {
                          "plusch", "nachbau"),
                 "incomplete": ("ohne anleitung", "ohne ovp", "ohne hulle", "ohne cover", "ohne handbuch",
                                "nur disc", "nur cd", "nur dvd", "nur spiel", "lose", "ohne box")},
+    # France (switched on 2026-10-14): as Germany, with French sellers' words, written the same way
+    # (no accents) and equally not yet checked against live listings.
+    "EBAY_FR": {"label": "FR", "site": "www.ebay.fr", "country": "FR", "currency": "EUR",
+                "extra": True, "min_every_hours": 24, "names_like": "UK", "keyword_only": True,
+                "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
+                "junk": ("boite seule", "boitier seul", "notice seule", "livret seul", "jaquette seule", "coque seule",
+                         "sans jeu", "sans disque", "boitier vide", "boite vide", "defectueux", "en panne",
+                         "ne fonctionne pas", "hors service", "pour pieces", "collection", "guide officiel",
+                         "guide strategique", "solution complete", "copie", "figurine", "peluche"),
+                "incomplete": ("sans notice", "sans boite", "sans boitier", "sans jaquette", "sans livret",
+                               "disque seul", "jeu seul", "cd seul", "dvd seul", "loose")},
 }
 
 # ---- How often each game is checked -------------------------------------------------
