@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: covers for games the library names differently
+
+- 15 library names the Libretro collection files under a longer or publisher's title now share that game's cover (`MANUAL` in `tools/build_covers.py`): Metal Gear
+  Solid 2 (Sons of Liberty), Splinter Cell, Tomb Raider: Anniversary, Cars Race-O-Rama and Mater-National, Spyro: The Eternal Night, the two James Bond 007 games, King's Field IV,
+  Over the Hedge, Donald Duck Goin' Quackers, EyeToy, Pimp My Ride, Dead or Alive 2: Hardcore, Arena Football. `covers.json` gained exactly those 15 keys.
+- The Silent Hill Collection (the PS2 box set of 2, 3 and 4) has no file in the collection, so it keeps its initials tile.
+
 ## 2026-10-14: Demand tab, a longer shelf
 
 - The Demand Index has its own **Demand** tab (`#demand`) instead of sharing the Tracker's second column, which made the Tracker wrap awkwardly: each row is a rank,

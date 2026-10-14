@@ -67,7 +67,26 @@ def build(names):
 
 
 # Titles the collection files under another name (a Japanese or European title).
-MANUAL = {"okami": "ookami"}
+MANUAL = {
+    "okami": "ookami",
+    # The library's name for a game the collection files under its full or publisher's title (2026-10-14: the same game, found
+    # from the 24-hour shelf, where "Metal Gear Solid 2" had a tile without a picture).
+    "metal gear solid 2": "metal gear solid 2 sons of liberty",
+    "splinter cell": "tom clancys splinter cell",
+    "tomb raider anniversary": "lara croft tomb raider anniversary",
+    "cars race o rama": "disney pixar cars race o rama",
+    "disney pixars cars mater national": "disney pixar cars mater national championship",
+    "spyro the eternal night": "legend of spyro the eternal night",
+    "james bond 007 everything or nothing": "007 everything or nothing",
+    "james bond 007 from russia with love": "007 from russia with love",
+    "kings field 4 the ancient city": "kings field the ancient city",
+    "over the hedge": "dreamworks over the hedge",
+    "donald duck goin quackers": "disneys donald duck goin quackers",
+    "eyetoy": "eyetoy play",
+    "pimp my ride": "mtv pimp my ride",
+    "dead or alive 2 hardcore": "dead or alive 2",
+    "arena football ea sports": "arena football",
+}
 
 
 def typo_of(key, spellings, unpadded):
