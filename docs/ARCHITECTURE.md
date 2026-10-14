@@ -371,7 +371,7 @@ On top of the levels, a `normal` or `staple` game that has priced the same for d
 | `rare` | On the Rarest page and not tracked otherwise | Once a day, on its list's site only |
 
 A mention found only in an item's body text keeps a game `normal` but never makes it surge. A
-run uses at most 500 searches and stops for the day at 4,500 of eBay's 5,000; surging games go
+run uses at most 500 searches and stops for the day at 4,900 of eBay's 5,000; surging games go
 first, then pinned ones, then whatever is longest overdue. What is left waits for the next run.
 
 **What it asks.** eBay's Browse API, with an application token from the client-credentials

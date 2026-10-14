@@ -255,7 +255,7 @@ Before you call something done, prove it; don't assume it.
     (a game the feed rarely names, named in headlines by 2+ sources within 24 hours) on every
     run for 48 hours; `normal` and `staple` (named on 5+ of the last 14 days, never surging)
     every 6 hours, except a *steady* game on one site (see below), which waits 48 hours; `dormant` (mentioned once, quiet for 14 days) daily. A run uses at most 500
-    searches and stops for the day at 4,500.
+    searches and stops for the day at 4,900.
   - Steady games (2026-10-14): a `normal` or `staple`, unpinned game on one site is looked up every 48
     hours (`STEADY_EVERY_HOURS`) while, in the last 6 days of history, it had 50+ copies at every check,
     its median stayed within 10% and its copy count within 30% of their middles, with 3+ rows spanning

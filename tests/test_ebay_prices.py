@@ -1028,6 +1028,67 @@ class SteadyTests(unittest.TestCase):
         self.assertEqual(self.due(entry, 7, history), 1, "the US is steady and the UK has no history")
 
 
+class ExtraSiteGroundworkTests(unittest.TestCase):
+    """What a site added later (Germany, say) is given, tested with a made-up one so that nothing
+    depends on that site being switched on."""
+    DE = {"label": "DE", "site": "www.ebay.de", "country": "DE", "currency": "EUR", "extra": True,
+          "min_every_hours": 24, "foreign": ("ntsc", "usa"), "junk": ("nur huelle", "defekt")}
+
+    def markets(self):
+        return mock.patch.dict(ebay_prices.MARKETS, {"EBAY_DE": self.DE})
+
+    def test_the_search_allowance_leaves_a_little_room_under_five_thousand(self):
+        self.assertEqual(ebay_prices.DAILY_SEARCHES, 4900)
+        self.assertLessEqual(ebay_prices.DAILY_SEARCHES, 5000 - 100)
+        self.assertGreater(ebay_prices.DAILY_SEARCHES, ebay_prices.MAX_SEARCHES_PER_RUN)
+
+    def test_the_two_first_sites_are_untouched(self):
+        self.assertEqual(list(ebay_prices.MARKETS), ["EBAY_US", "EBAY_GB"])
+        for market in ebay_prices.MARKETS.values():
+            self.assertFalse({"extra", "min_every_hours", "junk"} & set(market))
+
+    def test_an_extra_site_has_its_own_slower_clock(self):
+        entry = game("Kuon")
+        stamp = lambda hours: (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)   # noqa: E731
+        with self.markets():
+            state = {"games": {"Kuon": {"US": {"checked": stamp(7)}, "UK": {"checked": stamp(7)},
+                                        "DE": {"checked": stamp(7)}}}}
+            self.assertEqual([m for _, m in ebay_prices.due_lookups([entry], state, NOON)], ["EBAY_GB", "EBAY_US"])
+            state["games"]["Kuon"]["DE"]["checked"] = stamp(24)
+            self.assertIn("EBAY_DE", [m for _, m in ebay_prices.due_lookups([entry], state, NOON)])
+            state["games"]["Kuon"]["DE"]["checked"] = stamp(23)
+            self.assertNotIn("EBAY_DE", [m for _, m in ebay_prices.due_lookups([entry], state, NOON)], "a surging game too")
+            surging = game("Kuon", level="surging")
+            self.assertNotIn("EBAY_DE", [m for _, m in ebay_prices.due_lookups([surging], state, NOON)])
+
+    def test_a_game_never_checked_on_the_new_site_is_due_there_at_once(self):
+        with self.markets():
+            self.assertIn("EBAY_DE", [m for _, m in ebay_prices.due_lookups([game("Kuon")], {}, NOON)])
+
+    def test_a_game_only_on_the_rarest_page_is_not_looked_up_on_the_new_site(self):
+        entry = dict(game("Kuon", level="rare"), sites=["EBAY_GB"])
+        with self.markets():
+            self.assertEqual([m for _, m in ebay_prices.due_lookups([entry], {}, NOON)], ["EBAY_GB"])
+
+    def test_junk_words_of_a_site_leave_a_listing_out_only_there(self):
+        entry = game("Kuon")
+        item = listing("Kuon PS2 nur Huelle", 12, "EUR")
+        with self.markets():
+            self.assertEqual(ebay_prices.reject_reason(item, entry, self.DE, False), "not_a_copy")
+            self.assertIsNone(ebay_prices.reject_reason(listing("Kuon PS2 Spiel", 12, "EUR"), entry, self.DE, False))
+            self.assertIsNone(ebay_prices.reject_reason(listing("Kuon PS2 nur Huelle", 12, "GBP"), entry, GB, False))
+
+    def test_consoles_stay_off_an_extra_site_unless_they_name_it(self):
+        with tempfile.TemporaryDirectory() as folder, self.markets():
+            path = Path(folder) / "rare_consoles.json"
+            plain = {"rank": 1, "name": "PS2 Pearl", "search": {"queries": ["ps2 pearl white"], "require": ["pearl"]}}
+            path.write_text(json.dumps({"consoles": [plain, dict(plain, rank=2, name="PS2 Pearl DE", sites=["DE"])]}), encoding="utf-8")
+            consoles, problems = ebay_prices.load_consoles(path)
+            self.assertEqual(problems, [])
+            self.assertEqual(consoles[0]["sites"], ["EBAY_US", "EBAY_GB"])
+            self.assertEqual(consoles[1]["sites"], ["EBAY_DE"])
+
+
 class DueTests(unittest.TestCase):
     @staticmethod
     def state(**checked):
@@ -2306,13 +2367,13 @@ class EndToEndTests(unittest.TestCase):
         self.assertIn("Kuon [UK]: FAILED HTTP 500: Internal error for Bearer ***", printed)
 
     def test_the_days_allowance_carries_over_between_runs_and_stops_the_day(self):
-        self.sandbox.write("data/prices/latest.json", {"searches": {"day": "2026-10-06", "used": 4497}, "games": {}})
+        self.sandbox.write("data/prices/latest.json", {"searches": {"day": "2026-10-06", "used": ebay_prices.DAILY_SEARCHES - 3}, "games": {}})
         code, printed, fake = self.sandbox.run()
         self.assertIn("This run may use 3 searches.", printed)
         self.assertEqual(len(fake.searches), 2)
         self.assertIn("Stopped early: this run's allowance of searches is used.", printed)
         self.assertIn("2 left for the next run.", printed)
-        self.assertEqual(self.sandbox.latest["searches"], {"day": "2026-10-06", "used": 4499})
+        self.assertEqual(self.sandbox.latest["searches"], {"day": "2026-10-06", "used": ebay_prices.DAILY_SEARCHES - 1})
         code, printed, fake = self.sandbox.run()
         self.assertEqual(code, 0)
         self.assertIn("Today's allowance of eBay searches is used up", printed)
