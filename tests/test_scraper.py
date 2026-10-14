@@ -376,6 +376,24 @@ class TitleCacheTests(unittest.TestCase):
 
 
 class CeilingTests(unittest.TestCase):
+    def test_the_ceiling_raises_itself_with_room_to_spare_up_to_a_hard_limit(self):
+        self.assertEqual(scraper.item_ceiling(0), scraper.MAX_ITEMS)
+        self.assertEqual(scraper.item_ceiling(18000), scraper.MAX_ITEMS, "unchanged while there is room")
+        self.assertEqual(scraper.item_ceiling(27000), scraper.MAX_ITEMS, "90% is still fine")
+        self.assertEqual(scraper.item_ceiling(27001), 35000)
+        self.assertEqual(scraper.item_ceiling(30000), 35000)
+        self.assertEqual(scraper.item_ceiling(33000), 40000)
+        for count in range(27001, 90000, 997):
+            ceiling = scraper.item_ceiling(count)
+            self.assertEqual(ceiling % scraper.CEILING_STEP, 0)
+            self.assertLessEqual(ceiling, scraper.CEILING_HARD_MAX)
+            if count < scraper.CEILING_HARD_MAX * 0.9:
+                self.assertGreaterEqual(ceiling, count * 1.1 - 1, "at least a tenth of room")
+        self.assertEqual(scraper.item_ceiling(500000), scraper.CEILING_HARD_MAX, "never past the hard limit")
+        items = [self.item(n) for n in range(40)]
+        self.assertEqual(len(scraper.within_ceiling(items, 25)), 25)
+        self.assertIs(scraper.within_ceiling(items, 40), items)
+
     def item(self, n, game=None):
         return {"headline": f"item {n}", "matched_game": game, "timestamp": f"2026-01-01 {23 - n // 60:02d}:{59 - n % 60:02d} UTC"}
 
@@ -1150,7 +1168,7 @@ class RunScraperTests(unittest.TestCase):
 
         # Past the ceiling it is the oldest items that go, never the ones just collected.
         self.fixtures[self.NEWS_URL] = rss("Example News", [("Brand new story", "https://news.example/new", None, NOW)])
-        with mock.patch.object(scraper, "MAX_ITEMS", fetched + 2):
+        with mock.patch.object(scraper, "MAX_ITEMS", fetched + 2), mock.patch.object(scraper, "CEILING_HARD_MAX", fetched + 2):
             output, _ = self.run_scraper()
         self.assertEqual(len(output["items"]), fetched + 2)
         self.assertEqual(output["items"][0]["headline"], "Brand new story")
@@ -1161,7 +1179,7 @@ class RunScraperTests(unittest.TestCase):
                  "matched_game": "Okami", "matched_games": ["Okami"]}
         scraper.OUTPUT_PATH.write_text(json.dumps({"items": output["items"] + [named]}), encoding="utf-8")
         self.fixtures[self.NEWS_URL] = rss("Example News", [("Another new story", "https://news.example/new2", None, NOW)])
-        with mock.patch.object(scraper, "MAX_ITEMS", fetched + 2):
+        with mock.patch.object(scraper, "MAX_ITEMS", fetched + 2), mock.patch.object(scraper, "CEILING_HARD_MAX", fetched + 2):
             output, _ = self.run_scraper()
         self.assertEqual(len(output["items"]), fetched + 2)
         self.assertIn("Story from 10 days ago about Okami", [item["headline"] for item in output["items"]])
