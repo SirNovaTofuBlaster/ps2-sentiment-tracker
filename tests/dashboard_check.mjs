@@ -2091,4 +2091,47 @@ await check('charts on a phone: a finger drag scrolls the page, a tap reads a da
     assert.match(phone, /body main \.chart-tools \.chart-tool \{[^}]*min-height: 2\.25rem/, 'smaller than the general 44px button rule, which it must out-rank');
 });
 
+await check('the EUR button: converts at the ECB rate, marks it, keeps PriceCharting guides in dollars, hides without rates', () => {
+    const run = (code) => vm.runInContext(code, context);
+    // No rates, no button, and prices are exactly as before.
+    run('setFx(null)');
+    assert.equal(el('currencyRow').classList.contains('hidden'), false, 'not painted until the rates were read');
+    run('paintCurrency()');
+    assert.equal(el('currencyRow').classList.contains('hidden'), true);
+    assert.equal(evalJson("money(100, 'USD', 'en-GB')"), '$100');
+    // A rate that is not a positive number is dropped; a file with none is no file.
+    run("setFx({ date: '2026-10-13', rates: { USD: -1, GBP: 'x', EUR: 1 } })");
+    assert.equal(evalJson('fxData'), null);
+    run("setFx({ date: '2026-10-13', rates: { USD: 1.25, GBP: 0.8, XXX: 0, EUR: 1 } })");
+    assert.deepEqual(evalJson('fxData'), { date: '2026-10-13', rates: { USD: 1.25, GBP: 0.8 } });
+    run('paintCurrency()');
+    assert.equal(el('currencyRow').classList.contains('hidden'), false, 'shown once there are rates');
+    assert.equal(evalJson("money(5, 'USD', 'en-GB')"), '$5.00', 'off by default');
+    // On: other currencies are divided by the rate and marked; euros and guides are not.
+    run('setCurrency(true, false)');
+    assert.equal(evalJson('showEuro'), true);
+    assert.equal(el('currencyToggle').getAttribute('aria-pressed'), 'true');
+    assert.match(el('currencyNote').textContent, /^≈ converted at the European Central Bank rate of 13 Oct 2026$/);
+    assert.equal(evalJson("money(5, 'USD', 'en-GB')"), '≈€4.00');
+    assert.equal(evalJson("money(80, 'GBP', 'en-GB')"), '≈€100');
+    assert.equal(evalJson("money(10, 'EUR', 'en-GB')"), '€10.00', 'a price already in euros is not marked');
+    assert.equal(evalJson("money(100, 'USD', 'en-GB', false)"), '$100', 'the PriceCharting guide stays in dollars');
+    assert.equal(evalJson("money(null, 'USD', 'en-GB')"), '');
+    assert.match(evalJson("money(5, 'CHF', 'en-GB')"), /^CHF\s5\.00$/, 'a currency with no rate is shown as it is');
+    assert.match(evalJson("moneyShort(286000000, 'GBP', 'en-GB')"), /^≈€357\.5[Mm]$/);
+    assert.equal(evalJson("inEuros(5, 'USD', false).mark"), '');
+    // The week's change (an amount and a percentage) converts the amount only.
+    assert.match(evalJson("priceChangeHtml({ median: 12, week: { median: 10, checked: '2026-10-06T12:00Z' } }, 'USD', 'en-GB')"), /\(≈€1\.60 ▲ 20%\)/);
+    // Off again, and a file that stops giving rates switches it off by itself.
+    run('setCurrency(false, false)');
+    assert.equal(evalJson("money(5, 'USD', 'en-GB')"), '$5.00');
+    run('setCurrency(true, false); setFx(null)');
+    assert.equal(evalJson('showEuro'), false);
+    run('paintCurrency()');
+    // The page reads the rates before the prices, so the first list drawn is already right.
+    const page = read('index.html');
+    assert.ok(page.indexOf('await loadFx();') < page.indexOf('await loadPrices();'));
+    assert.match(page, /fetch\('data\/fx\.json', \{ cache: 'no-cache' \}\)/);
+});
+
 console.log(`dashboard checks passed (${passed})`);

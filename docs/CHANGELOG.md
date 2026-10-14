@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-14: EUR button
+
+- Asked: a button so people can flick every price between its own currency and euros.
+- `fx.py` and `.github/workflows/fx.yml` (new): each weekday after the European Central Bank
+  publishes, save `data/fx.json` with the rates of USD, GBP, PLN and CHF per euro. No key,
+  standard library only. A failed read leaves the old file; the file changes only when the ECB's
+  rates do.
+- `index.html`: a `€ EUR` button under the page tabs (hidden until `data/fx.json` is read). Off by
+  default; the choice is kept in the browser. `money()` and `moneyShort()` convert with today's
+  rate and mark the result `≈`. Charts and a week's change use the same latest rate. PriceCharting
+  guide figures stay in dollars. Index lines are percentages and do not change.
+- `guide.html` explains it. Tests: `tests/test_fx.py` and a dashboard check.
+
 ## 2026-10-14: counting listings on other eBay sites
 
 - Asked: add Germany, France, Italy, Spain and Poland to the eBay prices, starting with whether

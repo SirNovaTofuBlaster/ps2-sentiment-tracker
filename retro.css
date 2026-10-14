@@ -742,3 +742,21 @@ body .chart-close:hover { color: var(--text); border-color: var(--accent); }
   /* The day read-out under the buttons: bigger, and room for a second line */
   body .chart-legend { min-height: 2.4rem; font-size: .8125rem; line-height: 1.4; }
 }
+
+/* The EUR button, under the page tabs */
+body .currency-row:not(.hidden) { display: flex; align-items: center; justify-content: flex-end; gap: .75rem; margin: -1rem 0 0; font-family: var(--mono); }
+body .currency-note { color: var(--dim); font-size: .72rem; }
+body .currency-toggle {
+  padding: .3rem .8rem;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--dim);
+  font-size: .75rem;
+  cursor: pointer;
+}
+body .currency-toggle:hover { color: var(--text); }
+body .currency-toggle.is-active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+@media (max-width: 640px) {
+  body .currency-row { flex-wrap: wrap; margin-top: -.5rem; }
+  body main .currency-toggle { min-height: 2.25rem; }
+}
