@@ -679,14 +679,14 @@ class RunScraperTests(unittest.TestCase):
         # The words in capitals stand for what posters write; none of them may be kept.
         self.boards = {
             self.VR_URL: [
-                thread(100, NOW - 6 * hour, subject="Board rules", comment="RULESTEXT about Okami", sticky=1, closed=1),
-                thread(101, NOW - 3 * hour, subject="Silent Hill 2 thread", comment="RUDEWORD you all, the remake is a masterpiece"),
-                thread(102, NOW - 2 * hour, comment="Is Shadow of the Colossus<br><span class=\"quote\">&gt;still worth it</span> SECRETWORD"),
-                thread(103, NOW - hour, subject="comfy thread", comment="OTHERWORD what are you playing"),
+                thread(100, NOW - 6 * hour, subject="Board rules", comment="RULESTEXT about Okami", sticky=1, closed=1, replies=1),
+                thread(101, NOW - 3 * hour, subject="Silent Hill 2 thread", comment="RUDEWORD you all, the remake is a masterpiece", replies=1),
+                thread(102, NOW - 2 * hour, comment="Is Shadow of the Colossus<br><span class=\"quote\">&gt;still worth it</span> SECRETWORD", replies=1),
+                thread(103, NOW - hour, subject="comfy thread", comment="OTHERWORD what are you playing", replies=1),
             ],
             self.V_URL: [
-                thread(900, NOW - 2 * hour, comment="Ico, Okami &amp; Gran Turismo 4. PRIVATEWORD Also Final Fantasy X and Persona 4"),
-                thread(901, NOW - hour, comment="NOTAGAME thread"),
+                thread(900, NOW - 2 * hour, comment="Ico, Okami &amp; Gran Turismo 4. PRIVATEWORD Also Final Fantasy X and Persona 4", replies=1),
+                thread(901, NOW - hour, comment="NOTAGAME thread", replies=1),
             ],
         }
         self.board_calls = []
@@ -815,6 +815,7 @@ class RunScraperTests(unittest.TestCase):
 
     def test_games_named_in_a_threads_replies_are_kept_and_nothing_else(self):
         url = "https://a.4cdn.org/vr/thread/101.json"
+        next(t for t in self.boards[self.VR_URL] if t["no"] == 101)["replies"] = 3
         self.thread_files[url] = [{"no": 5, "name": "REPLYNAME", "com": "REPLYWORD Okami is better, so is Ico"}]
         output, status = self.run_scraper()
         row = next(i for i in output["items"] if i["link"] == "https://boards.4chan.org/vr/thread/101")
