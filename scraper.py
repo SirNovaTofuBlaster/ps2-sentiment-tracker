@@ -62,6 +62,12 @@ RETENTION_DAYS = 14
 # 18,000, 21,700 on the busiest days). The file is about 600 bytes an item, and GitHub Pages sends
 # it compressed (about a tenth of that).
 MAX_ITEMS = 30000
+# The ceiling raises itself: once the two weeks hold more than 90% of the ceiling, it grows in
+# steps of CEILING_STEP so there is always at least 10% room, up to CEILING_HARD_MAX. That last
+# limit is about the file, not the count: at about 600 bytes an item, 80,000 items is 48 MB,
+# near the 50 MB at which GitHub starts to warn about a file (100 MB is the hard stop).
+CEILING_STEP = 5000
+CEILING_HARD_MAX = 80000
 TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M UTC"
 FETCH_TIME_BUDGET = 600  # seconds from the first extra feed; YouTube/podcast feeds not reached by then wait
 HOST_FAILURE_LIMIT = 3  # consecutive YouTube/podcast host-level failures skip the rest of that host
@@ -1370,13 +1376,24 @@ def resolve_youtube_links(config, session, status, now):
     return resolved
 
 
-def within_ceiling(items):
-    """The snapshot cut to MAX_ITEMS (items newest first). Past the ceiling, the oldest items that
-    name no PS2 game go first; items naming a game go only when nothing else is left to drop."""
-    if len(items) <= MAX_ITEMS:
+def item_ceiling(count):
+    """The ceiling for a snapshot of `count` items: MAX_ITEMS while there is room to spare, then
+    raised in CEILING_STEPs to leave 10% free, never past CEILING_HARD_MAX."""
+    if count <= MAX_ITEMS * 0.9:
+        return MAX_ITEMS
+    wanted = -(-int(count / 0.9) // CEILING_STEP) * CEILING_STEP
+    return max(MAX_ITEMS, min(wanted, max(CEILING_HARD_MAX, MAX_ITEMS)))
+
+
+def within_ceiling(items, ceiling=None):
+    """The snapshot cut to the ceiling (MAX_ITEMS unless one is given; items newest first). Past the
+    ceiling, the oldest items that name no PS2 game go first; items naming a game go only when
+    nothing else is left to drop."""
+    ceiling = MAX_ITEMS if ceiling is None else ceiling
+    if len(items) <= ceiling:
         return items
     naming = sum(1 for item in items if item.get("matched_game"))
-    room = max(0, MAX_ITEMS - naming)     # how many items without a game can stay
+    room = max(0, ceiling - naming)     # how many items without a game can stay
     kept, others = [], 0
     for item in items:
         if item.get("matched_game"):
@@ -1384,7 +1401,7 @@ def within_ceiling(items):
         elif others < room:
             kept.append(item)
             others += 1
-    return kept[:MAX_ITEMS]
+    return kept[:ceiling]
 
 
 def run_scraper():
@@ -1516,7 +1533,10 @@ def run_scraper():
     cutoff = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).strftime(TIMESTAMP_FORMAT)
     merged_items = [i for i in merged.values() if i.get("timestamp", "") >= cutoff]
     merged_items.sort(key=lambda item: item["timestamp"], reverse=True)
-    merged_items = within_ceiling(merged_items)
+    ceiling = item_ceiling(len(merged_items))
+    if ceiling > MAX_ITEMS:
+        print(f"{len(merged_items)} items in two weeks: the ceiling is {ceiling} (raised from {MAX_ITEMS}).")
+    merged_items = within_ceiling(merged_items, ceiling)
     # Flagged again from the headline every run, so items saved before the flag existed (or
     # before its words last changed) are counted too. Copies: `previous` must stay as it was read.
     merged_items = [{**item, "is_digital_only": is_digital_only(item.get("headline"))} for item in merged_items]

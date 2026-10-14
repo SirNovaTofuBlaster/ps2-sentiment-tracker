@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-14: the item ceiling raises itself
+
+- `scraper.py`: `item_ceiling()` keeps `MAX_ITEMS` (30,000) until the two weeks hold more than 90% of it,
+  then raises it in steps of 5,000 so there is always 10% room, up to `CEILING_HARD_MAX` (80,000, about
+  48 MB). Below 27,000 items nothing changes. Checked by an AST comparison with `main` (only
+  `within_ceiling` and `run_scraper` changed) and new tests; `tools/regression_check.py` could not
+  reach the news sites from the development machine, so *Live checks* on the pull request runs it.
+
 ## 2026-10-14: search, game pages, rare sort, logo home
 
 - `index.html`: a search box over the whole library (`data/ps2_database.json`, read by the page), with

@@ -134,7 +134,7 @@ subreddits. The PS2 archive's index globs only its own folder, so the two never 
    29 posts an hour from the 26 subreddits (measured from GitHub's servers on 2026-10-08), and the
    whole feed 1,100-1,550 items a day, so two weeks come to about 18,000; the earlier ceiling of
    12,000 was full by 2026-10-13. At about 585 bytes an item the file reaches some 17 MB at the
-   ceiling; GitHub Pages sends it compressed (7.0 MB went as 0.9 MB on 2026-10-13). Past it, the oldest items that name no PS2 game go first (`within_ceiling()`);
+   ceiling; GitHub Pages sends it compressed (7.0 MB went as 0.9 MB on 2026-10-13). The ceiling raises itself (`item_ceiling()`, 2026-10-14): once two weeks hold more than 90% of it, it grows in steps of 5,000 so 10% stays free, up to 80,000 items (about 48 MB, near where GitHub warns about a file); it is worked out afresh each run and stored nowhere. Past the ceiling, the oldest items that name no PS2 game go first (`within_ceiling()`);
    items naming a game are kept for the full 14 days. The archive, the Demand Index, eBay's
    levels and every game count are therefore unaffected; the item count, the mood average and
    the remaster-news count then cover fewer days of items that name no game.
