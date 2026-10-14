@@ -1063,7 +1063,7 @@ await check('four pages in one: Tracker, Rarest, Most mentioned and eBay prices'
     const missing = [...asked].filter(id => !page.includes(`id="${id}"`));
     assert.deepEqual(missing, []);
     assert.ok(asked.size > 40);
-    assert.match(read('retro.css'), /body \.view-tab\.is-active \{[^}]*border-bottom-color: var\(--red\)/);
+    assert.match(read('retro.css'), /body \.view-tab\.is-active \{[^}]*border-bottom-color: var\(--accent\)/);
 });
 
 await check('the item count says how far back it goes', () => {
@@ -1239,17 +1239,18 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.ok(contrast(tokens.bg, tokens.accent) >= 4.5, 'the filled button: dark on blue');
     assert.ok(contrast(tokens.bg, tokens['accent-hi']) >= 4.5);
 
-    // Yellow has one job: nothing but a price link is yellow.
+    // Yellow has few jobs: a price link, a game's price on the shelf, and the keepsake colour of the collection button and badges.
     const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
     const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
     assert.ok(yellow.length >= 2, 'at rest and under the pointer');
-    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.price-link\b/.test(part))), yellow.join(' | '));
+    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-price|brand-btn-collection|coll-badge-qty)\b|\.coll-count/.test(part))), yellow.join(' | '));
     assert.match(css, /body \.price-link:hover, body \.price-link:focus-visible \{\s*background: var\(--money\);\s*border-color: var\(--money\);\s*color: var\(--bg\);/);
     // ...by no other route either: every colour is named once, at the top, and the strip's
     // yellow is used by the strip alone; the pages have no yellow of their own.
     const afterTokens = css.slice(css.indexOf('}', css.indexOf(':root {')) + 1).replace(/\/\*[\s\S]*?\*\//g, '');
     assert.deepEqual(afterTokens.match(/#[0-9A-Fa-f]{3,8}\b/g), null, 'no colour written out below the list at the top');
-    assert.deepEqual(rules.filter(([, body]) => /var\(--strip-/.test(body)).map(([selector]) => selector), ['body .brand-bar::before']);
+    assert.deepEqual(rules.filter(([, body]) => /var\(--strip-/.test(body)).map(([selector]) => selector),
+        ['body .brand-bar::before', 'body .stat:nth-child(1)::before', 'body .stat:nth-child(2)::before', 'body .stat:nth-child(3)::before', 'body .stat:nth-child(4)::before']);
     assert.doesNotMatch(page + guide, /\b(?:text|bg|border|accent)-(?:yellow|orange)-\d/);
     // The classes the pages colour things with all go through those names.
     for (const mapping of [
@@ -1264,7 +1265,7 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.deepEqual(named('.remaster-tag'), ['body .remaster-tag'], 'one rule, so nothing further down undoes it');
     assert.deepEqual(named('.stat-value'), ['body .stat-value', 'body .stat-value.is-news', 'body .stat-value.is-live', 'body .stat-value']);
     // Red marks remaster news (the tag, the number at the top, the open page's line) and a low mood.
-    assert.match(css, /body \.remaster-tag \{ border-color: var\(--red-line\); color: var\(--red\); \}/);
+    assert.match(css, /body \.remaster-tag \{ border-color: var\(--red-line\); border-radius: 4px; color: var\(--red\); \}/);
     assert.match(css, /body \.stat-value\.is-news \{ color: var\(--red\); \}/);
     assert.match(css, /body \.score-fill\.score-low \{ background: var\(--red\); \}/);
     // Teal is live and well: the sync dot, the active feeds, a good mood.
@@ -1284,7 +1285,7 @@ await check('the theme: four colours with one job each, readable on every ground
 
     // All four meet in the strip across the top of both pages, and in the mark.
     assert.match(css, /body \.brand-bar::before \{\s*content: "";\s*display: block;\s*height: 4px;\s*background: linear-gradient\(90deg,\s*var\(--strip-red\) 0 25%, var\(--strip-yellow\) 25% 50%, var\(--strip-teal\) 50% 75%, var\(--strip-blue\) 75% 100%\);\s*\}/);
-    assert.deepEqual(named('.brand-bar'), ['body .brand-bar', 'body .brand-bar::before']);
+    assert.deepEqual(named('.brand-bar'), ['body .brand-bar', 'body .brand-bar', 'body .brand-bar::before']);
     for (const [name, html] of [['index.html', page], ['guide.html', guide]]) {
         assert.match(html, /<header class="brand-bar">/, name);
         const mark = html.slice(html.indexOf('<header class="brand-bar">')).match(/<svg[\s\S]*?<\/svg>/)[0];
@@ -1358,6 +1359,15 @@ await check('games first: what was named in the last day leads, and the table op
     vm.runInContext(`renderRecentGames(__items, ${now})`, context);
     assert.equal(el('todaySummary').textContent,
         '16 items out of 19 published in the last 24 hours named a PS2 game: 10 games. The other 3 items are in the table further down, under Everything.');
+    // The shelf above the tabs: the six most-named games as box art, from the same list, links to their pages
+    const shelf = el('shelf').innerHTML;
+    assert.equal(shelf.split('<li class="shelf-item">').length - 1, 6, 'six boxes');
+    assert.match(shelf, /<a class="shelf-link" href="#game=Okami"[^>]*aria-label="Okami: 5 mentions in the last 24 hours"/);
+    assert.ok(shelf.indexOf('>Okami<') < shelf.indexOf('>Ico<') && shelf.indexOf('>Ico<') < shelf.indexOf('>Mixed Game<'), 'the order of the list');
+    assert.match(shelf, /<span class="shelf-count">5<\/span>/);
+    assert.match(shelf, /Ratchet &amp; Clank|^(?!.*Ratchet & Clank <3)/s, 'names are escaped');
+    assert.doesNotMatch(shelf, /<3/, 'a name is never markup');
+    assert.doesNotMatch(page, /Letterboxd/i, 'the page does not carry the theme\'s brand name');
     const rows = el('todayList').innerHTML.split('<li ').slice(1);
     assert.equal(rows.length, 10);
     assert.match(rows[0], /onclick="showGameRows\(0\)"[^>]*class="recent-game text-cyan-300 font-bold">Okami<\/button><a class="game-open"[^>]*><i [^>]*><\/i><\/a> <span class="remaster-tag [^"]*">1 remaster<\/span>/);
@@ -1387,7 +1397,7 @@ await check('games first: what was named in the last day leads, and the table op
     const about = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(rule => [rule[1], rule[2]].map(part => part.replace(/\s+/g, ' ').trim()))
         .filter(([selector]) => /recent-game|#today|#feedSummary/.test(selector));
     assert.deepEqual(about, [
-        ['body .recent-game', 'background: transparent; border: 0; padding: 0; text-align: left; cursor: pointer;'],
+        ['body .recent-game', 'background: transparent; border: 0; padding: 0; text-align: left; cursor: pointer; font-family: var(--serif); font-weight: 700; font-size: .98rem;'],
         ['body .recent-game:hover, body .recent-game:focus-visible', 'text-decoration: underline; text-underline-offset: 3px;'],
         ['body #feedSummary .recent-game', 'min-height: 2.1rem; vertical-align: middle;'],
         ['body #todayList > li > div:first-child, body #demandList > li > div:first-child, body #topGamesList > li > div:first-child, body #pricesList > li > div:first-child',
@@ -1399,13 +1409,13 @@ await check('games first: what was named in the last day leads, and the table op
     assert.deepEqual([...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(rule => /display:\s*none|visibility:\s*hidden/.test(rule[2])).map(rule => rule[1].replace(/\s+/g, ' ').trim()), [
         'body .is-folded > .list-extra', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
-        'body .chart-tools::-webkit-scrollbar',
+        'body .chart-tools::-webkit-scrollbar', 'body .shelf-item:nth-child(n+4)',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
     const order = ['class="stat-strip"', 'id="todaySection"', 'id="demandSection"', 'id="feedSection"'].map(mark => page.indexOf(mark));
     assert.ok(order.every((at, i) => at > 0 && (i === 0 || at > order[i - 1])), order.join(' '));
-    assert.match(page, /<div id="todaySection" class="bg-ps2card p-6">\s*<div class="flex items-start justify-between gap-4 mb-4">\s*<div>\s*<h2>Named in the last 24 hours<\/h2>\s*<p id="todaySummary" class="text-xs text-slate-400">Loading\.\.\.<\/p>/);
+    assert.match(page, /<div id="todaySection" class="[^"]*bg-ps2card[^"]*">\s*<div class="lb-section-header">\s*<div>\s*<h2>Named in the last 24 hours<\/h2>\s*<p id="todaySummary" class="text-xs text-slate-400 mt-1">Loading\.\.\.<\/p>/);
     assert.match(page, /<ol id="todayList" class="zebra"><\/ol>\s*<button type="button" id="todayListToggle" onclick="toggleList\('todayList'\)" aria-controls="todayList"/);
 
     // The edges of the window and of the order, each on a small feed of its own.
@@ -2660,14 +2670,15 @@ await check('My collection: add, value, keep in the browser, back up and restore
     assert.equal(el('tabCollection').classList.contains('is-active'), true);
     run(`showView('rare')`);
     assert.equal(el('tabCollection').classList.contains('is-active'), false);
-    // Dark text on the button's gradient (blue to teal) stays readable, and it uses no yellow
+    // The button is a yellow outline (the keepsake colour): yellow text on its own dark yellow ground stays readable
     const cssText = read('retro.css');
     const tok = Object.fromEntries([...cssText.matchAll(/--([a-z-]+):\s*(#[0-9A-Fa-f]{6})/g)].map(m => [m[1], m[2]]));
     const lum = (hex) => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255).map(c => c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4).reduce((sum, c, i) => sum + c * [0.2126, 0.7152, 0.0722][i], 0);
-    for (const end of ['accent-hi', 'accent', 'green']) assert.ok((lum(tok[end]) + 0.05) / (lum(tok.bg) + 0.05) >= 4.5, `dark text on --${end}`);
-    const block = cssText.slice(cssText.indexOf('.brand-btn-collection {'), cssText.indexOf('@keyframes collection-shine'));
-    assert.doesNotMatch(block, /--money/);
-    assert.match(cssText, /prefers-reduced-motion: reduce\) \{ body \.brand-btn-collection::after \{ animation: none/, 'the shine stops for people who ask for less motion');
+    const ratio = (a, b) => { const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05); };
+    assert.ok(ratio(tok.money, tok['money-bg']) >= 4.5, 'yellow on its dark ground');
+    assert.ok(ratio(tok.bg, tok.money) >= 4.5, 'the count: dark on yellow');
+    assert.doesNotMatch(cssText, /collection-shine|linear-gradient\(135deg, var\(--accent-hi\)/, 'no glossy gradient or shine any more');
+    assert.match(cssText, /body \.brand-btn-collection \{[^}]*border-color: var\(--money-line\);[^}]*color: var\(--money\)/);
 
     // The files that make the site installable
     const manifest = JSON.parse(read('manifest.webmanifest'));
