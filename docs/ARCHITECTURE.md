@@ -365,6 +365,9 @@ are skipped. Two library spellings that come to the same name are one game.
 | `staple` | Named in headlines on 5 or more days of the window; never surging | Every 6 hours |
 | `normal` | Any other mention in the window, or pinned | Every 6 hours |
 | `dormant` | Mentioned before, not in the window | Once a day |
+
+On top of the levels, a `normal` or `staple` game that has priced the same for days on one site is looked up there every 48 hours (`is_steady()` in `ebay_prices.py`) and goes back to 6 hours as soon as a check differs.
+
 | `rare` | On the Rarest page and not tracked otherwise | Once a day, on its list's site only |
 
 A mention found only in an item's body text keeps a game `normal` but never makes it surge. A

@@ -254,8 +254,15 @@ Before you call something done, prove it; don't assume it.
   - How often a game is checked (the settings are at the top of `ebay_prices.py`): `surging`
     (a game the feed rarely names, named in headlines by 2+ sources within 24 hours) on every
     run for 48 hours; `normal` and `staple` (named on 5+ of the last 14 days, never surging)
-    every 6 hours; `dormant` (mentioned once, quiet for 14 days) daily. A run uses at most 500
+    every 6 hours, except a *steady* game on one site (see below), which waits 48 hours; `dormant` (mentioned once, quiet for 14 days) daily. A run uses at most 500
     searches and stops for the day at 4,500.
+  - Steady games (2026-10-14): a `normal` or `staple`, unpinned game on one site is looked up every 48
+    hours (`STEADY_EVERY_HOURS`) while, in the last 6 days of history, it had 50+ copies at every check,
+    its median stayed within 10% and its copy count within 30% of their middles, with 3+ rows spanning
+    4+ days (`is_steady()`). It is worked out per game and site from the history rows, so there is no new
+    level and nothing new in `latest.json`; the first check that breaks the pattern puts it back on 6
+    hours. Chosen by replaying the first nine days of history: 0.4% of flagged moments saw a move
+    over 10% within two days. Re-run that replay before loosening the limits.
   - About half of the "surging" flags in the first week were matcher mistakes (the wrong game
     matched), so treat the level as "worth a look", not as news. It gets better only as the
     matcher does.
