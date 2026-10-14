@@ -282,6 +282,10 @@ Before you call something done, prove it; don't assume it.
     `ebay_watchlist.json` renames the start of a game's name per site; the UK search, the name
     check and the list of other games (`siblings`) all use the renamed words. Add a rule there,
     with the PAL box title, when a UK figure is missing for a game that sold in Europe.
+  - A listing is checked against a game's name with every "the" removed from both (`the_less()`, 2026-10-14):
+    sellers write "Prince of Persia: The Sands of Time" for the library's "Sands of Time", which used to leave
+    out about 170 of 200 listings. Different library entries for one game ("FIFA 2003" / "FIFA Football 2003")
+    are still counted apart; fix those with `regional_names` or a pin, not by loosening the check.
   - When eBay returns listings and none of them names the game, the game is marked
     `unmatched` in `latest.json` and gets no history row: that means "these search words do
     not find it", not "no copies for sale". Fix it by pinning the game with its own `search`.

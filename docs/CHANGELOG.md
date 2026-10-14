@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-14: eBay name check ignores "the"
+
+- `ebay_prices.py`: a listing is compared with a game's name with every "the" removed on both sides
+  (`the_less()`), in the name, sibling and `require` checks. Replayed on the 711 left-out listings
+  that last night's run kept as examples: 18 would now count (Prince of Persia: Sands of Time, Zone of
+  the Enders, Spyro: The Eternal Night, Genji, Spider-Man: The Movie), all the right game; sequels
+  and siblings (Warrior Within, Top Gun: Combat Zones, Simpsons Hit & Run) stay out. Affected games'
+  copy counts rise and medians move on their next check; their week-ago bracket compares two different
+  searches for a week.
+- "Combat Ace" in the Demand Index was not a current matcher error: 7 rows from 1-4 October predate the
+  fix in `TitleMatcher` and age out of the feed by 18 October (the one newer row, a Mount & Blade post
+  matched fuzzily at 90, is the only current case).
+
 ## 2026-10-14: search fixes, demand index fixes, honest "scarce"
 
 - `index.html`: the search lists a game once (spellings tied by `priceKey()`), also finds words in any form
