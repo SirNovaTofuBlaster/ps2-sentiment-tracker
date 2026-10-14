@@ -804,6 +804,17 @@ def item_key(item):
     return link if link != "#" else f"{item.get('source', '')}|{item.get('headline', '')}"
 
 
+def youtube_views(entry):
+    """The view count a YouTube feed entry carries, or None when it has none (or not a number)."""
+    stats = entry.get("media_statistics") if hasattr(entry, "get") else None
+    raw = stats.get("views") if hasattr(stats, "get") else None
+    try:
+        views = int(str(raw).strip())
+    except (TypeError, ValueError):
+        return None
+    return views if views >= 0 else None
+
+
 def analyze_entry(entry, feed, job, matcher, first_seen, ps2_keys, repeated_links=frozenset()):
     headline = entry.title.strip()
     source = entry_source(entry, feed, job)
@@ -837,6 +848,12 @@ def analyze_entry(entry, feed, job, matcher, first_seen, ps2_keys, repeated_link
         "hype": hype_score(headline),
         "timestamp": timestamp,
     }
+    if job["type"] == "youtube":
+        # A channel's feed gives each video's view count (media:statistics). Kept as a number for
+        # the Demand Index; absent when the feed gives none. Nothing else gets this field.
+        views = youtube_views(entry)
+        if views is not None:
+            item["views"] = views
     if not dated:
         # Undated entries keep the time they were first seen so they don't
         # look "new" (and change the file) on every run.

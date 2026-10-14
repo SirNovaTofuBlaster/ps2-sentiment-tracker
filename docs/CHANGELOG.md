@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-14: Demand Index v2, YouTube views, Wikipedia collectible check, Most rare repaired
+
+- `scraper.py`: YouTube items carry `views` (from the feed's `media:statistics`). Other sources are unchanged.
+- `demand.py` rewritten (`version: 2`): five signals (mentions rising 30%, sources 15%, YouTube views 20%,
+  eBay week change 20%, Wikipedia trend 15%), missing signals left out and the rest re-weighted. Wikipedia
+  articles are read in full and must be a PS2 video game; sentences calling it a rare collectible are
+  recorded in `data/wiki_checks.json` (150 articles per run, redone after 30 days). Archive.org is gone.
+- `index.html`: "Most rare" had collapsed after `listed` was added (almost no figure had it yet, so
+  nearly every game fell into the unchecked tail). Supply is now the higher of our count and eBay's
+  `listed`, ranked in groups of 10 / 30 / 100 / more, collectibles first inside a group. Collectible tag,
+  Demand Index v2 lines. `guide.html` rewritten for all of it.
+- Not verified live: YouTube view counts and the collectible wording rules (the build machine cannot reach
+  YouTube or Wikipedia); both are checked on the first workflow runs.
+
 ## 2026-10-14: eBay name check ignores "the"
 
 - `ebay_prices.py`: a listing is compared with a game's name with every "the" removed on both sides

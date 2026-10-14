@@ -375,6 +375,34 @@ class TitleCacheTests(unittest.TestCase):
         self.assertTrue(session.get.called, "a cache too small to trust is topped up from the indexes")
 
 
+class YouTubeViewsTests(unittest.TestCase):
+    FEED = """<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+<title>Chan</title><entry><id>yt:video:abc</id><title>God Hand review</title>
+<link rel="alternate" href="https://www.youtube.com/watch?v=abc"/><published>2026-10-10T10:00:00+00:00</published>
+<media:group><media:title>God Hand review</media:title><media:community><media:starRating count="10" average="5.00" min="1" max="5"/>
+<media:statistics views="%s"/></media:community></media:group></entry></feed>"""
+
+    class Matcher:
+        def match_all(self, text, ps2_source=False, threshold=None):
+            return []
+
+    def item(self, views, kind="youtube"):
+        entry = feedparser.parse(self.FEED % views).entries[0]
+        job = {"type": kind, "sources": [{"name": "Chan", "type": kind, "url": "https://example.com/feed", "channel_id": "UC" + "a" * 22}]}
+        return scraper.analyze_entry(entry, feedparser.parse(self.FEED % views), job, self.Matcher(), {}, set())
+
+    def test_a_youtube_item_keeps_the_view_count_its_feed_gives(self):
+        self.assertEqual(self.item("12345")["views"], 12345)
+        self.assertEqual(self.item("0")["views"], 0)
+
+    def test_a_missing_or_odd_count_is_left_out_and_no_other_type_gets_one(self):
+        for odd in ("", "many", "-5"):
+            self.assertNotIn("views", self.item(odd), odd)
+        self.assertNotIn("views", self.item("999", kind="podcast"))
+        self.assertNotIn("views", self.item("999", kind="news"))
+
+
 class CeilingTests(unittest.TestCase):
     def test_the_ceiling_raises_itself_with_room_to_spare_up_to_a_hard_limit(self):
         self.assertEqual(scraper.item_ceiling(0), scraper.MAX_ITEMS)
