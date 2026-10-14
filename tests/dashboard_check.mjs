@@ -1244,7 +1244,7 @@ await check('the theme: four colours with one job each, readable on every ground
     const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
     const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
     assert.ok(yellow.length >= 2, 'at rest and under the pointer');
-    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-price|brand-btn-collection|coll-badge-qty)\b|\.coll-count/.test(part))), yellow.join(' | '));
+    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty)\b|\.coll-count/.test(part))), yellow.join(' | '));
     assert.match(css, /body \.price-link:hover, body \.price-link:focus-visible \{\s*background: var\(--money\);\s*border-color: var\(--money\);\s*color: var\(--bg\);/);
     // ...by no other route either: every colour is named once, at the top, and the strip's
     // yellow is used by the strip alone; the pages have no yellow of their own.
@@ -2368,6 +2368,14 @@ await check('search suggests from the whole library and opens a game page; the l
     // The shelf is rarest first whichever order the list is in; the common game goes to the far end
     const shelfOrder = () => [...el('shelf').innerHTML.matchAll(/class="shelf-name">([^<]+)</g)].map(m => m[1]);
     assert.deepEqual(shelfOrder(), ['CY Girls', 'Kuon', 'God Hand', 'Dragon Quest']);
+    // Under each box: US dollars, UK pounds and euros (a dash where nothing is priced); a euro figure is converted and marked ≈ when only UK or US has one
+    const kuonBox = el('shelf').innerHTML.split('<li class="shelf-item">').find(box => box.includes('>Kuon<'));
+    assert.match(kuonBox, /<span class="shelf-flag">US<\/span><b>&ndash;<\/b>/);
+    assert.match(kuonBox, /<span class="shelf-flag">UK<\/span><b>£150<\/b>/);
+    assert.match(kuonBox, /<span class="shelf-quote is-none" title="No copies priced"><span class="shelf-flag">EU<\/span>/, 'no rates loaded, no euro figure');
+    run(`fxData = { date: '2026-10-14', rates: { USD: 0.86, GBP: 1.15 } }; renderShelf()`);
+    assert.match(el('shelf').innerHTML.split('<li class="shelf-item">').find(box => box.includes('>Kuon<')), /<span class="shelf-flag">EU<\/span><b>≈€173<\/b>/, '150 pounds at 1.15');
+    run(`fxData = null; renderShelf()`);
     run(`setRecentSort('price')`);
     assert.deepEqual(order(), ['Kuon', 'God Hand', 'CY Girls', 'Dragon Quest']);
     assert.deepEqual(shelfOrder(), ['CY Girls', 'Kuon', 'God Hand', 'Dragon Quest'], 'the shelf does not follow the list\'s buttons');

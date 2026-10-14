@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: prices under every shelf box
+
+- Each box on the shelf shows three eBay medians: US ($), UK (£) and EU (€), a dash where nothing is priced (`shelfQuotesHtml()`). The euro figure is the cheapest euro site's median; with none, the UK
+  (else US) median converted at the ECB rate and marked ≈. The whole box (cover, name, prices) is one link to the game's page.
+
 ## 2026-10-14: the shelf is rarest first
 
 - The shelf (now "Rare finds named in the last 24 hours") orders its games with `byRarity()`, the same order as the list's "Most rare" button: the fewest copies for sale first, then
