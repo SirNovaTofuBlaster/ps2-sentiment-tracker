@@ -338,29 +338,35 @@
             <h2>My Collection</h2>
             <p id="collectionSummary" class="text-xs text-slate-400 mb-4"></p>
             <form id="collectionForm" class="collection-form" onsubmit="return addFromForm(event)" autocomplete="off">
-                <label class="sr-only" for="collectionGame">Game</label>
-                <input type="text" id="collectionGame" list="collectionGames" placeholder="Search a game to add, e.g. god hand" oninput="onCollectionInput()"
-                    class="bg-slate-900 border border-slate-700 text-sm px-3 py-2 outline-none">
-                <datalist id="collectionGames"></datalist>
-                <label class="sr-only" for="collectionRegion">Region</label>
-                <select id="collectionRegion" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2">
-                    <option value="PAL">PAL (UK / Europe)</option>
-                    <option value="US">US (NTSC-U)</option>
-                </select>
-                <label class="sr-only" for="collectionCondition">Condition</label>
-                <select id="collectionCondition" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2">
-                    <option value="complete">Complete (box and manual)</option>
-                    <option value="loose">Loose (disc only)</option>
-                    <option value="sealed">Sealed</option>
-                </select>
-                <label class="sr-only" for="collectionQty">How many</label>
-                <input type="number" id="collectionQty" min="1" max="99" value="1" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2" title="How many copies">
-                <label class="sr-only" for="collectionPaid">What you paid (optional, per copy)</label>
-                <input type="number" id="collectionPaid" min="0" step="0.01" placeholder="Paid each (optional)" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2" title="What you paid for each copy, in that region's money. Optional.">
-                <button type="submit" class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer">Add</button>
+                <div class="relative coll-search">
+                    <label for="collectionGame" class="sr-only">Search a game to add</label>
+                    <input type="search" id="collectionGame" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="collectionSuggest"
+                        placeholder="Search a game to add, e.g. godh&hellip;" oninput="onCollectionInput()" onkeydown="onCollectionKey(event)" onfocus="onCollectionInput()" onblur="closeCollectionSuggestions()"
+                        class="bg-slate-900 border border-slate-700 text-sm px-3 py-2 outline-none w-full">
+                    <ul id="collectionSuggest" role="listbox" aria-label="Matching games" class="hidden absolute z-30 left-0 right-0 bg-slate-900 border border-slate-700 text-sm max-h-80 overflow-y-auto"></ul>
+                </div>
+                <div class="coll-fields">
+                    <label class="sr-only" for="collectionRegion">Region</label>
+                    <select id="collectionRegion" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2">
+                        <option value="PAL">PAL (UK / Europe)</option>
+                        <option value="US">US (NTSC-U)</option>
+                    </select>
+                    <label class="sr-only" for="collectionCondition">Condition</label>
+                    <select id="collectionCondition" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2">
+                        <option value="complete">Complete (box and manual)</option>
+                        <option value="loose">Loose (disc only)</option>
+                        <option value="sealed">Sealed</option>
+                    </select>
+                    <label class="sr-only" for="collectionQty">How many</label>
+                    <input type="number" id="collectionQty" min="1" max="99" value="1" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2 coll-qty-input" title="How many copies">
+                    <label class="sr-only" for="collectionPaid">What you paid (optional, per copy)</label>
+                    <input type="number" id="collectionPaid" min="0" step="0.01" placeholder="Paid each (optional)" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2 coll-paid-input" title="What you paid for each copy, in that region's money. Optional.">
+                    <button type="submit" class="brand-btn brand-btn-primary"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add</button>
+                </div>
             </form>
+            <label class="coll-covers-toggle text-xs text-slate-400"><input type="checkbox" id="collectionCovers" checked onchange="setCoversShown(this.checked)"> Show cover images <span class="text-slate-500">(loaded from Wikipedia)</span></label>
             <p id="collectionMessage" class="text-xs text-amber-300 mt-2 min-h-[1rem]" role="status"></p>
-            <ul id="collectionList" class="divide-y divide-slate-800 mt-4 text-sm"></ul>
+            <ul id="collectionList" class="coll-grid mt-4"></ul>
             <div class="flex flex-wrap gap-2 mt-4">
                 <button type="button" id="collectionExport" onclick="exportCollection()" class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer"><i class="fa-solid fa-download" aria-hidden="true"></i> Save a backup file</button>
                 <label class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer" for="collectionImport"><i class="fa-solid fa-upload" aria-hidden="true"></i> Load a backup file</label>
@@ -649,6 +655,7 @@
             sync.title = data.last_updated ? `Scraper ran at ${data.last_updated}` : '';
             document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
             loadLibrary();   // the search box's names; nothing waits for them
+            loadCovers();
             loadCollection();   // what this browser has kept of the visitor's collection
             registerServiceWorker();
             loadWikiChecks();   // Wikipedia's "collectible" verdicts; the list is drawn again when they arrive
@@ -999,9 +1006,12 @@
         // Wikipedia's verdict (data/wiki_checks.json, written by demand.py): its article on the game
         // calls it a rare or valuable collectible. Keyed by priceKey() so spellings agree.
         let wikiChecks = new Map();
+        let wikiArticles = new Map();   // every game whose article was read and is a PS2 game: priceKey -> article (for covers)
         function setWikiChecks(data) {
             wikiChecks = new Map();
+            wikiArticles = new Map();
             for (const [title, entry] of Object.entries(data && typeof data === 'object' ? data : {})) {
+                if (entry && typeof entry === 'object' && entry.article && entry.game && entry.ps2) wikiArticles.set(priceKey(title), String(entry.article));
                 if (entry && typeof entry === 'object' && entry.article && entry.game && entry.ps2
                         && Array.isArray(entry.collectible) && entry.collectible.length) {
                     wikiChecks.set(priceKey(title), { article: String(entry.article), words: entry.collectible.map(String).slice(0, 3) });
@@ -2443,23 +2453,149 @@
                 : 'Nothing here yet. Search a game, choose its region and condition, and press Add. Your list stays in this browser.';
             list.innerHTML = rows.map(({ entry, index, value }) => {
                 const [amount, currency, basis] = value;
-                const each = amount === null ? '<span class="text-slate-500" title="No eBay median for this game, region and condition yet.">no price</span>'
-                    : `<span title="${basis === 'article' ? 'From a public article, not a live price' : 'The median eBay asking price today'}">${esc(money(amount, currency, locale))}${basis === 'article' ? ' (article)' : ''}</span>`;
-                const gain = entry.paid !== null && amount !== null
-                    ? ` <span class="${amount >= entry.paid ? 'text-emerald-400' : 'text-red-400'}" title="Estimated value against what you paid each">${amount >= entry.paid ? '▲' : '▼'} ${esc(money(Math.abs(amount - entry.paid) * entry.qty, currency, locale))}</span>` : '';
-                return `<li class="py-3 flex items-baseline justify-between gap-3">
-                    <span><a class="text-cyan-300" href="#game=${encodeURIComponent(entry.title)}" onclick="openGame(${esc(JSON.stringify(entry.title))}); return false;">${esc(entry.title)}</a>
-                        <span class="text-xs text-slate-400">${esc(entry.region)} · ${esc(COLLECTION_CONDITIONS[entry.condition])}${entry.qty > 1 ? ` · ×${entry.qty}` : ''}${entry.paid !== null ? ` · paid ${esc(money(entry.paid, currency, locale, false))}` : ''}</span></span>
-                    <span class="whitespace-nowrap text-xs font-mono-custom">${each}${gain}
-                        <button type="button" class="text-slate-400 ml-2 cursor-pointer" onclick="removeFromCollection(${index})" aria-label="Remove ${esc(entry.title)}">&times;</button></span>
+                const worth = amount === null ? 'no price' : `${money(amount, currency, locale)}${basis === 'article' ? ' (article)' : ''}`;
+                const gain = entry.paid !== null && amount !== null ? (amount >= entry.paid ? ' ▲' : ' ▼') : '';
+                const cover = coversShown ? coverUrl(entry.title) : '';
+                const label = `${entry.title} · ${entry.region} · ${COLLECTION_CONDITIONS[entry.condition]}${entry.qty > 1 ? ` · ×${entry.qty}` : ''}`
+                    + (amount === null ? ' · no eBay price yet' : ` · ${worth} each${basis === 'article' ? ', from a public article' : ' (median eBay asking price)'}`)
+                    + (entry.paid !== null ? ` · paid ${money(entry.paid, currency, locale, false)} each` : '');
+                return `<li class="coll-tile">
+                    <a class="coll-cover" href="#game=${encodeURIComponent(entry.title)}" onclick="openGame(${esc(JSON.stringify(entry.title))}); return false;" title="${esc(label)}" aria-label="${esc(label)}">
+                        <span class="coll-initials" aria-hidden="true">${esc(initialsOf(entry.title))}</span>${cover
+                            ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
+                        ${entry.qty > 1 ? `<span class="coll-badge coll-badge-qty">×${esc(entry.qty)}</span>` : ''}
+                        <span class="coll-badge coll-badge-region">${esc(entry.region)}</span>
+                    </a>
+                    <button type="button" class="coll-remove" onclick="removeFromCollection(${index})" aria-label="Remove ${esc(entry.title)}" title="Remove">&times;</button>
+                    <div class="coll-name">${esc(entry.title)}</div>
+                    <div class="coll-meta">${esc(COLLECTION_CONDITIONS[entry.condition])}</div>
+                    <div class="coll-value${amount === null ? ' is-none' : ''}">${esc(worth)}${gain ? `<span class="${amount >= entry.paid ? 'text-emerald-400' : 'text-red-400'}" title="Against what you paid">${gain}</span>` : ''}</div>
                 </li>`;
             }).join('');
+            if (coversShown) fetchMissingCovers();
             document.getElementById('collectionNote').textContent =
-                'Kept only in this browser (nothing is sent anywhere and there is no login), so clearing the browser\'s data or switching device loses it: use Save a backup file to keep a copy, and Load a backup file to restore it. '
+                'Your list is kept only in this browser (there is no login and it is not sent to us), so clearing the browser\'s data or switching device loses it: use Save a backup file to keep a copy, and Load a backup file to restore it. '
+                + (coversShown ? 'The one thing that leaves your browser is a request to Wikipedia for each game\'s cover image, which names the game; untick Show cover images to stop that. Cover art belongs to its publishers and is shown small, as on the game\'s Wikipedia article. ' : '')
                 + 'Values are the median eBay asking price today for that region (PAL on eBay UK, US on eBay US): asking prices, not what anything sold for, and not what a buyer would pay you. '
                 + 'Complete uses the median of complete copies where eBay has them; loose uses the overall median; sealed has no eBay figure, so it uses a dated article price where one exists.'
                 + (collectionKept ? '' : ' This browser would not store the list, so it will be gone when you close the page.');
             updateCollectionTab();
+        }
+
+        /* ---- Cover images ------------------------------------------------------
+           A game's cover comes from its Wikipedia article's lead image, asked for by the
+           visitor's own browser (api.php, CORS open) as a small thumbnail that Wikipedia
+           resizes for us. Nothing is copied into this site's files. A game's article is the one the
+           Demand Index already checked (data/wiki_checks.json) when there is one; otherwise the top
+           search hit counts only if its title matches the game and its short description says
+           "video game". What was found (or not) is remembered in the browser so each game is
+           asked for once. Showing covers can be switched off, and then nothing is requested.
+        -------------------------------------------------------------------- */
+        const COVERS_KEY = 'ps2-sentiment-tracker.covers';
+        const COVERS_SHOWN_KEY = 'ps2-sentiment-tracker.covers-shown';
+        const COVER_PIXELS = 160;                // thumbnail width asked for; shown at about 96 px
+        const COVER_KEEP_DAYS = 45;
+        const COVER_RETRY_DAYS = 7;              // a game with no cover is asked about again after this
+        const COVER_URL = /^https:\/\/upload\.wikimedia\.org\/[A-Za-z0-9_\/.,%()'\-~!*:@+&=$ ]+$/;
+        let covers = {};                         // title -> { url, page, at }  (url '' = none found)
+        let coversShown = true;
+        let coverQueue = [];
+        let coverBusy = false;
+
+        function loadCovers() {
+            try { covers = JSON.parse(localStorage.getItem(COVERS_KEY) || '{}') || {}; } catch { covers = {}; }
+            if (typeof covers !== 'object' || Array.isArray(covers)) covers = {};
+            try { coversShown = localStorage.getItem(COVERS_SHOWN_KEY) !== 'off'; } catch { coversShown = true; }
+            const box = document.getElementById('collectionCovers');
+            if (box) box.checked = coversShown;
+        }
+
+        function saveCovers() {
+            try { localStorage.setItem(COVERS_KEY, JSON.stringify(covers)); } catch { /* covers are only a convenience */ }
+        }
+
+        function setCoversShown(on) {
+            coversShown = !!on;
+            try { localStorage.setItem(COVERS_SHOWN_KEY, coversShown ? 'on' : 'off'); } catch { /* remembered for this visit only */ }
+            renderCollection();
+        }
+
+        function coverUrl(title) {
+            const found = own(covers, title) ? covers[title] : null;
+            return found && typeof found.url === 'string' && COVER_URL.test(found.url) ? found.url : '';
+        }
+
+        const initialsOf = (title) => String(title).replace(/[^A-Za-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean).slice(0, 3).map(word => word[0].toUpperCase()).join('');
+
+        function coverDue(title) {
+            const found = own(covers, title) ? covers[title] : null;
+            if (!found || typeof found.at !== 'number') return true;
+            const days = (Date.now() - found.at) / 86400000;
+            return days > (found.url ? COVER_KEEP_DAYS : COVER_RETRY_DAYS);
+        }
+
+        function coverRequestUrl(title) {
+            const article = wikiArticles.get(priceKey(title));
+            const base = 'https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&origin=*&redirects=1'
+                + `&prop=pageimages%7Cdescription&piprop=thumbnail&pithumbsize=${COVER_PIXELS}`;
+            return article
+                ? `${base}&titles=${encodeURIComponent(article)}`
+                : `${base}&generator=search&gsrnamespace=0&gsrlimit=3&gsrsearch=${encodeURIComponent(`${title} PlayStation 2 video game`)}`;
+        }
+
+        const coverNameOf = (text) => plainText(String(text ?? '').replace(/\s*\([^)]*\)\s*$/, '')).replace(/^the /, '');
+
+        // The page whose image is this game's cover, or null. A page counts when its title is the
+        // game's name (a "(video game)" tag aside) and Wikipedia describes it as a video game.
+        function pickCoverPage(json, title) {
+            const pages = Array.isArray(json?.query?.pages) ? json.query.pages : [];
+            const asked = wikiArticles.get(priceKey(title));
+            const want = coverNameOf(title);
+            const ranked = [...pages].sort((a, b) => (a?.index ?? 99) - (b?.index ?? 99));
+            for (const page of ranked) {
+                const url = page?.thumbnail?.source;
+                if (typeof url !== 'string' || !COVER_URL.test(url)) continue;
+                const named = asked && page.title === asked ? true : coverNameOf(page.title) === want;
+                if (named && /video game/i.test(String(page.description ?? ''))) return { url, page: String(page.title) };
+            }
+            return null;
+        }
+
+        async function fetchCover(title) {
+            let result = { url: '', page: '' };
+            let failed = false;
+            try {
+                const response = await fetch(coverRequestUrl(title));
+                if (response.ok) result = pickCoverPage(await response.json(), title) || result;
+                else failed = true;
+            } catch {
+                failed = true;   // offline or blocked: try again next time, remember nothing
+            }
+            if (!failed) {
+                covers[title] = { url: result.url, page: result.page, at: Date.now() };
+                saveCovers();
+            }
+            return !failed && !!result.url;
+        }
+
+        function fetchMissingCovers() {
+            for (const entry of collection) {
+                if (coverDue(entry.title) && !coverQueue.includes(entry.title)) coverQueue.push(entry.title);
+            }
+            if (coverBusy || !coverQueue.length) return;
+            coverBusy = true;
+            (async () => {
+                let found = 0;
+                while (coverQueue.length && coversShown) {
+                    const title = coverQueue.shift();
+                    if (!collection.some(entry => entry.title === title)) continue;
+                    if (await fetchCover(title)) found++;
+                    if (found && (found % 4 === 0 || !coverQueue.length)) { try { renderCollection(); } catch { /* the next draw shows it */ } found = 0; }
+                    await new Promise(done => setTimeout(done, 150));   // gently: one request at a time
+                }
+                coverBusy = false;
+                if (found) { try { renderCollection(); } catch { /* the next draw shows it */ } }
+            })();
         }
 
         function refreshCollection() {
@@ -2473,15 +2609,59 @@
             renderCollection();
         }
 
+        /* The same dropdown as the main search box (suggestGames, arrow keys, Enter, Esc), with its own state. */
+        let collectionSuggestions = [];
+        let collectionSuggestAt = -1;
+
+        function paintCollectionSuggestions() {
+            const box = document.getElementById('collectionSuggest');
+            const open = collectionSuggestions.length > 0;
+            box.classList.toggle('hidden', !open);
+            document.getElementById('collectionGame').setAttribute('aria-expanded', String(open));
+            box.innerHTML = collectionSuggestions.map((title, i) => `<li role="option" id="collectionSuggest${i}" aria-selected="${i === collectionSuggestAt}"
+                onmousedown="event.preventDefault(); pickCollectionSuggestion(${i})" class="px-3 py-2 cursor-pointer text-slate-200${i === collectionSuggestAt ? ' bg-slate-700' : ''}">${esc(title)}</li>`).join('');
+        }
+
         function onCollectionInput() {
-            const text = document.getElementById('collectionGame').value;
-            document.getElementById('collectionGames').innerHTML = suggestGames(text, 10).map(title => `<option value="${esc(title)}"></option>`).join('');
+            collectionSuggestions = suggestGames(document.getElementById('collectionGame').value);
+            collectionSuggestAt = -1;
+            paintCollectionSuggestions();
+        }
+
+        function closeCollectionSuggestions() {
+            collectionSuggestions = [];
+            collectionSuggestAt = -1;
+            paintCollectionSuggestions();
+        }
+
+        function pickCollectionSuggestion(i) {
+            const title = collectionSuggestions[i];
+            if (!title) return;
+            document.getElementById('collectionGame').value = title;
+            closeCollectionSuggestions();
+            document.getElementById('collectionMessage').textContent = '';
+        }
+
+        function onCollectionKey(event) {
+            const n = collectionSuggestions.length;
+            if ((event.key === 'ArrowDown' || event.key === 'ArrowUp') && n) {
+                event.preventDefault?.();
+                collectionSuggestAt = event.key === 'ArrowDown' ? (collectionSuggestAt + 1) % n : (collectionSuggestAt <= 0 ? n - 1 : collectionSuggestAt - 1);
+                paintCollectionSuggestions();
+            } else if (event.key === 'Enter' && n && collectionSuggestAt >= 0) {
+                // Enter on a highlighted name fills it in; Enter again (or Add) adds the game.
+                event.preventDefault?.();
+                pickCollectionSuggestion(collectionSuggestAt);
+            } else if (event.key === 'Escape') {
+                closeCollectionSuggestions();
+            }
         }
 
         function addFromForm(event) {
             event?.preventDefault?.();
             const message = document.getElementById('collectionMessage');
             const text = document.getElementById('collectionGame').value.trim();
+            closeCollectionSuggestions();
             const picks = text ? suggestGames(text, 6) : [];
             const chosen = picks.find(title => plainText(title) === plainText(text)) || (picks.length === 1 ? picks[0] : null);
             if (!chosen) {
@@ -2496,7 +2676,7 @@
                 document.getElementById('collectionGame').value = '';
                 document.getElementById('collectionPaid').value = '';
                 document.getElementById('collectionQty').value = '1';
-                document.getElementById('collectionGames').innerHTML = '';
+                closeCollectionSuggestions();
                 renderCollection();
             }
             return false;

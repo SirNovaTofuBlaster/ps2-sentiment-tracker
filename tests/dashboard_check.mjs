@@ -2415,13 +2415,29 @@ await check('My collection: add, value, keep in the browser, back up and restore
     assert.match(el('collectionSummary').textContent, /^4 games, 6 copies\. Estimated value \$1,550 \+ £60\.00 \(1 copy without a price\)\.$/);
     const html = el('collectionList').innerHTML;
     assert.match(html, /God Hand/); assert.match(html, /×3/); assert.match(html, /paid \$90/); assert.match(html, /no price/);
+    assert.match(html, /class="coll-tile"/, 'cover tiles');
+    assert.match(html, /<span class="coll-initials" aria-hidden="true">GH<\/span>/, 'a tile without a cover shows the initials');
+    assert.doesNotMatch(html, /<img/, 'no cover asked for yet, so no image');
     assert.doesNotMatch(html, /NaN|undefined|null/);
     assert.deepEqual([el('tabCollectionCount').textContent, el('tabCollectionCount').classList.contains('hidden')], ['6', false]);
 
     // The form: only a name from the library is accepted
     el('collectionGame').value = 'kuo'; el('collectionRegion').value = 'PAL'; el('collectionCondition').value = 'complete'; el('collectionQty').value = '2'; el('collectionPaid').value = '';
     run(`onCollectionInput()`);
-    assert.match(el('collectionGames').innerHTML, /<option value="Kuon">/);
+    assert.match(el('collectionSuggest').innerHTML, /role="option"[^>]*>Kuon<\/li>/, 'the same kind of dropdown as the main search');
+    assert.equal(el('collectionSuggest').classList.contains('hidden'), false);
+    // Keyboard: arrows move, Enter fills the name in, Escape closes
+    run(`onCollectionKey({ key: 'ArrowDown' })`);
+    assert.equal(run(`collectionSuggestAt`), 0);
+    run(`onCollectionKey({ key: 'Enter' })`);
+    assert.equal(el('collectionGame').value, 'Kuon');
+    assert.equal(el('collectionSuggest').classList.contains('hidden'), true, 'the list closes once a name is picked');
+    el('collectionGame').value = 'god'; run(`onCollectionInput()`);
+    run(`onCollectionKey({ key: 'Escape' })`);
+    assert.equal(el('collectionSuggest').classList.contains('hidden'), true);
+    el('collectionGame').value = 'kuo'; run(`onCollectionInput()`);
+    run(`pickCollectionSuggestion(0)`);
+    assert.equal(el('collectionGame').value, 'Kuon');
     run(`addFromForm()`);
     assert.match(el('collectionMessage').textContent, /Added Kuon/);
     assert.equal(run(`collection.find(e => e.title === 'Kuon' && e.region === 'PAL').qty`), 2);
@@ -2467,6 +2483,55 @@ await check('My collection: add, value, keep in the browser, back up and restore
     assert.match(el('collectionNote').textContent, /would not store the list/);
     context.localStorage = { getItem: () => null, setItem() {} };
     run(`collection = []; collectionKept = true; updateCollectionTab()`);
+
+
+    // Covers: the article the Demand Index checked is used when there is one; otherwise a search hit counts only if it is that game
+    context.localStorage = { getItem: () => null, setItem() {} };
+    run(`covers = {}; coversShown = true; setWikiChecks(null)`);
+    const thumb = 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/God_Hand_Coverart.png/160px-God_Hand_Coverart.png';
+    const asked = [];
+    context.fetch = async (url) => {
+        asked.push(String(url));
+        const page = (title, description, source = thumb, index = 1) => ({ title, description, index, thumbnail: { source, width: 160, height: 220 } });
+        const reply = (pages) => ({ ok: true, json: async () => ({ query: { pages } }) });
+        if (String(url).includes('Kuon')) return reply([page('Kuon (film)', '2001 film', thumb, 1), page('Kuon', '2004 video game', thumb.replace('God_Hand', 'Kuon'), 2)]);
+        if (String(url).includes('Black')) return reply([page('Black (band)', 'English band')]);
+        if (String(url).includes('Rule')) return { ok: false, status: 500, json: async () => ({}) };
+        return reply([page('God Hand', '2006 video game'), page('Gods Hand (novel)', 'a novel', 'https://evil.example/x.png', 2)]);
+    };
+    assert.equal(run(`coverRequestUrl('God Hand')`).includes('generator=search'), true);
+    assert.match(run(`coverRequestUrl('God Hand')`), /origin=\*/);
+    assert.match(run(`coverRequestUrl('God Hand')`), /pithumbsize=160/);
+    run(`setWikiChecks({ 'Black': { article: 'Black (2006 video game)', game: true, ps2: true, collectible: [] } })`);
+    assert.match(run(`coverRequestUrl('Black')`), /titles=Black%20\(2006%20video%20game\)/, 'a checked article is asked for directly');
+    run(`setWikiChecks(null)`);
+    assert.equal(await run(`fetchCover('God Hand')`), true);
+    assert.equal(run(`coverUrl('God Hand')`), thumb);
+    assert.equal(await run(`fetchCover('Kuon')`), true, 'the film is skipped, the game is taken');
+    assert.match(run(`coverUrl('Kuon')`), /Kuon_Coverart/);
+    assert.equal(await run(`fetchCover('Black')`), false, 'a band is not the game');
+    assert.equal(run(`coverUrl('Black')`), '');
+    assert.equal(run(`covers['Black'].url`), '', 'remembered as not found');
+    assert.equal(run(`coverDue('Black')`), false); assert.equal(run(`coverDue('Never Asked')`), true);
+    run(`covers['Black'].at = Date.now() - 8 * 86400000`);
+    assert.equal(run(`coverDue('Black')`), true, 'a game with no cover is tried again after a week');
+    assert.equal(await run(`fetchCover('Rule of Rose')`), false);
+    assert.equal(run(`own(covers, 'Rule of Rose')`), false, 'a failed request is not remembered as "no cover"');
+    run(`covers['Evil'] = { url: 'https://evil.example/x.png', at: Date.now() }`);
+    assert.equal(run(`coverUrl('Evil')`), '', 'only Wikimedia image addresses are ever used');
+    // A tile shows the image, and switching covers off shows none and asks for none
+    run(`collection = []; addToCollection('God Hand', 'US', 'complete'); renderCollection()`);
+    assert.match(el('collectionList').innerHTML, new RegExp(`<img src="${thumb.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*referrerpolicy="no-referrer"`));
+    asked.length = 0;
+    run(`setCoversShown(false)`);
+    assert.doesNotMatch(el('collectionList').innerHTML, /<img/);
+    assert.equal(asked.length, 0);
+    assert.doesNotMatch(el('collectionNote').textContent, /request to Wikipedia/);
+    run(`setCoversShown(true)`);
+    assert.match(el('collectionNote').textContent, /request to Wikipedia for each game/, 'the page says what leaves the browser');
+    assert.equal(run(`initialsOf('The Legend of Heroes: Trails')`), 'TLO');
+    context.fetch = fakeFetch;
+    context.localStorage = { getItem: () => null, setItem() {} };
 
     // The address "#collection" opens the page
     context.location.hash = '#collection';
