@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: covers fixed, collection button in the header
+
+- Covers were blank because Wikipedia's page-image lookup returns only freely licensed images unless asked
+  with `pilicense=any`, and box art is non-free. Added; tiles now say whether a cover was found, not found or failed.
+- The My collection button moved from the page tabs to the header beside REFRESH, with a blue-to-teal glossy
+  gradient and a slow shine (off for `prefers-reduced-motion`). No yellow (reserved for price links).
+
 ## 2026-10-14: collection search and cover tiles
 
 - `index.html`, `retro.css`: the collection's add box uses the main search's dropdown (`suggestGames`, arrow

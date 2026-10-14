@@ -2502,6 +2502,7 @@ await check('My collection: add, value, keep in the browser, back up and restore
     assert.equal(run(`coverRequestUrl('God Hand')`).includes('generator=search'), true);
     assert.match(run(`coverRequestUrl('God Hand')`), /origin=\*/);
     assert.match(run(`coverRequestUrl('God Hand')`), /pithumbsize=160/);
+    assert.match(run(`coverRequestUrl('God Hand')`), /pilicense=any/, 'without this Wikipedia returns only freely licensed images, and a box cover is not one');
     run(`setWikiChecks({ 'Black': { article: 'Black (2006 video game)', game: true, ps2: true, collectible: [] } })`);
     assert.match(run(`coverRequestUrl('Black')`), /titles=Black%20\(2006%20video%20game\)/, 'a checked article is asked for directly');
     run(`setWikiChecks(null)`);
@@ -2528,6 +2529,12 @@ await check('My collection: add, value, keep in the browser, back up and restore
     assert.equal(asked.length, 0);
     assert.doesNotMatch(el('collectionNote').textContent, /request to Wikipedia/);
     run(`setCoversShown(true)`);
+    run(`covers = {}; coverFailed.clear()`);
+    assert.equal(run(`coverNote('God Hand')`), 'looking for a cover…', 'asked about but not answered yet');
+    run(`coverFailed.add('God Hand')`);
+    assert.equal(run(`coverNote('God Hand')`), 'cover could not be loaded (offline or blocked)');
+    run(`covers['God Hand'] = { url: '', page: '', at: Date.now() }; coverFailed.clear()`);
+    assert.equal(run(`coverNote('God Hand')`), 'no cover found on Wikipedia');
     assert.match(el('collectionNote').textContent, /request to Wikipedia for each game/, 'the page says what leaves the browser');
     assert.equal(run(`initialsOf('The Legend of Heroes: Trails')`), 'TLO');
     context.fetch = fakeFetch;
@@ -2550,6 +2557,26 @@ await check('My collection: add, value, keep in the browser, back up and restore
     assert.equal(run(`referenceHtml('Nothing Here', 'US', 'en-US')`), '');
     run(`referenceData = null`);
     assert.equal(run(`referenceHtml('Rule of Rose', 'US', 'en-US')`), '');
+
+    // The My collection button sits in the header beside REFRESH, not among the page tabs
+    const pageHtml = read('index.html');
+    const header = pageHtml.slice(pageHtml.indexOf('<div class="brand-actions">'), pageHtml.indexOf('<div class="brand-lock">'));
+    assert.ok(header.indexOf('onclick="fetchSentimentData()"') < header.indexOf('id="tabCollection"'), 'after REFRESH');
+    assert.match(header, /id="tabCollection"[^>]*onclick="showView\('collection'\)"[^>]*class="brand-btn brand-btn-collection"/);
+    const tabs = pageHtml.slice(pageHtml.indexOf('<div class="view-tabs"'), pageHtml.indexOf('</div>', pageHtml.indexOf('<div class="view-tabs"')));
+    assert.doesNotMatch(tabs, /tabCollection/, 'no longer one of the page tabs');
+    run(`showView('collection')`);
+    assert.equal(el('tabCollection').classList.contains('is-active'), true);
+    run(`showView('rare')`);
+    assert.equal(el('tabCollection').classList.contains('is-active'), false);
+    // Dark text on the button's gradient (blue to teal) stays readable, and it uses no yellow
+    const cssText = read('retro.css');
+    const tok = Object.fromEntries([...cssText.matchAll(/--([a-z-]+):\s*(#[0-9A-Fa-f]{6})/g)].map(m => [m[1], m[2]]));
+    const lum = (hex) => [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16) / 255).map(c => c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4).reduce((sum, c, i) => sum + c * [0.2126, 0.7152, 0.0722][i], 0);
+    for (const end of ['accent-hi', 'accent', 'green']) assert.ok((lum(tok[end]) + 0.05) / (lum(tok.bg) + 0.05) >= 4.5, `dark text on --${end}`);
+    const block = cssText.slice(cssText.indexOf('.brand-btn-collection {'), cssText.indexOf('@keyframes collection-shine'));
+    assert.doesNotMatch(block, /--money/);
+    assert.match(cssText, /prefers-reduced-motion: reduce\) \{ body \.brand-btn-collection::after \{ animation: none/, 'the shine stops for people who ask for less motion');
 
     // The files that make the site installable
     const manifest = JSON.parse(read('manifest.webmanifest'));

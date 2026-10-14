@@ -39,6 +39,7 @@
                     <a href="guide.html" target="_blank" rel="noopener noreferrer" class="brand-btn"><i class="fa-solid fa-circle-question"></i> How it works</a>
                     <a href="#sourcesSection" class="brand-btn"><i class="fa-solid fa-sliders"></i> Sources</a>
                     <button type="button" onclick="fetchSentimentData()" class="brand-btn brand-btn-primary"><i class="fa-solid fa-rotate"></i> REFRESH</button>
+                    <button type="button" id="tabCollection" aria-controls="viewCollection" onclick="showView('collection')" class="brand-btn brand-btn-collection" title="The games you own, with covers and what they are worth"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> My collection <span id="tabCollectionCount" class="coll-count hidden"></span></button>
                 </div>
             </div>
 
@@ -78,7 +79,6 @@
             <button type="button" id="tabRare" role="tab" aria-selected="false" aria-controls="viewRare" onclick="showView('rare')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Rarest</button>
             <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
             <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
-            <button type="button" id="tabCollection" role="tab" aria-selected="false" aria-controls="viewCollection" onclick="showView('collection')" class="view-tab"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> My collection <span id="tabCollectionCount" class="view-tab-count hidden"></span></button>
         </div>
 
         <!-- The EUR button: shown only when data/fx.json could be read. -->
@@ -538,7 +538,8 @@
                 document.getElementById(panel).classList.toggle('hidden', key !== view);
                 const button = document.getElementById(tab);
                 button.classList.toggle('is-active', key === view);
-                button.setAttribute?.('aria-selected', String(key === view));
+                if (key === 'collection') button.setAttribute?.('aria-current', key === view ? 'page' : 'false');
+                else button.setAttribute?.('aria-selected', String(key === view));
             }
             if (view === 'collection') {
                 try { renderCollection(); } catch (error) { console.warn('Could not show the collection.', error); }
@@ -871,7 +872,7 @@
                 document.getElementById(panel).classList.add('hidden');
                 const button = document.getElementById(tab);
                 button.classList.remove('is-active');
-                button.setAttribute?.('aria-selected', 'false');
+                button.setAttribute?.(button.id === 'tabCollection' ? 'aria-current' : 'aria-selected', button.id === 'tabCollection' ? 'false' : 'false');
             }
             document.getElementById('viewGame').classList.remove('hidden');
             document.getElementById('gameSearch').value = name;
@@ -2458,7 +2459,8 @@
                 const cover = coversShown ? coverUrl(entry.title) : '';
                 const label = `${entry.title} · ${entry.region} · ${COLLECTION_CONDITIONS[entry.condition]}${entry.qty > 1 ? ` · ×${entry.qty}` : ''}`
                     + (amount === null ? ' · no eBay price yet' : ` · ${worth} each${basis === 'article' ? ', from a public article' : ' (median eBay asking price)'}`)
-                    + (entry.paid !== null ? ` · paid ${money(entry.paid, currency, locale, false)} each` : '');
+                    + (entry.paid !== null ? ` · paid ${money(entry.paid, currency, locale, false)} each` : '')
+                    + (coversShown && !cover ? ` · ${coverNote(entry.title)}` : '');
                 return `<li class="coll-tile">
                     <a class="coll-cover" href="#game=${encodeURIComponent(entry.title)}" onclick="openGame(${esc(JSON.stringify(entry.title))}); return false;" title="${esc(label)}" aria-label="${esc(label)}">
                         <span class="coll-initials" aria-hidden="true">${esc(initialsOf(entry.title))}</span>${cover
@@ -2525,6 +2527,16 @@
             return found && typeof found.url === 'string' && COVER_URL.test(found.url) ? found.url : '';
         }
 
+        // What happened to a game's cover, in words, for its tile and the line under the switch.
+        const coverStatus = { loaded: 0, none: 0, failed: 0 };
+        const coverFailed = new Set();   // asked for and the request failed this visit
+        function coverNote(title) {
+            if (!coversShown) return '';
+            if (coverUrl(title)) return 'cover from Wikipedia';
+            if (own(covers, title)) return 'no cover found on Wikipedia';
+            return coverFailed.has(title) ? 'cover could not be loaded (offline or blocked)' : 'looking for a cover…';
+        }
+
         const initialsOf = (title) => String(title).replace(/[^A-Za-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean).slice(0, 3).map(word => word[0].toUpperCase()).join('');
 
         function coverDue(title) {
@@ -2537,7 +2549,7 @@
         function coverRequestUrl(title) {
             const article = wikiArticles.get(priceKey(title));
             const base = 'https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&origin=*&redirects=1'
-                + `&prop=pageimages%7Cdescription&piprop=thumbnail&pithumbsize=${COVER_PIXELS}`;
+                + `&prop=pageimages%7Cdescription&piprop=thumbnail&pilicense=any&pithumbsize=${COVER_PIXELS}`;
             return article
                 ? `${base}&titles=${encodeURIComponent(article)}`
                 : `${base}&generator=search&gsrnamespace=0&gsrlimit=3&gsrsearch=${encodeURIComponent(`${title} PlayStation 2 video game`)}`;
@@ -2575,26 +2587,32 @@
                 covers[title] = { url: result.url, page: result.page, at: Date.now() };
                 saveCovers();
             }
+            coverStatus[failed ? 'failed' : result.url ? 'loaded' : 'none']++;
+            if (failed) coverFailed.add(title); else coverFailed.delete(title);
             return !failed && !!result.url;
         }
 
         function fetchMissingCovers() {
             for (const entry of collection) {
-                if (coverDue(entry.title) && !coverQueue.includes(entry.title)) coverQueue.push(entry.title);
+                if (coverDue(entry.title) && !coverFailed.has(entry.title) && !coverQueue.includes(entry.title)) coverQueue.push(entry.title);
             }
             if (coverBusy || !coverQueue.length) return;
             coverBusy = true;
             (async () => {
                 let found = 0;
+                let asked = 0;
                 while (coverQueue.length && coversShown) {
                     const title = coverQueue.shift();
                     if (!collection.some(entry => entry.title === title)) continue;
+                    asked++;
                     if (await fetchCover(title)) found++;
-                    if (found && (found % 4 === 0 || !coverQueue.length)) { try { renderCollection(); } catch { /* the next draw shows it */ } found = 0; }
+                    if (found && found % 4 === 0) { try { renderCollection(); } catch { /* the next draw shows it */ } }
                     await new Promise(done => setTimeout(done, 150));   // gently: one request at a time
                 }
                 coverBusy = false;
-                if (found) { try { renderCollection(); } catch { /* the next draw shows it */ } }
+                // One last draw so every tile says what became of its cover. It asks for nothing:
+                // what failed this visit is not asked for again until the page is opened anew.
+                if (asked) { try { renderCollection(); } catch { /* the next draw shows it */ } }
             })();
         }
 
