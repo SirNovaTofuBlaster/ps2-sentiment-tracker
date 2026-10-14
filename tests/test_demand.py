@@ -113,6 +113,11 @@ class ArticleTests(unittest.TestCase):
     def test_a_sentence_about_value_without_the_market_is_not_enough(self):
         self.assertEqual(demand.collectible_terms("It was a rare achievement for a studio of that size."), [])
 
+    def test_the_real_kuon_sentence_and_collectors_editions(self):
+        self.assertTrue(demand.collectible_terms("Despite this, the Western version has become a rare collectable."))
+        self.assertEqual(demand.collectible_terms("The Collector's Edition included a soundtrack and a poster."), [])
+        self.assertEqual(demand.collectible_terms("A collector's edition was sold for the game's release."), [])
+
     def test_an_article_that_is_not_a_ps2_game_is_told_apart(self):
         general = demand.check_article_text("Retro gaming is the playing of older video games, mainly on consoles of the 1980s.")
         self.assertFalse(general["ps2"])
@@ -138,8 +143,9 @@ class ArticleTests(unittest.TestCase):
     def test_checks_come_due_after_a_month(self):
         today = datetime(2026, 10, 14).date()
         self.assertTrue(demand.due_for_check("A", {}, today))
-        self.assertFalse(demand.due_for_check("A", {"A": {"checked": "2026-10-01"}}, today))
-        self.assertTrue(demand.due_for_check("A", {"A": {"checked": "2026-09-01"}}, today))
+        self.assertFalse(demand.due_for_check("A", {"A": {"checked": "2026-10-01", "rules": demand.RULES_VERSION}}, today))
+        self.assertTrue(demand.due_for_check("A", {"A": {"checked": "2026-09-01", "rules": demand.RULES_VERSION}}, today))
+        self.assertTrue(demand.due_for_check("A", {"A": {"checked": "2026-10-13"}}, today), "older rules: read again")
         self.assertTrue(demand.due_for_check("A", {"A": {"checked": "garbage"}}, today))
 
 
@@ -150,7 +156,7 @@ class UpdateChecksTests(unittest.TestCase):
         with mock.patch.object(demand, "fetch_extract", side_effect=lambda session, article: texts[article]), \
                 mock.patch.object(demand, "resolve_article", side_effect=lambda session, title: f"{title} (video game)"), \
                 mock.patch.object(demand, "REQUEST_PAUSE", 0), mock.patch.object(demand, "CHECKS_PER_RUN", 2):
-            resolved, checks = {}, {"Done": {"article": "x", "checked": datetime.now(timezone.utc).strftime("%Y-%m-%d")}}
+            resolved, checks = {}, {"Done": {"article": "x", "checked": datetime.now(timezone.utc).strftime("%Y-%m-%d"), "rules": demand.RULES_VERSION}}
             changed = demand.update_checks(None, ["Done", "Kuon", "Other", "Third"], resolved, {}, checks, time_start())
         self.assertTrue(changed)
         self.assertTrue(checks["Kuon"]["ps2"] and "rare" in checks["Kuon"]["collectible"])
