@@ -360,6 +360,28 @@ class TitleTests(unittest.TestCase):
         item = listing(title, 10, currency=market["currency"])
         return ebay_prices.reject_reason(item, wanted, market, keyword)
 
+    def test_a_the_in_the_listing_or_the_library_does_not_make_another_game(self):
+        pop = game("Prince of Persia: Sands of Time")
+        for title in ("Prince of Persia: The Sands of Time (PS2) PEGI 12+", "Prince of Persia Sands of Time PS2",
+                      "Ubisoft Prince of Persia: The Sands of Time PS2 NTSC CIB"):
+            self.assertIsNone(self.reason(title, pop), title)
+        zoe = game("Zone of the Enders")
+        for title in ("Zone of Enders PS2 game", "Zone of the Enders PS2 game"):
+            self.assertIsNone(self.reason(title, zoe), title)
+        spyro = game("Spyro: The Eternal Night")
+        self.assertIsNone(self.reason("Spyro Eternal Night PS2 Complete", spyro))
+
+    def test_the_tolerance_does_not_let_sequels_siblings_or_other_games_in(self):
+        pop = game("Prince of Persia: Sands of Time", siblings=["prince of persia sands of time warrior within"])
+        self.assertEqual(self.reason("Prince of Persia: Warrior Within PS2", pop), "other_game")
+        self.assertEqual(self.reason("Prince of Persia: The Two Thrones PS2", pop), "other_game")
+        top_gun = game("Top Gun", siblings=["top gun combat zones"])
+        self.assertEqual(self.reason("Top Gun: Combat Zones PS2 PAL", top_gun), "other_game")
+        hit_run = game("The Simpsons Game")
+        self.assertEqual(self.reason("The Simpsons Hit & Run PS2 Game", hit_run), "other_game")
+        tag = game("Silent Hill 2")
+        self.assertEqual(self.reason("Silent Hill 3 (Sony PlayStation 2, 2003)", tag), "other_game")
+
     def test_the_2_in_playstation_2_is_not_the_2_in_silent_hill_2(self):
         for title in ("Silent Hill 3 (Sony PlayStation 2, 2003)",
                       "Silent Hill 4: The Room (Sony PlayStation 2, 2004)",

@@ -415,6 +415,13 @@ def name_words(text):
     return [ROMAN_NUMERALS.get(word, word) for word in words(text) if word != "and"]
 
 
+def the_less(text):
+    """A name with every "the" removed, for comparing: sellers write "Prince of Persia: The Sands of Time"
+    where the library has "Prince of Persia: Sands of Time". Used only when a listing's words are
+    checked against a game's name (never for the search words or the keys, which stay as they are)."""
+    return " ".join(word for word in text.split() if word != "the")
+
+
 def has_phrase(text, phrases):
     """True when one of the phrases appears in the text as whole words."""
     padded = f" {text} "
@@ -1219,9 +1226,11 @@ def reject_reason(item, game, market, keyword_search):
     name_text = " ".join(name_words(item.get("title")))   # for the game's name, spellings evened out
     if keyword_search and not PLATFORM_WORDS.search(text):
         return "other_game"
-    if not names_this_game(name_text, game["search"]) or names_another_entry(name_text, game["search"]) \
-            or has_phrase(name_text, game.get("siblings") or ()) \
-            or not all(has_phrase(name_text, [words_needed]) for words_needed in game.get("require") or ()):
+    # Both sides lose any "the", so a listing that adds or drops one is still the game.
+    bare, search = the_less(name_text), the_less(game["search"])
+    if not names_this_game(bare, search) or names_another_entry(bare, search) \
+            or has_phrase(bare, [the_less(sibling) for sibling in game.get("siblings") or ()]) \
+            or not all(has_phrase(bare, [the_less(words_needed)]) for words_needed in game.get("require") or ()):
         return "other_game"
     if has_phrase(text, OTHER_PLATFORMS):
         return "other_platform"
