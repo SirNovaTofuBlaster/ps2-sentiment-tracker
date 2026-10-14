@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-10-14: charts on a phone
+
+- Asked: the charts did not look good on a Pixel 10 Pro (427 x 952 CSS pixels).
+- `retro.css` (phones, up to 640 px): the chart tool buttons are one row you swipe sideways
+  (they were 11 full-height 44 px buttons stacked into a block 98 px tall; now 44 px) and
+  have a smaller height than the general 44 px button rule, which they out-rank; the chart
+  is 300 px tall; the day read-out is larger.
+- `index.html`: the chart no longer captures one-finger drags (`handleScroll` touch drags
+  off, pinch off), so the page scrolls over it; a tap reads off a day (`subscribeClick`).
+  On a computer the mouse still drags and zooms.
+- `guide.html` describes the above. Checked with phone-size Chromium screenshots using the
+  plain-line fallback only: the chart library's address is not reachable from the sandbox, so
+  touch behaviour was checked by reading the library's source (4.2.0), not on a device.
+
 ## 2026-10-13: rare-list charts, market cap, price history, and a bigger feed
 
 - Asked: are the rare games still priced (yes: daily, PAL on eBay UK, US on eBay US); more

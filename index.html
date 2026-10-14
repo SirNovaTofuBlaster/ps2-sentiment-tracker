@@ -1600,6 +1600,10 @@
                 rightPriceScale: { borderColor: colours.line, mode: spec.log ? 1 : 0 },
                 timeScale: { borderColor: colours.line },
                 crosshair: { mode: 0 },
+                // On a phone a finger drag scrolls the page instead of being caught by the chart
+                // (the range buttons do the zooming); a long press still reads off a day.
+                handleScroll: { horzTouchDrag: false, vertTouchDrag: false },
+                handleScale: { pinch: false },
             });
             liveCharts[holderId] = chart;
             const format = { type: 'custom', formatter: spec.format, minMove: 0.01 };
@@ -1615,11 +1619,13 @@
                 bars.setData(spec.bars);
             }
             chart.timeScale().fitContent();
-            chart.subscribeCrosshairMove(param => {
+            const dayAt = param => {
                 const at = Number.isFinite(param?.logical) ? Math.round(param.logical) : -1;
-                const i = at >= 0 && at < spec.points.length ? at : null;
-                spec.onHover?.(param?.point ? i : null);
-            });
+                return at >= 0 && at < spec.points.length ? at : null;
+            };
+            chart.subscribeCrosshairMove(param => spec.onHover?.(param?.point ? dayAt(param) : null));
+            // A tap reads off that day too, so a phone needs no long press.
+            chart.subscribeClick(param => { if (param?.point) spec.onHover?.(dayAt(param)); });
         }
 
         // The Rarest page's chart, above the PAL or the US list.
