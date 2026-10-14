@@ -6,6 +6,7 @@
   Solid 2 (Sons of Liberty), Splinter Cell, Tomb Raider: Anniversary, Cars Race-O-Rama and Mater-National, Spyro: The Eternal Night, the two James Bond 007 games, King's Field IV,
   Over the Hedge, Donald Duck Goin' Quackers, EyeToy, Pimp My Ride, Dead or Alive 2: Hardcore, Arena Football. `covers.json` gained exactly those 15 keys.
 - Shin Megami Tensei: Devil Summoner (the Raidou Kuzunoha vs. the Soulless Army box) and Devil Summoner 2 (King Abaddon) were added the same way.
+- LifeLine: Voice Action Adventure uses the collection's "Life Line (USA)".
 - The Silent Hill Collection (the PS2 box set of 2, 3 and 4) has no file in the collection, so it keeps its initials tile.
 
 ## 2026-10-14: Demand tab, a longer shelf
