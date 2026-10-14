@@ -1227,8 +1227,8 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.match(page, /<div id="statRemasters" class="stat-value is-news">/);
     assert.match(page, /<div id="statFeedsCount" class="stat-value is-live">/);
     assert.match(page, /<div id="statAvgSentiment" class="stat-value">/);
-    // The tag in the table, beside a game's rank and beside a game named today is the same tag.
-    assert.equal((script.match(/<span class="remaster-tag /g) || []).length, 3);
+    // The tag in the table, beside a game's rank and beside a game named today and on a game's own page is the same tag.
+    assert.equal((script.match(/<span class="remaster-tag /g) || []).length, 4);
     context.__items = [{ headline: 'Okami HD announced', source: 'Eurogamer', link: 'https://e.example/okami', matched_game: 'Okami',
         is_remaster_rumor: true, sentiment: 50, timestamp: '2026-10-07 08:00 UTC' }];
     vm.runInContext('allFeedData = __items; refreshDashboard();', context);
@@ -2184,6 +2184,97 @@ await check('the EUR button: converts at the ECB rate, marks it, keeps PriceChar
     const page = read('index.html');
     assert.ok(page.indexOf('await loadFx();') < page.indexOf('await loadPrices();'));
     assert.match(page, /fetch\('data\/fx\.json', \{ cache: 'no-cache' \}\)/);
+});
+
+await check('search suggests from the whole library and opens a game page; the logo goes home; the 24-hour list sorts by rarity', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    run(`setLibrary(['God Hand', 'Godzilla: Save the Earth', 'Kuon', 'Kingdom Hearts II', 'CY Girls', 'Final Fantasy X', 'Final Fantasy XII', 'Dragon Quest VIII: Journey of the Cursed King'])`);
+    assert.equal(evalJson(`suggestGames('godh')[0]`), 'God Hand', '"godh" finds God Hand');
+    assert.equal(evalJson(`suggestGames('GOD H')[0]`), 'God Hand', 'spaces and capitals do not matter');
+    assert.deepEqual(evalJson(`suggestGames('god')`), ['God Hand', 'Godzilla: Save the Earth']);
+    assert.equal(evalJson(`suggestGames('cursed')[0]`), 'Dragon Quest VIII: Journey of the Cursed King', 'any word, any part');
+    assert.deepEqual(evalJson(`suggestGames('')`), []);
+    assert.deepEqual(evalJson(`suggestGames('zzzz')`), []);
+    assert.equal(evalJson(`suggestGames('final fantasy x')[0]`), 'Final Fantasy X', 'the shortest match leads');
+    assert.equal(evalJson(`suggestGames('god', 1).length`), 1);
+    // Typing fills the list; a click on one opens its page and puts the address on it.
+    el('gameSearch').value = 'godh';
+    run('onGameSearchInput()');
+    assert.equal(el('gameSuggest').classList.contains('hidden'), false);
+    assert.match(el('gameSuggest').innerHTML, /God Hand/);
+    // Items for the page: spelled another way, still the same game; a switched-off source stays out.
+    run(`visibleFeedData = [
+        { headline: 'Old <b>news</b>', source: 'r/ps2', timestamp: '2026-10-10 10:00:00 UTC', link: 'https://example.com/a', matched_games: ['God Hand'], feed: 'reddit:ps2' },
+        { headline: 'New thread', source: '/vr/', feed: '4chan:vr', timestamp: '2026-10-12 10:00:00 UTC', link: 'javascript:alert(1)', matched_game: 'God Hand' },
+        { headline: 'Other', source: 'x', timestamp: '2026-10-12 10:00:00 UTC', link: 'https://example.com/c', matched_games: ['Kuon'] },
+    ]`);
+    addressChanges.length = 0;
+    assert.equal(run(`openGame('God Hand')`), 'game');
+    assert.deepEqual(addressChanges, ['#game=God%20Hand']);
+    assert.equal(el('viewGame').classList.contains('hidden'), false);
+    for (const panel of ['viewDashboard', 'viewRare', 'viewMentions', 'viewPrices']) assert.equal(el(panel).classList.contains('hidden'), true, `${panel} is away`);
+    assert.equal(el('gameTitle').textContent, 'God Hand');
+    const rows = el('gameItems').innerHTML.split('<li ').slice(1);
+    assert.equal(rows.length, 2);
+    assert.match(rows[0], /New thread/, 'newest first');
+    assert.doesNotMatch(el('gameItems').innerHTML, /<b>news|javascript:/, 'nothing from a feed is markup or a script link');
+    assert.match(el('gameItems').innerHTML, /Old &lt;b&gt;news&lt;\/b&gt;/);
+    // A game nobody has named: an empty page that says so, no error.
+    assert.equal(run(`openGame('CY Girls')`), 'game');
+    assert.equal(el('gameItems').innerHTML.split('<li ').length - 1, 1);
+    assert.match(el('gameItems').innerHTML, /Nothing yet/);
+    assert.match(el('gameSummary').textContent, /In the PS2 library, but nothing in our feeds/);
+    // Arriving by address, and Back/Forward, go through the same door.
+    context.location.hash = '#game=Kuon';
+    assert.equal(run('showViewFromAddress()'), 'game');
+    assert.equal(el('gameTitle').textContent, 'Kuon');
+    assert.match(el('gameItems').innerHTML, /Other/);
+    context.location.hash = '#game=%E0%A4%A';   // a broken escape does not stop the page
+    run('showViewFromAddress()');
+    // The logo: home, and a clean slate.
+    let prevented = 0;
+    assert.equal(run(`goHome({ preventDefault() { __p(); } })`.replace('__p()', 'globalThis.__prevented = 1')), false);
+    assert.equal(el('gameSearch').value, '');
+    assert.equal(el('viewGame').classList.contains('hidden'), true);
+    assert.equal(el('viewDashboard').classList.contains('hidden'), false);
+    const page = read('index.html');
+    assert.match(page, /<a class="brand-id" id="brandHome" href="\.\/" onclick="return goHome\(event\)"/, 'the logo is a link home');
+    assert.match(page, /<input type="search" id="gameSearch"/);
+
+    // Rarity: the fewest copies on UK or US; zero counts; never-checked games last; "scarce" at 10 or fewer.
+    run(`setPrices({ games: {
+        'God Hand': { level: 'normal', mentions: 3, UK: { copies: 40, median: 90, checked: '2026-10-14T10:00Z' }, US: { copies: 60, median: 120, checked: '2026-10-14T10:00Z' } },
+        'Kuon': { level: 'normal', mentions: 1, UK: { copies: 6, median: 150, checked: '2026-10-14T10:00Z' } },
+        'CY Girls': { level: 'normal', mentions: 1, UK: { copies: 2, median: 30, checked: '2026-10-14T10:00Z' } },
+        'Final Fantasy X': { level: 'normal', mentions: 1, UK: { copies: 0, checked: '2026-10-14T10:00Z' } },
+        'Kingdom Hearts II': { level: 'normal', mentions: 1, UK: { unmatched: true, copies: 0 } },
+    } }, null)`);
+    assert.deepEqual(evalJson(`scarcity('Kuon')`), [6, 'UK']);
+    assert.deepEqual(evalJson(`scarcity('God Hand')`), [40, 'UK']);
+    assert.equal(evalJson(`scarcity('Kingdom Hearts II')`), null, 'search words that find nothing say nothing about rarity');
+    assert.equal(evalJson(`scarcity('Dragon Quest')`), null);
+    assert.deepEqual(evalJson(`byRarity([{name:'Dragon Quest'},{name:'God Hand'},{name:'Kuon'},{name:'CY Girls'},{name:'Final Fantasy X'}]).map(g => g.name)`),
+        ['Final Fantasy X', 'CY Girls', 'Kuon', 'God Hand', 'Dragon Quest']);
+    assert.match(evalJson(`scarceTagHtml('Kuon')`), /scarce &middot; 6 for sale on eBay UK/);
+    assert.match(evalJson(`scarceTagHtml('Final Fantasy X')`), /none for sale on eBay UK/);
+    assert.equal(evalJson(`scarceTagHtml('God Hand')`), '');
+    // The buttons reorder the list and say which order is on.
+    const now = Date.parse('2026-10-14T12:00:00Z');
+    const stamp = '2026-10-14 11:00:00 UTC';
+    context.__rareItems = ['God Hand', 'Kuon', 'CY Girls', 'Dragon Quest'].map(name => ({ headline: name, source: 'r/ps2', feed: 'reddit:ps2', timestamp: stamp, link: 'https://example.com', matched_games: [name], matched_in: 'headline' }));
+    run(`renderRecentGames(__rareItems, ${now})`);
+    const order = () => [...el('todayList').innerHTML.matchAll(/class="recent-game[^"]*">([^<]+)</g)].map(m => m[1]);
+    assert.deepEqual(order(), ['Kuon', 'God Hand', 'CY Girls', 'Dragon Quest'], 'most expensive first (UK median)');
+    assert.equal(el('sortPrice').getAttribute('aria-pressed'), 'true');
+    run(`setRecentSort('rare')`);
+    assert.deepEqual(order(), ['CY Girls', 'Kuon', 'God Hand', 'Dragon Quest'], 'most rare first');
+    assert.equal(el('sortRare').getAttribute('aria-pressed'), 'true');
+    assert.equal(el('sortPrice').getAttribute('aria-pressed'), 'false');
+    assert.match(el('todaySummary').textContent, /Most rare first/);
+    assert.match(el('todayList').innerHTML, /scarce &middot; 2 for sale on eBay UK/);
+    run(`setRecentSort('price')`);
+    assert.deepEqual(order(), ['Kuon', 'God Hand', 'CY Girls', 'Dragon Quest']);
+    run(`setPrices(null, null)`);
 });
 
 console.log(`dashboard checks passed (${passed})`);

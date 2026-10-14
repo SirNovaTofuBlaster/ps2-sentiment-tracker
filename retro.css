@@ -760,3 +760,6 @@ body .currency-toggle.is-active { background: var(--accent); border-color: var(-
   body .currency-row { flex-wrap: wrap; margin-top: -.5rem; }
   body main .currency-toggle { min-height: 2.25rem; }
 }
+
+/* The two orders of the 24-hour list: the one in use is lit. */
+body .sort-btn.is-active { background: var(--accent); border-color: var(--accent); color: var(--bg); }

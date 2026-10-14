@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-14: search, game pages, rare sort, logo home
+
+- `index.html`: a search box over the whole library (`data/ps2_database.json`, read by the page), with
+  suggestions as you type ("godh" finds God Hand). A pick opens a game page (`#game=Title`) with its
+  eBay prices and the newest feed items that name it (matched by `priceKey()`); a game nobody named gets
+  an empty page. The Spindle logo is a link home and clears the search.
+- The 24-hour list has **Most expensive** (as before) and **Most rare** (fewest eBay UK/US copies first)
+  buttons, and a `scarce` tag at 10 copies or fewer (`SCARCE_COPIES`). Nothing new is fetched: rarity is
+  the copy count `ebay_prices.py` already saves in `latest.json`. `guide.html` explains all of it.
+
 ## 2026-10-14: one index for all PAL sites
 
 - `ebay_prices.py`: `index.json` has a `PAL` line beside each site's own, built from every game on the UK
