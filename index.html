@@ -559,6 +559,7 @@
                 else button.setAttribute?.('aria-selected', String(key === view));
             }
             drawPending(view);
+            if (view === 'rare' || view === 'mentions') ensureCoverIndex();
             if (view === 'collection') {
                 try { renderCollection(); } catch (error) { console.warn('Could not show the collection.', error); }
             }
@@ -1225,6 +1226,7 @@
         // An item that names three games is a mention of each, as it is for the list of the last
         // day and for archive.py, demand.py and ebay_prices.py.
         function renderTopGames(items) {
+            topGamesItems = items;
             const list = document.getElementById('topGamesList');
             const summary = document.getElementById('topGamesSummary');
             const games = new Map();
@@ -1251,13 +1253,13 @@
                 const pct = game.count / total * 100;
                 return `
                 <li class="${rowClass('topGamesList', i)}">
-                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
+                    ${withCover(game.name, 'US', `                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
                         <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${gameLinkHtml(game.name)}${game.remasters
                             ? ` <span class="remaster-tag text-[10px] border px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}</span>
                         <span class="text-slate-300 whitespace-nowrap">${game.count} mention${game.count === 1 ? '' : 's'} · ${pct >= 10 ? Math.round(pct) : pct.toFixed(1)}%</span>
                     </div>
                     <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full bg-cyan-500" style="width:${Math.max(pct, 2)}%"></div></div>
-                    ${listPricesHtml(game.name)}
+                    ${listPricesHtml(game.name)}`)}
                 </li>`;
             }).join('');
             foldList('topGamesList', ranked.length);
@@ -1870,7 +1872,7 @@
                 const rank = Number.isInteger(entry.rank) ? entry.rank : i + 1;
                 return `
                 <li class="${rowClass('rareList', i)}">
-                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
+                    ${withCover(entry.title, region, `                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
                         <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${esc(rank)} ${esc(entry.title)}${flags.map(flag =>
                             ` <span class="level-tag rare-flag" title="${esc(hint(flag))}">${esc(RARE_FLAGS[flag])}</span>`).join('')}</span>
                         <span class="whitespace-nowrap">${typeof value === 'number' && Number.isFinite(value)
@@ -1884,7 +1886,7 @@
                         : priceSiteHtml(label, site, currency, now, locale, LEVELS[prices?.level || 'rare'].stale)}</div>
                     ${referenceHtml(entry.title, region, locale)}
                     <p class="rare-note">${typeof entry.note === 'string' && entry.note ? `${esc(entry.note)} ` : ''}${sources.length
-                        ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>
+                        ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>`, entry.other_title)}
                 </li>`;
             }).join('');
             foldList('rareList', entries.length);
@@ -2581,6 +2583,7 @@
             try { localStorage.setItem(COVERS_SHOWN_KEY, coversShown ? 'on' : 'off'); } catch { /* remembered for this visit only */ }
             renderCollection();
             paintGameCover();
+            try { redrawCoverLists(); } catch { /* the next draw shows them */ }
         }
 
         async function ensureCoverIndex() {
@@ -2596,7 +2599,7 @@
             } catch {
                 coverIndexState = 'failed';
             }
-            try { refreshCollection(); paintGameCover(); } catch { /* the next draw shows them */ }
+            try { refreshCollection(); paintGameCover(); redrawCoverLists(); } catch { /* the next draw shows them */ }
         }
 
         // The address of a game's box art: the region's own picture when there is one, else the other's.
@@ -2619,6 +2622,22 @@
         }
 
         const initialsOf = (title) => String(title).replace(/[^A-Za-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean).slice(0, 3).map(word => word[0].toUpperCase()).join('');
+
+        // A small box-art picture to the left of a list row (Most mentioned, Rarest), with the row's
+        // own markup beside it. Nothing extra when covers are off or the game has none.
+        function withCover(title, region, inner, alt2 = '') {
+            const url = coverUrl(title, region) || (alt2 ? coverUrl(alt2, region) : '');
+            return url
+                ? `<div class="row-cover-wrap"><img class="row-cover" src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'"><div class="row-cover-body">${inner}</div></div>`
+                : inner;
+        }
+
+        // Lists that show covers are drawn again once the index has arrived.
+        let topGamesItems = null;
+        function redrawCoverLists() {
+            if (topGamesItems) renderTopGames(topGamesItems);
+            if (rareRegion !== 'Consoles') renderRare();
+        }
 
         // The small picture beside a game page's title.
         let gameCoverTitle = '';

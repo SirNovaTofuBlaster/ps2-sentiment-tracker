@@ -2605,6 +2605,28 @@ await check('My collection: add, value, keep in the browser, back up and restore
     }
     assert.ok(Object.keys(real.covers).length > 4000, 'thousands of games');
     assert.ok(Object.values(real.covers).every(value => Array.isArray(value) && value.length === 3 && typeof value[0] === 'string' && value[0] && value.slice(1).every(part => typeof part === 'string') && (value[1] || value[2])), 'every entry has a title and a region');
+    // Most mentioned and Rarest rows carry a small box beside them, and only when there is one
+    const wrapped = run(`withCover('God Hand', 'US', '<b>row</b>')`);
+    assert.match(wrapped, /^<div class="row-cover-wrap"><img class="row-cover" src="https:\/\/thumbnails\.libretro\.com\/[^"]*God%20Hand%20\(USA\)\.png"[^>]*referrerpolicy="no-referrer"[^>]*><div class="row-cover-body"><b>row<\/b><\/div><\/div>$/);
+    assert.equal(run(`withCover('Nothing Known Here', 'US', '<b>row</b>')`), '<b>row</b>', 'no cover, the row as it was');
+    assert.match(run(`withCover('Obscure PAL Name', 'PAL', 'x', 'God Hand')`), /God%20Hand%20\(Europe\)/, "the list's other title is tried too");
+    assert.match(run(`withCover('God Hand', 'PAL', 'x')`), /God%20Hand%20\(Europe\)/, 'a PAL list gets the PAL box');
+    const item = (game) => ({ headline: `${game} news`, source: 'Eurogamer', link: 'https://e.example/', matched_game: game, sentiment: 50, timestamp: '2026-10-01 10:00 UTC' });
+    context.__games = [item('God Hand'), item('God Hand'), item('Nothing Known Here')];
+    run(`renderTopGames(__games)`);
+    const topRows = el('topGamesList').innerHTML.split('<li ').slice(1);
+    assert.match(topRows[0], /class="row-cover"[^>]*God%20Hand/);
+    assert.doesNotMatch(topRows[1], /row-cover/);
+    run(`setCoversShown(false)`);
+    assert.doesNotMatch(el('topGamesList').innerHTML, /row-cover/, 'covers off: no pictures in the lists either');
+    run(`setCoversShown(true)`);
+    // The index arriving redraws the lists that were drawn without it
+    run(`coverIndex = null; coverIndexState = 'idle'; renderTopGames(__games)`);
+    assert.doesNotMatch(el('topGamesList').innerHTML, /row-cover/);
+    run(`ensureCoverIndex()`);
+    await new Promise(done => setTimeout(done, 20));
+    assert.match(el('topGamesList').innerHTML, /class="row-cover"/, 'drawn again once the covers list has arrived');
+    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions'\) ensureCoverIndex\(\);/, 'opening either page asks for the covers list');
     assert.equal(run(`initialsOf('The Legend of Heroes: Trails')`), 'TLO');
     context.fetch = fakeFetch;
     context.localStorage = { getItem: () => null, setItem() {} };
