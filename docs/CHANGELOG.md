@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-14: eBay Italy
+
+- `EBAY_IT` in `MARKETS`, the same way as Germany and France: euros, once a day, keyword search
+  only, the UK's regional names, Italian junk and incomplete-copy words (not yet checked on live
+  listings). `index.html`: IT everywhere beside DE and FR. `guide.html` updated. Tests: the per-site
+  tests are now one factory (`european_site_tests`) used for France and Italy, and one test covers
+  every extra site together, so the next site adds one line.
+
 ## 2026-10-14: eBay France
 
 - Asked: the next European site after Germany. `EBAY_FR` in `MARKETS`: euros, once a day, keyword

@@ -151,6 +151,16 @@ MARKETS = {
                          "guide strategique", "solution complete", "copie", "figurine", "peluche"),
                 "incomplete": ("sans notice", "sans boite", "sans boitier", "sans jaquette", "sans livret",
                                "disque seul", "jeu seul", "cd seul", "dvd seul", "loose")},
+    # Italy (switched on 2026-10-14): as Germany and France, with Italian sellers' words.
+    "EBAY_IT": {"label": "IT", "site": "www.ebay.it", "country": "IT", "currency": "EUR",
+                "extra": True, "min_every_hours": 24, "names_like": "UK", "keyword_only": True,
+                "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
+                "junk": ("solo scatola", "solo custodia", "solo manuale", "solo libretto", "solo copertina",
+                         "senza gioco", "senza disco", "custodia vuota", "scatola vuota", "difettoso",
+                         "non funzionante", "non funziona", "per ricambi", "per parti", "lotto", "stock",
+                         "collezione", "guida ufficiale", "guida strategica", "figura", "peluche"),
+                "incomplete": ("senza manuale", "senza libretto", "senza custodia", "senza scatola",
+                               "senza copertina", "solo disco", "solo gioco", "solo cd", "sfuso")},
 }
 
 # ---- How often each game is checked -------------------------------------------------

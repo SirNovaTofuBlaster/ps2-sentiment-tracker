@@ -1810,7 +1810,7 @@ await check('the sites the page shows are the ones the price job prices, each on
     const python = read('ebay_prices.py');
     const block = python.slice(python.indexOf('MARKETS = {'), python.indexOf('# ---- How often each game is checked'));
     const labels = [...block.matchAll(/"label": "(\w+)"/g)].map(match => match[1]);
-    assert.deepEqual(evalJson('PRICE_SITES'), ['US', 'UK', 'DE', 'FR']);
+    assert.deepEqual(evalJson('PRICE_SITES'), ['US', 'UK', 'DE', 'FR', 'IT']);
     assert.deepEqual([...labels].sort(), [...evalJson('PRICE_SITES')].sort(), 'MARKETS in ebay_prices.py and PRICE_SITES agree');
     assert.deepEqual(Object.keys(evalJson('PRICE_SEARCH')).sort(), [...labels].sort(), 'each site has a search link');
     for (const label of labels) {
@@ -1818,7 +1818,8 @@ await check('the sites the page shows are the ones the price job prices, each on
     }
     assert.equal(evalJson("currencyOf('DE', null)"), 'EUR');
     assert.equal(evalJson("currencyOf('FR', null)"), 'EUR');
-    for (const label of ['DE', 'FR']) {
+    assert.equal(evalJson("currencyOf('IT', null)"), 'EUR');
+    for (const label of ['DE', 'FR', 'IT']) {
         const clock = block.match(new RegExp(`"label": "${label}"[\\s\\S]*?"min_every_hours": (\\d+)`));
         assert.ok(clock && evalJson(`SITE_STALE_HOURS.${label}`) > Number(clock[1]), `${label}: dimmed only after its whole check interval`);
     }
