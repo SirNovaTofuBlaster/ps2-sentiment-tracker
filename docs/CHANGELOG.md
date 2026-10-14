@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: covers for editions
+
+- `coverUrl()` gives an edition (`editions.json`) the Libretro box named in its optional `cover` (four have one: Mortal Kombat
+  Armageddon Premium Edition, Driver: Parallel Lines Limited Edition, Call of Duty 2: Big Red One and Tony Hawk's American Wasteland
+  Collector's Editions, all USA files) and otherwise its game's box in the edition's own region. The collection has no steelbook
+  scans, so the Resident Evil 4 steelbooks show the standard RE4 box. An edition with no game page (Driver 2) shows initials.
+
 ## 2026-10-14: editions in the search and in My collection
 
 - The search box and My collection's game box also find the 32 editions of `editions.json`, by name and by what they come in

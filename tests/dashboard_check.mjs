@@ -2778,4 +2778,22 @@ await check('editions: the search finds them by name and by "steelbook", and My 
     }
 });
 
+await check('editions: covers use the edition\'s own box when Libretro has one, otherwise the game\'s box in the edition\'s region', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    run(`editionsData = ${JSON.stringify(JSON.parse(read('editions.json')))}`);
+    run(`coversShown = true; coverIndex = { 'resident evil 4': ['Resident Evil 4', ' (USA)', ' (Europe) (En,Fr,De,Es,It)'], 'mortal kombat armageddon': ['Mortal Kombat - Armageddon', ' (USA)', ''] }`);
+    try {
+        const base = 'https://thumbnails.libretro.com/Sony%20-%20PlayStation%202/Named_Boxarts/';
+        assert.equal(run(`coverUrl('Resident Evil 4 Limited Edition', 'US')`), base + encodeURIComponent('Resident Evil 4 (Europe) (En,Fr,De,Es,It)') + '.png', 'the PAL steelbook gets the Europe box, whatever region is asked');
+        assert.equal(run(`coverUrl('Resident Evil 4 Premium Edition', 'PAL')`), base + encodeURIComponent('Resident Evil 4 (USA)') + '.png');
+        assert.equal(run(`coverUrl('Mortal Kombat: Armageddon Premium Edition', 'US')`), base + encodeURIComponent('Mortal Kombat - Armageddon (USA) (Premium Edition)') + '.png', 'its own file when the entry names one');
+        assert.equal(run(`coverUrl('Driver 2 Limited Edition', 'PAL')`), '', 'no game page, no cover');
+        assert.match(run(`coverUrl('Resident Evil 4', 'US')`), /Resident%20Evil%204%20\(USA\)/, 'the plain game is unchanged');
+        run(`editionsData = { lists: { PAL: [{ title: 'Kuon Limited Edition', game: 'Kuon', cover: '../x' }] } }`);
+        assert.equal(run(`coverUrl('Kuon Limited Edition', 'PAL')`), '', 'a file name with a slash is not used');
+    } finally {
+        run(`editionsData = null; coverIndex = null; coverIndexState = 'idle'`);
+    }
+});
+
 console.log(`dashboard checks passed (${passed})`);
