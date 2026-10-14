@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-14 23:27:42 UTC",
+  "last_updated": "2026-10-14 23:30:44 UTC",
   "total_tracked_feeds": 231,
   "items": [
     {
@@ -2034,6 +2034,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-14 21:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Okami",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749697151",
+      "matched_game": "Okami",
+      "matched_games": [
+        "Okami"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-14 21:25 UTC"
     },
@@ -9218,6 +9237,27 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-10-14 16:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II and Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749680032",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "Kingdom Hearts II",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-14 16:19 UTC"
     },
@@ -229926,19 +229966,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-09-30 23:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Started collecting this year",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wuk4h3/started_collecting_this_year/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-09-30 23:29 UTC",
       "is_digital_only": false
     }
   ]
