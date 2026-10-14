@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: r/PlaystationCollectors
+
+- Added r/PlaystationCollectors to the "Collecting, Retro & Emulation" Reddit group (role `community`), by the maintainer's request. It joins that group's combined multireddit request; not fetched from the sandbox (Reddit is blocked there), so Live checks/the next run show whether it contributes.
+
 ## 2026-10-14: 4chan replies are read for game names
 
 - The catalog's `last_replies` now count: a thread that only a reply names enters the feed (`matched_in: "body"`), and a thread that names a game also lists the games its replies name.
