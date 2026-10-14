@@ -86,6 +86,8 @@ MANUAL = {
     "pimp my ride": "mtv pimp my ride",
     "dead or alive 2 hardcore": "dead or alive 2",
     "arena football ea sports": "arena football",
+    "shin megami tensei devil summoner": "shin megami tensei devil summoner raidou kuzunoha vs the soulless army",
+    "shin megami tensei devil summoner 2": "shin megami tensei devil summoner 2 raidou kuzunoha vs king abaddon",
 }
 
 
