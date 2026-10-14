@@ -355,6 +355,10 @@ Before you call something done, prove it; don't assume it.
     guide, and `FranceTests`-style tests; the Node check compares the two lists.
   - A production keyset stays disabled until eBay's marketplace account deletion notifications
     are subscribed to or opted out of in the developer portal.
+- **Speed**
+  - Build an `Intl` formatter once (`cachedFormat()`), never per price: per-price formatters cost ~380 ms of a page load
+    (2026-10-14). The long lists of pages not on screen are drawn when the tab opens (`drawForView()`); a new long list on a
+    hidden page should do the same. Profile with a CPU profile in headless Chromium before and after (long tasks, element count).
 - **Euros**
   - The EUR button converts at display time with one rate (`fxData`), through `money()` and
     `moneyShort()` only. A price shown some other way will not convert: route new prices through

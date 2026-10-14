@@ -2593,4 +2593,41 @@ await check('My collection: add, value, keep in the browser, back up and restore
     assert.doesNotMatch(worker, /localStorage|indexedDB/, 'the worker holds nothing of the visitor\'s');
 });
 
+await check('speed: formatters are made once, and a page that is not on screen is drawn when it is opened', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    // One formatter per kind, however many prices are drawn
+    run(`formatCache.clear()`);
+    for (let i = 0; i < 50; i++) run(`money(${i + 1.5}, 'GBP', 'en-GB')`);
+    assert.equal(run(`formatCache.size`) <= 2, true, 'a price drawn 50 times made at most one formatter per digit style');
+    assert.equal(run(`money(1234.5, 'USD', 'en-US')`), '$1,235');
+    assert.equal(run(`money(52.7, 'GBP', 'en-GB')`), '£52.70');
+    // In a browser (requestIdleCallback exists) a hidden page's long list waits for its tab
+    context.window.requestIdleCallback = () => {};
+    try {
+        run(`showView('dashboard', false)`);
+        run(`setPrices({ currencies: { UK: 'GBP', US: 'USD' }, games: { 'God Hand': { level: 'normal', mentions: 1, US: { copies: 5, median: 100, checked: '2026-10-14T10:00Z' } } } }, null)`);
+        el('pricesList').innerHTML = 'old';
+        run(`renderPrices()`);
+        assert.equal(el('pricesList').innerHTML, 'old', 'the eBay prices page is not on screen, so its rows are not built');
+        assert.equal(el('tabPricesCount').textContent, '1', 'but its tab still says how many games');
+        assert.match(el('pricesSummary').textContent, /1 games/);
+        run(`showView('prices', false)`);
+        assert.match(el('pricesList').innerHTML, /God Hand/, 'opening the page draws it');
+        // on screen it is drawn at once, and a newer draw replaces a waiting one
+        run(`renderPrices()`);
+        assert.match(el('pricesList').innerHTML, /God Hand/);
+        run(`showView('dashboard', false)`);
+        el('topGamesList').innerHTML = 'old';
+        run(`renderTopGames([{ headline: 'x', matched_game: 'God Hand', timestamp: '2026-10-14 10:00:00 UTC', source: 's' }])`);
+        assert.equal(el('topGamesList').innerHTML, 'old');
+        assert.equal(el('tabMentionsCount').textContent, '1');
+        run(`showView('mentions', false)`);
+        assert.match(el('topGamesList').innerHTML, /God Hand/);
+    } finally {
+        delete context.window.requestIdleCallback;
+        run(`showView('dashboard', false)`);
+        run(`setPrices(null, null)`);
+    }
+});
+
 console.log(`dashboard checks passed (${passed})`);
