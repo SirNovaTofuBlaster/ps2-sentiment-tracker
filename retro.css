@@ -788,3 +788,47 @@ body .coll-name { margin-top: 0.35rem; font-size: 0.72rem; line-height: 1.2; col
 body .coll-meta { font-size: 0.65rem; color: var(--mute); }
 body .coll-value { font-size: 0.72rem; color: var(--text); font-family: var(--mono, ui-monospace, monospace); }
 body .coll-value.is-none { color: var(--mute); }
+
+/* ---- The My collection button in the header: a glossy gradient from the palette's blue to its teal,
+   with a slow shine that passes across it. Dark text on both ends keeps it readable. ---- */
+body .brand-btn-collection {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--bg);
+  font-weight: 700;
+  letter-spacing: .04em;
+  border-color: var(--accent-hi);
+  background: linear-gradient(135deg, var(--accent-hi) 0%, var(--accent) 42%, var(--green) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .18), 0 0 14px rgba(45, 191, 166, .28);
+  transition: filter .15s, box-shadow .15s;
+}
+body .brand-btn-collection::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -70%;
+  width: 40%;
+  z-index: -1;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .6), transparent);
+  transform: skewX(-20deg);
+  animation: collection-shine 5s ease-in-out infinite;
+}
+@keyframes collection-shine { 0%, 55% { left: -70%; } 100% { left: 130%; } }
+body .brand-btn-collection:hover, body .brand-btn-collection:focus-visible {
+  color: var(--bg);
+  border-color: var(--text);
+  filter: brightness(1.08) saturate(1.1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 0 18px rgba(79, 168, 232, .5);
+}
+body .brand-btn-collection.is-active { border-color: var(--text); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 0 0 2px var(--bg), 0 0 0 3px var(--accent-hi); }
+body .brand-btn-collection .coll-count:not(.hidden) {
+  display: inline-block;
+  padding: .05rem .35rem;
+  font-size: .62rem;
+  background: rgba(10, 10, 12, .78);
+  color: var(--text);
+}
+@media (prefers-reduced-motion: reduce) { body .brand-btn-collection::after { animation: none; } }
+@media (max-width: 640px) { body .brand-btn-collection { grid-column: 1 / -1; } }
