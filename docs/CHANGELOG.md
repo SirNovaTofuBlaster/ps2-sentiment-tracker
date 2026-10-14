@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-14: game pages hold the detail, lists show three prices
+
+- Asked for by the maintainer after the eBay prices page felt slow. Lists (Tracker, Demand Index, Most mentioned,
+  eBay prices, table) now show a game's name and three prices only: US median, UK median and the cheapest euro
+  median (lowest of DE/FR/IT/ES, marked "from XX"; this reading of "cheapest for EUR" is mine). Every name is a link
+  to `#game=Title`. The game page shows every site's full figures, week change, chart, eBay search links and the
+  lookup chips, drawn only when opened.
+- Removed `priceFiguresHtml()` and `gamePricesHtml()`; added `compactPriceHtml()`, `gamePriceDetailHtml()`,
+  `gameLinkHtml()`, `openGameLink()`. The Rarest page lists are unchanged.
+- Tests: the eBay prices, medians, week-change and table assertions moved to the new shapes (46 checks).
+
 ## 2026-10-14: faster page load
 
 - Measured in headless Chromium on the live data (7.6 MB feed, 484 priced games): about 1.4 s of blocked main

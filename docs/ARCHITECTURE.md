@@ -218,13 +218,17 @@ they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`
   *Sources* link works from every page. Changing page adds one entry to the browser's
   history, so Back returns to the page before; links, Back and Forward all go through
   `showViewFromAddress()`, which also runs once more when the first load has finished.
-- **eBay medians beside every game.** `gamePricesHtml(title)` is what goes under a game's name
-  in the Demand Index, Most Mentioned Games and the feed table: the medians for eBay US and UK
-  when the game is priced (`priceFiguresHtml`), then the lookup chips. Prices are loaded
-  before those lists are drawn. The *eBay prices* page lists every tracked game with the
-  full figures and a search box. A read that fails (anything but a plain 404) keeps the
-  prices already loaded; with nothing loaded, the page says the file could not be read
-  rather than that the job has not run.
+- **eBay medians beside every game, detail on the game's page.** Every list (Tracker, Demand Index,
+  Most Mentioned Games, *eBay prices*, the feed table) shows a priced game as its name plus
+  `compactPriceHtml(title)`: the US median, the UK median and the lowest median of the euro sites
+  (DE/FR/IT/ES, marked "from XX"), all through `money()`. A name is a link built by `gameLinkHtml()`
+  (`#game=...`; a modified click is left to the browser). The last-24-hours list keeps its
+  name-filters-the-table button and gets a small `.game-open` link. Everything else lives on the game page and is built only when it is
+  opened: `gamePriceDetailHtml(title)` (every site through `priceSiteHtml()`, chart button, links to the same
+  eBay search per site, lookup chips). Prices are loaded before those lists are drawn. A read that fails
+  (anything but a plain 404) keeps the prices already loaded; with nothing loaded, the page says the file
+  could not be read rather than that the job has not run. Why: the full lines made the *eBay prices* page about
+  20,000 elements and slow.
 - **Which price belongs to which name.** The price file names a game by its library title;
   the feed may say "Persona 4" or "Kingdom Hearts 2". `priceKey()` reduces a title to the name
   `search_terms()` in `ebay_prices.py` gives it (article dropped, "and" dropped, Roman

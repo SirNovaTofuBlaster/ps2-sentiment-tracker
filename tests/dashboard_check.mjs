@@ -601,7 +601,7 @@ await check('ranked lists show their first rows until opened, and fold away agai
     assert.deepEqual(top(25), { rows: 25, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more', badge: '25' });
     assert.deepEqual(top(140), { rows: 140, extra: 115, folded: true, buttonHidden: false, button: 'Show 115 more', badge: '140' },
         'no game is left off the ranking, and the tab says how many there are');
-    assert.match(el('topGamesList').innerHTML, /#140 Game 139/);
+    assert.match(el('topGamesList').innerHTML, /#140 .*Game 139/);
     vm.runInContext("toggleList('topGamesList')", context);
     assert.deepEqual(top(), { rows: 140, extra: 115, folded: false, buttonHidden: false, button: 'Show fewer', badge: '140' });
     vm.runInContext("toggleList('topGamesList')", context);
@@ -653,7 +653,7 @@ const showPrices = (data, watchlist) => {
 
 await check('eBay prices page: every game, surging first, a line per site', () => {
     const html = showPrices(samplePrices());
-    const order = [...html.matchAll(/<span class="text-cyan-300">([^<]+)/g)].map(match => match[1].trim());
+    const order = [...html.matchAll(/<a class="game-link"[^>]*>([^<]*)<\/a>/g)].map(match => match[1].trim());
     assert.deepEqual(order, ['Gitaroo Man', 'Silent Hill 2', 'Jak X', '&lt;img src=x onerror=alert(1)&gt;', 'Okami'],
         'surging first, then by mentions, quiet games last however often they were named; a broken entry is dropped');
     assert.match(el('pricesSummary').textContent, /not what anything sold for · 5 games · 1 surging$/);
@@ -662,32 +662,27 @@ await check('eBay prices page: every game, surging first, a line per site', () =
 
     assert.match(html, /<span class="level-tag level-surging" title="[^"]+">surging<\/span>/);
     assert.match(html, /<span class="level-tag level-dormant" title="[^"]+">quiet<\/span>/);
-    assert.match(html, /<b class="ebay-median">\$220<\/b><span class="ebay-rest">median · from \$120 · 97\+ copies <span class="ebay-age" title="When eBay was last asked">· 2h ago<\/span>/);
-    assert.match(html, /<b class="ebay-median">£105<\/b><span class="ebay-rest">median · from £52\.70 · 47 copies /);
-    assert.match(html, /\$140<\/b><span class="ebay-rest">median · from \$140 · 1 copy <span class="level-tag few-copies"[^>]*>few copies<\/span> <span class="ebay-age"[^>]*>· 10 min ago/);
-    assert.doesNotMatch(html, /97\+ copies <span class="level-tag few-copies"/, 'many copies are no warning');
-    assert.match(html, /search needs tuning<\/span> <span class="ebay-age"/, 'unmatched is not shown as zero copies');
-    assert.match(html, /<span class="ebay-note">none listed<\/span>/);
-    assert.match(html, /<span class="ebay-site is-quiet"><span class="ebay-flag">UK<\/span><span class="ebay-note">not checked yet<\/span>/);
-    assert.match(html, /<span class="ebay-site is-stale"><span class="ebay-flag">UK<\/span><b class="ebay-median">£105<\/b>[^\n]*?title="Not checked for longer than usual">· 9h ago/,
-        'a staple is checked every 6 hours, so 9 hours is overdue');
-    assert.match(html, /<span class="ebay-site"><span class="ebay-flag">US<\/span><b class="ebay-median">\$34\.99<\/b>[^\n]*?title="When eBay was last asked">· 16h ago/,
-        'a quiet game is checked once a day, so 16 hours is not');
-    assert.match(html, /title="Headlines naming this game in the last two weeks">9 in headlines</);
+    // A row is the name (a link to the game's page), the US and UK medians and the cheapest euro one. Nothing else.
+    assert.match(html, /<a class="game-link" href="#game=Silent%20Hill%202" onclick="return openGameLink\(event, &quot;Silent Hill 2&quot;\)"[^>]*>Silent Hill 2<\/a>/);
+    assert.match(html, /<span class="ebay-quote" title="[^"]*"><span class="ebay-flag">US<\/span><b>\$220<\/b><\/span>/);
+    assert.match(html, /<span class="ebay-quote is-stale" title="[^"]*"><span class="ebay-flag">UK<\/span><b>£105<\/b><\/span>/, 'a staple is checked every 6 hours, so 9 hours is overdue');
+    assert.match(html, /<span class="ebay-quote" title="[^"]*"><span class="ebay-flag">US<\/span><b>\$34\.99<\/b><\/span>/, 'a quiet game is checked once a day, so 16 hours is not');
+    assert.match(html, /<span class="ebay-note">no price yet<\/span>/, 'a game with no figure says so');
     assert.doesNotMatch(html, /<img/, 'titles are escaped');
-    assert.match(html, /class="price-links"/, 'each game keeps its price lookups, eBay searches included');
-    assert.doesNotMatch(html, /ebay-quotes/, 'the full lines are here already; the short form is for the Tracker');
+    for (const detail of ['ebay-median', 'ebay-rest', 'few copies', 'copies', 'price-links', 'chart-open', 'in headlines', 'median · from', 'ebay-age', 'class="ebay-figures"']) {
+        assert.ok(!html.includes(detail), `${detail} belongs on the game's page, not in the list`);
+    }
 
     // No folding on this page: every game is listed, and the search box narrows them down.
     const many = { currencies: { US: '<b>', UK: 'GBP' }, games: Object.fromEntries(Array.from({ length: 8 }, (_, n) => [
         n === 3 ? 'Kingdom Hearts II' : `Game ${n}`,
         { level: 'normal', mentions: 8 - n, US: { checked: '2026-10-06T11:00Z', copies: 2, lowest: 9.5, median: 12, postage: 3 } }])) };
     const long = showPrices(many);
-    const titles = (text) => [...text.matchAll(/<span class="text-cyan-300">([^<]+)/g)].map(match => match[1].trim());
+    const titles = (text) => [...text.matchAll(/<a class="game-link"[^>]*>([^<]*)<\/a>/g)].map(match => match[1].trim());
     assert.equal(titles(long).length, 8);
     assert.doesNotMatch(long, /list-extra/);
-    assert.match(long, /<b class="ebay-median">12\.00 &lt;b&gt;<\/b>/, 'a currency code the browser does not know is shown as text, never as markup');
-    assert.doesNotMatch(long, /<b>/);
+    assert.match(long, /<b>12\.00 &lt;b&gt;<\/b>/, 'a currency code the browser does not know is shown as text, never as markup');
+    assert.doesNotMatch(long, /<b>(?!12\.00 &lt;b&gt;<\/b>)/);
 
     const find = (text) => {
         el('pricesSearch').value = text;
@@ -737,43 +732,68 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     ] };
     showPrices(prices, watchlist);
     context.__now = PRICES_NOW;
-    const figures = (title) => vm.runInContext(`priceFiguresHtml(${JSON.stringify(title)}, __now, 'en-GB')`, context);
+    const figures = (title) => vm.runInContext(`compactPriceHtml(${JSON.stringify(title)}, __now, 'en-GB')`, context);
 
-    assert.equal(figures('Silent Hill 2'),
-        '<span class="ebay-quotes"><span class="ebay-quotes-label">eBay median</span>'
-        + '<a class="ebay-quote" href="https://www.ebay.com/sch/i.html?_nkw=Silent%20Hill%202%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&amp;LH_BIN=1&amp;LH_PrefLoc=1" target="_blank" rel="noopener noreferrer"'
-        + ' title="Median asking price of 97+ used copies on eBay US, cheapest $120, checked 2h ago. Opens the same search on eBay: used Buy It Now copies in that country. Auctions, new copies and other countries are not counted.">'
-        + '<span class="ebay-flag">US</span><b>$220</b></a>'
-        + '<a class="ebay-quote is-stale" href="https://www.ebay.co.uk/sch/i.html?_nkw=Silent%20Hill%202%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&amp;LH_BIN=1&amp;LH_PrefLoc=1" target="_blank" rel="noopener noreferrer"'
-        + ' title="Median asking price of 47 used copies on eBay UK, cheapest £52.70, checked 9h ago (longer ago than usual). Opens the same search on eBay: used Buy It Now copies in that country. Auctions, new copies and other countries are not counted.">'
-        + '<span class="ebay-flag">UK</span><b>£105</b></a></span>');
-
+    // US, UK and the cheapest euro site: the names and medians, nothing else.
+    const sites = (title) => [...figures(title).matchAll(/<span class="ebay-flag">([^<]+)<\/span><b>([^<]+)<\/b>/g)].map(match => `${match[1]} ${match[2]}`);
+    assert.deepEqual(sites('Silent Hill 2'), ['US $220', 'UK £105']);
+    assert.match(figures('Silent Hill 2'), /^<span class="ebay-quotes"><span class="ebay-quote" title="Median asking price on eBay US\./);
+    assert.doesNotMatch(figures('Silent Hill 2'), /href=|copies|median ·|<a /, 'no links and no detail in the short form');
     // The feed's spelling finds the price file's.
-    const sites = (title) => [...figures(title).matchAll(/<span class="ebay-flag">(\w+)<\/span><b>([^<]+)<\/b>/g)].map(match => `${match[1]} ${match[2]}`);
     assert.deepEqual(sites('SILENT HILL 2'), ['US $220', 'UK £105']);
     assert.deepEqual(sites('Persona 4'), ['US $73.00'], "a pinned game's search words name it too; a site with nothing counted is left out");
     assert.deepEqual(sites('Shin Megami Tensei: Persona 4'), ['US $73.00']);
     assert.deepEqual(sites('Kingdom Hearts 2'), ['US $15.00', 'UK £8.00']);
     assert.deepEqual(sites('The Getaway'), ['UK £4.50']);
     assert.deepEqual(sites('Jak & Daxter: The Precursor Legacy'), ['US $11.00']);
-    assert.deepEqual(sites('Gitaroo Man'), ['US $140'], 'one copy: the wording follows');
-    assert.match(figures('Gitaroo Man'), /of 1 used copy on eBay US, cheapest \$140, checked 10 min ago\./);
+    assert.deepEqual(sites('Gitaroo Man'), ['US $140']);
     assert.deepEqual(sites('Okami'), ['US $34.99']);
-    assert.doesNotMatch(figures('Okami'), /is-stale|longer ago/, 'a quiet game is checked once a day, so 16 hours is not overdue');
+    assert.doesNotMatch(figures('Okami'), /is-stale/, 'a quiet game is checked once a day, so 16 hours is not overdue');
+    assert.match(figures('Silent Hill 2'), /ebay-quote is-stale"[^>]*><span class="ebay-flag">UK/, 'a stale figure is dimmed');
     // Nothing is shown rather than something misleading.
     for (const title of ['Jak X', 'Silent Hill', 'Silent Hill 3', 'Black', 'Not In The File', '', null, undefined, 'constructor', '<img src=x onerror=alert(1)>']) {
         assert.equal(figures(title), '', `no figures for ${JSON.stringify(title)}`);
     }
-    const hostile = figures('<b>Bold</b> Game');
-    assert.match(hostile, /_nkw=%3Cb%3EBold%3C%2Fb%3E%20Game%20ps2&amp;_sacat=139973/);
-    assert.doesNotMatch(hostile, /<b>Bold/);
-    // Nothing from the price file reaches the page as markup either: not in the figure, not in its tooltip.
+    assert.doesNotMatch(figures('<b>Bold</b> Game'), /<b>Bold/);
+    // Nothing from the price file reaches the page as markup.
     showPrices({ ...prices, currencies: { US: '"><img src=x onerror=alert(1)>', UK: 'GBP' } }, watchlist);
     const odd = figures('Kingdom Hearts II');
     assert.match(odd, /<b>15\.00 &quot;&gt;&lt;img src=x onerror=alert\(1\)&gt;<\/b>/);
-    assert.match(odd, /cheapest 7\.50 &quot;&gt;&lt;img/);
     assert.doesNotMatch(odd, /<img|"">/);
     showPrices(prices, watchlist);
+
+    // The cheapest euro site is the one whose median is lowest, and only one is shown.
+    const euros = { ...prices, games: { 'Euro Game': { level: 'normal', mentions: 3,
+        US: site(30), UK: site(20),
+        DE: site(25), FR: site(18, { copies: 3 }), IT: site(12, { copies: 0 }), ES: { checked: '2026-10-06T11:00Z', unmatched: true } } } };
+    euros.currencies = { US: 'USD', UK: 'GBP', DE: 'EUR', FR: 'EUR', IT: 'EUR', ES: 'EUR' };
+    showPrices(euros);
+    assert.deepEqual(sites('Euro Game'), ['US $30.00', 'UK £20.00', 'from FR €18.00'], 'a site with no copies or no match is not the cheapest');
+    assert.match(figures('Euro Game'), /Lowest median asking price across the euro eBay sites: eBay FR/);
+    vm.runInContext("fxData = { date: '2026-10-13', rates: { USD: 1.25, GBP: 0.8 } }; showEuro = true", context);
+    try {
+        assert.match(figures('Euro Game'), /from FR<\/span><b>€18\.00<\/b>/, 'the EUR button leaves euro figures alone');
+        assert.match(figures('Euro Game'), /<b>≈€/, 'and converts the others');
+    } finally { vm.runInContext('showEuro = false; fxData = null', context); }
+    showPrices(prices, watchlist);
+
+    // The game's own page holds the detail: every site with its figures, the chart, the eBay searches, the lookup chips.
+    const gamePage = (title) => vm.runInContext(`gamePriceDetailHtml(${JSON.stringify(title)}, __now, 'en-GB')`, context);
+    const rendered = (title) => { vm.runInContext(`renderGamePage(${JSON.stringify(title)})`, context); return el('gamePrices').innerHTML; };
+    const page = gamePage('Silent Hill 2');
+    assert.match(page, /<b class="ebay-median">\$220<\/b><span class="ebay-rest">median · from \$120 · 97\+ copies <span class="ebay-age" title="When eBay was last asked">· 2h ago<\/span>/);
+    assert.match(page, /<b class="ebay-median">£105<\/b><span class="ebay-rest">median · from £52\.70 · 47 copies /);
+    assert.match(page, /<span class="ebay-site is-stale"><span class="ebay-flag">UK<\/span>/, 'a staple is checked every 6 hours, so 9 hours is overdue');
+    assert.match(page, /class="chart-open"/);
+    assert.match(page, /class="price-links"/);
+    assert.match(page, /href="https:\/\/www\.ebay\.com\/sch\/i\.html\?_nkw=Silent%20Hill%202%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&amp;LH_BIN=1&amp;LH_PrefLoc=1"/);
+    assert.match(page, /href="https:\/\/www\.ebay\.co\.uk\/sch\/i\.html\?_nkw=Silent%20Hill%202%20ps2/);
+    assert.match(gamePage('Gitaroo Man'), /\$140<\/b><span class="ebay-rest">median · from \$140 · 1 copy <span class="level-tag few-copies"[^>]*>few copies<\/span>/);
+    assert.match(gamePage('Jak X'), /search needs tuning<\/span> <span class="ebay-age"/, 'unmatched is not shown as zero copies');
+    assert.match(gamePage('Jak X'), /<span class="ebay-note">none listed<\/span>/);
+    assert.match(rendered('Black'), /Not priced on eBay yet/);
+    assert.match(gamePage('Black'), /class="price-links"/, 'an unpriced game still has its lookup links');
+    assert.doesNotMatch(gamePage('<b>Bold</b> Game'), /<b>Bold/);
 
     // The places a game's name appears: Most Mentioned Games, the table, the Demand Index
     // and the games named in the last day.
@@ -782,15 +802,15 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     vm.runInContext('renderTopGames(__games)', context);
     const rows = el('topGamesList').innerHTML.split('<li ').slice(1);
     assert.equal(rows.length, 2);
-    assert.match(rows[0], /#1 Persona 4[\s\S]*<span class="ebay-quotes">[\s\S]*<span class="price-links"/, 'medians first, then the lookup chips');
-    assert.match(rows[1], /#2 Black/);
-    assert.doesNotMatch(rows[1], /ebay-quotes/, 'a game that is not priced keeps its chips and nothing else');
-    assert.match(rows[1], /class="price-links"/);
+    assert.match(rows[0], /#1 <a class="game-link"[^>]*>Persona 4<\/a>[\s\S]*<span class="ebay-quotes">/, 'the name opens the game, then the short prices');
+    assert.doesNotMatch(rows[0], /price-links/, 'the lookup chips live on the game page');
+    assert.match(rows[1], /#2 <a class="game-link"[^>]*>Black<\/a>/);
+    assert.doesNotMatch(rows[1], /ebay-quotes|price-links/, 'a game that is not priced shows nothing under its name');
 
     vm.runInContext('renderTable(__games)', context);
     const cells = el('feedTableBody').children.map(row => row.innerHTML.match(/<td data-col="game"[\s\S]*?<\/td>/)[0]);
     assert.deepEqual(cells.map(cell => /ebay-quotes/.test(cell)), [true, true, false, false]);
-    assert.match(cells[0], />Persona 4<span class="ebay-quotes">/);
+    assert.match(cells[0], />Persona 4<\/a><span class="ebay-quotes">/);
 
     const real = context.fetch;
     context.fetch = async () => ({ ok: true, json: async () => ({ window_days: 30, generated: '2026-10-06 05:41:00 UTC', games: [
@@ -805,7 +825,8 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     const named = el('todayList').innerHTML.split('<li ').slice(1);
     assert.deepEqual(named.map(row => [/>(?:Persona 4|Black)<\/button>/.exec(row)?.[0], /ebay-quotes/.test(row)]),
         [['>Persona 4</button>', true], ['>Black</button>', false]]);
-    assert.match(named[0], /<span class="ebay-quotes">[\s\S]*<span class="price-links"/);
+    assert.match(named[0], /<a class="game-open" href="#game=Persona%204"[^>]*aria-label="Open the page for Persona 4"/, 'the filter button stays; a small link opens the game');
+    assert.doesNotMatch(named[0], /price-links/);
 
     // No price file: every list looks as it did before prices existed.
     showPrices(null);
@@ -815,6 +836,30 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
 
     const css = read('retro.css');
     assert.match(css, /body \.ebay-quote\.is-stale b \{ opacity: \.5; \}/);
+});
+
+await check('every game name in a list opens the game\'s own page, and prices load there', () => {
+    showPrices(samplePrices());
+    const link = (title) => vm.runInContext(`gameLinkHtml(${JSON.stringify(title)})`, context);
+    assert.match(link('Silent Hill 2'), /^<a class="game-link" href="#game=Silent%20Hill%202" onclick="return openGameLink\(event, &quot;Silent Hill 2&quot;\)"/);
+    const hostile = link('"><img src=x onerror=alert(1)>\'');
+    assert.doesNotMatch(hostile, /<img/);
+    assert.doesNotMatch(hostile, /onerror=alert\(1\)>'/);
+    assert.match(hostile, /href="#game=%22%3E%3Cimg/);
+    // A plain click opens the page here; a modified click is left to the browser (new tab).
+    context.__evt = { ctrlKey: false, metaKey: false, shiftKey: false, button: 0 };
+    assert.equal(vm.runInContext("openGameLink(__evt, 'Okami')", context), false);
+    assert.match(el('gameTitle').textContent, /^Okami$/);
+    assert.equal(el('viewGame').classList.contains('hidden'), false);
+    for (const key of ['ctrlKey', 'metaKey', 'shiftKey']) {
+        context.__evt = { ctrlKey: false, metaKey: false, shiftKey: false, button: 0, [key]: true };
+        assert.equal(vm.runInContext("openGameLink(__evt, 'Okami')", context), true, `${key} click is the browser's`);
+    }
+    // The page holds what the lists no longer do.
+    assert.match(el('gamePrices').innerHTML, /class="ebay-figures"/);
+    assert.match(el('gamePrices').innerHTML, /class="chart-open"/);
+    assert.match(el('gamePrices').innerHTML, /class="price-links"/);
+    assert.match(read('guide.html'), /game page|page of its own/i, 'the guide explains the game pages');
 });
 
 await check('eBay prices: money and ages read naturally', () => {
@@ -895,7 +940,7 @@ await check('prices are read from the site itself, with no token, before the lis
         return { ok: true, status: 200, json: async () => answer };
     };
     const load = async (next) => { answers = next; await vm.runInContext('loadPrices()', context); };
-    const figure = (title) => vm.runInContext(`priceFiguresHtml(${JSON.stringify(title)}) !== ''`, context);
+    const figure = (title) => vm.runInContext(`compactPriceHtml(${JSON.stringify(title)}) !== ''`, context);
     const state = () => ({ short: figure('Persona 4'), full: figure('Shin Megami Tensei: Persona 4'),
         rows: (el('pricesList').innerHTML.match(/<li /g) || []).length, note: el('pricesEmpty').classList.contains('hidden') ? '' : el('pricesEmpty').textContent.slice(0, 13) });
     const SHOWN = { short: true, full: true, rows: 1, note: '' };
@@ -1074,7 +1119,7 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     assert.ok(feeds.sources.filter(src => src.type === '4chan').every(src => src.role === 'anonymous' && !('weight' in src)));
     assert.equal(el('statAvgSentiment').innerText, '80/100');
     assert.equal(el('statTotalItems').innerText, 3);
-    assert.match(el('topGamesList').innerHTML, /#1 Ico[\s\S]*#2 Okami/, 'both count as mentions');
+    assert.match(el('topGamesList').innerHTML, /#1 <a[^>]*>Ico<\/a>[\s\S]*#2 <a[^>]*>Okami<\/a>/, 'both count as mentions');
 
     const [, forumRow, boardRow] = rows();
     assert.match(forumRow, /fa-solid fa-comments[^>]*title="Forums"><\/i>Forum: /);
@@ -1313,17 +1358,17 @@ await check('games first: what was named in the last day leads, and the table op
         '16 items out of 19 published in the last 24 hours named a PS2 game: 10 games. The other 3 items are in the table further down, under Everything.');
     const rows = el('todayList').innerHTML.split('<li ').slice(1);
     assert.equal(rows.length, 10);
-    assert.match(rows[0], /onclick="showGameRows\(0\)"[^>]*class="recent-game text-cyan-300 font-bold">Okami<\/button> <span class="remaster-tag [^"]*">1 remaster<\/span>/);
+    assert.match(rows[0], /onclick="showGameRows\(0\)"[^>]*class="recent-game text-cyan-300 font-bold">Okami<\/button><a class="game-open"[^>]*><i [^>]*><\/i><\/a> <span class="remaster-tag [^"]*">1 remaster<\/span>/);
     assert.match(rows[0], />5 mentions<\/span>/);
     assert.match(rows[1], /class="recent-game text-cyan-300">Ico<\/button>/, 'only the first name is bold');
     assert.match(rows[0], /Eurogamer · r\/ps2 · YouTube: Some Channel <span class="text-slate-500">\+1 more<\/span>/, 'three sources named, the rest counted');
-    assert.match(rows[2], />Mixed Game<\/button><\/span>\s*<span[^>]*>3 mentions<\/span>/, 'the count is of every mention, headline or text');
-    assert.match(rows[4], />Kuon<\/button><\/span>\s*<span[^>]*>1 mention<\/span>/);
+    assert.match(rows[2], />Mixed Game<\/button>(?:<a class="game-open"[^>]*><i [^>]*><\/i><\/a>)?<\/span>\s*<span[^>]*>3 mentions<\/span>/, 'the count is of every mention, headline or text');
+    assert.match(rows[4], />Kuon<\/button>(?:<a class="game-open"[^>]*><i [^>]*><\/i><\/a>)?<\/span>\s*<span[^>]*>1 mention<\/span>/);
     assert.match(rows[4], /4chan \/vr\//);
-    assert.match(rows[9], />Retro<\/button> <span class="[^"]*" title="Named in the text under a headline, not in the headline itself\. These are wrong more often\.">in the text only<\/span>/);
+    assert.match(rows[9], />Retro<\/button><a class="game-open"[^>]*><i [^>]*><\/i><\/a> <span class="[^"]*" title="Named in the text under a headline, not in the headline itself\. These are wrong more often\.">in the text only<\/span>/);
     assert.match(rows[9], />2 mentions<\/span>/);
     assert.doesNotMatch(rows.slice(0, 9).join(''), /in the text only/);
-    assert.ok(rows.every(html => /class="price-links"/.test(html)), 'every game carries its price links');
+    assert.ok(rows.every(html => /class="game-open"/.test(html)), 'every game has a link to its page');
     assert.match(rows[6], /onclick="showGameRows\(6\)"[^>]*>Ratchet &amp; Clank &lt;3<\/button>/);
     assert.match(rows[6], /&lt;b&gt;Evil &amp; Co&lt;\/b&gt;/);
     assert.doesNotMatch(el('todayList').innerHTML, /<b>Evil|Clank <3/, 'nothing from a feed reaches the page as markup');
@@ -1462,13 +1507,13 @@ await check('games first: what was named in the last day leads, and the table op
     // A row names every game its item names: the first leads, the rest follow.
     shown('all');
     const cell = (headline) => tableRows().map(child => child.innerHTML).find(html => html.includes(headline)).match(/<td data-col="game"[\s\S]*?<\/td>/)[0];
-    assert.match(cell('r/ps2 item 2'), /text-cyan-300">Okami<span class="price-links"[\s\S]*<div class="[^"]*">also names Ico<\/div>/);
+    assert.match(cell('r/ps2 item 2'), /text-cyan-300"><a class="game-link"[^>]*>Okami<\/a>[\s\S]*<div class="[^"]*">also names Ico<\/div>/);
     assert.match(cell('Gematsu item 16'), />Zeta Game<[\s\S]*also names Alpha Game</);
     assert.doesNotMatch(cell('Eurogamer item 1'), /also names/);
     assert.match(cell('Polygon item 13'), /data-unmatched[^>]*><span class="text-slate-500">Unmatched \/ General<\/span>/);
     context.__crowd = [row('r/ps2', 1, ['A<1>', 'B<2>', 'C3', 'D4', 'E5', 'F6', 'The G7 Saga', 'G7 Two'])];
     vm.runInContext('visibleFeedData = __crowd; filterFeedItems();', context);
-    assert.match(tableRows()[0].innerHTML, /text-cyan-300">A&lt;1&gt;<[\s\S]*also names B&lt;2&gt;, C3, D4, E5 and 3 more<\/div>/);
+    assert.match(tableRows()[0].innerHTML, /text-cyan-300"><a class="game-link"[^>]*>A&lt;1&gt;<\/a>[\s\S]*also names B&lt;2&gt;, C3, D4, E5 and 3 more<\/div>/);
     assert.doesNotMatch(tableRows()[0].innerHTML, /A<1>|B<2>/);
     // A search that found games far down an item's list shows them, in their order, not "and 3
     // more": typed in capitals, found in the middle of a name, with the space a phone leaves.
@@ -1493,8 +1538,8 @@ await check('games first: what was named in the last day leads, and the table op
     vm.runInContext('showGameRows(1)', context);
     assert.deepEqual([el('searchInput').value, el('filterSelect').value, el('typeSelect').value, scrolled, focused], ['', 'matched', 'all', 1, 1]);
     assert.deepEqual(tableRows().map(child => child.innerHTML.match(/r\/ps2 item \d+/)[0]), ['r/ps2 item 2', 'r/ps2 item 5']);
-    assert.match(cell('r/ps2 item 2'), /text-cyan-300">Ico<[\s\S]*also names Okami</, 'the game asked for leads its rows');
-    assert.match(cell('r/ps2 item 2'), /aria-label="Price lookups for Ico"/);
+    assert.match(cell('r/ps2 item 2'), /text-cyan-300"><a class="game-link"[^>]*>Ico<\/a>[\s\S]*also names Okami</, 'the game asked for leads its rows');
+    assert.match(cell('r/ps2 item 2'), /href="#game=Ico"/);
     assert.doesNotMatch(cell('r/ps2 item 2'), /Price lookups for Okami/, 'with its own prices, not the first game\'s');
     assert.equal(el('feedSummary').innerHTML,
         'The 2 items in the feed that name Ico. <button type="button" onclick="clearGameFilter()" class="recent-game text-cyan-400 underline">Back to every game</button>');
@@ -1525,9 +1570,9 @@ await check('games first: what was named in the last day leads, and the table op
     assert.equal(el('topGamesSummary').textContent, 'Share of all PS2 game mentions: 22 mentions across 14 games.');
     assert.equal(el('tabMentionsCount').textContent, '14');
     const ranked = el('topGamesList').innerHTML.split('<li ').slice(1);
-    assert.match(ranked[0], /#1 Okami[\s\S]*>5 mentions · 23%</);
-    assert.match(ranked.find(html => / Ico</.test(html)), />2 mentions · 9\.1%</, 'named second in one item, first in another');
-    assert.ok(ranked.some(html => / Alpha Game</.test(html)), 'a game only ever named second is ranked too');
+    assert.match(ranked[0], /#1 <a[^>]*>Okami<\/a>[\s\S]*>5 mentions · 23%</);
+    assert.match(ranked.find(html => />Ico<\/a>/.test(html)), />2 mentions · 9\.1%</, 'named second in one item, first in another');
+    assert.ok(ranked.some(html => />Alpha Game<\/a>/.test(html)), 'a game only ever named second is ranked too');
 
     // The page draws all of it by itself, from the sources that are switched on.
     const feeds = context.__feeds;
@@ -1626,13 +1671,14 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
     assert.equal(evalJson('gameFilter'), 'Dear UK', 'a name opens the game it shows');
     vm.runInContext('clearGameFilter()', context);
 
-    // The change beside each median, in the list and wherever else a median is shown.
-    assert.match(rows[2], /<span class="ebay-flag">UK<\/span><b>£73\.49<\/b><span class="ebay-change is-up" title="A week before \((?:7 Oct|Oct 7)\) the median was £71\.19: up £2\.30, 3\.2%\.">\(£2\.30 ▲ 3\.2%\)<\/span><\/a>/);
-    assert.match(rows[2], /title="Median asking price of 9 used copies on eBay UK, cheapest £36\.75, checked [^"]*; a week before it was £71\.19\. Opens/);
-    assert.match(rows[0], /<b>£80\.00<\/b><span class="ebay-change" title="A week before \((?:7 Oct|Oct 7)\) the median was £80\.00: the same\.">\(no change\)<\/span>/);
-    assert.match(rows[1], /<b>£80\.00<\/b><\/a>/, 'no figure from a week before: nothing in brackets');
-    assert.match(rows[3], /<b>£5\.00<\/b><span class="ebay-change is-up"[^>]*>\(£1\.00 ▲ 25%\)<\/span>/);
-    assert.match(rows[4], /<b>\$200<\/b><span class="ebay-change is-down" title="A week before \((?:7 Oct|Oct 7)\) the median was \$250: down \$50\.00, 20%\.">\(\$50\.00 ▼ 20%\)<\/span>/);
+    // The change beside each median is on the game's page; the list keeps only the short form.
+    const detail = (name) => vm.runInContext(`gamePriceDetailHtml(${JSON.stringify(name)}, ${now}, 'en-GB')`, context);
+    assert.doesNotMatch(rows.join(''), /ebay-change/, 'no week change in the list');
+    assert.match(detail('Persona 4'), /<b class="ebay-median">£73\.49<\/b> <span class="ebay-change is-up" title="A week before \((?:7 Oct|Oct 7)\) the median was £71\.19: up £2\.30, 3\.2%\.">\(£2\.30 ▲ 3\.2%\)<\/span>/);
+    assert.match(detail('Dear UK'), /<b class="ebay-median">£80\.00<\/b> <span class="ebay-change" title="A week before \((?:7 Oct|Oct 7)\) the median was £80\.00: the same\.">\(no change\)<\/span>/);
+    assert.match(detail('Also Dear UK'), /<b class="ebay-median">£80\.00<\/b><span class="ebay-rest">/, 'no figure from a week before: nothing in brackets');
+    assert.match(detail('Cheap UK'), /<b class="ebay-median">£5\.00<\/b> <span class="ebay-change is-up"[^>]*>\(£1\.00 ▲ 25%\)<\/span>/);
+    assert.match(detail('Dollars Only'), /<b class="ebay-median">\$200<\/b> <span class="ebay-change is-down" title="A week before \((?:7 Oct|Oct 7)\) the median was \$250: down \$50\.00, 20%\.">\(\$50\.00 ▼ 20%\)<\/span>/);
 
     const change = (median, week, currency = 'GBP') => {
         context.__site = { checked: '2026-10-14T10:00Z', copies: 3, median, week };
@@ -1676,11 +1722,12 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
     assert.match(siteLine({ copies: 2 }), /2 copies <span class="level-tag few-copies" title="Only 2 copies are for sale/);
     assert.doesNotMatch(siteLine({ copies: 3 }), /few-copies/);
 
-    // The eBay prices page: the change sits beside the median, the rest of the line as before.
-    const pageRows = showPrices(prices).split('<li ').slice(1);
-    const persona = pageRows.find(html => html.includes('Persona 4'));
+    // The game's page: the change sits beside the median, the rest of the line as before.
+    showPrices(prices);
+    const gameDetail = (name) => vm.runInContext(`gamePriceDetailHtml(${JSON.stringify(name)}, ${now}, 'en-GB')`, context);
+    const persona = gameDetail('Shin Megami Tensei: Persona 4');
     assert.match(persona, /<span class="ebay-site"><span class="ebay-flag">UK<\/span><span class="ebay-now"><b class="ebay-median">£73\.49<\/b> <span class="ebay-change is-up"[^>]*>\(£2\.30 ▲ 3\.2%\)<\/span><\/span><span class="ebay-rest">median · from £36\.75/);
-    const plain = pageRows.find(html => html.includes('Also Dear UK'));
+    const plain = gameDetail('Also Dear UK');
     assert.match(plain, /<span class="ebay-flag">UK<\/span><b class="ebay-median">£80\.00<\/b><span class="ebay-rest">/);
 
     // Without prices the list keeps its usual order and says nothing about prices.
@@ -1913,7 +1960,7 @@ await check('the Rarest page: the rarest consoles, priced on both sites', async 
     vm.runInContext(`renderPrices(undefined, ${now}, 'en-GB')`, context);
     assert.doesNotMatch(el('pricesList').innerHTML, /Super Red/);
     assert.match(el('pricesList').innerHTML, /Kuon/);
-    assert.equal(evalJson(`priceFiguresHtml(${JSON.stringify(red.name)})`), '', 'nor do they show beside names in the feed');
+    assert.equal(evalJson(`compactPriceHtml(${JSON.stringify(red.name)})`), '', 'nor do they show beside names in the feed');
 
     // A hostile file is text, never markup.
     context.__hostile = { tiers: { 1: '<b>' }, consoles: [{ name: '<img src=x onerror=alert(1)>', tier: '1: x', rank: 1, models: ['<i>'], regions: ['JP', '<b>'],
@@ -2125,10 +2172,10 @@ await check('the Rarest charts: index and market cap per list, a game\'s history
     vm.runInContext('closeGameChart(); openGameChart(9999)', context);
     assert.equal(el('gameChart').classList.contains('hidden'), true, 'an unknown button opens nothing');
 
-    // Every list row with a price offers its chart.
+    // The game's page offers the chart (the lists keep only the short prices).
     const page = read('index.html');
     assert.match(page, /\$\{prices\s*\? ` \$\{chartButtonHtml\(prices\.title, label\)\}` : ''\}/);
-    assert.match(page, /chartButtonHtml\(row\.title, sitesOf\(row\.entry\)\.includes\('UK'\) \? 'UK' : sitesOf\(row\.entry\)\[0\]\)/);
+    assert.match(page, /chartButtonHtml\(row\.title, sites\.includes\('UK'\) \? 'UK' : sites\[0\]\)/);
     assert.match(page, /lightweight-charts@\d+\.\d+\.\d+\/dist\/lightweight-charts\.standalone\.production\.js/, 'a fixed version');
     assert.equal((page.match(/Charts by <a href="https:\/\/www\.tradingview\.com\/"/g) || []).length, 2, 'the library\'s credit under both charts');
 });

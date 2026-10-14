@@ -359,6 +359,8 @@ Before you call something done, prove it; don't assume it.
   - Build an `Intl` formatter once (`cachedFormat()`), never per price: per-price formatters cost ~380 ms of a page load
     (2026-10-14). The long lists of pages not on screen are drawn when the tab opens (`drawForView()`); a new long list on a
     hidden page should do the same. Profile with a CPU profile in headless Chromium before and after (long tasks, element count).
+  - Lists show a game as name (`gameLinkHtml()`) + `compactPriceHtml()` only (US, UK, cheapest euro median). Per-site
+    detail, chart, eBay links and lookup chips belong on the game page (`gamePriceDetailHtml()`); don't put them back in a list row.
 - **Euros**
   - The EUR button converts at display time with one rate (`fxData`), through `money()` and
     `moneyShort()` only. A price shown some other way will not convert: route new prices through

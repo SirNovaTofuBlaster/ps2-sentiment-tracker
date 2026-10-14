@@ -510,10 +510,6 @@
             return search.url(String(title ?? '').replace(/\s+/g, ' ').trim()) + LISTED_FILTERS;
         }
 
-        // What goes under a game's name wherever one is shown: eBay's medians when
-        // the game is priced, then the lookup chips.
-        const gamePricesHtml = (title) => priceFiguresHtml(title) + priceLookupHtml(title);
-
         /* ---- Four pages in one --------------------------------------------------
            "Tracker" is the feed and its sources, "Rarest" lists the rarest games of
            each region, "Most mentioned" ranks the games the feed names, "eBay
@@ -867,7 +863,7 @@
                 : (inLibrary ? 'In the PS2 library, but nothing in our feeds has named it in the last '
                     : 'Not found in the PS2 library, and nothing in our feeds has named it in the last ') + `${FEED_DAYS} days.`;
             const row = priceIndex.get(priceKey(title));
-            document.getElementById('gamePrices').innerHTML = gamePricesHtml(title) + scarceTagHtml(title) + collectibleTagHtml(title)
+            document.getElementById('gamePrices').innerHTML = gamePriceDetailHtml(title) + scarceTagHtml(title) + collectibleTagHtml(title)
                 + (row ? '' : '<p class="text-xs text-slate-400 mt-2">Not priced on eBay yet. A game is priced soon after the feed first names it; until then the links open eBay\'s own search.</p>');
             const list = document.getElementById('gameItems');
             if (!items.length) {
@@ -1119,13 +1115,13 @@
                 return `
                 <li class="${rowClass('todayList', i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
-                        <span><button type="button" onclick="showGameRows(${i})" title="Show the items that name this game" class="recent-game text-cyan-300${i === 0 ? ' font-bold' : ''}">${esc(game.name)}</button>${scarceTagHtml(game.name)}${collectibleTagHtml(game.name)}${game.remasters
+                        <span><button type="button" onclick="showGameRows(${i})" title="Show the items that name this game" class="recent-game text-cyan-300${i === 0 ? ' font-bold' : ''}">${esc(game.name)}</button><a class="game-open" href="#game=${esc(encodeURIComponent(game.name))}" onclick="return openGameLink(event, ${esc(JSON.stringify(game.name))})" title="Open the page for this game" aria-label="${esc('Open the page for ' + game.name)}"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></a>${scarceTagHtml(game.name)}${collectibleTagHtml(game.name)}${game.remasters
                             ? ` <span class="remaster-tag text-[10px] border px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}${game.headline
                             ? '' : ' <span class="text-[10px] border border-slate-700 text-slate-400 px-1.5 py-0.5 whitespace-nowrap" title="Named in the text under a headline, not in the headline itself. These are wrong more often.">in the text only</span>'}</span>
                         <span class="text-slate-300 whitespace-nowrap">${count} mention${count === 1 ? '' : 's'}</span>
                     </div>
                     <div class="mt-1 text-[11px] text-slate-400">${shown}${more > 0 ? ` <span class="text-slate-500">+${more} more</span>` : ''}</div>
-                    ${gamePricesHtml(game.name)}
+                    ${compactPriceHtml(game.name)}
                 </li>`;
             }).join('');
             foldList('todayList', recent.games.length);
@@ -1201,14 +1197,14 @@
                 return `
                 <li class="${rowClass('demandList', i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
-                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${esc(game.title)}</span>
+                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${gameLinkHtml(game.title)}</span>
                         <span class="whitespace-nowrap">
                             ${lead}
                             <span class="text-slate-500 ml-2">${v2 ? esc(facts) : facts}</span>
                         </span>
                     </div>
                     <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full bg-cyan-500" style="width:${Math.max(game.demand, 2)}%"></div></div>
-                    ${gamePricesHtml(game.title)}
+                    ${compactPriceHtml(game.title)}
                 </li>`;
             }).join('');
             foldList('demandList', shown.length);
@@ -1253,12 +1249,12 @@
                 return `
                 <li class="${rowClass('topGamesList', i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
-                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${esc(game.name)}${game.remasters
+                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${gameLinkHtml(game.name)}${game.remasters
                             ? ` <span class="remaster-tag text-[10px] border px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}</span>
                         <span class="text-slate-300 whitespace-nowrap">${game.count} mention${game.count === 1 ? '' : 's'} · ${pct >= 10 ? Math.round(pct) : pct.toFixed(1)}%</span>
                     </div>
                     <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full bg-cyan-500" style="width:${Math.max(pct, 2)}%"></div></div>
-                    ${gamePricesHtml(game.name)}
+                    ${compactPriceHtml(game.name)}
                 </li>`;
             }).join('');
             foldList('topGamesList', ranked.length);
@@ -1516,28 +1512,57 @@
             return `<span class="ebay-site${age.stale ? ' is-stale' : ''}">${flag}${figures}</span>`;
         }
 
-        // Beside a game's name: "eBay median  US $220  UK £105". Each figure opens that
-        // site's listings. Nothing at all when the game is not priced, so most rows stay as short
-        // as they were.
-        function priceFiguresHtml(title, now = Date.now(), locale) {
+        // A game's name as a link to its own page (#game=...). Plain clicks open the page here;
+        // a middle-click or "open in new tab" still works because it is a real link.
+        function gameLinkHtml(title, extraClass = '') {
+            return `<a class="game-link${extraClass ? ' ' + extraClass : ''}" href="#game=${esc(encodeURIComponent(String(title ?? '')))}" onclick="return openGameLink(event, ${esc(JSON.stringify(String(title ?? '')))})" title="Open the page for this game">${esc(title)}</a>`;
+        }
+        function openGameLink(event, title) {
+            if (event && (event.ctrlKey || event.metaKey || event.shiftKey || event.button > 0)) return true;
+            openGame(title);
+            return false;
+        }
+
+        // The short version used in every list: US median, UK median, and the cheapest euro
+        // median (the lowest of the German, French, Italian and Spanish ones). Everything else
+        // (copies, cheapest copy, week change, charts, links) is on the game's own page.
+        function compactPriceHtml(title, now = Date.now(), locale) {
             const row = priceIndex.get(priceKey(title));
             if (!row) return '';
-            const figures = PRICE_SITES.map(label => {
+            const usable = (label) => {
                 const site = row.entry[label];
-                const copies = site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) ? site.copies : 0;
-                if (!copies || typeof site.median !== 'number') return '';
+                return site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) && site.copies > 0
+                    && typeof site.median === 'number' ? site : null;
+            };
+            const picks = [];
+            ['US', 'UK'].forEach(label => { if (PRICE_SITES.includes(label) && usable(label)) picks.push([label, usable(label)]); });
+            const euro = PRICE_SITES.filter(label => currencyOf(label) === 'EUR' && usable(label))
+                .sort((a, b) => usable(a).median - usable(b).median)[0];
+            if (euro) picks.push([euro, usable(euro)]);
+            if (!picks.length) return '';
+            const figures = picks.map(([label, site]) => {
                 const currency = currencyOf(label);
                 const age = priceAge(site.checked, now, staleFor(site, LEVELS[row.level].stale, label));
-                const lowest = money(site.lowest, currency, locale);
-                const hint = `Median asking price of ${copies}${site.truncated ? '+' : ''} used ${copies === 1 ? 'copy' : 'copies'} on eBay ${label}`
-                    + (lowest ? `, cheapest ${lowest}` : '')
-                    + (age.text ? `, checked ${age.text}${age.stale ? ' (longer ago than usual)' : ''}` : '')
-                    + (weekBefore(site) ? `; a week before it was ${money(site.week.median, currency, locale)}` : '')
-                    + ". Opens the same search on eBay: used Buy It Now copies in that country. Auctions, new copies and other countries are not counted.";
-                return `<a class="ebay-quote${age.stale ? ' is-stale' : ''}" href="${safeUrl(listedSearchUrl(label, title))}" target="_blank" rel="noopener noreferrer" title="${esc(hint)}"><span class="ebay-flag">${esc(label)}</span><b>${esc(money(site.median, currency, locale))}</b>${priceChangeHtml(site, currency, locale)}</a>`;
-            }).filter(Boolean);
-            if (!figures.length) return '';
-            return `<span class="ebay-quotes"><span class="ebay-quotes-label">eBay median</span>${figures.join('')}</span>`;
+                const hint = currency === 'EUR' ? `Lowest median asking price across the euro eBay sites: eBay ${label}. Open the game's page for every site.`
+                    : `Median asking price on eBay ${label}. Open the game's page for the detail.`;
+                return `<span class="ebay-quote${age.stale ? ' is-stale' : ''}" title="${esc(hint)}"><span class="ebay-flag">${esc(currency === 'EUR' ? 'from ' + label : label)}</span><b>${esc(money(site.median, currency, locale))}</b></span>`;
+            });
+            return `<span class="ebay-quotes">${figures.join('')}</span>`;
+        }
+
+        // The game page's price block: every site with all its figures, the chart, the lookups.
+        function gamePriceDetailHtml(title, now = Date.now(), locale) {
+            const row = priceIndex.get(priceKey(title));
+            if (!row) return priceLookupHtml(title);
+            const sites = sitesOf(row.entry);
+            const level = LEVELS[row.level];
+            return `<div class="ebay-figures">${sites.map(label =>
+                priceSiteHtml(label, row.entry[label], currencyOf(label, priceData), now, locale, level.stale)).join('')}</div>`
+                + `<p class="mt-2 text-[11px] text-slate-400">${chartButtonHtml(row.title, sites.includes('UK') ? 'UK' : sites[0])} price history · `
+                + 'asking prices of used copies on eBay, not what anything sold for. Same search on eBay: '
+                + sites.map(label => `<a class="text-cyan-400" href="${safeUrl(listedSearchUrl(label, title))}" target="_blank" rel="noopener noreferrer" title="${esc(`Used Buy It Now copies in that country, as eBay ${label} counts them. Auctions, new copies and other countries are not counted.`)}">${esc(label)}</a>`).join(' · ')
+                + '</p>'
+                + priceLookupHtml(title);
         }
 
         // Surging games first, then the most mentioned.
@@ -1591,14 +1616,11 @@
                 const level = LEVELS[row.level];
                 return `
                 <li class="px-3 py-3">
-                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
-                        <span class="text-cyan-300">${esc(row.title)}${level.tag
+                    <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 text-xs font-mono-custom">
+                        <span class="text-cyan-300">${gameLinkHtml(row.title)}${level.tag
                             ? ` <span class="level-tag level-${esc(row.level)}" title="${esc(level.hint)}">${esc(level.tag)}</span>` : ''}</span>
-                        <span class="whitespace-nowrap"><span class="text-slate-500" title="Headlines naming this game in the last two weeks">${esc(row.mentions)} in headlines</span> ${chartButtonHtml(row.title, sitesOf(row.entry).includes('UK') ? 'UK' : sitesOf(row.entry)[0])}</span>
+                        ${compactPriceHtml(row.title, now, locale) || '<span class="ebay-note">no price yet</span>'}
                     </div>
-                    <div class="ebay-figures">${sitesOf(row.entry).map(label =>
-                        priceSiteHtml(label, row.entry[label], currencyOf(label, data), now, locale, level.stale)).join('')}</div>
-                    ${priceLookupHtml(row.title)}
                 </li>`;
             }).join('');
             });
@@ -2879,7 +2901,7 @@
                         ${esc(item.headline)}
                     </td>
                     <td data-col="game"${lead ? '' : ' data-unmatched'} class="py-3.5 px-4 font-mono-custom text-cyan-300">${lead
-                        ? esc(lead) + gamePricesHtml(lead) + (others.length
+                        ? gameLinkHtml(lead) + compactPriceHtml(lead) + (others.length
                             ? `<div class="mt-1.5 text-[10px] text-slate-400">also names ${others.slice(0, ALSO_NAMED).map(esc).join(', ')}${
                                 others.length > ALSO_NAMED ? ` and ${others.length - ALSO_NAMED} more` : ''}</div>` : '')
                         : '<span class="text-slate-500">Unmatched / General</span>'}</td>
