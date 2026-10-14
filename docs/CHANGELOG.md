@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14: .hack games searched the way sellers name them
+
+- The library spells them "Hack: Part 1: Infection", but eBay sellers write ".hack//INFECTION" or ".hack Infection". `ebay_watchlist.json` now pins the seven
+  games with their own search words (`hack infection`, `hack mutation`, `hack outbreak`, `hack quarantine`, `hack g u vol 1`, `vol 2`, `vol 3`: a Vol. 2 listing is not Vol. 1).
+  The Vol. 1 Premium Edition in `editions.json` searches `hack g u vol 1` with "premium edition". A test checks the sellers' spellings count and another part does not.
+
 ## 2026-10-14: editions cross-checked against the first eBay run
 
 - First run (26 of 32 editions placed): 6 US editions were missing from `latest["editions"]` because their names are already priced games

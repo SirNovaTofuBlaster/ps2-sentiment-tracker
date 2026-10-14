@@ -784,6 +784,20 @@ class WatchlistTests(unittest.TestCase):
         self.assertTrue(all(entry["pinned"] and entry["search"] and entry["queries"] for entry in pinned))
         self.assertFalse({entry["key"] for entry in pinned} & never, "a game cannot be pinned and never priced")
 
+    def test_the_hack_games_are_found_under_the_names_sellers_use(self):
+        pinned, _ = ebay_prices.load_watchlist()
+        games = {entry["title"]: entry for entry in pinned}
+        market = ebay_prices.MARKETS["EBAY_US"]
+
+        def counted(title, listing_title):
+            game = dict(games[title], siblings=[], require=[], allow=[])
+            return ebay_prices.reject_reason(listing(listing_title, 20), game, market, False) is None
+        self.assertTrue(counted("Hack: Part 1: Infection", ".hack//INFECTION Part 1 PS2 complete"))
+        self.assertTrue(counted("Hack: Part 2: Mutation", ".hack Mutation (Sony PlayStation 2, 2002) with DVD"))
+        self.assertTrue(counted("Hack: G.U. Vol.2: Reminisce", ".hack//G.U. Vol. 2//Reminisce PS2 complete"))
+        self.assertFalse(counted("Hack: G.U. Vol.1: Rebirth", ".hack//G.U. Vol. 2//Reminisce PS2"), "Vol. 2 is not Vol. 1")
+        self.assertFalse(counted("Hack: Part 1: Infection", ".hack//MUTATION Part 2 PS2"), "another part")
+
     def test_the_committed_watchlist_names_real_ps2_games(self):
         library_path = ROOT / "data" / "ps2_database.json"
         if not library_path.exists():
