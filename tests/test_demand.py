@@ -105,18 +105,31 @@ class ArticleTests(unittest.TestCase):
         self.assertIn("rare", found["collectible"])
         self.assertLessEqual(len(found["collectible"]), 3)
 
-    def test_gameplay_talk_of_rare_things_is_not_collectibility(self):
-        text = ("God Hand is a beat 'em up video game for the PlayStation 2. The player can find rare items dropped by "
-                "enemies, and the rare weapon in the final quest sells for a high price in the in-game shop.")
-        self.assertEqual(demand.check_article_text(text)["collectible"], [])
+    def test_sentences_from_real_articles_that_are_collectibility(self):
+        for sentence in (
+                "the North American and European versions of Gitaroo Man were produced in very low quantities by Koei and, as a result, have become somewhat rare; it is regarded as a cult video game.",
+                "Physical copies of Rule of Rose have become highly sought-after collector's items.",
+                "Prices for pre-owned copies range from around $300 to $800.",
+                "Despite this, the Western version has become a rare collectable.",
+                "Rule of Rose has garnered a reputation as one of the more expensive video games to buy second-hand."):
+            self.assertTrue(demand.collectible_terms(sentence), sentence)
 
-    def test_a_sentence_about_value_without_the_market_is_not_enough(self):
-        self.assertEqual(demand.collectible_terms("It was a rare achievement for a studio of that size."), [])
-
-    def test_the_real_kuon_sentence_and_collectors_editions(self):
-        self.assertTrue(demand.collectible_terms("Despite this, the Western version has become a rare collectable."))
-        self.assertEqual(demand.collectible_terms("The Collector's Edition included a soundtrack and a poster."), [])
-        self.assertEqual(demand.collectible_terms("A collector's edition was sold for the game's release."), [])
+    def test_sentences_from_real_articles_that_are_not(self):
+        # Each of these flagged a game on the first live run (2026-10-14) and is plain noise.
+        for sentence in (
+                "It was Rockstar North's most expensive game at the time, with a development budget of US$5 million.",
+                "Some of the rarer weapons can be made only through Event quest rewards.",
+                "Some of the items in the game of the highest rarity can only be obtained by combining.",
+                "The game shipped as a collector's edition box.",
+                "a rare supernatural delicacy",
+                "Light Eco, a rare and powerful substance",
+                "Good adventure games on consoles are rare",
+                "it's a rarity in the comic book world",
+                "The PS2 version went on to sell 358,899 copies in Japan.",
+                "The game sold for $50 at launch.",
+                "It was a rare achievement for a studio of that size.",
+                "The Collector's Edition included a soundtrack and a poster."):
+            self.assertEqual(demand.collectible_terms(sentence), [], sentence)
 
     def test_an_article_that_is_not_a_ps2_game_is_told_apart(self):
         general = demand.check_article_text("Retro gaming is the playing of older video games, mainly on consoles of the 1980s.")

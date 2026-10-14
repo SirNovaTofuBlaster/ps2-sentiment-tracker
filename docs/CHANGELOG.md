@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-14: collectible rules v3
+
+- `demand.py`: after reading the 12 articles flagged on the first live run, only Kuon, Gitaroo Man and
+  Rule of Rose were real. The rest were noise: a development budget ("most expensive game", GTA: Vice City),
+  sales ("sold for", Persona 4, Guitar Hero III, Mortal Kombat: Deception), rare in-game items (Monster
+  Hunter, Persona 3, Jak and Daxter), a review quote (The Punisher), a general remark (Shadow of Memories).
+  The rules now need rarity of the game's copies/versions, "out of print", small print runs, a second-hand
+  price or "expensive to buy second-hand". `RULES_VERSION` 3 makes every cached check be read again.
+
 ## 2026-10-14: Demand Index v2, YouTube views, Wikipedia collectible check, Most rare repaired
 
 - `scraper.py`: YouTube items carry `views` (from the feed's `media:statistics`). Other sources are unchanged.
