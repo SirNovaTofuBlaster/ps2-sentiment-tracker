@@ -45,7 +45,7 @@ through its **Sources & Weights** panel.
 | `.github/workflows/scraper.yml` | Runs `scrape_loop.py`; a push to `feeds.json`/`scraper.py`/`scrape_loop.py` or *Run scraper now* replaces the running loop; an hourly schedule restarts it if the chain breaks |
 | `.github/workflows/tests.yml` | The test suite on pushes and pull requests |
 | `archive.py`, `.github/workflows/archive.yml` | Appends every PS2 game mention to `data/archive/YYYY-MM.json`, and every digital-only story (any game, with its link) to `data/archive/digital/YYYY-MM.json`, four times a day. Reads the snapshot only: it fetches nothing |
-| `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index) from Wikipedia pageviews and mentions, daily |
+| `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index, v2: mentions trend, sources, YouTube `views` the scraper records, eBay week change from `latest.json`, Wikipedia pageviews) daily, and `data/wiki_checks.json` (each game's article read in full: PS2 game? calls it a collectible?). Reads `data/` only; no key |
 | `fx.py`, `.github/workflows/fx.yml` | Saves `data/fx.json` (euros per US dollar, pound, zloty and franc, from the European Central Bank's public rate file) each weekday for the dashboard's EUR button. Standard library only, no key; leaves the old file when the ECB cannot be read |
 | `tests/test_fx.py` | Offline tests for `fx.py` and its workflow |
 | `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |

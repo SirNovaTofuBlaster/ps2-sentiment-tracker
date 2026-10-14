@@ -2323,4 +2323,53 @@ await check('the real library plus the extra names: every game once, FIFA 09 to 
     vm.runInContext('setLibrary([])', context);
 });
 
+await check('Most rare ranks figures that predate "listed", weighs Wikipedia collectibles, and the Demand Index v2 draws', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    // The state right after "listed" was added: almost no figure has it yet. Ranking must still work.
+    run(`setPrices({ games: {
+        'The Punisher': { level: 'normal', mentions: 2, US: { copies: 18, median: 114.69, checked: '2026-10-14T10:00Z' }, UK: { copies: 21, median: 48, checked: '2026-10-14T10:00Z' } },
+        'Grand Theft Auto III': { level: 'normal', mentions: 9, US: { copies: 400, median: 6, checked: '2026-10-14T10:00Z' }, UK: { copies: 300, median: 5, checked: '2026-10-14T10:00Z' } },
+        'Black': { level: 'normal', mentions: 9, US: { copies: 150, median: 6, listed: 150, checked: '2026-10-14T10:00Z' } },
+        'Kuon': { level: 'normal', mentions: 1, UK: { copies: 4, median: 150, checked: '2026-10-14T10:00Z' } },
+        'Prince of Persia: Sands of Time': { level: 'normal', mentions: 1, UK: { copies: 27, listed: 170, median: 6, checked: '2026-10-14T10:00Z' } },
+        'Spyro: The Eternal Night': { level: 'normal', mentions: 1, UK: { copies: 1, listed: 34, median: 9, checked: '2026-10-14T10:00Z' } },
+    } }, null)`);
+    assert.deepEqual(evalJson(`supplyOf('The Punisher')`), [18, 'US']);
+    assert.deepEqual(evalJson(`supplyOf('Prince of Persia: Sands of Time')`), [170, 'UK'], 'eBay\'s own count when ours is lower');
+    assert.equal(evalJson(`supplyOf('Nothing Priced')`), null);
+    const names = (list) => evalJson(`byRarity(${JSON.stringify(list.map(name => ({ name })))}).map(game => game.name)`);
+    const everyone = ['Grand Theft Auto III', 'Black', 'Not Priced', 'The Punisher', 'Prince of Persia: Sands of Time', 'Kuon', 'Spyro: The Eternal Night'];
+    assert.deepEqual(names(everyone), ['Kuon', 'The Punisher', 'Spyro: The Eternal Night', 'Black', 'Prince of Persia: Sands of Time', 'Grand Theft Auto III', 'Not Priced'].map(x => x),
+        'few copies first even when "listed" is missing; common games last');
+    // Wikipedia: a game its article calls collectible leads its group, and one with no figure yet sits among the second group.
+    run(`setWikiChecks({
+        'The Punisher': { article: 'The Punisher (2005 video game)', game: true, ps2: true, collectible: ['rare', 'sought-after'] },
+        'Not Priced': { article: 'Not Priced (video game)', game: true, ps2: true, collectible: ['collectible'] },
+        'Retro': { article: 'Retro gaming', game: false, ps2: false, collectible: ['rare'] },
+        'Empty': { article: 'Empty', game: true, ps2: true, collectible: [] } })`);
+    assert.equal(evalJson(`collectibleOf('Retro')`), null, 'not a PS2 game article: ignored');
+    assert.equal(evalJson(`collectibleOf('Empty')`), null);
+    assert.deepEqual(evalJson(`collectibleOf('The Punisher').words`), ['rare', 'sought-after']);
+    assert.deepEqual(names(everyone), ['Kuon', 'Not Priced', 'The Punisher', 'Spyro: The Eternal Night', 'Black', 'Prince of Persia: Sands of Time', 'Grand Theft Auto III'].map(x => x));
+    assert.match(evalJson(`collectibleTagHtml('The Punisher')`), /href="https:\/\/en\.wikipedia\.org\/wiki\/The_Punisher_\(2005_video_game\)"[^>]*>collectible<\/a>/);
+    assert.equal(evalJson(`collectibleTagHtml('Kuon')`), '');
+    run(`setWikiChecks(null)`);
+    run(`setPrices(null, null)`);
+
+    // The Demand Index, version 2 and the old file both draw.
+    const file = { version: 2, generated: '2026-10-14 10:00:00 UTC', recent_days: 3, youtube_views_seen: true, games: [
+        { title: 'God Hand', demand: 71.2, mentions: 12, recent: 8, sources: 5, youtube_views: 1250000, ebay_change_pct: 12.5, trend_pct: -3.1 },
+        { title: 'Kuon', demand: 40, mentions: 2, recent: 0, sources: 1, youtube_views: 0, ebay_change_pct: null, trend_pct: null }] };
+    context.__demand = file;
+    context.fetch = async () => ({ ok: true, json: async () => context.__demand });
+    await vm.runInContext('loadDemand()', context);
+    const html = el('demandList').innerHTML;
+    assert.match(html, /God Hand/);
+    assert.match(html, /12 mentions \(8 in the last 3 days\) · 5 sources · 1\.3M YouTube views · eBay ▲ 12\.5% · Wikipedia ▼ 3\.1%/);
+    assert.match(html, /2 mentions \(0 in the last 3 days\) · 1 source · 0 YouTube views/);
+    assert.doesNotMatch(html, /null|undefined|NaN/);
+    assert.match(el('demandSummary').textContent, /Mentions rising/);
+    context.fetch = fakeFetch;
+});
+
 console.log(`dashboard checks passed (${passed})`);

@@ -600,6 +600,7 @@
             sync.title = data.last_updated ? `Scraper ran at ${data.last_updated}` : '';
             document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
             loadLibrary();   // the search box's names; nothing waits for them
+            loadWikiChecks();   // Wikipedia's "collectible" verdicts; the list is drawn again when they arrive
             // Prices first: every list below shows them beside its games.
             await loadFx();
             await loadPrices();
@@ -785,7 +786,7 @@
                 : (inLibrary ? 'In the PS2 library, but nothing in our feeds has named it in the last '
                     : 'Not found in the PS2 library, and nothing in our feeds has named it in the last ') + `${FEED_DAYS} days.`;
             const row = priceIndex.get(priceKey(title));
-            document.getElementById('gamePrices').innerHTML = gamePricesHtml(title) + scarceTagHtml(title)
+            document.getElementById('gamePrices').innerHTML = gamePricesHtml(title) + scarceTagHtml(title) + collectibleTagHtml(title)
                 + (row ? '' : '<p class="text-xs text-slate-400 mt-2">Not priced on eBay yet. A game is priced soon after the feed first names it; until then the links open eBay\'s own search.</p>');
             const list = document.getElementById('gameItems');
             if (!items.length) {
@@ -929,15 +930,65 @@
             return ` <a class="level-tag few-copies" href="${safeUrl(listedSearchUrl(found[1], title))}" target="_blank" rel="noopener noreferrer" title="Scarce: ${esc(words)} (used, Buy It Now, in that country; auctions and new copies are not counted). Opens exactly that search.">scarce &middot; ${esc(words)}</a>`;
         }
 
-        // Fewest copies first; then dearer first; games never checked on eBay last, in their usual order.
+        // How many copies eBay has for sale, for ranking: the fewest on UK or US, using eBay's own
+        // count ("listed") when it is higher than ours, since our name checks only ever drop copies.
+        // Unlike scarcity() this needs no proof: a game never re-checked since "listed" was added
+        // still has a count to rank by.
+        function supplyOf(title) {
+            let best = null;
+            for (const label of PRICE_ORDER) {
+                const site = priceIndex.get(priceKey(title))?.entry?.[label];
+                if (!site || typeof site !== 'object' || site.unmatched || !Number.isFinite(site.copies)) continue;
+                const supply = Number.isFinite(site.listed) && site.listed > site.copies ? site.listed : site.copies;
+                if (best === null || supply < best[0]) best = [supply, label];
+            }
+            return best;
+        }
+
+        // Wikipedia's verdict (data/wiki_checks.json, written by demand.py): its article on the game
+        // calls it a rare or valuable collectible. Keyed by priceKey() so spellings agree.
+        let wikiChecks = new Map();
+        function setWikiChecks(data) {
+            wikiChecks = new Map();
+            for (const [title, entry] of Object.entries(data && typeof data === 'object' ? data : {})) {
+                if (entry && typeof entry === 'object' && entry.article && entry.game && entry.ps2
+                        && Array.isArray(entry.collectible) && entry.collectible.length) {
+                    wikiChecks.set(priceKey(title), { article: String(entry.article), words: entry.collectible.map(String).slice(0, 3) });
+                }
+            }
+        }
+        async function loadWikiChecks() {
+            try {
+                const response = await fetch('data/wiki_checks.json', { cache: 'no-cache' });
+                setWikiChecks(response.ok ? await response.json() : null);
+            } catch {
+                setWikiChecks(null);
+            }
+            if (lastRecentItems.length) renderRecentGames(lastRecentItems);
+        }
+        const collectibleOf = (title) => wikiChecks.get(priceKey(title)) || null;
+
+        function collectibleTagHtml(title) {
+            const found = collectibleOf(title);
+            if (!found) return '';
+            const url = `https://en.wikipedia.org/wiki/${encodeURIComponent(found.article.replace(/ /g, '_'))}`;
+            return ` <a class="level-tag" href="${safeUrl(url)}" target="_blank" rel="noopener noreferrer" title="Wikipedia's article on this game calls it a rare or valuable collectible (it uses: ${esc(found.words.join(', '))}). Opens the article.">collectible</a>`;
+        }
+
+        // Most rare first. Groups by how few copies there are (10 or fewer, up to 30, up to 100,
+        // more), and inside a group puts the games Wikipedia calls collectible first, then the
+        // fewest copies, then the dearest. A collectible game with no eBay figure yet sits among
+        // the second group; games with neither come last, in their usual order.
         function byRarity(games) {
             const rank = (game) => {
-                const found = scarcity(game.name);
-                if (!found) return [1, 0, 0];
-                return [0, found[0], -(medianOf(game.name, found[1]) ?? 0)];
+                const supply = supplyOf(game.name);
+                const flagged = collectibleOf(game.name) ? 0 : 1;
+                if (!supply) return [flagged === 0 ? 1 : 4, flagged, 0, 0];
+                const group = supply[0] <= SCARCE_COPIES ? 0 : supply[0] <= 30 ? 1 : supply[0] <= 100 ? 2 : 3;
+                return [group, flagged, supply[0], -(medianOf(game.name, supply[1]) ?? 0)];
             };
             return games.map((game, i) => ({ game, i, r: rank(game) }))
-                .sort((a, b) => a.r[0] - b.r[0] || a.r[1] - b.r[1] || a.r[2] - b.r[2] || a.i - b.i)
+                .sort((a, b) => a.r[0] - b.r[0] || a.r[1] - b.r[1] || a.r[2] - b.r[2] || a.r[3] - b.r[3] || a.i - b.i)
                 .map(entry => entry.game);
         }
 
@@ -973,7 +1024,7 @@
             summary.textContent = `${plural(recent.naming, 'item')} out of ${recent.items.toLocaleString('en')} published in the last ${RECENT_HOURS} hours named a PS2 game: `
                 + `${plural(recent.games.length, 'game')}.`
                 + (recentSort === 'rare'
-                    ? ' Most rare first: the fewest copies for sale on eBay UK or US; games not checked on eBay yet last.'
+                    ? ' Most rare first: the fewest copies for sale on eBay UK or US, grouped (10 or fewer, up to 30, up to 100, more), games Wikipedia calls collectible first within a group; games not checked on eBay yet last.'
                     : recent.games.some(game => PRICE_ORDER.some(label => medianOf(game.name, label) !== null))
                     ? ' Most expensive first, by the eBay UK median (US where there is no UK figure); games without a price last.' : '')
                 + (rest ? ` The other ${plural(rest, 'item')} ${rest === 1 ? 'is' : 'are'} in the table further down, under Everything.` : '');
@@ -984,7 +1035,7 @@
                 return `
                 <li class="${rowClass('todayList', i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
-                        <span><button type="button" onclick="showGameRows(${i})" title="Show the items that name this game" class="recent-game text-cyan-300${i === 0 ? ' font-bold' : ''}">${esc(game.name)}</button>${scarceTagHtml(game.name)}${game.remasters
+                        <span><button type="button" onclick="showGameRows(${i})" title="Show the items that name this game" class="recent-game text-cyan-300${i === 0 ? ' font-bold' : ''}">${esc(game.name)}</button>${scarceTagHtml(game.name)}${collectibleTagHtml(game.name)}${game.remasters
                             ? ` <span class="remaster-tag text-[10px] border px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}${game.headline
                             ? '' : ' <span class="text-[10px] border border-slate-700 text-slate-400 px-1.5 py-0.5 whitespace-nowrap" title="Named in the text under a headline, not in the headline itself. These are wrong more often.">in the text only</span>'}</span>
                         <span class="text-slate-300 whitespace-nowrap">${count} mention${count === 1 ? '' : 's'}</span>
@@ -1042,21 +1093,34 @@
             section.classList.toggle('hidden', !games.length);
             if (!games.length) return;
 
-            document.getElementById('demandSummary').textContent =
-                `Wikipedia interest over ${data.window_days} days blended with mentions here · ${formatLocalTime(data.generated)}`;
+            const v2 = data.version === 2;
+            document.getElementById('demandSummary').textContent = v2
+                ? `Mentions rising, sources naming it, YouTube views, eBay price movement and Wikipedia trend, blended · ${formatLocalTime(data.generated)}`
+                : `Wikipedia interest over ${data.window_days} days blended with mentions here · ${formatLocalTime(data.generated)}`;
 
             const shown = games.slice(0, LIST_LONG);
             document.getElementById('demandList').innerHTML = shown.map((game, i) => {
                 const change = typeof game.trend_pct === 'number' ? game.trend_pct : null;
                 const tone = change === null ? 'text-slate-500' : change > 0 ? 'text-emerald-400' : 'text-red-400';
                 const arrow = change === null ? '' : change > 0 ? '▲' : '▼';
+                const move = (value) => typeof value === 'number' ? `${value > 0 ? '▲' : value < 0 ? '▼' : ''} ${Math.abs(value)}%` : null;
+                const facts = v2 ? [
+                    `${game.mentions} mentions${Number.isFinite(game.recent) ? ` (${game.recent} in the last ${data.recent_days} days)` : ''}`,
+                    Number.isFinite(game.sources) ? `${game.sources} source${game.sources === 1 ? '' : 's'}` : null,
+                    data.youtube_views_seen && Number.isFinite(game.youtube_views) ? `${fmtCount(game.youtube_views)} YouTube views` : null,
+                    move(game.ebay_change_pct) ? `eBay ${move(game.ebay_change_pct)}` : null,
+                    move(game.trend_pct) ? `Wikipedia ${move(game.trend_pct)}` : null,
+                ].filter(Boolean).join(' · ')
+                    : `${Number(game.views_30d).toLocaleString()} views · ${esc(game.mentions)} mentions`;
+                const lead = v2 ? `<span class="text-slate-300">${esc(game.demand)}</span>`
+                    : `<span class="${tone}">${arrow} ${change === null ? 'new' : esc(change) + '%'}</span>`;
                 return `
                 <li class="${rowClass('demandList', i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
                         <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${esc(game.title)}</span>
                         <span class="whitespace-nowrap">
-                            <span class="${tone}">${arrow} ${change === null ? 'new' : esc(change) + '%'}</span>
-                            <span class="text-slate-500 ml-2">${Number(game.views_30d).toLocaleString()} views · ${esc(game.mentions)} mentions</span>
+                            ${lead}
+                            <span class="text-slate-500 ml-2">${v2 ? esc(facts) : facts}</span>
                         </span>
                     </div>
                     <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full bg-cyan-500" style="width:${Math.max(game.demand, 2)}%"></div></div>
