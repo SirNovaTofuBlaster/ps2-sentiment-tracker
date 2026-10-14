@@ -324,8 +324,8 @@ Before you call something done, prove it; don't assume it.
     no listing carries the PS2 item specific and it asks again by keyword; a failed search
     is tried up to three times. eBay returns at most 200 listings per search, and a game
     with more is marked `truncated`.
-  - Other eBay sites (decision of 2026-10-14: Germany, France, Italy, Spain and Poland are being
-    considered). `ebay_prices.py` only *counts* listings there, never prices them: start *eBay
+  - Other eBay sites (decision of 2026-10-14: Germany, France, Italy and Spain are on; Poland was
+    left off after the probe). `ebay_prices.py` only *counts* listings there, never prices them: start *eBay
     asking prices* by hand with **probe** ticked (`EBAY_PROBE`). It asks each site in
     `PROBE_MARKETS` (with Britain as the control) how many listings it reports for 20 famous
     games and 20 rare PAL ones (about 300 searches, not added to the day's count), prints counts
@@ -334,7 +334,7 @@ Before you call something done, prove it; don't assume it.
     network. It reads no state and writes no file. A site is added to `MARKETS` only after those
     counts, and the code that loops over `MARKETS` (and the dashboard's site labels) must be
     checked first: adding a market there prices every tracked game on it.
-  - Germany (`EBAY_DE`), France (`EBAY_FR`) and Italy (`EBAY_IT`), all switched on 2026-10-14; Spain follows; Poland is
+  - Germany (`EBAY_DE`), France (`EBAY_FR`), Italy (`EBAY_IT`) and Spain (`EBAY_ES`), all switched on 2026-10-14; Poland is
     left off: an `extra` site in `MARKETS`. It is priced in euros, once a day (`min_every_hours`: 24, its
     own clock, so it cannot slow the first two), after every lookup on the US and UK, and a run is
     judged on the US and UK alone, so a failing German site cannot discard their answers. It is searched

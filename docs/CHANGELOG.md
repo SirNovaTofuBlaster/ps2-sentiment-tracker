@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14: eBay Spain
+
+- `EBAY_ES` in `MARKETS`, like Germany, France and Italy, with Spanish junk and incomplete-copy words
+  (not yet checked on live listings). `index.html`, `guide.html` and the tests follow. That is every
+  site asked for except Poland, which was left off.
+
 ## 2026-10-14: eBay Italy
 
 - `EBAY_IT` in `MARKETS`, the same way as Germany and France: euros, once a day, keyword search
