@@ -366,6 +366,8 @@ are skipped. Two library spellings that come to the same name are one game.
 | `normal` | Any other mention in the window, or pinned | Every 6 hours |
 | `dormant` | Mentioned before, not in the window | Once a day |
 
+A site added after the first two (`extra` in `MARKETS`; Germany so far) has its own slower clock, `min_every_hours`, whatever a game's level says, and its lookups run after the US and UK ones.
+
 On top of the levels, a `normal` or `staple` game that has priced the same for days on one site is looked up there every 48 hours (`is_steady()` in `ebay_prices.py`) and goes back to 6 hours as soon as a check differs.
 
 | `rare` | On the Rarest page and not tracked otherwise | Once a day, on its list's site only |

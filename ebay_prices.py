@@ -111,13 +111,35 @@ MARKETS = {
     # Optional, for a site added later (see "Other eBay sites" in AGENTS.md): "extra": True keeps the
     # Rarest page's consoles off it unless they name it; "min_every_hours" is the least time between
     # two checks of one game there (its own clock, so a new site cannot crowd out the first two);
-    # "junk" is words in the site's own language that mark a listing as not a copy.
+    # "junk" is words in the site's own language that mark a listing as not a copy, "incomplete" those
+    # that mark one as less than a complete copy; "names_like" borrows another site's regional_names;
+    # "keyword_only" searches by the words "ps2" and never by the PS2 item specific.
     # "zip" is where postage is quoted to. In the US most sellers let eBay work postage out
     # from the buyer's address, and without one eBay gives no figure; New York stands in.
     "EBAY_US": {"label": "US", "site": "www.ebay.com", "country": "US", "currency": "USD", "zip": "10001",
                 "foreign": ("pal", "european", "sles", "sces")},
     "EBAY_GB": {"label": "UK", "site": "www.ebay.co.uk", "country": "GB", "currency": "GBP",
                 "foreign": ("ntsc", "usa", "us version", "slus", "scus")},
+    # Germany (switched on 2026-10-14). Sold there are PAL copies, as in Britain, and the game names are
+    # mostly the English ones, so it borrows the UK's renames ("names_like"). The words are as
+    # words() writes them (no accents: "Hülle" is "hulle"; no ß, which it would split). Written from
+    # knowledge of how German sellers list games, not yet checked against live listings: the first
+    # run's listings file on the ebay-data branch shows what each rule left out.
+    "EBAY_DE": {"label": "DE", "site": "www.ebay.de", "country": "DE", "currency": "EUR",
+                "extra": True, "min_every_hours": 24, "names_like": "UK",
+                # Keyword search only: the probe counted listings by the words "ps2" and the category, which
+                # works; the "Platform" item specific is named and valued in German there, and a wrong
+                # guess would fail every lookup. The title must say PS2 or PlayStation 2 (PLATFORM_WORDS).
+                "keyword_only": True,
+                "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
+                "junk": ("nur hulle", "nur cover", "nur anleitung", "nur booklet", "nur das cover", "nur die hulle",
+                         "leerhulle", "leere hulle", "leerverpackung", "ohne spiel", "ohne disc", "ohne cd", "ohne dvd",
+                         "ersatzhulle", "ersatzcover", "defekt", "kaputt", "bastler", "nicht funktionsfahig",
+                         "konvolut", "sammlung", "spielesammlung", "spielepaket", "restposten", "paket",
+                         "losungsbuch", "spieleberater", "kopie", "raubkopie", "nachdruck", "fanartikel", "figur",
+                         "plusch", "nachbau"),
+                "incomplete": ("ohne anleitung", "ohne ovp", "ohne hulle", "ohne cover", "ohne handbuch",
+                               "nur disc", "nur cd", "nur dvd", "nur spiel", "lose", "ohne box")},
 }
 
 # ---- How often each game is checked -------------------------------------------------
@@ -631,6 +653,9 @@ def load_regional_names(path=None):
                 raise EbayError(f'{name}: rename {position} for {label} ("{rename["to"]}") does not work as eBay '
                                 'search words: use the full name, of two words or more.')
             rules.setdefault(labels[label], []).append((old, old_queries[0], new, new_queries[0]))
+    for market_id, market in MARKETS.items():          # a site that goes by another site's names
+        if market.get("names_like") and market_id not in rules:
+            rules[market_id] = list(rules.get(labels[market["names_like"]], ()))
     return rules
 
 
@@ -930,10 +955,10 @@ def due_lookups(games, state, now, history=()):
             wait = max(wait, market.get("min_every_hours", 0) * 60)
             if waited is None or waited >= wait - EARLY_MINUTES:
                 overdue = float("inf") if waited is None else waited / max(every, 60)
-                due.append((game["level"] != "surging", not game["pinned"], game["level"] == "rare", -overdue,
-                            game["title"].lower(), market_id, game))
-    due.sort(key=lambda row: row[:6])
-    return [(row[6], row[5]) for row in due]
+                due.append((bool(market.get("extra")), game["level"] != "surging", not game["pinned"],
+                            game["level"] == "rare", -overdue, game["title"].lower(), market_id, game))
+    due.sort(key=lambda row: row[:7])        # an extra site comes after the first two, whatever a game's level
+    return [(row[7], row[6]) for row in due]
 
 
 # ======================================================================================
@@ -1206,7 +1231,7 @@ def summarise(payload, game, market, keyword_search):
             "condition": str(item.get("condition") or "")[:40],
             "listed": str(item.get("itemCreationDate") or "")[:25],
             "url": listing_url(item, market),
-            "incomplete": has_phrase(" ".join(words(item.get("title"))), INCOMPLETE_PHRASES),
+            "incomplete": has_phrase(" ".join(words(item.get("title"))), INCOMPLETE_PHRASES + tuple(market.get("incomplete", ()))),
         })
 
     total = payload.get("total")
@@ -1292,9 +1317,9 @@ def check_market(http_client, token, game, market_id, counter):
             return {**base, "status": "error", "answered": status != 0, "error": error_text(status, payload)}
         return {**base, **summarise(payload, game, market, False)}
 
-    status, payload = fetch(http_client, token, game, market_id, counter, by_aspect=True)
-    keyword_search = False
-    if status == 200 and not payload["itemSummaries"]:
+    keyword_search = bool(market.get("keyword_only"))
+    status, payload = fetch(http_client, token, game, market_id, counter, by_aspect=not keyword_search)
+    if status == 200 and not payload["itemSummaries"] and not keyword_search:
         # Nothing carries the PS2 item specific: ask again by keyword instead.
         time.sleep(REQUEST_PAUSE)
         status, payload = fetch(http_client, token, game, market_id, counter, by_aspect=False)
@@ -1402,13 +1427,16 @@ def check_all(http_client, client_id, client_secret, lookups, allowance, known_g
 def verdict(results, state):
     """None when the run is worth keeping, otherwise the reason it is not."""
     answered = [(game, market_id, result) for game, market_id, result in results if result["status"] != "error"]
-    errors = len(results) - len(answered)
     if not results:
         return None
-    if not answered:
+    # A site added later (extra) that fails must not throw away the first two sites' good answers:
+    # the run is judged on the first two sites alone whenever it has lookups on them.
+    judged = [row for row in results if not MARKETS[row[1]].get("extra")] or results
+    errors = sum(1 for _, _, result in judged if result["status"] == "error")
+    if errors == len(judged):
         return "every lookup failed, so nothing was written."
-    if errors * 2 > len(results):
-        return (f"{errors} of {len(results)} lookups failed, so nothing was written and the "
+    if errors * 2 > len(judged):
+        return (f"{errors} of {len(judged)} lookups failed, so nothing was written and the "
                 "previous figures stay in place.")
 
     previous = prior_games(state)

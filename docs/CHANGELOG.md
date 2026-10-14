@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-14: eBay Germany
+
+- Asked: add the European eBay sites one at a time, starting with Germany (the probe on 2026-10-14
+  showed it has plenty of listings for both famous and rare PAL games).
+- `ebay_prices.py`: `EBAY_DE` in `MARKETS`: euros, once a day, keyword search only, the UK's regional
+  names, German junk and incomplete-copy words. Its lookups come after the US and UK ones, and a run is
+  judged on the US and UK alone.
+- `index.html`: a DE price beside US and UK everywhere a game's prices show, a link to eBay Germany's
+  search among the price chips, a chart button for DE, a DE index card (once the index has one), and DE
+  figures dimmed only after 30 hours. `guide.html` explains it.
+- Tests: `GermanyTests`, two more in `ExtraSiteGroundworkTests`, and a Node check that the page's
+  sites match `MARKETS`. The older eBay tests run with the first two sites only, as they were written.
+
 ## 2026-10-14: groundwork for more eBay sites, and a bigger allowance
 
 - Asked: raise the daily search allowance to just under eBay's 5,000, and get ready to add Germany,

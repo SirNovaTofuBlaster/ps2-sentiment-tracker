@@ -1806,6 +1806,33 @@ await check('the Rarest page: two lists of the rarest games, each with its own s
     assert.match(python, /RARE_SITES = \{"PAL": "EBAY_GB", "US": "EBAY_US"\}/, 'the page and the price job agree on which site prices which list');
 });
 
+await check('the sites the page shows are the ones the price job prices, each on its own clock', async () => {
+    const python = read('ebay_prices.py');
+    const block = python.slice(python.indexOf('MARKETS = {'), python.indexOf('# ---- How often each game is checked'));
+    const labels = [...block.matchAll(/"label": "(\w+)"/g)].map(match => match[1]);
+    assert.deepEqual(evalJson('PRICE_SITES'), ['US', 'UK', 'DE']);
+    assert.deepEqual([...labels].sort(), [...evalJson('PRICE_SITES')].sort(), 'MARKETS in ebay_prices.py and PRICE_SITES agree');
+    assert.deepEqual(Object.keys(evalJson('PRICE_SEARCH')).sort(), [...labels].sort(), 'each site has a search link');
+    for (const label of labels) {
+        assert.ok(evalJson(`PRICE_LOOKUPS.some(lookup => lookup.id === PRICE_SEARCH.${label})`), `${label}: its link exists`);
+    }
+    assert.equal(evalJson("currencyOf('DE', null)"), 'EUR');
+    assert.equal(evalJson("currencyOf('UK', null)"), 'GBP');
+    assert.equal(evalJson("currencyOf('US', null)"), 'USD');
+    // A site with a slower clock (min_every_hours) is overdue later than its game's level says.
+    const slower = block.match(/"label": "DE"[\s\S]*?"min_every_hours": (\d+)/);
+    assert.ok(slower, 'Germany has its own clock in the price job');
+    assert.ok(evalJson("SITE_STALE_HOURS.DE") > Number(slower[1]), 'overdue only after a whole check interval and a bit more');
+    assert.equal(evalJson("staleFor({}, 8, 'DE')"), evalJson('SITE_STALE_HOURS.DE'));
+    assert.equal(evalJson("staleFor({}, 8, 'UK')"), 8, 'the UK is as before');
+    assert.equal(evalJson("staleFor({ steady: true }, 8, 'DE')"), 56);
+    // A German figure is shown in euros, beside its flag, and is not dimmed after nine hours.
+    const html = evalJson(`priceSiteHtml('DE', { checked: '2026-10-06T03:00Z', copies: 12, lowest: 8, median: 14.5, postage: 3 }, 'EUR', ${Date.parse('2026-10-06T12:00:00Z')}, 'en-GB', staleFor({}, 8, 'DE'))`);
+    assert.match(html, /<span class="ebay-flag">DE<\/span>/);
+    assert.match(html, /€14\.50/);
+    assert.doesNotMatch(html, /is-stale/);
+});
+
 await check('the Rarest page: the rarest consoles, priced on both sites', async () => {
     const consoles = JSON.parse(read('rare_consoles.json'));
     const now = Date.parse('2026-10-08T12:00:00Z');
