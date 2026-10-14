@@ -39,6 +39,16 @@ SCRAPER_WORKFLOW = ROOT / ".github" / "workflows" / "scraper.yml"
 
 US = ebay_prices.MARKETS["EBAY_US"]
 GB = ebay_prices.MARKETS["EBAY_GB"]
+DE = ebay_prices.MARKETS["EBAY_DE"]
+# Most tests here were written for the first two sites and count lookups, searches and columns for
+# exactly those. They run in that world; the sites added since are tested on their own (GermanyTests,
+# ExtraSiteGroundworkTests), which put the site back for the length of the test.
+EXTRA_SITES = {market_id: ebay_prices.MARKETS.pop(market_id) for market_id in list(ebay_prices.MARKETS)
+               if ebay_prices.MARKETS[market_id].get("extra")}
+
+
+def tearDownModule():
+    ebay_prices.MARKETS.update(EXTRA_SITES)
 NOON = datetime(2026, 10, 6, 12, 0, tzinfo=timezone.utc)
 
 
@@ -1043,9 +1053,9 @@ class ExtraSiteGroundworkTests(unittest.TestCase):
         self.assertGreater(ebay_prices.DAILY_SEARCHES, ebay_prices.MAX_SEARCHES_PER_RUN)
 
     def test_the_two_first_sites_are_untouched(self):
-        self.assertEqual(list(ebay_prices.MARKETS), ["EBAY_US", "EBAY_GB"])
-        for market in ebay_prices.MARKETS.values():
-            self.assertFalse({"extra", "min_every_hours", "junk"} & set(market))
+        self.assertEqual(list(ebay_prices.MARKETS), ["EBAY_US", "EBAY_GB"], "the world these tests run in")
+        for market in (US, GB):
+            self.assertFalse({"extra", "min_every_hours", "junk", "incomplete", "names_like"} & set(market))
 
     def test_an_extra_site_has_its_own_slower_clock(self):
         entry = game("Kuon")
@@ -1060,6 +1070,24 @@ class ExtraSiteGroundworkTests(unittest.TestCase):
             self.assertNotIn("EBAY_DE", [m for _, m in ebay_prices.due_lookups([entry], state, NOON)], "a surging game too")
             surging = game("Kuon", level="surging")
             self.assertNotIn("EBAY_DE", [m for _, m in ebay_prices.due_lookups([surging], state, NOON)])
+
+    def test_the_first_two_sites_are_looked_up_before_an_extra_one(self):
+        games = [game("Kuon", level="surging"), game("Okami", pinned=True), game("God Hand")]
+        with self.markets():
+            order = [m for _, m in ebay_prices.due_lookups(games, {}, NOON)]
+        self.assertEqual(order[-3:], ["EBAY_DE"] * 3)
+        self.assertNotIn("EBAY_DE", order[:-3])
+
+    def test_a_failing_extra_site_does_not_cost_the_first_two_their_run(self):
+        entry = game("Kuon")
+        ok = {"status": "ok", "fetched": 2, "counted": 2}
+        bad = {"status": "error", "error": "HTTP 500"}
+        with self.markets():
+            mixed = [(entry, "EBAY_US", ok), (entry, "EBAY_GB", ok)] + [(game(f"G{n}"), "EBAY_DE", bad) for n in range(10)]
+            self.assertIsNone(ebay_prices.verdict(mixed, {}))
+            self.assertIn("failed", ebay_prices.verdict([(entry, "EBAY_US", bad), (entry, "EBAY_GB", bad),
+                                                         (entry, "EBAY_DE", ok)], {}))
+            self.assertIn("every lookup failed", ebay_prices.verdict([(entry, "EBAY_DE", bad)], {}))
 
     def test_a_game_never_checked_on_the_new_site_is_due_there_at_once(self):
         with self.markets():
@@ -1087,6 +1115,87 @@ class ExtraSiteGroundworkTests(unittest.TestCase):
             self.assertEqual(problems, [])
             self.assertEqual(consoles[0]["sites"], ["EBAY_US", "EBAY_GB"])
             self.assertEqual(consoles[1]["sites"], ["EBAY_DE"])
+
+
+class GermanyTests(unittest.TestCase):
+    """eBay Germany as it is defined in ebay_prices.py, switched on for the length of each test."""
+
+    def setUp(self):
+        patcher = mock.patch.dict(ebay_prices.MARKETS, {"EBAY_DE": DE})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_the_definition_is_sound(self):
+        self.assertEqual((DE["label"], DE["site"], DE["country"], DE["currency"]), ("DE", "www.ebay.de", "DE", "EUR"))
+        self.assertTrue(DE["extra"])
+        self.assertEqual(DE["min_every_hours"], 24)
+        self.assertEqual(DE["names_like"], "UK")
+        self.assertNotIn("zip", DE, "postage is quoted to Germany, not to a postcode of ours")
+        for field in ("foreign", "junk", "incomplete"):
+            phrases = DE[field]
+            self.assertEqual(len(phrases), len(set(phrases)), field)
+            for phrase in phrases:
+                self.assertEqual(phrase, " ".join(ebay_prices.words(phrase)),
+                                 f"{field} {phrase!r} must be spelt the way words() writes it, or it never matches")
+
+    def test_the_request_asks_the_german_site_for_german_listings(self):
+        url = ebay_prices.search_url("EBAY_DE", "kuon")
+        self.assertIn("itemLocationCountry%3ADE", url)
+        self.assertEqual(ebay_prices.buyer_location(DE), "country=DE")
+        self.assertTrue(DE["keyword_only"])
+
+    def test_german_sellers_junk_is_left_out(self):
+        entry = game("Kuon")
+        for title in ("Kuon PS2 nur Hülle", "Kuon PS2 Leerhülle", "Kuon PlayStation 2 ohne Spiel", "Kuon PS2 nur Anleitung",
+                      "Kuon PS2 defekt", "Kuon PS2 Sammlung Konvolut", "Kuon PS2 Lösungsbuch", "Kuon PS2 Bastler"):
+            self.assertEqual(ebay_prices.reject_reason(listing(title, 12, "EUR"), entry, DE, False), "not_a_copy", title)
+
+    def test_a_copy_made_for_another_region_is_left_out_and_a_normal_one_counts(self):
+        entry = game("Kuon")
+        self.assertEqual(ebay_prices.reject_reason(listing("Kuon PS2 NTSC USA Version", 30, "EUR"), entry, DE, False), "import")
+        self.assertIsNone(ebay_prices.reject_reason(listing("Kuon PS2 PAL Spiel komplett mit Anleitung", 30, "EUR"), entry, DE, False))
+        self.assertEqual(ebay_prices.reject_reason(listing("Kuon PS2", 30, "GBP"), entry, DE, False), "no_price",
+                         "a price in another currency is no price")
+
+    def test_a_copy_without_its_manual_is_counted_but_marked_incomplete(self):
+        item = listing("Kuon PS2 ohne Anleitung", 20, "EUR")
+        result = ebay_prices.summarise(page(item)[1], game("Kuon"), DE, False)
+        self.assertEqual(result["counted"], 1)
+        self.assertEqual(result["incomplete_hint"], 1)
+
+    def test_the_names_germany_sells_games_under_are_the_uks(self):
+        rules = ebay_prices.load_regional_names()
+        self.assertTrue(rules["EBAY_GB"], "the UK has renames")
+        self.assertEqual(rules["EBAY_DE"], rules["EBAY_GB"])
+
+    def test_it_is_priced_in_euros_on_its_own_slower_clock_and_the_first_two_sites_are_unchanged(self):
+        sandbox = Sandbox(self, feed=[mention("Kuon", 5, "r/ps2")])
+
+        def answer(params, headers):
+            market = headers["X-EBAY-C-MARKETPLACE-ID"]
+            currency = {"EBAY_GB": "GBP", "EBAY_DE": "EUR"}.get(market, "USD")
+            name = params["q"].replace(" ps2", "")
+            return page(listing(f"{name} PS2", 20, currency=currency, item_id=1),
+                        listing(f"{name} PS2 komplett", 30, currency=currency, item_id=2))
+
+        code, printed, fake = sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        german = [search for search in fake.searches if search["headers"]["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_DE"]
+        self.assertTrue(german)
+        for search in german:
+            self.assertNotIn("aspect_filter", search["params"], "Germany is searched by keyword only")
+            self.assertEqual(search["params"]["q"], "kuon ps2")
+        self.assertEqual(sandbox.latest["currencies"], {"US": "USD", "UK": "GBP", "DE": "EUR"})
+        kuon = sandbox.latest["games"]["Kuon"]
+        self.assertEqual({label: kuon[label]["median"] for label in ("US", "UK", "DE")}, {"US": 25.0, "UK": 25.0, "DE": 25.0})
+        self.assertEqual({row[2] for row in sandbox.history()}, {"US", "UK", "DE"})
+        sandbox.now = NOON + timedelta(hours=7)
+        code, printed, fake = sandbox.run(FakeHttp(answer))
+        self.assertIn("Kuon [UK]", printed)
+        self.assertNotIn("Kuon [DE]", printed, "seven hours later the UK and US are due again, Germany is not")
+        sandbox.now = NOON + timedelta(hours=25)
+        code, printed, fake = sandbox.run(FakeHttp(answer))
+        self.assertIn("Kuon [DE]", printed)
 
 
 class DueTests(unittest.TestCase):
