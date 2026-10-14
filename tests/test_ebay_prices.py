@@ -42,6 +42,7 @@ GB = ebay_prices.MARKETS["EBAY_GB"]
 DE = ebay_prices.MARKETS["EBAY_DE"]
 FR = ebay_prices.MARKETS["EBAY_FR"]
 IT = ebay_prices.MARKETS["EBAY_IT"]
+ES = ebay_prices.MARKETS["EBAY_ES"]
 # Most tests here were written for the first two sites and count lookups, searches and columns for
 # exactly those. They run in that world; the sites added since are tested on their own (GermanyTests,
 # ExtraSiteGroundworkTests), which put the site back for the length of the test.
@@ -1255,6 +1256,12 @@ ItalyTests = european_site_tests(
     ("Kuon PS2 solo custodia", "Kuon PS2 solo manuale", "Kuon PS2 senza gioco", "Kuon PS2 difettoso",
      "Kuon PS2 non funzionante", "Kuon PS2 per ricambi", "Kuon PS2 guida ufficiale"),
     "Kuon PS2 PAL completo con manuale", "Kuon PS2 senza manuale")
+
+SpainTests = european_site_tests(
+    "SpainTests", "EBAY_ES", ES,
+    ("Kuon PS2 solo caja", "Kuon PS2 solo manual", "Kuon PS2 sin juego", "Kuon PS2 defectuoso",
+     "Kuon PS2 no funciona", "Kuon PS2 para piezas", "Kuon PS2 guía oficial"),
+    "Kuon PS2 PAL completo con manual", "Kuon PS2 sin manual")
 
 
 class EveryExtraSiteTests(unittest.TestCase):

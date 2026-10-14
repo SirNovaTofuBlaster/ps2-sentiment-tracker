@@ -161,6 +161,16 @@ MARKETS = {
                          "collezione", "guida ufficiale", "guida strategica", "figura", "peluche"),
                 "incomplete": ("senza manuale", "senza libretto", "senza custodia", "senza scatola",
                                "senza copertina", "solo disco", "solo gioco", "solo cd", "sfuso")},
+    # Spain (switched on 2026-10-14): as the others, with Spanish sellers' words.
+    "EBAY_ES": {"label": "ES", "site": "www.ebay.es", "country": "ES", "currency": "EUR",
+                "extra": True, "min_every_hours": 24, "names_like": "UK", "keyword_only": True,
+                "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
+                "junk": ("solo caja", "solo carcasa", "solo manual", "solo funda", "solo portada", "sin juego",
+                         "sin disco", "caja vacia", "estuche vacio", "defectuoso", "roto", "no funciona",
+                         "para piezas", "para repuestos", "lote", "coleccion", "guia oficial", "guia estrategica",
+                         "replica", "figura", "peluche"),
+                "incomplete": ("sin manual", "sin caja", "sin estuche", "sin portada", "solo disco", "solo juego",
+                               "solo cd", "suelto")},
 }
 
 # ---- How often each game is checked -------------------------------------------------
