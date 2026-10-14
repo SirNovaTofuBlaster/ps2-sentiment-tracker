@@ -998,7 +998,7 @@ class SteadyTests(unittest.TestCase):
         self.assertEqual(len(ebay_prices.due_lookups([entry], state, NOON, history)), 2)
         self.assertEqual(entry["steady_on"], ["US"])
         result = {"status": "ok", "counted": 100, "lowest": 8.0, "median": 10.0, "truncated": False,
-                  "median_postage": None, "fetched": 100}
+                  "median_postage": None, "fetched": 100, "on_ebay": 100}
         run = {"results": [(entry, "EBAY_US", result), (entry, "EBAY_GB", result)], "searches": 2}
         latest, _ = ebay_prices.update_records(state, [entry], run, NOON)
         row = latest["games"][entry["title"]]
@@ -1380,9 +1380,9 @@ class RecordTests(unittest.TestCase):
         self.assertEqual(latest["games"]["Kuon"], {
             "level": "normal", "mentions": 1,
             "US": {"checked": "2026-10-06T12:00Z", "copies": 2, "lowest": 24.99, "median": 28.25,
-                   "postage": 3.49, "recorded": "2026-10-06"},
+                   "postage": 3.49, "listed": 2, "recorded": "2026-10-06"},
             "UK": {"checked": "2026-10-06T12:00Z", "copies": 2, "lowest": 24.99, "median": 28.25,
-                   "postage": 3.49, "recorded": "2026-10-06"}})
+                   "postage": 3.49, "listed": 2, "recorded": "2026-10-06"}})
         self.assertIs(latest["games"]["Silent Hill 2"]["pinned"], True)
         self.assertEqual(latest["currencies"], {"US": "USD", "UK": "GBP"})
         self.assertEqual(latest["searches"], {"day": "2026-10-06", "used": 4})
@@ -1455,7 +1455,7 @@ class RecordTests(unittest.TestCase):
         self.sandbox.run(FakeHttp(answer))
         self.assertEqual(self.sandbox.latest["games"]["Kuon"]["UK"], {
             "checked": "2026-10-06T12:00Z", "copies": 0, "lowest": None, "median": None, "postage": None,
-            "recorded": "2026-10-06"})
+            "listed": 0, "recorded": "2026-10-06"})
         self.assertIn(["2026-10-06T12:00Z", "Kuon", "UK", 0, None, None], self.sandbox.history())
 
     def test_a_failed_lookup_keeps_the_old_figures_and_is_tried_again_next_run(self):
@@ -1518,7 +1518,7 @@ class WeekTests(unittest.TestCase):
         self.sandbox.now = NOON + timedelta(days=7)
         self.sandbox.run(FakeHttp(lambda params, headers: two_copies(params, headers, low=29.99)))
         self.assertEqual(self.kuon(), {"checked": "2026-10-13T12:00Z", "copies": 2, "lowest": 29.99, "median": 30.75,
-                                       "postage": 3.49, "recorded": "2026-10-13",
+                                       "postage": 3.49, "listed": 2, "recorded": "2026-10-13",
                                        "week": {"checked": "2026-10-06T12:00Z", "median": 28.25}})
         self.assertEqual(self.kuon("US")["week"], {"checked": "2026-10-06T12:00Z", "median": 28.25})
         self.sandbox.now = NOON + timedelta(days=7, hours=1)

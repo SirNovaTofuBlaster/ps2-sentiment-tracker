@@ -182,6 +182,7 @@ def build_demand():
     overrides = load_json(WIKI_OVERRIDES_PATH, {})
     resolved = dict(remembered)
     rows, started = [], time.monotonic()
+    used_articles = {}
 
     with requests.Session() as session:
         session.headers["User-Agent"] = USER_AGENT
@@ -204,6 +205,11 @@ def build_demand():
                     continue
             if not article:
                 continue
+            if article in used_articles:
+                # Two titles on one article would count its views twice (a series page, say).
+                print(f"  {title}: {article} already ranks as {used_articles[article]}; skipped")
+                continue
+            used_articles[article] = title
 
             try:
                 views = fetch_pageviews(session, article, start, end)

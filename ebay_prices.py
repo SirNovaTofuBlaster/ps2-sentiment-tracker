@@ -1499,7 +1499,10 @@ def numbers_of(result, stamp):
         return {"checked": stamp, "unmatched": True}
     entry = {"checked": stamp, "copies": result["counted"],
              "lowest": result.get("lowest"), "median": result.get("median"),
-             "postage": result.get("median_postage")}
+             "postage": result.get("median_postage"),
+             # eBay's own count for the same search, before the name checks: the dashboard calls a
+             # game "scarce" only when the two agree (copies is never more than this).
+             "listed": result["on_ebay"]}
     if result["truncated"]:
         entry["truncated"] = True
     # Only when some copies say they are incomplete; otherwise it is the median itself.

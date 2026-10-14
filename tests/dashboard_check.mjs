@@ -741,11 +741,11 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
 
     assert.equal(figures('Silent Hill 2'),
         '<span class="ebay-quotes"><span class="ebay-quotes-label">eBay median</span>'
-        + '<a class="ebay-quote" href="https://www.ebay.com/sch/i.html?_nkw=Silent%20Hill%202%20ps2" target="_blank" rel="noopener noreferrer"'
-        + ' title="Median asking price of 97+ used copies on eBay US, cheapest $120, checked 2h ago. Opens eBay&#39;s search for this game.">'
+        + '<a class="ebay-quote" href="https://www.ebay.com/sch/i.html?_nkw=Silent%20Hill%202%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&amp;LH_BIN=1&amp;LH_PrefLoc=1" target="_blank" rel="noopener noreferrer"'
+        + ' title="Median asking price of 97+ used copies on eBay US, cheapest $120, checked 2h ago. Opens the same search on eBay: used Buy It Now copies in that country. Auctions, new copies and other countries are not counted.">'
         + '<span class="ebay-flag">US</span><b>$220</b></a>'
-        + '<a class="ebay-quote is-stale" href="https://www.ebay.co.uk/sch/i.html?_nkw=Silent%20Hill%202%20ps2" target="_blank" rel="noopener noreferrer"'
-        + ' title="Median asking price of 47 used copies on eBay UK, cheapest £52.70, checked 9h ago (longer ago than usual). Opens eBay&#39;s search for this game.">'
+        + '<a class="ebay-quote is-stale" href="https://www.ebay.co.uk/sch/i.html?_nkw=Silent%20Hill%202%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&amp;LH_BIN=1&amp;LH_PrefLoc=1" target="_blank" rel="noopener noreferrer"'
+        + ' title="Median asking price of 47 used copies on eBay UK, cheapest £52.70, checked 9h ago (longer ago than usual). Opens the same search on eBay: used Buy It Now copies in that country. Auctions, new copies and other countries are not counted.">'
         + '<span class="ebay-flag">UK</span><b>£105</b></a></span>');
 
     // The feed's spelling finds the price file's.
@@ -765,7 +765,7 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
         assert.equal(figures(title), '', `no figures for ${JSON.stringify(title)}`);
     }
     const hostile = figures('<b>Bold</b> Game');
-    assert.match(hostile, /_nkw=%3Cb%3EBold%3C%2Fb%3E%20Game%20ps2"/);
+    assert.match(hostile, /_nkw=%3Cb%3EBold%3C%2Fb%3E%20Game%20ps2&amp;_sacat=139973/);
     assert.doesNotMatch(hostile, /<b>Bold/);
     // Nothing from the price file reaches the page as markup either: not in the figure, not in its tooltip.
     showPrices({ ...prices, currencies: { US: '"><img src=x onerror=alert(1)>', UK: 'GBP' } }, watchlist);
@@ -2192,6 +2192,16 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.equal(evalJson(`suggestGames('godh')[0]`), 'God Hand', '"godh" finds God Hand');
     assert.equal(evalJson(`suggestGames('GOD H')[0]`), 'God Hand', 'spaces and capitals do not matter');
     assert.deepEqual(evalJson(`suggestGames('god')`), ['God Hand', 'Godzilla: Save the Earth']);
+    // One entry per game, whichever spelling the library has: the colon one is shown, all find it.
+    run(`setLibrary(['Medal of Honor Frontline', 'Medal of Honor: Frontline', 'Medal of Honor - Frontline', 'Medal of Honor: European Assault',
+        'Goblin Commander: Unleash The Horde', 'Goblin Commander: Unleash the Horde', 'Getaway, The', 'The Getaway', 'FIFA Soccer 10', 'FIFA 11', 'FIFA 10', 'God Hand', 'Kuon'])`);
+    assert.deepEqual(evalJson(`suggestGames('medal of honor frontline')`), ['Medal of Honor: Frontline']);
+    assert.deepEqual(evalJson(`suggestGames('medal of honour frontline')`), ['Medal of Honor: Frontline'], 'British spelling');
+    assert.deepEqual(evalJson(`suggestGames('goblin commander')`).length, 1);
+    assert.equal(evalJson(`suggestGames('getaway').length`), 1, 'The Getaway and Getaway, The are one game');
+    assert.deepEqual(evalJson(`suggestGames('fifa 10')`).sort(), ['FIFA 10', 'FIFA Soccer 10'], 'words in any form, in the name or not');
+    assert.deepEqual(evalJson(`suggestGames('fifa 11')`), ['FIFA 11']);
+    run(`setLibrary(['God Hand', 'Godzilla: Save the Earth', 'Kuon', 'Kingdom Hearts II', 'CY Girls', 'Final Fantasy X', 'Final Fantasy XII', 'Dragon Quest VIII: Journey of the Cursed King'])`);
     assert.equal(evalJson(`suggestGames('cursed')[0]`), 'Dragon Quest VIII: Journey of the Cursed King', 'any word, any part');
     assert.deepEqual(evalJson(`suggestGames('')`), []);
     assert.deepEqual(evalJson(`suggestGames('zzzz')`), []);
@@ -2243,16 +2253,26 @@ await check('search suggests from the whole library and opens a game page; the l
 
     // Rarity: the fewest copies on UK or US; zero counts; never-checked games last; "scarce" at 10 or fewer.
     run(`setPrices({ games: {
-        'God Hand': { level: 'normal', mentions: 3, UK: { copies: 40, median: 90, checked: '2026-10-14T10:00Z' }, US: { copies: 60, median: 120, checked: '2026-10-14T10:00Z' } },
-        'Kuon': { level: 'normal', mentions: 1, UK: { copies: 6, median: 150, checked: '2026-10-14T10:00Z' } },
-        'CY Girls': { level: 'normal', mentions: 1, UK: { copies: 2, median: 30, checked: '2026-10-14T10:00Z' } },
-        'Final Fantasy X': { level: 'normal', mentions: 1, UK: { copies: 0, checked: '2026-10-14T10:00Z' } },
+        'God Hand': { level: 'normal', mentions: 3, UK: { copies: 40, listed: 41, median: 90, checked: '2026-10-14T10:00Z' }, US: { copies: 60, listed: 60, median: 120, checked: '2026-10-14T10:00Z' } },
+        'Kuon': { level: 'normal', mentions: 1, UK: { copies: 6, listed: 7, median: 150, checked: '2026-10-14T10:00Z' } },
+        'CY Girls': { level: 'normal', mentions: 1, UK: { copies: 2, listed: 2, median: 30, checked: '2026-10-14T10:00Z' } },
+        'Final Fantasy X': { level: 'normal', mentions: 1, UK: { copies: 0, listed: 0, checked: '2026-10-14T10:00Z' } },
+        'FIFA 2003': { level: 'normal', mentions: 1, US: { copies: 6, listed: 200, truncated: true, median: 9, checked: '2026-10-14T10:00Z' } },
+        'Spyro: The Eternal Night': { level: 'normal', mentions: 1, UK: { copies: 1, listed: 34, median: 9, checked: '2026-10-14T10:00Z' } },
+        'Old Row': { level: 'normal', mentions: 1, UK: { copies: 3, median: 9, checked: '2026-10-14T10:00Z' } },
         'Kingdom Hearts II': { level: 'normal', mentions: 1, UK: { unmatched: true, copies: 0 } },
     } }, null)`);
     assert.deepEqual(evalJson(`scarcity('Kuon')`), [6, 'UK']);
     assert.deepEqual(evalJson(`scarcity('God Hand')`), [40, 'UK']);
     assert.equal(evalJson(`scarcity('Kingdom Hearts II')`), null, 'search words that find nothing say nothing about rarity');
     assert.equal(evalJson(`scarcity('Dragon Quest')`), null);
+    // A count that eBay's own count for the same search does not back is not trusted: it is too low
+    // (another spelling, a sibling game), so no "scarce" tag and no place among the rarest.
+    assert.equal(evalJson(`scarcity('FIFA 2003')`), null, 'eBay lists 200, we counted 6');
+    assert.equal(evalJson(`scarcity('Spyro: The Eternal Night')`), null, 'eBay lists 34, we counted 1');
+    assert.equal(evalJson(`scarcity('Old Row')`), null, 'a figure saved before "listed" existed is not vouched for');
+    assert.equal(evalJson(`scarceTagHtml('FIFA 2003')`), '');
+    assert.match(evalJson(`scarceTagHtml('Kuon')`), /href="https:\/\/www\.ebay\.co\.uk\/sch\/i\.html\?_nkw=Kuon%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&amp;LH_BIN=1&amp;LH_PrefLoc=1"/, 'the tag opens the search it counts');
     assert.deepEqual(evalJson(`byRarity([{name:'Dragon Quest'},{name:'God Hand'},{name:'Kuon'},{name:'CY Girls'},{name:'Final Fantasy X'}]).map(g => g.name)`),
         ['Final Fantasy X', 'CY Girls', 'Kuon', 'God Hand', 'Dragon Quest']);
     assert.match(evalJson(`scarceTagHtml('Kuon')`), /scarce &middot; 6 for sale on eBay UK/);
@@ -2275,6 +2295,32 @@ await check('search suggests from the whole library and opens a game page; the l
     run(`setRecentSort('price')`);
     assert.deepEqual(order(), ['Kuon', 'God Hand', 'CY Girls', 'Dragon Quest']);
     run(`setPrices(null, null)`);
+});
+
+await check('the real library plus the extra names: every game once, FIFA 09 to 14 present, nothing in the extras the library already has', async () => {
+    const base = JSON.parse(read('data/ps2_database.json'));
+    const extra = JSON.parse(read('search_extra_titles.json'));
+    assert.ok(Array.isArray(extra.titles) && extra.titles.length > 500 && extra.source && extra.checked);
+    context.__base = base;
+    context.__extra = extra.titles;
+    const keys = (list) => evalJson(`${list}.map(priceKey)`);
+    const inBase = new Set(keys('__base'));
+    const repeated = extra.titles.filter((title, i) => inBase.has(keys('__extra')[i]));
+    assert.deepEqual(repeated, [], 'a name in the extras is one the library lacks');
+    assert.equal(new Set(keys('__extra')).size, extra.titles.length, 'no game twice in the extras');
+    vm.runInContext('setLibrary([...__base, ...__extra])', context);
+    const shown = evalJson('library.map(game => game.title)');
+    const unique = evalJson('new Set(library.map(game => priceKey(game.title))).size');
+    assert.equal(unique, shown.length, 'one entry per game');
+    for (const query of ['medal of honor frontline', 'goblin commander', 'fifa 10', 'fifa 11', 'fifa 12', 'fifa 13', 'fifa 14', 'fifa 09']) {
+        const found = evalJson(`suggestGames(${JSON.stringify(query)}, 20)`);
+        assert.ok(found.length >= 1, `${query} finds something`);
+        assert.equal(new Set(found.map(title => evalJson(`priceKey(${JSON.stringify(title)})`))).size, found.length, `${query}: no game listed twice`);
+    }
+    assert.equal(evalJson(`suggestGames('medal of honor frontline').length`), 1);
+    assert.equal(evalJson(`suggestGames('goblin commander').length`), 1);
+    assert.equal(evalJson(`suggestGames('godh')[0]`), 'God Hand');
+    vm.runInContext('setLibrary([])', context);
 });
 
 console.log(`dashboard checks passed (${passed})`);

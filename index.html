@@ -450,6 +450,15 @@
             return `<span class="price-links" aria-label="Price lookups for ${esc(title)}">${PRICE_REGIONS.map(group).join('')}</span>`;
         }
 
+        // The search a figure comes from, on eBay itself: Video Games, used conditions, Buy It Now,
+        // items in the site's own country (what ebay_prices.py asks for; human_search_url() there is
+        // the same link). The plain lookup chips search everything, so they show more.
+        const LISTED_FILTERS = '&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1';
+        function listedSearchUrl(label, title) {
+            const search = PRICE_LOOKUPS.find(lookup => lookup.id === PRICE_SEARCH[label]);
+            return search.url(String(title ?? '').replace(/\s+/g, ' ').trim()) + LISTED_FILTERS;
+        }
+
         // What goes under a game's name wherever one is shown: eBay's medians when
         // the game is priced, then the lookup chips.
         const gamePricesHtml = (title) => priceFiguresHtml(title) + priceLookupHtml(title);
@@ -650,32 +659,63 @@
         const GAME_ITEMS_MAX = 100;
         const FEED_DAYS = 14;        // the scraper keeps the last two weeks (RETENTION_DAYS)
 
+        // One entry per game: the library spells some games twice (North American and European
+        // spellings: "Medal of Honor Frontline" and "Medal of Honor: Frontline", "…the Horde" and
+        // "…The Horde"). priceKey() says two spellings are one game; the one with a colon is shown,
+        // and every spelling still finds it.
         function setLibrary(titles) {
-            const seen = new Set();
-            library = (Array.isArray(titles) ? titles : []).filter(t => typeof t === 'string' && t.trim()).map(title => {
-                const plain = plainText(title);
-                return { title, plain, compact: plain.replace(/ /g, '') };
-            }).filter(game => game.plain && !seen.has(game.title) && seen.add(game.title));
+            const groups = new Map();
+            for (const title of Array.isArray(titles) ? titles : []) {
+                if (typeof title !== 'string' || !title.trim()) continue;
+                const key = priceKey(title);
+                if (!key) continue;
+                if (!groups.has(key)) groups.set(key, new Set());
+                groups.get(key).add(title.trim());
+            }
+            library = [...groups.values()].map(names => {
+                const spellings = [...names].sort((a, b) => (b.includes(':') - a.includes(':')) || cmpStr(a, b));
+                const plains = [...new Set(spellings.map(plainText))];
+                return { title: spellings[0], plains, compacts: plains.map(p => p.replace(/ /g, '')) };
+            });
         }
 
+        // The library, then the extra names (search_extra_titles.json) that only the search box knows.
         async function loadLibrary() {
-            try {
-                const response = await fetch('data/ps2_database.json');
-                setLibrary(response.ok ? await response.json() : []);
-            } catch {
-                setLibrary([]);
-            }
+            const read = async (path, pick) => {
+                try {
+                    const response = await fetch(path);
+                    return response.ok ? pick(await response.json()) : [];
+                } catch { return []; }
+            };
+            const [base, extra] = await Promise.all([
+                read('data/ps2_database.json', data => data),
+                read('search_extra_titles.json', data => data?.titles),
+            ]);
+            setLibrary([...(Array.isArray(base) ? base : []), ...(Array.isArray(extra) ? extra : [])]);
         }
+
+        // American spellings for the British ones people type ("honour" finds "Honor").
+        const SPELLINGS = [[/honour/g, 'honor'], [/armour/g, 'armor'], [/colour/g, 'color'], [/favourite/g, 'favorite'], [/harbour/g, 'harbor'], [/neighbour/g, 'neighbor']];
 
         function suggestGames(text, limit = SUGGEST_MAX) {
-            const plain = plainText(text);
+            let plain = plainText(text);
+            for (const [from, to] of SPELLINGS) plain = plain.replace(from, to);
             const compact = plain.replace(/ /g, '');
             if (!compact) return [];
+            const tokens = plain.split(' ');
             const found = [];
             for (const game of library) {
-                const rank = game.compact.startsWith(compact) ? 0
-                    : (` ${game.plain}`).includes(` ${plain}`) ? 1
-                    : game.compact.includes(compact) ? 2 : -1;
+                // The best any spelling of the game does: the name starts with it, a word does,
+                // it is inside the name, or every word typed starts some word of the name, in any
+                // order ("fifa 10" finds "FIFA Soccer 10").
+                let rank = -1;
+                game.plains.forEach((name, i) => {
+                    const here = game.compacts[i].startsWith(compact) ? 0
+                        : (` ${name}`).includes(` ${plain}`) ? 1
+                        : game.compacts[i].includes(compact) ? 2
+                        : tokens.length > 1 && tokens.every(token => name.split(' ').some(word => word.startsWith(token))) ? 3 : -1;
+                    if (here >= 0 && (rank < 0 || here < rank)) rank = here;
+                });
                 if (rank >= 0) found.push({ game, rank });
             }
             return found.sort((a, b) => a.rank - b.rank || a.game.title.length - b.game.title.length || cmpStr(a.game.title, b.game.title))
@@ -738,7 +778,7 @@
         function renderGamePage(title) {
             const items = itemsForGame(title);
             document.getElementById('gameTitle').textContent = title;
-            const inLibrary = library.some(game => priceKey(game.title) === priceKey(title));
+            const inLibrary = library.some(game => game.plains.includes(plainText(title)) || priceKey(game.title) === priceKey(title));
             document.getElementById('gameSummary').textContent = items.length
                 ? `${items.length.toLocaleString('en')} item${items.length === 1 ? '' : 's'} in the feed from the last ${FEED_DAYS} days name this game`
                     + (items.length > GAME_ITEMS_MAX ? `; the newest ${GAME_ITEMS_MAX} are listed.` : '.')
@@ -865,12 +905,18 @@
         // How many copies of a game are for sale on eBay, on the site with the fewest: [copies, site],
         // or null when no site has been checked. Zero is real: the site was searched and had none.
         // At or under SCARCE_COPIES a game is "scarce": an oddity a collector may want to see.
+        // A count is trusted only when eBay's own count for the same search ("listed") is known and
+        // our name checks left out at most SCARCE_SLACK of it: when they left out many, the count
+        // is too low (another spelling, a sibling game with the same words), and "scarce" would
+        // be a false alarm.
         const SCARCE_COPIES = 10;
+        const SCARCE_SLACK = 2;
         function scarcity(title) {
             let best = null;
             for (const label of PRICE_ORDER) {
                 const site = priceIndex.get(priceKey(title))?.entry?.[label];
                 if (!site || typeof site !== 'object' || site.unmatched || !Number.isFinite(site.copies)) continue;
+                if (!Number.isFinite(site.listed) || site.listed - site.copies > SCARCE_SLACK || site.truncated) continue;
                 if (best === null || site.copies < best[0]) best = [site.copies, label];
             }
             return best;
@@ -880,7 +926,7 @@
             const found = scarcity(title);
             if (!found || found[0] > SCARCE_COPIES) return '';
             const words = found[0] === 0 ? `none for sale on eBay ${found[1]}` : `${found[0]} for sale on eBay ${found[1]}`;
-            return ` <span class="level-tag few-copies" title="Scarce: ${esc(words)}. Few copies means a collector may find it hard to buy later.">scarce &middot; ${esc(words)}</span>`;
+            return ` <a class="level-tag few-copies" href="${safeUrl(listedSearchUrl(found[1], title))}" target="_blank" rel="noopener noreferrer" title="Scarce: ${esc(words)} (used, Buy It Now, in that country; auctions and new copies are not counted). Opens exactly that search.">scarce &middot; ${esc(words)}</a>`;
         }
 
         // Fewest copies first; then dearer first; games never checked on eBay last, in their usual order.
@@ -1323,10 +1369,8 @@
                     + (lowest ? `, cheapest ${lowest}` : '')
                     + (age.text ? `, checked ${age.text}${age.stale ? ' (longer ago than usual)' : ''}` : '')
                     + (weekBefore(site) ? `; a week before it was ${money(site.week.median, currency, locale)}` : '')
-                    + ". Opens eBay's search for this game.";
-                const search = PRICE_LOOKUPS.find(lookup => lookup.id === PRICE_SEARCH[label]);
-                const clean = String(title ?? '').replace(/\s+/g, ' ').trim();
-                return `<a class="ebay-quote${age.stale ? ' is-stale' : ''}" href="${safeUrl(search.url(clean))}" target="_blank" rel="noopener noreferrer" title="${esc(hint)}"><span class="ebay-flag">${esc(label)}</span><b>${esc(money(site.median, currency, locale))}</b>${priceChangeHtml(site, currency, locale)}</a>`;
+                    + ". Opens the same search on eBay: used Buy It Now copies in that country. Auctions, new copies and other countries are not counted.";
+                return `<a class="ebay-quote${age.stale ? ' is-stale' : ''}" href="${safeUrl(listedSearchUrl(label, title))}" target="_blank" rel="noopener noreferrer" title="${esc(hint)}"><span class="ebay-flag">${esc(label)}</span><b>${esc(money(site.median, currency, locale))}</b>${priceChangeHtml(site, currency, locale)}</a>`;
             }).filter(Boolean);
             if (!figures.length) return '';
             return `<span class="ebay-quotes"><span class="ebay-quotes-label">eBay median</span>${figures.join('')}</span>`;
