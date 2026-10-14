@@ -763,3 +763,28 @@ body .currency-toggle.is-active { background: var(--accent); border-color: var(-
 
 /* The two orders of the 24-hour list: the one in use is lit. */
 body .sort-btn.is-active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+
+/* ---- My collection: the add form and the cover tiles ---- */
+body .collection-form { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: stretch; }
+body .coll-search { flex: 1 1 18rem; min-width: 0; }
+body .coll-fields { display: flex; flex-wrap: wrap; gap: 0.5rem; flex: 0 1 auto; }
+body .coll-fields select, body .coll-fields input, body .coll-fields button { height: 2.5rem; }
+body .coll-qty-input { width: 4.25rem; }
+body .coll-paid-input { width: 9rem; }
+body .coll-covers-toggle { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.6rem; cursor: pointer; }
+body .coll-grid { list-style: none; padding: 0; display: grid; gap: 1rem 0.75rem; grid-template-columns: repeat(auto-fill, minmax(5.75rem, 1fr)); }
+body .coll-tile { position: relative; min-width: 0; }
+body .coll-cover { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; background: var(--inset); border: 1px solid var(--line); }
+body .coll-cover:hover, body .coll-cover:focus-visible { border-color: var(--accent); outline: none; }
+body .coll-initials { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--dim); letter-spacing: 0.05em; }
+body .coll-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: var(--inset); }
+body .coll-badge { position: absolute; font-size: 0.65rem; line-height: 1; padding: 0.2rem 0.3rem; background: rgba(10, 10, 12, 0.85); color: var(--text); }
+body .coll-badge-qty { right: 0; bottom: 0; color: var(--accent-hi); }
+body .coll-badge-region { left: 0; top: 0; color: var(--accent-hi); }
+body .coll-remove { position: absolute; top: 0; right: 0; width: 1.4rem; height: 1.4rem; line-height: 1; background: rgba(10, 10, 12, 0.85); color: var(--dim); border: 0; cursor: pointer; opacity: 0; }
+body .coll-tile:hover .coll-remove, body .coll-remove:focus-visible { opacity: 1; }
+@media (hover: none) { body .coll-remove { opacity: 1; } }
+body .coll-name { margin-top: 0.35rem; font-size: 0.72rem; line-height: 1.2; color: var(--text); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+body .coll-meta { font-size: 0.65rem; color: var(--mute); }
+body .coll-value { font-size: 0.72rem; color: var(--text); font-family: var(--mono, ui-monospace, monospace); }
+body .coll-value.is-none { color: var(--mute); }

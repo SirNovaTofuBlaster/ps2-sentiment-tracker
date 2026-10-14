@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-14: collection search and cover tiles
+
+- `index.html`, `retro.css`: the collection's add box uses the main search's dropdown (`suggestGames`, arrow
+  keys, Enter, Esc) and the form is laid out properly (it had no styles). The list is now a grid of cover
+  tiles (region, quantity, condition, value). Covers are the lead image of the game's Wikipedia article,
+  requested by the visitor's browser (`coverRequestUrl()`, `pickCoverPage()`): the article the Demand Index
+  checked when there is one, otherwise the top search hit only if its title matches and its short description
+  says "video game"; only `upload.wikimedia.org` addresses are used; results are remembered in the browser.
+  A `Show cover images` switch stops all requests. Not tested against Wikipedia's live API (the build machine
+  cannot reach it): the Node tests and a browser run use stand-in replies.
+
 ## 2026-10-14: My collection, installable site, reference prices on Rarest
 
 - `index.html`: a fifth tab, **My collection** (`#collection`). Games are added by region and condition,
