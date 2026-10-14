@@ -87,6 +87,27 @@ MANUAL = {
     "dead or alive 2 hardcore": "dead or alive 2",
     "arena football ea sports": "arena football",
     "lifeline voice action adventure": "life line",
+    "midnight club": "midnight club street racing",
+    "godfather collectors edition": "godfather",
+    "godfather limited edition": "godfather",
+    "cars": "disney pixar cars",
+    "cowboy bebop": "cowboy bebop tsuioku no serenade",
+    "socom": "socom u s navy seals",
+    "hustle detroit streets kats story": "hustle the detroit streets",
+    "uefa champions league": "uefa champions league 2006 2007",
+    "wall e": "disney pixar wall e",
+    "winning eleven 6": "world soccer winning eleven 6",
+    "ultimate spider man limited edition": "ultimate spider man",
+    "kirikou et les betes sauvages": "kirikou the wild beasts",
+    "hack quarantine": "dot hack part 4 quarantine",
+    "hack outbreak": "dot hack part 3 outbreak",
+    "hack infection part 1": "dot hack part 1 infection",
+    "hack mutation part 2": "dot hack part 2 mutation",
+    "hack outbreak part 3": "dot hack part 3 outbreak",
+    "hack quarantine part 4": "dot hack part 4 quarantine",
+    "hanuman the boy warrior": "hanuman boy warrior",
+    "giga wing generations": "gigawing generations",
+    "atv off road": "atv offroad fury",
     "shin megami tensei devil summoner": "shin megami tensei devil summoner raidou kuzunoha vs the soulless army",
     "shin megami tensei devil summoner 2": "shin megami tensei devil summoner 2 raidou kuzunoha vs king abaddon",
 }
@@ -115,6 +136,12 @@ def add_aliases(covers):
         except (OSError, ValueError):
             continue
         names += [t for t in (data.get(field, []) if field else data) if isinstance(t, str)]
+    # The Rarest page's titles are spelled by PriceCharting, not by the library (".hack//Quarantine", "Kirikou et les Bêtes Sauvages").
+    try:
+        rare = json.loads(Path("rare_games.json").read_text(encoding="utf-8-sig"))
+        names += [g["title"] for games in rare.get("lists", {}).values() for g in games if isinstance(g.get("title"), str)]
+    except (OSError, ValueError, AttributeError):
+        pass
     compact = {key.replace(" ", ""): key for key in covers}
     unpadded = {}
     for key in covers:

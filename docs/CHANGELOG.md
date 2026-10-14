@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: more covers
+
+- 21 more names share a cover the collection files under another title (`MANUAL` in `tools/build_covers.py`): Midnight Club (Street Racing), the Godfather editions, Cars, Cowboy Bebop
+  (Tsuioku no Serenade), SOCOM (U.S. Navy SEALs), The Hustle, UEFA Champions League (2006-2007), WALL-E, Winning Eleven 6, Ultimate Spider-Man Limited Edition, Kirikou, the four
+  .hack parts as PriceCharting spells them, Hanuman, GigaWing Generations and ATV Off-Road (Fury). `add_aliases()` now also reads the Rarest page's titles (`rare_games.json`).
+- No file exists in the collection for: The Silent Hill Collection, Grand Theft Auto: The Trilogy and Complete Collection, Harry Potter Collection, Deutsch Rock-Pop, World Quiz, Pro Evolution Soccer 2014.
+
 ## 2026-10-14: covers for games the library names differently
 
 - 15 library names the Libretro collection files under a longer or publisher's title now share that game's cover (`MANUAL` in `tools/build_covers.py`): Metal Gear
