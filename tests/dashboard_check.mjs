@@ -2491,6 +2491,7 @@ await check('Library: every game once, A to Z or by genre, filtered, and a click
     run(`renderLibrary()`);
     assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['Alien Hominid', 'God Hand', 'Project Zero'], 'two spellings, one tile; the shown spelling is the one the file names');
     assert.deepEqual(evalJson(`libraryShown.find(g => g.title === 'Project Zero').variants.sort()`), ['Fatal Frame', 'Project Zero']);
+    assert.equal(evalJson(`libraryEntries().flatMap(g => g.variants).length`), 5, 'folding keeps every name of the library: five names, four tiles');
     assert.equal(run(`libraryTitleFor(libraryShown[2], 'US')`), 'Fatal Frame', 'a US copy is filed under the name the US site prices');
     assert.equal(run(`libraryTitleFor(libraryShown[2], 'PAL')`), 'Project Zero');
     assert.equal(run(`libraryTitleFor(libraryShown[1], 'PAL')`), 'God Hand', 'no price anywhere: the shown name');

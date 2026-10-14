@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: the Library folds regional names, again
+
+- `build_covers.py` finds more of the library's spellings of one game: "FIFA Soccer 07" / "FIFA Football 07" / "FIFA 07", "PES 2008: Pro Evolution Soccer" / "Pro Evolution Soccer 2008", the translated names of FIFA World Cup 2002,
+  words run together ("Soul Calibur" / "Soulcalibur"), and 60 pairs read by eye (`SAME_GAME`). 632 spellings are now folded into 3,246 tiles; all 3,878 library names remain (a name is folded onto a tile, never removed:
+  search, prices and the collection still use every spelling). `KEEP_APART` lists spellings that look alike and are not (Dark Angel: Vampire Apocalypse / James Cameron's Dark Angel, EyeToy: Play / Play Sports).
+- A spelling with no picture takes its game's (`share_covers()`): 283 tiles are left without one, all games the Libretro collection has no box for.
+
 ## 2026-10-14: one tile per game in the Library, more covers, the rest of the .hack games
 
 - The Library showed a game once for every spelling the library has (".hack Infection Part 1" and "Hack: Part 1: Infection", "Club Football 2005: Arsenal" and "Arsenal FC: Club Football 2005", "Alien Homind", ...).

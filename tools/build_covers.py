@@ -354,6 +354,7 @@ MANUAL.update({
     "monster co lisola dello spavento": "disney pixar monsters co lisola dello spavento",
     "knights of the temple": "knights of the temple infernal crusade",
     "driver 3": "driv3r",
+    "dark angel": "james camerons dark angel",
     "hack g u vol 1 rebirth terminal disc": "dot hack g u vol 1 rebirth terminal disc",
     "hack g u terminal disc the end of the world": "dot hack g u terminal disc the end of the world",
     "hack fragment": "dot hack fraegment",
@@ -382,18 +383,102 @@ LOCAL = {
 # for "vol", the same word run together. loose_key() drops them and ignores word order, so "Club Football 2005 Arsenal" and
 # "Arsenal: Club Football 2005", or "Disney's Finding Nemo" and "Disney Pixar Finding Nemo", meet. Numbers are never dropped.
 LOOSE_SUBS = {"volume": "vol", "fuer": "for", "offroad": "off road", "disneys": "disney", "pixars": "pixar", "astroboy": "astro boy",
-              "airforce": "air force", "beatdown": "beat down", "jr": "junior"}
+              "airforce": "air force", "beatdown": "beat down", "jr": "junior", "pes": ""}
 LOOSE_PREFIXES = ("james bond", "snk", "disney pixar", "walt disney pictures presents", "walt disney", "disney", "nickelodeon", "nick jr",
                   "dreamworks", "eyetoy", "rtl", "sega sports", "ea sports", "project", "jim hensons", "lara croft", "operative", "jet li", "shonen jumps")
-LOOSE_STOP = {"the", "of", "and", "a", "in", "de", "to", "le", "la", "les", "der", "die", "das", "el", "fc", "sega", "sports", "game", "video", "videogame"}
+# The same game under its American, European and translated names: whole phrases that mean the same.
+LOOSE_PHRASES = (("fifa soccer", "fifa"), ("fifa football", "fifa"), ("fifa fussball weltmeisterschaft", "fifa world cup"),
+                 ("mondiali fifa", "fifa world cup"), ("mundial fifa", "fifa world cup"), ("coupe du monde fifa", "fifa world cup"))
+# What a title can end with (or carry) without being another game.
+LOOSE_TRAILING = re.compile(r"\s+(sega sports|the game|the video game|video game|videogame|game)$")
+LOOSE_STOP = {"the", "of", "and", "a", "in", "de", "to", "le", "la", "les", "der", "die", "das", "el", "fc", "vol"}
 
 
 def loose_key(key):
+    key = LOOSE_TRAILING.sub("", key)
+    for phrase, plain in LOOSE_PHRASES:
+        key = key.replace(phrase, plain)
     key = re.sub(r"\b0+(\d)", r"\1", " ".join(LOOSE_SUBS.get(word, word) for word in key.split()))
     for prefix in LOOSE_PREFIXES:
         if key.startswith(prefix + " ") and len(key) > len(prefix) + 1:
             key = key[len(prefix) + 1:]
     return " ".join(sorted(word for word in key.split() if word not in LOOSE_STOP))
+
+
+# Library spellings read by eye as one game that no rule above finds (2026-10-14): a translated or regional title, a longer
+# or shorter subtitle, a typo of a different shape. Each line is one game; the keys are search_terms() keys of library names.
+SAME_GAME = (
+    ("ace combat the belkan war", "ace combat zero the belkan war"),
+    ("air ranger rescue helicopter", "air rescue ranger"),
+    ("ajax club football", "club football ajax amsterdam"),
+    ("ajax club football 2005", "club football 2005 ajax amsterdam"),
+    ("arc the lad twilight of the spirits", "arc twilight of the spirits"),
+    ("backyard baseball 07", "backyard sports baseball 2007"),
+    ("backyard basketball 07", "backyard sports basketball 2007"),
+    ("black buccaneer", "pirates legend of the black buccaneer"),
+    ("buzz hollywood", "buzz the hollywood quiz"),
+    ("cat in the hat", "dr seuss the cat in the hat"),
+    ("chicken little aventures intergalactiques", "disney chicken little asso spaziale", "disneys chicken little ace in action"),
+    ("crash bandicoot nitro kart", "crash nitro kart"),
+    ("deus ex", "deus ex the conspiracy"),
+    ("devil may cry 3", "devil may cry 3 dantes awakening"),
+    ("dreamworks shark tale hajar som hajar", "shark tale"),
+    ("espn international winter sports 2002", "espn winter sports 2002"),
+    ("espn winter games snowboarding", "espn winter x games snowboarding", "winter x games snowboarding"),
+    ("fuga da monkey island", "fuga de monkey island la"),
+    ("ghostmaster", "ghost master the gravenville chronicles", "gravenville ghost master"),
+    ("guitar hero encore rocks the 80s", "guitar hero rocks the 80s"),
+    ("gun club", "nra gun club"),
+    ("jak 2", "jak 2 renegade", "jak daxter 2"),
+    ("jak daxter complete trilogy", "jak daxter trilogy"),
+    ("jimmy neutron boy genius jet fusion", "jimmy neutron jet fusion"),
+    ("kings field 4", "kings field 4 the ancient city"),
+    ("m m s adventure", "m ms adventure"),
+    ("magix music maker", "music maker"),
+    ("magna carta", "magna carta tears of blood", "magna carta les larmes de sang"),
+    ("mark of kri", "primal the mark of kri"),
+    ("mercedes bens world racing", "world racing"),
+    ("mountain bike adrenaline", "mountain bike adrenaline featuring salomon"),
+    ("muppets party cruise", "muppets party cruise jim hensons"),
+    ("mx unleashed", "mx vs atv unleashed"),
+    ("nba street 2", "nba street vol 2"),
+    ("ncaa college football 2k3", "ncaa football 2k3"),
+    ("nhl 2k6", "nhl hockey 2k6"),
+    ("nickelodeon spongebob schwammkopf der film", "nickelodeon spongebob schwammkopf film ab"),
+    ("nickelodeon spongebob squarepants movin with friends", "spongebob friends movin"),
+    ("nightmare of druaga", "nightmare of druaga fushigino dungeon"),
+    ("off road wide open", "test drive off road wide open"),
+    ("operation winback 2 project poseidon", "winback 2 project poseidon"),
+    ("padrino el", "padrino il", "godfather"),
+    ("pac man rally", "pac man world rally"),
+    ("pool paradise", "pool paradise international edition"),
+    ("pro tennis wta tour", "wta tour tennis"),
+    ("puyo pop fever", "puyo puyo fever"),
+    ("red baron", "wwi red baron"),
+    ("riding star", "tim stockdales riding star"),
+    ("road trip", "road trip adventure"),
+    ("sing star nrj music tour", "singstar nrj music tour"),
+    ("singstar after ski party", "singstar apres ski party"),
+    ("singstar after ski party 2", "singstar apres ski party 2"),
+    ("singstar swedish hits", "singstar svenska hits"),
+    ("singstar svenska hits schlager", "singstar swedish hits schlager"),
+    ("deutsch rock pop", "singstar german rock pop vol 2"),
+    ("ski doo snow x racing", "snow x racing"),
+    ("sudoku carol vondermans", "sudoku carol vordermans"),
+    ("sum of all fears", "tom clancys the sum of all fears"),
+    ("summer athletics", "summer athletics the ultimate challenge"),
+    ("super trucks", "super trucks racing"),
+    ("suzuki tt superbikes real road racing", "suzuki tt superbikes real road racing championship", "tt superbikes real road racing championship"),
+    ("tiger woods pga tour 2002", "tiger woods usa tour 2002"),
+    ("ty the tasmanian tiger", "ty the tazmanian tiger"),
+    ("tour de france le", "tour de france le centenary edition"),
+    ("torino 2006 the official game of the xx olympic winter games", "torino 2006 the official video game of the xx olympic winter games"),
+    ("world rally championship 4", "wrc 4 fia world rally championship"),
+    ("wrc rally evolved", "wrc world rally championship rally evolved"),
+    ("x men 2 wolverines revenge", "x2 wolverines revenge"),
+)
+# Spellings that look like another game's and are not (one entry per game that must keep its own tile).
+KEEP_APART = {"dark angel vampire apocalypse", "eyetoy play sports"}
 
 
 def typo_of(key, spellings, unpadded):
@@ -492,14 +577,22 @@ def same_game(covers):
         for other in keys[1:]:
             parent[find(other)] = find(keys[0])
 
-    by_loose, by_file = {}, {}
+    by_loose, by_file, by_compact = {}, {}, {}
     for key in titles:
+        if key in KEEP_APART:
+            continue
         by_loose.setdefault(loose_key(key), []).append(key)
+        by_compact.setdefault(key.replace(" ", ""), []).append(key)
         if key in covers:
             numbers = tuple(re.findall(r"\d+", re.sub(r"\b0+(\d)", r"\1", key)))
             by_file.setdefault((covers[key][0], numbers), []).append(key)
-    for keys in list(by_loose.values()) + list(by_file.values()):
+    for keys in list(by_loose.values()) + list(by_file.values()) + list(by_compact.values()):
         join(keys)
+    for keys in SAME_GAME:
+        present = [key for key in keys if key in titles]
+        if len(present) != len(keys):
+            print(f"  SAME_GAME names a spelling the library lacks: {[key for key in keys if key not in titles]}")
+        join(present)
     groups = {}
     for key in titles:
         groups.setdefault(find(key), []).append(key)
@@ -519,8 +612,21 @@ def same_game(covers):
     return out
 
 
+def share_covers(covers, same):
+    """A spelling with no picture takes its game's: the shown spelling's, else any other spelling's that has one."""
+    groups = {}
+    for key, shown in same.items():
+        groups.setdefault(shown, [shown]).append(key)
+    for members in groups.values():
+        donor = next((covers[key] for key in members if key in covers), None)
+        if donor:
+            for key in members:
+                covers.setdefault(key, donor)
+
+
 def main():
     covers = add_aliases(build(sys.stdin))
+    share_covers(covers, same_game(covers))
     doc = {"what": "Which Libretro box-art file belongs to which game (key = priceKey()); the pictures are not stored here.",
            "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation_2", "base": BASE,
            "checked": date.today().isoformat(), "local": {key: path for key, path in LOCAL.items() if Path(path).is_file()},
