@@ -50,6 +50,8 @@ through its **Sources & Weights** panel.
 | `tests/test_fx.py` | Offline tests for `fx.py` and its workflow |
 | `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |
 | `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words), titles never to price, and the names games have on eBay UK (`regional_names`) |
+| `search_extra_titles.json` | Names the dashboard's search box knows beyond `data/ps2_database.json` (805 NTSC-U/PAL names from PCSX2's game list, 2026-10-14). Search only: no script reads it |
+| `wiki_overrides.json` | Hand fixes for the Demand Index: a title's Wikipedia article, or `null` to leave it out |
 | `rare_games.json` | The Rarest page: the rarest PAL and US games (100+ each), ranked by PriceCharting's complete-copy value, each with its sources, eBay search words and an estimate of copies sold (`copies`; how it was made is at the top). `ebay_prices.py` prices each list daily on its own site |
 | `rare_consoles.json` | The Rarest page's consoles: the rarest official PS2 hardware, in tiers, with model numbers, sources and eBay search rules. `ebay_prices.py` prices each daily on both sites (or its `sites`) |
 | `data/prices/latest.json` | Per game and site: copies listed, lowest and median asking price, typical postage, when checked, the median of a week before (`week`), and the game's level. Numbers only |

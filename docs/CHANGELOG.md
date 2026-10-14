@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-10-14: search fixes, demand index fixes, honest "scarce"
+
+- `index.html`: the search lists a game once (spellings tied by `priceKey()`), also finds words in any form
+  ("fifa 10" finds "FIFA Soccer 10") and British spellings ("honour"). It reads `search_extra_titles.json`
+  (805 NTSC-U/PAL names from PCSX2's game list that the library lacks: FIFA 09 to 14 among them); the
+  scraper, matcher and eBay pricing do not read it.
+- `ebay_prices.py`: `latest.json` figures carry `listed`, eBay's own count for the same search. The
+  dashboard shows "scarce" and ranks "Most rare" only where `listed` is within 2 of `copies` (not
+  truncated). Measured on the `ebay-data` branch: 17 of 30 games with 10 or fewer counted copies had
+  3 or more listings left out by the name checks (FIFA 2003: 6 counted of 200; Spyro: The Eternal
+  Night: 1 of 34). Figures and the scarce tag now open the search they count (used, Buy It Now, in that
+  country, Video Games) instead of the general search.
+- `wiki_overrides.json` (new), `demand.py`: wrong Wikipedia matches fixed or left out, and two titles on
+  one article are counted once. The guide now lays out how the Demand Index is worked out.
+
 ## 2026-10-14: the item ceiling raises itself
 
 - `scraper.py`: `item_ceiling()` keeps `MAX_ITEMS` (30,000) until the two weeks hold more than 90% of it,
