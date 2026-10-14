@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: Demand tab, a longer shelf
+
+- The Demand Index has its own **Demand** tab (`#demand`) instead of sharing the Tracker's second column, which made the Tracker wrap awkwardly: each row is a rank,
+  a cover, the name and score, a bar and the facts on their own wrapped line (they were one unbroken line that ran off the card). Ten rows show, 25 in all.
+- The shelf holds up to 24 games and moves sideways with arrows at both ends (disabled at the ends, hidden when everything fits). Its covers were missing because the
+  cover list was only fetched when Rarest or Most mentioned opened; the Tracker, the shelf and Demand now ask for it too (all 24 of today's top games have a cover in `covers.json`).
+
 ## 2026-10-14: a new look (the maintainer's theme)
 
 - The maintainer's mock-up (`spindle_ps2_sentiment_market_tracker_letterboxd_ui.html`) was reviewed and its look applied to every page, keeping our script:

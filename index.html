@@ -95,7 +95,11 @@
           <h2>Trending in the last 24 hours</h2>
           <span class="text-[11px] font-mono-custom text-ps2neon">Open a box to see its page</span>
         </div>
-        <ol id="shelf" class="shelf grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3.5"></ol>
+        <div class="shelf-wrap">
+          <button type="button" id="shelfPrev" class="shelf-arrow shelf-arrow-prev" onclick="shelfScroll(-1)" aria-label="Show earlier games" aria-controls="shelf" disabled><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+          <ol id="shelf" class="shelf" aria-label="Games named most in the last 24 hours" onscroll="updateShelfArrows()"></ol>
+          <button type="button" id="shelfNext" class="shelf-arrow shelf-arrow-next" onclick="shelfScroll(1)" aria-label="Show more games" aria-controls="shelf"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
       </div>
 
       <!-- Four pages in one: the tracker, the rarest games, the ranking of games by mentions, and the full list of eBay asking prices. -->
@@ -103,6 +107,7 @@
         <div class="view-tabs" role="tablist" aria-label="Pages">
           <button type="button" id="tabDashboard" role="tab" aria-selected="true" aria-controls="viewDashboard" onclick="showView('dashboard')" class="view-tab is-active"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Tracker</button>
           <button type="button" id="tabRare" role="tab" aria-selected="false" aria-controls="viewRare" onclick="showView('rare')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Rarest</button>
+          <button type="button" id="tabDemand" role="tab" aria-selected="false" aria-controls="viewDemand" onclick="showView('demand')" class="view-tab"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> Demand</button>
           <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
           <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
         </div>
@@ -141,8 +146,8 @@
       </div>
 
       <!-- Two-column layout for 24h Named Games + Demand Index -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        <div id="todaySection" class="lg:col-span-7 bg-ps2card border border-ps2border rounded-md p-6">
+      <div class="grid grid-cols-1 gap-6 items-start">
+        <div id="todaySection" class="bg-ps2card border border-ps2border rounded-md p-6">
           <div class="lb-section-header">
             <div>
               <h2>Named in the last 24 hours</h2>
@@ -155,17 +160,6 @@
           </div>
           <ol id="todayList" class="zebra"></ol>
           <button type="button" id="todayListToggle" onclick="toggleList('todayList')" aria-controls="todayList" class="list-toggle hidden brand-btn mt-3"></button>
-        </div>
-
-        <div id="demandSection" class="lg:col-span-5 bg-ps2card border border-ps2border rounded-md p-6 hidden">
-          <div class="lb-section-header">
-            <div>
-              <h2>Demand Index</h2>
-              <p id="demandSummary" class="text-xs text-slate-400 mt-1">Loading...</p>
-            </div>
-          </div>
-          <ol id="demandList" class="zebra"></ol>
-          <button type="button" id="demandListToggle" onclick="toggleList('demandList')" aria-controls="demandList" class="list-toggle hidden brand-btn mt-3"></button>
         </div>
       </div>
 
@@ -321,6 +315,20 @@
         <ol id="rareList" class="zebra"></ol>
         <button type="button" id="rareListToggle" onclick="toggleList('rareList')" aria-controls="rareList" class="list-toggle hidden brand-btn mt-3"></button>
         <p id="rareNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
+      </div>
+    </div>
+
+    <!-- The Demand Index: the games people are turning to, blended from mentions, sources, YouTube, eBay and Wikipedia. -->
+    <div id="viewDemand" role="tabpanel" aria-labelledby="tabDemand" class="hidden space-y-8">
+      <div id="demandSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header">
+          <div>
+            <h2>Demand Index</h2>
+            <p id="demandSummary" class="text-xs text-slate-400 mt-1">Loading...</p>
+          </div>
+        </div>
+        <ol id="demandList" class="zebra"></ol>
+        <button type="button" id="demandListToggle" onclick="toggleList('demandList')" aria-controls="demandList" class="list-toggle hidden brand-btn mt-3"></button>
       </div>
     </div>
 
@@ -556,6 +564,7 @@
         const VIEWS = {
             dashboard: ['viewDashboard', 'tabDashboard'],
             rare: ['viewRare', 'tabRare'],
+            demand: ['viewDemand', 'tabDemand'],
             mentions: ['viewMentions', 'tabMentions'],
             prices: ['viewPrices', 'tabPrices'],
             collection: ['viewCollection', 'tabCollection'],
@@ -598,7 +607,7 @@
             drawPending(view);
             currentView = view;
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
-            if (view === 'rare' || view === 'mentions') ensureCoverIndex();
+            if (view === 'rare' || view === 'mentions' || view === 'demand') ensureCoverIndex();
             if (view === 'collection') {
                 try { renderCollection(); } catch (error) { console.warn('Could not show the collection.', error); }
             }
@@ -636,7 +645,7 @@
            named in the last day show ten; Most Mentioned Games has a page to
            itself and shows twenty-five, as does each list of the rarest games.
         -------------------------------------------------------------------- */
-        const LIST_FOLD = { todayList: 10, demandList: 5, topGamesList: 25, rareList: 25 };   // rows shown while each list is folded
+        const LIST_FOLD = { todayList: 10, demandList: 10, topGamesList: 25, rareList: 25 };   // rows shown while each list is folded
         const RECENT_HOURS = 24;  // "named in the last 24 hours"
         const SOURCES_NAMED = 3;  // a game's line names this many sources and counts the rest
         const ALSO_NAMED = 4;     // a table row names this many further games and counts the rest
@@ -1177,16 +1186,19 @@
             foldList('todayList', recent.games.length);
         }
 
-        // The shelf above the tabs: the six games named most in the last 24 hours (the order
-        // recentGames() gives), as box art with the mention count and the cheapest median.
+        // The shelf above the tabs: the SHELF_SIZE games named most in the last 24 hours (the order
+        // recentGames() gives), as box art with the mention count and the cheapest median. It is a row
+        // that scrolls sideways: the arrows at its ends (and a swipe) move it a screenful at a time.
         // Real feed data only; a game without a cover shows its initials.
+        const SHELF_SIZE = 24;
         let shelfGames = [];
         function renderShelf(games = shelfGames) {
             shelfGames = games;
             const section = document.getElementById('shelfSection');
             const shelf = document.getElementById('shelf');
             if (!section || !shelf) return;
-            const top = games.slice(0, 6);
+            const top = games.slice(0, SHELF_SIZE);
+            ensureCoverIndex();
             section.dataset.has = top.length ? '1' : '';
             section.classList.toggle('hidden', !top.length || currentView !== 'dashboard');
             shelf.innerHTML = top.map(game => {
@@ -1201,6 +1213,30 @@
                         <span class="shelf-count">${count}</span></span>
                     <span class="shelf-name">${esc(game.name)}</span>${price ? `<span class="shelf-price">${esc(price)}</span>` : ''}</a></li>`;
             }).join('');
+            updateShelfArrows();
+        }
+
+        // An arrow moves the row by what is on screen (less a little, so the last box stays in view);
+        // an arrow with nowhere to go is switched off, and both disappear when every box fits.
+        function shelfScroll(direction) {
+            const shelf = document.getElementById('shelf');
+            if (!shelf) return;
+            const by = Math.max((shelf.clientWidth || 0) * 0.85, 120) * direction;
+            if (typeof shelf.scrollBy === 'function') shelf.scrollBy({ left: by, behavior: 'smooth' });
+            else shelf.scrollLeft = (shelf.scrollLeft || 0) + by;
+            updateShelfArrows();
+        }
+        function updateShelfArrows() {
+            const shelf = document.getElementById('shelf');
+            const prev = document.getElementById('shelfPrev');
+            const next = document.getElementById('shelfNext');
+            if (!shelf || !prev || !next) return;
+            const max = (shelf.scrollWidth || 0) - (shelf.clientWidth || 0);
+            const at = shelf.scrollLeft || 0;
+            prev.disabled = at <= 2;
+            next.disabled = max <= 2 ? true : at >= max - 2;
+            prev.classList.toggle('hidden', max <= 2);
+            next.classList.toggle('hidden', max <= 2);
         }
 
         // A game's name in that list opens the table on the items that name it: exactly those,
@@ -1244,10 +1280,19 @@
             } catch {
                 data = null;
             }
-            const section = document.getElementById('demandSection');
+            demandData = data;
+            renderDemand(data);
+        }
+
+        let demandData = null;
+        function renderDemand(data) {
             const games = Array.isArray(data?.games) ? data.games : [];
-            section.classList.toggle('hidden', !games.length);
-            if (!games.length) return;
+            if (!games.length) {
+                document.getElementById('demandSummary').textContent = 'No demand figures yet: data/demand.json is written once a day by the demand job.';
+                document.getElementById('demandList').innerHTML = '';
+                foldList('demandList', 0);
+                return;
+            }
 
             const v2 = data.version === 2;
             document.getElementById('demandSummary').textContent = v2
@@ -1270,20 +1315,27 @@
                     : `${Number(game.views_30d).toLocaleString()} views · ${esc(game.mentions)} mentions`;
                 const lead = v2 ? `<span class="text-slate-300">${esc(game.demand)}</span>`
                     : `<span class="${tone}">${arrow} ${change === null ? 'new' : esc(change) + '%'}</span>`;
+                const cover = coverUrl(game.title);
                 return `
                 <li class="${rowClass('demandList', i)}">
-                    <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
-                        <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${i + 1} ${gameLinkHtml(game.title)}</span>
-                        <span class="whitespace-nowrap">
-                            ${lead}
-                            <span class="text-slate-500 ml-2">${v2 ? esc(facts) : facts}</span>
-                        </span>
+                    <div class="demand-row">
+                        <span class="demand-rank">${i + 1}</span>
+                        <span class="demand-cover" aria-hidden="true"><span class="coll-initials">${esc(initialsOf(game.title))}</span>${cover
+                            ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}</span>
+                        <div class="demand-main">
+                            <div class="demand-top">
+                                <span class="demand-name">${gameLinkHtml(game.title)}</span>
+                                <span class="demand-score font-mono-custom">${lead}</span>
+                            </div>
+                            <div class="demand-bar"><div style="width:${Math.max(game.demand, 2)}%"></div></div>
+                            <div class="demand-facts">${v2 ? esc(facts) : facts}</div>
+                            ${listPricesHtml(game.title)}
+                        </div>
                     </div>
-                    <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full bg-cyan-500" style="width:${Math.max(game.demand, 2)}%"></div></div>
-                    ${listPricesHtml(game.title)}
                 </li>`;
             }).join('');
             foldList('demandList', shown.length);
+            ensureCoverIndex();
         }
 
         // Items from switched-off sources are hidden right away, before the scraper drops them.
@@ -2826,7 +2878,7 @@
         let topGamesItems = null;
         function redrawCoverLists() {
             if (topGamesItems) renderTopGames(topGamesItems);
-            try { renderShelf(); } catch { /* the next draw shows it */ }
+            try { renderShelf(); if (demandData) renderDemand(demandData); } catch { /* the next draw shows it */ }
             if (rareRegion !== 'Consoles') renderRare();
         }
 
