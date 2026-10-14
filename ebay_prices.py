@@ -76,6 +76,7 @@ from urllib.parse import quote, urlencode
 ROOT = Path(__file__).parent
 WATCHLIST_PATH = ROOT / "ebay_watchlist.json"
 RARE_PATH = ROOT / "rare_games.json"            # the Rarest page's two lists (read only)
+EDITIONS_PATH = ROOT / "editions.json"          # limited and collector's editions, each priced on its own (read only)
 CONSOLES_PATH = ROOT / "rare_consoles.json"     # the Rarest page's consoles (read only)
 DEFAULT_OUT = Path(tempfile.gettempdir()) / "ebay_prices.json"   # outside the repository on purpose
 DATA_DIR = ROOT / "data"
@@ -770,10 +771,13 @@ def plan_games(now, pinned, never, mentions, ever, library, catalogue, state):
     return sorted(games.values(), key=lambda game: game["title"].lower()), left_out
 
 
-def load_rare(path=None):
+def load_rare(path=None, kind=None):
     """(entries, problems) from rare_games.json: every game on the Rarest page's two lists, with
     the words to look for. A missing file gives none. A file or an entry that cannot be used is
-    left out and named in the problems, so that it never stops the pricing of every other game."""
+    left out and named in the problems, so that it never stops the pricing of every other game.
+    With kind="edition" the file is editions.json: the same shape, but every entry must carry
+    "require" words (an edition is told from the plain game by them), and the games made from it
+    stay off the PS2 index and the eBay prices page."""
     path = Path(path or RARE_PATH)
     if not path.exists():
         return [], []
@@ -809,6 +813,9 @@ def load_rare(path=None):
                 problems.append(f'{list_name} "{title}": "require" and "exclude" must be lists of words, '
                                 '"allow" a list of the junk phrases an edition comes with')
                 continue
+            if kind == "edition" and not require:
+                problems.append(f'{list_name} "{title}": an edition needs "require" words to be told from the plain game')
+                continue
             # One word that is also an ordinary word would count every listing that uses it
             # ("rare obscure horror game"), as for the games the feed names.
             if " " not in phrase and phrase not in ONE_WORD_TITLES and not require:
@@ -822,7 +829,7 @@ def load_rare(path=None):
                 continue
             other = row.get("other_title")
             entries.append({"list": list_name, "title": title.strip(), "search": phrase, "queries": queries,
-                            "require": require, "exclude": exclude, "allow": sorted(allow),
+                            "require": require, "exclude": exclude, "allow": sorted(allow), "kind": kind,
                             "other_title": other.strip() if isinstance(other, str) and key_of(other) else None})
     return entries, problems
 
@@ -850,7 +857,7 @@ def add_rare_games(games, rare, catalogue):
         if game is None:
             # The same game on both lists is one game, looked up on both sites, leaving out what
             # either list leaves out.
-            identity = (entry["search"], tuple(entry["require"]), tuple(entry["allow"]))
+            identity = (entry["search"], tuple(entry["require"]), tuple(entry["allow"]), entry.get("kind"))
             game = added.get(identity)
             if game is None:
                 key = key_of(entry["title"])
@@ -865,6 +872,8 @@ def add_rare_games(games, rare, catalogue):
                 game = {"title": entry["title"], "key": key, "search": entry["search"], "queries": entry["queries"],
                         "exclude": entry["exclude"], "require": entry["require"], "allow": entry["allow"], "pinned": False,
                         "siblings": siblings, "level": "rare", "mentions": 0, "surging_until": None, "sites": []}
+                if entry.get("kind"):
+                    game["kind"] = entry["kind"]
                 added[identity] = game
                 keys.add(key)
             if market_id not in game["sites"]:
@@ -1520,7 +1529,7 @@ def numbers_of(result, stamp):
     return entry
 
 
-def update_records(state, games, run, now, rare_titles=None):
+def update_records(state, games, run, now, rare_titles=None, edition_titles=None):
     """(new latest.json, rows to add to this month's history) after a run."""
     stamp, today = now.strftime(STAMP_FORMAT), now.strftime("%Y-%m-%d")
     previous = prior_games(state)
@@ -1538,8 +1547,8 @@ def update_records(state, games, run, now, rare_titles=None):
             entry["surging_until"] = game["surging_until"].strftime(STAMP_FORMAT)
         if game.get("sites"):
             entry["sites"] = [MARKETS[market_id]["label"] for market_id in MARKETS if market_id in game["sites"]]
-        if game.get("kind") == "console":
-            entry["kind"] = "console"
+        if game.get("kind") in ("console", "edition"):
+            entry["kind"] = game["kind"]
         old_entry = previous.get(game["key"]) or {}
         for market in MARKETS.values():
             label = market["label"]
@@ -1572,6 +1581,9 @@ def update_records(state, games, run, now, rare_titles=None):
     if rare_titles:
         # Which game in "games" holds the figures of each game on the Rarest page's lists.
         latest["rare"] = {list_name: dict(titles) for list_name, titles in rare_titles.items()}
+    if edition_titles and any(edition_titles.values()):
+        # Which game in "games" holds the figures of each edition in editions.json.
+        latest["editions"] = {list_name: dict(titles) for list_name, titles in edition_titles.items()}
     return latest, rows
 
 
@@ -1838,7 +1850,7 @@ def index_file(rows, latest, now, left_out=()):
     (`left_out`, kept in the file), so that a console renamed or dropped from the list never
     enters it with its whole history."""
     consoles = {key_of(title) for title, entry in latest.get("games", {}).items()
-                if isinstance(entry, dict) and entry.get("kind") == "console"}
+                if isinstance(entry, dict) and entry.get("kind") in ("console", "edition")}
     listed = read_json(CONSOLES_PATH, {}).get("consoles")
     consoles |= {key_of(row["name"]) for row in listed or [] if isinstance(row, dict) and isinstance(row.get("name"), str)}
     consoles |= {key for key in left_out if isinstance(key, str)}
@@ -1848,7 +1860,7 @@ def index_file(rows, latest, now, left_out=()):
                  "together), 100 on the "
                  "first day. Each day moves by the geometric mean of each game's change in median since its "
                  "previous day, for games priced on both days from at least "
-                 f"{INDEX_MIN_COPIES} copies; a median that doubled or halved is left out. Consoles are not in it."),
+                 f"{INDEX_MIN_COPIES} copies; a median that doubled or halved is left out. Consoles and editions are not in it."),
         "currencies": latest.get("currencies", {}),
         "points": ("[day, index, games compared with their previous day]; the first day counts the games priced. "
                    "Finished UTC days only."),
@@ -1948,8 +1960,8 @@ def snapshot_of(run, now):
     }
 
 
-def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_problems=(), consoles=0):
-    games = [game for game in games if game.get("kind") != "console"]   # counted on a line of their own
+def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_problems=(), consoles=0, edition_titles=None):
+    games = [game for game in games if game.get("kind") not in ("console", "edition")]   # counted on lines of their own
     levels = {level: sum(1 for game in games if game["level"] == level) for level in CHECK_EVERY_HOURS}
     if not levels["rare"]:
         del levels["rare"]   # only there when rare_games.json adds games
@@ -1979,6 +1991,9 @@ def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_pr
             + f"; {sum(1 for game in games if game['level'] == 'rare' and game.get('kind') != 'console')} of the games are priced for it alone.")
     if consoles:
         say(f"Rarest page: {consoles} consoles priced.")
+    if edition_titles:
+        say(f"Editions: {sum(len(titles) for titles in edition_titles.values())} entries, "
+            + ", ".join(f"{len(titles)} {name}" for name, titles in edition_titles.items()) + ", each priced on its own.")
     for problem in rare_problems:
         say(f"Rarest page, left out: {problem}.")
     say(f"Due now: {len(lookups)} lookups. This run may use {max(allowance, 0)} searches.")
@@ -2141,14 +2156,16 @@ def main(argv=None):
         apply_regional_names(games, load_regional_names(), catalogue)
         rare, rare_problems = load_rare()
         rare_titles = add_rare_games(games, rare, catalogue)
+        editions, edition_problems = load_rare(EDITIONS_PATH, kind="edition")
+        edition_titles = add_rare_games(games, editions, catalogue)
         consoles, console_problems = load_consoles()
         consoles_priced = add_consoles(games, consoles)
-        rare_problems = rare_problems + console_problems
+        rare_problems = rare_problems + console_problems + [f"editions.json: {problem}" for problem in edition_problems]
         lookups = due_lookups(games, state, now, earlier + history)
         used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
         used_today = used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0
         allowance = min(MAX_SEARCHES_PER_RUN, DAILY_SEARCHES - used_today)
-        describe_plan(games, left_out, lookups, allowance, rare_titles if rare else None, rare_problems, consoles_priced)
+        describe_plan(games, left_out, lookups, allowance, rare_titles if rare else None, rare_problems, consoles_priced, edition_titles if editions else None)
         if args.plan:
             return 0
         if not lookups:
@@ -2180,7 +2197,7 @@ def main(argv=None):
         say(f"STOPPED: {problem}")
         return 1
 
-    latest, rows = update_records(state, games, run, now, rare_titles if rare else None)
+    latest, rows = update_records(state, games, run, now, rare_titles if rare else None, edition_titles if editions else None)
     add_week_before(latest, earlier + history + rows)
     try:
         append_history(history_path, rows)

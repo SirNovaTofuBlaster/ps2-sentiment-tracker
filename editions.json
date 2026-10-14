@@ -1,0 +1,778 @@
+{
+ "what": "Known limited, collector's, premium and steelbook PS2 editions of games, for the game page. ebay_prices.py looks each one up once a day, the PAL list on eBay UK and the US list on eBay US, by the game's name plus the words in require, so a plain copy is never counted. Numbers only are kept, in data/prices/latest.json under editions.",
+ "checked": "2026-10-14",
+ "method": "Hand-made from the Collectors Edition game database (collectorsedition.org/game-db, the PS2 PAL and NTSC lists, 14 and 23 entries; the pages were read one by one on 2026-10-14). 32 of those 37 entries are here. Left out: Dragon Ball Z Budokai 3 Collector's Edition (PAL), Silent Hill 2 Special 2 Disc Set (PAL) and Bully Special Edition (NTSC), whose pages did not load that day; Final Fantasy XI HDD (not a game edition); and one entry not read. Contents are quoted from each entry, packaging in kinds. Japanese editions cannot be priced (only the US and UK sites are), so none are here. Nothing was sent to the database's owners (rule 13).",
+ "lists": {
+  "PAL": [
+   {
+    "title": "Resident Evil 4 Limited Edition",
+    "game": "Resident Evil 4",
+    "search": "resident evil 4",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [
+     "guide book"
+    ],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "Capcom",
+    "released": "2005-11-04 (UK)",
+    "contents": "SteelBook case and the FuturePress official limited edition mini guide.",
+    "note": "The PAL steelbook.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Dragon Ball Z: Budokai Tenkaichi 3 Collector's Edition",
+    "game": "Dragon Ball Z: Budokai Tenkaichi 3",
+    "search": "dragon ball z budokai tenkaichi 3",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [
+     "art book",
+     "artbook"
+    ],
+    "kinds": [
+     "box",
+     "art book"
+    ],
+    "publisher": "Bandai",
+    "released": "2007-11-19 (Europe)",
+    "contents": "Cardboard box with a poster and a 50-page art book.",
+    "note": "Sellers often list the art book with it, so \"art book\" is allowed.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Tomb Raider: Anniversary Collector's Edition",
+    "game": "Tomb Raider: Anniversary",
+    "search": "tomb raider anniversary",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "digipak"
+    ],
+    "publisher": "Eidos",
+    "released": "2007-06-01",
+    "contents": "Digipak with a documentary DVD, a soundtrack mix and an artwork gallery with trailers.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "God of War II Special Edition",
+    "game": "God of War II",
+    "search": "god of war 2",
+    "require": [
+     "special edition"
+    ],
+    "allow": [
+     "strategy guide",
+     "guide book"
+    ],
+    "kinds": [
+     "digipak"
+    ],
+    "publisher": "SCE",
+    "released": "2007-04-27 (UK, Germany)",
+    "contents": "Digipak with the FuturePress official strategy guide and a bonus DVD.",
+    "note": "Sold in the UK and Germany.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "The Godfather Limited Edition 2 Disc Set",
+    "game": "The Godfather",
+    "search": "the godfather",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook",
+     "slipcover"
+    ],
+    "publisher": "EA",
+    "released": "2006-03-24 (UK)",
+    "contents": "SteelBook with a slip cover, a map of New York and a bonus disc.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Driver: Parallel Lines Collector's Edition",
+    "game": "Driver: Parallel Lines",
+    "search": "driver parallel lines",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook",
+     "slipcover"
+    ],
+    "publisher": "Atari",
+    "released": "2006-03-17 (UK)",
+    "contents": "SteelBook with a plastic slipcover and a soundtrack CD.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Peter Jackson's King Kong Collector's Edition",
+    "game": "King Kong, Peter Jackson's: The Official Game of the Movie",
+    "search": "king kong",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook",
+     "slipcase"
+    ],
+    "publisher": "Ubisoft",
+    "released": "2005-11-17 (UK)",
+    "contents": "Steelbook in a slipcase with a bonus DVD.",
+    "note": "The film's name (Peter Jackson's) is not required in a listing.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Metal Gear Solid 3: Snake Eater Slipcase Edition",
+    "game": "Metal Gear Solid 3: Snake Eater",
+    "search": "metal gear solid 3",
+    "require": [
+     "slipcase"
+    ],
+    "allow": [],
+    "kinds": [
+     "slipcase"
+    ],
+    "publisher": "Konami",
+    "released": "2005-03-04 (UK)",
+    "contents": "Cardboard slipcover around the game; an HMV exclusive.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Brothers in Arms: Road to Hill 30 Limited Edition Pre-Order Kit",
+    "game": "Brothers in Arms: Road to Hill 30",
+    "search": "brothers in arms road to hill 30",
+    "require": [
+     "pre order kit"
+    ],
+    "allow": [],
+    "kinds": [
+     "tin"
+    ],
+    "publisher": "Ubisoft",
+    "released": "2005-03-01 (UK)",
+    "contents": "Tin case with a DVD, a book and postcards. The game was bundled separately.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Primal Collector's Edition",
+    "game": "Primal",
+    "search": "primal",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "standard case"
+    ],
+    "publisher": "SCE",
+    "released": "2003-04-11 (Europe)",
+    "contents": "Standard case with a better manual, a soundtrack CD and a VIP card.",
+    "note": "\"Primal\" is one ordinary word, so a listing must also say Collector's Edition.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "ICO First Edition",
+    "game": "ICO",
+    "search": "ico",
+    "require": [
+     "first edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "digipak"
+    ],
+    "publisher": "SCE",
+    "released": "2002-03-22 (UK)",
+    "contents": "Digipak with a cardboard sleeve and 4 art cards.",
+    "note": "Contents come from a reader's comment on the database, not from an official source.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Driver 2 Limited Edition",
+    "game": null,
+    "search": "driver 2",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "box"
+    ],
+    "publisher": "Infogrames",
+    "released": "2000-11-17 (UK)",
+    "contents": "Cardboard box with a keyring, postcards, a pen and a soundtrack.",
+    "note": "Driver 2 is not in the library's PS2 list, so the entry has no game page.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   }
+  ],
+  "US": [
+   {
+    "title": "Call of Duty 3 Special Edition",
+    "game": "Call of Duty 3",
+    "search": "call of duty 3",
+    "require": [
+     "special edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "bonus disc"
+    ],
+    "publisher": "Activision",
+    "released": "2007-08-17",
+    "contents": "Standard case with a bonus disc.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "God of War II Two Disc Set",
+    "game": "God of War II",
+    "search": "god of war 2",
+    "require": [
+     "two disc set"
+    ],
+    "allow": [],
+    "kinds": [
+     "bonus disc"
+    ],
+    "publisher": "SCE",
+    "released": "2007-03-13",
+    "contents": "Standard case with a bonus disc.",
+    "note": "Sellers also write 2 disc set.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "The Sopranos: Road to Respect Limited Edition",
+    "game": "Sopranos, The: Road to Respect",
+    "search": "sopranos road to respect",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "box"
+    ],
+    "publisher": "THQ",
+    "released": "2006-11-07",
+    "contents": "Poster, DVD and booklet.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Final Fantasy XII Collector's Edition",
+    "game": "Final Fantasy XII",
+    "search": "final fantasy xii",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "Square Enix",
+    "released": "2006-10-31",
+    "contents": "2-disc SteelBook with a bonus DVD.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": ".hack//G.U. Vol. 1 Rebirth Premium Edition",
+    "game": "hack//G.U. vol. 1//Rebirth",
+    "search": "hack g u rebirth",
+    "require": [
+     "premium edition"
+    ],
+    "allow": [
+     "figure"
+    ],
+    "kinds": [
+     "box",
+     "figure"
+    ],
+    "publisher": "Namco Bandai",
+    "released": "2006-10-24",
+    "contents": "Haseo figure and a Terminal Disc in a cardboard box.",
+    "note": "The figure is part of the edition, so \"figure\" is allowed.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Mortal Kombat: Armageddon Premium Edition",
+    "game": "Mortal Kombat: Armageddon",
+    "search": "mortal kombat armageddon",
+    "require": [
+     "premium edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "Midway",
+    "released": "2006-10-09",
+    "contents": "2-disc SteelBook with a playable Ultimate Mortal Kombat 3 and extras.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Driver: Parallel Lines Limited Edition",
+    "game": "Driver: Parallel Lines",
+    "search": "driver parallel lines",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "box"
+    ],
+    "publisher": "Atari",
+    "released": "2006-03-14",
+    "contents": "Soundtrack CD, making-of DVD, map and mini posters.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Marc Ecko's Getting Up: Contents Under Pressure Limited Edition",
+    "game": "Marc Ecko's Getting Up: Contents Under Pressure",
+    "search": "getting up contents under pressure",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "limited"
+    ],
+    "publisher": "Atari",
+    "released": "2006-02-14",
+    "contents": "Contents not recorded in the database.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Need for Speed: Most Wanted Black Edition",
+    "game": "Need for Speed: Most Wanted",
+    "search": "need for speed most wanted",
+    "require": [
+     "black edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "slipcover"
+    ],
+    "publisher": "EA",
+    "released": "2005-11-15",
+    "contents": "Keep case with a slip cover and bonus content.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Call of Duty 2: Big Red One Collector's Edition",
+    "game": "Call of Duty 2: Big Red One",
+    "search": "call of duty 2 big red one",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "bonus disc"
+    ],
+    "publisher": "Activision",
+    "released": "2005-11-01",
+    "contents": "Bonus DVD.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Resident Evil 4 Premium Edition",
+    "game": "Resident Evil 4",
+    "search": "resident evil 4",
+    "require": [
+     "premium edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "Capcom",
+    "released": "2005-10-25",
+    "contents": "SteelBook, a Making of DVD, an Ada Wong laser cell, the Brady prologue and a numbered certificate.",
+    "note": "The US steelbook.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Resident Evil 4 Collector's Pack",
+    "game": "Resident Evil 4",
+    "search": "resident evil 4",
+    "require": [
+     "collectors pack"
+    ],
+    "allow": [
+     "figure",
+     "shirt"
+    ],
+    "kinds": [
+     "box",
+     "figure"
+    ],
+    "publisher": "Capcom",
+    "released": "2005-10-25",
+    "contents": "Biohazard Sound Chronicle 6-CD box, a 7-inch NECA Leon figure and an XL T-shirt.",
+    "note": "The figure and shirt are part of it, so they are allowed.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Tony Hawk's American Wasteland Collector's Edition",
+    "game": "Tony Hawk's American Wasteland",
+    "search": "tony hawks american wasteland",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "slipcover"
+    ],
+    "publisher": "Activision",
+    "released": "2005-10-18",
+    "contents": "Slip cover and extras.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Splinter Cell: Chaos Theory Limited Collector's Edition",
+    "game": "Tom Clancy's Splinter Cell: Chaos Theory",
+    "search": "splinter cell chaos theory",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "metal case"
+    ],
+    "publisher": "Ubisoft",
+    "released": "2005-03-28",
+    "contents": "Metal keep case (it imitates a SteelBook) with a bonus DVD.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Dragon Ball Z: Budokai 3 Limited Edition",
+    "game": "Dragon Ball Z: Budokai 3",
+    "search": "dragon ball z budokai 3",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [
+     "figure"
+    ],
+    "kinds": [
+     "box",
+     "figure"
+    ],
+    "publisher": "Atari",
+    "released": "2004-11-16",
+    "contents": "Cardboard box with a Broly chibi figure and a DVD.",
+    "note": "The figure is part of it, so \"figure\" is allowed.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Grand Theft Auto: San Andreas Special Edition",
+    "game": "Grand Theft Auto: San Andreas",
+    "search": "grand theft auto san andreas",
+    "require": [
+     "special edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "digipak"
+    ],
+    "publisher": "Rockstar",
+    "released": "2004-10-25",
+    "contents": "Digipak with a bonus DVD.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Mortal Kombat: Deception Premium Pack",
+    "game": "Mortal Kombat: Deception",
+    "search": "mortal kombat deception",
+    "require": [
+     "premium pack"
+    ],
+    "allow": [],
+    "kinds": [
+     "slipcover"
+    ],
+    "publisher": "Midway",
+    "released": "2004-10-03",
+    "contents": "Keep case with a fold-open slip cover and a playable Mortal Kombat 1.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Batman: Rise of Sin Tzu Action Figure Commemorative Edition",
+    "game": "Batman: Rise of Sin-Tzu",
+    "search": "batman rise of sin tzu",
+    "require": [
+     "commemorative edition"
+    ],
+    "allow": [
+     "figure"
+    ],
+    "kinds": [
+     "box",
+     "figure"
+    ],
+    "publisher": "Ubisoft",
+    "released": "2003-10-22",
+    "contents": "Robin figure in a large cardboard box.",
+    "note": "The figure is part of it, so \"figure\" is allowed.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Robotech: Battlecry Collector's Edition",
+    "game": "Robotech Battlecry",
+    "search": "robotech battlecry",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [
+     "shirt"
+    ],
+    "kinds": [
+     "box",
+     "shirt"
+    ],
+    "publisher": "TDK Mediactive",
+    "released": "2002-09-25",
+    "contents": "Silver cardboard box with a soundtrack, a T-shirt, cards and a dog tag.",
+    "note": "The shirt is part of it, so \"shirt\" is allowed.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Shin Megami Tensei: Devil Summoner 2 First Edition",
+    "game": "Shin Megami Tensei: Devil Summoner 2: Raidou Kuzunoha vs. King Abaddon",
+    "search": "shin megami tensei devil summoner 2",
+    "require": [
+     "first edition"
+    ],
+    "allow": [
+     "plush"
+    ],
+    "kinds": [
+     "box",
+     "plush"
+    ],
+    "publisher": "Atlus",
+    "released": "2009-03-12",
+    "contents": "Cardboard box with a window and a Raiho plush.",
+    "note": "The plush is part of it, so \"plush\" is allowed.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/game-db?c=PS2&e=NTSC",
+      "figure": "listed as an edition of this game, with the contents above",
+      "date": "2026-10-14"
+     }
+    ]
+   }
+  ]
+ }
+}

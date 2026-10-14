@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-14: limited and collector's editions
+
+- New `editions.json`: 32 known PS2 limited, collector's, premium and steelbook editions (12 PAL, 20 US), made by hand from the
+  Collectors Edition game database's PS2 lists (each entry read on 2026-10-14, its source linked). Includes both Resident Evil 4
+  steelbooks (PAL Limited Edition, US Premium Edition). Left out: Dragon Ball Z Budokai 3 Collector's Edition (PAL), Silent Hill 2
+  Special 2 Disc Set (PAL) and Bully Special Edition (NTSC), whose pages did not load; Japanese editions (only US and UK are priced).
+- `ebay_prices.py` reads it with `load_rare(EDITIONS_PATH, kind="edition")` and prices each edition once a day on its list's site
+  (PAL on eBay UK, US on eBay US), searching the game's name plus the entry's `require` words, so a plain copy never counts.
+  Editions are `kind: "edition"` in `latest.json`, are listed under `latest["editions"]`, and stay out of the PS2 price index,
+  the Rarest page and the eBay prices list. Numbers only are kept.
+- The game page shows an "Editions of this game" section: contents, release, its own eBay price, an eBay search link and the source.
+
 ## 2026-10-14: more covers found
 
 - `tools/build_covers.py` now accepts any region as a last resort (Cart Kings is only filed under India), matches the collection's zero-padded numbers ("Ace Combat 04"), and links near-identical spellings (typos in the library such as "Alien Homind", "Vol." / "Volume", an added "The") when the numbers agree and no one- or two-letter word differs ("DDR Max" is not "DDR X"). Library games with a cover: 76% -> 82% (5,172 keys).

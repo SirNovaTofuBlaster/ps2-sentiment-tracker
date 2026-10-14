@@ -150,6 +150,7 @@ class Sandbox:
                                                      for title in archive])
         for name, value in (("WATCHLIST_PATH", self.root / "ebay_watchlist.json"),
                             ("RARE_PATH", self.root / "rare_games.json"),
+                            ("EDITIONS_PATH", self.root / "editions.json"),
                             ("CONSOLES_PATH", self.root / "rare_consoles.json"),
                             ("FEED_PATH", self.data / "sentiment_feed.json"),
                             ("ARCHIVE_DIR", self.data / "archive"),
@@ -2936,3 +2937,68 @@ class KeyStaysInOnePlaceTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EditionTests(unittest.TestCase):
+    """editions.json: limited and collector's editions, priced on their own and kept off the PS2 index."""
+
+    def setUp(self):
+        self.sandbox = Sandbox(self, feed=[mention("Silent Hill 2", 5, "r/ps2")])
+        self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["Resident Evil 4"])
+        self.sandbox.feed([mention("Silent Hill 2", 5, "r/ps2"), mention("Resident Evil 4", 4, "r/ps2")])
+
+    def editions(self, pal=(), us=()):
+        self.sandbox.write("editions.json", {"lists": {"PAL": list(pal), "US": list(us)}})
+
+    RE4 = {"title": "Resident Evil 4 Limited Edition", "search": "resident evil 4", "require": ["limited edition"]}
+
+    def test_an_edition_without_require_words_is_left_out_and_named(self):
+        self.editions(pal=[dict(self.RE4), {"title": "Resident Evil 4 Plain", "search": "resident evil 4"}])
+        entries, problems = ebay_prices.load_rare(self.sandbox.root / "editions.json", kind="edition")
+        self.assertEqual([entry["title"] for entry in entries], ["Resident Evil 4 Limited Edition"])
+        self.assertEqual(entries[0]["kind"], "edition")
+        self.assertEqual(len(problems), 1, problems)
+        self.assertIn("needs \"require\" words", problems[0])
+
+    def test_an_edition_is_priced_on_its_own_site_by_its_words_and_never_as_the_plain_game(self):
+        self.editions(pal=[dict(self.RE4)])
+
+        def answer(params, headers):
+            if params["q"] == "resident evil 4 limited edition":
+                return page(listing("Resident Evil 4 Limited Edition Steelbook PS2 PAL", 80, "GBP", item_id=1),
+                            listing("Resident Evil 4 PS2 PAL", 6, "GBP", item_id=2))
+            return two_copies(params, headers)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        latest = self.sandbox.latest
+        edition = latest["games"]["Resident Evil 4 Limited Edition"]
+        self.assertEqual((edition["kind"], edition["level"], edition["sites"]), ("edition", "rare", ["UK"]))
+        self.assertEqual((edition["UK"]["copies"], edition["UK"]["median"]), (1, 80.0), "the plain copy is not counted")
+        self.assertEqual(latest["editions"], {"PAL": {"Resident Evil 4 Limited Edition": "Resident Evil 4 Limited Edition"}, "US": {}})
+        self.assertNotIn("rare", latest, "editions are not on the Rarest page")
+        asked = {(call["headers"]["X-EBAY-C-MARKETPLACE-ID"], call["params"]["q"]) for call in fake.searches}
+        self.assertNotIn(("EBAY_US", "resident evil 4 limited edition"), asked, "a PAL edition is not looked for in America")
+        self.assertIn("Editions: 1 entries, 1 PAL, 0 US, each priced on its own.", printed)
+        self.assertNotIn("Resident Evil 4 Limited Edition", [row for row in latest["games"] if latest["games"][row].get("level") == "normal"])
+
+    def test_editions_stay_out_of_the_price_index(self):
+        latest = {"games": {"Resident Evil 4 Limited Edition": {"kind": "edition"}, "Kuon": {}}, "currencies": {}}
+        index = ebay_prices.index_file([], latest, NOON, ())
+        self.assertIn("resident evil 4 limited edition", index["left_out"])
+        self.assertNotIn("kuon", index["left_out"])
+
+    def test_the_committed_file_is_well_formed_and_every_edition_has_a_source(self):
+        path = Path(__file__).resolve().parent.parent / "editions.json"
+        entries, problems = ebay_prices.load_rare(path, kind="edition")
+        self.assertEqual(problems, [])
+        raw = json.loads(path.read_text(encoding="utf-8"))
+        rows = [row for rows in raw["lists"].values() for row in rows]
+        self.assertEqual(len(entries), len(rows))
+        titles = [row["title"] for row in rows]
+        self.assertEqual(len(titles), len(set(titles)), "titles are unique")
+        for row in rows:
+            self.assertTrue(row["require"], row["title"])
+            self.assertTrue(row["evidence"] and all(item["source"].startswith("https://") and item["date"] for item in row["evidence"]), row["title"])
+            self.assertTrue(row["contents"] and row["released"] and row["publisher"], row["title"])
+        self.assertIn("Resident Evil 4 Limited Edition", [row["title"] for row in raw["lists"]["PAL"]])
+        self.assertIn("Resident Evil 4 Premium Edition", [row["title"] for row in raw["lists"]["US"]])
