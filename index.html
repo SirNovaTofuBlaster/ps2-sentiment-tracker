@@ -1121,7 +1121,7 @@
                         <span class="text-slate-300 whitespace-nowrap">${count} mention${count === 1 ? '' : 's'}</span>
                     </div>
                     <div class="mt-1 text-[11px] text-slate-400">${shown}${more > 0 ? ` <span class="text-slate-500">+${more} more</span>` : ''}</div>
-                    ${compactPriceHtml(game.name)}
+                    ${listPricesHtml(game.name)}
                 </li>`;
             }).join('');
             foldList('todayList', recent.games.length);
@@ -1204,7 +1204,7 @@
                         </span>
                     </div>
                     <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full bg-cyan-500" style="width:${Math.max(game.demand, 2)}%"></div></div>
-                    ${compactPriceHtml(game.title)}
+                    ${listPricesHtml(game.title)}
                 </li>`;
             }).join('');
             foldList('demandList', shown.length);
@@ -1254,7 +1254,7 @@
                         <span class="text-slate-300 whitespace-nowrap">${game.count} mention${game.count === 1 ? '' : 's'} · ${pct >= 10 ? Math.round(pct) : pct.toFixed(1)}%</span>
                     </div>
                     <div class="mt-2 h-2 bg-slate-950 border border-slate-800"><div class="h-full bg-cyan-500" style="width:${Math.max(pct, 2)}%"></div></div>
-                    ${compactPriceHtml(game.name)}
+                    ${listPricesHtml(game.name)}
                 </li>`;
             }).join('');
             foldList('topGamesList', ranked.length);
@@ -1550,6 +1550,10 @@
             return `<span class="ebay-quotes">${figures.join('')}</span>`;
         }
 
+        // What a list row carries under a game's name: the short prices, then the search buttons
+        // (eBay, PriceCharting and the other shops) so a game can be looked up from the list.
+        const listPricesHtml = (title, now, locale) => compactPriceHtml(title, now, locale) + priceLookupHtml(title);
+
         // The game page's price block: every site with all its figures, the chart, the lookups.
         function gamePriceDetailHtml(title, now = Date.now(), locale) {
             const row = priceIndex.get(priceKey(title));
@@ -1621,6 +1625,7 @@
                             ? ` <span class="level-tag level-${esc(row.level)}" title="${esc(level.hint)}">${esc(level.tag)}</span>` : ''}</span>
                         ${compactPriceHtml(row.title, now, locale) || '<span class="ebay-note">no price yet</span>'}
                     </div>
+                    ${priceLookupHtml(row.title)}
                 </li>`;
             }).join('');
             });
@@ -2901,7 +2906,7 @@
                         ${esc(item.headline)}
                     </td>
                     <td data-col="game"${lead ? '' : ' data-unmatched'} class="py-3.5 px-4 font-mono-custom text-cyan-300">${lead
-                        ? gameLinkHtml(lead) + compactPriceHtml(lead) + (others.length
+                        ? gameLinkHtml(lead) + listPricesHtml(lead) + (others.length
                             ? `<div class="mt-1.5 text-[10px] text-slate-400">also names ${others.slice(0, ALSO_NAMED).map(esc).join(', ')}${
                                 others.length > ALSO_NAMED ? ` and ${others.length - ALSO_NAMED} more` : ''}</div>` : '')
                         : '<span class="text-slate-500">Unmatched / General</span>'}</td>

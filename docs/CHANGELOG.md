@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-14: search buttons back in the lists
+
+- The eBay / PriceCharting / shop search buttons (`priceLookupHtml()`) were removed from list rows with the detail; they are back under every game's name (`listPricesHtml()` = short prices + buttons) and also on the game page.
+
 ## 2026-10-14: game pages hold the detail, lists show three prices
 
 - Asked for by the maintainer after the eBay prices page felt slow. Lists (Tracker, Demand Index, Most mentioned,
