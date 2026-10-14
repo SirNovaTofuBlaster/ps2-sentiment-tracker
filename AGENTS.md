@@ -125,6 +125,12 @@ python ebay_prices.py --plan              # which games would be priced now and 
     (the board server's own `Last-Modified` date, kept as `modified` in `feed_status.json`),
     4chan named as the source with a link, and its name or logo never used to promote the
     site. A test checks that no poster text reaches the snapshot.
+13. **Never contact anyone** (the maintainer's decision of 2026-10-14). No emails, messages,
+    contact-form entries, support tickets, licence or permission requests, or API-access
+    applications to eBay, PriceCharting, shops, marketplaces, site owners or anyone else, and
+    no sign-ups for accounts or keys on the maintainer's behalf. Research reads public pages
+    only. If outreach would help, write it up as a suggestion for the maintainer, who decides
+    and sends it themselves.
 
 ## Making a change: the skeptical checklist
 
