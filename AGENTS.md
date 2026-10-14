@@ -260,7 +260,8 @@ Before you call something done, prove it; don't assume it.
     hours (`STEADY_EVERY_HOURS`) while, in the last 6 days of history, it had 50+ copies at every check,
     its median stayed within 10% and its copy count within 30% of their middles, with 3+ rows spanning
     4+ days (`is_steady()`). It is worked out per game and site from the history rows, so there is no new
-    level and nothing new in `latest.json`; the first check that breaks the pattern puts it back on 6
+    level; a figure on that clock carries `steady: true` in `latest.json` and the dashboard allows it 56 hours
+    before dimming it; the first check that breaks the pattern puts it back on 6
     hours. Chosen by replaying the first nine days of history: 0.4% of flagged moments saw a move
     over 10% within two days. Re-run that replay before loosening the limits.
   - About half of the "surging" flags in the first week were matcher mistakes (the wrong game

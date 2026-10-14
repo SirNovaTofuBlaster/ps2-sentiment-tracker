@@ -1024,12 +1024,16 @@
             return ` · <span class="ebay-complete" title="${esc(`Median of the ${complete.copies} ${complete.copies === 1 ? 'copy' : 'copies'} whose listing does not say disc only, no manual or no case: closer to what a complete copy costs.`)}">complete ${esc(money(complete.median, currency, locale))} (${esc(complete.copies)})</span>`;
         }
 
+        // A steady figure (data/prices/latest.json "steady") is checked every 48 hours, not every 6.
+        const STEADY_STALE_HOURS = 56;
+        const staleFor = (site, hours) => (site && site.steady === true ? Math.max(hours, STEADY_STALE_HOURS) : hours);
+
         function priceSiteHtml(label, site, currency, now, locale, staleHours) {
             const flag = `<span class="ebay-flag">${esc(label)}</span>`;
             if (!site || typeof site !== 'object') {
                 return `<span class="ebay-site is-quiet">${flag}<span class="ebay-note">not checked yet</span></span>`;
             }
-            const age = priceAge(site.checked, now, staleHours);
+            const age = priceAge(site.checked, now, staleFor(site, staleHours));
             const when = age.text ? ` <span class="ebay-age" title="${age.stale
                 ? 'Not checked for longer than usual' : 'When eBay was last asked'}">· ${esc(age.text)}</span>` : '';
             const copies = Number.isFinite(site.copies) ? site.copies : 0;
@@ -1054,7 +1058,7 @@
                 const copies = site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) ? site.copies : 0;
                 if (!copies || typeof site.median !== 'number') return '';
                 const currency = currencyOf(label);
-                const age = priceAge(site.checked, now, LEVELS[row.level].stale);
+                const age = priceAge(site.checked, now, staleFor(site, LEVELS[row.level].stale));
                 const lowest = money(site.lowest, currency, locale);
                 const hint = `Median asking price of ${copies}${site.truncated ? '+' : ''} used ${copies === 1 ? 'copy' : 'copies'} on eBay ${label}`
                     + (lowest ? `, cheapest ${lowest}` : '')

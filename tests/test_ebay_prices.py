@@ -977,6 +977,21 @@ class SteadyTests(unittest.TestCase):
         self.assertEqual(self.due(entry, 30, history), 0)
         self.assertEqual(self.due(entry, 48, history), 2)
 
+    def test_a_steady_figure_is_marked_so_the_dashboard_does_not_call_it_overdue(self):
+        entry = game("Grand Theft Auto San Andreas")
+        history = self.rows(entry, "US", 5)
+        stamp = (NOON - timedelta(hours=49)).strftime(ebay_prices.STAMP_FORMAT)
+        state = {"games": {entry["title"]: {"US": {"checked": stamp}, "UK": {"checked": stamp}}}}
+        self.assertEqual(len(ebay_prices.due_lookups([entry], state, NOON, history)), 2)
+        self.assertEqual(entry["steady_on"], ["US"])
+        result = {"status": "ok", "counted": 100, "lowest": 8.0, "median": 10.0, "truncated": False,
+                  "median_postage": None, "fetched": 100}
+        run = {"results": [(entry, "EBAY_US", result), (entry, "EBAY_GB", result)], "searches": 2}
+        latest, _ = ebay_prices.update_records(state, [entry], run, NOON)
+        row = latest["games"][entry["title"]]
+        self.assertIs(row["US"].get("steady"), True)
+        self.assertNotIn("steady", row["UK"])
+
     def test_without_history_it_stays_on_six_hours(self):
         entry = game("Grand Theft Auto San Andreas")
         self.assertEqual(self.due(entry, 7, []), 2)
