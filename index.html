@@ -1204,16 +1204,36 @@
             shelf.innerHTML = top.map(game => {
                 const count = game.headline + game.text;
                 const cover = coverUrl(game.name);
-                const label = PRICE_ORDER.map(site => [site, medianOf(game.name, site)]).find(([, m]) => m !== null);
-                const price = label ? money(label[1], currencyOf(label[0])) : '';
                 const title = `${game.name}: ${count} mention${count === 1 ? '' : 's'} in the last ${RECENT_HOURS} hours`;
                 return `<li class="shelf-item"><a class="shelf-link" href="#game=${esc(encodeURIComponent(game.name))}" onclick="return openGameLink(event, ${esc(JSON.stringify(game.name))})" title="${esc(title)}" aria-label="${esc(title)}">
                     <span class="shelf-cover"><span class="coll-initials" aria-hidden="true">${esc(initialsOf(game.name))}</span>${cover
                         ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
                         <span class="shelf-count">${count}</span></span>
-                    <span class="shelf-name">${esc(game.name)}</span>${price ? `<span class="shelf-price">${esc(price)}</span>` : ''}</a></li>`;
+                    <span class="shelf-name">${esc(game.name)}</span>${shelfQuotesHtml(game.name)}</a></li>`;
             }).join('');
             updateShelfArrows();
+        }
+
+        // The three prices under a shelf box: the eBay US median in dollars, the eBay UK median in pounds, and euros: the
+        // cheapest of the euro sites' medians, or, where none has a figure, the UK (else US) median converted at the ECB
+        // rate and marked ≈. "-" where there is nothing; the EUR button still converts the dollars and pounds as everywhere.
+        function shelfQuotesHtml(name) {
+            const us = medianOf(name, 'US');
+            const uk = medianOf(name, 'UK');
+            const euros = PRICE_SITES.filter(label => currencyOf(label) === 'EUR').map(label => medianOf(name, label)).filter(value => value !== null);
+            let euro = null;
+            if (euros.length) euro = { text: money(Math.min(...euros), 'EUR'), hint: 'Lowest median asking price across the euro eBay sites' };
+            else {
+                const [from, currency] = uk !== null ? [uk, 'GBP'] : [us, 'USD'];
+                const rate = from !== null && fxData && own(fxData.rates, currency) ? fxData.rates[currency] : null;
+                if (rate) euro = { text: '≈' + money(from * rate, 'EUR'), hint: `No euro eBay site has a figure: the ${currency === 'GBP' ? 'UK' : 'US'} median converted at the European Central Bank rate` };
+            }
+            const quote = (flag, text, hint) => text
+                ? `<span class="shelf-quote" title="${esc(hint)}"><span class="shelf-flag">${flag}</span><b>${esc(text)}</b></span>`
+                : `<span class="shelf-quote is-none" title="No copies priced"><span class="shelf-flag">${flag}</span><b>&ndash;</b></span>`;
+            return `<span class="shelf-quotes">${quote('US', us === null ? '' : money(us, currencyOf('US')), 'Median asking price on eBay US')}${
+                quote('UK', uk === null ? '' : money(uk, currencyOf('UK')), 'Median asking price on eBay UK')}${
+                quote('EU', euro?.text ?? '', euro?.hint ?? '')}</span>`;
         }
 
         // An arrow moves the row by what is on screen (less a little, so the last box stays in view);
