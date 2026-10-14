@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-14: one tile per game in the Library, more covers, the rest of the .hack games
+
+- The Library showed a game once for every spelling the library has (".hack Infection Part 1" and "Hack: Part 1: Infection", "Club Football 2005: Arsenal" and "Arsenal FC: Club Football 2005", "Alien Homind", ...).
+  `tools/build_covers.py` now writes `same` into `covers.json`: 533 spellings folded into the 3,342 games left on the page. Two spellings are one game when `loose_key()` (publisher prefixes, "volume"/"vol", word order,
+  articles ignored; numbers kept) is equal, or when they share one Libretro file and the same numbers. The shown spelling is the library file's, never a misspelling (a word nothing else uses). Region is chosen
+  when adding (PAL / US in the bar; the picture follows), and the copy is filed under the spelling eBay prices on that region's site.
+- Covers: about 120 more hand-checked name pairs in `MANUAL`, aliases may now point at other aliases (three passes), and `loose_key()` finds the rest: 701 games without a picture became 326 (a third of those are SingStar
+  discs, club-football discs, magazines and preview discs the Libretro collection does not have).
+- `.hack//Fragment`, `.hack//G.U. Terminal Disc` and `.hack//G.U. Vol.1 Rebirth Terminal Disc` added to `search_extra_titles.json` (808 names); the seven main parts were already in the library.
+- `genres.json` rebuilt: a genre for 4,425 keys.
+
 ## 2026-10-14: the Library tab
 
 - New tab, **Library**: every game in the library (`data/ps2_database.json` plus `search_extra_titles.json`, one box per `priceKey()`) as cover art, A to Z with letter jump buttons or grouped by genre, with a

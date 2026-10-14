@@ -2482,6 +2482,26 @@ await check('Library: every game once, A to Z or by genre, filtered, and a click
     assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['God Hand'], 'the filter ignores spaces and punctuation');
     run(`setLibraryFilter('')`);
 
+    // Regional and misspelt names of one game are one tile; adding picks the spelling eBay has a price for in that region
+    run(`setLibrary(['Project Zero', 'Fatal Frame', 'God Hand', 'Alien Homind', 'Alien Hominid'])`);
+    run(`coverSame = { [priceKey('Fatal Frame')]: priceKey('Project Zero'), [priceKey('Alien Homind')]: priceKey('Alien Hominid') }; librarySorted = null`);
+    run(`setPrices({ currencies: { UK: 'GBP', US: 'USD' }, games: {
+        'Fatal Frame': { level: 'normal', mentions: 1, US: { copies: 5, median: 40, checked: '2026-10-14T10:00Z' } },
+        'Project Zero': { level: 'normal', mentions: 1, UK: { copies: 4, median: 30, checked: '2026-10-14T10:00Z' } } } }, null)`);
+    run(`renderLibrary()`);
+    assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['Alien Hominid', 'God Hand', 'Project Zero'], 'two spellings, one tile; the shown spelling is the one the file names');
+    assert.deepEqual(evalJson(`libraryShown.find(g => g.title === 'Project Zero').variants.sort()`), ['Fatal Frame', 'Project Zero']);
+    assert.equal(run(`libraryTitleFor(libraryShown[2], 'US')`), 'Fatal Frame', 'a US copy is filed under the name the US site prices');
+    assert.equal(run(`libraryTitleFor(libraryShown[2], 'PAL')`), 'Project Zero');
+    assert.equal(run(`libraryTitleFor(libraryShown[1], 'PAL')`), 'God Hand', 'no price anywhere: the shown name');
+    run(`libraryPick(2)`); el('libraryAddRegion').value = 'US'; el('libraryAddCondition').value = 'loose'; run(`libraryAddPicked()`);
+    assert.deepEqual(evalJson(`collection.map(e => [e.title, e.region])`), [['Fatal Frame', 'US']]);
+    run(`renderLibrary()`);
+    assert.match(el('libraryGrid').innerHTML, /lib-tile is-owned/, 'the one tile shows as owned whichever spelling is in the collection');
+    run(`collection = []; libraryClosePicked(); coverSame = {}; librarySorted = null`);
+    run(`setLibrary(['The Getaway', 'God Hand', '007: Agent Under Fire', 'Zone of the Enders', 'Gran Turismo 4', 'Kuon'])`);
+    run(`genreData = { names: ['Action', 'Racing'], genres: { [priceKey('God Hand')]: 0, [priceKey('Gran Turismo 4')]: 1, [priceKey('Zone of the Enders')]: 0 } }; renderLibrary()`);
+
     // A click opens the bar; adding goes to My collection and marks the tile
     run(`libraryPick(1)`);
     assert.equal(el('libraryAdd').classList.contains('hidden'), false);

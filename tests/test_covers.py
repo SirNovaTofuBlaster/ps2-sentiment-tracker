@@ -64,5 +64,45 @@ class BuildCovers(unittest.TestCase):
         self.assertGreater(have / len(library), 0.8, "most library games have a cover")
 
 
+class OneTilePerGame(unittest.TestCase):
+    """covers.json["same"] folds the library's many spellings of one game into the spelling the Library page shows."""
+
+    @classmethod
+    def setUpClass(cls):
+        with open(os.path.join(ROOT, "covers.json"), encoding="utf-8") as handle:
+            cls.doc = json.load(handle)
+        cls.titles = build_covers.library_titles()
+
+    def test_every_folded_spelling_is_a_library_name_and_points_at_one_that_stays(self):
+        same = self.doc["same"]
+        self.assertGreater(len(same), 300)
+        for key, shown in same.items():
+            self.assertIn(key, self.titles)
+            self.assertIn(shown, self.titles)
+            self.assertNotIn(shown, same, f"{key} -> {shown} -> another: the chain would leave a game with two tiles")
+
+    def test_regional_names_publisher_prefixes_and_typos_meet_but_sequels_do_not(self):
+        same = self.doc["same"]
+        def shown(title):
+            key = search_terms(title)[0]
+            return same.get(key, key)
+        self.assertEqual(shown("Hack: Part 1: Infection"), shown(".hack Infection Part 1"))
+        self.assertEqual(shown("Club Football 2005: Arsenal"), shown("Arsenal FC: Club Football 2005"))
+        self.assertEqual(shown("Alien Homind"), shown("Alien Hominid"))
+        self.assertEqual(shown("Disney's Finding Nemo"), shown("Disney/Pixar Finding Nemo"))
+        for a, b in (("Ratchet & Clank", "Ratchet & Clank 2: Going Commando"), ("Burnout 2", "Burnout 3"),
+                     ("Ty the Tasmanian Tiger", "Ty the Tasmanian Tiger 2: Bush Rescue"), ("Jak and Daxter", "Jak II")):
+            if search_terms(a)[0] in self.titles and search_terms(b)[0] in self.titles:
+                self.assertNotEqual(shown(a), shown(b), f"{a} and {b} are different games")
+
+    def test_the_hack_games_are_all_in_the_library_with_pictures(self):
+        wanted = ["hack part 1 infection", "hack part 2 mutation", "hack part 3 outbreak", "hack part 4 quarantine",
+                  "hack g u vol 1 rebirth", "hack g u vol 2 reminisce", "hack g u vol 3 redemption",
+                  "hack g u vol 1 rebirth terminal disc", "hack g u terminal disc the end of the world", "hack fragment"]
+        for key in wanted:
+            self.assertIn(key, self.titles)
+            self.assertIn(key, self.doc["covers"], key)
+
+
 if __name__ == "__main__":
     unittest.main()
