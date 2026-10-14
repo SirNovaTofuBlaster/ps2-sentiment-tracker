@@ -101,6 +101,13 @@ SOURCE_PREFIX = {"youtube": "YouTube: ", "podcast": "Podcast: ", "forum": "Forum
 BOARD_TYPE = "4chan"
 BOARD_CATALOG_URL = "https://a.4cdn.org/{}/catalog.json"
 BOARD_THREAD_URL = "https://boards.4chan.org/{}/thread/{}"
+BOARD_THREAD_JSON_URL = "https://a.4cdn.org/{}/thread/{}.json"
+# Replies are read for the names of PS2 games and for nothing else (the maintainer's decision of 2026-10-14, which widens
+# 2026-10-07's "opening post only"): the last few replies the catalog carries with each thread, and, for a thread that
+# already names a game, its other replies from the thread's own file. A board reads at most this many such files per run,
+# busiest threads first, and stops after this many seconds of them.
+BOARD_THREAD_READS = 12
+BOARD_THREAD_BUDGET = 120
 BOARD_PATTERN = re.compile(r"[a-z0-9]{1,6}")
 BOARD_REQUEST_GAP = 1.1  # seconds between two catalog requests
 # A Last-Modified date as servers write it ("Wed, 07 Oct 2026 13:31:02 GMT"). It is sent back
@@ -684,6 +691,24 @@ def fetch_board(session, url, modified=None):
     return threads, http_date(response.headers.get("Last-Modified"))
 
 
+def fetch_thread(session, url, modified=None):
+    """(the replies of one thread, when it last changed) from 4chan's thread file.
+
+    Like fetch_board(): hand the date back as `modified` and a thread nobody has replied to since answers
+    "not modified" (replies None, the date given). The opening post is left out, and so is anything that is
+    not a post."""
+    modified = http_date(modified)
+    response = session.get(url, timeout=REQUEST_TIMEOUT, headers={"If-Modified-Since": modified} if modified else {})
+    if response.status_code == 304:
+        return None, modified
+    response.raise_for_status()
+    body = response.json()
+    posts = body.get("posts") if isinstance(body, dict) else None
+    if not isinstance(posts, list):
+        raise ValueError("unreadable thread")
+    return [post for post in posts[1:] if isinstance(post, dict)], http_date(response.headers.get("Last-Modified"))
+
+
 def _stem_hit(token, stems):
     return any(token.startswith(stem) for stem in stems)
 
@@ -1028,13 +1053,31 @@ def games_in_post(text, matcher, ps2_source=False):
     return kept
 
 
-def analyze_thread(thread, job, matcher, ps2_keys):
-    """An item for a thread whose opening post names a PS2 game; None for every other thread.
+def reply_games(posts, matcher, ps2_source):
+    """The PS2 games named in replies, as (title, score, method), each once. Only the names are taken: a reply is
+    read the way a comment is (its first MAX_BODY_TOKENS words) and nothing of it is returned but the games."""
+    found, seen = [], set()
+    for post in posts or ():
+        if not isinstance(post, dict):
+            continue
+        text = first_words(board_text(post.get("com")), MAX_BODY_TOKENS)
+        for hit in games_in_post(text, matcher, ps2_source) if text else ():
+            if hit[0] not in seen:
+                seen.add(hit[0])
+                found.append(hit)
+    return found
+
+
+def analyze_thread(thread, job, matcher, ps2_keys, more_titles=()):
+    """An item for a thread that names a PS2 game, in its opening post or in the replies; None for every other thread.
 
     Nothing a poster wrote is kept. The item says which games were named, on which board
     and when, and links to the thread; its headline is written here from the game names.
     The text is not scored for sentiment and never raises a remaster flag: these boards are
-    counted for the games they mention and for nothing else."""
+    counted for the games they mention and for nothing else.
+
+    The replies read here are the few the catalog carries with a thread (`last_replies`); `more_titles` are games
+    already found in the rest of its replies (scan_board() reads them from the thread's own file)."""
     number, timestamp = thread.get("no"), thread_timestamp(thread)
     if isinstance(number, bool) or not isinstance(number, int) or timestamp is None:
         return None
@@ -1046,14 +1089,21 @@ def analyze_thread(thread, job, matcher, ps2_keys):
     # A subject is the thread's headline. Most threads have none, and then the comment is all
     # there is: it is read the same way but marked as body text, so that a game named there
     # counts as a mention without counting as a headline (the price checker's "surging" level
-    # goes by headlines).
+    # goes by headlines). A game named only in a reply is body text too.
     found, matched_in = (games_in_post(subject, matcher, ps2_source), "title") if subject else ([], None)
     if not found and comment:
         found, matched_in = games_in_post(comment, matcher, ps2_source), "body"
+    preview = thread.get("last_replies")
+    heard = reply_games(preview if isinstance(preview, list) else (), matcher, ps2_source)
+    if not found and heard:
+        found, matched_in = heard, "body"
     if not found:
-        return None
+        return None  # replies from the thread's own file only ever add to a thread that is already named
     game, score, method = found[0]
     titles = [title for title, _, _ in found]
+    for title in [hit[0] for hit in heard] + [t for t in more_titles if isinstance(t, str)]:
+        if title not in titles:
+            titles.append(title)
     return {
         "headline": f"Thread on /{source['board']}/ naming {games_named(titles)}",
         "source": f"4chan /{source['board']}/",
@@ -1080,22 +1130,76 @@ def scan_board(session, job, matcher, status, ps2_keys):
     A thread counts on the day it was started. On a slow board a thread can stay live for
     months or years, and one started before the feed's window is not a new mention: it is
     left out here, as an old article still listed in a news feed is left out when the
-    snapshot is trimmed."""
+    snapshot is trimmed.
+
+    A thread that names a game and has replies the catalog did not carry gets its own file read for the other
+    games its replies name (read_replies()). What is kept per such thread, in the board's status, is only the
+    games, the reply count and the file's Last-Modified date, so a thread nobody replied to is not asked for again."""
     key = source_key(job["sources"][0])
-    threads, modified = fetch_board(session, job["url"], status.get(key, {}).get("modified"))
-    items = []
+    previous = status.get(key, {})
+    threads, modified = fetch_board(session, job["url"], previous.get("modified"))
+    remembered = previous.get("threads") if isinstance(previous.get("threads"), dict) else {}
+    items, kept = [], {}
     if threads is None:  # nothing has been posted on the board since it was last read
         record_success(status, key, None)
+        kept = remembered
     else:
         cutoff = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).strftime(TIMESTAMP_FORMAT)
-        items = [item for item in (analyze_thread(t, job, matcher, ps2_keys) for t in threads)
-                 if item and item["timestamp"] >= cutoff]
+        named = [(t, analyze_thread(t, job, matcher, ps2_keys)) for t in threads]
+        named = [(t, item) for t, item in named if item and item["timestamp"] >= cutoff]
+        more, kept = read_replies(session, job, matcher, ps2_keys, named, remembered)
+        items = [analyze_thread(t, job, matcher, ps2_keys, more.get(t.get("no"), ())) or item for t, item in named]
         record_success(status, key, max(filter(None, map(thread_timestamp, threads)), default=None))
     if modified:
         # When the board itself last changed, as its server said: sent back next time. It is
         # not a "last checked" time, so a board nobody posts on leaves the status file alone.
         status[key]["modified"] = modified
+    if kept:
+        status[key]["threads"] = kept
     return items
+
+
+def read_replies(session, job, matcher, ps2_keys, named, remembered):
+    """({thread number: the games its replies name}, the notes to keep) for the threads of `named` (the board's
+    threads that name a game, with their items) that have replies the catalog did not show.
+
+    The busiest threads first, at most BOARD_THREAD_READS and for at most BOARD_THREAD_BUDGET seconds; one second
+    apart, with If-Modified-Since. A thread whose reply count has not changed since the last read is not asked for
+    again. A thread that cannot be read keeps what was known of it, and never stops the board."""
+    source = job["sources"][0]
+    ps2_source = source_key(source) in ps2_keys
+    live = {t.get("no") for t, _ in named}
+    kept = {number: note for number, note in remembered.items() if isinstance(note, dict) and number.isdigit() and int(number) in live}
+    games = {int(number): note.get("games") for number, note in kept.items() if isinstance(note.get("games"), list)}
+    wanted = []
+    for thread, _ in named:
+        replies, shown = thread.get("replies"), thread.get("last_replies")
+        if isinstance(replies, bool) or not isinstance(replies, int) or replies <= (len(shown) if isinstance(shown, list) else 0):
+            continue
+        if kept.get(str(thread["no"]), {}).get("replies") == replies:
+            continue
+        wanted.append((replies, thread["no"]))
+    started = time.monotonic()
+    for replies, number in sorted(wanted, reverse=True)[:BOARD_THREAD_READS]:
+        if time.monotonic() - started > BOARD_THREAD_BUDGET:
+            break
+        time.sleep(BOARD_REQUEST_GAP)  # one request a second
+        old = kept.get(str(number), {})
+        try:
+            posts, changed = fetch_thread(session, BOARD_THREAD_JSON_URL.format(source["board"], number), old.get("modified"))
+        except (requests.RequestException, ValueError):
+            continue
+        if posts is None:  # not modified: what was known stands, with the count it was known at
+            if old:
+                kept[str(number)] = {**old, "replies": replies}
+            continue
+        titles = [title for title, _, _ in reply_games(posts, matcher, ps2_source)]
+        note = {"replies": replies, "games": titles}
+        if changed:
+            note["modified"] = changed
+        kept[str(number)] = note
+        games[number] = titles
+    return {number: titles for number, titles in games.items() if number in live}, kept
 
 
 def load_previous_items():
@@ -1476,6 +1580,7 @@ def run_scraper():
                         time.sleep(max(0.0, BOARD_REQUEST_GAP - (time.monotonic() - last_board_request)))
                     last_board_request = time.monotonic()
                     feed, named = None, scan_board(session, job, matcher, status, ps2_keys)
+                    last_board_request = time.monotonic()  # a board's thread files count as requests too
                 else:
                     if job["type"] == "reddit":
                         wait = 0 if last_reddit_request is None else REDDIT_REQUEST_GAP - (time.monotonic() - last_reddit_request)

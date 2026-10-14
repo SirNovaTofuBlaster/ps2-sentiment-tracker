@@ -127,13 +127,16 @@ python ebay_prices.py --plan              # which games would be priced now and 
     inline scripts, and a curl smoke test of the static files. Use browser automation only when
     a human asks for it.
 12. **Nothing a 4chan poster wrote is ever kept** (the maintainer's decision of 2026-10-07).
-    The boards are read for the names of PS2 games and nothing else. No subject, comment,
+    The boards are read for the names of PS2 games and nothing else, in opening posts and in replies
+    (the catalog's `last_replies` and, for flagged threads, the thread file: `read_replies()`; what is kept per
+    thread is the titles, the reply count and `Last-Modified`, never a reply). No subject, comment,
     poster name, file name or anything derived from them may be written to `data/`, shown on
     the dashboard or printed in a log, except which library titles were matched and how
     (subject or comment, and by which rule of the matcher); the row's headline is written
     by the scraper. The rows are not scored for sentiment (`null`) and never count towards
     it. 4chan's API terms apply: at most one request a second, `If-Modified-Since` on each
-    (the board server's own `Last-Modified` date, kept as `modified` in `feed_status.json`),
+    (the board server's own `Last-Modified` date, kept as `modified` in `feed_status.json`; thread files
+    count against the same one-a-second gap),
     4chan named as the source with a link, and its name or logo never used to promote the
     site. A test checks that no poster text reaches the snapshot.
 13. **Never contact anyone** (the maintainer's decision of 2026-10-14). No emails, messages,
