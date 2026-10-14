@@ -852,3 +852,4 @@ body .row-cover-body { flex: 1 1 auto; min-width: 0; }
 /* Editions of a game, on its page (editions.json). */
 .edition-list { list-style: none; margin: 0.5rem 0 0; padding: 0; }
 .edition-item { border-top: 1px solid var(--line); padding: 0.6rem 0; font-size: 0.8rem; }
+body .coll-badge-edition { left: 0; bottom: 0; background: var(--accent); color: var(--bg); font-weight: 700; letter-spacing: 0.04em; }
