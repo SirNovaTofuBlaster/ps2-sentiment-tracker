@@ -669,7 +669,8 @@ await check('eBay prices page: every game, surging first, a line per site', () =
     assert.match(html, /<span class="ebay-quote" title="[^"]*"><span class="ebay-flag">US<\/span><b>\$34\.99<\/b><\/span>/, 'a quiet game is checked once a day, so 16 hours is not');
     assert.match(html, /<span class="ebay-note">no price yet<\/span>/, 'a game with no figure says so');
     assert.doesNotMatch(html, /<img/, 'titles are escaped');
-    for (const detail of ['ebay-median', 'ebay-rest', 'few copies', 'copies', 'price-links', 'chart-open', 'in headlines', 'median · from', 'ebay-age', 'class="ebay-figures"']) {
+    assert.equal((html.match(/<li /g) || []).length, (html.match(/class="price-links"/g) || []).length, 'every row keeps its eBay / PriceCharting search buttons');
+    for (const detail of ['ebay-median', 'ebay-rest', 'few copies', 'copies', 'chart-open', 'in headlines', 'median · from', 'ebay-age', 'class="ebay-figures"']) {
         assert.ok(!html.includes(detail), `${detail} belongs on the game's page, not in the list`);
     }
 
@@ -803,9 +804,10 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     const rows = el('topGamesList').innerHTML.split('<li ').slice(1);
     assert.equal(rows.length, 2);
     assert.match(rows[0], /#1 <a class="game-link"[^>]*>Persona 4<\/a>[\s\S]*<span class="ebay-quotes">/, 'the name opens the game, then the short prices');
-    assert.doesNotMatch(rows[0], /price-links/, 'the lookup chips live on the game page');
+    assert.match(rows[0], /<span class="ebay-quotes">[\s\S]*<span class="price-links"/, 'short prices first, then the eBay / PriceCharting search buttons');
     assert.match(rows[1], /#2 <a class="game-link"[^>]*>Black<\/a>/);
-    assert.doesNotMatch(rows[1], /ebay-quotes|price-links/, 'a game that is not priced shows nothing under its name');
+    assert.doesNotMatch(rows[1], /ebay-quotes/, 'a game that is not priced has no prices');
+    assert.match(rows[1], /class="price-links"/, 'but it keeps its search buttons');
 
     vm.runInContext('renderTable(__games)', context);
     const cells = el('feedTableBody').children.map(row => row.innerHTML.match(/<td data-col="game"[\s\S]*?<\/td>/)[0]);
@@ -826,7 +828,7 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     assert.deepEqual(named.map(row => [/>(?:Persona 4|Black)<\/button>/.exec(row)?.[0], /ebay-quotes/.test(row)]),
         [['>Persona 4</button>', true], ['>Black</button>', false]]);
     assert.match(named[0], /<a class="game-open" href="#game=Persona%204"[^>]*aria-label="Open the page for Persona 4"/, 'the filter button stays; a small link opens the game');
-    assert.doesNotMatch(named[0], /price-links/);
+    assert.match(named[0], /<span class="ebay-quotes">[\s\S]*<span class="price-links"/);
 
     // No price file: every list looks as it did before prices existed.
     showPrices(null);
@@ -1369,6 +1371,7 @@ await check('games first: what was named in the last day leads, and the table op
     assert.match(rows[9], />2 mentions<\/span>/);
     assert.doesNotMatch(rows.slice(0, 9).join(''), /in the text only/);
     assert.ok(rows.every(html => /class="game-open"/.test(html)), 'every game has a link to its page');
+    assert.ok(rows.every(html => /class="price-links"/.test(html)), 'every game carries its search buttons');
     assert.match(rows[6], /onclick="showGameRows\(6\)"[^>]*>Ratchet &amp; Clank &lt;3<\/button>/);
     assert.match(rows[6], /&lt;b&gt;Evil &amp; Co&lt;\/b&gt;/);
     assert.doesNotMatch(el('todayList').innerHTML, /<b>Evil|Clank <3/, 'nothing from a feed reaches the page as markup');
