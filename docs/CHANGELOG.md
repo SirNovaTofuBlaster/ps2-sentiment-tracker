@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: pictures the maintainer supplied
+
+- Eight games with no file in the Libretro collection now have a small (240 px wide, 12-30 KB) picture kept in `covers/`, listed under `local` in `covers.json` (`LOCAL` in `tools/build_covers.py`):
+  Final Fantasy X, Pro Evolution Soccer 2014, World Quiz, SingStar Deutsch Rock-Pop, Harry Potter Collection, Grand Theft Auto Complete Collection, Grand Theft Auto: The Trilogy and
+  The Silent Hill Collection. `coverUrl()` prefers them to the collection's file for every region, and their tile says "cover kept with this site". Served from the site itself, so the
+  privacy note about the collection's server does not apply to them.
+
 ## 2026-10-14: more covers
 
 - 21 more names share a cover the collection files under another title (`MANUAL` in `tools/build_covers.py`): Midnight Club (Street Racing), the Godfather editions, Cars, Cowboy Bebop

@@ -113,6 +113,20 @@ MANUAL = {
 }
 
 
+# Pictures the maintainer supplied for games the collection has no file for (2026-10-14), kept small (240 px wide) in covers/.
+# They are served from this site itself, so no third party is asked for them. A key here beats the collection's file.
+LOCAL = {
+    "final fantasy x": "covers/final-fantasy-x.jpg",
+    "pro evolution soccer 2014": "covers/pro-evolution-soccer-2014.jpg",
+    "world quiz": "covers/world-quiz.jpg",
+    "deutsch rock pop": "covers/singstar-deutsch-rock-pop.jpg",
+    "harry potter collection": "covers/harry-potter-collection.jpg",
+    "grand theft auto complete collection": "covers/grand-theft-auto-complete-collection.jpg",
+    "grand theft auto the trilogy": "covers/grand-theft-auto-the-trilogy.jpg",
+    "silent hill collection": "covers/silent-hill-collection.jpg",
+}
+
+
 def typo_of(key, spellings, unpadded):
     """A near-identical spelling (a typo in the library, "Vol." / "Volume", an added "The") with the same
     numbers. A difference of a one or two letter token ("max" / "x", "x2") is a different game, not a typo."""
@@ -166,7 +180,8 @@ def main():
     covers = add_aliases(build(sys.stdin))
     doc = {"what": "Which Libretro box-art file belongs to which game (key = priceKey()); the pictures are not stored here.",
            "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation_2", "base": BASE,
-           "checked": date.today().isoformat(), "covers": dict(sorted(covers.items()))}
+           "checked": date.today().isoformat(), "local": {key: path for key, path in LOCAL.items() if Path(path).is_file()},
+           "covers": dict(sorted(covers.items()))}
     Path("covers.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     print(f"{len(covers)} games with covers")
 
