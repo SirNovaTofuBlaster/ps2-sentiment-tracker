@@ -1863,6 +1863,17 @@
             }
         }
 
+        // What an edition comes in, as a short badge ("STEELBOOK"), or '' for a plain game.
+        const EDITION_BADGES = [['steelbook', 'STEELBOOK'], ['tin', 'TIN'], ['metal case', 'METAL CASE'], ['slipcase', 'SLIPCASE'],
+            ['slipcover', 'SLIPCOVER'], ['digipak', 'DIGIPAK'], ['figure', 'FIGURE SET'], ['plush', 'PLUSH SET'], ['box', 'BOXED SET']];
+        function editionBadge(title) {
+            const named = editionNamed(title);
+            if (!named) return '';
+            const kinds = Array.isArray(named.edition.kinds) ? named.edition.kinds : [];
+            const found = EDITION_BADGES.find(([kind]) => kinds.includes(kind));
+            return found ? found[1] : 'LIMITED';
+        }
+
         // The edition a title names, with the region it was sold in, or null.
         function editionNamed(title, data = editionsData) {
             const key = priceKey(title);
@@ -2638,7 +2649,8 @@
                         <span class="coll-initials" aria-hidden="true">${esc(initialsOf(entry.title))}</span>${cover
                             ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
                         ${entry.qty > 1 ? `<span class="coll-badge coll-badge-qty">×${esc(entry.qty)}</span>` : ''}
-                        <span class="coll-badge coll-badge-region">${esc(entry.region)}</span>
+                        <span class="coll-badge coll-badge-region">${esc(entry.region)}</span>${editionBadge(entry.title)
+                            ? `<span class="coll-badge coll-badge-edition" title="A limited or collector's edition; the picture is the game's usual box">${esc(editionBadge(entry.title))}</span>` : ''}
                     </a>
                     <button type="button" class="coll-remove" onclick="removeFromCollection(${index})" aria-label="Remove ${esc(entry.title)}" title="Remove">&times;</button>
                     <div class="coll-name">${esc(entry.title)}</div>
