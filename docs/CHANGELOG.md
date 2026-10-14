@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-14: faster page load
+
+- Measured in headless Chromium on the live data (7.6 MB feed, 484 priced games): about 1.4 s of blocked main
+  thread, 66,000 page elements, and 380 ms in `money()` building a new `Intl.NumberFormat` for every price.
+- `index.html`: `cachedFormat()` makes each number/date formatter once; the long lists of the two pages
+  that are not on screen (Most mentioned, eBay prices) are drawn when their tab is opened
+  (`drawForView()`, only where `requestIdleCallback` exists, so the Node checks draw them at once). Tab counts
+  still set at load. After: about 0.5 s blocked, 18,000 elements; the eBay prices tab takes about 0.4 s the first
+  time it is opened.
+- Not changed: the 7.6 MB `sentiment_feed.json` (about 12,900 items; the ceiling grows in steps from 30,000)
+  is still downloaded and parsed in full at load.
+
 ## 2026-10-14: covers fixed, collection button in the header
 
 - Covers were blank because Wikipedia's page-image lookup returns only freely licensed images unless asked
