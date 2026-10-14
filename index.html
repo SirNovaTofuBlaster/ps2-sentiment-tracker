@@ -766,11 +766,14 @@
                     return response.ok ? pick(await response.json()) : [];
                 } catch { return []; }
             };
-            const [base, extra] = await Promise.all([
+            const [base, extra, editions] = await Promise.all([
                 read('data/ps2_database.json', data => data),
                 read('search_extra_titles.json', data => data?.titles),
+                read('editions.json', data => data),   // limited and collector's editions are searchable too
             ]);
-            setLibrary([...(Array.isArray(base) ? base : []), ...(Array.isArray(extra) ? extra : [])]);
+            setLibrary([...(Array.isArray(base) ? base : []), ...(Array.isArray(extra) ? extra : []), ...editionTitles(editions)]);
+            if (!editionsData && editions && typeof editions === 'object' && !Array.isArray(editions)) editionsData = editions;
+            addEditionKeywords(editions);
         }
 
         // American spellings for the British ones people type ("honour" finds "Honor").
@@ -1835,6 +1838,54 @@
             return found;
         }
 
+        // Every edition's own title (editions.json), for the search boxes.
+        function editionTitles(data = editionsData) {
+            const lists = data && typeof data.lists === 'object' && data.lists ? data.lists : {};
+            return Object.keys(RARE_SITE).flatMap(region => (Array.isArray(lists[region]) ? lists[region] : [])
+                .map(edition => edition && edition.title).filter(title => typeof title === 'string' && title.trim()));
+        }
+
+        // An edition is also found by what it comes in: "steelbook", "tin", "slipcase" (its `kinds`), and
+        // by its game's name ("resident evil 4 steelbook").
+        function addEditionKeywords(data = editionsData) {
+            const lists = data && typeof data.lists === 'object' && data.lists ? data.lists : {};
+            for (const region of Object.keys(RARE_SITE)) {
+                for (const edition of Array.isArray(lists[region]) ? lists[region] : []) {
+                    if (!edition || typeof edition.title !== 'string' || !Array.isArray(edition.kinds)) continue;
+                    const entry = library.find(game => priceKey(game.title) === priceKey(edition.title));
+                    if (!entry) continue;
+                    const extra = plainText(`${edition.title} ${edition.kinds.filter(kind => typeof kind === 'string').join(' ')}`);
+                    if (extra && !entry.plains.includes(extra)) {
+                        entry.plains.push(extra);
+                        entry.compacts.push(extra.replace(/ /g, ''));
+                    }
+                }
+            }
+        }
+
+        // The edition a title names, with the region it was sold in, or null.
+        function editionNamed(title, data = editionsData) {
+            const key = priceKey(title);
+            const lists = data && typeof data.lists === 'object' && data.lists ? data.lists : {};
+            if (!key) return null;
+            for (const region of Object.keys(RARE_SITE)) {
+                const edition = (Array.isArray(lists[region]) ? lists[region] : []).find(item => item && typeof item.title === 'string' && priceKey(item.title) === key);
+                if (edition) return { region, edition };
+            }
+            return null;
+        }
+
+        // The edition's own eBay figure on its list's site, or null.
+        function editionFigure(title) {
+            const named = editionNamed(title);
+            if (!named) return null;
+            const placed = priceData && typeof priceData.editions === 'object' && priceData.editions ? priceData.editions : {};
+            const games = priceData && typeof priceData.games === 'object' && priceData.games ? priceData.games : {};
+            const where = own(placed[named.region], named.edition.title) ? placed[named.region][named.edition.title] : null;
+            const entry = where && own(games, where) ? games[where] : null;
+            return { ...named, site: RARE_SITE[named.region], figure: entry && typeof entry === 'object' ? entry[RARE_SITE[named.region]] : null };
+        }
+
         function editionsHtml(title, now = Date.now(), locale) {
             const found = editionsOfGame(title);
             if (!found.length) return '';
@@ -2529,14 +2580,16 @@
 
         // The price a copy is valued at: [amount or null, currency, what it rests on].
         function collectionValue(entry) {
-            const site = COLLECTION_REGIONS[entry.region];
+            const edition = editionFigure(entry.title);
+            // An edition is valued at its own price on the site it was sold on, whichever region was ticked.
+            const site = edition ? edition.site : COLLECTION_REGIONS[entry.region];
             const currency = currencyOf(site);
             if (entry.condition === 'sealed') {
                 const points = referencePoints(entry.title, entry.region).filter(point => point.condition === 'sealed');
                 points.sort((a, b) => cmpStr(String(referenceData.sources[b.source].published), String(referenceData.sources[a.source].published)));
                 return points.length ? [points[0].price, points[0].currency, 'article'] : [null, currency, 'none'];
             }
-            const figure = priceIndex.get(priceKey(entry.title))?.entry?.[site];
+            const figure = edition ? edition.figure : priceIndex.get(priceKey(entry.title))?.entry?.[site];
             if (!figure || typeof figure !== 'object' || figure.unmatched || !(figure.copies > 0)) return [null, currency, 'none'];
             const complete = figure.complete && typeof figure.complete === 'object' && figure.complete.copies > 0 && typeof figure.complete.median === 'number'
                 ? figure.complete.median : null;
@@ -2737,6 +2790,8 @@
             const title = collectionSuggestions[i];
             if (!title) return;
             document.getElementById('collectionGame').value = title;
+            const named = editionNamed(title);
+            if (named) document.getElementById('collectionRegion').value = named.region;   // an edition belongs to one region
             closeCollectionSuggestions();
             document.getElementById('collectionMessage').textContent = '';
         }

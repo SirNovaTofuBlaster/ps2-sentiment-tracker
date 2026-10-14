@@ -2750,4 +2750,32 @@ await check('editions: a game page lists its editions with their own prices and 
     }
 });
 
+await check('editions: the search finds them by name and by "steelbook", and My collection values them at their own price', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const file = JSON.parse(read('editions.json'));
+    run(`editionsData = ${JSON.stringify(file)}`);
+    const saved = run(`JSON.stringify(library.map(game => game.title))`);
+    try {
+        run(`setLibrary(['Resident Evil 4', 'God Hand', ...editionTitles()]); addEditionKeywords()`);
+        const names = run(`suggestGames('resident evil 4', 8)`);
+        assert.ok(names.includes('Resident Evil 4 Limited Edition') && names.includes('Resident Evil 4 Premium Edition'), 'both steelbook editions are in the search');
+        const steel = run(`suggestGames('steelbook', 20)`);
+        assert.ok(steel.includes('Resident Evil 4 Limited Edition') && steel.includes('Final Fantasy XII Collector\'s Edition'), 'typing steelbook finds steelbook editions');
+        assert.ok(!steel.includes('God Hand') && !steel.includes('Resident Evil 4'), 'and not a plain copy');
+        run(`setPrices({ currencies: { UK: 'GBP', US: 'USD' }, games: {
+            'Resident Evil 4 Limited Edition': { kind: 'edition', level: 'rare', sites: ['UK'], UK: { copies: 2, median: 85, lowest: 70, checked: '2026-10-14T10:00Z' } } },
+            editions: { PAL: { 'Resident Evil 4 Limited Edition': 'Resident Evil 4 Limited Edition' }, US: {} } }, null)`);
+        // ticked as US, but it is a PAL edition: valued on eBay UK
+        assert.deepEqual(Array.from(run(`collectionValue({ title: 'Resident Evil 4 Limited Edition', region: 'US', condition: 'complete', qty: 1, paid: null })`)), [85, 'GBP', 'ebay']);
+        assert.equal(run(`collectionValue({ title: 'Resident Evil 4 Premium Edition', region: 'US', condition: 'loose', qty: 1, paid: null })[2]`), 'none', 'not priced yet: no value, never the plain game\'s');
+        el('collectionGame').value = 'x';
+        run(`collectionSuggestions = ['Resident Evil 4 Limited Edition']; pickCollectionSuggestion(0)`);
+        assert.equal(el('collectionRegion').value, 'PAL', 'picking a PAL edition ticks PAL');
+    } finally {
+        run(`editionsData = null`);
+        run(`setLibrary(${saved})`);
+        run(`setPrices(null, null)`);
+    }
+});
+
 console.log(`dashboard checks passed (${passed})`);

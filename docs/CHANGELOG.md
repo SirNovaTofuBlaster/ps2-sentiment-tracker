@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: editions in the search and in My collection
+
+- The search box and My collection's game box also find the 32 editions of `editions.json`, by name and by what they come in
+  ("steelbook", "tin", "slipcase", "digipak"; `addEditionKeywords()`). Picking an edition ticks its region, and My collection values it
+  at its own eBay price on the site it was sold on (`collectionValue()` -> `editionFigure()`), never at the plain game's price; an
+  edition not priced yet shows no value. Sealed copies still use the reference articles only.
+
 ## 2026-10-14: limited and collector's editions
 
 - New `editions.json`: 32 known PS2 limited, collector's, premium and steelbook editions (12 PAL, 20 US), made by hand from the
