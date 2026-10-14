@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-10-14: covers from the Libretro thumbnails
+
+- Wikipedia covers did not work in practice (blank tiles), so they are replaced. `covers.json` (made by
+  `tools/build_covers.py` from the file list of github.com/libretro-thumbnails/Sony_-_PlayStation_2, 8,502 box arts)
+  names the file for each game under its `priceKey()`: 4,642 keys, about 420 KB (94 KB compressed), read once and only when a
+  cover is wanted. The picture itself is an ordinary `<img>` from thumbnails.libretro.com in the visitor's browser.
+  A PAL entry gets the Europe box, a US entry the USA one. About a quarter of the 3,292 library games (and more of the extra search names) have no file
+  (initials shown). Covers also show beside a game page's title. The old Wikipedia lookup and its localStorage cache are gone.
+- No key, no sign-up, nothing asked of anyone (rule 13); the collection is public. Its licence is not stated by the project:
+  the art belongs to its publishers and is hotlinked small, the way RetroArch itself loads it.
+
 ## 2026-10-14: search buttons back in the lists
 
 - The eBay / PriceCharting / shop search buttons (`priceLookupHtml()`) were removed from list rows with the detail; they are back under every game's name (`listPricesHtml()` = short prices + buttons) and also on the game page.

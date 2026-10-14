@@ -249,7 +249,7 @@
         <div id="viewGame" class="hidden space-y-6" aria-live="polite">
             <div class="bg-ps2card p-6">
                 <button type="button" onclick="goHome(event)" class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mb-4 cursor-pointer"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to the Tracker</button>
-                <h2 id="gameTitle"></h2>
+                <div class="game-head"><div id="gameCover" class="game-cover hidden"></div><h2 id="gameTitle"></h2></div>
                 <p id="gameSummary" class="text-xs text-slate-400 mt-1"></p>
                 <div id="gamePrices" class="mt-3"></div>
             </div>
@@ -364,7 +364,7 @@
                     <button type="submit" class="brand-btn brand-btn-primary"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add</button>
                 </div>
             </form>
-            <label class="coll-covers-toggle text-xs text-slate-400"><input type="checkbox" id="collectionCovers" checked onchange="setCoversShown(this.checked)"> Show cover images <span class="text-slate-500">(loaded from Wikipedia)</span></label>
+            <label class="coll-covers-toggle text-xs text-slate-400"><input type="checkbox" id="collectionCovers" checked onchange="setCoversShown(this.checked)"> Show cover images <span class="text-slate-500">(loaded from the Libretro thumbnail collection)</span></label>
             <p id="collectionMessage" class="text-xs text-amber-300 mt-2 min-h-[1rem]" role="status"></p>
             <ul id="collectionList" class="coll-grid mt-4"></ul>
             <div class="flex flex-wrap gap-2 mt-4">
@@ -856,6 +856,9 @@
         function renderGamePage(title) {
             const items = itemsForGame(title);
             document.getElementById('gameTitle').textContent = title;
+            gameCoverTitle = title;
+            ensureCoverIndex();
+            paintGameCover();
             const inLibrary = library.some(game => game.plains.includes(plainText(title)) || priceKey(game.title) === priceKey(title));
             document.getElementById('gameSummary').textContent = items.length
                 ? `${items.length.toLocaleString('en')} item${items.length === 1 ? '' : 's'} in the feed from the last ${FEED_DAYS} days name this game`
@@ -2522,7 +2525,7 @@
                 const [amount, currency, basis] = value;
                 const worth = amount === null ? 'no price' : `${money(amount, currency, locale)}${basis === 'article' ? ' (article)' : ''}`;
                 const gain = entry.paid !== null && amount !== null ? (amount >= entry.paid ? ' ▲' : ' ▼') : '';
-                const cover = coversShown ? coverUrl(entry.title) : '';
+                const cover = coversShown ? coverUrl(entry.title, entry.region) : '';
                 const label = `${entry.title} · ${entry.region} · ${COLLECTION_CONDITIONS[entry.condition]}${entry.qty > 1 ? ` · ×${entry.qty}` : ''}`
                     + (amount === null ? ' · no eBay price yet' : ` · ${worth} each${basis === 'article' ? ', from a public article' : ' (median eBay asking price)'}`)
                     + (entry.paid !== null ? ` · paid ${money(entry.paid, currency, locale, false)} each` : '')
@@ -2540,10 +2543,10 @@
                     <div class="coll-value${amount === null ? ' is-none' : ''}">${esc(worth)}${gain ? `<span class="${amount >= entry.paid ? 'text-emerald-400' : 'text-red-400'}" title="Against what you paid">${gain}</span>` : ''}</div>
                 </li>`;
             }).join('');
-            if (coversShown) fetchMissingCovers();
+            ensureCoverIndex();
             document.getElementById('collectionNote').textContent =
                 'Your list is kept only in this browser (there is no login and it is not sent to us), so clearing the browser\'s data or switching device loses it: use Save a backup file to keep a copy, and Load a backup file to restore it. '
-                + (coversShown ? 'The one thing that leaves your browser is a request to Wikipedia for each game\'s cover image, which names the game; untick Show cover images to stop that. Cover art belongs to its publishers and is shown small, as on the game\'s Wikipedia article. ' : '')
+                + (coversShown ? 'Cover pictures are the one thing that leaves your browser: it asks thumbnails.libretro.com (the Libretro thumbnail collection) for each cover, which names the game and shows that site your address; untick Show cover images to stop that. Cover art belongs to its publishers and is shown small. ' : '')
                 + 'Values are the median eBay asking price today for that region (PAL on eBay UK, US on eBay US): asking prices, not what anything sold for, and not what a buyer would pay you. '
                 + 'Complete uses the median of complete copies where eBay has them; loose uses the overall median; sealed has no eBay figure, so it uses a dated article price where one exists.'
                 + (collectionKept ? '' : ' This browser would not store the list, so it will be gone when you close the page.');
@@ -2551,135 +2554,80 @@
         }
 
         /* ---- Cover images ------------------------------------------------------
-           A game's cover comes from its Wikipedia article's lead image, asked for by the
-           visitor's own browser (api.php, CORS open) as a small thumbnail that Wikipedia
-           resizes for us. Nothing is copied into this site's files. A game's article is the one the
-           Demand Index already checked (data/wiki_checks.json) when there is one; otherwise the top
-           search hit counts only if its title matches the game and its short description says
-           "video game". What was found (or not) is remembered in the browser so each game is
-           asked for once. Showing covers can be switched off, and then nothing is requested.
+           covers.json (made by tools/build_covers.py) says which file of the Libretro thumbnail
+           collection (thumbnails.libretro.com, the box art RetroArch shows) is each game's box art:
+           [title as the collection spells it, NTSC-U suffix, PAL suffix] under the game's priceKey().
+           The picture itself is asked for by the visitor's own browser, as an ordinary image, only
+           for a game on screen (a collection tile or a game's page); nothing is copied into this
+           site. The index is read once, when a cover is first wanted. Showing covers can be
+           switched off, and then neither the index nor any picture is requested.
         -------------------------------------------------------------------- */
-        const COVERS_KEY = 'ps2-sentiment-tracker.covers';
         const COVERS_SHOWN_KEY = 'ps2-sentiment-tracker.covers-shown';
-        const COVER_PIXELS = 160;                // thumbnail width asked for; shown at about 96 px
-        const COVER_KEEP_DAYS = 45;
-        const COVER_RETRY_DAYS = 7;              // a game with no cover is asked about again after this
-        const COVER_URL = /^https:\/\/upload\.wikimedia\.org\/[A-Za-z0-9_\/.,%()'\-~!*:@+&=$ ]+$/;
-        let covers = {};                         // title -> { url, page, at }  (url '' = none found)
+        const COVER_BASE = 'https://thumbnails.libretro.com/Sony%20-%20PlayStation%202/Named_Boxarts/';
+        const COVER_SOURCE = 'the Libretro thumbnail collection';
+        let coverIndex = null;                   // priceKey -> [title, US suffix, PAL suffix]
+        let coverIndexState = 'idle';            // idle, loading, ready, failed
         let coversShown = true;
-        let coverQueue = [];
-        let coverBusy = false;
 
         function loadCovers() {
-            try { covers = JSON.parse(localStorage.getItem(COVERS_KEY) || '{}') || {}; } catch { covers = {}; }
-            if (typeof covers !== 'object' || Array.isArray(covers)) covers = {};
             try { coversShown = localStorage.getItem(COVERS_SHOWN_KEY) !== 'off'; } catch { coversShown = true; }
+            try { localStorage.removeItem('ps2-sentiment-tracker.covers'); } catch { /* the old Wikipedia cache: gone */ }
             const box = document.getElementById('collectionCovers');
             if (box) box.checked = coversShown;
-        }
-
-        function saveCovers() {
-            try { localStorage.setItem(COVERS_KEY, JSON.stringify(covers)); } catch { /* covers are only a convenience */ }
         }
 
         function setCoversShown(on) {
             coversShown = !!on;
             try { localStorage.setItem(COVERS_SHOWN_KEY, coversShown ? 'on' : 'off'); } catch { /* remembered for this visit only */ }
             renderCollection();
+            paintGameCover();
         }
 
-        function coverUrl(title) {
-            const found = own(covers, title) ? covers[title] : null;
-            return found && typeof found.url === 'string' && COVER_URL.test(found.url) ? found.url : '';
+        async function ensureCoverIndex() {
+            if (!coversShown || coverIndexState !== 'idle') return;
+            coverIndexState = 'loading';
+            try {
+                const response = await fetch('covers.json');
+                const data = response.ok ? await response.json() : null;
+                if (data && typeof data.covers === 'object' && data.covers && !Array.isArray(data.covers)) {
+                    coverIndex = data.covers;
+                    coverIndexState = 'ready';
+                } else coverIndexState = 'failed';
+            } catch {
+                coverIndexState = 'failed';
+            }
+            try { refreshCollection(); paintGameCover(); } catch { /* the next draw shows them */ }
         }
 
-        // What happened to a game's cover, in words, for its tile and the line under the switch.
-        const coverStatus = { loaded: 0, none: 0, failed: 0 };
-        const coverFailed = new Set();   // asked for and the request failed this visit
+        // The address of a game's box art: the region's own picture when there is one, else the other's.
+        function coverUrl(title, region = 'US') {
+            if (!coversShown || !coverIndex) return '';
+            const key = priceKey(title);
+            const found = key && own(coverIndex, key) ? coverIndex[key] : null;
+            if (!Array.isArray(found) || typeof found[0] !== 'string' || !found[0]) return '';
+            const [us, pal] = [found[1], found[2]].map(value => typeof value === 'string' ? value : '');
+            const suffix = region === 'PAL' ? (pal || us) : (us || pal);
+            return suffix ? `${COVER_BASE}${encodeURIComponent(found[0] + suffix)}.png` : '';
+        }
+
+        // What happened to a game's cover, in words, for its tile.
         function coverNote(title) {
             if (!coversShown) return '';
-            if (coverUrl(title)) return 'cover from Wikipedia';
-            if (own(covers, title)) return 'no cover found on Wikipedia';
-            return coverFailed.has(title) ? 'cover could not be loaded (offline or blocked)' : 'looking for a cover…';
+            if (coverIndexState === 'failed') return 'cover list could not be loaded (offline or blocked)';
+            if (coverIndexState !== 'ready') return 'looking for a cover…';
+            return coverUrl(title) ? `cover from ${COVER_SOURCE}` : `no cover in ${COVER_SOURCE}`;
         }
 
         const initialsOf = (title) => String(title).replace(/[^A-Za-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean).slice(0, 3).map(word => word[0].toUpperCase()).join('');
 
-        function coverDue(title) {
-            const found = own(covers, title) ? covers[title] : null;
-            if (!found || typeof found.at !== 'number') return true;
-            const days = (Date.now() - found.at) / 86400000;
-            return days > (found.url ? COVER_KEEP_DAYS : COVER_RETRY_DAYS);
-        }
-
-        function coverRequestUrl(title) {
-            const article = wikiArticles.get(priceKey(title));
-            const base = 'https://en.wikipedia.org/w/api.php?action=query&format=json&formatversion=2&origin=*&redirects=1'
-                + `&prop=pageimages%7Cdescription&piprop=thumbnail&pilicense=any&pithumbsize=${COVER_PIXELS}`;
-            return article
-                ? `${base}&titles=${encodeURIComponent(article)}`
-                : `${base}&generator=search&gsrnamespace=0&gsrlimit=3&gsrsearch=${encodeURIComponent(`${title} PlayStation 2 video game`)}`;
-        }
-
-        const coverNameOf = (text) => plainText(String(text ?? '').replace(/\s*\([^)]*\)\s*$/, '')).replace(/^the /, '');
-
-        // The page whose image is this game's cover, or null. A page counts when its title is the
-        // game's name (a "(video game)" tag aside) and Wikipedia describes it as a video game.
-        function pickCoverPage(json, title) {
-            const pages = Array.isArray(json?.query?.pages) ? json.query.pages : [];
-            const asked = wikiArticles.get(priceKey(title));
-            const want = coverNameOf(title);
-            const ranked = [...pages].sort((a, b) => (a?.index ?? 99) - (b?.index ?? 99));
-            for (const page of ranked) {
-                const url = page?.thumbnail?.source;
-                if (typeof url !== 'string' || !COVER_URL.test(url)) continue;
-                const named = asked && page.title === asked ? true : coverNameOf(page.title) === want;
-                if (named && /video game/i.test(String(page.description ?? ''))) return { url, page: String(page.title) };
-            }
-            return null;
-        }
-
-        async function fetchCover(title) {
-            let result = { url: '', page: '' };
-            let failed = false;
-            try {
-                const response = await fetch(coverRequestUrl(title));
-                if (response.ok) result = pickCoverPage(await response.json(), title) || result;
-                else failed = true;
-            } catch {
-                failed = true;   // offline or blocked: try again next time, remember nothing
-            }
-            if (!failed) {
-                covers[title] = { url: result.url, page: result.page, at: Date.now() };
-                saveCovers();
-            }
-            coverStatus[failed ? 'failed' : result.url ? 'loaded' : 'none']++;
-            if (failed) coverFailed.add(title); else coverFailed.delete(title);
-            return !failed && !!result.url;
-        }
-
-        function fetchMissingCovers() {
-            for (const entry of collection) {
-                if (coverDue(entry.title) && !coverFailed.has(entry.title) && !coverQueue.includes(entry.title)) coverQueue.push(entry.title);
-            }
-            if (coverBusy || !coverQueue.length) return;
-            coverBusy = true;
-            (async () => {
-                let found = 0;
-                let asked = 0;
-                while (coverQueue.length && coversShown) {
-                    const title = coverQueue.shift();
-                    if (!collection.some(entry => entry.title === title)) continue;
-                    asked++;
-                    if (await fetchCover(title)) found++;
-                    if (found && found % 4 === 0) { try { renderCollection(); } catch { /* the next draw shows it */ } }
-                    await new Promise(done => setTimeout(done, 150));   // gently: one request at a time
-                }
-                coverBusy = false;
-                // One last draw so every tile says what became of its cover. It asks for nothing:
-                // what failed this visit is not asked for again until the page is opened anew.
-                if (asked) { try { renderCollection(); } catch { /* the next draw shows it */ } }
-            })();
+        // The small picture beside a game page's title.
+        let gameCoverTitle = '';
+        function paintGameCover() {
+            const box = document.getElementById('gameCover');
+            if (!box) return;
+            const url = gameCoverTitle ? coverUrl(gameCoverTitle) : '';
+            box.innerHTML = url ? `<img src="${esc(url)}" alt="" decoding="async" referrerpolicy="no-referrer" onerror="this.parentNode.classList.add('hidden')">` : '';
+            box.classList.toggle('hidden', !url);
         }
 
         function refreshCollection() {
