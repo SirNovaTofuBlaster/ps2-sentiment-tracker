@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-14: edition badge on My collection
+
+- A coloured badge on an edition's tile in My collection says what it comes in (STEELBOOK, TIN, SLIPCASE, SLIPCOVER, DIGIPAK, BOXED SET,
+  FIGURE SET, PLUSH SET, otherwise LIMITED), from the entry's `kinds` (`editionBadge()`). The US Resident Evil 4 Premium Edition was
+  checked against two more pages (eBay's product page and Gameventory): it is the PS2 steelbook sold in America (steel case, Making of DVD,
+  Ada Wong laser cell, Brady Games prologue); the PAL one is the Limited Edition.
+
 ## 2026-10-14: covers for editions
 
 - `coverUrl()` gives an edition (`editions.json`) the Libretro box named in its optional `cover` (four have one: Mortal Kombat
