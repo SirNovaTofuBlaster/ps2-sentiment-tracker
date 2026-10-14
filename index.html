@@ -92,7 +92,7 @@
       <!-- The shelf: the games named most in the last 24 hours, as box art (Tracker page only). Filled by renderShelf(). -->
       <div id="shelfSection" class="hidden">
         <div class="lb-section-header !mb-3">
-          <h2>Trending in the last 24 hours</h2>
+          <h2>Rare finds named in the last 24 hours</h2>
           <span class="text-[11px] font-mono-custom text-ps2neon">Open a box to see its page</span>
         </div>
         <div class="shelf-wrap">
@@ -1147,7 +1147,7 @@
                 button.setAttribute('aria-pressed', String(recentSort === mode));
             }
             const recent = recentGames(items, now);
-            renderShelf(recent.games);
+            renderShelf(byRarity(recent.games));   // the shelf is rarest first whatever the list below is ordered by
             recent.games = recentSort === 'rare' ? byRarity(recent.games) : byPrice(recent.games);
             recentGameNames = recent.games.map(game => game.name);
             const plural = (count, word) => `${count.toLocaleString('en')} ${word}${count === 1 ? '' : 's'}`;
@@ -1186,8 +1186,8 @@
             foldList('todayList', recent.games.length);
         }
 
-        // The shelf above the tabs: the SHELF_SIZE games named most in the last 24 hours (the order
-        // recentGames() gives), as box art with the mention count and the cheapest median. It is a row
+        // The shelf above the tabs: the SHELF_SIZE rarest games named in the last 24 hours (byRarity(): the fewest
+        // copies for sale first, common games such as God of War last), as box art with the mention count and the cheapest median. It is a row
         // that scrolls sideways: the arrows at its ends (and a swipe) move it a screenful at a time.
         // Real feed data only; a game without a cover shows its initials.
         const SHELF_SIZE = 24;

@@ -2365,8 +2365,12 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.equal(el('sortPrice').getAttribute('aria-pressed'), 'false');
     assert.match(el('todaySummary').textContent, /Most rare first/);
     assert.match(el('todayList').innerHTML, /scarce &middot; 2 for sale on eBay UK/);
+    // The shelf is rarest first whichever order the list is in; the common game goes to the far end
+    const shelfOrder = () => [...el('shelf').innerHTML.matchAll(/class="shelf-name">([^<]+)</g)].map(m => m[1]);
+    assert.deepEqual(shelfOrder(), ['CY Girls', 'Kuon', 'God Hand', 'Dragon Quest']);
     run(`setRecentSort('price')`);
     assert.deepEqual(order(), ['Kuon', 'God Hand', 'CY Girls', 'Dragon Quest']);
+    assert.deepEqual(shelfOrder(), ['CY Girls', 'Kuon', 'God Hand', 'Dragon Quest'], 'the shelf does not follow the list\'s buttons');
     run(`setPrices(null, null)`);
 });
 
