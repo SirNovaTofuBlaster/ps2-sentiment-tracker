@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-14: groundwork for more eBay sites, and a bigger allowance
+
+- Asked: raise the daily search allowance to just under eBay's 5,000, and get ready to add Germany,
+  France, Italy and Spain one at a time (Poland left off).
+- `ebay_prices.py`: `DAILY_SEARCHES` 4,500 to 4,900. A site in `MARKETS` may now carry `extra: True`
+  (the Rarest page's consoles stay off it unless they name it), `min_every_hours` (its own slower
+  check clock) and `junk` (words in its language that mark a listing as not a copy). The first
+  two sites have none of these, so nothing changes for them. No new site is switched on here.
+  `ExtraSiteGroundworkTests` test all of this with a made-up site.
+
 ## 2026-10-14: fewer searches for steady games
 
 - Asked: stop re-checking famous games whose price barely moves (GTA San Andreas, about 160 copies

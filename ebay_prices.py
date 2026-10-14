@@ -108,6 +108,10 @@ CONDITION_FILTERS = {
 MARKETS = {
     # "foreign" words mark a copy made for another region, which is a different product.
     # They include the first part of the code printed on the spine: SLES/SCES is Europe, SLUS/SCUS America.
+    # Optional, for a site added later (see "Other eBay sites" in AGENTS.md): "extra": True keeps the
+    # Rarest page's consoles off it unless they name it; "min_every_hours" is the least time between
+    # two checks of one game there (its own clock, so a new site cannot crowd out the first two);
+    # "junk" is words in the site's own language that mark a listing as not a copy.
     # "zip" is where postage is quoted to. In the US most sellers let eBay work postage out
     # from the buyer's address, and without one eBay gives no figure; New York stands in.
     "EBAY_US": {"label": "US", "site": "www.ebay.com", "country": "US", "currency": "USD", "zip": "10001",
@@ -145,7 +149,7 @@ CHANGE_DAYS = 7              # beside each median, how it compares with the medi
 CHANGE_SLACK_DAYS = 2        # ...as recorded at most this much longer before (a quiet game is checked daily)
 
 # ---- How much of eBay's allowance (5,000 searches a day) a run may use ---------------
-DAILY_SEARCHES = 4500        # stop for the day here, leaving room for runs started by hand
+DAILY_SEARCHES = 4900        # stop for the day here, leaving room for runs started by hand
 MAX_SEARCHES_PER_RUN = 500   # and never more than this in one run
 TIME_BUDGET = 420            # seconds; whatever is still due then waits for the next run
 
@@ -841,7 +845,7 @@ def load_consoles(path=None):
         spec = row.get("search") if isinstance(row.get("search"), dict) else {}
         queries = spec.get("queries")
         require, require_any, exclude = (phrases(spec.get(field, [])) for field in ("require", "require_any", "exclude"))
-        sites = row.get("sites", list(labels))
+        sites = row.get("sites", [market["label"] for market in MARKETS.values() if not market.get("extra")])
         if not isinstance(queries, list) or not 1 <= len(queries) <= MAX_CONSOLE_QUERIES \
                 or not all(isinstance(query, str) and words(query) and len(query) <= MAX_QUERY_CHARS for query in queries) \
                 or None in (require, require_any, exclude) or not (require or require_any) \
@@ -923,6 +927,7 @@ def due_lookups(games, state, now, history=()):
                     and is_steady(steady_rows.get((game["key"], market["label"]), ()), now)):
                 wait = STEADY_EVERY_HOURS * 60
                 game["steady_on"].append(market["label"])
+            wait = max(wait, market.get("min_every_hours", 0) * 60)
             if waited is None or waited >= wait - EARLY_MINUTES:
                 overdue = float("inf") if waited is None else waited / max(every, 60)
                 due.append((game["level"] != "surging", not game["pinned"], game["level"] == "rare", -overdue,
@@ -1168,7 +1173,7 @@ def reject_reason(item, game, market, keyword_search):
     # sold on their own ("Limited Edition Art Book").
     junk = [phrase for phrase in JUNK_PHRASES
             if phrase not in (game.get("allow") or ()) or not comes_with(item.get("title"), phrase)]
-    if has_phrase(text, junk) or has_phrase(text, game["exclude"]) \
+    if has_phrase(text, junk) or has_phrase(text, market.get("junk", ())) or has_phrase(text, game["exclude"]) \
             or is_the_soundtrack(item.get("title"), name_text, game["search"]):
         return "not_a_copy"
     if has_phrase(text, GRADED_OR_SEALED) and not has_phrase(text, NOT_GRADED):
