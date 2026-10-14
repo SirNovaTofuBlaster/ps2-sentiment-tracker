@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-14: reference prices for rare games
+
+- `rare_reference_prices.json` (78 points from five public articles), `tools/compare_reference.py`,
+  `tests/test_reference.py`. Compared with `rare_games.json`: the July 2026 articles agree with our
+  PriceCharting values within about 20% (Kuon complete $1,575 vs $1,988; Haunting Ground $575 vs $606);
+  the 2020-2024 eBay-sold figures are lower ("over $400" for Rule of Rose against $1,100 now). Four of five
+  articles copy PriceCharting, so this checks our reading of it rather than adding a second market.
+
 ## 2026-10-14: collectible rules v3
 
 - `demand.py`: after reading the 12 articles flagged on the first live run, only Kuon, Gitaroo Man and
