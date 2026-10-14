@@ -211,13 +211,14 @@ returned HTTP 403 there (see [SOURCES.md](../SOURCES.md#forums)).
 they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`,
 `rare_games.json` and `rare_consoles.json`. Editions (`editions.json`, same shape as `rare_games.json` but every entry needs `require` words) go through the same `load_rare()` / `add_rare_games()` path with `kind="edition"`; `latest["editions"]` says which `games` entry holds each one, and `index_file()` leaves them out like consoles.
 
-- **Five pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Demand*, *Most mentioned*
-  and *eBay prices*; each is a wrapper (`viewDashboard`, `viewRare`, `viewDemand`, `viewMentions`,
-  `viewPrices`) and only one is displayed. `#rare`, `#demand`, `#mentions` and `#prices` in the address
-  select the other four; any other fragment selects the Tracker and scrolls to the part it names, so the header's
+- **Six pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Demand*, *Most mentioned*,
+  *eBay prices* and *Library*; each is a wrapper (`viewDashboard`, `viewRare`, `viewDemand`, `viewMentions`,
+  `viewPrices`, `viewLibrary`) and only one is displayed. `#rare`, `#demand`, `#mentions`, `#prices` and `#library` in the address
+  select the other five; any other fragment selects the Tracker and scrolls to the part it names, so the header's
   *Sources* link works from every page. Changing page adds one entry to the browser's
   history, so Back returns to the page before; links, Back and Forward all go through
   `showViewFromAddress()`, which also runs once more when the first load has finished.
+- **Library page.** `renderLibrary()` draws one tile per `libraryEntries()` item (sorted by title without a leading "The"), grouped by letter or by `genres.json` (`genreOf()`), with `content-visibility: auto` per section so ~3,900 tiles stay cheap; covers load lazily. A tile calls `libraryPick(i)` into the fixed add bar, and `libraryAddPicked()` calls `addToCollection()`; nothing leaves the browser.
 - **eBay medians beside every game, detail on the game's page.** Every list (Tracker, Demand Index,
   Most Mentioned Games, *eBay prices*, the feed table) shows a priced game as its name plus
   `compactPriceHtml(title)`: the US median, the UK median and the lowest median of the euro sites

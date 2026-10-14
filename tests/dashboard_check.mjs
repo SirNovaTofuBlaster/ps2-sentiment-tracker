@@ -1423,6 +1423,7 @@ await check('games first: what was named in the last day leads, and the table op
         'body .is-folded > .list-extra', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
         'body .chart-tools::-webkit-scrollbar', 'body .shelf::-webkit-scrollbar', 'body .shelf-arrow.hidden',
+    'body .library-add.hidden',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
@@ -2457,6 +2458,47 @@ await check('Most rare ranks figures that predate "listed", weighs Wikipedia col
     context.fetch = fakeFetch;
 });
 
+await check('Library: every game once, A to Z or by genre, filtered, and a click adds it to My collection', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const kept = new Map();
+    context.localStorage = { getItem: (key) => (kept.has(key) ? kept.get(key) : null), setItem: (key, value) => { kept.set(key, String(value)); } };
+    run(`collection = []`);
+    run(`setLibrary(['The Getaway', 'God Hand', '007: Agent Under Fire', 'Zone of the Enders', 'Gran Turismo 4', 'Kuon'])`);
+    run(`genreData = { names: ['Action', 'Racing'], genres: { [priceKey('God Hand')]: 0, [priceKey('Gran Turismo 4')]: 1, [priceKey('Zone of the Enders')]: 0 } }; genreState = 'ready'; fillGenreMenu()`);
+    run(`showView('library')`);
+    assert.equal(el('viewLibrary').classList.contains('hidden'), false);
+    assert.equal(el('tabLibrary').classList.contains('is-active'), true);
+    run(`renderLibrary()`);
+    assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['The Getaway', 'God Hand', 'Gran Turismo 4', 'Kuon', 'Zone of the Enders', '007: Agent Under Fire'],
+        'A to Z, "The" ignored, titles starting with a digit last under #');
+    assert.deepEqual(evalJson(`libraryShown.map(g => g.letter)`).slice(0, 2), ['G', 'G']);
+    run(`setLibrarySort('genre')`);
+    assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['God Hand', 'Zone of the Enders', 'Gran Turismo 4', '007: Agent Under Fire', 'The Getaway', 'Kuon'],
+        'genres in the list\'s order, Other last, A to Z inside each');
+    run(`setLibraryGenre('Racing')`);
+    assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['Gran Turismo 4']);
+    run(`setLibraryGenre('')`); run(`setLibrarySort('az')`);
+    run(`setLibraryFilter('godhand')`);
+    assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['God Hand'], 'the filter ignores spaces and punctuation');
+    run(`setLibraryFilter('')`);
+
+    // A click opens the bar; adding goes to My collection and marks the tile
+    run(`libraryPick(1)`);
+    assert.equal(el('libraryAdd').classList.contains('hidden'), false);
+    assert.equal(el('libraryAddName').textContent, 'God Hand');
+    el('libraryAddRegion').value = 'US'; el('libraryAddCondition').value = 'loose';
+    run(`libraryAddPicked()`);
+    assert.deepEqual(evalJson(`collection.map(e => [e.title, e.region, e.condition, e.qty])`), [['God Hand', 'US', 'loose', 1]]);
+    assert.match(el('libraryAddMessage').textContent, /^Added: God Hand \(US, .*\)\. You now own 1\.$/);
+    run(`renderLibrary()`);
+    assert.match(el('libraryGrid').innerHTML, /lib-tile is-owned/);
+    run(`libraryPick(1)`); run(`libraryAddPicked()`);
+    assert.equal(evalJson(`collection[0].qty`), 2, 'the same copy again raises the count');
+    run(`showView('dashboard')`);
+    assert.equal(el('libraryAdd').classList.contains('hidden'), true, 'the bar closes when the page is left');
+    run(`collection = []`);
+});
+
 await check('My collection: add, value, keep in the browser, back up and restore; reference prices; installable', async () => {
     const run = (code) => vm.runInContext(code, context);
     const kept = new Map();
@@ -2671,7 +2713,7 @@ await check('My collection: add, value, keep in the browser, back up and restore
     run(`ensureCoverIndex()`);
     await new Promise(done => setTimeout(done, 20));
     assert.match(el('topGamesList').innerHTML, /class="row-cover"/, 'drawn again once the covers list has arrived');
-    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions' \|\| view === 'demand'\) ensureCoverIndex\(\);/, 'opening any of these pages asks for the covers list');
+    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions' \|\| view === 'demand' \|\| view === 'library'\) ensureCoverIndex\(\);/, 'opening any of these pages asks for the covers list');
     assert.equal(run(`initialsOf('The Legend of Heroes: Trails')`), 'TLO');
     context.fetch = fakeFetch;
     context.localStorage = { getItem: () => null, setItem() {} };
