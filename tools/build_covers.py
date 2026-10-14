@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+"""Builds covers.json: which box-art picture the Libretro thumbnail collection has for each game.
+
+The pictures are not copied here. The collection (github.com/libretro-thumbnails/Sony_-_PlayStation_2,
+the box art RetroArch shows, served at thumbnails.libretro.com) is asked for by the visitor's own
+browser; this file only says which file name belongs to which game, so the page can build the address.
+
+Usage (reads nothing from the network):
+    git clone --depth 1 --filter=blob:none --no-checkout https://github.com/libretro-thumbnails/Sony_-_PlayStation_2 /tmp/lt
+    git -C /tmp/lt ls-tree -r --name-only HEAD Named_Boxarts | sed 's#^Named_Boxarts/##' | python tools/build_covers.py
+
+Each game's key is the name ebay_prices.search_terms() gives its title, the same key the page's
+priceKey() makes, so "Ratchet & Clank" (the collection writes "Ratchet _ Clank") and
+"Getaway, The" find their files. A key holds [file name without its region, NTSC-U suffix, PAL suffix].
+"""
+import json
+import re
+import sys
+from datetime import date
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from ebay_prices import search_terms  # noqa: E402  (standard library only)
+
+BASE = "https://thumbnails.libretro.com/Sony%20-%20PlayStation%202/Named_Boxarts/"
+BAD = re.compile(r"\b(Beta|Demo|Proto|Prototype|Sample|Unl|Pirate|Promo|Kiosk|Bonus|Disc [2-9])\b", re.I)
+US_TAGS = ("USA", "Canada", "USA, Canada")
+PAL_TAGS = ("Europe", "UK", "Australia", "World")
+
+
+def split(name):
+    """'Okami (USA)' -> ('Okami', ' (USA)'): the title is what comes before the first bracket."""
+    match = re.match(r"^(.*?)((?:\s*\([^)]*\))+)$", name)
+    return (match.group(1).strip(), match.group(2)) if match else (name, "")
+
+
+def rank(suffix, wanted):
+    """Lower is better: the exact region first, then the shortest suffix, never a beta or demo."""
+    first = (re.match(r"\s*\(([^)]*)\)", suffix) or [None, ""])[1]
+    region = next((i for i, tag in enumerate(wanted) if first.split(",")[0].strip() == tag), len(wanted))
+    return (bool(BAD.search(suffix)), region, len(suffix))
+
+
+def build(names):
+    games = {}
+    for line in names:
+        line = line.strip()
+        if not line.endswith(".png"):
+            continue
+        title, suffix = split(line[:-4])
+        key = search_terms(title.replace(" _ ", " and ").replace("_", " "))[0]
+        if key:
+            games.setdefault(key, {}).setdefault(title, []).append(suffix)
+    out = {}
+    for key, titles in games.items():
+        # one spelling per key: the one with the most files (a game's many regional releases)
+        title, suffixes = max(titles.items(), key=lambda item: (len(item[1]), -len(item[0])))
+        us = min(suffixes, key=lambda s: rank(s, US_TAGS))
+        pal = min(suffixes, key=lambda s: rank(s, PAL_TAGS))
+        usable = lambda s: not BAD.search(s) and re.match(r"\s*\((?:%s)\b" % "|".join(US_TAGS + PAL_TAGS + ("Japan", "Korea")), s)
+        if not usable(us) and not usable(pal):
+            continue
+        out[key] = [title, us if usable(us) else "", pal if usable(pal) else ""]
+    return out
+
+
+# Titles the collection files under another name (a Japanese or European title).
+MANUAL = {"okami": "ookami"}
+
+
+def add_aliases(covers):
+    """Library and search names the collection spells a little differently get the same files:
+    the same letters without spaces ("off road" / "offroad"), or the collection's longer title
+    ("18 wheeler" / "18 wheeler american pro trucker") when exactly one of them starts with it."""
+    names = []
+    for path, field in (("data/ps2_database.json", None), ("search_extra_titles.json", "titles")):
+        try:
+            data = json.loads(Path(path).read_text(encoding="utf-8-sig"))
+        except (OSError, ValueError):
+            continue
+        names += [t for t in (data.get(field, []) if field else data) if isinstance(t, str)]
+    compact = {key.replace(" ", ""): key for key in covers}
+    for title in names:
+        key = search_terms(title)[0]
+        if not key or key in covers:
+            continue
+        target = MANUAL.get(key) or compact.get(key.replace(" ", ""))
+        if not target:
+            starts = [other for other in covers if other.startswith(key + " ")]
+            target = starts[0] if len(starts) == 1 else None
+        if target in covers:
+            covers[key] = covers[target]
+    return covers
+
+
+def main():
+    covers = add_aliases(build(sys.stdin))
+    doc = {"what": "Which Libretro box-art file belongs to which game (key = priceKey()); the pictures are not stored here.",
+           "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation_2", "base": BASE,
+           "checked": date.today().isoformat(), "covers": dict(sorted(covers.items()))}
+    Path("covers.json").write_text(json.dumps(doc, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    print(f"{len(covers)} games with covers")
+
+
+if __name__ == "__main__":
+    main()

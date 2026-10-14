@@ -2535,57 +2535,76 @@ await check('My collection: add, value, keep in the browser, back up and restore
     run(`collection = []; collectionKept = true; updateCollectionTab()`);
 
 
-    // Covers: the article the Demand Index checked is used when there is one; otherwise a search hit counts only if it is that game
-    context.localStorage = { getItem: () => null, setItem() {} };
-    run(`covers = {}; coversShown = true; setWikiChecks(null)`);
-    const thumb = 'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/God_Hand_Coverart.png/160px-God_Hand_Coverart.png';
+    // Covers: covers.json names the Libretro box-art file for each game; the browser asks for the picture itself
+    context.localStorage = { getItem: () => null, setItem() {}, removeItem() {} };
+    const BASE = 'https://thumbnails.libretro.com/Sony%20-%20PlayStation%202/Named_Boxarts/';
+    const index = { what: 'x', covers: {
+        'god hand': ['God Hand', ' (USA)', ' (Europe) (En,Fr,De,Es,It)'],
+        'ratchet clank': ['Ratchet _ Clank', ' (USA) (En,Fr,De,Es,It)', ' (Europe) (En,Fr,De,Es,It) (v1.00)'],
+        kuon: ['Kuon', ' (USA)', ''],
+        'only pal': ['Only Pal', '', ' (Europe)'],
+        'bad entry': ['', ' (USA)', ''], 'worse entry': 'nope',
+    } };
     const asked = [];
-    context.fetch = async (url) => {
-        asked.push(String(url));
-        const page = (title, description, source = thumb, index = 1) => ({ title, description, index, thumbnail: { source, width: 160, height: 220 } });
-        const reply = (pages) => ({ ok: true, json: async () => ({ query: { pages } }) });
-        if (String(url).includes('Kuon')) return reply([page('Kuon (film)', '2001 film', thumb, 1), page('Kuon', '2004 video game', thumb.replace('God_Hand', 'Kuon'), 2)]);
-        if (String(url).includes('Black')) return reply([page('Black (band)', 'English band')]);
-        if (String(url).includes('Rule')) return { ok: false, status: 500, json: async () => ({}) };
-        return reply([page('God Hand', '2006 video game'), page('Gods Hand (novel)', 'a novel', 'https://evil.example/x.png', 2)]);
-    };
-    assert.equal(run(`coverRequestUrl('God Hand')`).includes('generator=search'), true);
-    assert.match(run(`coverRequestUrl('God Hand')`), /origin=\*/);
-    assert.match(run(`coverRequestUrl('God Hand')`), /pithumbsize=160/);
-    assert.match(run(`coverRequestUrl('God Hand')`), /pilicense=any/, 'without this Wikipedia returns only freely licensed images, and a box cover is not one');
-    run(`setWikiChecks({ 'Black': { article: 'Black (2006 video game)', game: true, ps2: true, collectible: [] } })`);
-    assert.match(run(`coverRequestUrl('Black')`), /titles=Black%20\(2006%20video%20game\)/, 'a checked article is asked for directly');
-    run(`setWikiChecks(null)`);
-    assert.equal(await run(`fetchCover('God Hand')`), true);
-    assert.equal(run(`coverUrl('God Hand')`), thumb);
-    assert.equal(await run(`fetchCover('Kuon')`), true, 'the film is skipped, the game is taken');
-    assert.match(run(`coverUrl('Kuon')`), /Kuon_Coverart/);
-    assert.equal(await run(`fetchCover('Black')`), false, 'a band is not the game');
-    assert.equal(run(`coverUrl('Black')`), '');
-    assert.equal(run(`covers['Black'].url`), '', 'remembered as not found');
-    assert.equal(run(`coverDue('Black')`), false); assert.equal(run(`coverDue('Never Asked')`), true);
-    run(`covers['Black'].at = Date.now() - 8 * 86400000`);
-    assert.equal(run(`coverDue('Black')`), true, 'a game with no cover is tried again after a week');
-    assert.equal(await run(`fetchCover('Rule of Rose')`), false);
-    assert.equal(run(`own(covers, 'Rule of Rose')`), false, 'a failed request is not remembered as "no cover"');
-    run(`covers['Evil'] = { url: 'https://evil.example/x.png', at: Date.now() }`);
-    assert.equal(run(`coverUrl('Evil')`), '', 'only Wikimedia image addresses are ever used');
-    // A tile shows the image, and switching covers off shows none and asks for none
-    run(`collection = []; addToCollection('God Hand', 'US', 'complete'); renderCollection()`);
-    assert.match(el('collectionList').innerHTML, new RegExp(`<img src="${thumb.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*referrerpolicy="no-referrer"`));
+    let answer = { ok: true, json: async () => index };
+    context.fetch = async (url) => { asked.push(String(url)); return answer; };
+    run(`coversShown = true; coverIndex = null; coverIndexState = 'idle'`);
+    assert.equal(run(`coverUrl('God Hand')`), '', 'nothing until the index is read');
+    assert.equal(run(`coverNote('God Hand')`), 'looking for a cover…');
+    run(`collection = []; addToCollection('God Hand', 'US', 'complete'); addToCollection('God Hand', 'PAL', 'loose'); addToCollection('Ratchet & Clank', 'US', 'loose'); addToCollection('Black', 'US', 'loose'); renderCollection()`);
+    await new Promise(done => setTimeout(done, 20));
+    assert.deepEqual(asked, ['covers.json'], 'the index is read once, and only when a cover is wanted');
+    assert.equal(run(`coverIndexState`), 'ready');
+    assert.equal(run(`coverUrl('God Hand')`), `${BASE}God%20Hand%20(USA).png`);
+    assert.equal(run(`coverUrl('God Hand', 'PAL')`), `${BASE}God%20Hand%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).png`, 'a PAL copy gets the PAL box');
+    assert.equal(run(`coverUrl('Ratchet & Clank')`), `${BASE}Ratchet%20_%20Clank%20(USA)%20(En%2CFr%2CDe%2CEs%2CIt).png`, 'spelt the way the collection spells it');
+    assert.equal(run(`coverUrl('Kuon', 'PAL')`), `${BASE}Kuon%20(USA).png`, 'the other region\'s box when there is no PAL one');
+    assert.equal(run(`coverUrl('Only Pal', 'US')`), `${BASE}Only%20Pal%20(Europe).png`);
+    for (const none of ['Black', 'Bad Entry', 'Worse Entry', '', null, 'constructor', '__proto__']) assert.equal(run(`coverUrl(${JSON.stringify(none)})`), '', `no cover for ${JSON.stringify(none)}`);
+    assert.ok(run(`coverUrl('God Hand')`).startsWith('https://thumbnails.libretro.com/'), 'only the collection\'s own address is ever built');
+    const tiles = el('collectionList').innerHTML;
+    assert.match(tiles, /<img src="https:\/\/thumbnails\.libretro\.com\/Sony%20-%20PlayStation%202\/Named_Boxarts\/God%20Hand%20\(USA\)\.png"[^>]*referrerpolicy="no-referrer"/);
+    assert.match(tiles, /God%20Hand%20\(Europe\)/);
+    assert.match(tiles, /<span class="coll-initials" aria-hidden="true">B<\/span>/, 'a game without a cover keeps its initials');
+    assert.match(tiles, /no cover in the Libretro thumbnail collection/);
+    // The game's page shows the box beside its title
+    el('gameCover').classList.add('hidden');
+    run(`renderGamePage('God Hand')`);
+    assert.match(el('gameCover').innerHTML, /<img src="https:\/\/thumbnails\.libretro\.com\/[^"]*God%20Hand%20\(USA\)\.png"/);
+    assert.equal(el('gameCover').classList.contains('hidden'), false);
+    run(`renderGamePage('Black')`);
+    assert.equal(el('gameCover').innerHTML, '');
+    assert.equal(el('gameCover').classList.contains('hidden'), true, 'no cover, no empty frame');
+    // Switching covers off shows none and asks for none
     asked.length = 0;
     run(`setCoversShown(false)`);
     assert.doesNotMatch(el('collectionList').innerHTML, /<img/);
+    assert.equal(run(`coverUrl('God Hand')`), '');
+    assert.equal(el('gameCover').classList.contains('hidden'), true);
     assert.equal(asked.length, 0);
-    assert.doesNotMatch(el('collectionNote').textContent, /request to Wikipedia/);
+    assert.doesNotMatch(el('collectionNote').textContent, /libretro/);
     run(`setCoversShown(true)`);
-    run(`covers = {}; coverFailed.clear()`);
-    assert.equal(run(`coverNote('God Hand')`), 'looking for a cover…', 'asked about but not answered yet');
-    run(`coverFailed.add('God Hand')`);
-    assert.equal(run(`coverNote('God Hand')`), 'cover could not be loaded (offline or blocked)');
-    run(`covers['God Hand'] = { url: '', page: '', at: Date.now() }; coverFailed.clear()`);
-    assert.equal(run(`coverNote('God Hand')`), 'no cover found on Wikipedia');
-    assert.match(el('collectionNote').textContent, /request to Wikipedia for each game/, 'the page says what leaves the browser');
+    assert.match(el('collectionNote').textContent, /thumbnails\.libretro\.com .* names the game and shows that site your address/, 'the page says what leaves the browser');
+    // An index that cannot be read leaves initials and says so; a bad file is not trusted
+    for (const bad of [{ ok: false, status: 404, json: async () => ({}) }, { ok: true, json: async () => ({ covers: [] }) }, { ok: true, json: async () => ({ covers: null }) }, { ok: true, json: async () => { throw new SyntaxError('x'); } }]) {
+        answer = bad;
+        run(`coverIndex = null; coverIndexState = 'idle'; renderCollection()`);
+        await new Promise(done => setTimeout(done, 20));
+        assert.equal(run(`coverIndexState`), 'failed');
+        assert.equal(run(`coverUrl('God Hand')`), '');
+        assert.equal(run(`coverNote('God Hand')`), 'cover list could not be loaded (offline or blocked)');
+        assert.doesNotMatch(el('collectionList').innerHTML, /<img/);
+    }
+    // The real index: well-known games are in it, and every entry builds an address
+    const real = JSON.parse(read('covers.json'));
+    answer = { ok: true, json: async () => real };
+    run(`coverIndex = null; coverIndexState = 'idle'; ensureCoverIndex()`);
+    await new Promise(done => setTimeout(done, 20));
+    for (const name of ['God Hand', 'Okami', 'Silent Hill 2', 'Kingdom Hearts II', 'The Getaway', 'Ratchet & Clank', 'Shadow of the Colossus', 'Kuon']) {
+        assert.match(run(`coverUrl(${JSON.stringify(name)})`), /^https:\/\/thumbnails\.libretro\.com\/Sony%20-%20PlayStation%202\/Named_Boxarts\/[^"<>]+\.png$/, `${name} has a cover`);
+    }
+    assert.ok(Object.keys(real.covers).length > 4000, 'thousands of games');
+    assert.ok(Object.values(real.covers).every(value => Array.isArray(value) && value.length === 3 && typeof value[0] === 'string' && value[0] && value.slice(1).every(part => typeof part === 'string') && (value[1] || value[2])), 'every entry has a title and a region');
     assert.equal(run(`initialsOf('The Legend of Heroes: Trails')`), 'TLO');
     context.fetch = fakeFetch;
     context.localStorage = { getItem: () => null, setItem() {} };
