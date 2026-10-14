@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-14: editions cross-checked against the first eBay run
+
+- First run (26 of 32 editions placed): 6 US editions were missing from `latest["editions"]` because their names are already priced games
+  (the Rarest page lists them, e.g. Resident Evil 4 Premium Edition: 28 copies, median $199.99). `add_rare_games()` now points such an
+  edition at the game that holds the figures (when it is priced on the edition's site) instead of skipping it.
+- Six came back `unmatched` (eBay returned listings, none named the game): the search words for `.hack//G.U. Vol. 1 Rebirth Premium Edition`
+  (now "hack g u" + "rebirth") and Shin Megami Tensei: Devil Summoner 2 (now its Raidou Kuzunoha vs. King Abaddon name) were wrong and are changed;
+  Brothers in Arms pre-order kit, Driver 2, ICO First Edition, Resident Evil 4 Collector's Pack and Robotech Battlecry Collector's Edition are left as
+  they are: either nothing is listed under the edition's own words or the entry is too rare to ever be listed.
+- "Special Edition" / "Two Disc Set" entries for Call of Duty 3 and God of War II (US) were the ordinary pressing, so their figures are ordinary prices (180 and
+  152 copies), not collectors' prices.
+
 ## 2026-10-14: edition badge on My collection
 
 - A coloured badge on an edition's tile in My collection says what it comes in (STEELBOOK, TIN, SLIPCASE, SLIPCOVER, DIGIPAK, BOXED SET,
