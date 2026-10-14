@@ -2706,6 +2706,15 @@
         // The address of a game's box art: the region's own picture when there is one, else the other's.
         function coverUrl(title, region = 'US') {
             if (!coversShown || !coverIndex) return '';
+            // An edition (editions.json) uses the box Libretro has for that very edition when the entry names
+            // its file ("cover"), otherwise its game's box in the edition's own region: the plain case, not
+            // the steelbook, because the collection has no picture of those.
+            const named = editionNamed(title);
+            if (named) {
+                const file = named.edition.cover;
+                if (typeof file === 'string' && file && !/[\\/]/.test(file)) return `${COVER_BASE}${encodeURIComponent(file)}.png`;
+                return typeof named.edition.game === 'string' ? coverUrl(named.edition.game, named.region) : '';
+            }
             const key = priceKey(title);
             const found = key && own(coverIndex, key) ? coverIndex[key] : null;
             if (!Array.isArray(found) || typeof found[0] !== 'string' || !found[0]) return '';
