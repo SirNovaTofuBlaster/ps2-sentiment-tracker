@@ -59,7 +59,7 @@ RECENT_DAYS = 3          # momentum: mentions in the last N days ...
 BASELINE_DAYS = 11       # ... against the N days before those (the snapshot keeps 14)
 EBAY_MIN_COPIES = 3      # a week's change in a median of fewer copies than this says nothing
 CHECKS_PER_RUN = 150     # Wikipedia articles checked per run (resolved + read in full)
-RULES_VERSION = 2        # raise when the collectible rules change: every article is read again
+RULES_VERSION = 3        # raise when the collectible rules change: every article is read again
 CHECK_MAX_AGE_DAYS = 30  # a checked article is read again after this long
 
 # Articles that are never the game, whatever the search says.
@@ -249,32 +249,35 @@ IN_GAME_WORDS = re.compile(r"\b(in-game|player|players|character|characters|weap
                            r"boss|loot|quest)\b", re.I)
 
 
-# Strong words say the game itself is rare or sought after; they need only a sentence about a game
-# or its copies. Weak words (a price) need a market word as well. "Collector's edition" is a box
-# set, not rarity, so "collector's" alone never counts.
-STRONG_WORDS = re.compile(r"\b(rare|rarity|scarce|scarcity|sought[- ]after|out of print|"
-                          r"(?:rare|valuable|highly[- ]valued|become|became|becoming)\s+(?:a\s+)?collect[ai]ble)\b", re.I)
-SUBJECT_WORDS = re.compile(r"\b(game|games|version|release|released|edition|copies|copy|title|"
-                           r"collectors?|market|resale|ebay|auctions?)\b", re.I)
-WEAK_WORDS = re.compile(r"\b(expensive|valuable|high prices?|sells? for|sold for|fetch(?:es|ed)?|"
-                        r"limited (?:print|run|production))\b", re.I)
+# What counts as "the article calls the game a rare collectible" (rules v3, 2026-10-14, written
+# from reading the flagged articles): the rarity must be of the game's copies, versions, releases
+# or of the game itself becoming sought after, or a price must be given for second-hand copies.
+# Not counted: rare items or enemies inside the game, "collector's edition" boxes, a development
+# budget ("most expensive game"), sales figures ("sold for" / "sold 1 million"), review quotes
+# ("a rarity in the comic book world").
+_RARITY = r"(?:rare|rarer|scarce|sought[- ]after|out of print|highly valued)"
+_COPY = r"(?:copies|copy|versions?|releases?|editions?|pressings?|print(?:ing)?s?|discs?)"
+COLLECTIBLE_PATTERNS = [
+    ("rare", re.compile(r"\b(?:become|became|becoming|becomes)\s+(?:an?\s+)?(?:somewhat\s+|very\s+|extremely\s+|highly\s+|quite\s+)?" + _RARITY + r"\b", re.I)),
+    ("rare", re.compile(r"\b" + _RARITY + r"\s+(?:collect[ai]ble|collector'?s?\s+items?|" + _COPY + r")\b", re.I)),
+    ("rare", re.compile(r"\b" + _COPY + r"\b[^.;]{0,40}\b(?:are|is|have become|has become|became)\s+(?:now\s+)?(?:very\s+|extremely\s+|highly\s+)?" + _RARITY + r"\b", re.I)),
+    ("out of print", re.compile(r"\bout of print\b", re.I)),
+    ("low quantities", re.compile(r"\b(?:low quantities|limited number of copies|limited print run|small print run)\b", re.I)),
+    ("second-hand price", re.compile(r"\b(?:pre-owned|second-?hand|used|resale|loose|complete)\s+(?:copies|market|prices?)[^.;]{0,60}[$£€]\s?\d", re.I)),
+    ("expensive second-hand", re.compile(r"\bexpensive\b[^.;]{0,40}\b(?:second-?hand|to buy|to collect|on the (?:resale|used) market)\b", re.I)),
+]
 
 
 def collectible_terms(text):
-    """The value words (at most three, lower case) that show the article calls the game a rare
-    or valuable collectible; [] when it does not. Only the words are kept, never the sentences."""
+    """Short labels (at most three) for why the article calls the game a rare or valuable
+    collectible; [] when it does not. Only the labels are kept, never the sentences."""
     found = []
     for sentence in re.split(r"(?<=[.!?])\s+", str(text or "")):
         if IN_GAME_WORDS.search(sentence):
             continue
-        hits = [m.group(1) for m in STRONG_WORDS.finditer(sentence)] \
-            if SUBJECT_WORDS.search(sentence) else []
-        if not hits and MARKET_WORDS.search(sentence) and "edition" not in sentence.lower():
-            hits = [m.group(1) for m in WEAK_WORDS.finditer(sentence)]
-        for word in hits:
-            word = word.lower()
-            if word not in found:
-                found.append(word)
+        for label, pattern in COLLECTIBLE_PATTERNS:
+            if label not in found and pattern.search(sentence):
+                found.append(label)
     return found[:3]
 
 
