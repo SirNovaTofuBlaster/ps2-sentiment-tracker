@@ -46,6 +46,8 @@ through its **Sources & Weights** panel.
 | `.github/workflows/tests.yml` | The test suite on pushes and pull requests |
 | `archive.py`, `.github/workflows/archive.yml` | Appends every PS2 game mention to `data/archive/YYYY-MM.json`, and every digital-only story (any game, with its link) to `data/archive/digital/YYYY-MM.json`, four times a day. Reads the snapshot only: it fetches nothing |
 | `demand.py`, `.github/workflows/demand.yml` | Builds `data/demand.json` (the Demand Index) from Wikipedia pageviews and mentions, daily |
+| `fx.py`, `.github/workflows/fx.yml` | Saves `data/fx.json` (euros per US dollar, pound, zloty and franc, from the European Central Bank's public rate file) each weekday for the dashboard's EUR button. Standard library only, no key; leaves the old file when the ECB cannot be read |
+| `tests/test_fx.py` | Offline tests for `fx.py` and its workflow |
 | `ebay_prices.py` | eBay asking prices (US and UK) for every library game the feed has mentioned, through eBay's official API; decides how often each game is checked. The only script that uses a key |
 | `ebay_watchlist.json` | Games pinned for pricing (always tracked, with their own search words), titles never to price, and the names games have on eBay UK (`regional_names`) |
 | `rare_games.json` | The Rarest page: the rarest PAL and US games (100+ each), ranked by PriceCharting's complete-copy value, each with its sources, eBay search words and an estimate of copies sold (`copies`; how it was made is at the top). `ebay_prices.py` prices each list daily on its own site |
@@ -229,7 +231,7 @@ Before you call something done, prove it; don't assume it.
     API when it differs, and checks it again before saving.
   - *Live checks* and *Tests* are the only workflows that run on pull requests. Neither holds
     a key or may write; keep it that way (rule 8).
-  - Four workflows commit to `main` on their own (scraper, archive, demand, eBay prices). Each
+  - Five workflows commit to `main` on their own (scraper, archive, demand, eBay prices, euro rates). Each
     one must `git pull --rebase` and retry before giving up, or it fails whenever another got
     there first, and each stages only the files it wrote. The fixtures workflow commits too,
     but only when started by hand.
@@ -324,6 +326,12 @@ Before you call something done, prove it; don't assume it.
     checked first: adding a market there prices every tracked game on it.
   - A production keyset stays disabled until eBay's marketplace account deletion notifications
     are subscribed to or opted out of in the developer portal.
+- **Euros**
+  - The EUR button converts at display time with one rate (`fxData`), through `money()` and
+    `moneyShort()` only. A price shown some other way will not convert: route new prices through
+    those two. PriceCharting guide figures pass `convert = false` and stay in dollars.
+  - Converted figures are marked `≈`. The week's change converts the amount, not the percentage.
+  - `data/fx.json` holds no time of day, so a day with the same ECB rates commits nothing.
 - **Windows**
   - Set `PYTHONIOENCODING=utf-8` before printing titles.
   - `core.autocrlf=true` gives CRLF working files, so the tests normalise line endings.

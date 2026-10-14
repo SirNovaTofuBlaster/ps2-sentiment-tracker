@@ -1,0 +1,50 @@
+name: Euro exchange rates
+
+# Saves data/fx.json for the dashboard's EUR button, once each weekday after the European
+# Central Bank has published its rates. Holds no key and installs nothing: fx.py uses only
+# Python's standard library. A skipped run just leaves the previous day's rates in place.
+on:
+  schedule:
+    - cron: "37 16 * * 1-5"
+  workflow_dispatch:
+
+concurrency:
+  group: fx
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  fx:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.ref }}
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - run: python fx.py
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/fx.json
+          if git diff --staged --quiet; then
+            echo "The rates have not changed."
+            exit 0
+          fi
+          git commit -m "Update euro exchange rates"
+          # Other jobs save to main too. If one got there first, take its commit and try again.
+          for attempt in 1 2 3; do
+            if git pull --rebase origin "$GITHUB_REF_NAME" && git push; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed; retrying..."
+            git rebase --abort 2>/dev/null || true
+            sleep 5
+          done
+          echo "Push failed after 3 attempts." >&2
+          exit 1

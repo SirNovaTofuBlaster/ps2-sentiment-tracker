@@ -67,6 +67,12 @@
             <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
         </div>
 
+        <!-- The EUR button: shown only when data/fx.json could be read. -->
+        <div id="currencyRow" class="currency-row hidden">
+            <span id="currencyNote" class="currency-note"></span>
+            <button type="button" id="currencyToggle" class="currency-toggle" aria-pressed="false" onclick="setCurrency(!showEuro)">&euro; EUR</button>
+        </div>
+
         <div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">
 
         <div class="stat-strip">
@@ -541,6 +547,7 @@
             sync.title = data.last_updated ? `Scraper ran at ${data.last_updated}` : '';
             document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
             // Prices first: every list below shows them beside its games.
+            await loadFx();
             await loadPrices();
             await loadRare();
             await loadDemand();
@@ -885,15 +892,79 @@
 
         // "$220", "£52.70": the site (US, UK) is always named beside the figure, so the
         // plain symbol is enough whatever the reader's own country.
-        function money(value, currency, locale) {
+        function money(value, currency, locale, convert = true) {
             if (typeof value !== 'number' || !Number.isFinite(value)) return '';
-            const digits = value >= 100 ? 0 : 2;
+            const { shown, code, mark } = inEuros(value, currency, convert);
+            const digits = shown >= 100 ? 0 : 2;
             try {
-                return new Intl.NumberFormat(locale, { style: 'currency', currency, currencyDisplay: 'narrowSymbol',
-                    minimumFractionDigits: digits, maximumFractionDigits: digits }).format(value);
+                return mark + new Intl.NumberFormat(locale, { style: 'currency', currency: code, currencyDisplay: 'narrowSymbol',
+                    minimumFractionDigits: digits, maximumFractionDigits: digits }).format(shown);
             } catch {
-                return `${value.toFixed(digits)} ${currency}`;
+                return `${mark}${shown.toFixed(digits)} ${code}`;
             }
+        }
+
+        /* ---- The EUR button ---------------------------------------------------
+           data/fx.json (saved daily from the European Central Bank's published rates): units
+           of each currency per euro. With the button on, every price shown in another currency
+           is divided by today's rate and marked "≈". Charts and a week's change use the same
+           (latest) rate, so no price is mixed with a different day's rate. Index lines are
+           percentages and do not change. The PriceCharting "guide" figures stay in dollars.
+        -------------------------------------------------------------------- */
+        let fxData = null;      // { date, rates: { USD, GBP, ... } } as loaded, or null
+        let showEuro = false;   // the button is on
+        const EURO_KEY = 'ps2-sentiment-tracker.euro';
+
+        function setFx(data) {
+            const rates = {};
+            if (data && typeof data === 'object' && /^\d{4}-\d{2}-\d{2}$/.test(String(data.date)) && data.rates && typeof data.rates === 'object') {
+                for (const code of Object.keys(data.rates)) {
+                    const rate = data.rates[code];
+                    if (/^[A-Z]{3}$/.test(code) && code !== 'EUR' && typeof rate === 'number' && Number.isFinite(rate) && rate > 0) rates[code] = rate;
+                }
+            }
+            fxData = Object.keys(rates).length ? { date: data.date, rates } : null;
+            if (!fxData) showEuro = false;
+        }
+
+        function inEuros(value, currency, convert = true) {
+            const rate = convert && showEuro && currency !== 'EUR' && fxData && own(fxData.rates, currency) ? fxData.rates[currency] : null;
+            return rate ? { shown: value / rate, code: 'EUR', mark: '≈' } : { shown: value, code: currency, mark: '' };
+        }
+
+        function paintCurrency() {
+            const button = document.getElementById('currencyToggle');
+            button.classList.toggle('is-active', showEuro);
+            button.setAttribute('aria-pressed', String(showEuro));
+            document.getElementById('currencyRow').classList.toggle('hidden', !fxData);
+            const note = document.getElementById('currencyNote');
+            note.textContent = showEuro && fxData ? `≈ converted at the European Central Bank rate of ${shortDate(fxData.date, 'en-GB')}` : '';
+            button.title = fxData ? `Show every price in euros at the European Central Bank rate of ${fxData.date}. Charts and a week's change use that same rate.` : '';
+        }
+
+        function setCurrency(on, remember = true) {
+            showEuro = on === true && fxData !== null;
+            paintCurrency();
+            if (remember) {
+                try { localStorage.setItem(EURO_KEY, showEuro ? 'EUR' : 'native'); } catch { /* the choice is just not remembered */ }
+            }
+            for (const draw of [() => renderPrices(), () => renderRare(), () => refreshDashboard(),
+                () => { if (!document.getElementById('gameChart').classList.contains('hidden')) renderGameChart(); }]) {
+                try { draw(); } catch (error) { console.warn('Could not redraw after the currency changed.', error); }
+            }
+        }
+
+        async function loadFx() {
+            try {
+                const response = await fetch('data/fx.json', { cache: 'no-cache' });
+                setFx(response.ok ? await response.json() : null);
+            } catch {
+                setFx(null);
+            }
+            let stored = null;
+            try { stored = localStorage.getItem(EURO_KEY); } catch { /* no memory of the choice */ }
+            showEuro = fxData !== null && stored === 'EUR';
+            paintCurrency();
         }
 
         // "2026-10-06T12:00Z" -> { text: '3h ago', stale: false }; stale once older than `staleHours`.
@@ -1295,7 +1366,7 @@
                         <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${esc(rank)} ${esc(entry.title)}${flags.map(flag =>
                             ` <span class="level-tag rare-flag" title="${esc(hint(flag))}">${esc(RARE_FLAGS[flag])}</span>`).join('')}</span>
                         <span class="whitespace-nowrap">${typeof value === 'number' && Number.isFinite(value)
-                            ? `<span class="text-slate-400" title="What collectors pay for a complete copy: PriceCharting's market price in US dollars${checkedOn ? `, ${esc(checkedOn)}` : ''}. This is what the list is ranked by.">guide ${esc(money(value, 'USD', locale))}</span>` : ''}${prices
+                            ? `<span class="text-slate-400" title="What collectors pay for a complete copy: PriceCharting's market price in US dollars${checkedOn ? `, ${esc(checkedOn)}` : ''}. This is what the list is ranked by.">guide ${esc(money(value, 'USD', locale, false))}</span>` : ''}${prices
                             ? ` ${chartButtonHtml(prices.title, label)}` : ''}</span>
                     </div>
                     ${typeof entry.other_title === 'string' && entry.other_title.trim()
@@ -1434,7 +1505,7 @@
                         <span class="text-cyan-300${i === 0 ? ' font-bold' : ''}">#${esc(rank)} ${esc(entry.name)}${tier
                             ? ` <span class="rarity-badge rarity-${esc(tier)}" title="${esc(CONSOLE_RARITY[tier][1])}">${esc(CONSOLE_RARITY[tier][0])}</span>` : ''}${tags.map(tag =>
                             ` <span class="level-tag rare-flag" title="${esc(CONSOLE_TAGS[tag][1])}">${esc(CONSOLE_TAGS[tag][0])}</span>`).join('')}</span>
-                        ${usd !== null ? `<span class="text-slate-400 whitespace-nowrap" title="${esc(`${value.what ?? ''}${value.date ? ` (${value.date})` : ''}`)}">guide ${esc(money(usd, 'USD', locale))}</span>` : ''}
+                        ${usd !== null ? `<span class="text-slate-400 whitespace-nowrap" title="${esc(`${value.what ?? ''}${value.date ? ` (${value.date})` : ''}`)}">guide ${esc(money(usd, 'USD', locale, false))}</span>` : ''}
                     </div>
                     ${facts.length ? `<p class="rare-aka" title="${esc(models.join(' · '))}">${esc(facts.join(' · '))}</p>` : ''}
                     <div class="ebay-figures">${figures}</div>
@@ -1522,11 +1593,12 @@
         // "£286M", "$1.1B": a market cap in a few characters.
         function moneyShort(value, currency, locale) {
             if (typeof value !== 'number' || !Number.isFinite(value)) return '';
+            const { shown, code, mark } = inEuros(value, currency);
             try {
-                return new Intl.NumberFormat(locale, { style: 'currency', currency, currencyDisplay: 'narrowSymbol',
-                    notation: 'compact', minimumFractionDigits: 0, maximumFractionDigits: 1 }).format(value);
+                return mark + new Intl.NumberFormat(locale, { style: 'currency', currency: code, currencyDisplay: 'narrowSymbol',
+                    notation: 'compact', minimumFractionDigits: 0, maximumFractionDigits: 1 }).format(shown);
             } catch {
-                return `${Math.round(value)} ${currency}`;
+                return `${mark}${Math.round(shown)} ${code}`;
             }
         }
 
