@@ -10,6 +10,7 @@ import base64
 import contextlib
 import io
 import json
+import os
 import re
 import sys
 import tempfile
@@ -2448,6 +2449,90 @@ class WorkflowTests(unittest.TestCase):
         for path in ("- ebay_prices.py", "- ebay_watchlist.json", "- .github/workflows/ebay.yml"):
             self.assertIn(path, text)
         self.assertNotIn("secrets.", text)
+
+
+class ProbeTests(unittest.TestCase):
+    """The count-only check of other eBay sites, started by hand: counts, nothing else."""
+
+    def run_it(self, answer, rare=("Kuon",)):
+        http, lines = FakeHttp(answer=answer), []
+        used = ebay_prices.run_probe(http, "the-id", "the-secret", rare_titles=rare, pause=0, out=lines.append)
+        return http, lines, used
+
+    def test_each_site_is_asked_for_one_listing_with_its_own_marketplace_and_country(self):
+        http, lines, used = self.run_it(lambda params, headers: page(total=7))
+        self.assertEqual(used, len(http.searches))
+        self.assertEqual({search["headers"]["X-EBAY-C-MARKETPLACE-ID"] for search in http.searches},
+                         {"EBAY_GB", "EBAY_DE", "EBAY_FR", "EBAY_IT", "EBAY_ES", "EBAY_PL"})
+        for search in http.searches:
+            country = ebay_prices.PROBE_MARKETS[search["headers"]["X-EBAY-C-MARKETPLACE-ID"]]["country"]
+            self.assertEqual(search["params"]["limit"], "1", "the count only")
+            self.assertIn(f"itemLocationCountry:{country}", search["params"]["filter"])
+            self.assertTrue(search["params"]["q"].endswith(" ps2"))
+        # A few are also asked without the video games category, to see that it is the right one.
+        self.assertTrue(any("category_ids" not in search["params"] for search in http.searches))
+        self.assertTrue(any("category_ids" in search["params"] for search in http.searches))
+
+    def test_it_reports_how_many_games_show_enough_copies_per_site(self):
+        counts = {"Kuon": 0, "Okami": 2}
+        def answer(params, headers):
+            name = params["q"].replace(" ps2", "")
+            return page(total=counts.get(name, 9))
+        _, lines, _ = self.run_it(answer, rare=("Kuon",))
+        text = "\n".join(lines)
+        self.assertIn("[DE] famous: 19 of 20 show 5+ copies, 20 show 1+, 0 could not be counted", text)
+        self.assertIn("rare PAL: 0 of 1 show 5+ copies, 0 show 1+", text)
+
+    def test_a_failed_search_is_reported_not_counted_as_zero(self):
+        _, lines, _ = self.run_it(lambda params, headers: (400, {"errors": [{"message": "bad marketplace"}]}))
+        self.assertIn("20 could not be counted", "\n".join(lines))
+        self.assertIn("HTTP 400: bad marketplace", "\n".join(lines))
+
+    def test_the_allowance_running_out_stops_it(self):
+        http, lines, used = self.run_it(lambda params, headers: (429, {"errors": [{"message": "limit"}]}))
+        self.assertEqual(used, 1)
+        self.assertIn("stopped early", lines[-1])
+
+    def test_only_counts_and_our_own_game_names_come_out_and_the_key_never_does(self):
+        def answer(params, headers):
+            return page(listing("Someone's listing title", 123.45, item_id=99, itemWebUrl="https://www.ebay.de/itm/99"), total=1)
+        _, lines, _ = self.run_it(answer)
+        text = "\n".join(lines)
+        for secret in ("the-id", "the-secret", TOKEN, "Someone", "123.45", "ebay.de/itm"):
+            self.assertNotIn(secret, text)
+
+    def test_the_notices_are_one_per_site_and_escaped(self):
+        _, lines, _ = self.run_it(lambda params, headers: page(total=3))
+        notices = [line for line in lines if line.startswith("::notice title=")]
+        self.assertEqual(len(notices), 6, "one per site, under GitHub's limit of ten a step")
+        self.assertTrue(all("\n" not in line for line in notices))
+        self.assertEqual(ebay_prices.annotation("a: b, c", ["x%y", "z"]), "::notice title=a%3A b%2C c::x%25y%0Az")
+
+    def test_it_writes_nothing_and_the_workflow_only_passes_a_switch(self):
+        source = (ROOT / "ebay_prices.py").read_text(encoding="utf-8")
+        block = source[source.index("def run_probe"):source.index("def main(argv=None):")]
+        for writer in (".write_text(", "open(", "append_history", "write_latest", "write_series"):
+            self.assertNotIn(writer, block)
+        text = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("probe:", text)
+        self.assertIn("EBAY_PROBE: ${{ inputs.probe }}", text)
+
+    def test_the_rare_titles_are_plain_pal_entries_from_the_research_file(self):
+        titles = ebay_prices.probe_rare_titles()
+        self.assertEqual(len(titles), ebay_prices.PROBE_RARE_GAMES)
+        self.assertNotIn("Grand Theft Auto Complete Collection", titles, "an Australian box set is left out")
+
+    def test_main_runs_the_probe_and_nothing_else_when_asked(self):
+        calls = []
+        saved = ebay_prices.run_probe
+        ebay_prices.run_probe = lambda *args, **kwargs: calls.append(args[1:3]) or 0
+        try:
+            with mock.patch.dict(os.environ, {"EBAY_PROBE": "true", "EBAY_CLIENT_ID": "i", "EBAY_CLIENT_SECRET": "s"}):
+                with mock.patch.object(ebay_prices, "load_watchlist", side_effect=AssertionError("normal run started")):
+                    self.assertEqual(ebay_prices.main([]), 0)
+        finally:
+            ebay_prices.run_probe = saved
+        self.assertEqual(calls, [("i", "s")])
 
 
 class KeyStaysInOnePlaceTests(unittest.TestCase):

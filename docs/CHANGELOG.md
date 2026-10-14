@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-14: counting listings on other eBay sites
+
+- Asked: add Germany, France, Italy, Spain and Poland to the eBay prices, starting with whether
+  each site has enough listings to be worth it.
+- `ebay_prices.py`: a probe mode (`EBAY_PROBE=true`, the workflow's new **probe** tick box). It
+  asks each site in `PROBE_MARKETS` how many listings it reports for 20 famous games and the
+  first 20 plain PAL entries of `rare_games.json`, one listing per search (counts only), and
+  prints a summary per site plus one run notice per site. Britain is the control. It uses about
+  300 searches, reads no state and writes nothing. The normal run, `MARKETS` and the dashboard are
+  unchanged: no site is priced yet.
+- `.github/workflows/ebay.yml`: the `probe` input and `EBAY_PROBE`. No other step changed.
+
 ## 2026-10-14: charts on a phone
 
 - Asked: the charts did not look good on a Pixel 10 Pro (427 x 952 CSS pixels).

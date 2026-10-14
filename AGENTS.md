@@ -312,6 +312,16 @@ Before you call something done, prove it; don't assume it.
     no listing carries the PS2 item specific and it asks again by keyword; a failed search
     is tried up to three times. eBay returns at most 200 listings per search, and a game
     with more is marked `truncated`.
+  - Other eBay sites (decision of 2026-10-14: Germany, France, Italy, Spain and Poland are being
+    considered). `ebay_prices.py` only *counts* listings there, never prices them: start *eBay
+    asking prices* by hand with **probe** ticked (`EBAY_PROBE`). It asks each site in
+    `PROBE_MARKETS` (with Britain as the control) how many listings it reports for 20 famous
+    games and 20 rare PAL ones (about 300 searches, not added to the day's count), prints counts
+    and our own game names only, and attaches one notice per site to the run
+    (`check-runs/<job id>/annotations`) because the job log cannot be downloaded from every
+    network. It reads no state and writes no file. A site is added to `MARKETS` only after those
+    counts, and the code that loops over `MARKETS` (and the dashboard's site labels) must be
+    checked first: adding a market there prices every tracked game on it.
   - A production keyset stays disabled until eBay's marketplace account deletion notifications
     are subscribed to or opted out of in the developer portal.
 - **Windows**
