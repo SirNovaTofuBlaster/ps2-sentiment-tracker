@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "generated": "2026-10-14 14:18:57 UTC",
+  "generated": "2026-10-14 14:34:41 UTC",
   "window_days": 28,
   "trend_days": 7,
   "recent_days": 3,
@@ -12,7 +12,7 @@
     "ebay": 0.2,
     "wikipedia": 0.15
   },
-  "youtube_views_seen": false,
+  "youtube_views_seen": true,
   "games": [
     {
       "title": "God of War",
@@ -20,8 +20,8 @@
       "recent": 34,
       "prior": 25,
       "sources": 24,
-      "youtube_views": 0,
-      "youtube_videos": 0,
+      "youtube_views": 43189,
+      "youtube_videos": 3,
       "ebay_change_pct": -5.5,
       "article": "God of War (2005 video game)",
       "url": "https://en.wikipedia.org/wiki/God_of_War_%282005_video_game%29",
@@ -32,11 +32,225 @@
       "signals": {
         "momentum": 100.0,
         "breadth": 100.0,
-        "youtube": null,
+        "youtube": 74.6,
         "ebay": 36.2,
         "wikipedia": 29.1
       },
-      "demand": 70.8
+      "demand": 71.5
+    },
+    {
+      "title": "Retro",
+      "mentions": 41,
+      "recent": 14,
+      "prior": 27,
+      "sources": 11,
+      "youtube_views": 49308,
+      "youtube_videos": 19,
+      "ebay_change_pct": null,
+      "article": null,
+      "url": null,
+      "views_30d": null,
+      "trend_pct": null,
+      "signals": {
+        "momentum": 77.4,
+        "breadth": 45.8,
+        "youtube": 75.5,
+        "ebay": null,
+        "wikipedia": null
+      },
+      "demand": 69.5
+    },
+    {
+      "title": "Resident Evil 4",
+      "mentions": 30,
+      "recent": 13,
+      "prior": 17,
+      "sources": 15,
+      "youtube_views": 39811,
+      "youtube_videos": 1,
+      "ebay_change_pct": 3.3,
+      "article": "Resident Evil 4",
+      "url": "https://en.wikipedia.org/wiki/Resident_Evil_4",
+      "views_30d": 74089,
+      "trend_pct": -19.0,
+      "views_recent": 13414,
+      "views_previous": 16569,
+      "signals": {
+        "momentum": 91.5,
+        "breadth": 62.5,
+        "youtube": 74.1,
+        "ebay": 58.2,
+        "wikipedia": 20.7
+      },
+      "demand": 66.4
+    },
+    {
+      "title": "Persona 4",
+      "mentions": 34,
+      "recent": 9,
+      "prior": 25,
+      "sources": 13,
+      "youtube_views": 1006637,
+      "youtube_videos": 17,
+      "ebay_change_pct": null,
+      "article": "Persona 4",
+      "url": "https://en.wikipedia.org/wiki/Persona_4",
+      "views_30d": 21131,
+      "trend_pct": -4.3,
+      "views_recent": 4212,
+      "views_previous": 4403,
+      "signals": {
+        "momentum": 62.5,
+        "breadth": 54.2,
+        "youtube": 96.6,
+        "ebay": null,
+        "wikipedia": 30.5
+      },
+      "demand": 63.5
+    },
+    {
+      "title": "Kingdom Hearts",
+      "mentions": 54,
+      "recent": 9,
+      "prior": 45,
+      "sources": 22,
+      "youtube_views": 404809,
+      "youtube_videos": 5,
+      "ebay_change_pct": 4.2,
+      "article": "Kingdom Hearts (video game)",
+      "url": "https://en.wikipedia.org/wiki/Kingdom_Hearts_%28video_game%29",
+      "views_30d": 29595,
+      "trend_pct": 16.1,
+      "views_recent": 7780,
+      "views_previous": 6701,
+      "signals": {
+        "momentum": 38.8,
+        "breadth": 91.7,
+        "youtube": 90.3,
+        "ebay": 60.5,
+        "wikipedia": 44.1
+      },
+      "demand": 62.2
+    },
+    {
+      "title": "Grand Theft Auto III",
+      "mentions": 11,
+      "recent": 9,
+      "prior": 2,
+      "sources": 5,
+      "youtube_views": 76460,
+      "youtube_videos": 1,
+      "ebay_change_pct": -6.2,
+      "article": "Grand Theft Auto III",
+      "url": "https://en.wikipedia.org/wiki/Grand_Theft_Auto_III",
+      "views_30d": 50409,
+      "trend_pct": 3.8,
+      "views_recent": 11657,
+      "views_previous": 11234,
+      "signals": {
+        "momentum": 100.0,
+        "breadth": 20.8,
+        "youtube": 78.6,
+        "ebay": 34.5,
+        "wikipedia": 35.9
+      },
+      "demand": 61.1
+    },
+    {
+      "title": "Spider-Man",
+      "mentions": 32,
+      "recent": 9,
+      "prior": 23,
+      "sources": 17,
+      "youtube_views": 41123,
+      "youtube_videos": 6,
+      "ebay_change_pct": -1.0,
+      "article": "Spider-Man (2002 video game)",
+      "url": "https://en.wikipedia.org/wiki/Spider-Man_%282002_video_game%29",
+      "views_30d": 6125,
+      "trend_pct": 3.1,
+      "views_recent": 1385,
+      "views_previous": 1344,
+      "signals": {
+        "momentum": 65.7,
+        "breadth": 70.8,
+        "youtube": 74.3,
+        "ebay": 47.5,
+        "wikipedia": 35.4
+      },
+      "demand": 60.0
+    },
+    {
+      "title": "Splinter Cell",
+      "mentions": 14,
+      "recent": 7,
+      "prior": 7,
+      "sources": 8,
+      "youtube_views": 1707,
+      "youtube_videos": 1,
+      "ebay_change_pct": 1.9,
+      "article": "Tom Clancy's Splinter Cell (video game)",
+      "url": "https://en.wikipedia.org/wiki/Tom_Clancy%27s_Splinter_Cell_%28video_game%29",
+      "views_30d": 8643,
+      "trend_pct": -11.4,
+      "views_recent": 1851,
+      "views_previous": 2089,
+      "signals": {
+        "momentum": 94.4,
+        "breadth": 33.3,
+        "youtube": 52.0,
+        "ebay": 54.8,
+        "wikipedia": 25.7
+      },
+      "demand": 58.5
+    },
+    {
+      "title": "Hardware Online Arena",
+      "mentions": 22,
+      "recent": 7,
+      "prior": 15,
+      "sources": 9,
+      "youtube_views": 46390,
+      "youtube_videos": 8,
+      "ebay_change_pct": 0.0,
+      "article": "Hardware: Online Arena",
+      "url": "https://en.wikipedia.org/wiki/Hardware%3A_Online_Arena",
+      "views_30d": 234,
+      "trend_pct": 11.3,
+      "views_recent": 59,
+      "views_previous": 53,
+      "signals": {
+        "momentum": 71.5,
+        "breadth": 37.5,
+        "youtube": 75.1,
+        "ebay": 50.0,
+        "wikipedia": 40.9
+      },
+      "demand": 58.2
+    },
+    {
+      "title": "Black",
+      "mentions": 29,
+      "recent": 10,
+      "prior": 19,
+      "sources": 9,
+      "youtube_views": 5390,
+      "youtube_videos": 2,
+      "ebay_change_pct": null,
+      "article": "Black (video game)",
+      "url": "https://en.wikipedia.org/wiki/Black_%28video_game%29",
+      "views_30d": 7712,
+      "trend_pct": 5.3,
+      "views_recent": 1984,
+      "views_previous": 1884,
+      "signals": {
+        "momentum": 76.9,
+        "breadth": 37.5,
+        "youtube": 60.1,
+        "ebay": null,
+        "wikipedia": 36.9
+      },
+      "demand": 57.8
     },
     {
       "title": "Bully",
@@ -56,79 +270,35 @@
       "signals": {
         "momentum": 94.9,
         "breadth": 20.8,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 100.0,
         "wikipedia": 26.7
       },
-      "demand": 69.5
+      "demand": 55.6
     },
     {
-      "title": "Top Gun",
-      "mentions": 42,
-      "recent": 21,
-      "prior": 21,
-      "sources": 2,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": null,
-      "url": null,
-      "views_30d": null,
-      "trend_pct": null,
+      "title": "Silent Hill 2",
+      "mentions": 15,
+      "recent": 5,
+      "prior": 10,
+      "sources": 8,
+      "youtube_views": 26391,
+      "youtube_videos": 2,
+      "ebay_change_pct": 0.5,
+      "article": "Silent Hill 2",
+      "url": "https://en.wikipedia.org/wiki/Silent_Hill_2",
+      "views_30d": 55996,
+      "trend_pct": -11.3,
+      "views_recent": 11987,
+      "views_previous": 13509,
       "signals": {
-        "momentum": 100.0,
-        "breadth": 8.3,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": null
+        "momentum": 72.5,
+        "breadth": 33.3,
+        "youtube": 71.2,
+        "ebay": 51.2,
+        "wikipedia": 25.8
       },
-      "demand": 69.4
-    },
-    {
-      "title": "Retro",
-      "mentions": 41,
-      "recent": 14,
-      "prior": 27,
-      "sources": 11,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": null,
-      "url": null,
-      "views_30d": null,
-      "trend_pct": null,
-      "signals": {
-        "momentum": 77.4,
-        "breadth": 45.8,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": null
-      },
-      "demand": 66.9
-    },
-    {
-      "title": "Resident Evil 4",
-      "mentions": 30,
-      "recent": 14,
-      "prior": 16,
-      "sources": 15,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": 3.3,
-      "article": "Resident Evil 4",
-      "url": "https://en.wikipedia.org/wiki/Resident_Evil_4",
-      "views_30d": 74089,
-      "trend_pct": -19.0,
-      "views_recent": 13414,
-      "views_previous": 16569,
-      "signals": {
-        "momentum": 96.7,
-        "breadth": 62.5,
-        "youtube": null,
-        "ebay": 58.2,
-        "wikipedia": 20.7
-      },
-      "demand": 66.4
+      "demand": 55.1
     },
     {
       "title": "Max Payne",
@@ -148,11 +318,11 @@
       "signals": {
         "momentum": 100.0,
         "breadth": 41.7,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 63.5,
         "wikipedia": 25.8
       },
-      "demand": 66.0
+      "demand": 52.8
     },
     {
       "title": "Fatal Frame",
@@ -172,35 +342,105 @@
       "signals": {
         "momentum": 87.5,
         "breadth": 20.8,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 84.5,
         "wikipedia": 36.2
       },
-      "demand": 64.6
+      "demand": 51.7
     },
     {
-      "title": "Burnout Revenge",
-      "mentions": 6,
-      "recent": 4,
-      "prior": 2,
-      "sources": 2,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": "Burnout Revenge",
-      "url": "https://en.wikipedia.org/wiki/Burnout_Revenge",
-      "views_30d": 5577,
-      "trend_pct": 23.5,
-      "views_recent": 1683,
-      "views_previous": 1363,
+      "title": "Scaler",
+      "mentions": 11,
+      "recent": 3,
+      "prior": 8,
+      "sources": 1,
+      "youtube_views": 37846,
+      "youtube_videos": 6,
+      "ebay_change_pct": 2.1,
+      "article": "Scaler (video game)",
+      "url": "https://en.wikipedia.org/wiki/Scaler_%28video_game%29",
+      "views_30d": 1500,
+      "trend_pct": 10.4,
+      "views_recent": 340,
+      "views_previous": 308,
       "signals": {
-        "momentum": 98.2,
-        "breadth": 8.3,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": 49.0
+        "momentum": 62.8,
+        "breadth": 4.2,
+        "youtube": 73.7,
+        "ebay": 55.2,
+        "wikipedia": 40.3
       },
-      "demand": 63.4
+      "demand": 51.3
+    },
+    {
+      "title": "Need for Speed Most Wanted",
+      "mentions": 13,
+      "recent": 3,
+      "prior": 10,
+      "sources": 3,
+      "youtube_views": 16158,
+      "youtube_videos": 5,
+      "ebay_change_pct": -0.1,
+      "article": null,
+      "url": null,
+      "views_30d": null,
+      "trend_pct": null,
+      "signals": {
+        "momentum": 56.5,
+        "breadth": 12.5,
+        "youtube": 67.7,
+        "ebay": 49.8,
+        "wikipedia": null
+      },
+      "demand": 49.8
+    },
+    {
+      "title": "God Hand",
+      "mentions": 8,
+      "recent": 3,
+      "prior": 5,
+      "sources": 5,
+      "youtube_views": 559,
+      "youtube_videos": 1,
+      "ebay_change_pct": 0.6,
+      "article": "God Hand",
+      "url": "https://en.wikipedia.org/wiki/God_Hand",
+      "views_30d": 14187,
+      "trend_pct": 0.2,
+      "views_recent": 3254,
+      "views_previous": 3246,
+      "signals": {
+        "momentum": 74.3,
+        "breadth": 20.8,
+        "youtube": 44.2,
+        "ebay": 51.5,
+        "wikipedia": 33.5
+      },
+      "demand": 49.6
+    },
+    {
+      "title": "Kingdom Hearts II",
+      "mentions": 14,
+      "recent": 1,
+      "prior": 13,
+      "sources": 8,
+      "youtube_views": 1628206,
+      "youtube_videos": 6,
+      "ebay_change_pct": 3.8,
+      "article": "Kingdom Hearts II",
+      "url": "https://en.wikipedia.org/wiki/Kingdom_Hearts_II",
+      "views_30d": 18501,
+      "trend_pct": -1.2,
+      "views_recent": 4681,
+      "views_previous": 4739,
+      "signals": {
+        "momentum": 24.0,
+        "breadth": 33.3,
+        "youtube": 100.0,
+        "ebay": 59.5,
+        "wikipedia": 32.5
+      },
+      "demand": 49.0
     },
     {
       "title": "Burnout 3",
@@ -220,41 +460,87 @@
       "signals": {
         "momentum": 95.8,
         "breadth": 8.3,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 51.5,
         "wikipedia": 54.1
       },
-      "demand": 60.5
+      "demand": 48.4
     },
     {
-      "title": "Splinter Cell",
-      "mentions": 14,
-      "recent": 7,
-      "prior": 7,
-      "sources": 8,
+      "title": "Top Gun",
+      "mentions": 42,
+      "recent": 21,
+      "prior": 21,
+      "sources": 2,
       "youtube_views": 0,
       "youtube_videos": 0,
-      "ebay_change_pct": 1.9,
-      "article": "Tom Clancy's Splinter Cell (video game)",
-      "url": "https://en.wikipedia.org/wiki/Tom_Clancy%27s_Splinter_Cell_%28video_game%29",
-      "views_30d": 8643,
-      "trend_pct": -11.4,
-      "views_recent": 1851,
-      "views_previous": 2089,
+      "ebay_change_pct": null,
+      "article": null,
+      "url": null,
+      "views_30d": null,
+      "trend_pct": null,
       "signals": {
-        "momentum": 94.4,
-        "breadth": 33.3,
-        "youtube": null,
-        "ebay": 54.8,
-        "wikipedia": 25.7
+        "momentum": 100.0,
+        "breadth": 8.3,
+        "youtube": 0.0,
+        "ebay": null,
+        "wikipedia": null
       },
-      "demand": 60.2
+      "demand": 48.1
+    },
+    {
+      "title": "Juiced",
+      "mentions": 20,
+      "recent": 6,
+      "prior": 14,
+      "sources": 1,
+      "youtube_views": 7039,
+      "youtube_videos": 8,
+      "ebay_change_pct": 0.0,
+      "article": "Juiced (video game)",
+      "url": "https://en.wikipedia.org/wiki/Juiced_%28video_game%29",
+      "views_30d": 2215,
+      "trend_pct": -7.7,
+      "views_recent": 477,
+      "views_previous": 517,
+      "signals": {
+        "momentum": 68.2,
+        "breadth": 4.2,
+        "youtube": 61.9,
+        "ebay": 50.0,
+        "wikipedia": 28.2
+      },
+      "demand": 47.7
+    },
+    {
+      "title": "Burnout Revenge",
+      "mentions": 6,
+      "recent": 4,
+      "prior": 2,
+      "sources": 2,
+      "youtube_views": 0,
+      "youtube_videos": 0,
+      "ebay_change_pct": null,
+      "article": "Burnout Revenge",
+      "url": "https://en.wikipedia.org/wiki/Burnout_Revenge",
+      "views_30d": 5577,
+      "trend_pct": 23.5,
+      "views_recent": 1683,
+      "views_previous": 1363,
+      "signals": {
+        "momentum": 98.2,
+        "breadth": 8.3,
+        "youtube": 0.0,
+        "ebay": null,
+        "wikipedia": 49.0
+      },
+      "demand": 47.6
     },
     {
       "title": "Monster Hunter",
-      "mentions": 33,
+      "mentions": 32,
       "recent": 5,
-      "prior": 28,
+      "prior": 27,
       "sources": 16,
       "youtube_views": 0,
       "youtube_videos": 0,
@@ -266,133 +552,13 @@
       "views_recent": 1300,
       "views_previous": 1356,
       "signals": {
-        "momentum": 36.6,
+        "momentum": 38.0,
         "breadth": 66.7,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 100.0,
         "wikipedia": 30.6
       },
-      "demand": 57.0
-    },
-    {
-      "title": "Black",
-      "mentions": 29,
-      "recent": 10,
-      "prior": 19,
-      "sources": 9,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": "Black (video game)",
-      "url": "https://en.wikipedia.org/wiki/Black_%28video_game%29",
-      "views_30d": 7712,
-      "trend_pct": 5.3,
-      "views_recent": 1984,
-      "views_previous": 1884,
-      "signals": {
-        "momentum": 76.9,
-        "breadth": 37.5,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": 36.9
-      },
-      "demand": 57.0
-    },
-    {
-      "title": "Grand Theft Auto III",
-      "mentions": 11,
-      "recent": 9,
-      "prior": 2,
-      "sources": 5,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": -6.2,
-      "article": "Grand Theft Auto III",
-      "url": "https://en.wikipedia.org/wiki/Grand_Theft_Auto_III",
-      "views_30d": 50409,
-      "trend_pct": 3.8,
-      "views_recent": 11657,
-      "views_previous": 11234,
-      "signals": {
-        "momentum": 100.0,
-        "breadth": 20.8,
-        "youtube": null,
-        "ebay": 34.5,
-        "wikipedia": 35.9
-      },
-      "demand": 56.8
-    },
-    {
-      "title": "Spider-Man",
-      "mentions": 32,
-      "recent": 9,
-      "prior": 23,
-      "sources": 17,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": -1.0,
-      "article": "Spider-Man (2002 video game)",
-      "url": "https://en.wikipedia.org/wiki/Spider-Man_%282002_video_game%29",
-      "views_30d": 6125,
-      "trend_pct": 3.1,
-      "views_recent": 1385,
-      "views_previous": 1344,
-      "signals": {
-        "momentum": 65.7,
-        "breadth": 70.8,
-        "youtube": null,
-        "ebay": 47.5,
-        "wikipedia": 35.4
-      },
-      "demand": 56.4
-    },
-    {
-      "title": "Ape Escape 2",
-      "mentions": 7,
-      "recent": 3,
-      "prior": 4,
-      "sources": 2,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": "Ape Escape 2",
-      "url": "https://en.wikipedia.org/wiki/Ape_Escape_2",
-      "views_30d": 3037,
-      "trend_pct": 34.0,
-      "views_recent": 1013,
-      "views_previous": 756,
-      "signals": {
-        "momentum": 78.9,
-        "breadth": 8.3,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": 56.0
-      },
-      "demand": 55.5
-    },
-    {
-      "title": "Kingdom Hearts",
-      "mentions": 54,
-      "recent": 9,
-      "prior": 45,
-      "sources": 22,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": 4.2,
-      "article": "Kingdom Hearts (video game)",
-      "url": "https://en.wikipedia.org/wiki/Kingdom_Hearts_%28video_game%29",
-      "views_30d": 29595,
-      "trend_pct": 16.1,
-      "views_recent": 7780,
-      "views_previous": 6701,
-      "signals": {
-        "momentum": 38.8,
-        "breadth": 91.7,
-        "youtube": null,
-        "ebay": 60.5,
-        "wikipedia": 44.1
-      },
-      "demand": 55.1
+      "demand": 46.0
     },
     {
       "title": "Champions of Norrath",
@@ -412,57 +578,35 @@
       "signals": {
         "momentum": 98.2,
         "breadth": 16.7,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 41.5,
         "wikipedia": 22.3
       },
-      "demand": 54.5
+      "demand": 43.6
     },
     {
-      "title": "Hardware Online Arena",
-      "mentions": 22,
-      "recent": 7,
-      "prior": 15,
-      "sources": 9,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": 0.0,
-      "article": "Hardware: Online Arena",
-      "url": "https://en.wikipedia.org/wiki/Hardware%3A_Online_Arena",
-      "views_30d": 234,
-      "trend_pct": 11.3,
-      "views_recent": 59,
-      "views_previous": 53,
+      "title": "Shadow of the Colossus",
+      "mentions": 5,
+      "recent": 1,
+      "prior": 4,
+      "sources": 4,
+      "youtube_views": 1598,
+      "youtube_videos": 1,
+      "ebay_change_pct": -2.5,
+      "article": "Shadow of the Colossus (2018 video game)",
+      "url": "https://en.wikipedia.org/wiki/Shadow_of_the_Colossus_%282018_video_game%29",
+      "views_30d": 6996,
+      "trend_pct": 2.5,
+      "views_recent": 1529,
+      "views_previous": 1491,
       "signals": {
-        "momentum": 71.5,
-        "breadth": 37.5,
-        "youtube": null,
-        "ebay": 50.0,
-        "wikipedia": 40.9
+        "momentum": 54.5,
+        "breadth": 16.7,
+        "youtube": 51.6,
+        "ebay": 43.8,
+        "wikipedia": 35.0
       },
-      "demand": 54.0
-    },
-    {
-      "title": "Beyond Good and Evil",
-      "mentions": 4,
-      "recent": 2,
-      "prior": 2,
-      "sources": 1,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": null,
-      "url": null,
-      "views_30d": null,
-      "trend_pct": null,
-      "signals": {
-        "momentum": 78.9,
-        "breadth": 4.2,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": null
-      },
-      "demand": 54.0
+      "demand": 43.2
     },
     {
       "title": "Grand Theft Auto: San Andreas",
@@ -482,11 +626,11 @@
       "signals": {
         "momentum": 71.5,
         "breadth": 45.8,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 45.8,
         "wikipedia": 36.3
       },
-      "demand": 53.7
+      "demand": 42.9
     },
     {
       "title": "Crazy Taxi",
@@ -506,11 +650,11 @@
       "signals": {
         "momentum": 57.0,
         "breadth": 58.3,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 58.8,
         "wikipedia": 35.5
       },
-      "demand": 53.7
+      "demand": 42.9
     },
     {
       "title": "Gran Turismo 4",
@@ -530,83 +674,83 @@
       "signals": {
         "momentum": 73.2,
         "breadth": 20.8,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 62.5,
         "wikipedia": 29.4
       },
-      "demand": 52.5
+      "demand": 42.0
     },
     {
-      "title": "Persona 4",
-      "mentions": 34,
-      "recent": 9,
-      "prior": 25,
-      "sources": 13,
+      "title": "God of War II",
+      "mentions": 5,
+      "recent": 2,
+      "prior": 3,
+      "sources": 4,
+      "youtube_views": 0,
+      "youtube_videos": 0,
+      "ebay_change_pct": 6.6,
+      "article": "God of War II",
+      "url": "https://en.wikipedia.org/wiki/God_of_War_II",
+      "views_30d": 15848,
+      "trend_pct": -10.0,
+      "views_recent": 3634,
+      "views_previous": 4036,
+      "signals": {
+        "momentum": 73.2,
+        "breadth": 16.7,
+        "youtube": 0.0,
+        "ebay": 66.5,
+        "wikipedia": 26.7
+      },
+      "demand": 41.8
+    },
+    {
+      "title": "Ape Escape 2",
+      "mentions": 7,
+      "recent": 3,
+      "prior": 4,
+      "sources": 2,
       "youtube_views": 0,
       "youtube_videos": 0,
       "ebay_change_pct": null,
-      "article": "Persona 4",
-      "url": "https://en.wikipedia.org/wiki/Persona_4",
-      "views_30d": 21131,
-      "trend_pct": -4.3,
-      "views_recent": 4212,
-      "views_previous": 4403,
+      "article": "Ape Escape 2",
+      "url": "https://en.wikipedia.org/wiki/Ape_Escape_2",
+      "views_30d": 3037,
+      "trend_pct": 34.0,
+      "views_recent": 1013,
+      "views_previous": 756,
       "signals": {
-        "momentum": 62.5,
-        "breadth": 54.2,
-        "youtube": null,
+        "momentum": 78.9,
+        "breadth": 8.3,
+        "youtube": 0.0,
         "ebay": null,
-        "wikipedia": 30.5
+        "wikipedia": 56.0
       },
-      "demand": 52.4
+      "demand": 41.6
     },
     {
-      "title": "Silent Hill 2",
-      "mentions": 15,
-      "recent": 5,
-      "prior": 10,
-      "sources": 8,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": 0.5,
-      "article": "Silent Hill 2",
-      "url": "https://en.wikipedia.org/wiki/Silent_Hill_2",
-      "views_30d": 55996,
-      "trend_pct": -11.3,
-      "views_recent": 11987,
-      "views_previous": 13509,
-      "signals": {
-        "momentum": 72.5,
-        "breadth": 33.3,
-        "youtube": null,
-        "ebay": 51.2,
-        "wikipedia": 25.8
-      },
-      "demand": 51.1
-    },
-    {
-      "title": "God Hand",
+      "title": "XIII",
       "mentions": 8,
-      "recent": 3,
-      "prior": 5,
-      "sources": 5,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": 0.6,
-      "article": "God Hand",
-      "url": "https://en.wikipedia.org/wiki/God_Hand",
-      "views_30d": 14187,
-      "trend_pct": 0.2,
-      "views_recent": 3254,
-      "views_previous": 3246,
+      "recent": 1,
+      "prior": 7,
+      "sources": 7,
+      "youtube_views": 2376,
+      "youtube_videos": 1,
+      "ebay_change_pct": -1.4,
+      "article": "XIII (2003 video game)",
+      "url": "https://en.wikipedia.org/wiki/XIII_%282003_video_game%29",
+      "views_30d": 3337,
+      "trend_pct": -13.0,
+      "views_recent": 764,
+      "views_previous": 878,
       "signals": {
-        "momentum": 74.3,
-        "breadth": 20.8,
-        "youtube": null,
-        "ebay": 51.5,
-        "wikipedia": 33.5
+        "momentum": 42.0,
+        "breadth": 29.2,
+        "youtube": 54.3,
+        "ebay": 46.5,
+        "wikipedia": 24.7
       },
-      "demand": 50.9
+      "demand": 40.8
     },
     {
       "title": "Final Fantasy X",
@@ -626,11 +770,11 @@
       "signals": {
         "momentum": 75.0,
         "breadth": 29.2,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 44.8,
         "wikipedia": 32.2
       },
-      "demand": 50.8
+      "demand": 40.7
     },
     {
       "title": "Astro Boy",
@@ -650,11 +794,11 @@
       "signals": {
         "momentum": 75.0,
         "breadth": 16.7,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 50.0,
         "wikipedia": 37.0
       },
-      "demand": 50.7
+      "demand": 40.6
     },
     {
       "title": "Call of Duty 3",
@@ -674,59 +818,33 @@
       "signals": {
         "momentum": 78.9,
         "breadth": 8.3,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 44.2,
         "wikipedia": 41.3
       },
-      "demand": 49.9
+      "demand": 40.0
     },
     {
-      "title": "Battlefield 2: Modern Combat",
-      "mentions": 4,
-      "recent": 2,
-      "prior": 2,
-      "sources": 1,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": "Battlefield 2: Modern Combat",
-      "url": "https://en.wikipedia.org/wiki/Battlefield_2%3A_Modern_Combat",
-      "views_30d": 2988,
-      "trend_pct": 5.6,
-      "views_recent": 770,
-      "views_previous": 729,
-      "signals": {
-        "momentum": 78.9,
-        "breadth": 4.2,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": 37.1
-      },
-      "demand": 49.8
-    },
-    {
-      "title": "Ape Escape 3",
+      "title": "The Arcade",
       "mentions": 5,
-      "recent": 2,
-      "prior": 3,
-      "sources": 1,
-      "youtube_views": 0,
-      "youtube_videos": 0,
+      "recent": 0,
+      "prior": 5,
+      "sources": 4,
+      "youtube_views": 24686,
+      "youtube_videos": 1,
       "ebay_change_pct": null,
-      "article": "Ape Escape 3",
-      "url": "https://en.wikipedia.org/wiki/Ape_Escape_3",
-      "views_30d": 3614,
-      "trend_pct": 17.1,
-      "views_recent": 1131,
-      "views_previous": 966,
+      "article": null,
+      "url": null,
+      "views_30d": null,
+      "trend_pct": null,
       "signals": {
-        "momentum": 73.2,
-        "breadth": 4.2,
-        "youtube": null,
+        "momentum": 30.7,
+        "breadth": 16.7,
+        "youtube": 70.7,
         "ebay": null,
-        "wikipedia": 44.7
+        "wikipedia": null
       },
-      "demand": 48.8
+      "demand": 39.8
     },
     {
       "title": "Baldur's Gate: Dark Alliance",
@@ -746,11 +864,11 @@
       "signals": {
         "momentum": 78.9,
         "breadth": 8.3,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 45.2,
         "wikipedia": 32.4
       },
-      "demand": 48.5
+      "demand": 38.8
     },
     {
       "title": "Grand Theft Auto: Vice City",
@@ -770,11 +888,11 @@
       "signals": {
         "momentum": 59.6,
         "breadth": 33.3,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 52.5,
         "wikipedia": 35.2
       },
-      "demand": 48.3
+      "demand": 38.7
     },
     {
       "title": "Devil May Cry",
@@ -794,35 +912,57 @@
       "signals": {
         "momentum": 48.9,
         "breadth": 29.2,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 73.0,
         "wikipedia": 27.1
       },
-      "demand": 47.1
+      "demand": 37.7
     },
     {
-      "title": "God of War II",
+      "title": "Beyond Good and Evil",
       "mentions": 4,
-      "recent": 1,
-      "prior": 3,
-      "sources": 3,
+      "recent": 2,
+      "prior": 2,
+      "sources": 1,
       "youtube_views": 0,
       "youtube_videos": 0,
-      "ebay_change_pct": 6.6,
-      "article": "God of War II",
-      "url": "https://en.wikipedia.org/wiki/God_of_War_II",
-      "views_30d": 15848,
-      "trend_pct": -10.0,
-      "views_recent": 3634,
-      "views_previous": 4036,
+      "ebay_change_pct": null,
+      "article": null,
+      "url": null,
+      "views_30d": null,
+      "trend_pct": null,
       "signals": {
-        "momentum": 59.6,
-        "breadth": 12.5,
-        "youtube": null,
-        "ebay": 66.5,
-        "wikipedia": 26.7
+        "momentum": 78.9,
+        "breadth": 4.2,
+        "youtube": 0.0,
+        "ebay": null,
+        "wikipedia": null
       },
-      "demand": 46.3
+      "demand": 37.4
+    },
+    {
+      "title": "Battlefield 2: Modern Combat",
+      "mentions": 4,
+      "recent": 2,
+      "prior": 2,
+      "sources": 1,
+      "youtube_views": 0,
+      "youtube_videos": 0,
+      "ebay_change_pct": null,
+      "article": "Battlefield 2: Modern Combat",
+      "url": "https://en.wikipedia.org/wiki/Battlefield_2%3A_Modern_Combat",
+      "views_30d": 2988,
+      "trend_pct": 5.6,
+      "views_recent": 770,
+      "views_previous": 729,
+      "signals": {
+        "momentum": 78.9,
+        "breadth": 4.2,
+        "youtube": 0.0,
+        "ebay": null,
+        "wikipedia": 37.1
+      },
+      "demand": 37.3
     },
     {
       "title": "Deus Ex",
@@ -842,11 +982,11 @@
       "signals": {
         "momentum": 74.3,
         "breadth": 12.5,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 45.2,
         "wikipedia": 24.5
       },
-      "demand": 46.1
+      "demand": 36.9
     },
     {
       "title": "Final Fantasy XI",
@@ -866,35 +1006,35 @@
       "signals": {
         "momentum": 89.5,
         "breadth": 12.5,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 27.2,
         "wikipedia": 17.1
       },
-      "demand": 45.9
+      "demand": 36.7
     },
     {
-      "title": "Scaler",
-      "mentions": 11,
-      "recent": 3,
-      "prior": 8,
+      "title": "Ape Escape 3",
+      "mentions": 5,
+      "recent": 2,
+      "prior": 3,
       "sources": 1,
       "youtube_views": 0,
       "youtube_videos": 0,
-      "ebay_change_pct": 2.1,
-      "article": "Scaler (video game)",
-      "url": "https://en.wikipedia.org/wiki/Scaler_%28video_game%29",
-      "views_30d": 1500,
-      "trend_pct": 10.4,
-      "views_recent": 340,
-      "views_previous": 308,
+      "ebay_change_pct": null,
+      "article": "Ape Escape 3",
+      "url": "https://en.wikipedia.org/wiki/Ape_Escape_3",
+      "views_30d": 3614,
+      "trend_pct": 17.1,
+      "views_recent": 1131,
+      "views_previous": 966,
       "signals": {
-        "momentum": 62.8,
+        "momentum": 73.2,
         "breadth": 4.2,
-        "youtube": null,
-        "ebay": 55.2,
-        "wikipedia": 40.3
+        "youtube": 0.0,
+        "ebay": null,
+        "wikipedia": 44.7
       },
-      "demand": 45.7
+      "demand": 36.6
     },
     {
       "title": "Persona 3",
@@ -914,11 +1054,33 @@
       "signals": {
         "momentum": 63.7,
         "breadth": 25.0,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": null,
         "wikipedia": 28.7
       },
-      "demand": 45.3
+      "demand": 34.0
+    },
+    {
+      "title": "Metal Gear Solid 2",
+      "mentions": 5,
+      "recent": 1,
+      "prior": 4,
+      "sources": 5,
+      "youtube_views": 0,
+      "youtube_videos": 0,
+      "ebay_change_pct": -1.8,
+      "article": null,
+      "url": null,
+      "views_30d": null,
+      "trend_pct": null,
+      "signals": {
+        "momentum": 54.5,
+        "breadth": 20.8,
+        "youtube": 0.0,
+        "ebay": 45.5,
+        "wikipedia": null
+      },
+      "demand": 33.6
     },
     {
       "title": "Pro Evolution Soccer",
@@ -938,103 +1100,11 @@
       "signals": {
         "momentum": 73.2,
         "breadth": 4.2,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": null,
         "wikipedia": 28.5
       },
-      "demand": 44.8
-    },
-    {
-      "title": "Need for Speed Most Wanted",
-      "mentions": 13,
-      "recent": 3,
-      "prior": 10,
-      "sources": 3,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": -0.1,
-      "article": null,
-      "url": null,
-      "views_30d": null,
-      "trend_pct": null,
-      "signals": {
-        "momentum": 56.5,
-        "breadth": 12.5,
-        "youtube": null,
-        "ebay": 49.8,
-        "wikipedia": null
-      },
-      "demand": 44.3
-    },
-    {
-      "title": "Juiced",
-      "mentions": 20,
-      "recent": 6,
-      "prior": 14,
-      "sources": 1,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": 0.0,
-      "article": "Juiced (video game)",
-      "url": "https://en.wikipedia.org/wiki/Juiced_%28video_game%29",
-      "views_30d": 2215,
-      "trend_pct": -7.7,
-      "views_recent": 477,
-      "views_previous": 517,
-      "signals": {
-        "momentum": 68.2,
-        "breadth": 4.2,
-        "youtube": null,
-        "ebay": 50.0,
-        "wikipedia": 28.2
-      },
-      "demand": 44.1
-    },
-    {
-      "title": "Metal Gear Solid 2",
-      "mentions": 5,
-      "recent": 1,
-      "prior": 4,
-      "sources": 5,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": -1.8,
-      "article": null,
-      "url": null,
-      "views_30d": null,
-      "trend_pct": null,
-      "signals": {
-        "momentum": 54.5,
-        "breadth": 20.8,
-        "youtube": null,
-        "ebay": 45.5,
-        "wikipedia": null
-      },
-      "demand": 44.0
-    },
-    {
-      "title": "Aggressive Inline",
-      "mentions": 5,
-      "recent": 2,
-      "prior": 3,
-      "sources": 1,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": "Aggressive Inline (video game)",
-      "url": "https://en.wikipedia.org/wiki/Aggressive_Inline_%28video_game%29",
-      "views_30d": 1789,
-      "trend_pct": -18.5,
-      "views_recent": 358,
-      "views_previous": 439,
-      "signals": {
-        "momentum": 73.2,
-        "breadth": 4.2,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": 21.0
-      },
-      "demand": 42.9
+      "demand": 33.6
     },
     {
       "title": "Metal Gear Solid 3: Snake Eater",
@@ -1054,11 +1124,11 @@
       "signals": {
         "momentum": 54.5,
         "breadth": 8.3,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 58.2,
         "wikipedia": 28.7
       },
-      "demand": 41.9
+      "demand": 33.5
     },
     {
       "title": "Ace Combat 4: Shattered Skies",
@@ -1078,35 +1148,11 @@
       "signals": {
         "momentum": 68.2,
         "breadth": 4.2,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 50.0,
         "wikipedia": 13.5
       },
-      "demand": 41.4
-    },
-    {
-      "title": "Shadow of the Colossus",
-      "mentions": 5,
-      "recent": 1,
-      "prior": 4,
-      "sources": 4,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": -2.5,
-      "article": "Shadow of the Colossus (2018 video game)",
-      "url": "https://en.wikipedia.org/wiki/Shadow_of_the_Colossus_%282018_video_game%29",
-      "views_30d": 6996,
-      "trend_pct": 2.5,
-      "views_recent": 1529,
-      "views_previous": 1491,
-      "signals": {
-        "momentum": 54.5,
-        "breadth": 16.7,
-        "youtube": null,
-        "ebay": 43.8,
-        "wikipedia": 35.0
-      },
-      "demand": 41.1
+      "demand": 33.1
     },
     {
       "title": "Dirge of Cerberus: Final Fantasy VII",
@@ -1126,11 +1172,11 @@
       "signals": {
         "momentum": 66.4,
         "breadth": 25.0,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 25.5,
         "wikipedia": 25.7
       },
-      "demand": 40.8
+      "demand": 32.6
     },
     {
       "title": "Final Fantasy XII",
@@ -1150,11 +1196,35 @@
       "signals": {
         "momentum": 59.6,
         "breadth": 12.5,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 40.5,
         "wikipedia": 29.9
       },
-      "demand": 40.4
+      "demand": 32.3
+    },
+    {
+      "title": "Aggressive Inline",
+      "mentions": 5,
+      "recent": 2,
+      "prior": 3,
+      "sources": 1,
+      "youtube_views": 0,
+      "youtube_videos": 0,
+      "ebay_change_pct": null,
+      "article": "Aggressive Inline (video game)",
+      "url": "https://en.wikipedia.org/wiki/Aggressive_Inline_%28video_game%29",
+      "views_30d": 1789,
+      "trend_pct": -18.5,
+      "views_recent": 358,
+      "views_previous": 439,
+      "signals": {
+        "momentum": 73.2,
+        "breadth": 4.2,
+        "youtube": 0.0,
+        "ebay": null,
+        "wikipedia": 21.0
+      },
+      "demand": 32.2
     },
     {
       "title": "Siren",
@@ -1174,11 +1244,11 @@
       "signals": {
         "momentum": 54.5,
         "breadth": 12.5,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 48.0,
         "wikipedia": 27.3
       },
-      "demand": 39.9
+      "demand": 31.9
     },
     {
       "title": "Ace Combat 5: The Unsung War",
@@ -1198,11 +1268,11 @@
       "signals": {
         "momentum": 68.2,
         "breadth": 4.2,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": null,
         "wikipedia": 12.0
       },
-      "demand": 38.2
+      "demand": 28.6
     },
     {
       "title": "Dragon Rage",
@@ -1222,81 +1292,11 @@
       "signals": {
         "momentum": 50.0,
         "breadth": 25.0,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": null,
         "wikipedia": 27.5
       },
-      "demand": 38.1
-    },
-    {
-      "title": "XIII",
-      "mentions": 8,
-      "recent": 1,
-      "prior": 7,
-      "sources": 7,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": -1.4,
-      "article": "XIII (2003 video game)",
-      "url": "https://en.wikipedia.org/wiki/XIII_%282003_video_game%29",
-      "views_30d": 3337,
-      "trend_pct": -13.0,
-      "views_recent": 764,
-      "views_previous": 878,
-      "signals": {
-        "momentum": 42.0,
-        "breadth": 29.2,
-        "youtube": null,
-        "ebay": 46.5,
-        "wikipedia": 24.7
-      },
-      "demand": 37.5
-    },
-    {
-      "title": "Winning Eleven: Pro Evolution Soccer 2007",
-      "mentions": 6,
-      "recent": 1,
-      "prior": 5,
-      "sources": 3,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": null,
-      "url": null,
-      "views_30d": null,
-      "trend_pct": null,
-      "signals": {
-        "momentum": 50.0,
-        "breadth": 12.5,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": null
-      },
-      "demand": 37.5
-    },
-    {
-      "title": "Kingdom Hearts II",
-      "mentions": 14,
-      "recent": 1,
-      "prior": 13,
-      "sources": 8,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": 3.8,
-      "article": "Kingdom Hearts II",
-      "url": "https://en.wikipedia.org/wiki/Kingdom_Hearts_II",
-      "views_30d": 18501,
-      "trend_pct": -1.2,
-      "views_recent": 4681,
-      "views_previous": 4739,
-      "signals": {
-        "momentum": 24.0,
-        "breadth": 33.3,
-        "youtube": null,
-        "ebay": 59.5,
-        "wikipedia": 32.5
-      },
-      "demand": 36.2
+      "demand": 28.6
     },
     {
       "title": "Half-Life",
@@ -1316,18 +1316,18 @@
       "signals": {
         "momentum": 45.9,
         "breadth": 12.5,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": null,
         "wikipedia": 34.9
       },
-      "demand": 34.8
+      "demand": 26.1
     },
     {
-      "title": "The Arcade",
-      "mentions": 5,
-      "recent": 0,
+      "title": "Winning Eleven: Pro Evolution Soccer 2007",
+      "mentions": 6,
+      "recent": 1,
       "prior": 5,
-      "sources": 4,
+      "sources": 3,
       "youtube_views": 0,
       "youtube_videos": 0,
       "ebay_change_pct": null,
@@ -1336,57 +1336,13 @@
       "views_30d": null,
       "trend_pct": null,
       "signals": {
-        "momentum": 30.7,
-        "breadth": 16.7,
-        "youtube": null,
+        "momentum": 50.0,
+        "breadth": 12.5,
+        "youtube": 0.0,
         "ebay": null,
         "wikipedia": null
       },
       "demand": 26.0
-    },
-    {
-      "title": "Combat Ace",
-      "mentions": 7,
-      "recent": 0,
-      "prior": 7,
-      "sources": 6,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": null,
-      "url": null,
-      "views_30d": null,
-      "trend_pct": null,
-      "signals": {
-        "momentum": 22.7,
-        "breadth": 25.0,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": null
-      },
-      "demand": 23.5
-    },
-    {
-      "title": "Gift",
-      "mentions": 5,
-      "recent": 0,
-      "prior": 5,
-      "sources": 2,
-      "youtube_views": 0,
-      "youtube_videos": 0,
-      "ebay_change_pct": null,
-      "article": null,
-      "url": null,
-      "views_30d": null,
-      "trend_pct": null,
-      "signals": {
-        "momentum": 30.7,
-        "breadth": 8.3,
-        "youtube": null,
-        "ebay": null,
-        "wikipedia": null
-      },
-      "demand": 23.2
     },
     {
       "title": "Metal Gear Solid 2: Sons of Liberty",
@@ -1406,11 +1362,11 @@
       "signals": {
         "momentum": 26.6,
         "breadth": 12.5,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": null,
         "wikipedia": 25.1
       },
-      "demand": 22.7
+      "demand": 17.0
     },
     {
       "title": "Dynasty Warriors 3",
@@ -1430,11 +1386,55 @@
       "signals": {
         "momentum": 5.5,
         "breadth": 25.0,
-        "youtube": null,
+        "youtube": 0.0,
         "ebay": 54.5,
         "wikipedia": 0.0
       },
-      "demand": 20.4
+      "demand": 16.3
+    },
+    {
+      "title": "Combat Ace",
+      "mentions": 7,
+      "recent": 0,
+      "prior": 7,
+      "sources": 6,
+      "youtube_views": 0,
+      "youtube_videos": 0,
+      "ebay_change_pct": null,
+      "article": null,
+      "url": null,
+      "views_30d": null,
+      "trend_pct": null,
+      "signals": {
+        "momentum": 22.7,
+        "breadth": 25.0,
+        "youtube": 0.0,
+        "ebay": null,
+        "wikipedia": null
+      },
+      "demand": 16.2
+    },
+    {
+      "title": "Gift",
+      "mentions": 5,
+      "recent": 0,
+      "prior": 5,
+      "sources": 2,
+      "youtube_views": 0,
+      "youtube_videos": 0,
+      "ebay_change_pct": null,
+      "article": null,
+      "url": null,
+      "views_30d": null,
+      "trend_pct": null,
+      "signals": {
+        "momentum": 30.7,
+        "breadth": 8.3,
+        "youtube": 0.0,
+        "ebay": null,
+        "wikipedia": null
+      },
+      "demand": 16.1
     }
   ]
 }
