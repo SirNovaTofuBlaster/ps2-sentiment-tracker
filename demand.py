@@ -59,6 +59,7 @@ RECENT_DAYS = 3          # momentum: mentions in the last N days ...
 BASELINE_DAYS = 11       # ... against the N days before those (the snapshot keeps 14)
 EBAY_MIN_COPIES = 3      # a week's change in a median of fewer copies than this says nothing
 CHECKS_PER_RUN = 150     # Wikipedia articles checked per run (resolved + read in full)
+RULES_VERSION = 2        # raise when the collectible rules change: every article is read again
 CHECK_MAX_AGE_DAYS = 30  # a checked article is read again after this long
 
 # Articles that are never the game, whatever the search says.
@@ -301,7 +302,7 @@ def fetch_extract(session, article):
 
 def due_for_check(title, checks, today):
     entry = checks.get(title)
-    if not isinstance(entry, dict):
+    if not isinstance(entry, dict) or entry.get("rules") != RULES_VERSION:
         return True
     try:
         age = (today - datetime.strptime(entry.get("checked", ""), "%Y-%m-%d").date()).days
@@ -327,7 +328,7 @@ def update_checks(session, titles, resolved, overrides, checks, started):
                 article = resolve_article(session, title)
                 resolved[title] = article
                 time.sleep(REQUEST_PAUSE)
-            entry = {"article": article, "checked": today.strftime("%Y-%m-%d")}
+            entry = {"article": article, "checked": today.strftime("%Y-%m-%d"), "rules": RULES_VERSION}
             if article:
                 entry.update(check_article_text(fetch_extract(session, article)))
                 time.sleep(REQUEST_PAUSE)
