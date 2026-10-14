@@ -2010,6 +2010,28 @@ class PriceIndexTests(unittest.TestCase):
 
     GAMES = {f"Game {n}": 10.0 for n in range(12)}
 
+    def test_the_pal_index_counts_every_game_on_every_pal_site_and_the_us_stays_out(self):
+        games = {f"Game {n}": 10.0 for n in range(12)}
+        rows = []
+        for site in ("UK", "DE"):
+            rows += self.day("2026-10-06", games, site) + self.day("2026-10-07", {t: 11.0 for t in games}, site)
+        rows += self.day("2026-10-06", games, "US") + self.day("2026-10-07", {t: 15.0 for t in games}, "US")
+        self.assertNotIn("PAL", ebay_prices.price_index(rows), "with one PAL site there is nothing to combine")
+        with mock.patch.dict(ebay_prices.MARKETS, {"EBAY_DE": DE}):
+            index = ebay_prices.price_index(rows)
+        self.assertEqual(index["PAL"], [["2026-10-06", 100.0, 24], ["2026-10-07", 110.0, 24]], "24 items: 12 games on 2 sites")
+        self.assertEqual(index["UK"][-1][1], 110.0)
+        self.assertEqual(index["US"][-1][1], 150.0)
+
+    def test_a_site_joining_later_does_not_move_the_pal_index(self):
+        games = {f"Game {n}": 10.0 for n in range(12)}
+        rows = self.day("2026-10-06", games, "UK") + self.day("2026-10-07", games, "UK") \
+            + self.day("2026-10-07", {t: 99.0 for t in games}, "DE") + self.day("2026-10-08", games, "UK") \
+            + self.day("2026-10-08", {t: 99.0 for t in games}, "DE")
+        with mock.patch.dict(ebay_prices.MARKETS, {"EBAY_DE": DE}):
+            index = ebay_prices.price_index(rows)["PAL"]
+        self.assertEqual([point[1] for point in index], [100.0, 100.0, 100.0], "Germany's first day is not a move")
+
     def test_it_moves_by_the_geometric_mean_of_each_games_move(self):
         rows = self.day("2026-10-06", self.GAMES) + self.day("2026-10-07", {title: 11.0 for title in self.GAMES})
         self.assertEqual(ebay_prices.price_index(rows), {"UK": [["2026-10-06", 100.0, 12], ["2026-10-07", 110.0, 12]]})

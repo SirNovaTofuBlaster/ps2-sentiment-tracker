@@ -1954,6 +1954,17 @@ await check('the PS2 price index: the latest value, its moves and a line of ever
     assert.match(cards[1], /162 games priced on its first day/);
     assert.equal(evalJson("indexChange([['2026-10-07', 100, 1], ['2026-10-08', 100.04, 1]], 1)").change.toFixed(2), '0.04');
     assert.match(evalJson("indexChangeHtml({ change: 0.04, day: '2026-10-07' }, (day) => day)"), /no change since 2026-10-07/);
+    // The PAL card (every PAL site together) comes after the US and before the single sites.
+    context.__pal = { sites: { UK: [['2026-10-06', 100, 100], ['2026-10-07', 101, 100]], DE: [['2026-10-06', 100, 100], ['2026-10-07', 102, 100]],
+        PAL: [['2026-10-06', 100, 200], ['2026-10-07', 101.5, 200]], US: [['2026-10-06', 100, 100], ['2026-10-07', 99, 100]] } };
+    vm.runInContext("renderIndex(__pal, 'en-GB')", context);
+    const palCards = el('indexCards').innerHTML.split('class="index-card"').slice(1);
+    assert.equal(palCards.length, 4);
+    assert.deepEqual(palCards.map(card => card.match(/ebay-flag">(\w+)</)[1]), ['US', 'PAL', 'UK', 'DE']);
+    assert.match(palCards[1], /all PAL sites · 7 Oct/);
+    assert.match(palCards[1], /<div class="index-value">101\.5<\/div>/);
+    assert.match(el('indexSummary').textContent, /"All PAL sites" counts every game on the UK and the euro sites together\./);
+    assert.match(palCards[2], /eBay UK · 7 Oct/);
     // A day with too few games kept its value: it says so, and does not claim "no change".
     context.__kept = { min_games: 10, sites: { UK: [['2026-10-06', 100, 145], ['2026-10-07', 101, 140], ['2026-10-08', 101, 4]] } };
     vm.runInContext("renderIndex(__kept, 'en-GB')", context);

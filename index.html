@@ -1197,6 +1197,11 @@
            (100). Shown at the top of the eBay prices page: the latest value, how it moved since
            the day before and over a week, and a line of every day so far.
         -------------------------------------------------------------------- */
+        // The index cards: the US, then every PAL site together ("PAL", from the price job: the UK and
+        // the euro sites as one), then each PAL site on its own.
+        const INDEX_CARDS = ['US', 'PAL', ...PRICE_SITES.filter(site => site !== 'US')];
+        const INDEX_NAMES = { PAL: 'all PAL sites' };
+
         function indexPoints(data, site) {
             const points = own(data?.sites, site) && Array.isArray(data.sites[site]) ? data.sites[site] : [];
             return points.filter(point => Array.isArray(point) && /^\d{4}-\d{2}-\d{2}$/.test(String(point[0]))
@@ -1241,7 +1246,7 @@
 
         function renderIndex(data = indexData, locale) {
             const section = document.getElementById('indexSection');
-            const cards = PRICE_SITES.map(site => [site, indexPoints(data, site)]).filter(([, points]) => points.length);
+            const cards = INDEX_CARDS.map(site => [site, indexPoints(data, site)]).filter(([, points]) => points.length);
             section.classList.toggle('hidden', !cards.length);
             if (!cards.length) return;
             const shortDay = (day) => {
@@ -1252,14 +1257,14 @@
                 }
             };
             const first = cards.map(([, points]) => points[0][0]).sort()[0];
-            document.getElementById('indexSummary').textContent = `100 = ${shortDay(first)}. How used PS2 games' asking prices have moved since, per site, up to the last full day (UTC).`;
+            document.getElementById('indexSummary').textContent = `100 = ${shortDay(first)}. How used PS2 games' asking prices have moved since, per site, up to the last full day (UTC).${cards.some(([site]) => site === 'PAL') ? ' "All PAL sites" counts every game on the UK and the euro sites together.' : ''}`;
             document.getElementById('indexCards').innerHTML = cards.map(([site, points]) => {
                 const [day, value, games] = points[points.length - 1];
                 const minimum = Number.isInteger(data.min_games) ? data.min_games : 10;
                 const kept = points.length > 1 && Number.isInteger(games) && games < minimum;
                 return `
                 <div class="index-card">
-                    <div class="index-head"><span class="ebay-flag">${esc(site)}</span><span class="text-slate-400">eBay ${esc(site)} · ${esc(shortDay(day))}</span></div>
+                    <div class="index-head"><span class="ebay-flag">${esc(site)}</span><span class="text-slate-400">${esc(own(INDEX_NAMES, site) ? INDEX_NAMES[site] : `eBay ${site}`)} · ${esc(shortDay(day))}</span></div>
                     <div class="index-value">${esc(value.toFixed(1))}</div>
                     <div class="index-moves">${kept ? '' : indexChangeHtml(indexChange(points, 1), shortDay)}${indexChangeHtml(indexChange(points, 7), shortDay)}</div>
                     ${indexLineSvg(points)}
