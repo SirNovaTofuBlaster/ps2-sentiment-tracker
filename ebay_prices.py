@@ -845,6 +845,7 @@ def add_rare_games(games, rare, catalogue):
         for market_id in MARKETS:
             known.setdefault((market_id, for_market(game, market_id)["search"]), game)
     keys = {game["key"] for game in games}
+    owners = {game["key"]: game for game in games}
     placed, added = {list_name: {} for list_name in RARE_SITES}, {}
     for entry in rare:
         market_id = RARE_SITES[entry["list"]]
@@ -862,7 +863,14 @@ def add_rare_games(games, rare, catalogue):
             if game is None:
                 key = key_of(entry["title"])
                 if key in keys:
-                    continue   # its title belongs to another game here; it would take that one's figures
+                    # Its title belongs to another game here and would take that one's figures. An edition
+                    # whose own name is already priced (the feed tracks it, or the Rarest page lists it, by the
+                    # same strict title) points at that game, when it is priced on this site.
+                    owner = owners.get(key)
+                    if entry.get("kind") == "edition" and owner is not None and owner.get("kind") != "console" \
+                            and (not owner.get("sites") or market_id in owner["sites"]):
+                        placed[entry["list"]][entry["title"]] = owner["title"]
+                    continue
                 # Library names for this very game are not other games: "Project Zero 3 Tormented",
                 # "R.A.D. Robot Alchemic Drive" (single letters are an abbreviation's).
                 own = set(name_words(readable(entry["title"])))
@@ -876,6 +884,7 @@ def add_rare_games(games, rare, catalogue):
                     game["kind"] = entry["kind"]
                 added[identity] = game
                 keys.add(key)
+                owners[key] = game
             if market_id not in game["sites"]:
                 game["sites"].append(market_id)
             game["exclude"] = sorted(set(game["exclude"]) | set(entry["exclude"]))

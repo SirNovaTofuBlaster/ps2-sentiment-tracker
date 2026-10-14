@@ -3002,3 +3002,22 @@ class EditionTests(unittest.TestCase):
             self.assertTrue(row["contents"] and row["released"] and row["publisher"], row["title"])
         self.assertIn("Resident Evil 4 Limited Edition", [row["title"] for row in raw["lists"]["PAL"]])
         self.assertIn("Resident Evil 4 Premium Edition", [row["title"] for row in raw["lists"]["US"]])
+
+
+class EditionNameClashTests(unittest.TestCase):
+    """An edition whose title is already a priced game's (the Rarest page lists it) points at that game."""
+
+    def test_an_edition_with_the_name_of_a_priced_game_uses_its_figures(self):
+        sandbox = Sandbox(self, feed=[mention("Silent Hill 2", 5, "r/ps2")])
+        sandbox.write("rare_games.json", {"lists": {"PAL": [], "US": [{"title": "Resident Evil 4 Premium Edition"}]}})
+        sandbox.write("editions.json", {"lists": {"PAL": [], "US": [
+            {"title": "Resident Evil 4 Premium Edition", "search": "resident evil 4", "require": ["premium edition"]}]}})
+        games, rare_titles = [], None
+        library, catalogue = ebay_prices.load_library()
+        rare, _ = ebay_prices.load_rare(sandbox.root / "rare_games.json")
+        editions, _ = ebay_prices.load_rare(sandbox.root / "editions.json", kind="edition")
+        ebay_prices.add_rare_games(games, rare, catalogue)
+        placed = ebay_prices.add_rare_games(games, editions, catalogue)
+        self.assertEqual(placed["US"], {"Resident Evil 4 Premium Edition": "Resident Evil 4 Premium Edition"})
+        self.assertEqual(len(games), 1, "no second game is made for it")
+        self.assertNotEqual(games[0].get("kind"), "edition")
