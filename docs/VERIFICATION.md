@@ -707,3 +707,22 @@ Suspicions the review checked and found fine: the index maths, the keys (Project
 Frame), rule 8 (no prices in the log, numbers and library titles only, standard library), the
 library API, escaping, two charts opened at once, missing or odd files, and the CSS.
 
+
+## Steady games rule (2026-10-14)
+
+Replay of `data/prices/2026-10.json` (2026-10-06 to 2026-10-14, 581 game-site pairs with a row on the
+last day). A pair was "flagged" on a day if, over the previous 5 days, copies never dropped below the
+minimum and the median stayed within the range. Then: did the median move over 10% from that day
+within the next two days? Only 3 evaluation days existed, so this is early evidence.
+
+| Minimum copies | Range | Flagged moments | Moved over 10% in 2 days | Flagged on last day |
+|---|---|---|---|---|
+| 50 | 10% | 482 | 2 (0.4%) | 205 |
+| 50 | 15% | 521 | 7 (1.3%) | 219 |
+| 30 | 10% | 607 | 6 (1.0%) | 253 |
+| 100 | 10% | 290 | 2 (0.7%) | 125 |
+
+Chosen: 50 copies, 10%. The built rule also looks 6 days back and allows copies to vary by 30%, because
+a game checked every 48 hours has fewer rows; on the same history it flags 217 pairs. Worst case: a
+steady game's price change appears up to two days late. Self-review only (no second reviewer yet).
+Revisit with a longer history.

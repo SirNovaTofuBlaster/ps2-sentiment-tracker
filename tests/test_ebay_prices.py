@@ -952,6 +952,67 @@ class PlanTests(unittest.TestCase):
                             or entry["queries"][0] in ebay_prices.ONE_WORD_TITLES, entry["title"])
 
 
+class SteadyTests(unittest.TestCase):
+    """A game that has priced the same for days is looked up every 48 hours instead of every 6."""
+    @staticmethod
+    def rows(entry, label, days, changes=None, copies=100, median=10.0):
+        """One history row per day for `days` days back from NOON (noon each day); changes={0: (copies, median)}
+        replaces the row that many days back."""
+        out = []
+        for ago in range(days, -1, -1):
+            c, m = (changes or {}).get(ago, (copies, median))
+            stamp = (NOON - timedelta(days=ago)).strftime(ebay_prices.STAMP_FORMAT)
+            out.append([stamp, entry["title"], label, c, None if m is None else m * 0.8, m])
+        return out
+
+    def due(self, entry, hours_ago, history, now=NOON):
+        stamp = (now - timedelta(hours=hours_ago)).strftime(ebay_prices.STAMP_FORMAT)
+        state = {"games": {entry["title"]: {"US": {"checked": stamp}, "UK": {"checked": stamp}}}}
+        return len(ebay_prices.due_lookups([entry], state, now, history))
+
+    def test_steady_game_waits_48_hours_not_6(self):
+        entry = game("Grand Theft Auto San Andreas")
+        history = self.rows(entry, "US", 5) + self.rows(entry, "UK", 5)
+        self.assertEqual(self.due(entry, 7, history), 0)
+        self.assertEqual(self.due(entry, 30, history), 0)
+        self.assertEqual(self.due(entry, 48, history), 2)
+
+    def test_without_history_it_stays_on_six_hours(self):
+        entry = game("Grand Theft Auto San Andreas")
+        self.assertEqual(self.due(entry, 7, []), 2)
+
+    def test_each_break_in_the_pattern_returns_it_to_six_hours(self):
+        entry = game("Grand Theft Auto San Andreas")
+        cases = {"price jump": {0: (100, 12.0)},
+                 "few copies": {2: (40, 10.0)},
+                 "copies jump": {0: (160, 10.0)},
+                 "nothing found": {1: (0, None)}}
+        for name, changes in cases.items():
+            history = self.rows(entry, "US", 5, changes) + self.rows(entry, "UK", 5, changes)
+            self.assertEqual(self.due(entry, 7, history), 2, name)
+
+    def test_too_little_history_is_not_steady(self):
+        entry = game("Grand Theft Auto San Andreas")
+        self.assertEqual(self.due(entry, 7, self.rows(entry, "US", 2) + self.rows(entry, "UK", 2)), 2)
+
+    def test_only_normal_and_staple_games_are_slowed(self):
+        for level, pinned, expected in (("normal", False, 0), ("staple", False, 0), ("surging", False, 2),
+                                        ("dormant", False, 2), ("normal", True, 2)):
+            entry = game("Grand Theft Auto San Andreas", level=level, pinned=pinned)
+            history = self.rows(entry, "US", 5) + self.rows(entry, "UK", 5)
+            self.assertEqual(self.due(entry, 7 if level != "dormant" else 25, history), expected, (level, pinned))
+
+    def test_one_site_being_steady_does_not_slow_the_other(self):
+        entry = game("Grand Theft Auto San Andreas")
+        history = self.rows(entry, "US", 5)
+        self.assertEqual(self.due(entry, 7, history), 1)
+
+    def test_bad_rows_are_ignored(self):
+        entry = game("Grand Theft Auto San Andreas")
+        history = ["junk", [1, 2], ["not a time", entry["title"], "US", 100, 8, 10]] + self.rows(entry, "US", 5)
+        self.assertEqual(self.due(entry, 7, history), 1, "the US is steady and the UK has no history")
+
+
 class DueTests(unittest.TestCase):
     @staticmethod
     def state(**checked):

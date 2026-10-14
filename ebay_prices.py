@@ -127,6 +127,19 @@ CHECK_EVERY_HOURS = {"surging": 0, "normal": 6, "staple": 6, "dormant": 24, "rar
 # The Rarest page's lists in rare_games.json, and the one site each is priced on: a rare PAL game
 # is a PAL copy, sold in Britain; a rare US game is an American copy.
 RARE_SITES = {"PAL": "EBAY_GB", "US": "EBAY_US"}
+# A steady game on one site (normal or staple only): at least STEADY_MIN_COPIES listed every time it was
+# checked in the last STEADY_LOOK_DAYS days, the median within STEADY_PRICE_RANGE of its middle value, the
+# number of copies within STEADY_COPIES_RANGE of its middle value, and checks spanning STEADY_SPAN_DAYS.
+# Such a pair is looked up every STEADY_EVERY_HOURS, until a check breaks the pattern. Chosen by replaying
+# the first nine days of history (docs/VERIFICATION.md): 0.4% of flagged moments saw a move over 10% within
+# the next two days.
+STEADY_EVERY_HOURS = 48
+STEADY_MIN_COPIES = 50
+STEADY_PRICE_RANGE = 0.10
+STEADY_COPIES_RANGE = 0.30
+STEADY_LOOK_DAYS = 6
+STEADY_SPAN_DAYS = 4
+STEADY_MIN_ROWS = 3
 EARLY_MINUTES = 30           # a check may come this much early, so "every 6 hours" does not drift to 7
 CHANGE_DAYS = 7              # beside each median, how it compares with the median this long before...
 CHANGE_SLACK_DAYS = 2        # ...as recorded at most this much longer before (a quiet game is checked daily)
@@ -855,11 +868,41 @@ def add_consoles(games, consoles):
     return len(added)
 
 
-def due_lookups(games, state, now):
+def steady_index(rows):
+    """{(key, site): [(time, copies, median), ...]} from history rows, for is_steady()."""
+    index = {}
+    for row in rows:
+        if not (isinstance(row, list) and len(row) == 6 and isinstance(row[1], str) and isinstance(row[2], str)):
+            continue
+        when = parse_stamp(row[0])
+        if when is not None:
+            index.setdefault((key_of(row[1]), row[2]), []).append((when, row[3], row[5]))
+    return index
+
+
+def is_steady(rows, now):
+    """True when a game on one site has priced the same for days: see STEADY_* above. `rows` are
+    (time, copies, median) for that pair. Any missing number, or a single check outside the limits,
+    makes it False, so a game is looked at again as soon as it moves."""
+    recent = sorted(row for row in rows if now - timedelta(days=STEADY_LOOK_DAYS) <= row[0] <= now)
+    if len(recent) < STEADY_MIN_ROWS or (recent[-1][0] - recent[0][0]) < timedelta(days=STEADY_SPAN_DAYS):
+        return False
+    copies, medians = [row[1] for row in recent], [row[2] for row in recent]
+    if not all(isinstance(n, (int, float)) and not isinstance(n, bool) for n in copies + medians):
+        return False
+    if min(copies) < STEADY_MIN_COPIES or min(medians) <= 0:
+        return False
+    middle_copies, middle_median = statistics.median(copies), statistics.median(medians)
+    return ((max(copies) - min(copies)) / middle_copies <= STEADY_COPIES_RANGE
+            and (max(medians) - min(medians)) / middle_median <= STEADY_PRICE_RANGE)
+
+
+def due_lookups(games, state, now, history=()):
     """(game, market) pairs whose turn has come, most urgent first. A game the library also
     files under the name it has on a site ("Project Zero" beside "Fatal Frame") is looked up
     there once, for the game the feed knows by the other name; the second is skipped there."""
     previous = prior_games(state)
+    steady_rows = steady_index(history)
     due = []
     renamed_to = {(market_id, words_there["search"]) for game in games
                   for market_id, words_there in (game.get("markets") or {}).items()}
@@ -874,7 +917,11 @@ def due_lookups(games, state, now):
             entry = (previous.get(game["key"]) or {}).get(market["label"])
             checked = parse_stamp(entry.get("checked")) if isinstance(entry, dict) else None
             waited = (now - checked).total_seconds() / 60 if checked else None
-            if waited is None or waited >= every - EARLY_MINUTES:
+            wait = every
+            if (game["level"] in ("normal", "staple") and not game["pinned"] and checked
+                    and is_steady(steady_rows.get((game["key"], market["label"]), ()), now)):
+                wait = STEADY_EVERY_HOURS * 60
+            if waited is None or waited >= wait - EARLY_MINUTES:
                 overdue = float("inf") if waited is None else waited / max(every, 60)
                 due.append((game["level"] != "surging", not game["pinned"], game["level"] == "rare", -overdue,
                             game["title"].lower(), market_id, game))
@@ -1993,7 +2040,7 @@ def main(argv=None):
         consoles, console_problems = load_consoles()
         consoles_priced = add_consoles(games, consoles)
         rare_problems = rare_problems + console_problems
-        lookups = due_lookups(games, state, now)
+        lookups = due_lookups(games, state, now, earlier + history)
         used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
         used_today = used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0
         allowance = min(MAX_SEARCHES_PER_RUN, DAILY_SEARCHES - used_today)
