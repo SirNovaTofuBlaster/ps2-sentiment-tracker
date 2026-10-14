@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-14: more covers found
+
+- `tools/build_covers.py` now accepts any region as a last resort (Cart Kings is only filed under India), matches the collection's zero-padded numbers ("Ace Combat 04"), and links near-identical spellings (typos in the library such as "Alien Homind", "Vol." / "Volume", an added "The") when the numbers agree and no one- or two-letter word differs ("DDR Max" is not "DDR X"). Library games with a cover: 76% -> 82% (5,172 keys).
+
 ## 2026-10-14: covers on Most mentioned and Rarest
 
 - A 3 rem box (`withCover()`) sits beside each row of both pages, lazy-loaded; the PAL list uses the Europe box, the US list and Most mentioned the USA one; Rarest also tries the PAL title. The covers list is requested when either page is opened, and both lists redraw when it arrives. Covers off: no pictures, no request.

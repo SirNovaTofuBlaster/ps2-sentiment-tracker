@@ -13,6 +13,7 @@ Each game's key is the name ebay_prices.search_terms() gives its title, the same
 priceKey() makes, so "Ratchet & Clank" (the collection writes "Ratchet _ Clank") and
 "Getaway, The" find their files. A key holds [file name without its region, NTSC-U suffix, PAL suffix].
 """
+import difflib
 import json
 import re
 import sys
@@ -35,7 +36,7 @@ def split(name):
 
 
 def rank(suffix, wanted):
-    """Lower is better: the exact region first, then the shortest suffix, never a beta or demo."""
+    """Lower is better: not a beta or demo, then the wanted region, then the shortest suffix."""
     first = (re.match(r"\s*\(([^)]*)\)", suffix) or [None, ""])[1]
     region = next((i for i, tag in enumerate(wanted) if first.split(",")[0].strip() == tag), len(wanted))
     return (bool(BAD.search(suffix)), region, len(suffix))
@@ -57,7 +58,8 @@ def build(names):
         title, suffixes = max(titles.items(), key=lambda item: (len(item[1]), -len(item[0])))
         us = min(suffixes, key=lambda s: rank(s, US_TAGS))
         pal = min(suffixes, key=lambda s: rank(s, PAL_TAGS))
-        usable = lambda s: not BAD.search(s) and re.match(r"\s*\((?:%s)\b" % "|".join(US_TAGS + PAL_TAGS + ("Japan", "Korea")), s)
+        # any region will do as a last resort (India, Asia, Germany...): a cover in the wrong language beats none
+        usable = lambda s: not BAD.search(s) and s.strip().startswith("(")
         if not usable(us) and not usable(pal):
             continue
         out[key] = [title, us if usable(us) else "", pal if usable(pal) else ""]
@@ -66,6 +68,18 @@ def build(names):
 
 # Titles the collection files under another name (a Japanese or European title).
 MANUAL = {"okami": "ookami"}
+
+
+def typo_of(key, spellings, unpadded):
+    """A near-identical spelling (a typo in the library, "Vol." / "Volume", an added "The") with the same
+    numbers. A difference of a one or two letter token ("max" / "x", "x2") is a different game, not a typo."""
+    close = difflib.get_close_matches(key, spellings, n=1, cutoff=0.88)
+    if not close or re.findall(r"\d+", close[0]) != re.findall(r"\d+", key):
+        return None
+    differing = set(key.split()) ^ set(close[0].split())
+    if any(len(word) <= 2 and word not in ("a", "o", "de", "of", "in", "s") for word in differing):
+        return None
+    return unpadded[close[0]]
 
 
 def add_aliases(covers):
@@ -80,14 +94,20 @@ def add_aliases(covers):
             continue
         names += [t for t in (data.get(field, []) if field else data) if isinstance(t, str)]
     compact = {key.replace(" ", ""): key for key in covers}
+    unpadded = {}
+    for key in covers:
+        unpadded.setdefault(re.sub(r"\b0+(\d)", r"\1", key), key)    # "ace combat 04" -> "ace combat 4"
+    spellings = list(unpadded)
     for title in names:
         key = search_terms(title)[0]
         if not key or key in covers:
             continue
-        target = MANUAL.get(key) or compact.get(key.replace(" ", ""))
+        target = MANUAL.get(key) or compact.get(key.replace(" ", "")) or unpadded.get(key)
         if not target:
             starts = [other for other in covers if other.startswith(key + " ")]
             target = starts[0] if len(starts) == 1 else None
+        if not target:
+            target = typo_of(key, spellings, unpadded)
         if target in covers:
             covers[key] = covers[target]
     return covers
