@@ -248,15 +248,30 @@ IN_GAME_WORDS = re.compile(r"\b(in-game|player|players|character|characters|weap
                            r"boss|loot|quest)\b", re.I)
 
 
+# Strong words say the game itself is rare or sought after; they need only a sentence about a game
+# or its copies. Weak words (a price) need a market word as well. "Collector's edition" is a box
+# set, not rarity, so "collector's" alone never counts.
+STRONG_WORDS = re.compile(r"\b(rare|rarity|scarce|scarcity|sought[- ]after|out of print|"
+                          r"(?:rare|valuable|highly[- ]valued|become|became|becoming)\s+(?:a\s+)?collect[ai]ble)\b", re.I)
+SUBJECT_WORDS = re.compile(r"\b(game|games|version|release|released|edition|copies|copy|title|"
+                           r"collectors?|market|resale|ebay|auctions?)\b", re.I)
+WEAK_WORDS = re.compile(r"\b(expensive|valuable|high prices?|sells? for|sold for|fetch(?:es|ed)?|"
+                        r"limited (?:print|run|production))\b", re.I)
+
+
 def collectible_terms(text):
     """The value words (at most three, lower case) that show the article calls the game a rare
     or valuable collectible; [] when it does not. Only the words are kept, never the sentences."""
     found = []
     for sentence in re.split(r"(?<=[.!?])\s+", str(text or "")):
-        if IN_GAME_WORDS.search(sentence) or not MARKET_WORDS.search(sentence):
+        if IN_GAME_WORDS.search(sentence):
             continue
-        for match in VALUE_WORDS.finditer(sentence):
-            word = match.group(1).lower()
+        hits = [m.group(1) for m in STRONG_WORDS.finditer(sentence)] \
+            if SUBJECT_WORDS.search(sentence) else []
+        if not hits and MARKET_WORDS.search(sentence) and "edition" not in sentence.lower():
+            hits = [m.group(1) for m in WEAK_WORDS.finditer(sentence)]
+        for word in hits:
+            word = word.lower()
             if word not in found:
                 found.append(word)
     return found[:3]

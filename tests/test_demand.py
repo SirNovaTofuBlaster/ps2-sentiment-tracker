@@ -113,6 +113,11 @@ class ArticleTests(unittest.TestCase):
     def test_a_sentence_about_value_without_the_market_is_not_enough(self):
         self.assertEqual(demand.collectible_terms("It was a rare achievement for a studio of that size."), [])
 
+    def test_the_real_kuon_sentence_and_collectors_editions(self):
+        self.assertTrue(demand.collectible_terms("Despite this, the Western version has become a rare collectable."))
+        self.assertEqual(demand.collectible_terms("The Collector's Edition included a soundtrack and a poster."), [])
+        self.assertEqual(demand.collectible_terms("A collector's edition was sold for the game's release."), [])
+
     def test_an_article_that_is_not_a_ps2_game_is_told_apart(self):
         general = demand.check_article_text("Retro gaming is the playing of older video games, mainly on consoles of the 1980s.")
         self.assertFalse(general["ps2"])
