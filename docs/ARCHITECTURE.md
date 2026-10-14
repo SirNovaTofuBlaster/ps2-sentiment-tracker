@@ -211,10 +211,10 @@ returned HTTP 403 there (see [SOURCES.md](../SOURCES.md#forums)).
 they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`,
 `rare_games.json` and `rare_consoles.json`. Editions (`editions.json`, same shape as `rare_games.json` but every entry needs `require` words) go through the same `load_rare()` / `add_rare_games()` path with `kind="edition"`; `latest["editions"]` says which `games` entry holds each one, and `index_file()` leaves them out like consoles.
 
-- **Four pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Most mentioned*
-  and *eBay prices*; each is a wrapper (`viewDashboard`, `viewRare`, `viewMentions`,
-  `viewPrices`) and only one is displayed. `#rare`, `#mentions` and `#prices` in the address
-  select the other three; any other fragment selects the Tracker and scrolls to the part it names, so the header's
+- **Five pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Demand*, *Most mentioned*
+  and *eBay prices*; each is a wrapper (`viewDashboard`, `viewRare`, `viewDemand`, `viewMentions`,
+  `viewPrices`) and only one is displayed. `#rare`, `#demand`, `#mentions` and `#prices` in the address
+  select the other four; any other fragment selects the Tracker and scrolls to the part it names, so the header's
   *Sources* link works from every page. Changing page adds one entry to the browser's
   history, so Back returns to the page before; links, Back and Forward all go through
   `showViewFromAddress()`, which also runs once more when the first load has finished.
@@ -274,7 +274,7 @@ they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`
   marked, and a class on the list hides them until the button under it is pressed. The stylesheet does the hiding, so the script only flips a class and rewrites the
   button. An opened list stays open when the data reloads, its "Show fewer" button follows the
   reader down the list, and folding it returns to the top of its section.
-- **The shelf** (`renderShelf()`, `#shelf`) shows the six top games of `recentGames()` as box art above the tabs, on the Tracker only: `showView()` and
+- **The shelf** (`renderShelf()`, `#shelf`) shows up to 24 top games of `recentGames()` as box art in a row that scrolls sideways (arrows `shelfScroll()`) above the tabs, on the Tracker only: `showView()` and
   `openGame()` hide it elsewhere. It is drawn from `renderRecentGames()` and again when the cover index arrives (`redrawCoverLists()`).
 - **Look.** `retro.css` carries the theme (Inter, Playfair Display for names, JetBrains Mono for figures; rounded cards; yellow only for prices and the keepsake
   My collection button). Colours are named once at the top of the file; the Node test pins where each may be used.

@@ -557,7 +557,7 @@ await check('a phone gets 25 rows to a page, anything wider keeps 100', () => {
 });
 
 await check('ranked lists show their first rows until opened, and fold away again', async () => {
-    // The Demand Index shares the Tracker with the feed: five rows, at most 25.
+    // The Demand Index page: ten rows, at most 25.
     const demandFile = (count) => ({ window_days: 28, generated: '2026-10-06 05:41:00 UTC', games: Array.from({ length: count }, (_, n) => ({
         title: `Demand ${String(n).padStart(2, '0')}`, demand: 90 - n, views_30d: 1000, mentions: 2, trend_pct: 5 })) });
     const demand = async (count) => {
@@ -571,17 +571,17 @@ await check('ranked lists show their first rows until opened, and fold away agai
             folded: el('demandList').classList.contains('is-folded'), buttonHidden: el('demandListToggle').classList.contains('hidden'),
             button: el('demandListToggle').innerHTML.replace(/ <i .*$/, '') };
     };
-    assert.deepEqual(await demand(8), { rows: 8, extra: 3, folded: true, buttonHidden: false, button: 'Show 3 more' });
+    assert.deepEqual(await demand(14), { rows: 14, extra: 4, folded: true, buttonHidden: false, button: 'Show 4 more' });
     assert.equal(el('demandListToggle').getAttribute('aria-expanded'), 'false');
     vm.runInContext("toggleList('demandList')", context);
-    assert.deepEqual(await demand(), { rows: 8, extra: 3, folded: false, buttonHidden: false, button: 'Show fewer' });
+    assert.deepEqual(await demand(), { rows: 14, extra: 4, folded: false, buttonHidden: false, button: 'Show fewer' });
     assert.equal(el('demandListToggle').getAttribute('aria-expanded'), 'true');
     // New data arriving does not fold a list the reader has opened.
-    assert.equal((await demand(8)).folded, false);
+    assert.equal((await demand(14)).folded, false);
     vm.runInContext("toggleList('demandList')", context);
-    assert.deepEqual(await demand(), { rows: 8, extra: 3, folded: true, buttonHidden: false, button: 'Show 3 more' });
-    assert.deepEqual(await demand(5), { rows: 5, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more' });
-    assert.deepEqual(await demand(40), { rows: 25, extra: 20, folded: true, buttonHidden: false, button: 'Show 20 more' });
+    assert.deepEqual(await demand(), { rows: 14, extra: 4, folded: true, buttonHidden: false, button: 'Show 4 more' });
+    assert.deepEqual(await demand(10), { rows: 10, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more' });
+    assert.deepEqual(await demand(40), { rows: 25, extra: 15, folded: true, buttonHidden: false, button: 'Show 15 more' });
     assert.deepEqual(await demand(4), { rows: 4, extra: 0, folded: true, buttonHidden: true, button: 'Show 0 more' });
 
     // Most Mentioned Games has a page to itself: 25 rows, and every game behind the button.
@@ -1044,9 +1044,10 @@ await check('four pages in one: Tracker, Rarest, Most mentioned and eBay prices'
 
     const page = read('index.html');
     const at = (text) => { const index = page.indexOf(text); assert.notEqual(index, -1, text); assert.equal(page.indexOf(text, index + 1), -1, `${text} appears once`); return index; };
-    const order = ['id="tabDashboard"', 'id="tabRare"', 'id="tabMentions"', 'id="tabPrices"',
-        '<div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">', 'id="demandSection"', 'id="feedSection"', 'id="sourcesSection"',
+    const order = ['id="tabDashboard"', 'id="tabRare"', 'id="tabDemand"', 'id="tabMentions"', 'id="tabPrices"',
+        '<div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">', 'id="feedSection"', 'id="sourcesSection"',
         '<div id="viewRare" role="tabpanel" aria-labelledby="tabRare" class="hidden ', 'id="rareSection"',
+        '<div id="viewDemand" role="tabpanel" aria-labelledby="tabDemand" class="hidden ', 'id="demandSection"',
         '<div id="viewMentions" role="tabpanel" aria-labelledby="tabMentions" class="hidden ', 'id="topGamesSection"',
         '<div id="viewPrices" role="tabpanel" aria-labelledby="tabPrices" class="hidden ', 'id="pricesSection"', '</main>'].map(at);
     assert.deepEqual(order, [...order].sort((a, b) => a - b), 'each list is on its own page, after everything on the Tracker');
@@ -1361,7 +1362,19 @@ await check('games first: what was named in the last day leads, and the table op
         '16 items out of 19 published in the last 24 hours named a PS2 game: 10 games. The other 3 items are in the table further down, under Everything.');
     // The shelf above the tabs: the six most-named games as box art, from the same list, links to their pages
     const shelf = el('shelf').innerHTML;
-    assert.equal(shelf.split('<li class="shelf-item">').length - 1, 6, 'six boxes');
+    assert.equal(shelf.split('<li class="shelf-item">').length - 1, 10, 'every game of the list, up to 24');
+    // The arrows: the row moves by most of its width; one with nowhere to go is off; both hide when everything fits
+    const strip = el('shelf'); Object.assign(strip, { clientWidth: 600, scrollWidth: 2000, scrollLeft: 0 });
+    let moved = null; strip.scrollBy = ({ left }) => { moved = left; strip.scrollLeft += left; };
+    vm.runInContext('shelfScroll(1)', context);
+    assert.equal(moved, 510, 'a screenful less a little');
+    assert.equal(el('shelfPrev').disabled, false); assert.equal(el('shelfNext').disabled, false);
+    strip.scrollLeft = 1400; vm.runInContext('updateShelfArrows()', context);
+    assert.equal(el('shelfNext').disabled, true, 'at the end');
+    strip.scrollLeft = 0; vm.runInContext('updateShelfArrows()', context);
+    assert.equal(el('shelfPrev').disabled, true, 'at the start');
+    strip.scrollWidth = 600; vm.runInContext('updateShelfArrows()', context);
+    assert.equal(el('shelfPrev').classList.contains('hidden') && el('shelfNext').classList.contains('hidden'), true, 'everything fits: no arrows');
     assert.match(shelf, /<a class="shelf-link" href="#game=Okami"[^>]*aria-label="Okami: 5 mentions in the last 24 hours"/);
     assert.ok(shelf.indexOf('>Okami<') < shelf.indexOf('>Ico<') && shelf.indexOf('>Ico<') < shelf.indexOf('>Mixed Game<'), 'the order of the list');
     assert.match(shelf, /<span class="shelf-count">5<\/span>/);
@@ -1409,11 +1422,11 @@ await check('games first: what was named in the last day leads, and the table op
     assert.deepEqual([...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(rule => /display:\s*none|visibility:\s*hidden/.test(rule[2])).map(rule => rule[1].replace(/\s+/g, ' ').trim()), [
         'body .is-folded > .list-extra', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
-        'body .chart-tools::-webkit-scrollbar', 'body .shelf-item:nth-child(n+4)',
+        'body .chart-tools::-webkit-scrollbar', 'body .shelf::-webkit-scrollbar', 'body .shelf-arrow.hidden',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
-    const order = ['class="stat-strip"', 'id="todaySection"', 'id="demandSection"', 'id="feedSection"'].map(mark => page.indexOf(mark));
+    const order = ['class="stat-strip"', 'id="todaySection"', 'id="feedSection"'].map(mark => page.indexOf(mark));
     assert.ok(order.every((at, i) => at > 0 && (i === 0 || at > order[i - 1])), order.join(' '));
     assert.match(page, /<div id="todaySection" class="[^"]*bg-ps2card[^"]*">\s*<div class="lb-section-header">\s*<div>\s*<h2>Named in the last 24 hours<\/h2>\s*<p id="todaySummary" class="text-xs text-slate-400 mt-1">Loading\.\.\.<\/p>/);
     assert.match(page, /<ol id="todayList" class="zebra"><\/ol>\s*<button type="button" id="todayListToggle" onclick="toggleList\('todayList'\)" aria-controls="todayList"/);
@@ -2636,7 +2649,7 @@ await check('My collection: add, value, keep in the browser, back up and restore
     run(`ensureCoverIndex()`);
     await new Promise(done => setTimeout(done, 20));
     assert.match(el('topGamesList').innerHTML, /class="row-cover"/, 'drawn again once the covers list has arrived');
-    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions'\) ensureCoverIndex\(\);/, 'opening either page asks for the covers list');
+    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions' \|\| view === 'demand'\) ensureCoverIndex\(\);/, 'opening any of these pages asks for the covers list');
     assert.equal(run(`initialsOf('The Legend of Heroes: Trails')`), 'TLO');
     context.fetch = fakeFetch;
     context.localStorage = { getItem: () => null, setItem() {} };
