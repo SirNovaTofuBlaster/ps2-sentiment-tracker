@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-14: My collection, installable site, reference prices on Rarest
+
+- `index.html`: a fifth tab, **My collection** (`#collection`). Games are added by region and condition,
+  kept in the browser's `localStorage` only (no login, nothing sent), valued with the eBay median of the
+  region's site (complete uses the complete median, sealed an article price), with a backup file to save and
+  load. The Rarest page shows up to two dated article figures per game (`Articles (not live)`) from
+  `rare_reference_prices.json`.
+- `manifest.webmanifest`, `sw.js`, `icons/`: the site can be installed on a phone and opens offline with the
+  last data it saw. The worker is network first and same-origin only.
+- A crypto-wallet "connect" was left out on purpose: it identifies a visitor but stores nothing, so the list
+  would still need a server or a file.
+
 ## 2026-10-14: reference prices for rare games
 
 - `rare_reference_prices.json` (78 points from five public articles), `tools/compare_reference.py`,

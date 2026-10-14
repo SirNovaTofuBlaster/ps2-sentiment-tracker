@@ -3,7 +3,7 @@
 //   node tests/dashboard_check.mjs --validate FILE  prints validateConfig() verdicts for the configs in FILE
 //   node tests/dashboard_check.mjs --price-keys FILE  prints priceKey() for the titles in FILE
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import vm from 'node:vm';
 
 const root = new URL('..', import.meta.url);
@@ -2370,6 +2370,135 @@ await check('Most rare ranks figures that predate "listed", weighs Wikipedia col
     assert.doesNotMatch(html, /null|undefined|NaN/);
     assert.match(el('demandSummary').textContent, /Mentions rising/);
     context.fetch = fakeFetch;
+});
+
+await check('My collection: add, value, keep in the browser, back up and restore; reference prices; installable', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const kept = new Map();
+    context.localStorage = { getItem: (key) => (kept.has(key) ? kept.get(key) : null), setItem: (key, value) => { kept.set(key, String(value)); } };
+    run(`setLibrary(['God Hand', 'Kuon', 'Rule of Rose', 'Black'])`);
+    run(`setPrices({ currencies: { UK: 'GBP', US: 'USD' }, games: {
+        'God Hand': { level: 'normal', mentions: 1, US: { copies: 30, median: 100, complete: { copies: 12, median: 130 }, checked: '2026-10-14T10:00Z' },
+                      UK: { copies: 9, median: 60, checked: '2026-10-14T10:00Z' } },
+        'Kuon': { level: 'normal', mentions: 1, US: { copies: 3, median: 1000, unmatched: true, checked: '2026-10-14T10:00Z' } },
+    } }, null)`);
+    run(`referenceData = { sources: { a: { name: 'Example Site, a list', url: 'https://example.com/a', published: '2026-07-14' }, b: { name: 'Old Site', url: 'https://example.com/b', published: '2023-06-02' } },
+        prices: [ { title: 'Rule of Rose', region: 'US', condition: 'sealed', price: 1160, currency: 'USD', source: 'a' },
+                  { title: 'Rule of Rose', region: 'US', condition: 'complete', price: 1000, currency: 'USD', source: 'a' },
+                  { title: 'Rule of Rose', region: '?', condition: 'mint', price: 650, currency: 'GBP', source: 'b' },
+                  { title: 'Rule of Rose', region: 'PAL', condition: 'mint', price: 400, currency: 'USD', source: 'b', note: 'PAL list takes GBP or PAL-region points' } ] }`);
+
+    // Adding, merging, validation
+    assert.equal(run(`collection.length`), 0);
+    assert.equal(run(`addToCollection('God Hand', 'US', 'complete', 2, 90)`), true);
+    assert.equal(run(`addToCollection('God Hand', 'US', 'complete', 1)`), true, 'the same game, region and condition adds a copy');
+    assert.equal(run(`addToCollection('God Hand', 'PAL', 'loose')`), true);
+    assert.equal(run(`addToCollection('Kuon', 'US', 'loose')`), true);
+    assert.equal(run(`addToCollection('Rule of Rose', 'US', 'sealed')`), true);
+    assert.equal(run(`addToCollection('', 'US', 'loose')`), false);
+    assert.equal(run(`addToCollection('God Hand', 'MARS', 'loose')`), false);
+    assert.equal(run(`addToCollection('God Hand', 'US', 'mint')`), false);
+    assert.deepEqual(evalJson(`collection.map(e => [e.title, e.region, e.condition, e.qty, e.paid])`),
+        [['God Hand', 'US', 'complete', 3, 90], ['God Hand', 'PAL', 'loose', 1, null], ['Kuon', 'US', 'loose', 1, null], ['Rule of Rose', 'US', 'sealed', 1, null]]);
+    assert.deepEqual(JSON.parse(kept.get('ps2-sentiment-tracker.collection')).length, 4, 'saved in the browser');
+
+    // Values: complete uses the complete median, loose the overall one, an unmatched figure none, sealed an article price
+    assert.deepEqual(evalJson(`collectionValue(collection[0])`), [130, 'USD', 'ebay']);
+    assert.deepEqual(evalJson(`collectionValue(collection[1])`), [60, 'GBP', 'ebay']);
+    assert.deepEqual(evalJson(`collectionValue(collection[2])`), [null, 'USD', 'none']);
+    assert.deepEqual(evalJson(`collectionValue(collection[3])`), [1160, 'USD', 'article']);
+    assert.deepEqual(evalJson(`collectionTotals()`), { worth: { USD: 130 * 3 + 1160, GBP: 60 }, paid: { USD: 270 }, unpriced: 1, copies: 6 });
+    run(`showView('collection')`);
+    assert.equal(el('viewCollection').classList.contains('hidden'), false);
+    assert.equal(el('tabCollection').classList.contains('is-active'), true);
+    assert.equal(el('viewRare').classList.contains('hidden'), true);
+    assert.match(el('collectionSummary').textContent, /^4 games, 6 copies\. Estimated value \$1,550 \+ £60\.00 \(1 copy without a price\)\.$/);
+    const html = el('collectionList').innerHTML;
+    assert.match(html, /God Hand/); assert.match(html, /×3/); assert.match(html, /paid \$90/); assert.match(html, /no price/);
+    assert.doesNotMatch(html, /NaN|undefined|null/);
+    assert.deepEqual([el('tabCollectionCount').textContent, el('tabCollectionCount').classList.contains('hidden')], ['6', false]);
+
+    // The form: only a name from the library is accepted
+    el('collectionGame').value = 'kuo'; el('collectionRegion').value = 'PAL'; el('collectionCondition').value = 'complete'; el('collectionQty').value = '2'; el('collectionPaid').value = '';
+    run(`onCollectionInput()`);
+    assert.match(el('collectionGames').innerHTML, /<option value="Kuon">/);
+    run(`addFromForm()`);
+    assert.match(el('collectionMessage').textContent, /Added Kuon/);
+    assert.equal(run(`collection.find(e => e.title === 'Kuon' && e.region === 'PAL').qty`), 2);
+    el('collectionGame').value = 'zzzz nothing';
+    run(`addFromForm()`);
+    assert.match(el('collectionMessage').textContent, /No PS2 game by that name/);
+    assert.equal(run(`collection.length`), 5);
+
+    // Survives a reload: a fresh load reads what was kept; garbage is ignored
+    run(`collection = []; loadCollection()`);
+    assert.equal(run(`collection.length`), 5);
+    kept.set('ps2-sentiment-tracker.collection', '{not json');
+    run(`loadCollection()`);
+    assert.equal(run(`collection.length`), 0, 'a damaged save is treated as empty, not an error');
+    kept.set('ps2-sentiment-tracker.collection', JSON.stringify([{ title: 'God Hand', region: 'US', condition: 'loose', qty: 500, paid: -3 }, { title: '<img src=x onerror=1>', region: 'PAL', condition: 'loose', qty: 1 }, 7, null]));
+    run(`loadCollection()`);
+    assert.deepEqual(evalJson(`collection.map(e => [e.title, e.qty, e.paid])`), [['God Hand', 99, null], ['<img src=x onerror=1>', 1, null]], 'quantity capped, a negative price dropped');
+    run(`renderCollection()`);
+    assert.doesNotMatch(el('collectionList').innerHTML, /<img src=x/, 'a title is never markup');
+
+    // Backup file round trip, and a stranger's file is refused
+    run(`collection = []; addToCollection('God Hand', 'US', 'loose', 2, 50); addToCollection('Kuon', 'PAL', 'complete')`);
+    const file = run(`exportCollection()`);
+    const backup = JSON.parse(file);
+    assert.deepEqual([backup.app, backup.kind, backup.version, backup.games.length], ['ps2-sentiment-tracker', 'collection', 1, 2]);
+    run(`collection = []`);
+    assert.equal(run(`loadCollectionFile(${JSON.stringify(file)})`), 2);
+    assert.deepEqual(evalJson(`collection.map(e => [e.title, e.qty, e.paid])`), [['God Hand', 2, 50], ['Kuon', 1, null]]);
+    assert.equal(run(`loadCollectionFile('not a backup')`), -1);
+    assert.equal(run(`loadCollectionFile('{"hello": 1}')`), -1);
+    assert.equal(run(`collection.length`), 2, 'a refused file changes nothing');
+    run(`removeFromCollection(0)`);
+    assert.deepEqual(evalJson(`collection.map(e => e.title)`), ['Kuon']);
+    run(`removeFromCollection(99)`);
+    assert.equal(run(`collection.length`), 1);
+
+    // Storage that refuses: it still works for the session and says so
+    context.localStorage = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); } };
+    run(`loadCollection(); collection = []; addToCollection('God Hand', 'US', 'loose')`);
+    assert.equal(run(`collection.length`), 1);
+    assert.equal(run(`collectionKept`), false);
+    run(`renderCollection()`);
+    assert.match(el('collectionNote').textContent, /would not store the list/);
+    context.localStorage = { getItem: () => null, setItem() {} };
+    run(`collection = []; collectionKept = true; updateCollectionTab()`);
+
+    // The address "#collection" opens the page
+    context.location.hash = '#collection';
+    assert.equal(run(`showViewFromAddress()`), 'collection');
+    context.location.hash = '';
+    run(`showView('dashboard', false)`);
+
+    // Reference prices under a rare game: the US list takes USD points, the PAL list GBP or PAL ones
+    const us = run(`referenceHtml('Rule of Rose', 'US', 'en-US')`);
+    assert.match(us, /Articles \(not live\): \$1,000 complete \(<a href="https:\/\/example\.com\/a"[^>]*>Example Site<\/a> 2026\)/);
+    assert.doesNotMatch(us, /£650/);
+    const pal = run(`referenceHtml('Rule of Rose', 'PAL', 'en-US')`);
+    assert.match(pal, /£650 mint/);
+    assert.doesNotMatch(pal, /\$400/, 'one figure per article');
+    assert.doesNotMatch(pal, /Example Site/, 'a US point is not shown on the PAL list');
+    assert.equal(run(`referenceHtml('Nothing Here', 'US', 'en-US')`), '');
+    run(`referenceData = null`);
+    assert.equal(run(`referenceHtml('Rule of Rose', 'US', 'en-US')`), '');
+
+    // The files that make the site installable
+    const manifest = JSON.parse(read('manifest.webmanifest'));
+    assert.equal(manifest.start_url, './'); assert.equal(manifest.display, 'standalone');
+    for (const icon of manifest.icons) assert.ok(existsSync(new URL(icon.src, root)), `${icon.src} exists`);
+    assert.ok(manifest.icons.some(icon => icon.sizes === '192x192') && manifest.icons.some(icon => icon.sizes === '512x512'));
+    const page = read('index.html');
+    assert.match(page, /<link rel="manifest" href="manifest\.webmanifest">/);
+    assert.match(page, /<link rel="apple-touch-icon" href="icons\/icon-180\.png">/);
+    const worker = read('sw.js');
+    assert.match(worker, /url\.origin !== self\.location\.origin\) return;/, 'only our own files go through the worker');
+    assert.match(worker, /request\.method !== 'GET'/);
+    assert.match(worker, /fetch\(request\)[\s\S]*\.catch\(\(\) => caches\.match\(request\)/, 'network first, the saved copy only when it fails');
+    assert.doesNotMatch(worker, /localStorage|indexedDB/, 'the worker holds nothing of the visitor\'s');
 });
 
 console.log(`dashboard checks passed (${passed})`);

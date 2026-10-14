@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#111114">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icons/icon-180.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Spindle">
     <title>Spindle — tracking the Retro Gaming PS2 Market</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -74,6 +78,7 @@
             <button type="button" id="tabRare" role="tab" aria-selected="false" aria-controls="viewRare" onclick="showView('rare')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Rarest</button>
             <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
             <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
+            <button type="button" id="tabCollection" role="tab" aria-selected="false" aria-controls="viewCollection" onclick="showView('collection')" class="view-tab"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> My collection <span id="tabCollectionCount" class="view-tab-count hidden"></span></button>
         </div>
 
         <!-- The EUR button: shown only when data/fx.json could be read. -->
@@ -325,6 +330,46 @@
         </div>
         </div>
 
+
+        <!-- My collection: games the visitor owns, kept in this browser's localStorage only
+             (nothing is sent anywhere, there is no login). Valued with the eBay medians. -->
+        <div id="viewCollection" role="tabpanel" aria-labelledby="tabCollection" class="hidden space-y-8">
+        <div id="collectionSection" class="bg-ps2card p-6">
+            <h2>My Collection</h2>
+            <p id="collectionSummary" class="text-xs text-slate-400 mb-4"></p>
+            <form id="collectionForm" class="collection-form" onsubmit="return addFromForm(event)" autocomplete="off">
+                <label class="sr-only" for="collectionGame">Game</label>
+                <input type="text" id="collectionGame" list="collectionGames" placeholder="Search a game to add, e.g. god hand" oninput="onCollectionInput()"
+                    class="bg-slate-900 border border-slate-700 text-sm px-3 py-2 outline-none">
+                <datalist id="collectionGames"></datalist>
+                <label class="sr-only" for="collectionRegion">Region</label>
+                <select id="collectionRegion" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2">
+                    <option value="PAL">PAL (UK / Europe)</option>
+                    <option value="US">US (NTSC-U)</option>
+                </select>
+                <label class="sr-only" for="collectionCondition">Condition</label>
+                <select id="collectionCondition" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2">
+                    <option value="complete">Complete (box and manual)</option>
+                    <option value="loose">Loose (disc only)</option>
+                    <option value="sealed">Sealed</option>
+                </select>
+                <label class="sr-only" for="collectionQty">How many</label>
+                <input type="number" id="collectionQty" min="1" max="99" value="1" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2" title="How many copies">
+                <label class="sr-only" for="collectionPaid">What you paid (optional, per copy)</label>
+                <input type="number" id="collectionPaid" min="0" step="0.01" placeholder="Paid each (optional)" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2" title="What you paid for each copy, in that region's money. Optional.">
+                <button type="submit" class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer">Add</button>
+            </form>
+            <p id="collectionMessage" class="text-xs text-amber-300 mt-2 min-h-[1rem]" role="status"></p>
+            <ul id="collectionList" class="divide-y divide-slate-800 mt-4 text-sm"></ul>
+            <div class="flex flex-wrap gap-2 mt-4">
+                <button type="button" id="collectionExport" onclick="exportCollection()" class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer"><i class="fa-solid fa-download" aria-hidden="true"></i> Save a backup file</button>
+                <label class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer" for="collectionImport"><i class="fa-solid fa-upload" aria-hidden="true"></i> Load a backup file</label>
+                <input type="file" id="collectionImport" accept="application/json,.json" class="sr-only" onchange="importCollection(event)">
+                <button type="button" id="collectionClear" onclick="clearCollection()" class="bg-slate-800 text-red-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer">Clear all</button>
+            </div>
+            <p id="collectionNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
+        </div>
+        </div>
     </main>
 
     <!-- One game's price history, opened from a "chart" button (openGameChart()). -->
@@ -475,6 +520,7 @@
             rare: ['viewRare', 'tabRare'],
             mentions: ['viewMentions', 'tabMentions'],
             prices: ['viewPrices', 'tabPrices'],
+            collection: ['viewCollection', 'tabCollection'],
         };
 
         const isView = (name) => Object.prototype.hasOwnProperty.call(VIEWS, name);
@@ -487,6 +533,9 @@
                 const button = document.getElementById(tab);
                 button.classList.toggle('is-active', key === view);
                 button.setAttribute?.('aria-selected', String(key === view));
+            }
+            if (view === 'collection') {
+                try { renderCollection(); } catch (error) { console.warn('Could not show the collection.', error); }
             }
             if (remember) {
                 // A new entry in the browser's history, so Back returns to the page you came from.
@@ -600,6 +649,8 @@
             sync.title = data.last_updated ? `Scraper ran at ${data.last_updated}` : '';
             document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
             loadLibrary();   // the search box's names; nothing waits for them
+            loadCollection();   // what this browser has kept of the visitor's collection
+            registerServiceWorker();
             loadWikiChecks();   // Wikipedia's "collectible" verdicts; the list is drawn again when they arrive
             // Prices first: every list below shows them beside its games.
             await loadFx();
@@ -1236,6 +1287,7 @@
             }
             priceData = data ?? null;
             priceIndex = index;
+            try { refreshCollection(); } catch { /* the collection page draws itself when opened */ }
         }
 
         const currencyOf = (label, data = priceData) => {
@@ -1750,6 +1802,7 @@
                     <div class="ebay-figures">${unpriced
                         ? `<span class="ebay-site is-quiet"><span class="ebay-flag">${esc(label)}</span><span class="ebay-note" title="Not looked up on eBay: its search words would also count other games' listings (a name that is an everyday word) or cannot be used. The eBay price job's log names the reason.">not priced</span></span>`
                         : priceSiteHtml(label, site, currency, now, locale, LEVELS[prices?.level || 'rare'].stale)}</div>
+                    ${referenceHtml(entry.title, region, locale)}
                     <p class="rare-note">${typeof entry.note === 'string' && entry.note ? `${esc(entry.note)} ` : ''}${sources.length
                         ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>
                 </li>`;
@@ -2233,6 +2286,278 @@
         }
 
         // Reads one of the Rarest page's files: { data, failed }.
+
+        /* ---- Reference prices (rare_reference_prices.json) -------------------------
+           Dated figures from public articles about rare games, shown under a game on the
+           Rarest page. They are not live prices and mostly repeat PriceCharting, so each
+           carries its article's name and year, and the line says so.
+        -------------------------------------------------------------------- */
+        let referenceData = null;
+        const REFERENCE_CONDITION = ['complete', 'mint', 'unstated', 'good', 'loose', 'sealed', 'variant'];
+
+        function referencePoints(title, region) {
+            const sources = referenceData?.sources && typeof referenceData.sources === 'object' ? referenceData.sources : {};
+            const points = Array.isArray(referenceData?.prices) ? referenceData.prices : [];
+            return points.filter(point => point && point.title === title && own(sources, point.source)
+                && typeof point.price === 'number' && Number.isFinite(point.price) && point.price > 0
+                && (region === 'PAL' ? (point.region === 'PAL' || point.currency === 'GBP') : (point.region !== 'PAL' && point.currency === 'USD')));
+        }
+
+        function referenceHtml(title, region, locale) {
+            const sources = referenceData?.sources || {};
+            const bySource = new Map();
+            for (const point of referencePoints(title, region)) {
+                const rank = REFERENCE_CONDITION.indexOf(point.condition);
+                const held = bySource.get(point.source);
+                if (!held || (rank >= 0 ? rank : 99) < (REFERENCE_CONDITION.indexOf(held.condition) >= 0 ? REFERENCE_CONDITION.indexOf(held.condition) : 99)) bySource.set(point.source, point);
+            }
+            const shown = [...bySource.values()]
+                .sort((a, b) => cmpStr(String(sources[b.source].published), String(sources[a.source].published))).slice(0, 2);
+            if (!shown.length) return '';
+            const parts = shown.map(point => {
+                const source = sources[point.source];
+                const name = String(source.name ?? '').split(',')[0];
+                const year = String(source.published ?? '').slice(0, 4);
+                const label = point.condition === 'unstated' ? '' : ` ${point.condition}`;
+                const link = /^https:\/\//i.test(String(source.url ?? '')) ? safeUrl(source.url) : '';
+                return `${esc(money(point.price, point.currency, locale, false))}${esc(label)} (${link ? `<a href="${link}" target="_blank" rel="noopener noreferrer">${esc(name)}</a>` : esc(name)} ${esc(year)})`;
+            });
+            return `<p class="rare-note" title="Figures from public articles, not live prices. Most of them repeat PriceCharting; see rare_reference_prices.json for the source and date of each.">Articles (not live): ${parts.join(' · ')}</p>`;
+        }
+
+        /* ---- My collection ------------------------------------------------------
+           The visitor's games, kept in this browser's localStorage and nowhere else: no login,
+           no server, nothing sent. Valued with the same eBay medians as the rest of the page
+           (asking prices, not sold prices). A backup file can be saved and loaded again, because
+           a browser can lose its storage and a collection should survive that.
+        -------------------------------------------------------------------- */
+        const COLLECTION_KEY = 'ps2-sentiment-tracker.collection';
+        const COLLECTION_MAX = 2000;
+        const COLLECTION_CONDITIONS = { complete: 'Complete', loose: 'Loose', sealed: 'Sealed' };
+        const COLLECTION_REGIONS = { PAL: 'UK', US: 'US' };   // the region's eBay site
+        let collection = [];
+        let collectionKept = true;   // false when the browser would not store it
+
+        function cleanCollection(raw) {
+            const out = [];
+            const seen = new Set();
+            for (const item of Array.isArray(raw) ? raw : []) {
+                if (!item || typeof item !== 'object') continue;
+                const title = typeof item.title === 'string' ? item.title.trim().slice(0, 200) : '';
+                if (!title || !own(COLLECTION_REGIONS, item.region) || !own(COLLECTION_CONDITIONS, item.condition)) continue;
+                const qty = Math.min(99, Math.max(1, Math.floor(Number(item.qty)) || 1));
+                const paid = Number.isFinite(Number(item.paid)) && item.paid !== null && item.paid !== '' && Number(item.paid) >= 0 ? Math.round(Number(item.paid) * 100) / 100 : null;
+                const key = `${title}|${item.region}|${item.condition}`;
+                if (seen.has(key) || out.length >= COLLECTION_MAX) continue;
+                seen.add(key);
+                out.push({ title, region: item.region, condition: item.condition, qty, paid });
+            }
+            return out;
+        }
+
+        function loadCollection() {
+            try {
+                collection = cleanCollection(JSON.parse(localStorage.getItem(COLLECTION_KEY) || '[]'));
+            } catch {
+                collection = [];
+            }
+            updateCollectionTab();
+        }
+
+        function saveCollection() {
+            try {
+                localStorage.setItem(COLLECTION_KEY, JSON.stringify(collection));
+                collectionKept = true;
+            } catch {
+                collectionKept = false;   // private window or blocked storage: it lasts until the page closes
+            }
+            updateCollectionTab();
+        }
+
+        function updateCollectionTab() {
+            const badge = document.getElementById('tabCollectionCount');
+            if (!badge) return;
+            const total = collection.reduce((sum, entry) => sum + entry.qty, 0);
+            badge.textContent = total.toLocaleString('en');
+            badge.classList.toggle('hidden', total === 0);
+        }
+
+        function addToCollection(title, region, condition, qty = 1, paid = null) {
+            const [added] = cleanCollection([{ title, region, condition, qty, paid }]);
+            if (!added) return false;
+            const held = collection.find(entry => entry.title === added.title && entry.region === added.region && entry.condition === added.condition);
+            if (held) {
+                held.qty = Math.min(99, held.qty + added.qty);
+                if (added.paid !== null) held.paid = added.paid;
+            } else {
+                if (collection.length >= COLLECTION_MAX) return false;
+                collection.push(added);
+            }
+            saveCollection();
+            return true;
+        }
+
+        // The price a copy is valued at: [amount or null, currency, what it rests on].
+        function collectionValue(entry) {
+            const site = COLLECTION_REGIONS[entry.region];
+            const currency = currencyOf(site);
+            if (entry.condition === 'sealed') {
+                const points = referencePoints(entry.title, entry.region).filter(point => point.condition === 'sealed');
+                points.sort((a, b) => cmpStr(String(referenceData.sources[b.source].published), String(referenceData.sources[a.source].published)));
+                return points.length ? [points[0].price, points[0].currency, 'article'] : [null, currency, 'none'];
+            }
+            const figure = priceIndex.get(priceKey(entry.title))?.entry?.[site];
+            if (!figure || typeof figure !== 'object' || figure.unmatched || !(figure.copies > 0)) return [null, currency, 'none'];
+            const complete = figure.complete && typeof figure.complete === 'object' && figure.complete.copies > 0 && typeof figure.complete.median === 'number'
+                ? figure.complete.median : null;
+            const amount = entry.condition === 'complete' && complete !== null ? complete : figure.median;
+            return typeof amount === 'number' && Number.isFinite(amount) ? [amount, currency, 'ebay'] : [null, currency, 'none'];
+        }
+
+        function collectionTotals() {
+            const worth = {};
+            const paid = {};
+            let unpriced = 0;
+            let copies = 0;
+            for (const entry of collection) {
+                copies += entry.qty;
+                const [amount, currency] = collectionValue(entry);
+                if (amount === null) unpriced += entry.qty;
+                else worth[currency] = (worth[currency] || 0) + amount * entry.qty;
+                if (entry.paid !== null) paid[currencyOf(COLLECTION_REGIONS[entry.region])] = (paid[currencyOf(COLLECTION_REGIONS[entry.region])] || 0) + entry.paid * entry.qty;
+            }
+            return { worth, paid, unpriced, copies };
+        }
+
+        function renderCollection(locale) {
+            const list = document.getElementById('collectionList');
+            const summary = document.getElementById('collectionSummary');
+            const totals = collectionTotals();
+            const rows = collection.map((entry, index) => ({ entry, index, value: collectionValue(entry) }))
+                .sort((a, b) => ((b.value[0] ?? -1) * b.entry.qty) - ((a.value[0] ?? -1) * a.entry.qty) || cmpStr(a.entry.title, b.entry.title));
+            const sums = Object.entries(totals.worth).map(([currency, amount]) => money(amount, currency, locale)).join(' + ');
+            summary.textContent = collection.length
+                ? `${collection.length} game${collection.length === 1 ? '' : 's'}, ${totals.copies} cop${totals.copies === 1 ? 'y' : 'ies'}. `
+                    + (sums ? `Estimated value ${sums}` : 'No price for any of them yet')
+                    + (totals.unpriced ? ` (${totals.unpriced} cop${totals.unpriced === 1 ? 'y' : 'ies'} without a price)` : '') + '.'
+                : 'Nothing here yet. Search a game, choose its region and condition, and press Add. Your list stays in this browser.';
+            list.innerHTML = rows.map(({ entry, index, value }) => {
+                const [amount, currency, basis] = value;
+                const each = amount === null ? '<span class="text-slate-500" title="No eBay median for this game, region and condition yet.">no price</span>'
+                    : `<span title="${basis === 'article' ? 'From a public article, not a live price' : 'The median eBay asking price today'}">${esc(money(amount, currency, locale))}${basis === 'article' ? ' (article)' : ''}</span>`;
+                const gain = entry.paid !== null && amount !== null
+                    ? ` <span class="${amount >= entry.paid ? 'text-emerald-400' : 'text-red-400'}" title="Estimated value against what you paid each">${amount >= entry.paid ? '▲' : '▼'} ${esc(money(Math.abs(amount - entry.paid) * entry.qty, currency, locale))}</span>` : '';
+                return `<li class="py-3 flex items-baseline justify-between gap-3">
+                    <span><a class="text-cyan-300" href="#game=${encodeURIComponent(entry.title)}" onclick="openGame(${esc(JSON.stringify(entry.title))}); return false;">${esc(entry.title)}</a>
+                        <span class="text-xs text-slate-400">${esc(entry.region)} · ${esc(COLLECTION_CONDITIONS[entry.condition])}${entry.qty > 1 ? ` · ×${entry.qty}` : ''}${entry.paid !== null ? ` · paid ${esc(money(entry.paid, currency, locale, false))}` : ''}</span></span>
+                    <span class="whitespace-nowrap text-xs font-mono-custom">${each}${gain}
+                        <button type="button" class="text-slate-400 ml-2 cursor-pointer" onclick="removeFromCollection(${index})" aria-label="Remove ${esc(entry.title)}">&times;</button></span>
+                </li>`;
+            }).join('');
+            document.getElementById('collectionNote').textContent =
+                'Kept only in this browser (nothing is sent anywhere and there is no login), so clearing the browser\'s data or switching device loses it: use Save a backup file to keep a copy, and Load a backup file to restore it. '
+                + 'Values are the median eBay asking price today for that region (PAL on eBay UK, US on eBay US): asking prices, not what anything sold for, and not what a buyer would pay you. '
+                + 'Complete uses the median of complete copies where eBay has them; loose uses the overall median; sealed has no eBay figure, so it uses a dated article price where one exists.'
+                + (collectionKept ? '' : ' This browser would not store the list, so it will be gone when you close the page.');
+            updateCollectionTab();
+        }
+
+        function refreshCollection() {
+            if (!document.getElementById('viewCollection')?.classList.contains('hidden')) renderCollection();
+        }
+
+        function removeFromCollection(index) {
+            if (!Number.isInteger(index) || index < 0 || index >= collection.length) return;
+            collection.splice(index, 1);
+            saveCollection();
+            renderCollection();
+        }
+
+        function onCollectionInput() {
+            const text = document.getElementById('collectionGame').value;
+            document.getElementById('collectionGames').innerHTML = suggestGames(text, 10).map(title => `<option value="${esc(title)}"></option>`).join('');
+        }
+
+        function addFromForm(event) {
+            event?.preventDefault?.();
+            const message = document.getElementById('collectionMessage');
+            const text = document.getElementById('collectionGame').value.trim();
+            const picks = text ? suggestGames(text, 6) : [];
+            const chosen = picks.find(title => plainText(title) === plainText(text)) || (picks.length === 1 ? picks[0] : null);
+            if (!chosen) {
+                message.textContent = picks.length ? 'Choose one of the suggested names (start typing and pick from the list).' : 'No PS2 game by that name. Try fewer words.';
+                return false;
+            }
+            const paidText = document.getElementById('collectionPaid').value;
+            const ok = addToCollection(chosen, document.getElementById('collectionRegion').value, document.getElementById('collectionCondition').value,
+                Number(document.getElementById('collectionQty').value) || 1, paidText === '' ? null : Number(paidText));
+            message.textContent = ok ? `Added ${chosen}.` : 'Could not add that (the list is full, or the details were not valid).';
+            if (ok) {
+                document.getElementById('collectionGame').value = '';
+                document.getElementById('collectionPaid').value = '';
+                document.getElementById('collectionQty').value = '1';
+                document.getElementById('collectionGames').innerHTML = '';
+                renderCollection();
+            }
+            return false;
+        }
+
+        function exportCollection() {
+            const file = JSON.stringify({ app: 'ps2-sentiment-tracker', kind: 'collection', version: 1, saved: new Date().toISOString(), games: collection }, null, 2) + '\n';
+            try {
+                const url = URL.createObjectURL(new Blob([file], { type: 'application/json' }));
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'spindle-collection.json';
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+            } catch {
+                document.getElementById('collectionMessage').textContent = 'This browser would not make the file.';
+            }
+            return file;
+        }
+
+        // A backup replaces the list (after asking), so loading the same file twice cannot double anything.
+        function loadCollectionFile(text) {
+            let parsed;
+            try { parsed = JSON.parse(text); } catch { return -1; }
+            const games = cleanCollection(Array.isArray(parsed) ? parsed : parsed?.games);
+            if (!games.length && !(Array.isArray(parsed?.games) && parsed.games.length === 0)) return -1;
+            collection = games;
+            saveCollection();
+            renderCollection();
+            return games.length;
+        }
+
+        async function importCollection(event) {
+            const input = event?.target;
+            const file = input?.files?.[0];
+            const message = document.getElementById('collectionMessage');
+            if (!file) return;
+            if (collection.length && typeof confirm === 'function' && !confirm('Replace the list on this page with the one in the file?')) { input.value = ''; return; }
+            let count = -1;
+            try { count = loadCollectionFile(await file.text()); } catch { count = -1; }
+            message.textContent = count < 0 ? 'That file is not a Spindle collection backup.' : `Loaded ${count} game${count === 1 ? '' : 's'}.`;
+            input.value = '';
+        }
+
+        function clearCollection() {
+            if (!collection.length) return;
+            if (typeof confirm === 'function' && !confirm('Remove every game from your collection on this browser?')) return;
+            collection = [];
+            saveCollection();
+            renderCollection();
+        }
+
+        // Lets the site be installed and open offline (sw.js: network first, never stale while online).
+        function registerServiceWorker() {
+            try {
+                if (navigator.serviceWorker && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(() => {});
+            } catch { /* installing is optional */ }
+        }
+
         async function readRareFile(path) {
             try {
                 const response = await fetch(path, { cache: 'no-cache' });
@@ -2247,7 +2572,9 @@
         }
 
         async function loadRare() {
-            const [games, consoles] = await Promise.all([readRareFile('rare_games.json'), readRareFile('rare_consoles.json')]);
+            const [games, consoles, reference] = await Promise.all([readRareFile('rare_games.json'), readRareFile('rare_consoles.json'),
+                readRareFile('rare_reference_prices.json')]);
+            if (!reference.failed && reference.data) referenceData = reference.data;
             // A hiccup must not wipe a list that is already on screen.
             if (!(consoles.failed && consoleData)) {
                 consoleData = consoles.data;

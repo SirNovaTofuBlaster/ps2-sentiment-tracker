@@ -55,6 +55,7 @@
                 <li><a class="hover:underline" href="#demand">The Demand Index</a></li>
                 <li><a class="hover:underline" href="#ebay">eBay asking prices</a></li>
                 <li><a class="hover:underline" href="#rare">The rarest games</a></li>
+                <li><a class="hover:underline" href="#collection">My collection and installing the site</a></li>
                 <li><a class="hover:underline" href="#sources">The Sources &amp; Weights panel</a></li>
                 <li><a class="hover:underline" href="#add">Add a source</a></li>
                 <li><a class="hover:underline" href="#weights">Weights</a></li>
@@ -70,7 +71,7 @@
             <h2>1. What the dashboard shows</h2>
             <p>A robot on GitHub reads gaming news sites, Reddit, forums, 4chan's game boards, YouTube channels and podcasts all day long, each on its own clock: 4chan every 15 minutes, news sites and forums every 30, Reddit and YouTube every hour, podcasts every 6 hours. For every headline, thread, video and episode it checks whether a PlayStation 2 game is mentioned, whether it sounds like remaster or remake news, and how positive the wording is. Every game it recognises gets links out to shops and price guides, and eBay's asking prices beside its name. The dashboard shows the result:</p>
             <ul class="list-disc pl-5 space-y-1">
-                <li><b class="text-white">Four pages</b>, chosen with the tabs under the banner. <b class="text-white">Tracker</b> has the numbers, the games named in the last 24 hours, the Demand Index, the table and the sources. <b class="text-white">Rarest</b> lists the hundred rarest PAL games, the hundred rarest US games and the rarest official PS2 consoles, with their eBay prices (see <a class="text-cyan-400 hover:underline" href="#rare">The rarest games</a>). <b class="text-white">Most mentioned</b> ranks every PS2 game the feed names. <b class="text-white">eBay prices</b> opens with the PS2 Price Index and then lists what used copies of every tracked game are listed for. On a screen wider than a phone, the number on a tab is how many games that page holds. Your browser's Back button returns to the page you were on, and adding <span class="font-mono-custom">#rare</span>, <span class="font-mono-custom">#mentions</span> or <span class="font-mono-custom">#prices</span> to the address opens a page directly.</li>
+                <li><b class="text-white">Five pages</b>, chosen with the tabs under the banner. <b class="text-white">Tracker</b> has the numbers, the games named in the last 24 hours, the Demand Index, the table and the sources. <b class="text-white">Rarest</b> lists the hundred rarest PAL games, the hundred rarest US games and the rarest official PS2 consoles, with their eBay prices (see <a class="text-cyan-400 hover:underline" href="#rare">The rarest games</a>). <b class="text-white">Most mentioned</b> ranks every PS2 game the feed names. <b class="text-white">eBay prices</b> opens with the PS2 Price Index and then lists what used copies of every tracked game are listed for. On a screen wider than a phone, the number on a tab is how many games that page holds. Your browser's Back button returns to the page you were on, <b class="text-white">My collection</b> keeps the games you own and adds up what they are worth (see <a class="text-cyan-400 hover:underline" href="#collection">My collection</a>). Adding <span class="font-mono-custom">#rare</span>, <span class="font-mono-custom">#mentions</span>, <span class="font-mono-custom">#prices</span> or <span class="font-mono-custom">#collection</span> to the address opens a page directly.</li>
                 <li><b class="text-white">Search and game pages</b>: the search box above the tabs knows every game in the PS2 library, not only the ones in the news. Start typing (<span class="font-mono-custom">godh</span> brings up God Hand; spaces and capitals do not matter) and pick a name with a click, or with the arrow keys and Enter. You land on that game's own page: its eBay prices, and the latest items from the feeds that name it (news, Reddit, forums, 4chan, YouTube, podcasts), newest first. A game nobody has named in the last two weeks gets an empty page that says so; it fills in by itself later. The address of a game page (<span class="font-mono-custom">#game=God%20Hand</span>) can be bookmarked. Clicking the <b class="text-white">Spindle</b> logo, or <b class="text-white">Back to the Tracker</b>, returns to the home page and clears the search.</li>
                 <li><b class="text-white">Named in the last 24 hours</b>, first on the Tracker: the PS2 games named by anything published in the last day, and nothing else. Most of what the robot reads names no PS2 game at all, so this list is where to look first. It is <b class="text-white">ordered by price</b>: first the games with an eBay UK median, the most expensive at the top down to the cheapest; then the games with only a US price, the same way (dollars and pounds are never compared); then the games with no price at all. Two buttons beside the heading change the order: <b class="text-white">Most expensive</b> (the default) and <b class="text-white">Most rare</b>, which puts first the games with the fewest copies for sale on eBay (using eBay's own count where it is higher than ours): 10 or fewer, then up to 30, then up to 100, then the rest, and inside each group the dearer first. A game whose Wikipedia article calls it a collectible leads its group and wears a <b class="text-white">collectible</b> tag. A game not yet checked on eBay comes last. A game with 10 copies or fewer wears a red <b class="text-white">scarce</b> tag with the count, in either order: a rare game that suddenly gets named is the kind a collector may want to buy before the price moves. A game is checked on eBay soon after the feed first names it, so a brand-new oddity shows its count within the hour. Games at the same price, and the games without one, keep the usual order: the most headlines first, so one found only in the text under a headline (marked <b class="text-white">in the text only</b>; those are wrong more often) comes later, then the most mentions, then the most recent. Each line says how many items named the game and which sources, with its prices. <b class="text-white">Click a game's name</b> to jump to the table showing exactly the items that name it, from the whole two weeks and not only the last day; <b class="text-white">Back to every game</b> above the table, or any change to the search box or the menus, returns the table to normal. The line under the heading says how many items were published in the last day and how many of them named a game. "Published" is the date the source gave the item, so when a source is first added, its older items go straight to the table. (A source that gives no dates has its items dated when the robot first sees them.) The list is as good as the name matching: a series still going today is counted for its PS2 game, and an ordinary phrase is sometimes taken for a title.</li>
                 <li><b class="text-white">eBay median</b>: under a game's name, wherever one appears (the last 24 hours, Demand Index, Most Mentioned Games and the table), you see the middle asking price of used copies on eBay US, eBay UK, eBay Germany (DE), eBay France (FR) and eBay Italy (IT) and eBay Spain (ES), the last four in euros. Click a figure to search that eBay site for the game; hover over it for how many copies it covers and when it was checked. Once a game has been priced for a week, a bracket beside the median says how it moved since a week before: <span class="font-mono-custom">£73.49 <span class="text-emerald-400">(£2.30 ▲ 3.2%)</span></span> means up £2.30, or 3.2%, and <span class="font-mono-custom text-red-400">▼</span> means down; <span class="font-mono-custom">(no change)</span> means the same. Hover over the bracket for the week-old figure and its date. A game's first bracket appears a week after its first price. The earliest prices are from the night of 6 October 2026, so the first brackets appear late on 13 October (UK time), and for most games during the 14th, as each comes up for its next check. When a game's search words have just been changed, its bracket compares two different searches for a week, so a big jump then says more about the search than about the market. A game with no such line is one that isn't priced: see <a class="text-cyan-400 hover:underline" href="#ebay">eBay asking prices</a>.</li>
@@ -149,6 +150,7 @@
             <h2>5. The rarest games</h2>
             <p>The <b class="text-white">Rarest</b> tab has three lists: the rarest <b class="text-white">PAL</b> games (Europe and other PAL countries, over a hundred), the rarest <b class="text-white">US</b> games (over a hundred), and the rarest official <b class="text-white">Consoles</b>. Press the coloured <b class="text-white">PAL</b> (blue), <b class="text-white">US</b> (red) or <b class="text-white">Consoles</b> (teal) buttons at the top right to switch between them; the lit one is the list on screen. The PAL list is priced on eBay UK and the US list on eBay US.</p>
             <ul class="list-disc pl-5 space-y-1">
+                <li><b class="text-white">Articles (not live)</b>: under some games a line quotes what public articles said a copy was worth, with the article's name and year, for example <i>£600 (Arcade Attack 2023)</i>. They are old, rounded and mostly repeat PriceCharting, so they are a second opinion on the guide figure and not a price you can buy at. They are kept, with their sources and dates, in <span class="font-mono-custom">rare_reference_prices.json</span>.</li>
                 <li><b class="text-white">How they are ranked</b>: nobody counts how many copies of a game were made or still exist, so collectors go by price. Each list is ranked by <b class="text-white">guide</b>, PriceCharting's market price for a complete copy (game, case and manual) in US dollars, as read on the date in the line under the heading. That is where cheap "shovelware" that was printed in tiny numbers, such as <i>Sengoku Anthology</i> or <i>Gun Club</i>, comes out above famous games.</li>
                 <li><b class="text-white">The eBay price under each game</b> is the median asking price for a used copy on that region's own site, checked once a day: eBay UK for the PAL list, eBay US for the US list. It works like the rest of the dashboard's eBay figures (see <a class="text-cyan-400 hover:underline" href="#ebay">eBay asking prices</a>): it is what sellers ask, not what anything sold for, and rare games often have few or no copies for sale, so "none listed" is common and a single copy can make the median jump. <b class="text-white">"not priced"</b> means the game is never looked up, usually because its name is an everyday word (<i>Obscure</i>, <i>Buccaneer</i>) and an eBay search would count other games' listings.</li>
                 <li><b class="text-white">US name / PAL name</b>: the name the same game has in the other region, where it differs.</li>
@@ -174,8 +176,21 @@
             <p class="text-slate-400">The lists live in <span class="font-mono-custom">rare_games.json</span> and <span class="font-mono-custom">rare_consoles.json</span> on GitHub, with every source and the reasons for each place. To move, add or remove a game, the repository's owner edits that file; the price job picks the change up on its next run.</p>
         </section>
 
+        <section id="collection" class="space-y-3">
+            <h2>6. My collection and installing the site</h2>
+            <p>The <b class="text-white">My collection</b> tab is a list of the games you own. Search a game, choose its <b class="text-white">region</b> (PAL or US) and <b class="text-white">condition</b> (complete, loose or sealed), say how many you have and, if you like, what you paid for each, then press <b class="text-white">Add</b>. The page adds up what the list is worth.</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li><b class="text-white">Where it is kept</b>: only in your own browser, on this device. There is no login and no account, and nothing is sent to anyone. The side effect is that clearing the browser's data, or opening the site on another phone or computer, shows an empty list.</li>
+                <li><b class="text-white">Backups</b>: <b class="text-white">Save a backup file</b> downloads your list as a small file; <b class="text-white">Load a backup file</b> puts it back (it replaces the list on the page, so loading the same file twice changes nothing). To use the list on a second device, save the file on one and load it on the other. Keep a copy somewhere safe.</li>
+                <li><b class="text-white">How a game is valued</b>: with the median eBay asking price today for its region, <b class="text-white">PAL on eBay UK</b> in pounds and <b class="text-white">US on eBay US</b> in dollars, so a mixed collection shows two totals (the euro button converts them). A <b class="text-white">complete</b> copy uses the median of complete copies when eBay has some, <b class="text-white">loose</b> uses the overall median, and <b class="text-white">sealed</b> has no eBay figure, so it uses a dated figure from a public article where there is one, marked <b class="text-white">(article)</b>. A game with no figure says <b class="text-white">no price</b> and is left out of the total, which the summary counts. If you entered what you paid, a green or red arrow shows the difference.</li>
+                <li><b class="text-white">What the value means</b>: asking prices of copies for sale, not what anything sold for and not what a buyer would pay you. Treat it as a rough guide.</li>
+                <li><b class="text-white">No wallet or account</b>: a crypto wallet could tell the site who you are, but it would still need somewhere to keep the list. For now the list lives in your browser and the backup file.</li>
+                <li><b class="text-white">Installing the site as an app</b>: on a phone, open the site in Chrome (Android) and choose <b class="text-white">Install app</b> or <b class="text-white">Add to Home screen</b> from the menu, or in Safari (iPhone) press Share and then <b class="text-white">Add to Home Screen</b>. It opens full screen with its own icon. It always loads the latest numbers when you are online, and shows what it last saw when you are not. Your collection is the same one as in the browser, on that device.</li>
+            </ul>
+        </section>
+
         <section id="sources" class="space-y-3">
-            <h2>6. The Sources &amp; Weights panel</h2>
+            <h2>7. The Sources &amp; Weights panel</h2>
             <p>Click <b class="text-white"><i class="fa-solid fa-sliders"></i> Sources</b> at the top of the dashboard. There is one tab per kind of source (News sites, Reddit, Forums, 4chan, YouTube, Podcasts) and a <b class="text-white">Weights &amp; schedule</b> tab.</p>
             <ul class="list-disc pl-5 space-y-1">
                 <li><b class="text-white">Switch a source on or off</b> with the checkbox at the start of its row. Its items disappear from the dashboard straight away. Nothing is deleted: switch it back on whenever you like.</li>
@@ -187,7 +202,7 @@
         </section>
 
         <section id="add" class="space-y-4">
-            <h2>7. Add a source</h2>
+            <h2>8. Add a source</h2>
             <p>Open the tab for the kind of source, paste the link into the box under the list and press <b class="text-white">Add source</b>. The name is filled in for you where possible. <b class="text-white">Group</b> only sorts the list, and <b class="text-white">Role</b> sets its <a class="text-cyan-400 hover:underline" href="#weights">weight</a>.</p>
             <div class="grid gap-4 sm:grid-cols-2">
                 <div class="bg-ps2card p-4">
@@ -219,7 +234,7 @@
         </section>
 
         <section id="weights" class="space-y-3">
-            <h2>8. Weights</h2>
+            <h2>9. Weights</h2>
             <p>A weight says how much a source's items count towards the <b class="text-white">overall mood</b> figure. It doesn't change a single headline's own score, and it doesn't affect which games are recognised.</p>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse text-xs">
@@ -243,7 +258,7 @@
         </section>
 
         <section id="save" class="space-y-3">
-            <h2>9. Save your changes</h2>
+            <h2>10. Save your changes</h2>
             <p>The list of sources is a file called <span class="font-mono-custom text-cyan-300">feeds.json</span> on GitHub. Saving means putting the new version there, which needs a GitHub account that can edit the repository.</p>
             <ol class="steps list-decimal pl-5 space-y-2">
                 <li>Press <b class="text-white"><i class="fa-solid fa-floppy-disk"></i> Save changes</b>. Your changes are copied and a box with the next steps appears.</li>
@@ -259,7 +274,7 @@
         </section>
 
         <section id="token" class="space-y-3">
-            <h2>10. One-click saving with a token (optional)</h2>
+            <h2>11. One-click saving with a token (optional)</h2>
             <p>A token is a password that lets this page save for you. With one, <b class="text-white">Save changes</b> saves in one click and <b class="text-white">Run scraper now</b> works. Which kind you need depends on who owns the repository:</p>
             <div class="grid gap-4 sm:grid-cols-2">
                 <div class="bg-ps2card p-4">
@@ -287,7 +302,7 @@
         </section>
 
         <section id="status" class="space-y-3">
-            <h2>11. What the status badges mean</h2>
+            <h2>12. What the status badges mean</h2>
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse text-xs">
                     <tbody>
@@ -304,7 +319,7 @@
         </section>
 
         <section id="problems" class="space-y-3">
-            <h2>12. If something looks wrong</h2>
+            <h2>13. If something looks wrong</h2>
             <dl class="space-y-3">
                 <div><dt class="text-white font-semibold">A new source still says "Not checked yet"</dt>
                     <dd>The robot runs all the time, and starts afresh right after a save. Wait a few minutes and press <b class="text-white">Refresh Feed</b>. The website itself can take a few minutes to show a new save.</dd></div>
@@ -336,7 +351,7 @@
         </section>
 
         <section id="faq" class="space-y-3">
-            <h2>13. Questions</h2>
+            <h2>14. Questions</h2>
             <dl class="space-y-3">
                 <div><dt class="text-white font-semibold">Why are some of the biggest YouTube channels switched off?</dt>
                     <dd>Most are in other languages (the mood score only understands English) or mostly play Minecraft, Roblox or Fortnite, which says little about PS2 games. They are all in the list, so switch any of them on if you want.</dd></div>
