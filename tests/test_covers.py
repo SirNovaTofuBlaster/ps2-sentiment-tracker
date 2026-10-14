@@ -89,8 +89,12 @@ class OneTilePerGame(unittest.TestCase):
         self.assertEqual(shown("Hack: Part 1: Infection"), shown(".hack Infection Part 1"))
         self.assertEqual(shown("Club Football 2005: Arsenal"), shown("Arsenal FC: Club Football 2005"))
         self.assertEqual(shown("Alien Homind"), shown("Alien Hominid"))
+        self.assertEqual(shown("FIFA Soccer 07"), shown("FIFA 07"))
+        self.assertEqual(shown("PES 2008: Pro Evolution Soccer"), shown("Pro Evolution Soccer 2008"))
+        self.assertEqual(shown("Mondiali FIFA 2002"), shown("FIFA World Cup 2002"))
         self.assertEqual(shown("Disney's Finding Nemo"), shown("Disney/Pixar Finding Nemo"))
-        for a, b in (("Ratchet & Clank", "Ratchet & Clank 2: Going Commando"), ("Burnout 2", "Burnout 3"),
+        for a, b in (("Dark Angel: Vampire Apocalypse", "Dark Angel: James Cameron's"), ("EyeToy: Play", "EyeToy: Play Sports"),
+                     ("Ratchet & Clank", "Ratchet & Clank 2: Going Commando"), ("Burnout 2", "Burnout 3"),
                      ("Ty the Tasmanian Tiger", "Ty the Tasmanian Tiger 2: Bush Rescue"), ("Jak and Daxter", "Jak II")):
             if search_terms(a)[0] in self.titles and search_terms(b)[0] in self.titles:
                 self.assertNotEqual(shown(a), shown(b), f"{a} and {b} are different games")
