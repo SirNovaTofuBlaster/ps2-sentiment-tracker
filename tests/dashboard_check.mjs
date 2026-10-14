@@ -2721,4 +2721,33 @@ await check('speed: formatters are made once, and a page that is not on screen i
     }
 });
 
+await check('editions: a game page lists its editions with their own prices and sources; the eBay list leaves them out', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const file = JSON.parse(read('editions.json'));
+    run(`editionsData = ${JSON.stringify(file)}`);
+    try {
+        run(`setPrices({ currencies: { UK: 'GBP', US: 'USD' },
+            games: { 'Resident Evil 4': { level: 'normal', mentions: 3, US: { copies: 9, median: 20, lowest: 10, checked: '2026-10-14T10:00Z' } },
+                     'Resident Evil 4 Limited Edition': { kind: 'edition', level: 'rare', sites: ['UK'], UK: { copies: 2, median: 85, lowest: 70, checked: '2026-10-14T10:00Z' } } },
+            editions: { PAL: { 'Resident Evil 4 Limited Edition': 'Resident Evil 4 Limited Edition' }, US: {} } }, null)`);
+        const found = run(`editionsOfGame('Resident Evil 4').map(item => item.edition.title)`);
+        assert.deepEqual(Array.from(found).sort(), ['Resident Evil 4 Collector\'s Pack', 'Resident Evil 4 Limited Edition', 'Resident Evil 4 Premium Edition']);
+        assert.equal(run(`editionsOfGame('Silent Hill 2').length`), 0);
+        const html = run(`editionsHtml('Resident Evil 4', Date.parse('2026-10-14T11:00Z'), 'en-GB')`);
+        assert.match(html, /Editions of this game/);
+        assert.match(html, /Resident Evil 4 Limited Edition/);
+        assert.match(html, /£85/, 'the edition has its own UK price');
+        assert.match(html, /FuturePress/, 'and its contents');
+        assert.match(html, /href="https:\/\/collectorsedition\.org\/game-db\?c=PS2&amp;e=PAL"/, 'and a link to its source');
+        assert.match(html, /Premium Edition[\s\S]*not checked yet/, 'an edition not priced yet says so');
+        assert.doesNotMatch(run(`priceRows(priceData).map(row => row.title).join('|')`), /Limited Edition/, 'editions are not on the eBay prices list');
+        assert.equal(run(`editionsHtml('Silent Hill 2')`), '');
+        run(`editionsData = { lists: { PAL: [{ title: 3, game: 'Kuon' }, null, { title: 'x', game: 'Kuon', contents: '<b>' }] } }`);
+        assert.match(run(`editionsHtml('Kuon')`), /&lt;b&gt;/, 'odd data is escaped, and an entry without a title is skipped');
+    } finally {
+        run(`editionsData = null`);
+        run(`setPrices(null, null)`);
+    }
+});
+
 console.log(`dashboard checks passed (${passed})`);

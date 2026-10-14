@@ -848,3 +848,7 @@ body .game-cover img { display: block; width: 100%; height: auto; }
 body .row-cover-wrap { display: flex; align-items: flex-start; gap: .75rem; }
 body .row-cover { flex: none; width: 3rem; height: auto; border: 1px solid var(--line); background: var(--bg); }
 body .row-cover-body { flex: 1 1 auto; min-width: 0; }
+
+/* Editions of a game, on its page (editions.json). */
+.edition-list { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+.edition-item { border-top: 1px solid var(--line); padding: 0.6rem 0; font-size: 0.8rem; }

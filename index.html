@@ -868,6 +868,7 @@
                     : 'Not found in the PS2 library, and nothing in our feeds has named it in the last ') + `${FEED_DAYS} days.`;
             const row = priceIndex.get(priceKey(title));
             document.getElementById('gamePrices').innerHTML = gamePriceDetailHtml(title) + scarceTagHtml(title) + collectibleTagHtml(title)
+                + editionsHtml(title)
                 + (row ? '' : '<p class="text-xs text-slate-400 mt-2">Not priced on eBay yet. A game is priced soon after the feed first names it; until then the links open eBay\'s own search.</p>');
             const list = document.getElementById('gameItems');
             if (!items.length) {
@@ -1578,7 +1579,7 @@
         function priceRows(data) {
             const games = data && typeof data.games === 'object' && data.games ? data.games : {};
             return Object.entries(games)
-                .filter(([, entry]) => entry && typeof entry === 'object' && entry.kind !== 'console')   // consoles: the Rarest page
+                .filter(([, entry]) => entry && typeof entry === 'object' && entry.kind !== 'console' && entry.kind !== 'edition')   // consoles: the Rarest page; editions: their game's page
                 .map(([title, entry]) => ({ title, entry, level: LEVELS[entry.level] ? entry.level : 'normal',
                     mentions: Number.isFinite(entry.mentions) ? entry.mentions : 0 }))
                 .sort((a, b) => LEVELS[a.level].rank - LEVELS[b.level].rank || b.mentions - a.mentions || a.title.localeCompare(b.title));
@@ -1812,6 +1813,53 @@
         function showRareRegion(region) {
             rareRegion = RARE_VIEWS.includes(region) ? region : 'PAL';
             renderRare();
+        }
+
+        let editionsData = null;     // editions.json as loaded, or null
+
+        /* Editions of a game (editions.json): limited, collector's and steelbook editions, each priced
+           on its own by ebay_prices.py (latest.json "editions" says which "games" entry holds an
+           edition's figures). They are shown on the game's page only. */
+        function editionsOfGame(title, data = editionsData) {
+            const key = priceKey(title);
+            const lists = data && typeof data.lists === 'object' && data.lists ? data.lists : {};
+            const found = [];
+            if (!key) return found;
+            for (const region of Object.keys(RARE_SITE)) {
+                for (const edition of Array.isArray(lists[region]) ? lists[region] : []) {
+                    if (edition && typeof edition.title === 'string' && typeof edition.game === 'string' && priceKey(edition.game) === key) {
+                        found.push({ region, edition });
+                    }
+                }
+            }
+            return found;
+        }
+
+        function editionsHtml(title, now = Date.now(), locale) {
+            const found = editionsOfGame(title);
+            if (!found.length) return '';
+            const placed = priceData && typeof priceData.editions === 'object' && priceData.editions ? priceData.editions : {};
+            const games = priceData && typeof priceData.games === 'object' && priceData.games ? priceData.games : {};
+            const text = value => (typeof value === 'string' ? value : '');
+            const items = found.map(({ region, edition }) => {
+                const label = RARE_SITE[region];
+                const where = own(placed[region], edition.title) ? placed[region][edition.title] : null;
+                const entry = where && own(games, where) ? games[where] : null;
+                const site = entry && typeof entry === 'object' ? entry[label] : null;
+                const kinds = Array.isArray(edition.kinds) ? edition.kinds.filter(kind => typeof kind === 'string').join(', ') : '';
+                const query = [text(edition.search), ...(Array.isArray(edition.require) ? edition.require.filter(word => typeof word === 'string') : [])].join(' ');
+                const sources = (Array.isArray(edition.evidence) ? edition.evidence : [])
+                    .filter(item => item && typeof item.source === 'string' && /^https:\/\//.test(item.source));
+                return `<li class="edition-item">
+                    <div><b>${esc(text(edition.title))}</b> <span class="level-tag">${esc(region === 'PAL' ? 'PAL' : 'NTSC-U')}</span></div>
+                    <div class="text-[11px] text-slate-400">${esc([kinds, text(edition.publisher), text(edition.released)].filter(Boolean).join(' · '))}</div>
+                    <div class="text-xs text-slate-300 mt-1">${esc(text(edition.contents))}${edition.note ? ` <span class="text-slate-400">${esc(text(edition.note))}</span>` : ''}</div>
+                    <div class="ebay-figures mt-1">${priceSiteHtml(label, site, currencyOf(label, priceData), now, locale, LEVELS.rare.stale)}</div>
+                    <div class="text-[11px] text-slate-400 mt-1">Same search on eBay: <a class="text-cyan-400" href="${safeUrl(listedSearchUrl(label, query))}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>${
+                        sources.map((item, number) => ` · <a class="text-cyan-400" href="${safeUrl(item.source)}" target="_blank" rel="noopener noreferrer">source${sources.length > 1 ? ' ' + (number + 1) : ''}</a>`).join('')}</div>
+                </li>`;
+            }).join('');
+            return `<h3 class="mt-4">Editions of this game</h3><p class="text-[11px] text-slate-400">Limited and collector's editions, priced on their own: only listings that name the edition count, so a plain copy never moves these numbers. Asking prices, not sales.</p><ul class="edition-list">${items}</ul>`;
         }
 
         function renderRare(data = rareData, now = Date.now(), locale) {
@@ -2803,8 +2851,9 @@
         }
 
         async function loadRare() {
-            const [games, consoles, reference] = await Promise.all([readRareFile('rare_games.json'), readRareFile('rare_consoles.json'),
-                readRareFile('rare_reference_prices.json')]);
+            const [games, consoles, reference, editions] = await Promise.all([readRareFile('rare_games.json'), readRareFile('rare_consoles.json'),
+                readRareFile('rare_reference_prices.json'), readRareFile('editions.json')]);
+            if (!editions.failed || !editionsData) editionsData = editions.data;
             if (!reference.failed && reference.data) referenceData = reference.data;
             // A hiccup must not wipe a list that is already on screen.
             if (!(consoles.failed && consoleData)) {

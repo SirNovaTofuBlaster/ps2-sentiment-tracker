@@ -209,7 +209,7 @@ returned HTTP 403 there (see [SOURCES.md](../SOURCES.md#forums)).
 
 `index.html` loads `data/sentiment_feed.json`, `feeds.json` and `data/feed_status.json`, and, when
 they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`,
-`rare_games.json` and `rare_consoles.json`.
+`rare_games.json` and `rare_consoles.json`. Editions (`editions.json`, same shape as `rare_games.json` but every entry needs `require` words) go through the same `load_rare()` / `add_rare_games()` path with `kind="edition"`; `latest["editions"]` says which `games` entry holds each one, and `index_file()` leaves them out like consoles.
 
 - **Four pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Most mentioned*
   and *eBay prices*; each is a wrapper (`viewDashboard`, `viewRare`, `viewMentions`,
