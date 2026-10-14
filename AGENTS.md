@@ -334,7 +334,7 @@ Before you call something done, prove it; don't assume it.
     network. It reads no state and writes no file. A site is added to `MARKETS` only after those
     counts, and the code that loops over `MARKETS` (and the dashboard's site labels) must be
     checked first: adding a market there prices every tracked game on it.
-  - Germany (`EBAY_DE`) and France (`EBAY_FR`), both switched on 2026-10-14; Italy and Spain follow one at a time; Poland is
+  - Germany (`EBAY_DE`), France (`EBAY_FR`) and Italy (`EBAY_IT`), all switched on 2026-10-14; Spain follows; Poland is
     left off: an `extra` site in `MARKETS`. It is priced in euros, once a day (`min_every_hours`: 24, its
     own clock, so it cannot slow the first two), after every lookup on the US and UK, and a run is
     judged on the US and UK alone, so a failing German site cannot discard their answers. It is searched
