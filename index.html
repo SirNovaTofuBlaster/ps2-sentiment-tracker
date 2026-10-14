@@ -39,7 +39,7 @@
             </div>
 
             <div class="brand-lock">
-                <div class="brand-id">
+                <a class="brand-id" id="brandHome" href="./" onclick="return goHome(event)" title="Back to the home page" aria-label="Spindle: back to the home page" style="color:inherit;text-decoration:none">
                     <svg class="brand-mark" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
                         <circle cx="28" cy="28" r="26" fill="none" stroke="#E5303A" stroke-width="2"></circle>
                         <circle cx="28" cy="28" r="17" fill="none" stroke="#F5C52E" stroke-width="1.5"></circle>
@@ -50,13 +50,22 @@
                         <h1 class="brand-word">Spindle</h1>
                         <p class="brand-tag">PS2 news, mentions and prices</p>
                     </div>
-                </div>
+                </a>
             </div>
 
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
+
+        <!-- Search the whole PS2 library (data/ps2_database.json). A pick opens that game's own page. -->
+        <div class="relative" id="gameSearchBox">
+            <label for="gameSearch" class="sr-only">Search any PS2 game</label>
+            <input type="search" id="gameSearch" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gameSuggest"
+                placeholder="Search any PS2 game, e.g. godh&hellip;" oninput="onGameSearchInput()" onkeydown="onGameSearchKey(event)" onfocus="onGameSearchInput()" onblur="closeSuggestions()"
+                class="bg-slate-900 border border-slate-700 text-sm px-3 py-2 outline-none w-full">
+            <ul id="gameSuggest" role="listbox" aria-label="Matching games" class="hidden absolute z-30 left-0 right-0 bg-slate-900 border border-slate-700 text-sm max-h-80 overflow-y-auto"></ul>
+        </div>
 
         <!-- Four pages in one: the tracker, the rarest games, the ranking of games by mentions,
              and the full list of eBay asking prices. -->
@@ -98,6 +107,10 @@
                 <div>
                     <h2>Named in the last 24 hours</h2>
                     <p id="todaySummary" class="text-xs text-slate-400">Loading...</p>
+                </div>
+                <div class="flex gap-2 shrink-0" role="group" aria-label="Order the list">
+                    <button type="button" id="sortPrice" aria-pressed="true" onclick="setRecentSort('price')" class="sort-btn bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer"><i class="fa-solid fa-sterling-sign" aria-hidden="true"></i> Most expensive</button>
+                    <button type="button" id="sortRare" aria-pressed="false" onclick="setRecentSort('rare')" class="sort-btn bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer"><i class="fa-solid fa-gem" aria-hidden="true"></i> Most rare</button>
                 </div>
             </div>
             <ol id="todayList" class="zebra"></ol>
@@ -227,6 +240,20 @@
         <!-- The rarest PS2 games of each region (rare_games.json), each with today's eBay median
              on its own region's site, and the rarest official consoles (rare_consoles.json), each
              with its medians on both sites (data/prices/latest.json). -->
+        <!-- One game's own page: opened from the search bar (#game=Title). -->
+        <div id="viewGame" class="hidden space-y-6" aria-live="polite">
+            <div class="bg-ps2card p-6">
+                <button type="button" onclick="goHome(event)" class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mb-4 cursor-pointer"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to the Tracker</button>
+                <h2 id="gameTitle"></h2>
+                <p id="gameSummary" class="text-xs text-slate-400 mt-1"></p>
+                <div id="gamePrices" class="mt-3"></div>
+            </div>
+            <div class="bg-ps2card p-6">
+                <h2>Latest from our feeds</h2>
+                <ol id="gameItems" class="zebra mt-3"></ol>
+            </div>
+        </div>
+
         <div id="viewRare" role="tabpanel" aria-labelledby="tabRare" class="hidden space-y-8">
         <div id="rareSection" class="bg-ps2card p-6">
             <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
@@ -445,6 +472,7 @@
 
         function showView(name, remember = true) {
             const view = isView(name) ? name : 'dashboard';
+            document.getElementById('viewGame').classList.add('hidden');
             for (const [key, [panel, tab]] of Object.entries(VIEWS)) {
                 document.getElementById(panel).classList.toggle('hidden', key !== view);
                 const button = document.getElementById(tab);
@@ -467,6 +495,10 @@
         function showViewFromAddress() {
             const hash = String(location.hash || '');
             const named = hash.slice(1);
+            if (hash.startsWith('#game=')) {
+                const title = safeDecode(hash.slice(6)).trim();
+                if (title) return openGame(title, false);
+            }
             if (named !== 'dashboard' && isView(named)) return showView(named, false);
             showView('dashboard', false);
             if (hash.length > 1) document.getElementById(hash.slice(1))?.scrollIntoView?.();
@@ -558,6 +590,7 @@
             sync.innerText = formatLocalTime(data.last_updated) || 'Just now';
             sync.title = data.last_updated ? `Scraper ran at ${data.last_updated}` : '';
             document.getElementById('statFeedsCount').innerText = data.total_tracked_feeds || 6;
+            loadLibrary();   // the search box's names; nothing waits for them
             // Prices first: every list below shows them beside its games.
             await loadFx();
             await loadPrices();
@@ -601,6 +634,168 @@
             renderRecentGames(items);
             renderTopGames(items);
             filterFeedItems();
+        }
+
+        /* ---- Search and a game's own page ---------------------------------------
+           The search box knows the whole PS2 library (data/ps2_database.json), not only
+           the games the feed has named, so a game nobody has mentioned still has a page:
+           an empty one that says so. Suggestions match the start of the name first
+           ("godh" finds God Hand: spaces are ignored), then the start of any word, then
+           any part of it.
+        -------------------------------------------------------------------- */
+        let library = [];            // { title, plain, compact }
+        let suggestions = [];
+        let suggestAt = -1;
+        const SUGGEST_MAX = 8;
+        const GAME_ITEMS_MAX = 100;
+        const FEED_DAYS = 14;        // the scraper keeps the last two weeks (RETENTION_DAYS)
+
+        function setLibrary(titles) {
+            const seen = new Set();
+            library = (Array.isArray(titles) ? titles : []).filter(t => typeof t === 'string' && t.trim()).map(title => {
+                const plain = plainText(title);
+                return { title, plain, compact: plain.replace(/ /g, '') };
+            }).filter(game => game.plain && !seen.has(game.title) && seen.add(game.title));
+        }
+
+        async function loadLibrary() {
+            try {
+                const response = await fetch('data/ps2_database.json');
+                setLibrary(response.ok ? await response.json() : []);
+            } catch {
+                setLibrary([]);
+            }
+        }
+
+        function suggestGames(text, limit = SUGGEST_MAX) {
+            const plain = plainText(text);
+            const compact = plain.replace(/ /g, '');
+            if (!compact) return [];
+            const found = [];
+            for (const game of library) {
+                const rank = game.compact.startsWith(compact) ? 0
+                    : (` ${game.plain}`).includes(` ${plain}`) ? 1
+                    : game.compact.includes(compact) ? 2 : -1;
+                if (rank >= 0) found.push({ game, rank });
+            }
+            return found.sort((a, b) => a.rank - b.rank || a.game.title.length - b.game.title.length || cmpStr(a.game.title, b.game.title))
+                .slice(0, limit).map(entry => entry.game.title);
+        }
+
+        function paintSuggestions() {
+            const box = document.getElementById('gameSuggest');
+            const open = suggestions.length > 0;
+            box.classList.toggle('hidden', !open);
+            document.getElementById('gameSearch').setAttribute('aria-expanded', String(open));
+            box.innerHTML = suggestions.map((title, i) => `<li role="option" id="suggest${i}" aria-selected="${i === suggestAt}"
+                onmousedown="event.preventDefault(); openSuggestion(${i})" class="px-3 py-2 cursor-pointer text-slate-200${i === suggestAt ? ' bg-slate-700' : ''}">${esc(title)}</li>`).join('');
+        }
+
+        function onGameSearchInput() {
+            suggestions = suggestGames(document.getElementById('gameSearch').value);
+            suggestAt = -1;
+            paintSuggestions();
+        }
+
+        function closeSuggestions() {
+            suggestions = [];
+            suggestAt = -1;
+            paintSuggestions();
+        }
+
+        function openSuggestion(i) {
+            const title = suggestions[i];
+            if (title) openGame(title);
+        }
+
+        function onGameSearchKey(event) {
+            if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+                if (!suggestions.length) return;
+                event.preventDefault?.();
+                const n = suggestions.length;
+                suggestAt = event.key === 'ArrowDown' ? (suggestAt + 1) % n : (suggestAt <= 0 ? n - 1 : suggestAt - 1);
+                paintSuggestions();
+            } else if (event.key === 'Enter') {
+                event.preventDefault?.();
+                const typed = document.getElementById('gameSearch').value;
+                const pick = suggestions[suggestAt >= 0 ? suggestAt : 0] ?? suggestGames(typed, 1)[0];
+                if (pick) openGame(pick);
+            } else if (event.key === 'Escape') {
+                closeSuggestions();
+            }
+        }
+
+        // Everything the feed has said about one game, newest first, from the feed as loaded
+        // (minus switched-off sources). Games are tied together by priceKey(), so
+        // "Kingdom Hearts 2" and "Kingdom Hearts II" are one game.
+        function itemsForGame(title, items = visibleFeedData) {
+            const key = priceKey(title);
+            if (!key) return [];
+            return items.filter(item => gamesOf(item).some(name => priceKey(name) === key))
+                .sort((a, b) => (parseUtc(b.timestamp)?.getTime() ?? 0) - (parseUtc(a.timestamp)?.getTime() ?? 0));
+        }
+
+        function renderGamePage(title) {
+            const items = itemsForGame(title);
+            document.getElementById('gameTitle').textContent = title;
+            const inLibrary = library.some(game => priceKey(game.title) === priceKey(title));
+            document.getElementById('gameSummary').textContent = items.length
+                ? `${items.length.toLocaleString('en')} item${items.length === 1 ? '' : 's'} in the feed from the last ${FEED_DAYS} days name this game`
+                    + (items.length > GAME_ITEMS_MAX ? `; the newest ${GAME_ITEMS_MAX} are listed.` : '.')
+                : (inLibrary ? 'In the PS2 library, but nothing in our feeds has named it in the last '
+                    : 'Not found in the PS2 library, and nothing in our feeds has named it in the last ') + `${FEED_DAYS} days.`;
+            const row = priceIndex.get(priceKey(title));
+            document.getElementById('gamePrices').innerHTML = gamePricesHtml(title) + scarceTagHtml(title)
+                + (row ? '' : '<p class="text-xs text-slate-400 mt-2">Not priced on eBay yet. A game is priced soon after the feed first names it; until then the links open eBay\'s own search.</p>');
+            const list = document.getElementById('gameItems');
+            if (!items.length) {
+                list.innerHTML = '<li class="px-3 py-6 text-xs text-slate-400">Nothing yet. This page fills in by itself when a news site, subreddit, forum, board, channel or podcast we read names the game.</li>';
+                return;
+            }
+            list.innerHTML = items.slice(0, GAME_ITEMS_MAX).map(item => {
+                const meta = TYPE_META[itemType(item)];
+                return `<li class="px-3 py-3 text-xs">
+                    <div class="flex items-baseline justify-between gap-3 font-mono-custom text-slate-400">
+                        <span><i class="${meta.icon}" title="${esc(meta.label)}"></i> ${esc(item.source)}</span>
+                        <span title="${esc(item.timestamp)}">${esc(formatLocalTime(item.timestamp, true))}</span>
+                    </div>
+                    <div class="mt-1 text-slate-200 leading-relaxed">${item.is_remaster_rumor ? '<span class="remaster-tag border text-[10px] px-1.5 py-0.5 mr-1">Remaster</span>' : ''}${esc(item.headline)}</div>
+                    <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-cyan-400 inline-block mt-1">${esc(meta.tableAction)} <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
+                </li>`;
+            }).join('');
+        }
+
+        function openGame(title, remember = true) {
+            const name = String(title ?? '').trim();
+            if (!name) return showView('dashboard', remember);
+            for (const [panel, tab] of Object.values(VIEWS)) {
+                document.getElementById(panel).classList.add('hidden');
+                const button = document.getElementById(tab);
+                button.classList.remove('is-active');
+                button.setAttribute?.('aria-selected', 'false');
+            }
+            document.getElementById('viewGame').classList.remove('hidden');
+            document.getElementById('gameSearch').value = name;
+            closeSuggestions();
+            renderGamePage(name);
+            if (remember) {
+                const hash = `#game=${encodeURIComponent(name)}`;
+                try { if (String(location.hash || '') !== hash) history.pushState(null, '', hash); } catch { /* only loses the bookmark */ }
+            }
+            window.scrollTo?.(0, 0);
+            return 'game';
+        }
+
+        // The Spindle logo and "Back": the Tracker, with no game and no search left over.
+        function goHome(event) {
+            event?.preventDefault?.();
+            document.getElementById('gameSearch').value = '';
+            closeSuggestions();
+            gameFilter = null;
+            showView('dashboard');
+            filterFeedItems();
+            window.scrollTo?.(0, 0);
+            return false;
         }
 
         // Every game an item names (the scraper lists them all), falling back to the one
@@ -667,11 +862,57 @@
                 .map(entry => entry.game);
         }
 
+        // How many copies of a game are for sale on eBay, on the site with the fewest: [copies, site],
+        // or null when no site has been checked. Zero is real: the site was searched and had none.
+        // At or under SCARCE_COPIES a game is "scarce": an oddity a collector may want to see.
+        const SCARCE_COPIES = 10;
+        function scarcity(title) {
+            let best = null;
+            for (const label of PRICE_ORDER) {
+                const site = priceIndex.get(priceKey(title))?.entry?.[label];
+                if (!site || typeof site !== 'object' || site.unmatched || !Number.isFinite(site.copies)) continue;
+                if (best === null || site.copies < best[0]) best = [site.copies, label];
+            }
+            return best;
+        }
+
+        function scarceTagHtml(title) {
+            const found = scarcity(title);
+            if (!found || found[0] > SCARCE_COPIES) return '';
+            const words = found[0] === 0 ? `none for sale on eBay ${found[1]}` : `${found[0]} for sale on eBay ${found[1]}`;
+            return ` <span class="level-tag few-copies" title="Scarce: ${esc(words)}. Few copies means a collector may find it hard to buy later.">scarce &middot; ${esc(words)}</span>`;
+        }
+
+        // Fewest copies first; then dearer first; games never checked on eBay last, in their usual order.
+        function byRarity(games) {
+            const rank = (game) => {
+                const found = scarcity(game.name);
+                if (!found) return [1, 0, 0];
+                return [0, found[0], -(medianOf(game.name, found[1]) ?? 0)];
+            };
+            return games.map((game, i) => ({ game, i, r: rank(game) }))
+                .sort((a, b) => a.r[0] - b.r[0] || a.r[1] - b.r[1] || a.r[2] - b.r[2] || a.i - b.i)
+                .map(entry => entry.game);
+        }
+
+        let recentSort = 'price';
+        let lastRecentItems = [];
+        function setRecentSort(mode) {
+            recentSort = mode === 'rare' ? 'rare' : 'price';
+            renderRecentGames(lastRecentItems);
+        }
+
         function renderRecentGames(items, now = Date.now()) {
             const list = document.getElementById('todayList');
             const summary = document.getElementById('todaySummary');
+            lastRecentItems = items;
+            for (const [id, mode] of [['sortPrice', 'price'], ['sortRare', 'rare']]) {
+                const button = document.getElementById(id);
+                button.classList.toggle('is-active', recentSort === mode);
+                button.setAttribute('aria-pressed', String(recentSort === mode));
+            }
             const recent = recentGames(items, now);
-            recent.games = byPrice(recent.games);
+            recent.games = recentSort === 'rare' ? byRarity(recent.games) : byPrice(recent.games);
             recentGameNames = recent.games.map(game => game.name);
             const plural = (count, word) => `${count.toLocaleString('en')} ${word}${count === 1 ? '' : 's'}`;
             if (!recent.games.length) {
@@ -685,7 +926,9 @@
             const rest = recent.items - recent.naming;
             summary.textContent = `${plural(recent.naming, 'item')} out of ${recent.items.toLocaleString('en')} published in the last ${RECENT_HOURS} hours named a PS2 game: `
                 + `${plural(recent.games.length, 'game')}.`
-                + (recent.games.some(game => PRICE_ORDER.some(label => medianOf(game.name, label) !== null))
+                + (recentSort === 'rare'
+                    ? ' Most rare first: the fewest copies for sale on eBay UK or US; games not checked on eBay yet last.'
+                    : recent.games.some(game => PRICE_ORDER.some(label => medianOf(game.name, label) !== null))
                     ? ' Most expensive first, by the eBay UK median (US where there is no UK figure); games without a price last.' : '')
                 + (rest ? ` The other ${plural(rest, 'item')} ${rest === 1 ? 'is' : 'are'} in the table further down, under Everything.` : '');
             list.innerHTML = recent.games.map((game, i) => {
@@ -695,7 +938,7 @@
                 return `
                 <li class="${rowClass('todayList', i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
-                        <span><button type="button" onclick="showGameRows(${i})" title="Show the items that name this game" class="recent-game text-cyan-300${i === 0 ? ' font-bold' : ''}">${esc(game.name)}</button>${game.remasters
+                        <span><button type="button" onclick="showGameRows(${i})" title="Show the items that name this game" class="recent-game text-cyan-300${i === 0 ? ' font-bold' : ''}">${esc(game.name)}</button>${scarceTagHtml(game.name)}${game.remasters
                             ? ` <span class="remaster-tag text-[10px] border px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}${game.headline
                             ? '' : ' <span class="text-[10px] border border-slate-700 text-slate-400 px-1.5 py-0.5 whitespace-nowrap" title="Named in the text under a headline, not in the headline itself. These are wrong more often.">in the text only</span>'}</span>
                         <span class="text-slate-300 whitespace-nowrap">${count} mention${count === 1 ? '' : 's'}</span>
