@@ -1344,6 +1344,7 @@ await check('games first: what was named in the last day leads, and the table op
     assert.deepEqual([...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(rule => /display:\s*none|visibility:\s*hidden/.test(rule[2])).map(rule => rule[1].replace(/\s+/g, ' ').trim()), [
         'body .is-folded > .list-extra', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
+        'body .chart-tools::-webkit-scrollbar',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
@@ -2078,6 +2079,16 @@ await check('the Rarest charts: index and market cap per list, a game\'s history
     assert.match(page, /chartButtonHtml\(row\.title, sitesOf\(row\.entry\)\.includes\('UK'\) \? 'UK' : sitesOf\(row\.entry\)\[0\]\)/);
     assert.match(page, /lightweight-charts@\d+\.\d+\.\d+\/dist\/lightweight-charts\.standalone\.production\.js/, 'a fixed version');
     assert.equal((page.match(/Charts by <a href="https:\/\/www\.tradingview\.com\/"/g) || []).length, 2, 'the library\'s credit under both charts');
+});
+
+await check('charts on a phone: a finger drag scrolls the page, a tap reads a day, the tools are one row you swipe', () => {
+    const page = read('index.html');
+    assert.match(page, /handleScroll: \{ horzTouchDrag: false, vertTouchDrag: false \}/, 'touch drags are left to the page');
+    assert.match(page, /chart\.subscribeClick\(param => \{ if \(param\?\.point\) spec\.onHover\?\.\(dayAt\(param\)\); \}\);/, 'a tap reads a day');
+    const css = read('retro.css').replace(/\/\*[\s\S]*?\*\//g, '');
+    const phone = /@media \(max-width: 640px\) \{\s*body \.chart-canvas[\s\S]*?\n\}/.exec(css)?.[0] || '';
+    assert.match(phone, /body \.chart-tools \{[^}]*flex-wrap: nowrap;[^}]*overflow-x: auto/);
+    assert.match(phone, /body main \.chart-tools \.chart-tool \{[^}]*min-height: 2\.25rem/, 'smaller than the general 44px button rule, which it must out-rank');
 });
 
 console.log(`dashboard checks passed (${passed})`);
