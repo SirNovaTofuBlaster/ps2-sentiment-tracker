@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-14: covers on Most mentioned and Rarest
+
+- A 3 rem box (`withCover()`) sits beside each row of both pages, lazy-loaded; the PAL list uses the Europe box, the US list and Most mentioned the USA one; Rarest also tries the PAL title. The covers list is requested when either page is opened, and both lists redraw when it arrives. Covers off: no pictures, no request.
+
 ## 2026-10-14: covers from the Libretro thumbnails
 
 - Wikipedia covers did not work in practice (blank tiles), so they are replaced. `covers.json` (made by

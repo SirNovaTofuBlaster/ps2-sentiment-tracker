@@ -843,3 +843,8 @@ body .game-open:hover, body .game-open:focus-visible { color: var(--accent-hi); 
 body .game-head { display: flex; align-items: flex-start; gap: 1rem; }
 body .game-cover { flex: none; width: 5.5rem; border: 1px solid var(--line); background: var(--bg); }
 body .game-cover img { display: block; width: 100%; height: auto; }
+
+/* Box art beside a row of Most mentioned and Rarest */
+body .row-cover-wrap { display: flex; align-items: flex-start; gap: .75rem; }
+body .row-cover { flex: none; width: 3rem; height: auto; border: 1px solid var(--line); background: var(--bg); }
+body .row-cover-body { flex: 1 1 auto; min-width: 0; }
