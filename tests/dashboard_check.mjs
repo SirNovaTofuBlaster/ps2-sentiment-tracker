@@ -2628,6 +2628,16 @@ await check('My collection: add, value, keep in the browser, back up and restore
     }
     assert.ok(Object.keys(real.covers).length > 4000, 'thousands of games');
     assert.ok(Object.values(real.covers).every(value => Array.isArray(value) && value.length === 3 && typeof value[0] === 'string' && value[0] && value.slice(1).every(part => typeof part === 'string') && (value[1] || value[2])), 'every entry has a title and a region');
+    // Pictures kept with the site (covers/) beat the collection's file, for every region, and exist on disk
+    for (const [name, file] of [['Final Fantasy X', 'covers/final-fantasy-x.jpg'], ['The Silent Hill Collection', 'covers/silent-hill-collection.jpg'],
+        ['Grand Theft Auto: The Trilogy', 'covers/grand-theft-auto-the-trilogy.jpg'], ['Deutsch Rock-Pop', 'covers/singstar-deutsch-rock-pop.jpg']]) {
+        assert.equal(run(`coverUrl(${JSON.stringify(name)})`), file, name);
+        assert.equal(run(`coverUrl(${JSON.stringify(name)}, 'PAL')`), file, `${name}, PAL`);
+        assert.equal(run(`coverNote(${JSON.stringify(name)})`), 'cover kept with this site');
+        assert.ok(existsSync(new URL(file, root)), `${file} exists`);
+    }
+    assert.equal(Object.keys(real.local).length, 8);
+    assert.ok(Object.values(real.local).every(file => /^covers\/[\w.-]+\.jpg$/.test(file) && existsSync(new URL(file, root))));
     // Most mentioned and Rarest rows carry a small box beside them, and only when there is one
     const wrapped = run(`withCover('God Hand', 'US', '<b>row</b>')`);
     assert.match(wrapped, /^<div class="row-cover-wrap"><img class="row-cover" src="https:\/\/thumbnails\.libretro\.com\/[^"]*God%20Hand%20\(USA\)\.png"[^>]*referrerpolicy="no-referrer"[^>]*><div class="row-cover-body"><b>row<\/b><\/div><\/div>$/);

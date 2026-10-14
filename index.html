@@ -2801,6 +2801,7 @@
         const COVER_BASE = 'https://thumbnails.libretro.com/Sony%20-%20PlayStation%202/Named_Boxarts/';
         const COVER_SOURCE = 'the Libretro thumbnail collection';
         let coverIndex = null;                   // priceKey -> [title, US suffix, PAL suffix]
+        let coverLocal = {};                     // priceKey -> a small picture kept with this site (covers/), which beats the collection's file
         let coverIndexState = 'idle';            // idle, loading, ready, failed
         let coversShown = true;
 
@@ -2827,6 +2828,7 @@
                 const data = response.ok ? await response.json() : null;
                 if (data && typeof data.covers === 'object' && data.covers && !Array.isArray(data.covers)) {
                     coverIndex = data.covers;
+                    coverLocal = data.local && typeof data.local === 'object' && !Array.isArray(data.local) ? data.local : {};
                     coverIndexState = 'ready';
                 } else coverIndexState = 'failed';
             } catch {
@@ -2848,6 +2850,8 @@
                 return typeof named.edition.game === 'string' ? coverUrl(named.edition.game, named.region) : '';
             }
             const key = priceKey(title);
+            const local = key && own(coverLocal, key) ? coverLocal[key] : null;
+            if (typeof local === 'string' && /^covers\/[\w.-]+$/.test(local)) return local;
             const found = key && own(coverIndex, key) ? coverIndex[key] : null;
             if (!Array.isArray(found) || typeof found[0] !== 'string' || !found[0]) return '';
             const [us, pal] = [found[1], found[2]].map(value => typeof value === 'string' ? value : '');
@@ -2860,7 +2864,8 @@
             if (!coversShown) return '';
             if (coverIndexState === 'failed') return 'cover list could not be loaded (offline or blocked)';
             if (coverIndexState !== 'ready') return 'looking for a cover…';
-            return coverUrl(title) ? `cover from ${COVER_SOURCE}` : `no cover in ${COVER_SOURCE}`;
+            const url = coverUrl(title);
+            return url ? (url.startsWith('covers/') ? 'cover kept with this site' : `cover from ${COVER_SOURCE}`) : `no cover in ${COVER_SOURCE}`;
         }
 
         const initialsOf = (title) => String(title).replace(/[^A-Za-z0-9 ]/g, ' ').split(/\s+/).filter(Boolean).slice(0, 3).map(word => word[0].toUpperCase()).join('');

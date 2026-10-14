@@ -35,6 +35,17 @@ class BuildCovers(unittest.TestCase):
         self.assertIsNone(build_covers.typo_of("dance dance revolution max", ["dance dance revolution x"], {"dance dance revolution x": "x"}))
         self.assertIsNone(build_covers.typo_of("ace combat 5", ["ace combat 4"], {"ace combat 4": "x"}), "other numbers are other games")
 
+    def test_local_pictures_are_listed_small_and_present(self):
+        with open(os.path.join(ROOT, "covers.json"), encoding="utf-8") as handle:
+            doc = json.load(handle)
+        self.assertEqual(doc["local"], build_covers.LOCAL)
+        for key, path in doc["local"].items():
+            self.assertRegex(path, r"^covers/[\w.-]+\.jpg$")
+            full = os.path.join(ROOT, path)
+            self.assertTrue(os.path.isfile(full), path)
+            self.assertLess(os.path.getsize(full), 60000, "a small picture, not a scan")
+            self.assertRegex(key, r"^[a-z0-9]+( [a-z0-9]+)*$")
+
     def test_the_committed_index_is_well_formed_and_names_real_games(self):
         with open(os.path.join(ROOT, "covers.json"), encoding="utf-8") as handle:
             doc = json.load(handle)
