@@ -274,7 +274,7 @@ they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`
   marked, and a class on the list hides them until the button under it is pressed. The stylesheet does the hiding, so the script only flips a class and rewrites the
   button. An opened list stays open when the data reloads, its "Show fewer" button follows the
   reader down the list, and folding it returns to the top of its section.
-- **The shelf** (`renderShelf()`, `#shelf`) shows up to 24 top games of `recentGames()` as box art in a row that scrolls sideways (arrows `shelfScroll()`) above the tabs, on the Tracker only: `showView()` and
+- **The shelf** (`renderShelf()`, `#shelf`) shows up to 24 of the games of `recentGames()`, ordered by `byRarity()` (rarest first), as box art in a row that scrolls sideways (arrows `shelfScroll()`) above the tabs, on the Tracker only: `showView()` and
   `openGame()` hide it elsewhere. It is drawn from `renderRecentGames()` and again when the cover index arrives (`redrawCoverLists()`).
 - **Look.** `retro.css` carries the theme (Inter, Playfair Display for names, JetBrains Mono for figures; rounded cards; yellow only for prices and the keepsake
   My collection button). Colours are named once at the top of the file; the Node test pins where each may be used.

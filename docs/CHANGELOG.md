@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-14: the shelf is rarest first
+
+- The shelf (now "Rare finds named in the last 24 hours") orders its games with `byRarity()`, the same order as the list's "Most rare" button: the fewest copies for sale first, then
+  up to 30, up to 100, more; collectible games first within a group; games not yet checked on eBay last. Everyday games (God of War, Resident Evil 4) move to the far end.
+
 ## 2026-10-14: pictures the maintainer supplied
 
 - Eight games with no file in the Libretro collection now have a small (240 px wide, 12-30 KB) picture kept in `covers/`, listed under `local` in `covers.json` (`LOCAL` in `tools/build_covers.py`):
