@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-14: the Library tab
+
+- New tab, **Library**: every game in the library (`data/ps2_database.json` plus `search_extra_titles.json`, one box per `priceKey()`) as cover art, A to Z with letter jump buttons or grouped by genre, with a
+  name filter, a genre menu and "only games with a cover". Pressing a box opens a bar at the foot of the page (region, condition, Add to My collection, Game page). Owned games carry a tick. `#library` opens it.
+- `genres.json` (made by `tools/build_genres.py`) gives each game a genre: the Libretro database's own genre where present, else a keyword guess. Approximate; the rest is "Other".
+
 ## 2026-10-14: prices under every shelf box
 
 - Each box on the shelf shows three eBay medians: US ($), UK (£) and EU (€), a dash where nothing is priced (`shelfQuotesHtml()`). The euro figure is the cheapest euro site's median; with none, the UK

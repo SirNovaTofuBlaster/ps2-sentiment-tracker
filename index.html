@@ -110,6 +110,7 @@
           <button type="button" id="tabDemand" role="tab" aria-selected="false" aria-controls="viewDemand" onclick="showView('demand')" class="view-tab"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> Demand</button>
           <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
           <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
+          <button type="button" id="tabLibrary" role="tab" aria-selected="false" aria-controls="viewLibrary" onclick="showView('library')" class="view-tab"><i class="fa-solid fa-table-cells" aria-hidden="true"></i> Library</button>
         </div>
 
         <!-- The EUR button: shown only when data/fx.json could be read. -->
@@ -368,6 +369,59 @@
     </div>
 
     <!-- My collection -->
+    <!-- Every game in the library as box art, A to Z or by genre; a click adds it to My collection. -->
+    <div id="viewLibrary" role="tabpanel" aria-labelledby="tabLibrary" class="hidden space-y-8">
+      <div id="librarySection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header">
+          <div>
+            <h2>Game Library</h2>
+            <p id="librarySummary" class="text-xs text-slate-400 mt-1">Loading the library...</p>
+          </div>
+        </div>
+        <div class="lib-controls">
+          <label class="sr-only" for="libraryFilter">Filter the library by name</label>
+          <input type="search" id="libraryFilter" autocomplete="off" spellcheck="false" placeholder="Filter by name…" oninput="setLibraryFilter(this.value)"
+            class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white outline-none lib-filter">
+          <div class="lib-sort" role="group" aria-label="Order the library">
+            <button type="button" id="libSortAz" aria-pressed="true" onclick="setLibrarySort('az')" class="sort-btn is-active">A&ndash;Z</button>
+            <button type="button" id="libSortGenre" aria-pressed="false" onclick="setLibrarySort('genre')" class="sort-btn">By genre</button>
+          </div>
+          <label class="sr-only" for="libraryGenre">Show one genre</label>
+          <select id="libraryGenre" onchange="setLibraryGenre(this.value)" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+            <option value="">All genres</option>
+          </select>
+          <label class="lib-covers-only text-xs text-slate-400 flex items-center gap-2"><input type="checkbox" id="libraryCoversOnly" onchange="setLibraryCoversOnly(this.checked)" class="accent-ps2neon"> Only games with a cover</label>
+        </div>
+        <nav id="libraryJump" class="lib-jump" aria-label="Jump to"></nav>
+        <div id="libraryGrid"></div>
+        <p id="libraryNote" class="text-xs text-slate-500 mt-4"></p>
+      </div>
+
+      <div id="libraryAdd" class="library-add hidden" role="dialog" aria-label="Add to My collection">
+        <div class="library-add-cover" id="libraryAddCover" aria-hidden="true"></div>
+        <div class="library-add-body">
+          <div id="libraryAddName" class="library-add-name"></div>
+          <div class="library-add-fields">
+            <label class="sr-only" for="libraryAddRegion">Region</label>
+            <select id="libraryAddRegion" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+              <option value="PAL">PAL (UK / Europe)</option>
+              <option value="US">US (NTSC-U)</option>
+            </select>
+            <label class="sr-only" for="libraryAddCondition">Condition</label>
+            <select id="libraryAddCondition" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+              <option value="complete">Complete (box and manual)</option>
+              <option value="loose">Loose (disc only)</option>
+              <option value="sealed">Sealed</option>
+            </select>
+            <button type="button" id="libraryAddButton" onclick="libraryAddPicked()" class="brand-btn brand-btn-primary py-2 px-4"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add to My collection</button>
+            <a id="libraryAddOpen" href="#" class="brand-btn" onclick="return libraryOpenPicked(event)">Game page</a>
+          </div>
+          <p id="libraryAddMessage" class="text-xs text-slate-400 mt-1 min-h-[1rem]" role="status"></p>
+        </div>
+        <button type="button" class="library-add-close" onclick="libraryClosePicked()" aria-label="Close">&times;</button>
+      </div>
+    </div>
+
     <div id="viewCollection" role="tabpanel" aria-labelledby="tabCollection" class="hidden space-y-8">
       <div id="collectionSection" class="bg-ps2card border border-ps2border rounded-md p-6">
         <div class="lb-section-header"><h2>My Collection</h2></div>
@@ -567,6 +621,7 @@
             demand: ['viewDemand', 'tabDemand'],
             mentions: ['viewMentions', 'tabMentions'],
             prices: ['viewPrices', 'tabPrices'],
+            library: ['viewLibrary', 'tabLibrary'],
             collection: ['viewCollection', 'tabCollection'],
         };
 
@@ -607,7 +662,9 @@
             drawPending(view);
             currentView = view;
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
-            if (view === 'rare' || view === 'mentions' || view === 'demand') ensureCoverIndex();
+            if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library') ensureCoverIndex();
+            if (view === 'library') ensureGenres();
+            if (view !== 'library') libraryClosePicked();
             if (view === 'collection') {
                 try { renderCollection(); } catch (error) { console.warn('Could not show the collection.', error); }
             }
@@ -804,6 +861,8 @@
                 const plains = [...new Set(spellings.map(plainText))];
                 return { title: spellings[0], plains, compacts: plains.map(p => p.replace(/ /g, '')) };
             });
+            librarySorted = null;
+            if (typeof redrawLibrary === 'function') redrawLibrary();
         }
 
         // The library, then the extra names (search_extra_titles.json) that only the search box knows.
@@ -2808,6 +2867,193 @@
             updateCollectionTab();
         }
 
+        /* ---- Library: every game as box art ---------------------------------------
+           The whole library (data/ps2_database.json and search_extra_titles.json, one tile per priceKey()) as covers,
+           A to Z or grouped by genre (genres.json, made by tools/build_genres.py: the Libretro database's genre where it has
+           one, else a guess from the title's words, so a genre is a rule of thumb). A tile opens a small bar at the bottom of
+           the page to choose a region and condition and add the game to My collection. Drawn when the page is opened.
+        -------------------------------------------------------------------- */
+        let librarySorted = null;                  // [{ title, key, sortKey, letter, plains, compacts }] A to Z
+        let genreData = null;                      // { names: [...], genres: { priceKey: index } }
+        let genreState = 'idle';
+        const libraryView = { sort: 'az', genre: '', filter: '', coversOnly: false };
+        let libraryShown = [];                     // the tiles on screen, in order: a tile's button holds its place in this list
+        let libraryPicked = null;
+        let libraryRegion = 'PAL';
+        const LIBRARY_OTHER = 'Other';
+
+        async function ensureGenres() {
+            if (genreState !== 'idle') return;
+            genreState = 'loading';
+            try {
+                const response = await fetch('genres.json');
+                const data = response.ok ? await response.json() : null;
+                if (data && Array.isArray(data.names) && data.genres && typeof data.genres === 'object' && !Array.isArray(data.genres)) {
+                    genreData = { names: data.names.filter(name => typeof name === 'string'), genres: data.genres };
+                    genreState = 'ready';
+                } else genreState = 'failed';
+            } catch {
+                genreState = 'failed';
+            }
+            fillGenreMenu();
+            redrawLibrary();
+        }
+
+        function genreOf(key) {
+            if (!genreData || !own(genreData.genres, key)) return LIBRARY_OTHER;
+            const name = genreData.names[genreData.genres[key]];
+            return typeof name === 'string' ? name : LIBRARY_OTHER;
+        }
+
+        function fillGenreMenu() {
+            const menu = document.getElementById('libraryGenre');
+            if (!menu || !genreData) return;
+            const names = [...genreData.names, LIBRARY_OTHER];
+            menu.innerHTML = '<option value="">All genres</option>' + names.map(name => `<option value="${esc(name)}">${esc(name)}</option>`).join('');
+            menu.value = libraryView.genre;
+        }
+
+        // "The Getaway" files under G; a title that starts with a digit or a symbol goes under "#".
+        function libraryEntries() {
+            if (librarySorted) return librarySorted;
+            librarySorted = library.map(game => {
+                const key = priceKey(game.title);
+                const sortKey = plainText(game.title).replace(/^the /, '');
+                const first = (sortKey.match(/[a-z0-9]/) || ['#'])[0];
+                return { title: game.title, key, sortKey, letter: /[a-z]/.test(first) ? first.toUpperCase() : '#', plains: game.plains, compacts: game.compacts };
+            }).sort((a, b) => cmpStr(a.sortKey, b.sortKey) || cmpStr(a.title, b.title));
+            return librarySorted;
+        }
+
+        function ownedKeys() {
+            const owned = new Map();
+            for (const entry of collection) {
+                const key = priceKey(entry.title);
+                owned.set(key, (owned.get(key) || 0) + entry.qty);
+            }
+            return owned;
+        }
+
+        function libraryTileHtml(game, i, owned) {
+            const cover = coversShown ? coverUrl(game.title, libraryRegion) : '';
+            const have = owned.get(game.key) || 0;
+            const label = `${game.title}${have ? ` (you own ${have})` : ''}: add to My collection`;
+            return `<li class="lib-tile${have ? ' is-owned' : ''}" id="libTile${i}"><button type="button" class="coll-cover lib-cover" onclick="libraryPick(${i})" title="${esc(label)}" aria-label="${esc(label)}">
+                <span class="coll-initials" aria-hidden="true">${esc(initialsOf(game.title))}</span>${cover
+                    ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
+                <span class="lib-owned" aria-hidden="true">&#10003;</span></button>
+                <span class="lib-name">${esc(game.title)}</span></li>`;
+        }
+
+        function renderLibrary() {
+            const grid = document.getElementById('libraryGrid');
+            const jump = document.getElementById('libraryJump');
+            const summary = document.getElementById('librarySummary');
+            if (!grid || !jump || !summary) return;
+            const all = libraryEntries();
+            if (!all.length) {
+                summary.textContent = 'The game library could not be loaded, so there is nothing to show yet.';
+                grid.innerHTML = '';
+                jump.innerHTML = '';
+                libraryShown = [];
+                return;
+            }
+            const needle = plainText(libraryView.filter).trim();
+            const compact = needle.replace(/ /g, '');
+            let shown = all.filter(game => (!needle || game.plains.some(plain => plain.includes(needle)) || game.compacts.some(c => c.includes(compact)))
+                && (!libraryView.genre || genreOf(game.key) === libraryView.genre)
+                && (!libraryView.coversOnly || coverUrl(game.title, libraryRegion)));
+            const groupOf = libraryView.sort === 'genre' ? (game) => genreOf(game.key) : (game) => game.letter;
+            const groups = new Map();
+            for (const game of shown) {
+                const name = groupOf(game);
+                if (!groups.has(name)) groups.set(name, []);
+                groups.get(name).push(game);
+            }
+            const names = [...groups.keys()].sort((a, b) => libraryView.sort === 'genre'
+                ? (a === LIBRARY_OTHER) - (b === LIBRARY_OTHER) || cmpStr(a, b)
+                : (a === '#') - (b === '#') || cmpStr(a, b));
+            libraryShown = names.flatMap(name => groups.get(name));
+            const owned = ownedKeys();
+            let at = 0;
+            grid.innerHTML = names.map(name => {
+                const games = groups.get(name);
+                const tiles = games.map(game => libraryTileHtml(game, at++, owned)).join('');
+                return `<section class="lib-section" id="lib-${esc(name.replace(/[^A-Za-z0-9#]/g, '_'))}"><h3 class="lib-heading">${esc(name)} <span>${games.length.toLocaleString('en')}</span></h3><ul class="lib-grid">${tiles}</ul></section>`;
+            }).join('');
+            jump.innerHTML = names.map(name => `<button type="button" class="lib-jump-btn" onclick="libraryJump(${esc(JSON.stringify(name))})">${esc(name)}</button>`).join('');
+            const noun = (n) => `${n.toLocaleString('en')} game${n === 1 ? '' : 's'}`;
+            summary.textContent = shown.length === all.length ? `${noun(all.length)}, ${libraryView.sort === 'genre' ? 'by genre, A to Z within each' : 'A to Z'}. Choose a box to add it to My collection.`
+                : `${noun(shown.length)} of ${all.length.toLocaleString('en')}. Choose a box to add it to My collection.`;
+            if (!shown.length) grid.innerHTML = '<p class="text-xs text-slate-400 py-6">No game matches.</p>';
+            document.getElementById('libraryNote').textContent = libraryView.sort === 'genre' || libraryView.genre
+                ? (genreState === 'failed' ? 'The genre list could not be loaded, so every game is under Other.'
+                    : 'Genres are a rule of thumb: the Libretro database\'s own genre where it has one, otherwise a guess from the words in the title. "Other" holds the rest.') : '';
+        }
+
+        function redrawLibrary() { drawForView('library', renderLibrary); }
+
+        function libraryJump(name) {
+            const section = document.getElementById(`lib-${String(name).replace(/[^A-Za-z0-9#]/g, '_')}`);
+            section?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
+        }
+        function setLibraryFilter(value) { libraryView.filter = String(value ?? ''); redrawLibrary(); }
+        function setLibraryGenre(value) { libraryView.genre = String(value ?? ''); redrawLibrary(); }
+        function setLibraryCoversOnly(on) { libraryView.coversOnly = on === true; redrawLibrary(); }
+        function setLibrarySort(mode) {
+            libraryView.sort = mode === 'genre' ? 'genre' : 'az';
+            for (const [id, key] of [['libSortAz', 'az'], ['libSortGenre', 'genre']]) {
+                const button = document.getElementById(id);
+                button.classList.toggle('is-active', libraryView.sort === key);
+                button.setAttribute('aria-pressed', String(libraryView.sort === key));
+            }
+            redrawLibrary();
+        }
+
+        // A box was chosen: the bar at the bottom asks for a region and a condition.
+        function libraryPick(i) {
+            const game = libraryShown[i];
+            if (!game) return;
+            libraryPicked = { game, i };
+            document.getElementById('libraryAddName').textContent = game.title;
+            document.getElementById('libraryAddRegion').value = libraryRegion;
+            const cover = coversShown ? coverUrl(game.title, libraryRegion) : '';
+            document.getElementById('libraryAddCover').innerHTML = cover
+                ? `<img src="${esc(cover)}" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : `<span class="coll-initials">${esc(initialsOf(game.title))}</span>`;
+            const have = ownedKeys().get(game.key) || 0;
+            document.getElementById('libraryAddMessage').textContent = have ? `You already own ${have} cop${have === 1 ? 'y' : 'ies'}. Adding another raises the count.` : '';
+            document.getElementById('libraryAddOpen').href = `#game=${encodeURIComponent(game.title)}`;
+            document.getElementById('libraryAdd').classList.remove('hidden');
+        }
+        function libraryClosePicked() {
+            libraryPicked = null;
+            document.getElementById('libraryAdd')?.classList.add('hidden');
+        }
+        function libraryOpenPicked(event) {
+            event?.preventDefault?.();
+            if (libraryPicked) openGame(libraryPicked.game.title);
+            return false;
+        }
+        function libraryAddPicked() {
+            if (!libraryPicked) return false;
+            const { game, i } = libraryPicked;
+            const region = document.getElementById('libraryAddRegion').value;
+            const condition = document.getElementById('libraryAddCondition').value;
+            libraryRegion = region === 'US' ? 'US' : 'PAL';
+            const message = document.getElementById('libraryAddMessage');
+            if (!addToCollection(game.title, region, condition)) {
+                message.textContent = 'It could not be added: the collection is full or the browser would not take it.';
+                return false;
+            }
+            const have = ownedKeys().get(game.key) || 0;
+            message.textContent = `Added: ${game.title} (${region}, ${COLLECTION_CONDITIONS[condition]}). You now own ${have}.`;
+            const tile = document.getElementById(`libTile${i}`);
+            tile?.classList.add('is-owned');
+            try { refreshCollection(); } catch { /* the page shows it when opened */ }
+            updateCollectionTab();
+            return false;
+        }
+
         /* ---- Cover images ------------------------------------------------------
            covers.json (made by tools/build_covers.py) says which file of the Libretro thumbnail
            collection (thumbnails.libretro.com, the box art RetroArch shows) is each game's box art:
@@ -2903,7 +3149,7 @@
         let topGamesItems = null;
         function redrawCoverLists() {
             if (topGamesItems) renderTopGames(topGamesItems);
-            try { renderShelf(); if (demandData) renderDemand(demandData); } catch { /* the next draw shows it */ }
+            try { renderShelf(); if (demandData) renderDemand(demandData); redrawLibrary(); } catch { /* the next draw shows it */ }
             if (rareRegion !== 'Consoles') renderRare();
         }
 
