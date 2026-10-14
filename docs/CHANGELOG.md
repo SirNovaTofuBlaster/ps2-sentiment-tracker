@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-10-14: a new look (the maintainer's theme)
+
+- The maintainer's mock-up (`spindle_ps2_sentiment_market_tracker_letterboxd_ui.html`) was reviewed and its look applied to every page, keeping our script:
+  Inter for text, Playfair Display for the wordmark and game names, JetBrains Mono for figures (a `<link>` in both pages, no `@import`); rounded cards
+  instead of hairline sections; a glow behind the search box and tabs; stat cards with a coloured top edge; capital tabs underlined in the accent colour;
+  box art at 2:3 on My collection; the My collection button as a yellow outline instead of the glossy gradient; the banner sticks to the top on wide screens only.
+- New: the **shelf** above the tabs on the Tracker page (`renderShelf()`): the six games named most in the last 24 hours as box art, from the same
+  list as "Named in the last 24 hours", with the mention count and the eBay median. Real data only; hidden on the other pages.
+- Not taken from the mock-up (it was a design sketch, not a drop-in page): its stripped script (no GitHub saving, no weights, no EUR, no charts), its
+  invented fallback games and prices, its "Letterboxd" wording, and its CSS-less parts (charts, editions, sources table, phone layout), which keep our rules.
+- Tests: the design-pinned checks in `tests/dashboard_check.mjs` were updated (tab underline, yellow's jobs, banner rules, card markup, collection button) and a
+  shelf check added. `guide.html` describes the shelf and the new button.
+
 ## 2026-10-14: .hack games searched the way sellers name them
 
 - The library spells them "Hack: Part 1: Infection", but eBay sellers write ".hack//INFECTION" or ".hack Infection". `ebay_watchlist.json` now pins the seven

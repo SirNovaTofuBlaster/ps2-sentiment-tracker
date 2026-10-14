@@ -13,391 +13,427 @@
     <script>
         tailwind.config = {
             darkMode: 'class',
-            theme: { extend: { colors: {
-                ps2neon: '#4FA8E8',
-                ps2dark: '#0A0A0C',
-                ps2card: '#16161B',
-                ps2border: '#27272E',
-            } } }
+            theme: { extend: {
+                colors: {
+                    ps2neon: '#4FA8E8',
+                    ps2dark: '#0A0A0C',
+                    ps2card: '#16161B',
+                    ps2border: '#27272E',
+                    spindle: { red: '#E5303A', yellow: '#F5C52E', blue: '#2F9BE0', teal: '#2DBFA6' },
+                },
+                fontFamily: {
+                    sans: ['Inter', 'system-ui', 'sans-serif'],
+                    serif: ['Playfair Display', 'Georgia', 'serif'],
+                    mono: ['JetBrains Mono', 'monospace'],
+                },
+            } }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="retro.css">
 </head>
 <body class="bg-ps2dark min-h-screen flex flex-col selection:bg-ps2neon selection:text-black">
 
-    <header class="brand-bar">
-        <div class="brand-inner">
+  <header class="brand-bar">
+    <div class="brand-inner">
 
-            <div class="brand-util">
-                <div class="brand-sync">
-                    <span class="brand-dot"></span>
-                    <span>Last sync <span id="lastUpdated" class="text-slate-300">syncing…</span></span>
-                    <span id="dataSourceBadge" class="text-xs border px-2 py-0.5 font-mono-custom text-slate-300 border-slate-700">Loading feed…</span>
-                </div>
-                <div class="brand-actions">
-                    <a href="guide.html" target="_blank" rel="noopener noreferrer" class="brand-btn"><i class="fa-solid fa-circle-question"></i> How it works</a>
-                    <a href="#sourcesSection" class="brand-btn"><i class="fa-solid fa-sliders"></i> Sources</a>
-                    <button type="button" onclick="fetchSentimentData()" class="brand-btn brand-btn-primary"><i class="fa-solid fa-rotate"></i> REFRESH</button>
-                    <button type="button" id="tabCollection" aria-controls="viewCollection" onclick="showView('collection')" class="brand-btn brand-btn-collection" title="The games you own, with covers and what they are worth"><i class="fa-solid fa-box-archive" aria-hidden="true"></i> My collection <span id="tabCollectionCount" class="coll-count hidden"></span></button>
-                </div>
-            </div>
-
-            <div class="brand-lock">
-                <a class="brand-id" id="brandHome" href="./" onclick="return goHome(event)" title="Back to the home page" aria-label="Spindle: back to the home page" style="color:inherit;text-decoration:none">
-                    <svg class="brand-mark" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
-                        <circle cx="28" cy="28" r="26" fill="none" stroke="#E5303A" stroke-width="2"></circle>
-                        <circle cx="28" cy="28" r="17" fill="none" stroke="#F5C52E" stroke-width="1.5"></circle>
-                        <circle cx="28" cy="28" r="7" fill="none" stroke="#2F9BE0" stroke-width="2"></circle>
-                        <path d="M28 2 A26 26 0 0 1 54 28" fill="none" stroke="#2DBFA6" stroke-width="2" stroke-linecap="round"></path>
-                    </svg>
-                    <div>
-                        <h1 class="brand-word">Spindle</h1>
-                        <p class="brand-tag">PS2 news, mentions and prices</p>
-                    </div>
-                </a>
-            </div>
-
+      <div class="brand-util">
+        <div class="brand-sync">
+          <span class="brand-dot"></span>
+          <span>Last sync <span id="lastUpdated" class="text-slate-300 font-mono-custom">syncing…</span></span>
+          <span id="dataSourceBadge" class="text-xs border px-2 py-0.5 font-mono-custom text-slate-300 border-slate-700 rounded">Loading feed…</span>
         </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
-
-        <!-- Search the whole PS2 library (data/ps2_database.json). A pick opens that game's own page. -->
-        <div class="relative" id="gameSearchBox">
-            <label for="gameSearch" class="sr-only">Search any PS2 game</label>
-            <input type="search" id="gameSearch" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gameSuggest"
-                placeholder="Search any PS2 game, e.g. godh&hellip;" oninput="onGameSearchInput()" onkeydown="onGameSearchKey(event)" onfocus="onGameSearchInput()" onblur="closeSuggestions()"
-                class="bg-slate-900 border border-slate-700 text-sm px-3 py-2 outline-none w-full">
-            <ul id="gameSuggest" role="listbox" aria-label="Matching games" class="hidden absolute z-30 left-0 right-0 bg-slate-900 border border-slate-700 text-sm max-h-80 overflow-y-auto"></ul>
+        <div class="brand-actions">
+          <a href="guide.html" target="_blank" rel="noopener noreferrer" class="brand-btn"><i class="fa-solid fa-circle-question text-ps2neon"></i> How it works</a>
+          <a href="#sourcesSection" class="brand-btn"><i class="fa-solid fa-sliders text-spindle-teal"></i> Sources</a>
+          <button type="button" onclick="fetchSentimentData()" class="brand-btn brand-btn-primary"><i class="fa-solid fa-rotate"></i> REFRESH</button>
+          <button type="button" id="tabCollection" aria-controls="viewCollection" onclick="showView('collection')" class="brand-btn brand-btn-collection" title="The games you own, with covers and what they are worth">
+            <i class="fa-solid fa-box-archive" aria-hidden="true"></i> My collection <span id="tabCollectionCount" class="coll-count hidden"></span>
+          </button>
         </div>
+      </div>
 
-        <!-- Four pages in one: the tracker, the rarest games, the ranking of games by mentions,
-             and the full list of eBay asking prices. -->
+      <div class="brand-lock">
+        <a class="brand-id" id="brandHome" href="./" onclick="return goHome(event)" title="Back to the home page" aria-label="Spindle: back to the home page" style="color:inherit;text-decoration:none">
+          <svg class="brand-mark" width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+            <circle cx="28" cy="28" r="26" fill="none" stroke="#E5303A" stroke-width="2"></circle>
+            <circle cx="28" cy="28" r="17" fill="none" stroke="#F5C52E" stroke-width="1.5"></circle>
+            <circle cx="28" cy="28" r="7" fill="none" stroke="#2F9BE0" stroke-width="2"></circle>
+            <path d="M28 2 A26 26 0 0 1 54 28" fill="none" stroke="#2DBFA6" stroke-width="2" stroke-linecap="round"></path>
+          </svg>
+          <div>
+            <h1 class="brand-word">Spindle</h1>
+            <p class="brand-tag">PS2 news, mentions and prices</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="spindle-backdrop border-b border-ps2border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-6 space-y-5">
+
+      <!-- Search the whole PS2 library (data/ps2_database.json). A pick opens that game's own page. -->
+      <div class="relative" id="gameSearchBox">
+        <label for="gameSearch" class="sr-only">Search any PS2 game</label>
+        <div class="relative flex items-center">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 text-slate-400 text-xs pointer-events-none"></i>
+          <input type="search" id="gameSearch" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="gameSuggest"
+            placeholder="Search any PS2 game, e.g. godh…" oninput="onGameSearchInput()" onkeydown="onGameSearchKey(event)" onfocus="onGameSearchInput()" onblur="closeSuggestions()"
+            class="bg-ps2card/90 border border-ps2border focus:border-ps2neon rounded-full text-sm pl-9 pr-4 py-2.5 text-white placeholder-slate-400 outline-none w-full transition-colors shadow-inner">
+        </div>
+        <ul id="gameSuggest" role="listbox" aria-label="Matching games" class="hidden absolute z-30 left-0 right-0 mt-1 bg-ps2card border border-ps2border rounded-md shadow-2xl text-sm max-h-80 overflow-y-auto divide-y divide-ps2border"></ul>
+      </div>
+
+      <!-- The shelf: the games named most in the last 24 hours, as box art (Tracker page only). Filled by renderShelf(). -->
+      <div id="shelfSection" class="hidden">
+        <div class="lb-section-header !mb-3">
+          <h2>Trending in the last 24 hours</h2>
+          <span class="text-[11px] font-mono-custom text-ps2neon">Open a box to see its page</span>
+        </div>
+        <ol id="shelf" class="shelf grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3.5"></ol>
+      </div>
+
+      <!-- Four pages in one: the tracker, the rarest games, the ranking of games by mentions, and the full list of eBay asking prices. -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
         <div class="view-tabs" role="tablist" aria-label="Pages">
-            <button type="button" id="tabDashboard" role="tab" aria-selected="true" aria-controls="viewDashboard" onclick="showView('dashboard')" class="view-tab is-active"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Tracker</button>
-            <button type="button" id="tabRare" role="tab" aria-selected="false" aria-controls="viewRare" onclick="showView('rare')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Rarest</button>
-            <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
-            <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
+          <button type="button" id="tabDashboard" role="tab" aria-selected="true" aria-controls="viewDashboard" onclick="showView('dashboard')" class="view-tab is-active"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Tracker</button>
+          <button type="button" id="tabRare" role="tab" aria-selected="false" aria-controls="viewRare" onclick="showView('rare')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Rarest</button>
+          <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
+          <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
         </div>
 
         <!-- The EUR button: shown only when data/fx.json could be read. -->
-        <div id="currencyRow" class="currency-row hidden">
-            <span id="currencyNote" class="currency-note"></span>
-            <button type="button" id="currencyToggle" class="currency-toggle" aria-pressed="false" onclick="setCurrency(!showEuro)">&euro; EUR</button>
+        <div id="currencyRow" class="currency-row hidden flex items-center gap-2 text-xs">
+          <span id="currencyNote" class="currency-note text-slate-400"></span>
+          <button type="button" id="currencyToggle" class="brand-btn font-mono-custom" aria-pressed="false" onclick="setCurrency(!showEuro)">&euro; EUR</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
+
+    <div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">
+
+      <div class="stat-strip">
+        <div class="stat">
+          <div id="statTotalLabel" class="stat-label">Items scraped</div>
+          <div id="statTotalItems" class="stat-value">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Remaster flags</div>
+          <div id="statRemasters" class="stat-value is-news">0</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Active feeds</div>
+          <div id="statFeedsCount" class="stat-value is-live">--</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label">Net sentiment</div>
+          <div id="statAvgSentiment" class="stat-value">--</div>
+        </div>
+      </div>
+
+      <!-- Two-column layout for 24h Named Games + Demand Index -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div id="todaySection" class="lg:col-span-7 bg-ps2card border border-ps2border rounded-md p-6">
+          <div class="lb-section-header">
+            <div>
+              <h2>Named in the last 24 hours</h2>
+              <p id="todaySummary" class="text-xs text-slate-400 mt-1">Loading...</p>
+            </div>
+            <div class="flex gap-1.5 shrink-0" role="group" aria-label="Order the list">
+              <button type="button" id="sortPrice" aria-pressed="true" onclick="setRecentSort('price')" class="sort-btn is-active"><i class="fa-solid fa-sterling-sign" aria-hidden="true"></i> Most expensive</button>
+              <button type="button" id="sortRare" aria-pressed="false" onclick="setRecentSort('rare')" class="sort-btn"><i class="fa-solid fa-gem" aria-hidden="true"></i> Most rare</button>
+            </div>
+          </div>
+          <ol id="todayList" class="zebra"></ol>
+          <button type="button" id="todayListToggle" onclick="toggleList('todayList')" aria-controls="todayList" class="list-toggle hidden brand-btn mt-3"></button>
         </div>
 
-        <div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">
-
-        <div class="stat-strip">
-            <div class="stat">
-                <div id="statTotalLabel" class="stat-label">Items scraped</div>
-                <div id="statTotalItems" class="stat-value">0</div>
+        <div id="demandSection" class="lg:col-span-5 bg-ps2card border border-ps2border rounded-md p-6 hidden">
+          <div class="lb-section-header">
+            <div>
+              <h2>Demand Index</h2>
+              <p id="demandSummary" class="text-xs text-slate-400 mt-1">Loading...</p>
             </div>
-            <div class="stat">
-                <div class="stat-label">Remaster flags</div>
-                <div id="statRemasters" class="stat-value is-news">0</div>
-            </div>
-            <div class="stat">
-                <div class="stat-label">Active feeds</div>
-                <div id="statFeedsCount" class="stat-value is-live">--</div>
-            </div>
-            <div class="stat">
-                <div class="stat-label">Net sentiment</div>
-                <div id="statAvgSentiment" class="stat-value">--</div>
-            </div>
+          </div>
+          <ol id="demandList" class="zebra"></ol>
+          <button type="button" id="demandListToggle" onclick="toggleList('demandList')" aria-controls="demandList" class="list-toggle hidden brand-btn mt-3"></button>
         </div>
-        <div id="todaySection" class="bg-ps2card p-6">
-            <div class="flex items-start justify-between gap-4 mb-4">
-                <div>
-                    <h2>Named in the last 24 hours</h2>
-                    <p id="todaySummary" class="text-xs text-slate-400">Loading...</p>
-                </div>
-                <div class="flex gap-2 shrink-0" role="group" aria-label="Order the list">
-                    <button type="button" id="sortPrice" aria-pressed="true" onclick="setRecentSort('price')" class="sort-btn bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer"><i class="fa-solid fa-sterling-sign" aria-hidden="true"></i> Most expensive</button>
-                    <button type="button" id="sortRare" aria-pressed="false" onclick="setRecentSort('rare')" class="sort-btn bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer"><i class="fa-solid fa-gem" aria-hidden="true"></i> Most rare</button>
-                </div>
-            </div>
-            <ol id="todayList" class="zebra"></ol>
-            <button type="button" id="todayListToggle" onclick="toggleList('todayList')" aria-controls="todayList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
-        </div>
+      </div>
 
-        <div id="demandSection" class="bg-ps2card p-6 hidden">
-            <div class="flex items-start justify-between gap-4 mb-4">
-                <div>
-                    <h2>Demand Index</h2>
-                    <p id="demandSummary" class="text-xs text-slate-400">Loading...</p>
-                </div>
-            </div>
-            <ol id="demandList" class="zebra"></ol>
-            <button type="button" id="demandListToggle" onclick="toggleList('demandList')" aria-controls="demandList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
+      <div id="feedSection" class="bg-ps2card border border-ps2border rounded-md p-6 scroll-mt-20">
+        <div class="lb-section-header">
+          <h2>Live Ingestion &amp; Sentiment Stream</h2>
+          <div class="feed-filters flex flex-wrap items-center gap-2.5">
+            <input type="text" id="searchInput" oninput="onFeedFilterChange()" placeholder="Filter by game or headline..." class="bg-ps2dark border border-ps2border focus:border-ps2neon rounded text-xs px-3 py-1.5 text-white outline-none w-full sm:w-60">
+            <select id="filterSelect" onchange="onFeedFilterChange()" aria-label="Which items to show" class="bg-ps2dark border border-ps2border rounded text-xs px-2.5 py-1.5 text-slate-200 outline-none">
+              <option value="matched" selected>PS2 Games Only</option>
+              <option value="remaster">Remaster News Only</option>
+              <option value="all">Everything</option>
+              <option value="digital">Digital-Only News</option>
+            </select>
+            <select id="typeSelect" onchange="onFeedFilterChange()" aria-label="Source type" class="bg-ps2dark border border-ps2border rounded text-xs px-2.5 py-1.5 text-slate-200 outline-none">
+              <option value="all">All Sources</option>
+              <option value="news">News Sites</option>
+              <option value="reddit">Reddit</option>
+              <option value="forum">Forums</option>
+              <option value="4chan">4chan</option>
+              <option value="youtube">YouTube</option>
+              <option value="podcast">Podcasts</option>
+            </select>
+          </div>
         </div>
+        <p id="feedSummary" tabindex="-1" aria-live="polite" class="text-xs text-slate-400 mb-4">Incoming items matched against the PS2 database.</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-ps2border text-[11px] font-mono-custom text-slate-400 uppercase tracking-wider">
+                <th class="py-3 px-4">SOURCE / TIME</th>
+                <th class="py-3 px-4">HEADLINE</th>
+                <th class="py-3 px-4">MATCHED PS2 GAME</th>
+                <th class="py-3 px-4">SENTIMENT</th>
+                <th class="py-3 px-4 text-right">ACTION</th>
+              </tr>
+            </thead>
+            <tbody id="feedTableBody" class="zebra divide-y divide-ps2border/60 text-xs"></tbody>
+          </table>
+        </div>
+        <div id="pagination" class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-4 border-t border-ps2border text-xs"></div>
+      </div>
 
-        <div id="feedSection" class="bg-ps2card p-6 scroll-mt-20">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
-                <h2>Live Ingestion &amp; Sentiment Stream</h2>
-                <div class="feed-filters flex flex-wrap items-center gap-3">
-                    <input type="text" id="searchInput" oninput="onFeedFilterChange()" placeholder="Filter by game or headline..." class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none w-full sm:w-64">
-                    <select id="filterSelect" onchange="onFeedFilterChange()" aria-label="Which items to show" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none">
-                        <option value="matched" selected>PS2 Games Only</option>
-                        <option value="remaster">Remaster News Only</option>
-                        <option value="all">Everything</option>
-                        <option value="digital">Digital-Only News</option>
-                    </select>
-                    <select id="typeSelect" onchange="onFeedFilterChange()" aria-label="Source type" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none">
-                        <option value="all">All Sources</option>
-                        <option value="news">News Sites</option>
-                        <option value="reddit">Reddit</option>
-                        <option value="forum">Forums</option>
-                        <option value="4chan">4chan</option>
-                        <option value="youtube">YouTube</option>
-                        <option value="podcast">Podcasts</option>
-                    </select>
-                </div>
-            </div>
-            <p id="feedSummary" tabindex="-1" aria-live="polite" class="text-xs text-slate-400 mb-4">Incoming items matched against the PS2 database.</p>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="border-b border-slate-800 text-xs">
-                            <th class="py-3 px-4">SOURCE / TIME</th>
-                            <th class="py-3 px-4">HEADLINE</th>
-                            <th class="py-3 px-4">MATCHED PS2 GAME</th>
-                            <th class="py-3 px-4">SENTIMENT</th>
-                            <th class="py-3 px-4 text-right">ACTION</th>
-                        </tr>
-                    </thead>
-                    <tbody id="feedTableBody" class="zebra divide-y divide-slate-800/60 text-xs"></tbody>
-                </table>
-            </div>
-            <div id="pagination" class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-4 border-t border-slate-800 text-xs"></div>
+      <!-- Sources & Weights: edits feeds.json (the scraper's source list) -->
+      <div id="sourcesSection" class="bg-ps2card border border-ps2border rounded-md p-6 scroll-mt-20">
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 mb-4 border-b border-ps2border pb-4">
+          <div>
+            <h2 class="flex flex-wrap items-center gap-2">
+              Sources &amp; Weights
+              <span id="dirtyBadge" class="hidden border border-spindle-yellow/50 text-spindle-yellow text-[10px] px-2 py-0.5 rounded font-mono-custom">Unsaved changes</span>
+            </h2>
+            <p id="sourcesSummary" class="text-xs text-slate-400 mt-1">Loading feeds.json...</p>
+            <p class="text-[11px] text-slate-500 mt-1">Changes show on this page right away. Press <b>Save changes</b> to make the scraper use them. New here? Read <a href="guide.html" target="_blank" rel="noopener noreferrer" class="text-ps2neon underline">How to use</a>.</p>
+          </div>
+          <div class="sources-actions flex flex-wrap items-center gap-2 text-xs">
+            <button type="button" id="saveBtn" onclick="saveToGitHub()" class="brand-btn brand-btn-primary disabled:opacity-40 disabled:pointer-events-none"><i class="fa-solid fa-floppy-disk"></i> Save changes</button>
+            <button type="button" id="discardBtn" onclick="discardChanges()" class="brand-btn disabled:opacity-40 disabled:pointer-events-none"><i class="fa-solid fa-rotate-left"></i> Discard</button>
+            <button type="button" onclick="downloadConfig()" class="brand-btn text-ps2neon"><i class="fa-solid fa-download"></i> Download</button>
+            <button type="button" onclick="runScraperNow()" class="brand-btn text-spindle-teal"><i class="fa-solid fa-play"></i> Run scraper now</button>
+            <button type="button" onclick="toggleSettings()" aria-controls="settingsPanel" class="brand-btn"><i class="fa-solid fa-gear"></i> GitHub settings</button>
+          </div>
         </div>
 
-        <!-- Sources & Weights: edits feeds.json (the scraper's source list) -->
-        <div id="sourcesSection" class="bg-ps2card p-6 scroll-mt-20">
-            <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 mb-4">
-                <div>
-                    <h2 class="flex flex-wrap items-center gap-2">
-                        Sources &amp; Weights
-                        <span id="dirtyBadge" class="hidden border border-slate-700 text-slate-300 text-[10px] px-2 py-0.5">Unsaved changes</span>
-                    </h2>
-                    <p id="sourcesSummary" class="text-xs text-slate-400">Loading feeds.json...</p>
-                    <p class="text-[11px] text-slate-500 mt-1">Changes show on this page right away. Press <b>Save changes</b> to make the scraper use them. New here? Read <a href="guide.html" target="_blank" rel="noopener noreferrer" class="text-cyan-400">How to use</a>.</p>
-                </div>
-                <div class="sources-actions flex flex-wrap items-center gap-2 text-xs">
-                    <button type="button" id="saveBtn" onclick="saveToGitHub()" class="from-blue-600 px-3 py-2 transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"><i class="fa-solid fa-floppy-disk"></i> Save changes</button>
-                    <button type="button" id="discardBtn" onclick="discardChanges()" class="bg-slate-800 text-slate-300 border border-slate-700 px-3 py-2 transition-all flex items-center gap-1.5 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"><i class="fa-solid fa-rotate-left"></i> Discard</button>
-                    <button type="button" onclick="downloadConfig()" class="bg-slate-800 text-cyan-400 border border-slate-700 px-3 py-2 transition-all flex items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-download"></i> Download</button>
-                    <button type="button" onclick="runScraperNow()" class="bg-slate-800 text-cyan-400 border border-slate-700 px-3 py-2 transition-all flex items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-play"></i> Run scraper now</button>
-                    <button type="button" onclick="toggleSettings()" aria-controls="settingsPanel" class="bg-slate-800 text-slate-300 border border-slate-700 px-3 py-2 transition-all flex items-center gap-1.5 cursor-pointer"><i class="fa-solid fa-gear"></i> GitHub settings</button>
-                </div>
-            </div>
+        <form id="settingsPanel" class="hidden bg-ps2dark border border-ps2border rounded p-4 mb-4 text-xs space-y-3" onsubmit="saveSettings(event)">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <label class="flex flex-col gap-1 text-slate-400">Repository (owner/name)
+              <input id="settingRepo" type="text" placeholder="owner/ps2-sentiment-tracker" autocomplete="off" class="bg-ps2card border border-ps2border rounded px-3 py-2 text-white outline-none">
+            </label>
+            <label class="flex flex-col gap-1 text-slate-400">Branch
+              <input id="settingBranch" type="text" placeholder="main" autocomplete="off" class="bg-ps2card border border-ps2border rounded px-3 py-2 text-white outline-none">
+            </label>
+            <label class="flex flex-col gap-1 text-slate-400">GitHub token (optional)
+              <input id="settingToken" type="password" placeholder="github_pat_... or ghp_..." autocomplete="off" class="bg-ps2card border border-ps2border rounded px-3 py-2 text-white outline-none">
+            </label>
+          </div>
+          <label class="flex items-center gap-2 text-slate-300"><input id="settingRemember" type="checkbox" class="accent-ps2neon"> Remember on this device (otherwise it is forgotten when the tab closes)</label>
+          <p class="text-slate-500 leading-relaxed">You don't need a token: without one, <b>Save changes</b> walks you through saving on GitHub in a few clicks. A token makes saving one click. If the repository is yours, use a <b>fine-grained</b> token for just this repository with <b>Contents</b> set to read and write (add <b>Actions</b> for <b>Run scraper now</b>). A collaborator on someone else's repository needs a <b>classic</b> token with the <b>public_repo</b> scope; give it a short expiry. Step-by-step: <a href="guide.html#token" target="_blank" rel="noopener noreferrer" class="text-ps2neon">How to use → Token</a>. The token is only sent to api.github.com, and commits use your GitHub no-reply email.</p>
+          <div class="flex flex-wrap gap-2">
+            <button type="submit" class="brand-btn brand-btn-primary">Save settings</button>
+            <button type="button" onclick="forgetToken()" class="brand-btn">Forget token</button>
+          </div>
+        </form>
 
-            <form id="settingsPanel" class="hidden bg-slate-900/80 border border-slate-800 p-4 mb-4 text-xs space-y-3" onsubmit="saveSettings(event)">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    <label class="flex flex-col gap-1 text-slate-400">Repository (owner/name)
-                        <input id="settingRepo" type="text" placeholder="owner/ps2-sentiment-tracker" autocomplete="off" class="bg-slate-950 border border-slate-700 px-3 py-2 outline-none">
-                    </label>
-                    <label class="flex flex-col gap-1 text-slate-400">Branch
-                        <input id="settingBranch" type="text" placeholder="main" autocomplete="off" class="bg-slate-950 border border-slate-700 px-3 py-2 outline-none">
-                    </label>
-                    <label class="flex flex-col gap-1 text-slate-400">GitHub token (optional)
-                        <input id="settingToken" type="password" placeholder="github_pat_... or ghp_..." autocomplete="off" class="bg-slate-950 border border-slate-700 px-3 py-2 outline-none">
-                    </label>
-                </div>
-                <label class="flex items-center gap-2 text-slate-300"><input id="settingRemember" type="checkbox" class="accent-cyan-400"> Remember on this device (otherwise it is forgotten when the tab closes)</label>
-                <p class="text-slate-500 leading-relaxed">You don't need a token: without one, <b>Save changes</b> walks you through saving on GitHub in a few clicks. A token makes saving one click. If the repository is yours, use a <b>fine-grained</b> token for just this repository with <b>Contents</b> set to read and write (add <b>Actions</b> for <b>Run scraper now</b>). A collaborator on someone else's repository needs a <b>classic</b> token with the <b>public_repo</b> scope; give it a short expiry. Step-by-step: <a href="guide.html#token" target="_blank" rel="noopener noreferrer" class="text-cyan-400">How to use → Token</a>. The token is only sent to api.github.com, and commits use your GitHub no-reply email.</p>
-                <div class="flex flex-wrap gap-2">
-                    <button type="submit" class="from-blue-600 px-3 py-2 cursor-pointer">Save settings</button>
-                    <button type="button" onclick="forgetToken()" class="bg-slate-800 text-slate-300 border border-slate-700 px-3 py-2 cursor-pointer">Forget token</button>
-                </div>
-            </form>
+        <div id="sourcesMessage" role="status" aria-live="polite" class="hidden mb-4 text-xs px-3 py-2 border rounded"></div>
+        <div id="saveGuide" class="hidden mb-4 text-xs border border-ps2border rounded p-4 space-y-3 bg-ps2dark"></div>
+        <div id="sourceTabs" role="tablist" class="flex flex-wrap gap-2 mb-4 text-xs"></div>
 
-            <div id="sourcesMessage" role="status" aria-live="polite" class="hidden mb-4 text-xs px-3 py-2 border"></div>
-            <div id="saveGuide" class="hidden mb-4 text-xs border border-slate-700 p-4 space-y-3"></div>
-            <div id="sourceTabs" role="tablist" class="flex flex-wrap gap-2 mb-4 text-xs"></div>
-
-            <div id="sourcesToolbar" class="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
-                <input type="text" id="sourceSearch" oninput="renderSourcesView()" placeholder="Search sources..." aria-label="Search sources" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none w-full sm:w-64">
-                <select id="sourceShow" onchange="renderSourcesView()" aria-label="Show sources" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none">
-                    <option value="all">All sources</option>
-                    <option value="enabled">Enabled only</option>
-                    <option value="disabled">Disabled only</option>
-                </select>
-                <select id="sourceSort" onchange="renderSourcesView()" aria-label="Sort sources" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none"></select>
-            </div>
-
-            <div id="sourcesView" class="overflow-x-auto"></div>
-
-            <form id="addSourceForm" class="mt-4 pt-4 border-t border-slate-800 grid grid-cols-1 md:grid-cols-6 gap-3 text-xs" onsubmit="addSource(event)">
-                <input id="addValue" type="text" required autocomplete="off" class="md:col-span-2 bg-slate-900 border border-slate-700 px-3 py-2 outline-none" aria-label="Feed URL, subreddit or channel">
-                <input id="addName" type="text" autocomplete="off" placeholder="Display name" class="bg-slate-900 border border-slate-700 px-3 py-2 outline-none" aria-label="Display name">
-                <input id="addGroup" type="text" list="addGroupOptions" autocomplete="off" placeholder="Group" class="bg-slate-900 border border-slate-700 px-3 py-2 outline-none" aria-label="Group">
-                <datalist id="addGroupOptions"></datalist>
-                <select id="addRole" class="bg-slate-900 border border-slate-700 px-3 py-2 outline-none" aria-label="Role"></select>
-                <button type="submit" id="addBtn" class="bg-slate-800 text-cyan-400 border border-slate-700 px-3 py-2 transition-all cursor-pointer disabled:opacity-40 disabled:pointer-events-none"><i class="fa-solid fa-plus"></i> Add source</button>
-                <p id="addHint" class="md:col-span-6 text-[11px] text-slate-500"></p>
-            </form>
+        <div id="sourcesToolbar" class="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
+          <input type="text" id="sourceSearch" oninput="renderSourcesView()" placeholder="Search sources..." aria-label="Search sources" class="bg-ps2dark border border-ps2border rounded text-xs px-3 py-2 text-white outline-none w-full sm:w-64">
+          <select id="sourceShow" onchange="renderSourcesView()" aria-label="Show sources" class="bg-ps2dark border border-ps2border rounded text-xs px-3 py-2 text-slate-200 outline-none">
+            <option value="all">All sources</option>
+            <option value="enabled">Enabled only</option>
+            <option value="disabled">Disabled only</option>
+          </select>
+          <select id="sourceSort" onchange="renderSourcesView()" aria-label="Sort sources" class="bg-ps2dark border border-ps2border rounded text-xs px-3 py-2 text-slate-200 outline-none"></select>
         </div>
 
-        </div>
+        <div id="sourcesView" class="overflow-x-auto"></div>
 
-        <!-- The rarest PS2 games of each region (rare_games.json), each with today's eBay median
-             on its own region's site, and the rarest official consoles (rare_consoles.json), each
-             with its medians on both sites (data/prices/latest.json). -->
-        <!-- One game's own page: opened from the search bar (#game=Title). -->
-        <div id="viewGame" class="hidden space-y-6" aria-live="polite">
-            <div class="bg-ps2card p-6">
-                <button type="button" onclick="goHome(event)" class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mb-4 cursor-pointer"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to the Tracker</button>
-                <div class="game-head"><div id="gameCover" class="game-cover hidden"></div><h2 id="gameTitle"></h2></div>
-                <p id="gameSummary" class="text-xs text-slate-400 mt-1"></p>
-                <div id="gamePrices" class="mt-3"></div>
-            </div>
-            <div class="bg-ps2card p-6">
-                <h2>Latest from our feeds</h2>
-                <ol id="gameItems" class="zebra mt-3"></ol>
-            </div>
-        </div>
+        <form id="addSourceForm" class="mt-4 pt-4 border-t border-ps2border grid grid-cols-1 md:grid-cols-6 gap-3 text-xs" onsubmit="addSource(event)">
+          <input id="addValue" type="text" required autocomplete="off" class="md:col-span-2 bg-ps2dark border border-ps2border rounded px-3 py-2 text-white outline-none" aria-label="Feed URL, subreddit or channel">
+          <input id="addName" type="text" autocomplete="off" placeholder="Display name" class="bg-ps2dark border border-ps2border rounded px-3 py-2 text-white outline-none" aria-label="Display name">
+          <input id="addGroup" type="text" list="addGroupOptions" autocomplete="off" placeholder="Group" class="bg-ps2dark border border-ps2border rounded px-3 py-2 text-white outline-none" aria-label="Group">
+          <datalist id="addGroupOptions"></datalist>
+          <select id="addRole" class="bg-ps2dark border border-ps2border rounded px-3 py-2 text-slate-200 outline-none" aria-label="Role"></select>
+          <button type="submit" id="addBtn" class="brand-btn brand-btn-primary justify-center disabled:opacity-40 disabled:pointer-events-none"><i class="fa-solid fa-plus"></i> Add source</button>
+          <p id="addHint" class="md:col-span-6 text-[11px] text-slate-500"></p>
+        </form>
+      </div>
 
-        <div id="viewRare" role="tabpanel" aria-labelledby="tabRare" class="hidden space-y-8">
-        <div id="rareSection" class="bg-ps2card p-6">
-            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
-                <div>
-                    <h2 id="rareHeading">Rarest PS2 Games</h2>
-                    <p id="rareSummary" class="text-xs text-slate-400">Loading...</p>
-                </div>
-                <div class="rare-regions" role="group" aria-label="Which region's list">
-                    <button type="button" id="rareRegionPAL" onclick="showRareRegion('PAL')" aria-pressed="true" class="rare-region is-pal is-active">PAL</button>
-                    <button type="button" id="rareRegionUS" onclick="showRareRegion('US')" aria-pressed="false" class="rare-region is-us">US</button>
-                    <button type="button" id="rareRegionConsoles" onclick="showRareRegion('Consoles')" aria-pressed="false" class="rare-region is-consoles">Consoles</button>
-                </div>
-            </div>
-            <!-- The list's index and market cap (index.json's "rare"), drawn by renderRareChart(). -->
-            <div id="rareChart" class="chart-panel hidden">
-                <div id="rareChartStats" class="chart-stats"></div>
-                <div id="rareChartTools" class="chart-tools" role="toolbar" aria-label="Chart tools"></div>
-                <div id="rareChartLegend" class="chart-legend" aria-live="polite"></div>
-                <div id="rareChartCanvas" class="chart-canvas"></div>
-                <p class="chart-credit">Charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> Lightweight Charts™</p>
-                <p id="rareChartNote" class="chart-note"></p>
-            </div>
-            <div id="consoleRegions" class="console-regions hidden" role="group" aria-label="Consoles sold in">
-                <button type="button" id="consoleRegionUS" onclick="showConsoleRegion('US')" aria-pressed="false" class="console-region">US</button>
-                <button type="button" id="consoleRegionJP" onclick="showConsoleRegion('JP')" aria-pressed="true" class="console-region is-active">Japan</button>
-                <button type="button" id="consoleRegionPAL" onclick="showConsoleRegion('PAL')" aria-pressed="false" class="console-region">PAL</button>
-            </div>
-            <ol id="rareList" class="zebra"></ol>
-            <button type="button" id="rareListToggle" onclick="toggleList('rareList')" aria-controls="rareList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
-            <p id="rareNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
-        </div>
-        </div>
-
-        <!-- Every PS2 game the feed names, ranked by how often. -->
-        <div id="viewMentions" role="tabpanel" aria-labelledby="tabMentions" class="hidden space-y-8">
-        <div id="topGamesSection" class="bg-ps2card p-6">
-            <div class="flex items-start justify-between gap-4 mb-4">
-                <div>
-                    <h2>Most Mentioned Games</h2>
-                    <p id="topGamesSummary" class="text-xs text-slate-400">Counting mentions...</p>
-                </div>
-            </div>
-            <ol id="topGamesList" class="zebra"></ol>
-            <button type="button" id="topGamesListToggle" onclick="toggleList('topGamesList')" aria-controls="topGamesList" class="list-toggle hidden bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 mt-3 cursor-pointer"></button>
-        </div>
-        </div>
-
-        <!-- eBay asking prices, every tracked game: data/prices/latest.json, written by
-             ebay_prices.py. The same medians also sit beside each game's name everywhere else. -->
-        <div id="viewPrices" role="tabpanel" aria-labelledby="tabPrices" class="hidden space-y-8">
-        <!-- The PS2 price index: data/prices/index.json, worked out by ebay_prices.py from the
-             price history. Hidden until the file exists. -->
-        <div id="indexSection" class="bg-ps2card p-6 hidden">
-            <h2>PS2 Price Index</h2>
-            <p id="indexSummary" class="text-xs text-slate-400 mb-4"></p>
-            <div id="indexCards" class="index-cards"></div>
-            <p class="text-[11px] text-slate-500 mt-4 leading-relaxed">Like a stock market index for PS2 games: it started at 100, and each day it moves by the typical change in each game's median asking price since the last day that game was priced (up to three days before). A game needs at least three copies listed; a median that more than doubled or halved is left out, as that is nearly always a change in what the search finds, though a smaller change of search words can still nudge it. Games joining or leaving never move it, and a cheap game counts as much as a dear one. US and UK are separate, consoles are not in it, and a day counts once it is over (UTC).</p>
-        </div>
-        <div id="pricesSection" class="bg-ps2card p-6">
-            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
-                <div>
-                    <h2>eBay Asking Prices</h2>
-                    <p id="pricesSummary" class="text-xs text-slate-400">Loading...</p>
-                </div>
-                <input type="text" id="pricesSearch" oninput="filterPrices()" placeholder="Find a game..." aria-label="Find a game" class="bg-slate-900 border border-slate-700 text-xs px-3 py-2 outline-none w-full sm:w-64">
-            </div>
-            <ol id="pricesList" class="zebra"></ol>
-            <p id="pricesEmpty" class="hidden text-xs text-slate-400 leading-relaxed"></p>
-        </div>
-        </div>
-
-
-        <!-- My collection: games the visitor owns, kept in this browser's localStorage only
-             (nothing is sent anywhere, there is no login). Valued with the eBay medians. -->
-        <div id="viewCollection" role="tabpanel" aria-labelledby="tabCollection" class="hidden space-y-8">
-        <div id="collectionSection" class="bg-ps2card p-6">
-            <h2>My Collection</h2>
-            <p id="collectionSummary" class="text-xs text-slate-400 mb-4"></p>
-            <form id="collectionForm" class="collection-form" onsubmit="return addFromForm(event)" autocomplete="off">
-                <div class="relative coll-search">
-                    <label for="collectionGame" class="sr-only">Search a game to add</label>
-                    <input type="search" id="collectionGame" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="collectionSuggest"
-                        placeholder="Search a game to add, e.g. godh&hellip;" oninput="onCollectionInput()" onkeydown="onCollectionKey(event)" onfocus="onCollectionInput()" onblur="closeCollectionSuggestions()"
-                        class="bg-slate-900 border border-slate-700 text-sm px-3 py-2 outline-none w-full">
-                    <ul id="collectionSuggest" role="listbox" aria-label="Matching games" class="hidden absolute z-30 left-0 right-0 bg-slate-900 border border-slate-700 text-sm max-h-80 overflow-y-auto"></ul>
-                </div>
-                <div class="coll-fields">
-                    <label class="sr-only" for="collectionRegion">Region</label>
-                    <select id="collectionRegion" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2">
-                        <option value="PAL">PAL (UK / Europe)</option>
-                        <option value="US">US (NTSC-U)</option>
-                    </select>
-                    <label class="sr-only" for="collectionCondition">Condition</label>
-                    <select id="collectionCondition" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2">
-                        <option value="complete">Complete (box and manual)</option>
-                        <option value="loose">Loose (disc only)</option>
-                        <option value="sealed">Sealed</option>
-                    </select>
-                    <label class="sr-only" for="collectionQty">How many</label>
-                    <input type="number" id="collectionQty" min="1" max="99" value="1" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2 coll-qty-input" title="How many copies">
-                    <label class="sr-only" for="collectionPaid">What you paid (optional, per copy)</label>
-                    <input type="number" id="collectionPaid" min="0" step="0.01" placeholder="Paid each (optional)" class="bg-slate-900 border border-slate-700 text-sm px-2 py-2 coll-paid-input" title="What you paid for each copy, in that region's money. Optional.">
-                    <button type="submit" class="brand-btn brand-btn-primary"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add</button>
-                </div>
-            </form>
-            <label class="coll-covers-toggle text-xs text-slate-400"><input type="checkbox" id="collectionCovers" checked onchange="setCoversShown(this.checked)"> Show cover images <span class="text-slate-500">(loaded from the Libretro thumbnail collection)</span></label>
-            <p id="collectionMessage" class="text-xs text-amber-300 mt-2 min-h-[1rem]" role="status"></p>
-            <ul id="collectionList" class="coll-grid mt-4"></ul>
-            <div class="flex flex-wrap gap-2 mt-4">
-                <button type="button" id="collectionExport" onclick="exportCollection()" class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer"><i class="fa-solid fa-download" aria-hidden="true"></i> Save a backup file</button>
-                <label class="bg-slate-800 text-cyan-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer" for="collectionImport"><i class="fa-solid fa-upload" aria-hidden="true"></i> Load a backup file</label>
-                <input type="file" id="collectionImport" accept="application/json,.json" class="sr-only" onchange="importCollection(event)">
-                <button type="button" id="collectionClear" onclick="clearCollection()" class="bg-slate-800 text-red-400 border border-slate-700 text-xs px-3 py-2 cursor-pointer">Clear all</button>
-            </div>
-            <p id="collectionNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
-        </div>
-        </div>
-    </main>
-
-    <!-- One game's price history, opened from a "chart" button (openGameChart()). -->
-    <div id="gameChart" class="chart-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="gameChartTitle" onclick="if (event.target === this) closeGameChart()">
-        <div class="chart-dialog bg-ps2card">
-            <div class="chart-dialog-head">
-                <h3 id="gameChartTitle"></h3>
-                <button type="button" class="chart-close" onclick="closeGameChart()" aria-label="Close the chart">close</button>
-            </div>
-            <div id="gameChartTools" class="chart-tools" role="toolbar" aria-label="Chart tools"></div>
-            <div id="gameChartLegend" class="chart-legend" aria-live="polite"></div>
-            <div id="gameChartCanvas" class="chart-canvas"></div>
-            <p class="chart-credit">Charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> Lightweight Charts™</p>
-            <p id="gameChartNote" class="chart-note"></p>
-        </div>
     </div>
 
-    <footer class="border-t border-ps2border py-6 mt-12 text-center text-xs text-slate-500">
-        <p>PS2 Global Sentiment &amp; Remaster Tracker • Powered by GitHub Actions &amp; Python Scraper Pipelines</p>
-    </footer>
+    <!-- One game's own page: opened from the search bar (#game=Title). -->
+    <div id="viewGame" class="hidden space-y-6" aria-live="polite">
+      <div class="bg-ps2card border border-ps2border rounded-md p-6">
+        <button type="button" onclick="goHome(event)" class="brand-btn mb-4"><i class="fa-solid fa-arrow-left text-ps2neon" aria-hidden="true"></i> Back to the Tracker</button>
+        <div class="game-head"><div id="gameCover" class="game-cover hidden"></div><h2 id="gameTitle" class="!text-2xl !normal-case !tracking-normal !text-white"></h2></div>
+        <p id="gameSummary" class="text-xs text-slate-400 mt-1"></p>
+        <div id="gamePrices" class="mt-3"></div>
+      </div>
+      <div class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header"><h2>Latest from our feeds</h2></div>
+        <ol id="gameItems" class="zebra mt-3"></ol>
+      </div>
+    </div>
 
-    <script>
+    <div id="viewRare" role="tabpanel" aria-labelledby="tabRare" class="hidden space-y-8">
+      <div id="rareSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header">
+          <div>
+            <h2 id="rareHeading">Rarest PS2 Games</h2>
+            <p id="rareSummary" class="text-xs text-slate-400 mt-1">Loading...</p>
+          </div>
+          <div class="rare-regions" role="group" aria-label="Which region's list">
+            <button type="button" id="rareRegionPAL" onclick="showRareRegion('PAL')" aria-pressed="true" class="rare-region is-pal is-active">PAL</button>
+            <button type="button" id="rareRegionUS" onclick="showRareRegion('US')" aria-pressed="false" class="rare-region is-us">US</button>
+            <button type="button" id="rareRegionConsoles" onclick="showRareRegion('Consoles')" aria-pressed="false" class="rare-region is-consoles">Consoles</button>
+          </div>
+        </div>
+        <div id="rareChart" class="chart-panel hidden mb-6 bg-ps2dark border border-ps2border rounded p-4">
+          <div id="rareChartStats" class="chart-stats grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3 text-xs font-mono-custom"></div>
+          <div id="rareChartTools" class="chart-tools" role="toolbar" aria-label="Chart tools"></div>
+          <div id="rareChartLegend" class="chart-legend" aria-live="polite"></div>
+          <div id="rareChartCanvas" class="chart-canvas"></div>
+          <p class="chart-credit">Charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> Lightweight Charts™</p>
+          <p id="rareChartNote" class="chart-note"></p>
+        </div>
+        <div id="consoleRegions" class="console-regions hidden mb-4" role="group" aria-label="Consoles sold in">
+          <button type="button" id="consoleRegionUS" onclick="showConsoleRegion('US')" aria-pressed="false" class="console-region">US</button>
+          <button type="button" id="consoleRegionJP" onclick="showConsoleRegion('JP')" aria-pressed="true" class="console-region is-active">Japan</button>
+          <button type="button" id="consoleRegionPAL" onclick="showConsoleRegion('PAL')" aria-pressed="false" class="console-region">PAL</button>
+        </div>
+        <ol id="rareList" class="zebra"></ol>
+        <button type="button" id="rareListToggle" onclick="toggleList('rareList')" aria-controls="rareList" class="list-toggle hidden brand-btn mt-3"></button>
+        <p id="rareNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
+      </div>
+    </div>
+
+    <!-- Every PS2 game the feed names, ranked by how often. -->
+    <div id="viewMentions" role="tabpanel" aria-labelledby="tabMentions" class="hidden space-y-8">
+      <div id="topGamesSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header">
+          <div>
+            <h2>Most Mentioned Games</h2>
+            <p id="topGamesSummary" class="text-xs text-slate-400 mt-1">Counting mentions...</p>
+          </div>
+        </div>
+        <ol id="topGamesList" class="zebra"></ol>
+        <button type="button" id="topGamesListToggle" onclick="toggleList('topGamesList')" aria-controls="topGamesList" class="list-toggle hidden brand-btn mt-3"></button>
+      </div>
+    </div>
+
+    <!-- eBay asking prices, every tracked game -->
+    <div id="viewPrices" role="tabpanel" aria-labelledby="tabPrices" class="hidden space-y-8">
+      <div id="indexSection" class="bg-ps2card border border-ps2border rounded-md p-6 hidden">
+        <div class="lb-section-header"><h2>PS2 Price Index</h2></div>
+        <p id="indexSummary" class="text-xs text-slate-400 mb-4"></p>
+        <div id="indexCards" class="index-cards"></div>
+        <p class="text-[11px] text-slate-500 mt-4 leading-relaxed">Like a stock market index for PS2 games: it started at 100, and each day it moves by the typical change in each game's median asking price since the last day that game was priced (up to three days before). A game needs at least three copies listed; a median that more than doubled or halved is left out, as that is nearly always a change in what the search finds, though a smaller change of search words can still nudge it. Games joining or leaving never move it, and a cheap game counts as much as a dear one. US and UK are separate, consoles are not in it, and a day counts once it is over (UTC).</p>
+      </div>
+      <div id="pricesSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header">
+          <div>
+            <h2>eBay Asking Prices</h2>
+            <p id="pricesSummary" class="text-xs text-slate-400 mt-1">Loading...</p>
+          </div>
+          <input type="text" id="pricesSearch" oninput="filterPrices()" placeholder="Find a game..." aria-label="Find a game" class="bg-ps2dark border border-ps2border rounded text-xs px-3 py-2 text-white outline-none w-full sm:w-64">
+        </div>
+        <ol id="pricesList" class="zebra"></ol>
+        <p id="pricesEmpty" class="hidden text-xs text-slate-400 leading-relaxed"></p>
+      </div>
+    </div>
+
+    <!-- My collection -->
+    <div id="viewCollection" role="tabpanel" aria-labelledby="tabCollection" class="hidden space-y-8">
+      <div id="collectionSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header"><h2>My Collection</h2></div>
+        <p id="collectionSummary" class="text-xs text-slate-400 mb-4"></p>
+        <form id="collectionForm" class="collection-form" onsubmit="return addFromForm(event)" autocomplete="off">
+          <div class="relative coll-search">
+            <label for="collectionGame" class="sr-only">Search a game to add</label>
+            <input type="search" id="collectionGame" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="collectionSuggest"
+              placeholder="Search a game to add, e.g. godh…" oninput="onCollectionInput()" onkeydown="onCollectionKey(event)" onfocus="onCollectionInput()" onblur="closeCollectionSuggestions()"
+              class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white outline-none w-full">
+            <ul id="collectionSuggest" role="listbox" aria-label="Matching games" class="hidden absolute z-30 left-0 right-0 bg-ps2card border border-ps2border text-sm max-h-80 overflow-y-auto"></ul>
+          </div>
+          <div class="coll-fields">
+            <label class="sr-only" for="collectionRegion">Region</label>
+            <select id="collectionRegion" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+              <option value="PAL">PAL (UK / Europe)</option>
+              <option value="US">US (NTSC-U)</option>
+            </select>
+            <label class="sr-only" for="collectionCondition">Condition</label>
+            <select id="collectionCondition" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+              <option value="complete">Complete (box and manual)</option>
+              <option value="loose">Loose (disc only)</option>
+              <option value="sealed">Sealed</option>
+            </select>
+            <label class="sr-only" for="collectionQty">How many</label>
+            <input type="number" id="collectionQty" min="1" max="99" value="1" class="bg-ps2dark border border-ps2border rounded text-sm px-2 py-2 text-white coll-qty-input" title="How many copies">
+            <label class="sr-only" for="collectionPaid">What you paid (optional, per copy)</label>
+            <input type="number" id="collectionPaid" min="0" step="0.01" placeholder="Paid each (optional)" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white coll-paid-input" title="What you paid for each copy, in that region's money. Optional.">
+            <button type="submit" class="brand-btn brand-btn-primary py-2 px-4"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add</button>
+          </div>
+        </form>
+        <label class="coll-covers-toggle text-xs text-slate-400 flex items-center gap-2"><input type="checkbox" id="collectionCovers" checked onchange="setCoversShown(this.checked)" class="accent-ps2neon"> Show cover images <span class="text-slate-500">(loaded from the Libretro thumbnail collection)</span></label>
+        <p id="collectionMessage" class="text-xs text-amber-300 mt-2 min-h-[1rem]" role="status"></p>
+        <ul id="collectionList" class="coll-grid mt-4"></ul>
+        <div class="flex flex-wrap gap-2 mt-4">
+          <button type="button" id="collectionExport" onclick="exportCollection()" class="brand-btn text-ps2neon"><i class="fa-solid fa-download" aria-hidden="true"></i> Save a backup file</button>
+          <label class="brand-btn text-ps2neon" for="collectionImport"><i class="fa-solid fa-upload" aria-hidden="true"></i> Load a backup file</label>
+          <input type="file" id="collectionImport" accept="application/json,.json" class="sr-only" onchange="importCollection(event)">
+          <button type="button" id="collectionClear" onclick="clearCollection()" class="brand-btn text-spindle-red">Clear all</button>
+        </div>
+        <p id="collectionNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- One game's price history, opened from a "chart" button (openGameChart()). -->
+  <div id="gameChart" class="chart-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="gameChartTitle" onclick="if (event.target === this) closeGameChart()">
+    <div class="chart-dialog bg-ps2card">
+      <div class="chart-dialog-head">
+        <h3 id="gameChartTitle"></h3>
+        <button type="button" class="chart-close" onclick="closeGameChart()" aria-label="Close the chart">close</button>
+      </div>
+      <div id="gameChartTools" class="chart-tools" role="toolbar" aria-label="Chart tools"></div>
+      <div id="gameChartLegend" class="chart-legend" aria-live="polite"></div>
+      <div id="gameChartCanvas" class="chart-canvas"></div>
+      <p class="chart-credit">Charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> Lightweight Charts™</p>
+      <p id="gameChartNote" class="chart-note"></p>
+    </div>
+  </div>
+
+  <footer class="border-t border-ps2border py-8 mt-12 text-center text-xs text-slate-500 bg-[#070709]">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <span class="w-2.5 h-2.5 rounded-full bg-spindle-red"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-spindle-yellow"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-spindle-blue"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-spindle-teal"></span>
+        <span class="text-white font-serif font-bold ml-1">Spindle</span>
+      </div>
+      <p>PS2 Global Sentiment &amp; Remaster Tracker • Powered by GitHub Actions &amp; Python Scraper Pipelines</p>
+    </div>
+  </footer>
+
+  <script>
         // ===================== Shared helpers =====================
         // Phones get shorter pages: each row is a card there, and 100 cards is a long scroll.
         const PAGE_SIZE = typeof matchMedia === 'function' && matchMedia('(max-width: 640px)').matches ? 25 : 100;
@@ -548,6 +584,7 @@
             try { draw(); } catch (error) { console.warn('Could not draw the page.', error); }
         }
 
+        let currentView = 'dashboard';
         function showView(name, remember = true) {
             const view = isView(name) ? name : 'dashboard';
             document.getElementById('viewGame').classList.add('hidden');
@@ -559,6 +596,8 @@
                 else button.setAttribute?.('aria-selected', String(key === view));
             }
             drawPending(view);
+            currentView = view;
+            document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
             if (view === 'rare' || view === 'mentions') ensureCoverIndex();
             if (view === 'collection') {
                 try { renderCollection(); } catch (error) { console.warn('Could not show the collection.', error); }
@@ -901,6 +940,8 @@
                 button.setAttribute?.(button.id === 'tabCollection' ? 'aria-current' : 'aria-selected', button.id === 'tabCollection' ? 'false' : 'false');
             }
             document.getElementById('viewGame').classList.remove('hidden');
+            currentView = 'game';
+            document.getElementById('shelfSection')?.classList.add('hidden');
             document.getElementById('gameSearch').value = name;
             closeSuggestions();
             renderGamePage(name);
@@ -1097,6 +1138,7 @@
                 button.setAttribute('aria-pressed', String(recentSort === mode));
             }
             const recent = recentGames(items, now);
+            renderShelf(recent.games);
             recent.games = recentSort === 'rare' ? byRarity(recent.games) : byPrice(recent.games);
             recentGameNames = recent.games.map(game => game.name);
             const plural = (count, word) => `${count.toLocaleString('en')} ${word}${count === 1 ? '' : 's'}`;
@@ -1133,6 +1175,32 @@
                 </li>`;
             }).join('');
             foldList('todayList', recent.games.length);
+        }
+
+        // The shelf above the tabs: the six games named most in the last 24 hours (the order
+        // recentGames() gives), as box art with the mention count and the cheapest median.
+        // Real feed data only; a game without a cover shows its initials.
+        let shelfGames = [];
+        function renderShelf(games = shelfGames) {
+            shelfGames = games;
+            const section = document.getElementById('shelfSection');
+            const shelf = document.getElementById('shelf');
+            if (!section || !shelf) return;
+            const top = games.slice(0, 6);
+            section.dataset.has = top.length ? '1' : '';
+            section.classList.toggle('hidden', !top.length || currentView !== 'dashboard');
+            shelf.innerHTML = top.map(game => {
+                const count = game.headline + game.text;
+                const cover = coverUrl(game.name);
+                const label = PRICE_ORDER.map(site => [site, medianOf(game.name, site)]).find(([, m]) => m !== null);
+                const price = label ? money(label[1], currencyOf(label[0])) : '';
+                const title = `${game.name}: ${count} mention${count === 1 ? '' : 's'} in the last ${RECENT_HOURS} hours`;
+                return `<li class="shelf-item"><a class="shelf-link" href="#game=${esc(encodeURIComponent(game.name))}" onclick="return openGameLink(event, ${esc(JSON.stringify(game.name))})" title="${esc(title)}" aria-label="${esc(title)}">
+                    <span class="shelf-cover"><span class="coll-initials" aria-hidden="true">${esc(initialsOf(game.name))}</span>${cover
+                        ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
+                        <span class="shelf-count">${count}</span></span>
+                    <span class="shelf-name">${esc(game.name)}</span>${price ? `<span class="shelf-price">${esc(price)}</span>` : ''}</a></li>`;
+            }).join('');
         }
 
         // A game's name in that list opens the table on the items that name it: exactly those,
@@ -2758,6 +2826,7 @@
         let topGamesItems = null;
         function redrawCoverLists() {
             if (topGamesItems) renderTopGames(topGamesItems);
+            try { renderShelf(); } catch { /* the next draw shows it */ }
             if (rareRegion !== 'Consoles') renderRare();
         }
 
