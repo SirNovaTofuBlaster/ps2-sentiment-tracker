@@ -1,0 +1,722 @@
+{
+  "what": "Dated price points for rare PS2 games, read from public articles on 2026-10-14. Numbers and short labels only, no article text. Most articles copy PriceCharting, so they are reference points to cross-check rare_games.json, not independent proof; only entries marked basis 'eBay sold' or 'completed sales' come from actual sales, and those are 2020-2026 snapshots. Nothing here is a live price.",
+  "checked": "2026-10-14",
+  "sources": {
+    "extralife": {
+      "name": "Extra Life Retro, Most Valuable PlayStation 2 Games Right Now",
+      "url": "https://www.extraliferetro.com/commentaries/most-valuable-playstation-2-games/",
+      "published": "2026-07-14",
+      "article_says_prices_come_from": "PriceCharting estimates, plus completed sales where marked"
+    },
+    "retrododo": {
+      "name": "Retro Dodo, The 10 Rarest PS2 Games & How Much They're Worth",
+      "url": "https://retrododo.com/rare-ps2-games/",
+      "published": "2020-05-15 (edited 2024-03-04)",
+      "article_says_prices_come_from": "eBay sold listings, as the article says"
+    },
+    "arcade": {
+      "name": "Arcade Attack, Rare PS2 Games - Top Ten",
+      "url": "https://www.arcadeattack.co.uk/rare-ps2-games-top-ten/",
+      "published": "2023-06-02",
+      "article_says_prices_come_from": "none named by the article"
+    },
+    "cgc": {
+      "name": "CGC, The Rarest and Most Expensive PS2 Games",
+      "url": "https://www.cgcgrading.com/news/articles/the-rarest-and-most-expensive-ps2-games-2Gci01rK4kvJ1wcnOakQBg/",
+      "published": "2023-06-23",
+      "article_says_prices_come_from": "PriceCharting links"
+    },
+    "unanswered": {
+      "name": "Unanswered.io, Rarest & Most Valuable PS2 Games in 2026",
+      "url": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
+      "published": "2026-07-25",
+      "article_says_prices_come_from": "PriceCharting, values 'January 2026 where available'"
+    }
+  },
+  "prices": [
+    {
+      "title": "Kuon",
+      "region": "US",
+      "condition": "loose",
+      "price": 840,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Kuon",
+      "region": "US",
+      "condition": "complete",
+      "price": 1575,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Kuon",
+      "region": "US",
+      "condition": "sealed",
+      "price": 2290,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "US",
+      "condition": "loose",
+      "price": 500,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "US",
+      "condition": "complete",
+      "price": 1000,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "US",
+      "condition": "sealed",
+      "price": 1160,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Haunting Ground",
+      "region": "US",
+      "condition": "loose",
+      "price": 430,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Haunting Ground",
+      "region": "US",
+      "condition": "complete",
+      "price": 575,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Haunting Ground",
+      "region": "US",
+      "condition": "sealed",
+      "price": 1000,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Silent Hill: Shattered Memories",
+      "region": "US",
+      "condition": "loose",
+      "price": 300,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Silent Hill: Shattered Memories",
+      "region": "US",
+      "condition": "complete",
+      "price": 515,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Silent Hill: Shattered Memories",
+      "region": "US",
+      "condition": "sealed",
+      "price": 725,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Futurama",
+      "region": "US",
+      "condition": "loose",
+      "price": 250,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Futurama",
+      "region": "US",
+      "condition": "complete",
+      "price": 415,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Futurama",
+      "region": "US",
+      "condition": "sealed",
+      "price": 900,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Blood Will Tell",
+      "region": "US",
+      "condition": "loose",
+      "price": 240,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Blood Will Tell",
+      "region": "US",
+      "condition": "complete",
+      "price": 365,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Blood Will Tell",
+      "region": "US",
+      "condition": "sealed",
+      "price": 700,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Samurai Western",
+      "region": "US",
+      "condition": "loose",
+      "price": 128,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Samurai Western",
+      "region": "US",
+      "condition": "complete",
+      "price": 260,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Samurai Western",
+      "region": "US",
+      "condition": "sealed",
+      "price": 400,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": ".hack//Quarantine",
+      "region": "US",
+      "condition": "loose",
+      "price": 260,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": ".hack//Quarantine",
+      "region": "US",
+      "condition": "complete",
+      "price": 390,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Xenosaga Episode III: Also sprach Zarathustra",
+      "region": "US",
+      "condition": "loose",
+      "price": 215,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Xenosaga Episode III: Also sprach Zarathustra",
+      "region": "US",
+      "condition": "complete",
+      "price": 280,
+      "currency": "USD",
+      "source": "extralife"
+    },
+    {
+      "title": "Silent Hill: Shattered Memories",
+      "region": "US",
+      "condition": "complete",
+      "price": 528,
+      "currency": "USD",
+      "source": "extralife",
+      "basis": "completed sales",
+      "note": "completed sales June-July 2026, range 440-617 by condition"
+    },
+    {
+      "title": "Blood Will Tell",
+      "region": "US",
+      "condition": "complete",
+      "price": 380,
+      "currency": "USD",
+      "source": "extralife",
+      "basis": "completed sales",
+      "note": "completed sales, range 360-400"
+    },
+    {
+      "title": "Samurai Western",
+      "region": "US",
+      "condition": "complete",
+      "price": 260,
+      "currency": "USD",
+      "source": "extralife",
+      "basis": "completed sales",
+      "note": "completed sales, range 240-280"
+    },
+    {
+      "title": "Kuon",
+      "region": "?",
+      "condition": "loose",
+      "price": 900,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "as of March 2024"
+    },
+    {
+      "title": "Kuon",
+      "region": "?",
+      "condition": "sealed",
+      "price": 2499,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "Wata 9.6 A graded, as of March 2024"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "?",
+      "condition": "complete",
+      "price": 400,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'over', recently sold"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "?",
+      "condition": "sealed",
+      "price": 1000,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'over'"
+    },
+    {
+      "title": "Michigan: Report from Hell",
+      "region": "PAL",
+      "condition": "complete",
+      "price": 300,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'about' for normal boxed copies"
+    },
+    {
+      "title": "Michigan: Report from Hell",
+      "region": "PAL",
+      "condition": "variant",
+      "price": 650,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'about' for rare PAL variants"
+    },
+    {
+      "title": "Ocean Commander",
+      "region": "PAL",
+      "condition": "mint",
+      "price": 380,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "Italian eBay; thought Italy-only"
+    },
+    {
+      "title": "Futurama",
+      "region": "?",
+      "condition": "complete",
+      "price": 350,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'up to'"
+    },
+    {
+      "title": "Haunting Ground",
+      "region": "?",
+      "condition": "complete",
+      "price": 320,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'over', great condition"
+    },
+    {
+      "title": "Haunting Ground",
+      "region": "?",
+      "condition": "mint",
+      "price": 549,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'over'"
+    },
+    {
+      "title": "Blood Will Tell",
+      "region": "?",
+      "condition": "complete",
+      "price": 300,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "boxed"
+    },
+    {
+      "title": "Blood Will Tell",
+      "region": "?",
+      "condition": "sealed",
+      "price": 1000,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'close to', graded, as of March 2024"
+    },
+    {
+      "title": "Dragon Ball Z: Budokai Tenkaichi 3",
+      "region": "?",
+      "condition": "complete",
+      "price": 180,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'about', great condition"
+    },
+    {
+      "title": "Dragon Ball Z: Budokai Tenkaichi 3",
+      "region": "?",
+      "condition": "sealed",
+      "price": 400,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "'over'"
+    },
+    {
+      "title": "Kingdom Hearts II",
+      "region": "?",
+      "condition": "complete",
+      "price": 400,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "normal first-print Black Label copy"
+    },
+    {
+      "title": "Kingdom Hearts II",
+      "region": "?",
+      "condition": "sealed",
+      "price": 1299,
+      "currency": "USD",
+      "source": "retrododo",
+      "basis": "eBay sold",
+      "note": "graded"
+    },
+    {
+      "title": "Dragon Blaze",
+      "region": "PAL",
+      "condition": "unstated",
+      "price": 125,
+      "currency": "GBP",
+      "source": "arcade"
+    },
+    {
+      "title": "Haunting Ground",
+      "region": "PAL",
+      "condition": "unstated",
+      "price": 130,
+      "currency": "GBP",
+      "source": "arcade"
+    },
+    {
+      "title": "Xenosaga Episode III: Also sprach Zarathustra",
+      "region": "?",
+      "condition": "unstated",
+      "price": 150,
+      "currency": "GBP",
+      "source": "arcade"
+    },
+    {
+      "title": "Silent Hill: Shattered Memories",
+      "region": "?",
+      "condition": "complete",
+      "price": 220,
+      "currency": "GBP",
+      "source": "arcade"
+    },
+    {
+      "title": "Blood Will Tell",
+      "region": "?",
+      "condition": "unstated",
+      "price": 250,
+      "currency": "GBP",
+      "source": "arcade"
+    },
+    {
+      "title": ".hack//Quarantine",
+      "region": "?",
+      "condition": "good",
+      "price": 400,
+      "currency": "GBP",
+      "source": "arcade"
+    },
+    {
+      "title": "Ocean Commander",
+      "region": "PAL",
+      "condition": "unstated",
+      "price": 450,
+      "currency": "GBP",
+      "source": "arcade",
+      "note": "Italy only"
+    },
+    {
+      "title": "Michigan: Report from Hell",
+      "region": "PAL",
+      "condition": "unstated",
+      "price": 480,
+      "currency": "GBP",
+      "source": "arcade"
+    },
+    {
+      "title": "Kuon",
+      "region": "?",
+      "condition": "unstated",
+      "price": 600,
+      "currency": "GBP",
+      "source": "arcade"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "?",
+      "condition": "mint",
+      "price": 650,
+      "currency": "GBP",
+      "source": "arcade",
+      "note": "'over'"
+    },
+    {
+      "title": "MS Saga: A New Dawn",
+      "region": "US",
+      "condition": "sealed",
+      "price": 170,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Steambot Chronicles",
+      "region": "US",
+      "condition": "sealed",
+      "price": 200,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Chulip",
+      "region": "US",
+      "condition": "sealed",
+      "price": 200,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Samurai Western",
+      "region": "US",
+      "condition": "sealed",
+      "price": 275,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Wild Arms: Alter Code F",
+      "region": "US",
+      "condition": "sealed",
+      "price": 300,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "God Hand",
+      "region": "US",
+      "condition": "sealed",
+      "price": 320,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Xenosaga Episode III: Also sprach Zarathustra",
+      "region": "US",
+      "condition": "sealed",
+      "price": 350,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": ".hack//Quarantine",
+      "region": "US",
+      "condition": "sealed",
+      "price": 350,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Obscure",
+      "region": "US",
+      "condition": "sealed",
+      "price": 360,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Silent Hill 3",
+      "region": "US",
+      "condition": "sealed",
+      "price": 375,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Dragon Ball Z: Budokai Tenkaichi 3",
+      "region": "US",
+      "condition": "sealed",
+      "price": 500,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Echo Night: Beyond",
+      "region": "US",
+      "condition": "sealed",
+      "price": 500,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Silent Hill: Shattered Memories",
+      "region": "US",
+      "condition": "sealed",
+      "price": 520,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Haunting Ground",
+      "region": "US",
+      "condition": "sealed",
+      "price": 560,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Blood Will Tell",
+      "region": "US",
+      "condition": "sealed",
+      "price": 560,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Futurama",
+      "region": "US",
+      "condition": "sealed",
+      "price": 600,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Marvel vs. Capcom 2",
+      "region": "US",
+      "condition": "sealed",
+      "price": 900,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "US",
+      "condition": "sealed",
+      "price": 1060,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "Kuon",
+      "region": "US",
+      "condition": "sealed",
+      "price": 1380,
+      "currency": "USD",
+      "source": "cgc",
+      "note": "'about' / 'over' as the article words it; no sale date given"
+    },
+    {
+      "title": "God of War II (retailer/press kit)",
+      "region": "?",
+      "condition": "complete",
+      "price": 400,
+      "currency": "USD",
+      "source": "unanswered"
+    },
+    {
+      "title": "Star Wars: Bounty Hunter (Limited Edition Action Pack)",
+      "region": "?",
+      "condition": "complete",
+      "price": 300,
+      "currency": "USD",
+      "source": "unanswered"
+    },
+    {
+      "title": "Star Wars: Bounty Hunter (Limited Edition Action Pack)",
+      "region": "?",
+      "condition": "sealed",
+      "price": 720,
+      "currency": "USD",
+      "source": "unanswered"
+    },
+    {
+      "title": "Xenosaga Episode III (Best Buy lenticular cover)",
+      "region": "US",
+      "condition": "complete",
+      "price": 447,
+      "currency": "USD",
+      "source": "unanswered"
+    },
+    {
+      "title": "Echo Night: Beyond",
+      "region": "US",
+      "condition": "sealed",
+      "price": 500,
+      "currency": "USD",
+      "source": "unanswered",
+      "note": "'500+'"
+    }
+  ]
+}
