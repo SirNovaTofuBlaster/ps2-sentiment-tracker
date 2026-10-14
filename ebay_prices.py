@@ -1833,6 +1833,126 @@ def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_pr
     say(f"Due now: {len(lookups)} lookups. This run may use {max(allowance, 0)} searches.")
 
 
+# ======================================================================================
+# The count-only check of other eBay sites (a started-by-hand diagnosis; it writes nothing)
+# ======================================================================================
+
+# Sites being considered, with Britain as the known-good control. None of them is priced by the
+# normal run: this only asks each site how many listings it reports for some games.
+PROBE_MARKETS = {
+    "EBAY_GB": {"label": "UK", "country": "GB"},
+    "EBAY_DE": {"label": "DE", "country": "DE"},
+    "EBAY_FR": {"label": "FR", "country": "FR"},
+    "EBAY_IT": {"label": "IT", "country": "IT"},
+    "EBAY_ES": {"label": "ES", "country": "ES"},
+    "EBAY_PL": {"label": "PL", "country": "PL"},
+}
+PROBE_FAMOUS = (
+    "Grand Theft Auto San Andreas", "Grand Theft Auto Vice City", "Pro Evolution Soccer 6", "Final Fantasy X",
+    "Kingdom Hearts", "God of War", "Resident Evil 4", "Metal Gear Solid 3 Snake Eater", "Shadow of the Colossus",
+    "Gran Turismo 4", "Tekken 5", "Need for Speed Underground 2", "Jak and Daxter The Precursor Legacy",
+    "Ratchet & Clank", "Devil May Cry 3", "Silent Hill 2", "Okami", "Burnout 3 Takedown", "Sonic Heroes",
+    "Buzz The Music Quiz",
+)
+PROBE_RARE_GAMES = 20        # the first plain (not edition, not country-only) PAL entries of rare_games.json
+PROBE_BY_CATEGORY_CHECK = 5  # per group: also asked without the video games category, to see it is the right one
+PROBE_MANY = 5               # "enough": a site is worth pricing games on if most famous games show this many copies
+PROBE_TIME_BUDGET = 600      # seconds
+
+
+def probe_rare_titles(path=None):
+    data = read_json(path or ROOT / "rare_games.json", {})
+    entries = (data.get("lists") or {}).get("PAL") if isinstance(data, dict) else None
+    titles = []
+    for entry in entries if isinstance(entries, list) else []:
+        if isinstance(entry, dict) and isinstance(entry.get("title"), str) and not entry.get("flags"):
+            titles.append(entry["title"])
+        if len(titles) >= PROBE_RARE_GAMES:
+            break
+    return titles
+
+
+def annotation(title, lines):
+    """A line the Actions run shows as a notice, so it can be read through the checks API
+    when the job log cannot be downloaded. Only counts and our own game names go in."""
+    def escape(text):
+        return str(text).replace("%", "%25").replace("\r", "").replace("\n", "%0A")
+    return f"::notice title={escape(title).replace(',', '%2C').replace(':', '%3A')}::{escape(chr(10).join(lines))}"
+
+
+def probe_search(http_client, token, market_id, country, query, in_category, counter):
+    """How many listings one site reports for the words, asked for one listing only. Returns
+    (count or None, reason when there is no count). Prices are never read."""
+    filters = f"buyingOptions:{{FIXED_PRICE}},itemLocationCountry:{country}"
+    params = {"q": f"{query} ps2", "filter": filters, "limit": "1"}
+    if in_category:
+        params["category_ids"] = CATEGORY_ID
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "X-EBAY-C-MARKETPLACE-ID": market_id,
+        "X-EBAY-C-ENDUSERCTX": "contextualLocation=" + quote(f"country={country}", safe=""),
+    }
+    counter["searches"] += 1
+    try:
+        status, text = http_client.send(SEARCH_URL + "?" + urlencode(params, quote_via=quote), headers)
+        payload = parse(text)
+    except NetworkProblem as exc:
+        return None, f"network problem ({exc})"
+    if status == 429:
+        raise LimitReached(error_text(status, payload))
+    total = payload.get("total")
+    if status == 200 and isinstance(total, int):
+        return total, ""
+    return None, error_text(status, payload)
+
+
+def run_probe(http_client, client_id, client_secret, rare_titles=None, pause=REQUEST_PAUSE, out=say):
+    """Ask each site in PROBE_MARKETS how many listings it reports for the famous games and the
+    rare PAL ones. Prints counts and our own game names; writes nothing."""
+    token, basic = get_token(http_client, client_id, client_secret)
+    secrets = (client_id, client_secret, token, basic)
+    rare_titles = probe_rare_titles() if rare_titles is None else list(rare_titles)
+    groups = (("famous", list(PROBE_FAMOUS)), ("rare PAL", rare_titles))
+    counter, started, stopped = {"searches": 0}, time.monotonic(), ""
+    for market_id, market in PROBE_MARKETS.items():
+        lines, summary = [], []
+        for group, titles in groups:
+            counts, errors = [], []
+            for n, title in enumerate(titles):
+                if time.monotonic() - started > PROBE_TIME_BUDGET:
+                    stopped = "time is up"
+                    break
+                try:
+                    total, reason = probe_search(http_client, token, market_id, market["country"], title, True, counter)
+                    wider = ""
+                    if n < PROBE_BY_CATEGORY_CHECK:
+                        time.sleep(pause)
+                        outside, why = probe_search(http_client, token, market_id, market["country"], title, False, counter)
+                        wider = f" (without the category: {outside if outside is not None else why})"
+                except LimitReached as exc:
+                    stopped = f"eBay says the allowance of searches is used up ({redact(exc, secrets)})"
+                    break
+                time.sleep(pause)
+                if total is None:
+                    errors.append(reason)
+                    lines.append(redact(f"{title}: no count, {reason}", secrets))
+                else:
+                    counts.append(total)
+                    lines.append(redact(f"{title}: {total}{wider}", secrets))
+            if counts or errors:
+                summary.append(f"{group}: {sum(1 for c in counts if c >= PROBE_MANY)} of {len(counts)} show {PROBE_MANY}+ copies, "
+                               f"{sum(1 for c in counts if c >= 1)} show 1+, {len(errors)} could not be counted")
+            if stopped:
+                break
+        head = f"[{market['label']}] " + "; ".join(summary)
+        out(head)
+        out(annotation(f"eBay check {market['label']}", [head] + lines))
+        if stopped:
+            break
+    out(f"{counter['searches']} searches used" + (f"; stopped early: {stopped}" if stopped else "") + ". Nothing was written.")
+    return counter["searches"]
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="eBay asking prices for the PS2 games the feed mentions.")
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT, help="where to write this run's listings")
@@ -1842,6 +1962,17 @@ def main(argv=None):
     client_id = os.environ.get("EBAY_CLIENT_ID", "").strip()
     client_secret = os.environ.get("EBAY_CLIENT_SECRET", "").strip()
     with_diagnosis = os.environ.get("EBAY_DIAGNOSE", "").strip().lower() == "true"
+    if os.environ.get("EBAY_PROBE", "").strip().lower() == "true":
+        # Started by hand to count listings on other eBay sites; nothing is read or written.
+        if not client_id or not client_secret:
+            say("STOPPED: the eBay key is not set.")
+            return 1
+        try:
+            run_probe(Http(), client_id, client_secret)
+        except EbayError as exc:
+            say(f"STOPPED: {redact(exc, (client_id, client_secret))}")
+            return 1
+        return 0
     now = utc_now()
     latest_path = PRICES_DIR / LATEST_NAME
     try:

@@ -14,6 +14,10 @@ on:
         description: "Also print a search check (8 extra searches)"
         type: boolean
         default: false
+      probe:
+        description: "Only count listings on other eBay sites (DE, FR, IT, ES, PL, with UK as a control). Looks up and saves no prices"
+        type: boolean
+        default: false
 
 concurrency:
   group: ebay
@@ -49,6 +53,7 @@ jobs:
           EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
           EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
           EBAY_DIAGNOSE: ${{ inputs.diagnose }}
+          EBAY_PROBE: ${{ inputs.probe }}
           PYTHONUNBUFFERED: "1"
         run: python ebay_prices.py --out "$RUNNER_TEMP/ebay/ebay_prices.json"
 
