@@ -1651,9 +1651,32 @@ def daily_medians(rows, leave_out=(), before_day=None, min_copies=INDEX_MIN_COPI
     return days
 
 
+PAL_INDEX = "PAL"
+
+
+def pal_sites():
+    """The labels of the sites that sell PAL copies: every site but the US."""
+    return [market["label"] for market in MARKETS.values() if market["country"] != "US"]
+
+
+def add_pal_days(days):
+    """Add the PAL index's days: every game on every PAL site is one item, so a game on three sites
+    counts three times, and a game or site joining on a later day never moves it (only items priced
+    on both days count, as in each site's own index). Nothing is added with fewer than two sites."""
+    sites = pal_sites()
+    present = {site for site, _ in days if site in sites}
+    if len(present) < 2:
+        return days
+    for (site, day), medians in list(days.items()):
+        if site in present:
+            days.setdefault((PAL_INDEX, day), {}).update({f"{key}@{site}": median for key, median in medians.items()})
+    return days
+
+
 def price_index(rows, leave_out=(), before_day=None):
-    """{site: [[day, index, games compared], ...]} from history rows, oldest day first."""
-    days = daily_medians(rows, leave_out, before_day)
+    """{site: [[day, index, games compared], ...]} from history rows, oldest day first. When two or
+    more PAL sites have figures, "PAL" is the index of all their games together."""
+    days = add_pal_days(daily_medians(rows, leave_out, before_day))
     index = {}
     for site in sorted({site for site, _ in days}):
         dates = sorted(day for each_site, day in days if each_site == site)
@@ -1809,7 +1832,8 @@ def index_file(rows, latest, now, left_out=()):
     consoles |= {key for key in left_out if isinstance(key, str)}
     consoles.discard("")
     return {
-        "what": ("The PS2 price index: how eBay asking prices of used PS2 games moved, per site, 100 on the "
+        "what": ("The PS2 price index: how eBay asking prices of used PS2 games moved, per site (and \"PAL\", every PAL site "
+                 "together), 100 on the "
                  "first day. Each day moves by the geometric mean of each game's change in median since its "
                  "previous day, for games priced on both days from at least "
                  f"{INDEX_MIN_COPIES} copies; a median that doubled or halved is left out. Consoles are not in it."),

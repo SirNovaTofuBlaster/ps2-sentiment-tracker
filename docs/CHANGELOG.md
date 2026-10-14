@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-14: one index for all PAL sites
+
+- `ebay_prices.py`: `index.json` has a `PAL` line beside each site's own, built from every game on the UK
+  and the euro sites as separate items (`add_pal_days()`); it is a percentage, so no currency enters.
+  It appears once two PAL sites have a finished day. The Rarest page's PAL market cap still uses eBay
+  UK alone, in pounds (decided so, as its copy estimates are for PAL countries as a whole and not per site).
+- `index.html`: the index cards are US, all PAL sites, then each PAL site. `guide.html` explains it.
+- Search words (the other half of this step): of the 53 games a European site could not find, none
+  has a documented European name, so no rename was added (`ebay_watchlist.json` stays as it is). Most
+  are games with few listings outside America or listed under spellings of their own; add a rule only
+  with the PAL box title, as the existing ones have.
+
 ## 2026-10-14: eBay Spain
 
 - `EBAY_ES` in `MARKETS`, like Germany, France and Italy, with Spanish junk and incomplete-copy words
