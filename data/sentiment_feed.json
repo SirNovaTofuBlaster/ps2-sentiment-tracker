@@ -1,7 +1,47 @@
 {
-  "last_updated": "2026-10-14 05:19:09 UTC",
+  "last_updated": "2026-10-14 05:35:23 UTC",
   "total_tracked_feeds": 231,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749655961",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 05:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X, Resident Evil 4 and Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749655893",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X",
+        "Resident Evil 4",
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 05:28 UTC"
+    },
     {
       "headline": "Earthbound is great.",
       "source": "r/gaming",
@@ -208534,19 +208574,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-09-30 09:05 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Max Payne 2 VR Mod | Beta Release",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1wtwptt/max_payne_2_vr_mod_beta_release/",
-      "matched_game": "Max Payne",
-      "match_score": 90,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-09-30 05:32 UTC",
       "is_digital_only": false
     }
   ]
