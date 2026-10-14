@@ -218,7 +218,7 @@ they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`
   *Sources* link works from every page. Changing page adds one entry to the browser's
   history, so Back returns to the page before; links, Back and Forward all go through
   `showViewFromAddress()`, which also runs once more when the first load has finished.
-- **Library page.** `renderLibrary()` draws one tile per `libraryEntries()` item (sorted by title without a leading "The"), grouped by letter or by `genres.json` (`genreOf()`), with `content-visibility: auto` per section so ~3,900 tiles stay cheap; covers load lazily. A tile calls `libraryPick(i)` into the fixed add bar, and `libraryAddPicked()` calls `addToCollection()`; nothing leaves the browser.
+- **Library page.** `renderLibrary()` draws one tile per game: `libraryEntries()` folds the library's spellings with `coverSame` (`covers.json` `same`), keeps the others as `variants`, and `libraryTitleFor()` files an added copy under the spelling eBay prices for the region. It draws one tile per item (sorted by title without a leading "The"), grouped by letter or by `genres.json` (`genreOf()`), with `content-visibility: auto` per section so ~3,900 tiles stay cheap; covers load lazily. A tile calls `libraryPick(i)` into the fixed add bar, and `libraryAddPicked()` calls `addToCollection()`; nothing leaves the browser.
 - **eBay medians beside every game, detail on the game's page.** Every list (Tracker, Demand Index,
   Most Mentioned Games, *eBay prices*, the feed table) shows a priced game as its name plus
   `compactPriceHtml(title)`: the US median, the UK median and the lowest median of the euro sites

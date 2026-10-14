@@ -403,7 +403,7 @@
           <div id="libraryAddName" class="library-add-name"></div>
           <div class="library-add-fields">
             <label class="sr-only" for="libraryAddRegion">Region</label>
-            <select id="libraryAddRegion" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+            <select id="libraryAddRegion" onchange="libraryRegionChanged()" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
               <option value="PAL">PAL (UK / Europe)</option>
               <option value="US">US (NTSC-U)</option>
             </select>
@@ -2895,6 +2895,7 @@
             } catch {
                 genreState = 'failed';
             }
+            for (const game of librarySorted || []) delete game.genre;
             fillGenreMenu();
             redrawLibrary();
         }
@@ -2903,6 +2904,14 @@
             if (!genreData || !own(genreData.genres, key)) return LIBRARY_OTHER;
             const name = genreData.names[genreData.genres[key]];
             return typeof name === 'string' ? name : LIBRARY_OTHER;
+        }
+        // A game's genre from whichever of its spellings has one.
+        function libraryGenre(game) {
+            if (!game.genre) {
+                const keys = [game.key, ...game.variants.map(priceKey)];
+                game.genre = keys.map(genreOf).find(name => name !== LIBRARY_OTHER) || LIBRARY_OTHER;
+            }
+            return game.genre;
         }
 
         function fillGenreMenu() {
@@ -2913,29 +2922,59 @@
             menu.value = libraryView.genre;
         }
 
-        // "The Getaway" files under G; a title that starts with a digit or a symbol goes under "#".
+        // One tile per game, however many ways the library spells it (regional titles, a publisher's name in front, a typo):
+        // covers.json's "same" says which spelling stands for the others. "The Getaway" files under G; a title that starts with a
+        // digit or a symbol goes under "#".
+        function libraryKeyOf(title) {
+            const key = priceKey(title);
+            return own(coverSame, key) ? coverSame[key] : key;
+        }
         function libraryEntries() {
             if (librarySorted) return librarySorted;
-            librarySorted = library.map(game => {
+            const games = new Map();
+            for (const game of library) {
                 const key = priceKey(game.title);
-                const sortKey = plainText(game.title).replace(/^the /, '');
+                const shown = own(coverSame, key) ? coverSame[key] : key;
+                let entry = games.get(shown);
+                if (!entry) games.set(shown, entry = { title: null, key: shown, variants: [], plains: [], compacts: [] });
+                entry.variants.push(game.title);
+                entry.plains.push(...game.plains);
+                entry.compacts.push(...game.compacts);
+                if (key === shown) entry.title = game.title;
+            }
+            librarySorted = [...games.values()].map(entry => {
+                entry.title = entry.title || entry.variants[0];
+                const sortKey = plainText(entry.title).replace(/^the /, '');
                 const first = (sortKey.match(/[a-z0-9]/) || ['#'])[0];
-                return { title: game.title, key, sortKey, letter: /[a-z]/.test(first) ? first.toUpperCase() : '#', plains: game.plains, compacts: game.compacts };
+                return Object.assign(entry, { sortKey, letter: /[a-z]/.test(first) ? first.toUpperCase() : '#' });
             }).sort((a, b) => cmpStr(a.sortKey, b.sortKey) || cmpStr(a.title, b.title));
             return librarySorted;
+        }
+
+        // The spelling to put in the collection for a region: the one eBay has a price for on that region's site, else the shown one.
+        function libraryTitleFor(game, region) {
+            const label = COLLECTION_REGIONS[region];
+            return game.variants.find(title => medianOf(title, label) !== null) || game.title;
+        }
+
+        // A cover for the region from any spelling of the game.
+        function libraryCover(game, region) {
+            let found = coverUrl(game.title, region);
+            for (let i = 0; !found && i < game.variants.length; i++) found = coverUrl(game.variants[i], region);
+            return found;
         }
 
         function ownedKeys() {
             const owned = new Map();
             for (const entry of collection) {
-                const key = priceKey(entry.title);
+                const key = libraryKeyOf(entry.title);
                 owned.set(key, (owned.get(key) || 0) + entry.qty);
             }
             return owned;
         }
 
         function libraryTileHtml(game, i, owned) {
-            const cover = coversShown ? coverUrl(game.title, libraryRegion) : '';
+            const cover = coversShown ? libraryCover(game, libraryRegion) : '';
             const have = owned.get(game.key) || 0;
             const label = `${game.title}${have ? ` (you own ${have})` : ''}: add to My collection`;
             return `<li class="lib-tile${have ? ' is-owned' : ''}" id="libTile${i}"><button type="button" class="coll-cover lib-cover" onclick="libraryPick(${i})" title="${esc(label)}" aria-label="${esc(label)}">
@@ -2961,9 +3000,9 @@
             const needle = plainText(libraryView.filter).trim();
             const compact = needle.replace(/ /g, '');
             let shown = all.filter(game => (!needle || game.plains.some(plain => plain.includes(needle)) || game.compacts.some(c => c.includes(compact)))
-                && (!libraryView.genre || genreOf(game.key) === libraryView.genre)
-                && (!libraryView.coversOnly || coverUrl(game.title, libraryRegion)));
-            const groupOf = libraryView.sort === 'genre' ? (game) => genreOf(game.key) : (game) => game.letter;
+                && (!libraryView.genre || libraryGenre(game) === libraryView.genre)
+                && (!libraryView.coversOnly || libraryCover(game, libraryRegion)));
+            const groupOf = libraryView.sort === 'genre' ? libraryGenre : (game) => game.letter;
             const groups = new Map();
             for (const game of shown) {
                 const name = groupOf(game);
@@ -3017,13 +3056,24 @@
             libraryPicked = { game, i };
             document.getElementById('libraryAddName').textContent = game.title;
             document.getElementById('libraryAddRegion').value = libraryRegion;
-            const cover = coversShown ? coverUrl(game.title, libraryRegion) : '';
-            document.getElementById('libraryAddCover').innerHTML = cover
-                ? `<img src="${esc(cover)}" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : `<span class="coll-initials">${esc(initialsOf(game.title))}</span>`;
+            paintLibraryAddCover();
             const have = ownedKeys().get(game.key) || 0;
             document.getElementById('libraryAddMessage').textContent = have ? `You already own ${have} cop${have === 1 ? 'y' : 'ies'}. Adding another raises the count.` : '';
             document.getElementById('libraryAddOpen').href = `#game=${encodeURIComponent(game.title)}`;
             document.getElementById('libraryAdd').classList.remove('hidden');
+        }
+        // The PAL / US choice in the bar also flips the picture shown there, and the next ones drawn in the grid.
+        function paintLibraryAddCover() {
+            if (!libraryPicked) return;
+            const game = libraryPicked.game;
+            const region = document.getElementById('libraryAddRegion').value === 'US' ? 'US' : 'PAL';
+            const cover = coversShown ? libraryCover(game, region) : '';
+            document.getElementById('libraryAddCover').innerHTML = cover
+                ? `<img src="${esc(cover)}" alt="" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : `<span class="coll-initials">${esc(initialsOf(game.title))}</span>`;
+        }
+        function libraryRegionChanged() {
+            libraryRegion = document.getElementById('libraryAddRegion').value === 'US' ? 'US' : 'PAL';
+            paintLibraryAddCover();
         }
         function libraryClosePicked() {
             libraryPicked = null;
@@ -3041,7 +3091,7 @@
             const condition = document.getElementById('libraryAddCondition').value;
             libraryRegion = region === 'US' ? 'US' : 'PAL';
             const message = document.getElementById('libraryAddMessage');
-            if (!addToCollection(game.title, region, condition)) {
+            if (!addToCollection(libraryTitleFor(game, region), region, condition)) {
                 message.textContent = 'It could not be added: the collection is full or the browser would not take it.';
                 return false;
             }
@@ -3067,6 +3117,7 @@
         const COVER_BASE = 'https://thumbnails.libretro.com/Sony%20-%20PlayStation%202/Named_Boxarts/';
         const COVER_SOURCE = 'the Libretro thumbnail collection';
         let coverIndex = null;                   // priceKey -> [title, US suffix, PAL suffix]
+        let coverSame = {};                      // priceKey of a spelling -> priceKey of the spelling the Library shows for that game
         let coverLocal = {};                     // priceKey -> a small picture kept with this site (covers/), which beats the collection's file
         let coverIndexState = 'idle';            // idle, loading, ready, failed
         let coversShown = true;
@@ -3095,6 +3146,8 @@
                 if (data && typeof data.covers === 'object' && data.covers && !Array.isArray(data.covers)) {
                     coverIndex = data.covers;
                     coverLocal = data.local && typeof data.local === 'object' && !Array.isArray(data.local) ? data.local : {};
+                    coverSame = data.same && typeof data.same === 'object' && !Array.isArray(data.same) ? data.same : {};
+                    librarySorted = null;
                     coverIndexState = 'ready';
                 } else coverIndexState = 'failed';
             } catch {
