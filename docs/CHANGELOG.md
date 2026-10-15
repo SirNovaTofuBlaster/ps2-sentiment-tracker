@@ -4,6 +4,10 @@
 
 - 195 US and UK figures (121 US, 74 UK, normal and staple games) looked overdue on the page, 32 hours old against an 8-hour limit. None was late: all 195 are games on the 48-hour *steady* clock, which `due_lookups()` leaves alone. The page could not tell, because `steady: true` was written only when a figure was looked up, and these were written before the rule began (2026-10-14) and not looked up since. `update_records()` now brings the mark up to date on every run for a figure it did not look up this run (adds it when the game is steady on that site, drops it when it no longer is). Checked against the live files: every overdue-looking figure is a steady one. The hourly job's 500-search cap was not the cause (the lookups left over each run are the daily euro sites, after US and UK).
 
+## 2026-10-15: one game, two names, one set of prices
+
+- King's Field IV (the European name) showed no US price on the shelf: in the US the game is King's Field: The Ancient City, which has its own entry and its own US figure ($119.99, 15 copies on eBay US), while the European name's US search finds none. `ebay_watchlist.json` has a new `same_game` list (names of one game the library files apart), and `setPrices()` lets a name take another's figure for any site where its own has none, so both names read the same. Nothing is searched differently and each name keeps its own row and history. Listed: King's Field (three names), Project Zero / Fatal Frame (1, 2 and 3), Kaido Racer / Tokyo Xtreme Racer: Drift (1 and 2), Mr. Moskeeto / Mister Mosquito, Persona 4 / Shin Megami Tensei: Persona 4. Names in the list are never labelled region-only. Add a group when a game shows a price under one name and none under the other.
+
 ## 2026-10-15: shelf prices line up
 
 - On the Tracker's shelf a one-line game name left its price rows higher than a neighbour's two-line name. The name now always reserves two lines (`min-height: 2.4em` on `.shelf-name`), so the US, UK and EU rows start at the same height in every box, on a desktop and a phone (checked in headless Chromium: every row at the same top).
