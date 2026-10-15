@@ -870,7 +870,7 @@ await check('eBay prices: money and ages read naturally', () => {
     assert.equal(evalJson("staleFor({}, 8)"), 8);
     assert.equal(evalJson("staleFor(null, 8)"), 8);
     assert.deepEqual(evalJson('Object.fromEntries(Object.entries(LEVELS).map(([name, level]) => [name, level.stale]))'),
-        { surging: 3, staple: 8, normal: 8, dormant: 30, rare: 30 }, 'the rarest games are checked daily, like quiet ones');
+        { surging: 3, staple: 8, normal: 8, dormant: 30, underrated: 30, rare: 30 }, 'the rarest games are checked daily, like quiet ones');
     assert.deepEqual(age('not a time'), { text: '', stale: true });
     assert.deepEqual(age('2026-10-06T13:00Z'), { text: '1 min ago', stale: false }, 'a clock that is slightly off does not show a negative age');
 });
