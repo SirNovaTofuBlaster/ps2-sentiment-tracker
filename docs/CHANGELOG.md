@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: steady figures are marked on every run
+
+- 195 US and UK figures (121 US, 74 UK, normal and staple games) looked overdue on the page, 32 hours old against an 8-hour limit. None was late: all 195 are games on the 48-hour *steady* clock, which `due_lookups()` leaves alone. The page could not tell, because `steady: true` was written only when a figure was looked up, and these were written before the rule began (2026-10-14) and not looked up since. `update_records()` now brings the mark up to date on every run for a figure it did not look up this run (adds it when the game is steady on that site, drops it when it no longer is). Checked against the live files: every overdue-looking figure is a steady one. The hourly job's 500-search cap was not the cause (the lookups left over each run are the daily euro sites, after US and UK).
+
 ## 2026-10-15: no grey prices beside names
 
 - A price beside a game's name in the lists was dimmed to half strength when its check was overdue (over 8 hours for a staple), which read as a broken or different price next to a full-strength euro figure. Those figures now keep their colour; their hover line says `Last checked 9h ago: later than usual.` The detail on a game's own page and the eBay prices page still dims an overdue figure and prints its age beside it. The overdue figures came from the hourly job's 500-search cap: when more than 500 lookups are due, the rest wait for the next run.
