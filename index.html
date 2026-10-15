@@ -1850,7 +1850,8 @@
                 const age = priceAge(site.checked, now, staleFor(site, LEVELS[row.level].stale, label));
                 const hint = currency === 'EUR' ? `Lowest median asking price across the euro eBay sites: eBay ${label}. Open the game's page for every site.`
                     : `Median asking price on eBay ${label}. Open the game's page for the detail.`;
-                return `<span class="ebay-quote${age.stale ? ' is-stale' : ''}" title="${esc(hint)}"><span class="ebay-flag">${esc(currency === 'EUR' ? 'from ' + label : label)}</span><b>${esc(money(site.median, currency, locale))}</b></span>`;
+                const note = age.stale && age.text ? ` Last checked ${age.text}: later than usual.` : '';
+                return `<span class="ebay-quote${age.stale ? ' is-stale' : ''}" title="${esc(hint + note)}"><span class="ebay-flag">${esc(currency === 'EUR' ? 'from ' + label : label)}</span><b>${esc(money(site.median, currency, locale))}</b></span>`;
             });
             return `<span class="ebay-quotes">${figures.join('')}</span>`;
         }
