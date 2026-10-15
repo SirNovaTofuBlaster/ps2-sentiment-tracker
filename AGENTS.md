@@ -306,7 +306,11 @@ Before you call something done, prove it; don't assume it.
     listing that uses the word.
   - Nobody has been able to test `ebay_prices.py` against the real API from a development
     machine: the request format follows eBay's documentation. When a run looks wrong, start
-    it with the search check ticked and read the counts it prints.
+    it with the search check ticked and read the counts it prints. When one game shows no copies where a
+    person can see some (Kuon on eBay UK, 2026-10-15), start *eBay asking prices* by hand with the game's
+    title in **check_game** (`EBAY_CHECK_GAME`): it counts what eBay reports for the UK and US with the
+    condition, the country, the format and the category relaxed one at a time, and attaches the counts to the
+    run as a notice (`check-runs/<job id>/annotations`). Counts only; it looks up and writes nothing.
   - The Rarest page's games (`rare_games.json`) are priced once a day on their own list's site
     only. A game the feed already tracks is reused when it is searched there under the entry's
     words or its name; otherwise the entry is looked up on its own (King's Field IV is, because

@@ -51,6 +51,9 @@ job that holds the key installs nothing.
     python ebay_prices.py --plan              # what would be checked now; needs no key
     python ebay_prices.py --out some/file.json
 
+Set EBAY_CHECK_GAME="Kuon" (the workflow's "check_game" box) to see how many listings eBay reports for that game
+when one part of the search is relaxed at a time (counts only; nothing is looked up or written).
+
 Set EBAY_DIAGNOSE=true to also print how many listings eBay reports for a few
 variations of the search (counts only), which shows whether the filters work.
 """
@@ -1046,7 +1049,7 @@ def get_token(http_client, client_id, client_secret):
     return token, basic
 
 
-def search_url(market_id, query, by_aspect=True, condition="ids", console=None):
+def search_url(market_id, query, by_aspect=True, condition="ids", console=None, relax=()):
     """The search request for one game on one site, encoded the way eBay's examples are. For a
     console (`console` is its category, or "" for every category): any condition but for parts,
     from sellers anywhere (most rare consoles are sold from Japan), and the words as given."""
@@ -1057,14 +1060,19 @@ def search_url(market_id, query, by_aspect=True, condition="ids", console=None):
         if console:
             params["category_ids"] = console
         return SEARCH_URL + "?" + urlencode(params, quote_via=quote)
-    filters = [CONDITION_FILTERS[condition], "buyingOptions:{FIXED_PRICE}",
-               f"itemLocationCountry:{market['country']}"]
+    # `relax` is for the search check only: "format" also asks for auctions, "anywhere" for listings in
+    # any country, "category" for every category. Lookups never use it.
+    filters = [CONDITION_FILTERS[condition], "" if "format" in relax else "buyingOptions:{FIXED_PRICE}",
+               "" if "anywhere" in relax else f"itemLocationCountry:{market['country']}"]
     params = {
         "q": query if by_aspect else f"{query} ps2",
-        "category_ids": CATEGORY_ID,
         "filter": ",".join(part for part in filters if part),
         "limit": str(PAGE_LIMIT),
     }
+    if "category" not in relax:
+        params["category_ids"] = CATEGORY_ID
+    if not params["filter"]:
+        del params["filter"]
     if by_aspect:
         params["aspect_filter"] = f"categoryId:{CATEGORY_ID},Platform:{{{PLATFORM_ASPECT}}}"
     return SEARCH_URL + "?" + urlencode(params, quote_via=quote)   # spaces as %20, never "+"
@@ -1075,7 +1083,7 @@ def buyer_location(market):
     return f"country={market['country']}" + (f",zip={market['zip']}" if market.get("zip") else "")
 
 
-def search(http_client, token, market_id, query, counter, by_aspect=True, condition="ids", console=None):
+def search(http_client, token, market_id, query, counter, by_aspect=True, condition="ids", console=None, relax=()):
     """One search, tried up to three times. Returns (HTTP status or 0 for no answer, JSON)."""
     market = MARKETS[market_id]
     headers = {
@@ -1083,7 +1091,7 @@ def search(http_client, token, market_id, query, counter, by_aspect=True, condit
         "X-EBAY-C-MARKETPLACE-ID": market_id,
         "X-EBAY-C-ENDUSERCTX": "contextualLocation=" + quote(buyer_location(market), safe=""),
     }
-    url = search_url(market_id, query, by_aspect, condition, console)
+    url = search_url(market_id, query, by_aspect, condition, console, relax)
     status, payload = 0, {}
     for pause in (0,) + RETRY_PAUSES:
         if pause:
@@ -1434,6 +1442,38 @@ def diagnose(http_client, token, game, counter, secrets):
             say(redact(f"  [{market['label']}] {label}: {answer}"
                        + (f" (eBay warning: {warning})" if warning else ""), secrets))
             time.sleep(REQUEST_PAUSE)
+
+
+GAME_CHECK_VARIANTS = (
+    # (what is asked, platform by item specific, condition, what is relaxed)
+    ("the search this script uses", True, "ids", ()),
+    ("platform by keyword", False, "ids", ()),
+    ("any condition (new and sealed included)", True, "any", ()),
+    ("listed in any country", True, "ids", ("anywhere",)),
+    ("auctions as well as Buy It Now", True, "ids", ("format",)),
+    ("any category", False, "ids", ("category",)),
+    ("everything relaxed at once", False, "any", ("anywhere", "format", "category")),
+)
+
+
+def check_game(http_client, token, game, secrets, markets=("EBAY_GB", "EBAY_US")):
+    """How many listings eBay reports for one game when one part of the search is relaxed, for finding out why a
+    game shows no copies where a person can see some. Counts only (no price, title or seller), as lines for a notice."""
+    counter, lines = {"searches": 0}, []
+    for market_id in markets:
+        market = MARKETS[market_id]
+        for label, by_aspect, condition, relax in GAME_CHECK_VARIANTS:
+            try:
+                status, payload = search(http_client, token, market_id, for_market(game, market_id)["queries"][0], counter,
+                                         by_aspect=by_aspect, condition=condition, relax=relax)
+            except LimitReached as exc:
+                lines.append(redact(f"[{market['label']}] {label}: {exc}", secrets))
+                return lines
+            total = payload.get("total")
+            answer = f"{total}" if status == 200 and isinstance(total, int) else error_text(status, payload)
+            lines.append(redact(f"[{market['label']}] {label}: {answer}", secrets))
+            time.sleep(REQUEST_PAUSE)
+    return lines
 
 
 def check_all(http_client, client_id, client_secret, lookups, allowance, known_good=True,
@@ -2150,6 +2190,7 @@ def main(argv=None):
         return 0
     now = utc_now()
     latest_path = PRICES_DIR / LATEST_NAME
+    wanted = os.environ.get("EBAY_CHECK_GAME", "").strip()
     try:
         history_path = PRICES_DIR / f"{now.strftime('%Y-%m')}.json"
         pinned, never = load_watchlist()
@@ -2170,6 +2211,24 @@ def main(argv=None):
         consoles, console_problems = load_consoles()
         consoles_priced = add_consoles(games, consoles)
         rare_problems = rare_problems + console_problems + [f"editions.json: {problem}" for problem in edition_problems]
+        if wanted:
+            # Started by hand to see why one game shows no copies somewhere: counts for the search with one
+            # part relaxed at a time. Nothing is looked up for the dashboard and nothing is written.
+            game = next((g for g in games if str(g.get("title", "")).lower() == wanted.lower() and g.get("kind") != "console"), None)
+            if game is None:
+                say(f'STOPPED: "{wanted}" is not a game this script tracks.')
+                return 1
+            if not client_id or not client_secret:
+                say("STOPPED: the eBay key is not set.")
+                return 1
+            token, basic = get_token(Http(), client_id, client_secret)
+            lines = check_game(Http(), token, game, (client_id, client_secret, token, basic))
+            say(f'Search check for "{game["title"]}" (listings eBay reports):')
+            for line in lines:
+                say("  " + line)
+            if os.environ.get("GITHUB_ACTIONS") == "true":
+                print(annotation(f"Search check: {game['title']}", lines), flush=True)
+            return 0
         lookups = due_lookups(games, state, now, earlier + history)
         used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
         used_today = used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0
