@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 15:37:40 UTC",
+  "last_updated": "2026-10-15 15:48:43 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -105,6 +105,25 @@
       "timestamp": "2026-10-15 15:22 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Okami",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749740983",
+      "matched_game": "Okami",
+      "matched_games": [
+        "Okami"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 15:22 UTC"
+    },
+    {
       "headline": "Hitman: Absolution – Nintendo Switch 2 Edition launches October 22",
       "source": "Gematsu",
       "source_type": "news",
@@ -122,14 +141,15 @@
       "timestamp": "2026-10-15 15:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Monster Hunter and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749740637",
       "matched_game": "Monster Hunter",
       "matched_games": [
-        "Monster Hunter"
+        "Monster Hunter",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -8796,14 +8816,15 @@
       "views": 158
     },
     {
-      "headline": "Thread on /vg/ naming The Sims",
+      "headline": "Thread on /vg/ naming The Sims and The Sims 2",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584530238",
       "matched_game": "The Sims",
       "matched_games": [
-        "The Sims"
+        "The Sims",
+        "The Sims 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -15429,15 +15450,15 @@
       "timestamp": "2026-10-14 23:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Resident Evil 4 and Silent Hill 4: The Room",
+      "headline": "Thread on /v/ naming Resident Evil 4, Resident Evil Code: Veronica X and Silent Hill 4: The Room",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749703046",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil Code: Veronica X",
         "Resident Evil 4",
+        "Resident Evil Code: Veronica X",
         "Silent Hill 4: The Room"
       ],
       "match_score": 100,
@@ -241087,148 +241108,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-01 15:52 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Great news, cowards: The Witcher 3's most yellow-bellied mod works with the remaster",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/the-witcher/great-news-cowards-the-witcher-3s-most-yellow-bellied-mod-is-ready-for-the-remaster/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": true,
-      "sentiment": 60,
-      "timestamp": "2026-10-01 15:46 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "ININ 'Relaunches' R-Type Dimensions 3 With A Free Digital Artbook",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/inin-relaunches-r-type-dimensions-3-with-a-free-digital-artbook",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 15:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sony actualiza PS5 Slim con una nueva revisión que facilita las reparaciones y cambia la refrigeración",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026274030/sony-actualiza-ps5-slim-con-una-nueva-revision-que-facilita-las-reparaciones-y-cambia-la-refrigeracion/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 15:44 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Best Gladiator build in Aion 2",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/best-gladiator-build-in-aion-2/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "timestamp": "2026-10-01 15:41 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sony lançou uma nova versão da PS5 Slim sem dizer a ninguém",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/sony-lancou-uma-nova-versao-da-ps5-slim-sem-dizer-a-ninguem",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 15:40 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Looking for games where I can listen to music while playing (and focus on the music)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wv2qb2/looking_for_games_where_i_can_listen_to_music/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 15:39 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "GTA 6 Doesn’t Compromise Scale For Detail, Rockstar Says",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/gta-6-doesnt-compromise-scale-for-detail-rockstar-says/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 15:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo Switch gets new excavation game played by using guitar controller as a shovel",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-switch-gets-new-excavation-game-played-by-using-guitar-controller-as-a-shovel/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 15:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "I was forced by Nintendo to play this game again, I swear 😂😍",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wv2q11/i_was_forced_by_nintendo_to_play_this_game_again/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 15:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Gears Of War: E-Day Quick Review",
-      "source": "YouTube: GameSpot",
-      "source_type": "youtube",
-      "feed": "youtube:UCbu2SsF-Or3Rsn3NxqODImw",
-      "link": "https://www.youtube.com/shorts/Bn4cMZamNA4",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 15:38 UTC",
       "is_digital_only": false
     }
   ]
