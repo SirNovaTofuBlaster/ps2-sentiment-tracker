@@ -1919,6 +1919,27 @@ class RareListTests(unittest.TestCase):
         self.assertEqual(listed["counted"], 2, "the listings themselves go to the latest-run file only")
         self.assertNotIn("Sealed", json.dumps(self.sandbox.latest))
 
+    def test_with_no_used_copy_at_home_a_rare_game_gets_a_figure_from_abroad_kept_apart(self):
+        self.lists(pal=[{"rank": 1, "title": "Kuon"}], us=[])
+        def answer(params, headers):
+            if "1000|1500|1750" in params.get("filter", ""):
+                return page()
+            if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" and params["q"].startswith("kuon"):
+                if "itemLocationCountry" in params.get("filter", ""):
+                    return page()      # none located in the UK
+                return page(listing("Kuon PS2 PAL", 400.0, currency="GBP", item_id=11),
+                            listing("Kuon PS2 PAL boxed", 500.0, currency="GBP", item_id=12),
+                            listing("Kuon PS2 NTSC USA", 300.0, currency="GBP", item_id=13))
+            return two_copies(params, headers)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        uk = self.sandbox.latest["games"]["Kuon"]["UK"]
+        self.assertEqual((uk["copies"], uk["median"]), (0, None), "the UK figure itself stays empty")
+        self.assertEqual(uk["abroad"], {"copies": 2, "lowest": 400.0, "median": 450.0}, "the American disc is still left out")
+        self.assertIn("2 from abroad", printed)
+        self.assertFalse([row for row in self.sandbox.history() if row[1] == "Kuon" and row[2] == "UK" and row[3]],
+                         "nothing from abroad reaches the history")
+
     def test_a_game_that_is_not_on_the_rarest_lists_gets_no_second_look(self):
         self.lists(pal=[{"rank": 1, "title": "Kuon"}])
         code, printed, fake = self.sandbox.run()

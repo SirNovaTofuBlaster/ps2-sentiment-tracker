@@ -1711,6 +1711,15 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
         /none listed<\/span> · <span class="ebay-new" title="3 new or sealed copies are listed[^"]*">new from £800 \(3\)<\/span> <span class="ebay-age"/);
     assert.match(siteLine({ copies: 5, new: { copies: 1, lowest: 700, median: 700 } }),
         /5 copies · <span class="ebay-new" title="1 new or sealed copy is listed[^"]*">new from £700 \(1\)<\/span>/);
+    // Used copies listed from abroad: a number of their own when none is listed at home, never beside a real median.
+    const abroadLine = siteLine({ copies: 0, median: null, lowest: null, abroad: { copies: 27, lowest: 300, median: 450 },
+        new: { copies: 3, lowest: 800, median: 875 } });
+    assert.match(abroadLine, /<b class="ebay-median ebay-abroad">£450<\/b><span class="ebay-rest">median from abroad · 27 copies listed in other countries, none in this one · <span class="ebay-new"/);
+    assert.doesNotMatch(abroadLine, /none listed/);
+    assert.doesNotMatch(siteLine({ copies: 5, abroad: { copies: 27, lowest: 300, median: 450 } }), /abroad/, 'a site with copies at home shows its own median');
+    for (const bad of [undefined, null, 'x', {}, { copies: 0, median: 5 }, { copies: 2, median: '5' }, { copies: 2 }, { copies: 1.5, median: 5 }, { copies: 2, median: Infinity }]) {
+        assert.doesNotMatch(siteLine({ copies: 0, median: null, abroad: bad }), /ebay-abroad/, JSON.stringify(bad));
+    }
     for (const bad of [undefined, null, 'x', {}, { copies: 0, lowest: 5 }, { copies: 2, lowest: '5' }, { copies: 2 }, { copies: 1.5, lowest: 5 }, { copies: 2, lowest: Infinity }]) {
         assert.doesNotMatch(siteLine({ copies: 5, new: bad }), /ebay-new/, JSON.stringify(bad));
     }

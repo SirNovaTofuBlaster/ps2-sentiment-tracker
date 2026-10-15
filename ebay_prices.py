@@ -1448,7 +1448,7 @@ def human_search_url(game, market):
             f"&_sacat={CATEGORY_ID}&LH_ItemCondition={quote(USED_CONDITION_IDS)}&LH_BIN=1&LH_PrefLoc=1")
 
 
-def fetch(http_client, token, game, market_id, counter, by_aspect, console=None, condition="ids"):
+def fetch(http_client, token, game, market_id, counter, by_aspect, console=None, condition="ids", relax=()):
     """Run the game's searches on one site and merge them, each listing once.
     Returns (status, payload): the first failure as it came, or 200 and the merged listings."""
     merged, total, truncated, warning = {}, 0, False, ""
@@ -1456,7 +1456,7 @@ def fetch(http_client, token, game, market_id, counter, by_aspect, console=None,
         if position:
             time.sleep(REQUEST_PAUSE)
         status, payload = search(http_client, token, market_id, query, counter, by_aspect=by_aspect, condition=condition,
-                                 console=console)
+                                 console=console, relax=relax)
         if status != 200:
             return status, payload
         items = [item for item in payload.get("itemSummaries") or [] if isinstance(item, dict)]
@@ -1497,7 +1497,26 @@ def check_market(http_client, token, game, market_id, counter):
     result = {**base, **summarise(payload, game, market, keyword_search)}
     if game.get("new_tier") and market_id in game["new_tier"]:
         result["new"] = check_new_copies(http_client, token, game, market_id, counter, keyword_search)
+        if not result.get("counted"):
+            # No used copy is listed in the site's own country: a Rarest game's copies are often sold from abroad.
+            result["abroad"] = check_abroad_copies(http_client, token, game, market_id, counter, keyword_search)
     return result
+
+
+def check_abroad_copies(http_client, token, game, market_id, counter, keyword_search):
+    """The Rarest page's third look, only when the used search found nothing: used copies listed from other
+    countries on this site (any seller location), under the same name checks and the site's own `foreign` words
+    (an American disc on eBay UK is still left out). Counted apart, never mixed into the used figures, the
+    history or the index. {"counted", "lowest", "median"}, or {"counted": 0}."""
+    market = MARKETS[market_id]
+    time.sleep(REQUEST_PAUSE)
+    status, payload = fetch(http_client, token, game, market_id, counter, not keyword_search, relax=("anywhere",))
+    if status != 200:
+        return {"counted": 0}
+    summary = summarise(payload, game, market, keyword_search)
+    if not summary.get("counted"):
+        return {"counted": 0}
+    return {"counted": summary["counted"], "lowest": summary["lowest"], "median": summary["median"]}
 
 
 def check_new_copies(http_client, token, game, market_id, counter, keyword_search):
@@ -1537,6 +1556,8 @@ def describe(game, market, result):
                 f"it needs its own search words{tail}")
     if isinstance(result.get("new"), dict):
         tail += f"; {result['new']['counted']} new or sealed"
+    if isinstance(result.get("abroad"), dict):
+        tail += f"; {result['abroad']['counted']} from abroad"
     if result["status"] == "none":
         return f"{label}: no copies counted, {result['fetched']} returned{tail}"
     return f"{label}: {result['counted']} of {result['fetched']} listings counted{tail}"
@@ -1728,6 +1749,9 @@ def numbers_of(result, stamp):
     new = result.get("new")
     if isinstance(new, dict) and new.get("counted"):
         entry["new"] = {"copies": new["counted"], "lowest": new["lowest"], "median": new["median"]}
+    abroad = result.get("abroad")
+    if isinstance(abroad, dict) and abroad.get("counted"):
+        entry["abroad"] = {"copies": abroad["counted"], "lowest": abroad["lowest"], "median": abroad["median"]}
     # Only when at least CONFIRMED_MIN copies say they are complete, and not all of them do anyway.
     if result.get("confirmed_median") is not None and CONFIRMED_MIN <= result.get("confirmed_counted", 0) < result["counted"]:
         entry["complete"] = {"copies": result["confirmed_counted"], "median": result["confirmed_median"]}
@@ -1784,7 +1808,7 @@ def update_records(state, games, run, now, rare_titles=None, edition_titles=None
     used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
     used_today = used.get("used", 0) if used.get("day") == today else 0
     latest = {
-        "what": ("Asking prices of used Buy It Now copies of PS2 games on eBay, by site (the Rarest games also count new and sealed copies apart, as `new`). Numbers only: "
+        "what": ("Asking prices of used Buy It Now copies of PS2 games on eBay, by site (the Rarest games also count new and sealed copies apart, as `new`, and used copies listed from abroad when none is listed at home, as `abroad`). Numbers only: "
                  "copies listed, lowest and median price before postage, typical postage. Not sold prices."),
         "currencies": {market["label"]: market["currency"] for market in MARKETS.values()},
         "searches": {"day": today, "used": used_today + run["searches"]},

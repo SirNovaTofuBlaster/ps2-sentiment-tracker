@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: Rarest games with no copy at home show a median from abroad
+
+- Kuon on eBay UK had no used copy located in the UK (3 new ones, 27 used ones from other countries on 2026-10-15), so its UK figure read "none listed". When a Rarest game has none at home, `ebay_prices.py` now makes one more search without the seller-location filter and keeps the median and lowest of the used copies it names (`abroad`), shown as "median from abroad · n copies listed in other countries". American discs on eBay UK are still left out. It never touches the UK median, the history or the index, and it costs one search per Rarest game with an empty site per check.
+
 ## 2026-10-15: gems are priced, Rarest every 12 hours, mentions bring a recheck forward
 
 - The Underrated page's games that the feed does not track (59 of 100 on 2026-10-15; 9 more are left out: Mega Man X8 and Bujingai are not in the library, and Oni, Obscure, Summoner, Extermination, Primal, Fahrenheit and The Thing are ordinary words) are priced once a day on eBay US and UK as level `underrated`, so a gem has a figure the day it is shown. The Rarest page's games are checked every 12 hours instead of 24 (consoles and editions stay daily). A game on either page that the feed names after its last check is looked up again within the hour on the US and UK. Estimated from the plan (186 lookups due on the first run): about 4,700 of the 4,900 searches a day; the first day's `searches` figure in `latest.json` is the measurement.
