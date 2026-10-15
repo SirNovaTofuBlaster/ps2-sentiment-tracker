@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 18:29:39 UTC",
+  "last_updated": "2026-10-15 18:40:42 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -54,6 +54,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 18:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749750364",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 18:05 UTC"
     },
     {
       "headline": "What time are the Fortnitemares power hours in Fortnite Chapter 7 Season 4?",
@@ -17289,6 +17308,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 01:59 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Silent Hill 2",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12878563",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -243518,100 +243556,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 18:42 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sony's Ai-Upscaling Tech Is No Longer Ps5 Pro Exclusive",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/ps5-ai-upscaling-qssr-sony/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 18:39 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "DON'T STARE",
-      "source": "YouTube: Markiplier",
-      "source_type": "youtube",
-      "feed": "youtube:UC7_YxT-KID8kRbqZo7MyscQ",
-      "link": "https://www.youtube.com/watch?v=izmpB-q48Fo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 18:39 UTC",
-      "views": 2019869
-    },
-    {
-      "headline": "PS1 💙 Have you played The Italian Job? 😁",
-      "source": "YouTube: Retrogamingtommy",
-      "source_type": "youtube",
-      "feed": "youtube:UCrapa0hAEAIfdZxtjODd0Lw",
-      "link": "https://www.youtube.com/shorts/BBo7j-Om2dw",
-      "matched_game": "The Italian Job",
-      "matched_games": [
-        "The Italian Job"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 18:35 UTC",
-      "views": 50021
-    },
-    {
-      "headline": "Sony Confirms Refined Version of Acclaimed PSSR Upscaler for Base PS5, with 'Remarkable' Potential",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/sony-confirms-refined-version-of-acclaimed-pssr-upscaler-for-base-ps5-with-remarkable-potential",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 18:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Cat in the Hat - Official 'CATastrophe' Trailer (2026) Bill Hader, Xochitl Gomez, Matt Berry",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=9F77TcVPX68",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 18:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "GTA 6’s Weather System Sounds Like A Big Step Up",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/gta-6s-weather-system-sounds-like-a-big-step-up/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 18:30 UTC",
       "is_digital_only": false
     }
   ]
