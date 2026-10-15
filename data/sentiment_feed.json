@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 18:53:38 UTC",
+  "last_updated": "2026-10-15 18:56:13 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -120,6 +120,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 18:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749752667",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 18:43 UTC"
     },
     {
       "headline": "Can someone please help me fix this black screen?",
@@ -271,6 +290,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 18:31 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Iron Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749751883",
+      "matched_game": "Iron Man",
+      "matched_games": [
+        "Iron Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 18:31 UTC"
     },
@@ -3044,7 +3082,7 @@
       "timestamp": "2026-10-15 16:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3 and Persona 3",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3, Persona 3 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -3053,7 +3091,8 @@
       "matched_games": [
         "Kingdom Hearts",
         "Dynasty Warriors 3",
-        "Persona 3"
+        "Persona 3",
+        "Dora the Explorer"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -4953,16 +4992,18 @@
       "timestamp": "2026-10-15 15:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Splinter Cell, Resident Evil 4 and Sonic Unleashed",
+      "headline": "Thread on /v/ naming The Sopranos, Resident Evil 4, Sonic Unleashed and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749741741",
-      "matched_game": "Splinter Cell",
+      "matched_game": "The Sopranos",
       "matched_games": [
-        "Splinter Cell",
+        "The Sopranos",
         "Resident Evil 4",
-        "Sonic Unleashed"
+        "Sonic Unleashed",
+        "Splinter Cell",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -244474,23 +244515,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-01 19:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "GTA 6 confirma clasificación M para adultos y despeja dudas sobre sus compras internas",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/grand-theft-auto-vi/114852/gta-6-confirma-clasificacion-m-para-adultos-y-despeja-dudas-sobre-sus-compras-internas",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 18:55 UTC",
       "is_digital_only": false
     }
   ]
