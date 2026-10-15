@@ -111,6 +111,7 @@
           <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
           <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
           <button type="button" id="tabLibrary" role="tab" aria-selected="false" aria-controls="viewLibrary" onclick="showView('library')" class="view-tab"><i class="fa-solid fa-table-cells" aria-hidden="true"></i> Library</button>
+          <button type="button" id="tabGacha" role="tab" aria-selected="false" aria-controls="viewGacha" onclick="showView('gacha')" class="view-tab"><i class="fa-solid fa-dice" aria-hidden="true"></i> Gacha</button>
         </div>
 
         <!-- The EUR button: shown only when data/fx.json could be read. -->
@@ -417,7 +418,42 @@
       </div>
     </div>
 
+    <!-- Gacha: four capsule machines (gacha.json). Free: three coins a day, kept in this browser. Prizes go to My collection > My gacha prizes. -->
+    <div id="viewGacha" role="tabpanel" aria-labelledby="tabGacha" class="hidden space-y-8">
+      <div id="gachaSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header"><h2>Gacha</h2></div>
+        <p id="gachaSummary" class="text-xs text-slate-400 mb-4"></p>
+        <div id="gachaMachines" class="gacha-machines" role="tablist" aria-label="Machines"></div>
+        <div class="gacha-stage">
+          <div id="gachaMachine" class="gacha-machine" aria-hidden="true"></div>
+          <div class="gacha-side">
+            <p id="gachaCoins" class="gacha-coins" role="status"></p>
+            <button type="button" id="gachaTurn" onclick="gachaTurn()" class="brand-btn brand-btn-primary gacha-turn"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> TURN THE HANDLE</button>
+            <div id="gachaOdds" class="gacha-odds"></div>
+          </div>
+        </div>
+        <div id="gachaResult" class="gacha-result" role="status" aria-live="polite"></div>
+        <h3 class="gacha-h3">What is in this machine</h3>
+        <ul id="gachaContents" class="gacha-contents"></ul>
+        <p id="gachaNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
+      </div>
+    </div>
+
     <div id="viewCollection" role="tabpanel" aria-labelledby="tabCollection" class="hidden space-y-8">
+      <div class="view-tabs coll-tabs" role="tablist" aria-label="My collection">
+        <button type="button" id="collTabGames" role="tab" aria-selected="true" aria-controls="collectionSection" onclick="showCollectionTab('games')" class="view-tab is-active">My games</button>
+        <button type="button" id="collTabPrizes" role="tab" aria-selected="false" aria-controls="prizesSection" onclick="showCollectionTab('prizes')" class="view-tab">My gacha prizes <span id="collTabPrizesCount" class="view-tab-count hidden"></span></button>
+      </div>
+      <div id="prizesSection" class="hidden bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header"><h2>My Gacha Prizes</h2></div>
+        <p id="prizesSummary" class="text-xs text-slate-400 mb-4"></p>
+        <ul id="prizesList" class="coll-grid mt-4"></ul>
+        <div class="flex flex-wrap gap-2 mt-6">
+          <button type="button" onclick="gachaGoTo()" class="brand-btn text-ps2neon"><i class="fa-solid fa-dice" aria-hidden="true"></i> Go to the machines</button>
+          <button type="button" id="prizesClear" onclick="clearPrizes()" class="brand-btn text-spindle-red">Clear prizes</button>
+        </div>
+        <p id="prizesNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
+      </div>
       <div id="collectionSection" class="bg-ps2card border border-ps2border rounded-md p-6">
         <div class="lb-section-header"><h2>My Collection</h2></div>
         <p id="collectionSummary" class="text-xs text-slate-400 mb-4"></p>
@@ -617,6 +653,7 @@
             mentions: ['viewMentions', 'tabMentions'],
             prices: ['viewPrices', 'tabPrices'],
             library: ['viewLibrary', 'tabLibrary'],
+            gacha: ['viewGacha', 'tabGacha'],
             collection: ['viewCollection', 'tabCollection'],
         };
 
@@ -657,11 +694,14 @@
             drawPending(view);
             currentView = view;
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
-            if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library') ensureCoverIndex();
+            if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'gacha') ensureCoverIndex();
             if (view === 'library') ensureGenres();
             if (view !== 'library') libraryClosePicked();
+            if (view === 'gacha') {
+                try { openGacha(); } catch (error) { console.warn('Could not show the gacha.', error); }
+            }
             if (view === 'collection') {
-                try { renderCollection(); } catch (error) { console.warn('Could not show the collection.', error); }
+                try { renderCollection(); renderPrizes(); } catch (error) { console.warn('Could not show the collection.', error); }
             }
             if (remember) {
                 // A new entry in the browser's history, so Back returns to the page you came from.
@@ -777,6 +817,7 @@
             loadLibrary();   // the search box's names; nothing waits for them
             loadCovers();
             loadCollection();   // what this browser has kept of the visitor's collection
+            loadGachaState();   // coins, what is left in each machine and the prizes won
             registerServiceWorker();
             loadWikiChecks();   // Wikipedia's "collectible" verdicts; the list is drawn again when they arrive
             // Prices first: every list below shows them beside its games.
@@ -2875,6 +2916,376 @@
             updateCollectionTab();
         }
 
+        /* ---- Gacha ----------------------------------------------------------------
+           Four capsule machines (gacha.json, made by hand: 20 capsules each, 5 common games x3, 1 uncommon
+           game x4, 1 super rare game x1). It is a game, not a shop: nothing is paid for and nothing is sent
+           anywhere. The visitor gets a few free coins a day; a turn takes one capsule at random from what is
+           left in the machine (so the odds are the counts on screen), and when the last one is out the
+           machine is filled again. Coins, what is left in each machine and the prizes won are kept in this
+           browser's localStorage only, and the prizes show under My collection > My gacha prizes.
+           Each game is shown with its eBay US median asking price from the same price file as the rest of the page.
+        -------------------------------------------------------------------- */
+        const GACHA_KEY = 'ps2-sentiment-tracker.gacha';
+        const GACHA_PRIZES_MAX = 500;
+        const GACHA_TIERS = {
+            super_rare: { label: 'Super rare', rank: 0 },
+            uncommon: { label: 'Uncommon', rank: 1 },
+            common: { label: 'Common', rank: 2 },
+        };
+        const GACHA_CAPSULES = ['#E5303A', '#F5C52E', '#2F9BE0', '#2DBFA6'];   // the logo's four colours; they say nothing about what is inside
+        let gachaData = null;          // { dailyCoins, machines: [{ id, name, tagline, prizes: [{ title, tier, qty }] }] }
+        let gachaFileState = 'idle';   // idle, loading, ready or failed
+        let gachaMachineId = '';
+        let gachaKept = true;          // false when the browser would not store it
+        let gachaSaved = { day: '', coins: 0, left: {}, prizes: [] };
+        let gachaShown = null;         // the capsule on screen: { title, tier, machine, restocked }
+        let gachaTurning = false;
+        let gachaMessage = '';
+        let collectionTab = 'games';
+
+        // The file, checked enough to be drawn: machines with at least one prize, every prize a title, a known tier and a count.
+        function cleanGachaData(raw) {
+            if (!raw || typeof raw !== 'object' || Array.isArray(raw) || !Array.isArray(raw.machines)) return null;
+            const daily = Math.min(10, Math.max(1, Math.floor(Number(raw.daily_coins)) || 3));
+            const machines = [];
+            for (const machine of raw.machines.slice(0, 8)) {
+                if (!machine || typeof machine !== 'object' || !/^[a-z][a-z_]{0,29}$/.test(String(machine.id ?? '')) || typeof machine.name !== 'string' || !machine.name.trim()) continue;
+                if (machines.some(other => other.id === machine.id)) continue;
+                const seen = new Set();
+                const prizes = [];
+                for (const prize of Array.isArray(machine.prizes) ? machine.prizes.slice(0, 30) : []) {
+                    const title = typeof prize?.title === 'string' ? prize.title.trim().slice(0, 200) : '';
+                    const qty = Math.floor(Number(prize?.qty));
+                    if (!title || seen.has(title) || !own(GACHA_TIERS, prize.tier) || !(qty >= 1 && qty <= 99)) continue;
+                    seen.add(title);
+                    prizes.push({ title, tier: prize.tier, qty });
+                }
+                if (prizes.length) machines.push({ id: machine.id, name: machine.name.trim().slice(0, 40), tagline: typeof machine.tagline === 'string' ? machine.tagline.slice(0, 200) : '', prizes });
+            }
+            return machines.length ? { dailyCoins: daily, machines } : null;
+        }
+
+        function cleanGachaSaved(raw) {
+            const source = raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
+            const left = {};
+            if (source.left && typeof source.left === 'object' && !Array.isArray(source.left)) {
+                for (const [id, counts] of Object.entries(source.left).slice(0, 8)) {
+                    if (!counts || typeof counts !== 'object' || Array.isArray(counts)) continue;
+                    left[id] = {};
+                    for (const [title, count] of Object.entries(counts).slice(0, 30)) {
+                        const n = Math.floor(Number(count));
+                        if (n >= 0 && n <= 99) left[id][title] = n;
+                    }
+                }
+            }
+            const prizes = [];
+            for (const prize of Array.isArray(source.prizes) ? source.prizes : []) {
+                const title = typeof prize?.title === 'string' ? prize.title.trim().slice(0, 200) : '';
+                if (!title || !own(GACHA_TIERS, prize.tier)) continue;
+                prizes.push({ title, tier: prize.tier, machine: String(prize.machine ?? '').slice(0, 30), at: Number.isFinite(Number(prize.at)) ? Number(prize.at) : 0 });
+            }
+            return {
+                day: /^\d{4}-\d{2}-\d{2}$/.test(String(source.day ?? '')) ? source.day : '',
+                coins: Math.min(10, Math.max(0, Math.floor(Number(source.coins)) || 0)),
+                left,
+                prizes: prizes.slice(-GACHA_PRIZES_MAX),
+            };
+        }
+
+        function loadGachaState() {
+            try {
+                gachaSaved = cleanGachaSaved(JSON.parse(localStorage.getItem(GACHA_KEY) || '{}'));
+            } catch {
+                gachaSaved = cleanGachaSaved({});
+            }
+            updatePrizesTab();
+        }
+
+        function saveGachaState() {
+            try {
+                localStorage.setItem(GACHA_KEY, JSON.stringify(gachaSaved));
+                gachaKept = true;
+            } catch {
+                gachaKept = false;   // private window or blocked storage: it lasts until the page closes
+            }
+            updatePrizesTab();
+        }
+
+        // Today's date in the visitor's own time zone: the coins come back at their midnight.
+        function gachaToday(now = new Date()) {
+            const two = (n) => String(n).padStart(2, '0');
+            return `${now.getFullYear()}-${two(now.getMonth() + 1)}-${two(now.getDate())}`;
+        }
+
+        function gachaCoinsNow(now = new Date()) {
+            const today = gachaToday(now);
+            if (gachaSaved.day !== today) {
+                gachaSaved.day = today;
+                gachaSaved.coins = gachaData ? gachaData.dailyCoins : 3;
+                saveGachaState();
+            }
+            return gachaSaved.coins;
+        }
+
+        const gachaMachineOf = (id) => gachaData?.machines.find(machine => machine.id === id) || null;
+        const gachaTotal = (counts) => Object.values(counts).reduce((sum, n) => sum + n, 0);
+
+        // What is in a machine now: the saved counts (never more than the file stocks), else a full machine.
+        function gachaStock(machine) {
+            const saved = gachaSaved.left[machine.id];
+            const stock = {};
+            for (const prize of machine.prizes) stock[prize.title] = saved && own(saved, prize.title) ? Math.min(prize.qty, saved[prize.title]) : prize.qty;
+            return gachaTotal(stock) > 0 && saved ? stock : Object.fromEntries(machine.prizes.map(prize => [prize.title, prize.qty]));
+        }
+
+        // One capsule, chosen evenly among those left; returns what came out, or null with no coin or no machine.
+        function gachaPull(machineId, rng = Math.random, now = new Date()) {
+            const machine = gachaMachineOf(machineId);
+            if (!machine || gachaCoinsNow(now) < 1) return null;
+            const stock = gachaStock(machine);
+            const total = gachaTotal(stock);
+            let pick = Math.min(total - 1, Math.max(0, Math.floor(rng() * total)));
+            let title = machine.prizes[0].title;
+            for (const prize of machine.prizes) {
+                if (pick < stock[prize.title]) { title = prize.title; break; }
+                pick -= stock[prize.title];
+            }
+            stock[title]--;
+            gachaSaved.coins--;
+            const restocked = gachaTotal(stock) === 0;
+            if (restocked) delete gachaSaved.left[machine.id]; else gachaSaved.left[machine.id] = stock;
+            const tier = machine.prizes.find(prize => prize.title === title).tier;
+            gachaSaved.prizes.push({ title, tier, machine: machine.id, at: now.getTime() });
+            gachaSaved.prizes = gachaSaved.prizes.slice(-GACHA_PRIZES_MAX);
+            saveGachaState();
+            return { title, tier, machine: machine.id, restocked };
+        }
+
+        async function ensureGacha() {
+            if (gachaFileState === 'ready' || gachaFileState === 'loading') return;
+            gachaFileState = 'loading';
+            try {
+                const response = await fetch('gacha.json');
+                gachaData = response.ok ? cleanGachaData(await response.json()) : null;
+            } catch {
+                gachaData = null;
+            }
+            gachaFileState = gachaData ? 'ready' : 'failed';
+            if (gachaData && !gachaMachineOf(gachaMachineId)) gachaMachineId = gachaData.machines[0].id;
+            redrawGacha();
+            try { renderPrizes(); } catch { /* the prizes tab draws itself when it opens */ }
+        }
+
+        function openGacha() {
+            if (gachaFileState === 'ready') renderGacha();
+            else { renderGacha(); ensureGacha(); }
+        }
+
+        function redrawGacha() {
+            if (!document.getElementById('viewGacha')?.classList.contains('hidden')) renderGacha();
+        }
+
+        function gachaPick(id) {
+            if (gachaTurning || !gachaMachineOf(id)) return;
+            gachaMachineId = id;
+            gachaShown = null;
+            gachaMessage = '';
+            renderGacha();
+        }
+
+        // Turn the handle: the capsule is decided and saved at once; the picture waits for the machine to finish turning.
+        function gachaTurn() {
+            if (gachaTurning || gachaFileState !== 'ready') return;
+            const pull = gachaPull(gachaMachineId);
+            if (!pull) {
+                gachaMessage = 'No coins left today. They come back tomorrow.';
+                renderGacha();
+                return;
+            }
+            gachaTurning = true;
+            gachaShown = null;
+            gachaMessage = '';
+            renderGacha();
+            let reduced = false;
+            try { reduced = Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches); } catch { /* animate */ }
+            setTimeout(() => {
+                gachaTurning = false;
+                gachaShown = pull;
+                renderGacha();
+            }, reduced ? 0 : 1100);
+        }
+
+        function gachaPriceText(title, locale) {
+            const [amount, currency] = collectionValue({ title, region: 'US', condition: 'loose' });
+            return amount === null ? 'no eBay price yet' : `${money(amount, currency, locale)} median`;
+        }
+
+        // The machine: a dome with a capsule for each one left (their colours are only decoration), a body and a handle.
+        function gachaMachineSvg(count) {
+            let capsules = '';
+            for (let i = 0; i < count; i++) {
+                const angle = i * 2.39996;
+                const radius = 48 * Math.sqrt((i + 0.5) / 20);
+                const x = (100 + radius * Math.cos(angle)).toFixed(1);
+                const y = (78 + radius * Math.sin(angle) * 0.9).toFixed(1);
+                capsules += `<g transform="translate(${x} ${y})"><circle r="10" fill="${GACHA_CAPSULES[i % GACHA_CAPSULES.length]}"></circle>`
+                    + '<path d="M-10 0 A10 10 0 0 1 10 0 Z" fill="#fff" opacity=".35"></path><circle cx="-3.5" cy="-4" r="2" fill="#fff" opacity=".7"></circle></g>';
+            }
+            return '<svg viewBox="0 0 200 250" width="100%" role="img" aria-label="">'
+                + '<g class="gacha-dome"><circle cx="100" cy="78" r="64" style="fill:var(--inset);stroke:var(--line)" stroke-width="3"></circle>' + capsules
+                + '<path d="M52 40 A64 64 0 0 1 100 14" fill="none" stroke="#fff" stroke-width="4" opacity=".25" stroke-linecap="round"></path></g>'
+                + '<rect x="38" y="140" width="124" height="92" rx="10" style="fill:var(--card);stroke:var(--line)" stroke-width="3"></rect>'
+                + '<g class="gacha-knob"><circle cx="100" cy="176" r="22" style="fill:var(--bg);stroke:var(--accent)" stroke-width="3"></circle>'
+                + '<rect x="94" y="156" width="12" height="40" rx="3" style="fill:var(--accent)"></rect></g>'
+                + '<rect x="64" y="212" width="72" height="14" rx="4" style="fill:var(--bg);stroke:var(--line)" stroke-width="2"></rect>'
+                + '</svg>';
+        }
+
+        function renderGacha(locale) {
+            const summary = document.getElementById('gachaSummary');
+            const machine = gachaMachineOf(gachaMachineId);
+            if (!machine) {
+                summary.textContent = gachaFileState === 'failed' ? 'The machines could not be loaded just now. Press REFRESH to try again.' : 'Loading the machines…';
+                for (const id of ['gachaMachines', 'gachaMachine', 'gachaCoins', 'gachaOdds', 'gachaResult', 'gachaContents', 'gachaNote']) document.getElementById(id).innerHTML = '';
+                document.getElementById('gachaTurn').disabled = true;
+                return;
+            }
+            const stock = gachaStock(machine);
+            const total = gachaTotal(stock);
+            const full = machine.prizes.reduce((sum, prize) => sum + prize.qty, 0);
+            const coins = gachaCoinsNow();
+            const daily = gachaData.dailyCoins;
+            summary.textContent = `Four machines, ${daily} free coins a day. A turn takes one capsule at random from what is left in the machine, and the prize goes to My collection > My gacha prizes.`;
+            document.getElementById('gachaMachines').innerHTML = gachaData.machines.map(other => `<button type="button" role="tab" aria-selected="${other.id === machine.id}" onclick="gachaPick(${esc(JSON.stringify(other.id))})"
+                class="view-tab${other.id === machine.id ? ' is-active' : ''}"${gachaTurning ? ' disabled' : ''}>${esc(other.name)}</button>`).join('');
+            const machineBox = document.getElementById('gachaMachine');
+            machineBox.innerHTML = gachaMachineSvg(Math.min(20, total));
+            machineBox.classList.toggle('is-turning', gachaTurning);
+            document.getElementById('gachaCoins').innerHTML = `<span class="gacha-coin-row" aria-hidden="true">${Array.from({ length: daily }, (_, i) =>
+                `<span class="gacha-coin${i < coins ? '' : ' is-spent'}"></span>`).join('')}</span> ${esc(coins)} of ${esc(daily)} coins left today`;
+            const turn = document.getElementById('gachaTurn');
+            turn.disabled = gachaTurning || coins < 1;
+            const odds = Object.entries(GACHA_TIERS).sort((a, b) => a[1].rank - b[1].rank).map(([tier, info]) => {
+                const left = machine.prizes.filter(prize => prize.tier === tier).reduce((sum, prize) => sum + stock[prize.title], 0);
+                const of = machine.prizes.filter(prize => prize.tier === tier).reduce((sum, prize) => sum + prize.qty, 0);
+                return of ? `<li class="gacha-odd tier-${tier}"><span>${esc(info.label)}</span><span>${esc(left)} of ${esc(of)}</span><span>${total ? esc(Math.round(left * 1000 / total) / 10) : 0}%</span></li>` : '';
+            }).join('');
+            document.getElementById('gachaOdds').innerHTML = `<p class="gacha-odds-head">${esc(total)} of ${esc(full)} capsules left · chance of each next</p><ul>${odds}</ul>`;
+            let result = '';
+            if (gachaTurning) {
+                result = '<p class="gacha-wait">The handle is turning…</p>';
+            } else if (gachaShown && gachaShown.machine === machine.id) {
+                const cover = coversShown ? coverUrl(gachaShown.title, 'US') : '';
+                const info = GACHA_TIERS[gachaShown.tier];
+                result = `<div class="gacha-prize tier-${esc(gachaShown.tier)}">
+                    <a class="coll-cover gacha-cover" href="#game=${encodeURIComponent(gachaShown.title)}" onclick="openGame(${esc(JSON.stringify(gachaShown.title))}); return false;" aria-label="${esc(gachaShown.title)}">
+                        <span class="coll-initials" aria-hidden="true">${esc(initialsOf(gachaShown.title))}</span>${cover
+                            ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
+                    </a>
+                    <div>
+                        <span class="gacha-tier tier-${esc(gachaShown.tier)}">${esc(info.label)}</span>
+                        <p class="gacha-prize-name">${esc(gachaShown.title)}</p>
+                        <p class="gacha-prize-price">${esc(gachaPriceText(gachaShown.title, locale))}</p>
+                        <p class="text-xs text-slate-400">Saved to <a class="text-cyan-400" href="#collection" onclick="gachaOpenPrizes(); return false;">My gacha prizes</a>.${gachaShown.restocked ? ' That was the last capsule, so the machine has been filled again.' : ''}</p>
+                    </div>
+                </div>`;
+            } else if (gachaMessage) {
+                result = `<p class="gacha-wait">${esc(gachaMessage)}</p>`;
+            }
+            document.getElementById('gachaResult').innerHTML = result;
+            document.getElementById('gachaContents').innerHTML = [...machine.prizes].sort((a, b) => GACHA_TIERS[a.tier].rank - GACHA_TIERS[b.tier].rank).map(prize => `
+                <li class="gacha-row tier-${esc(prize.tier)}"><span class="gacha-tier tier-${esc(prize.tier)}">${esc(GACHA_TIERS[prize.tier].label)}</span>
+                    <a class="gacha-row-name" href="#game=${encodeURIComponent(prize.title)}" onclick="openGame(${esc(JSON.stringify(prize.title))}); return false;">${esc(prize.title)}</a>
+                    <span class="gacha-row-left">${esc(stock[prize.title])} of ${esc(prize.qty)} left</span>
+                    <span class="gacha-row-price">${esc(gachaPriceText(prize.title, locale))}</span></li>`).join('');
+            document.getElementById('gachaNote').textContent = (machine.tagline ? `${machine.tagline} ` : '')
+                + 'This is a game: it costs nothing and nothing is won or sold. Coins, the machines and your prizes are kept only in this browser, so clearing its data starts again. '
+                + 'Prices are the median eBay US asking price today (asking prices, not what anything sold for). Cover pictures come from the Libretro thumbnail collection, like My collection.'
+                + (gachaKept ? '' : ' This browser would not store your progress, so it will be gone when you close the page.');
+        }
+
+        function gachaOpenPrizes() {
+            showView('collection');
+            showCollectionTab('prizes');
+        }
+        function gachaGoTo() { showView('gacha'); }
+
+        // My collection has two lists: the games the visitor owns and the prizes won in the machines.
+        function showCollectionTab(name) {
+            collectionTab = name === 'prizes' ? 'prizes' : 'games';
+            const prizes = collectionTab === 'prizes';
+            document.getElementById('collectionSection').classList.toggle('hidden', prizes);
+            document.getElementById('prizesSection').classList.toggle('hidden', !prizes);
+            for (const [id, on] of [['collTabGames', !prizes], ['collTabPrizes', prizes]]) {
+                const button = document.getElementById(id);
+                button.classList.toggle('is-active', on);
+                button.setAttribute?.('aria-selected', String(on));
+            }
+            if (prizes) renderPrizes();
+        }
+
+        function updatePrizesTab() {
+            const badge = document.getElementById('collTabPrizesCount');
+            if (!badge) return;
+            badge.textContent = gachaSaved.prizes.length.toLocaleString('en');
+            badge.classList.toggle('hidden', gachaSaved.prizes.length === 0);
+        }
+
+        function renderPrizes(locale) {
+            const list = document.getElementById('prizesList');
+            const summary = document.getElementById('prizesSummary');
+            const groups = new Map();
+            for (const prize of gachaSaved.prizes) {
+                const held = groups.get(prize.title);
+                if (held) { held.qty++; if (GACHA_TIERS[prize.tier].rank < GACHA_TIERS[held.tier].rank) held.tier = prize.tier; }
+                else groups.set(prize.title, { title: prize.title, tier: prize.tier, qty: 1 });
+            }
+            const rows = [...groups.values()].map(group => ({ ...group, value: collectionValue({ title: group.title, region: 'US', condition: 'loose' }) }))
+                .sort((a, b) => GACHA_TIERS[a.tier].rank - GACHA_TIERS[b.tier].rank || ((b.value[0] ?? -1) - (a.value[0] ?? -1)) || cmpStr(a.title, b.title));
+            const worth = {};
+            let unpriced = 0;
+            for (const row of rows) {
+                if (row.value[0] === null) unpriced += row.qty;
+                else worth[row.value[1]] = (worth[row.value[1]] || 0) + row.value[0] * row.qty;
+            }
+            const sums = Object.entries(worth).map(([currency, amount]) => money(amount, currency, locale)).join(' + ');
+            const byTier = Object.entries(GACHA_TIERS).sort((a, b) => a[1].rank - b[1].rank)
+                .map(([tier, info]) => [info.label, gachaSaved.prizes.filter(prize => prize.tier === tier).length]).filter(([, n]) => n).map(([label, n]) => `${n} ${label.toLowerCase()}`).join(', ');
+            summary.textContent = gachaSaved.prizes.length
+                ? `${gachaSaved.prizes.length} capsule${gachaSaved.prizes.length === 1 ? '' : 's'} opened (${byTier}), ${rows.length} different game${rows.length === 1 ? '' : 's'}. `
+                    + (sums ? `Worth about ${sums} at today's median eBay asking prices` : 'No price for any of them yet') + (unpriced ? ` (${unpriced} without a price)` : '') + '.'
+                : 'Nothing here yet. Open the Gacha page and turn a handle: whatever comes out is kept here.';
+            list.innerHTML = rows.map(row => {
+                const [amount, currency] = row.value;
+                const cover = coversShown ? coverUrl(row.title, 'US') : '';
+                const worthText = amount === null ? 'no price' : money(amount, currency, locale);
+                const label = `${row.title} · ${GACHA_TIERS[row.tier].label}${row.qty > 1 ? ` · ×${row.qty}` : ''} · ${worthText}`;
+                return `<li class="coll-tile">
+                    <a class="coll-cover" href="#game=${encodeURIComponent(row.title)}" onclick="openGame(${esc(JSON.stringify(row.title))}); return false;" title="${esc(label)}" aria-label="${esc(label)}">
+                        <span class="coll-initials" aria-hidden="true">${esc(initialsOf(row.title))}</span>${cover
+                            ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
+                        ${row.qty > 1 ? `<span class="coll-badge coll-badge-qty">×${esc(row.qty)}</span>` : ''}
+                        <span class="coll-badge gacha-badge tier-${esc(row.tier)}">${esc(GACHA_TIERS[row.tier].label)}</span>
+                    </a>
+                    <div class="coll-name">${esc(row.title)}</div>
+                    <div class="coll-value${amount === null ? ' is-none' : ''}">${esc(worthText)}</div>
+                </li>`;
+            }).join('');
+            document.getElementById('prizesClear').classList.toggle('hidden', !gachaSaved.prizes.length);
+            document.getElementById('prizesNote').textContent = 'Prizes from the Gacha page, kept only in this browser. They are not part of My games, and the value is not added to it. Prices are median eBay US asking prices, not what anything sold for.'
+                + (gachaKept ? '' : ' This browser would not store them, so they will be gone when you close the page.');
+            if (typeof ensureCoverIndex === 'function') ensureCoverIndex();
+            updatePrizesTab();
+        }
+
+        function clearPrizes() {
+            if (!gachaSaved.prizes.length || !confirm('Remove every gacha prize from this browser? The machines keep their place.')) return;
+            gachaSaved.prizes = [];
+            gachaShown = null;
+            saveGachaState();
+            renderPrizes();
+        }
+
         /* ---- Library: every game as box art ---------------------------------------
            The whole library (data/ps2_database.json and search_extra_titles.json, one tile per priceKey()) as covers,
            A to Z or grouped by genre (genres.json, made by tools/build_genres.py: the Libretro database's genre where it has
@@ -3161,7 +3572,7 @@
             } catch {
                 coverIndexState = 'failed';
             }
-            try { refreshCollection(); paintGameCover(); redrawCoverLists(); } catch { /* the next draw shows them */ }
+            try { refreshCollection(); paintGameCover(); redrawCoverLists(); redrawGacha(); } catch { /* the next draw shows them */ }
         }
 
         // The address of a game's box art: the region's own picture when there is one, else the other's.
@@ -3226,6 +3637,7 @@
 
         function refreshCollection() {
             if (!document.getElementById('viewCollection')?.classList.contains('hidden')) renderCollection();
+            if (!document.getElementById('viewCollection')?.classList.contains('hidden') && collectionTab === 'prizes') renderPrizes();
         }
 
         function removeFromCollection(index) {

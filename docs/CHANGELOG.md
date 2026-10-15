@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: the Gacha
+
+- New **Gacha** tab (`#gacha`): four capsule machines (Survival Horror, Action, Open World, RPG) from `gacha.json`, 20 capsules each (5 common games x3, 1 uncommon x4, 1 super rare x1). Three free coins a day; a turn takes a random capsule from what is left, with the live odds shown, and the machine refills when empty. Each game shows its eBay US median.
+- Prizes are kept in the browser (`localStorage`) and listed under a new **My gacha prizes** tab inside My collection, apart from My games and its value. Nothing is sent anywhere. Guide, AGENTS.md and ARCHITECTURE updated; a Node check covers the file, the draw, coins, restocking, saved-state cleaning and the two tabs.
+
 ## 2026-10-15: PriceCharting links on the Rarest page
 
 - Every Rarest game row now has a **PriceCharting** link under its prices (`rarePriceChartingHtml()`): a search on PriceCharting's PAL page for the PAL list and its US page for the US list, so a game with no eBay figure can be checked by hand. It reuses the `pc-pal` / `pc-ntsc` lookups. The new/sealed search already covers every game on the lists; the seller-country and category filters were not relaxed, because that would put non-UK copies into the UK figures.

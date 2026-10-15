@@ -2699,7 +2699,7 @@ await check('My collection: add, value, keep in the browser, back up and restore
     run(`ensureCoverIndex()`);
     await new Promise(done => setTimeout(done, 20));
     assert.match(el('topGamesList').innerHTML, /class="row-cover"/, 'drawn again once the covers list has arrived');
-    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions' \|\| view === 'demand' \|\| view === 'library'\) ensureCoverIndex\(\);/, 'opening any of these pages asks for the covers list');
+    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions' \|\| view === 'demand' \|\| view === 'library' \|\| view === 'gacha'\) ensureCoverIndex\(\);/, 'opening any of these pages asks for the covers list');
     assert.equal(run(`initialsOf('The Legend of Heroes: Trails')`), 'TLO');
     context.fetch = fakeFetch;
     context.localStorage = { getItem: () => null, setItem() {} };
@@ -2868,6 +2868,127 @@ await check('editions: covers use the edition\'s own box when Libretro has one, 
     } finally {
         run(`editionsData = null; coverIndex = null; coverIndexState = 'idle'`);
     }
+});
+
+await check('Gacha: four machines of twenty capsules, free coins, prizes kept under My collection', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const file = JSON.parse(read('gacha.json'));
+    const kept = new Map();
+    context.localStorage = { getItem: (key) => (kept.has(key) ? kept.get(key) : null), setItem: (key, value) => { kept.set(key, String(value)); } };
+    // The file: four machines, 20 capsules each as 5 commons x3, 1 uncommon x4 and 1 super rare x1; every game is in the library.
+    assert.deepEqual(file.machines.map(m => m.id), ['horror', 'action', 'open_world', 'rpg']);
+    const library = new Set([...JSON.parse(read('data/ps2_database.json')), ...JSON.parse(read('search_extra_titles.json')).titles,
+        ...Object.values(JSON.parse(read('editions.json')).lists).flat().map(entry => entry.title)]);
+    for (const machine of file.machines) {
+        const by = (tier) => machine.prizes.filter(prize => prize.tier === tier);
+        assert.equal(machine.prizes.reduce((sum, prize) => sum + prize.qty, 0), 20, `${machine.id}: 20 capsules`);
+        assert.deepEqual([by('common').length, by('uncommon').length, by('super_rare').length], [5, 1, 1], machine.id);
+        assert.ok(by('common').every(prize => prize.qty === 3) && by('uncommon')[0].qty === 4 && by('super_rare')[0].qty === 1, machine.id);
+        for (const prize of machine.prizes) assert.ok(library.has(prize.title), `${prize.title} is a library game`);
+    }
+    assert.equal(new Set(file.machines.flatMap(m => m.prizes.map(prize => prize.title))).size, 28, 'no game in two machines');
+    // A file that is wrong in places still draws what is right.
+    assert.equal(run(`cleanGachaData({ machines: 'x' })`), null);
+    assert.deepEqual(evalJson(`cleanGachaData({ daily_coins: 99, machines: [{ id: 'A b', name: 'x', prizes: [] }, { id: 'ok', name: 'Ok', prizes: [{ title: 'Kuon', tier: 'super_rare', qty: 1 }, { title: 'Kuon', tier: 'common', qty: 1 }, { title: '<b>', tier: 'mythic', qty: 1 }, { title: 'Siren', tier: 'common', qty: 0 }] }] })`),
+        { dailyCoins: 10, machines: [{ id: 'ok', name: 'Ok', tagline: '', prizes: [{ title: 'Kuon', tier: 'super_rare', qty: 1 }] }] });
+
+    // Turning: coins, drawing without replacement, restocking.
+    context.__gacha = file;
+    run(`gachaData = cleanGachaData(__gacha); gachaFileState = 'ready'; gachaMachineId = 'horror'; gachaSaved = cleanGachaSaved({}); gachaShown = null; gachaTurning = false`);
+    const day = new Date(2026, 9, 15, 10, 0, 0);
+    context.__day = day;
+    assert.equal(run(`gachaToday(__day)`), '2026-10-15');
+    assert.equal(run(`gachaCoinsNow(__day)`), 3, 'three free coins a day');
+    let rolls = 0;
+    context.__rng = () => [0.999, 0, 0.5][rolls++ % 3];
+    const first = evalJson(`gachaPull('horror', __rng, __day)`);
+    assert.equal(first.title, 'Rule of Rose', 'the last capsule in the list is picked at the top of the range');
+    assert.equal(first.tier, 'super_rare');
+    const second = evalJson(`gachaPull('horror', __rng, __day)`);
+    assert.equal(second.title, 'Resident Evil 4', 'the first at the bottom');
+    const third = evalJson(`gachaPull('horror', __rng, __day)`);
+    assert.equal(run(`gachaSaved.coins`), 0);
+    assert.equal(run(`gachaPull('horror', __rng, __day)`), null, 'no coin, no capsule');
+    assert.equal(run(`gachaStock(gachaMachineOf('horror'))['Rule of Rose']`), 0, 'a capsule taken is gone');
+    assert.equal(run(`gachaTotal(gachaStock(gachaMachineOf('horror')))`), 17);
+    assert.equal(run(`gachaSaved.prizes.length`), 3);
+    assert.ok([...kept.keys()].includes('ps2-sentiment-tracker.gacha'), 'kept in this browser');
+    assert.ok(JSON.parse(kept.get('ps2-sentiment-tracker.gacha')).left.horror, 'the machine\'s place is kept');
+    // The next day brings coins back, and a machine emptied one capsule at a time fills up again with every game drawn exactly its count.
+    context.__next = new Date(2026, 9, 16, 9, 0, 0);
+    const drawn = {};
+    let restocked = 0;
+    for (let i = 0; i < 17; i++) {
+        if (i % 3 === 0) { context.__next = new Date(2026, 9, 16 + i / 3, 9, 0, 0); }
+        const pull = evalJson(`gachaPull('horror', Math.random, __next)`);
+        assert.ok(pull, `pull ${i}`);
+        drawn[pull.title] = (drawn[pull.title] || 0) + 1;
+        if (pull.restocked) restocked++;
+    }
+    assert.equal(restocked, 1, 'the machine is filled again when its last capsule is out');
+    assert.equal(run(`gachaTotal(gachaStock(gachaMachineOf('horror')))`), 20);
+    const everyDraw = run(`gachaSaved.prizes`).length;
+    assert.equal(everyDraw, 20);
+    const counts = {};
+    for (const prize of evalJson(`gachaSaved.prizes`)) counts[prize.title] = (counts[prize.title] || 0) + 1;
+    for (const prize of file.machines[0].prizes) assert.equal(counts[prize.title], prize.qty, `${prize.title}: exactly its count came out of twenty`);
+    // Saved state is cleaned: nothing in it can add a game or more capsules than the file stocks.
+    run(`gachaSaved = cleanGachaSaved({ day: 'x', coins: 99, left: { horror: { 'Rule of Rose': 7, 'Not a game': 2 } }, prizes: [{ title: 'Kuon', tier: 'super_rare' }, { title: 'x', tier: 'bogus' }] })`);
+    assert.equal(run(`gachaSaved.coins`), 10);
+    assert.equal(run(`gachaSaved.prizes.length`), 1);
+    assert.equal(run(`gachaStock(gachaMachineOf('horror'))['Rule of Rose']`), 1, 'never more than the machine holds');
+    assert.equal(run(`'Not a game' in gachaStock(gachaMachineOf('horror'))`), false);
+
+    // The page: coins, odds, the capsule that came out, and the prizes tab inside My collection.
+    run(`gachaSaved = cleanGachaSaved({}); gachaShown = null; coversShown = false; setPrices(${JSON.stringify({ games: { 'Siren': { US: { copies: 44, lowest: 60, median: 71.91 } } } })}, null)`);
+    run(`renderGacha('en-GB')`);
+    assert.match(el('gachaCoins').innerHTML, /3 of 3 coins left today/);
+    assert.match(el('gachaOdds').innerHTML, /15 of 15[\s\S]*75%|15 of 15/);
+    assert.equal(el('gachaTurn').disabled, false);
+    assert.equal((el('gachaContents').innerHTML.match(/<li /g) || []).length, 7);
+    assert.match(el('gachaContents').innerHTML, /\$71\.91 median|\$72 median/, 'a game with a price shows it');
+    assert.match(el('gachaContents').innerHTML, /no eBay price yet/, 'a game without one says so');
+    assert.doesNotMatch(el('gachaMachines').innerHTML + el('gachaContents').innerHTML, /<script|<img/);
+    context.__rng2 = () => 0.5;
+    const turned = evalJson(`gachaPull('horror', __rng2, new Date())`);
+    run(`gachaShown = ${JSON.stringify(turned)}; renderGacha('en-GB')`);
+    assert.match(el('gachaResult').innerHTML, new RegExp(`gacha-prize tier-${turned.tier}`));
+    assert.match(el('gachaResult').innerHTML, /My gacha prizes/);
+    run(`showView('collection')`);
+    assert.equal(el('tabCollection').classList.contains('is-active'), true);
+    run(`showCollectionTab('prizes')`);
+    assert.equal(el('prizesSection').classList.contains('hidden'), false);
+    assert.equal(el('collectionSection').classList.contains('hidden'), true);
+    assert.equal(el('collTabPrizes').attributes['aria-selected'], 'true');
+    assert.match(el('prizesSummary').textContent, /1 capsule opened/);
+    assert.equal((el('prizesList').innerHTML.match(/<li /g) || []).length, 1);
+    assert.match(el('collTabPrizesCount').textContent, /1/);
+    assert.equal(el('collTabPrizesCount').classList.contains('hidden'), false);
+    run(`showCollectionTab('games')`);
+    assert.equal(el('collectionSection').classList.contains('hidden'), false);
+    assert.equal(el('prizesSection').classList.contains('hidden'), true);
+    context.confirm = () => true;
+    run(`clearPrizes()`);
+    assert.match(el('prizesSummary').textContent, /Nothing here yet/);
+    run(`showView('gacha')`);
+    assert.equal(el('viewGacha').classList.contains('hidden'), false);
+    assert.equal(el('tabGacha').classList.contains('is-active'), true);
+    assert.equal(run(`isView('gacha')`), true, '#gacha opens the page');
+    // A browser that will not store anything still plays.
+    context.localStorage = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); } };
+    run(`loadGachaState(); gachaSaved = cleanGachaSaved({}); gachaCoinsNow(new Date())`);
+    assert.ok(run(`gachaPull('rpg', Math.random, new Date())`), 'a turn works without storage');
+    assert.equal(run(`gachaKept`), false);
+    run(`renderGacha('en-GB')`);
+    assert.match(el('gachaNote').textContent, /would not store your progress/);
+    // Nothing is sold or sent: no network call from a turn.
+    const asked = [];
+    const real = context.fetch;
+    context.fetch = async (url) => { asked.push(String(url)); return real(url); };
+    run(`gachaPull('rpg', Math.random, new Date())`);
+    context.fetch = real;
+    assert.deepEqual(asked, []);
+    run(`gachaData = null; gachaFileState = 'idle'; gachaMachineId = ''; gachaSaved = cleanGachaSaved({}); showView('dashboard')`);
 });
 
 console.log(`dashboard checks passed (${passed})`);

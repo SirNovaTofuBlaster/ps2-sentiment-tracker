@@ -218,10 +218,10 @@ returned HTTP 403 there (see [SOURCES.md](../SOURCES.md#forums)).
 they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`,
 `rare_games.json` and `rare_consoles.json`. Editions (`editions.json`, same shape as `rare_games.json` but every entry needs `require` words) go through the same `load_rare()` / `add_rare_games()` path with `kind="edition"`; `latest["editions"]` says which `games` entry holds each one, and `index_file()` leaves them out like consoles.
 
-- **Six pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Demand*, *Most mentioned*,
-  *eBay prices* and *Library*; each is a wrapper (`viewDashboard`, `viewRare`, `viewDemand`, `viewMentions`,
-  `viewPrices`, `viewLibrary`) and only one is displayed. `#rare`, `#demand`, `#mentions`, `#prices` and `#library` in the address
-  select the other five; any other fragment selects the Tracker and scrolls to the part it names, so the header's
+- **Seven pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Demand*, *Most mentioned*,
+  *eBay prices*, *Library* and *Gacha*; each is a wrapper (`viewDashboard`, `viewRare`, `viewDemand`, `viewMentions`,
+  `viewPrices`, `viewLibrary`, `viewGacha`) and only one is displayed. `#rare`, `#demand`, `#mentions`, `#prices`, `#library` and `#gacha` in the address
+  select the other six; any other fragment selects the Tracker and scrolls to the part it names, so the header's
   *Sources* link works from every page. Changing page adds one entry to the browser's
   history, so Back returns to the page before; links, Back and Forward all go through
   `showViewFromAddress()`, which also runs once more when the first load has finished.
@@ -592,6 +592,23 @@ it was sold in, and sorts each list by price (`consoleSortPrice()`): the eBay me
 region's own site (UK for PAL, US otherwise), then the other site's, then `value.usd`; the file's
 rarity order is shown as the tier. 34
 consoles priced: 64 lookups a day, two searches each.
+
+## The Gacha
+
+`gacha.json` holds four machines made by hand. Each has 20 capsules: 5 common games x3, 1 uncommon x4 and 1 super rare x1. The tiers are
+relative to the machine (survival horror has no cheap end) and were chosen from the eBay US medians and copies listed in
+`data/prices/latest.json` on 2026-10-15; the page shows today's median beside each game, so a tier that has drifted is visible. Every title must
+be a library name (`data/ps2_database.json`, `search_extra_titles.json` or `editions.json`), so the page can open its game page and cover.
+A Node check pins the shape (20 capsules, 5/1/1, no game in two machines, every title in the library).
+
+A turn (`gachaPull()`) takes one capsule uniformly at random from those still in the machine, so the odds shown are the real ones and move as it empties; when
+the last one is out the machine is full again. It costs a coin: `daily_coins` (3) a day, reset at the visitor's local midnight. The result is decided and saved
+before the 1.1 s animation plays (nothing is lost by closing the page), and the animation is switched off under `prefers-reduced-motion`.
+
+State is the visitor's alone, in `localStorage` key `ps2-sentiment-tracker.gacha` (`day`, `coins`, `left` per machine, `prizes`, newest 500): no server, no request,
+no login. `cleanGachaSaved()` clamps whatever is read, so a hand-edited value cannot add capsules or games. If storage is blocked the game still works until the page closes.
+Prizes appear under My collection > *My gacha prizes* (`renderPrizes()`), grouped by game with a count, and are kept apart from My games and its value. The file is read when the
+Gacha tab is first opened (`ensureGacha()`), not at page load. It is a game with no purchase; nothing here involves money.
 
 ## Roles and weights
 
