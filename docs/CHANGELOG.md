@@ -2,7 +2,7 @@
 
 ## 2026-10-15: app icon fills the circle
 
-- On Android the installed icon sat as a dark square inside a white circle: the manifest only offered icons for "any" use, so the phone padded them. It now also lists `icon-maskable-192.png` and `icon-maskable-512.png` (`purpose: maskable`): the ring mark on full-bleed black, kept inside the central 62% so any round or rounded mask leaves only the rings on black. The icons' background is pure black (`#000000`) and the manifest's `background_color` matches. Remove and add the app again to see it.
+- On Android the installed icon sat as a dark square inside a white circle: the manifest only offered icons for "any" use, so the phone padded them. It now also lists `icon-maskable-192.png` and `icon-maskable-512.png` (`purpose: maskable`): the ring mark on full-bleed black, kept inside the central 74% (the safe zone is 80%) so any round or rounded mask leaves only the rings on black. The icons' background is pure black (`#000000`) and the manifest's `background_color` matches. Remove and add the app again to see it.
 
 ## 2026-10-15: Library duplicates, phone tab row
 
