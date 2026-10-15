@@ -1814,6 +1814,15 @@
             return `<span class="ebay-new" title="${esc(`${found.copies} new or sealed ${found.copies === 1 ? 'copy is' : 'copies are'} listed, counted apart from the used ones: the cheapest is ${money(found.lowest, currency, locale)}.`)}">new from ${esc(money(found.lowest, currency, locale))} (${esc(found.copies)})</span>`;
         }
 
+        // " · from abroad £300 (27)": a Rarest game with no used copy listed in the site's own country, but some listed from
+        // elsewhere (ebay_prices.py counts them apart; they never feed the medians, history or index).
+        function abroadHtml(site, currency, locale) {
+            const found = site.abroad && typeof site.abroad === 'object' ? site.abroad : null;
+            if (!found || !Number.isInteger(found.copies) || found.copies < 1
+                    || typeof found.median !== 'number' || !Number.isFinite(found.median)) return '';
+            return `<b class="ebay-median ebay-abroad">${esc(money(found.median, currency, locale))}</b><span class="ebay-rest">median from abroad · ${esc(found.copies)} ${found.copies === 1 ? 'copy' : 'copies'} listed in other countries, none in this one</span>`;
+        }
+
         // A steady figure (data/prices/latest.json "steady") is checked every 48 hours, not every 6.
         const STEADY_STALE_HOURS = 56;
         const staleFor = (site, hours, label) => Math.max(site && site.steady === true ? Math.max(hours, STEADY_STALE_HOURS) : hours,
@@ -1833,7 +1842,9 @@
             const figures = site.unmatched
                 ? `<span class="ebay-rest"><span class="ebay-note" title="eBay returned listings, but none of them named this game. It needs its own search words.">search needs tuning</span>${when}</span>`
                 : !copies || typeof site.median !== 'number'
-                    ? `<span class="ebay-rest"><span class="ebay-note">none listed</span>${newPart}${when}</span>`
+                    ? (abroadHtml(site, currency, locale)
+                        ? abroadHtml(site, currency, locale).replace(/<\/span>$/, `${newPart}${when}</span>`)
+                        : `<span class="ebay-rest"><span class="ebay-note">none listed</span>${newPart}${when}</span>`)
                     : `${weekBefore(site) ? '<span class="ebay-now">' : ''}<b class="ebay-median">${esc(money(site.median, currency, locale))}</b>${
                         weekBefore(site) ? ` ${priceChangeHtml(site, currency, locale)}</span>` : ''}<span class="ebay-rest">median · from ${esc(money(site.lowest, currency, locale))} · ${esc(copies)}${site.truncated ? '<span title="eBay has more listings than the 200 it hands over, cheapest first: these figures are for the cheapest 200">+</span>' : ''} ${copies === 1 ? 'copy' : 'copies'}${completeHtml(site, copies, currency, locale)}${copies <= FEW_COPIES
                         ? ` <span class="level-tag few-copies" title="Only ${esc(copies)} ${copies === 1 ? 'copy is' : 'copies are'} for sale, so this median is one or two sellers' asking prices, not a market price.">few copies</span>` : ''}${newPart}${when}</span>`;
