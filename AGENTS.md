@@ -219,6 +219,8 @@ Before you call something done, prove it; don't assume it.
   - Thread links die when 4chan prunes the thread; the row outlives the link.
   - The job logs cannot be downloaded through the API from every network. `try_sources.py`
     therefore also attaches its report to the run as notices (`check-runs/<job id>/annotations`).
+- **Newer games with a PS2 name**
+  - A PS2 title is often the first words of a newer game's name (God of War, 2026-10-15: "God of War Ragnarök" filled the feed). `NEWER_GAME_FOLLOWERS` in `scraper.py` names the words that, right after the title, make a text about the newer game; add the series there when one floods the feed (a new entry needs a test in `tests/test_matcher_fixtures.py`). Old rows are cleaned from their headline by `without_newer_games()`.
 - **Reddit**
   - Unauthenticated access allows about one request a minute; quick test loops get 429s.
   - The multireddit uses the "hot" listing, so small subreddits can look quiet.
