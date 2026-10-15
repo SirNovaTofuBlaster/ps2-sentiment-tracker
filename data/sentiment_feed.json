@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 21:03:53 UTC",
+  "last_updated": "2026-10-15 21:17:56 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -1348,20 +1348,23 @@
       "timestamp": "2026-10-15 19:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 4: The Room, Silent Hill 3 and 1 more",
+      "headline": "Thread on /v/ naming Haunting Ground, Silent Hill 2, Rule of Rose and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749756838",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Haunting Ground",
       "matched_games": [
-        "Resident Evil 4",
+        "Haunting Ground",
+        "Silent Hill 2",
+        "Rule of Rose",
+        "Fatal Frame",
         "Silent Hill 4: The Room",
         "Silent Hill 3",
-        "Silent Hill 2"
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1539,6 +1542,25 @@
       "match_score": 100,
       "match_method": "fuzzy",
       "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 19:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Top Gun",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749756382",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": null,
@@ -3484,15 +3506,15 @@
       "timestamp": "2026-10-15 18:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man and God of War",
+      "headline": "Thread on /v/ naming God of War and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749752062",
-      "matched_game": "Spider-Man",
+      "matched_game": "God of War",
       "matched_games": [
-        "Spider-Man",
-        "God of War"
+        "God of War",
+        "Spider-Man"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -6438,7 +6460,7 @@
       "timestamp": "2026-10-15 16:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3, Persona 3 and 5 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3, Persona 3 and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -6452,7 +6474,8 @@
         "Kingdom Hearts II",
         "Silent Hill 2",
         "Ape Escape 2",
-        "Spider-Man"
+        "Spider-Man",
+        "Spider-Man 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -10469,6 +10492,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 14:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749736797",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 14:06 UTC"
     },
@@ -246483,123 +246525,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-01 21:18 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Silent Hill-Like Uses Phones To Parry, Because Even Anime Girls Know Tech Is A Weapon",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/silent-hill-like-uses-phones-to-parry-because-even-anime-girls-know-tech-is-a-weapon/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 21:14 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "What are some good fan made games or fan made mods",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wvbiqj/what_are_some_good_fan_made_games_or_fan_made_mods/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 21:14 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Let's Go!!!",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wvbg3y/lets_go/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 21:11 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Should I buy Pax Autocratica, The Riftbreaker or Funnel Runners?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wvbfwn/should_i_buy_pax_autocratica_the_riftbreaker_or/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 21:11 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "One story about my first 30 minutes in this post-apocalyptic robot game led multiple people to buy it",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/adventure/one-story-about-my-first-30-minutes-in-this-post-apocalyptic-robot-game-led-multiple-people-to-buy-it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 21:06 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Death of Video Game Ownership - Fact Hunt",
-      "source": "YouTube: Larry Bundy Jr",
-      "source_type": "youtube",
-      "feed": "youtube:UCJVdNvvuvOnthuWVQjYff2w",
-      "link": "https://www.youtube.com/watch?v=QNMIMnufTCU",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 21:05 UTC",
-      "views": 86924
-    },
-    {
-      "headline": "'Open world fatigue' is one reason indie RPG Entropy is borrowing from the classics: 'PS1, PS2, GameCube games really never outstayed their welcome'",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/rpg/open-world-fatigue-is-one-reason-indie-rpg-entropy-is-borrowing-from-the-classics-ps1-ps2-gamecube-games-really-never-outstayed-their-welcome/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-01 21:04 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Fall 2026 Steam Sale Features So Many Great Games For $15 Or Less",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/fall-2026-steam-sale-features-so-many-great-games-for-15-or-less-2000739030",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 21:04 UTC",
       "is_digital_only": false
     }
   ]
