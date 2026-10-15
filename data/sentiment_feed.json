@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 14:23:48 UTC",
+  "last_updated": "2026-10-15 14:37:50 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -731,6 +731,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 13:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Def Jam: Fight For NY and Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749734876",
+      "matched_game": "Def Jam: Fight For NY",
+      "matched_games": [
+        "Def Jam: Fight For NY",
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 13:32 UTC"
     },
     {
       "headline": "Nobody Loves Cars More Than Polyphony Digital, and Its New Gran Turismo 7 Movie Proves It",
@@ -2799,13 +2819,14 @@
       "timestamp": "2026-10-15 12:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming King's Field IV",
+      "headline": "Thread on /v/ naming Final Fantasy X and King's Field IV",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749731376",
-      "matched_game": "King's Field IV",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
         "King's Field IV"
       ],
       "match_score": 100,
@@ -8838,7 +8859,7 @@
       "timestamp": "2026-10-15 04:28 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Burnout 3 and God of War",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Armored Core 2: Another Age, Armored Core 3 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -8846,6 +8867,8 @@
       "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
         "Grand Theft Auto: Vice City",
+        "Armored Core 2: Another Age",
+        "Armored Core 3",
         "Burnout 3",
         "God of War"
       ],
@@ -240155,114 +240178,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 14:43 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Mary Kate and Ashley for GameCube, anyone?",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wv13rx/mary_kate_and_ashley_for_gamecube_anyone/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 14:36 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Yes! Awesome! All right! Toejam & Earl 2 beaten.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wv11tx/yes_awesome_all_right_toejam_earl_2_beaten/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 14:34 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "007 First Light se actualiza gratis con Nuevo Juego+, modo foto, dificultad 00 y más de 700 mejoras",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026274027/007-first-light-se-actualiza-gratis-con-nuevo-juego-modo-foto-dificultad-00-y-mas-de-700-mejoras/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 14:33 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Free DLC for 007 First Light drops today, including 2 new missions and more",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/free-dlc-007-first-light-2-new-missions-more/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 14:32 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Arc Raiders Is About To Go Nuclear On Cheaters: ‘No Warnings, No Second Chances’",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/arc-raiders-cheating-exploits-queue-teaming-embark-update-frozen-trail-2000738934",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 14:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Google Japan's conveyor belt keyboard is a sad reminder of the sense of humour the whole company used to have long, long ago",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/hardware/gaming-keyboards/google-japans-conveyor-belt-keyboard-is-a-sad-reminder-of-the-sense-of-humour-the-whole-company-used-to-have-long-long-ago/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 14:29 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "007 First Light gets free new DLC today, adding New Game Plus and Photo modes, new TacSim missions and more",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/007-james-bond-first-light-free-dlc",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 14:28 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "How I feel when setting my ps5 into safe mode and clearing out 200 gigs of \"other\" storage",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1wv0uq2/how_i_feel_when_setting_my_ps5_into_safe_mode_and/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 14:26 UTC",
       "is_digital_only": false
     }
   ]
