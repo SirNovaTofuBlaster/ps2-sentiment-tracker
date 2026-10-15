@@ -1725,6 +1725,50 @@ class RareListTests(unittest.TestCase):
         code, printed, fake = self.sandbox.run()
         self.assertIn("sengoku anthology", {call["params"]["q"] for call in fake.searches}, "the next day")
 
+    def test_a_rare_games_new_and_sealed_copies_are_counted_apart_on_its_lists_site(self):
+        self.lists(pal=[{"rank": 1, "title": "Kuon"}], us=[])
+        def answer(params, headers):
+            if "1000|1500|1750" in params.get("filter", ""):
+                return page(listing("Kuon PS2 PAL Factory Sealed", 800.0, currency="GBP", item_id=7, condition="New"),
+                            listing("Kuon (PS2) brand new", 950.0, currency="GBP", item_id=8, condition="New"))
+            if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" and params["q"].startswith("kuon"):
+                return page()      # no used copy for sale
+            return two_copies(params, headers)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        uk = self.sandbox.latest["games"]["Kuon"]["UK"]
+        self.assertEqual((uk["copies"], uk["new"]), (0, {"copies": 2, "lowest": 800.0, "median": 875.0}))
+        new_searches = [c for c in fake.searches if "1000|1500|1750" in c["params"].get("filter", "")]
+        self.assertTrue(new_searches and all(c["headers"]["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" for c in new_searches),
+                        "only on the list's own site")
+        for call in new_searches:
+            self.assertNotIn("conditionIds:{2750", call["params"]["filter"], "never mixed with the used search")
+        self.assertIn("2 new or sealed", printed)
+        listed = [row for row in self.sandbox.snapshot["games"] if row["title"] == "Kuon"][0]["markets"]["EBAY_GB"]["new"]
+        self.assertEqual(listed["counted"], 2, "the listings themselves go to the latest-run file only")
+        self.assertNotIn("Sealed", json.dumps(self.sandbox.latest))
+
+    def test_a_game_that_is_not_on_the_rarest_lists_gets_no_second_look(self):
+        self.lists(pal=[{"rank": 1, "title": "Kuon"}])
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        silent_hill = [c for c in fake.searches if c["params"]["q"] == "silent hill 2"]
+        self.assertTrue(silent_hill)
+        self.assertFalse(any("1000|1500|1750" in c["params"].get("filter", "") for c in silent_hill))
+        self.assertNotIn("new", self.sandbox.latest["games"]["Silent Hill 2"]["UK"])
+
+    def test_sealed_titles_count_as_new_copies_but_never_as_used_ones(self):
+        market = ebay_prices.MARKETS["EBAY_GB"]
+        game = {"title": "Kuon", "search": "kuon", "queries": ["kuon"], "exclude": [], "require": [], "allow": [], "siblings": []}
+        item = listing("Kuon PS2 PAL Factory Sealed", 800.0, currency="GBP", item_id=7)
+        self.assertEqual(ebay_prices.reject_reason(item, game, market, False), "graded_or_sealed")
+        self.assertIsNone(ebay_prices.reject_reason(item, game, market, False, sealed_ok=True))
+
+    def test_the_main_search_is_unchanged_by_the_new_look(self):
+        url = ebay_prices.search_url("EBAY_GB", "kuon")
+        self.assertIn("conditionIds", url)
+        self.assertNotIn("1000", url)
+
     def test_a_game_the_feed_already_tracks_is_not_looked_up_twice(self):
         self.lists(pal=[{"rank": 1, "title": "Silent Hill 2"}, {"rank": 2, "title": "Project Zero 2", "search": "project zero 2"}],
                    us=[{"rank": 1, "title": "Silent Hill 2"}])

@@ -1684,6 +1684,15 @@
             return ` · <span class="ebay-complete" title="${esc(`Median of the ${complete.copies} ${complete.copies === 1 ? 'copy' : 'copies'} whose listing does not say disc only, no manual or no case: closer to what a complete copy costs.`)}">complete ${esc(money(complete.median, currency, locale))} (${esc(complete.copies)})</span>`;
         }
 
+        // " · new from £800 (3)": the Rarest games' new and sealed copies, which ebay_prices.py counts apart from the
+        // used ones (the main figures never include them). Nothing when there are none.
+        function newCopiesHtml(site, currency, locale) {
+            const found = site.new && typeof site.new === 'object' ? site.new : null;
+            if (!found || !Number.isInteger(found.copies) || found.copies < 1
+                    || typeof found.lowest !== 'number' || !Number.isFinite(found.lowest)) return '';
+            return `<span class="ebay-new" title="${esc(`${found.copies} new or sealed ${found.copies === 1 ? 'copy is' : 'copies are'} listed, counted apart from the used ones: the cheapest is ${money(found.lowest, currency, locale)}.`)}">new from ${esc(money(found.lowest, currency, locale))} (${esc(found.copies)})</span>`;
+        }
+
         // A steady figure (data/prices/latest.json "steady") is checked every 48 hours, not every 6.
         const STEADY_STALE_HOURS = 56;
         const staleFor = (site, hours, label) => Math.max(site && site.steady === true ? Math.max(hours, STEADY_STALE_HOURS) : hours,
@@ -1698,13 +1707,15 @@
             const when = age.text ? ` <span class="ebay-age" title="${age.stale
                 ? 'Not checked for longer than usual' : 'When eBay was last asked'}">· ${esc(age.text)}</span>` : '';
             const copies = Number.isFinite(site.copies) ? site.copies : 0;
+            const newCopies = newCopiesHtml(site, currency, locale);
+            const newPart = newCopies ? ' · ' + newCopies : '';
             const figures = site.unmatched
                 ? `<span class="ebay-rest"><span class="ebay-note" title="eBay returned listings, but none of them named this game. It needs its own search words.">search needs tuning</span>${when}</span>`
                 : !copies || typeof site.median !== 'number'
-                    ? `<span class="ebay-rest"><span class="ebay-note">none listed</span>${when}</span>`
+                    ? `<span class="ebay-rest"><span class="ebay-note">none listed</span>${newPart}${when}</span>`
                     : `${weekBefore(site) ? '<span class="ebay-now">' : ''}<b class="ebay-median">${esc(money(site.median, currency, locale))}</b>${
                         weekBefore(site) ? ` ${priceChangeHtml(site, currency, locale)}</span>` : ''}<span class="ebay-rest">median · from ${esc(money(site.lowest, currency, locale))} · ${esc(copies)}${site.truncated ? '+' : ''} ${copies === 1 ? 'copy' : 'copies'}${completeHtml(site, copies, currency, locale)}${copies <= FEW_COPIES
-                        ? ` <span class="level-tag few-copies" title="Only ${esc(copies)} ${copies === 1 ? 'copy is' : 'copies are'} for sale, so this median is one or two sellers' asking prices, not a market price.">few copies</span>` : ''}${when}</span>`;
+                        ? ` <span class="level-tag few-copies" title="Only ${esc(copies)} ${copies === 1 ? 'copy is' : 'copies are'} for sale, so this median is one or two sellers' asking prices, not a market price.">few copies</span>` : ''}${newPart}${when}</span>`;
             return `<span class="ebay-site${age.stale ? ' is-stale' : ''}">${flag}${figures}</span>`;
         }
 

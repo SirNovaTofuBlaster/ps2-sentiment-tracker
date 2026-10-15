@@ -479,6 +479,8 @@ that cannot be read leaves the old index in place and is named in the log. The d
 it at the top of the eBay prices page (`renderIndex()`): the latest value, the change since the
 day before and over a week (`indexChange()`), and an SVG line of every day.
 
+**New and sealed copies of the Rarest games (added 2026-10-15).** Kuon showed "none listed" on eBay UK while three new copies were for sale (found with the search check, `check_game`: 0 with the used-condition filter, 3 with any condition, 27 from any seller country). The main search stays on used conditions on purpose. A game on a Rarest list now also gets a second search, on its list's site only, with `NEW_CONDITION_IDS` (new, new other, new with defects) and with sealed titles allowed (`reject_reason(sealed_ok=True)`); `check_new_copies()` keeps `{copies, lowest, median}` as `new` in the site's entry of `latest.json`, and the page shows it as "new from £X (n)" (`newCopiesHtml()`). It is never part of `copies`, `median`, history rows, the index or a market cap. Seller country is unchanged: a UK figure still means copies listed in the UK.
+
 **Complete copies, graded and sealed (added 2026-10-13).** `reject_reason()` leaves out a
 listing whose title says graded (WATA, "VGA graded", CGC, UKG) or factory sealed
 (`GRADED_OR_SEALED`, reason `graded_or_sealed`), unless it says "not graded"; "VGA" alone (a
