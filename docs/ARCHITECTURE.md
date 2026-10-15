@@ -382,7 +382,7 @@ are skipped. Two library spellings that come to the same name are one game.
 | `normal` | Any other mention in the window, or pinned | Every 6 hours |
 | `dormant` | Mentioned before, not in the window | Once a day |
 
-A site added after the first two (`extra` in `MARKETS`; Germany so far) has its own slower clock, `min_every_hours`, whatever a game's level says, and its lookups run after the US and UK ones.
+A site added after the first two (`extra` in `MARKETS`; Germany so far) has its own slower clock, `min_every_hours`, whatever a game's level says, and its lookups run after the US and UK ones. Since 2026-10-15 Spain waits 72 hours, France 48, Germany and Italy 24, and on those sites a pair that found no copies waits 48 (`QUIET_EVERY_HOURS`); the US and UK are never slowed.
 
 On top of the levels, a `normal` or `staple` game that has priced the same for days on one site is looked up there every 48 hours (`is_steady()` in `ebay_prices.py`) and goes back to 6 hours as soon as a check differs.
 
@@ -485,10 +485,14 @@ day before and over a week (`indexChange()`), and an SVG line of every day.
 listing whose title says graded (WATA, "VGA graded", CGC, UKG) or factory sealed
 (`GRADED_OR_SEALED`, reason `graded_or_sealed`), unless it says "not graded"; "VGA" alone (a
 cable) and "new sealed" (a replacement case) are not enough: those sell at many times a used copy, and one of them moved a rare
-game's median by hundreds. Copies whose title says they are incomplete (`INCOMPLETE_PHRASES`)
-are still counted, but `summarise()` also works out the median of the rest
-(`complete_median`), and `latest.json` keeps it as `complete: {copies, median}` when at least one
-copy is incomplete and at least one is not (otherwise it would only repeat the median). The
+game's median by hundreds. Since 2026-10-15 a listing whose title says the copy is incomplete (`INCOMPLETE_PHRASES`, plus a
+site's own `incomplete` words) is left out too (reason `incomplete`), and `summarise()` works out the
+median of the listings that say they are complete (`COMPLETE_PHRASES`: CIB, complete, with manual,
+boxed...; `confirmed_median`), which `latest.json` keeps as `complete: {copies, median}` when at least
+`CONFIRMED_MIN` (3) say so and not all of them do (otherwise it would only repeat the median). Game
+searches also ask for `sort=price` (cheapest first; if eBay answers 400 before any sorted search has
+worked, the run drops the sort and says so) and leave out "acceptable" condition, so when a game has
+more than 200 listings the figures are for the cheapest 200 (`truncated`, the `+` on the page). The
 dashboard shows it after the copies (`completeHtml()`), and a red "few copies" tag when only
 one or two copies are listed (`FEW_COPIES`). eBay's Browse API gives only listings still for
 sale; sold prices are in the Marketplace Insights API, which eBay grants only on application.

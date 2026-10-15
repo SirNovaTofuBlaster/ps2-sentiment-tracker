@@ -760,12 +760,12 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     const gamePage = (title) => vm.runInContext(`gamePriceDetailHtml(${JSON.stringify(title)}, __now, 'en-GB')`, context);
     const rendered = (title) => { vm.runInContext(`renderGamePage(${JSON.stringify(title)})`, context); return el('gamePrices').innerHTML; };
     const page = gamePage('Silent Hill 2');
-    assert.match(page, /<b class="ebay-median">\$220<\/b><span class="ebay-rest">median · from \$120 · 97\+ copies <span class="ebay-age" title="When eBay was last asked">· 2h ago<\/span>/);
+    assert.match(page, /<b class="ebay-median">\$220<\/b><span class="ebay-rest">median · from \$120 · 97<span title="[^"]*">\+<\/span> copies <span class="ebay-age" title="When eBay was last asked">· 2h ago<\/span>/);
     assert.match(page, /<b class="ebay-median">£105<\/b><span class="ebay-rest">median · from £52\.70 · 47 copies /);
     assert.match(page, /<span class="ebay-site is-stale"><span class="ebay-flag">UK<\/span>/, 'a staple is checked every 6 hours, so 9 hours is overdue');
     assert.match(page, /class="chart-open"/);
     assert.match(page, /class="price-links"/);
-    assert.match(page, /href="https:\/\/www\.ebay\.com\/sch\/i\.html\?_nkw=Silent%20Hill%202%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&amp;LH_BIN=1&amp;LH_PrefLoc=1"/);
+    assert.match(page, /href="https:\/\/www\.ebay\.com\/sch\/i\.html\?_nkw=Silent%20Hill%202%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000&amp;LH_BIN=1&amp;LH_PrefLoc=1"/);
     assert.match(page, /href="https:\/\/www\.ebay\.co\.uk\/sch\/i\.html\?_nkw=Silent%20Hill%202%20ps2/);
     assert.match(gamePage('Gitaroo Man'), /\$140<\/b><span class="ebay-rest">median · from \$140 · 1 copy <span class="level-tag few-copies"[^>]*>few copies<\/span>/);
     assert.match(gamePage('Jak X'), /search needs tuning<\/span> <span class="ebay-age"/, 'unmatched is not shown as zero copies');
@@ -2371,7 +2371,7 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.equal(evalJson(`scarcity('Spyro: The Eternal Night')`), null, 'eBay lists 34, we counted 1');
     assert.equal(evalJson(`scarcity('Old Row')`), null, 'a figure saved before "listed" existed is not vouched for');
     assert.equal(evalJson(`scarceTagHtml('FIFA 2003')`), '');
-    assert.match(evalJson(`scarceTagHtml('Kuon')`), /href="https:\/\/www\.ebay\.co\.uk\/sch\/i\.html\?_nkw=Kuon%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&amp;LH_BIN=1&amp;LH_PrefLoc=1"/, 'the tag opens the search it counts');
+    assert.match(evalJson(`scarceTagHtml('Kuon')`), /href="https:\/\/www\.ebay\.co\.uk\/sch\/i\.html\?_nkw=Kuon%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000&amp;LH_BIN=1&amp;LH_PrefLoc=1"/, 'the tag opens the search it counts');
     assert.deepEqual(evalJson(`byRarity([{name:'Dragon Quest'},{name:'God Hand'},{name:'Kuon'},{name:'CY Girls'},{name:'Final Fantasy X'}]).map(g => g.name)`),
         ['Final Fantasy X', 'CY Girls', 'Kuon', 'God Hand', 'Dragon Quest']);
     assert.match(evalJson(`scarceTagHtml('Kuon')`), /scarce &middot; 6 for sale on eBay UK/);

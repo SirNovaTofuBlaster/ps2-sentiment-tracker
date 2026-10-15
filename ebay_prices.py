@@ -103,7 +103,7 @@ CONSOLE_CATEGORY_ID = "139971"             # eBay's "Video Game Consoles", same 
 # Every condition but "for parts or not working": a rare console is often sold new or refurbished.
 CONSOLE_CONDITION_IDS = "1000|1500|2000|2010|2020|2030|2500|2750|3000|4000|5000|6000"
 PLATFORM_ASPECT = "Sony PlayStation 2"     # the "Platform" item specific sellers pick
-USED_CONDITION_IDS = "2750|3000|4000|5000|6000"   # like new, used, very good, good, acceptable
+USED_CONDITION_IDS = "2750|3000|4000|5000"   # like new, used, very good, good; "acceptable" (6000) is left out (2026-10-15)
 NEW_CONDITION_IDS = "1000|1500|1750"   # new, new other, new with defects: sealed copies are listed as these
 CONDITION_FILTERS = {
     "new": f"conditionIds:{{{NEW_CONDITION_IDS}}}",   # the Rarest page's second look, at unused copies
@@ -206,6 +206,7 @@ STEADY_MIN_ROWS = 3
 EARLY_MINUTES = 30           # a check may come this much early, so "every 6 hours" does not drift to 7
 CHANGE_DAYS = 7              # beside each median, how it compares with the median this long before...
 CHANGE_SLACK_DAYS = 2        # ...as recorded at most this much longer before (a quiet game is checked daily)
+CONFIRMED_MIN = 3           # the "confirmed complete" figure needs this many listings that say so
 CHANGE_MIN_DAYS = 3          # until a game has a week of history, it is compared with its oldest check at least this old
 QUIET_EVERY_HOURS = 48       # a game that had no copies (or whose words found none) at its last check waits this long
 
@@ -323,11 +324,21 @@ GRADED_OR_SEALED = (
 )
 NOT_GRADED = ("not graded", "never graded")
 
-# Counted, but worth knowing about: the price is for less than a complete copy.
+# Left out of the figures (reason "incomplete", 2026-10-15): the price is for less than a complete copy.
 INCOMPLETE_PHRASES = (
     "disc only", "disk only", "game only", "loose", "no manual", "no case", "no box",
     "no cover", "no inlay", "missing manual", "without manual",
 )
+
+# Titles that say the copy is complete: the "confirmed complete" figure is made from these alone.
+COMPLETE_PHRASES = (
+    "complete", "cib", "boxed", "with manual", "manual included", "includes manual", "inc manual",
+    "with case", "with box", "case and manual", "box and manual",
+)
+
+# Game lookups ask eBay for the cheapest listings first (`sort=price`), so the 200 a search returns are
+# the 200 cheapest. If eBay ever refuses the parameter the run drops it for the rest of the run.
+SORT_BY_PRICE = {"on": True, "worked": False}   # "worked": a sorted search has been answered this run
 
 
 class EbayError(Exception):
@@ -1086,6 +1097,8 @@ def search_url(market_id, query, by_aspect=True, condition="ids", console=None, 
     }
     if "category" not in relax:
         params["category_ids"] = CATEGORY_ID
+    if SORT_BY_PRICE["on"] and "sort" not in relax:
+        params["sort"] = "price"
     if not params["filter"]:
         del params["filter"]
     if by_aspect:
@@ -1117,6 +1130,15 @@ def search(http_client, token, market_id, query, counter, by_aspect=True, condit
             payload = parse(text)
         except NetworkProblem as exc:
             status, payload = 0, {"errors": [{"message": f"network problem ({exc})"}]}
+        if status == 200 and "sort=price" in url:
+            SORT_BY_PRICE["worked"] = True
+        if status == 400 and "sort=price" in url and not SORT_BY_PRICE["worked"]:
+            # Not one sorted search has been answered yet, so eBay may not take the sort: ask again without
+            # it, and without it for the rest of the run. (After one has worked, a 400 is something else.)
+            SORT_BY_PRICE["on"] = False
+            say("eBay refused sort=price (HTTP 400): asking without it from now on.")
+            url = search_url(market_id, query, by_aspect, condition, console, relax)
+            continue
         if status not in (0, 429) and status < 500:
             break
     if status == 429:
@@ -1286,6 +1308,8 @@ def reject_reason(item, game, market, keyword_search, sealed_ok=False):
         return "graded_or_sealed"
     if has_phrase(text, IMPORT_PHRASES) or has_phrase(text, market["foreign"]):
         return "import"
+    if has_phrase(text, INCOMPLETE_PHRASES + tuple(market.get("incomplete", ()))):
+        return "incomplete"
     if amount(item.get("price"), market["currency"]) is None:
         return "no_price"
     if listing_url(item, market) is None:
@@ -1312,7 +1336,7 @@ def summarise(payload, game, market, keyword_search, sealed_ok=False):
             "condition": str(item.get("condition") or "")[:40],
             "listed": str(item.get("itemCreationDate") or "")[:25],
             "url": listing_url(item, market),
-            "incomplete": has_phrase(" ".join(words(item.get("title"))), INCOMPLETE_PHRASES + tuple(market.get("incomplete", ()))),
+            "confirmed": has_phrase(" ".join(words(item.get("title"))), COMPLETE_PHRASES),
         })
 
     total = payload.get("total")
@@ -1343,13 +1367,12 @@ def summarise(payload, game, market, keyword_search, sealed_ok=False):
             "median": middle(prices),                                 # item price, postage not included
             "postage_known": len(postages),
             "median_postage": middle(postages) if postages else None,
-            "incomplete_hint": sum(1 for row in kept if row["incomplete"]),
-            # The copies that do not say they lack something (disc only, no manual): the figure
-            # to set beside a collector's value for a complete copy.
-            "complete_counted": sum(1 for row in kept if not row["incomplete"]),
-            "complete_median": middle([row["price"] for row in kept if not row["incomplete"]])
-                               if any(not row["incomplete"] for row in kept) else None,
-            "listings": [{k: v for k, v in row.items() if k != "incomplete"} for row in kept[:LISTINGS_KEPT]],
+            # The copies whose titles say they are complete (CIB, with manual...): the figure to set beside
+            # a collector's value for a complete copy. The others are not wrong, they just do not say.
+            "confirmed_counted": sum(1 for row in kept if row["confirmed"]),
+            "confirmed_median": middle([row["price"] for row in kept if row["confirmed"]])
+                                if any(row["confirmed"] for row in kept) else None,
+            "listings": [{k: v for k, v in row.items() if k != "confirmed"} for row in kept[:LISTINGS_KEPT]],
         })
     return result
 
@@ -1497,6 +1520,7 @@ def describe_conditions(payload, game, market):
 GAME_CHECK_VARIANTS = (
     # (what is asked, platform by item specific, condition, what is relaxed)
     ("the search this script uses", True, "ids", ()),
+    ("the same, not sorted by price", True, "ids", ("sort",)),
     ("platform by keyword", False, "ids", ()),
     ("new condition only (the Rarest page's second look)", True, "new", ()),
     ("any condition (new and sealed included)", True, "any", ()),
@@ -1505,6 +1529,18 @@ GAME_CHECK_VARIANTS = (
     ("any category", False, "ids", ("category",)),
     ("everything relaxed at once", False, "any", ("anywhere", "format", "category")),
 )
+
+
+def describe_order(payload, market):
+    """Is a result cheapest first, and which fields does a listing carry? Field names and a yes or no only:
+    no price, title or seller is printed."""
+    items = [item for item in payload.get("itemSummaries") or [] if isinstance(item, dict)]
+    prices = [amount(item.get("price"), market["currency"]) for item in items]
+    prices = [price for price in prices if price is not None]
+    ascending = all(a <= b for a, b in zip(prices, prices[1:]))
+    fields = sorted({key for item in items[:5] for key in item})
+    return (f"{len(prices)} priced listings returned, cheapest first: {'yes' if ascending else 'NO'}; "
+            f"fields: {', '.join(fields) or 'none'}")
 
 
 def check_game(http_client, token, game, secrets, markets=("EBAY_GB", "EBAY_US")):
@@ -1523,6 +1559,8 @@ def check_game(http_client, token, game, secrets, markets=("EBAY_GB", "EBAY_US")
             total = payload.get("total")
             answer = f"{total}" if status == 200 and isinstance(total, int) else error_text(status, payload)
             lines.append(redact(f"[{market['label']}] {label}: {answer}", secrets))
+            if status == 200 and not relax and condition == "ids" and by_aspect:
+                lines.append(redact(f"[{market['label']}]   {describe_order(payload, market)}", secrets))
             if status == 200 and condition in ("new", "any") and not relax and by_aspect:
                 lines.append(redact(f"[{market['label']}]   of those: {describe_conditions(payload, for_market(game, market_id), market)}", secrets))
             time.sleep(REQUEST_PAUSE)
@@ -1628,9 +1666,9 @@ def numbers_of(result, stamp):
     new = result.get("new")
     if isinstance(new, dict) and new.get("counted"):
         entry["new"] = {"copies": new["counted"], "lowest": new["lowest"], "median": new["median"]}
-    # Only when some copies say they are incomplete; otherwise it is the median itself.
-    if result.get("complete_median") is not None and 0 < result.get("complete_counted", 0) < result["counted"]:
-        entry["complete"] = {"copies": result["complete_counted"], "median": result["complete_median"]}
+    # Only when at least CONFIRMED_MIN copies say they are complete, and not all of them do anyway.
+    if result.get("confirmed_median") is not None and CONFIRMED_MIN <= result.get("confirmed_counted", 0) < result["counted"]:
+        entry["complete"] = {"copies": result["confirmed_counted"], "median": result["confirmed_median"]}
     return entry
 
 
@@ -2244,6 +2282,7 @@ def main(argv=None):
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT, help="where to write this run's listings")
     parser.add_argument("--plan", action="store_true", help="show what would be checked now, then stop")
     args = parser.parse_args(argv)
+    SORT_BY_PRICE.update({"on": True, "worked": False})
 
     client_id = os.environ.get("EBAY_CLIENT_ID", "").strip()
     client_secret = os.environ.get("EBAY_CLIENT_SECRET", "").strip()

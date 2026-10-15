@@ -264,16 +264,17 @@ class RequestTests(Quiet):
             self.assertEqual(call["params"], {
                 "q": "silent hill 2",
                 "category_ids": "139973",
-                "filter": "conditionIds:{2750|3000|4000|5000|6000},buyingOptions:{FIXED_PRICE},"
+                "filter": "conditionIds:{2750|3000|4000|5000},buyingOptions:{FIXED_PRICE},"
                           f"itemLocationCountry:{country}",
                 "aspect_filter": "categoryId:139973,Platform:{Sony PlayStation 2}",
+                "sort": "price",
                 "limit": "200"})
 
     def test_the_address_is_encoded_the_way_ebays_examples_are(self):
         query = urlsplit(ebay_prices.search_url("EBAY_GB", "silent hill 2")).query
         self.assertIn("q=silent%20hill%202&", query)
         self.assertIn("Platform%3A%7BSony%20PlayStation%202%7D", query)
-        self.assertIn("conditionIds%3A%7B2750%7C3000%7C4000%7C5000%7C6000%7D%2CbuyingOptions", query)
+        self.assertIn("conditionIds%3A%7B2750%7C3000%7C4000%7C5000%7D%2CbuyingOptions", query)
         for raw in ("+", "{", "}", "|", " "):
             self.assertNotIn(raw, query)
 
@@ -533,7 +534,6 @@ class TitleTests(unittest.TestCase):
             ("Persona 4 [PS2] - Complete PAL version + OST, pristine condition", persona, GB),
             ("Okami⭐️Complete CIB Original⭐️Sony PlayStation 2 PS2 Authentic Black Label", okami, US),
             ("Ōkami™ (PlayStation 2) [S-Grade, Complete & Tested] EU Version", okami, GB),
-            ("Silent Hill 2 PlayStation 2 PS2 Greatest Hits Disc Only", SH2, US),
             ("Silent Hill 2 Special 2-Disc Set PlayStation 2 In Very Good Condition PAL UK", SH2, GB),
             ("Silent Hill 2 Special Edition 2 Disc Set PAL Survival Horror PS2 (15)", SH2, GB),
             ("Konami Silent Hill 3 PS2 Disc w/ Soundtrack Survival Horror M NTSC-U/C 2003", sh3, US),
@@ -542,15 +542,23 @@ class TitleTests(unittest.TestCase):
             ("Silent Hill 3 Playstation 2 Game & Manual VG+!! Tested! HTF!! NO SOUNDTRACK", sh3, US),
             ("Persona 4 PS2 - Manual Included without Original Soundtrack", persona, GB),
             ("Shin Megami Tensei Persona 4 PS2, Manual and Soundtrack CD", persona, GB),
-            ("Rule of Rose (Sony PlayStation 2, 2006) PS2 Game Disc & Case! No Manual TESTED!", rose, US),
             ("Rule of Rose PS2 PAL French Cover and Manual Disc in English", rose, GB),
-            ("ICO - PS2 PLAYSTATION GAME 2006 - FULL GAME PROMO-TESTED-DISC ONLY", ico, GB),
-            ("Okami PS2 PAL Disc Only SLES-54439#", okami, GB),
-            ("Okami, Capcom, PlayStation 2 (PS2), 2006, T, NTSC-U/C, Disc Only", okami, US),
             ("Sony Computer Entertainment Europe Ico PS2 PAL PEGI 7 (2001) 1 Player Puzzle", ico, GB),
         ]
         for title, wanted, market in counted:
             self.assertIsNone(self.reason(title, wanted, market), title)
+
+    def test_copies_that_say_they_lack_the_case_or_manual_are_left_out_as_incomplete(self):
+        rose, okami, ico = game("Rule of Rose"), game("Okami"), game("Ico", exclude=["colossus"])
+        incomplete = [
+            ("Silent Hill 2 PlayStation 2 PS2 Greatest Hits Disc Only", SH2, US),
+            ("Rule of Rose (Sony PlayStation 2, 2006) PS2 Game Disc & Case! No Manual TESTED!", rose, US),
+            ("ICO - PS2 PLAYSTATION GAME 2006 - FULL GAME PROMO-TESTED-DISC ONLY", ico, GB),
+            ("Okami PS2 PAL Disc Only SLES-54439#", okami, GB),
+            ("Okami, Capcom, PlayStation 2 (PS2), 2006, T, NTSC-U/C, Disc Only", okami, US),
+        ]
+        for title, wanted, market in incomplete:
+            self.assertEqual(self.reason(title, wanted, market), "incomplete", title)
 
     def test_a_keyword_search_only_counts_titles_that_say_ps2(self):
         rose = game("Rule of Rose")
@@ -658,27 +666,26 @@ class SummaryTests(Quiet):
         self.assertEqual(result["median"], 30.0, "the median is the item price, postage not added")
         self.assertIsNone(self.summary(listing("Silent Hill 2", 20))["median_postage"])
 
-    def test_incomplete_copies_are_counted_and_flagged(self):
+    def test_incomplete_copies_are_left_out_and_named_in_the_skipped_counts(self):
         result = self.summary(
             listing("Silent Hill 2 PS2 disc only", 12, item_id=1),
             listing("Silent Hill 2 PS2 no manual", 18, item_id=2),
             listing("Silent Hill 2 PS2 complete", 35, item_id=3))
-        self.assertEqual((result["counted"], result["incomplete_hint"]), (3, 2))
-        self.assertNotIn("incomplete", result["listings"][0])
+        self.assertEqual((result["counted"], result["skipped"]), (1, {"incomplete": 2}))
+        self.assertEqual(result["median"], 35.0)
 
-    def test_the_median_of_complete_copies_leaves_out_the_ones_that_say_they_are_not(self):
-        result = self.summary(
-            listing("Silent Hill 2 PS2 disc only", 12, item_id=1),
-            listing("Silent Hill 2 PS2 no manual", 18, item_id=2),
-            listing("Silent Hill 2 PS2 complete", 35, item_id=3),
-            listing("Silent Hill 2 PS2 CIB", 41, item_id=4))
-        self.assertEqual((result["complete_counted"], result["complete_median"]), (2, 38.0))
-        self.assertEqual(result["median"], 26.5, "the ordinary median still counts every copy")
+    def test_the_confirmed_complete_figure_needs_three_listings_that_say_so(self):
+        titles = [("Silent Hill 2 PS2 CIB", 41), ("Silent Hill 2 PS2 complete", 35), ("Silent Hill 2 PS2 boxed", 50),
+                  ("Silent Hill 2 PS2", 20)]
+        result = self.summary(*[listing(t, p, item_id=i) for i, (t, p) in enumerate(titles)])
+        self.assertEqual((result["confirmed_counted"], result["confirmed_median"]), (3, 41.0))
+        self.assertEqual(result["median"], 38.0, "the ordinary median counts every copy that is not incomplete")
         whole = ebay_prices.numbers_of(result, "2026-10-06T12:00Z")
-        self.assertEqual(whole["complete"], {"copies": 2, "median": 38.0})
-        plain = self.summary(listing("Silent Hill 2 PS2", 20, item_id=1), listing("Silent Hill 2 PS2", 30, item_id=2))
-        self.assertNotIn("complete", ebay_prices.numbers_of(plain, "2026-10-06T12:00Z"),
-                         "nothing to add when no copy says it is incomplete")
+        self.assertEqual(whole["complete"], {"copies": 3, "median": 41.0})
+        two = self.summary(*[listing(t, p, item_id=i) for i, (t, p) in enumerate(titles[:2] + titles[3:])])
+        self.assertNotIn("complete", ebay_prices.numbers_of(two, "2026-10-06T12:00Z"), "two listings are too few")
+        every = self.summary(*[listing(t, p, item_id=i) for i, (t, p) in enumerate(titles[:3])])
+        self.assertNotIn("complete", ebay_prices.numbers_of(every, "2026-10-06T12:00Z"), "nothing to add when all say so")
 
     def test_a_cable_a_new_case_or_not_graded_is_not_a_graded_or_sealed_copy(self):
         for title in ("Kuon PS2 CIB not graded", "Silent Hill 2 PS2 complete in new sealed replacement case",
@@ -727,7 +734,7 @@ class FallbackTests(Quiet):
         self.assertEqual(
             result["search_url"],
             "https://www.ebay.co.uk/sch/i.html?_nkw=kuon%20ps2&_sacat=139973"
-            "&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1")
+            "&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1")
 
     def test_a_title_with_a_roman_numeral_is_searched_both_ways_and_each_listing_counts_once(self):
         def answer(params, headers):
@@ -760,12 +767,43 @@ class FallbackTests(Quiet):
     def test_an_error_is_reported_with_ebays_own_words_and_no_second_search(self):
         fake = FakeHttp(lambda params, headers: (
             400, {"errors": [{"errorId": 12001, "message": "short", "longMessage": "The aspect filter is invalid."}]}))
+        self.addCleanup(ebay_prices.SORT_BY_PRICE.update, {"on": True, "worked": False})
+        ebay_prices.SORT_BY_PRICE.update({"on": True, "worked": True})   # a sorted search was answered: not the sort's fault
         result = ebay_prices.check_market(fake, TOKEN, SH2, "EBAY_US", {"searches": 0})
         self.assertEqual(result["status"], "error")
         self.assertEqual(result["error"], "HTTP 400: The aspect filter is invalid.")
         self.assertIs(result["answered"], True)
         self.assertNotIn("median", result)
         self.assertEqual(len(fake.searches), 1)
+
+
+class SortTests(unittest.TestCase):
+    def setUp(self):
+        self.addCleanup(ebay_prices.SORT_BY_PRICE.update, {"on": True, "worked": False})
+        ebay_prices.SORT_BY_PRICE.update({"on": True, "worked": False})
+
+    def test_game_searches_are_cheapest_first_and_consoles_are_not_sorted(self):
+        self.assertIn("sort=price", ebay_prices.search_url("EBAY_US", "kuon"))
+        self.assertNotIn("sort=", ebay_prices.search_url("EBAY_US", "kuon", console="139971"))
+
+    def test_if_ebay_refuses_the_sort_the_search_is_repeated_without_it_for_the_rest_of_the_run(self):
+        def answer(params, headers):
+            return (400, {"errors": [{"message": "bad sort"}]}) if "sort" in params else page(listing("Kuon PS2", 30))
+        fake = FakeHttp(answer)
+        counter = {"searches": 0}
+        status, payload = ebay_prices.search(fake, TOKEN, "EBAY_US", "kuon", counter)
+        self.assertEqual((status, counter["searches"]), (200, 2))
+        self.assertFalse(ebay_prices.SORT_BY_PRICE["on"])
+        ebay_prices.search(fake, TOKEN, "EBAY_US", "kuon", counter)
+        self.assertNotIn("sort", fake.searches[-1]["params"])
+
+    def test_the_search_check_says_whether_a_result_is_cheapest_first_without_printing_a_price(self):
+        ordered = page(listing("Kuon PS2", 10, item_id=1), listing("Kuon PS2", 30, item_id=2))[1]
+        text = ebay_prices.describe_order(ordered, US)
+        self.assertIn("cheapest first: yes", text)
+        self.assertNotIn("30", text.replace("2 priced", ""))
+        shuffled = page(listing("Kuon PS2", 30, item_id=1), listing("Kuon PS2", 10, item_id=2))[1]
+        self.assertIn("cheapest first: NO", ebay_prices.describe_order(shuffled, US))
 
 
 # ------------------------------------------------------------------- the watchlist
@@ -1211,11 +1249,10 @@ class GermanyTests(unittest.TestCase):
         self.assertEqual(ebay_prices.reject_reason(listing("Kuon PS2", 30, "GBP"), entry, DE, False), "no_price",
                          "a price in another currency is no price")
 
-    def test_a_copy_without_its_manual_is_counted_but_marked_incomplete(self):
+    def test_a_copy_without_its_manual_is_left_out_as_incomplete(self):
         item = listing("Kuon PS2 ohne Anleitung", 20, "EUR")
         result = ebay_prices.summarise(page(item)[1], game("Kuon"), DE, False)
-        self.assertEqual(result["counted"], 1)
-        self.assertEqual(result["incomplete_hint"], 1)
+        self.assertEqual((result["counted"], result["skipped"]), (0, {"incomplete": 1}))
 
     def test_the_names_germany_sells_games_under_are_the_uks(self):
         rules = ebay_prices.load_regional_names()
@@ -1280,9 +1317,9 @@ def european_site_tests(name, market_id, market, junk_titles, normal_title, inco
             self.assertIsNone(ebay_prices.reject_reason(listing(normal_title, 30, "EUR"), entry, market, False))
             self.assertEqual(ebay_prices.reject_reason(listing("Kuon PS2 NTSC USA", 30, "EUR"), entry, market, False), "import")
 
-        def test_a_copy_without_its_manual_is_counted_but_marked_incomplete(self):
+        def test_a_copy_without_its_manual_is_left_out_as_incomplete(self):
             result = ebay_prices.summarise(page(listing(incomplete_title, 20, "EUR"))[1], game("Kuon"), market, False)
-            self.assertEqual((result["counted"], result["incomplete_hint"]), (1, 1))
+            self.assertEqual((result["counted"], result["skipped"]), (0, {"incomplete": 1}))
 
         def test_it_runs_after_the_first_two_sites_and_on_its_own_clock(self):
             stamp = lambda hours: (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)   # noqa: E731
@@ -3067,7 +3104,9 @@ class GameCheckTests(unittest.TestCase):
     def test_each_part_of_the_search_is_relaxed_on_its_own_on_both_sites(self):
         http, lines = self.run_it(lambda params, headers: page(total=4))
         detail = [line for line in lines if "of those" in line]
-        lines = [line for line in lines if "of those" not in line]
+        order = [line for line in lines if "cheapest first" in line]
+        self.assertEqual(len(order), 2, "the search this script uses says whether eBay sorted it, on both sites")
+        lines = [line for line in lines if "of those" not in line and "cheapest first" not in line]
         self.assertEqual(len(lines), 2 * len(ebay_prices.GAME_CHECK_VARIANTS))
         self.assertEqual(len(detail), 4, "the new-only and any-condition searches each say what came back, on both sites")
         first, strict = http.searches[0]["params"], http.searches[0]["params"]
