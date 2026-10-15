@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 13:10:23 UTC",
+  "last_updated": "2026-10-15 13:13:02 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -16,6 +16,27 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 13:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3 and Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749733423",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "Dynasty Warriors 3",
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 13:05 UTC"
     },
@@ -947,6 +968,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 12:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming King's Field IV",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749731376",
+      "matched_game": "King's Field IV",
+      "matched_games": [
+        "King's Field IV"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 12:09 UTC"
     },
@@ -3009,17 +3049,16 @@
       "timestamp": "2026-10-15 10:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex, Burnout 3, Resident Evil 4 and 21 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts II, Persona 4, Resident Evil 4 and 21 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749727312",
-      "matched_game": "Deus Ex",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
-        "Deus Ex",
-        "Burnout 3",
-        "Resident Evil 4",
         "Kingdom Hearts II",
+        "Persona 4",
+        "Resident Evil 4",
         "Silent Hill 2",
         "Grand Theft Auto: San Andreas",
         "Half-Life",
@@ -3037,12 +3076,13 @@
         "Harry Potter and The Chamber of Secrets",
         "Metal Gear Solid 2: Sons of Liberty",
         "God of War II",
-        "Persona 4",
+        "Deus Ex",
         "Crazy Taxi",
-        "Max Payne"
+        "Max Payne",
+        "Burnout 3"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5730,13 +5770,14 @@
       "timestamp": "2026-10-15 06:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Grand Theft Auto: San Andreas and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749720925",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
+        "Grand Theft Auto: Vice City",
         "Grand Theft Auto: San Andreas",
         "Grand Theft Auto III"
       ],
@@ -8224,15 +8265,16 @@
       "timestamp": "2026-10-15 02:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming 007: NightFire and Half-Life",
+      "headline": "Thread on /v/ naming Spider-Man, Half-Life and 007: NightFire",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749712641",
-      "matched_game": "007: NightFire",
+      "matched_game": "Spider-Man",
       "matched_games": [
-        "007: NightFire",
-        "Half-Life"
+        "Spider-Man",
+        "Half-Life",
+        "007: NightFire"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -82235,6 +82277,34 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 00:12 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Resident Evil 4, Dead or Alive 2, Wacky Races and 7 more",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12873183",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Dead or Alive 2",
+        "Wacky Races",
+        "Gran Turismo 4",
+        "Final Fantasy XII",
+        "Shadow of the Colossus",
+        "ICO",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Grand Theft Auto: San Andreas",
+        "God of War II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-12 00:06 UTC"
     },
     {
       "headline": "How it’s meant to be…",
@@ -238883,49 +238953,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 13:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "007 First Light – Extended Operations Free DLC Overview Trailer",
-      "source": "YouTube: GameSpot",
-      "source_type": "youtube",
-      "feed": "youtube:UCbu2SsF-Or3Rsn3NxqODImw",
-      "link": "https://www.youtube.com/watch?v=J4nhMkYOWF0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 13:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo Download – October 1, 2026 (North America) – Middle-earth games, Octopath Traveler 1 and 2 for Switch 2, more",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-download-october-1-2026-north-america-middle-earth-games-octopath-traveler-1-and-2-for-switch-2-more/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 13:11 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "As Xbox swings the axe, Gears of War: E-Day developers fear they'll be laid off straight after launch - and right before they'd be due their bonuses",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wuz281/as_xbox_swings_the_axe_gears_of_war_eday/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 13:11 UTC",
       "is_digital_only": false
     }
   ]
