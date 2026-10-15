@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 00:46:29 UTC",
+  "last_updated": "2026-10-15 00:48:56 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -1499,6 +1499,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 22:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life and Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749701772",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 22:53 UTC"
     },
     {
       "headline": "I really wish Nintendo put out NES games on HuCards",
@@ -4135,6 +4155,25 @@
       "timestamp": "2026-10-14 20:33 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749694034",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 20:31 UTC"
+    },
+    {
       "headline": "What Game should I buy? Lego Batman, AC or No Mans Sky",
       "source": "r/gamingsuggestions",
       "source_type": "reddit",
@@ -5829,6 +5868,26 @@
       "hype": 0,
       "timestamp": "2026-10-14 19:01 UTC",
       "views": 13949
+    },
+    {
+      "headline": "Thread on /v/ naming Castlevania: Lament of Innocence and Castlevania: Curse of Darkness",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749689007",
+      "matched_game": "Castlevania: Lament of Innocence",
+      "matched_games": [
+        "Castlevania: Lament of Innocence",
+        "Castlevania: Curse of Darkness"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 19:01 UTC"
     },
     {
       "headline": "Even a game from 2002 can look stunning with DX11, modern lighting, post-processing, and of course, DLSS 5!",
@@ -232265,19 +232324,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 00:51 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Tell me one game you still think about to this day",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wulsjm/tell_me_one_game_you_still_think_about_to_this_day/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 00:47 UTC",
       "is_digital_only": false
     }
   ]
