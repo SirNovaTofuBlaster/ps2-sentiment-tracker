@@ -4,6 +4,10 @@
 
 - A price beside a game's name in the lists was dimmed to half strength when its check was overdue (over 8 hours for a staple), which read as a broken or different price next to a full-strength euro figure. Those figures now keep their colour; their hover line says `Last checked 9h ago: later than usual.` The detail on a game's own page and the eBay prices page still dims an overdue figure and prints its age beside it. The overdue figures came from the hourly job's 500-search cap: when more than 500 lookups are due, the rest wait for the next run.
 
+## 2026-10-15: one game, two names, one set of prices
+
+- King's Field IV (the European name) showed no US price on the shelf: in the US the game is King's Field: The Ancient City, which has its own entry and its own US figure ($119.99, 15 copies on eBay US), while the European name's US search finds none. `ebay_watchlist.json` has a new `same_game` list (names of one game the library files apart), and `setPrices()` lets a name take another's figure for any site where its own has none, so both names read the same. Nothing is searched differently and each name keeps its own row and history. Listed: King's Field (three names), Project Zero / Fatal Frame (1, 2 and 3), Kaido Racer / Tokyo Xtreme Racer: Drift (1 and 2), Mr. Moskeeto / Mister Mosquito, Persona 4 / Shin Megami Tensei: Persona 4. Names in the list are never labelled region-only. Add a group when a game shows a price under one name and none under the other.
+
 ## 2026-10-15: shelf prices line up
 
 - On the Tracker's shelf a one-line game name left its price rows higher than a neighbour's two-line name. The name now always reserves two lines (`min-height: 2.4em` on `.shelf-name`), so the US, UK and EU rows start at the same height in every box, on a desktop and a phone (checked in headless Chromium: every row at the same top).

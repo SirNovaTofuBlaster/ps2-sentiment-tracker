@@ -2312,6 +2312,19 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.doesNotMatch(stamped, /\b(am|pm)\b/i, 'no 12-hour clock');
     assert.match(read('index.html'), /hourCycle: 'h23', timeZoneName: 'short'/);
     assert.doesNotMatch(read('index.html'), /formatLocalTime[^\n]*timeZone: '/, 'no fixed zone for the visitor\'s times');
+    // Names of one game the library keeps apart share their figures, site by site (King's Field IV / The Ancient City).
+    run(`setPrices({ games: {
+        "King's Field IV": { level: 'normal', mentions: 1, US: { copies: 0, listed: 2, checked: '2026-10-15T10:00Z' }, UK: { copies: 6, median: 206.1, checked: '2026-10-15T10:00Z' } },
+        "King's Field: The Ancient City": { level: 'normal', mentions: 0, US: { copies: 15, median: 119.99, checked: '2026-10-15T10:00Z' } },
+        "King's Field IV: The Ancient City": { level: 'normal', mentions: 0, US: { unmatched: true }, UK: { unmatched: true } },
+    } }, { same_game: [["King's Field IV", "King's Field IV: The Ancient City", "King's Field: The Ancient City"], 'nonsense', ['One only']] })`);
+    assert.equal(evalJson(`medianOf("King's Field IV", 'US')`), 119.99, 'the PAL name takes the US name\'s US figure');
+    assert.equal(evalJson(`medianOf("King's Field IV", 'UK')`), 206.1);
+    assert.equal(evalJson(`medianOf("King's Field: The Ancient City", 'UK')`), 206.1, 'and the US name takes the UK figure');
+    assert.equal(evalJson(`medianOf("King's Field: The Ancient City", 'US')`), 119.99, 'a name keeps a figure of its own');
+    assert.equal(evalJson(`medianOf("King's Field IV: The Ancient City", 'US')`), 119.99);
+    const watch = JSON.parse(read('ebay_watchlist.json'));
+    assert.ok(Array.isArray(watch.same_game) && watch.same_game.every(names => Array.isArray(names) && names.length >= 2 && names.every(name => typeof name === 'string')));
     // A game released in one region only says so where its other price can never exist.
     run(`coverSame = {}; coverIndex = {
         'gregory horror show': ['Gregory Horror Show', ' (Korea)', ' (Europe) (En,Fr,De)'],
@@ -2324,8 +2337,8 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.equal(evalJson(`regionOnly('Romancing SaGa')`), 'US');
     assert.equal(evalJson(`regionOnly('Kuon')`), null, 'out in both');
     assert.equal(evalJson(`regionOnly('Okami')`), null, 'no US or PAL file at all says nothing');
-    assert.equal(evalJson(`regionOnly('Ratchet: Deadlocked')`), null, 'a game with another name on another site is never called exclusive');
     run(`renamedKeys = new Set(['ratchet deadlocked'])`);
+    assert.equal(evalJson(`regionOnly('Ratchet: Deadlocked')`), null, 'a game with another name on another site is never called exclusive');
     assert.equal(evalJson(`regionOnly('Ratchet - Deadlocked')`), null);
     run(`setPrices({ games: { 'Gregory Horror Show': { level: 'normal', mentions: 1, UK: { copies: 12, median: 105, checked: '2026-10-15T10:00Z' } }, 'Romancing SaGa': { level: 'normal', mentions: 1, US: { copies: 90, median: 25, checked: '2026-10-15T10:00Z' } } } }, null)`);
     const quotes = name => evalJson(`shelfQuotesHtml(${JSON.stringify(name)})`);

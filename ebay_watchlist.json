@@ -1,5 +1,5 @@
 {
-  "about": "ebay_prices.py prices every game the feed mentions. 'games' are pinned: always tracked, even when nobody mentions them. For a pinned game, 'search' is optional (the words a listing must contain, when they differ from the title) and so is 'exclude' (listings containing any of these words are left out). 'never' lists titles that must not be priced, such as names the feed keeps matching by mistake. At most 100 pinned games. 'regional_names' lists games released in a region under another name: on that eBay site, a game whose name starts with 'from' is searched with 'to' in its place (Fatal Frame 2: Crimson Butterfly is Project Zero 2 on eBay UK).",
+  "about": "ebay_prices.py prices every game the feed mentions. 'games' are pinned: always tracked, even when nobody mentions them. For a pinned game, 'search' is optional (the words a listing must contain, when they differ from the title) and so is 'exclude' (listings containing any of these words are left out). 'never' lists titles that must not be priced, such as names the feed keeps matching by mistake. At most 100 pinned games. 'same_game' lists the names of one game that the library keeps as separate entries because it was released under another name (King's Field IV is The Ancient City in the US): the dashboard fills a site's missing price under one name from another name's figure for that site; nothing is searched differently. 'regional_names' lists games released in a region under another name: on that eBay site, a game whose name starts with 'from' is searched with 'to' in its place (Fatal Frame 2: Crimson Butterfly is Project Zero 2 on eBay UK).",
   "games": [
     { "title": "Silent Hill 2" },
     { "title": "Silent Hill 3" },
@@ -38,6 +38,16 @@
       { "from": "Dragon Quest VIII: Journey of the Cursed King", "to": "Dragon Quest: The Journey of the Cursed King" }
     ]
   },
+  "same_game": [
+    ["King's Field IV", "King's Field IV: The Ancient City", "King's Field: The Ancient City"],
+    ["Project Zero", "Fatal Frame"],
+    ["Project Zero 2: Crimson Butterfly", "Fatal Frame 2: Crimson Butterfly", "Fatal Frame II: Crimson Butterfly"],
+    ["Project Zero 3: The Tormented", "Fatal Frame III: The Tormented"],
+    ["Kaido Racer", "Tokyo Xtreme Racer: Drift"],
+    ["Kaido Racer 2", "Tokyo Xtreme Racer: Drift 2"],
+    ["Mr. Moskeeto", "Mister Mosquito"],
+    ["Persona 4", "Shin Megami Tensei: Persona 4"]
+  ],
   "never": [
     "Combat Ace"
   ]
