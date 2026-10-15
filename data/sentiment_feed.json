@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-15 01:05:01 UTC",
+  "last_updated": "2026-10-15 01:16:44 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749708665",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 01:10 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584503024",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 01:05 UTC"
+    },
     {
       "headline": "Fire Emblem: Fortune’s Weave Expansion Pass announced",
       "source": "Gematsu",
@@ -20,14 +58,15 @@
       "timestamp": "2026-10-15 01:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Fatal Frame",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749708168",
       "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Fatal Frame"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -156,6 +195,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 00:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749707010",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 00:34 UTC"
     },
     {
       "headline": "Let's play some Minecraft",
@@ -232214,91 +232272,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-01 01:17 UTC"
-    },
-    {
-      "headline": "Lego's Sony PlayStation Set Officially Launches This Week",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/lego-playstation-price-release-date-availability-october-2026/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 01:14 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo Switch 2 and Switch update 23.0.1 out now, patch notes",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-switch-2-and-switch-update-23-0-1-out-now-patch-notes/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 01:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Thread on /vr/ naming Fatal Frame and Mister Mosquito",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12851167",
-      "matched_game": "Fatal Frame",
-      "matched_games": [
-        "Fatal Frame",
-        "Mister Mosquito"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-01 01:10 UTC"
-    },
-    {
-      "headline": "All Previous Donkey Kong Bananza Emerald Rush Events will be available to play on a monthly basis",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1wum86k/all_previous_donkey_kong_bananza_emerald_rush/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 01:08 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo Switch 1 & 2 system version 23.0.1 released",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1wum7i1/nintendo_switch_1_2_system_version_2301_released/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 01:07 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Recommend me the most impactful game you have ever played",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wum669/recommend_me_the_most_impactful_game_you_have/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 01:06 UTC",
-      "is_digital_only": false
     }
   ]
 }
