@@ -1,7 +1,66 @@
 {
-  "last_updated": "2026-10-15 20:23:38 UTC",
+  "last_updated": "2026-10-15 20:34:51 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /v/ naming God of War and Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749759074",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 20:29 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749758435",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 20:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter and Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749757528",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 20:04 UTC"
+    },
     {
       "headline": "SPINE ‘Customization Announce’ trailer, screenshots",
       "source": "Gematsu",
@@ -37,14 +96,16 @@
       "timestamp": "2026-10-15 19:56 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 4: The Room",
+      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 4: The Room and Silent Hill 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749756838",
-      "matched_game": "Silent Hill 4: The Room",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Silent Hill 4: The Room"
+        "Silent Hill 2",
+        "Silent Hill 4: The Room",
+        "Silent Hill 3"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -107,18 +168,18 @@
       "timestamp": "2026-10-15 19:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Silent Hill 2",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749756463",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1998,13 +2059,14 @@
       "timestamp": "2026-10-15 18:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War",
+      "headline": "Thread on /v/ naming Spider-Man and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749752062",
-      "matched_game": "God of War",
+      "matched_game": "Spider-Man",
       "matched_games": [
+        "Spider-Man",
         "God of War"
       ],
       "match_score": 100,
@@ -3168,15 +3230,15 @@
       "timestamp": "2026-10-15 17:48 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 4 and Persona 3",
+      "headline": "Thread on /v/ naming Persona 3 and Persona 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749749292",
-      "matched_game": "Persona 4",
+      "matched_game": "Persona 3",
       "matched_games": [
-        "Persona 4",
-        "Persona 3"
+        "Persona 3",
+        "Persona 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -4951,7 +5013,7 @@
       "timestamp": "2026-10-15 16:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3, Persona 3 and 2 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3, Persona 3 and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -4962,7 +5024,9 @@
         "Dynasty Warriors 3",
         "Persona 3",
         "Dora the Explorer",
-        "Kingdom Hearts II"
+        "Kingdom Hearts II",
+        "Silent Hill 2",
+        "Ape Escape 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -245351,83 +245415,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 20:37 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "How to conquer Kuttenberg",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/rpg/how-to-conquer-kuttenberg/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 20:32 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Gears of War: E-Day | Gallery",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/gears-of-war-e-day/114848/gears-of-war-e-day-gallery",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 20:31 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "More than 450 Witcher 3 mods have already been updated to support the Remastered version",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wvafhq/more_than_450_witcher_3_mods_have_already_been/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": true,
-      "sentiment": 60,
-      "timestamp": "2026-10-01 20:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Witcher 3 Remastered: How to Activate Alternate Outfits",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=wBCgpJ7LFnQ",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": true,
-      "sentiment": 60,
-      "timestamp": "2026-10-01 20:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "More than 450 Witcher 3 mods have already been updated to support the Remastered version",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/the-witcher/more-than-450-witcher-3-mods-have-already-been-updated-to-support-the-remastered-version/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-01 20:26 UTC",
       "is_digital_only": false
     }
   ]
