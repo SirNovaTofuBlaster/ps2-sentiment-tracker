@@ -18,7 +18,7 @@ only which games a thread names (rule 12). It writes:
 - `data/poll_state.json`: when each source type was last fetched (each has its own clock)
 
 The static `index.html` dashboard (GitHub Pages) renders those files and edits `feeds.json`
-through its **Sources & Weights** panel.
+through its **Sources** panel (no sentiment or weights are shown: removed 2026-10-15; the scraper still writes `sentiment` and `feeds.json` keeps weights).
 
 - How it works and why: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 - What changed and when: [docs/CHANGELOG.md](docs/CHANGELOG.md)
@@ -29,7 +29,7 @@ through its **Sources & Weights** panel.
 
 | Path | What it is |
 |---|---|
-| `feeds.json` | Every source (news / reddit / forum / 4chan / youtube / podcast), roles and weights, `poll_every_hours` (0.25, 0.5 or 1–24) |
+| `feeds.json` | Every source (news / reddit / forum / 4chan / youtube / podcast), roles (and weights, no longer shown), `poll_every_hours` (0.25, 0.5 or 1–24) |
 | `scrape_loop.py` | Keeps the scraper running for 5½ hours per workflow run: runs it when a type is due, commits `data/`, starts the eBay job hourly and its own successor |
 | `tests/test_scrape_loop.py` | Offline tests for the loop (fake clock) and `scraper.yml` |
 | `scraper.py` | Config validation, fetch plan, YouTube link resolution, matching, sentiment, reading 4chan boards for game names, feed health, snapshot merge |

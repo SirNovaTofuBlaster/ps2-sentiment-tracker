@@ -24,14 +24,13 @@ both as a dashboard. A GitHub Actions workflow keeps the scraper running all the
 
 - [SOURCES.md](SOURCES.md): the ranked lists (subscribers, total views, Apple ratings and chart
   positions, last activity) and why each source is on or off.
-- The dashboard's **Sources & Weights** panel switches sources on and off, adds new ones (paste a
-  YouTube channel link, an Apple Podcasts link, a feed link, a subreddit or a 4chan board) and tunes how much
-  each kind of source counts. **Save changes** commits `feeds.json` through a guided copy/paste
+- The dashboard's **Sources** panel switches sources on and off, adds new ones (paste a
+  YouTube channel link, an Apple Podcasts link, a feed link, a subreddit or a 4chan board) and sets how often each kind of source is read. **Save changes** commits `feeds.json` through a guided copy/paste
   into GitHub's editor, or in one click with a GitHub token.
 - `guide.html` (the dashboard's **How to use** button) explains all of this step by step for
   non-technical users.
-- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how a run works end to end, how weights are
-  applied, and why it is built this way.
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): how a run works end to end, how the sources are
+  handled, and why it is built this way.
 
 ## What else runs
 

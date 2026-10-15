@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-15: no sentiment on the dashboard
+
+- Removed the **Net sentiment** tile (three tiles are left), the table's **Sentiment** column and its phone-card row, the `×0.5` weight badges, and the weight inputs in the Sources panel (the role weights table and each
+  source's Weight box). The Weights & schedule tab is now **Schedule**; the guide's Weights section is now "Roles and schedule", and the page's name drops "Sentiment".
+- Not changed: `scraper.py` still scores and writes `sentiment`, `feeds.json` keeps its weights and the validators still check them, so nothing in `data/` or the validator parity changes. Stripping the scores from the
+  scraper and the data is a separate step.
+
 ## 2026-10-15: r/PlaystationCollectors
 
 - Added r/PlaystationCollectors to the "Collecting, Retro & Emulation" Reddit group (role `community`), by the maintainer's request. It joins that group's combined multireddit request; not fetched from the sandbox (Reddit is blocked there), so Live checks/the next run show whether it contributes.

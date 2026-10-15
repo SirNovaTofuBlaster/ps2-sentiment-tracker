@@ -1,6 +1,6 @@
 # Sources
 
-Every source the scraper reads lives in [`feeds.json`](feeds.json). This page is the ranked snapshot behind it: who each source is, how big it is and whether it starts switched on. Switch sources on or off, add new ones or change weights in the dashboard's **Sources & Weights** panel (step by step: the dashboard's **How to use** page, `guide.html`; how it works and why these choices were made: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)).
+Every source the scraper reads lives in [`feeds.json`](feeds.json). This page is the ranked snapshot behind it: who each source is, how big it is and whether it starts switched on. Switch sources on or off, add new ones in the dashboard's **Sources** panel (step by step: the dashboard's **How to use** page, `guide.html`; how it works and why these choices were made: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)).
 
 - Numbers were measured on **2026-09-30**, directly from YouTube (public subscriber count, which YouTube rounds, and exact total views) and Apple Podcasts (number of US ratings and the Video Games chart rank in the US and UK). They are a snapshot, not live numbers.
 - *Last upload / Last episode* is the newest item in the source's own feed on that date. The live state of every feed (active, quiet, stale or failing) is shown in the dashboard from `data/feed_status.json`.
@@ -243,7 +243,7 @@ Small channels, but every upload is about PS2 games, so they count as PS2 contex
 
 ### Added from the dashboard
 
-Channels added later through **Sources & Weights**. They were not part of the 2026-09-30 measurement, so they have no subscriber or view figures here.
+Channels added later through **the Sources panel**. They were not part of the 2026-09-30 measurement, so they have no subscriber or view figures here.
 
 | Channel | Default |
 |---|---|
