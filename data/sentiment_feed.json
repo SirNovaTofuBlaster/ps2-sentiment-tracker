@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-15 19:50:38 UTC",
+  "last_updated": "2026-10-15 19:53:15 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749756463",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 19:48 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Kingdom Hearts",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584585175",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 19:47 UTC"
+    },
     {
       "headline": "When a JRPG is lopsided in gameplay & story",
       "source": "r/JRPG",
@@ -245276,58 +245314,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-01 19:53 UTC"
-    },
-    {
-      "headline": "Magic: The Gathering's Disastrous Zeta Set is Officially Coming Back",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/magic-secret-lair-mschf-zeta-set-preorder-december-2026/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 19:52 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Become the Overseer with the New Fallout Overseer's Pip-Boy",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=P4ALPFr9f0g",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 19:52 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Real or nah?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wv9fw7/real_or_nah/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 19:51 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Real or nah?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wv9ej5/real_or_nah/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 19:50 UTC",
-      "is_digital_only": false
     }
   ]
 }
