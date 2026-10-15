@@ -2757,7 +2757,7 @@ await check('My collection: add, value, keep in the browser, back up and restore
     run(`ensureCoverIndex()`);
     await new Promise(done => setTimeout(done, 20));
     assert.match(el('topGamesList').innerHTML, /class="row-cover"/, 'drawn again once the covers list has arrived');
-    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions' \|\| view === 'demand' \|\| view === 'library' \|\| view === 'gacha'\) ensureCoverIndex\(\);/, 'opening any of these pages asks for the covers list');
+    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions' \|\| view === 'demand' \|\| view === 'library' \|\| view === 'gacha' \|\| view === 'underrated'\) ensureCoverIndex\(\);/, 'opening any of these pages asks for the covers list');
     assert.equal(run(`initialsOf('The Legend of Heroes: Trails')`), 'TLO');
     context.fetch = fakeFetch;
     context.localStorage = { getItem: () => null, setItem() {} };
@@ -3032,6 +3032,48 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
     assert.equal(el('viewGacha').classList.contains('hidden'), false);
     assert.equal(el('tabGacha').classList.contains('is-active'), true);
     assert.equal(run(`isView('gacha')`), true, '#gacha opens the page');
+    // Underrated: the file, the daily pick (random, the same all day, no repeat within a round) and the page.
+    {
+        const raw = JSON.parse(read('underrated.json'));
+        const database = JSON.parse(read('data/ps2_database.json'));
+        const library = new Set([...(Array.isArray(database) ? database : database.games || []).map(g => typeof g === 'string' ? g : g.title || g.name), ...JSON.parse(read('search_extra_titles.json')).titles].map(t => String(t).toLowerCase()));
+        assert.ok(raw.games.length >= 30, 'enough games for a month of picks');
+        const titles = raw.games.map(g => g.title);
+        assert.equal(new Set(titles.map(t => t.toLowerCase())).size, titles.length, 'no game twice');
+        for (const t of titles) assert.ok(library.has(t.toLowerCase()), `${t} is a library name`);
+        for (const g of raw.games) assert.ok(g.why && g.genre && (g.year === null || Number.isInteger(g.year)), `${g.title} has a reason, a genre and a year or null`);
+        const never = new Set(raw.never.map(t => t.toLowerCase()));
+        for (const t of titles) assert.ok(!never.has(t.toLowerCase()), `${t} is on the never list`);
+        for (const must of ['Okami', 'Grand Theft Auto: San Andreas', 'Medal of Honor: Frontline']) assert.ok(never.has(must.toLowerCase()), `${must} is kept off`);
+        assert.ok(Object.values(raw.lists).every(l => /^https:\/\//.test(l.url)), 'every list has a link');
+        assert.ok(!JSON.stringify(raw).match(/"rank"|"score"/), 'no invented ranks or scores');
+        const n = raw.games.length;
+        const day0 = 20000;
+        const seen = new Set(Array.from({ length: n }, (_, i) => evalJson(`underratedIndexFor(${n}, ${day0 + i})`)));
+        assert.ok(seen.size >= n - 1 && seen.size <= n);
+        const first = Math.floor(day0 / n) * n;
+        const round = Array.from({ length: n }, (_, i) => evalJson(`underratedIndexFor(${n}, ${first + i})`));
+        assert.equal(new Set(round).size, n, 'no repeat inside one round: every game once');
+        assert.deepEqual(evalJson(`underratedIndexFor(${n}, ${day0})`), evalJson(`underratedIndexFor(${n}, ${day0})`), 'the same day gives the same game');
+        assert.notDeepEqual(round, Array.from({ length: n }, (_, i) => evalJson(`underratedIndexFor(${n}, ${first + n + i})`)), 'the next round is shuffled differently');
+        assert.notDeepEqual(round, round.slice().sort((a, b) => a - b), 'the order is not the file order');
+        run(`underratedData = cleanUnderratedData(${JSON.stringify(raw)}); underratedFileState = 'ready'; underratedFilter = 'all'`);
+        run(`showView('underrated', false)`);
+        assert.equal(el('viewUnderrated').classList.contains('hidden'), false);
+        assert.equal(el('tabUnderrated').classList.contains('is-active'), true);
+        assert.equal(run(`isView('underrated')`), true, '#underrated opens the page');
+        assert.match(el('underratedToday').innerHTML, /Game of the day/);
+        assert.equal((el('underratedDays').innerHTML.match(/<li /g) || []).length, 7, 'seven earlier days');
+        assert.equal((el('underratedGrid').innerHTML.match(/<li /g) || []).length, n, 'all of them in the grid');
+        run(`underratedSetFilter('g:' + underratedData.games[0].genre)`);
+        const inGenre = raw.games.filter(g => g.genre === raw.games[0].genre).length;
+        assert.equal((el('underratedGrid').innerHTML.match(/<li /g) || []).length, inGenre, 'a genre chip narrows the grid');
+        run(`underratedSetFilter('all')`);
+        assert.match(el('underratedNote').innerHTML, /denofgeek\.com/, 'the lists are credited with links');
+        assert.equal(run(`cleanUnderratedData({games: [{title: 'A', why: 'x'}, {title: 'a', why: 'y'}, {title: 5}]}).games.length`), 1, 'bad rows and repeats are dropped');
+        assert.equal(run(`cleanUnderratedData({})`), null);
+        run(`showView('dashboard', false)`);
+    }
     // The console: drawn once, one lit square per capsule left, and a coin plays the whole sequence (tray out, disc, prize).
     run(`gachaSaved = cleanGachaSaved({}); gachaShown = null; gachaTurning = false; gachaMachineId = 'horror'; renderGacha('en-GB')`);
     assert.match(el('gachaMachine').innerHTML, /id="gxPips"/);

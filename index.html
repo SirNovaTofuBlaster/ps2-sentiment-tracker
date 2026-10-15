@@ -112,6 +112,7 @@
           <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
           <button type="button" id="tabLibrary" role="tab" aria-selected="false" aria-controls="viewLibrary" onclick="showView('library')" class="view-tab"><i class="fa-solid fa-table-cells" aria-hidden="true"></i> Library</button>
           <button type="button" id="tabGacha" role="tab" aria-selected="false" aria-controls="viewGacha" onclick="showView('gacha')" class="view-tab"><i class="fa-solid fa-dice" aria-hidden="true"></i> Gacha</button>
+          <button type="button" id="tabUnderrated" role="tab" aria-selected="false" aria-controls="viewUnderrated" onclick="showView('underrated')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Underrated</button>
         </div>
 
         <!-- The EUR button: shown only when data/fx.json could be read. -->
@@ -418,6 +419,21 @@
       </div>
     </div>
 
+    <!-- Underrated: one game a day from underrated.json, picked by the date (the same for everyone), then the whole list. -->
+    <div id="viewUnderrated" role="tabpanel" aria-labelledby="tabUnderrated" class="hidden space-y-8">
+      <div id="underratedSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header"><h2>Underrated</h2></div>
+        <p id="underratedSummary" class="text-xs text-slate-400 mb-4">Loading the list…</p>
+        <div id="underratedToday"></div>
+        <h3 class="gacha-h3">Last 7 days</h3>
+        <ul id="underratedDays" class="under-days"></ul>
+        <h3 class="gacha-h3">All of them</h3>
+        <div id="underratedFilters" class="under-filters" role="group" aria-label="Filter"></div>
+        <ul id="underratedGrid" class="under-grid"></ul>
+        <p id="underratedNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
+      </div>
+    </div>
+
     <!-- Gacha: four capsule machines (gacha.json). Free: three coins a day, kept in this browser. Prizes go to My collection > My gacha prizes. -->
     <div id="viewGacha" role="tabpanel" aria-labelledby="tabGacha" class="hidden space-y-8">
       <div id="gachaSection" class="bg-ps2card border border-ps2border rounded-md p-6">
@@ -656,6 +672,7 @@
             prices: ['viewPrices', 'tabPrices'],
             library: ['viewLibrary', 'tabLibrary'],
             gacha: ['viewGacha', 'tabGacha'],
+            underrated: ['viewUnderrated', 'tabUnderrated'],
             collection: ['viewCollection', 'tabCollection'],
         };
 
@@ -697,11 +714,14 @@
             drawPending(view);
             currentView = view;
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
-            if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'gacha') ensureCoverIndex();
+            if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'gacha' || view === 'underrated') ensureCoverIndex();
             if (view === 'library') ensureGenres();
             if (view !== 'library') libraryClosePicked();
             if (view === 'gacha') {
                 try { openGacha(); } catch (error) { console.warn('Could not show the gacha.', error); }
+            }
+            if (view === 'underrated') {
+                try { openUnderrated(); } catch (error) { console.warn('Could not show the underrated page.', error); }
             }
             if (view === 'collection') {
                 try { renderCollection(); renderPrizes(); } catch (error) { console.warn('Could not show the collection.', error); }
@@ -3143,6 +3163,156 @@
             if (!document.getElementById('viewGacha')?.classList.contains('hidden')) renderGacha();
         }
 
+        /* ---- Underrated -------------------------------------------------------
+           underrated.json: games that public "underrated PS2" lists keep naming (made by hand, read only
+           when the tab is opened). One is the game of the day. The day is the UTC date, so every visitor
+           sees the same game, and the order is a shuffle that is fixed per round: every game shows once
+           before any shows again. Nothing is stored and nothing is sent. */
+        let underratedData = null, underratedFileState = 'idle', underratedFilter = 'all';
+        const UNDERRATED_CHEAP_UK = 15;   // "Under £15" uses the eBay UK median
+
+        function cleanUnderratedData(raw) {
+            if (!raw || typeof raw !== 'object' || !Array.isArray(raw.games)) return null;
+            const games = [];
+            const seen = new Set();
+            for (const g of raw.games) {
+                if (!g || typeof g.title !== 'string' || !g.title.trim() || typeof g.why !== 'string') continue;
+                const key = g.title.trim().toLowerCase();
+                if (seen.has(key)) continue;
+                seen.add(key);
+                games.push({
+                    title: g.title.trim(),
+                    year: Number.isInteger(g.year) ? g.year : null,
+                    genre: typeof g.genre === 'string' && g.genre.trim() ? g.genre.trim() : 'Other',
+                    why: g.why.trim(),
+                });
+            }
+            if (!games.length) return null;
+            const lists = [];
+            for (const entry of Object.values(raw.lists && typeof raw.lists === 'object' ? raw.lists : {})) {
+                if (entry && typeof entry.name === 'string' && /^https:\/\//.test(String(entry.url))) lists.push({ name: entry.name, url: entry.url });
+            }
+            return { games, lists };
+        }
+
+        // A small seeded generator, so the same round always gives the same shuffle.
+        function seededRandom(seed) {
+            let a = (seed >>> 0) || 1;
+            return () => {
+                a = (a + 0x6D2B79F5) >>> 0;
+                let t = a;
+                t = Math.imul(t ^ (t >>> 15), t | 1);
+                t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+                return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+            };
+        }
+        // The order of one round of n games (round 0, 1, 2 ...): a Fisher-Yates shuffle seeded by the round.
+        function underratedRound(n, round) {
+            const order = Array.from({ length: n }, (_, i) => i);
+            const random = seededRandom(round * 2654435761 + 12345);
+            for (let i = n - 1; i > 0; i--) {
+                const j = Math.floor(random() * (i + 1));
+                [order[i], order[j]] = [order[j], order[i]];
+            }
+            return order;
+        }
+        // Which game (an index) is the pick of a day number (days since 1970-01-01, UTC).
+        function underratedIndexFor(n, day) {
+            if (!(n > 0)) return -1;
+            return underratedRound(n, Math.floor(day / n))[((day % n) + n) % n];
+        }
+        const utcDay = (when = Date.now()) => Math.floor(when / 86400000);
+
+        function underratedPriceHtml(title) {
+            let html = '';
+            try { html = compactPriceHtml(title, Date.now()); } catch { html = ''; }
+            return html;
+        }
+
+        function underratedCardHtml(game, extra = '') {
+            const url = coversShown ? libraryCover({ title: game.title, variants: [] }, 'US') || coverUrl(game.title, 'PAL') : '';
+            const meta = [game.genre, game.year].filter(Boolean).join(' · ');
+            return `<div class="under-cover coll-cover" aria-hidden="true"><span class="coll-initials">${esc(initialsOf(game.title))}</span>${url
+                ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}</div>
+                <div class="under-body"><div class="under-title">${gameLinkHtml(game.title)}</div>
+                <div class="under-meta">${esc(meta)}</div>
+                <p class="under-why">${esc(game.why)}</p>
+                <div class="under-price">${underratedPriceHtml(game.title)}</div>${extra}</div>`;
+        }
+
+        function underratedButtons(game) {
+            const t = esc(JSON.stringify(game.title));
+            return `<div class="under-actions"><button type="button" class="brand-btn brand-btn-primary" onclick="openGame(${t})">Open game page</button>
+                <button type="button" class="brand-btn" onclick="underratedAdd(${t}, this)">Add to collection</button></div>`;
+        }
+        function underratedAdd(title, button) {
+            const ok = addToCollection(title, 'US', 'complete');
+            if (button) button.textContent = ok ? 'Added (US, complete)' : 'Could not add';
+            if (ok) { try { updateCollectionTab(); refreshCollection(); } catch { /* shown when the tab opens */ } }
+            return false;
+        }
+
+        function underratedGenres(games) {
+            return [...new Set(games.map(g => g.genre))].sort();
+        }
+
+        function renderUnderrated(now = Date.now()) {
+            const summary = document.getElementById('underratedSummary');
+            const today = document.getElementById('underratedToday');
+            if (!summary || !today) return;
+            if (!underratedData) {
+                summary.textContent = underratedFileState === 'failed' ? 'The list could not be loaded. Try again later.' : 'Loading the list…';
+                today.innerHTML = '';
+                return;
+            }
+            const games = underratedData.games;
+            const n = games.length;
+            const day = utcDay(now);
+            summary.textContent = `One game a day, picked at random from ${n} that lists of underrated PS2 games keep naming. Every game comes up once before any comes up again.`;
+            const pick = games[underratedIndexFor(n, day)];
+            today.innerHTML = `<div class="under-hero"><div class="under-hero-label">Game of the day</div>${underratedCardHtml(pick, underratedButtons(pick))}</div>`;
+            document.getElementById('underratedDays').innerHTML = [1, 2, 3, 4, 5, 6, 7].map(back => {
+                const g = games[underratedIndexFor(n, day - back)];
+                const date = new Date((day - back) * 86400000).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+                return `<li class="under-day"><span class="under-day-date">${esc(date)}</span> ${gameLinkHtml(g.title)}</li>`;
+            }).join('');
+            const chips = [['all', 'All'], ...underratedGenres(games).map(g => ['g:' + g, g]), ['cheap', `Under £${UNDERRATED_CHEAP_UK}`]];
+            if (!chips.some(([key]) => key === underratedFilter)) underratedFilter = 'all';
+            document.getElementById('underratedFilters').innerHTML = chips.map(([key, label]) =>
+                `<button type="button" class="under-chip${key === underratedFilter ? ' is-active' : ''}" aria-pressed="${key === underratedFilter}" onclick="underratedSetFilter(${esc(JSON.stringify(key))})">${esc(label)}</button>`).join('');
+            const shown = games.filter(g => underratedFilter === 'all'
+                || (underratedFilter === 'cheap' && (medianOf(g.title, 'UK') ?? Infinity) < UNDERRATED_CHEAP_UK)
+                || underratedFilter === 'g:' + g.genre);
+            document.getElementById('underratedGrid').innerHTML = shown.length
+                ? shown.map(g => `<li class="under-card">${underratedCardHtml(g)}</li>`).join('')
+                : '<li class="text-xs text-slate-400">Nothing matches this filter right now.</li>';
+            const links = underratedData.lists.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.name)}</a>`).join(', ');
+            document.getElementById('underratedNote').innerHTML = `A game gets on the list when public "underrated PS2" lists name it, and is left out when it is a famous classic. The titles were collected by hand from: ${links}. The one-line reasons are written here, not quoted. Prices are eBay asking prices.`;
+        }
+        function underratedSetFilter(key) {
+            underratedFilter = key;
+            renderUnderrated();
+        }
+        async function ensureUnderrated() {
+            if (underratedFileState === 'ready' || underratedFileState === 'loading') return;
+            underratedFileState = 'loading';
+            try {
+                const response = await fetch('underrated.json');
+                underratedData = response.ok ? cleanUnderratedData(await response.json()) : null;
+            } catch {
+                underratedData = null;
+            }
+            underratedFileState = underratedData ? 'ready' : 'failed';
+            redrawUnderrated();
+        }
+        function openUnderrated() {
+            renderUnderrated();
+            ensureUnderrated();
+        }
+        function redrawUnderrated() {
+            if (!document.getElementById('viewUnderrated')?.classList.contains('hidden')) renderUnderrated();
+        }
+
         function gachaPick(id) {
             if (gachaTurning || !gachaMachineOf(id)) return;
             gachaMachineId = id;
@@ -3702,7 +3872,7 @@
             } catch {
                 coverIndexState = 'failed';
             }
-            try { refreshCollection(); paintGameCover(); redrawCoverLists(); redrawGacha(); } catch { /* the next draw shows them */ }
+            try { refreshCollection(); paintGameCover(); redrawCoverLists(); redrawGacha(); redrawUnderrated(); } catch { /* the next draw shows them */ }
         }
 
         // The address of a game's box art: the region's own picture when there is one, else the other's.
