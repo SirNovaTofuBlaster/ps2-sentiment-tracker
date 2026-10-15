@@ -892,9 +892,11 @@ def add_rare_games(games, rare, catalogue):
                 owners[key] = game
             if market_id not in game["sites"]:
                 game["sites"].append(market_id)
-            # Its new and sealed copies are counted too, on this list's site: a rare game's copies are often that.
-            game["new_tier"] = sorted(set(game.get("new_tier") or ()) | {market_id})
             game["exclude"] = sorted(set(game["exclude"]) | set(entry["exclude"]))
+        # Its new and sealed copies are counted too, on this list's site: a rare game's copies are often that. This
+        # includes a game the feed already tracks (Kuon): its used lookup is reused, and it was left without the
+        # second look until 2026-10-15.
+        game["new_tier"] = sorted(set(game.get("new_tier") or ()) | {market_id})
         placed[entry["list"]][entry["title"]] = game["title"]
     games.extend(added.values())
     games.sort(key=lambda game: game["title"].lower())

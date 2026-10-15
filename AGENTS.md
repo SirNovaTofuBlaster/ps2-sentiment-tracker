@@ -334,7 +334,7 @@ Before you call something done, prove it; don't assume it.
     `require_any` words (the model or the colour's name). Bundles count; shells, skins, custom
     paint, mods and broken consoles never do (`CONSOLE_JUNK`). They are `kind: "console"` in
     `latest.json` and stay off the eBay prices page.
-  - The Rarest page's games also get a second search for new and sealed copies on their list's site (`check_new_copies()`, `new` in `latest.json`, shown as "new from £X (n)"), because the used-condition search showed Kuon as "none listed" on eBay UK while 3 new copies were for sale (2026-10-15, found with `check_game`). Never mix it into `copies`, `median`, the history or the index. Copies listed from another country (27 for Kuon on eBay UK) are still left out on purpose.
+  - The Rarest page's games also get a second search for new and sealed copies on their list's site (`check_new_copies()`, `new` in `latest.json`, shown as "new from £X (n)"), because the used-condition search showed Kuon as "none listed" on eBay UK while 3 new copies were for sale (2026-10-15, found with `check_game`). It covers every Rarest entry, including a game the feed also tracks (Kuon was skipped until 2026-10-15). `check_game` prints which condition ids came back; all of Kuon's 3 UK listings were id 1000. Never mix it into `copies`, `median`, the history or the index. Copies listed from another country (27 for Kuon on eBay UK) are still left out on purpose.
   - The API returns listings that are still for sale. They are asking prices, not sold prices,
     and US (NTSC) and UK (PAL) figures are never combined.
   - The dashboard shows a game's medians wherever its name appears, so it has to tie the

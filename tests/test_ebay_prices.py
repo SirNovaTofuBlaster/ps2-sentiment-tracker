@@ -1757,6 +1757,23 @@ class RareListTests(unittest.TestCase):
         self.assertFalse(any("1000|1500|1750" in c["params"].get("filter", "") for c in silent_hill))
         self.assertNotIn("new", self.sandbox.latest["games"]["Silent Hill 2"]["UK"])
 
+    def test_a_game_the_feed_tracks_and_a_rare_list_names_still_gets_the_second_look_on_the_lists_site_only(self):
+        # Kuon, 2026-10-15: tracked by the feed, so its lookup was reused and the second look was skipped.
+        self.lists(pal=[{"rank": 1, "title": "Silent Hill 2"}], us=[])
+        def answer(params, headers):
+            if "1000|1500|1750" in params.get("filter", ""):
+                return page(listing("Silent Hill 2 PS2 PAL brand new", 120.0, currency="GBP", item_id=9, condition="New"))
+            return two_copies(params, headers)
+        code, printed, fake = self.sandbox.run(FakeHttp(answer))
+        self.assertEqual(code, 0, printed)
+        games = self.sandbox.latest["games"]["Silent Hill 2"]
+        self.assertEqual(games["level"], "normal", "still the feed's game, priced on both sites")
+        self.assertEqual(games["UK"]["new"]["copies"], 1)
+        self.assertEqual(games["UK"]["copies"], 2, "the used figures are untouched")
+        self.assertNotIn("new", games["US"], "not on the other site")
+        new_searches = [c for c in fake.searches if "1000|1500|1750" in c["params"].get("filter", "")]
+        self.assertTrue(new_searches and all(c["headers"]["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" for c in new_searches))
+
     def test_sealed_titles_count_as_new_copies_but_never_as_used_ones(self):
         market = ebay_prices.MARKETS["EBAY_GB"]
         game = {"title": "Kuon", "search": "kuon", "queries": ["kuon"], "exclude": [], "require": [], "allow": [], "siblings": []}
@@ -1777,7 +1794,9 @@ class RareListTests(unittest.TestCase):
         self.sandbox.feed([mention("Silent Hill 2", 5, "r/ps2"), mention("Fatal Frame 2", 4, "r/ps2")])
         code, printed, fake = self.sandbox.run()
         self.assertEqual(code, 0, printed)
-        queries = [(call["headers"]["X-EBAY-C-MARKETPLACE-ID"], call["params"]["q"]) for call in fake.searches]
+        # The used lookups: the second look for new copies (its own condition filter) is another search by design.
+        queries = [(call["headers"]["X-EBAY-C-MARKETPLACE-ID"], call["params"]["q"]) for call in fake.searches
+                   if "1000|1500|1750" not in call["params"].get("filter", "")]
         self.assertEqual(queries.count(("EBAY_GB", "silent hill 2")), 1)
         self.assertEqual(queries.count(("EBAY_GB", "project zero 2")), 1, "the UK name the feed's game is searched under")
         latest = self.sandbox.latest
@@ -1876,8 +1895,9 @@ class RareListTests(unittest.TestCase):
         self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["Fatal Frame 2: Crimson Butterfly"])
         self.sandbox.feed([mention("Fatal Frame 2: Crimson Butterfly", 4, "r/ps2")])
         code, printed, fake = self.sandbox.run()
-        queries = [call["params"]["q"] for call in fake.searches if call["headers"]["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB"]
-        self.assertEqual(queries, ["project zero 2 crimson butterfly"], "one UK lookup, not two")
+        queries = [call["params"]["q"] for call in fake.searches if call["headers"]["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB"
+                   and "1000|1500|1750" not in call["params"].get("filter", "")]
+        self.assertEqual(queries, ["project zero 2 crimson butterfly"], "one UK used lookup, not two")
         self.assertEqual(self.sandbox.latest["rare"]["PAL"], {"Project Zero 2: Crimson Butterfly": "Fatal Frame 2: Crimson Butterfly"})
 
     def test_an_entry_never_takes_the_place_of_a_tracked_game_with_its_title(self):
