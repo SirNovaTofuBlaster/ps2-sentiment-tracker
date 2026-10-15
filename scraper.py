@@ -289,6 +289,15 @@ TITLE_ALIASES = {
 
 # Used only to guarantee coverage of well-known titles; always merged into the
 # index titles (e.g. names that differ between regions, like Bully).
+# A PS2 game's name is also the start of a newer game's: "God of War" begins "God of War Ragnarök" and
+# "God of War (2018)". Words that, right after the PS2 title, mean the text is about the newer game
+# (normalised, after normalise()). A text is not about the PS2 game when every place its name appears is
+# followed by one of them. Add a series here when a newer game of the same name floods the feed.
+NEWER_GAME_FOLLOWERS = {
+    "god of war": (("ragnarok",), ("ragnarök",), ("2018",)),
+}
+
+
 FALLBACK_TITLES = [
     ".hack//Infection", ".hack//Mutation", ".hack//Outbreak", ".hack//Quarantine",
     ".hack//G.U. Vol. 1//Rebirth", ".hack//G.U. Vol. 2//Reminisce", ".hack//G.U. Vol. 3//Redemption",
@@ -636,7 +645,26 @@ class TitleMatcher:
                 add(title, 92, "variant", gram)
         for title, score, gram in self._fuzzy_matches(norm, threshold):
             add(title, score, "fuzzy", gram)
-        return [(title, score, method) for title, score, method, _ in self._drop_contained(tokens, claims)]
+        claims = self._drop_contained(tokens, claims)
+        return [(title, score, method) for title, score, method, _ in self._drop_newer_games(tokens, claims)]
+
+    def _drop_newer_games(self, tokens, claims):
+        """Drops a claim whose every occurrence is followed by words that make it a newer game's name."""
+        kept = []
+        for claim in claims:
+            title, _, _, gram = claim
+            followers = NEWER_GAME_FOLLOWERS.get(normalise(title))
+            if followers:
+                run = gram.split()
+                # Places where a longer claim already covers the name ("God of War 2") do not count.
+                covered = [span for other in claims if other is not claim and len(other[3].split()) > len(run)
+                           for span in self._occurrences(tokens, other[3].split())]
+                spans = [(i, e) for i, e in self._occurrences(tokens, run)
+                         if not any(start <= i and e <= end for start, end in covered)]
+                if spans and all(any(tokens[end:end + len(f)] == list(f) for f in followers) for _, end in spans):
+                    continue
+            kept.append(claim)
+        return kept
 
     def match(self, text, ps2_source=False):
         """Returns (title, score) or (None, 0) — the best single match, as before."""
@@ -1525,6 +1553,33 @@ def within_ceiling(items, ceiling=None):
     return kept[:ceiling]
 
 
+def without_newer_games(item):
+    """A saved row whose headline names a newer game that shares a PS2 game's name ("God of War Ragnarök")
+    stops counting for the PS2 game, so rows saved before NEWER_GAME_FOLLOWERS listed it go too. Only the
+    scraper's own copy of a news headline is read; a 4chan row's headline is written by the scraper and is
+    left alone (rule 12)."""
+    if item.get("source_type") == "4chan" or not item.get("matched_game"):
+        return item
+    tokens = normalise(item.get("headline")).split()
+    games = [g for g in (item.get("matched_games") or [item["matched_game"]])]
+    kept = []
+    for game in games:
+        followers = NEWER_GAME_FOLLOWERS.get(normalise(game))
+        words = normalise(game).split()
+        spans = [(i, i + len(words)) for i in range(len(tokens) - len(words) + 1) if tokens[i:i + len(words)] == words]
+        if followers and spans and all(any(tokens[end:end + len(f)] == list(f) for f in followers) for _, end in spans):
+            continue
+        kept.append(game)
+    if kept == games:
+        return item
+    changed = {**item, "matched_games": kept}
+    if not kept:
+        changed.update(matched_game=None, match_score=0, match_method=None, matched_in=None)
+    elif kept[0] != item.get("matched_game"):
+        changed["matched_game"] = kept[0]
+    return changed
+
+
 def run_scraper():
     DATA_DIR.mkdir(exist_ok=True)
     config = load_config()
@@ -1662,6 +1717,7 @@ def run_scraper():
     # Flagged again from the headline every run, so items saved before the flag existed (or
     # before its words last changed) are counted too. Copies: `previous` must stay as it was read.
     merged_items = [{**item, "is_digital_only": is_digital_only(item.get("headline"))} for item in merged_items]
+    merged_items = [without_newer_games(item) for item in merged_items]
 
     if merged_items == previous:
         print("No new or changed items; leaving snapshot untouched.")

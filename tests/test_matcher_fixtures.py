@@ -252,6 +252,30 @@ class MatcherRuleTests(unittest.TestCase):
         self.assertEqual(self.claims("God of War and God of War II both hold up", ps2_source=True),
                          ["God of War", "God of War II"])
 
+    def test_a_newer_game_with_the_same_start_is_not_the_ps2_game(self):
+        # "God of War" begins "God of War Ragnarök" and "God of War (2018)": those texts are about the newer games.
+        self.assertEqual(self.claims("God of War Ragnarök saves should work across both physical and digital formats"), [])
+        self.assertEqual(self.claims("God of War: Ragnarok is on sale"), [])
+        self.assertEqual(self.claims("God of War (2018) review"), [])
+        # The PS2 game is still found, alone or next to the newer one.
+        self.assertEqual(self.claims("God of War on PS2 still looks great", ps2_source=True), ["God of War"])
+        self.assertEqual(self.claims("God of War and God of War Ragnarok compared", ps2_source=True), ["God of War"])
+        self.assertEqual(self.claims("God of War II is better than God of War Ragnarok", ps2_source=True), ["God of War II"])
+
+    def test_saved_rows_about_a_newer_game_are_cleaned(self):
+        row = {"headline": "God of War Ragnarök saves should work", "source_type": "reddit", "matched_game": "God of War",
+               "matched_games": ["God of War"], "match_score": 100, "match_method": "exact", "matched_in": "title"}
+        cleaned = scraper.without_newer_games(row)
+        self.assertIsNone(cleaned["matched_game"])
+        self.assertEqual(cleaned["matched_games"], [])
+        self.assertEqual(cleaned["match_score"], 0)
+        ps2 = {**row, "headline": "God of War is 20 years old"}
+        self.assertEqual(scraper.without_newer_games(ps2), ps2)
+        board = {**row, "source_type": "4chan"}
+        self.assertEqual(scraper.without_newer_games(board), board, "a board row is never reread")
+        both = {**row, "headline": "God of War and God of War Ragnarok", "matched_games": ["God of War", "Okami"], "matched_game": "God of War"}
+        self.assertEqual(scraper.without_newer_games(both), both, "one place where it stands alone keeps it")
+
     def test_a_title_that_is_only_a_number_needs_ps2_context(self):
         self.assertEqual(self.claims("Nerial shuts down after 13 years"), [])
         self.assertEqual(self.claims("XIII on PS2 deserves another look"), ["XIII"])

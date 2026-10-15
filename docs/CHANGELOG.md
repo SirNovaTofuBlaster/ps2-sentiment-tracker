@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: texts about a newer game with a PS2 game's name no longer count
+
+- "God of War Ragnarök saves should work..." was filed under the PS2 *God of War*, because the PS2 title is the start of the newer one's name. `NEWER_GAME_FOLLOWERS` in `scraper.py` lists, per PS2 title, the words that mean a newer game when they come right after the name (for God of War: Ragnarök, 2018). A text is not about the PS2 game when every place its name stands alone is followed by one of them; "God of War II" and a place where the PS2 title stands alone still count. Rows already in the snapshot are cleaned on the next run that writes it (`without_newer_games()`, headline only; 4chan rows are never reread). The next God of War's name is not known yet: add it to the list when it is.
+
 ## 2026-10-15: Underrated grows to 100 games, one revealed a day
 
 - `underrated.json` now holds 100 games in reveal order (40 from the three public lists, 60 added from general knowledge, marked `via`), with `launch: 2026-10-15`. The game at position k is the pick of day launch + k, so Rygar is today's, and a game is not shown before its day. The grid shows only games revealed so far; "Last 7 days" counts only days since launch. After the hundredth day the rounds repeat in a seeded shuffle.
