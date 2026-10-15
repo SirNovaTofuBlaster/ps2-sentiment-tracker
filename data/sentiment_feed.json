@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 20:06:54 UTC",
+  "last_updated": "2026-10-15 20:20:50 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -56,13 +56,14 @@
       "timestamp": "2026-10-15 19:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749756463",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
+        "Metal Gear Solid 3: Snake Eater",
         "Silent Hill 2"
       ],
       "match_score": 100,
@@ -75,14 +76,15 @@
       "timestamp": "2026-10-15 19:48 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Kingdom Hearts",
+      "headline": "Thread on /vg/ naming Kingdom Hearts and Kingdom Hearts II",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584585175",
       "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2780,6 +2782,26 @@
       "timestamp": "2026-10-15 17:57 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Midnight Club and Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749749898",
+      "matched_game": "Midnight Club",
+      "matched_games": [
+        "Midnight Club",
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 17:57 UTC"
+    },
+    {
       "headline": "Diablo 5 Officially Passes a Major Production Milestone",
       "source": "Polygon.com",
       "source_type": "news",
@@ -4844,7 +4866,7 @@
       "timestamp": "2026-10-15 16:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3, Persona 3 and 1 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3, Persona 3 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -4854,7 +4876,8 @@
         "Kingdom Hearts",
         "Dynasty Warriors 3",
         "Persona 3",
-        "Dora the Explorer"
+        "Dora the Explorer",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -12243,17 +12266,18 @@
       "timestamp": "2026-10-15 11:56 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex",
+      "headline": "Thread on /v/ naming God of War and Deus Ex",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749730845",
-      "matched_game": "Deus Ex",
+      "matched_game": "God of War",
       "matched_games": [
+        "God of War",
         "Deus Ex"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -245345,122 +245369,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 20:20 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Voicemail Dump Truck 225 | Cursive Dirtbag.mp3",
-      "source": "YouTube: Giant Bomb",
-      "source_type": "youtube",
-      "feed": "youtube:UCmeds0MLhjfkjD_5acPnFlQ",
-      "link": "https://www.youtube.com/watch?v=lurNE6iGDEQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 20:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Custom CD player / AriaCast with Milkdrop running on PS2 slim",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wva119/custom_cd_player_ariacast_with_milkdrop_running/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 20:14 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Kingdom Come: Deliverance studio co-founder hopes Grand Theft Auto 6 will 'blaze a trail' to higher game prices",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/grand-theft-auto/kingdom-come-deliverance-studio-co-founder-hopes-grand-theft-auto-6-will-blaze-a-trail-to-higher-game-prices/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 20:13 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Score? I paid 250 but I...",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wv9znf/score_i_paid_250_but_i/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 20:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Indie game Metropolis 1998 announcement from the dev \"working with composers: Jerry Martin (SimCity, The Sims) Paul Zimmermann (Space Haven, Wild Frost) + The last major feature (economy) is in game\" Retro sandbox city builder that blends classic 90s aesthetics with deep, modern simulation",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wv9z7t/indie_game_metropolis_1998_announcement_from_the/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 70,
-      "timestamp": "2026-10-01 20:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "'We needed a potentially infinite resource of party members so that we could then kill them:' Entropy dev James Wragg explains how you fit permadeath in a party RPG",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/rpg/we-needed-a-potentially-infinite-resource-of-party-members-so-that-we-could-then-kill-them-entropy-dev-james-wragg-explains-how-you-fit-permadeath-in-a-party-rpg/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 20:10 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Survival Game Rust's Big Update Adds Raw Milk and Rotten-Meat Fuel",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/rust-livestock-update-force-wipe-october-2026/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 20:08 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Games with ultimate/final armors or weapons ?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wv9v7p/games_with_ultimatefinal_armors_or_weapons/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 20:08 UTC",
       "is_digital_only": false
     }
   ]
