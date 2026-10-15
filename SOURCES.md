@@ -396,7 +396,7 @@ These are the original sources, moved unchanged from `scraper.py` into feeds.jso
 | Vandal | Spanish & Portuguese Feeds | https://vandal.elespanol.com/xml.cgi |
 
 - **Dedicated PS2 & Emulation Hubs**: r/ps2, r/ps2homebrew, r/PCSX2, r/playstation2
-- **Collecting, Retro & Emulation**: r/gamecollecting, r/LimitedPrintGames, r/NSCollectors, r/Steelbook, r/gameverifying, r/retrogaming, r/classicgaming, r/emulation, r/psx
+- **Collecting, Retro & Emulation**: r/gamecollecting, r/LimitedPrintGames, r/NSCollectors, r/Steelbook, r/PlaystationCollectors, r/gameverifying, r/retrogaming, r/classicgaming, r/emulation, r/psx
 - **High-Traffic General Communities**: r/gaming, r/Games, r/pcgaming, r/truegaming, r/ShouldIbuythisgame, r/gamingsuggestions, r/pcmasterrace, r/NintendoSwitch, r/PlayStation, r/xboxone, r/SteamDeck, r/jrpg, r/patientgamers
 
 Health on 2026-09-30:
