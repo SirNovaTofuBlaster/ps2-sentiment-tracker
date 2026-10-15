@@ -2302,6 +2302,38 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.equal(evalJson(`medianOf('Ratchet: Gladiator', 'UK')`), 13.66, 'the PAL name takes the game\'s UK figure');
     assert.equal(evalJson(`medianOf('Ratchet: Gladiator', 'US')`), 13.99);
     assert.equal(evalJson(`medianOf('Sly 3', 'UK')`), 9, 'a name with no source row keeps its own figures');
+    // Times are on the 24-hour clock, in the visitor's own time zone (no zone is forced, so the browser picks theirs).
+    for (const zone of ['Asia/Tokyo', 'America/New_York', 'Europe/London']) {
+        const shown = new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: zone }).format(new Date('2026-10-15T12:46:00Z'));
+        assert.match(shown, /^\d{2}:\d{2}$/);
+    }
+    const stamped = evalJson(`formatLocalTime('2026-10-15 12:46:00 UTC')`);
+    assert.match(stamped, /\b\d{2}:\d{2}\b/);
+    assert.doesNotMatch(stamped, /\b(am|pm)\b/i, 'no 12-hour clock');
+    assert.match(read('index.html'), /hourCycle: 'h23', timeZoneName: 'short'/);
+    assert.doesNotMatch(read('index.html'), /formatLocalTime[^\n]*timeZone: '/, 'no fixed zone for the visitor\'s times');
+    // A game released in one region only says so where its other price can never exist.
+    run(`coverSame = {}; coverIndex = {
+        'gregory horror show': ['Gregory Horror Show', ' (Korea)', ' (Europe) (En,Fr,De)'],
+        'romancing saga': ['Romancing SaGa', ' (USA)', ' (USA)'],
+        'kuon': ['Kuon', ' (USA)', ' (Europe) (En,Fr,De)'],
+        'ratchet deadlocked': ['Ratchet - Deadlocked', ' (USA) (En,Fr,Es)', ' (USA) (En,Fr,Es)'],
+        'okami': ['Okami', ' (Japan)', ' (Japan)'],
+    }`);
+    assert.equal(evalJson(`regionOnly('Gregory Horror Show')`), 'PAL');
+    assert.equal(evalJson(`regionOnly('Romancing SaGa')`), 'US');
+    assert.equal(evalJson(`regionOnly('Kuon')`), null, 'out in both');
+    assert.equal(evalJson(`regionOnly('Okami')`), null, 'no US or PAL file at all says nothing');
+    assert.equal(evalJson(`regionOnly('Ratchet: Deadlocked')`), null, 'a game with another name on another site is never called exclusive');
+    run(`renamedKeys = new Set(['ratchet deadlocked'])`);
+    assert.equal(evalJson(`regionOnly('Ratchet - Deadlocked')`), null);
+    run(`setPrices({ games: { 'Gregory Horror Show': { level: 'normal', mentions: 1, UK: { copies: 12, median: 105, checked: '2026-10-15T10:00Z' } }, 'Romancing SaGa': { level: 'normal', mentions: 1, US: { copies: 90, median: 25, checked: '2026-10-15T10:00Z' } } } }, null)`);
+    const quotes = name => evalJson(`shelfQuotesHtml(${JSON.stringify(name)})`);
+    assert.match(quotes('Gregory Horror Show'), /<span class="shelf-flag">US<\/span><b>n\/a<\/b>/, 'PAL only: no US copy to price');
+    assert.match(quotes('Romancing SaGa'), /<span class="shelf-flag">UK<\/span><b>n\/a<\/b>/, 'US only: no UK copy to price');
+    assert.doesNotMatch(quotes('Gregory Horror Show'), /UK<\/span><b>n\/a/);
+    assert.match(quotes('Kuon'), /US<\/span><b>&ndash;<\/b>/, 'released in both: a dash');
+    run(`coverIndex = null; coverIndexState = 'idle'; coverSame = {}; renamedKeys = new Set()`);
     // Rarity: the fewest copies on UK or US; zero counts; never-checked games last; "scarce" at 10 or fewer.
     run(`setPrices({ games: {
         'God Hand': { level: 'normal', mentions: 3, UK: { copies: 40, listed: 41, median: 90, checked: '2026-10-14T10:00Z' }, US: { copies: 60, listed: 60, median: 120, checked: '2026-10-14T10:00Z' } },
