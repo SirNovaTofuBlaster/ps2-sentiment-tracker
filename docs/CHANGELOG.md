@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-15: a search check for one game
+
+- *eBay asking prices* has a new box, **check_game**. Kuon showed no UK listings while a person could see copies at about £800 on eBay UK; the box counts what eBay reports for one game with each part of the search
+  (condition, seller country, Buy It Now only, category) relaxed in turn, for the UK and US, as a notice on the run. Counts only; nothing is looked up or saved. Lookups are unchanged.
+
 ## 2026-10-15: no sentiment on the dashboard
 
 - Removed the **Net sentiment** tile (three tiles are left), the table's **Sentiment** column and its phone-card row, the `×0.5` weight badges, and the weight inputs in the Sources panel (the role weights table and each

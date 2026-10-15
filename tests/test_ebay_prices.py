@@ -2930,6 +2930,89 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(calls, [("i", "s")])
 
 
+class GameCheckTests(unittest.TestCase):
+    """The count-only check of one game, started by hand: which part of the search hides the copies a person can see."""
+
+    def game(self):
+        return {"title": "Kuon", "search": "kuon", "queries": ["kuon"], "left_out_if_named": []}
+
+    def run_it(self, answer):
+        http = FakeHttp(answer=answer)
+        with mock.patch.object(ebay_prices.time, "sleep"):
+            lines = ebay_prices.check_game(http, TOKEN, self.game(), ("the-id", "the-secret", TOKEN))
+        return http, lines
+
+    def test_each_part_of_the_search_is_relaxed_on_its_own_on_both_sites(self):
+        http, lines = self.run_it(lambda params, headers: page(total=4))
+        self.assertEqual(len(lines), 2 * len(ebay_prices.GAME_CHECK_VARIANTS))
+        first, strict = http.searches[0]["params"], http.searches[0]["params"]
+        self.assertIn("buyingOptions:{FIXED_PRICE}", strict["filter"])
+        self.assertIn("itemLocationCountry:GB", strict["filter"])
+        self.assertIn("conditionIds:", strict["filter"])
+        by_label = {line.split(": ")[0]: search["params"] for line, search in zip(lines, http.searches)}
+        self.assertNotIn("itemLocationCountry", by_label["[UK] listed in any country"].get("filter", ""))
+        self.assertNotIn("buyingOptions", by_label["[UK] auctions as well as Buy It Now"]["filter"])
+        self.assertNotIn("conditionIds", by_label["[UK] any condition (new and sealed included)"]["filter"])
+        self.assertNotIn("category_ids", by_label["[UK] any category"])
+        self.assertNotIn("filter", by_label["[UK] everything relaxed at once"])
+        self.assertEqual({s["headers"]["X-EBAY-C-MARKETPLACE-ID"] for s in http.searches}, {"EBAY_GB", "EBAY_US"})
+        self.assertIn("[UK] listed in any country: 4", lines)
+
+    def test_a_lookup_never_relaxes_anything(self):
+        for market_id in ("EBAY_GB", "EBAY_US"):
+            url = ebay_prices.search_url(market_id, "kuon")
+            self.assertIn("buyingOptions", url)
+            self.assertIn("itemLocationCountry", url)
+            self.assertIn("conditionIds", url)
+
+    def test_only_counts_come_out_and_the_key_never_does(self):
+        def answer(params, headers):
+            return page(listing("Someone's listing title", 800.0, item_id=99, itemWebUrl="https://www.ebay.co.uk/itm/99"), total=1)
+        _, lines = self.run_it(answer)
+        text = "\n".join(lines)
+        for secret in ("the-id", "the-secret", TOKEN, "Someone", "800", "ebay.co.uk/itm"):
+            self.assertNotIn(secret, text)
+
+    def test_a_failed_search_is_said_not_counted_as_zero(self):
+        _, lines = self.run_it(lambda params, headers: (400, {"errors": [{"message": "bad"}]}))
+        self.assertIn("[UK] platform by keyword: HTTP 400: bad", lines)
+
+    def test_the_allowance_running_out_stops_it(self):
+        _, lines = self.run_it(lambda params, headers: (429, {"errors": [{"message": "limit"}]}))
+        self.assertEqual(len(lines), 1)
+
+    def test_main_checks_the_one_game_and_nothing_else_when_asked(self):
+        Sandbox(self, pinned=[{"title": "Kuon"}])
+        http = FakeHttp(answer=lambda params, headers: page(total=2))
+        out = io.StringIO()
+        env = {"EBAY_CHECK_GAME": "kuon", "EBAY_CLIENT_ID": "i", "EBAY_CLIENT_SECRET": "s", "GITHUB_ACTIONS": "true"}
+        with mock.patch.dict(os.environ, env), mock.patch.object(ebay_prices, "Http", return_value=http), \
+                mock.patch.object(ebay_prices, "get_token", return_value=(TOKEN, "basic")), \
+                mock.patch.object(ebay_prices, "due_lookups", side_effect=AssertionError("a normal run started")), \
+                contextlib.redirect_stdout(out):
+            self.assertEqual(ebay_prices.main(["--out", str(self.sandbox_out())]), 0)
+        text = out.getvalue()
+        self.assertIn('Search check for "Kuon"', text)
+        self.assertIn("::notice title=Search check%3A Kuon::", text)
+        self.assertEqual(len(http.searches), 2 * len(ebay_prices.GAME_CHECK_VARIANTS))
+        with mock.patch.dict(os.environ, {**env, "EBAY_CHECK_GAME": "No Such Game"}), contextlib.redirect_stdout(io.StringIO()) as nothing:
+            self.assertEqual(ebay_prices.main([]), 1)
+        self.assertIn("is not a game this script tracks", nothing.getvalue())
+
+    def sandbox_out(self):
+        return Path(tempfile.mkdtemp()) / "x.json"
+
+    def test_it_writes_nothing_and_the_workflow_only_passes_the_title(self):
+        source = (ROOT / "ebay_prices.py").read_text(encoding="utf-8")
+        block = source[source.index("def check_game"):source.index("def check_all")]
+        for writer in (".write_text(", "open(", "append_history", "write_latest", "write_series"):
+            self.assertNotIn(writer, block)
+        text = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("check_game:", text)
+        self.assertIn("EBAY_CHECK_GAME: ${{ inputs.check_game }}", text)
+        self.assertNotIn("inputs.check_game }}\n        run:", text, "the title is an environment variable, never pasted into a command")
+
+
 class KeyStaysInOnePlaceTests(unittest.TestCase):
     def test_only_the_price_script_knows_about_the_key(self):
         for name in ("scraper.py", "demand.py", "archive.py", "index.html", "guide.html"):
