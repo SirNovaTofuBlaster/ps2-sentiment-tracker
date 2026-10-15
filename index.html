@@ -1577,6 +1577,25 @@
                 if (row && key) index.set(key, row);
             }
             const renamed = new Set();
+            // Names of one game the library keeps apart ("King's Field IV" in Europe, "King's Field: The Ancient City" in the US):
+            // on a site where one name has no figure and another has, the first takes the other's. Each name keeps its own row.
+            const usable = site => site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) && site.copies > 0 && typeof site.median === 'number';
+            for (const names of Array.isArray(watchlist?.same_game) ? watchlist.same_game : []) {
+                const keys = (Array.isArray(names) ? names : []).map(name => typeof name === 'string' ? priceKey(name) : '').filter(Boolean);
+                keys.forEach(key => renamed.add(key));    // another region's file may sit under the other name: never called region-only
+                const rows = keys.map(key => index.get(key)).filter(Boolean);
+                if (rows.length < 2) continue;
+                const labels = new Set(rows.flatMap(row => Object.keys(row.entry || {})));
+                const merged = {};
+                for (const label of labels) {
+                    const donor = rows.find(row => usable(row.entry[label])) || rows.find(row => row.entry[label] !== undefined);
+                    if (donor) merged[label] = donor.entry[label];
+                }
+                for (const key of keys) {
+                    const row = index.get(key);
+                    if (row) index.set(key, { ...row, entry: { ...row.entry, ...Object.fromEntries(Object.entries(merged).filter(([label]) => !usable(row.entry[label]))) } });
+                }
+            }
             // A game the library also files under the name it has on another site ("Project Zero" beside "Fatal Frame",
             // "Ratchet: Gladiator" beside "Ratchet: Deadlocked") is priced once, under the name the feed knows it by
             // (ebay_prices.py skips the second name), so the other name takes that game's figures.
