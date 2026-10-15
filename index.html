@@ -691,6 +691,7 @@
                 if (key === 'collection') button.setAttribute?.('aria-current', key === view ? 'page' : 'false');
                 else button.setAttribute?.('aria-selected', String(key === view));
             }
+            try { document.getElementById(VIEWS[view][1])?.scrollIntoView?.({ inline: 'nearest', block: 'nearest' }); } catch { /* the tab row slides sideways on a phone; nothing to do without it */ }
             drawPending(view);
             currentView = view;
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
