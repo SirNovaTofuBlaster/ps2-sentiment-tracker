@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 02:40:36 UTC",
+  "last_updated": "2026-10-15 02:43:09 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -4513,7 +4513,7 @@
       "timestamp": "2026-10-14 21:48 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Silent Hill 2, Metal Gear Solid 2: Sons of Liberty and 2 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Silent Hill 2, Final Fantasy X and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -4522,9 +4522,9 @@
       "matched_games": [
         "Metal Gear Solid 3: Snake Eater",
         "Silent Hill 2",
-        "Metal Gear Solid 2: Sons of Liberty",
         "Final Fantasy X",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -5035,17 +5035,19 @@
       "timestamp": "2026-10-14 21:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Okami",
+      "headline": "Thread on /v/ naming Ratchet & Clank, Okami and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749697151",
-      "matched_game": "Okami",
+      "matched_game": "Ratchet & Clank",
       "matched_games": [
-        "Okami"
+        "Ratchet & Clank",
+        "Okami",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -233668,19 +233670,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-01 02:45 UTC"
-    },
-    {
-      "headline": "Japanese Fire Emblem - real or fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wuo304/japanese_fire_emblem_real_or_fake/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 02:40 UTC",
-      "is_digital_only": false
     }
   ]
 }
