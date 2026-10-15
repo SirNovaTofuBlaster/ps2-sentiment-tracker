@@ -1,0 +1,175 @@
+{
+  "what": "The Gacha page's four machines, made by hand. Each holds 20 capsules: 5 common games x3, 1 uncommon game x4, 1 super rare game x1. Tiers are relative to the machine and were chosen from the eBay US medians and the number of copies listed in data/prices/latest.json on 2026-10-15 (the page shows today's median beside each game). Every title must be a library name; a test checks that.",
+  "checked": "2026-10-15",
+  "daily_coins": 3,
+  "machines": [
+    {
+      "id": "horror",
+      "name": "Survival Horror",
+      "tagline": "Cheap survival horror is rare on the PS2, so these tiers are relative to this machine.",
+      "prizes": [
+        {
+          "title": "Resident Evil 4",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Siren",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Cold Fear",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Silent Hill 2",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Fatal Frame",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Haunting Ground",
+          "tier": "uncommon",
+          "qty": 4
+        },
+        {
+          "title": "Rule of Rose",
+          "tier": "super_rare",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "name": "Action",
+      "tagline": "Hack-and-slash, platform shooters and stealth.",
+      "prizes": [
+        {
+          "title": "God of War",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Devil May Cry 3: Dante's Awakening",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Jak II",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Ratchet & Clank: Going Commando",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Metal Gear Solid 3: Snake Eater",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Manhunt",
+          "tier": "uncommon",
+          "qty": 4
+        },
+        {
+          "title": "God Hand",
+          "tier": "super_rare",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "open_world",
+      "name": "Open World",
+      "tagline": "Cities to roam, missions to ignore.",
+      "prizes": [
+        {
+          "title": "Grand Theft Auto III",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Grand Theft Auto: Vice City",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Grand Theft Auto: San Andreas",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Mercenaries",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Spider-Man 2",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Scarface: The World Is Yours",
+          "tier": "uncommon",
+          "qty": 4
+        },
+        {
+          "title": "Grand Theft Auto: Vice City Stories",
+          "tier": "super_rare",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "rpg",
+      "name": "RPG",
+      "tagline": "Long games, big parties.",
+      "prizes": [
+        {
+          "title": "Final Fantasy X",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Kingdom Hearts",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Dark Cloud",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Dragon Quest VIII: Journey of the Cursed King",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Star Ocean: Till the End of Time",
+          "tier": "common",
+          "qty": 3
+        },
+        {
+          "title": "Shin Megami Tensei: Persona 4",
+          "tier": "uncommon",
+          "qty": 4
+        },
+        {
+          "title": "Hack: Part 4: Quarantine",
+          "tier": "super_rare",
+          "qty": 1
+        }
+      ]
+    }
+  ]
+}
