@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 15:04:42 UTC",
+  "last_updated": "2026-10-15 15:07:20 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -411,6 +411,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 14:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749738486",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 14:37 UTC"
     },
@@ -5417,6 +5437,25 @@
       "timestamp": "2026-10-15 10:58 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749728978",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 10:56 UTC"
+    },
+    {
       "headline": "I fell sorry for all pc enthusiasts that are caught in the current situation.",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -6210,16 +6249,15 @@
       "timestamp": "2026-10-15 10:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man, Astro Boy, Resident Evil 4 and 24 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Astro Boy, Kingdom Hearts II and 24 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749727312",
-      "matched_game": "Spider-Man",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Spider-Man",
-        "Astro Boy",
         "Resident Evil 4",
+        "Astro Boy",
         "Kingdom Hearts II",
         "Silent Hill 2",
         "Grand Theft Auto: San Andreas",
@@ -6243,7 +6281,8 @@
         "Crazy Taxi",
         "Max Payne",
         "Burnout 3",
-        "Yakuza 2"
+        "Yakuza 2",
+        "Spider-Man"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -12654,6 +12693,28 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 01:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4, Half-Life, Kingdom Hearts and 1 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749709984",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Half-Life",
+        "Kingdom Hearts",
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 01:36 UTC"
     },
@@ -241071,54 +241132,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 15:07 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Half Life modding scene has always been decent to good but, in the past 5-6 years it has utterly exploded in quality. Genuine masterpieces of single player campaigns, all available completely for free",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wv1vne/the_half_life_modding_scene_has_always_been/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "timestamp": "2026-10-01 15:06 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo, Sony And XBOX CAN'T Stop This....",
-      "source": "YouTube: RGT 85",
-      "source_type": "youtube",
-      "feed": "youtube:UCA5RGaQc-a8tIX_AqTTmWdw",
-      "link": "https://www.youtube.com/watch?v=OwZvPmUHXGw",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 15:05 UTC",
-      "views": 68513
-    },
-    {
-      "headline": "Dumb Ways to Build se renueva con la actualización v2.0 \"Power Tools & Packed Lunches\"",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/dumb-ways-to-build/114846/dumb-ways-to-build-actualizacion-v2-0-herramientas-consolas-pc",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 15:04 UTC",
       "is_digital_only": false
     }
   ]
