@@ -3040,6 +3040,8 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
         assert.equal(raw.games.length, 100, 'a hundred games');
         assert.equal(raw.games[0].title, 'Rygar: The Legendary Adventure', 'Rygar is the game of the launch day');
         assert.match(raw.launch, /^2026-10-15$/);
+        assert.ok(raw.games.filter(g => g.developer).length >= 90, 'a developer for nearly every game');
+        assert.equal(raw.games[0].developer, 'Tecmo');
         const titles = raw.games.map(g => g.title);
         assert.equal(new Set(titles.map(t => t.toLowerCase())).size, titles.length, 'no game twice');
         for (const t of titles) assert.ok(library.has(t.toLowerCase()), `${t} is a library name`);
@@ -3078,6 +3080,15 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
         assert.equal(el('tabUnderrated').classList.contains('is-active'), true);
         assert.equal(run(`isView('underrated')`), true, '#underrated opens the page');
         assert.match(el('underratedToday').innerHTML, /Game of the day/);
+        assert.match(el('underratedToday').innerHTML, /under-attn/, 'the game of the day shows its attention bar');
+        assert.match(el('underratedToday').innerHTML, /Not named in the last 14 days|Named \d+ /, 'it says how often the feed named it');
+        assert.match(el('underratedToday').innerHTML, /metacritic\.com\/search\//, 'a link to find reviews');
+        assert.ok(!/\b\d\/10\b|metascore/i.test(el('underratedToday').innerHTML), 'no review score is invented');
+        run(`visibleFeedData = [{ games: ['Rygar: The Legendary Adventure'], matched_games: ['Rygar: The Legendary Adventure'], game: 'Rygar: The Legendary Adventure', timestamp: '2026-10-14 10:00:00 UTC' }, { games: ['Other Game'], matched_games: ['Other Game'], game: 'Other Game', timestamp: '2026-10-14 10:00:00 UTC' }]; underratedMentionCache = null`);
+        assert.equal(evalJson(`underratedMentionInfo('Rygar: The Legendary Adventure').n`), 1, 'one item names it');
+        assert.equal(evalJson(`underratedMentionInfo('Rygar: The Legendary Adventure').rank`), 1);
+        assert.equal(evalJson(`underratedMentionInfo('Never Named').rank`), null);
+        run(`visibleFeedData = []; underratedMentionCache = null`);
         assert.equal((el('underratedDays').innerHTML.match(/<li /g) || []).length, 7, 'seven earlier days');
         assert.equal((el('underratedGrid').innerHTML.match(/<li /g) || []).length, 21, 'the games revealed so far');
         run(`underratedFilter = 'g:' + underratedData.games[0].genre; renderUnderrated(${dayStamp(launchDay + 20)})`);

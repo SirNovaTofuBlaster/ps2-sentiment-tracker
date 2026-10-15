@@ -1066,3 +1066,9 @@ body .under-card { display: grid; grid-template-columns: 5.5rem 1fr; gap: .8rem;
   body .under-actions .brand-btn { flex: 1 1 100%; min-height: 2.75rem; }
 }
 @media (min-width: 721px) and (max-width: 1000px) { body .under-grid { grid-template-columns: repeat(2, 1fr); } }
+body .under-attn { margin: 0 0 .75rem; font-size: .72rem; }
+body .under-attn-label { font-family: var(--mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); }
+body .under-attn-bar { height: .4rem; border-radius: 3px; background: var(--line); margin: .25rem 0; overflow: hidden; }
+body .under-attn-bar span { display: block; height: 100%; background: var(--text); }
+body .under-attn-text { color: var(--dim); }
+body a.brand-btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; text-decoration: none; }

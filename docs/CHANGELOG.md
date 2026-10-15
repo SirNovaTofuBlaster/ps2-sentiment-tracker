@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: Underrated shows developer, attention and a reviews link
+
+- Each game has a `developer` in `underrated.json` (95 of 100, written from general knowledge, null where unsure). The game of the day shows an Attention bar built from the feed's own counts (items naming the game in the last 14 days, and its rank among games named), and a "Find reviews" link (Metacritic search). Review scores (Metacritic, Eurogamer, magazines) and the praise-versus-attention bar of the first preview are not shown: they were placeholders and no score has been checked against a source yet.
+
 ## 2026-10-15: Underrated grows to 100 games, one revealed a day
 
 - `underrated.json` now holds 100 games in reveal order (40 from the three public lists, 60 added from general knowledge, marked `via`), with `launch: 2026-10-15`. The game at position k is the pick of day launch + k, so Rygar is today's, and a game is not shown before its day. The grid shows only games revealed so far; "Last 7 days" counts only days since launch. After the hundredth day the rounds repeat in a seeded shuffle.
