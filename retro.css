@@ -484,9 +484,10 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
   body main { padding-top: 1.25rem; padding-bottom: 1.5rem; }
   body main.space-y-8 > :not([hidden]) ~ :not([hidden]),
   body main > .space-y-8 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.75rem; }
-  /* Page tabs: three equal parts, tall enough to tap; icons and counts give way to the words */
-  body .view-tabs { gap: 0; flex-wrap: nowrap; width: 100%; }
-  body .view-tab { flex: 1 1 0; min-width: 0; justify-content: center; gap: .4rem; padding: .7rem .15rem; font-size: .69rem; letter-spacing: .04em; line-height: 1.25; }
+  /* Page tabs: one row that slides sideways (seven pages do not fit a phone), each tab as wide as its words and tall enough
+     to tap; a short row of tabs (My collection, the Gacha machines) still shares the width. Icons and counts give way to the words */
+  body .view-tabs { gap: 0; flex-wrap: nowrap; width: 100%; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  body .view-tab { flex: 1 0 auto; justify-content: center; gap: .4rem; padding: .7rem .8rem; font-size: .69rem; letter-spacing: .04em; line-height: 1.25; white-space: nowrap; }
   body .view-tab i, body .view-tab-count:not(.hidden) { display: none; }  /* each page states its own count */
   body .bg-ps2card { padding: 1rem; }
   body .text-\[10px\] { font-size: .69rem; }

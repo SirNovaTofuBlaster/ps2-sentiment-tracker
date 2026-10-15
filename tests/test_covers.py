@@ -110,3 +110,14 @@ class OneTilePerGame(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LibraryDuplicates(unittest.TestCase):
+    def test_games_the_library_spells_twice_are_one_tile(self):
+        doc = json.load(open(os.path.join(ROOT, "covers.json"), encoding="utf-8"))
+        same = doc["same"]
+        shown = {same.get(k, k) for k in ("amf xtreme bowling", "amf xtreme bowling 2006")}
+        self.assertEqual(len(shown), 1)
+        for apart in ("zombie hunters", "zombie hunters 2"):
+            self.assertNotIn(apart, same, "sequels keep their own tile")
+        self.assertNotEqual(same.get("fifa 2002", "fifa 2002"), same.get("fifa world cup 2002", "fifa world cup 2002"))

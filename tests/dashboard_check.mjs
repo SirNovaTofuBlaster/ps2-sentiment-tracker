@@ -1043,6 +1043,9 @@ await check('four pages in one: Tracker, Rarest, Most mentioned and eBay prices'
     assert.deepEqual(missing, []);
     assert.ok(asked.size > 40);
     assert.match(read('retro.css'), /body \.view-tab\.is-active \{[^}]*border-bottom-color: var\(--accent\)/);
+    // Phone: seven tabs slide sideways instead of squeezing into one another.
+    assert.match(read('retro.css'), /body \.view-tabs \{[^}]*flex-wrap: nowrap;[^}]*overflow-x: auto/);
+    assert.match(read('retro.css'), /body \.view-tab \{ flex: 1 0 auto;[^}]*white-space: nowrap/);
 });
 
 await check('the item count says how far back it goes', () => {
@@ -2318,8 +2321,9 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.match(evalJson(`scarceTagHtml('Final Fantasy X')`), /none for sale on eBay UK/);
     assert.equal(evalJson(`scarceTagHtml('God Hand')`), '');
     // The buttons reorder the list and say which order is on.
-    const now = Date.parse('2026-10-14T12:00:00Z');
-    const stamp = '2026-10-14 11:00:00 UTC';
+    // Relative to the real clock: setRecentSort() redraws with Date.now(), so fixed dates stop working a day later.
+    const now = Date.now();
+    const stamp = new Date(now - 3600000).toISOString().slice(0, 19).replace('T', ' ') + ' UTC';
     context.__rareItems = ['God Hand', 'Kuon', 'CY Girls', 'Dragon Quest'].map(name => ({ headline: name, source: 'r/ps2', feed: 'reddit:ps2', timestamp: stamp, link: 'https://example.com', matched_games: [name], matched_in: 'headline' }));
     run(`renderRecentGames(__rareItems, ${now})`);
     const order = () => [...el('todayList').innerHTML.matchAll(/class="recent-game[^"]*">([^<]+)</g)].map(m => m[1]);

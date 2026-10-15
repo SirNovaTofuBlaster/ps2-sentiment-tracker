@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-15: Library duplicates, phone tab row
+
+- The Library showed some games twice with the same picture (AMF Xtreme Bowling and AMF Xtreme Bowling 2006). The collection's files for the pair are byte-for-byte equal (same git blob). Every tile pair whose files are equal was listed from the collection's file tree and read by eye: 99 more spellings (regional, translated or longer names of one game: LMA Manager / BDFL Manager, Winning Eleven 8 / Pro Evolution Soccer 4, Tenchu 4 / Fatal Shadows, the Star Wars Episode III titles...) are now folded into one tile through `SAME_GAME` in `tools/build_covers.py` (`covers.json` rebuilt; its `covers` and `local` are unchanged). The shown name stays the library file's, closest to the collection's title. Different games that share a file by the collection's mistake (Zombie Hunters and 2, FIFA 2002 and FIFA World Cup 2002, the Club Football teams, the regional SingStar and Buzz editions) are left alone: nothing here shows which of them has the right picture.
+- Phone: the seven page tabs overlapped (equal widths, no room). The row is now one line that slides sideways, each tab as wide as its words; the open tab scrolls into view. Shorter rows (My collection, the Gacha machines) still share the width.
+- The installed-app icons (`icons/icon-180/192/512.png`: home screen, app list, splash) are now the Spindle mark from the page's banner (red, yellow and blue rings with the teal arc) on the dark background, replacing the blue disc. Phones may keep the old icon until the app is removed and added again.
+- The dashboard check for "most rare first" used a fixed date and failed a day later; it now uses the clock.
+- The rare-games shelf's dashes were checked against `latest.json`: Wheel of Fortune UK and Hardware Online Arena US have 0 copies listed on eBay (US-only and PAL-only releases); Kuon UK waits for its next check with the new-copies search.
+
 ## 2026-10-15: the new-copies search also covers tracked Rarest games
 
 - Kuon on eBay UK still showed no new figure after the new-copies search shipped. The search check showed why it should have: all 3 UK listings are condition New (id 1000) and name the game. The cause was in `add_rare_games()`: the second look was only switched on for Rarest games looked up on their own, and Kuon is also a game the feed tracks, so its used lookup was reused and the second look skipped. It is now switched on for every Rarest entry, on its list's site only. Costs one extra search per tracked Rarest game per check on that site. The *check_game* notice also prints, for the new-only and any-condition searches, the condition ids that came back and how many name the game (counts and eBay's own ids only).
