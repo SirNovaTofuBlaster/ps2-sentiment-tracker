@@ -1471,10 +1471,23 @@ def diagnose(http_client, token, game, counter, secrets):
             time.sleep(REQUEST_PAUSE)
 
 
+def describe_conditions(payload, game, market):
+    """For the search check: the condition ids of the listings returned and how many of them the Rarest page's new-copy
+    count would take (they must name the game; sealed ones are welcome). Counts and eBay's own ids only."""
+    items = payload.get("itemSummaries") if isinstance(payload.get("itemSummaries"), list) else []
+    ids = {}
+    for item in items:
+        key = str(item.get("conditionId", "none")) if isinstance(item, dict) else "none"
+        ids[key] = ids.get(key, 0) + 1
+    counted = summarise(payload, game, market, False, sealed_ok=True).get("counted", 0)
+    return f"{len(items)} returned, condition ids {', '.join(f'{k} x{v}' for k, v in sorted(ids.items())) or 'none'}; {counted} name the game"
+
+
 GAME_CHECK_VARIANTS = (
     # (what is asked, platform by item specific, condition, what is relaxed)
     ("the search this script uses", True, "ids", ()),
     ("platform by keyword", False, "ids", ()),
+    ("new condition only (the Rarest page's second look)", True, "new", ()),
     ("any condition (new and sealed included)", True, "any", ()),
     ("listed in any country", True, "ids", ("anywhere",)),
     ("auctions as well as Buy It Now", True, "ids", ("format",)),
@@ -1499,6 +1512,8 @@ def check_game(http_client, token, game, secrets, markets=("EBAY_GB", "EBAY_US")
             total = payload.get("total")
             answer = f"{total}" if status == 200 and isinstance(total, int) else error_text(status, payload)
             lines.append(redact(f"[{market['label']}] {label}: {answer}", secrets))
+            if status == 200 and condition in ("new", "any") and not relax and by_aspect:
+                lines.append(redact(f"[{market['label']}]   of those: {describe_conditions(payload, for_market(game, market_id), market)}", secrets))
             time.sleep(REQUEST_PAUSE)
     return lines
 
