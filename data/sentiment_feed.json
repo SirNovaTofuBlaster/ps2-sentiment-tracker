@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 04:07:41 UTC",
+  "last_updated": "2026-10-15 04:21:41 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -12914,19 +12914,19 @@
       "timestamp": "2026-10-14 16:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II and Final Fantasy X",
+      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749680032",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
-        "Kingdom Hearts",
         "Kingdom Hearts II",
+        "Kingdom Hearts",
         "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -17877,6 +17877,26 @@
       "hype": 0,
       "timestamp": "2026-10-14 13:30 UTC",
       "views": 34720
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand and Final Fantasy XI",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749671328",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand",
+        "Final Fantasy XI"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 13:30 UTC"
     },
     {
       "headline": "I'm looking to upgrade to a desktop PC from a laptop, any recommendations?",
@@ -233916,66 +233936,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-01 04:22 UTC"
-    },
-    {
-      "headline": "port idk",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wupwco/port_idk/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 04:16 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "How to Unlock LU BU in DYNASTY WARRIORS 3 Remastered",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/watch?v=SoYL9z1cuQE",
-      "matched_game": "Dynasty Warriors 3",
-      "match_score": 90,
-      "is_remaster_rumor": true,
-      "sentiment": 60,
-      "timestamp": "2026-10-01 04:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Let's Play SEGA Rally REVO (PS3) - Part 3",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/watch?v=7KSua_XtPuM",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 04:09 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "I am so close…. I only need the original…",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1wupqzw/i_am_so_close_i_only_need_the_original/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 04:08 UTC"
     }
   ]
 }
