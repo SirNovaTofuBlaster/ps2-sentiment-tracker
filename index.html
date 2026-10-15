@@ -140,10 +140,6 @@
           <div class="stat-label">Active feeds</div>
           <div id="statFeedsCount" class="stat-value is-live">--</div>
         </div>
-        <div class="stat">
-          <div class="stat-label">Net sentiment</div>
-          <div id="statAvgSentiment" class="stat-value">--</div>
-        </div>
       </div>
 
       <!-- Two-column layout for 24h Named Games + Demand Index -->
@@ -166,7 +162,7 @@
 
       <div id="feedSection" class="bg-ps2card border border-ps2border rounded-md p-6 scroll-mt-20">
         <div class="lb-section-header">
-          <h2>Live Ingestion &amp; Sentiment Stream</h2>
+          <h2>Live Ingestion Stream</h2>
           <div class="feed-filters flex flex-wrap items-center gap-2.5">
             <input type="text" id="searchInput" oninput="onFeedFilterChange()" placeholder="Filter by game or headline..." class="bg-ps2dark border border-ps2border focus:border-ps2neon rounded text-xs px-3 py-1.5 text-white outline-none w-full sm:w-60">
             <select id="filterSelect" onchange="onFeedFilterChange()" aria-label="Which items to show" class="bg-ps2dark border border-ps2border rounded text-xs px-2.5 py-1.5 text-slate-200 outline-none">
@@ -194,7 +190,6 @@
                 <th class="py-3 px-4">SOURCE / TIME</th>
                 <th class="py-3 px-4">HEADLINE</th>
                 <th class="py-3 px-4">MATCHED PS2 GAME</th>
-                <th class="py-3 px-4">SENTIMENT</th>
                 <th class="py-3 px-4 text-right">ACTION</th>
               </tr>
             </thead>
@@ -204,12 +199,12 @@
         <div id="pagination" class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-4 pt-4 border-t border-ps2border text-xs"></div>
       </div>
 
-      <!-- Sources & Weights: edits feeds.json (the scraper's source list) -->
+      <!-- Sources: edits feeds.json (the scraper's source list) -->
       <div id="sourcesSection" class="bg-ps2card border border-ps2border rounded-md p-6 scroll-mt-20">
         <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 mb-4 border-b border-ps2border pb-4">
           <div>
             <h2 class="flex flex-wrap items-center gap-2">
-              Sources &amp; Weights
+              Sources
               <span id="dirtyBadge" class="hidden border border-spindle-yellow/50 text-spindle-yellow text-[10px] px-2 py-0.5 rounded font-mono-custom">Unsaved changes</span>
             </h2>
             <p id="sourcesSummary" class="text-xs text-slate-400 mt-1">Loading feeds.json...</p>
@@ -491,7 +486,7 @@
         <span class="w-2.5 h-2.5 rounded-full bg-spindle-teal"></span>
         <span class="text-white font-serif font-bold ml-1">Spindle</span>
       </div>
-      <p>PS2 Global Sentiment &amp; Remaster Tracker • Powered by GitHub Actions &amp; Python Scraper Pipelines</p>
+      <p>PS2 Global Remaster Tracker • Powered by GitHub Actions &amp; Python Scraper Pipelines</p>
     </div>
   </footer>
 
@@ -743,10 +738,10 @@
             items: [
                 { headline: 'Silent Hill 2 original PS2 atmospheric lighting and sound design praised in new retrospective review.',
                   source: 'Eurogamer', link: 'https://www.eurogamer.net', matched_game: 'Silent Hill 2',
-                  is_remaster_rumor: false, sentiment: 85, timestamp: '2026-06-06 11:30:00' },
+                  is_remaster_rumor: false, timestamp: '2026-06-06 11:30:00' },
                 { headline: 'Embracer Group surveys community on Legacy of Kain and Defiance remasters.',
                   source: 'r/ps2', link: 'https://reddit.com/r/ps2', matched_game: 'Legacy of Kain: Defiance',
-                  is_remaster_rumor: true, sentiment: 88, timestamp: '2026-06-06 10:15:00' },
+                  is_remaster_rumor: true, timestamp: '2026-06-06 10:15:00' },
             ]
         };
 
@@ -813,13 +808,6 @@
             // The stand-in data shown before the first scrape has no window to speak of.
             document.getElementById('statTotalLabel').textContent = itemsLabel(allFeedData === fallbackData.items ? [] : allFeedData);
             document.getElementById('statRemasters').innerText = items.filter(i => i.is_remaster_rumor).length;
-
-            // Weighted by each item's source weight (Sources & Weights).
-            const totalWeight = items.reduce((acc, i) => acc + itemWeight(i), 0);
-            const avg = totalWeight > 0
-                ? Math.round(items.reduce((acc, i) => acc + itemWeight(i) * (i.sentiment || 50), 0) / totalWeight)
-                : 0;
-            document.getElementById('statAvgSentiment').innerText = `${avg}/100`;
 
             if (feedConfig) {
                 document.getElementById('statFeedsCount').innerText = feedConfig.sources.filter(s => s.enabled).length;
@@ -3411,7 +3399,7 @@
             renderPagination(totalPages);
 
             if (!items.length) {
-                tbody.innerHTML = '<tr><td colspan="5" class="py-6 text-center text-slate-400">No records found.</td></tr>';
+                tbody.innerHTML = '<tr><td colspan="4" class="py-6 text-center text-slate-400">No records found.</td></tr>';
                 return;
             }
 
@@ -3419,8 +3407,6 @@
             // (Trimmed: a phone's keyboard leaves a space after a suggested word.)
             const query = document.getElementById('searchInput').value.trim().toLowerCase();
             items.slice(start, start + PAGE_SIZE).forEach(item => {
-                const score = Math.max(0, Math.min(100, Number(item.sentiment) || 0));
-                const tone = score < 50 ? 'score-low' : score < 70 ? 'score-mid' : 'score-high';
                 const meta = TYPE_META[itemType(item)];
                 // An item can name several games. The column leads with the first, or with the
                 // one the table was opened on, and lists the others under it: the ones the search
@@ -3435,7 +3421,7 @@
                 row.innerHTML = `
                     <td data-col="source" class="py-3.5 px-4">
                         <div class="text-white flex items-center gap-1.5"><i class="${meta.icon} text-slate-400 text-[11px]" title="${esc(meta.label)}"></i>${esc(item.source)}</div>
-                        <div class="text-[10px] text-slate-500 font-mono-custom" title="${esc(item.timestamp)}">${esc(formatLocalTime(item.timestamp, true))}${weightBadge(item)}</div>
+                        <div class="text-[10px] text-slate-500 font-mono-custom" title="${esc(item.timestamp)}">${esc(formatLocalTime(item.timestamp, true))}</div>
                     </td>
                     <td data-col="headline" class="py-3.5 px-4 text-slate-300 max-w-md leading-relaxed">
                         ${item.is_remaster_rumor ? '<span class="remaster-tag border text-[10px] px-1.5 py-0.5 mr-1">Remaster</span>' : ''}
@@ -3447,13 +3433,6 @@
                             ? `<div class="mt-1.5 text-[10px] text-slate-400">also names ${others.slice(0, ALSO_NAMED).map(esc).join(', ')}${
                                 others.length > ALSO_NAMED ? ` and ${others.length - ALSO_NAMED} more` : ''}</div>` : '')
                         : '<span class="text-slate-500">Unmatched / General</span>'}</td>
-                    <td data-col="score" class="py-3.5 px-4">${itemType(item) === '4chan'
-                        // Only the games a thread names are read from 4chan, so there is no mood to show.
-                        ? '<div class="score-value font-mono-custom text-slate-500" title="Not scored: only the games a thread names are read from 4chan.">&ndash;</div>'
-                        : `
-                        <div class="score-value font-mono-custom">${esc(item.sentiment)}</div>
-                        <div class="score-meter"><div class="score-fill ${tone}" style="width:${score}%"></div></div>`}
-                    </td>
                     <td data-col="action" class="py-3.5 px-4 text-right">
                         <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-xs bg-slate-800 text-cyan-400 border border-slate-700 px-3 py-1.5 transition-all inline-flex items-center gap-1.5">
                             ${esc(meta.tableAction)} <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
@@ -3585,9 +3564,9 @@
             renderTable(rows);
         }
 
-        // ===================== Sources & Weights (feeds.json) =====================
+        // ===================== Sources (feeds.json) =====================
         // Mirrors scraper.py: each item's "feed" field is the source_key() of the
-        // feeds.json source it came from, so on/off switches and weights apply live.
+        // feeds.json source it came from, so on/off switches apply live.
         const SOURCE_TYPES = ['news', 'reddit', 'forum', '4chan', 'youtube', 'podcast'];
         const TYPE_META = {
             news: { label: 'News sites', plural: 'news sites', icon: 'fa-solid fa-newspaper', tableAction: 'Source', defaultRole: 'press' },
@@ -3662,26 +3641,6 @@
 
         const sourceForItem = (item) => sourcesByKey.get(itemFeedKey(item));
         const isHiddenItem = (item) => sourceForItem(item)?.enabled === false;
-
-        // A weight set on the source wins; otherwise its role's weight; unknown sources count 1.
-        function effectiveWeight(src) {
-            if (isWeightValue(src.weight)) return src.weight;
-            const roleWeight = feedConfig?.roles?.[src.role]?.weight;
-            return isWeightValue(roleWeight) ? roleWeight : 1;
-        }
-
-        function itemWeight(item) {
-            // A 4chan row has no mood score (only the games it names are read), so it can never
-            // count towards the overall mood, whatever weight its board or role is given.
-            if (itemType(item) === '4chan') return 0;
-            const src = sourceForItem(item);
-            return src ? effectiveWeight(src) : 1;
-        }
-
-        function weightBadge(item) {
-            const weight = itemWeight(item);
-            return weight === 1 ? '' : ` <span class="ml-1 px-1 border border-slate-700 text-slate-400" title="Source weight in the sentiment average">&times;${esc(weight)}</span>`;
-        }
 
         // How often a source type may be fetched: a quarter or half of an hour, or whole hours
         // from 1 to 24 (the same rule as _is_hours() in scraper.py).
@@ -3772,8 +3731,8 @@
                 refreshAddFormOptions(true);
                 if (fromGitHub) showSourcesMessage('Showing the list as last saved on GitHub; the website is still catching up.', 'info');
             } catch (error) {
-                console.warn('Could not load feeds.json; every item counts with weight 1.', error);
-                document.getElementById('sourcesSummary').textContent = `Could not load feeds.json (${error.message}); every item counts with weight 1.`;
+                console.warn('Could not load feeds.json; the sources list is unavailable.', error);
+                document.getElementById('sourcesSummary').textContent = `Could not load feeds.json (${error.message}); the sources list is unavailable.`;
             }
             await loadFeedStatus();
             renderSources();
@@ -3837,7 +3796,7 @@
                         : 'bg-slate-900 text-slate-300 border-slate-700'}"><i class="${icon}"></i> ${label}</button>`;
             tabs.innerHTML = SOURCE_TYPES.map(type =>
                 tab(type, `${esc(TYPE_META[type].label)} <span class="font-mono-custom opacity-80">${count(type)}</span>`, TYPE_META[type].icon)
-            ).join('') + tab('weights', 'Weights &amp; schedule', 'fa-solid fa-scale-balanced');
+            ).join('') + tab('weights', 'Schedule', 'fa-solid fa-clock');
             // On a phone the tabs are one line that swipes sideways; redrawing them must not
             // leave the open tab out of view. (Sideways only: this never moves the page.)
             const open = tabs.querySelector?.('[aria-selected="true"]');
@@ -3927,7 +3886,6 @@
                             <th class="py-2 px-3">ON</th>
                             <th class="py-2 px-3">SOURCE</th>
                             <th class="py-2 px-3">ROLE</th>
-                            <th class="py-2 px-3" title="Empty = use the role weight">WEIGHT</th>
                             ${columns.map(c => `<th class="py-2 px-3 ${c.right ? 'text-right' : ''}">${c.label}</th>`).join('')}
                             <th class="py-2 px-3">STATUS</th>
                             <th class="py-2 px-3"><span class="sr-only">Remove</span></th>
@@ -3950,9 +3908,8 @@
             const detail = [src.group, handle].filter(Boolean).join(' · ');
             const feedUrl = ['news', 'forum', 'podcast'].includes(src.type)
                 ? `<div class="text-[10px] text-slate-600 font-mono-custom break-all">${esc(src.url)}</div>` : '';
-            const roleWeight = effectiveWeight({ ...src, weight: undefined });
             const roles = Object.entries(feedConfig.roles).map(([key, role]) =>
-                `<option value="${esc(key)}" ${key === src.role ? 'selected' : ''}>${esc(role.label || key)} (&times;${esc(role.weight)})</option>`).join('');
+                `<option value="${esc(key)}" ${key === src.role ? 'selected' : ''}>${esc(role.label || key)} </option>`).join('');
             return `
                 <tr data-index="${index}" class="border-b border-slate-800/40 ${src.enabled ? '' : 'opacity-60'}">
                     <td data-col="on" class="py-2 px-3"><input type="checkbox" data-field="enabled" ${src.enabled ? 'checked' : ''} class="accent-cyan-400 w-4 h-4 cursor-pointer" aria-label="Enable ${esc(src.name)}"></td>
@@ -3963,9 +3920,6 @@
                         ${src.note ? `<div class="text-[10px] text-slate-500 mt-0.5">${esc(src.note)}</div>` : ''}
                     </td>
                     <td data-col="role" class="py-2 px-3"><select data-field="role" aria-label="Role for ${esc(src.name)}" class="max-w-[13rem] ${INPUT}">${roles}</select></td>
-                    <td data-col="weight" class="py-2 px-3">${src.type === '4chan'
-                        ? '<span class="text-slate-500" title="Not scored, so there is nothing to weigh: only the games a thread names are read from 4chan.">&ndash;</span>'
-                        : `<input type="number" data-field="weight" min="0" max="10" step="0.1" value="${isWeightValue(src.weight) ? esc(src.weight) : ''}" placeholder="${esc(roleWeight)}" title="Empty = use the role weight (${esc(roleWeight)})" aria-label="Weight for ${esc(src.name)}" class="w-16 ${INPUT}">`}</td>
                     ${columns.map(c => `<td data-col="stat" data-label="${esc(c.label)}" class="py-2 px-3 font-mono-custom whitespace-nowrap ${c.right ? 'text-right' : ''}">${c.cell(src)}</td>`).join('')}
                     <td data-col="status" class="py-2 px-3 whitespace-nowrap">${statusBadgeHtml(src)}</td>
                     <td data-col="remove" class="py-2 px-3 text-right">${unsavedAdditions.has(sourceKey(src))
@@ -4003,23 +3957,9 @@
                 counts[src.role].total++;
                 if (src.enabled) counts[src.role].on++;
             });
-            const overrides = feedConfig.sources.filter(src => isWeightValue(src.weight)).length;
             const polls = feedConfig.poll_every_hours || {};
             return `
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs">
-                    <div>
-                        <h3 class="mb-1">Role weights</h3>
-                        <p class="text-slate-500 mb-3 leading-relaxed">How much each item counts in the weighted Global Net Sentiment: 1 = normal, 0.5 = half, 0 = shown but not counted. A weight typed on a single source overrides its role (${overrides} override${overrides === 1 ? '' : 's'} set).</p>
-                        <table class="w-full text-left border-collapse">
-                            <thead><tr class="border-b border-slate-800"><th class="py-2 px-3">ROLE</th><th class="py-2 px-3">WEIGHT</th><th class="py-2 px-3 text-right">ON / TOTAL</th></tr></thead>
-                            <tbody>${Object.entries(feedConfig.roles).map(([key, role]) => `
-                                <tr class="border-b border-slate-800/40">
-                                    <td class="py-2 px-3"><div class="text-white">${esc(role.label || key)}</div><div class="text-[10px] text-slate-500 font-mono-custom">${esc(key)}</div></td>
-                                    <td class="py-2 px-3"><input type="number" data-role="${esc(key)}" min="0" max="10" step="0.1" value="${esc(role.weight)}" aria-label="Weight for ${esc(role.label || key)}" class="w-20 ${INPUT}"></td>
-                                    <td class="py-2 px-3 text-right font-mono-custom">${counts[key] ? `${counts[key].on} / ${counts[key].total}` : '0 / 0'}</td>
-                                </tr>`).join('')}</tbody>
-                        </table>
-                    </div>
+                <div class="text-xs">
                     <div>
                         <h3 class="mb-1">Fetch schedule</h3>
                         <p class="text-slate-500 mb-3 leading-relaxed">The scraper runs all the time and fetches each kind of source once its interval has passed. Reddit asks for a few subreddits a minute, so a Reddit round takes several minutes. Run scraper now and saving sources fetch everything at once.</p>
@@ -4038,14 +3978,7 @@
         function onSourcesViewChange(event) {
             const target = event.target;
             if (!feedConfig) return;
-            if (target.dataset.role !== undefined) {
-                const weight = Number(target.value);
-                if (target.value.trim() === '' || !isWeightValue(weight)) {
-                    target.value = feedConfig.roles[target.dataset.role].weight;
-                    return showSourcesMessage('Role weights must be between 0 and 10.', 'error');
-                }
-                feedConfig.roles[target.dataset.role].weight = weight;
-            } else if (target.dataset.poll !== undefined) {
+            if (target.dataset.poll !== undefined) {
                 const hours = Number(target.value);
                 if (!isPollInterval(hours)) {
                     target.value = feedConfig.poll_every_hours?.[target.dataset.poll] ?? 1;
@@ -4060,16 +3993,6 @@
                     src.enabled = target.checked;
                 } else if (target.dataset.field === 'role') {
                     src.role = target.value;
-                } else if (target.dataset.field === 'weight') {
-                    const raw = target.value.trim();
-                    if (raw === '') {
-                        delete src.weight;
-                    } else if (isWeightValue(Number(raw))) {
-                        src.weight = Number(raw);
-                    } else {
-                        target.value = isWeightValue(src.weight) ? src.weight : '';
-                        return showSourcesMessage('Weights must be between 0 and 10 (empty = use the role weight).', 'error');
-                    }
                 } else {
                     return;
                 }

@@ -18,7 +18,7 @@ committed files.
  data/sentiment_feed.json   data/feed_status.json                               │
           └──────────┬──────────────┘                                           │
                      ▼                                                          │
-                index.html  ── Sources & Weights panel ──────────────────────────┘
+                index.html  ── Sources panel          ──────────────────────────┘
 ```
 
 ## feeds.json
@@ -291,16 +291,16 @@ they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`
   the feed goes ("Items · 9 days"), worked out from the oldest item, because a count that
   has levelled off was read as a feed that had stopped.
 
-- **Weights** (next section) drive the *Global Net Sentiment* card (a weighted average) and the
-  order of the *Remaster Radar* (matched PS2 games first, then heavier sources, then the newest).
-  Items with a weight other than 1 show a small `×0.5`-style badge.
+- **No sentiment on the page** (2026-10-15): the net sentiment tile, the table's sentiment column and the
+  `×0.5`-style weight badges were removed. The scraper still writes `sentiment` and `feeds.json` still holds
+  weights (both validated), but nothing on the page reads them.
 - **Switched-off sources** disappear from every card and table immediately. The scraper stops
   collecting them on its next run, and their old items age out within 14 days. The exception is
   items collected before this version, which carry no source key; those only age out.
-- **Sources & Weights panel**: one tab per source type. It has search, sorting (subscribers, total
-  views, Apple ratings, chart rank, latest activity), an on/off switch, role and weight per
-  source, live status badges, and an *Add source* form. The *Weights & schedule* tab edits the
-  role weights and `poll_every_hours`. Status badges come from `feed_status.json`:
+- **Sources panel**: one tab per source type. It has search, sorting (subscribers, total
+  views, Apple ratings, chart rank, latest activity), an on/off switch, a role per
+  source, live status badges, and an *Add source* form. The *Schedule* tab edits
+  `poll_every_hours`. Status badges come from `feed_status.json`:
 
   | Badge | Meaning |
   |---|---|
@@ -591,7 +591,11 @@ region's own site (UK for PAL, US otherwise), then the other site's, then `value
 rarity order is shown as the tier. 34
 consoles priced: 64 lookups a day, two searches each.
 
-## Weights
+## Roles and weights
+
+The dashboard no longer shows or edits weights (2026-10-15): they fed only the net sentiment tile, which was
+removed. The values stay in `feeds.json` and the scraper still validates them; a role still decides PS2 context
+(`ps2`).
 
 | Role | Default weight | Used for |
 |---|---:|---|
@@ -604,8 +608,7 @@ consoles priced: 64 lookups a day, two searches each.
 | `creator` Entertainment creators | 0.5 | Big let's-play channels and comedy gaming podcasts |
 | `anonymous` Anonymous boards (4chan) | 0 | The 4chan boards. Their rows have no mood score, so they count 0 whatever is set here |
 
-`effective weight = the source's own weight if set, else its role's weight, else 1`.
-A weight of 0 keeps items visible but leaves them out of the average.
+Before the tile was removed: `effective weight = the source's own weight if set, else its role's weight, else 1`.
 
 ## Why it is built this way
 
@@ -631,13 +634,6 @@ start off: they are non-English (the keyword sentiment only understands English)
 Minecraft, Roblox or Fortnite. They are all listed with their numbers and are one click from
 being on. Anything with nothing new for 120+ days starts off as well. The reason for every "off"
 is in the source's `note`.
-
-**Weights apply to totals, not to single headlines.** A headline's own score stays readable ("+10
-per positive keyword"). Weights only decide how much each item counts in the aggregate numbers,
-which is where a flood of hype titles ("INSANE PS2 HAUL!!") from reseller channels would
-otherwise skew things. Roles give one knob per kind of source, and per-source overrides handle
-exceptions. The page applies weights live because every item records its source key, so tuning
-needs no rescrape.
 
 **The `ps2` role also gives PS2 context.** Before, only the dedicated PS2 subreddits could match
 ambiguous one-word titles. Tying that to the role keeps exactly that behaviour for them and
@@ -813,10 +809,10 @@ reason saving without a token is the default and tokens should be short-lived.
 - **Dashboard** (needs Node.js): the inline script runs in a sandbox with a stub DOM:
   - feeds.json validates
   - a save reproduces the file byte for byte
-  - weights, hiding and type inference behave as described
-  - every tab and the weights panel render with the real feeds.json
-  - the sentiment card shows the weighted average and the Radar puts matched PS2 games first
-  - switching a source off or changing a role weight updates the cards, and Discard restores them
+  - hiding and type inference behave as described
+  - every tab and the schedule panel render with the real feeds.json
+  - the Radar puts matched PS2 games first, and no sentiment is on the page
+  - switching a source off updates the cards, and Discard restores them
   - adding a source validates its input, rejects duplicates and video links, and only unsaved
     additions can be removed
   - pasted YouTube channel links are normalised and stored as `channel_url`

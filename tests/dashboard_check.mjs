@@ -146,24 +146,10 @@ await check('source keys are unique and follow scraper.source_key()', () => {
     assert.ok(sources.some(src => src.type === '4chan') && sources.some(src => src.type === 'forum'), 'every kind of source is covered');
 });
 
-await check('weights: role default, per-source override, legacy and unknown items', () => {
+await check('switched-off sources hide their items', () => {
     vm.runInContext(`
         feedConfig = JSON.parse(__text);
         rebuildSourceIndex();
-        __collector = feedConfig.sources.find(s => s.role === 'collector');
-    `, context);
-    const roles = context.__feeds.roles;
-    assert.equal(evalJson('effectiveWeight(__collector)'), roles.collector.weight);
-    assert.equal(evalJson('(__collector.weight = 0.2, effectiveWeight(__collector))'), 0.2);
-    assert.equal(evalJson('(__collector.weight = 0, effectiveWeight(__collector))'), 0);
-    // Items scraped before feeds.json existed have no "feed"; r/ps2 still maps to the PS2 role.
-    assert.equal(evalJson("itemWeight({ source: 'r/ps2' })"), roles.ps2.weight);
-    assert.equal(evalJson("itemWeight({ source: 'Some Unknown Site' })"), 1);
-    assert.equal(evalJson("effectiveWeight({ role: 'no-such-role' })"), 1);
-});
-
-await check('switched-off sources hide their items', () => {
-    vm.runInContext(`
         __off = feedConfig.sources.find(s => !s.enabled);
         __on = feedConfig.sources.find(s => s.enabled);
     `, context);
@@ -217,7 +203,7 @@ await check('GitHub contents API base64 helpers round-trip non-ASCII text', () =
     assert.equal(evalJson("decodeBase64Utf8(encodeBase64Utf8('IGN Latinoamérica ★ 💙'))"), 'IGN Latinoamérica ★ 💙');
 });
 
-await check('dashboard renders every view and weights the sentiment average', () => {
+await check('dashboard renders every view', () => {
     const feeds = context.__feeds;
     const find = (pred) => feeds.sources.find(pred);
     const press = find(s => s.enabled && s.role === 'press' && s.type === 'news');
@@ -245,11 +231,8 @@ await check('dashboard renders every view and weights the sentiment average', ()
         renderSourcesToolbar();
         refreshDashboard();
     `, context);
-    // (100*1 + 10*0.5 + 70*1 + 40*1.5) / (1 + 0.5 + 1 + 1.5) = 235 / 4 = 58.75 -> 59 (unweighted: 55)
-    assert.equal(el('statAvgSentiment').innerText, '59/100');
     assert.equal(el('statTotalItems').innerText, 4);
     assert.equal(el('statFeedsCount').innerText, feeds.sources.filter(s => s.enabled).length);
-    // Radar: the matched PS2 game comes first even though its source weighs less.
     assert.match(el('topGamesList').innerHTML, /Okami/);
     assert.equal(el('feedTableBody').children.length, 4);
     const kinds = evalJson('SOURCE_TYPES');
@@ -264,7 +247,8 @@ await check('dashboard renders every view and weights the sentiment average', ()
     vm.runInContext(`setSourceTab('news')`, context);
     assert.match(el('sourcesView').innerHTML, /Active · /);
     vm.runInContext(`setSourceTab('weights')`, context);
-    assert.match(el('sourcesView').innerHTML, /Role weights/);
+    assert.match(el('sourcesView').innerHTML, /Fetch schedule/);
+    assert.doesNotMatch(el('sourcesView').innerHTML, /Role weights/);
     // Each type's clock is a menu: 15 or 30 minutes, or 1 to 24 hours, with the file's value chosen.
     const html = el('sourcesView').innerHTML;
     const menu = (type) => html.match(new RegExp(`<select data-poll="${type}"[^>]*>([\\s\\S]*?)</select>`))[1];
@@ -302,12 +286,6 @@ await check('switching a source off hides its items and marks the config as unsa
     vm.runInContext('onSourcesViewChange(__event)', context);
     assert.equal(el('statTotalItems').innerText, 3);
     assert.equal(el('dirtyBadge').classList.contains('hidden'), false);
-    const roleTarget = { dataset: { role: 'ps2' }, value: '3' };
-    context.__event = { target: roleTarget };
-    vm.runInContext('onSourcesViewChange(__event)', context);
-    assert.equal(evalJson('feedConfig.roles.ps2.weight'), 3);
-    // (100*1 + 70*1 + 40*3) / (1 + 1 + 3) = 290 / 5 = 58
-    assert.equal(el('statAvgSentiment').innerText, '58/100');
     vm.runInContext('discardChanges()', context);
     assert.equal(el('statTotalItems').innerText, 4);
     assert.equal(el('dirtyBadge').classList.contains('hidden'), true);
@@ -527,7 +505,7 @@ await check('rows name their cells so the phone layout can turn them into cards'
     ];
     vm.runInContext('renderTable(__rows)', context);
     const [matched, unmatched] = el('feedTableBody').children.map(row => row.innerHTML);
-    for (const col of ['source', 'headline', 'game', 'score', 'action']) {
+    for (const col of ['source', 'headline', 'game', 'action']) {
         assert.match(matched, new RegExp(`<td data-col="${col}"`), `feed cell ${col}`);
     }
     assert.doesNotMatch(matched, /data-unmatched/);
@@ -537,7 +515,7 @@ await check('rows name their cells so the phone layout can turn them into cards'
     vm.runInContext(`setSourceTab('youtube')`, context);
     const youtube = el('sourcesView').innerHTML;
     assert.match(youtube, /<table class="sources-table /);
-    for (const col of ['on', 'source', 'role', 'weight', 'stat', 'status', 'remove']) {
+    for (const col of ['on', 'source', 'role', 'stat', 'status', 'remove']) {
         assert.match(youtube, new RegExp(`<td data-col="${col}"`), `source cell ${col}`);
     }
     for (const label of ['SUBSCRIBERS', 'TOTAL VIEWS', 'LAST UPLOAD']) assert.match(youtube, new RegExp(`data-label="${label}"`));
@@ -1096,7 +1074,7 @@ await check('the item count says how far back it goes', () => {
     assert.match(read('index.html'), /<div id="statTotalLabel" class="stat-label">Items scraped<\/div>\s*<div id="statTotalItems" class="stat-value">0<\/div>/);
 });
 
-await check('forums and 4chan boards: their rows, their weight and adding one', () => {
+await check('forums and 4chan boards: their rows, and adding one', () => {
     const feeds = context.__feeds;
     const press = feeds.sources.find(src => src.enabled && src.role === 'press' && src.type === 'news');
     const forum = feeds.sources.find(src => src.type === 'forum');
@@ -1116,11 +1094,6 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     `, context);
     const rows = () => el('feedTableBody').children.map(child => child.innerHTML);
 
-    // A board's rows count for the games they name and for nothing else: the role's weight is 0,
-    // so the mood score is the press item and the forum thread only. (90*1 + 70*1) / 2 = 80
-    assert.equal(feeds.roles.anonymous.weight, 0);
-    assert.ok(feeds.sources.filter(src => src.type === '4chan').every(src => src.role === 'anonymous' && !('weight' in src)));
-    assert.equal(el('statAvgSentiment').innerText, '80/100');
     assert.equal(el('statTotalItems').innerText, 3);
     assert.match(el('topGamesList').innerHTML, /#1 <a[^>]*>Ico<\/a>[\s\S]*#2 <a[^>]*>Okami<\/a>/, 'both count as mentions');
 
@@ -1131,21 +1104,7 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     assert.match(boardRow, /fa-solid fa-user-secret[^>]*title="4chan"><\/i>4chan \/vr\//);
     assert.match(boardRow, /Thread on \/vr\/ naming Okami/);
     assert.match(boardRow, /href="https:\/\/boards\.4chan\.org\/vr\/thread\/101"[^>]*>\s*Thread /);
-    assert.match(boardRow, /title="Source weight in the sentiment average">&times;0<\/span>/);
-    assert.match(boardRow, /<td data-col="score"[^>]*><div class="score-value[^"]*" title="Not scored: [^"]+">&ndash;<\/div>\s*<\/td>/, 'no mood is shown for a thread');
-    assert.match(forumRow, /<div class="score-value font-mono-custom">70<\/div>/);
-    // A thread has no mood score at all, so no weight can bring it into the average as a
-    // neutral 50: not a weight on the role, not one on the board, and not a board the list has lost.
-    const mood = (change) => {
-        vm.runInContext(`${change}; rebuildSourceIndex(); refreshDashboard()`, context);
-        return el('statAvgSentiment').innerText;
-    };
-    assert.equal(mood('feedConfig.roles.anonymous.weight = 5'), '80/100');
-    assert.equal(mood("feedConfig.roles.anonymous.weight = 0; feedConfig.sources.find(s => s.board === 'vr').weight = 10"), '80/100');
-    assert.equal(mood("feedConfig.sources = feedConfig.sources.filter(s => s.board !== 'vr')"), '80/100');
-    // ...while a weight on the forum does what it says. (90*1 + 70*3) / 4 = 75
-    assert.equal(mood(`feedConfig = JSON.parse(__text); feedConfig.sources.find(s => s.type === 'forum').weight = 3`), '75/100');
-    assert.equal(mood('feedConfig = JSON.parse(__text)'), '80/100');
+    for (const row of [forumRow, boardRow]) assert.doesNotMatch(row, /data-col="score"|score-value|Source weight/, 'no sentiment and no weight on a row');
 
     // The feed can be narrowed to either kind.
     const only = (kind) => { el('typeSelect').value = kind; vm.runInContext('filterFeedItems()', context); return rows().length; };
@@ -1153,14 +1112,12 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     const page = read('index.html');
     assert.match(page, /<option value="forum">Forums<\/option>\s*<option value="4chan">4chan<\/option>/);
 
-    // Sources & Weights: a tab for each, with the board's own page as its link.
+    // Sources: a tab for each, with the board's own page as its link.
     vm.runInContext("setSourceTab('4chan')", context);
     let html = el('sourcesView').innerHTML;
     assert.equal((html.match(/<tr data-index=/g) || []).length, feeds.sources.filter(src => src.type === '4chan').length);
     assert.match(html, /<a href="https:\/\/boards\.4chan\.org\/vr\/"[^>]*>\/vr\/ - Retro Games<\/a>/);
-    assert.doesNotMatch(html, /data-field="weight"/, 'a board has no weight to set');
-    assert.equal((html.match(/<td data-col="weight"[^>]*><span[^>]*title="Not scored, [^"]+">&ndash;<\/span><\/td>/g) || []).length,
-        feeds.sources.filter(src => src.type === '4chan').length);
+    assert.doesNotMatch(html, /data-field="weight"|data-col="weight"/, 'there are no weights to set');
     assert.match(el('addHint').textContent, /^Add to 4chan: only the names of the PS2 games/);
     const add = (value, name = '') => {
         el('addValue').value = value; el('addName').value = name;
@@ -1184,7 +1141,6 @@ await check('forums and 4chan boards: their rows, their weight and adding one', 
     assert.equal((html.match(/<tr data-index=/g) || []).length, feeds.sources.filter(src => src.type === 'forum').length);
     assert.ok(html.includes(`<div class="text-[10px] text-slate-600 font-mono-custom break-all">${esc(forum.url)}</div>`),
         'the feed link is shown under a forum, as for news sites');
-    assert.equal((html.match(/data-field="weight"/g) || []).length, feeds.sources.filter(src => src.type === 'forum').length);
     assert.equal(el('addName').placeholder, 'Name');
     assert.match(add('https://forum.example.org/forums/retro.5/index.rss'), /Give the source a name\./);
     assert.match(add('forum.example.org/index.rss', 'No Scheme'), /Paste the full link of the feed/);
@@ -1251,7 +1207,7 @@ await check('the theme: four colours with one job each, readable on every ground
     const afterTokens = css.slice(css.indexOf('}', css.indexOf(':root {')) + 1).replace(/\/\*[\s\S]*?\*\//g, '');
     assert.deepEqual(afterTokens.match(/#[0-9A-Fa-f]{3,8}\b/g), null, 'no colour written out below the list at the top');
     assert.deepEqual(rules.filter(([, body]) => /var\(--strip-/.test(body)).map(([selector]) => selector),
-        ['body .brand-bar::before', 'body .stat:nth-child(1)::before', 'body .stat:nth-child(2)::before', 'body .stat:nth-child(3)::before', 'body .stat:nth-child(4)::before']);
+        ['body .brand-bar::before', 'body .stat:nth-child(1)::before', 'body .stat:nth-child(2)::before', 'body .stat:nth-child(3)::before']);
     assert.doesNotMatch(page + guide, /\b(?:text|bg|border|accent)-(?:yellow|orange)-\d/);
     // The classes the pages colour things with all go through those names.
     for (const mapping of [
@@ -1265,17 +1221,15 @@ await check('the theme: four colours with one job each, readable on every ground
     const named = (part) => rules.filter(([selector]) => selector.includes(part)).map(([selector]) => selector);
     assert.deepEqual(named('.remaster-tag'), ['body .remaster-tag'], 'one rule, so nothing further down undoes it');
     assert.deepEqual(named('.stat-value'), ['body .stat-value', 'body .stat-value.is-news', 'body .stat-value.is-live', 'body .stat-value']);
-    // Red marks remaster news (the tag, the number at the top, the open page's line) and a low mood.
+    // Red marks remaster news (the tag, the number at the top, the open page's line).
     assert.match(css, /body \.remaster-tag \{ border-color: var\(--red-line\); border-radius: 4px; color: var\(--red\); \}/);
     assert.match(css, /body \.stat-value\.is-news \{ color: var\(--red\); \}/);
-    assert.match(css, /body \.score-fill\.score-low \{ background: var\(--red\); \}/);
-    // Teal is live and well: the sync dot, the active feeds, a good mood.
+    // Teal is live and well: the sync dot, the active feeds.
     assert.match(css, /body \.brand-dot \{[^}]*background: var\(--green\)/);
     assert.match(css, /body \.stat-value\.is-live \{ color: var\(--green\); \}/);
-    assert.match(css, /body \.score-fill\.score-high \{ background: var\(--green\); \}/);
     assert.match(page, /<div id="statRemasters" class="stat-value is-news">/);
     assert.match(page, /<div id="statFeedsCount" class="stat-value is-live">/);
-    assert.match(page, /<div id="statAvgSentiment" class="stat-value">/);
+    assert.doesNotMatch(page, /statAvgSentiment|Net sentiment|SENTIMENT<\/th>|score-meter/, 'no sentiment on the page');
     // The tag in the table, beside a game's rank and beside a game named today and on a game's own page is the same tag.
     assert.equal((script.match(/<span class="remaster-tag /g) || []).length, 4);
     context.__items = [{ headline: 'Okami HD announced', source: 'Eurogamer', link: 'https://e.example/okami', matched_game: 'Okami',

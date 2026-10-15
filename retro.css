@@ -6,9 +6,9 @@
      yellow  prices (the price links, the prices under a shelf box) and the keepsake colour of
              the My collection button; nothing else is yellow
      blue    what can be followed: game names, links, buttons
-     red     remaster news, and whatever is low or failing (a low mood score, a falling
+     red     remaster news, and whatever is low or failing (a falling
              trend, a source that cannot be read, an error)
-     teal    live and well: the sync dot, the sources switched on, a high mood score, a
+     teal    live and well: the sync dot, the sources switched on, a
              rising trend, a success
    All four meet only in the strip across the top and in the rings of the mark. */
 
@@ -228,7 +228,7 @@ body .view-tab-count:not(.hidden) {
 }
 
 /* Stat cards: label over number, a coloured edge along the top of each */
-body .stat-strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; }
+body .stat-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; }
 body .stat {
   position: relative;
   overflow: hidden;
@@ -245,7 +245,6 @@ body .stat::before { content: ""; position: absolute; top: 0; left: 0; right: 0;
 body .stat:nth-child(1)::before { background: var(--strip-red); }
 body .stat:nth-child(2)::before { background: var(--strip-yellow); }
 body .stat:nth-child(3)::before { background: var(--strip-blue); }
-body .stat:nth-child(4)::before { background: var(--strip-teal); }
 body .stat-label {
   font-size: .68rem;
   font-weight: 600;
@@ -265,6 +264,7 @@ body .stat-value.is-news { color: var(--red); }    /* remaster flags */
 body .stat-value.is-live { color: var(--green); }  /* active feeds */
 @media (max-width: 820px) {
   body .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 
 /* Inputs */
@@ -305,12 +305,6 @@ body .remaster-tag { border-color: var(--red-line); border-radius: 4px; color: v
 body .digital-tag { border-color: var(--accent); color: var(--accent-hi); }
 
 /* Sentiment: a number and a 2px meter, not a coloured pill */
-body .score-value { font-size: .95rem; color: var(--text); }
-body .score-meter { width: 70px; height: 2px; background: var(--rule); margin-top: .5rem; }
-body .score-fill { height: 2px; display: block; }
-body .score-fill.score-high { background: var(--green); }
-body .score-fill.score-mid { background: var(--dim); }
-body .score-fill.score-low { background: var(--red); }
 
 /* Tables */
 body thead th {
@@ -500,6 +494,7 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
 
   /* Stat strip: two by two, compact */
   body .stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body .stat:last-child:nth-child(odd) { grid-column: 1 / -1; }
   body .stat { padding: .85rem .95rem; }
   body .stat-label { font-size: .69rem; letter-spacing: .06em; white-space: nowrap; }  /* "Items · 14 days" on one line at 320px */
   body .stat-value { font-size: 1.65rem; }
@@ -559,13 +554,13 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
   body .feed-filters > select { width: 100%; }
 
   /* Feed: each row is a card -- where and when, the headline, the game and
-     its prices, then the score beside the link out */
+     its prices, then the link out */
   body #feedSection table, body #feedSection tbody { display: block; }
   body #feedSection thead { display: none; }
   body #feedTableBody > tr {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
-    grid-template-areas: "source source" "headline headline" "game game" "score action";
+    grid-template-areas: "source source" "headline headline" "game game" ". action";
     gap: .6rem 1rem;
     align-items: center;
     padding: 1.1rem .75rem;  /* room at the sides, now that every second card is tinted */
@@ -581,12 +576,6 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
   body #feedTableBody td[data-col="headline"] { grid-area: headline; font-size: 1rem; line-height: 1.45; color: var(--text); }
   body #feedTableBody td[data-col="game"] { grid-area: game; font-size: .875rem; }
   body #feedTableBody td[data-col="game"][data-unmatched] { display: none; }
-  body #feedTableBody td[data-col="score"] { grid-area: score; display: flex; align-items: center; gap: .6rem; }
-  body #feedTableBody td[data-col="score"]::before {
-    content: "Sentiment";
-    font-family: var(--mono); font-size: .69rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim);
-  }
-  body #feedTableBody td[data-col="score"] .score-meter { margin-top: 0; }
   body #feedTableBody td[data-col="action"] { grid-area: action; }
   body #feedTableBody td[data-col="action"] > a { min-height: 2.5rem; padding: 0 .9rem; }
   body #pagination button { min-width: 2.75rem; }
