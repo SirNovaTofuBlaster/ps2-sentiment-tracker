@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: the Gacha console
+
+- The Gacha machine is now an animated console (button **Insert coin**): it powers on, the disc tray slides out with a disc in the prize's rarity colour, a ring pulses, and the prize card appears; the tray stays out until the next coin. One lit square per capsule left. Covers are much smaller (30px thumbnails in the contents, a 62px prize card, 88px tiles under My gacha prizes), and the odds have a bar. Switched off under `prefers-reduced-motion`. Checks cover the sequence, the squares and the classes.
+
 ## 2026-10-15: the Gacha
 
 - New **Gacha** tab (`#gacha`): four capsule machines (Survival Horror, Action, Open World, RPG) from `gacha.json`, 20 capsules each (5 common games x3, 1 uncommon x4, 1 super rare x1). Three free coins a day; a turn takes a random capsule from what is left, with the live odds shown, and the machine refills when empty. Each game shows its eBay US median.
