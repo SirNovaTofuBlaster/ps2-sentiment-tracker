@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-15 17:40:50 UTC",
+  "last_updated": "2026-10-15 17:43:31 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749748331",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 17:32 UTC"
+    },
     {
       "headline": "The  Ocarina Of Time Remake Doesn’t Do Everyone’s Favorite Bombchu-Bowling Baddie Justice",
       "source": "Kotaku",
@@ -720,6 +739,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 16:31 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749744807",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 16:31 UTC"
     },
@@ -9759,13 +9797,14 @@
       "timestamp": "2026-10-15 10:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Kingdom Hearts II, Silent Hill 2 and 34 more",
+      "headline": "Thread on /v/ naming Deus Ex, Resident Evil 4, Kingdom Hearts II and 34 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749727312",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Resident Evil 4",
         "Kingdom Hearts II",
         "Silent Hill 2",
@@ -9786,7 +9825,6 @@
         "Metal Gear Solid 2: Sons of Liberty",
         "God of War II",
         "Persona 4",
-        "Deus Ex",
         "Crazy Taxi",
         "Max Payne",
         "Burnout 3",
@@ -9805,7 +9843,7 @@
         "God of War"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -242616,19 +242654,6 @@
       "is_remaster_rumor": false,
       "sentiment": 60,
       "timestamp": "2026-10-01 17:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "ROBLOX PIGGY OWELL (FRIGHT NIGHT) JUMPSCARE - Roblox Piggy New Update",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/shorts/Spq2fsEth8c",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 17:40 UTC",
       "is_digital_only": false
     }
   ]
