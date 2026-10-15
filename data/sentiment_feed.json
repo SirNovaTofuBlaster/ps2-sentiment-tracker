@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 04:37:11 UTC",
+  "last_updated": "2026-10-15 04:50:47 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -7206,14 +7206,15 @@
       "timestamp": "2026-10-14 20:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749694034",
       "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -13513,19 +13514,19 @@
       "timestamp": "2026-10-14 16:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts and Final Fantasy X",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749680032",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts II",
         "Kingdom Hearts",
+        "Kingdom Hearts II",
         "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -234417,50 +234418,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-01 04:51 UTC"
-    },
-    {
-      "headline": "Here are some Gran Turismo 3 and 4 patches I made to help with night tracks performance.",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1wuqhaf/here_are_some_gran_turismo_3_and_4_patches_i_made/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 04:49 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Looking for a game where you can play as an evil-ass wizard casting evil-ass spells",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wuqfr0/looking_for_a_game_where_you_can_play_as_an/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 04:47 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Greatest Grenade Jump In Quake History!",
-      "source": "YouTube: Karl Jobst",
-      "source_type": "youtube",
-      "feed": "youtube:UC3ltptWa0xfrDweghW94Acg",
-      "link": "https://www.youtube.com/watch?v=Zqk_XL3oCZE",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-01 04:41 UTC",
-      "views": 476449
     }
   ]
 }
