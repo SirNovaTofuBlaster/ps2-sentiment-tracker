@@ -1552,7 +1552,7 @@
         const PRICE_SEARCH = { US: 'ebay-us', UK: 'ebay-uk', DE: 'ebay-de', FR: 'ebay-fr', IT: 'ebay-it', ES: 'ebay-es' };
         // A site added later is checked less often (min_every_hours in ebay_prices.py), so its
         // figures are overdue later: the hours a figure there may be old before it is dimmed.
-        const SITE_STALE_HOURS = { DE: 30, FR: 30, IT: 30, ES: 30 };   // the PRICE_LOOKUPS entry a figure links to
+        const SITE_STALE_HOURS = { DE: 30, FR: 56, IT: 30, ES: 80 };   // the PRICE_LOOKUPS entry a figure links to
         let priceData = null;          // data/prices/latest.json as loaded, or null
         let priceIndex = new Map();    // priceKey(title) -> { title, entry, level, mentions }
         let renamedKeys = new Set();   // priceKey of every game that has another name on another site (ebay_watchlist.json regional_names)

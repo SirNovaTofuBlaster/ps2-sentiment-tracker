@@ -149,7 +149,7 @@ MARKETS = {
     # France (switched on 2026-10-14): as Germany, with French sellers' words, written the same way
     # (no accents) and equally not yet checked against live listings.
     "EBAY_FR": {"label": "FR", "site": "www.ebay.fr", "country": "FR", "currency": "EUR",
-                "extra": True, "min_every_hours": 24, "names_like": "UK", "keyword_only": True,
+                "extra": True, "min_every_hours": 48, "names_like": "UK", "keyword_only": True,
                 "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
                 "junk": ("boite seule", "boitier seul", "notice seule", "livret seul", "jaquette seule", "coque seule",
                          "sans jeu", "sans disque", "boitier vide", "boite vide", "defectueux", "en panne",
@@ -169,7 +169,7 @@ MARKETS = {
                                "senza copertina", "solo disco", "solo gioco", "solo cd", "sfuso")},
     # Spain (switched on 2026-10-14): as the others, with Spanish sellers' words.
     "EBAY_ES": {"label": "ES", "site": "www.ebay.es", "country": "ES", "currency": "EUR",
-                "extra": True, "min_every_hours": 24, "names_like": "UK", "keyword_only": True,
+                "extra": True, "min_every_hours": 72, "names_like": "UK", "keyword_only": True,
                 "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
                 "junk": ("solo caja", "solo carcasa", "solo manual", "solo funda", "solo portada", "sin juego",
                          "sin disco", "caja vacia", "estuche vacio", "defectuoso", "roto", "no funciona",
@@ -1019,10 +1019,11 @@ def due_lookups(games, state, now, history=()):
                     and is_steady(steady_rows.get((game["key"], market["label"]), ()), now)):
                 wait = STEADY_EVERY_HOURS * 60
                 game["steady_on"].append(market["label"])
-            if (game["level"] != "surging" and not game["pinned"] and checked and game["level"] != "rare"
+            if (market.get("extra") and game["level"] != "surging" and not game["pinned"] and checked
+                    and game["level"] != "rare"
                     and isinstance(entry, dict) and (entry.get("unmatched") or entry.get("copies") == 0)):
-                # Nothing was for sale (or the words find nothing) at the last check: the answer rarely changes,
-                # so it is asked every 48 hours; the dashboard gives it the steady figures' longer allowance.
+                # Nothing was for sale (or the words find nothing) at the last check on a euro site: the answer rarely
+                # changes, so it is asked every 48 hours (US and UK are never slowed this way); the dashboard gives it the steady figures' longer allowance.
                 wait = max(wait, QUIET_EVERY_HOURS * 60)
                 game["steady_on"].append(market["label"])
             wait = max(wait, market.get("min_every_hours", 0) * 60)

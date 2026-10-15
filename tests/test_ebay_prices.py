@@ -1263,7 +1263,8 @@ def european_site_tests(name, market_id, market, junk_titles, normal_title, inco
 
         def test_the_definition_is_sound(self):
             self.assertEqual((market["currency"], market["extra"], market["keyword_only"]), ("EUR", True, True))
-            self.assertEqual((market["min_every_hours"], market["names_like"]), (24, "UK"))
+            self.assertEqual((market["min_every_hours"], market["names_like"]), (market["min_every_hours"], "UK"))
+            self.assertEqual(market["min_every_hours"], {"DE": 24, "FR": 48, "IT": 24, "ES": 72}[market["label"]])
             self.assertEqual(market["site"], f"www.ebay.{market['country'].lower()}")
             self.assertEqual(market["label"], market["country"])
             for field in ("foreign", "junk", "incomplete"):
@@ -1290,7 +1291,7 @@ def european_site_tests(name, market_id, market, junk_titles, normal_title, inco
             label = market["label"]
             state = {"games": {"Kuon": {label: {"checked": stamp(7)}}}}
             self.assertNotIn(market_id, [m for _, m in ebay_prices.due_lookups([entry], state, NOON)])
-            state["games"]["Kuon"][label]["checked"] = stamp(24)
+            state["games"]["Kuon"][label]["checked"] = stamp(market["min_every_hours"])
             self.assertIn(market_id, [m for _, m in ebay_prices.due_lookups([entry], state, NOON)])
 
     SiteTests.__name__ = SiteTests.__qualname__ = name
@@ -1687,22 +1688,39 @@ class WeekTests(unittest.TestCase):
 
 
 class QuietTests(unittest.TestCase):
-    """A game with no copies for sale (or whose words find none) is asked every 48 hours, not every 6."""
+    """On the euro sites a game with no copies (or whose words find none) is asked every 48 hours; US and UK keep their pace."""
 
     def setUp(self):
         self.sandbox = Sandbox(self, feed=[mention("Kuon", 5, "r/ps2")])
 
-    def test_a_site_with_no_copies_waits_48_hours_and_is_marked_for_the_dashboard(self):
+    def test_us_and_uk_are_never_slowed_for_empty_games(self):
         self.sandbox.run(FakeHttp())
         first = self.sandbox.latest["games"]["Kuon"]["UK"]
         self.assertEqual(first.get("copies"), 0)
         self.sandbox.now += timedelta(hours=7)
         code, printed, fake = self.sandbox.run()
-        self.assertIn("Nothing is due", printed, "no copies at the last check: not asked again after 7 hours")
+        self.assertIn("Kuon [UK]", printed, "the UK is never slowed: asked again after 7 hours")
+        self.assertIn("Kuon [US]", printed, "the US is never slowed either")
         self.sandbox.now += timedelta(hours=42)
         code, printed, fake = self.sandbox.run(FakeHttp(lambda params, headers: two_copies(params, headers)))
         self.assertNotIn("Nothing is due", printed, "after 48 hours it is asked again")
         self.assertGreater(self.sandbox.latest["games"]["Kuon"]["UK"].get("copies", 0), 0)
+
+
+class QuietEuroTests(unittest.TestCase):
+    def setUp(self):
+        patcher = mock.patch.dict(ebay_prices.MARKETS, {"EBAY_DE": DE})
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_an_empty_german_pair_waits_48_hours_but_a_stocked_one_24(self):
+        stamp = lambda hours: (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)   # noqa: E731
+        for record, hours, due in (({"copies": 0}, 30, False), ({"copies": 0}, 49, True),
+                                   ({"copies": 3}, 25, True), ({"unmatched": True}, 30, False)):
+            entry = game("Kuon")
+            state = {"games": {"Kuon": {"DE": dict(record, checked=stamp(hours))}}}
+            got = "EBAY_DE" in [m for _, m in ebay_prices.due_lookups([entry], state, NOON)]
+            self.assertEqual(got, due, (record, hours))
 
 
 class RareListTests(unittest.TestCase):
