@@ -104,7 +104,9 @@ CONSOLE_CATEGORY_ID = "139971"             # eBay's "Video Game Consoles", same 
 CONSOLE_CONDITION_IDS = "1000|1500|2000|2010|2020|2030|2500|2750|3000|4000|5000|6000"
 PLATFORM_ASPECT = "Sony PlayStation 2"     # the "Platform" item specific sellers pick
 USED_CONDITION_IDS = "2750|3000|4000|5000|6000"   # like new, used, very good, good, acceptable
+NEW_CONDITION_IDS = "1000|1500|1750"   # new, new other, new with defects: sealed copies are listed as these
 CONDITION_FILTERS = {
+    "new": f"conditionIds:{{{NEW_CONDITION_IDS}}}",   # the Rarest page's second look, at unused copies
     "ids": f"conditionIds:{{{USED_CONDITION_IDS}}}",   # what this script uses; leaves out "for parts"
     "used": "conditions:{USED}",                       # diagnosis only
     "any": "",                                         # diagnosis only
@@ -890,6 +892,8 @@ def add_rare_games(games, rare, catalogue):
                 owners[key] = game
             if market_id not in game["sites"]:
                 game["sites"].append(market_id)
+            # Its new and sealed copies are counted too, on this list's site: a rare game's copies are often that.
+            game["new_tier"] = sorted(set(game.get("new_tier") or ()) | {market_id})
             game["exclude"] = sorted(set(game["exclude"]) | set(entry["exclude"]))
         placed[entry["list"]][entry["title"]] = game["title"]
     games.extend(added.values())
@@ -1244,7 +1248,7 @@ def console_reject_reason(item, console, market):
     return None
 
 
-def reject_reason(item, game, market, keyword_search):
+def reject_reason(item, game, market, keyword_search, sealed_ok=False):
     """Why a listing is left out, or None to count it."""
     if game.get("kind") == "console":
         return console_reject_reason(item, game, market)
@@ -1267,7 +1271,7 @@ def reject_reason(item, game, market, keyword_search):
     if has_phrase(text, junk) or has_phrase(text, market.get("junk", ())) or has_phrase(text, game["exclude"]) \
             or is_the_soundtrack(item.get("title"), name_text, game["search"]):
         return "not_a_copy"
-    if has_phrase(text, GRADED_OR_SEALED) and not has_phrase(text, NOT_GRADED):
+    if not sealed_ok and has_phrase(text, GRADED_OR_SEALED) and not has_phrase(text, NOT_GRADED):
         return "graded_or_sealed"
     if has_phrase(text, IMPORT_PHRASES) or has_phrase(text, market["foreign"]):
         return "import"
@@ -1278,12 +1282,12 @@ def reject_reason(item, game, market, keyword_search):
     return None
 
 
-def summarise(payload, game, market, keyword_search):
+def summarise(payload, game, market, keyword_search, sealed_ok=False):
     """Turn one search result into the numbers and links for this run's file."""
     items = [item for item in payload.get("itemSummaries") or [] if isinstance(item, dict)]
     skipped, examples, kept = {}, {}, []
     for item in items:
-        reason = reject_reason(item, game, market, keyword_search)
+        reason = reject_reason(item, game, market, keyword_search, sealed_ok)
         if reason:
             skipped[reason] = skipped.get(reason, 0) + 1
             if len(examples.setdefault(reason, [])) < SKIPPED_EXAMPLES:
@@ -1348,14 +1352,15 @@ def human_search_url(game, market):
             f"&_sacat={CATEGORY_ID}&LH_ItemCondition={quote(USED_CONDITION_IDS)}&LH_BIN=1&LH_PrefLoc=1")
 
 
-def fetch(http_client, token, game, market_id, counter, by_aspect, console=None):
+def fetch(http_client, token, game, market_id, counter, by_aspect, console=None, condition="ids"):
     """Run the game's searches on one site and merge them, each listing once.
     Returns (status, payload): the first failure as it came, or 200 and the merged listings."""
     merged, total, truncated, warning = {}, 0, False, ""
     for position, query in enumerate(game["queries"]):
         if position:
             time.sleep(REQUEST_PAUSE)
-        status, payload = search(http_client, token, market_id, query, counter, by_aspect=by_aspect, console=console)
+        status, payload = search(http_client, token, market_id, query, counter, by_aspect=by_aspect, condition=condition,
+                                 console=console)
         if status != 200:
             return status, payload
         items = [item for item in payload.get("itemSummaries") or [] if isinstance(item, dict)]
@@ -1393,7 +1398,27 @@ def check_market(http_client, token, game, market_id, counter):
 
     if status != 200:
         return {**base, "status": "error", "answered": status != 0, "error": error_text(status, payload)}
-    return {**base, **summarise(payload, game, market, keyword_search)}
+    result = {**base, **summarise(payload, game, market, keyword_search)}
+    if game.get("new_tier") and market_id in game["new_tier"]:
+        result["new"] = check_new_copies(http_client, token, game, market_id, counter, keyword_search)
+    return result
+
+
+def check_new_copies(http_client, token, game, market_id, counter, keyword_search):
+    """The Rarest page's second look at a game: its new and sealed copies (condition new), which the main
+    search leaves out because they sell at many times a used copy. Counted apart, never mixed into the
+    used figures. {"counted", "lowest", "median", "listings"}, or {"counted": 0} when there are none or eBay
+    could not be asked (the used figures stand either way)."""
+    market = MARKETS[market_id]
+    time.sleep(REQUEST_PAUSE)
+    status, payload = fetch(http_client, token, game, market_id, counter, not keyword_search, condition="new")
+    if status != 200:
+        return {"counted": 0}
+    summary = summarise(payload, game, market, keyword_search, sealed_ok=True)
+    if not summary.get("counted"):
+        return {"counted": 0}
+    return {"counted": summary["counted"], "lowest": summary["lowest"], "median": summary["median"],
+            "listings": summary["listings"]}
 
 
 def describe(game, market, result):
@@ -1414,6 +1439,8 @@ def describe(game, market, result):
     if result["status"] == "unmatched":
         return (f"{label}: none of the {result['fetched']} listings eBay returned names this game; "
                 f"it needs its own search words{tail}")
+    if isinstance(result.get("new"), dict):
+        tail += f"; {result['new']['counted']} new or sealed"
     if result["status"] == "none":
         return f"{label}: no copies counted, {result['fetched']} returned{tail}"
     return f"{label}: {result['counted']} of {result['fetched']} listings counted{tail}"
@@ -1572,6 +1599,9 @@ def numbers_of(result, stamp):
              "listed": result["on_ebay"]}
     if result["truncated"]:
         entry["truncated"] = True
+    new = result.get("new")
+    if isinstance(new, dict) and new.get("counted"):
+        entry["new"] = {"copies": new["counted"], "lowest": new["lowest"], "median": new["median"]}
     # Only when some copies say they are incomplete; otherwise it is the median itself.
     if result.get("complete_median") is not None and 0 < result.get("complete_counted", 0) < result["counted"]:
         entry["complete"] = {"copies": result["complete_counted"], "median": result["complete_median"]}
@@ -1621,7 +1651,7 @@ def update_records(state, games, run, now, rare_titles=None, edition_titles=None
     used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
     used_today = used.get("used", 0) if used.get("day") == today else 0
     latest = {
-        "what": ("Asking prices of used Buy It Now copies of PS2 games on eBay, by site. Numbers only: "
+        "what": ("Asking prices of used Buy It Now copies of PS2 games on eBay, by site (the Rarest games also count new and sealed copies apart, as `new`). Numbers only: "
                  "copies listed, lowest and median price before postage, typical postage. Not sold prices."),
         "currencies": {market["label"]: market["currency"] for market in MARKETS.values()},
         "searches": {"day": today, "used": used_today + run["searches"]},

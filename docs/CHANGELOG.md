@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-15: new and sealed copies on the Rarest page
+
+- Kuon showed "none listed" on eBay UK while a person could see copies at about £800. The search check (`check_game`) found 0 listings with the used-condition filter, 3 with any condition and 27 with the seller-country filter lifted: the
+  UK copies are new or sealed ones, which the main search leaves out on purpose. A game on a Rarest list now also gets a second search for new copies (`check_new_copies()`), counted apart (`new` in `latest.json`) and shown as
+  "none listed · new from £800 (3)" or after the used figures. It never enters the medians, history, price index or market cap. Copies listed from other countries stay out of the UK figure.
+
 ## 2026-10-15: a search check for one game
 
 - *eBay asking prices* has a new box, **check_game**. Kuon showed no UK listings while a person could see copies at about £800 on eBay UK; the box counts what eBay reports for one game with each part of the search

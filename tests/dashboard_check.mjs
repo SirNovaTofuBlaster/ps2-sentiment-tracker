@@ -1700,6 +1700,15 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
         { copies: 1.5, median: 42 }, { copies: 3, median: Infinity }]) {
         assert.doesNotMatch(siteLine({ copies: 5, complete: bad }), /ebay-complete/, JSON.stringify(bad));
     }
+    // New and sealed copies are shown apart from the used figures: after them, or alone when no used copy is listed.
+    assert.match(siteLine({ copies: 0, median: null, lowest: null, new: { copies: 3, lowest: 800, median: 875 } }),
+        /none listed<\/span> · <span class="ebay-new" title="3 new or sealed copies are listed[^"]*">new from £800 \(3\)<\/span> <span class="ebay-age"/);
+    assert.match(siteLine({ copies: 5, new: { copies: 1, lowest: 700, median: 700 } }),
+        /5 copies · <span class="ebay-new" title="1 new or sealed copy is listed[^"]*">new from £700 \(1\)<\/span>/);
+    for (const bad of [undefined, null, 'x', {}, { copies: 0, lowest: 5 }, { copies: 2, lowest: '5' }, { copies: 2 }, { copies: 1.5, lowest: 5 }, { copies: 2, lowest: Infinity }]) {
+        assert.doesNotMatch(siteLine({ copies: 5, new: bad }), /ebay-new/, JSON.stringify(bad));
+    }
+    assert.doesNotMatch(siteLine({ copies: 0, median: null, lowest: null }), /ebay-new/, 'no new copies, nothing said');
     assert.match(siteLine({ copies: 2 }), /2 copies <span class="level-tag few-copies" title="Only 2 copies are for sale/);
     assert.doesNotMatch(siteLine({ copies: 3 }), /few-copies/);
 
