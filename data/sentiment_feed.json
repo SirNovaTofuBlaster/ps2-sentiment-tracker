@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 11:15:23 UTC",
+  "last_updated": "2026-10-15 11:17:58 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -934,14 +934,15 @@
       "timestamp": "2026-10-15 10:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dark Cloud, Resident Evil 4, Kingdom Hearts II and 13 more",
+      "headline": "Thread on /v/ naming God of War II, Persona 4, Resident Evil 4 and 17 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749727312",
-      "matched_game": "Dark Cloud",
+      "matched_game": "God of War II",
       "matched_games": [
-        "Dark Cloud",
+        "God of War II",
+        "Persona 4",
         "Resident Evil 4",
         "Kingdom Hearts II",
         "Silent Hill 2",
@@ -956,7 +957,10 @@
         "Sly 3",
         "Final Fantasy X",
         "Kingdom Hearts",
-        "Midnight Club 3: DUB Edition Remix"
+        "Dark Cloud",
+        "Midnight Club 3: DUB Edition Remix",
+        "Harry Potter and The Chamber of Secrets",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2587,6 +2591,25 @@
       "is_digital_only": false,
       "sentiment": 50,
       "hype": 1,
+      "timestamp": "2026-10-15 08:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749723793",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
       "timestamp": "2026-10-15 08:11 UTC"
     },
     {
@@ -4557,6 +4580,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 04:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749716997",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 04:33 UTC"
     },
     {
       "headline": "Thread on /v/ naming Sonic Unleashed and Devil May Cry",
