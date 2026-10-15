@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: PriceCharting links on the Rarest page
+
+- Every Rarest game row now has a **PriceCharting** link under its prices (`rarePriceChartingHtml()`): a search on PriceCharting's PAL page for the PAL list and its US page for the US list, so a game with no eBay figure can be checked by hand. It reuses the `pc-pal` / `pc-ntsc` lookups. The new/sealed search already covers every game on the lists; the seller-country and category filters were not relaxed, because that would put non-UK copies into the UK figures.
+
 ## 2026-10-15: new and sealed copies on the Rarest page
 
 - Kuon showed "none listed" on eBay UK while a person could see copies at about £800. The search check (`check_game`) found 0 listings with the used-condition filter, 3 with any condition and 27 with the seller-country filter lifted: the

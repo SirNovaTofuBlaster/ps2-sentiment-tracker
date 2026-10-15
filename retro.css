@@ -956,3 +956,5 @@ body .library-add-name { font-family: var(--serif); font-weight: 700; color: var
 body .library-add-fields { display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
 body .library-add-close { flex: none; align-self: flex-start; font-size: 1.5rem; line-height: 1; color: var(--dim); background: none; border: 0; cursor: pointer; }
 body .library-add-close:hover { color: var(--text); }
+body .rare-pc { margin-top: .3rem; font-size: .69rem; color: var(--dim); }
+body .rare-pc a { color: var(--body); text-decoration: underline; text-underline-offset: 2px; }

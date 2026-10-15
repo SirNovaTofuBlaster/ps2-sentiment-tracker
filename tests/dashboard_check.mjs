@@ -1755,6 +1755,8 @@ await check('the Rarest page: two lists of the rarest games, each with its own s
 
     const pal = draw('PAL');
     const palCount = rareFile.lists.PAL.length;
+    assert.equal(pal.filter(html => html.includes('class="rare-pc"')).length, palCount, 'every PAL row has a PriceCharting link');
+    assert.match(pal[0], /pricecharting\.com\/search-products[^"]*pal%20playstation%202/, 'the PAL list searches the PAL page');
     assert.equal(pal.length, palCount);
     assert.equal(pal.filter(html => html.includes('list-extra')).length, palCount - 25, 'twenty-five shown, the rest a click away');
     const sengoku = rowOf(pal, 'Sengoku Anthology');
@@ -1796,7 +1798,7 @@ await check('the Rarest page: two lists of the rarest games, each with its own s
     assert.doesNotMatch(hostile, /<img|<script|<i>|javascript:|<b>/);
     assert.match(hostile, /#1 &lt;img/, 'a rank that is not a number gives way to the position');
     assert.doesNotMatch(hostile, /guide/);
-    assert.equal((hostile.match(/<a /g) || []).length, 1);
+    assert.equal((hostile.match(/<a /g) || []).length, 2, "its source link and the PriceCharting search");
     assert.equal((hostile.match(/rare-flag/g) || []).length, 1);
     assert.doesNotMatch(el('rareSummary').textContent, /PriceCharting,/, 'no date that is not a date');
 
