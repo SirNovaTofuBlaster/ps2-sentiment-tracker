@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-15 07:32:13 UTC",
+  "last_updated": "2026-10-15 07:43:48 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming The Sims",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584530238",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 07:35 UTC"
+    },
     {
       "headline": "Finally my 13900ks gave up",
       "source": "r/pcmasterrace",
@@ -434,17 +453,18 @@
       "timestamp": "2026-10-15 06:42 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shrek 2",
+      "headline": "Thread on /v/ naming The Incredibles and Shrek 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749721062",
-      "matched_game": "Shrek 2",
+      "matched_game": "The Incredibles",
       "matched_games": [
+        "The Incredibles",
         "Shrek 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -762,6 +782,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 06:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749720149",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 06:09 UTC"
     },
     {
       "headline": "Hice un launcher gratuito para Tenchu 2 (PS1)",
@@ -3434,13 +3473,14 @@
       "timestamp": "2026-10-15 01:59 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Odin Sphere and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749711002",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Odin Sphere",
       "matched_games": [
+        "Odin Sphere",
         "Resident Evil 4"
       ],
       "match_score": 100,
@@ -236036,36 +236076,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 07:46 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "This game was 2 parts sugar, 1 part caffeine, and 1 part mania.",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wutb8l/this_game_was_2_parts_sugar_1_part_caffeine_and_1/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 07:42 UTC"
-    },
-    {
-      "headline": "Arreglan casi 6000 bugs de The Witcher 3 Remastered con un mod que también restaura contenido eliminado",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026274010/arreglan-casi-6000-bugs-de-the-witcher-3-remastered-con-un-mod-que-tambien-restaura-contenido-eliminado/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": true,
-      "sentiment": 45,
-      "timestamp": "2026-10-01 07:35 UTC",
       "is_digital_only": false
     }
   ]
