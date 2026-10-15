@@ -387,6 +387,11 @@
           <select id="libraryGenre" onchange="setLibraryGenre(this.value)" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
             <option value="">All genres</option>
           </select>
+          <div class="lib-sort" role="group" aria-label="Show games released in one region only">
+            <button type="button" id="libRegionAll" aria-pressed="true" onclick="setLibraryRegion('')" class="sort-btn is-active">All regions</button>
+            <button type="button" id="libRegionUs" aria-pressed="false" onclick="setLibraryRegion('US')" class="sort-btn" title="Games the box-art collection has only an American box for">US exclusives</button>
+            <button type="button" id="libRegionPal" aria-pressed="false" onclick="setLibraryRegion('PAL')" class="sort-btn" title="Games the box-art collection has only a European box for">PAL exclusives</button>
+          </div>
           <label class="lib-covers-only text-xs text-slate-400 flex items-center gap-2"><input type="checkbox" id="libraryCoversOnly" onchange="setLibraryCoversOnly(this.checked)" class="accent-ps2neon"> Only games with a cover</label>
         </div>
         <nav id="libraryJump" class="lib-jump" aria-label="Jump to"></nav>
@@ -3655,7 +3660,7 @@
         let librarySorted = null;                  // [{ title, key, sortKey, letter, plains, compacts }] A to Z
         let genreData = null;                      // { names: [...], genres: { priceKey: index } }
         let genreState = 'idle';
-        const libraryView = { sort: 'az', genre: '', filter: '', coversOnly: false };
+        const libraryView = { sort: 'az', genre: '', filter: '', coversOnly: false, region: '' };   // region: '' | 'US' | 'PAL' (exclusives)
         let libraryShown = [];                     // the tiles on screen, in order: a tile's button holds its place in this list
         let libraryPicked = null;
         let libraryRegion = 'PAL';
@@ -3743,6 +3748,26 @@
             return found;
         }
 
+        // US or PAL exclusive, judged from covers.json (the Libretro box-art collection): a game with an American box and no
+        // European one is a US exclusive, the reverse a PAL exclusive. Approximate: a game released in both regions whose
+        // other box the collection lacks looks exclusive, and a Japan-only game is neither. '' when covers.json is not loaded.
+        const COVER_US_TAGS = ['USA', 'Canada'], COVER_PAL_TAGS = ['Europe', 'UK', 'Australia', 'World'];
+        const coverRegionTag = (suffix) => ((/^\s*\(([^)]*)\)/.exec(String(suffix ?? '')) || [])[1] || '').split(',')[0].trim();
+        function libraryExclusive(game) {
+            if (!coverIndex) return '';
+            if (game.exclusive === undefined) {
+                let us = false, pal = false;
+                for (const key of [game.key, ...game.variants.map(priceKey)]) {
+                    const found = own(coverIndex, key) ? coverIndex[key] : null;
+                    if (!Array.isArray(found)) continue;
+                    us = us || COVER_US_TAGS.includes(coverRegionTag(found[1]));
+                    pal = pal || COVER_PAL_TAGS.includes(coverRegionTag(found[2]));
+                }
+                game.exclusive = us && !pal ? 'US' : pal && !us ? 'PAL' : '';
+            }
+            return game.exclusive;
+        }
+
         function ownedKeys() {
             const owned = new Map();
             for (const entry of collection) {
@@ -3780,6 +3805,7 @@
             const compact = needle.replace(/ /g, '');
             let shown = all.filter(game => (!needle || game.plains.some(plain => plain.includes(needle)) || game.compacts.some(c => c.includes(compact)))
                 && (!libraryView.genre || libraryGenre(game) === libraryView.genre)
+                && (!libraryView.region || libraryExclusive(game) === libraryView.region)
                 && (!libraryView.coversOnly || libraryCover(game, libraryRegion)));
             const groupOf = libraryView.sort === 'genre' ? libraryGenre : (game) => game.letter;
             const groups = new Map();
@@ -3804,7 +3830,9 @@
             summary.textContent = shown.length === all.length ? `${noun(all.length)}, ${libraryView.sort === 'genre' ? 'by genre, A to Z within each' : 'A to Z'}. Choose a box to add it to My collection.`
                 : `${noun(shown.length)} of ${all.length.toLocaleString('en')}. Choose a box to add it to My collection.`;
             if (!shown.length) grid.innerHTML = '<p class="text-xs text-slate-400 py-6">No game matches.</p>';
-            document.getElementById('libraryNote').textContent = libraryView.sort === 'genre' || libraryView.genre
+            document.getElementById('libraryNote').textContent = libraryView.region && !coverIndex ? (coverIndexState === 'failed' ? 'The list of regions could not be loaded, so no game can be told apart.' : 'Loading the list of regions…')
+                : libraryView.region ? `${libraryView.region === 'US' ? 'US' : 'PAL'} exclusive means the box-art collection has only ${libraryView.region === 'US' ? 'an American' : 'a European'} box for the game. It is a guide, not a release list: a game released in both regions can look exclusive when the collection lacks one box.`
+                : libraryView.sort === 'genre' || libraryView.genre
                 ? (genreState === 'failed' ? 'The genre list could not be loaded, so every game is under Other.'
                     : 'Genres are a rule of thumb: the Libretro database\'s own genre where it has one, otherwise a guess from the words in the title. "Other" holds the rest.') : '';
         }
@@ -3817,6 +3845,17 @@
         }
         function setLibraryFilter(value) { libraryView.filter = String(value ?? ''); redrawLibrary(); }
         function setLibraryGenre(value) { libraryView.genre = String(value ?? ''); redrawLibrary(); }
+        function setLibraryRegion(region) {
+            libraryView.region = region === 'US' || region === 'PAL' ? region : '';
+            for (const [id, key] of [['libRegionAll', ''], ['libRegionUs', 'US'], ['libRegionPal', 'PAL']]) {
+                const button = document.getElementById(id);
+                button.classList.toggle('is-active', libraryView.region === key);
+                button.setAttribute('aria-pressed', String(libraryView.region === key));
+            }
+            // The regions come from covers.json, which is otherwise fetched only when pictures are shown.
+            if (libraryView.region && coverIndexState === 'idle') ensureCoverIndex(true).then(redrawLibrary);
+            redrawLibrary();
+        }
         function setLibraryCoversOnly(on) { libraryView.coversOnly = on === true; redrawLibrary(); }
         function setLibrarySort(mode) {
             libraryView.sort = mode === 'genre' ? 'genre' : 'az';
@@ -3916,8 +3955,8 @@
             try { redrawCoverLists(); } catch { /* the next draw shows them */ }
         }
 
-        async function ensureCoverIndex() {
-            if (!coversShown || coverIndexState !== 'idle') return;
+        async function ensureCoverIndex(force = false) {
+            if ((!coversShown && !force) || coverIndexState !== 'idle') return;
             coverIndexState = 'loading';
             try {
                 const response = await fetch('covers.json');
