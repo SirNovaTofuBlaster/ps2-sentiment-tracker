@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-15: cheapest listings first, complete copies only, euro sites asked less often
+
+- eBay searches for games now ask for `sort=price`, so the 200 listings a search can return are the 200 cheapest (a game with more than that is marked `+` and its hover says so). If eBay refuses the sort the run asks again without it. The check run (`check_game`) prints "cheapest first: yes/NO" and the field names of a listing, no prices.
+- "Acceptable" condition is no longer asked for (the web links match). Listings that say disc only, loose, no manual, no case and so on are now left out of the copies, lowest and median (they show in the skipped counts as `incomplete`); the "complete" figure is the median of three or more listings that say CIB, complete, with manual or boxed. Existing history is not rewritten, so some medians step on the next check.
+- Euro sites: Spain every 72 hours, France 48, Germany and Italy 24, and an empty pair on those sites 48. The first version of this change also slowed empty US and UK pairs; that was taken out. Rarest and US/UK clocks are unchanged.
+
+## 2026-10-15: price movements appear after three days, and empty sites are asked less often
+
+- Today's allowance was 4,612 of 4,900 searches by 23:00, so asking more often was not an option. Two changes instead, using no extra searches: (1) `week_before()` falls back, when a game has no row from 7-9 days back, to its oldest row that is at least `CHANGE_MIN_DAYS` (3) old, so the 307 figures with less than a week of history show a change now; the hover says "3 days before" and so on, the bracket is unchanged. (2) A game and site that had no copies, or whose words found none, at the last check (476 of them in `latest.json`: 18+34 US, 28+40 UK, 46+30 DE, 68+17 FR, 63+13 IT, 95+24 ES) is asked every `QUIET_EVERY_HOURS` (48) instead of every 24, on the euro sites only (see the entry above: the US and UK are not slowed), and marked `steady` so the dashboard allows it 56 hours. Pinned, surging and Rarest entries are not slowed.
+
 ## 2026-10-15: texts about a newer game with a PS2 game's name no longer count
 
 - "God of War Ragnarök saves should work..." was filed under the PS2 *God of War*, because the PS2 title is the start of the newer one's name. `NEWER_GAME_FOLLOWERS` in `scraper.py` lists, per PS2 title, the words that mean a newer game when they come right after the name (for God of War: Ragnarök, 2018, Laufey, the last from a live Lemmy headline about the next game's collector box). A text is not about the PS2 game when every place its name stands alone is followed by one of them; "God of War II" and a place where the PS2 title stands alone still count. Rows already in the snapshot are cleaned on the next run that writes it (`without_newer_games()`, headline only; 4chan rows are never reread). The next God of War's name is not known yet: add it to the list when it is.

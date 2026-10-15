@@ -651,7 +651,7 @@
         // The search a figure comes from, on eBay itself: Video Games, used conditions, Buy It Now,
         // items in the site's own country (what ebay_prices.py asks for; human_search_url() there is
         // the same link). The plain lookup chips search everything, so they show more.
-        const LISTED_FILTERS = '&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000%7C6000&LH_BIN=1&LH_PrefLoc=1';
+        const LISTED_FILTERS = '&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1';
         function listedSearchUrl(label, title) {
             const search = PRICE_LOOKUPS.find(lookup => lookup.id === PRICE_SEARCH[label]);
             return search.url(String(title ?? '').replace(/\s+/g, ' ').trim()) + LISTED_FILTERS;
@@ -1552,7 +1552,7 @@
         const PRICE_SEARCH = { US: 'ebay-us', UK: 'ebay-uk', DE: 'ebay-de', FR: 'ebay-fr', IT: 'ebay-it', ES: 'ebay-es' };
         // A site added later is checked less often (min_every_hours in ebay_prices.py), so its
         // figures are overdue later: the hours a figure there may be old before it is dimmed.
-        const SITE_STALE_HOURS = { DE: 30, FR: 30, IT: 30, ES: 30 };   // the PRICE_LOOKUPS entry a figure links to
+        const SITE_STALE_HOURS = { DE: 30, FR: 56, IT: 30, ES: 80 };   // the PRICE_LOOKUPS entry a figure links to
         let priceData = null;          // data/prices/latest.json as loaded, or null
         let priceIndex = new Map();    // priceKey(title) -> { title, entry, level, mentions }
         let renamedKeys = new Set();   // priceKey of every game that has another name on another site (ebay_watchlist.json regional_names)
@@ -1779,7 +1779,9 @@
             try {
                 day = cachedFormat('date', locale, { day: 'numeric', month: 'short' }).format(new Date(Date.parse(week.checked)));
             } catch { /* the date is only for the hint */ }
-            const then = `A week before${day ? ` (${day})` : ''} the median was ${money(week.median, currency, locale)}`;
+            const gap = Math.round((Date.parse(site.checked) - Date.parse(week.checked)) / 86400000);
+            const ago = Number.isFinite(gap) && gap >= 2 && gap < 7 ? `${gap} days before` : 'A week before';
+            const then = `${ago}${day ? ` (${day})` : ''} the median was ${money(week.median, currency, locale)}`;
             if (diff === 0) {
                 return `<span class="ebay-change" title="${esc(then)}: the same.">(no change)</span>`;
             }
@@ -1799,7 +1801,7 @@
             const complete = site.complete && typeof site.complete === 'object' ? site.complete : null;
             if (!complete || typeof complete.median !== 'number' || !Number.isFinite(complete.median)
                     || !Number.isInteger(complete.copies) || complete.copies < 1 || complete.copies >= copies) return '';
-            return ` · <span class="ebay-complete" title="${esc(`Median of the ${complete.copies} ${complete.copies === 1 ? 'copy' : 'copies'} whose listing does not say disc only, no manual or no case: closer to what a complete copy costs.`)}">complete ${esc(money(complete.median, currency, locale))} (${esc(complete.copies)})</span>`;
+            return ` · <span class="ebay-complete" title="${esc(`Median of the ${complete.copies} ${complete.copies === 1 ? 'copy' : 'copies'} whose listing says it is complete (CIB, complete, with manual, boxed): closer to what a complete copy costs.`)}">complete ${esc(money(complete.median, currency, locale))} (${esc(complete.copies)})</span>`;
         }
 
         // " · new from £800 (3)": the Rarest games' new and sealed copies, which ebay_prices.py counts apart from the
@@ -1832,7 +1834,7 @@
                 : !copies || typeof site.median !== 'number'
                     ? `<span class="ebay-rest"><span class="ebay-note">none listed</span>${newPart}${when}</span>`
                     : `${weekBefore(site) ? '<span class="ebay-now">' : ''}<b class="ebay-median">${esc(money(site.median, currency, locale))}</b>${
-                        weekBefore(site) ? ` ${priceChangeHtml(site, currency, locale)}</span>` : ''}<span class="ebay-rest">median · from ${esc(money(site.lowest, currency, locale))} · ${esc(copies)}${site.truncated ? '+' : ''} ${copies === 1 ? 'copy' : 'copies'}${completeHtml(site, copies, currency, locale)}${copies <= FEW_COPIES
+                        weekBefore(site) ? ` ${priceChangeHtml(site, currency, locale)}</span>` : ''}<span class="ebay-rest">median · from ${esc(money(site.lowest, currency, locale))} · ${esc(copies)}${site.truncated ? '<span title="eBay has more listings than the 200 it hands over, cheapest first: these figures are for the cheapest 200">+</span>' : ''} ${copies === 1 ? 'copy' : 'copies'}${completeHtml(site, copies, currency, locale)}${copies <= FEW_COPIES
                         ? ` <span class="level-tag few-copies" title="Only ${esc(copies)} ${copies === 1 ? 'copy is' : 'copies are'} for sale, so this median is one or two sellers' asking prices, not a market price.">few copies</span>` : ''}${newPart}${when}</span>`;
             return `<span class="ebay-site${age.stale ? ' is-stale' : ''}">${flag}${figures}</span>`;
         }
