@@ -294,7 +294,7 @@ TITLE_ALIASES = {
 # (normalised, after normalise()). A text is not about the PS2 game when every place its name appears is
 # followed by one of them. Add a series here when a newer game of the same name floods the feed.
 NEWER_GAME_FOLLOWERS = {
-    "god of war": (("ragnarok",), ("ragnarök",), ("2018",)),
+    "god of war": (("ragnarok",), ("ragnarök",), ("2018",), ("laufey",)),
 }
 
 

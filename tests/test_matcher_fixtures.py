@@ -257,6 +257,7 @@ class MatcherRuleTests(unittest.TestCase):
         self.assertEqual(self.claims("God of War Ragnarök saves should work across both physical and digital formats"), [])
         self.assertEqual(self.claims("God of War: Ragnarok is on sale"), [])
         self.assertEqual(self.claims("God of War (2018) review"), [])
+        self.assertEqual(self.claims("God of War Laufey's $150 Collector Box Includes a Light-Up Faye Statue but no game"), [])
         # The PS2 game is still found, alone or next to the newer one.
         self.assertEqual(self.claims("God of War on PS2 still looks great", ps2_source=True), ["God of War"])
         self.assertEqual(self.claims("God of War and God of War Ragnarok compared", ps2_source=True), ["God of War"])

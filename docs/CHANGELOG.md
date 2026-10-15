@@ -2,7 +2,7 @@
 
 ## 2026-10-15: texts about a newer game with a PS2 game's name no longer count
 
-- "God of War Ragnarök saves should work..." was filed under the PS2 *God of War*, because the PS2 title is the start of the newer one's name. `NEWER_GAME_FOLLOWERS` in `scraper.py` lists, per PS2 title, the words that mean a newer game when they come right after the name (for God of War: Ragnarök, 2018). A text is not about the PS2 game when every place its name stands alone is followed by one of them; "God of War II" and a place where the PS2 title stands alone still count. Rows already in the snapshot are cleaned on the next run that writes it (`without_newer_games()`, headline only; 4chan rows are never reread). The next God of War's name is not known yet: add it to the list when it is.
+- "God of War Ragnarök saves should work..." was filed under the PS2 *God of War*, because the PS2 title is the start of the newer one's name. `NEWER_GAME_FOLLOWERS` in `scraper.py` lists, per PS2 title, the words that mean a newer game when they come right after the name (for God of War: Ragnarök, 2018, Laufey, the last from a live Lemmy headline about the next game's collector box). A text is not about the PS2 game when every place its name stands alone is followed by one of them; "God of War II" and a place where the PS2 title stands alone still count. Rows already in the snapshot are cleaned on the next run that writes it (`without_newer_games()`, headline only; 4chan rows are never reread). The next God of War's name is not known yet: add it to the list when it is.
 
 ## 2026-10-15: Underrated grows to 100 games, one revealed a day
 
