@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 17:14:53 UTC",
+  "last_updated": "2026-10-15 17:28:48 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -1003,14 +1003,15 @@
       "timestamp": "2026-10-15 16:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "headline": "Thread on /v/ naming Final Fantasy XII and Final Fantasy X-2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749744060",
       "matched_game": "Final Fantasy XII",
       "matched_games": [
-        "Final Fantasy XII"
+        "Final Fantasy XII",
+        "Final Fantasy X-2"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -2979,17 +2980,18 @@
       "timestamp": "2026-10-15 15:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749740198",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3257,18 +3259,19 @@
       "timestamp": "2026-10-15 14:59 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Splinter Cell and Persona 4",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Persona 4 and Splinter Cell",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749739686",
-      "matched_game": "Splinter Cell",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Splinter Cell",
-        "Persona 4"
+        "Resident Evil Code: Veronica X",
+        "Persona 4",
+        "Splinter Cell"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9620,14 +9623,13 @@
       "timestamp": "2026-10-15 10:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 4, Resident Evil 4, Kingdom Hearts II and 33 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Kingdom Hearts II, Silent Hill 2 and 34 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749727312",
-      "matched_game": "Persona 4",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Persona 4",
         "Resident Evil 4",
         "Kingdom Hearts II",
         "Silent Hill 2",
@@ -9647,6 +9649,7 @@
         "Harry Potter and The Chamber of Secrets",
         "Metal Gear Solid 2: Sons of Liberty",
         "God of War II",
+        "Persona 4",
         "Deus Ex",
         "Crazy Taxi",
         "Max Payne",
@@ -9662,10 +9665,11 @@
         "Okami",
         "Shadow Hearts: Covenant",
         "Grand Theft Auto III",
-        "Devil May Cry"
+        "Devil May Cry",
+        "God of War"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -17919,6 +17923,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-14 23:51 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Guitar Hero and Rock Band",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12878408",
+      "matched_game": "Guitar Hero",
+      "matched_games": [
+        "Guitar Hero",
+        "Rock Band"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-14 23:51 UTC"
     },
@@ -29218,6 +29242,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-14 15:46 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Unreal Tournament",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12877729",
+      "matched_game": "Unreal Tournament",
+      "matched_games": [
+        "Unreal Tournament"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-14 15:46 UTC"
     },
@@ -242588,126 +242631,6 @@
       "is_remaster_rumor": false,
       "sentiment": 60,
       "timestamp": "2026-10-01 17:29 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PS5 recebe conversor de resolução por IA",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/ps5-recebe-conversor-de-resolucao-por-ia",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 17:27 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "I think I have a problem",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wv5kri/i_think_i_have_a_problem/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 17:26 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Warhammer 40,000: Space Marine 2 - Official Anniversary Update 2 Launch Trailer",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=UKwW3THqOdg",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 17:25 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "ROBLOX PIGGY LAURA (FRIGHT NIGHT) JUMPSCARE - Roblox Piggy New Update",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/shorts/xT-R6Co0p_g",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 17:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "You can now buy more than 44,000 games for $5 or less on Steam",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/steam-autumn-sale-2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 17:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Invincible VS confirma a Angstrom Levy como el nuevo luchador del DLC de la Temporada 2",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/invincible-vs/114850/invincible-vs-angstrom-levy",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 17:18 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Wolverine Adds Sony's New QSSR Tech as Default on Base PS5 in Latest Patch",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/wolverine-adds-sonys-new-qssr-tech-as-default-on-base-ps5-in-latest-patch",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 17:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Crash Bandicoot N-Tranced",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wv5asu/crash_bandicoot_ntranced/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 17:15 UTC",
       "is_digital_only": false
     }
   ]
