@@ -218,10 +218,10 @@ returned HTTP 403 there (see [SOURCES.md](../SOURCES.md#forums)).
 they exist, `data/demand.json`, `data/prices/latest.json`, `ebay_watchlist.json`,
 `rare_games.json` and `rare_consoles.json`. Editions (`editions.json`, same shape as `rare_games.json` but every entry needs `require` words) go through the same `load_rare()` / `add_rare_games()` path with `kind="edition"`; `latest["editions"]` says which `games` entry holds each one, and `index_file()` leaves them out like consoles.
 
-- **Seven pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Demand*, *Most mentioned*,
-  *eBay prices*, *Library* and *Gacha*; each is a wrapper (`viewDashboard`, `viewRare`, `viewDemand`, `viewMentions`,
-  `viewPrices`, `viewLibrary`, `viewGacha`) and only one is displayed. `#rare`, `#demand`, `#mentions`, `#prices`, `#library` and `#gacha` in the address
-  select the other six; any other fragment selects the Tracker and scrolls to the part it names, so the header's
+- **Eight pages in one file.** A tab bar switches between *Tracker*, *Rarest*, *Demand*, *Most mentioned*,
+  *eBay prices*, *Library*, *Gacha* and *Underrated*; each is a wrapper (`viewDashboard`, `viewRare`, `viewDemand`, `viewMentions`,
+  `viewPrices`, `viewLibrary`, `viewGacha`, `viewUnderrated`) and only one is displayed. `#rare`, `#demand`, `#mentions`, `#prices`, `#library`, `#gacha` and `#underrated` in the address
+  select the others; any other fragment selects the Tracker and scrolls to the part it names, so the header's
   *Sources* link works from every page. Changing page adds one entry to the browser's
   history, so Back returns to the page before; links, Back and Forward all go through
   `showViewFromAddress()`, which also runs once more when the first load has finished.

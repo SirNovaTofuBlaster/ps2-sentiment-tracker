@@ -1038,3 +1038,31 @@ body .coll-tabs { margin-bottom: 1rem; }
   body .gacha-row .gacha-tier { grid-column: 2; grid-row: 2; justify-self: start; }
   body .gacha-row .gacha-row-left { grid-column: 3; grid-row: 2; }
 }
+
+/* Underrated page */
+body .under-hero { display: grid; grid-template-columns: 11rem 1fr; gap: 1.25rem; padding: 1rem; border: 1px solid var(--line); border-radius: 6px; margin-bottom: 1.25rem; position: relative; }
+body .under-hero-label { position: absolute; top: -.6rem; left: .75rem; padding: 0 .4rem; background: var(--card); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+body .under-hero .under-title { font-size: 1.15rem; }
+body .under-cover { position: relative; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; align-self: start; }
+body .under-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+body .under-body { min-width: 0; }
+body .under-title { font-weight: 600; margin-bottom: .15rem; }
+body .under-meta { font-size: .7rem; color: var(--dim); font-family: var(--mono); margin-bottom: .4rem; }
+body .under-why { font-size: .8rem; line-height: 1.5; margin: 0 0 .5rem; }
+body .under-price { font-size: .75rem; margin-bottom: .6rem; }
+body .under-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+body .under-days { list-style: none; padding: 0; margin: 0 0 1.25rem; display: flex; gap: .5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+body .under-day { flex: 0 0 auto; border: 1px solid var(--line); border-radius: 4px; padding: .4rem .6rem; font-size: .75rem; }
+body .under-day-date { display: block; font-size: .62rem; color: var(--dim); font-family: var(--mono); }
+body .under-filters { display: flex; gap: .4rem; overflow-x: auto; margin-bottom: 1rem; padding-bottom: .25rem; -webkit-overflow-scrolling: touch; }
+body .under-chip { flex: 0 0 auto; padding: .4rem .8rem; min-height: 2.2rem; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--text); font-size: .75rem; cursor: pointer; }
+body .under-chip.is-active { border-color: var(--text); font-weight: 600; }
+body .under-grid { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+body .under-card { display: grid; grid-template-columns: 5.5rem 1fr; gap: .8rem; padding: .8rem; border: 1px solid var(--line); border-radius: 6px; }
+@media (max-width: 720px) {
+  body .under-hero { grid-template-columns: 1fr; }
+  body .under-hero .under-cover { width: 11.25rem; max-width: 60%; margin: 0 auto; }
+  body .under-grid { grid-template-columns: 1fr; }
+  body .under-actions .brand-btn { flex: 1 1 100%; min-height: 2.75rem; }
+}
+@media (min-width: 721px) and (max-width: 1000px) { body .under-grid { grid-template-columns: repeat(2, 1fr); } }

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-15: Underrated tab
+
+- New page after Gacha: one underrated PS2 game a day, from `underrated.json` (40 games, made by hand). The titles were collected from three public lists (Den of Geek, TheGamer, Super Phillip Central); the reason lines are original and no rank or score is kept, because none was verified. Metacritic and Wikipedia could not be read from the build environment, so they are not used.
+- The pick is random but set by the UTC date, so everyone sees the same game; each round is a seeded shuffle, so no game repeats until all have shown. The page also lists the last 7 picks and all games, with genre and "under £15" (UK median) filters, live prices, add to collection, `#underrated` link. Famous classics (see `never` in the file) are excluded.
+- Tests: file shape, every title in the library, the never list, the no-repeat round, and the page.
+
 ## 2026-10-15: steady figures are marked on every run
 
 - 195 US and UK figures (121 US, 74 UK, normal and staple games) looked overdue on the page, 32 hours old against an 8-hour limit. None was late: all 195 are games on the 48-hour *steady* clock, which `due_lookups()` leaves alone. The page could not tell, because `steady: true` was written only when a figure was looked up, and these were written before the rule began (2026-10-14) and not looked up since. `update_records()` now brings the mark up to date on every run for a figure it did not look up this run (adds it when the game is steady on that site, drops it when it no longer is). Checked against the live files: every overdue-looking figure is a steady one. The hourly job's 500-search cap was not the cause (the lookups left over each run are the daily euro sites, after US and UK).
