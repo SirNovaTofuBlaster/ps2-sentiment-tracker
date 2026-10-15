@@ -3185,6 +3185,7 @@
                     year: Number.isInteger(g.year) ? g.year : null,
                     genre: typeof g.genre === 'string' && g.genre.trim() ? g.genre.trim() : 'Other',
                     why: g.why.trim(),
+                    developer: typeof g.developer === 'string' && g.developer.trim() ? g.developer.trim() : null,
                 });
             }
             if (!games.length) return null;
@@ -3244,21 +3245,48 @@
             return html;
         }
 
-        function underratedCardHtml(game, extra = '') {
+        // How often the feed has named a game in the last FEED_DAYS days, and where that puts it among all the games named.
+        let underratedMentionCache = null;
+        function underratedMentionInfo(title) {
+            if (!underratedMentionCache || underratedMentionCache.source !== visibleFeedData) {
+                const counts = new Map();
+                for (const item of visibleFeedData) {
+                    for (const key of new Set(gamesOf(item).map(priceKey).filter(Boolean))) counts.set(key, (counts.get(key) || 0) + 1);
+                }
+                underratedMentionCache = { source: visibleFeedData, counts, top: Math.max(0, ...counts.values()) };
+            }
+            const { counts, top } = underratedMentionCache;
+            const n = counts.get(priceKey(title)) || 0;
+            let ahead = 0;
+            for (const value of counts.values()) if (value > n) ahead++;
+            return { n, rank: n ? ahead + 1 : null, of: counts.size, top };
+        }
+        function underratedAttentionHtml(title) {
+            const info = underratedMentionInfo(title);
+            const width = info.n && info.top ? Math.max(3, Math.round(100 * Math.log(1 + info.n) / Math.log(1 + info.top))) : 0;
+            const text = info.n
+                ? `Named ${info.n.toLocaleString('en')} ${info.n === 1 ? 'time' : 'times'} in the last ${FEED_DAYS} days: #${info.rank.toLocaleString('en')} of ${info.of.toLocaleString('en')} games named`
+                : `Not named in the last ${FEED_DAYS} days`;
+            return `<div class="under-attn"><div class="under-attn-label">Attention</div><div class="under-attn-bar" role="img" aria-label="${esc(text)}"><span style="width:${width}%"></span></div><div class="under-attn-text">${esc(text)}</div></div>`;
+        }
+
+        function underratedCardHtml(game, extra = '', hero = false) {
             const url = coversShown ? libraryCover({ title: game.title, variants: [] }, 'US') || coverUrl(game.title, 'PAL') : '';
-            const meta = [game.genre, game.year].filter(Boolean).join(' · ');
+            const meta = [game.genre, game.year, game.developer].filter(Boolean).join(' · ');
             return `<div class="under-cover coll-cover" aria-hidden="true"><span class="coll-initials">${esc(initialsOf(game.title))}</span>${url
                 ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}</div>
                 <div class="under-body"><div class="under-title">${gameLinkHtml(game.title)}</div>
                 <div class="under-meta">${esc(meta)}</div>
                 <p class="under-why">${esc(game.why)}</p>
+                ${hero ? underratedAttentionHtml(game.title) : ''}
                 <div class="under-price">${underratedPriceHtml(game.title)}</div>${extra}</div>`;
         }
 
         function underratedButtons(game) {
             const t = esc(JSON.stringify(game.title));
             return `<div class="under-actions"><button type="button" class="brand-btn brand-btn-primary" onclick="openGame(${t})">Open game page</button>
-                <button type="button" class="brand-btn" onclick="underratedAdd(${t}, this)">Add to collection</button></div>`;
+                <button type="button" class="brand-btn" onclick="underratedAdd(${t}, this)">Add to collection</button>
+                <a class="brand-btn" href="https://www.metacritic.com/search/${esc(encodeURIComponent(game.title))}/" target="_blank" rel="noopener noreferrer">Find reviews <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>`;
         }
         function underratedAdd(title, button) {
             const ok = addToCollection(title, 'US', 'complete');
@@ -3287,7 +3315,7 @@
             const revealed = underratedRevealed(n, launch, day);
             const pick = games[underratedPickFor(n, launch, day)];
             summary.textContent = `One new underrated game a day, in a random order. ${revealed} on show so far; more are added every day.`;
-            today.innerHTML = `<div class="under-hero"><div class="under-hero-label">Game of the day</div>${underratedCardHtml(pick, underratedButtons(pick))}</div>`;
+            today.innerHTML = `<div class="under-hero"><div class="under-hero-label">Game of the day</div>${underratedCardHtml(pick, underratedButtons(pick), true)}</div>`;
             const backs = [1, 2, 3, 4, 5, 6, 7].filter(back => launch === null || day - back >= launch);
             document.getElementById('underratedDays').innerHTML = backs.length ? backs.map(back => {
                 const g = games[underratedPickFor(n, launch, day - back)];
