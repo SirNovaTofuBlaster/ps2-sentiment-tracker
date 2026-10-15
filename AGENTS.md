@@ -272,6 +272,7 @@ Before you call something done, prove it; don't assume it.
     run for 48 hours; `normal` and `staple` (named on 5+ of the last 14 days, never surging)
     every 6 hours, except a *steady* game on one site (see below), which waits 48 hours; `dormant` (mentioned once, quiet for 14 days) daily. A run uses at most 500
     searches and stops for the day at 4,900.
+  - Quiet sites (2026-10-15): a non-pinned, non-surging, non-Rarest game and site whose last check found no copies (or `unmatched`) is looked up every 48 hours (`QUIET_EVERY_HOURS`) and carries `steady: true`, so the dashboard's 56-hour allowance applies. Until a game has a week of history, `week_before()` uses its oldest row that is 3 or more days old (`CHANGE_MIN_DAYS`). The day's allowance was 94% used on 2026-10-15, so more frequent checks need savings elsewhere first.
   - Steady games (2026-10-14): a `normal` or `staple`, unpinned game on one site is looked up every 48
     hours (`STEADY_EVERY_HOURS`) while, in the last 6 days of history, it had 50+ copies at every check,
     its median stayed within 10% and its copy count within 30% of their middles, with 3+ rows spanning

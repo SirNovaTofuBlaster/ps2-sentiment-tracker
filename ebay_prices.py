@@ -206,6 +206,8 @@ STEADY_MIN_ROWS = 3
 EARLY_MINUTES = 30           # a check may come this much early, so "every 6 hours" does not drift to 7
 CHANGE_DAYS = 7              # beside each median, how it compares with the median this long before...
 CHANGE_SLACK_DAYS = 2        # ...as recorded at most this much longer before (a quiet game is checked daily)
+CHANGE_MIN_DAYS = 3          # until a game has a week of history, it is compared with its oldest check at least this old
+QUIET_EVERY_HOURS = 48       # a game that had no copies (or whose words found none) at its last check waits this long
 
 # ---- How much of eBay's allowance (5,000 searches a day) a run may use ---------------
 DAILY_SEARCHES = 4900        # stop for the day here, leaving room for runs started by hand
@@ -1017,6 +1019,12 @@ def due_lookups(games, state, now, history=()):
                     and is_steady(steady_rows.get((game["key"], market["label"]), ()), now)):
                 wait = STEADY_EVERY_HOURS * 60
                 game["steady_on"].append(market["label"])
+            if (game["level"] != "surging" and not game["pinned"] and checked and game["level"] != "rare"
+                    and isinstance(entry, dict) and (entry.get("unmatched") or entry.get("copies") == 0)):
+                # Nothing was for sale (or the words find nothing) at the last check: the answer rarely changes,
+                # so it is asked every 48 hours; the dashboard gives it the steady figures' longer allowance.
+                wait = max(wait, QUIET_EVERY_HOURS * 60)
+                game["steady_on"].append(market["label"])
             wait = max(wait, market.get("min_every_hours", 0) * 60)
             if waited is None or waited >= wait - EARLY_MINUTES:
                 overdue = float("inf") if waited is None else waited / max(every, 60)
@@ -1707,15 +1715,23 @@ def history_index(rows):
 def week_before(index, title, label, checked):
     """The median recorded CHANGE_DAYS before a check, for the change shown beside it: the
     latest history row of that game and site from between CHANGE_DAYS and CHANGE_DAYS +
-    CHANGE_SLACK_DAYS before. None when there is no such row, or when it found no copies."""
+    CHANGE_SLACK_DAYS before. When there is none yet (the game has less than a week of history), the
+    oldest row that is at least CHANGE_MIN_DAYS old, which the dashboard calls "3 days before" and so on.
+    None when there is no such row, or when it found no copies."""
     then = parse_stamp(checked)
     if then is None:
         return None
     newest, oldest = then - timedelta(days=CHANGE_DAYS), then - timedelta(days=CHANGE_DAYS + CHANGE_SLACK_DAYS)
-    rows = [(when, median) for when, median in index.get((key_of(title), label), ()) if oldest <= when <= newest]
-    if not rows:
-        return None
-    when, median = max(rows, key=lambda row: row[0])
+    known = list(index.get((key_of(title), label), ()))
+    rows = [(when, median) for when, median in known if oldest <= when <= newest]
+    if rows:
+        when, median = max(rows, key=lambda row: row[0])
+    else:
+        young = [(when, median) for when, median in known
+                 if newest < when <= then - timedelta(days=CHANGE_MIN_DAYS)]
+        if not young:
+            return None
+        when, median = min(young, key=lambda row: row[0])
     if isinstance(median, bool) or not isinstance(median, (int, float)) or not math.isfinite(median) or median <= 0:
         return None
     return {"checked": when.strftime(STAMP_FORMAT), "median": median}

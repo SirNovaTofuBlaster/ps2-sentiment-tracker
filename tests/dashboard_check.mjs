@@ -1679,6 +1679,9 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
     const late = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' }).format(new Date('2026-10-07T23:30:00Z'));
     context.__site = { checked: '2026-10-14T23:00Z', copies: 3, median: 12, week: { checked: '2026-10-07T23:30Z', median: 10 } };
     assert.ok(vm.runInContext("priceChangeHtml(__site, 'GBP', 'en-GB')", context).includes(`A week before (${late}) the median`), late);
+    // Until a game has a week of history it is compared with its oldest check, and the hint says how many days that is.
+    assert.match(change(12, { checked: '2026-10-11T10:00Z', median: 10 }), /title="3 days before \(/, 'a three-day-old base is called that');
+    assert.match(change(12, { checked: '2026-10-07T10:00Z', median: 10 }), /title="A week before \(/, 'seven days is a week');
     assert.match(change(0.01, wk(20)), /is-down[^>]*>\(£19\.99 ▼ &gt;99%\)</, 'a fall short of everything is not "100%"');
     assert.doesNotMatch(change(10, wk(10), '<b>'), /<b>/, 'the hint of an unchanged price is escaped too');
     assert.match(change(99.5, wk(100)), /is-down[^>]*>\(£0\.50 ▼ 0\.5%\)</);

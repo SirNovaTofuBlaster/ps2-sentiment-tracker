@@ -1779,7 +1779,9 @@
             try {
                 day = cachedFormat('date', locale, { day: 'numeric', month: 'short' }).format(new Date(Date.parse(week.checked)));
             } catch { /* the date is only for the hint */ }
-            const then = `A week before${day ? ` (${day})` : ''} the median was ${money(week.median, currency, locale)}`;
+            const gap = Math.round((Date.parse(site.checked) - Date.parse(week.checked)) / 86400000);
+            const ago = Number.isFinite(gap) && gap >= 2 && gap < 7 ? `${gap} days before` : 'A week before';
+            const then = `${ago}${day ? ` (${day})` : ''} the median was ${money(week.median, currency, locale)}`;
             if (diff === 0) {
                 return `<span class="ebay-change" title="${esc(then)}: the same.">(no change)</span>`;
             }

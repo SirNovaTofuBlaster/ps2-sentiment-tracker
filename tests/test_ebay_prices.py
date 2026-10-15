@@ -1563,9 +1563,16 @@ class WeekTests(unittest.TestCase):
     def test_a_week_later_each_median_carries_the_one_recorded_a_week_before(self):
         self.sandbox.run()
         self.assertNotIn("week", self.kuon(), "nothing a week old yet")
+        self.sandbox.now = NOON + timedelta(days=2)
+        self.sandbox.run(FakeHttp(lambda params, headers: two_copies(params, headers, low=19.99)))
+        self.assertNotIn("week", self.kuon(), "two days of history is too little to compare")
+        self.sandbox.now = NOON + timedelta(days=3)
+        self.sandbox.run(FakeHttp(lambda params, headers: two_copies(params, headers, low=19.99)))
+        self.assertEqual(self.kuon()["week"], {"checked": "2026-10-06T12:00Z", "median": 28.25},
+                         "three days of history: compared with the oldest check, which the page calls '3 days before'")
         self.sandbox.now = NOON + timedelta(days=6)
         self.sandbox.run(FakeHttp(lambda params, headers: two_copies(params, headers, low=19.99)))
-        self.assertNotIn("week", self.kuon(), "six days is not a week")
+        self.assertEqual(self.kuon()["week"]["checked"], "2026-10-06T12:00Z", "six days: still the oldest check")
         self.sandbox.now = NOON + timedelta(days=7)
         self.sandbox.run(FakeHttp(lambda params, headers: two_copies(params, headers, low=29.99)))
         self.assertEqual(self.kuon(), {"checked": "2026-10-13T12:00Z", "copies": 2, "lowest": 29.99, "median": 30.75,
@@ -1677,6 +1684,25 @@ class WeekTests(unittest.TestCase):
         ebay_prices.add_week_before(latest, rows)
         self.assertNotIn("week", latest["games"]["Kuon"]["UK"], "no row for it any more: the old figure goes")
         self.assertNotIn("week", latest["games"]["Kuon"]["US"], "a check time that cannot be read gets none")
+
+
+class QuietTests(unittest.TestCase):
+    """A game with no copies for sale (or whose words find none) is asked every 48 hours, not every 6."""
+
+    def setUp(self):
+        self.sandbox = Sandbox(self, feed=[mention("Kuon", 5, "r/ps2")])
+
+    def test_a_site_with_no_copies_waits_48_hours_and_is_marked_for_the_dashboard(self):
+        self.sandbox.run(FakeHttp())
+        first = self.sandbox.latest["games"]["Kuon"]["UK"]
+        self.assertEqual(first.get("copies"), 0)
+        self.sandbox.now += timedelta(hours=7)
+        code, printed, fake = self.sandbox.run()
+        self.assertIn("Nothing is due", printed, "no copies at the last check: not asked again after 7 hours")
+        self.sandbox.now += timedelta(hours=42)
+        code, printed, fake = self.sandbox.run(FakeHttp(lambda params, headers: two_copies(params, headers)))
+        self.assertNotIn("Nothing is due", printed, "after 48 hours it is asked again")
+        self.assertGreater(self.sandbox.latest["games"]["Kuon"]["UK"].get("copies", 0), 0)
 
 
 class RareListTests(unittest.TestCase):
