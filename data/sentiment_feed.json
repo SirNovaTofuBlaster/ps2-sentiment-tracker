@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 04:52:59 UTC",
+  "last_updated": "2026-10-15 05:04:44 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -568,6 +568,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 03:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Ape Escape 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749715451",
+      "matched_game": "Ape Escape 3",
+      "matched_games": [
+        "Ape Escape 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 03:48 UTC"
     },
     {
       "headline": "Upgrade Ram on Laptop",
@@ -12141,6 +12160,25 @@
       "timestamp": "2026-10-14 17:11 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749682961",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 17:11 UTC"
+    },
+    {
       "headline": "Zero Escape And Hundred Line Director’s New Game Canceled Before He Could Announce New Studio [UPDATE: Something’s Off]",
       "source": "Kotaku",
       "source_type": "news",
@@ -13531,19 +13569,19 @@
       "timestamp": "2026-10-14 16:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II and Final Fantasy X",
+      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749680032",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
-        "Kingdom Hearts",
         "Kingdom Hearts II",
+        "Kingdom Hearts",
         "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -234354,66 +234392,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 05:06 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Mazda RX-7 Infini III (FC3S) From Initial D Special Stage #ps2 #shorts",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/shorts/RhPaxinwGtc",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 05:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "a collection i can proudly call mine",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1wuqnid/a_collection_i_can_proudly_call_mine/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 05:00 UTC"
-    },
-    {
-      "headline": "What’s your go-to game for when you don’t want to think? That never gets old.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wuqngd/whats_your_goto_game_for_when_you_dont_want_to/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 04:59 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "We're probably not getting a new Fallout game until well into the 2030s, but that's no reason to stop talking about them",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/fallout/were-probably-not-getting-a-new-fallout-game-until-well-into-the-2030s-but-thats-no-reason-to-stop-talking-about-them/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 04:53 UTC",
       "is_digital_only": false
     }
   ]
