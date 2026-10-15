@@ -1306,6 +1306,21 @@
         // The three prices under a shelf box: the eBay US median in dollars, the eBay UK median in pounds, and euros: the
         // cheapest of the euro sites' medians, or, where none has a figure, the UK (else US) median converted at the ECB
         // rate and marked ≈. "-" where there is nothing; the EUR button still converts the dollars and pounds as everywhere.
+        // Which region a game came out in, when only one: 'PAL' (Europe, Britain, Australia) or 'US' (USA, Canada), from the box-art
+        // list's file names ("Gregory Horror Show (Europe)" and no USA one). A game filed under another name in another region
+        // ("Ratchet: Deadlocked" and "Ratchet: Gladiator") would look exclusive in both, so those are left out. null = not known.
+        function regionOnly(title) {
+            const key = priceKey(title);
+            if (!coverIndex || !key || renamedKeys.has(key) || own(coverSame, key) || Object.values(coverSame).includes(key)) return null;
+            const entry = own(coverIndex, key) ? coverIndex[key] : null;
+            if (!Array.isArray(entry)) return null;
+            const isUs = suffix => /^\s*\((?:USA|Canada)\b/.test(suffix || '');
+            const isPal = suffix => /^\s*\((?:Europe|UK|Australia|World)\b/.test(suffix || '');
+            const us = isUs(entry[1]) || isUs(entry[2]);
+            const pal = isPal(entry[1]) || isPal(entry[2]);
+            return us && !pal ? 'US' : pal && !us ? 'PAL' : null;
+        }
+
         function shelfQuotesHtml(name) {
             const us = medianOf(name, 'US');
             const uk = medianOf(name, 'UK');
@@ -1317,9 +1332,13 @@
                 const rate = from !== null && fxData && own(fxData.rates, currency) ? fxData.rates[currency] : null;
                 if (rate) euro = { text: '≈' + money(from * rate, 'EUR'), hint: `No euro eBay site has a figure: the ${currency === 'GBP' ? 'UK' : 'US'} median converted at the European Central Bank rate` };
             }
+            // Where a game never came out ("PAL only": no US copy to find), the dash says "n/a" and why.
+            const only = regionOnly(name);
             const quote = (flag, text, hint) => text
                 ? `<span class="shelf-quote" title="${esc(hint)}"><span class="shelf-flag">${flag}</span><b>${esc(text)}</b></span>`
-                : `<span class="shelf-quote is-none" title="No copies priced"><span class="shelf-flag">${flag}</span><b>&ndash;</b></span>`;
+                : (flag === 'US' && only === 'PAL') || (flag !== 'US' && only === 'US')
+                    ? `<span class="shelf-quote is-none" title="${only === 'PAL' ? 'Only released in Europe and Australia (PAL), so there is no US copy to price' : 'Only released in the US and Canada (NTSC-U), so there is no UK or euro copy to price'}"><span class="shelf-flag">${flag}</span><b>n/a</b></span>`
+                    : `<span class="shelf-quote is-none" title="No copies priced"><span class="shelf-flag">${flag}</span><b>&ndash;</b></span>`;
             return `<span class="shelf-quotes">${quote('US', us === null ? '' : money(us, currencyOf('US')), 'Median asking price on eBay US')}${
                 quote('UK', uk === null ? '' : money(uk, currencyOf('UK')), 'Median asking price on eBay UK')}${
                 quote('EU', euro?.text ?? '', euro?.hint ?? '')}</span>`;
@@ -1514,6 +1533,7 @@
         const SITE_STALE_HOURS = { DE: 30, FR: 30, IT: 30, ES: 30 };   // the PRICE_LOOKUPS entry a figure links to
         let priceData = null;          // data/prices/latest.json as loaded, or null
         let priceIndex = new Map();    // priceKey(title) -> { title, entry, level, mentions }
+        let renamedKeys = new Set();   // priceKey of every game that has another name on another site (ebay_watchlist.json regional_names)
         let priceWatchlist = null;     // ebay_watchlist.json as loaded, or null
         let priceTrouble = false;      // the price file is there but could not be read or drawn
         let indexData = null;          // data/prices/index.json as loaded, or null
@@ -1554,6 +1574,7 @@
                 const key = priceKey(game.search);
                 if (row && key) index.set(key, row);
             }
+            const renamed = new Set();
             // A game the library also files under the name it has on another site ("Project Zero" beside "Fatal Frame",
             // "Ratchet: Gladiator" beside "Ratchet: Deadlocked") is priced once, under the name the feed knows it by
             // (ebay_prices.py skips the second name), so the other name takes that game's figures.
@@ -1562,11 +1583,14 @@
                     if (!rule || typeof rule.from !== 'string' || typeof rule.to !== 'string') continue;
                     const row = index.get(priceKey(rule.from));
                     const key = priceKey(rule.to);
+                    if (key) renamed.add(key);
+                    if (priceKey(rule.from)) renamed.add(priceKey(rule.from));
                     if (row && key) index.set(key, row);
                 }
             }
             priceData = data ?? null;
             priceIndex = index;
+            renamedKeys = renamed;
             try { refreshCollection(); } catch { /* the collection page draws itself when opened */ }
         }
 

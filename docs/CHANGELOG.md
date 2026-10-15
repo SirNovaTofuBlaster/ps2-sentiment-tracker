@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: "n/a" for a region a game never came out in
+
+- Gregory Horror Show is a PAL release, so its US price will always be a dash. On the shelf the slot now says **n/a** (with a hover line saying why) where the game has box art from the PAL regions (Europe, UK, Australia, World) and none from the USA or Canada (US slot), or the other way round (UK and EU slots), read from the file names in `covers.json` (`regionOnly()`). Games with another name on another site (`regional_names`) or folded into one tile (`same`) are never called exclusive, because their other region's file sits under the other name. It is a label only: prices, history and lookups are unchanged. By the file list that is about 845 PAL-only and 480 US-only titles; it is as good as that list, so a release it lacks reads as exclusive.
+
 ## 2026-10-15: a game's other name shows its prices
 
 - Ratchet: Gladiator on the shelf had dashes everywhere. It is the PAL name of Ratchet: Deadlocked, and `ebay_prices.py` prices such a game once, under the name the feed knows it by, searching eBay UK and the euro sites for the other name (`regional_names`) and skipping the second library entry there. So the other entry had no UK or euro figures at all, and its own US search (the PAL name on eBay US) found 0. The page now points the other name at the game's row (`setPrices()`, for every rename in `ebay_watchlist.json`: Project Zero, Dark Chronicle, Ratchet & Clank 2 and 3, Lucifer's Call, the Ace Combat names...), so both names show the same figures. The other dashes on that shelf were checked in the last run's listings and are real: Winning Eleven: PES 2007 has no US copy (the 9 US listings are Japanese discs, other games or cover art), Romancing SaGa has no UK copy, Gregory Horror Show no US one.
