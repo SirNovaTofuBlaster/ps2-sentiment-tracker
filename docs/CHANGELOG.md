@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: shelf prices line up
+
+- On the Tracker's shelf a one-line game name left its price rows higher than a neighbour's two-line name. The name now always reserves two lines (`min-height: 2.4em` on `.shelf-name`), so the US, UK and EU rows start at the same height in every box, on a desktop and a phone (checked in headless Chromium: every row at the same top).
+
 ## 2026-10-15: times on the 24-hour clock
 
 - "Last sync" and every other time the page shows (feed rows, the Demand Index's date) now use the 24-hour clock, `13:46` instead of `01:46 pm` (`hourCycle: 'h23'` in `formatLocalTime()`, so midnight is `00:05`, never `24:05`). The time zone was already the visitor's own, because no zone is forced: the same sync reads `21:46 GMT+9` in Japan and `08:46 EDT` in New York, and the long form names the offset. The check pins both.
