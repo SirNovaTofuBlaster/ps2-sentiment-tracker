@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 13:15:12 UTC",
+  "last_updated": "2026-10-15 13:26:51 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -3474,16 +3474,16 @@
       "timestamp": "2026-10-15 10:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Persona 4, Resident Evil 4 and 21 more",
+      "headline": "Thread on /v/ naming Persona 4, Resident Evil 4, Kingdom Hearts II and 22 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749727312",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Persona 4",
       "matched_games": [
-        "Kingdom Hearts II",
         "Persona 4",
         "Resident Evil 4",
+        "Kingdom Hearts II",
         "Silent Hill 2",
         "Grand Theft Auto: San Andreas",
         "Half-Life",
@@ -3504,7 +3504,8 @@
         "Deus Ex",
         "Crazy Taxi",
         "Max Payne",
-        "Burnout 3"
+        "Burnout 3",
+        "Yakuza 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -4190,6 +4191,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 09:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749726073",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -239304,114 +239324,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 13:29 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Gaelco Sports Collection launches October 22",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/gaelco-sports-collection-launches-october-22",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 13:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "AOC jumps on the 1,000 Hz IPS gaming monitor bandwagon but this time with 0.1 ms pixel response",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/hardware/gaming-monitors/aoc-jumps-on-the-1-000-hz-ips-gaming-monitor-bandwagon-but-this-time-with-0-1-ms-pixel-response/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 13:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Castlevania: Belmont's Curse demo available for Nintendo Switch 2, will run at 60 FPS",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1wuza1t/castlevania_belmonts_curse_demo_available_for/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 13:20 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Real or fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wuz84n/real_or_fake/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 13:18 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Gears Of War: E-Day Campaign Is Full Of Highs And Lows",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/the-gears-of-war-e-day-campaign-is-full-of-highs-and-lows-2000738923",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 13:16 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pokémon Platin ( GER )",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wuz6j0/pokémon_platin_ger/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 13:16 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Roll up roll up, can you spot which of these images are using DLSS 5?",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/hardware/roll-up-roll-up-can-you-spot-which-of-these-images-are-using-dlss-5/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 13:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Bulwark: Falconeer Chronicles - Colossal Update & DLC Reveal Trailer | PS5 & PS4 Games",
-      "source": "YouTube: PlayStation",
-      "source_type": "youtube",
-      "feed": "youtube:UC-2Y8dQb0S6DtpxNgAKoJKA",
-      "link": "https://www.youtube.com/watch?v=dupUOuX4ouo",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 13:15 UTC",
       "is_digital_only": false
     }
   ]
