@@ -2978,7 +2978,7 @@ class GameCheckTests(unittest.TestCase):
     """The count-only check of one game, started by hand: which part of the search hides the copies a person can see."""
 
     def game(self):
-        return {"title": "Kuon", "search": "kuon", "queries": ["kuon"], "left_out_if_named": []}
+        return {"title": "Kuon", "search": "kuon", "queries": ["kuon"], "left_out_if_named": [], "exclude": [], "require": ["kuon"]}
 
     def run_it(self, answer):
         http = FakeHttp(answer=answer)
@@ -2988,7 +2988,10 @@ class GameCheckTests(unittest.TestCase):
 
     def test_each_part_of_the_search_is_relaxed_on_its_own_on_both_sites(self):
         http, lines = self.run_it(lambda params, headers: page(total=4))
+        detail = [line for line in lines if "of those" in line]
+        lines = [line for line in lines if "of those" not in line]
         self.assertEqual(len(lines), 2 * len(ebay_prices.GAME_CHECK_VARIANTS))
+        self.assertEqual(len(detail), 4, "the new-only and any-condition searches each say what came back, on both sites")
         first, strict = http.searches[0]["params"], http.searches[0]["params"]
         self.assertIn("buyingOptions:{FIXED_PRICE}", strict["filter"])
         self.assertIn("itemLocationCountry:GB", strict["filter"])
@@ -2997,10 +3000,23 @@ class GameCheckTests(unittest.TestCase):
         self.assertNotIn("itemLocationCountry", by_label["[UK] listed in any country"].get("filter", ""))
         self.assertNotIn("buyingOptions", by_label["[UK] auctions as well as Buy It Now"]["filter"])
         self.assertNotIn("conditionIds", by_label["[UK] any condition (new and sealed included)"]["filter"])
+        self.assertIn("conditionIds:{1000|1500|1750}", by_label["[UK] new condition only (the Rarest page's second look)"]["filter"])
         self.assertNotIn("category_ids", by_label["[UK] any category"])
         self.assertNotIn("filter", by_label["[UK] everything relaxed at once"])
         self.assertEqual({s["headers"]["X-EBAY-C-MARKETPLACE-ID"] for s in http.searches}, {"EBAY_GB", "EBAY_US"})
         self.assertIn("[UK] listed in any country: 4", lines)
+
+    def test_it_says_which_condition_ids_came_back_and_how_many_name_the_game(self):
+        def answer(params, headers):
+            return page(listing("Kuon PS2 sealed", 800.0, item_id=1, conditionId="1000"),
+                        listing("Kuon", 90.0, item_id=2, conditionId="2500"),
+                        listing("Something else", 5.0, item_id=3, conditionId="1000"), total=3)
+        _, lines = self.run_it(answer)
+        detail = [line for line in lines if "of those" in line]
+        self.assertIn("[US]   of those: 3 returned, condition ids 1000 x2, 2500 x1; 2 name the game", detail)
+        text = "\n".join(lines)
+        for leak in ("Kuon PS2 sealed", "800", "Something else"):
+            self.assertNotIn(leak, text)
 
     def test_a_lookup_never_relaxes_anything(self):
         for market_id in ("EBAY_GB", "EBAY_US"):
