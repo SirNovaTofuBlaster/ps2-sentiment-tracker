@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: a game's other name shows its prices
+
+- Ratchet: Gladiator on the shelf had dashes everywhere. It is the PAL name of Ratchet: Deadlocked, and `ebay_prices.py` prices such a game once, under the name the feed knows it by, searching eBay UK and the euro sites for the other name (`regional_names`) and skipping the second library entry there. So the other entry had no UK or euro figures at all, and its own US search (the PAL name on eBay US) found 0. The page now points the other name at the game's row (`setPrices()`, for every rename in `ebay_watchlist.json`: Project Zero, Dark Chronicle, Ratchet & Clank 2 and 3, Lucifer's Call, the Ace Combat names...), so both names show the same figures. The other dashes on that shelf were checked in the last run's listings and are real: Winning Eleven: PES 2007 has no US copy (the 9 US listings are Japanese discs, other games or cover art), Romancing SaGa has no UK copy, Gregory Horror Show no US one.
+
 ## 2026-10-15: app icon fills the circle
 
 - On Android the installed icon sat as a dark square inside a white circle: the manifest only offered icons for "any" use, so the phone padded them. It now also lists `icon-maskable-192.png` and `icon-maskable-512.png` (`purpose: maskable`): the ring mark on full-bleed black, kept inside the central 74% (the safe zone is 80%) so any round or rounded mask leaves only the rings on black. The icons' background is pure black (`#000000`) and the manifest's `background_color` matches. Remove and add the app again to see it.

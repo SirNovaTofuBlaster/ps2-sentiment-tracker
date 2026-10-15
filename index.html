@@ -1554,6 +1554,17 @@
                 const key = priceKey(game.search);
                 if (row && key) index.set(key, row);
             }
+            // A game the library also files under the name it has on another site ("Project Zero" beside "Fatal Frame",
+            // "Ratchet: Gladiator" beside "Ratchet: Deadlocked") is priced once, under the name the feed knows it by
+            // (ebay_prices.py skips the second name), so the other name takes that game's figures.
+            for (const rules of Object.values(watchlist?.regional_names && typeof watchlist.regional_names === 'object' ? watchlist.regional_names : {})) {
+                for (const rule of Array.isArray(rules) ? rules : []) {
+                    if (!rule || typeof rule.from !== 'string' || typeof rule.to !== 'string') continue;
+                    const row = index.get(priceKey(rule.from));
+                    const key = priceKey(rule.to);
+                    if (row && key) index.set(key, row);
+                }
+            }
             priceData = data ?? null;
             priceIndex = index;
             try { refreshCollection(); } catch { /* the collection page draws itself when opened */ }

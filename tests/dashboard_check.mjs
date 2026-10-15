@@ -2293,6 +2293,15 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.match(page, /<a class="brand-id" id="brandHome" href="\.\/" onclick="return goHome\(event\)"/, 'the logo is a link home');
     assert.match(page, /<input type="search" id="gameSearch"/);
 
+    // A game filed under two names (ebay_prices.py prices it once) shows the same figures under both.
+    run(`setPrices({ games: {
+        'Ratchet: Deadlocked': { level: 'normal', mentions: 1, US: { copies: 190, median: 13.99, checked: '2026-10-14T10:00Z' }, UK: { copies: 45, median: 13.66, checked: '2026-10-14T10:00Z' } },
+        'Ratchet: Gladiator': { level: 'normal', mentions: 0, US: { copies: 0, checked: '2026-10-14T10:00Z' } },
+        'Sly 3': { level: 'normal', mentions: 1, UK: { copies: 5, median: 9, checked: '2026-10-14T10:00Z' } },
+    } }, { regional_names: { UK: [{ from: 'Ratchet: Deadlocked', to: 'Ratchet: Gladiator' }, { from: 'Sly 3: Honor Among Thieves', to: 'Sly 3' }, { from: 7 }] } })`);
+    assert.equal(evalJson(`medianOf('Ratchet: Gladiator', 'UK')`), 13.66, 'the PAL name takes the game\'s UK figure');
+    assert.equal(evalJson(`medianOf('Ratchet: Gladiator', 'US')`), 13.99);
+    assert.equal(evalJson(`medianOf('Sly 3', 'UK')`), 9, 'a name with no source row keeps its own figures');
     // Rarity: the fewest copies on UK or US; zero counts; never-checked games last; "scarce" at 10 or fewer.
     run(`setPrices({ games: {
         'God Hand': { level: 'normal', mentions: 3, UK: { copies: 40, listed: 41, median: 90, checked: '2026-10-14T10:00Z' }, US: { copies: 60, listed: 60, median: 120, checked: '2026-10-14T10:00Z' } },
