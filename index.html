@@ -3192,7 +3192,8 @@
             for (const entry of Object.values(raw.lists && typeof raw.lists === 'object' ? raw.lists : {})) {
                 if (entry && typeof entry.name === 'string' && /^https:\/\//.test(String(entry.url))) lists.push({ name: entry.name, url: entry.url });
             }
-            return { games, lists };
+            const launch = /^\d{4}-\d{2}-\d{2}$/.test(String(raw.launch)) ? Math.floor(Date.parse(raw.launch + 'T00:00:00Z') / 86400000) : null;
+            return { games, lists, launch: Number.isFinite(launch) ? launch : null };
         }
 
         // A small seeded generator, so the same round always gives the same shuffle.
@@ -3222,6 +3223,20 @@
             return underratedRound(n, Math.floor(day / n))[((day % n) + n) % n];
         }
         const utcDay = (when = Date.now()) => Math.floor(when / 86400000);
+
+        /* The file lists the games in the order they are revealed: the game at position k is the pick of
+           day launch + k, and nothing is shown before its day. After the last one every game has been
+           shown, and the next rounds are seeded shuffles (no repeat inside a round). */
+        function underratedPickFor(n, launch, day) {
+            if (!(n > 0)) return -1;
+            const k = day - (launch ?? day);
+            if (k < 0) return 0;
+            return k < n ? k : underratedRound(n, Math.floor(k / n))[k % n];
+        }
+        // How many games are on show on a day: one on the launch day, one more every day.
+        function underratedRevealed(n, launch, day) {
+            return Math.max(1, Math.min(n, day - (launch ?? day) + 1));
+        }
 
         function underratedPriceHtml(title) {
             let html = '';
@@ -3268,26 +3283,29 @@
             const games = underratedData.games;
             const n = games.length;
             const day = utcDay(now);
-            summary.textContent = `One game a day, picked at random from ${n} that lists of underrated PS2 games keep naming. Every game comes up once before any comes up again.`;
-            const pick = games[underratedIndexFor(n, day)];
+            const launch = underratedData.launch;
+            const revealed = underratedRevealed(n, launch, day);
+            const pick = games[underratedPickFor(n, launch, day)];
+            summary.textContent = `One new underrated game a day, in a random order. ${revealed} on show so far; more are added every day.`;
             today.innerHTML = `<div class="under-hero"><div class="under-hero-label">Game of the day</div>${underratedCardHtml(pick, underratedButtons(pick))}</div>`;
-            document.getElementById('underratedDays').innerHTML = [1, 2, 3, 4, 5, 6, 7].map(back => {
-                const g = games[underratedIndexFor(n, day - back)];
+            const backs = [1, 2, 3, 4, 5, 6, 7].filter(back => launch === null || day - back >= launch);
+            document.getElementById('underratedDays').innerHTML = backs.length ? backs.map(back => {
+                const g = games[underratedPickFor(n, launch, day - back)];
                 const date = new Date((day - back) * 86400000).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
                 return `<li class="under-day"><span class="under-day-date">${esc(date)}</span> ${gameLinkHtml(g.title)}</li>`;
-            }).join('');
-            const chips = [['all', 'All'], ...underratedGenres(games).map(g => ['g:' + g, g]), ['cheap', `Under £${UNDERRATED_CHEAP_UK}`]];
+            }).join('') : '<li class="under-day">Earlier picks will show here from tomorrow.</li>';
+            const chips = [['all', 'All'], ...underratedGenres(games.filter((g, i) => i < revealed || day - (launch ?? day) >= n)).map(g => ['g:' + g, g]), ['cheap', `Under £${UNDERRATED_CHEAP_UK}`]];
             if (!chips.some(([key]) => key === underratedFilter)) underratedFilter = 'all';
             document.getElementById('underratedFilters').innerHTML = chips.map(([key, label]) =>
                 `<button type="button" class="under-chip${key === underratedFilter ? ' is-active' : ''}" aria-pressed="${key === underratedFilter}" onclick="underratedSetFilter(${esc(JSON.stringify(key))})">${esc(label)}</button>`).join('');
-            const shown = games.filter(g => underratedFilter === 'all'
+            const shown = games.filter((g, i) => (i < revealed || day - (launch ?? day) >= n) && (underratedFilter === 'all'
                 || (underratedFilter === 'cheap' && (medianOf(g.title, 'UK') ?? Infinity) < UNDERRATED_CHEAP_UK)
-                || underratedFilter === 'g:' + g.genre);
+                || underratedFilter === 'g:' + g.genre));
             document.getElementById('underratedGrid').innerHTML = shown.length
                 ? shown.map(g => `<li class="under-card">${underratedCardHtml(g)}</li>`).join('')
                 : '<li class="text-xs text-slate-400">Nothing matches this filter right now.</li>';
             const links = underratedData.lists.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.name)}</a>`).join(', ');
-            document.getElementById('underratedNote').innerHTML = `A game gets on the list when public "underrated PS2" lists name it, and is left out when it is a famous classic. The titles were collected by hand from: ${links}. The one-line reasons are written here, not quoted. Prices are eBay asking prices.`;
+            document.getElementById('underratedNote').innerHTML = `A game gets on the list when public "underrated PS2" lists name it, and is left out when it is a famous classic. Some titles were collected by hand from: ${links}; the rest are picks from general knowledge. The one-line reasons are written here, not quoted. Prices are eBay asking prices.`;
         }
         function underratedSetFilter(key) {
             underratedFilter = key;

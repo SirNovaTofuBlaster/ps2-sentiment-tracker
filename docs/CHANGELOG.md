@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: Underrated grows to 100 games, one revealed a day
+
+- `underrated.json` now holds 100 games in reveal order (40 from the three public lists, 60 added from general knowledge, marked `via`), with `launch: 2026-10-15`. The game at position k is the pick of day launch + k, so Rygar is today's, and a game is not shown before its day. The grid shows only games revealed so far; "Last 7 days" counts only days since launch. After the hundredth day the rounds repeat in a seeded shuffle.
+
 ## 2026-10-15: Underrated tab
 
 - New page after Gacha: one underrated PS2 game a day, from `underrated.json` (40 games, made by hand). The titles were collected from three public lists (Den of Geek, TheGamer, Super Phillip Central); the reason lines are original and no rank or score is kept, because none was verified. Metacritic and Wikipedia could not be read from the build environment, so they are not used.
