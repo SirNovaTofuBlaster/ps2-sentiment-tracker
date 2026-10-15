@@ -1,7 +1,46 @@
 {
-  "last_updated": "2026-10-15 07:43:48 UTC",
+  "last_updated": "2026-10-15 07:57:48 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584531001",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 07:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4 and Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749722816",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 07:41 UTC"
+    },
     {
       "headline": "Thread on /vg/ naming The Sims",
       "source": "4chan /vg/",
@@ -2000,6 +2039,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 03:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749715718",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4134,6 +4192,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-15 01:24 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Phantasy Star Universe",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749709334",
+      "matched_game": "Phantasy Star Universe",
+      "matched_games": [
+        "Phantasy Star Universe"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 01:23 UTC"
     },
     {
       "headline": "Confusion with the HDMi cable",
@@ -6858,6 +6935,25 @@
       "timestamp": "2026-10-14 22:42 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749701173",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 22:42 UTC"
+    },
+    {
       "headline": "Looking for games that involve building a community, or bringing life/people back to an empty town or settlement",
       "source": "r/gamingsuggestions",
       "source_type": "reddit",
@@ -8582,21 +8678,22 @@
       "views": 71536
     },
     {
-      "headline": "Thread on /v/ naming Baldur's Gate: Dark Alliance, Harry Potter and The Chamber of Secrets, Harry Potter and The Prisoner of Azkaban and 5 more",
+      "headline": "Thread on /v/ naming Romancing SaGa, Harry Potter and The Chamber of Secrets, Harry Potter and The Prisoner of Azkaban and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749696182",
-      "matched_game": "Baldur's Gate: Dark Alliance",
+      "matched_game": "Romancing SaGa",
       "matched_games": [
-        "Baldur's Gate: Dark Alliance",
+        "Romancing SaGa",
         "Harry Potter and The Chamber of Secrets",
         "Harry Potter and The Prisoner of Azkaban",
         "Kingdom Hearts",
         "Beyond Good and Evil",
         "Monster Hunter",
         "SoulCalibur III",
-        "Dynasty Warriors 3"
+        "Dynasty Warriors 3",
+        "Baldur's Gate: Dark Alliance"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -236032,50 +236129,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 07:59 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Castlevania: Belmont‘s Curse Demo OUT Now (ESRB) | KONAMI",
-      "source": "YouTube: Konami",
-      "source_type": "youtube",
-      "feed": "youtube:UCwkUBN7foWU9GcY5cFmso-Q",
-      "link": "https://www.youtube.com/watch?v=Mgl_n10il2o",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 07:54 UTC",
-      "views": 76496
-    },
-    {
-      "headline": "Another PS3 haul (pausing for a while now)",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wutdrh/another_ps3_haul_pausing_for_a_while_now/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 07:46 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Good management games for someone who never really played this genre?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wutdcd/good_management_games_for_someone_who_never/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 07:46 UTC",
       "is_digital_only": false
     }
   ]
