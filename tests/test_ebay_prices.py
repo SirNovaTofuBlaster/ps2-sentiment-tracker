@@ -150,6 +150,7 @@ class Sandbox:
                                                      for title in archive])
         for name, value in (("WATCHLIST_PATH", self.root / "ebay_watchlist.json"),
                             ("RARE_PATH", self.root / "rare_games.json"),
+                            ("UNDERRATED_PATH", self.root / "underrated.json"),
                             ("EDITIONS_PATH", self.root / "editions.json"),
                             ("CONSOLES_PATH", self.root / "rare_consoles.json"),
                             ("FEED_PATH", self.data / "sentiment_feed.json"),
@@ -1758,6 +1759,81 @@ class QuietEuroTests(unittest.TestCase):
             state = {"games": {"Kuon": {"DE": dict(record, checked=stamp(hours))}}}
             got = "EBAY_DE" in [m for _, m in ebay_prices.due_lookups([entry], state, NOON)]
             self.assertEqual(got, due, (record, hours))
+
+
+class UnderratedPricingTests(unittest.TestCase):
+    def setUp(self):
+        self.sandbox = Sandbox(self, feed=[])
+        self.sandbox.write("underrated.json", {"games": [{"title": "Okami"}, {"title": "Kuon"}, {"title": "No Such Game"},
+                                                           {"title": "Black"}]})
+
+    def test_untracked_games_are_priced_daily_on_the_us_and_uk_only(self):
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(code, 0, printed)
+        asked = {(call["headers"]["X-EBAY-C-MARKETPLACE-ID"], call["params"]["q"]) for call in fake.searches}
+        self.assertEqual(asked, {("EBAY_US", "okami"), ("EBAY_GB", "okami"), ("EBAY_US", "kuon"), ("EBAY_GB", "kuon")})
+        entry = self.sandbox.latest["games"]["Okami"]
+        self.assertEqual((entry["level"], entry["sites"]), ("underrated", ["US", "UK"]))
+        self.assertIn("2 underrated", printed)
+        self.assertIn("Left out, on the Underrated page but not priced", printed)
+        self.assertIn("No Such Game", printed)
+        self.sandbox.now = NOON + timedelta(hours=7)
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(fake.searches, [], "not again the same day")
+        self.sandbox.now = NOON + timedelta(hours=25)
+        code, printed, fake = self.sandbox.run()
+        self.assertEqual(len(fake.searches), 4, "the next day")
+
+    def test_a_game_the_feed_tracks_keeps_its_own_level(self):
+        box = Sandbox(self, feed=[mention("Okami", 5, "r/ps2")])
+        box.write("underrated.json", {"games": [{"title": "Okami"}]})
+        box.run()
+        self.assertEqual(box.latest["games"]["Okami"]["level"], "normal")
+        self.assertNotIn("sites", box.latest["games"]["Okami"])
+
+    def test_a_missing_or_broken_file_prices_nothing_and_stops_nothing(self):
+        (self.sandbox.root / "underrated.json").write_text("{nope", encoding="utf-8")
+        self.assertEqual(ebay_prices.load_underrated(self.sandbox.root / "underrated.json"), [])
+        self.assertEqual(ebay_prices.load_underrated(self.sandbox.root / "absent.json"), [])
+
+
+class WatchedGameTests(unittest.TestCase):
+    """A mention of a game on the Rarest or Underrated page has it looked up again, whatever its clock."""
+
+    def entry(self, level, watch=True, mentioned=None):
+        item = game("Okami", level=level)
+        item.update({"watch": watch, "latest_mention": mentioned, "sites": ["EBAY_US", "EBAY_GB", "EBAY_DE"]})
+        return item
+
+    def due(self, item, hours_since_check, label_checked="UK"):
+        stamp = (NOON - timedelta(hours=hours_since_check)).strftime(ebay_prices.STAMP_FORMAT)
+        state = {"games": {"Okami": {label_checked: {"checked": stamp, "copies": 3}}}}
+        return [m for _, m in ebay_prices.due_lookups([item], state, NOON)]
+
+    def test_rare_games_are_checked_every_12_hours_but_consoles_and_editions_daily(self):
+        self.assertEqual(ebay_prices.CHECK_EVERY_HOURS["rare"], 12)
+        self.assertIn("EBAY_GB", self.due(self.entry("rare"), 13))
+        self.assertNotIn("EBAY_GB", self.due(self.entry("rare"), 11))
+        console = self.entry("rare")
+        console["kind"] = "console"
+        self.assertNotIn("EBAY_GB", self.due(console, 13))
+        self.assertIn("EBAY_GB", self.due(console, 25))
+
+    def test_a_new_mention_brings_the_next_check_forward_on_the_first_two_sites(self):
+        mentioned = NOON - timedelta(hours=1)
+        self.assertIn("EBAY_GB", self.due(self.entry("underrated", mentioned=mentioned), 3))
+        self.assertNotIn("EBAY_GB", self.due(self.entry("underrated", mentioned=NOON - timedelta(hours=5)), 3),
+                         "a mention before the last check is not new")
+        self.assertNotIn("EBAY_GB", self.due(self.entry("underrated", watch=False, mentioned=mentioned), 3))
+        self.assertNotIn("EBAY_GB", self.due(self.entry("underrated", mentioned=mentioned), 0.2),
+                         "never twice within the hour")
+
+    def test_a_mention_does_not_hurry_a_euro_site(self):
+        stamp = (NOON - timedelta(hours=3)).strftime(ebay_prices.STAMP_FORMAT)
+        item = self.entry("underrated", mentioned=NOON - timedelta(hours=1))
+        state = {"games": {"Okami": {"DE": {"checked": stamp, "copies": 3}}}}
+        with mock.patch.dict(ebay_prices.MARKETS, {"EBAY_DE": DE}):
+            self.assertNotIn("EBAY_DE", [m for _, m in ebay_prices.due_lookups([item], state, NOON)])
 
 
 class RareListTests(unittest.TestCase):

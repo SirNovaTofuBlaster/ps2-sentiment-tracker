@@ -386,7 +386,10 @@ A site added after the first two (`extra` in `MARKETS`; Germany so far) has its 
 
 On top of the levels, a `normal` or `staple` game that has priced the same for days on one site is looked up there every 48 hours (`is_steady()` in `ebay_prices.py`) and goes back to 6 hours as soon as a check differs.
 
-| `rare` | On the Rarest page and not tracked otherwise | Once a day, on its list's site only |
+| `rare` | On the Rarest page and not tracked otherwise | Every 12 hours (consoles and editions: daily), on its list's site only |
+| `underrated` | On the Underrated page (`underrated.json`) and not tracked otherwise | Once a day, on the US and UK only |
+
+A game of the Rarest or Underrated page that the feed names after its last check is looked up again on the US and UK within the hour (`watch`, `latest_mention`, `WATCH_RECHECK_MINUTES`); the euro sites keep their clocks.
 
 A mention found only in an item's body text keeps a game `normal` but never makes it surge. A
 run uses at most 500 searches and stops for the day at 4,900 of eBay's 5,000; surging games go

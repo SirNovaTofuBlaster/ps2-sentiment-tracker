@@ -78,6 +78,7 @@ from urllib.parse import quote, urlencode
 
 ROOT = Path(__file__).parent
 WATCHLIST_PATH = ROOT / "ebay_watchlist.json"
+UNDERRATED_PATH = ROOT / "underrated.json"      # the Underrated page's games (read only)
 RARE_PATH = ROOT / "rare_games.json"            # the Rarest page's two lists (read only)
 EDITIONS_PATH = ROOT / "editions.json"          # limited and collector's editions, each priced on its own (read only)
 CONSOLES_PATH = ROOT / "rare_consoles.json"     # the Rarest page's consoles (read only)
@@ -186,7 +187,8 @@ SURGE_HOURS = 24             # a surge is judged over this long...
 SURGE_SOURCES = 2            # ...and needs this many different sources, each with its own headline,
 SURGE_QUIET_MENTIONS = 1     # ...for a game named at most this often in the rest of the window
 SURGE_HOLD_HOURS = 48        # once surging, a game stays surging this long after its last mention
-CHECK_EVERY_HOURS = {"surging": 0, "normal": 6, "staple": 6, "dormant": 24, "rare": 24}   # 0 = every run
+CHECK_EVERY_HOURS = {"surging": 0, "normal": 6, "staple": 6, "dormant": 24, "underrated": 24, "rare": 12}   # 0 = every run
+RARE_SLOW_KINDS = ("console", "edition")   # level "rare" but still daily: only the Rarest page's games are checked every 12 hours
 # The Rarest page's lists in rare_games.json, and the one site each is priced on: a rare PAL game
 # is a PAL copy, sold in Britain; a rare US game is an American copy.
 RARE_SITES = {"PAL": "EBAY_GB", "US": "EBAY_US"}
@@ -208,6 +210,7 @@ CHANGE_DAYS = 7              # beside each median, how it compares with the medi
 CHANGE_SLACK_DAYS = 2        # ...as recorded at most this much longer before (a quiet game is checked daily)
 CONFIRMED_MIN = 3           # the "confirmed complete" figure needs this many listings that say so
 CHANGE_MIN_DAYS = 3          # until a game has a week of history, it is compared with its oldest check at least this old
+WATCH_RECHECK_MINUTES = 60   # a watched game named in the feed since its last check waits at most this long
 QUIET_EVERY_HOURS = 48       # a game that had no copies (or whose words found none) at its last check waits this long
 
 # ---- How much of eBay's allowance (5,000 searches a day) a run may use ---------------
@@ -786,7 +789,58 @@ def plan_games(now, pinned, never, mentions, ever, library, catalogue, state):
         held = parse_stamp((previous.get(game["key"]) or {}).get("surging_until"))
         game["level"], game["mentions"], game["surging_until"] = level_of(
             by_key.get(game["key"], []), now, held, game["pinned"])
+        game["latest_mention"] = max((m["when"] for m in by_key.get(game["key"], [])), default=None)
     return sorted(games.values(), key=lambda game: game["title"].lower()), left_out
+
+
+def load_underrated(path=None):
+    """The titles on the Underrated page, from underrated.json. A missing or damaged file gives none:
+    the page's games are an extra and must never stop the pricing of the others."""
+    raw = read_json(Path(path or UNDERRATED_PATH), {})
+    rows = raw.get("games") if isinstance(raw, dict) else None
+    return [row["title"] for row in rows or [] if isinstance(row, dict) and isinstance(row.get("title"), str)
+            and key_of(row["title"])]
+
+
+def add_underrated_games(games, titles, library, catalogue):
+    """Price the Underrated page's games on the first two sites (US and UK) once a day, so that a
+    gem has a figure the day it is shown. A game the feed tracks already keeps its own level and
+    sites; a title that is not in the PS2 library, or whose one word is an ordinary word, is left
+    out (the page could not find its figure either). Returns the titles left out."""
+    keys = {game["key"] for game in games}
+    names = {game["search"] for game in games}
+    sites = [market_id for market_id, market in MARKETS.items() if not market.get("extra")]
+    left_out = []
+    for title in titles:
+        key = key_of(title)
+        if key in keys:
+            continue
+        if key not in library:
+            left_out.append(title)
+            continue
+        name, queries = search_terms(library[key])
+        if name in names:
+            continue
+        if not queries or any(len(query) + len(" ps2") > MAX_QUERY_CHARS for query in queries) \
+                or (" " not in name and queries[0] not in ONE_WORD_TITLES):
+            left_out.append(title)
+            continue
+        games.append({"title": library[key], "key": key, "search": name, "queries": queries, "exclude": [],
+                      "pinned": False, "siblings": other_games(library[key], name, catalogue),
+                      "level": "underrated", "mentions": 0, "surging_until": None, "sites": list(sites)})
+        keys.add(key)
+        names.add(name)
+    games.sort(key=lambda game: game["title"].lower())
+    return left_out
+
+
+def mark_watched(games, titles):
+    """Flag the games of the Rarest and Underrated pages: a new mention of one in the feed has it looked up
+    again at the next run, whatever its clock (`due_lookups()`)."""
+    keys = {key_of(title) for title in titles}
+    names = {search_terms(title)[0] for title in titles}
+    for game in games:
+        game["watch"] = game.get("kind") not in RARE_SLOW_KINDS and (game["key"] in keys or game["search"] in names)
 
 
 def load_rare(path=None, kind=None):
@@ -1015,6 +1069,8 @@ def due_lookups(games, state, now, history=()):
                   for market_id, words_there in (game.get("markets") or {}).items()}
     for game in games:
         every = CHECK_EVERY_HOURS[game["level"]] * 60
+        if game["level"] == "rare" and game.get("kind") in RARE_SLOW_KINDS:
+            every = CHECK_EVERY_HOURS["dormant"] * 60     # consoles and editions: once a day, as before
         game["steady_on"] = []          # the sites on which it waits 48 hours, so the dashboard knows
         for market_id, market in MARKETS.items():
             if game.get("sites"):                  # a game only on the Rarest page: its own list's site
@@ -1038,10 +1094,16 @@ def due_lookups(games, state, now, history=()):
                 wait = max(wait, QUIET_EVERY_HOURS * 60)
                 game["steady_on"].append(market["label"])
             wait = max(wait, market.get("min_every_hours", 0) * 60)
+            mentioned = game.get("latest_mention")
+            if (game.get("watch") and not market.get("extra") and mentioned is not None and checked is not None
+                    and mentioned > checked):
+                # A game of the Rarest or Underrated page was named after its last check: look again now (a
+                # mention can be the start of a rush), whatever its clock. The euro sites keep their own.
+                wait = min(wait, WATCH_RECHECK_MINUTES)
             if waited is None or waited >= wait - EARLY_MINUTES:
                 overdue = float("inf") if waited is None else waited / max(every, 60)
                 due.append((bool(market.get("extra")), game["level"] != "surging", not game["pinned"],
-                            game["level"] == "rare", -overdue, game["title"].lower(), market_id, game))
+                            {"underrated": 1, "rare": 2}.get(game["level"], 0), -overdue, game["title"].lower(), market_id, game))
     due.sort(key=lambda row: row[:7])        # an extra site comes after the first two, whatever a game's level
     return [(row[7], row[6]) for row in due]
 
@@ -2121,8 +2183,9 @@ def snapshot_of(run, now):
 def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_problems=(), consoles=0, edition_titles=None):
     games = [game for game in games if game.get("kind") not in ("console", "edition")]   # counted on lines of their own
     levels = {level: sum(1 for game in games if game["level"] == level) for level in CHECK_EVERY_HOURS}
-    if not levels["rare"]:
-        del levels["rare"]   # only there when rare_games.json adds games
+    for extra_level in ("underrated", "rare"):
+        if not levels[extra_level]:
+            del levels[extra_level]   # only there when underrated.json or rare_games.json adds games
     pinned = sum(1 for game in games if game["pinned"])
     say(f"Tracking {len(games)} games ({pinned} pinned): " + ", ".join(
         f"{count} {level}" for level, count in levels.items()) + ".")
@@ -2131,9 +2194,10 @@ def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_pr
             say(f"  surging: {game['title']}")
     reasons = (("one_word", "one-word name that is also an ordinary word (pin it to track it)"),
                ("not_in_library", "not in the PS2 library"),
-               ("never", 'on the "never" list'))
+               ("never", 'on the "never" list'),
+               ("underrated", "on the Underrated page but not priced (not in the PS2 library, or a one-word name that is an ordinary word)"))
     for reason, text in reasons:
-        titles = left_out[reason]
+        titles = left_out.get(reason) or []
         if titles:
             shown = ", ".join(titles[:12]) + (f" and {len(titles) - 12} more" if len(titles) > 12 else "")
             say(f"Left out, {text}: {len(titles)} ({shown}).")
@@ -2313,6 +2377,8 @@ def main(argv=None):
         mentions, ever = load_mentions()
         library, catalogue = load_library()
         games, left_out = plan_games(now, pinned, never, mentions, ever, library, catalogue, state)
+        underrated = load_underrated()
+        left_out["underrated"] = add_underrated_games(games, underrated, library, catalogue)
         apply_regional_names(games, load_regional_names(), catalogue)
         rare, rare_problems = load_rare()
         rare_titles = add_rare_games(games, rare, catalogue)
@@ -2320,6 +2386,7 @@ def main(argv=None):
         edition_titles = add_rare_games(games, editions, catalogue)
         consoles, console_problems = load_consoles()
         consoles_priced = add_consoles(games, consoles)
+        mark_watched(games, underrated + [entry["title"] for entry in rare])
         rare_problems = rare_problems + console_problems + [f"editions.json: {problem}" for problem in edition_problems]
         if wanted:
             # Started by hand to see why one game shows no copies somewhere: counts for the search with one

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: gems are priced, Rarest every 12 hours, mentions bring a recheck forward
+
+- The Underrated page's games that the feed does not track (59 of 100 on 2026-10-15; 9 more are left out: Mega Man X8 and Bujingai are not in the library, and Oni, Obscure, Summoner, Extermination, Primal, Fahrenheit and The Thing are ordinary words) are priced once a day on eBay US and UK as level `underrated`, so a gem has a figure the day it is shown. The Rarest page's games are checked every 12 hours instead of 24 (consoles and editions stay daily). A game on either page that the feed names after its last check is looked up again within the hour on the US and UK. Estimated from the plan (186 lookups due on the first run): about 4,700 of the 4,900 searches a day; the first day's `searches` figure in `latest.json` is the measurement.
+
 ## 2026-10-15: cheapest listings first, complete copies only, euro sites asked less often
 
 - eBay searches for games now ask for `sort=price`, so the 200 listings a search can return are the 200 cheapest (a game with more than that is marked `+` and its hover says so). If eBay refuses the sort the run asks again without it. The check run (`check_game`) prints "cheapest first: yes/NO" and the field names of a listing, no prices.
