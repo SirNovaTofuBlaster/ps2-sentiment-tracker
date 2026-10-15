@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 12:12:11 UTC",
+  "last_updated": "2026-10-15 12:15:37 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -1834,14 +1834,13 @@
       "timestamp": "2026-10-15 10:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Crazy Taxi, Deus Ex, Max Payne and 20 more",
+      "headline": "Thread on /v/ naming Deus Ex, Max Payne, Resident Evil 4 and 20 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749727312",
-      "matched_game": "Crazy Taxi",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Crazy Taxi",
         "Deus Ex",
         "Max Payne",
         "Resident Evil 4",
@@ -1863,10 +1862,11 @@
         "Harry Potter and The Chamber of Secrets",
         "Metal Gear Solid 2: Sons of Liberty",
         "God of War II",
-        "Persona 4"
+        "Persona 4",
+        "Crazy Taxi"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -238552,53 +238552,6 @@
       "sentiment": 50,
       "timestamp": "2026-10-01 12:15 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Krafton has Cancelled the development of PUBG: BLACK BUDGET",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1wuxubp/krafton_has_cancelled_the_development_of_pubg/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 12:13 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "007 First Light free DLC ‘Extended Operations’ now available",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/007-first-light-free-dlc-extended-operations-now-available",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 12:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Consider my mind boggled.",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wuxtig/consider_my_mind_boggled/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 12:12 UTC"
     }
   ]
 }
