@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 06:33:27 UTC",
+  "last_updated": "2026-10-15 07:00:46 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -1600,6 +1600,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 03:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Sonic Unleashed",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749714008",
+      "matched_game": "Sonic Unleashed",
+      "matched_games": [
+        "Sonic Unleashed"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 03:12 UTC"
     },
     {
       "headline": "Hudson Williams plays dual roles in Yaga #ignfanfest",
@@ -235208,32 +235227,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 07:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Las mejores ofertas de Nintendo Switch y Switch 2 en la eShop de esta semana (1/10/2026)",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026274007/las-mejores-ofertas-de-nintendo-switch-y-switch-2-en-la-eshop-de-esta-semana-1102026/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 06:56 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Microsoft responde a los rumores sobre el futuro de XBOX: Asha Sharma asegura que la división 'no está en venta'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026274006/microsoft-responde-a-los-rumores-sobre-el-futuro-de-xbox-asha-sharma-asegura-que-la-division-no-esta-en-venta/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 06:46 UTC",
       "is_digital_only": false
     }
   ]
