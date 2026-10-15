@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 18:01:17 UTC",
+  "last_updated": "2026-10-15 18:12:48 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -365,18 +365,18 @@
       "timestamp": "2026-10-15 17:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749748683",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Final Fantasy X",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5630,6 +5630,27 @@
       "timestamp": "2026-10-15 14:16 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Final Fantasy XII, God of War II and Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749737276",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII",
+        "God of War II",
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 14:16 UTC"
+    },
+    {
       "headline": "Video: Digital Foundry Delivers Its Tech Review For Resident Evil 4 On Switch 2",
       "source": "Nintendo Life",
       "source_type": "news",
@@ -8266,6 +8287,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 12:57 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Unreal Tournament",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749733042",
+      "matched_game": "Unreal Tournament",
+      "matched_games": [
+        "Unreal Tournament"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 12:56 UTC"
     },
     {
       "headline": "First major problem with my build. Some advice/help would be much appreciated",
@@ -18492,16 +18532,17 @@
       "views": 1805
     },
     {
-      "headline": "Thread on /v/ naming Wheel of Fortune, ICO and Max Payne",
+      "headline": "Thread on /v/ naming Rock Band, ICO, Max Payne and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749707636",
-      "matched_game": "Wheel of Fortune",
+      "matched_game": "Rock Band",
       "matched_games": [
-        "Wheel of Fortune",
+        "Rock Band",
         "ICO",
-        "Max Payne"
+        "Max Payne",
+        "Wheel of Fortune"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -103554,14 +103595,15 @@
       "timestamp": "2026-10-11 10:08 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Devil May Cry",
+      "headline": "Thread on /vg/ naming Devil May Cry and Top Spin",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584108025",
       "matched_game": "Devil May Cry",
       "matched_games": [
-        "Devil May Cry"
+        "Devil May Cry",
+        "Top Spin"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -243684,71 +243726,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 18:13 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "ROBLOX PIGGY PHENNA JUMPSCARE   Roblox Piggy New Update",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/shorts/NT9eN48pZhU",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 18:11 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Fantasy adventure game Humblets coming to Nintendo Switch 2, Switch",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/fantasy-adventure-game-humblets-coming-to-nintendo-switch-2-switch/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 18:09 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Chrono Trigger CIB (DS) - Is Anything Fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wv6pxj/chrono_trigger_cib_ds_is_anything_fake/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 18:09 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Reacher Spinoff Neagley Officially Returning for Season 2",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/neagley-season-2-reacher-spinoff-amazon-prime-video/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "timestamp": "2026-10-01 18:06 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "ROBLOX PIGGY MOOPY (HALLOWEEN) JUMPSCARE - Roblox Piggy New Update",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/shorts/HHcMN3gXfDM",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 18:02 UTC",
       "is_digital_only": false
     }
   ]
