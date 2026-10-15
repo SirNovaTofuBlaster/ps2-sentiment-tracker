@@ -2302,6 +2302,16 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.equal(evalJson(`medianOf('Ratchet: Gladiator', 'UK')`), 13.66, 'the PAL name takes the game\'s UK figure');
     assert.equal(evalJson(`medianOf('Ratchet: Gladiator', 'US')`), 13.99);
     assert.equal(evalJson(`medianOf('Sly 3', 'UK')`), 9, 'a name with no source row keeps its own figures');
+    // Times are on the 24-hour clock, in the visitor's own time zone (no zone is forced, so the browser picks theirs).
+    for (const zone of ['Asia/Tokyo', 'America/New_York', 'Europe/London']) {
+        const shown = new Intl.DateTimeFormat(undefined, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: zone }).format(new Date('2026-10-15T12:46:00Z'));
+        assert.match(shown, /^\d{2}:\d{2}$/);
+    }
+    const stamped = evalJson(`formatLocalTime('2026-10-15 12:46:00 UTC')`);
+    assert.match(stamped, /\b\d{2}:\d{2}\b/);
+    assert.doesNotMatch(stamped, /\b(am|pm)\b/i, 'no 12-hour clock');
+    assert.match(read('index.html'), /hourCycle: 'h23', timeZoneName: 'short'/);
+    assert.doesNotMatch(read('index.html'), /formatLocalTime[^\n]*timeZone: '/, 'no fixed zone for the visitor\'s times');
     // A game released in one region only says so where its other price can never exist.
     run(`coverSame = {}; coverIndex = {
         'gregory horror show': ['Gregory Horror Show', ' (Korea)', ' (Europe) (En,Fr,De)'],

@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: times on the 24-hour clock
+
+- "Last sync" and every other time the page shows (feed rows, the Demand Index's date) now use the 24-hour clock, `13:46` instead of `01:46 pm` (`hourCycle: 'h23'` in `formatLocalTime()`, so midnight is `00:05`, never `24:05`). The time zone was already the visitor's own, because no zone is forced: the same sync reads `21:46 GMT+9` in Japan and `08:46 EDT` in New York, and the long form names the offset. The check pins both.
+
 ## 2026-10-15: "n/a" for a region a game never came out in
 
 - Gregory Horror Show is a PAL release, so its US price will always be a dash. On the shelf the slot now says **n/a** (with a hover line saying why) where the game has box art from the PAL regions (Europe, UK, Australia, World) and none from the USA or Canada (US slot), or the other way round (UK and EU slots), read from the file names in `covers.json` (`regionOnly()`). Games with another name on another site (`regional_names`) or folded into one tile (`same`) are never called exclusive, because their other region's file sits under the other name. It is a label only: prices, history and lookups are unchanged. By the file list that is about 845 PAL-only and 480 US-only titles; it is as good as that list, so a release it lacks reads as exclusive.
