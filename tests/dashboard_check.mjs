@@ -815,7 +815,7 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     assert.equal(figures('Silent Hill 2'), '');
 
     const css = read('retro.css');
-    assert.match(css, /body \.ebay-quote\.is-stale b \{ opacity: \.5; \}/);
+    assert.doesNotMatch(css, /\.ebay-quote\.is-stale b \{ opacity/, 'a price beside a name is never greyed');
 });
 
 await check('every game name in a list opens the game\'s own page, and prices load there', () => {
@@ -1730,7 +1730,7 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
     assert.doesNotMatch(el('todayList').innerHTML, /ebay-change/);
 
     const css = read('retro.css');
-    assert.match(css, /body \.ebay-change \{ font-size: \.72rem; font-weight: 400; color: var\(--dim\); white-space: nowrap; \}\nbody \.ebay-change\.is-up \{ color: var\(--green\); \}\nbody \.ebay-change\.is-down \{ color: var\(--red\); \}\n\/\* An overdue figure is dimmed, and so is how it moved \*\/\nbody \.ebay-site\.is-stale \.ebay-change, body \.ebay-quote\.is-stale \.ebay-change \{ opacity: \.5; \}/);
+    assert.match(css, /body \.ebay-change \{ font-size: \.72rem; font-weight: 400; color: var\(--dim\); white-space: nowrap; \}\nbody \.ebay-change\.is-up \{ color: var\(--green\); \}\nbody \.ebay-change\.is-down \{ color: var\(--red\); \}\n\/\* On the detail page an overdue figure is dimmed, and so is how it moved \*\/\nbody \.ebay-site\.is-stale \.ebay-change \{ opacity: \.5; \}/);
     vm.runInContext('allFeedData = []; visibleFeedData = []; refreshDashboard();', context);
 });
 

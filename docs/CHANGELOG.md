@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: no grey prices beside names
+
+- A price beside a game's name in the lists was dimmed to half strength when its check was overdue (over 8 hours for a staple), which read as a broken or different price next to a full-strength euro figure. Those figures now keep their colour; their hover line says `Last checked 9h ago: later than usual.` The detail on a game's own page and the eBay prices page still dims an overdue figure and prints its age beside it. The overdue figures came from the hourly job's 500-search cap: when more than 500 lookups are due, the rest wait for the next run.
+
 ## 2026-10-15: shelf prices line up
 
 - On the Tracker's shelf a one-line game name left its price rows higher than a neighbour's two-line name. The name now always reserves two lines (`min-height: 2.4em` on `.shelf-name`), so the US, UK and EU rows start at the same height in every box, on a desktop and a phone (checked in headless Chromium: every row at the same top).
