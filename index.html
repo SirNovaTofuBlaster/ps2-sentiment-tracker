@@ -2122,6 +2122,14 @@
             return `<h3 class="mt-4">Editions of this game</h3><p class="text-[11px] text-slate-400">Limited and collector's editions, priced on their own: only listings that name the edition count, so a plain copy never moves these numbers. Asking prices, not sales.</p><ul class="edition-list">${items}</ul>`;
         }
 
+        // A PriceCharting search for a Rarest game, for the region of the list (PAL or US), so a game
+        // with no eBay figure can still be checked by hand.
+        function rarePriceChartingHtml(title, region) {
+            const link = priceLookupUrls(title).find(l => l.id === (region === 'PAL' ? 'pc-pal' : 'pc-ntsc'));
+            if (!link) return '';
+            return `<p class="rare-pc"><a class="text-cyan-400" href="${safeUrl(link.url)}" target="_blank" rel="noopener noreferrer" title="${esc(link.hint)}">PriceCharting</a> ${esc(region === 'PAL' ? 'PAL' : 'US')} prices</p>`;
+        }
+
         function renderRare(data = rareData, now = Date.now(), locale) {
             const region = rareRegion;
             for (const name of RARE_VIEWS) {
@@ -2192,6 +2200,7 @@
                     <div class="ebay-figures">${unpriced
                         ? `<span class="ebay-site is-quiet"><span class="ebay-flag">${esc(label)}</span><span class="ebay-note" title="Not looked up on eBay: its search words would also count other games' listings (a name that is an everyday word) or cannot be used. The eBay price job's log names the reason.">not priced</span></span>`
                         : priceSiteHtml(label, site, currency, now, locale, LEVELS[prices?.level || 'rare'].stale)}</div>
+                    ${rarePriceChartingHtml(entry.title, region)}
                     ${referenceHtml(entry.title, region, locale)}
                     <p class="rare-note">${typeof entry.note === 'string' && entry.note ? `${esc(entry.note)} ` : ''}${sources.length
                         ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>`, entry.other_title)}
