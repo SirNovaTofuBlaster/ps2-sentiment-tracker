@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-15 08:24:28 UTC",
+  "last_updated": "2026-10-15 08:27:11 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -1480,6 +1480,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 05:27 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Spy vs. Spy",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12878740",
+      "matched_game": "Spy vs. Spy",
+      "matched_games": [
+        "Spy vs. Spy"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 05:27 UTC"
     },
@@ -7058,14 +7077,15 @@
       "timestamp": "2026-10-14 22:54 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4",
+      "headline": "Thread on /vg/ naming Persona 4 and Persona 3",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584491764",
       "matched_game": "Persona 4",
       "matched_games": [
-        "Persona 4"
+        "Persona 4",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -236369,23 +236389,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-01 08:28 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sega Is Resurrecting 'House Of The Dead' In Arcades Using VR",
-      "source": "Time Extension",
-      "source_type": "news",
-      "feed": "https://www.timeextension.com/feed",
-      "link": "https://www.timeextension.com/news/2026/10/sega-is-resurrecting-house-of-the-dead-in-arcades-using-vr",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 08:25 UTC",
       "is_digital_only": false
     }
   ]
