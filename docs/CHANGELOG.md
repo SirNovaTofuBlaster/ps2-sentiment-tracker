@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: steady figures are marked on every run
+
+- 195 US and UK figures (121 US, 74 UK, normal and staple games) looked overdue on the page, 32 hours old against an 8-hour limit. None was late: all 195 are games on the 48-hour *steady* clock, which `due_lookups()` leaves alone. The page could not tell, because `steady: true` was written only when a figure was looked up, and these were written before the rule began (2026-10-14) and not looked up since. `update_records()` now brings the mark up to date on every run for a figure it did not look up this run (adds it when the game is steady on that site, drops it when it no longer is). Checked against the live files: every overdue-looking figure is a steady one. The hourly job's 500-search cap was not the cause (the lookups left over each run are the daily euro sites, after US and UK).
+
 ## 2026-10-15: shelf prices line up
 
 - On the Tracker's shelf a one-line game name left its price rows higher than a neighbour's two-line name. The name now always reserves two lines (`min-height: 2.4em` on `.shelf-name`), so the US, UK and EU rows start at the same height in every box, on a desktop and a phone (checked in headless Chromium: every row at the same top).

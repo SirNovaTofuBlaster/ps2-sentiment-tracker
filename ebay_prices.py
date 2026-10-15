@@ -1652,7 +1652,14 @@ def update_records(state, games, run, now, rare_titles=None, edition_titles=None
             new = checked.get((game["key"], label))
             if new is None:
                 if old:
-                    entry[label] = old          # not checked this run (or it failed): keep what we had
+                    # Not checked this run (or it failed): keep what we had, with its "steady" mark brought up to date. A figure
+                    # written before a game turned steady has no mark, and until it is looked up again (48 hours) the dashboard
+                    # would call it overdue after 8 hours.
+                    if label in game.get("steady_on", ()) and "copies" in old and old.get("steady") is not True:
+                        old = {**old, "steady": True}
+                    elif old.get("steady") and label not in game.get("steady_on", ()):
+                        old = {key: value for key, value in old.items() if key != "steady"}
+                    entry[label] = old
                 continue
             if "copies" in new:                 # a real answer; "unmatched" has no figures to record
                 figures = (new["copies"], new["lowest"], new["median"])

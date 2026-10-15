@@ -1042,6 +1042,20 @@ class SteadyTests(unittest.TestCase):
         self.assertIs(row["US"].get("steady"), True)
         self.assertNotIn("steady", row["UK"])
 
+    def test_a_figure_not_looked_up_this_run_gets_its_steady_mark_brought_up_to_date(self):
+        entry = game("Grand Theft Auto San Andreas")
+        history = self.rows(entry, "US", 5)
+        stamp = (NOON - timedelta(hours=30)).strftime(ebay_prices.STAMP_FORMAT)
+        old = {"checked": stamp, "copies": 100, "lowest": 8.0, "median": 10.0, "recorded": "2026-10-13"}
+        state = {"games": {entry["title"]: {"US": dict(old), "UK": {**old, "steady": True}}}}
+        self.assertEqual(len(ebay_prices.due_lookups([entry], state, NOON, history)), 1, "only the UK (no history) is due")
+        self.assertEqual(entry["steady_on"], ["US"])
+        run = {"results": [], "searches": 0}
+        latest, _ = ebay_prices.update_records(state, [entry], run, NOON)
+        row = latest["games"][entry["title"]]
+        self.assertIs(row["US"].get("steady"), True, "a steady game's older figure is marked too")
+        self.assertNotIn("steady", row["UK"], "a mark on a game that is no longer steady is dropped")
+
     def test_without_history_it_stays_on_six_hours(self):
         entry = game("Grand Theft Auto San Andreas")
         self.assertEqual(self.due(entry, 7, []), 2)
