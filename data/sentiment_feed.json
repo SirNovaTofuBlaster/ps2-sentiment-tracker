@@ -1,7 +1,46 @@
 {
-  "last_updated": "2026-10-15 11:31:41 UTC",
+  "last_updated": "2026-10-15 11:45:41 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749730182",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 11:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dark Cloud",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749730173",
+      "matched_game": "Dark Cloud",
+      "matched_games": [
+        "Dark Cloud"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 11:33 UTC"
+    },
     {
       "headline": "Disco Elysium splinter studio's Red Rooster is going to be a 'an incendiary, physics-driven RPG' where you play an inmate, an opiate-fuelled mathematician, and a bus driver with nunchucks",
       "source": "PCGamer latest",
@@ -1155,15 +1194,14 @@
       "timestamp": "2026-10-15 10:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War II, Persona 4, Resident Evil 4 and 17 more",
+      "headline": "Thread on /v/ naming Deus Ex, Resident Evil 4, Kingdom Hearts II and 18 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749727312",
-      "matched_game": "God of War II",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "God of War II",
-        "Persona 4",
+        "Deus Ex",
         "Resident Evil 4",
         "Kingdom Hearts II",
         "Silent Hill 2",
@@ -1181,10 +1219,12 @@
         "Dark Cloud",
         "Midnight Club 3: DUB Edition Remix",
         "Harry Potter and The Chamber of Secrets",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Metal Gear Solid 2: Sons of Liberty",
+        "God of War II",
+        "Persona 4"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6271,13 +6311,14 @@
       "timestamp": "2026-10-15 02:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life",
+      "headline": "Thread on /v/ naming 007: NightFire and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749712641",
-      "matched_game": "Half-Life",
+      "matched_game": "007: NightFire",
       "matched_games": [
+        "007: NightFire",
         "Half-Life"
       ],
       "match_score": 100,
@@ -238076,88 +238117,6 @@
       "hype": 0,
       "timestamp": "2026-10-01 11:47 UTC",
       "views": 1089
-    },
-    {
-      "headline": "Report: Gears Of War: E-Day Developers Fear For Their Jobs And Bonuses",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/gears-of-war-e-day-the-coalition-microsoft-xbox-job-losses-2000738913",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 11:44 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Best Bodyguard setup and leveling guide in Dynasty Warriors 3: Complete Edition Remastered",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/best-bodyguard-setup-and-leveling-guide-in-dynasty-warriors-3-complete-edition-remastered/",
-      "matched_game": "Dynasty Warriors 3",
-      "match_score": 90,
-      "is_remaster_rumor": true,
-      "sentiment": 70,
-      "timestamp": "2026-10-01 11:40 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Fortnite Shop - NEW - FIVE NIGHTS AT FREDDY'S BUNDLE! (Oct. 10, 2026) Fortnite Fortnitemares 2026",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/watch?v=JlY3jzNDhbA",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 11:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Castlevania: Belmont’s Curse supports 60 FPS on Nintendo Switch 2",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/castlevania-belmonts-curse-supports-60-fps-on-nintendo-switch-2/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 11:37 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Las skins de FNAF ya están en Fortnite: este es el precio del lote y de cada personaje por separado",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026274022/las-skins-de-fnaf-ya-estan-en-fortnite-este-es-el-precio-del-lote-y-de-cada-personaje-por-separado/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 11:33 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Equipa de Gears of War: E-Day teme despedimentos e perda de bónus do Metacritic",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/equipa-de-gears-of-war-e-day-teme-despedimentos-e-perda-de-bonus-do-metacritic",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 11:32 UTC",
-      "is_digital_only": false
     }
   ]
 }
