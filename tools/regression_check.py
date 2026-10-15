@@ -89,6 +89,8 @@ def download(urls, cache, user_agent, offline):
             (cache / name).write_bytes(response.content)
             index[url] = {"status": response.status_code, "file": name}
             index_path.write_text(json.dumps(index, indent=1), encoding="utf-8")
+            if "reddit.com" in url:
+                notice("Reddit answer", f"HTTP {response.status_code}, {len(response.content)} bytes, {url.split('/r/')[-1][:60]}")
             print(f"  saved {response.status_code} {len(response.content):>8} bytes  {url[:100]}")
     return index
 
@@ -192,4 +194,12 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except SystemExit as stopped:
+        if stopped.code not in (0, None, 1):  # a message: say it where the run's notices can be read
+            notice("stopped", str(stopped.code)[:300])
+        raise
+    except Exception as problem:
+        notice("crashed", f"{type(problem).__name__}: {str(problem)[:200]}")
+        raise
