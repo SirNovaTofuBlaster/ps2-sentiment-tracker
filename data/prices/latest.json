@@ -10,7 +10,7 @@
  },
  "searches": {
   "day": "2026-10-15",
-  "used": 236
+  "used": 280
  },
  "games": {
   ".hack//G.U. Vol. 1 Rebirth Premium Edition": {
@@ -286,20 +286,20 @@
    "mentions": 3,
    "surging_until": "2026-10-15T11:55Z",
    "US": {
-    "checked": "2026-10-15T00:46Z",
-    "copies": 16,
+    "checked": "2026-10-15T01:59Z",
+    "copies": 15,
     "lowest": 49.95,
-    "median": 69.4,
-    "postage": 6.67,
-    "listed": 22,
+    "median": 69.8,
+    "postage": 7.0,
+    "listed": 21,
     "complete": {
-     "copies": 15,
-     "median": 69.8
+     "copies": 14,
+     "median": 70.9
     },
     "recorded": "2026-10-15"
    },
    "UK": {
-    "checked": "2026-10-15T00:46Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 4,
     "lowest": 19.36,
     "median": 31.74,
@@ -3351,22 +3351,135 @@
    }
   },
   "Castlevania: Curse of Darkness": {
-   "level": "rare",
+   "level": "normal",
    "mentions": 0,
-   "sites": [
-    "UK"
-   ],
-   "UK": {
-    "checked": "2026-10-14T13:06Z",
-    "copies": 18,
-    "lowest": 59.98,
-    "median": 130.35,
-    "postage": 3.0,
+   "US": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 21,
+    "lowest": 64.0,
+    "median": 99.99,
+    "postage": 6.07,
+    "listed": 29,
     "complete": {
-     "copies": 16,
-     "median": 133.3
+     "copies": 18,
+     "median": 99.99
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
+   },
+   "UK": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 17,
+    "lowest": 80.78,
+    "median": 130.7,
+    "postage": 3.0,
+    "listed": 19,
+    "complete": {
+     "copies": 15,
+     "median": 135.9
+    },
+    "recorded": "2026-10-15"
+   },
+   "DE": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 16,
+    "lowest": 25.0,
+    "median": 57.45,
+    "postage": 0.0,
+    "listed": 17,
+    "complete": {
+     "copies": 15,
+     "median": 59.9
+    },
+    "recorded": "2026-10-15"
+   },
+   "FR": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 5,
+    "lowest": 56.95,
+    "median": 94.2,
+    "postage": 4.85,
+    "listed": 8,
+    "recorded": "2026-10-15"
+   },
+   "IT": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 9,
+    "lowest": 73.5,
+    "median": 89.1,
+    "postage": 9.4,
+    "listed": 10,
+    "recorded": "2026-10-15"
+   },
+   "ES": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 5,
+    "lowest": 93.5,
+    "median": 140.0,
+    "postage": 5.99,
+    "listed": 5,
+    "recorded": "2026-10-15"
+   }
+  },
+  "Castlevania: Lament of Innocence": {
+   "level": "normal",
+   "mentions": 0,
+   "US": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 124,
+    "lowest": 12.95,
+    "median": 40.0,
+    "postage": 6.26,
+    "listed": 136,
+    "complete": {
+     "copies": 91,
+     "median": 44.99
+    },
+    "recorded": "2026-10-15"
+   },
+   "UK": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 3,
+    "lowest": 47.5,
+    "median": 72.45,
+    "postage": 3.13,
+    "listed": 5,
+    "recorded": "2026-10-15"
+   },
+   "DE": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 3,
+    "lowest": 49.99,
+    "median": 75.99,
+    "postage": 0.0,
+    "listed": 6,
+    "recorded": "2026-10-15"
+   },
+   "FR": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 4,
+    "lowest": 30.86,
+    "median": 62.65,
+    "postage": 5.0,
+    "listed": 12,
+    "recorded": "2026-10-15"
+   },
+   "IT": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 1,
+    "lowest": 42.3,
+    "median": 42.3,
+    "postage": 8.0,
+    "listed": 6,
+    "recorded": "2026-10-15"
+   },
+   "ES": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "listed": 0,
+    "recorded": "2026-10-15"
    }
   },
   "Champions of Norrath": {
@@ -6131,7 +6244,7 @@
   },
   "Dynasty Warriors 3": {
    "level": "staple",
-   "mentions": 19,
+   "mentions": 18,
    "US": {
     "checked": "2026-10-14T05:21Z",
     "copies": 119,
@@ -6570,6 +6683,77 @@
     "median": null,
     "postage": null,
     "recorded": "2026-10-14"
+   }
+  },
+  "Fantastic 4": {
+   "level": "normal",
+   "mentions": 0,
+   "US": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 176,
+    "lowest": 3.99,
+    "median": 9.99,
+    "postage": 5.86,
+    "listed": 326,
+    "truncated": true,
+    "complete": {
+     "copies": 152,
+     "median": 9.99
+    },
+    "recorded": "2026-10-15"
+   },
+   "UK": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 113,
+    "lowest": 1.79,
+    "median": 4.99,
+    "postage": 2.5,
+    "listed": 139,
+    "complete": {
+     "copies": 104,
+     "median": 4.99
+    },
+    "recorded": "2026-10-15"
+   },
+   "DE": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 8,
+    "lowest": 3.98,
+    "median": 7.61,
+    "postage": 0.9,
+    "listed": 24,
+    "complete": {
+     "copies": 6,
+     "median": 7.61
+    },
+    "recorded": "2026-10-15"
+   },
+   "FR": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 1,
+    "lowest": 9.4,
+    "median": 9.4,
+    "postage": 0.0,
+    "listed": 2,
+    "recorded": "2026-10-15"
+   },
+   "IT": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 3,
+    "lowest": 13.95,
+    "median": 14.0,
+    "postage": 0.0,
+    "listed": 5,
+    "recorded": "2026-10-15"
+   },
+   "ES": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 1,
+    "lowest": 6.9,
+    "median": 6.9,
+    "postage": 4.9,
+    "listed": 2,
+    "recorded": "2026-10-15"
    }
   },
   "Fatal Frame": {
@@ -8760,15 +8944,15 @@
    "mentions": 4,
    "surging_until": "2026-10-16T17:30Z",
    "US": {
-    "checked": "2026-10-15T00:46Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 164,
     "lowest": 4.0,
-    "median": 12.24,
+    "median": 12.0,
     "postage": 5.99,
     "listed": 1383,
     "truncated": true,
     "complete": {
-     "copies": 140,
+     "copies": 141,
      "median": 12.99
     },
     "recorded": "2026-10-15",
@@ -8778,15 +8962,15 @@
     }
    },
    "UK": {
-    "checked": "2026-10-15T00:46Z",
-    "copies": 150,
+    "checked": "2026-10-15T01:59Z",
+    "copies": 149,
     "lowest": 4.0,
-    "median": 7.99,
+    "median": 7.95,
     "postage": 2.7,
-    "listed": 320,
+    "listed": 319,
     "truncated": true,
     "complete": {
-     "copies": 141,
+     "copies": 139,
      "median": 7.99
     },
     "recorded": "2026-10-15",
@@ -9784,26 +9968,26 @@
    "mentions": 0,
    "pinned": true,
    "US": {
-    "checked": "2026-10-14T20:09Z",
-    "copies": 25,
+    "checked": "2026-10-15T01:59Z",
+    "copies": 26,
     "lowest": 15.99,
-    "median": 32.0,
-    "postage": 5.99,
-    "listed": 138,
+    "median": 31.0,
+    "postage": 6.03,
+    "listed": 140,
     "complete": {
-     "copies": 21,
-     "median": 35.0
+     "copies": 22,
+     "median": 33.5
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "UK": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 1,
     "lowest": 31.9,
     "median": 31.9,
     "postage": 3.38,
     "listed": 9,
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "DE": {
     "checked": "2026-10-14T20:09Z",
@@ -9847,27 +10031,27 @@
    "mentions": 0,
    "pinned": true,
    "US": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 22,
     "lowest": 7.5,
     "median": 20.45,
     "postage": 6.03,
-    "listed": 229,
+    "listed": 231,
     "truncated": true,
     "complete": {
      "copies": 10,
      "median": 29.47
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "UK": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 1,
     "lowest": 29.82,
     "median": 29.82,
     "postage": 3.38,
     "listed": 13,
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "DE": {
     "checked": "2026-10-14T20:09Z",
@@ -9906,26 +10090,26 @@
    "mentions": 0,
    "pinned": true,
    "US": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 24,
     "lowest": 17.49,
     "median": 35.0,
     "postage": 5.7,
-    "listed": 80,
+    "listed": 81,
     "complete": {
      "copies": 19,
      "median": 45.0
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "UK": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 0,
     "lowest": null,
     "median": null,
     "postage": null,
     "listed": 8,
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "DE": {
     "checked": "2026-10-14T20:09Z",
@@ -9964,31 +10148,31 @@
    "mentions": 0,
    "pinned": true,
    "US": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 138,
     "lowest": 7.5,
-    "median": 29.97,
+    "median": 29.99,
     "postage": 5.99,
-    "listed": 249,
+    "listed": 247,
     "truncated": true,
     "complete": {
      "copies": 100,
-     "median": 32.73
+     "median": 32.97
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "UK": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 20,
     "lowest": 19.99,
     "median": 40.0,
     "postage": 2.7,
-    "listed": 43,
+    "listed": 44,
     "complete": {
      "copies": 18,
      "median": 40.08
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "DE": {
     "checked": "2026-10-14T20:09Z",
@@ -10032,26 +10216,26 @@
    "mentions": 0,
    "pinned": true,
    "US": {
-    "checked": "2026-10-14T20:09Z",
-    "copies": 56,
+    "checked": "2026-10-15T01:59Z",
+    "copies": 55,
     "lowest": 11.99,
     "median": 59.99,
-    "postage": 6.0,
-    "listed": 98,
+    "postage": 5.99,
+    "listed": 97,
     "complete": {
      "copies": 44,
      "median": 68.75
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "UK": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 2,
     "lowest": 42.3,
     "median": 96.65,
     "postage": 1.69,
     "listed": 15,
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "DE": {
     "checked": "2026-10-14T20:09Z",
@@ -10095,26 +10279,26 @@
    "mentions": 0,
    "pinned": true,
    "US": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 28,
     "lowest": 29.5,
     "median": 89.92,
-    "postage": 6.03,
+    "postage": 5.99,
     "listed": 58,
     "complete": {
      "copies": 22,
      "median": 92.48
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "UK": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 5,
     "lowest": 80.0,
     "median": 125.5,
     "postage": 0.0,
     "listed": 14,
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "DE": {
     "checked": "2026-10-14T20:09Z",
@@ -10158,26 +10342,26 @@
    "mentions": 0,
    "pinned": true,
    "US": {
-    "checked": "2026-10-14T20:09Z",
-    "copies": 22,
+    "checked": "2026-10-15T01:59Z",
+    "copies": 23,
     "lowest": 299.99,
-    "median": 402.5,
+    "median": 404.99,
     "postage": 5.99,
-    "listed": 41,
+    "listed": 42,
     "complete": {
-     "copies": 21,
-     "median": 404.99
+     "copies": 22,
+     "median": 407.24
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "UK": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 5,
     "lowest": 110.0,
     "median": 170.0,
     "postage": 0.0,
     "listed": 5,
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "DE": {
     "checked": "2026-10-14T20:09Z",
@@ -13216,6 +13400,76 @@
     "recorded": "2026-10-14"
    }
   },
+  "Looney Tunes: Back in Action": {
+   "level": "normal",
+   "mentions": 1,
+   "US": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 105,
+    "lowest": 4.65,
+    "median": 14.29,
+    "postage": 5.99,
+    "listed": 111,
+    "complete": {
+     "copies": 86,
+     "median": 14.99
+    },
+    "recorded": "2026-10-15"
+   },
+   "UK": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 21,
+    "lowest": 4.99,
+    "median": 8.45,
+    "postage": 0.0,
+    "listed": 35,
+    "complete": {
+     "copies": 20,
+     "median": 8.72
+    },
+    "recorded": "2026-10-15"
+   },
+   "DE": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 5,
+    "lowest": 16.0,
+    "median": 19.99,
+    "postage": 1.8,
+    "listed": 6,
+    "recorded": "2026-10-15"
+   },
+   "FR": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 1,
+    "lowest": 12.99,
+    "median": 12.99,
+    "postage": 3.5,
+    "listed": 1,
+    "recorded": "2026-10-15"
+   },
+   "IT": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 6,
+    "lowest": 15.9,
+    "median": 19.0,
+    "postage": 5.93,
+    "listed": 8,
+    "complete": {
+     "copies": 5,
+     "median": 20.0
+    },
+    "recorded": "2026-10-15"
+   },
+   "ES": {
+    "checked": "2026-10-15T01:59Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "listed": 0,
+    "recorded": "2026-10-15"
+   }
+  },
   "Madden NFL 2003": {
    "level": "normal",
    "mentions": 0,
@@ -14733,16 +14987,16 @@
    "level": "normal",
    "mentions": 2,
    "US": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 0,
     "lowest": null,
     "median": null,
     "postage": null,
     "listed": 2,
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "UK": {
-    "checked": "2026-10-14T20:09Z",
+    "checked": "2026-10-15T01:59Z",
     "copies": 7,
     "lowest": 9.72,
     "median": 38.88,
@@ -14752,7 +15006,7 @@
      "copies": 5,
      "median": 44.99
     },
-    "recorded": "2026-10-14"
+    "recorded": "2026-10-15"
    },
    "DE": {
     "checked": "2026-10-14T10:50Z",
@@ -15082,8 +15336,11 @@
    }
   },
   "Mister Mosquito": {
-   "level": "normal",
+   "level": "rare",
    "mentions": 0,
+   "sites": [
+    "US"
+   ],
    "US": {
     "checked": "2026-10-14T23:27Z",
     "copies": 33,
@@ -15316,7 +15573,7 @@
   },
   "Monster Hunter": {
    "level": "staple",
-   "mentions": 28,
+   "mentions": 29,
    "US": {
     "checked": "2026-10-14T22:18Z",
     "copies": 13,
@@ -21537,7 +21794,7 @@
   },
   "Silent Hill 3": {
    "level": "normal",
-   "mentions": 2,
+   "mentions": 1,
    "pinned": true,
    "US": {
     "checked": "2026-10-14T22:18Z",
