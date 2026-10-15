@@ -428,7 +428,7 @@
           <div id="gachaMachine" class="gacha-machine" aria-hidden="true"></div>
           <div class="gacha-side">
             <p id="gachaCoins" class="gacha-coins" role="status"></p>
-            <button type="button" id="gachaTurn" onclick="gachaTurn()" class="brand-btn brand-btn-primary gacha-turn"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> TURN THE HANDLE</button>
+            <button type="button" id="gachaTurn" onclick="gachaTurn()" class="brand-btn brand-btn-primary gacha-turn"><i class="fa-solid fa-coins" aria-hidden="true"></i> INSERT COIN</button>
             <div id="gachaOdds" class="gacha-odds"></div>
           </div>
         </div>
@@ -447,7 +447,7 @@
       <div id="prizesSection" class="hidden bg-ps2card border border-ps2border rounded-md p-6">
         <div class="lb-section-header"><h2>My Gacha Prizes</h2></div>
         <p id="prizesSummary" class="text-xs text-slate-400 mb-4"></p>
-        <ul id="prizesList" class="coll-grid mt-4"></ul>
+        <ul id="prizesList" class="coll-grid prize-grid mt-4"></ul>
         <div class="flex flex-wrap gap-2 mt-6">
           <button type="button" onclick="gachaGoTo()" class="brand-btn text-ps2neon"><i class="fa-solid fa-dice" aria-hidden="true"></i> Go to the machines</button>
           <button type="button" id="prizesClear" onclick="clearPrizes()" class="brand-btn text-spindle-red">Clear prizes</button>
@@ -3090,11 +3090,18 @@
             gachaMachineId = id;
             gachaShown = null;
             gachaMessage = '';
+            document.getElementById('gachaMachine').classList.remove('on', 'out', 'pop', 'closing', 'shake');
             renderGacha();
         }
 
-        // Turn the handle: the capsule is decided and saved at once; the picture waits for the machine to finish turning.
-        function gachaTurn() {
+        const gachaWait = (ms) => new Promise(done => setTimeout(done, ms));
+        function gachaReducedMotion() {
+            try { return Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches); } catch { return false; }
+        }
+
+        // Insert a coin: the capsule is decided and saved at once; then the console powers on, its tray slides out with the
+        // game's disc, and the prize is shown. The tray stays out until the next coin, when it closes first.
+        async function gachaTurn() {
             if (gachaTurning || gachaFileState !== 'ready') return;
             const pull = gachaPull(gachaMachineId);
             if (!pull) {
@@ -3106,13 +3113,38 @@
             gachaShown = null;
             gachaMessage = '';
             renderGacha();
-            let reduced = false;
-            try { reduced = Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches); } catch { /* animate */ }
-            setTimeout(() => {
+            const box = document.getElementById('gachaMachine');
+            const wait = (ms) => gachaWait(gachaReducedMotion() ? 0 : ms);
+            try {
+                if (box.classList.contains('out')) {
+                    box.classList.add('closing');
+                    box.classList.remove('out', 'pop');
+                    await wait(750);
+                    box.classList.remove('closing');
+                }
+                box.classList.add('on', 'shake');
+                await wait(1000);
+                box.classList.remove('shake');
+                gachaPaintDisc(box, pull);
+                box.classList.add('out');
+                await wait(500);
+                box.classList.add('pop');
+                await wait(700);
+            } finally {
                 gachaTurning = false;
                 gachaShown = pull;
                 renderGacha();
-            }, reduced ? 0 : 1100);
+            }
+            await wait(2500);
+            if (!gachaTurning) box.classList.remove('on');
+        }
+
+        // The disc on the tray wears the prize's rarity colour and the game's initials.
+        function gachaPaintDisc(box, pull) {
+            for (const tier of Object.keys(GACHA_TIERS)) box.classList.remove(`tier-${tier}`);
+            box.classList.add(`tier-${pull.tier}`);
+            const text = document.getElementById('gxText');
+            if (text) text.textContent = initialsOf(pull.title).slice(0, 3);
         }
 
         function gachaPriceText(title, locale) {
@@ -3120,25 +3152,50 @@
             return amount === null ? 'no eBay price yet' : `${money(amount, currency, locale)} median`;
         }
 
-        // The machine: a dome with a capsule for each one left (their colours are only decoration), a body and a handle.
-        function gachaMachineSvg(count) {
-            let capsules = '';
-            for (let i = 0; i < count; i++) {
-                const angle = i * 2.39996;
-                const radius = 48 * Math.sqrt((i + 0.5) / 20);
-                const x = (100 + radius * Math.cos(angle)).toFixed(1);
-                const y = (78 + radius * Math.sin(angle) * 0.9).toFixed(1);
-                capsules += `<g transform="translate(${x} ${y})"><circle r="10" fill="${GACHA_CAPSULES[i % GACHA_CAPSULES.length]}"></circle>`
-                    + '<path d="M-10 0 A10 10 0 0 1 10 0 Z" fill="#fff" opacity=".35"></path><circle cx="-3.5" cy="-4" r="2" fill="#fff" opacity=".7"></circle></g>';
+        // The machine: a black console with the Spindle rings on it. One square on its left for each capsule left; its disc tray
+        // slides out with the prize. Drawn once per page: the animation lives in classes on #gachaMachine (see retro.css).
+        const GACHA_CONSOLE = '<svg viewBox="0 0 360 290" width="100%" role="img" aria-label="A console with a disc tray and one light for each capsule left">'
+            + '<defs>'
+            + '<linearGradient id="gxBody" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#26262e"></stop><stop offset=".08" stop-color="#1a1a20"></stop><stop offset="1" stop-color="#0e0e12"></stop></linearGradient>'
+            + '<linearGradient id="gxTray" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#3a3a44"></stop><stop offset="1" stop-color="#1c1c22"></stop></linearGradient>'
+            + '<radialGradient id="gxGlow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#4FA8E8" stop-opacity=".55"></stop><stop offset="1" stop-color="#4FA8E8" stop-opacity="0"></stop></radialGradient>'
+            + '<radialGradient id="gxDisc" cx=".5" cy=".5" r=".5"><stop offset=".18" stop-color="#0a0a0c"></stop><stop offset=".2" stop-color="#cfd6e4"></stop><stop offset=".55" stop-color="#8CC6F2"></stop><stop offset=".8" stop-color="#b9a7e8"></stop><stop offset="1" stop-color="#e9eef7"></stop></radialGradient>'
+            + '<clipPath id="gxBelow"><rect x="0" y="104" width="360" height="190"></rect></clipPath>'
+            + '<clipPath id="gxDiscClip"><ellipse cx="0" cy="0" rx="50" ry="17"></ellipse></clipPath>'
+            + '</defs>'
+            + '<ellipse cx="180" cy="270" rx="150" ry="9" fill="#000" opacity=".5"></ellipse>'
+            + '<ellipse class="gx-aura" cx="180" cy="120" rx="200" ry="90" fill="url(#gxGlow)"></ellipse>'
+            + '<g class="gx-cons">'
+            + '<rect x="38" y="238" width="30" height="10" rx="3" fill="#0b0b0e" stroke="#27272E"></rect><rect x="292" y="238" width="30" height="10" rx="3" fill="#0b0b0e" stroke="#27272E"></rect>'
+            + '<rect x="20" y="34" width="320" height="206" rx="14" fill="url(#gxBody)" stroke="#2f2f38" stroke-width="2"></rect>'
+            + '<g fill="#050507"><rect x="206" y="48" width="100" height="3" rx="1.5"></rect><rect x="206" y="56" width="100" height="3" rx="1.5"></rect><rect x="206" y="64" width="100" height="3" rx="1.5"></rect></g>'
+            + '<g transform="translate(58 62)" fill="none"><circle r="17" stroke="#E5303A" stroke-width="2"></circle><circle r="11" stroke="#F5C52E" stroke-width="1.5"></circle><circle r="5" stroke="#2F9BE0" stroke-width="2"></circle><path d="M0 -17 A17 17 0 0 1 17 0" stroke="#2DBFA6" stroke-width="2" stroke-linecap="round"></path></g>'
+            + '<text x="86" y="66" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" letter-spacing="3" fill="#8E96A8">SPINDLE</text>'
+            + '<circle cx="48" cy="118" r="9" fill="#0a0a0d" stroke="#2f2f38" stroke-width="2"></circle><circle class="gx-led" cx="48" cy="118" r="4"></circle>'
+            + '<rect x="68" y="112" width="26" height="12" rx="6" fill="#0a0a0d" stroke="#2f2f38"></rect>'
+            + '<g id="gxPips"></g><text x="42" y="150" font-family="JetBrains Mono,monospace" font-size="7" fill="#8E96A8" letter-spacing="1">CAPSULES</text>'
+            + '<rect x="104" y="96" width="232" height="38" rx="8" fill="#050507" stroke="#2f2f38" stroke-width="2"></rect><rect x="112" y="106" width="216" height="3" rx="1.5" fill="#15151a"></rect>'
+            + '<g fill="#050507" stroke="#2f2f38"><rect x="268" y="186" width="24" height="9" rx="2"></rect><rect x="298" y="186" width="24" height="9" rx="2"></rect><rect x="268" y="204" width="54" height="8" rx="2"></rect></g>'
+            + '</g>'
+            + '<g clip-path="url(#gxBelow)"><g class="gx-tray">'
+            + '<path d="M118 120 H322 L338 176 H102 Z" fill="url(#gxTray)" stroke="#3b3b46" stroke-width="2" stroke-linejoin="round"></path>'
+            + '<g transform="translate(220 148)"><ellipse rx="64" ry="20" fill="#0b0b0e" stroke="#2f2f38"></ellipse>'
+            + '<ellipse rx="50" ry="17" fill="url(#gxDisc)"></ellipse>'
+            + '<g clip-path="url(#gxDiscClip)"><g class="gx-sweep"><g transform="scale(1 .34)"><path d="M0 0 L60 -14 L60 14Z" fill="#fff" opacity=".35"></path><path d="M0 0 L-60 14 L-60 -14Z" fill="#fff" opacity=".22"></path></g></g></g>'
+            + '<ellipse class="gx-label" rx="26" ry="8.7"></ellipse><ellipse rx="26" ry="8.7" fill="none" stroke="#000" opacity=".35"></ellipse>'
+            + '<ellipse rx="4" ry="1.4" fill="#0a0a0c" transform="translate(-20 0)"></ellipse>'
+            + '<text id="gxText" x="3" y="3.4" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" font-weight="800" fill="#0A0A0C"></text></g>'
+            + '</g></g>'
+            + '<g class="gx-burst" transform="translate(220 140)" fill="none"><ellipse class="gx-ring" rx="40" ry="14" stroke-width="3"></ellipse><ellipse class="gx-ring gx-ring2" rx="40" ry="14" stroke-width="2"></ellipse></g>'
+            + '</svg>';
+
+        // One square for each capsule left in the machine.
+        function gachaPips(left) {
+            let squares = '';
+            for (let i = 0; i < 20; i++) {
+                squares += `<rect class="gx-pip${i < left ? ' is-lit' : ''}" x="${42 + (i % 5) * 11}" y="${158 + Math.floor(i / 5) * 12}" width="8" height="8" rx="2"></rect>`;
             }
-            return '<svg viewBox="0 0 200 250" width="100%" role="img" aria-label="">'
-                + '<g class="gacha-dome"><circle cx="100" cy="78" r="64" style="fill:var(--inset);stroke:var(--line)" stroke-width="3"></circle>' + capsules
-                + '<path d="M52 40 A64 64 0 0 1 100 14" fill="none" stroke="#fff" stroke-width="4" opacity=".25" stroke-linecap="round"></path></g>'
-                + '<rect x="38" y="140" width="124" height="92" rx="10" style="fill:var(--card);stroke:var(--line)" stroke-width="3"></rect>'
-                + '<g class="gacha-knob"><circle cx="100" cy="176" r="22" style="fill:var(--bg);stroke:var(--accent)" stroke-width="3"></circle>'
-                + '<rect x="94" y="156" width="12" height="40" rx="3" style="fill:var(--accent)"></rect></g>'
-                + '<rect x="64" y="212" width="72" height="14" rx="4" style="fill:var(--bg);stroke:var(--line)" stroke-width="2"></rect>'
-                + '</svg>';
+            return squares;
         }
 
         function renderGacha(locale) {
@@ -3146,6 +3203,7 @@
             const machine = gachaMachineOf(gachaMachineId);
             if (!machine) {
                 summary.textContent = gachaFileState === 'failed' ? 'The machines could not be loaded just now. Press REFRESH to try again.' : 'Loading the machines…';
+                document.getElementById('gachaMachine').dataset.built = '';
                 for (const id of ['gachaMachines', 'gachaMachine', 'gachaCoins', 'gachaOdds', 'gachaResult', 'gachaContents', 'gachaNote']) document.getElementById(id).innerHTML = '';
                 document.getElementById('gachaTurn').disabled = true;
                 return;
@@ -3159,8 +3217,11 @@
             document.getElementById('gachaMachines').innerHTML = gachaData.machines.map(other => `<button type="button" role="tab" aria-selected="${other.id === machine.id}" onclick="gachaPick(${esc(JSON.stringify(other.id))})"
                 class="view-tab${other.id === machine.id ? ' is-active' : ''}"${gachaTurning ? ' disabled' : ''}>${esc(other.name)}</button>`).join('');
             const machineBox = document.getElementById('gachaMachine');
-            machineBox.innerHTML = gachaMachineSvg(Math.min(20, total));
-            machineBox.classList.toggle('is-turning', gachaTurning);
+            if (!machineBox.dataset.built) {
+                machineBox.innerHTML = GACHA_CONSOLE;
+                machineBox.dataset.built = '1';
+            }
+            document.getElementById('gxPips').innerHTML = gachaPips(Math.min(20, total));
             document.getElementById('gachaCoins').innerHTML = `<span class="gacha-coin-row" aria-hidden="true">${Array.from({ length: daily }, (_, i) =>
                 `<span class="gacha-coin${i < coins ? '' : ' is-spent'}"></span>`).join('')}</span> ${esc(coins)} of ${esc(daily)} coins left today`;
             const turn = document.getElementById('gachaTurn');
@@ -3170,10 +3231,14 @@
                 const of = machine.prizes.filter(prize => prize.tier === tier).reduce((sum, prize) => sum + prize.qty, 0);
                 return of ? `<li class="gacha-odd tier-${tier}"><span>${esc(info.label)}</span><span>${esc(left)} of ${esc(of)}</span><span>${total ? esc(Math.round(left * 1000 / total) / 10) : 0}%</span></li>` : '';
             }).join('');
-            document.getElementById('gachaOdds').innerHTML = `<p class="gacha-odds-head">${esc(total)} of ${esc(full)} capsules left · chance of each next</p><ul>${odds}</ul>`;
+            const bar = Object.entries(GACHA_TIERS).sort((a, b) => a[1].rank - b[1].rank).map(([tier]) => {
+                const left = machine.prizes.filter(prize => prize.tier === tier).reduce((sum, prize) => sum + stock[prize.title], 0);
+                return `<i class="tier-${tier}" style="width:${total ? Math.round(left * 1000 / total) / 10 : 0}%"></i>`;
+            }).join('');
+            document.getElementById('gachaOdds').innerHTML = `<p class="gacha-odds-head">${esc(total)} of ${esc(full)} capsules left · chance of each next</p><div class="gacha-bar" aria-hidden="true">${bar}</div><ul>${odds}</ul>`;
             let result = '';
             if (gachaTurning) {
-                result = '<p class="gacha-wait">The handle is turning…</p>';
+                result = '<p class="gacha-wait">Powering on…</p>';
             } else if (gachaShown && gachaShown.machine === machine.id) {
                 const cover = coversShown ? coverUrl(gachaShown.title, 'US') : '';
                 const info = GACHA_TIERS[gachaShown.tier];
@@ -3194,7 +3259,7 @@
             }
             document.getElementById('gachaResult').innerHTML = result;
             document.getElementById('gachaContents').innerHTML = [...machine.prizes].sort((a, b) => GACHA_TIERS[a.tier].rank - GACHA_TIERS[b.tier].rank).map(prize => `
-                <li class="gacha-row tier-${esc(prize.tier)}"><span class="gacha-tier tier-${esc(prize.tier)}">${esc(GACHA_TIERS[prize.tier].label)}</span>
+                <li class="gacha-row tier-${esc(prize.tier)}">${gachaThumbHtml(prize.title)}<span class="gacha-tier tier-${esc(prize.tier)}">${esc(GACHA_TIERS[prize.tier].label)}</span>
                     <a class="gacha-row-name" href="#game=${encodeURIComponent(prize.title)}" onclick="openGame(${esc(JSON.stringify(prize.title))}); return false;">${esc(prize.title)}</a>
                     <span class="gacha-row-left">${esc(stock[prize.title])} of ${esc(prize.qty)} left</span>
                     <span class="gacha-row-price">${esc(gachaPriceText(prize.title, locale))}</span></li>`).join('');
@@ -3202,6 +3267,13 @@
                 + 'This is a game: it costs nothing and nothing is won or sold. Coins, the machines and your prizes are kept only in this browser, so clearing its data starts again. '
                 + 'Prices are the median eBay US asking price today (asking prices, not what anything sold for). Cover pictures come from the Libretro thumbnail collection, like My collection.'
                 + (gachaKept ? '' : ' This browser would not store your progress, so it will be gone when you close the page.');
+        }
+
+        // A small box-art thumbnail for a game's row.
+        function gachaThumbHtml(title) {
+            const cover = coversShown ? coverUrl(title, 'US') : '';
+            return `<span class="coll-cover gacha-thumb" aria-hidden="true"><span class="coll-initials">${esc(initialsOf(title))}</span>${cover
+                ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}</span>`;
         }
 
         function gachaOpenPrizes() {

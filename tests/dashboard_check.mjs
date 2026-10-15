@@ -22,7 +22,7 @@ function stubElement(id = '') {
         id, value: '', checked: false, disabled: false, textContent: '', innerText: '',
         className: '', placeholder: '', href: '', dataset: {}, style: {}, children: [],
         classList: {
-            add: (c) => classes.add(c), remove: (c) => classes.delete(c), contains: (c) => classes.has(c),
+            add: (...names) => names.forEach(c => classes.add(c)), remove: (...names) => names.forEach(c => classes.delete(c)), contains: (c) => classes.has(c),
             toggle: (c, force) => ((force ?? !classes.has(c)) ? classes.add(c) : classes.delete(c)),
         },
         attributes: {},
@@ -2974,6 +2974,37 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
     assert.equal(el('viewGacha').classList.contains('hidden'), false);
     assert.equal(el('tabGacha').classList.contains('is-active'), true);
     assert.equal(run(`isView('gacha')`), true, '#gacha opens the page');
+    // The console: drawn once, one lit square per capsule left, and a coin plays the whole sequence (tray out, disc, prize).
+    run(`gachaSaved = cleanGachaSaved({}); gachaShown = null; gachaTurning = false; gachaMachineId = 'horror'; renderGacha('en-GB')`);
+    assert.match(el('gachaMachine').innerHTML, /id="gxPips"/);
+    assert.equal(el('gachaMachine').dataset.built, '1');
+    assert.equal((el('gxPips').innerHTML.match(/class="gx-pip is-lit"/g) || []).length, 20, 'a full machine lights twenty squares');
+    const svgBefore = el('gachaMachine').innerHTML;
+    context.window.matchMedia = () => ({ matches: true });   // no waiting in the test
+    context.localStorage = { getItem: (key) => (kept.has(key) ? kept.get(key) : null), setItem: (key, value) => { kept.set(key, String(value)); } };
+    await vm.runInContext(`gachaTurn()`, context);
+    assert.equal(el('gachaMachine').classList.contains('out'), true, 'the tray is out with the disc');
+    assert.equal(el('gachaMachine').classList.contains('pop'), true);
+    assert.equal(run(`gachaTurning`), false);
+    assert.equal(el('gachaMachine').innerHTML, svgBefore, 'the machine is not redrawn during a turn, so its animation is not cut');
+    assert.equal((el('gxPips').innerHTML.match(/class="gx-pip is-lit"/g) || []).length, 19, 'one square goes dark');
+    assert.match(el('gachaMachine').classList.contains('tier-common') || el('gachaMachine').classList.contains('tier-uncommon') || el('gachaMachine').classList.contains('tier-super_rare') ? 'tier' : '', /tier/, 'the disc wears the prize\'s rarity colour');
+    assert.match(el('gachaResult').innerHTML, /gacha-prize/);
+    // The next coin closes the tray first.
+    await vm.runInContext(`gachaTurn()`, context);
+    assert.equal((el('gxPips').innerHTML.match(/class="gx-pip is-lit"/g) || []).length, 18);
+    run(`gachaPick('rpg')`);
+    for (const state of ['on', 'out', 'pop']) assert.equal(el('gachaMachine').classList.contains(state), false, `switching machine puts the console to rest (${state})`);
+    assert.equal(run(`gachaSaved.coins`), 1, 'three coins, two spent');
+    run(`gachaSaved.coins = 0`);
+    await vm.runInContext(`gachaTurn()`, context);
+    assert.match(el('gachaResult').innerHTML, /No coins left today/);
+    const css = read('retro.css');
+    assert.match(css, /prefers-reduced-motion: reduce\) \{[^@]*gx-sweep/, 'the animation is switched off for those who ask');
+    assert.match(read('index.html'), /id="gxText"/);
+    // Small covers: a thumbnail in each row of the contents, small tiles for the prizes.
+    assert.equal((el('gachaContents').innerHTML.match(/class="coll-cover gacha-thumb"/g) || []).length, 7);
+    assert.match(css, /body \.prize-grid \{ grid-template-columns: repeat\(auto-fill, 5\.5rem\); \}/);
     // A browser that will not store anything still plays.
     context.localStorage = { getItem() { throw new Error('blocked'); }, setItem() { throw new Error('blocked'); } };
     run(`loadGachaState(); gachaSaved = cleanGachaSaved({}); gachaCoinsNow(new Date())`);

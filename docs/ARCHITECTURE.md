@@ -601,9 +601,11 @@ relative to the machine (survival horror has no cheap end) and were chosen from 
 be a library name (`data/ps2_database.json`, `search_extra_titles.json` or `editions.json`), so the page can open its game page and cover.
 A Node check pins the shape (20 capsules, 5/1/1, no game in two machines, every title in the library).
 
+The machine is an original black console drawn in SVG (`GACHA_CONSOLE`, drawn once per page; no manufacturer's logo, the Spindle rings are on it). The animation lives in classes on `#gachaMachine` (`on`, `shake`, `out`, `pop`, `closing`; rarity as `tier-*`, which colours the disc label and the burst ring), set in sequence by `gachaTurn()`: power on, tray out, disc, prize; the tray stays out until the next coin. `gachaPips()` lights one square per capsule left. The SVG is never redrawn during a turn, or the CSS transitions would be cut. Covers are small: 30px rows, a 62px prize card, 88px prize tiles.
+
 A turn (`gachaPull()`) takes one capsule uniformly at random from those still in the machine, so the odds shown are the real ones and move as it empties; when
 the last one is out the machine is full again. It costs a coin: `daily_coins` (3) a day, reset at the visitor's local midnight. The result is decided and saved
-before the 1.1 s animation plays (nothing is lost by closing the page), and the animation is switched off under `prefers-reduced-motion`.
+before the animation (about 3 s) plays (nothing is lost by closing the page), and the animation is switched off under `prefers-reduced-motion`.
 
 State is the visitor's alone, in `localStorage` key `ps2-sentiment-tracker.gacha` (`day`, `coins`, `left` per machine, `prizes`, newest 500): no server, no request,
 no login. `cleanGachaSaved()` clamps whatever is read, so a hand-edited value cannot add capsules or games. If storage is blocked the game still works until the page closes.
