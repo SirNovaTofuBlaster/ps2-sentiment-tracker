@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: the new-copies search also covers tracked Rarest games
+
+- Kuon on eBay UK still showed no new figure after the new-copies search shipped. The search check showed why it should have: all 3 UK listings are condition New (id 1000) and name the game. The cause was in `add_rare_games()`: the second look was only switched on for Rarest games looked up on their own, and Kuon is also a game the feed tracks, so its used lookup was reused and the second look skipped. It is now switched on for every Rarest entry, on its list's site only. Costs one extra search per tracked Rarest game per check on that site. The *check_game* notice also prints, for the new-only and any-condition searches, the condition ids that came back and how many name the game (counts and eBay's own ids only).
+
 ## 2026-10-15: the Gacha console
 
 - The Gacha machine is now an animated console (button **Insert coin**): it powers on, the disc tray slides out with a disc in the prize's rarity colour, a ring pulses, and the prize card appears; the tray stays out until the next coin. One lit square per capsule left. Covers are much smaller (30px thumbnails in the contents, a 62px prize card, 88px tiles under My gacha prizes), and the odds have a bar. Switched off under `prefers-reduced-motion`. Checks cover the sequence, the squares and the classes.
