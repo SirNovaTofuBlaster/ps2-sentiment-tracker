@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-15 23:06:55 UTC",
+  "last_updated": "2026-10-15 23:20:47 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Okami",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749767960",
+      "matched_game": "Okami",
+      "matched_games": [
+        "Okami"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 23:16 UTC"
+    },
     {
       "headline": "Trailer de GTA 6: Fãs usam os comentários para homenagear amigos e familiares falecidos",
       "source": "Eurogamer.pt Latest Articles Feed",
@@ -12365,6 +12384,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 14:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749737750",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 14:25 UTC"
     },
@@ -25217,6 +25255,25 @@
       "hype": 0,
       "timestamp": "2026-10-15 01:00 UTC",
       "views": 1401
+    },
+    {
+      "headline": "Thread on /vr/ naming Half-Life",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12878482",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 01:00 UTC"
     },
     {
       "headline": "Should I fix this?",
@@ -99506,21 +99563,21 @@
       "timestamp": "2026-10-11 21:27 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Sword of the Samurai, Escape from Monkey Island, Monkey Island 4 and 2 more",
+      "headline": "Thread on /vr/ naming Deus Ex, Escape from Monkey Island, Monkey Island 4 and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12872992",
-      "matched_game": "Sword of the Samurai",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Sword of the Samurai",
+        "Deus Ex",
         "Escape from Monkey Island",
         "Monkey Island 4",
         "ICO",
-        "Deus Ex"
+        "Sword of the Samurai"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -247794,57 +247851,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-01 23:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Fun or NOT Gamecube Games",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/DuiWoVwf_zY",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-01 23:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Thread on /vr/ naming Final Fantasy X, Grand Theft Auto: San Andreas and Baldur's Gate: Dark Alliance",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12852665",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X",
-        "Grand Theft Auto: San Andreas",
-        "Baldur's Gate: Dark Alliance"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-01 23:07 UTC"
-    },
-    {
-      "headline": "Is this Platinum legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wve23n/is_this_platinum_legit/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-01 23:06 UTC",
       "is_digital_only": false
     }
   ]
