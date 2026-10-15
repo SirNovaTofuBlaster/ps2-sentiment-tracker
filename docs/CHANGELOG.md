@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-15: app icon fills the circle
+
+- On Android the installed icon sat as a dark square inside a white circle: the manifest only offered icons for "any" use, so the phone padded them. It now also lists `icon-maskable-192.png` and `icon-maskable-512.png` (`purpose: maskable`): the ring mark on full-bleed black, kept inside the central 62% so any round or rounded mask leaves only the rings on black. The icons' background is pure black (`#000000`) and the manifest's `background_color` matches. Remove and add the app again to see it.
+
 ## 2026-10-15: Library duplicates, phone tab row
 
 - The Library showed some games twice with the same picture (AMF Xtreme Bowling and AMF Xtreme Bowling 2006). The collection's files for the pair are byte-for-byte equal (same git blob). Every tile pair whose files are equal was listed from the collection's file tree and read by eye: 99 more spellings (regional, translated or longer names of one game: LMA Manager / BDFL Manager, Winning Eleven 8 / Pro Evolution Soccer 4, Tenchu 4 / Fatal Shadows, the Star Wars Episode III titles...) are now folded into one tile through `SAME_GAME` in `tools/build_covers.py` (`covers.json` rebuilt; its `covers` and `local` are unchanged). The shown name stays the library file's, closest to the collection's title. Different games that share a file by the collection's mistake (Zombie Hunters and 2, FIFA 2002 and FIFA World Cup 2002, the Club Football teams, the regional SingStar and Buzz editions) are left alone: nothing here shows which of them has the right picture.
