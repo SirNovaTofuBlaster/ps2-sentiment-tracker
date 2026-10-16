@@ -2323,6 +2323,9 @@
                 const sources = [...new Map((Array.isArray(entry.evidence) ? entry.evidence : [])
                     .filter(proof => proof && /^https:\/\//i.test(String(proof.source ?? '')))
                     .map(proof => [siteName(proof.source), proof])).values()];
+                const noteLinks = (Array.isArray(entry.note_sources) ? entry.note_sources : [])
+                    .filter(url => /^https:\/\//i.test(String(url ?? '')))
+                    .map(url => `<a href="${safeUrl(url)}" target="_blank" rel="noopener noreferrer">${esc(siteName(url))}</a>`).join(', ');
                 const rank = Number.isInteger(entry.rank) ? entry.rank : i + 1;
                 return `
                 <li class="${rowClass('rareList', i)}">
@@ -2341,7 +2344,7 @@
                     ${rarePriceChartingHtml(entry.title, region)}
                     ${referenceHtml(entry.title, region, locale)}
                     <p class="rare-note">${typeof entry.note === 'string' && entry.note ? `${esc(entry.note)} ` : ''}${sources.length
-                        ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}</p>`, entry.other_title)}
+                        ? `Sources: ${sources.map(proof => `<a href="${safeUrl(proof.source)}" target="_blank" rel="noopener noreferrer" title="${esc(`${proof.figure ?? ''} (${proof.date ?? ''})`)}">${esc(siteName(proof.source))}</a>`).join(', ')}` : ''}${noteLinks ? `${sources.length ? ' · ' : ''}Release facts: ${noteLinks}` : ''}</p>`, entry.other_title)}
                 </li>`;
             }).join('');
             foldList('rareList', entries.length);

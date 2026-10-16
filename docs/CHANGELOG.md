@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: Rarest games get a short release note
+
+- 103 Rarest entries (of 143 that had none) gained a one-sentence `note` in `rare_games.json`: release dates and order by region, a region that never got the game, or a limited run, each read from a public page (mostly Wikipedia) and stated only as that page states it. The page is kept in a new `note_sources` list and shown as **Release facts** links after the entry's price sources. `note_sources` is separate from `evidence`, which the `one_source` flag counts. 40 entries stay without a note because no readable page backed one. `tests/test_rare_notes.py` and a dashboard check cover it.
+
 ## 2026-10-16: Library: US exclusives and PAL exclusives
 
 - Two buttons beside the sort buttons (and **All regions**) show only games with a box in one region. It is worked out in the page from `covers.json` (the Libretro box-art collection's file list): an NTSC-U/Canada box and no Europe/UK/Australia/World box is a US exclusive, the reverse a PAL exclusive. It is a guide: a game released in both regions looks exclusive when the collection lacks one box, and Japan-only games are in neither. Against the library on 2026-10-16: 435 US, 706 PAL, 1,341 in both or Japan-only, 192 with no cover entry. `covers.json` is fetched when a region is chosen even if pictures are switched off (the file only names files; no picture is requested).
