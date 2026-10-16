@@ -1080,7 +1080,7 @@
                         <span class="src-name"><i class="${meta.icon}" title="${esc(meta.label)}"></i> ${esc(item.source)}</span>
                         <span title="${esc(item.timestamp)}">${esc(formatLocalTime(item.timestamp, true))}</span>
                     </div>
-                    <div class="mt-1 text-slate-200 leading-relaxed">${item.is_remaster_rumor ? '<span class="remaster-tag border text-[10px] px-1.5 py-0.5 mr-1">Remaster</span>' : ''}${esc(rowHeadline(item))}</div>
+                    ${rowHeadline(item) ? `<div class="mt-1 text-slate-200 leading-relaxed">${item.is_remaster_rumor ? '<span class="remaster-tag border text-[10px] px-1.5 py-0.5 mr-1">Remaster</span>' : ''}${esc(rowHeadline(item))}</div>` : ''}
                     <a href="${safeUrl(item.link)}" target="_blank" rel="noopener noreferrer" class="text-cyan-400 inline-block mt-1">${esc(meta.tableAction)} <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i></a>
                 </li>`;
             }).join('');
@@ -1130,13 +1130,12 @@
 
         const namesGame = (item) => gamesOf(item).length > 0;
 
-        // A 4chan row's headline is written by the scraper ("Thread on /v/ naming Bee Movie Game"). Rows show only the
-        // game name(s) of it: the board and the word "thread" say nothing the source cell does not.
-        const FOURCHAN_HEADLINE = /^Thread on \/[a-z0-9]+\/ naming (.+)$/;
+        // A 4chan row's headline is written by the scraper ("Thread on /v/ naming Bee Movie Game") and says only which
+        // games the row names, which the Game column already shows. So the row shows no headline of its own: no repeat.
+        const FOURCHAN_HEADLINE = /^Thread on \/[a-z0-9]+\/ naming .+$/;
         const rowHeadline = (item) => {
             const text = String(item.headline ?? '');
-            const named = FOURCHAN_HEADLINE.exec(text);
-            return named ? named[1] : text;
+            return FOURCHAN_HEADLINE.test(text) ? '' : text;
         };
 
         // The front of the Tracker: the games named by what was published in the last day, and
@@ -4491,7 +4490,7 @@
                         <div class="src-name flex items-center gap-1.5"><i class="${meta.icon} text-[11px]" title="${esc(meta.label)}"></i>${esc(item.source)}</div>
                         <div class="text-[10px] text-slate-500 font-mono-custom" title="${esc(item.timestamp)}">${esc(formatLocalTime(item.timestamp, true))}</div>
                     </td>
-                    <td data-col="headline" class="py-3.5 px-4 text-slate-300 max-w-md leading-relaxed">
+                    <td data-col="headline"${rowHeadline(item) ? '' : ' data-empty'} class="py-3.5 px-4 text-slate-300 max-w-md leading-relaxed">
                         ${item.is_remaster_rumor ? '<span class="remaster-tag border text-[10px] px-1.5 py-0.5 mr-1">Remaster</span>' : ''}
                         ${item.is_digital_only === true ? '<span class="digital-tag border text-[10px] px-1.5 py-0.5 mr-1" title="About a digital-only release or discs going away">Digital-only</span>' : ''}
                         ${esc(rowHeadline(item))}

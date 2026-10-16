@@ -1331,3 +1331,6 @@ body .game-link:hover, body .game-link:focus-visible, body .recent-game:not(.und
   background: rgba(79, 168, 232, .24); border-color: var(--accent); text-decoration: none;
 }
 body .src-name { color: var(--money); }
+
+/* A 4chan row has no headline of its own (the Game column names the games): no empty block on a phone. */
+body #feedTableBody td[data-col="headline"][data-empty] { display: none; }

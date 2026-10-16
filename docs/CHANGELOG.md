@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17: 4chan rows no longer repeat the game name
+
+- The table row's headline cell is empty for a 4chan row (`rowHeadline()` gives `''`, the cell carries `data-empty` and is hidden on a phone) because the Game column already names the games; a game page's list leaves the line out too. Display only.
+
 ## 2026-10-16: boxed game names, yellow sources, plain 4chan rows
 
 - A game's name sits in a blue box wherever it is a link (`.game-link`, and the 24-hour list's `.recent-game`).
