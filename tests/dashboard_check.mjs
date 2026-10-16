@@ -1107,7 +1107,8 @@ await check('forums and 4chan boards: their rows, and adding one', () => {
     // 4chan asks that it be named as the source and linked to.
     assert.match(boardRow, /fa-solid fa-user-secret[^>]*title="4chan"><\/i>4chan \/vr\//);
     assert.doesNotMatch(boardRow, /Thread on/, 'a 4chan row shows the game name, not the scraper sentence');
-    assert.match(boardRow, /data-col="headline"[^>]*>\s*Okami\s*<\/td>/);
+    assert.match(boardRow, /<td data-col="headline" data-empty [^>]*>\s*<\/td>/, 'no headline of its own: the Game column already names Okami');
+    assert.match(boardRow, /data-col="game"[^>]*>[\s\S]*Okami/);
     assert.match(boardRow, /<div class="src-name flex items-center gap-1\.5">/, 'the source name is the palette yellow');
     assert.match(boardRow, /href="https:\/\/boards\.4chan\.org\/vr\/thread\/101"[^>]*>\s*Thread /);
     for (const row of [forumRow, boardRow]) assert.doesNotMatch(row, /data-col="score"|score-value|Source weight/, 'no sentiment and no weight on a row');
@@ -1387,7 +1388,7 @@ await check('games first: what was named in the last day leads, and the table op
         'body .view-tab.hidden', 'body .is-folded > .list-extra', 'body .list-toggle.hidden', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
         'body .chart-tools::-webkit-scrollbar', 'body .shelf::-webkit-scrollbar', 'body .shelf-arrow.hidden',
-    'body .library-add.hidden',
+    'body .library-add.hidden', 'body #feedTableBody td[data-col="headline"][data-empty]',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
@@ -3388,9 +3389,9 @@ await check('a fold button that has nothing to fold really is hidden (Highlights
     run("toggleList('todayList')");
 });
 
-await check('rows: the game name sits in a box, a source name is yellow, a 4chan headline is just the game', () => {
+await check('rows: the game name sits in a box, a source name is yellow, a 4chan row repeats nothing', () => {
     const run = (code) => vm.runInContext(code, context);
-    for (const [headline, shown] of [['Thread on /v/ naming Bee Movie Game', 'Bee Movie Game'], ['Thread on /vr/ naming Okami, Kuon and 2 more', 'Okami, Kuon and 2 more'],
+    for (const [headline, shown] of [['Thread on /v/ naming Bee Movie Game', ''], ['Thread on /vr/ naming Okami, Kuon and 2 more', ''],
         ['I really wish they added Bee Movie Game to the premium catalogue', 'I really wish they added Bee Movie Game to the premium catalogue'], ['Thread on the fence', 'Thread on the fence']]) {
         context.__row = { headline };
         assert.equal(run('rowHeadline(__row)'), shown);
