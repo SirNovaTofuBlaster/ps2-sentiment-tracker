@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-16: Highlights, folded shops, bigger names, more YouTube channels
+
+- New first tab **Highlights** (`pickHighlights()`): 12 games a day, 3 named in the news, 3 rare, 2 staples, 2 underrated, 2 movers, alternating by kind and seeded by the UTC day; missing kinds are filled by the others. The Tracker is no longer home.
+- Shop buttons fold under a **Shops** button on each row (grid 0fr to 1fr, `inert` while shut, no motion with `prefers-reduced-motion`); game pages show them open.
+- The "in the text only" tag, the footer line and the paragraph under "Named in the last 24 hours" are gone (the paragraph stays for screen readers). Smaller chips; game names in Newsreader, larger.
+- Charts: sized explicitly and refitted when the box gets its size (the first open used to draw nothing); a game's latest.json figure is appended, so a game has a chart from its first price. Not tested in a real browser.
+- feeds.json: 13 YouTube channels from the maintainer's list (retro reviews and history). Their IDs resolve at the scraper's first run; check `feed_status.json`.
+
 ## 2026-10-16: 4chan archives looked at, not added
 
 - desuarchive.org's `robots.txt` disallows its API and search, and 4plebs answers GitHub's runners with a Cloudflare challenge, so neither is read. Details in AGENTS.md under *4chan*. No code changed.

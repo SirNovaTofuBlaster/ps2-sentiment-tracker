@@ -31,7 +31,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Plus+Jakarta+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="retro.css">
 </head>
@@ -110,7 +110,8 @@
       <!-- Four pages in one: the tracker, the rarest games, the ranking of games by mentions, and the full list of eBay asking prices. -->
       <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
         <div class="view-tabs" role="tablist" aria-label="Pages">
-          <button type="button" id="tabDashboard" role="tab" aria-selected="true" aria-controls="viewDashboard" onclick="showView('dashboard')" class="view-tab is-active"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Tracker</button>
+          <button type="button" id="tabHighlights" role="tab" aria-selected="true" aria-controls="viewHighlights" onclick="showView('highlights')" class="view-tab is-active"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Highlights</button>
+          <button type="button" id="tabDashboard" role="tab" aria-selected="false" aria-controls="viewDashboard" onclick="showView('dashboard')" class="view-tab"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Tracker</button>
           <button type="button" id="tabRare" role="tab" aria-selected="false" aria-controls="viewRare" onclick="showView('rare')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Rarest</button>
           <button type="button" id="tabDemand" role="tab" aria-selected="false" aria-controls="viewDemand" onclick="showView('demand')" class="view-tab"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> Demand</button>
           <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
@@ -126,7 +127,15 @@
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
 
-    <div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">
+    <div id="viewHighlights" role="tabpanel" aria-labelledby="tabHighlights" class="space-y-8">
+      <div id="highlightsSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header"><h2>Highlights</h2></div>
+        <p id="highlightsSummary" class="text-xs text-slate-400 mb-4">Loading…</p>
+        <ul id="highlightsGrid" class="hl-grid"></ul>
+      </div>
+    </div>
+
+    <div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="hidden space-y-8">
 
       <div class="stat-strip">
         <div class="stat">
@@ -149,7 +158,7 @@
           <div class="lb-section-header">
             <div>
               <h2>Named in the last 24 hours</h2>
-              <p id="todaySummary" class="text-xs text-slate-400 mt-1">Loading...</p>
+              <p id="todaySummary" class="sr-only">Loading...</p>
             </div>
             <div class="flex gap-1.5 shrink-0" role="group" aria-label="Order the list">
               <button type="button" id="sortPrice" aria-pressed="true" onclick="setRecentSort('price')" class="sort-btn is-active"><i class="fa-solid fa-sterling-sign" aria-hidden="true"></i> Most expensive</button>
@@ -272,7 +281,7 @@
     <!-- One game's own page: opened from the search bar (#game=Title). -->
     <div id="viewGame" class="hidden space-y-6" aria-live="polite">
       <div class="bg-ps2card border border-ps2border rounded-md p-6">
-        <button type="button" onclick="goHome(event)" class="brand-btn mb-4"><i class="fa-solid fa-arrow-left text-ps2neon" aria-hidden="true"></i> Back to the Tracker</button>
+        <button type="button" onclick="goHome(event)" class="brand-btn mb-4"><i class="fa-solid fa-arrow-left text-ps2neon" aria-hidden="true"></i> Back to Highlights</button>
         <div class="game-head"><div id="gameCover" class="game-cover hidden"></div><h2 id="gameTitle" class="!text-2xl !normal-case !tracking-normal !text-white"></h2></div>
         <p id="gameSummary" class="text-xs text-slate-400 mt-1"></p>
         <div id="gamePrices" class="mt-3"></div>
@@ -542,7 +551,6 @@
         <span class="w-2.5 h-2.5 rounded-full bg-spindle-teal"></span>
         <span class="text-white font-serif font-bold ml-1">Spindle</span>
       </div>
-      <p>PS2 Global Remaster Tracker • Powered by GitHub Actions &amp; Python Scraper Pipelines</p>
     </div>
   </footer>
 
@@ -632,6 +640,17 @@
         ];
         const PRICE_REGIONS = [['PAL', 'PAL'], ['NTSC', 'US']];
 
+        // Opens or closes a row's shop buttons (the CSS animates it); a closed panel is inert, so Tab skips its links.
+        function toggleShops(button) {
+            const fold = button?.closest?.('.shop-fold');
+            if (!fold) return;
+            const open = !fold.classList.contains('is-open');
+            fold.classList.toggle('is-open', open);
+            button.setAttribute('aria-expanded', String(open));
+            const panel = fold.querySelector?.('.shop-panel');
+            if (panel) { if (open) panel.removeAttribute?.('inert'); else panel.setAttribute?.('inert', ''); }
+        }
+
         function priceLookupUrls(title) {
             const clean = String(title ?? '').replace(/\s+/g, ' ').trim();
             if (!clean) return [];
@@ -639,7 +658,7 @@
                 ({ ...p, url: p.url(clean) }));
         }
 
-        function priceLookupHtml(title) {
+        function priceLookupHtml(title, fold = false) {
             const links = priceLookupUrls(title);
             if (!links.length) return '';
             // Each shop has its own look (2026-10-16 preview): Price Charting in teal with a chart mark,
@@ -651,12 +670,15 @@
                 ? `<span class="ebay-wordmark" aria-hidden="true"><span class="ebay-e">e</span><span class="ebay-b">b</span><span class="ebay-a">a</span><span class="ebay-y">y</span></span>`
                 : kind === 'cex' ? `<span class="cex-dot" aria-hidden="true"></span><span class="price-mark">CeX</span>`
                 : `<span class="price-mark">${esc(l.mark ?? '')}</span>`;
-            const chip = (l) => { const kind = kindOf(l); return `<a class="price-link price-link--${kind}" href="${safeUrl(l.url)}" target="_blank" rel="noopener noreferrer" title="${esc(l.hint)}" aria-label="${esc(l.hint)}">${face(l, kind)}${l.sup ? `<span class="price-sup">${esc(l.sup)}</span>` : ''}</a>`; };
+            let n = 0;
+            const chip = (l) => { const kind = kindOf(l); return `<a class="price-link price-link--${kind}" style="--n:${n++}" href="${safeUrl(l.url)}" target="_blank" rel="noopener noreferrer" title="${esc(l.hint)}" aria-label="${esc(l.hint)}">${face(l, kind)}${l.sup ? `<span class="price-sup">${esc(l.sup)}</span>` : ''}</a>`; };
             const group = ([region, flag]) => {
                 const inner = links.filter(l => l.region === region).map(chip).join('');
                 return inner ? `<span class="price-region"><span class="price-flag">${esc(flag)}</span>${inner}</span>` : '';
             };
-            return `<span class="price-links" aria-label="Price lookups for ${esc(title)}">${PRICE_REGIONS.map(group).join('')}</span>`;
+            const panel = `<span class="price-links" aria-label="Price lookups for ${esc(title)}">${PRICE_REGIONS.map(group).join('')}</span>`;
+            if (!fold) return panel;
+            return `<span class="shop-fold"><button type="button" class="shop-toggle" aria-expanded="false" onclick="toggleShops(this)" title="Show or hide the shop and price-guide links for ${esc(title)}"><i class="fa-solid fa-chevron-down" aria-hidden="true"></i> Shops</button><span class="shop-panel" inert><span class="shop-inner">${panel}</span></span></span>`;
         }
 
         // The search a figure comes from, on eBay itself: Video Games, used conditions, Buy It Now,
@@ -676,6 +698,7 @@
            bookmarked, and the header's Sources link still works from any of them.
         -------------------------------------------------------------------- */
         const VIEWS = {
+            highlights: ['viewHighlights', 'tabHighlights'],
             dashboard: ['viewDashboard', 'tabDashboard'],
             rare: ['viewRare', 'tabRare'],
             demand: ['viewDemand', 'tabDemand'],
@@ -713,9 +736,9 @@
             try { draw(); } catch (error) { console.warn('Could not draw the page.', error); }
         }
 
-        let currentView = 'dashboard';
+        let currentView = 'highlights';
         function showView(name, remember = true) {
-            const view = isView(name) ? name : 'dashboard';
+            const view = isView(name) ? name : 'highlights';
             document.getElementById('viewGame').classList.add('hidden');
             for (const [key, [panel, tab]] of Object.entries(VIEWS)) {
                 document.getElementById(panel).classList.toggle('hidden', key !== view);
@@ -728,6 +751,7 @@
             drawPending(view);
             currentView = view;
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
+            if (view === 'highlights') redrawHighlights();
             if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'gacha' || view === 'underrated') ensureCoverIndex();
             if (view === 'library') ensureGenres();
             if (view !== 'library') libraryClosePicked();
@@ -742,7 +766,7 @@
             }
             if (remember) {
                 // A new entry in the browser's history, so Back returns to the page you came from.
-                const hash = view === 'dashboard' ? '' : `#${view}`;
+                const hash = view === 'highlights' ? '' : `#${view}`;
                 try {
                     if (String(location.hash || '') !== hash) history.pushState(null, '', hash || location.pathname + (location.search || ''));
                 } catch { /* an address that cannot be changed only loses the bookmark */ }
@@ -760,10 +784,15 @@
                 const title = safeDecode(hash.slice(6)).trim();
                 if (title) return openGame(title, false);
             }
-            if (named !== 'dashboard' && isView(named)) return showView(named, false);
-            showView('dashboard', false);
-            if (hash.length > 1) document.getElementById(hash.slice(1))?.scrollIntoView?.();
-            return 'dashboard';
+            if (isView(named)) return showView(named, false);
+            // A part of the Tracker ("#sourcesSection") opens the Tracker; no address at all is the front page.
+            if (/^[A-Za-z][\w-]*Section$/.test(named) && document.getElementById(named)) {
+                showView('dashboard', false);
+                document.getElementById(named)?.scrollIntoView?.();
+                return 'dashboard';
+            }
+            showView('highlights', false);
+            return 'highlights';
         }
 
         /* ---- Lists that fold away ----------------------------------------------
@@ -857,12 +886,13 @@
             loadGachaState();   // coins, what is left in each machine and the prizes won
             registerServiceWorker();
             loadWikiChecks();   // Wikipedia's "collectible" verdicts; the list is drawn again when they arrive
-            // Prices first: every list below shows them beside its games.
+            // Prices first: every list below shows them beside its games. The Underrated file comes last: Highlights mixes its games in.
             await loadFx();
             await loadPrices();
             await loadRare();
             await loadDemand();
             await loadDigitalArchive();
+            await ensureUnderrated();
             refreshDashboard();
         }
 
@@ -1066,7 +1096,7 @@
 
         function openGame(title, remember = true) {
             const name = String(title ?? '').trim();
-            if (!name) return showView('dashboard', remember);
+            if (!name) return showView('highlights', remember);
             for (const [panel, tab] of Object.values(VIEWS)) {
                 document.getElementById(panel).classList.add('hidden');
                 const button = document.getElementById(tab);
@@ -1093,7 +1123,7 @@
             document.getElementById('gameSearch').value = '';
             closeSuggestions();
             gameFilter = null;
-            showView('dashboard');
+            showView('highlights');
             filterFeedItems();
             window.scrollTo?.(0, 0);
             return false;
@@ -1300,8 +1330,7 @@
                 <li class="${rowClass('todayList', i)}">
                     <div class="flex items-baseline justify-between gap-3 text-xs font-mono-custom">
                         <span><button type="button" onclick="showGameRows(${i})" title="Show the items that name this game" class="recent-game text-cyan-300${i === 0 ? ' font-bold' : ''}">${esc(game.name)}</button><a class="game-open" href="#game=${esc(encodeURIComponent(game.name))}" onclick="return openGameLink(event, ${esc(JSON.stringify(game.name))})" title="Open the page for this game" aria-label="${esc('Open the page for ' + game.name)}"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></a>${scarceTagHtml(game.name)}${collectibleTagHtml(game.name)}${game.remasters
-                            ? ` <span class="remaster-tag text-[10px] border px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}${game.headline
-                            ? '' : ' <span class="text-[10px] border border-slate-700 text-slate-400 px-1.5 py-0.5 whitespace-nowrap" title="Named in the text under a headline, not in the headline itself. These are wrong more often.">in the text only</span>'}</span>
+                            ? ` <span class="remaster-tag text-[10px] border px-1.5 py-0.5 whitespace-nowrap">${game.remasters} remaster</span>` : ''}</span>
                         <span class="text-slate-300 whitespace-nowrap">${count} mention${count === 1 ? '' : 's'}</span>
                     </div>
                     <div class="mt-1 text-[11px] text-slate-400">${shown}${more > 0 ? ` <span class="text-slate-500">+${more} more</span>` : ''}</div>
@@ -1507,6 +1536,7 @@
             visibleFeedData = allFeedData.filter(item => !isHiddenItem(item));
             processAndRender(visibleFeedData);
             renderSources();
+            redrawHighlights();
         }
 
         // Ranks every PS2 game the feed names by how many items mention it; recalculated on every
@@ -1906,7 +1936,7 @@
 
         // What a list row carries under a game's name: the short prices, then the search buttons
         // (eBay, PriceCharting and the other shops) so a game can be looked up from the list.
-        const listPricesHtml = (title, now, locale) => compactPriceHtml(title, now, locale) + priceLookupHtml(title);
+        const listPricesHtml = (title, now, locale) => compactPriceHtml(title, now, locale) + priceLookupHtml(title, true);
 
         // The game page's price block: every site with all its figures, the chart, the lookups.
         function gamePriceDetailHtml(title, now = Date.now(), locale) {
@@ -1979,7 +2009,7 @@
                             ? ` <span class="level-tag level-${esc(row.level)}" title="${esc(level.hint)}">${esc(level.tag)}</span>` : ''}</span>
                         ${compactPriceHtml(row.title, now, locale) || '<span class="ebay-note">no price yet</span>'}
                     </div>
-                    ${priceLookupHtml(row.title)}
+                    ${priceLookupHtml(row.title, true)}
                 </li>`;
             }).join('');
             });
@@ -2624,11 +2654,16 @@
 
         // Draws `spec` into the element `holderId`: { points: [{ time, value }], bars (optional,
         // the same days), format(value), style, log, onHover(i or null) }.
+        const chartWatchers = {};      // holder id -> the ResizeObserver that keeps its chart the size of its box
         function drawChart(holderId, spec, locale) {
             const holder = document.getElementById(holderId);
             if (liveCharts[holderId]) {
                 try { liveCharts[holderId].remove(); } catch { /* already gone */ }
                 delete liveCharts[holderId];
+            }
+            if (chartWatchers[holderId]) {
+                try { chartWatchers[holderId].disconnect(); } catch { /* nothing to stop */ }
+                delete chartWatchers[holderId];
             }
             holder.innerHTML = '';
             if (!spec.points.length) {
@@ -2643,8 +2678,11 @@
                 if (!library) loadChartLibrary().then(() => spec.redraw?.()).catch(() => { /* the plain line stays */ });
                 return;
             }
+            // The box can have no size yet when the chart is made (a page that is still hidden, a panel that has just
+            // opened): a chart built then stayed blank until the range was changed. So it is sized by hand, and sized
+            // again, and fitted, each time the box gets a real size (chartWatchers below).
             const chart = library.createChart(holder, {
-                autoSize: true,
+                width: holder.clientWidth || 600, height: holder.clientHeight || 320,
                 layout: { background: { type: 'solid', color: colours.inset }, textColor: colours.dim, fontFamily: colours.mono, attributionLogo: true },
                 grid: { vertLines: { color: colours.rule }, horzLines: { color: colours.rule } },
                 rightPriceScale: { borderColor: colours.line, mode: spec.log ? 1 : 0 },
@@ -2669,6 +2707,16 @@
                 bars.setData(spec.bars);
             }
             chart.timeScale().fitContent();
+            const fit = () => {
+                const width = holder.clientWidth, height = holder.clientHeight;
+                if (!(width > 0 && height > 0)) return;
+                try { chart.resize(width, height); chart.timeScale().fitContent(); } catch { /* the chart was removed meanwhile */ }
+            };
+            if (typeof ResizeObserver === 'function') {
+                chartWatchers[holderId] = new ResizeObserver(fit);
+                chartWatchers[holderId].observe(holder);
+            }
+            if (typeof requestAnimationFrame === 'function') requestAnimationFrame(fit);
             const dayAt = param => {
                 const at = Number.isFinite(param?.logical) ? Math.round(param.logical) : -1;
                 return at >= 0 && at < spec.points.length ? at : null;
@@ -2771,11 +2819,22 @@
             const start = Date.parse(`${data?.start}T00:00:00Z`);
             const rows = own(data?.games, title) && own(data.games[title], site) && Array.isArray(data.games[title][site]) ? data.games[title][site] : [];
             if (!Number.isFinite(start)) return [];
-            return rows.filter(row => Array.isArray(row) && Number.isInteger(row[0]) && row[0] >= 0
+            const points = rows.filter(row => Array.isArray(row) && Number.isInteger(row[0]) && row[0] >= 0
                 && typeof row[1] === 'number' && Number.isFinite(row[1]) && row[1] > 0)
                 .sort((a, b) => a[0] - b[0])
                 .map(row => ({ time: new Date(start + row[0] * 86400000).toISOString().slice(0, 10), value: row[1],
                     copies: Number.isInteger(row[2]) ? row[2] : 0 }));
+            // series.json holds finished days only, so a game first priced today would have no chart until tomorrow:
+            // its latest figure (latest.json) is the last point when it is later than the file's.
+            const live = priceIndex.get(priceKey(title))?.entry?.[site];
+            if (live && typeof live === 'object' && !live.unmatched && Number.isFinite(live.copies) && live.copies >= 1
+                && typeof live.median === 'number' && Number.isFinite(live.median) && live.median > 0) {
+                const day = String(live.recorded || live.checked || '').slice(0, 10);
+                if (/^\d{4}-\d{2}-\d{2}$/.test(day) && (!points.length || day > points[points.length - 1].time)) {
+                    points.push({ time: day, value: live.median, copies: live.copies });
+                }
+            }
+            return points;
         }
 
         async function openGameChart(i) {
@@ -3388,6 +3447,160 @@
         }
         function redrawUnderrated() {
             if (!document.getElementById('viewUnderrated')?.classList.contains('hidden')) renderUnderrated();
+        }
+
+        /* ---- Highlights --------------------------------------------------------
+           The front page: a dozen games, mixed on purpose so that no one kind crowds out the rest.
+           Five kinds compete for the slots (HIGHLIGHT_QUOTA):
+             news        named by the feed in the last 24 hours (rare ones weigh more)
+             rare        the Rarest page's games (a higher guide price weighs more)
+             staple      games the feed names on most days (GTA: San Andreas and the like)
+             underrated  the Underrated page's games revealed so far (today's pick weighs more)
+             mover       a median that has moved the most against a week ago (empty until a week of history)
+           Inside a kind the draw is weighted but seeded by the day, so the page does not change on every refresh
+           and still turns over from day to day. A kind with too few candidates hands its slots to the others.
+        -------------------------------------------------------------------- */
+        const HIGHLIGHT_SIZE = 12;
+        const HIGHLIGHT_QUOTA = [['news', 3], ['rare', 3], ['staple', 2], ['underrated', 2], ['mover', 2]];
+        const HIGHLIGHT_KINDS = { news: 'In the news', rare: 'Rare find', staple: 'Staple', underrated: 'Underrated', mover: 'On the move' };
+        const HIGHLIGHT_MIN_COPIES = 3;   // a median of fewer copies is one or two sellers' asking prices, not a move
+
+        // The most a game's median has moved against a week ago on one site: { label, pct } or null.
+        function highlightMove(row) {
+            let best = null;
+            for (const label of sitesOf(row.entry)) {
+                const site = row.entry[label];
+                const week = weekBefore(site);
+                if (!week || !(site.copies >= HIGHLIGHT_MIN_COPIES)) continue;
+                const pct = (site.median - week.median) / week.median * 100;
+                if (Math.abs(pct) >= 3 && (!best || Math.abs(pct) > Math.abs(best.pct))) best = { label, pct };
+            }
+            return best;
+        }
+
+        function shortWhy(text, limit = 120) {
+            const clean = String(text ?? '').replace(/\s+/g, ' ').trim();
+            if (clean.length <= limit) return clean;
+            const cut = clean.slice(0, limit);
+            return cut.slice(0, Math.max(cut.lastIndexOf(' '), 40)).replace(/[,;:.\s]+$/, '') + '…';
+        }
+
+        // { news: Map(priceKey -> { title, weight, why, ... }), ... }
+        function highlightCandidates(now = Date.now()) {
+            const pool = Object.fromEntries(HIGHLIGHT_QUOTA.map(([kind]) => [kind, new Map()]));
+            const add = (kind, title, weight, why, extra = {}) => {
+                const key = priceKey(title);
+                if (!key || !(weight > 0)) return;
+                const have = pool[kind].get(key);
+                if (!have || weight > have.weight) pool[kind].set(key, { title, key, weight, why, ...extra });
+            };
+            const priced = (title) => PRICE_ORDER.some(label => medianOf(title, label) !== null);
+            for (const game of recentGames(visibleFeedData, now).games) {
+                const count = game.headline + game.text;
+                const supply = supplyOf(game.name);
+                add('news', game.name, 1 + 2 * game.headline + game.text + (supply && supply[0] <= SCARCE_COPIES ? 4 : 0) + (priced(game.name) ? 1 : 0),
+                    `Named ${count} ${count === 1 ? 'time' : 'times'} in the last ${RECENT_HOURS} hours`);
+            }
+            const seen = new Set();
+            for (const row of priceIndex.values()) {
+                if (seen.has(row.title)) continue;
+                seen.add(row.title);
+                if (!priced(row.title)) continue;
+                if (row.level === 'staple') add('staple', row.title, 1 + Math.log(1 + row.mentions), 'A staple: the feed names it most days, so its price is the one to watch');
+                const move = highlightMove(row);
+                if (move) {
+                    add('mover', row.title, Math.abs(move.pct),
+                        `eBay ${move.label} median ${move.pct > 0 ? 'up' : 'down'} ${Math.abs(move.pct) >= 10 ? Math.round(Math.abs(move.pct)) : Math.abs(move.pct).toFixed(1)}% on a week ago`,
+                        { up: move.pct > 0 });
+                }
+            }
+            for (const region of ['PAL', 'US']) {
+                for (const entry of rareEntries(rareData, region)) {
+                    const value = typeof entry.value_usd === 'number' && Number.isFinite(entry.value_usd) ? entry.value_usd : 0;
+                    const guide = value ? `, guide ${money(value, 'USD', undefined, false)}` : '';
+                    add('rare', entry.title, (1 + Math.log10(Math.max(10, value)) / 2) * (priced(entry.title) ? 1.5 : 1),
+                        `Rarest ${region === 'US' ? 'US' : 'PAL'} list, number ${entry.rank ?? '?'}${guide}`);
+                }
+            }
+            if (underratedData?.games?.length) {
+                const n = underratedData.games.length;
+                const day = utcDay(now);
+                const shown = underratedRevealed(n, underratedData.launch, day);
+                const today = underratedPickFor(n, underratedData.launch, day);
+                underratedData.games.forEach((game, k) => {
+                    if (k < shown || k === today) add('underrated', game.title, k === today ? 4 : 1 + (priced(game.title) ? 1 : 0), shortWhy(game.why));
+                });
+            }
+            return pool;
+        }
+
+        // The dozen: each kind fills its quota from a seeded weighted draw; slots a kind cannot fill go round-robin to the
+        // others; the result alternates kinds so a row of the grid is never one kind.
+        function pickHighlights(pool, now = Date.now(), size = HIGHLIGHT_SIZE) {
+            const taken = new Set();
+            const draw = (kind, n, salt) => {
+                const random = seededRandom(utcDay(now) * 131 + salt * 977 + taken.size);
+                return [...pool[kind].values()].filter(c => !taken.has(c.key))
+                    .map(c => ({ c, k: Math.pow(Math.max(random(), 1e-9), 1 / c.weight) }))
+                    .sort((a, b) => b.k - a.k).slice(0, n)
+                    .map(({ c }) => { taken.add(c.key); return { ...c, kind }; });
+            };
+            const picked = {};
+            let spare = 0;
+            HIGHLIGHT_QUOTA.forEach(([kind, quota], i) => {
+                picked[kind] = draw(kind, quota, i);
+                spare += quota - picked[kind].length;
+            });
+            spare += Math.max(0, size - HIGHLIGHT_QUOTA.reduce((sum, [, quota]) => sum + quota, 0));
+            const order = ['rare', 'underrated', 'news', 'staple', 'mover'];
+            for (let round = 0; spare > 0 && round < size; round++) {
+                let moved = false;
+                for (const kind of order) {
+                    if (spare <= 0) break;
+                    const more = draw(kind, 1, 10 + round);
+                    if (more.length) { picked[kind].push(...more); spare--; moved = true; }
+                }
+                if (!moved) break;
+            }
+            const lanes = HIGHLIGHT_QUOTA.map(([kind]) => [...picked[kind]]);
+            const result = [];
+            while (lanes.some(lane => lane.length)) for (const lane of lanes) if (lane.length) result.push(lane.shift());
+            return result.slice(0, size);
+        }
+
+        function coverTileHtml(title, className) {
+            const url = coversShown ? libraryCover({ title, variants: [] }, 'US') || coverUrl(title, 'PAL') : '';
+            return `<div class="${className} coll-cover" aria-hidden="true"><span class="coll-initials">${esc(initialsOf(title))}</span>${url
+                ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}</div>`;
+        }
+
+        function highlightCardHtml(game, i) {
+            let prices = '';
+            try { prices = compactPriceHtml(game.title, Date.now()); } catch { prices = ''; }
+            return `<li class="hl-card hl-card--${esc(game.kind)}" style="--i:${i}">
+                ${coverTileHtml(game.title, 'hl-cover')}
+                <div class="hl-body">
+                    <span class="hl-kind">${esc(HIGHLIGHT_KINDS[game.kind])}</span>
+                    <div class="hl-title">${gameLinkHtml(game.title)}</div>
+                    <p class="hl-why">${esc(game.why)}</p>
+                    <div class="hl-price">${prices}</div>
+                </div></li>`;
+        }
+
+        function redrawHighlights(now = Date.now()) {
+            const grid = document.getElementById('highlightsGrid');
+            const summary = document.getElementById('highlightsSummary');
+            if (!grid || !summary) return;
+            try {
+                ensureCoverIndex();
+                const games = pickHighlights(highlightCandidates(now), now);
+                summary.textContent = games.length
+                    ? 'A mix of what the feed is naming now, staples, rare finds and underrated games. It turns over each day.'
+                    : 'Nothing to show yet: the feed and the price files have not loaded.';
+                grid.innerHTML = games.map(highlightCardHtml).join('');
+            } catch (error) {
+                console.warn('Could not draw the Highlights.', error);
+            }
         }
 
         function gachaPick(id) {
@@ -4032,7 +4245,7 @@
         let topGamesItems = null;
         function redrawCoverLists() {
             if (topGamesItems) renderTopGames(topGamesItems);
-            try { renderShelf(); if (demandData) renderDemand(demandData); redrawLibrary(); } catch { /* the next draw shows it */ }
+            try { renderShelf(); if (demandData) renderDemand(demandData); redrawLibrary(); redrawHighlights(); } catch { /* the next draw shows it */ }
             if (rareRegion !== 'Consoles') renderRare();
         }
 
