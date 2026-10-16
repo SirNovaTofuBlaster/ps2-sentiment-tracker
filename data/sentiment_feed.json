@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 05:17:48 UTC",
+  "last_updated": "2026-10-16 05:31:38 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -961,17 +961,18 @@
       "timestamp": "2026-10-16 03:12 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749778889",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
+        "Grand Theft Auto: San Andreas",
         "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -251157,53 +251158,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-02 05:32 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Let's Play SEGA Rally REVO (PS3) - Part 4",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/watch?v=cykZumtWeFQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 05:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "How does everyone else store there memory cards?",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wvlk0d/how_does_everyone_else_store_there_memory_cards/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 05:26 UTC"
-    },
-    {
-      "headline": "This weekends pick",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wvliw6/this_weekends_pick/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 05:24 UTC",
       "is_digital_only": false
     }
   ]
