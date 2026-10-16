@@ -3283,6 +3283,15 @@
       "enabled": true
     },
     {
+      "type": "youtube",
+      "name": "RetroArquivo",
+      "channel_url": "https://www.youtube.com/@retroarquivo",
+      "group": "Retro: reviews & history",
+      "role": "press",
+      "enabled": true,
+      "note": "European Portuguese retro-gaming archive (magazines, games, history). Added 2026-10-16 by channel link: the scraper resolves the channel ID on its first run; check the resolved name and size in feed_status.json."
+    },
+    {
       "type": "podcast",
       "name": "Beyond",
       "url": "https://rss.pdrl.fm/a9cb78/feeds.megaphone.fm/ignbeyond",
