@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-16 17:26:41 UTC",
+  "last_updated": "2026-10-16 17:29:24 UTC",
   "total_tracked_feeds": 236,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Winx Club",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749811285",
+      "matched_game": "Winx Club",
+      "matched_games": [
+        "Winx Club"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 17:27 UTC"
+    },
     {
       "headline": "Ken Kutaragi defiende la eliminación de discos en PS5 y asegura que el rechazo \"es un tema de mentalidad\"",
       "source": "IGN Latinoamérica",
@@ -2560,6 +2579,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 15:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Yakuza",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749806560",
+      "matched_game": "Yakuza",
+      "matched_games": [
+        "Yakuza"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 15:56 UTC"
     },
@@ -6191,6 +6229,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 13:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Tekken 5",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749800937",
+      "matched_game": "Tekken 5",
+      "matched_games": [
+        "Tekken 5"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 13:54 UTC"
     },
@@ -31202,19 +31259,20 @@
       "timestamp": "2026-10-15 14:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War II, Half-Life and Monster Hunter",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Half-Life, Monster Hunter and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749737750",
-      "matched_game": "God of War II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "God of War II",
+        "Kingdom Hearts",
         "Half-Life",
-        "Monster Hunter"
+        "Monster Hunter",
+        "God of War II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -258988,49 +259046,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-02 17:30 UTC"
-    },
-    {
-      "headline": "Former Game Collectors who sold off their collection: Did you experience relief or anxiety?",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wvzrjn/former_game_collectors_who_sold_off_their/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 17:27 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Can anyone tell me what these files are for?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wvzqg3/can_anyone_tell_me_what_these_files_are_for/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 17:26 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Star Wars: Galactic Racer Review Roundup",
-      "source": "Podcast: Game Mess Mornings",
-      "source_type": "podcast",
-      "feed": "https://www.spreaker.com/show/5928689/episodes/feed",
-      "link": "https://www.spreaker.com/episode/star-wars-galactic-racer-review-roundup--75526357",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 17:26 UTC"
     }
   ]
 }
