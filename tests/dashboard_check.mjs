@@ -1106,7 +1106,9 @@ await check('forums and 4chan boards: their rows, and adding one', () => {
     assert.match(forumRow, /href="https:\/\/forum\.example\/threads\/ico\.1\/"[^>]*>\s*Thread /);
     // 4chan asks that it be named as the source and linked to.
     assert.match(boardRow, /fa-solid fa-user-secret[^>]*title="4chan"><\/i>4chan \/vr\//);
-    assert.match(boardRow, /Thread on \/vr\/ naming Okami/);
+    assert.doesNotMatch(boardRow, /Thread on/, 'a 4chan row shows the game name, not the scraper sentence');
+    assert.match(boardRow, /data-col="headline"[^>]*>\s*Okami\s*<\/td>/);
+    assert.match(boardRow, /<div class="src-name flex items-center gap-1\.5">/, 'the source name is the palette yellow');
     assert.match(boardRow, /href="https:\/\/boards\.4chan\.org\/vr\/thread\/101"[^>]*>\s*Thread /);
     for (const row of [forumRow, boardRow]) assert.doesNotMatch(row, /data-col="score"|score-value|Source weight/, 'no sentiment and no weight on a row');
 
@@ -1200,11 +1202,11 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.ok(contrast(tokens.bg, tokens.accent) >= 4.5, 'the filled button: dark on blue');
     assert.ok(contrast(tokens.bg, tokens['accent-hi']) >= 4.5);
 
-    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16.
+    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16; a source's name (subreddit, channel, site) is yellow since the same day, by the maintainer's request.
     const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
     const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
     assert.ok(yellow.length >= 2, 'at rest and under the pointer');
-    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty)\b|\.coll-count/.test(part))), yellow.join(' | '));
+    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name)\b|\.coll-count/.test(part))), yellow.join(' | '));
     assert.match(css, /body \.price-link:hover, body \.price-link:focus-visible \{\s*background: var\(--money\);\s*border-color: var\(--money\);\s*color: var\(--bg\);/);
     // ...by no other route either: every colour is named once, at the top, and the strip's
     // yellow is used by the strip alone; the pages have no yellow of their own.
@@ -1344,7 +1346,7 @@ await check('games first: what was named in the last day leads, and the table op
     assert.match(rows[0], /onclick="showGameRows\(0\)"[^>]*class="recent-game text-cyan-300 font-bold">Okami<\/button><a class="game-open"[^>]*><i [^>]*><\/i><\/a> <span class="remaster-tag [^"]*">1 remaster<\/span>/);
     assert.match(rows[0], />5 mentions<\/span>/);
     assert.match(rows[1], /class="recent-game text-cyan-300">Ico<\/button>/, 'only the first name is bold');
-    assert.match(rows[0], /Eurogamer · r\/ps2 · YouTube: Some Channel <span class="text-slate-500">\+1 more<\/span>/, 'three sources named, the rest counted');
+    assert.match(rows[0], /<span class="src-name">Eurogamer · r\/ps2 · YouTube: Some Channel<\/span> <span class="text-slate-500">\+1 more<\/span>/, 'three sources named, the rest counted');
     assert.match(rows[2], />Mixed Game<\/button>(?:<a class="game-open"[^>]*><i [^>]*><\/i><\/a>)?<\/span>\s*<span[^>]*>3 mentions<\/span>/, 'the count is of every mention, headline or text');
     assert.match(rows[4], />Kuon<\/button>(?:<a class="game-open"[^>]*><i [^>]*><\/i><\/a>)?<\/span>\s*<span[^>]*>1 mention<\/span>/);
     assert.match(rows[4], /4chan \/vr\//);
@@ -1359,7 +1361,7 @@ await check('games first: what was named in the last day leads, and the table op
     assert.doesNotMatch(el('todayList').innerHTML, /God Hand|Rule of Rose|Silent Hill 2|Cars|Polygon|VG247/, 'nothing older, nothing undated, nothing without a game');
     assert.equal(el('todayListToggle').classList.contains('hidden'), true, 'ten games fit without a button');
     assert.deepEqual(evalJson('[LIST_FOLD.todayList, RECENT_HOURS]'), [10, 24]);
-    assert.match(rows[4], /<div class="mt-1 text-\[11px\] text-slate-400">4chan \/vr\/<\/div>/, 'one source: its name and nothing after it');
+    assert.match(rows[4], /<div class="mt-1 text-\[11px\] text-slate-400"><span class="src-name">4chan \/vr\/<\/span><\/div>/, 'one source: its name and nothing after it');
     // The stylesheet says this about the new parts and nothing more: the first name keeps its
     // bold (no "font: inherit"), nothing is hidden, a name in the list keeps the height every
     // button has on a phone and the button in the sentence over the table stays near the text.
@@ -1375,6 +1377,8 @@ await check('games first: what was named in the last day leads, and the table op
         ['body #todaySection', 'padding: 1rem;'],
         ['body #todaySection .lb-section-header > div[role="group"]', 'width: 100%; flex-wrap: wrap;'],
         ['body #todaySection .sort-btn', 'flex: 1 1 auto; min-height: 2.4rem; display: inline-flex; align-items: center; justify-content: center; gap: .35rem;'],
+        ['body .game-link, body .recent-game:not(.underline)', 'display: inline-block; max-width: 100%; padding: .12rem .6rem; border: 1px solid rgba(79, 168, 232, .55); border-radius: 7px; background: rgba(79, 168, 232, .12); color: var(--accent-hi); text-decoration: none; cursor: pointer; transition: background .2s, border-color .2s;'],
+        ['body .game-link:hover, body .game-link:focus-visible, body .recent-game:not(.underline):hover, body .recent-game:not(.underline):focus-visible', 'background: rgba(79, 168, 232, .24); border-color: var(--accent); text-decoration: none;'],
     ]);
     assert.match(css, /body main button, body main a\.bg-slate-800, body main \.from-blue-600 \{\s*min-height: 2\.75rem;/);
     // Everything the stylesheet hides. A rule added here on purpose belongs in this list; one
@@ -1406,7 +1410,7 @@ await check('games first: what was named in the last day leads, and the table op
     context.__edge = [row('One', 1, ['Solo'], { is_remaster_rumor: true }), row('Two', 2, ['Solo'], { is_remaster_rumor: true }), row('Three', 3, ['Solo'])];
     vm.runInContext(`renderRecentGames(__edge, ${now})`, context);
     assert.match(el('todayList').innerHTML, />2 remaster<\/span>/);
-    assert.match(el('todayList').innerHTML, /<div class="mt-1 text-\[11px\] text-slate-400">One · Two · Three<\/div>/, 'three sources: all named and nothing "more"');
+    assert.match(el('todayList').innerHTML, /<div class="mt-1 text-\[11px\] text-slate-400"><span class="src-name">One · Two · Three<\/span><\/div>/, 'three sources: all named and nothing "more"');
     vm.runInContext('renderTopGames(__edge)', context);
     assert.match(el('topGamesList').innerHTML, />2 remaster<\/span>/);
 
@@ -3382,6 +3386,22 @@ await check('a fold button that has nothing to fold really is hidden (Highlights
     run("setRecentSort('price')");
     assert.equal(toggle(), false, 'and it is back with the list');
     run("toggleList('todayList')");
+});
+
+await check('rows: the game name sits in a box, a source name is yellow, a 4chan headline is just the game', () => {
+    const run = (code) => vm.runInContext(code, context);
+    for (const [headline, shown] of [['Thread on /v/ naming Bee Movie Game', 'Bee Movie Game'], ['Thread on /vr/ naming Okami, Kuon and 2 more', 'Okami, Kuon and 2 more'],
+        ['I really wish they added Bee Movie Game to the premium catalogue', 'I really wish they added Bee Movie Game to the premium catalogue'], ['Thread on the fence', 'Thread on the fence']]) {
+        context.__row = { headline };
+        assert.equal(run('rowHeadline(__row)'), shown);
+    }
+    const css = read('retro.css');
+    const tail = css.slice(css.indexOf('/* ---- Row polish (2026-10-16)'));
+    assert.match(tail, /body \.game-link, body \.recent-game:not\(\.underline\) \{[^}]*display: inline-block;[^}]*border: 1px solid rgba\(79, 168, 232, \.55\);[^}]*border-radius: 7px;/);
+    assert.match(tail, /body \.src-name \{ color: var\(--money\); \}/, 'the palette yellow (--money, the logo yellow)');
+    assert.match(css, /--money: #F5C52E;/);
+    const page = read('index.html');
+    assert.equal((page.match(/class="src-name/g) || []).length, 3, 'table, game page and the 24-hour list');
 });
 
 console.log(`dashboard checks passed (${passed})`);

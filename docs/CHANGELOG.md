@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-16: boxed game names, yellow sources, plain 4chan rows
+
+- A game's name sits in a blue box wherever it is a link (`.game-link`, and the 24-hour list's `.recent-game`).
+- A source's name (subreddit, YouTube channel, site; table, game page and the 24-hour list's sources line) is the palette yellow, `--money` (`.src-name`).
+- A 4chan row shows only the game name(s), not "Thread on /v/ naming ..." (`rowHeadline()`, display only: the scraper still writes that headline, so archive keys are unchanged).
+
 ## 2026-10-16: "Show fewer" no longer shows on Highlights
 
 - `body .brand-btn { display: inline-flex }` beat Tailwind's `.hidden`, so a fold button the script had hidden (Highlights shows cards, not the list) stayed on screen, as "Show fewer" when the list had been left open. `body .list-toggle.hidden { display: none; }` fixes it for every list's button; a Node check reads the rule and the state.

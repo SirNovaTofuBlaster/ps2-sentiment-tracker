@@ -1320,3 +1320,14 @@ body .hl-price { margin-top: auto; font-size: .78rem; }
   body .hl-cover { flex-basis: 3.9rem; }
   body .hl-title { font-size: 1.12rem; }
 }
+
+/* ---- Row polish (2026-10-16): the game name sits in a box; a source's name (subreddit, channel, site) is the palette yellow ---- */
+body .game-link, body .recent-game:not(.underline) {
+  display: inline-block; max-width: 100%; padding: .12rem .6rem; border: 1px solid rgba(79, 168, 232, .55); border-radius: 7px;
+  background: rgba(79, 168, 232, .12); color: var(--accent-hi); text-decoration: none; cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+body .game-link:hover, body .game-link:focus-visible, body .recent-game:not(.underline):hover, body .recent-game:not(.underline):focus-visible {
+  background: rgba(79, 168, 232, .24); border-color: var(--accent); text-decoration: none;
+}
+body .src-name { color: var(--money); }
