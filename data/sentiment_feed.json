@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 10:16:44 UTC",
+  "last_updated": "2026-10-16 10:30:37 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -477,6 +477,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 09:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749790897",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 09:20 UTC"
     },
@@ -6533,13 +6552,14 @@
       "timestamp": "2026-10-16 00:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Devil May Cry and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749772273",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Devil May Cry",
       "matched_games": [
+        "Devil May Cry",
         "Monster Hunter"
       ],
       "match_score": 100,
@@ -253293,102 +253313,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-02 10:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "551: Streets of Rage: Inside the Music with Yuzo Koshiro - The Retro Hour EP551",
-      "source": "Podcast: The Retro Hour (Retro Gaming Podcast)",
-      "source_type": "podcast",
-      "feed": "https://audioboom.com/channels/4970769.rss",
-      "link": "https://audioboom.com/posts/8959750",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 10:28 UTC"
-    },
-    {
-      "headline": "Academic Research | Risk of Rain 2 User Study - Remote via Zoom",
-      "source": "r/truegaming",
-      "source_type": "reddit",
-      "feed": "reddit:truegaming",
-      "link": "https://www.reddit.com/r/truegaming/comments/1wvq825/academic_research_risk_of_rain_2_user_study/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 10:23 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PS2 Collection Showcase",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wvq79f/ps2_collection_showcase/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 10:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Game Appreciation, Shadow Of Destiny (or Memories) #1",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1wvq5rs/game_appreciation_shadow_of_destiny_or_memories_1/",
-      "matched_game": "Shadow of Destiny",
-      "matched_games": [
-        "Shadow of Destiny"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 10:19 UTC"
-    },
-    {
-      "headline": "Steam hará cambios en la sección Descuentos y eventos y prometen 'recomendaciones dinámicas y personalizadas'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026275017/steam-hara-cambios-en-la-seccion-descuentos-y-eventos-y-prometen-recomendaciones-dinamicas-y-personalizadas/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 10:17 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Unscrupulous Airbnb host tries to get $1,700 out of Redditor with AI-generated pic of overflowing toilet",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/software/ai/unscrupulous-airbnb-host-tries-to-get-usd1-700-out-of-redditor-with-ai-generated-pic-of-overflowing-toilet/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 10:16 UTC",
       "is_digital_only": false
     }
   ]
