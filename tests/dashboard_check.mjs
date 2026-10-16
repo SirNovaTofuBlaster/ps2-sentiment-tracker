@@ -3073,6 +3073,7 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
     // The Gacha page is switched off (GACHA_SHOWN): no tab, and #gacha falls back to the Tracker.
     assert.match(read('index.html'), /id="tabGacha"[^>]*class="view-tab hidden"/, 'the Gacha tab is hidden');
     assert.match(read('index.html'), /id="collTabPrizes"[^>]*class="view-tab hidden"/, 'so is My gacha prizes');
+    assert.match(read('retro.css'), /body \.view-tab\.hidden \{ display: none; \}/, 'and the stylesheet lets .hidden win over .view-tab');
     assert.equal(run(`isView('gacha')`), false, '#gacha does not open the page while it is off');
     run(`showView('gacha')`);
     assert.equal(el('viewGacha').classList.contains('hidden'), true);

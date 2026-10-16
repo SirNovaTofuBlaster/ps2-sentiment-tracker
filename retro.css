@@ -210,6 +210,8 @@ body .view-tab {
   cursor: pointer;
   transition: color .15s;
 }
+/* `body .view-tab` sets display, which beat Tailwind's .hidden: a hidden tab (Gacha, My gacha prizes) stayed on screen */
+body .view-tab.hidden { display: none; }
 body .view-tab i { font-size: .72rem; }
 body .view-tab:hover, body .view-tab:focus-visible { color: var(--text); }
 body .view-tab.is-active {

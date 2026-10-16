@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: the hidden Gacha tab really is hidden
+
+- The first change added `hidden` to the Gacha and My gacha prizes tab buttons, but `body .view-tab { display: inline-flex }` in `retro.css` overrode it, so both stayed visible. `body .view-tab.hidden { display: none; }` fixes it; a Node check reads the rule.
+
 ## 2026-10-16: the EUR button moves next to My collection
 
 - The `€ EUR` button now sits in the header beside **My collection** (it was in its own row under the page tabs). It still appears only when `data/fx.json` could be read. The line saying which rate is used is now the button's hover text and a screen-reader note instead of visible text. Not checked in a browser; look at it on a phone.
