@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 00:48:57 UTC",
+  "last_updated": "2026-10-16 01:00:58 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -892,7 +892,7 @@
       "timestamp": "2026-10-15 23:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Okami, Beyond Good and Evil, Red Faction and 1 more",
+      "headline": "Thread on /v/ naming Okami, Red Faction, Kingdom Hearts and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -900,9 +900,10 @@
       "matched_game": "Okami",
       "matched_games": [
         "Okami",
-        "Beyond Good and Evil",
         "Red Faction",
-        "Resident Evil 4"
+        "Kingdom Hearts",
+        "Resident Evil 4",
+        "Beyond Good and Evil"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -1388,6 +1389,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 22:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749766467",
+      "matched_game": "Spider-Man 3",
+      "matched_games": [
+        "Spider-Man 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 22:46 UTC"
     },
@@ -2549,6 +2569,25 @@
       "hype": 0,
       "timestamp": "2026-10-15 21:44 UTC",
       "views": 1254
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749763223",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 21:42 UTC"
     },
     {
       "headline": "It’s finally here",
@@ -3747,14 +3786,15 @@
       "timestamp": "2026-10-15 20:42 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749759819",
       "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -5054,17 +5094,17 @@
       "timestamp": "2026-10-15 19:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 4: The Room, Resident Evil Code: Veronica X, Silent Hill 2 and 6 more",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Silent Hill 2, Silent Hill 3 and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749756838",
-      "matched_game": "Silent Hill 4: The Room",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Silent Hill 4: The Room",
         "Resident Evil Code: Veronica X",
         "Silent Hill 2",
         "Silent Hill 3",
+        "Silent Hill 4: The Room",
         "Resident Evil 4",
         "Haunting Ground",
         "Rule of Rose",
@@ -10008,17 +10048,18 @@
       "timestamp": "2026-10-15 16:56 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 4",
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening and Persona 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749746163",
-      "matched_game": "Persona 4",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
       "matched_games": [
+        "Devil May Cry 3: Dante's Awakening",
         "Persona 4"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -248870,83 +248911,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-02 01:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Escape from playtime | Preview",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/escape-from-playtime/114867/escape-from-playtime-preview",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 00:57 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "First pickup for October",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wvgf3e/first_pickup_for_october/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 00:56 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "what game did you expect to hate but ended up absolutely loving?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wvgayo/what_game_did_you_expect_to_hate_but_ended_up/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 00:51 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Gallipoli - Ali al Muntar Trailer | XBOX",
-      "source": "YouTube: XBOX",
-      "source_type": "youtube",
-      "feed": "youtube:UCjBp_7RuDBUYbd1LegWEJ8g",
-      "link": "https://www.youtube.com/watch?v=CoHrBuv5c2Y",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 00:50 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Gears of War E-Day Quick Review",
-      "source": "YouTube: Kinda Funny Games",
-      "source_type": "youtube",
-      "feed": "youtube:UCT6QFE3peNry9PdO5uGj96g",
-      "link": "https://www.youtube.com/shorts/Vx_Rpyxo9S8",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 00:49 UTC",
       "is_digital_only": false
     }
   ]
