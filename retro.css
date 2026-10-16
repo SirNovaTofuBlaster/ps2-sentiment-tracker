@@ -771,8 +771,9 @@ body .chart-close:hover { color: var(--text); border-color: var(--accent); }
   body .chart-legend { min-height: 2.4rem; font-size: .8125rem; line-height: 1.4; }
 }
 
-/* The EUR button, under the page tabs */
-body .currency-row:not(.hidden) { display: flex; align-items: center; justify-content: flex-end; gap: .75rem; margin: -1rem 0 0; font-family: var(--mono); }
+/* The EUR button, beside My collection in the header. Its row adds no box of its own (the button is the grid item on a phone); the note (which rate was used) is read aloud and is also the button's hover text. */
+body .currency-row:not(.hidden) { display: contents; font-family: var(--mono); }
+body .currency-row .currency-note { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 body .currency-note { color: var(--dim); font-size: .72rem; }
 body .currency-toggle {
   padding: .3rem .8rem;
@@ -785,7 +786,6 @@ body .currency-toggle {
 body .currency-toggle:hover { color: var(--text); }
 body .currency-toggle.is-active { background: var(--accent); border-color: var(--accent); color: var(--bg); }
 @media (max-width: 640px) {
-  body .currency-row { flex-wrap: wrap; margin-top: -.5rem; }
   body main .currency-toggle { min-height: 2.25rem; }
 }
 

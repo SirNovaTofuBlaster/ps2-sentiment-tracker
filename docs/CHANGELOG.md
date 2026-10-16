@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: the EUR button moves next to My collection
+
+- The `€ EUR` button now sits in the header beside **My collection** (it was in its own row under the page tabs). It still appears only when `data/fx.json` could be read. The line saying which rate is used is now the button's hover text and a screen-reader note instead of visible text. Not checked in a browser; look at it on a phone.
+
 ## 2026-10-16: charts open on the last week
 
 - The Rarest charts and a game's price chart now open on **1W** instead of All (`rareChart.range` and `gameChart.range` in `index.html`). The other ranges are one tap away.

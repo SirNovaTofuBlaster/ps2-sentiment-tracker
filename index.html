@@ -53,6 +53,11 @@
           <button type="button" id="tabCollection" aria-controls="viewCollection" onclick="showView('collection')" class="brand-btn brand-btn-collection" title="The games you own, with covers and what they are worth">
             <i class="fa-solid fa-box-archive" aria-hidden="true"></i> My collection <span id="tabCollectionCount" class="coll-count hidden"></span>
           </button>
+          <!-- The EUR button, beside My collection: shown only when data/fx.json could be read. -->
+          <span id="currencyRow" class="currency-row hidden">
+            <span id="currencyNote" class="currency-note" role="status"></span>
+            <button type="button" id="currencyToggle" class="brand-btn font-mono-custom" aria-pressed="false" onclick="setCurrency(!showEuro)">&euro; EUR</button>
+          </span>
         </div>
       </div>
 
@@ -113,12 +118,6 @@
           <button type="button" id="tabLibrary" role="tab" aria-selected="false" aria-controls="viewLibrary" onclick="showView('library')" class="view-tab"><i class="fa-solid fa-table-cells" aria-hidden="true"></i> Library</button>
           <button type="button" id="tabGacha" role="tab" aria-selected="false" aria-controls="viewGacha" onclick="showView('gacha')" class="view-tab hidden"><i class="fa-solid fa-dice" aria-hidden="true"></i> Gacha</button>
           <button type="button" id="tabUnderrated" role="tab" aria-selected="false" aria-controls="viewUnderrated" onclick="showView('underrated')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Underrated</button>
-        </div>
-
-        <!-- The EUR button: shown only when data/fx.json could be read. -->
-        <div id="currencyRow" class="currency-row hidden flex items-center gap-2 text-xs">
-          <span id="currencyNote" class="currency-note text-slate-400"></span>
-          <button type="button" id="currencyToggle" class="brand-btn font-mono-custom" aria-pressed="false" onclick="setCurrency(!showEuro)">&euro; EUR</button>
         </div>
       </div>
 
