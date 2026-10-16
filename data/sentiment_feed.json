@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 13:47:36 UTC",
+  "last_updated": "2026-10-16 13:50:09 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -867,14 +867,15 @@
       "timestamp": "2026-10-16 12:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "headline": "Thread on /v/ naming Shadow of the Colossus and ICO",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749798240",
       "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "Shadow of the Colossus"
+        "Shadow of the Colossus",
+        "ICO"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1351,6 +1352,25 @@
       "timestamp": "2026-10-16 12:21 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Baldur's Gate: Dark Alliance",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12881019",
+      "matched_game": "Baldur's Gate: Dark Alliance",
+      "matched_games": [
+        "Baldur's Gate: Dark Alliance"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 12:20 UTC"
+    },
+    {
       "headline": "Most Underrated PS1 Game?",
       "source": "r/psx",
       "source_type": "reddit",
@@ -1417,6 +1437,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 12:12 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Cowboy Bebop",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749796454",
+      "matched_game": "Cowboy Bebop",
+      "matched_games": [
+        "Cowboy Bebop"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 12:11 UTC"
     },
     {
       "headline": "Nvidia Spark Is Here! N1X ASUS Pro Art P16 First Look!",
@@ -5852,17 +5891,18 @@
       "timestamp": "2026-10-16 06:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming King Arthur",
+      "headline": "Thread on /v/ naming Silent Hill 4: The Room and King Arthur",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749785394",
-      "matched_game": "King Arthur",
+      "matched_game": "Silent Hill 4: The Room",
       "matched_games": [
+        "Silent Hill 4: The Room",
         "King Arthur"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -254795,62 +254835,6 @@
       "hype": 0,
       "timestamp": "2026-10-02 13:55 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Which game is this? I really want to play it!",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1wvub6b/which_game_is_this_i_really_want_to_play_it/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:49 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "I Don’t Want To Play Your AI-Generated Mod That Puts Skate 3 Inside Of Modern Warfare 2 Inside Of Minecraft",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/i-dont-want-to-play-your-ai-generated-mod-that-puts-skate-3-inside-of-modern-warfare-2-inside-of-minecraft-2000738660",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:48 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "'In the Eternal Fire's Shadow' quest walkthrough in The Witcher 3 Wild Hunt",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/witcher-3-wild-hunt-in-the-eternal-fires-shadow-quest-walkthrough-reinald-priest/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:48 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nier Automata \"Brother\" interlude scene",
-      "source": "r/patientgamers",
-      "source_type": "reddit",
-      "feed": "reddit:patientgamers",
-      "link": "https://www.reddit.com/r/patientgamers/comments/1wvua59/nier_automata_brother_interlude_scene/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 13:48 UTC"
     }
   ]
 }
