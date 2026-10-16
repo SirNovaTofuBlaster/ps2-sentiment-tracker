@@ -407,6 +407,8 @@ body .recent-game:hover, body .recent-game:focus-visible { text-decoration: unde
    nothing else is needed here. */
 body .is-folded > .list-extra { display: none; }
 body .list-toggle:not(.hidden) { display: inline-flex; align-items: center; gap: .55rem; }
+/* `body .brand-btn` sets display, which beat Tailwind's .hidden: a fold button with nothing to fold (Highlights shows cards, not the list) stayed on screen as "Show fewer" */
+body .list-toggle.hidden { display: none; }
 body .list-toggle i { font-size: .6rem; }
 /* An opened list can be very long: "Show fewer" follows you down it. */
 body .list-toggle[aria-expanded="true"] { position: sticky; bottom: .75rem; z-index: 5; background-color: var(--bg); }

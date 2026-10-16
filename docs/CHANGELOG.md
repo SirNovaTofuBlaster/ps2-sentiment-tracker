@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: "Show fewer" no longer shows on Highlights
+
+- `body .brand-btn { display: inline-flex }` beat Tailwind's `.hidden`, so a fold button the script had hidden (Highlights shows cards, not the list) stayed on screen, as "Show fewer" when the list had been left open. `body .list-toggle.hidden { display: none; }` fixes it for every list's button; a Node check reads the rule and the state.
+
 ## 2026-10-16: phone polish for the new rows
 
 - At 640 px and below the three order buttons share one full row (they used to run off the edge), the "Named in the last 24 hours" box has less padding, the Shops pill is 2.25 rem tall, the opened shop buttons wrap inside their panel instead of swiping out of it, Highlights cards are tighter, and cards no longer lift on touch screens. Written from the stylesheet; not looked at on a real phone.
