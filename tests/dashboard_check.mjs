@@ -966,12 +966,12 @@ await check('prices are read from the site itself, with no token, before the lis
     await vm.runInContext('loadPrices()', context);
     assert.match(el('pricesEmpty').textContent, /^No prices yet\./);
 
-    assert.match(read('index.html'), /await loadPrices\(\);\s*await loadRare\(\);\s*await loadDemand\(\);\s*await loadDigitalArchive\(\);\s*refreshDashboard\(\);/,
+    assert.match(read('index.html'), /await loadPrices\(\);\s*await loadRare\(\);\s*await loadDemand\(\);\s*await loadDigitalArchive\(\);\s*await ensureUnderrated\(\);\s*refreshDashboard\(\);/,
         'prices are loaded before the lists that show them');
 });
 
-await check('four pages in one: Tracker, Rarest, Most mentioned and eBay prices', () => {
-    const views = { dashboard: ['viewDashboard', 'tabDashboard'], rare: ['viewRare', 'tabRare'], mentions: ['viewMentions', 'tabMentions'], prices: ['viewPrices', 'tabPrices'] };
+await check('five pages in one: Highlights, Tracker, Rarest, Most mentioned and eBay prices', () => {
+    const views = { highlights: ['viewHighlights', 'tabHighlights'], dashboard: ['viewDashboard', 'tabDashboard'], rare: ['viewRare', 'tabRare'], mentions: ['viewMentions', 'tabMentions'], prices: ['viewPrices', 'tabPrices'] };
     // Which page is on screen, and which tab says so. Exactly one of each, always.
     const shown = () => {
         const open = Object.keys(views).filter(name => !el(views[name][0]).classList.contains('hidden'));
@@ -985,23 +985,25 @@ await check('four pages in one: Tracker, Rarest, Most mentioned and eBay prices'
     const show = (name) => { vm.runInContext(`showView(${JSON.stringify(name)})`, context); return shown(); };
     const selected = () => Object.keys(views).map(name => el(views[name][1]).getAttribute('aria-selected')).join(' ');
     assert.equal(show('prices'), 'prices');
-    assert.equal(selected(), 'false false false true', 'a screen reader hears which tab is open');
+    assert.equal(selected(), 'false false false false true', 'a screen reader hears which tab is open');
     assert.equal(show('prices'), 'prices');
     assert.equal(show('mentions'), 'mentions');
-    assert.equal(selected(), 'false false true false');
+    assert.equal(selected(), 'false false false true false');
     assert.equal(show('rare'), 'rare');
-    assert.equal(selected(), 'false true false false');
+    assert.equal(selected(), 'false false true false false');
     assert.equal(show('dashboard'), 'dashboard');
-    assert.equal(selected(), 'true false false false');
+    assert.equal(selected(), 'false true false false false');
     assert.equal(show('dashboard'), 'dashboard');
-    assert.deepEqual(addressChanges, ['#prices', '#mentions', '#rare', '/'],
+    assert.equal(show('dashboard'), 'dashboard');
+    assert.equal(show('highlights'), 'highlights');
+    assert.deepEqual(addressChanges, ['#prices', '#mentions', '#rare', '#dashboard', '/'],
         'each change of page is one new entry in the history, so Back returns to the last page and the address can be bookmarked');
-    for (const name of ['nonsense', 'constructor', 'toString', '', null]) assert.equal(show(name), 'dashboard', `"${name}" is not a page`);
-    assert.deepEqual(addressChanges, ['#prices', '#mentions', '#rare', '/'], 'staying on a page adds nothing to the history');
-    // Leaving a part of the Tracker that the address names ("#sourcesSection") by its own tab clears the name.
+    for (const name of ['nonsense', 'constructor', 'toString', '', null]) assert.equal(show(name), 'highlights', `"${name}" is not a page`);
+    assert.deepEqual(addressChanges, ['#prices', '#mentions', '#rare', '#dashboard', '/'], 'staying on a page adds nothing to the history');
+    // Leaving a part of the Tracker that the address names ("#sourcesSection") by the front page's tab clears the name.
     context.location.hash = '#sourcesSection';
-    assert.equal(show('dashboard'), 'dashboard');
-    assert.deepEqual(addressChanges, ['#prices', '#mentions', '#rare', '/', '/']);
+    assert.equal(show('highlights'), 'highlights');
+    assert.deepEqual(addressChanges, ['#prices', '#mentions', '#rare', '#dashboard', '/', '/']);
 
     // Arriving with an address, or following a link such as the header's "Sources".
     addressChanges.length = 0;
@@ -1016,21 +1018,23 @@ await check('four pages in one: Tracker, Rarest, Most mentioned and eBay prices'
     assert.equal(scrolled, 2);
     assert.equal(arrive('#prices'), 'prices');
     assert.equal(arrive('#rare'), 'rare');
-    for (const hash of ['', '#', '#dashboard', '#constructor', '#__proto__']) assert.equal(arrive(hash), 'dashboard', `"${hash}" opens the Tracker`);
+    assert.equal(arrive('#dashboard'), 'dashboard', '"#dashboard" is the Tracker');
+    for (const hash of ['', '#', '#constructor', '#__proto__']) assert.equal(arrive(hash), 'highlights', `"${hash}" opens the front page`);
     assert.deepEqual(addressChanges, [], 'reading the address never rewrites it');
     context.location.hash = '';
 
     const page = read('index.html');
     const at = (text) => { const index = page.indexOf(text); assert.notEqual(index, -1, text); assert.equal(page.indexOf(text, index + 1), -1, `${text} appears once`); return index; };
-    const order = ['id="tabDashboard"', 'id="tabRare"', 'id="tabDemand"', 'id="tabMentions"', 'id="tabPrices"',
-        '<div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">', 'id="feedSection"', 'id="sourcesSection"',
+    const order = ['id="tabHighlights"', 'id="tabDashboard"', 'id="tabRare"', 'id="tabDemand"', 'id="tabMentions"', 'id="tabPrices"',
+        '<div id="viewHighlights" role="tabpanel" aria-labelledby="tabHighlights" class="space-y-8">', 'id="highlightsSection"',
+        '<div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="hidden space-y-8">', 'id="feedSection"', 'id="sourcesSection"',
         '<div id="viewRare" role="tabpanel" aria-labelledby="tabRare" class="hidden ', 'id="rareSection"',
         '<div id="viewDemand" role="tabpanel" aria-labelledby="tabDemand" class="hidden ', 'id="demandSection"',
         '<div id="viewMentions" role="tabpanel" aria-labelledby="tabMentions" class="hidden ', 'id="topGamesSection"',
         '<div id="viewPrices" role="tabpanel" aria-labelledby="tabPrices" class="hidden ', 'id="pricesSection"', '</main>'].map(at);
     assert.deepEqual(order, [...order].sort((a, b) => a - b), 'each list is on its own page, after everything on the Tracker');
     for (const [name, [panel, tab]] of Object.entries(views)) {
-        assert.match(page, new RegExp(`id="${tab}" role="tab" aria-selected="${name === 'dashboard'}" aria-controls="${panel}" onclick="showView\\('${name}'\\)"`));
+        assert.match(page, new RegExp(`id="${tab}" role="tab" aria-selected="${name === 'highlights'}" aria-controls="${panel}" onclick="showView\\('${name}'\\)"`));
     }
     assert.match(page, /showViewFromAddress\(\);\s*window\.addEventListener\('hashchange', showViewFromAddress\);\s*window\.addEventListener\('popstate', showViewFromAddress\);/,
         'links, Back and Forward all go through the address');
@@ -1347,9 +1351,8 @@ await check('games first: what was named in the last day leads, and the table op
     assert.match(rows[2], />Mixed Game<\/button>(?:<a class="game-open"[^>]*><i [^>]*><\/i><\/a>)?<\/span>\s*<span[^>]*>3 mentions<\/span>/, 'the count is of every mention, headline or text');
     assert.match(rows[4], />Kuon<\/button>(?:<a class="game-open"[^>]*><i [^>]*><\/i><\/a>)?<\/span>\s*<span[^>]*>1 mention<\/span>/);
     assert.match(rows[4], /4chan \/vr\//);
-    assert.match(rows[9], />Retro<\/button><a class="game-open"[^>]*><i [^>]*><\/i><\/a> <span class="[^"]*" title="Named in the text under a headline, not in the headline itself\. These are wrong more often\.">in the text only<\/span>/);
+    assert.doesNotMatch(rows.join(''), /in the text only/, 'the badge is gone from every row (2026-10-16)');
     assert.match(rows[9], />2 mentions<\/span>/);
-    assert.doesNotMatch(rows.slice(0, 9).join(''), /in the text only/);
     assert.ok(rows.every(html => /class="game-open"/.test(html)), 'every game has a link to its page');
     assert.ok(rows.every(html => /class="price-links"/.test(html)), 'every game carries its search buttons');
     assert.match(rows[6], /onclick="showGameRows\(6\)"[^>]*>Ratchet &amp; Clank &lt;3<\/button>/);
@@ -1367,7 +1370,7 @@ await check('games first: what was named in the last day leads, and the table op
     const about = [...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(rule => [rule[1], rule[2]].map(part => part.replace(/\s+/g, ' ').trim()))
         .filter(([selector]) => /recent-game|#today|#feedSummary/.test(selector));
     assert.deepEqual(about, [
-        ['body .recent-game', 'background: transparent; border: 0; padding: 0; text-align: left; cursor: pointer; font-family: var(--serif); font-weight: 700; font-size: .98rem;'],
+        ['body .recent-game', 'background: transparent; border: 0; padding: 0; text-align: left; cursor: pointer; font-family: \'Newsreader\', Georgia, serif; font-weight: 600; font-size: 1.28rem; line-height: 1.2; letter-spacing: -.005em;'],
         ['body .recent-game:hover, body .recent-game:focus-visible', 'text-decoration: underline; text-underline-offset: 3px;'],
         ['body #feedSummary .recent-game', 'min-height: 2.1rem; vertical-align: middle;'],
         ['body #todayList > li > div:first-child, body #demandList > li > div:first-child, body #topGamesList > li > div:first-child, body #pricesList > li > div:first-child',
@@ -1386,7 +1389,7 @@ await check('games first: what was named in the last day leads, and the table op
     // The list sits first on the Tracker, above the Demand Index and the table.
     const order = ['class="stat-strip"', 'id="todaySection"', 'id="feedSection"'].map(mark => page.indexOf(mark));
     assert.ok(order.every((at, i) => at > 0 && (i === 0 || at > order[i - 1])), order.join(' '));
-    assert.match(page, /<div id="todaySection" class="[^"]*bg-ps2card[^"]*">\s*<div class="lb-section-header">\s*<div>\s*<h2>Named in the last 24 hours<\/h2>\s*<p id="todaySummary" class="text-xs text-slate-400 mt-1">Loading\.\.\.<\/p>/);
+    assert.match(page, /<div id="todaySection" class="[^"]*bg-ps2card[^"]*">\s*<div class="lb-section-header">\s*<div>\s*<h2>Named in the last 24 hours<\/h2>\s*<p id="todaySummary" class="sr-only">Loading\.\.\.<\/p>/);
     assert.match(page, /<ol id="todayList" class="zebra"><\/ol>\s*<button type="button" id="todayListToggle" onclick="toggleList\('todayList'\)" aria-controls="todayList"/);
 
     // The edges of the window and of the order, each on a small feed of its own.
@@ -2314,7 +2317,8 @@ await check('search suggests from the whole library and opens a game page; the l
     assert.equal(run(`goHome({ preventDefault() { __p(); } })`.replace('__p()', 'globalThis.__prevented = 1')), false);
     assert.equal(el('gameSearch').value, '');
     assert.equal(el('viewGame').classList.contains('hidden'), true);
-    assert.equal(el('viewDashboard').classList.contains('hidden'), false);
+    assert.equal(el('viewHighlights').classList.contains('hidden'), false, 'the logo goes to the front page, Highlights');
+    assert.equal(el('viewDashboard').classList.contains('hidden'), true);
     const page = read('index.html');
     assert.match(page, /<a class="brand-id" id="brandHome" href="\.\/" onclick="return goHome\(event\)"/, 'the logo is a link home');
     assert.match(page, /<input type="search" id="gameSearch"/);
@@ -3077,7 +3081,7 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
     assert.equal(run(`isView('gacha')`), false, '#gacha does not open the page while it is off');
     run(`showView('gacha')`);
     assert.equal(el('viewGacha').classList.contains('hidden'), true);
-    assert.equal(el('viewDashboard').classList.contains('hidden'), false);
+    assert.equal(el('viewHighlights').classList.contains('hidden'), false, 'an off page falls back to the front page');
     // Underrated: the file, the daily pick (random, the same all day, no repeat within a round) and the page.
     {
         const raw = JSON.parse(read('underrated.json'));
@@ -3211,6 +3215,113 @@ await check('shop buttons: each shop has its own look, and the colours are token
     assert.match(page, /class="brand-btn brand-btn-how"/);
     assert.match(page, /class="brand-btn brand-btn-sources"/);
     assert.match(page, /Plus\+Jakarta\+Sans/);
+});
+
+await check('Highlights: a dozen games, mixed, steady through the day, and short of nothing when a kind has no candidates', () => {
+    const run = (code) => vm.runInContext(code, context);
+    const now = Date.parse('2026-10-16T12:00:00Z');
+    const day = Math.floor(now / 86400000);
+    const site = (median, copies, week) => ({ checked: '2026-10-16T08:00Z', copies, lowest: median, median, listed: copies, recorded: '2026-10-16',
+        ...(week ? { week: { median: week, checked: '2026-10-09T08:00Z' } } : {}) });
+    const games = {};
+    for (let i = 0; i < 8; i++) games[`Staple ${i}`] = { level: 'staple', mentions: 20 + i, sites: ['UK'], UK: site(20 + i, 30) };
+    for (let i = 0; i < 6; i++) games[`Mover ${i}`] = { level: 'normal', mentions: 3, sites: ['UK'], UK: site(50 + i * 10, 8, 40) };
+    for (let i = 0; i < 6; i++) games[`Rare ${i}`] = { level: 'rare', mentions: 0, sites: ['UK'], UK: site(300 + i, 2) };
+    run(`setPrices(${JSON.stringify({ games })}, null)`);
+    run(`rareData = ${JSON.stringify({ lists: { PAL: Array.from({ length: 6 }, (_, i) => ({ title: `Rare ${i}`, rank: i + 1, value_usd: 400 })), US: [] } })}`);
+    run(`underratedData = ${JSON.stringify({ games: Array.from({ length: 12 }, (_, i) => ({ title: `Under ${i}`, why: 'A short reason.', genre: 'RPG', year: 2003, developer: null })), lists: [], launch: day - 11 })}`);
+    run(`visibleFeedData = ${JSON.stringify(Array.from({ length: 5 }, (_, i) => ({ timestamp: '2026-10-16 10:00 UTC', matched_games: [`News ${i}`], matched_in: 'headline', source: 'IGN', headline: `h${i}` })))}`);
+    const pick = (when) => JSON.parse(run(`JSON.stringify(pickHighlights(highlightCandidates(${when}), ${when}).map(game => [game.kind, game.title]))`));
+    const picked = pick(now);
+    assert.equal(picked.length, 12);
+    assert.equal(new Set(picked.map(([, title]) => title)).size, 12, 'no game twice');
+    const count = (list, kind) => list.filter(([k]) => k === kind).length;
+    assert.deepEqual(['news', 'rare', 'staple', 'underrated', 'mover'].map(kind => count(picked, kind)), [3, 3, 2, 2, 2], 'each kind gets its share');
+    assert.deepEqual(picked.slice(0, 5).map(([kind]) => kind), ['news', 'rare', 'staple', 'underrated', 'mover'], 'kinds alternate, so a row is never one kind');
+    assert.deepEqual(pick(now + 3600000), picked, 'the same all day');
+    assert.notDeepEqual(pick(now + 86400000), picked, 'and turns over the next day');
+    // Without the Rarest and Underrated files the other kinds fill the dozen.
+    run('rareData = null; underratedData = null;');
+    const bare = pick(now);
+    assert.equal(bare.length, 12);
+    assert.equal(count(bare, 'rare') + count(bare, 'underrated'), 0);
+    // Nothing at all: nothing drawn, and the page says why.
+    run(`setPrices(null, null); visibleFeedData = [];`);
+    run(`redrawHighlights(${now})`);
+    assert.equal(el('highlightsGrid').innerHTML, '');
+    assert.match(el('highlightsSummary').textContent, /Nothing to show yet/);
+    // A full draw puts a card per game, each kind tagged and each game a link to its page.
+    run(`setPrices(${JSON.stringify({ games })}, null); visibleFeedData = [];`);
+    run(`redrawHighlights(${now})`);
+    const cards = el('highlightsGrid').innerHTML;
+    assert.equal((cards.match(/<li class="hl-card /g) || []).length, 12);
+    assert.match(cards, /class="hl-kind">Staple<\/span>/);
+    assert.match(cards, /class="game-link"/);
+    run('visibleFeedData = []; rareData = null; underratedData = null;');
+});
+
+await check('shop buttons fold under each game and open with a light animation', () => {
+    const run = (code) => vm.runInContext(code, context);
+    const folded = run(`priceLookupHtml('Kuon', true)`);
+    assert.match(folded, /^<span class="shop-fold"><button type="button" class="shop-toggle" aria-expanded="false" onclick="toggleShops\(this\)"/);
+    assert.match(folded, /<span class="shop-panel" inert><span class="shop-inner"><span class="price-links"/);
+    assert.equal((folded.match(/style="--n:\d+"/g) || []).length, 9, 'every button has its place in the stagger');
+    assert.doesNotMatch(run(`priceLookupHtml('Kuon')`), /shop-fold/, 'a game page shows them open');
+    assert.match(run(`listPricesHtml('Kuon')`), /shop-fold/);
+    // Opening and closing: the class the stylesheet animates, the spoken state, and inert while shut (Tab skips it).
+    const classes = new Set();
+    const attrs = {};
+    const panel = { setAttribute: (name, value) => { attrs.inert = value; }, removeAttribute: () => { delete attrs.inert; } };
+    const fold = { classList: { contains: name => classes.has(name), toggle: (name, on) => (on ? classes.add(name) : classes.delete(name)) }, querySelector: () => panel };
+    const button = { closest: () => fold, setAttribute: (name, value) => { attrs[name] = value; } };
+    context.__button = button;
+    run('toggleShops(__button)');
+    assert.equal(classes.has('is-open'), true);
+    assert.equal(attrs['aria-expanded'], 'true');
+    assert.equal('inert' in attrs, false);
+    run('toggleShops(__button)');
+    assert.equal(classes.has('is-open'), false);
+    assert.equal(attrs['aria-expanded'], 'false');
+    assert.equal(attrs.inert, '');
+    const css = read('retro.css');
+    assert.match(css, /body \.shop-panel \{[^}]*grid-template-rows: 0fr;[^}]*transition: grid-template-rows/);
+    assert.match(css, /body \.shop-fold\.is-open \.shop-panel \{ grid-template-rows: 1fr; opacity: 1; \}/);
+    assert.match(css, /@media \(prefers-reduced-motion: reduce\) \{\s*body \.shop-panel, body \.shop-toggle i, body \.shop-panel \.price-link \{ transition: none; \}/, 'no motion when asked for none');
+});
+
+await check('charts are sized when their box gets a size, and a game first priced today has a chart', () => {
+    const run = (code) => vm.runInContext(code, context);
+    const calls = [];
+    const observers = [];
+    const series = () => ({ setData() {} });
+    context.window.LightweightCharts = { createChart: (holder, options) => {
+        calls.push(['create', options.width, options.height, 'autoSize' in options]);
+        return { addLineSeries: series, addAreaSeries: series, addHistogramSeries: series, priceScale: () => ({ applyOptions() {} }),
+            timeScale: () => ({ fitContent: () => calls.push(['fit']) }), subscribeCrosshairMove() {}, subscribeClick() {},
+            resize: (width, height) => calls.push(['resize', width, height]), remove() {} };
+    } };
+    context.getComputedStyle = () => ({ getPropertyValue: () => '#123456' });
+    context.ResizeObserver = class { constructor(callback) { observers.push(callback); } observe() {} disconnect() {} };
+    const holder = el('gameChartCanvas');
+    holder.clientWidth = 0; holder.clientHeight = 0;     // a page still hidden: no size yet
+    run(`drawChart('gameChartCanvas', { points: [{ time: '2026-10-15', value: 5 }, { time: '2026-10-16', value: 6 }], format: String })`);
+    assert.deepEqual(calls[0], ['create', 600, 320, false], 'a box with no size gets a sensible one, and no autoSize');
+    const before = calls.length;
+    observers[0]([]);
+    assert.equal(calls.length, before, 'still no size: nothing is resized');
+    holder.clientWidth = 480; holder.clientHeight = 300;  // the page is shown
+    observers[0]([]);
+    assert.deepEqual(calls.slice(before), [['resize', 480, 300], ['fit']], 'the chart is made the size of its box and fitted');
+    delete context.window.LightweightCharts;
+    delete context.ResizeObserver;
+    // series.json holds finished days only; today's figure comes from latest.json.
+    run(`setPrices(${JSON.stringify({ games: { 'New Game': { level: 'underrated', mentions: 0, sites: ['US'], US: { checked: '2026-10-16T08:00Z', recorded: '2026-10-16', copies: 4, median: 12.5, lowest: 9 } },
+        'Old Game': { level: 'normal', mentions: 1, sites: ['US'], US: { checked: '2026-10-16T08:00Z', recorded: '2026-10-16', copies: 3, median: 20, lowest: 9 } } } })}, null)`);
+    const data = { start: '2026-10-01', games: { 'Old Game': { US: [[13, 18, 3], [14, 19, 3]] } } };
+    context.__data = data;
+    assert.deepEqual(JSON.parse(run(`JSON.stringify(gamePoints(__data, 'New Game', 'US'))`)), [{ time: '2026-10-16', value: 12.5, copies: 4 }], 'no series yet: today alone');
+    assert.deepEqual(JSON.parse(run(`JSON.stringify(gamePoints(__data, 'Old Game', 'US').map(point => point.time))`)), ['2026-10-14', '2026-10-15', '2026-10-16'], "today's figure follows the finished days");
+    run('setPrices(null, null)');
 });
 
 console.log(`dashboard checks passed (${passed})`);
