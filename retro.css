@@ -3,8 +3,8 @@
 
    The colours are those of a late-nineties console's start-up screen: a near-black ground
    and four primaries, each with its own kind of job:
-     yellow  prices (the price links, the prices under a shelf box) and the keepsake colour of
-             the My collection button; nothing else is yellow
+     yellow  prices (the prices under a shelf box) and the keepsake colour of the My collection
+             button; the shop buttons have their own colours (teal, four-colour, red) since 2026-10-16
      blue    what can be followed: game names, links, buttons
      red     remaster news, and whatever is low or failing (a falling
              trend, a source that cannot be read, an error)
@@ -41,6 +41,34 @@
   --mono: 'JetBrains Mono', 'Courier New', monospace;
   --sans: 'Inter', system-ui, sans-serif;
   --serif: 'Playfair Display', Georgia, serif;
+  /* shop and button colours (brand-calibrated buttons, 2026-10-16) */
+  --k-030509: #030509;
+  --k-060911: #060911;
+  --k-12151f: #12151F;
+  --k-131620: #131620;
+  --k-171b27: #171B27;
+  --k-1a1e2b: #1A1E2B;
+  --k-1b1f2d: #1B1F2D;
+  --k-22c55e: #22C55E;
+  --k-232838: #232838;
+  --k-2581eb: #2581EB;
+  --k-318df5: #318DF5;
+  --k-3898ff: #3898FF;
+  --k-38bdf8: #38BDF8;
+  --k-4da6ff: #4DA6FF;
+  --k-63b3ff: #63B3FF;
+  --k-6ee7b7: #6EE7B7;
+  --k-7dd3fc: #7DD3FC;
+  --k-d1fae5: #D1FAE5;
+  --k-e2e8f0: #E2E8F0;
+  --k-f1f5f9: #F1F5F9;
+  --k-fbbf24: #FBBF24;
+  --k-fcd34d: #FCD34D;
+  --k-fef08a: #FEF08A;
+  --k-ff4b4b: #FF4B4B;
+  --k-ff5252: #FF5252;
+  --k-ff8080: #FF8080;
+  --k-ffffff: #FFFFFF;
 }
 
 /* Sans for prose, mono for data */
@@ -1074,3 +1102,143 @@ body .under-attn-bar { height: .4rem; border-radius: 3px; background: var(--line
 body .under-attn-bar span { display: block; height: 100%; background: var(--text); }
 body .under-attn-text { color: var(--dim); }
 body a.brand-btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; text-decoration: none; }
+
+/* ---- Brand-calibrated buttons (preview, 2026-10-16) ---------------------------------------------
+   Header buttons take one colour of the mark each (How it works red, Sources teal, REFRESH blue,
+   My collection gold, EUR blue). The shop chips under every game take their shop's colours:
+   Price Charting teal with a chart mark, eBay as its four-colour wordmark over a four-colour edge,
+   CeX red. Labels use Plus Jakarta Sans. The old "only prices are yellow" rule now holds for
+   numbers, not for the search chips. */
+body .brand-btn, body .price-link, body .level-tag { font-family: 'Plus Jakarta Sans', var(--sans); }
+body .brand-btn {
+  font-size: .8rem; letter-spacing: -.005em; border-radius: 9px; min-height: 2.5rem;
+  background: linear-gradient(180deg, var(--k-1b1f2d) 0%, var(--k-131620) 100%);
+  border-color: rgba(255, 255, 255, .11);
+  color: var(--k-e2e8f0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 4px 12px rgba(0, 0, 0, .35);
+  transition: transform .2s cubic-bezier(.16, 1, .3, 1), border-color .2s, box-shadow .2s, background .2s, color .2s;
+}
+body .brand-btn:hover, body .brand-btn:focus-visible { transform: translateY(-1.5px); color: var(--k-ffffff); }
+body .brand-btn:active { transform: none; }
+body .brand-btn-how {
+  border-color: rgba(255, 75, 75, .35);
+  background: linear-gradient(180deg, rgba(255, 75, 75, .10) 0%, rgba(20, 23, 34, .95) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 120, 120, .18), 0 4px 14px -2px rgba(255, 75, 75, .14);
+}
+body .brand-btn-how:hover, body .brand-btn-how:focus-visible {
+  border-color: rgba(255, 75, 75, .65);
+  box-shadow: inset 0 1px 0 rgba(255, 140, 140, .28), 0 6px 20px -2px rgba(255, 75, 75, .26);
+}
+body .brand-btn-sources {
+  border-color: rgba(16, 185, 129, .38);
+  background: linear-gradient(180deg, rgba(16, 185, 129, .11) 0%, rgba(20, 23, 34, .95) 100%);
+  box-shadow: inset 0 1px 0 rgba(52, 211, 153, .18), 0 4px 14px -2px rgba(16, 185, 129, .14);
+}
+body .brand-btn-sources:hover, body .brand-btn-sources:focus-visible {
+  border-color: rgba(16, 185, 129, .7);
+  box-shadow: inset 0 1px 0 rgba(110, 231, 183, .28), 0 6px 20px -2px rgba(16, 185, 129, .26);
+}
+body .brand-btn-primary {
+  background: linear-gradient(180deg, var(--k-4da6ff) 0%, var(--k-2581eb) 100%);
+  color: var(--k-060911); font-weight: 700; letter-spacing: .02em;
+  border-color: rgba(191, 227, 255, .45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55), 0 4px 18px rgba(56, 152, 255, .38);
+}
+body .brand-btn-primary:hover, body .brand-btn-primary:focus-visible {
+  background: linear-gradient(180deg, var(--k-63b3ff) 0%, var(--k-318df5) 100%);
+  color: var(--k-030509); border-color: rgba(255, 255, 255, .65);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 6px 24px rgba(56, 152, 255, .55);
+}
+body .brand-btn-collection {
+  color: var(--k-fcd34d); border-color: rgba(251, 191, 36, .42);
+  background: linear-gradient(180deg, rgba(251, 191, 36, .14) 0%, rgba(28, 23, 14, .95) 100%);
+  box-shadow: inset 0 1px 0 rgba(253, 224, 71, .22), 0 4px 15px -2px rgba(251, 191, 36, .16);
+}
+body .brand-btn-collection:hover, body .brand-btn-collection:focus-visible {
+  color: var(--k-fef08a); border-color: rgba(251, 191, 36, .75);
+  background: linear-gradient(180deg, rgba(251, 191, 36, .22) 0%, rgba(36, 29, 15, .98) 100%);
+  box-shadow: inset 0 1px 0 rgba(254, 240, 138, .35), 0 6px 22px -2px rgba(251, 191, 36, .3);
+}
+body .brand-btn-currency {
+  border-color: rgba(56, 152, 255, .32);
+  background: linear-gradient(180deg, rgba(56, 152, 255, .10) 0%, rgba(19, 22, 32, .95) 100%);
+}
+body .brand-btn-currency:hover, body .brand-btn-currency:focus-visible { border-color: rgba(56, 152, 255, .65); box-shadow: 0 5px 18px -2px rgba(56, 152, 255, .25); }
+body .brand-btn-currency[aria-pressed="true"] { border-color: rgba(56, 152, 255, .8); color: var(--k-ffffff); }
+
+/* Shop chips */
+body .price-link {
+  position: relative; overflow: hidden; border-radius: 8px;
+  height: 1.9rem; padding: 0 .7rem; gap: .4rem;
+  font-size: .72rem; font-weight: 600; letter-spacing: -.005em;
+  transition: transform .18s cubic-bezier(.16, 1, .3, 1), border-color .18s, box-shadow .18s, background .18s, color .18s;
+}
+body .price-link:hover, body .price-link:focus-visible { transform: translateY(-1.5px); font-weight: 600; }
+body .price-link:active { transform: none; }
+body .price-link .pc-icon { width: .9rem; height: .9rem; flex-shrink: 0; }
+
+body .price-link--pc {
+  background: linear-gradient(135deg, rgba(16, 185, 129, .15) 0%, rgba(6, 182, 212, .10) 100%);
+  color: var(--k-6ee7b7); border-color: rgba(16, 185, 129, .42);
+  box-shadow: inset 0 1px 0 rgba(167, 243, 208, .18), 0 3px 10px -2px rgba(16, 185, 129, .18);
+}
+body .price-link--pc .pc-chart-word { color: var(--k-38bdf8); font-weight: 700; }
+body .price-link--pc:hover, body .price-link--pc:focus-visible {
+  background: linear-gradient(135deg, rgba(16, 185, 129, .25) 0%, rgba(6, 182, 212, .18) 100%);
+  color: var(--k-d1fae5); border-color: rgba(52, 211, 153, .78);
+  box-shadow: inset 0 1px 0 rgba(167, 243, 208, .3), 0 6px 18px -2px rgba(16, 185, 129, .34);
+}
+body .price-link--pc:hover .pc-chart-word, body .price-link--pc:focus-visible .pc-chart-word { color: var(--k-7dd3fc); }
+
+body .price-link--ebay {
+  background: linear-gradient(180deg, var(--k-1a1e2b) 0%, var(--k-12151f) 100%);
+  color: var(--k-f1f5f9); border-color: rgba(255, 255, 255, .13);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 3px 10px -2px rgba(0, 0, 0, .4);
+}
+body .price-link--ebay::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; opacity: .75;
+  background: linear-gradient(90deg, var(--k-ff4b4b) 0 25%, var(--k-3898ff) 25% 50%, var(--k-fbbf24) 50% 75%, var(--k-22c55e) 75% 100%);
+  transition: height .18s, opacity .18s;
+}
+body .price-link--ebay:hover, body .price-link--ebay:focus-visible {
+  background: linear-gradient(180deg, var(--k-232838) 0%, var(--k-171b27) 100%);
+  color: var(--k-ffffff); border-color: rgba(56, 152, 255, .45);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .16), 0 6px 16px -2px rgba(56, 152, 255, .25);
+}
+body .price-link--ebay:hover::after, body .price-link--ebay:focus-visible::after { opacity: 1; height: 2.5px; }
+body .ebay-wordmark { display: inline-flex; align-items: baseline; font-weight: 700; letter-spacing: -.03em; font-size: .9rem; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .4)); }
+body .ebay-e { color: var(--k-ff5252); }
+body .ebay-b { color: var(--k-3898ff); }
+body .ebay-a { color: var(--k-fbbf24); }
+body .ebay-y { color: var(--k-22c55e); }
+body .price-link--ebay .price-sup {
+  font-size: .68rem; font-weight: 700; letter-spacing: .03em; opacity: 1; color: var(--k-e2e8f0);
+  background: rgba(255, 255, 255, .08); padding: .1rem .38rem; border-radius: 4px; line-height: 1.1;
+}
+body .price-link--ebay:hover .price-sup, body .price-link--ebay:focus-visible .price-sup { background: rgba(56, 152, 255, .22); color: var(--k-ffffff); }
+
+body .price-link--cex {
+  background: linear-gradient(135deg, rgba(239, 68, 68, .20) 0%, rgba(185, 28, 28, .14) 100%);
+  color: var(--k-ffffff); font-weight: 700; border-color: rgba(248, 113, 113, .45);
+  box-shadow: inset 0 1px 0 rgba(254, 202, 202, .2), 0 3px 10px -2px rgba(239, 68, 68, .22);
+}
+body .price-link--cex:hover, body .price-link--cex:focus-visible {
+  background: linear-gradient(135deg, rgba(239, 68, 68, .34) 0%, rgba(220, 38, 38, .24) 100%);
+  color: var(--k-ffffff); border-color: rgba(252, 165, 165, .8);
+  box-shadow: inset 0 1px 0 rgba(254, 202, 202, .35), 0 6px 18px -2px rgba(239, 68, 68, .38);
+}
+body .cex-dot { width: 6px; height: 6px; border-radius: 999px; background: var(--k-ff4b4b); box-shadow: 0 0 8px var(--k-ff4b4b); flex-shrink: 0; }
+body .price-flag { font-family: 'Plus Jakarta Sans', var(--sans); font-weight: 700; letter-spacing: .08em; }
+
+/* "Scarce" badge */
+body .level-tag.few-copies {
+  display: inline-flex; align-items: center; gap: .4rem; padding: .22rem .6rem; border-radius: 6px;
+  font-weight: 700; letter-spacing: .04em; color: var(--k-ff8080); border-color: rgba(255, 75, 75, .45);
+  background: linear-gradient(90deg, rgba(255, 75, 75, .16) 0%, rgba(255, 75, 75, .08) 100%);
+  box-shadow: 0 2px 10px -2px rgba(255, 75, 75, .2);
+}
+body a.level-tag.few-copies::before { content: ''; width: 6px; height: 6px; border-radius: 999px; background: var(--k-ff4b4b); flex-shrink: 0; }
+@media (max-width: 640px) {
+  body .price-link { height: 2.25rem; padding: 0 .8rem; }
+  body .brand-btn { font-size: .78rem; }
+}

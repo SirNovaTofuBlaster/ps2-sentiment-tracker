@@ -31,7 +31,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="retro.css">
 </head>
@@ -47,8 +47,8 @@
           <span id="dataSourceBadge" class="text-xs border px-2 py-0.5 font-mono-custom text-slate-300 border-slate-700 rounded">Loading feed…</span>
         </div>
         <div class="brand-actions">
-          <a href="guide.html" target="_blank" rel="noopener noreferrer" class="brand-btn"><i class="fa-solid fa-circle-question text-ps2neon"></i> How it works</a>
-          <a href="#sourcesSection" class="brand-btn"><i class="fa-solid fa-sliders text-spindle-teal"></i> Sources</a>
+          <a href="guide.html" target="_blank" rel="noopener noreferrer" class="brand-btn brand-btn-how"><i class="fa-solid fa-circle-question text-ps2neon"></i> How it works</a>
+          <a href="#sourcesSection" class="brand-btn brand-btn-sources"><i class="fa-solid fa-sliders text-spindle-teal"></i> Sources</a>
           <button type="button" onclick="fetchSentimentData()" class="brand-btn brand-btn-primary"><i class="fa-solid fa-rotate"></i> REFRESH</button>
           <button type="button" id="tabCollection" aria-controls="viewCollection" onclick="showView('collection')" class="brand-btn brand-btn-collection" title="The games you own, with covers and what they are worth">
             <i class="fa-solid fa-box-archive" aria-hidden="true"></i> My collection <span id="tabCollectionCount" class="coll-count hidden"></span>
@@ -56,7 +56,7 @@
           <!-- The EUR button, beside My collection: shown only when data/fx.json could be read. -->
           <span id="currencyRow" class="currency-row hidden">
             <span id="currencyNote" class="currency-note" role="status"></span>
-            <button type="button" id="currencyToggle" class="brand-btn font-mono-custom" aria-pressed="false" onclick="setCurrency(!showEuro)">&euro; EUR</button>
+            <button type="button" id="currencyToggle" class="brand-btn brand-btn-currency font-mono-custom" aria-pressed="false" onclick="setCurrency(!showEuro)">&euro; EUR</button>
           </span>
         </div>
       </div>
@@ -642,9 +642,16 @@
         function priceLookupHtml(title) {
             const links = priceLookupUrls(title);
             if (!links.length) return '';
-            const chip = (l) => `<a class="price-link" href="${safeUrl(l.url)}" target="_blank" rel="noopener noreferrer" title="${esc(l.hint)}" aria-label="${esc(l.hint)}">${
-                l.fa ? `<i class="${esc(l.fa)}" aria-hidden="true"></i>` : `<span class="price-mark">${esc(l.mark)}</span>`
-            }${l.sup ? `<span class="price-sup">${esc(l.sup)}</span>` : ''}</a>`;
+            // Each shop has its own look (2026-10-16 preview): Price Charting in teal with a chart mark,
+            // eBay as the four-colour wordmark with the country beside it, CeX in red.
+            const kindOf = (l) => l.id.startsWith('pc-') ? 'pc' : l.id.startsWith('ebay-') ? 'ebay' : l.id === 'cex' ? 'cex' : 'other';
+            const face = (l, kind) => kind === 'pc'
+                ? `<svg class="pc-icon" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 12L6 8L9 10.5L14 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.5 4.5H14V8" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="price-mark">Price <span class="pc-chart-word">Charting</span></span>`
+                : kind === 'ebay'
+                ? `<span class="ebay-wordmark" aria-hidden="true"><span class="ebay-e">e</span><span class="ebay-b">b</span><span class="ebay-a">a</span><span class="ebay-y">y</span></span>`
+                : kind === 'cex' ? `<span class="cex-dot" aria-hidden="true"></span><span class="price-mark">CeX</span>`
+                : `<span class="price-mark">${esc(l.mark ?? '')}</span>`;
+            const chip = (l) => { const kind = kindOf(l); return `<a class="price-link price-link--${kind}" href="${safeUrl(l.url)}" target="_blank" rel="noopener noreferrer" title="${esc(l.hint)}" aria-label="${esc(l.hint)}">${face(l, kind)}${l.sup ? `<span class="price-sup">${esc(l.sup)}</span>` : ''}</a>`; };
             const group = ([region, flag]) => {
                 const inner = links.filter(l => l.region === region).map(chip).join('');
                 return inner ? `<span class="price-region"><span class="price-flag">${esc(flag)}</span>${inner}</span>` : '';

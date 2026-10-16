@@ -1199,7 +1199,7 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.ok(contrast(tokens.bg, tokens.accent) >= 4.5, 'the filled button: dark on blue');
     assert.ok(contrast(tokens.bg, tokens['accent-hi']) >= 4.5);
 
-    // Yellow has few jobs: a price link, a game's price on the shelf, and the keepsake colour of the collection button and badges.
+    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16.
     const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
     const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
     assert.ok(yellow.length >= 2, 'at rest and under the pointer');
@@ -1260,7 +1260,7 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.match(css, /grid-template-areas: "id" "actions" "sync";/, 'on a phone: the name, the three buttons, the sync line');
     assert.match(guide, /Every game it recognises gets links out to shops and price guides, and eBay's asking prices beside its name\./);
     assert.doesNotMatch(guide, /amber/i, 'the guide calls the price buttons by the colour they are');
-    assert.equal((guide.match(/yellow buttons/g) || []).length, 3);
+    assert.equal((guide.match(/shop buttons/g) || []).length, 3);
 
     // Nothing of the palette before this one is left behind.
     for (const old of ['#080B12', '#0C1120', '#10141F', '#1E2636', '#141A28', '#101A2E', '#E8ECF5', '#C7D0E2', '#7E899F', '#4D5872',
@@ -3192,6 +3192,25 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
     context.fetch = real;
     assert.deepEqual(asked, []);
     run(`gachaData = null; gachaFileState = 'idle'; gachaMachineId = ''; gachaSaved = cleanGachaSaved({}); showView('dashboard')`);
+});
+
+await check('shop buttons: each shop has its own look, and the colours are tokens', () => {
+    const run = (code) => vm.runInContext(code, context);
+    const chips = run(`priceLookupHtml('Haunting Ground')`);
+    assert.equal((chips.match(/class="price-link price-link--pc"/g) || []).length, 2, 'Price Charting, PAL and US');
+    assert.equal((chips.match(/class="price-link price-link--ebay"/g) || []).length, 6, 'eBay UK, DE, FR, IT, ES, US');
+    assert.equal((chips.match(/class="price-link price-link--cex"/g) || []).length, 1);
+    assert.equal((chips.match(/<span class="ebay-wordmark" aria-hidden="true">/g) || []).length, 6);
+    for (const code of ['UK', 'DE', 'FR', 'IT', 'ES', 'US']) assert.match(chips, new RegExp(`<span class="price-sup">${code}</span>`));
+    assert.equal((chips.match(/aria-label="[^"]+"/g) || []).length, 10, 'every button, and the row, keeps its spoken name');
+    const css = read('retro.css');
+    for (const rule of ['body .price-link--pc', 'body .price-link--ebay', 'body .price-link--cex', 'body .brand-btn-how', 'body .brand-btn-sources', 'body .brand-btn-currency']) {
+        assert.ok(css.includes(rule), rule);
+    }
+    const page = read('index.html');
+    assert.match(page, /class="brand-btn brand-btn-how"/);
+    assert.match(page, /class="brand-btn brand-btn-sources"/);
+    assert.match(page, /Plus\+Jakarta\+Sans/);
 });
 
 console.log(`dashboard checks passed (${passed})`);
