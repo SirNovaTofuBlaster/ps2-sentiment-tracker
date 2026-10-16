@@ -1380,7 +1380,7 @@ await check('games first: what was named in the last day leads, and the table op
     // Everything the stylesheet hides. A rule added here on purpose belongs in this list; one
     // that hides the new list or the line over the table by where it sits does not.
     assert.deepEqual([...css.matchAll(/([^{}]+)\{([^{}]*)\}/g)].filter(rule => /display:\s*none|visibility:\s*hidden/.test(rule[2])).map(rule => rule[1].replace(/\s+/g, ' ').trim()), [
-        'body .view-tab.hidden', 'body .is-folded > .list-extra', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
+        'body .view-tab.hidden', 'body .is-folded > .list-extra', 'body .list-toggle.hidden', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
         'body .chart-tools::-webkit-scrollbar', 'body .shelf::-webkit-scrollbar', 'body .shelf-arrow.hidden',
     'body .library-add.hidden',
@@ -3364,6 +3364,24 @@ await check('phones: the order buttons share a row, the Shops pill is thumb-size
     assert.match(phone, /body \.shop-toggle \{ min-height: 2\.25rem;/);
     assert.match(phone, /body \.shop-inner \.price-links \{ flex-wrap: wrap; overflow: visible; margin-right: 0;/, 'the open shop buttons wrap rather than swipe out of their panel');
     assert.match(read('index.html'), /<div class="flex gap-1\.5 shrink-0" role="group" aria-label="Order the list">/, 'the group the phone rule widens');
+});
+
+await check('a fold button that has nothing to fold really is hidden (Highlights on a phone)', () => {
+    const css = read('retro.css');
+    assert.match(css, /body \.list-toggle\.hidden \{ display: none; \}/, '.brand-btn sets display and beat Tailwind hidden');
+    assert.ok(css.indexOf('body .list-toggle.hidden') > css.indexOf('body .brand-btn {'), 'and it comes after that rule');
+    const run = (code) => vm.runInContext(code, context);
+    const now = Date.parse('2026-10-16T12:00:00Z');
+    context.__many = Array.from({ length: 15 }, (_, i) => ({ headline: `h${i}`, source: 'IGN', link: `https://e.com/${i}`, timestamp: '2026-10-16 10:00 UTC', matched_game: `Game ${i}`, matched_games: [`Game ${i}`], matched_in: 'headline', is_remaster_rumor: false, sentiment: 50 }));
+    const toggle = () => el('todayListToggle').classList.contains('hidden');
+    run("setRecentSort('price')"); run(`renderRecentGames(__many, ${now})`);
+    assert.equal(toggle(), false, 'a long list has its button');
+    run("toggleList('todayList')");
+    run("setRecentSort('highlights')");
+    assert.equal(toggle(), true, 'Highlights has none, even with the list left open');
+    run("setRecentSort('price')");
+    assert.equal(toggle(), false, 'and it is back with the list');
+    run("toggleList('todayList')");
 });
 
 console.log(`dashboard checks passed (${passed})`);
