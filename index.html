@@ -110,8 +110,7 @@
       <!-- Four pages in one: the tracker, the rarest games, the ranking of games by mentions, and the full list of eBay asking prices. -->
       <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
         <div class="view-tabs" role="tablist" aria-label="Pages">
-          <button type="button" id="tabHighlights" role="tab" aria-selected="true" aria-controls="viewHighlights" onclick="showView('highlights')" class="view-tab is-active"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Highlights</button>
-          <button type="button" id="tabDashboard" role="tab" aria-selected="false" aria-controls="viewDashboard" onclick="showView('dashboard')" class="view-tab"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Tracker</button>
+          <button type="button" id="tabDashboard" role="tab" aria-selected="true" aria-controls="viewDashboard" onclick="showView('dashboard')" class="view-tab is-active"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> Tracker</button>
           <button type="button" id="tabRare" role="tab" aria-selected="false" aria-controls="viewRare" onclick="showView('rare')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Rarest</button>
           <button type="button" id="tabDemand" role="tab" aria-selected="false" aria-controls="viewDemand" onclick="showView('demand')" class="view-tab"><i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i> Demand</button>
           <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
@@ -127,15 +126,7 @@
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow space-y-8 w-full">
 
-    <div id="viewHighlights" role="tabpanel" aria-labelledby="tabHighlights" class="space-y-8">
-      <div id="highlightsSection" class="bg-ps2card border border-ps2border rounded-md p-6">
-        <div class="lb-section-header"><h2>Highlights</h2></div>
-        <p id="highlightsSummary" class="text-xs text-slate-400 mb-4">Loading…</p>
-        <ul id="highlightsGrid" class="hl-grid"></ul>
-      </div>
-    </div>
-
-    <div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="hidden space-y-8">
+    <div id="viewDashboard" role="tabpanel" aria-labelledby="tabDashboard" class="space-y-8">
 
       <div class="stat-strip">
         <div class="stat">
@@ -161,12 +152,14 @@
               <p id="todaySummary" class="sr-only">Loading...</p>
             </div>
             <div class="flex gap-1.5 shrink-0" role="group" aria-label="Order the list">
-              <button type="button" id="sortPrice" aria-pressed="true" onclick="setRecentSort('price')" class="sort-btn is-active"><i class="fa-solid fa-sterling-sign" aria-hidden="true"></i> Most expensive</button>
+              <button type="button" id="sortHighlights" aria-pressed="true" onclick="setRecentSort('highlights')" class="sort-btn is-active"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Highlights</button>
+              <button type="button" id="sortPrice" aria-pressed="false" onclick="setRecentSort('price')" class="sort-btn"><i class="fa-solid fa-sterling-sign" aria-hidden="true"></i> Most expensive</button>
               <button type="button" id="sortRare" aria-pressed="false" onclick="setRecentSort('rare')" class="sort-btn"><i class="fa-solid fa-gem" aria-hidden="true"></i> Most rare</button>
             </div>
           </div>
           <ol id="todayList" class="zebra"></ol>
           <button type="button" id="todayListToggle" onclick="toggleList('todayList')" aria-controls="todayList" class="list-toggle hidden brand-btn mt-3"></button>
+          <ul id="highlightsGrid" class="hl-grid"></ul>
         </div>
       </div>
 
@@ -698,7 +691,6 @@
            bookmarked, and the header's Sources link still works from any of them.
         -------------------------------------------------------------------- */
         const VIEWS = {
-            highlights: ['viewHighlights', 'tabHighlights'],
             dashboard: ['viewDashboard', 'tabDashboard'],
             rare: ['viewRare', 'tabRare'],
             demand: ['viewDemand', 'tabDemand'],
@@ -736,9 +728,9 @@
             try { draw(); } catch (error) { console.warn('Could not draw the page.', error); }
         }
 
-        let currentView = 'highlights';
+        let currentView = 'dashboard';
         function showView(name, remember = true) {
-            const view = isView(name) ? name : 'highlights';
+            const view = isView(name) ? name : 'dashboard';
             document.getElementById('viewGame').classList.add('hidden');
             for (const [key, [panel, tab]] of Object.entries(VIEWS)) {
                 document.getElementById(panel).classList.toggle('hidden', key !== view);
@@ -751,7 +743,6 @@
             drawPending(view);
             currentView = view;
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
-            if (view === 'highlights') redrawHighlights();
             if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'gacha' || view === 'underrated') ensureCoverIndex();
             if (view === 'library') ensureGenres();
             if (view !== 'library') libraryClosePicked();
@@ -766,7 +757,7 @@
             }
             if (remember) {
                 // A new entry in the browser's history, so Back returns to the page you came from.
-                const hash = view === 'highlights' ? '' : `#${view}`;
+                const hash = view === 'dashboard' ? '' : `#${view}`;
                 try {
                     if (String(location.hash || '') !== hash) history.pushState(null, '', hash || location.pathname + (location.search || ''));
                 } catch { /* an address that cannot be changed only loses the bookmark */ }
@@ -784,6 +775,7 @@
                 const title = safeDecode(hash.slice(6)).trim();
                 if (title) return openGame(title, false);
             }
+            if (named === 'highlights') { showView('dashboard', false); setRecentSort('highlights'); return 'dashboard'; }
             if (isView(named)) return showView(named, false);
             // A part of the Tracker ("#sourcesSection") opens the Tracker; no address at all is the front page.
             if (/^[A-Za-z][\w-]*Section$/.test(named) && document.getElementById(named)) {
@@ -791,8 +783,8 @@
                 document.getElementById(named)?.scrollIntoView?.();
                 return 'dashboard';
             }
-            showView('highlights', false);
-            return 'highlights';
+            showView('dashboard', false);
+            return 'dashboard';
         }
 
         /* ---- Lists that fold away ----------------------------------------------
@@ -1096,7 +1088,7 @@
 
         function openGame(title, remember = true) {
             const name = String(title ?? '').trim();
-            if (!name) return showView('highlights', remember);
+            if (!name) return showView('dashboard', remember);
             for (const [panel, tab] of Object.values(VIEWS)) {
                 document.getElementById(panel).classList.add('hidden');
                 const button = document.getElementById(tab);
@@ -1123,7 +1115,7 @@
             document.getElementById('gameSearch').value = '';
             closeSuggestions();
             gameFilter = null;
-            showView('highlights');
+            showView('dashboard');
             filterFeedItems();
             window.scrollTo?.(0, 0);
             return false;
@@ -1285,10 +1277,10 @@
                 .map(entry => entry.game);
         }
 
-        let recentSort = 'price';
+        let recentSort = 'highlights';
         let lastRecentItems = [];
         function setRecentSort(mode) {
-            recentSort = mode === 'rare' ? 'rare' : 'price';
+            recentSort = mode === 'rare' || mode === 'highlights' ? mode : 'price';
             renderRecentGames(lastRecentItems);
         }
 
@@ -1296,7 +1288,7 @@
             const list = document.getElementById('todayList');
             const summary = document.getElementById('todaySummary');
             lastRecentItems = items;
-            for (const [id, mode] of [['sortPrice', 'price'], ['sortRare', 'rare']]) {
+            for (const [id, mode] of [['sortHighlights', 'highlights'], ['sortPrice', 'price'], ['sortRare', 'rare']]) {
                 const button = document.getElementById(id);
                 button.classList.toggle('is-active', recentSort === mode);
                 button.setAttribute('aria-pressed', String(recentSort === mode));
@@ -1305,6 +1297,15 @@
             renderShelf(byRarity(recent.games));   // the shelf is rarest first whatever the list below is ordered by
             recent.games = recentSort === 'rare' ? byRarity(recent.games) : byPrice(recent.games);
             recentGameNames = recent.games.map(game => game.name);
+            // Highlights is the third way to look at this window: cards instead of rows (the list and its fold button step aside).
+            const highlightsOn = recentSort === 'highlights';
+            document.getElementById('highlightsGrid')?.classList.toggle('hidden', !highlightsOn);
+            list.classList.toggle('hidden', highlightsOn);
+            if (highlightsOn) {
+                document.getElementById('todayListToggle')?.classList.add('hidden');
+                redrawHighlights(now);
+                return;
+            }
             const plural = (count, word) => `${count.toLocaleString('en')} ${word}${count === 1 ? '' : 's'}`;
             if (!recent.games.length) {
                 summary.textContent = allFeedData === fallbackData.items ? 'No feed has been loaded, so there is nothing to list yet.'
@@ -3589,14 +3590,16 @@
 
         function redrawHighlights(now = Date.now()) {
             const grid = document.getElementById('highlightsGrid');
-            const summary = document.getElementById('highlightsSummary');
+            const summary = document.getElementById('todaySummary');
             if (!grid || !summary) return;
             try {
                 ensureCoverIndex();
                 const games = pickHighlights(highlightCandidates(now), now);
-                summary.textContent = games.length
-                    ? 'A mix of what the feed is naming now, staples, rare finds and underrated games. It turns over each day.'
-                    : 'Nothing to show yet: the feed and the price files have not loaded.';
+                if (recentSort === 'highlights') {
+                    summary.textContent = games.length
+                        ? 'Highlights: a mix of what the feed is naming now, staples, rare finds and underrated games. It turns over each day.'
+                        : 'Nothing to show yet: the feed and the price files have not loaded.';
+                }
                 grid.innerHTML = games.map(highlightCardHtml).join('');
             } catch (error) {
                 console.warn('Could not draw the Highlights.', error);

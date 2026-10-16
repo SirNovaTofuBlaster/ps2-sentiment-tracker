@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: Highlights moved into "Named in the last 24 hours"
+
+- Highlights is no longer a tab. It is the third button beside Most expensive and Most rare in the 24-hour window (`setRecentSort('highlights')`; the window opens on it) and shows its cards in `#highlightsGrid` in place of the list. The Tracker is the front page again; `#highlights` still opens the Tracker on that button.
+
 ## 2026-10-16: Highlights, folded shops, bigger names, more YouTube channels
 
 - New first tab **Highlights** (`pickHighlights()`): 12 games a day, 3 named in the news, 3 rare, 2 staples, 2 underrated, 2 movers, alternating by kind and seeded by the UTC day; missing kinds are filled by the others. The Tracker is no longer home.
