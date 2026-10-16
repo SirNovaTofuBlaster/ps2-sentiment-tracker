@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-16 02:26:54 UTC",
+  "last_updated": "2026-10-16 02:54:44 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584623407",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 02:45 UTC"
+    },
     {
       "headline": "53 Years Later, The Greatest Closing Line In Sci-Fi History Is Still The Best Book Quote Of The 1970s",
       "source": "Polygon.com",
@@ -30051,7 +30070,7 @@
         "Silent Hill 4: The Room"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -249912,105 +249931,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-02 02:54 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "OCTOPATH TRAVELER and OCTOPATH TRAVELER II on GOG",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wvirqy/octopath_traveler_and_octopath_traveler_ii_on_gog/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 02:52 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "After a record-breaking September, 'it's safe to say Steam's yearly revenue will blow past $20B for the first time'",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/software/platforms/after-a-record-breaking-september-its-safe-to-say-steams-yearly-revenue-will-blow-past-usd20b-for-the-first-time/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 02:50 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Opening: This is a personal nostalgia piece, not a controller review.",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/52613932",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 02:50 UTC"
-    },
-    {
-      "headline": "Pokemon Pearl help",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wviluv/pokemon_pearl_help/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 02:44 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pokemon emerald",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wviksi/pokemon_emerald/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 02:42 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Infinite world graphical bugs",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1wvieto/infinite_world_graphical_bugs/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 35,
-      "timestamp": "2026-10-02 02:33 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Neon Inferno (#617)",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wvib6e/neon_inferno_617/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 02:28 UTC",
       "is_digital_only": false
     }
   ]
