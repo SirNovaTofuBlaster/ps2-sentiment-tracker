@@ -1372,6 +1372,9 @@ await check('games first: what was named in the last day leads, and the table op
         ['body #feedSummary .recent-game', 'min-height: 2.1rem; vertical-align: middle;'],
         ['body #todayList > li > div:first-child, body #demandList > li > div:first-child, body #topGamesList > li > div:first-child, body #pricesList > li > div:first-child',
             'flex-wrap: wrap; row-gap: .25rem; font-size: .8125rem;'],
+        ['body #todaySection', 'padding: 1rem;'],
+        ['body #todaySection .lb-section-header > div[role="group"]', 'width: 100%; flex-wrap: wrap;'],
+        ['body #todaySection .sort-btn', 'flex: 1 1 auto; min-height: 2.4rem; display: inline-flex; align-items: center; justify-content: center; gap: .35rem;'],
     ]);
     assert.match(css, /body main button, body main a\.bg-slate-800, body main \.from-blue-600 \{\s*min-height: 2\.75rem;/);
     // Everything the stylesheet hides. A rule added here on purpose belongs in this list; one
@@ -3350,6 +3353,17 @@ await check('charts are sized when their box gets a size, and a game first price
     assert.deepEqual(JSON.parse(run(`JSON.stringify(gamePoints(__data, 'New Game', 'US'))`)), [{ time: '2026-10-16', value: 12.5, copies: 4 }], 'no series yet: today alone');
     assert.deepEqual(JSON.parse(run(`JSON.stringify(gamePoints(__data, 'Old Game', 'US').map(point => point.time))`)), ['2026-10-14', '2026-10-15', '2026-10-16'], "today's figure follows the finished days");
     run('setPrices(null, null)');
+});
+
+await check('phones: the order buttons share a row, the Shops pill is thumb-sized and the cards do not lift on touch', () => {
+    const css = read('retro.css');
+    const phone = css.slice(css.indexOf('/* ---- Phones (2026-10-16)'));
+    assert.match(phone, /@media \(hover: none\) \{ body \.hl-card:hover \{ transform: none;/);
+    assert.match(phone, /@media \(max-width: 640px\) \{[^]*body #todaySection \.lb-section-header > div\[role="group"\] \{ width: 100%; flex-wrap: wrap; \}/);
+    assert.match(phone, /body #todaySection \.sort-btn \{ flex: 1 1 auto; min-height: 2\.4rem;/);
+    assert.match(phone, /body \.shop-toggle \{ min-height: 2\.25rem;/);
+    assert.match(phone, /body \.shop-inner \.price-links \{ flex-wrap: wrap; overflow: visible; margin-right: 0;/, 'the open shop buttons wrap rather than swipe out of their panel');
+    assert.match(read('index.html'), /<div class="flex gap-1\.5 shrink-0" role="group" aria-label="Order the list">/, 'the group the phone rule widens');
 });
 
 console.log(`dashboard checks passed (${passed})`);

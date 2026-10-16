@@ -1302,3 +1302,19 @@ body .hl-card--mover .hl-kind { border-color: var(--k-ff8080); color: var(--k-ff
 body .hl-title { font-size: 1.2rem; }
 body .hl-why { margin: 0; font-size: .78rem; line-height: 1.4; color: var(--dim); }
 body .hl-price { margin-top: auto; font-size: .78rem; }
+
+/* ---- Phones (2026-10-16): the three order buttons, the Shops pill, the open shop buttons and the Highlights cards ---- */
+@media (hover: none) { body .hl-card:hover { transform: none; border-color: var(--line); } }
+@media (max-width: 640px) {
+  /* The 24-hour window: less padding, and the three buttons share a full row instead of running off the right edge. */
+  body #todaySection { padding: 1rem; }
+  body #todaySection .lb-section-header > div[role="group"] { width: 100%; flex-wrap: wrap; }
+  body #todaySection .sort-btn { flex: 1 1 auto; min-height: 2.4rem; display: inline-flex; align-items: center; justify-content: center; gap: .35rem; }
+  /* Thumb-sized: the Shops pill, and the shop buttons wrap inside the open panel instead of swiping out of it. */
+  body .shop-toggle { min-height: 2.25rem; padding: .3rem .85rem .3rem .75rem; font-size: .72rem; }
+  body .shop-inner .price-links { flex-wrap: wrap; overflow: visible; margin-right: 0; padding-right: 0; gap: .55rem .9rem; }
+  body .shop-inner .price-region { flex-wrap: wrap; }
+  body .hl-card { padding: .7rem; gap: .75rem; }
+  body .hl-cover { flex-basis: 3.9rem; }
+  body .hl-title { font-size: 1.12rem; }
+}

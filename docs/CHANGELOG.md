@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: phone polish for the new rows
+
+- At 640 px and below the three order buttons share one full row (they used to run off the edge), the "Named in the last 24 hours" box has less padding, the Shops pill is 2.25 rem tall, the opened shop buttons wrap inside their panel instead of swiping out of it, Highlights cards are tighter, and cards no longer lift on touch screens. Written from the stylesheet; not looked at on a real phone.
+
 ## 2026-10-16: Highlights moved into "Named in the last 24 hours"
 
 - Highlights is no longer a tab. It is the third button beside Most expensive and Most rare in the 24-hour window (`setRecentSort('highlights')`; the window opens on it) and shows its cards in `#highlightsGrid` in place of the list. The Tracker is the front page again; `#highlights` still opens the Tracker on that button.
