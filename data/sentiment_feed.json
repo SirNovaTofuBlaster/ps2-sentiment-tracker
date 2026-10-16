@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 04:18:23 UTC",
+  "last_updated": "2026-10-16 04:20:55 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -297,6 +297,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 03:31 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749779567",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 03:30 UTC"
     },
     {
       "headline": "Why can't I buy oversized external hardware for cheap?",
@@ -26977,14 +26996,15 @@
       "timestamp": "2026-10-15 03:38 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Area 51",
+      "headline": "Thread on /vg/ naming Area 51 and Top Gun",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584515839",
       "matched_game": "Area 51",
       "matched_games": [
-        "Area 51"
+        "Area 51",
+        "Top Gun"
       ],
       "match_score": 100,
       "match_method": "exact",
