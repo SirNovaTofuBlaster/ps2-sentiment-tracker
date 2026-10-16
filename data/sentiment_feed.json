@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 19:18:39 UTC",
+  "last_updated": "2026-10-16 19:22:47 UTC",
   "total_tracked_feeds": 236,
   "items": [
     {
@@ -135,6 +135,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 18:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Katamari Damacy",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749816389",
+      "matched_game": "Katamari Damacy",
+      "matched_games": [
+        "Katamari Damacy"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 18:58 UTC"
     },
@@ -5024,6 +5043,27 @@
       "views": 38659
     },
     {
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, God Hand and Devil May Cry 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749806990",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening",
+        "God Hand",
+        "Devil May Cry 3"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 16:05 UTC"
+    },
+    {
       "headline": "Laden vs USA electronic game",
       "source": "r/gaming",
       "source_type": "reddit",
@@ -6349,6 +6389,25 @@
       "hype": 0,
       "timestamp": "2026-10-16 15:20 UTC",
       "views": 5209
+    },
+    {
+      "headline": "Thread on /v/ naming Just Cause",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749804752",
+      "matched_game": "Just Cause",
+      "matched_games": [
+        "Just Cause"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 15:20 UTC"
     },
     {
       "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Kingdom Hearts",
@@ -260685,37 +260744,6 @@
       "sentiment": 60,
       "timestamp": "2026-10-02 19:28 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Network adapter",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1ww2oce/network_adapter/",
-      "matched_game": "Network Adapter Start-Up Disc",
-      "match_score": 90,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 19:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The EU Has FINALLY Had Enough",
-      "source": "YouTube: Bellular News",
-      "source_type": "youtube",
-      "feed": "youtube:UC3nPaf5MeeDTHA2JN7clidg",
-      "link": "https://www.youtube.com/watch?v=cpnzITKGv5k",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 19:21 UTC",
-      "views": 314006
     }
   ]
 }
