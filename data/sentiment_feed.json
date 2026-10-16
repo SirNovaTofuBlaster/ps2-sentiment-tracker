@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-16 14:45:37 UTC",
+  "last_updated": "2026-10-16 14:48:17 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749803064",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 14:43 UTC"
+    },
     {
       "headline": "Need help adding fans",
       "source": "r/pcmasterrace",
@@ -11248,13 +11267,15 @@
       "timestamp": "2026-10-16 01:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Thing",
+      "headline": "Thread on /v/ naming Marvel: Ultimate Alliance, Fantastic Four and The Thing",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749773314",
-      "matched_game": "The Thing",
+      "matched_game": "Marvel: Ultimate Alliance",
       "matched_games": [
+        "Marvel: Ultimate Alliance",
+        "Fantastic Four",
         "The Thing"
       ],
       "match_score": 100,
@@ -11719,17 +11740,18 @@
       "views": 92700
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening",
+      "headline": "Thread on /v/ naming God of War and Devil May Cry 3: Dante's Awakening",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749772019",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_game": "God of War",
       "matched_games": [
+        "God of War",
         "Devil May Cry 3: Dante's Awakening"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -255738,36 +255760,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-02 14:48 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "'Avengers: Secret Wars' Release Date at Risk as Filming Reportedly Delayed",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/avengers-secret-wars-filming-delayed-doomsday-sequel/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 14:47 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Decided to do something cursed today",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wvvpc4/decided_to_do_something_cursed_today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 14:46 UTC",
       "is_digital_only": false
     }
   ]
