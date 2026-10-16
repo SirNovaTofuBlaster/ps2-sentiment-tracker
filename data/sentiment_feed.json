@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 09:36:37 UTC",
+  "last_updated": "2026-10-16 09:47:42 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -20216,18 +20216,19 @@
       "timestamp": "2026-10-15 14:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter and Half-Life",
+      "headline": "Thread on /v/ naming God of War II, Half-Life and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749737750",
-      "matched_game": "Monster Hunter",
+      "matched_game": "God of War II",
       "matched_games": [
-        "Monster Hunter",
-        "Half-Life"
+        "God of War II",
+        "Half-Life",
+        "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -252865,79 +252866,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-02 09:53 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Cyberpunk 2077 with or without DLC",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wvpllc/cyberpunk_2077_with_or_without_dlc/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 09:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "You said the gold PC looked like a kitchen appliance… so we got a shark instead",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1wvplel/you_said_the_gold_pc_looked_like_a_kitchen/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 09:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "How to use a Flusher to block Geno from listening to The Order’s message in Fortnite Chapter 7, season 4",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/how-to-use-a-flusher-to-block-geno-from-listening-to-the-orders-message-in-fortnite-chapter-7-season-4/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 09:44 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Into the Breach - Challenging and Satisfying",
-      "source": "r/patientgamers",
-      "source_type": "reddit",
-      "feed": "reddit:patientgamers",
-      "link": "https://www.reddit.com/r/patientgamers/comments/1wvpjeh/into_the_breach_challenging_and_satisfying/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 09:41 UTC"
-    },
-    {
-      "headline": "GTA 6 Rating Officially Confirms Sex Will Indeed Be in the Game",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/grand-theft-auto-gta-6-sex-scenes-rating-mature/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 09:40 UTC",
       "is_digital_only": false
     }
   ]
