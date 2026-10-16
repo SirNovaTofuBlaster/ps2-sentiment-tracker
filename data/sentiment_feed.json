@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 21:39:44 UTC",
+  "last_updated": "2026-10-16 21:42:17 UTC",
   "total_tracked_feeds": 242,
   "items": [
     {
@@ -143,6 +143,25 @@
       "timestamp": "2026-10-16 21:28 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Tony Hawks Underground",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749824978",
+      "matched_game": "Tony Hawks Underground",
+      "matched_games": [
+        "Tony Hawks Underground"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 21:27 UTC"
+    },
+    {
       "headline": "PS2 Controller Check",
       "source": "r/psx",
       "source_type": "reddit",
@@ -158,6 +177,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 21:26 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749824836",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 21:25 UTC"
     },
     {
       "headline": "First Build",
@@ -1063,6 +1101,28 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 20:34 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Metal Gear Solid 2: Sons of Liberty, Spy Hunter, Shadow the Hedgehog and 1 more",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12881981",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Spy Hunter",
+        "Shadow the Hedgehog",
+        "Special Forces"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 20:34 UTC"
     },
@@ -37294,21 +37354,22 @@
       "timestamp": "2026-10-15 14:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter, Half-Life, God of War II and 2 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Half-Life, Monster Hunter and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749737750",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
-        "Monster Hunter",
+        "Grand Theft Auto: San Andreas",
         "Half-Life",
+        "Monster Hunter",
         "God of War II",
         "Kingdom Hearts",
         "Dark Cloud"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -263210,41 +263271,6 @@
       "sentiment": 50,
       "timestamp": "2026-10-02 21:43 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Is there a PS2 equivalent to removing dithering artifacts caused by lower color bit depth in games? Swiss homebrew app on the Gamecube allows you to remove the dithering in games that used lower 16-bit color depth! PS2 games are dithered quite a bit sometimes.",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1ww61v2/is_there_a_ps2_equivalent_to_removing_dithering/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 21:41 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Mighty No 9 and Keiji Inafune - The Whole Story | Past Mortem | SSFF",
-      "source": "YouTube: Stop Skeletons From Fighting",
-      "source_type": "youtube",
-      "feed": "youtube:UC5Xeb9-FhZXgvw340n7PsCQ",
-      "link": "https://www.youtube.com/watch?v=qNz7x1ZxJOM",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 21:41 UTC",
-      "views": 66256
     }
   ]
 }
