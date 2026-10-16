@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-16 16:38:38 UTC",
+  "last_updated": "2026-10-16 16:41:19 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Mortal Kombat: Deception",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749808593",
+      "matched_game": "Mortal Kombat: Deception",
+      "matched_games": [
+        "Mortal Kombat: Deception"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 16:37 UTC"
+    },
     {
       "headline": "Vram?",
       "source": "r/pcmasterrace",
@@ -119,6 +138,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 16:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749808263",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 16:30 UTC"
     },
@@ -1031,6 +1069,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 15:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749806350",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 15:52 UTC"
     },
@@ -2103,7 +2160,7 @@
       "timestamp": "2026-10-16 15:13 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Shadow of the Colossus, No One Lives Forever and 12 more",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Shadow of the Colossus, No One Lives Forever and 13 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -2124,7 +2181,8 @@
         "Space Channel 5",
         "Soul Calibur 2",
         "Burnout Revenge",
-        "Project Zero"
+        "Project Zero",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -9776,18 +9834,21 @@
       "timestamp": "2026-10-16 08:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Silent Hill 3",
+      "headline": "Thread on /v/ naming The Lord of the Rings: The Two Towers, Silent Hill 3, Silent Hill 2 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749788982",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "The Lord of the Rings: The Two Towers",
       "matched_games": [
+        "The Lord of the Rings: The Two Towers",
+        "Silent Hill 3",
         "Silent Hill 2",
-        "Silent Hill 3"
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -13576,6 +13637,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 02:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 4: The Room",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749776786",
+      "matched_game": "Silent Hill 4: The Room",
+      "matched_games": [
+        "Silent Hill 4: The Room"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 02:19 UTC"
     },
     {
       "headline": "Looking for games like troublemaker but with customization",
@@ -18740,7 +18820,7 @@
       "views": 24161
     },
     {
-      "headline": "Thread on /vg/ naming Final Fantasy XI and Kingdom Hearts",
+      "headline": "Thread on /vg/ naming Final Fantasy XI, Kingdom Hearts and Final Fantasy X",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -18748,7 +18828,8 @@
       "matched_game": "Final Fantasy XI",
       "matched_games": [
         "Final Fantasy XI",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -257715,23 +257796,6 @@
       "hype": 0,
       "timestamp": "2026-10-02 16:43 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Game Scoop! 873: Games of Our Lives, Pt. 2",
-      "source": "Podcast: Game Scoop!",
-      "source_type": "podcast",
-      "feed": "https://rss.pdrl.fm/817ebc/feeds.megaphone.fm/gamescoop",
-      "link": "https://www.podtrac.com/pts/redirect.mp3/mgln.ai/e/495/pscrb.fm/rss/p/traffic.megaphone.fm/SBP9022343747.mp3",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 16:40 UTC"
     }
   ]
 }
