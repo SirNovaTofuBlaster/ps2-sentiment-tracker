@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-16 13:06:43 UTC",
+  "last_updated": "2026-10-16 13:20:56 UTC",
   "total_tracked_feeds": 232,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749799005",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 13:10 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Shadow of the Colossus",
       "source": "4chan /v/",
@@ -516,6 +535,25 @@
       "is_digital_only": false,
       "sentiment": 50,
       "hype": 1,
+      "timestamp": "2026-10-16 12:02 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Heroes of Might and Magic",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749796130",
+      "matched_game": "Heroes of Might and Magic",
+      "matched_games": [
+        "Heroes of Might and Magic"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
       "timestamp": "2026-10-16 12:02 UTC"
     },
     {
@@ -1820,17 +1858,18 @@
       "timestamp": "2026-10-16 10:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Half-Life and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749792636",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Half-Life",
       "matched_games": [
+        "Half-Life",
         "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -168773,6 +168812,25 @@
       "views": 47810
     },
     {
+      "headline": "Thread on /vrpg/ naming Devil May Cry 3: Dante's Awakening",
+      "source": "4chan /vrpg/",
+      "source_type": "4chan",
+      "feed": "4chan:vrpg",
+      "link": "https://boards.4chan.org/vrpg/thread/4124668",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-09 00:10 UTC"
+    },
+    {
       "headline": "Dragon's Dogma 2: Dark Arisen Expansion is available now on Steam",
       "source": "r/pcgaming",
       "source_type": "reddit",
@@ -253991,148 +254049,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-02 13:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Miami HEAT to play as Grand Theft Auto VI’s Vice City on November 18",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/miami-heat-to-play-as-grand-theft-auto-vis-vice-city-on-november-18",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 13:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Signal Veil Is a PS5 Horror Game with a Style Unlike Any Other",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/signal-veil-is-a-ps5-horror-game-with-a-style-unlike-any-other",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 13:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Lag on San Andreas played on PSxMemCard Gen 2",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wvtj71/lag_on_san_andreas_played_on_psxmemcard_gen_2/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Halo's new steward Activision reportedly considering rebooting the series, with a team in Sledgehammer Games leading the charge",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/halo-activision-rumours-slegehammer-games-reboot",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 13:14 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Latest pick ups of physical games il play!",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wvti5d/latest_pick_ups_of_physical_games_il_play/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:14 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Blizzard Might Finally Be Serious About WoW: Forever Gold Buying, Bans Streamer For Promoting It",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/blizzard-might-finally-be-serious-about-wow-forever-gold-buying-bans-streamer-for-promoting-it/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:13 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Reminder about AI",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wvtf9o/reminder_about_ai/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:10 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "I got a strange Garou : Mark of The Wolves on MVS",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wvtf46/i_got_a_strange_garou_mark_of_the_wolves_on_mvs/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:10 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Disney Responds To Rumor That It Could Buy Fortnite Studio Epic Games",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/disney-responds-to-rumor-that-it-could-buy-fortnite-studio-epic-games/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:08 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Airbnb Host Tries To Scam Guest With An AI-Created Image Of A Disgusting Toilet",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/airbnb-host-genai-ai-scam-overflowing-toilet-google-synthid-2000739288",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 13:07 UTC",
       "is_digital_only": false
     }
   ]
