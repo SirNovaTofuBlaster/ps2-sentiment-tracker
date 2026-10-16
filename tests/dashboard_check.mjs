@@ -1894,6 +1894,20 @@ await check('the sites the page shows are the ones the price job prices, each on
     assert.doesNotMatch(html, /is-stale/);
 });
 
+await check('the Rarest page: a note shows its own release-fact links, and only https ones', async () => {
+    const rareFile = JSON.parse(read('rare_games.json'));
+    const base = rareFile.lists.PAL[0];
+    context.__rare = { ...rareFile, lists: { ...rareFile.lists, PAL: [
+        { ...base, note: 'Out in Europe first.', note_sources: ['https://en.wikipedia.org/wiki/Kuon', 'javascript:alert(1)'] },
+        { ...base, title: 'Plain', note: 'Only a note.', note_sources: undefined },
+    ] } };
+    vm.runInContext(`setPrices(null, null); rareRegion = 'PAL'; renderRare(__rare, ${Date.parse('2026-10-16T12:00:00Z')}, 'en-GB')`, context);
+    const rows = el('rareList').innerHTML.split('<li ').slice(1);
+    assert.match(rows[0], /Out in Europe first\. [^]*Release facts: <a href="https:\/\/en\.wikipedia\.org\/wiki\/Kuon"[^>]*>en\.wikipedia\.org<\/a>/);
+    assert.ok(!rows[0].includes('javascript:'), 'a link that is not https is not drawn');
+    assert.ok(!rows[1].includes('Release facts'), 'no sources, no line');
+});
+
 await check('the Rarest page: the rarest consoles, priced on both sites', async () => {
     const consoles = JSON.parse(read('rare_consoles.json'));
     const now = Date.parse('2026-10-08T12:00:00Z');
