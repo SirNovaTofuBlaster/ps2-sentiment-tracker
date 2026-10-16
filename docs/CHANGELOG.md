@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: new tagline
+
+- The line under the name reads "Price Guides, Collection Trackers & Tools for Collectors" (it was "PS2 news, mentions and prices"), set in Plus Jakarta Sans in normal case instead of small spaced capitals. The search box says "Search any PS2 game" with no example.
+
 ## 2026-10-16: colour-coded buttons
 
 - Header buttons each take a colour of the logo (How it works red, Sources teal, REFRESH blue, My collection gold, EUR blue) and the labels use Plus Jakarta Sans.
