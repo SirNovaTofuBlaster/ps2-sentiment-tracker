@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 12:09:46 UTC",
+  "last_updated": "2026-10-16 12:23:43 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -311,7 +311,7 @@
       "timestamp": "2026-10-16 11:30 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Grand Theft Auto III and Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /vr/ naming Grand Theft Auto III, Metal Gear Solid 3: Snake Eater and Resident Evil 4",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -319,7 +319,8 @@
       "matched_game": "Grand Theft Auto III",
       "matched_games": [
         "Grand Theft Auto III",
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -809,6 +810,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 10:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749793527",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 10:50 UTC"
     },
@@ -253770,116 +253790,6 @@
       "sentiment": 50,
       "timestamp": "2026-10-02 12:26 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "How to unlock Lu Bu and Diaochan in Dynasty Warriors 3: Complete Edition Remastered",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/how-to-unlock-lu-bu-and-diaochan-in-dynasty-warriors-3-complete-edition-remastered/",
-      "matched_game": "Dynasty Warriors 3",
-      "matched_games": [
-        "Dynasty Warriors 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-02 12:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo reveals GameChat origins including Switch 1 prototype, started working on Switch 2 features in 2020",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-reveals-gamechat-origins-including-switch-1-prototype-started-working-on-switch-2-features-in-2020/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 12:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nova atualização da PS5 combate o jailbreak e traz melhorias aos gráficos",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/nova-atualizacao-da-ps5-combate-o-jailbreak-e-traz-melhorias-aos-graficos",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 12:14 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Ace Combat 8: Wings of Theve is now available on Steam",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wvs761/ace_combat_8_wings_of_theve_is_now_available_on/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 12:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Star Wars: Galactic Racer Review Thread",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1wvs5ml/star_wars_galactic_racer_review_thread/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 12:10 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "How to get Dumpster Dive Sprite in Fortnite Chapter 7, season 4",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/how-to-get-dumpster-dive-sprite-in-fortnite-chapter-7-season-4/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 12:09 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Star Fighter",
-      "source": "YouTube: Gary",
-      "source_type": "youtube",
-      "feed": "youtube:UC202eItEazdvnMRK09RTtaw",
-      "link": "https://www.youtube.com/shorts/6xv20iFdVPM",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 12:09 UTC",
-      "views": 737
     }
   ]
 }
