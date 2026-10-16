@@ -3070,10 +3070,13 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
     context.confirm = () => true;
     run(`clearPrizes()`);
     assert.match(el('prizesSummary').textContent, /Nothing here yet/);
+    // The Gacha page is switched off (GACHA_SHOWN): no tab, and #gacha falls back to the Tracker.
+    assert.match(read('index.html'), /id="tabGacha"[^>]*class="view-tab hidden"/, 'the Gacha tab is hidden');
+    assert.match(read('index.html'), /id="collTabPrizes"[^>]*class="view-tab hidden"/, 'so is My gacha prizes');
+    assert.equal(run(`isView('gacha')`), false, '#gacha does not open the page while it is off');
     run(`showView('gacha')`);
-    assert.equal(el('viewGacha').classList.contains('hidden'), false);
-    assert.equal(el('tabGacha').classList.contains('is-active'), true);
-    assert.equal(run(`isView('gacha')`), true, '#gacha opens the page');
+    assert.equal(el('viewGacha').classList.contains('hidden'), true);
+    assert.equal(el('viewDashboard').classList.contains('hidden'), false);
     // Underrated: the file, the daily pick (random, the same all day, no repeat within a round) and the page.
     {
         const raw = JSON.parse(read('underrated.json'));

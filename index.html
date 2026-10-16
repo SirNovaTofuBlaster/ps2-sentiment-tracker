@@ -111,7 +111,7 @@
           <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
           <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
           <button type="button" id="tabLibrary" role="tab" aria-selected="false" aria-controls="viewLibrary" onclick="showView('library')" class="view-tab"><i class="fa-solid fa-table-cells" aria-hidden="true"></i> Library</button>
-          <button type="button" id="tabGacha" role="tab" aria-selected="false" aria-controls="viewGacha" onclick="showView('gacha')" class="view-tab"><i class="fa-solid fa-dice" aria-hidden="true"></i> Gacha</button>
+          <button type="button" id="tabGacha" role="tab" aria-selected="false" aria-controls="viewGacha" onclick="showView('gacha')" class="view-tab hidden"><i class="fa-solid fa-dice" aria-hidden="true"></i> Gacha</button>
           <button type="button" id="tabUnderrated" role="tab" aria-selected="false" aria-controls="viewUnderrated" onclick="showView('underrated')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Underrated</button>
         </div>
 
@@ -463,7 +463,7 @@
     <div id="viewCollection" role="tabpanel" aria-labelledby="tabCollection" class="hidden space-y-8">
       <div class="view-tabs coll-tabs" role="tablist" aria-label="My collection">
         <button type="button" id="collTabGames" role="tab" aria-selected="true" aria-controls="collectionSection" onclick="showCollectionTab('games')" class="view-tab is-active">My games</button>
-        <button type="button" id="collTabPrizes" role="tab" aria-selected="false" aria-controls="prizesSection" onclick="showCollectionTab('prizes')" class="view-tab">My gacha prizes <span id="collTabPrizesCount" class="view-tab-count hidden"></span></button>
+        <button type="button" id="collTabPrizes" role="tab" aria-selected="false" aria-controls="prizesSection" onclick="showCollectionTab('prizes')" class="view-tab hidden">My gacha prizes <span id="collTabPrizesCount" class="view-tab-count hidden"></span></button>
       </div>
       <div id="prizesSection" class="hidden bg-ps2card border border-ps2border rounded-md p-6">
         <div class="lb-section-header"><h2>My Gacha Prizes</h2></div>
@@ -681,7 +681,10 @@
             collection: ['viewCollection', 'tabCollection'],
         };
 
-        const isView = (name) => Object.prototype.hasOwnProperty.call(VIEWS, name);
+        /* The Gacha page is switched off for now (2026-10-16): its tab, the My gacha prizes tab and the #gacha
+           address are hidden. Set this to true and take `hidden` off the two tab buttons to bring it back. */
+        const GACHA_SHOWN = false;
+        const isView = (name) => Object.prototype.hasOwnProperty.call(VIEWS, name) && (name !== 'gacha' || GACHA_SHOWN);
 
         /* A page that is not on screen need not be drawn yet. Its long list (Most mentioned: about 17,000
            elements, eBay prices: about 30,000) is built when its tab is opened, from the latest data,
