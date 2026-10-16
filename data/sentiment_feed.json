@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 02:54:44 UTC",
+  "last_updated": "2026-10-16 03:08:44 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -3794,7 +3794,7 @@
       "timestamp": "2026-10-15 21:59 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Deus Ex and Half-Life",
+      "headline": "Thread on /vr/ naming Deus Ex, Half-Life and Unreal Tournament",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -3802,7 +3802,8 @@
       "matched_game": "Deus Ex",
       "matched_games": [
         "Deus Ex",
-        "Half-Life"
+        "Half-Life",
+        "Unreal Tournament"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -4879,14 +4880,15 @@
       "views": 16673
     },
     {
-      "headline": "Thread on /vg/ naming Final Fantasy XI",
+      "headline": "Thread on /vg/ naming Final Fantasy XI and Kingdom Hearts",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584592852",
       "matched_game": "Final Fantasy XI",
       "matched_games": [
-        "Final Fantasy XI"
+        "Final Fantasy XI",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -10287,18 +10289,18 @@
       "timestamp": "2026-10-15 17:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749748683",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Kingdom Hearts",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -249849,88 +249851,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-02 03:13 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Its that time of year what yall think is the best horror game?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1wvj0o6/its_that_time_of_year_what_yall_think_is_the_best/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "timestamp": "2026-10-02 03:05 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Plastic piece blocking the controller port",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wviydf/plastic_piece_blocking_the_controller_port/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 03:01 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "This Scentbar lets you smell games while playing them 👃",
-      "source": "YouTube: PC Gamer",
-      "source_type": "youtube",
-      "feed": "youtube:UCgaPRP68bbyHnfkPhWWBrNw",
-      "link": "https://www.youtube.com/shorts/bGqzDwusW1k",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 03:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Why is it so hard to force 480p mode for ALL PS2 games? OPL or GSM compatibility list is pretty bad compared to Gamecube's Swiss app. Gamecube's Swiss homebrew app on the other hand has like 95% compatibility rate at forcing 480p. The GC only has 3MB of VRAM, which is lower than the PS2's!",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wvitiy/why_is_it_so_hard_to_force_480p_mode_for_all_ps2/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 02:55 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Steam Autumn Sale 2026",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1wvitwn/steam_autumn_sale_2026/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 02:55 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "After a record-breaking September, 'it's safe to say Steam's yearly revenue will blow past $20B for the first time'",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wviszl/after_a_recordbreaking_september_its_safe_to_say/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 02:54 UTC",
       "is_digital_only": false
     }
   ]
