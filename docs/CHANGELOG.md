@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-16: colour-coded buttons
+
+- Header buttons each take a colour of the logo (How it works red, Sources teal, REFRESH blue, My collection gold, EUR blue) and the labels use Plus Jakarta Sans.
+- The shop buttons under every game take their shop's look: Price Charting teal with a chart mark, eBay as its four-colour name with the country in a badge and a four-colour edge, CeX red (`price-link--pc|ebay|cex`, chosen in `priceLookupHtml()` from the lookup's `id`). The "scarce" tag is a red pill with a dot.
+- The new colours are tokens (`--k-*`) at the top of `retro.css`. Yellow is no longer the colour of the search buttons; the guide says "shop buttons". Design by the maintainer and a friend; not checked on a phone.
+
 ## 2026-10-16: the hidden Gacha tab really is hidden
 
 - The first change added `hidden` to the Gacha and My gacha prizes tab buttons, but `body .view-tab { display: inline-flex }` in `retro.css` overrode it, so both stayed visible. `body .view-tab.hidden { display: none; }` fixes it; a Node check reads the rule.
