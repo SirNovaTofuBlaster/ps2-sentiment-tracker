@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 21:42:17 UTC",
+  "last_updated": "2026-10-16 21:55:58 UTC",
   "total_tracked_feeds": 242,
   "items": [
     {
@@ -179,17 +179,18 @@
       "timestamp": "2026-10-16 21:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749824836",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
+        "Kingdom Hearts II",
         "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -860,6 +861,25 @@
       "views": 2634
     },
     {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749822470",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 20:45 UTC"
+    },
+    {
       "headline": "Anyone know where to get an authentic NA Clock Tower 1 case and manual?",
       "source": "r/gamecollecting",
       "source_type": "reddit",
@@ -1004,6 +1024,26 @@
       "matched_game": "Fight Night Round 3",
       "matched_games": [
         "Fight Night Round 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 20:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Time Crisis 2 and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749822223",
+      "matched_game": "Time Crisis 2",
+      "matched_games": [
+        "Time Crisis 2",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -6369,7 +6409,7 @@
       "timestamp": "2026-10-16 16:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shrek 2, Shrek: Super Slam, Shrek Superslam and 1 more",
+      "headline": "Thread on /v/ naming Shrek 2, The Simpsons: Hit & Run, Shrek Superslam and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -6377,9 +6417,12 @@
       "matched_game": "Shrek 2",
       "matched_games": [
         "Shrek 2",
-        "Shrek: Super Slam",
+        "The Simpsons: Hit & Run",
         "Shrek Superslam",
-        "Shark Tale"
+        "Shrek: Super Slam",
+        "Shark Tale",
+        "Legend of Kay",
+        "American Idol"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -263214,62 +263257,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-02 22:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Ace combat 8 finally arrived, Sony isn't gonna catch me lacking like I said from now on only physical PS5 games",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1ww6bm6/ace_combat_8_finally_arrived_sony_isnt_gonna/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 21:53 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Need verification on these 3 beauties",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1ww696o/need_verification_on_these_3_beauties/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 21:50 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "A Quick Look at Gears of War: E-Day",
-      "source": "YouTube: Giant Bomb",
-      "source_type": "youtube",
-      "feed": "youtube:UCmeds0MLhjfkjD_5acPnFlQ",
-      "link": "https://www.youtube.com/watch?v=mI1CH7-jKoM",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 21:49 UTC"
-    },
-    {
-      "headline": "Good games for making consistent gamer friends to play with regularly?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1ww6439/good_games_for_making_consistent_gamer_friends_to/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 21:43 UTC",
       "is_digital_only": false
     }
   ]
