@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: Gacha page hidden for now
+
+- The Gacha tab, the My gacha prizes tab and the `#gacha` address are switched off (`GACHA_SHOWN = false` in `index.html`; `#gacha` opens the Tracker). Nothing is deleted: `gacha.json`, the page code and the visitor's saved coins and prizes in `localStorage` stay. To bring it back, set the constant to `true` and take `hidden` off the two tab buttons.
+
 ## 2026-10-16: Rarest games get a short release note
 
 - 103 Rarest entries (of 143 that had none) gained a one-sentence `note` in `rare_games.json`: release dates and order by region, a region that never got the game, or a limited run, each read from a public page (mostly Wikipedia) and stated only as that page states it. The page is kept in a new `note_sources` list and shown as **Release facts** links after the entry's price sources. `note_sources` is separate from `evidence`, which the `one_source` flag counts. 40 entries stay without a note because no readable page backed one. `tests/test_rare_notes.py` and a dashboard check cover it.
