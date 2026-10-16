@@ -217,6 +217,7 @@ Before you call something done, prove it; don't assume it.
     board. Anything that tells mentions apart by headline needs the start time as well
     (`archive.py` does this).
   - Thread links die when 4chan prunes the thread; the row outlives the link.
+  - Archives (probe of 2026-10-16 from GitHub's runners, asked once for /vr/ and /tg/, 6 API requests): **desuarchive.org** answers its API (HTTP 200, FoolFuuka JSON, thread numbers are 4chan's own) but its `robots.txt` says `Disallow: /_/api` and `/_/search` for everyone, and its board pages answer with a Cloudflare challenge (403). **archive.4plebs.org** answers every page and API path with a Cloudflare challenge (403). So neither is read, like RFGeneration (the one-off probe went to the disallowed API paths, which was a mistake not to repeat; it was deleted). The archives mirror 4chan's own threads under the same thread numbers: 24 of the 25 newest openers on each board were in the live catalog at that moment, so an archive would add only threads that died between two polls. A thread seen on an archive but not on the tracker is more likely a matcher miss than a missed poll (for example a series name such as `.hack` in a subject, which names no single library title).
   - The job logs cannot be downloaded through the API from every network. `try_sources.py`
     therefore also attaches its report to the run as notices (`check-runs/<job id>/annotations`).
 - **Newer games with a PS2 name**
