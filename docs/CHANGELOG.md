@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: charts open on the last week
+
+- The Rarest charts and a game's price chart now open on **1W** instead of All (`rareChart.range` and `gameChart.range` in `index.html`). The other ranges are one tap away.
+
 ## 2026-10-16: Gacha page hidden for now
 
 - The Gacha tab, the My gacha prizes tab and the `#gacha` address are switched off (`GACHA_SHOWN = false` in `index.html`; `#gacha` opens the Tracker). Nothing is deleted: `gacha.json`, the page code and the visitor's saved coins and prizes in `localStorage` stay. To bring it back, set the constant to `true` and take `hidden` off the two tab buttons.

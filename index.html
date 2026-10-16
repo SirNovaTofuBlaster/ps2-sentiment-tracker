@@ -2505,8 +2505,8 @@
         -------------------------------------------------------------------- */
         const CHART_LIBRARY = 'https://cdn.jsdelivr.net/npm/lightweight-charts@4.2.0/dist/lightweight-charts.standalone.production.js';
         const CHART_RANGES = { '1W': 7, '1M': 31, '3M': 92, All: 0 };
-        const rareChart = { measure: 'index', scope: 'all', range: 'All', style: 'area', log: false };
-        const gameChart = { title: '', sites: [], site: '', range: 'All', style: 'area', log: false };
+        const rareChart = { measure: 'index', scope: 'all', range: '1W', style: 'area', log: false };
+        const gameChart = { title: '', sites: [], site: '', range: '1W', style: 'area', log: false };
         const liveCharts = {};          // holder id -> the library's chart, removed before the next one
         let chartLoading = null;        // the library's script, while it loads
         let seriesData = null;          // data/prices/series.json as loaded, or null
