@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 16:15:37 UTC",
+  "last_updated": "2026-10-16 16:26:49 UTC",
   "total_tracked_feeds": 232,
   "items": [
     {
@@ -1204,6 +1204,25 @@
       "is_digital_only": false,
       "sentiment": 50,
       "hype": 1,
+      "timestamp": "2026-10-16 15:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749804029",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
       "timestamp": "2026-10-16 15:04 UTC"
     },
     {
@@ -3562,17 +3581,19 @@
       "timestamp": "2026-10-16 13:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming Silent Hill 3, Silent Hill 2 and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749800627",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Silent Hill 3",
       "matched_games": [
-        "Silent Hill 2"
+        "Silent Hill 3",
+        "Silent Hill 2",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6025,6 +6046,26 @@
       "is_digital_only": false,
       "sentiment": 50,
       "hype": 1,
+      "timestamp": "2026-10-16 11:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry and Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749794459",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry",
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
       "timestamp": "2026-10-16 11:17 UTC"
     },
     {
@@ -256712,87 +256753,6 @@
       "hype": 0,
       "timestamp": "2026-10-02 16:30 UTC",
       "views": 6731
-    },
-    {
-      "headline": "Is a PS1 Steering Wheel worth it?",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wvy4rp/is_a_ps1_steering_wheel_worth_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 16:22 UTC"
-    },
-    {
-      "headline": "Criador da primeira PlayStation diz que os jogos modernos pararam no tempo",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/criador-da-primeira-playstation-diz-que-os-jogos-modernos-pararam-no-tempo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 16:19 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "World of Warcraft: Blizzard añade para siempre la histórica misión \"Kyle's Gone Missing\" en WoW Forever",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/world-of-warcraft-forever/114872/blizzard-mision-kyles-gone-missing-world-of-warcraft-forever",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 16:18 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Just based on these pictures does this copy of majoras mask look real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wvy0n9/just_based_on_these_pictures_does_this_copy_of/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 16:17 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Desktop and handheld prices going out of control means PC bargain hunts lead to my old enemy: gaming laptops",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/desktop-and-handheld-prices-going-out-of-control-means-pc-bargain-hunts-lead-to-my-old-enemy-gaming-laptops",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-02 16:15 UTC"
     }
   ]
 }
