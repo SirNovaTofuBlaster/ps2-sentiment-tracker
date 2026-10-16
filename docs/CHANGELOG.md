@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: Library: US exclusives and PAL exclusives
+
+- Two buttons beside the sort buttons (and **All regions**) show only games with a box in one region. It is worked out in the page from `covers.json` (the Libretro box-art collection's file list): an NTSC-U/Canada box and no Europe/UK/Australia/World box is a US exclusive, the reverse a PAL exclusive. It is a guide: a game released in both regions looks exclusive when the collection lacks one box, and Japan-only games are in neither. Against the library on 2026-10-16: 435 US, 706 PAL, 1,341 in both or Japan-only, 192 with no cover entry. `covers.json` is fetched when a region is chosen even if pictures are switched off (the file only names files; no picture is requested).
+
 ## 2026-10-16: Rarest games with no copy at home show a median from abroad
 
 - Kuon on eBay UK had no used copy located in the UK (3 new ones, 27 used ones from other countries on 2026-10-15), so its UK figure read "none listed". When a Rarest game has none at home, `ebay_prices.py` now makes one more search without the seller-location filter and keeps the median and lowest of the used copies it names (`abroad`), shown as "median from abroad · n copies listed in other countries". American discs on eBay UK are still left out. It never touches the UK median, the history or the index, and it costs one search per Rarest game with an empty site per check.

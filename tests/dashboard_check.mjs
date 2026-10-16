@@ -2517,6 +2517,22 @@ await check('Library: every game once, A to Z or by genre, filtered, and a click
     assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['God Hand'], 'the filter ignores spaces and punctuation');
     run(`setLibraryFilter('')`);
 
+    // US and PAL exclusives, told from the box-art collection: a box for one region only.
+    run(`coverIndex = { [priceKey('God Hand')]: ['God Hand', ' (USA)', ' (USA)'], [priceKey('Kuon')]: ['Kuon', ' (USA)', ' (Europe) (En,Fr,De)'],
+        [priceKey('Gran Turismo 4')]: ['Gran Turismo 4', ' (Europe)', ' (Europe)'], [priceKey('Zone of the Enders')]: ['Zone of the Enders', ' (Japan)', ' (Japan)'],
+        [priceKey('The Getaway')]: ['Getaway', ' (Europe, Australia)', ' (Europe, Australia)'] }; librarySorted = null`);
+    run(`setLibraryRegion('US')`);
+    assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['God Hand'], 'an American box and no European one');
+    run(`setLibraryRegion('PAL')`);
+    assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), ['The Getaway', 'Gran Turismo 4'], 'a European box and no American one; Kuon (both) and a Japan-only game are neither');
+    assert.equal(el('libRegionPal').getAttribute('aria-pressed'), 'true');
+    assert.match(el('libraryNote').textContent, /PAL exclusive means the box-art collection has only a European box/);
+    run(`setLibraryRegion('')`);
+    assert.equal(evalJson(`libraryShown.length`), 6, 'all regions: every game again');
+    run(`coverIndex = null; librarySorted = null; coverIndexState = 'ready'; setLibraryRegion('US')`);
+    assert.deepEqual(evalJson(`libraryShown.map(g => g.title)`), [], 'without the list of regions nothing can be told apart');
+    run(`setLibraryRegion(''); coverIndexState = 'idle'; librarySorted = null`);
+
     // Regional and misspelt names of one game are one tile; adding picks the spelling eBay has a price for in that region
     run(`setLibrary(['Project Zero', 'Fatal Frame', 'God Hand', 'Alien Homind', 'Alien Hominid'])`);
     run(`coverSame = { [priceKey('Fatal Frame')]: priceKey('Project Zero'), [priceKey('Alien Homind')]: priceKey('Alien Hominid') }; librarySorted = null`);
