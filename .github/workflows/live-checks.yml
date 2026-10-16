@@ -35,6 +35,12 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Ask the 4chan archives how they answer
+        if: always()
+        env:
+          PYTHONUNBUFFERED: "1"
+        run: python tools/probe_archives.py
+
       - name: Try the forums, boards and Reddit
         env:
           PYTHONUNBUFFERED: "1"
