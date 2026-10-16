@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-16: 4chan archives looked at, not added
+
+- desuarchive.org's `robots.txt` disallows its API and search, and 4plebs answers GitHub's runners with a Cloudflare challenge, so neither is read. Details in AGENTS.md under *4chan*. No code changed.
+
 ## 2026-10-16: new tagline
 
 - The line under the name reads "Price Guides, Collection Trackers & Tools for Collectors" (it was "PS2 news, mentions and prices"), set in Plus Jakarta Sans in normal case instead of small spaced capitals. The search box says "Search any PS2 game" with no example.
