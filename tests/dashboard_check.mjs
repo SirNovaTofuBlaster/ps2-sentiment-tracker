@@ -1253,7 +1253,7 @@ await check('the theme: four colours with one job each, readable on every ground
     }
 
     // The banner is the mark, the name and one line; what the site does is on the guide page.
-    assert.match(page, /<h1 class="brand-word">Spindle<\/h1>\s*<p class="brand-tag">PS2 news, mentions and prices<\/p>/);
+    assert.match(page, /<h1 class="brand-word">Spindle<\/h1>\s*<p class="brand-tag">Price Guides, Collection Trackers &amp; Tools for Collectors<\/p>/);
     assert.doesNotMatch(page + css, /blurb/);
     const lockup = page.slice(page.indexOf('<div class="brand-lock">'), page.indexOf('</header>'));
     assert.equal((lockup.match(/<p\b/g) || []).length, 1, 'one line under the name and no paragraph beside it');

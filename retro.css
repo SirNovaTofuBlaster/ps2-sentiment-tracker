@@ -174,12 +174,13 @@ body h1.brand-word {
   color: var(--text);
 }
 body .brand-tag {
-  margin: .65rem 0 0 0;
-  font-family: var(--mono);
-  font-size: .69rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--dim);
+  margin: .6rem 0 0 0;
+  font-family: 'Plus Jakarta Sans', var(--sans);
+  font-size: 1.02rem;
+  font-weight: 500;
+  letter-spacing: -.005em;
+  line-height: 1.35;
+  color: var(--body);
 }
 @media (max-width: 720px) {
   body h1.brand-word { font-size: 1.9rem; }
@@ -506,7 +507,7 @@ body p .font-mono-custom, body li .font-mono-custom { overflow-wrap: anywhere; }
   body .brand-id { grid-area: id; gap: .85rem; }
   body .brand-mark { width: 42px; height: 42px; }
   body h1.brand-word { font-size: 1.75rem; }
-  body .brand-tag { margin-top: .4rem; letter-spacing: .1em; }
+  body .brand-tag { margin-top: .4rem; font-size: .92rem; }
   body .brand-actions { grid-area: actions; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
   body .brand-btn { justify-content: center; min-height: 2.75rem; padding: 0 .4rem; white-space: nowrap; }
   body .brand-sync { grid-area: sync; padding-top: .8rem; border-top: 1px solid var(--rule); }
