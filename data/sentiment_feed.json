@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-16 20:12:41 UTC",
+  "last_updated": "2026-10-16 20:15:11 UTC",
   "total_tracked_feeds": 237,
   "items": [
     {
@@ -667,14 +667,15 @@
       "timestamp": "2026-10-16 19:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War",
+      "headline": "Thread on /v/ naming God of War and SOCOM",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749818460",
       "matched_game": "God of War",
       "matched_games": [
-        "God of War"
+        "God of War",
+        "SOCOM"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2113,17 +2114,18 @@
       "views": 1621
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Katamari Damacy and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749814413",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Katamari Damacy",
       "matched_games": [
+        "Katamari Damacy",
         "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4771,6 +4773,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 16:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749809529",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 16:55 UTC"
     },
@@ -261745,19 +261766,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-02 20:18 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Oh boy",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1ww3x82/oh_boy/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-02 20:12 UTC",
       "is_digital_only": false
     }
   ]
