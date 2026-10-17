@@ -274,7 +274,7 @@
     <!-- One game's own page: opened from the search bar (#game=Title). -->
     <div id="viewGame" class="hidden space-y-6" aria-live="polite">
       <div class="bg-ps2card border border-ps2border rounded-md p-6">
-        <button type="button" onclick="goHome(event)" class="brand-btn mb-4"><i class="fa-solid fa-arrow-left text-ps2neon" aria-hidden="true"></i> Back to Highlights</button>
+        <button type="button" id="gameBack" onclick="goBack(event)" class="brand-btn mb-4"><i class="fa-solid fa-arrow-left text-ps2neon" aria-hidden="true"></i> <span id="gameBackLabel">Back to Highlights</span></button>
         <div class="game-head"><div id="gameCover" class="game-cover hidden"></div><h2 id="gameTitle" class="!text-2xl !normal-case !tracking-normal !text-white"></h2></div>
         <p id="gameSummary" class="text-xs text-slate-400 mt-1"></p>
         <div id="gamePrices" class="mt-3"></div>
@@ -1086,6 +1086,20 @@
             }).join('');
         }
 
+        // Pages a game page can be opened from, and what its Back button says for each (the Tracker is "Highlights").
+        const BACK_LABELS = { rare: 'Back to Rarest', demand: 'Back to Demand', mentions: 'Back to Most mentioned', prices: 'Back to eBay prices',
+            library: 'Back to Library', gacha: 'Back to Gacha', underrated: 'Back to Underrated', collection: 'Back to My collection' };
+        let gameBackTo = null;
+        function goBack(event) {
+            if (!gameBackTo) return goHome(event);
+            event?.preventDefault?.();
+            const view = gameBackTo;
+            document.getElementById('gameSearch').value = '';
+            closeSuggestions();
+            showView(view);
+            window.scrollTo?.(0, 0);
+            return false;
+        }
         function openGame(title, remember = true) {
             const name = String(title ?? '').trim();
             if (!name) return showView('dashboard', remember);
@@ -1095,6 +1109,10 @@
                 button.classList.remove('is-active');
                 button.setAttribute?.(button.id === 'tabCollection' ? 'aria-current' : 'aria-selected', button.id === 'tabCollection' ? 'false' : 'false');
             }
+            // Remember the page the visitor came from (not another game page) so "Back" returns there.
+            if (currentView !== 'game') gameBackTo = own(BACK_LABELS, currentView) ? currentView : null;
+            const backLabel = document.getElementById('gameBackLabel');
+            if (backLabel) backLabel.textContent = gameBackTo ? BACK_LABELS[gameBackTo] : 'Back to Highlights';
             document.getElementById('viewGame').classList.remove('hidden');
             currentView = 'game';
             document.getElementById('shelfSection')?.classList.add('hidden');
@@ -3429,7 +3447,7 @@
                 || (underratedFilter === 'cheap' && (medianOf(g.title, 'UK') ?? Infinity) < UNDERRATED_CHEAP_UK)
                 || underratedFilter === 'g:' + g.genre));
             document.getElementById('underratedGrid').innerHTML = shown.length
-                ? shown.map(g => `<li class="under-card">${underratedCardHtml(g)}</li>`).join('')
+                ? shown.map(g => `<li class="under-card">${underratedCardHtml(g, underratedButtons(g))}</li>`).join('')
                 : '<li class="text-xs text-slate-400">Nothing matches this filter right now.</li>';
             const links = underratedData.lists.map(l => `<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.name)}</a>`).join(', ');
             document.getElementById('underratedNote').innerHTML = `A game gets on the list when public "underrated PS2" lists name it, and is left out when it is a famous classic. Some titles were collected by hand from: ${links}; the rest are picks from general knowledge. The one-line reasons are written here, not quoted. Prices are eBay asking prices.`;
