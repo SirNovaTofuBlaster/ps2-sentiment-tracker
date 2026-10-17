@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 22:39:08 UTC",
+  "last_updated": "2026-10-17 22:57:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2276,6 +2276,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 19:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749881446",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6687,13 +6706,15 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming TimeSplitters 2, The Bouncer, God Hand and 22 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Half-Life, TimeSplitters 2 and 24 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "TimeSplitters 2",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
+        "Grand Theft Auto III",
+        "Half-Life",
         "TimeSplitters 2",
         "The Bouncer",
         "God Hand",
@@ -6721,7 +6742,7 @@
         "Persona 3"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -276594,57 +276615,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 22:57 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Advice on a SATA upgrade for my ps2 network adaptor",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wx0alu/advice_on_a_sata_upgrade_for_my_ps2_network/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 22:52 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Jagex announces that Runescape 4 is being developed",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wx05ck/jagex_announces_that_runescape_4_is_being/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-03 22:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Valorant player claims to have inherited hardware ban through secondhand CPU, Riot anticheat boss disputes parts of story",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/fps/valorant-player-claims-to-have-inherited-hardware-ban-through-secondhand-cpu-riot-anticheat-boss-disputes-parts-of-story/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 22:41 UTC",
       "is_digital_only": false
     }
   ]
