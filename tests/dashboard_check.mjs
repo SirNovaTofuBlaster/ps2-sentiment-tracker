@@ -1210,7 +1210,7 @@ await check('the theme: four colours with one job each, readable on every ground
     const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
     const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
     assert.ok(yellow.length >= 2, 'at rest and under the pointer');
-    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name|account-eyebrow|account-warn|account-msg)\b|\.coll-count/.test(part))), yellow.join(' | '));
+    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name|account-eyebrow|account-warn|account-msg|portfolio-paid)\b|\.coll-count/.test(part))), yellow.join(' | '));
     assert.match(css, /body \.price-link:hover, body \.price-link:focus-visible \{\s*background: var\(--money\);\s*border-color: var\(--money\);\s*color: var\(--bg\);/);
     // ...by no other route either: every colour is named once, at the top, and the strip's
     // yellow is used by the strip alone; the pages have no yellow of their own.
@@ -1391,7 +1391,7 @@ await check('games first: what was named in the last day leads, and the table op
         'body .view-tab.hidden', 'body .is-folded > .list-extra', 'body .list-toggle.hidden', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
         'body .chart-tools::-webkit-scrollbar', 'body .shelf::-webkit-scrollbar', 'body .shelf-arrow.hidden',
-    'body .library-add.hidden', 'body #feedTableBody td[data-col="headline"][data-empty]', 'body .library-remove.hidden', 'body .account-dialog.hidden',
+    'body .library-add.hidden', 'body #feedTableBody td[data-col="headline"][data-empty]', 'body .library-remove.hidden', 'body .account-dialog.hidden', 'body .portfolio-key.hidden',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
@@ -2209,7 +2209,7 @@ await check('the Rarest charts: index and market cap per list, a game\'s history
     assert.match(page, /\$\{prices\s*\? ` \$\{chartButtonHtml\(prices\.title, label\)\}` : ''\}/);
     assert.match(page, /chartButtonHtml\(row\.title, sites\.includes\('UK'\) \? 'UK' : sites\[0\]\)/);
     assert.match(page, /lightweight-charts@\d+\.\d+\.\d+\/dist\/lightweight-charts\.standalone\.production\.js/, 'a fixed version');
-    assert.equal((page.match(/Charts by <a href="https:\/\/www\.tradingview\.com\/"/g) || []).length, 2, 'the library\'s credit under both charts');
+    assert.equal((page.match(/Charts by <a href="https:\/\/www\.tradingview\.com\/"/g) || []).length, 3, 'the library\'s credit under every chart');
 });
 
 await check('charts on a phone: a finger drag scrolls the page, a tap reads a day, the tools are one row you swipe', () => {
@@ -2794,7 +2794,7 @@ await check('My collection: add, value, keep in the browser, back up and restore
     assert.equal(run(`coverNote('God Hand')`), 'looking for a cover…');
     run(`collection = []; addToCollection('God Hand', 'US', 'complete'); addToCollection('God Hand', 'PAL', 'loose'); addToCollection('Ratchet & Clank', 'US', 'loose'); addToCollection('Black', 'US', 'loose'); renderCollection()`);
     await new Promise(done => setTimeout(done, 20));
-    assert.deepEqual(asked, ['covers.json'], 'the index is read once, and only when a cover is wanted');
+    assert.deepEqual(asked.filter(url => url !== 'data/prices/series.json'), ['covers.json'], 'the index is read once, and only when a cover is wanted (the portfolio chart reads the price history)');
     assert.equal(run(`coverIndexState`), 'ready');
     assert.equal(run(`coverUrl('God Hand')`), `${BASE}God%20Hand%20(USA).png`);
     assert.equal(run(`coverUrl('God Hand', 'PAL')`), `${BASE}God%20Hand%20(Europe)%20(En%2CFr%2CDe%2CEs%2CIt).png`, 'a PAL copy gets the PAL box');
@@ -2822,7 +2822,7 @@ await check('My collection: add, value, keep in the browser, back up and restore
     assert.doesNotMatch(el('collectionList').innerHTML, /<img/);
     assert.equal(run(`coverUrl('God Hand')`), '');
     assert.equal(el('gameCover').classList.contains('hidden'), true);
-    assert.equal(asked.length, 0);
+    assert.equal(asked.filter(url => url !== 'data/prices/series.json').length, 0);
     assert.doesNotMatch(el('collectionNote').textContent, /libretro/);
     run(`setCoversShown(true)`);
     assert.match(el('collectionNote').textContent, /thumbnails\.libretro\.com .* names the game and shows that site your address/, 'the page says what leaves the browser');
@@ -3000,6 +3000,57 @@ await check('editions: a game page lists its editions with their own prices and 
         run(`editionsData = null`);
         run(`setPrices(null, null)`);
     }
+});
+
+await check('portfolio: the value of My games over time, between the tabs and the list, with what was paid', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const saved = evalJson('collection');
+    // two copies priced on eBay UK, one on eBay US, one with nothing known; history for the two sites over three days
+    run(`seriesData = { start: '2026-10-10', games: { 'God Hand': { UK: [[0, 100, 5], [1, 110, 5], [2, 120, 5]], US: [[0, 200, 5], [1, 200, 5], [2, 200, 5]] }, 'Okami': { UK: [[1, 30, 5], [2, 30, 5]] } } }`);
+    run(`priceIndex = new Map([[priceKey('God Hand'), { entry: { UK: { copies: 5, median: 120, recorded: '2026-10-12' }, US: { copies: 5, median: 200, recorded: '2026-10-12' } } }], [priceKey('Okami'), { entry: { UK: { copies: 5, median: 30, recorded: '2026-10-12' } } }]])`);
+    run(`fxData = { date: '2026-10-16', rates: { USD: 1.25, GBP: 0.8 } }; showEuro = false`);
+    run(`collection = [{ title: 'God Hand', region: 'PAL', condition: 'loose', qty: 1, paid: 90 }, { title: 'God Hand', region: 'US', condition: 'loose', qty: 1, paid: 150 }, { title: 'Okami', region: 'PAL', condition: 'loose', qty: 2, paid: null }, { title: 'Nothing Known', region: 'PAL', condition: 'loose', qty: 1, paid: null }]`);
+    const model = evalJson('portfolioModel(seriesData)');
+    assert.equal(model.currency, 'GBP', 'US and UK copies are added in pounds');
+    assert.deepEqual(model.points.map(p => p.time), ['2026-10-10', '2026-10-11', '2026-10-12']);
+    // day one: God Hand UK 100, God Hand US $200 = 200/1.25*0.8 = 128, Okami (first price 30, back-filled) x2 = 60
+    assert.equal(Math.round(model.points[0].value * 100) / 100, 288);
+    // the last day is exactly the summary's own number
+    const worth = evalJson('collectionTotals().worth');
+    assert.equal(Math.round(model.points[2].value * 100) / 100, Math.round((worth.GBP + worth.USD / 1.25 * 0.8) * 100) / 100);
+    assert.equal(Math.round(model.paid * 100) / 100, 90 + 150 / 1.25 * 0.8, 'what was paid, in pounds');
+    assert.equal(model.paidCopies, 2);
+    assert.equal(model.copies, 5);
+    // shown: signed in, My games tab, between the tabs and the list
+    run(`crowd = { id: '${'a'.repeat(32)}', key: '${'b'.repeat(64)}', confirmed: true }; collectionTab = 'games'`);
+    await run('renderPortfolio()');
+    assert.equal(el('portfolioSection').classList.contains('hidden'), false);
+    assert.match(el('portfolioStats').innerHTML, /Value now/);
+    assert.match(el('portfolioStats').innerHTML, /You paid/);
+    assert.match(el('portfolioStats').innerHTML, /2 of 5 copies/);
+    assert.match(el('portfolioTools').innerHTML, /Profit \/ loss/);
+    const page = read('index.html');
+    assert.ok(page.indexOf('id="portfolioSection"') > page.indexOf('id="collectionGate"') && page.indexOf('id="portfolioSection"') < page.indexOf('id="collectionSection"'), 'it sits above the My Collection card');
+    // nothing paid: no profit/loss button and no yellow line
+    run(`collection.forEach(e => { e.paid = null }); portfolioChart.style = 'pnl'`);
+    await run('renderPortfolio()');
+    assert.doesNotMatch(el('portfolioTools').innerHTML, /Profit/);
+    assert.equal(run('portfolioChart.style'), 'line');
+    // hidden on the other tabs, when signed out, and with one day of history only
+    run(`collectionTab = 'prizes'`); await run('renderPortfolio()');
+    assert.equal(el('portfolioSection').classList.contains('hidden'), true);
+    run(`collectionTab = 'games'; seriesData = { start: '2026-10-12', games: { 'God Hand': { UK: [[0, 100, 5]] } } }`);
+    await run('renderPortfolio()');
+    assert.equal(el('portfolioSection').classList.contains('hidden'), true, 'one point is not a chart yet');
+    // the euro button changes the money, not the shape
+    run(`seriesData = { start: '2026-10-10', games: { 'God Hand': { UK: [[0, 100, 5], [1, 110, 5], [2, 120, 5]], US: [[0, 200, 5], [1, 200, 5], [2, 200, 5]] }, 'Okami': { UK: [[1, 30, 5], [2, 30, 5]] } } }; showEuro = true`);
+    assert.equal(evalJson('portfolioModel(seriesData).currency'), 'EUR');
+    // without exchange rates two currencies cannot be added: no chart rather than a wrong one
+    run(`showEuro = false; fxData = null`);
+    assert.equal(evalJson('portfolioModel(seriesData)'), null);
+    run(`crowd = { id: '', key: '', confirmed: false }`); await run('renderPortfolio()');
+    assert.equal(el('portfolioSection').classList.contains('hidden'), true, 'signed out: nothing');
+    run(`crowd = { id: '${'a'.repeat(32)}', key: '${'b'.repeat(64)}', confirmed: true }; collection = ${JSON.stringify(saved)}`);
 });
 
 await check('editions: the search finds them by name and by "steelbook", and My collection values them at their own price', async () => {
