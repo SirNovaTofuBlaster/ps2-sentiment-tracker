@@ -91,6 +91,8 @@ const context = vm.createContext({
 });
 const el = (id) => context.document.getElementById(id);
 vm.runInContext(script, context);
+// Adding games needs an account (2026-10-17): every check below that adds one runs signed in; the account tests sign out first.
+vm.runInContext("crowd = { id: 'a'.repeat(32), key: 'b'.repeat(64), confirmed: true }", context);
 vm.runInContext("recentSort = 'price'", context);   // the page opens on Highlights; the older checks read the list, so they start on its price order
 // Values cross the sandbox boundary as JSON so assertions don't trip over foreign prototypes.
 const evalJson = (code) => JSON.parse(vm.runInContext(`JSON.stringify(${code})`, context));
@@ -1203,11 +1205,11 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.ok(contrast(tokens.bg, tokens.accent) >= 4.5, 'the filled button: dark on blue');
     assert.ok(contrast(tokens.bg, tokens['accent-hi']) >= 4.5);
 
-    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16; a source's name (subreddit, channel, site) is yellow since the same day, by the maintainer's request.
+    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16; the account screens' small heading, notice and message are yellow (2026-10-17, as in the approved preview); a source's name (subreddit, channel, site) is yellow since 2026-10-16, by the maintainer's request.
     const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
     const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
     assert.ok(yellow.length >= 2, 'at rest and under the pointer');
-    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name)\b|\.coll-count/.test(part))), yellow.join(' | '));
+    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name|account-eyebrow|account-warn|account-msg)\b|\.coll-count/.test(part))), yellow.join(' | '));
     assert.match(css, /body \.price-link:hover, body \.price-link:focus-visible \{\s*background: var\(--money\);\s*border-color: var\(--money\);\s*color: var\(--bg\);/);
     // ...by no other route either: every colour is named once, at the top, and the strip's
     // yellow is used by the strip alone; the pages have no yellow of their own.
@@ -1388,7 +1390,7 @@ await check('games first: what was named in the last day leads, and the table op
         'body .view-tab.hidden', 'body .is-folded > .list-extra', 'body .list-toggle.hidden', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
         'body .chart-tools::-webkit-scrollbar', 'body .shelf::-webkit-scrollbar', 'body .shelf-arrow.hidden',
-    'body .library-add.hidden', 'body #feedTableBody td[data-col="headline"][data-empty]',
+    'body .library-add.hidden', 'body #feedTableBody td[data-col="headline"][data-empty]', 'body .account-dialog.hidden',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
@@ -2588,6 +2590,20 @@ await check('Library: every game once, A to Z or by genre, filtered, and a click
     assert.match(el('libraryGrid').innerHTML, /lib-tile is-owned/);
     run(`libraryPick(1)`); run(`libraryAddPicked()`);
     assert.equal(evalJson(`collection[0].qty`), 2, 'the same copy again raises the count');
+    // The price paid is optional: empty adds without one, a number is kept, a non-number stops the add
+    assert.equal(evalJson(`collection[0].paid`), null, 'no price typed, none kept');
+    run(`collection = []`);
+    run(`libraryPick(1)`); el('libraryAddPaid').value = '24.5';
+    run(`libraryAddPicked()`);
+    assert.equal(evalJson(`collection[0].paid`), 24.5, 'the price typed is kept');
+    assert.match(el('libraryAddMessage').textContent, /paid .*24/);
+    assert.equal(el('libraryAddPaid').value, '', 'the box empties after an add');
+    run(`libraryPick(1)`); el('libraryAddPaid').value = 'abc';
+    run(`libraryAddPicked()`);
+    assert.equal(evalJson(`collection[0].qty`), 1, 'a bad price adds nothing');
+    assert.match(el('libraryAddMessage').textContent, /must be a number/);
+    run(`libraryPick(1)`); assert.equal(el('libraryAddPaid').value, '', 'picking a game clears the box');
+    run(`collection = []`);
     run(`showView('dashboard')`);
     assert.equal(el('libraryAdd').classList.contains('hidden'), true, 'the bar closes when the page is left');
     run(`collection = []`);
@@ -3145,6 +3161,18 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
         run(`visibleFeedData = []; underratedMentionCache = null`);
         assert.equal((el('underratedDays').innerHTML.match(/<li /g) || []).length, 7, 'seven earlier days');
         assert.equal((el('underratedGrid').innerHTML.match(/<li /g) || []).length, 21, 'the games revealed so far');
+        assert.equal((el('underratedGrid').innerHTML.match(/Open game page/g) || []).length, 21, 'every card has Open game page');
+        assert.equal((el('underratedGrid').innerHTML.match(/Add to collection/g) || []).length, 21, 'and Add to collection');
+        assert.equal((el('underratedGrid').innerHTML.match(/Find reviews/g) || []).length, 21, 'and Find reviews');
+        run(`showView('underrated', false); openGame('Rygar: The Legendary Adventure', false)`);
+        assert.match(el('gameBackLabel').textContent, /Back to Underrated/, 'a game opened from Underrated goes back there');
+        run(`goBack()`);
+        assert.equal(run(`currentView`), 'underrated', 'Back returns to the Underrated page');
+        run(`showView('dashboard', false); openGame('Rygar: The Legendary Adventure', false)`);
+        assert.match(el('gameBackLabel').textContent, /Back to Highlights/, 'from the Tracker it still says Highlights');
+        run(`goBack()`);
+        assert.equal(run(`currentView`), 'dashboard');
+        run(`showView('underrated', false)`);
         run(`underratedFilter = 'g:' + underratedData.games[0].genre; renderUnderrated(${dayStamp(launchDay + 20)})`);
         const inGenre = raw.games.slice(0, 21).filter(g => g.genre === raw.games[0].genre).length;
         assert.equal((el('underratedGrid').innerHTML.match(/<li /g) || []).length, inGenre, 'a genre chip narrows the grid');
@@ -3384,7 +3412,7 @@ await check('a fold button that has nothing to fold really is hidden (Highlights
     run("toggleList('todayList')");
     run("setRecentSort('highlights')");
     assert.equal(toggle(), true, 'Highlights has none, even with the list left open');
-    run("setRecentSort('price')");
+    run("setRecentSort('price')"); run(`renderRecentGames(__many, ${now})`);   // not the live feed: its size changes every day
     assert.equal(toggle(), false, 'and it is back with the list');
     run("toggleList('todayList')");
 });
@@ -3403,6 +3431,144 @@ await check('rows: the game name sits in a box, a source name is yellow, a 4chan
     assert.match(css, /--money: #F5C52E;/);
     const page = read('index.html');
     assert.equal((page.match(/class="src-name/g) || []).length, 3, 'table, game page and the 24-hour list');
+});
+
+await check('accounts: nothing can be added without one, the key is saved first, then the counts are sent', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const kept = new Map();
+    const realStorage = context.localStorage, realFetch = context.fetch;
+    context.localStorage = { getItem: (key) => (kept.has(key) ? kept.get(key) : null), setItem: (key, value) => { kept.set(key, String(value)); }, removeItem: (key) => { kept.delete(key); } };
+    const calls = [];
+    context.fetch = async (url, options = {}) => {
+        calls.push({ url, method: options.method, auth: options.headers?.Authorization, body: options.body ? JSON.parse(options.body) : null });
+        if (url.endsWith('/api/register')) return { status: 201, json: async () => ({ id: 'c'.repeat(32), key: 'd'.repeat(64) }) };
+        if (url.endsWith('/api/stats')) return { status: 200, json: async () => ({ generated: 'x', prices: { 'kuon': [{ region: 'PAL', condition: 'complete', currency: 'GBP', median: 120, low: 90, high: 150, reporters: 6 }] }, owners: { 'kuon': { owners: 7, sealed: 1, complete: 5, loose: 2 } } }) };
+        return { status: 200, json: async () => ({}) };
+    };
+    const signedOut = `crowd = { id: '', key: '', confirmed: false }; crowdStats = null; crowdStatsState = 'idle'; collection = []; accountPending = null; accountPendingName = ''; document.getElementById('accountDialog').classList.add('hidden')`;
+    try {
+        run(signedOut);
+        // My collection shows the account screen, not the games
+        run(`collectionTab = 'games'; syncCollectionAccess()`);
+        assert.equal(el('collectionGate').classList.contains('hidden'), false, 'the account screen shows');
+        assert.equal(el('collectionSection').classList.contains('hidden'), true, 'the games and the Add form do not');
+        assert.equal(el('collTabReport').classList.contains('hidden'), true);
+        assert.equal(el('collTabShare').classList.contains('hidden'), true);
+        assert.match(el('collectionGate').innerHTML, /Create an account to start your collection/);
+        assert.match(el('collectionGate').innerHTML, /Create my anonymous account/);
+        assert.ok(!/Make (an|my)/.test(el('collectionGate').innerHTML + read('index.html').match(/id="accountDialog"[\s\S]{0,400}/)[0]), '"Create", not "Make"');
+        // an old list on the device is carried over, and said to be
+        run(`collection = [{ title: 'Okami', region: 'PAL', condition: 'complete', qty: 1, paid: null }]; paintAccountGate()`);
+        assert.match(el('collectionGate').innerHTML, /1 game saved on this device/);
+        run(`collection = []`);
+        // every Add asks first
+        assert.equal(run(`underratedAdd('Okami', null)`), false);
+        assert.equal(run(`collection.length`), 0, 'Underrated cannot add without an account');
+        assert.equal(el('accountDialog').classList.contains('hidden'), false, 'the dialog opens');
+        assert.match(el('accountDialogBody').innerHTML, /Create an account to add games/);
+        assert.match(el('accountDialogBody').innerHTML, /ADDING OKAMI/);
+        run(`accountDialogClose()`);
+        assert.equal(el('accountDialog').classList.contains('hidden'), true, 'Not now closes it');
+        assert.equal(run(`accountPending`), null, 'and drops the Add that asked');
+        const source = read('index.html');
+        assert.match(source, /function libraryAddPicked\(\) \{[\s\S]{0,200}?requireAccount\(\(\) => libraryAddPicked\(\), game\.title\)/, 'the Library asks too');
+        assert.match(source, /function addFromForm\(event\) \{\s*event\?\.preventDefault\?\.\(\);\s*if \(!requireAccount/, 'and the form on My collection');
+        assert.equal(calls.length, 0, 'nothing has left the browser');
+        // creating the account: the key comes first
+        run(`underratedAdd('Okami', null)`);
+        await run('crowdCreate()');
+        assert.equal(calls[0].url, 'https://spindle-crowd.nacmh.workers.dev/api/register');
+        assert.equal(calls[0].auth, undefined, 'registering sends no credentials');
+        assert.equal(run('crowd.id'), 'c'.repeat(32));
+        assert.equal(run('crowd.confirmed'), false, 'not an account to use until the key is saved');
+        assert.equal(JSON.parse(kept.get('ps2-sentiment-tracker.crowd')).confirmed, false);
+        assert.match(el('accountDialogBody').innerHTML, /Save your key before you carry on/);
+        assert.match(el('accountDialogBody').innerHTML, new RegExp('c'.repeat(32) + '\\.' + 'd'.repeat(64)));
+        assert.match(el('accountDialogBody').innerHTML, /id="gateContinue"[^>]*disabled/, 'Continue is grey until the box is ticked');
+        assert.equal(run('hasAccount()'), false);
+        assert.equal(run(`underratedAdd('Kuon', null)`), false, 'still no adding');
+        el('gateSaved').checked = false;
+        run('crowdKeyContinue()');
+        assert.equal(run('crowd.confirmed'), false, 'Continue without the tick does nothing');
+        // the tick, then Continue: the account is live and the Add that asked is done
+        calls.length = 0;
+        el('gateSaved').checked = true;
+        run('crowdKeyContinue()');
+        assert.equal(run('crowd.confirmed'), true);
+        assert.deepEqual(evalJson(`collection.map(e => e.title)`), ['Kuon'], 'the Add that asked last (Kuon, pressed while the key screen was up) was done');
+        assert.equal(el('accountDialog').classList.contains('hidden'), true);
+        await new Promise(resolve => setTimeout(resolve, 20));
+        const put = calls.find(c => c.method === 'PUT');
+        assert.ok(put && put.url.endsWith('/api/collection'), 'counts are sent once the account is live');
+        assert.equal(put.auth, `Bearer ${'c'.repeat(32)}.${'d'.repeat(64)}`);
+        assert.deepEqual(put.body, { items: [{ game: 'kuon', sealed: 0, complete: 1, loose: 0 }] });
+        run(`syncCollectionAccess()`);
+        assert.equal(el('collectionGate').classList.contains('hidden'), true);
+        assert.equal(el('collectionSection').classList.contains('hidden'), false, 'the games show');
+        assert.equal(el('collTabReport').classList.contains('hidden'), false);
+        assert.equal(el('collTabShare').classList.contains('hidden'), false);
+        // counts: per game, per condition, nothing else
+        run(`addToCollection('Kuon', 'PAL', 'complete', 2); addToCollection('Kuon', 'US', 'complete', 3); addToCollection('Kuon', 'PAL', 'sealed', 1)`);
+        const counts = evalJson('crowdCounts()');
+        assert.deepEqual(counts.find(c => c.game === 'kuon'), { game: 'kuon', sealed: 1, complete: 6, loose: 0 });
+        assert.ok(!/paid|title/.test(JSON.stringify(counts)), 'no prices or titles in the counts');
+        // loadCrowd takes only well-formed accounts; one saved without the flag was confirmed
+        kept.set('ps2-sentiment-tracker.crowd', JSON.stringify({ id: 'x', key: 'y', confirmed: true }));
+        run('crowd = { id: "", key: "", confirmed: false }; loadCrowd()');
+        assert.equal(run('crowd.id'), '', 'a malformed saved account is ignored');
+        kept.set('ps2-sentiment-tracker.crowd', JSON.stringify({ id: 'e'.repeat(32), key: 'f'.repeat(64) }));
+        run('loadCrowd()');
+        assert.equal(run('hasAccount()'), true, 'an account saved before the key screen existed is kept');
+        // a key from before is accepted on the account screen
+        run(signedOut);
+        el('gateKeyInput').value = 'nonsense';
+        run('crowdSignIn()');
+        assert.equal(run('hasAccount()'), false, 'a made-up key is refused');
+        el('gateKeyInput').value = `${'1'.repeat(32)}.${'2'.repeat(64)}`;
+        run('crowdSignIn()');
+        assert.equal(run('hasAccount()'), true);
+        assert.equal(run('crowd.id'), '1'.repeat(32));
+        // a report: no "where"
+        calls.length = 0;
+        el('reportGame').value = 'Kuon'; el('reportPrice').value = '120'; el('reportMonth').value = '2026-09';
+        el('reportRegion').value = 'PAL'; el('reportCondition').value = 'complete'; el('reportCurrency').value = 'GBP';
+        await run('crowdReport()');
+        const post = calls.find(c => c.method === 'POST');
+        assert.deepEqual(post.body, { game: 'kuon', region: 'PAL', condition: 'complete', currency: 'GBP', price: 120, month: '2026-09' });
+        assert.ok(!('source' in post.body) && !read('index.html').includes('reportSource'), 'no "where" is asked or sent');
+        calls.length = 0;
+        el('reportPrice').value = '';
+        await run('crowdReport()');
+        assert.equal(calls.length, 0, 'no price, nothing sent');
+        // published figures
+        assert.equal(run(`crowdGameHtml('Kuon')`), '', 'nothing before the figures are loaded');
+        await run('ensureCrowdStats()');
+        const html = run(`crowdGameHtml('Kuon')`);
+        assert.match(html, /PAL complete/);
+        assert.match(html, /6 people paid/);
+        assert.match(html, /7 collectors who share/);
+        assert.equal(run(`crowdGameHtml('Some Other Game')`), '', 'a game with no figures shows nothing');
+        // signing out puts the account screen back; the list stays on the device
+        run(`collection = [{ title: 'Okami', region: 'PAL', condition: 'complete', qty: 1, paid: null }]`);
+        run('crowdSignOut()');
+        assert.equal(run('hasAccount()'), false);
+        assert.equal(el('collectionGate').classList.contains('hidden'), false);
+        assert.equal(run('collection.length'), 1, 'the list is still on this device');
+        // deleting
+        run(`crowd = { id: '${'1'.repeat(32)}', key: '${'2'.repeat(64)}', confirmed: true }`);
+        calls.length = 0;
+        await run('crowdDelete()');
+        assert.equal(calls[0].method, 'DELETE');
+        assert.equal(run('crowd.id'), '', 'signed out after deleting');
+        assert.equal(kept.has('ps2-sentiment-tracker.crowd'), false);
+        // the words
+        assert.match(read('guide.html'), /Accounts and sharing[\s\S]*Create my anonymous account/, 'the guide explains it');
+        assert.match(read('index.html'), /id="collTabShare"[^>]*>Account</, 'the tab is called Account');
+    } finally {
+        context.localStorage = realStorage;
+        context.fetch = realFetch;
+        run(`crowd = { id: '${'a'.repeat(32)}', key: '${'b'.repeat(64)}', confirmed: true }; crowdStats = null; crowdStatsState = 'idle'; collection = []; accountPending = null; syncCollectionAccess()`);
+    }
 });
 
 console.log(`dashboard checks passed (${passed})`);

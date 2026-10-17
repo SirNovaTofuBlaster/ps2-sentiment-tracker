@@ -1334,3 +1334,39 @@ body .src-name { color: var(--money); }
 
 /* A 4chan row has no headline of its own (the Game column names the games): no empty block on a phone. */
 body #feedTableBody td[data-col="headline"][data-empty] { display: none; }
+
+/* ---- Accounts (2026-10-17): the screen that stands in for My games until there is an account, and the dialog when Add is pressed elsewhere ---- */
+body .account-gate:not(.hidden) { display: block; }
+body .account-gate > * + *, body .account-card > * + * { margin-top: 1rem; }
+body .account-gate { max-width: 46rem; margin-inline: auto; }
+body .account-dialog { position: fixed; inset: 0; z-index: 70; display: flex; align-items: center; justify-content: center; padding: 1rem; background: rgba(5, 5, 8, .72); }
+/* `body .account-dialog` sets display, which beat Tailwind's .hidden */
+body .account-dialog.hidden { display: none; }
+body .account-card { width: min(30rem, 100%); max-height: calc(100vh - 2rem); overflow-y: auto; box-sizing: border-box; padding: 1.75rem; background: var(--card); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 20px 60px rgba(0, 0, 0, .6); }
+body .account-eyebrow { font-family: var(--mono); font-size: .69rem; letter-spacing: .12em; color: var(--money); }
+body .account-eyebrow.is-ok { color: var(--green); }
+body .account-eyebrow.is-bad { color: var(--red); }
+body .account-title { margin: 0; font-family: var(--serif); font-weight: 700; font-size: 1.75rem; line-height: 1.15; color: var(--text); text-transform: none; letter-spacing: 0; }
+body .account-text { font-size: .9rem; line-height: 1.6; color: var(--body); }
+body .account-dim { font-size: .8rem; color: var(--dim); }
+body .account-row { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
+body .account-signin { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+body .account-signin .account-row { margin-top: .5rem; flex-wrap: nowrap; }
+body .account-key { padding: 1rem; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; font-family: var(--mono); font-size: .8rem; line-height: 1.6; color: var(--text); word-break: break-all; user-select: all; }
+body .account-warn { padding: .75rem .9rem; background: var(--money-bg); border: 1px solid var(--money-line); border-radius: 6px; font-size: .8rem; line-height: 1.5; color: var(--money); }
+body .account-tick { display: flex; align-items: center; gap: .6rem; font-size: .9rem; color: var(--text); }
+body .account-msg { min-height: 1rem; font-size: .75rem; color: var(--money); }
+body .account-later { background: none; border: 0; padding: .4rem 0; font-size: .8rem; color: var(--dim); text-decoration: underline; cursor: pointer; }
+body .account-panels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+body .account-panel { padding: 1rem; background: var(--inset); border: 1px solid var(--line); border-radius: 8px; font-size: .85rem; line-height: 1.55; color: var(--body); }
+body .account-panel p + p { margin-top: .5rem; }
+body .account-panel b { color: var(--text); }
+body #gateContinue:disabled { opacity: .45; cursor: not-allowed; }
+@media (max-width: 640px) {
+  body .account-dialog { align-items: flex-end; padding: 0; }
+  body .account-card { width: 100%; border-radius: 16px 16px 0 0; padding: 1.4rem 1rem 1.75rem; }
+  body .account-title { font-size: 1.5rem; }
+  body .account-panels { grid-template-columns: 1fr; }
+  body .account-row .brand-btn-primary { flex: 1 1 100%; min-height: 2.9rem; justify-content: center; }
+  body .account-signin .account-row { flex-wrap: wrap; }
+}
