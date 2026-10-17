@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: a game's own page redesigned, with an Add to My collection button
+
+- The page you land on from search is laid out like the rest of the site: a hero with the box picture (glowing in the site's colours), the name, a tag saying whether the library or the feeds know it, and a full-width **Add to My collection** button that opens the Library's add bar (region, condition, what you paid) for that game, asking for an account first when signed out. Prices are one card per eBay site (the median in the site's money), the shop links sit under "Where to look", and the chart button is smaller. No data, matching or price logic changed; the theme tests list the new hiding rules. The guide describes it.
+
 ## 2026-10-17: a device's old games are never passed into an account
 
 - The maintainer's decision: games saved on a device are never sent to an account. **Signing in** to an existing account (a pasted key or a scanned code) now replaces the device's list with the account's, and sends nothing of the old list; if the service does not answer (or refuses the key) the old list is put back and nobody is signed in. A **new account** starts empty: the device's list is cleared when the account is created, because adding games needs an account and so anything saved before is from before accounts. The screens, the guide and the scanned-key screen say so. Before, both carried the device's games into the account.

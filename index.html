@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Plus+Jakarta+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="retro.css?v=20261017f">
+    <link rel="stylesheet" href="retro.css?v=20261018a">
 </head>
 <body class="bg-ps2dark min-h-screen flex flex-col selection:bg-ps2neon selection:text-black">
 
@@ -273,11 +273,25 @@
 
     <!-- One game's own page: opened from the search bar (#game=Title). -->
     <div id="viewGame" class="hidden space-y-6" aria-live="polite">
-      <div class="bg-ps2card border border-ps2border rounded-md p-6">
-        <button type="button" id="gameBack" onclick="goBack(event)" class="brand-btn mb-4"><i class="fa-solid fa-arrow-left text-ps2neon" aria-hidden="true"></i> <span id="gameBackLabel">Back to Highlights</span></button>
-        <div class="game-head"><div id="gameCover" class="game-cover hidden"></div><h2 id="gameTitle" class="!text-2xl !normal-case !tracking-normal !text-white"></h2></div>
-        <p id="gameSummary" class="text-xs text-slate-400 mt-1"></p>
-        <div id="gamePrices" class="mt-3"></div>
+      <div class="game-hero bg-ps2card border border-ps2border rounded-md">
+        <button type="button" id="gameBack" onclick="goBack(event)" class="brand-btn game-back"><i class="fa-solid fa-arrow-left text-ps2neon" aria-hidden="true"></i> <span id="gameBackLabel">Back to Highlights</span></button>
+        <div class="game-head">
+          <div id="gameCover" class="game-cover hidden"></div>
+          <div class="game-info">
+            <div class="game-kicker">PS2 game</div>
+            <h2 id="gameTitle" class="game-title"></h2>
+            <div id="gameTags" class="game-tags"></div>
+            <p id="gameSummary" class="game-summary"></p>
+            <div class="game-actions">
+              <button type="button" id="gameAddButton" class="brand-btn brand-btn-primary game-add hidden" onclick="gameAddToCollection()"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add to My collection</button>
+              <span id="gameOwned" class="game-owned" role="status"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="game-panel bg-ps2card border border-ps2border rounded-md">
+        <div class="lb-section-header"><h2>Prices</h2></div>
+        <div id="gamePrices"></div>
         <div id="gameCrowd" class="mt-3"></div>
       </div>
       <div class="bg-ps2card border border-ps2border rounded-md p-6">
@@ -401,37 +415,39 @@
         <p id="libraryNote" class="text-xs text-slate-500 mt-4"></p>
       </div>
 
-      <div id="libraryAdd" class="library-add hidden" role="dialog" aria-label="Add to My collection">
-        <div class="library-add-cover" id="libraryAddCover" aria-hidden="true"></div>
-        <div class="library-add-body">
-          <div id="libraryAddName" class="library-add-name"></div>
-          <div class="library-add-fields">
-            <label class="sr-only" for="libraryAddRegion">Region</label>
-            <select id="libraryAddRegion" onchange="libraryRegionChanged()" class="spin-field spin-select spin-gold spin-region">
-              <option value="PAL">PAL (UK / Europe)</option>
-              <option value="US">US (NTSC-U)</option>
-            </select>
-            <label class="sr-only" for="libraryAddCondition">Condition</label>
-            <select id="libraryAddCondition" onchange="paintLibraryRemove()" class="spin-field spin-select spin-rose spin-cond">
-              <option value="complete">Complete (box and manual)</option>
-              <option value="loose">Loose (disc only)</option>
-              <option value="sealed">Sealed</option>
-            </select>
-            <label class="sr-only" for="libraryAddPaid">What you paid (optional, per copy)</label>
-            <span class="spin-field spin-silver spin-paid"><span class="spin-sym" id="libraryPaidSym" aria-hidden="true">£</span><input type="number" id="libraryAddPaid" min="0" step="0.01" inputmode="decimal" placeholder="Paid each" onkeydown="if (event.key === 'Enter') libraryAddPicked()" title="What you paid for one copy, in that region's money. Optional: leave it empty to add the game without a price."></span>
-            <button type="button" id="libraryAddButton" onclick="libraryAddPicked()" class="brand-btn brand-btn-primary py-2 px-4"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add to My collection</button>
-          </div>
-          <div class="library-add-actions">
-            <button type="button" id="libraryRemoveButton" onclick="libraryRemovePicked()" class="library-remove brand-btn hidden"><i class="fa-solid fa-minus" aria-hidden="true"></i> <span id="libraryRemoveLabel">Remove one</span></button>
-            <a id="libraryAddOpen" href="#" class="brand-btn" onclick="return libraryOpenPicked(event)">Game page</a>
-            <p id="libraryAddMessage" class="library-add-message" role="status"></p>
-          </div>
-        </div>
-        <button type="button" class="library-add-close" onclick="libraryClosePicked()" aria-label="Close">&times;</button>
-      </div>
 
       <!-- Appears once the long list has been scrolled down; sits above the add bar when that is open. -->
       <button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop()" aria-label="Back to the top of the library" title="Back to the top" inert><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
+    </div>
+
+    <!-- The add bar: opened from a Library box or from a game's page, so it sits outside both pages. -->
+    <div id="libraryAdd" class="library-add hidden" role="dialog" aria-label="Add to My collection">
+      <div class="library-add-cover" id="libraryAddCover" aria-hidden="true"></div>
+      <div class="library-add-body">
+        <div id="libraryAddName" class="library-add-name"></div>
+        <div class="library-add-fields">
+          <label class="sr-only" for="libraryAddRegion">Region</label>
+          <select id="libraryAddRegion" onchange="libraryRegionChanged()" class="spin-field spin-select spin-gold spin-region">
+            <option value="PAL">PAL (UK / Europe)</option>
+            <option value="US">US (NTSC-U)</option>
+          </select>
+          <label class="sr-only" for="libraryAddCondition">Condition</label>
+          <select id="libraryAddCondition" onchange="paintLibraryRemove()" class="spin-field spin-select spin-rose spin-cond">
+            <option value="complete">Complete (box and manual)</option>
+            <option value="loose">Loose (disc only)</option>
+            <option value="sealed">Sealed</option>
+          </select>
+          <label class="sr-only" for="libraryAddPaid">What you paid (optional, per copy)</label>
+          <span class="spin-field spin-silver spin-paid"><span class="spin-sym" id="libraryPaidSym" aria-hidden="true">£</span><input type="number" id="libraryAddPaid" min="0" step="0.01" inputmode="decimal" placeholder="Paid each" onkeydown="if (event.key === 'Enter') libraryAddPicked()" title="What you paid for one copy, in that region's money. Optional: leave it empty to add the game without a price."></span>
+          <button type="button" id="libraryAddButton" onclick="libraryAddPicked()" class="brand-btn brand-btn-primary py-2 px-4"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add to My collection</button>
+        </div>
+        <div class="library-add-actions">
+          <button type="button" id="libraryRemoveButton" onclick="libraryRemovePicked()" class="library-remove brand-btn hidden"><i class="fa-solid fa-minus" aria-hidden="true"></i> <span id="libraryRemoveLabel">Remove one</span></button>
+          <a id="libraryAddOpen" href="#" class="brand-btn" onclick="return libraryOpenPicked(event)">Game page</a>
+          <p id="libraryAddMessage" class="library-add-message" role="status"></p>
+        </div>
+      </div>
+      <button type="button" class="library-add-close" onclick="libraryClosePicked()" aria-label="Close">&times;</button>
     </div>
 
     <!-- Underrated: one game a day from underrated.json, picked by the date (the same for everyone), then the whole list. -->
@@ -1026,6 +1042,8 @@
             });
             librarySorted = null;
             if (typeof redrawLibrary === 'function') redrawLibrary();
+            // A game's page opened before the library arrived: its tags and Add button wait for it.
+            if (currentView === 'game') { try { renderGamePage(document.getElementById('gameTitle').textContent); } catch { /* drawn when the page is opened */ } }
         }
 
         // The library, then the extra names (search_extra_titles.json) that only the search box knows.
@@ -1140,7 +1158,11 @@
                 : (inLibrary ? 'In the PS2 library, but nothing in our feeds has named it in the last '
                     : 'Not found in the PS2 library, and nothing in our feeds has named it in the last ') + `${FEED_DAYS} days.`;
             const row = priceIndex.get(priceKey(title));
-            document.getElementById('gamePrices').innerHTML = gamePriceDetailHtml(title) + scarceTagHtml(title) + collectibleTagHtml(title)
+            document.getElementById('gameTags').innerHTML = (inLibrary ? '<span class="game-tag is-ok">In the PS2 library</span>' : '<span class="game-tag">Not in the PS2 library</span>')
+                + scarceTagHtml(title) + collectibleTagHtml(title);
+            if (libraryPicked && priceKey(libraryPicked.game.title) !== priceKey(title)) libraryClosePicked();   // a bar left open for another game would be for the wrong page
+            paintGameAdd(title);
+            document.getElementById('gamePrices').innerHTML = gamePriceDetailHtml(title)
                 + editionsHtml(title)
                 + (row ? '' : '<p class="text-xs text-slate-400 mt-2">Not priced on eBay yet. A game is priced soon after the feed first names it; until then the links open eBay\'s own search.</p>');
             renderGameCrowd(title);
@@ -4987,12 +5009,36 @@
             redrawLibrary();
         }
 
+        // The library's entry for a game's page title, or null for a name that is not in it.
+        function libraryGameFor(title) {
+            const key = libraryKeyOf(title);
+            return key ? libraryEntries().find(game => game.key === key) || null : null;
+        }
+        // "Add to My collection" on a game's page: only for a game in the library; says how many copies are owned.
+        function paintGameAdd(title = document.getElementById('gameTitle')?.textContent) {
+            const button = document.getElementById('gameAddButton'), owned = document.getElementById('gameOwned');
+            if (!button || !owned) return;
+            const game = libraryGameFor(title);
+            button.classList.toggle('hidden', !game);
+            const have = game ? ownedKeys().get(game.key) || 0 : 0;
+            owned.innerHTML = have ? `<i class="fa-solid fa-check" aria-hidden="true"></i> You own ${have} cop${have === 1 ? 'y' : 'ies'}` : '';
+        }
+        // The same bar as the Library's: region, condition, what you paid, then Add (which asks for an account first when there is none).
+        function gameAddToCollection() {
+            const game = libraryGameFor(document.getElementById('gameTitle').textContent);
+            if (!game) return false;
+            libraryOpenBar(game, -1, document.getElementById('gameTitle').textContent);
+            return false;
+        }
         // A box was chosen: the bar at the bottom asks for a region and a condition.
         function libraryPick(i) {
             const game = libraryShown[i];
             if (!game) return;
+            libraryOpenBar(game, i);
+        }
+        function libraryOpenBar(game, i, name = game.title) {
             libraryPicked = { game, i };
-            document.getElementById('libraryAddName').textContent = game.title;
+            document.getElementById('libraryAddName').textContent = name;
             document.getElementById('libraryAddRegion').value = libraryRegion;
             document.getElementById('libraryAddPaid').value = '';
             paintLibraryAddCover();
@@ -5000,6 +5046,7 @@
             const have = ownedKeys().get(game.key) || 0;
             document.getElementById('libraryAddMessage').textContent = have ? `You already own ${have} cop${have === 1 ? 'y' : 'ies'}. Adding another raises the count.` : '';
             document.getElementById('libraryAddOpen').href = `#game=${encodeURIComponent(game.title)}`;
+            document.getElementById('libraryAddOpen').classList.toggle('hidden', i < 0);   // opened from the game's own page already
             document.getElementById('libraryAdd').classList.remove('hidden');
             paintLibraryRemove();
         }
@@ -5033,6 +5080,7 @@
             document.getElementById(`libTile${i}`)?.classList.toggle('is-owned', have > 0);
             paintLibraryRemove();
             try { refreshCollection(); } catch { /* the page shows it when opened */ }
+            paintGameAdd();
             return false;
         }
         // Back to the top of the long list: a round button, there once the page has been scrolled a good way down.
@@ -5112,6 +5160,7 @@
             try { refreshCollection(); } catch { /* the page shows it when opened */ }
             updateCollectionTab();
             paintLibraryRemove();
+            paintGameAdd();
             return false;
         }
 
