@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 03:43:39 UTC",
+  "last_updated": "2026-10-17 03:46:28 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -875,6 +875,23 @@
       "source_type": "reddit",
       "feed": "reddit:gamecollecting",
       "link": "https://www.reddit.com/r/gamecollecting/comments/1x7xut0/killer_marketplace_pickup/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 01:35 UTC"
+    },
+    {
+      "headline": "Unreleased SNES game Moto X coming to Nintendo Switch [update: trailer]",
+      "source": "Nintendo Everything",
+      "source_type": "news",
+      "feed": "https://nintendoeverything.com/feed",
+      "link": "https://nintendoeverything.com/unreleased-snes-game-moto-x-coming-to-nintendo-switch/",
       "matched_game": null,
       "matched_games": [],
       "match_score": 0,
@@ -2305,6 +2322,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 23:40 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming God Hand",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12882475",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 23:38 UTC"
     },
     {
       "headline": "Strange Side of Game Collecting - Unusual and Unlicensed Games",
@@ -5586,24 +5622,24 @@
       "timestamp": "2026-10-16 20:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Red Faction, Resident Evil 4, Fight Night Round 3 and 5 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Fight Night Round 3, Metal Gear Solid 2: Sons of Liberty and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749822229",
-      "matched_game": "Red Faction",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Red Faction",
         "Resident Evil 4",
         "Fight Night Round 3",
         "Metal Gear Solid 2: Sons of Liberty",
         "Ecco the Dolphin: Defender of the Future",
         "Final Fantasy XII",
         "Splinter Cell",
-        "The Getaway"
+        "The Getaway",
+        "Red Faction"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -180547,23 +180583,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 11:27 UTC"
-    },
-    {
-      "headline": "Unreleased SNES game Moto X coming to Nintendo Switch",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/unreleased-snes-game-moto-x-coming-to-nintendo-switch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 11:26 UTC"
     },
     {
       "headline": "Can anyone make an all in one free for all trainer app where we can download the trainers for all the game from the app itself? Open source Wand app alternative by using AI.",
