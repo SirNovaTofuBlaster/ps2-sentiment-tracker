@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 19:00:27 UTC",
+  "last_updated": "2026-10-17 19:03:10 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -36,6 +36,25 @@
       "hype": 0,
       "timestamp": "2026-10-17 18:56 UTC",
       "views": 12
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749878370",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 18:56 UTC"
     },
     {
       "headline": "Games similar to Viva Piñata?",
@@ -119,6 +138,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 18:51 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749878083",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 18:51 UTC"
     },
@@ -1439,6 +1477,25 @@
       "timestamp": "2026-10-17 17:25 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749873126",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 17:23 UTC"
+    },
+    {
       "headline": "Havn bf360 airflow or Jonsbo x400 pro for best temps",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -1507,13 +1564,14 @@
       "timestamp": "2026-10-17 17:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Wipeout Pulse and Marvel: Ultimate Alliance 2",
+      "headline": "Thread on /v/ naming Star Wars: The Force Unleashed, Wipeout Pulse and Marvel: Ultimate Alliance 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749872783",
-      "matched_game": "Wipeout Pulse",
+      "matched_game": "Star Wars: The Force Unleashed",
       "matched_games": [
+        "Star Wars: The Force Unleashed",
         "Wipeout Pulse",
         "Marvel: Ultimate Alliance 2"
       ],
@@ -274276,41 +274334,6 @@
       "hype": 0,
       "timestamp": "2026-10-03 19:04 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "'Futurama' Series Finales Ranked: All 6 of Them, From Worst to Best",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/futurama-series-finales-ranked-best-worst/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 45,
-      "hype": 0,
-      "timestamp": "2026-10-03 19:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "This the exact opposite of what she wanted",
-      "source": "YouTube: Smosh Games",
-      "source_type": "youtube",
-      "feed": "youtube:UCJ2ZDzMRgSrxmwphstrm8Ww",
-      "link": "https://www.youtube.com/shorts/barkhPcUnOo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 19:00 UTC",
-      "views": 391384
     }
   ]
 }
