@@ -3380,6 +3380,23 @@ class EditionTests(unittest.TestCase):
         self.assertIn("Resident Evil 4 Premium Edition", [row["title"] for row in raw["lists"]["US"]])
 
 
+class WinningEleven7Tests(unittest.TestCase):
+    """Winning Eleven 7 World Soccer: International showed no price (2026-10-17): sellers write "Winning Eleven 7
+    International", and on eBay UK it is Pro Evolution Soccer 3, so the library's long name matched no listing."""
+
+    def test_it_is_searched_by_its_short_name_and_by_its_pal_name_on_the_euro_and_uk_sites(self):
+        pinned, _ = ebay_prices.load_watchlist()
+        game = next(row for row in pinned if row["title"] == "Winning Eleven 7 World Soccer: International")
+        self.assertEqual(game["search"], "winning eleven 7")
+        placed = ebay_prices.apply_regional_names([dict(game, siblings=[])], ebay_prices.load_regional_names(), [])[0]
+        self.assertEqual(placed["markets"]["EBAY_GB"]["search"], "pro evolution soccer 3")
+
+    def test_the_dashboard_shares_a_figure_between_the_two_names(self):
+        path = Path(__file__).resolve().parent.parent / "ebay_watchlist.json"
+        groups = json.loads(path.read_text(encoding="utf-8"))["same_game"]
+        self.assertIn(["Pro Evolution Soccer 3", "Winning Eleven 7 World Soccer: International"], groups)
+
+
 class EditionNameClashTests(unittest.TestCase):
     """An edition whose title is already a priced game's (the Rarest page lists it) points at that game."""
 

@@ -252,6 +252,14 @@ STOPWORDS = {
 # in the headline to count as a match. These distinctive ones do not.
 DISTINCTIVE_SHORT = {"ico", "okami", "vexx", "genji", "kessen"}
 
+# Library entries that are not PS2 games (2026-10-17: "The Cabal" is an ordinary phrase). They never match,
+# and rows saved with one lose it.
+NOT_GAMES = {"the cabal"}
+
+# Half a title that is only an ordinary word ("Hardware" from "Hardware: Online Arena" claimed every text
+# about consoles and hardware, 2026-10-17). Such a half is not a name; the whole title still matches.
+GENERIC_HALVES = {"hardware"}
+
 # Abbreviations and alternate names that fuzzy matching can't bridge. Roman/Arabic
 # pairs are handled by normalisation now, so only true abbreviations belong here.
 # Keys are matched against runs of up to 4 words in the headline.
@@ -424,7 +432,7 @@ class TitleMatcher:
         seen = set()
         for title in titles:
             norm = normalise(title)
-            if not norm or norm in seen:
+            if not norm or norm in seen or norm in NOT_GAMES:
                 continue
             seen.add(norm)
             self.canonical[norm] = title
@@ -486,7 +494,7 @@ class TitleMatcher:
             for part in (head, tail):
                 name = normalise(part)
                 tokens = name.split()
-                if len(name) < SHORT_TITLE_MAX_LEN or name in taken or name in self.aliases:
+                if len(name) < SHORT_TITLE_MAX_LEN or name in taken or name in self.aliases or name in GENERIC_HALVES:
                     continue
                 if all(t in STOPWORDS for t in tokens):
                     continue
@@ -1553,6 +1561,32 @@ def within_ceiling(items, ceiling=None):
     return kept[:ceiling]
 
 
+def without_not_games(item):
+    """Drops from a saved row every title in NOT_GAMES, and "Hardware Online Arena" unless its headline
+    writes the whole name (rows saved when "hardware" alone matched it). 4chan rows are cleaned from their
+    game list only: their headline is the scraper's own (rule 12)."""
+    games = item.get("matched_games") or ([item["matched_game"]] if item.get("matched_game") else [])
+    if not games:
+        return item
+    headline = " ".join(normalise(item.get("headline")).split())
+    kept = []
+    for game in games:
+        name = normalise(game)
+        if name in NOT_GAMES:
+            continue
+        if name == "hardware online arena" and item.get("source_type") != "4chan" and name not in headline:
+            continue
+        kept.append(game)
+    if kept == games:
+        return item
+    changed = {**item, "matched_games": kept}
+    if not kept:
+        changed.update(matched_game=None, match_score=0, match_method=None, matched_in=None)
+    elif kept[0] != item.get("matched_game"):
+        changed["matched_game"] = kept[0]
+    return changed
+
+
 def without_newer_games(item):
     """A saved row whose headline names a newer game that shares a PS2 game's name ("God of War Ragnarök")
     stops counting for the PS2 game, so rows saved before NEWER_GAME_FOLLOWERS listed it go too. Only the
@@ -1717,7 +1751,7 @@ def run_scraper():
     # Flagged again from the headline every run, so items saved before the flag existed (or
     # before its words last changed) are counted too. Copies: `previous` must stay as it was read.
     merged_items = [{**item, "is_digital_only": is_digital_only(item.get("headline"))} for item in merged_items]
-    merged_items = [without_newer_games(item) for item in merged_items]
+    merged_items = [without_newer_games(without_not_games(item)) for item in merged_items]
 
     if merged_items == previous:
         print("No new or changed items; leaving snapshot untouched.")

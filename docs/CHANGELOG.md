@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: "The Cabal" and "hardware" no longer count as games, and Winning Eleven 7 gets prices
+
+- "The Cabal" is in the library's list but is not a game, and it showed on the Highlights. `NOT_GAMES` in `scraper.py` keeps it from matching, and rows already saved lose it (`without_not_games()`).
+- "Hardware Online Arena" was claimed by any PS2-flavoured text that said "hardware" (25 rows on 2026-10-17: Pandora boxes, projectors, N64 HDMI): the half "Hardware" of "Hardware: Online Arena" was a usable name. `GENERIC_HALVES` drops such halves; the whole name still matches, and saved rows keep the game only if their headline writes the whole name. Rule 2 applies: run `tools/regression_check.py`; it may not print `IDENTICAL` for these rows, which is the point.
+- Winning Eleven 7 World Soccer: International showed no price anywhere: it is pinned (`winning eleven 7`), the UK and euro sites search it as Pro Evolution Soccer 3, and `same_game` lets the two spellings share a figure. The price appears after the next eBay run.
+
 ## 2026-10-17: the Live Ingestion Stream gives the game and its Shops buttons room
 
 - Opening **Shops** on a feed row cut the eBay buttons off at the right edge of the game cell (the panel hides what overflows it, and a region's buttons did not wrap on a wide screen). The buttons of a region now wrap, and the table's columns are SOURCE / TIME, MATCHED PS2 GAME, HEADLINE, ACTION: the game column comes before the headline and is 46% wide (at least 20 rem), the headline 34%. On a phone nothing changes (each row is already a card).
