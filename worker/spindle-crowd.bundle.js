@@ -9,6 +9,7 @@ const CONDITIONS = ['sealed', 'complete', 'loose'];
 const CURRENCIES = ['USD', 'GBP', 'EUR'];
 const MAX_GAMES_PER_ACCOUNT = 600;
 const MAX_COPIES = 99;
+const MAX_LIST = 2000;         // entries of the account's own saved list (title, region, condition, count)
 const MAX_REPORTS_PER_DAY = 20;
 const MAX_PRICE = 20000;       // in the report's own currency
 const MONTHS_BACK = 24;
@@ -26,6 +27,22 @@ function cleanCopies(body) {
     const { sealed, complete, loose } = body ?? {};
     if (!game || ![sealed, complete, loose].every(whole)) return null;
     return { game, sealed, complete, loose };
+}
+
+// The account's own list, kept so a new browser can load it back. Private to the account: never published, never read by stats.
+// No price, name or address: a title (as the dashboard spells it), a region, a condition and how many.
+function cleanList(list) {
+    if (!Array.isArray(list) || list.length > MAX_LIST) return null;
+    const out = [];
+    for (const item of list) {
+        const title = typeof item?.title === 'string' ? item.title.trim() : '';
+        const qty = item?.qty;
+        // eslint-disable-next-line no-control-regex
+        if (!title || title.length > 100 || /[\u0000-\u001f\u007f<>]/.test(title)) return null;
+        if (!REGIONS.includes(item.region) || !CONDITIONS.includes(item.condition) || !Number.isInteger(qty) || qty < 1 || qty > MAX_COPIES) return null;
+        out.push({ title, region: item.region, condition: item.condition, qty });
+    }
+    return out;
 }
 
 // months: "2026-10". Not in the future, not older than MONTHS_BACK.
@@ -96,7 +113,7 @@ function randomToken(bytes) {
 
 const DAY = 86400000;
 const today = () => Math.floor(Date.now() / DAY);
-const MAX_BODY = 200_000;
+const MAX_BODY = 400_000;
 const REGISTER_PER_DAY = 5;           // per hashed network address, rotating daily
 const COLLECTION_SAVES_PER_DAY = 30;  // per account
 
@@ -160,6 +177,8 @@ async function saveCollection(request, env, account) {
     if (!body || !Array.isArray(body.items) || body.items.length > MAX_GAMES_PER_ACCOUNT) return reply(request, env, 400, { error: 'bad collection' });
     const items = body.items.map(cleanCopies);
     if (items.some(item => !item)) return reply(request, env, 400, { error: 'bad collection' });
+    const list = body.list === undefined ? undefined : cleanList(body.list);
+    if (list === null) return reply(request, env, 400, { error: 'bad collection' });
     if (!await allow(env, 'col:' + account, COLLECTION_SAVES_PER_DAY)) return reply(request, env, 429, { error: 'too many saves today' });
     // The saved list replaces the old one, so a game taken out of the collection disappears here too.
     const day = today();
@@ -170,7 +189,26 @@ async function saveCollection(request, env, account) {
             .bind(account, game, sealed, complete, loose, day));
     }
     await env.DB.batch(statements);
-    return reply(request, env, 200, { saved: statements.length - 1 });
+    // The list itself (so a new browser can load it back) is a separate step: an older database without the table still gets its counts.
+    let listSaved = false;
+    if (list !== undefined) {
+        try {
+            await env.DB.prepare('INSERT OR REPLACE INTO lists (account, data, updated) VALUES (?, ?, ?)').bind(account, JSON.stringify(list), day).run();
+            listSaved = true;
+        } catch { /* no lists table yet */ }
+    }
+    return reply(request, env, 200, { saved: statements.length - 1, list: listSaved });
+}
+
+// The signed-in account's own saved list; null when none was saved (or the table is not there yet).
+async function getCollection(request, env, account) {
+    if (!await allow(env, 'get:' + account, 60)) return reply(request, env, 429, { error: 'too many today' });
+    let list = null;
+    try {
+        const row = await env.DB.prepare('SELECT data FROM lists WHERE account = ?').bind(account).first();
+        if (row) list = cleanList(JSON.parse(row.data));
+    } catch { /* no lists table yet, or nothing saved */ }
+    return reply(request, env, 200, { list });
 }
 
 async function addReport(request, env, account) {
@@ -191,6 +229,8 @@ async function deleteAccount(request, env, account) {
         env.DB.prepare('DELETE FROM limits WHERE bucket = ?').bind('col:' + account),
         env.DB.prepare('DELETE FROM accounts WHERE id = ?').bind(account),
     ]);
+    try { await env.DB.prepare('DELETE FROM lists WHERE account = ?').bind(account).run(); } catch { /* no lists table */ }
+    try { await env.DB.prepare('DELETE FROM limits WHERE bucket = ?').bind('get:' + account).run(); } catch { /* nothing to remove */ }
     return reply(request, env, 200, { deleted: true });
 }
 
@@ -242,7 +282,7 @@ export default {
         try {
             if (request.method === 'GET' && pathname === '/api/stats') return await stats(request, env);
             if (request.method === 'POST' && pathname === '/api/register') return await register(request, env);
-            const routes = { 'PUT /api/collection': saveCollection, 'POST /api/report': addReport, 'DELETE /api/account': deleteAccount };
+            const routes = { 'GET /api/collection': getCollection, 'PUT /api/collection': saveCollection, 'POST /api/report': addReport, 'DELETE /api/account': deleteAccount };
             const handler = routes[`${request.method} ${pathname}`];
             if (!handler) return reply(request, env, 404, { error: 'not found' });
             const account = await authenticate(request, env);

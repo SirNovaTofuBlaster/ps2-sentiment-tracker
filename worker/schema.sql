@@ -14,6 +14,8 @@ CREATE TABLE IF NOT EXISTS copies (
   updated  INTEGER NOT NULL,
   PRIMARY KEY (account, game)
 );
+-- The account's own list as JSON (title, region, condition, count; no price), so a new browser can load it back. Never published.
+CREATE TABLE IF NOT EXISTS lists (account TEXT PRIMARY KEY, data TEXT NOT NULL, updated INTEGER NOT NULL);
 CREATE TABLE IF NOT EXISTS reports (
   id        INTEGER PRIMARY KEY AUTOINCREMENT,
   account   TEXT NOT NULL,

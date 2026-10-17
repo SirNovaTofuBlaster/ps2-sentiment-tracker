@@ -3080,10 +3080,44 @@
             const items = crowdCounts();
             if (items.length > CROWD_MAX_GAMES) { crowdSay(`Only collections of up to ${CROWD_MAX_GAMES} different games can be shared.`); return false; }
             crowdBusy = true;
-            const { status } = await crowdCall('PUT', '/api/collection', { items });
+            // The list itself goes too (no prices), kept private to the account so a new browser can load it back.
+            const list = collection.map(({ title, region, condition, qty }) => ({ title, region, condition, qty }));
+            const { status } = await crowdCall('PUT', '/api/collection', { items, list });
             crowdBusy = false;
             crowdSay(status === 200 ? `Sent the counts for ${items.length} game${items.length === 1 ? '' : 's'}.` : crowdProblem(status));
             return status === 200;
+        }
+        // Loads the list this account saved from another browser and adds what is missing here (never removes anything).
+        // Returns { status, added }.
+        async function crowdPullList() {
+            const { status, json } = await crowdCall('GET', '/api/collection');
+            if (status !== 200) return { status, added: 0 };
+            const saved = cleanCollection(Array.isArray(json?.list) ? json.list : []);
+            let added = 0;
+            for (const entry of saved) {
+                const held = collection.find(e => e.title === entry.title && e.region === entry.region && e.condition === entry.condition);
+                if (held) {
+                    if (entry.qty > held.qty) { added += entry.qty - held.qty; held.qty = entry.qty; }
+                } else if (collection.length < COLLECTION_MAX) {
+                    collection.push({ title: entry.title, region: entry.region, condition: entry.condition, qty: entry.qty, paid: null });
+                    added += entry.qty;
+                }
+            }
+            if (added) {
+                saveCollection();
+                try { refreshCollection(); } catch { /* shown when My collection is opened */ }
+                updateCollectionTab();
+            }
+            return { status, added, saved: saved.length };
+        }
+        async function crowdLoadList() {
+            if (!hasAccount()) return false;
+            crowdSay('Looking for your saved list...');
+            const { status, added, saved } = await crowdPullList();
+            if (status !== 200) { crowdSay(crowdProblem(status)); return false; }
+            crowdSay(!saved ? 'This account has no saved list yet. Open the browser that has your games and they are saved to the account within a few seconds.'
+                : added ? `Added ${added} cop${added === 1 ? 'y' : 'ies'} from your account's saved list.` : 'Your list here already has everything the account saved.');
+            return true;
         }
         function crowdScheduleSend() {
             if (!hasAccount() || typeof setTimeout !== 'function') return;
@@ -3108,16 +3142,17 @@
             }
             const saved = collection.length
                 ? `<div class="account-warn">You already have ${collection.length} game${collection.length === 1 ? '' : 's'} saved on this device. They'll come with you into your new account.</div>` : '';
-            const form = `<form class="account-signin" onsubmit="return crowdSignIn(event)" autocomplete="off">
+            const form = `<form class="account-signin" onsubmit="crowdSignIn(event); return false" autocomplete="off">
                     <label for="gateKeyInput" class="account-text">${page ? 'Already have a key?' : 'Got a key? Paste it here'}</label>
                     <div class="account-row"><input type="password" id="gateKeyInput" placeholder="Paste your key here" spellcheck="false" class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white min-w-0 flex-1">
                         <button type="submit" class="brand-btn">Sign in</button></div></form>`;
             const panels = page ? `<div class="account-panels">
                     <div class="account-panel"><div class="account-eyebrow is-ok">WHAT IS SHARED</div>
                         <p>For each game, how many <b>sealed</b>, <b>complete</b> and <b>loose</b> copies you own. A count only shows once five or more people agree, so nobody can pick you out.</p>
+                        <p>Your list (game, region, condition and how many) is kept with your account so you can load it in another browser. Nobody else ever sees it.</p>
                         <p>If you like, you can also send <b>purchase reports</b>: game, region, condition, price and month.</p></div>
                     <div class="account-panel"><div class="account-eyebrow is-bad">STAYS PRIVATE</div>
-                        <p>Your name, email or address. What you paid for the games in your list. Your list as a file.</p>
+                        <p>Your name, email or address. What you paid for the games in your list.</p>
                         <p class="account-dim">You can delete your account whenever you want, and everything you sent goes with it.</p></div></div>` : '';
             return `<div class="account-eyebrow">${page ? 'STEP 1 OF 2 · YOUR ACCOUNT' : `ADDING ${esc((accountPendingName || 'A GAME').toUpperCase())}`}</div>
                 <h2 class="account-title">${page ? 'Create an account to start your collection' : 'Create an account to add games'}</h2>
@@ -3195,14 +3230,25 @@
             saveCrowd();
             accountDone();
         }
-        function crowdSignIn(event) {
+        async function crowdSignIn(event) {
             event?.preventDefault?.();
             const text = String(document.getElementById('gateKeyInput')?.value || '').trim();
             const match = text.match(/^([0-9a-f]{32})\.([0-9a-f]{64})$/);
             if (!match) { crowdSay('That is not a key. It looks like two long strings of letters and numbers joined by a dot.'); return false; }
             crowd = { id: match[1], key: match[2], confirmed: true };
             saveCrowd();
+            // Asking for the saved list also proves the key is real, and brings the list from the browser it was made on.
+            crowdSay('Signing in...');
+            const { status } = await crowdPullList();
+            if (status === 401) {
+                crowd = { id: '', key: '', confirmed: false };
+                saveCrowd();
+                crowdSay('The service does not know that key. Check it was copied whole.');
+                paintAccountGate();
+                return false;
+            }
             accountDone();
+            if (status === 0) crowdSay('Signed in, but the service could not be reached just now. Press "Load my list from the account" on the Account tab to try again.');
             return false;
         }
         function crowdSignOut() {
@@ -3275,6 +3321,7 @@
                 ? `<p class="text-xs text-slate-300 mb-3">Account <span class="font-mono-custom">${esc(crowd.id.slice(0, 8))}…</span></p>
                    <div class="flex flex-wrap gap-2">
                      <button type="button" class="brand-btn text-ps2neon" onclick="crowdCopyKey()">Copy my key</button>
+                     <button type="button" class="brand-btn text-ps2neon" onclick="crowdLoadList()">Load my list from the account</button>
                      <button type="button" class="brand-btn text-ps2neon" onclick="crowdSend()">Send my counts now</button>
                      <button type="button" class="brand-btn" onclick="crowdSignOut()">Sign out on this device</button>
                      <button type="button" class="brand-btn text-spindle-red" onclick="crowdDelete()">Delete my account and data</button>
@@ -3282,8 +3329,8 @@
             const month = document.getElementById('reportMonth');
             if (month && !month.value) month.value = new Date().toISOString().slice(0, 7);
             document.getElementById('shareNote').textContent =
-                'What gets sent: your account id and key (the service keeps only a hash of the key), how many sealed, complete and loose copies you own of each game, and each purchase report you choose to send (game, region, condition, price, currency and the month you bought it). '
-                + 'A game goes by its plain lower-case name, the same spelling the price lookups use. Your name, email, address, what you paid in My games and your list as a file all stay on your device. The service does not store your network address; it uses it for a moment to limit sign-ups. '
+                'What gets sent: your account id and key (the service keeps only a hash of the key), how many sealed, complete and loose copies you own of each game, your list itself (game, region, condition and count, kept private to your account so another browser can load it), and each purchase report you choose to send (game, region, condition, price, currency and the month you bought it). '
+                + 'A game goes by its plain lower-case name, the same spelling the price lookups use. Your name, email, address and what you paid in My games stay on your device. The service does not store your network address; it uses it for a moment to limit sign-ups. '
                 + 'A price or count is published only when five or more different accounts agree, and a price far from the others is held back, never deleted. Signing out only forgets the key on this device; deleting your account removes everything you sent. If you lose the key, the account cannot be recovered. '
                 + 'Reading the published figures asks the service for one file when a game page or this tab opens, which shows it your address.';
         }

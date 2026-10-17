@@ -3555,7 +3555,8 @@ await check('accounts: nothing can be added without one, the key is saved first,
         const put = calls.find(c => c.method === 'PUT');
         assert.ok(put && put.url.endsWith('/api/collection'), 'counts are sent once the account is live');
         assert.equal(put.auth, `Bearer ${'c'.repeat(32)}.${'d'.repeat(64)}`);
-        assert.deepEqual(put.body, { items: [{ game: 'kuon', sealed: 0, complete: 1, loose: 0 }] });
+        assert.deepEqual(put.body.items, [{ game: 'kuon', sealed: 0, complete: 1, loose: 0 }]);
+        assert.deepEqual(put.body.list.map(e => Object.keys(e).sort().join()), ['condition,qty,region,title'], 'the saved list carries no price');
         run(`syncCollectionAccess()`);
         assert.equal(el('collectionGate').classList.contains('hidden'), true);
         assert.equal(el('collectionSection').classList.contains('hidden'), false, 'the games show');
@@ -3576,12 +3577,43 @@ await check('accounts: nothing can be added without one, the key is saved first,
         // a key from before is accepted on the account screen
         run(signedOut);
         el('gateKeyInput').value = 'nonsense';
-        run('crowdSignIn()');
+        await run('crowdSignIn()');
         assert.equal(run('hasAccount()'), false, 'a made-up key is refused');
         el('gateKeyInput').value = `${'1'.repeat(32)}.${'2'.repeat(64)}`;
-        run('crowdSignIn()');
+        // the key's own list comes down with it: this browser's list is empty, the account's has two games
+        run('collection = []');
+        calls.length = 0;
+        const realFetch2 = context.fetch;
+        context.fetch = async (url, options = {}) => {
+            if (url.endsWith('/api/collection') && options.method === 'GET') {
+                calls.push({ url, method: 'GET', auth: options.headers?.Authorization });
+                return { status: 200, json: async () => ({ list: [{ title: 'Kuon', region: 'PAL', condition: 'sealed', qty: 1 }, { title: 'Okami', region: 'US', condition: 'loose', qty: 2 }, { title: '', region: 'JP' }] }) };
+            }
+            return realFetch2(url, options);
+        };
+        await run('crowdSignIn()');
         assert.equal(run('hasAccount()'), true);
         assert.equal(run('crowd.id'), '1'.repeat(32));
+        assert.equal(calls[0].method, 'GET');
+        assert.match(calls[0].auth, /^Bearer 1{32}\.2{64}$/);
+        assert.deepEqual(evalJson(`collection.map(e => [e.title, e.region, e.condition, e.qty, e.paid])`), [['Kuon', 'PAL', 'sealed', 1, null], ['Okami', 'US', 'loose', 2, null]], 'the saved list is loaded, a bad entry is dropped');
+        // loading again only adds what is missing, never removes, and keeps the price typed here
+        run(`collection[0].paid = 99; collection[0].qty = 3`);
+        assert.equal(await run('crowdLoadList()'), true);
+        assert.deepEqual(evalJson(`collection.map(e => [e.title, e.qty, e.paid])`), [['Kuon', 3, 99], ['Okami', 2, null]]);
+        // a key the service does not know signs nothing in
+        context.fetch = async () => ({ status: 401, json: async () => ({}) });
+        run(signedOut);
+        el('gateKeyInput').value = `${'3'.repeat(32)}.${'4'.repeat(64)}`;
+        await run('crowdSignIn()');
+        assert.equal(run('hasAccount()'), false, 'an unknown key is refused');
+        // the service cannot be reached: still signed in, with a way to try again
+        context.fetch = async () => { throw new Error('offline'); };
+        el('gateKeyInput').value = `${'1'.repeat(32)}.${'2'.repeat(64)}`;
+        await run('crowdSignIn()');
+        assert.equal(run('hasAccount()'), true);
+        context.fetch = realFetch2;
+        run('collection = []');
         // a report: no "where"
         calls.length = 0;
         el('reportGame').value = 'Kuon'; el('reportPrice').value = '120'; el('reportMonth').value = '2026-09';

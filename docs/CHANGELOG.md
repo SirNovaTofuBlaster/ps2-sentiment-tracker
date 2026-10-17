@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17: the account carries your list to another browser
+
+- Found by the maintainer: a key used in a second browser signed in but showed no games, because only counts (no regions, no titles) were kept server-side.
+- The Worker saves the account's list (title, region, condition, count; no price) in a new `lists` table and returns it on `GET /api/collection`; `cleanList()` bounds it. The table is optional: without it counts still save. Needs the one-line table in the D1 console and the new bundle pasted into Cloudflare (steps in `docs/CROWD.md`).
+- Signing in with a key now asks the service for the list, which also proves the key is real (an unknown key is refused instead of signing in). The list is merged into the browser (adds missing games, raises a count, never removes, keeps prices typed here). Account tab: **Load my list from the account**. Each browser's sends replace the saved list.
+- `tests/worker_check.mjs` (15) and the accounts test cover the list, the merge, an unknown key and the service being unreachable.
+
 ## 2026-10-17: more articles behind the Rarest list (Rule of Rose, Manhunt 2)
 
 - `rare_reference_prices.json`: two new sources (Time Extension's CeX Retro Watch, 2023-11-17, and AnimeClick.it, 2024-09-11) and three Rule of Rose PAL points: CeX shop price GBP 570, and the article's average of about $600 before and about $320 after sealed copies turned up in Italy (September 2024). Reference points only; nothing ranks by them.
