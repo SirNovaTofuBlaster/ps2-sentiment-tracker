@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17: the Live Ingestion Stream gives the game and its Shops buttons room
+
+- Opening **Shops** on a feed row cut the eBay buttons off at the right edge of the game cell (the panel hides what overflows it, and a region's buttons did not wrap on a wide screen). The buttons of a region now wrap, and the table's columns are SOURCE / TIME, MATCHED PS2 GAME, HEADLINE, ACTION: the game column comes before the headline and is 46% wide (at least 20 rem), the headline 34%. On a phone nothing changes (each row is already a card).
+
 ## 2026-10-17: 88 more covers kept with the site (first batch)
 
 - The maintainer supplied 88 box pictures, each file named after a game that had no cover (the list of 282 was made from the library and `covers.json`). Each is kept at 240 px in `covers/` and registered in `covers.json` `local` (`LOCAL` in `tools/build_covers.py`), so it beats the collection's file for that game. 282 games had no cover before; about 195 still have none.
