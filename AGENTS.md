@@ -210,6 +210,7 @@ Before you call something done, prove it; don't assume it.
     the whole name in the library's spelling, written as a name, and not followed by
     another entry's number; that left 33 mentions of 23 games (28 of 20 in threads young
     enough to enter the feed). Don't relax it without a new dry run.
+  - `tools/try_sources.py` prints, per board, the near misses by reason (`post_near_misses()`: spelt differently / runs into a number / not written as a name / inside a longer title), library names and counts only. Read that in a pull request's *Live checks* before loosening a rule, and compare mentions of the same game that are wrong (the first dry run's Dragon Rage) with those that are real.
   - Nobody working on the rules for posts could read the boards: they were judged from the
     game names and counts `try_sources.py` prints, and from made-up posts in the tests.
   - `normalise()` turns Roman numerals into digits, so the pronoun "I" reads as 1 and the

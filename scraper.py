@@ -1112,6 +1112,44 @@ def games_in_post(text, matcher, ps2_source=False):
     return kept
 
 
+NEAR_MISS_THRESHOLD = 85  # how close a spelling must be for post_near_misses() to call it a near miss
+
+
+def post_near_misses(text, matcher, ps2_source=False):
+    """[(library title, why games_in_post() did not keep it)] for a post: the names the strict rules for posts turn
+    away, so they can be counted and judged from real boards (tools/try_sources.py prints the counts). Nothing but a
+    library title and a reason leaves this function; nothing of the post does (rule 12).
+
+    The reasons: "spelt differently" (not the whole name as the library has it), "runs into a number" (another entry's
+    number follows it), "not written as a name" (capitals the library has are missing, or an everyday word) and "inside
+    a longer title"."""
+    kept = {title for title, _, _ in games_in_post(text, matcher, ps2_source)}
+    words = post_words(text)
+    found, seen = [], set()
+    for title, score, method in matcher.match_all(text, ps2_source=ps2_source, threshold=NEAR_MISS_THRESHOLD):
+        if title in kept or method == "variant" or title in seen:
+            continue
+        seen.add(title)
+        if score < 100:
+            found.append((title, "spelt differently"))
+        elif words is None:
+            continue
+        else:
+            run = normalise(title).split()
+            tokens = [word[0] for word in words]
+            spans = TitleMatcher._occurrences(tokens, run)
+            if not spans:
+                continue
+            start, end = spans[0]
+            if another_entry(text, words, end):
+                found.append((title, "runs into a number"))
+            elif not written_as_a_name(text, words, start, end, title, matcher):
+                found.append((title, "not written as a name"))
+            else:
+                found.append((title, "inside a longer title"))
+    return found
+
+
 def reply_games(posts, matcher, ps2_source):
     """The PS2 games named in replies, as (title, score, method), each once. Only the names are taken: a reply is
     read the way a comment is (its first MAX_BODY_TOKENS words) and nothing of it is returned but the games."""

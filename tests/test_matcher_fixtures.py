@@ -291,6 +291,16 @@ class MatcherRuleTests(unittest.TestCase):
         self.assertEqual(self.claims("Cabelas Outdoor Adventures 2006 review", ps2_source=True), ["Cabela's Outdoor Adventures 2006"])
         self.assertEqual(self.claims("Cabela's Outdoor Adventures review", ps2_source=True), ["Cabela's Outdoor Adventures"])
 
+    def test_near_misses_say_why_and_carry_only_library_names(self):
+        miss = lambda text: scraper.post_near_misses(text, self.matcher, True)
+        self.assertEqual(miss("i love okami so much"), [("Okami", "not written as a name")])
+        self.assertEqual(miss("Silent Hil 2 is great"), [("Silent Hill 2", "spelt differently")])
+        self.assertEqual(miss("max payne 2 is better"), [("Max Payne", "runs into a number")])
+        self.assertEqual(miss("Silent Hill 2 is great"), [], "a game the rules keep is not a near miss")
+        for title, reason in miss("SECRETWORD i love okami so much"):
+            self.assertIn(title, self.matcher.canonical.values())
+            self.assertNotIn("SECRETWORD", title + reason)
+
     def test_saved_rows_with_a_non_game_are_cleaned(self):
         row = {"headline": "The Cabal", "source_type": "news", "matched_game": "The Cabal", "matched_games": ["The Cabal"],
                "match_score": 100, "match_method": "fuzzy", "matched_in": "body"}

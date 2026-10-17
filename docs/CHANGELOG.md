@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17: `try_sources.py` counts the near misses on the 4chan boards
+
+- For each board it now prints, per reason, which library games the strict rules for posts turned away and how often: *spelt differently*, *runs into a number*, *not written as a name* (capitals missing, or an everyday word) and *inside a longer title* (`post_near_misses()` in `scraper.py`, read over subjects, opening comments and the catalog's last replies). Library names and counts only; nothing a poster wrote is printed or kept (rule 12). It is for judging from real boards, in the *Live checks* report of a pull request, which of the rules is losing real mentions before anyone loosens it. Nothing about matching changed.
+
 ## 2026-10-17: the account key as a QR code
 
 - The key screen and the Account tab can show the key as a QR code. It encodes a link to the site with the key after `#signin=`; a phone's camera opens it, the key leaves the address bar at once and is only filled into the sign-in box (the person still presses Sign in, so a link someone else sends cannot sign a visitor into the sender's account by itself, and a link opened while signed in changes nothing). The code is drawn in the browser by a small encoder in `index.html` (`qrMatrix()`, byte mode, error correction level M, versions 1 to 10); no library and no request. Black on white with a four-module margin in any theme.
