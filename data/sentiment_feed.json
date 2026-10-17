@@ -1,7 +1,64 @@
 {
-  "last_updated": "2026-10-17 22:57:18 UTC",
+  "last_updated": "2026-10-17 23:10:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming ICO",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749891342",
+      "matched_game": "ICO",
+      "matched_games": [
+        "ICO"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 23:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749890765",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 22:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Soul Calibur 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749890148",
+      "matched_game": "Soul Calibur 2",
+      "matched_games": [
+        "Soul Calibur 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 22:44 UTC"
+    },
     {
       "headline": "Someone reset the count… wait, what?",
       "source": "r/pcmasterrace",
@@ -6706,15 +6763,14 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Half-Life, TimeSplitters 2 and 24 more",
+      "headline": "Thread on /v/ naming Warship Gunner 2, TimeSplitters 2, The Bouncer and 25 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Warship Gunner 2",
       "matched_games": [
-        "Grand Theft Auto III",
-        "Half-Life",
+        "Warship Gunner 2",
         "TimeSplitters 2",
         "The Bouncer",
         "God Hand",
@@ -6739,10 +6795,12 @@
         "The Sopranos",
         "Dark Cloud",
         "God of War",
-        "Persona 3"
+        "Persona 3",
+        "Grand Theft Auto III",
+        "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -166485,6 +166543,25 @@
       "timestamp": "2026-10-10 20:09 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Death by Degrees",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12870917",
+      "matched_game": "Death by Degrees",
+      "matched_games": [
+        "Death by Degrees"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-10 20:08 UTC"
+    },
+    {
       "headline": "Is this Pokemon ruby real or fake?",
       "source": "r/gameverifying",
       "source_type": "reddit",
@@ -276547,74 +276624,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-03 23:13 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sega Master System Find",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/XmMxBjc7YpQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 23:09 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "updates on my search for a rare line of ps1 era playstation clothing called “Playstation Threadz”",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wx0izr/updates_on_my_search_for_a_rare_line_of_ps1_era/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 23:03 UTC"
-    },
-    {
-      "headline": "Uncharted: The Lost Legacy Is Still the Best Uncharted Game",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/uncharted-lost-legacy-rec-playstation-naughty-dog/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-03 23:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Guesses or wishes for the two Strictly Shadow drops for 2026.",
-      "source": "r/LimitedPrintGames",
-      "source_type": "reddit",
-      "feed": "reddit:limitedprintgames",
-      "link": "https://www.reddit.com/r/LimitedPrintGames/comments/1wx0e1m/guesses_or_wishes_for_the_two_strictly_shadow/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 22:57 UTC",
       "is_digital_only": false
     }
   ]
