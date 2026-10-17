@@ -1,16 +1,55 @@
 {
-  "last_updated": "2026-10-17 17:22:50 UTC",
+  "last_updated": "2026-10-17 17:36:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
-      "headline": "Thread on /vg/ naming Final Fantasy XI",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749873463",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 17:29 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Wipeout Pulse",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749872783",
+      "matched_game": "Wipeout Pulse",
+      "matched_games": [
+        "Wipeout Pulse"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 17:17 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Final Fantasy XI and Kingdom Hearts",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584793606",
       "matched_game": "Final Fantasy XI",
       "matched_games": [
-        "Final Fantasy XI"
+        "Final Fantasy XI",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3332,15 +3371,15 @@
       "timestamp": "2026-10-17 14:04 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Warriors and The Sopranos",
+      "headline": "Thread on /v/ naming The Sopranos and The Warriors",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749863140",
-      "matched_game": "The Warriors",
+      "matched_game": "The Sopranos",
       "matched_games": [
-        "The Warriors",
-        "The Sopranos"
+        "The Sopranos",
+        "The Warriors"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -5906,19 +5945,19 @@
       "timestamp": "2026-10-17 11:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Splinter Cell, Delta Force: Black Hawk Down, Just Cause and 3 more",
+      "headline": "Thread on /v/ naming Just Cause, Metal Gear Solid 3: Snake Eater, Shadow of the Colossus and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749856547",
-      "matched_game": "Splinter Cell",
+      "matched_game": "Just Cause",
       "matched_games": [
-        "Splinter Cell",
-        "Delta Force: Black Hawk Down",
         "Just Cause",
         "Metal Gear Solid 3: Snake Eater",
         "Shadow of the Colossus",
-        "Black"
+        "Black",
+        "Splinter Cell",
+        "Delta Force: Black Hawk Down"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -273099,91 +273138,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 17:43 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Looking for third-person games with local co-op that are similar to Phantasy Star Online on the GameCube.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wwsx4y/looking_for_thirdperson_games_with_local_coop/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 17:32 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Behold The Best New Witcher 3 Remastered Mod",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/behold-the-best-new-witcher-3-remastered-mod-2000739585",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "sentiment": 60,
-      "hype": 1,
-      "timestamp": "2026-10-03 17:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is this metroid fusion real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wwsswl/is_this_metroid_fusion_real/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 17:27 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Final Fantasy 7 Revelation director says he \"did his best\" to fight for a full disc release",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/final-fantasy-7-revelation-naoki-hamaguchi-disc-release-physical-media",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-03 17:25 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Red Beards Super Nintendo Game Haul",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/aZZLDqNCQ2U",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 17:25 UTC",
       "is_digital_only": false
     }
   ]
