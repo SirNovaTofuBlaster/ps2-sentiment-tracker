@@ -3,6 +3,7 @@
 ## 2026-10-17: Shadow of the Colossus Collector's Edition (PAL) and the Resident Evil: The Essentials cover
 
 - Added the Shadow of the Colossus Collector's Edition (PAL) to `editions.json` (63 in all): a 2006 Sony matte cardboard case with a bi-fold, disc, manual and postcards, read on a collector's page (computinghistory.org.uk); sources disagree on postcards, art cards or posters, and the entry says so. Its picture (supplied by the maintainer) is kept in `covers/`.
+- The PAL box of Yazuka (the library's spelling of Yakuza) is kept in `covers/yazuka.jpg` and beats the collection's file for that spelling.
 - Resident Evil: The Essentials was already in the library (a 2007 NTSC box set); its cover is kept in `covers/` and named in `covers.json` `local` (`LOCAL` in `tools/build_covers.py`). It is not an edition, so it is not in `editions.json`.
 
 ## 2026-10-17: pictures of 12 editions, and Dragon Ball Z Budokai 3 Collector's Edition (PAL)

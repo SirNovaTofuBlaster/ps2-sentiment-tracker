@@ -2859,7 +2859,7 @@ await check('My collection: add, value, keep in the browser, back up and restore
         assert.equal(run(`coverNote(${JSON.stringify(name)})`), 'cover kept with this site');
         assert.ok(existsSync(new URL(file, root)), `${file} exists`);
     }
-    assert.equal(Object.keys(real.local).length, 9);
+    assert.equal(Object.keys(real.local).length, 10);
     assert.ok(Object.values(real.local).every(file => /^covers\/[\w.-]+\.jpg$/.test(file) && existsSync(new URL(file, root))));
     // Most mentioned and Rarest rows carry a small box beside them, and only when there is one
     const wrapped = run(`withCover('God Hand', 'US', '<b>row</b>')`);

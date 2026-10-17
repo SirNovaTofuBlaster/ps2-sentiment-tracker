@@ -377,6 +377,7 @@ LOCAL = {
     "grand theft auto the trilogy": "covers/grand-theft-auto-the-trilogy.jpg",
     "silent hill collection": "covers/silent-hill-collection.jpg",
     "resident evil the essentials": "covers/resident-evil-the-essentials.jpg",
+    "yazuka": "covers/yazuka.jpg",
 }
 
 
