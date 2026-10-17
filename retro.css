@@ -1447,4 +1447,18 @@ body .library-add:not(.hidden) ~ .lib-top { bottom: calc(10rem + env(safe-area-i
   body .library-add-fields .spin-region, body .library-add-fields .spin-cond { grid-column: 1 / -1; flex: none; }
   body .library-add-fields .spin-paid { width: 100%; }
   body .library-add-actions .brand-btn { flex: 1 1 40%; justify-content: center; }
+/* ---- Portfolio chart (2026-10-17): between the My games tabs and the list; same chart tools as a game's chart ---- */
+body .portfolio-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .75rem; margin-bottom: 1rem; }
+body .portfolio-tile { min-width: 0; padding: .75rem .9rem; background: var(--inset); border: 1px solid var(--line); border-radius: 6px; }
+body .portfolio-name { font-family: var(--mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); }
+body .portfolio-value { margin-top: .15rem; font-family: var(--sans); font-weight: 600; font-size: 1.35rem; letter-spacing: -.01em; color: var(--text); font-variant-numeric: lining-nums tabular-nums; font-feature-settings: 'lnum', 'tnum'; overflow-wrap: anywhere; }
+body .portfolio-value span { font-size: 1rem; }
+body .portfolio-sub { font-family: var(--sans); font-weight: 500; font-size: .75rem; color: var(--dim); font-variant-numeric: lining-nums tabular-nums; font-feature-settings: 'lnum', 'tnum'; }
+body #portfolioChart.chart-canvas { height: 300px; }
+body .portfolio-key { display: flex; align-items: center; gap: .5rem; margin-top: .6rem; font-size: .75rem; color: var(--body); }
+body .portfolio-key.hidden { display: none; }
+body .portfolio-paid { display: inline-block; width: 1.1rem; border-top: 2px solid var(--money); }
+@media (max-width: 640px) {
+  body .portfolio-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  body #portfolioChart.chart-canvas { height: 250px; }
 }
