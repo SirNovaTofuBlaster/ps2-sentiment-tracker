@@ -2590,6 +2590,20 @@ await check('Library: every game once, A to Z or by genre, filtered, and a click
     assert.match(el('libraryGrid').innerHTML, /lib-tile is-owned/);
     run(`libraryPick(1)`); run(`libraryAddPicked()`);
     assert.equal(evalJson(`collection[0].qty`), 2, 'the same copy again raises the count');
+    // The price paid is optional: empty adds without one, a number is kept, a non-number stops the add
+    assert.equal(evalJson(`collection[0].paid`), null, 'no price typed, none kept');
+    run(`collection = []`);
+    run(`libraryPick(1)`); el('libraryAddPaid').value = '24.5';
+    run(`libraryAddPicked()`);
+    assert.equal(evalJson(`collection[0].paid`), 24.5, 'the price typed is kept');
+    assert.match(el('libraryAddMessage').textContent, /paid .*24/);
+    assert.equal(el('libraryAddPaid').value, '', 'the box empties after an add');
+    run(`libraryPick(1)`); el('libraryAddPaid').value = 'abc';
+    run(`libraryAddPicked()`);
+    assert.equal(evalJson(`collection[0].qty`), 1, 'a bad price adds nothing');
+    assert.match(el('libraryAddMessage').textContent, /must be a number/);
+    run(`libraryPick(1)`); assert.equal(el('libraryAddPaid').value, '', 'picking a game clears the box');
+    run(`collection = []`);
     run(`showView('dashboard')`);
     assert.equal(el('libraryAdd').classList.contains('hidden'), true, 'the bar closes when the page is left');
     run(`collection = []`);

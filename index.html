@@ -417,6 +417,8 @@
               <option value="loose">Loose (disc only)</option>
               <option value="sealed">Sealed</option>
             </select>
+            <label class="sr-only" for="libraryAddPaid">What you paid (optional, per copy)</label>
+            <input type="number" id="libraryAddPaid" min="0" step="0.01" inputmode="decimal" placeholder="Paid each (optional)" onkeydown="if (event.key === 'Enter') libraryAddPicked()" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white coll-paid-input" title="What you paid for one copy, in that region's money. Optional: leave it empty to add the game without a price.">
             <button type="button" id="libraryAddButton" onclick="libraryAddPicked()" class="brand-btn brand-btn-primary py-2 px-4"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add to My collection</button>
             <a id="libraryAddOpen" href="#" class="brand-btn" onclick="return libraryOpenPicked(event)">Game page</a>
           </div>
@@ -4494,7 +4496,9 @@
             libraryPicked = { game, i };
             document.getElementById('libraryAddName').textContent = game.title;
             document.getElementById('libraryAddRegion').value = libraryRegion;
+            document.getElementById('libraryAddPaid').value = '';
             paintLibraryAddCover();
+            paintLibraryPaidHint();
             const have = ownedKeys().get(game.key) || 0;
             document.getElementById('libraryAddMessage').textContent = have ? `You already own ${have} cop${have === 1 ? 'y' : 'ies'}. Adding another raises the count.` : '';
             document.getElementById('libraryAddOpen').href = `#game=${encodeURIComponent(game.title)}`;
@@ -4512,6 +4516,14 @@
         function libraryRegionChanged() {
             libraryRegion = document.getElementById('libraryAddRegion').value === 'US' ? 'US' : 'PAL';
             paintLibraryAddCover();
+            paintLibraryPaidHint();
+        }
+        // The price box says which money it means: the region's.
+        function paintLibraryPaidHint() {
+            const box = document.getElementById('libraryAddPaid');
+            if (!box) return;
+            const code = currencyOf(COLLECTION_REGIONS[libraryRegion === 'US' ? 'US' : 'PAL']);
+            box.placeholder = `Paid each, ${code} (optional)`;
         }
         function libraryClosePicked() {
             libraryPicked = null;
@@ -4530,12 +4542,22 @@
             const condition = document.getElementById('libraryAddCondition').value;
             libraryRegion = region === 'US' ? 'US' : 'PAL';
             const message = document.getElementById('libraryAddMessage');
-            if (!addToCollection(libraryTitleFor(game, region), region, condition)) {
+            // The price is optional: empty adds the game without one; anything else must be a price.
+            const paidBox = document.getElementById('libraryAddPaid');
+            const paidText = String(paidBox.value ?? '').trim();
+            const paid = paidText === '' ? null : Number(paidText);
+            if (paid !== null && !(Number.isFinite(paid) && paid >= 0)) {
+                message.textContent = 'The price must be a number, like 24.99. Leave it empty to add the game without one.';
+                return false;
+            }
+            if (!addToCollection(libraryTitleFor(game, region), region, condition, 1, paid)) {
                 message.textContent = 'It could not be added: the collection is full or the browser would not take it.';
                 return false;
             }
             const have = ownedKeys().get(game.key) || 0;
-            message.textContent = `Added: ${game.title} (${region}, ${COLLECTION_CONDITIONS[condition]}). You now own ${have}.`;
+            const paidNote = paid !== null ? `, paid ${money(paid, currencyOf(COLLECTION_REGIONS[region]), undefined, false)}` : '';
+            message.textContent = `Added: ${game.title} (${region}, ${COLLECTION_CONDITIONS[condition]}${paidNote}). You now own ${have}.`;
+            paidBox.value = '';
             const tile = document.getElementById(`libTile${i}`);
             tile?.classList.add('is-owned');
             try { refreshCollection(); } catch { /* the page shows it when opened */ }
