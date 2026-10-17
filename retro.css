@@ -32,6 +32,11 @@
   --green: #2DBFA6;  /* teal */
   --red: #F2555C;
   --red-line: #6E1F24;
+  /* the glow of a form box, as r, g, b: teal, gold, rose, silver (2026-10-17) */
+  --glow-teal: 45, 191, 166;
+  --glow-gold: 245, 197, 46;
+  --glow-rose: 242, 85, 92;
+  --glow-silver: 148, 163, 184;
   /* The strip and the mark use the primaries at full strength; text uses the lighter
      --red and --accent above, which stay readable on the dark ground. */
   --strip-red: #E5303A;
@@ -827,7 +832,7 @@ body .sort-btn.is-active { background: var(--accent); border-color: var(--accent
 
 /* ---- My collection: the add form and the cover tiles ---- */
 body .collection-form { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: stretch; }
-body .coll-search { flex: 1 1 18rem; min-width: 0; }
+body .coll-search { flex: 1 1 100%; min-width: 0; }
 body .coll-fields { display: flex; flex-wrap: wrap; gap: 0.5rem; flex: 0 1 auto; }
 body .coll-fields select, body .coll-fields input, body .coll-fields button { height: 2.5rem; }
 body .coll-qty-input { width: 4.25rem; }
@@ -1389,4 +1394,57 @@ body #gateContinue:disabled { opacity: .45; cursor: not-allowed; }
   body .account-panels { grid-template-columns: 1fr; }
   body .account-row .brand-btn-primary { flex: 1 1 100%; min-height: 2.9rem; justify-content: center; }
   body .account-signin .account-row { flex-wrap: wrap; }
+}
+
+/* ---- Form boxes (2026-10-17): the glowing boxes of the My collection form and the Library's add bar ---- */
+body .spin-field { box-sizing: border-box; min-height: 2.65rem; padding: .6rem .9rem; background: var(--inset); border: 1px solid var(--line); border-radius: 8px; color: var(--text); font-family: var(--sans); font-size: .875rem; transition: border-color .3s cubic-bezier(.4, 0, .2, 1), box-shadow .3s cubic-bezier(.4, 0, .2, 1); }
+body .spin-field::placeholder, body .spin-paid input::placeholder { color: var(--dim); opacity: .8; }
+body .spin-teal:hover, body .spin-teal:focus, body .spin-teal:focus-within { outline: none; border-color: rgba(var(--glow-teal), .6); box-shadow: 0 0 12px rgba(var(--glow-teal), .2), inset 0 0 4px rgba(var(--glow-teal), .1); }
+body .spin-gold:hover, body .spin-gold:focus { outline: none; border-color: rgba(var(--glow-gold), .6); box-shadow: 0 0 12px rgba(var(--glow-gold), .2), inset 0 0 4px rgba(var(--glow-gold), .1); }
+body .spin-rose:hover, body .spin-rose:focus { outline: none; border-color: rgba(var(--glow-rose), .6); box-shadow: 0 0 12px rgba(var(--glow-rose), .2), inset 0 0 4px rgba(var(--glow-rose), .1); }
+body .spin-silver:hover, body .spin-silver:focus, body .spin-silver:focus-within { outline: none; border-color: rgba(var(--glow-silver), .6); box-shadow: 0 0 12px rgba(var(--glow-silver), .2), inset 0 0 4px rgba(var(--glow-silver), .1); }
+body .spin-field:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 2px; }
+body select.spin-select { appearance: none; padding-right: 2.4rem; cursor: pointer; background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e"); background-position: right .75rem center; background-repeat: no-repeat; background-size: 1.25rem; }
+body select.spin-select option { background: var(--inset); color: var(--text); }
+body .spin-field[type=number], body .spin-paid input { -moz-appearance: textfield; }
+body .spin-field[type=number]::-webkit-inner-spin-button, body .spin-field[type=number]::-webkit-outer-spin-button,
+body .spin-paid input::-webkit-inner-spin-button, body .spin-paid input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+body .spin-qty { width: 4rem; padding-inline: .5rem; text-align: center; }
+body .spin-paid { position: relative; display: inline-flex; align-items: center; width: 8.5rem; padding: 0; }
+body .spin-paid .spin-sym { position: absolute; left: .8rem; color: var(--dim); pointer-events: none; }
+body .spin-paid input { width: 100%; height: 100%; min-height: 2.5rem; padding: .6rem .8rem .6rem 1.9rem; background: transparent; border: 0; border-radius: 8px; outline: none; color: var(--text); font: inherit; }
+body .spin-region { flex: 0 0 11.5rem; }
+body .spin-cond { flex: 0 0 15.25rem; }
+body .collection-form { gap: .75rem; }
+body .coll-fields { gap: .75rem; align-items: center; }
+body .coll-fields select, body .coll-fields input, body .coll-fields button { height: auto; }
+body .coll-fields .spin-field, body .coll-fields button { height: 2.65rem; }
+body .coll-fields .spin-paid input { height: 100%; }
+/* the check box that turns the cover pictures on and off */
+body input.spin-check { appearance: none; flex: none; display: grid; place-content: center; width: 1.125rem; height: 1.125rem; margin: 0; background: var(--inset); border: 1px solid var(--accent); border-radius: .25rem; cursor: pointer; transition: background .2s ease, box-shadow .2s ease; }
+body input.spin-check::before { content: ""; width: .65em; height: .65em; transform: scale(0); transition: transform 120ms ease-in-out; background: var(--text); clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%); }
+body input.spin-check:checked::before { transform: scale(1); }
+body input.spin-check:checked { background: var(--accent); box-shadow: 0 0 8px rgba(var(--glow-silver), .35); }
+body input.spin-check:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 2px; }
+body .coll-covers-toggle { margin-top: 1.1rem; gap: .75rem; font-size: .875rem; color: var(--body); cursor: pointer; }
+/* the Library's add bar: the name, one row of boxes and the Add button, then Remove, Game page and the message */
+body .library-add-fields { gap: .75rem; margin-top: .35rem; }
+body .library-add-fields .spin-field, body .library-add-fields .brand-btn { height: 2.65rem; }
+body .library-add-fields .spin-paid { width: 8.75rem; }
+body .library-add-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-top: .6rem; }
+body .library-add-actions .brand-btn:hover { border-color: rgba(var(--glow-silver), .6); box-shadow: 0 0 12px rgba(var(--glow-silver), .2); }
+body .library-add-message { flex: 1 1 14rem; min-width: 0; margin: 0; min-height: 1rem; font-size: .75rem; color: var(--dim); }
+body .library-add { align-items: flex-start; }
+body .library-add:not(.hidden) ~ .lib-top { bottom: calc(10rem + env(safe-area-inset-bottom, 0px)); }
+@media (max-width: 640px) {
+  body .spin-qty { width: 100%; }
+  body .collection-form { flex-direction: column; align-items: stretch; }
+  body .coll-fields { display: grid; grid-template-columns: 5rem minmax(0, 1fr); }
+  body .coll-fields .spin-region, body .coll-fields .spin-cond, body .coll-fields button { grid-column: 1 / -1; }
+  body .coll-fields .spin-paid { width: 100%; }
+  body .library-add { max-height: 78vh; overflow-y: auto; }
+  body .library-add-fields { display: grid; grid-template-columns: minmax(0, 1fr) auto; }
+  body .library-add-fields .spin-region, body .library-add-fields .spin-cond { grid-column: 1 / -1; flex: none; }
+  body .library-add-fields .spin-paid { width: 100%; }
+  body .library-add-actions .brand-btn { flex: 1 1 40%; justify-content: center; }
 }
