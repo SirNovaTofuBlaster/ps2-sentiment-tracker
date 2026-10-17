@@ -3713,4 +3713,8 @@ await check('accounts: nothing can be added without one, the key is saved first,
     }
 });
 
+await check('the stylesheet link carries a version, so a new page never meets an old cached retro.css', () => {
+    for (const f of ['index.html', 'guide.html']) assert.match(read(f), /href="retro\.css\?v=\d{8}[a-z]?"/, f);
+});
+
 console.log(`dashboard checks passed (${passed})`);
