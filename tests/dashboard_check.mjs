@@ -3604,9 +3604,9 @@ await check('accounts: nothing can be added without one, the key is saved first,
         assert.match(el('collectionGate').innerHTML, /Create an account to start your collection/);
         assert.match(el('collectionGate').innerHTML, /Create my anonymous account/);
         assert.ok(!/Make (an|my)/.test(el('collectionGate').innerHTML + read('index.html').match(/id="accountDialog"[\s\S]{0,400}/)[0]), '"Create", not "Make"');
-        // an old list on the device is carried over, and said to be
+        // an old list on the device is not carried into an account, and the screen says so
         run(`collection = [{ title: 'Okami', region: 'PAL', condition: 'complete', qty: 1, paid: null }]; paintAccountGate()`);
-        assert.match(el('collectionGate').innerHTML, /1 game saved on this device/);
+        assert.match(el('collectionGate').innerHTML, /The 1 game saved on this device before accounts will not come into a new account/);
         run(`collection = []`);
         // every Add asks first
         assert.equal(run(`underratedAdd('Okami', null)`), false);
@@ -3700,11 +3700,35 @@ await check('accounts: nothing can be added without one, the key is saved first,
         el('gateKeyInput').value = `${'3'.repeat(32)}.${'4'.repeat(64)}`;
         await run('crowdSignIn()');
         assert.equal(run('hasAccount()'), false, 'an unknown key is refused');
-        // the service cannot be reached: still signed in, with a way to try again
+        // the service cannot be reached: nobody is signed in and the device's list is exactly as it was
+        run(`collection = [{ title: 'Ico', region: 'US', condition: 'loose', qty: 4, paid: 7 }]`);
         context.fetch = async () => { throw new Error('offline'); };
         el('gateKeyInput').value = `${'1'.repeat(32)}.${'2'.repeat(64)}`;
         await run('crowdSignIn()');
+        assert.equal(run('hasAccount()'), false, 'a failed sign-in signs no one in');
+        assert.deepEqual(evalJson(`collection.map(e => [e.title, e.qty, e.paid])`), [['Ico', 4, 7]], 'and loses nothing');
+        // signing in replaces the device's list with the account's, and sends none of the old list
+        const sent = [];
+        context.fetch = async (url, options = {}) => {
+            sent.push({ url, method: options.method, body: options.body });
+            if (url.endsWith('/api/collection') && options.method === 'GET') return { status: 200, json: async () => ({ list: [{ title: 'Okami', region: 'US', condition: 'loose', qty: 2 }] }) };
+            return { status: 200, json: async () => ({}) };
+        };
+        el('gateKeyInput').value = `${'1'.repeat(32)}.${'2'.repeat(64)}`;
+        await run('crowdSignIn()');
+        await new Promise(resolve => setTimeout(resolve, 20));
         assert.equal(run('hasAccount()'), true);
+        assert.deepEqual(evalJson(`collection.map(e => e.title)`), ['Okami'], 'the account\'s list replaces the device\'s');
+        assert.ok(!sent.some(c => c.body && /ico/i.test(c.body)), 'nothing of the old list was sent');
+        assert.ok(!sent.some(c => c.method === 'PUT' && /ico/i.test(c.body || '')));
+        // a new account starts empty, whatever the device had
+        run(`crowd = { id: '', key: '', confirmed: false }; collection = [{ title: 'Ico', region: 'US', condition: 'loose', qty: 4, paid: 7 }]`);
+        context.fetch = async (url) => (url.endsWith('/api/register')
+            ? { status: 201, json: async () => ({ id: 'e'.repeat(32), key: 'f'.repeat(64) }) } : { status: 200, json: async () => ({}) });
+        await run('crowdCreate()');
+        assert.deepEqual(evalJson('collection'), [], 'games saved before the account do not come into it');
+        assert.deepEqual(JSON.parse(kept.get('ps2-sentiment-tracker.collection') || '[]'), [], 'and are gone from the device too');
+        run(`crowd = { id: '${'1'.repeat(32)}', key: '${'2'.repeat(64)}', confirmed: true }`);
         context.fetch = realFetch2;
         run('collection = []');
         // a report: no "where"
