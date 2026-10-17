@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 11:57:40 UTC",
+  "last_updated": "2026-10-17 12:08:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -672,6 +672,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 10:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749855750",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 10:50 UTC"
     },
@@ -2434,6 +2453,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 08:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Teen Titans and Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749850132",
+      "matched_game": "Teen Titans",
+      "matched_games": [
+        "Teen Titans",
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 07:55 UTC"
     },
     {
       "headline": "Buy or wait - MGS Edition",
@@ -9601,18 +9640,19 @@
       "timestamp": "2026-10-16 21:47 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus and God of War",
+      "headline": "Thread on /v/ naming Black, God of War and Shadow of the Colossus",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749825971",
-      "matched_game": "Shadow of the Colossus",
+      "matched_game": "Black",
       "matched_games": [
-        "Shadow of the Colossus",
-        "God of War"
+        "Black",
+        "God of War",
+        "Shadow of the Colossus"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -10978,14 +11018,15 @@
       "timestamp": "2026-10-16 20:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Ratchet & Clank, Fight Night Round 3, Metal Gear Solid 2: Sons of Liberty and 6 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Grand Theft Auto: San Andreas, Fight Night Round 3 and 8 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749822229",
-      "matched_game": "Ratchet & Clank",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Ratchet & Clank",
+        "Grand Theft Auto III",
+        "Grand Theft Auto: San Andreas",
         "Fight Night Round 3",
         "Metal Gear Solid 2: Sons of Liberty",
         "Ecco the Dolphin: Defender of the Future",
@@ -10993,10 +11034,11 @@
         "Splinter Cell",
         "The Getaway",
         "Red Faction",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Ratchet & Clank"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -269581,108 +269623,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 12:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Metro Redux's Next-Gen Update arrives this month as franchise passes 50 million sales",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/metro-redux-next-gen-update-50-million-sales-metro-2039",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 12:04 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Stellar Blade Has Crashed To Its Lowest Price Yet On PC, So Get Ready To Save Humanity",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/stellar-blade-has-crashed-to-its-lowest-price-yet-on-pc-so-get-ready-to-save-humanity/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 12:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "3D action platformer Manairons announced for Nintendo Switch [update: release date]",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/3d-action-platformer-manairons-announced-for-nintendo-switch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-03 12:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "NEIGHBOR vs NEIGHBOR - Hello Neighbor Mod",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/watch?v=tSOmTTcGTIg",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 12:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "This Is A Nightmare For The Gaming Industry",
-      "source": "YouTube: Spawn Wave",
-      "source_type": "youtube",
-      "feed": "youtube:UCoIXnB865l9Ex9zs4OIXTdQ",
-      "link": "https://www.youtube.com/watch?v=ZyiuGmBrpHU",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 12:00 UTC"
-    },
-    {
-      "headline": "Pokemon emerald legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wwlgxt/pokemon_emerald_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 11:59 UTC",
       "is_digital_only": false
     }
   ]
