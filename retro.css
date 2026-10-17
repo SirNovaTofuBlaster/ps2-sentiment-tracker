@@ -1478,3 +1478,61 @@ body .portfolio-paid { display: inline-block; width: 1.1rem; border-top: 2px sol
   body #feedTableBody td[data-col="headline"] { width: 34%; }
   body #feedTableBody td[data-col="game"] .shop-inner, body #feedTableBody td[data-col="game"] .price-links { max-width: 100%; }
 }
+
+/* ---- A game's own page (2026-10-18) ----------------------------------------
+   A hero with the box, the name, a few tags and the Add button; below it the prices as one card per eBay site, and the shop
+   buttons in their own strip. The strip across the top is the console start-up screen's four colours. */
+body .game-hero { position: relative; overflow: hidden; padding: 1.25rem 1.5rem 1.5rem; background: radial-gradient(120% 90% at 0% 0%, rgba(var(--glow-teal), .10), transparent 55%), radial-gradient(90% 80% at 100% 100%, rgba(47, 155, 224, .10), transparent 60%), var(--card); }
+body .game-hero::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: linear-gradient(90deg, var(--green), var(--accent)); }
+body .game-back { margin-bottom: 1.1rem; }
+body .game-head { display: flex; align-items: flex-start; gap: 1.4rem; }
+body .game-cover { width: 9rem; border-radius: 6px; border-color: rgba(var(--glow-teal), .45); box-shadow: 0 0 0 1px rgba(var(--glow-teal), .18), 0 10px 28px rgba(0, 0, 0, .7), 0 0 36px rgba(var(--glow-teal), .16); }
+body .game-info { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; gap: .55rem; }
+body .game-kicker { font-family: var(--mono); font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; color: var(--green); }
+body .bg-ps2card h2.game-title { margin: 0; font-family: var(--serif); font-weight: 700; font-size: 2rem; line-height: 1.12; letter-spacing: 0 !important; text-transform: none !important; color: var(--text); overflow-wrap: anywhere; text-wrap: balance; }
+body .game-tags { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+body .game-tags .level-tag { margin-left: 0; }
+body .game-tag { padding: .1rem .5rem; border: 1px solid var(--line); border-radius: 999px; font-family: var(--mono); font-size: .66rem; letter-spacing: .04em; color: var(--dim); background: var(--inset); }
+body .game-tag.is-ok { color: var(--green); border-color: rgba(var(--glow-teal), .5); }
+body .game-summary { margin: 0; font-size: .8rem; line-height: 1.55; color: var(--dim); max-width: 42rem; }
+body .game-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; margin-top: .35rem; }
+body .game-add { height: 2.7rem; padding: 0 1.2rem; font-size: .9rem; box-shadow: 0 0 18px rgba(var(--glow-teal), .28); }
+body .game-add.hidden { display: none; }
+body .game-owned { font-family: var(--mono); font-size: .75rem; color: var(--green); }
+body .game-owned:empty { display: none; }
+body .game-panel { padding: 1.25rem 1.5rem 1.5rem; }
+body #libraryAddOpen.hidden { display: none; }
+
+/* Prices: a card per site */
+body #gamePrices .ebay-figures { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; margin-top: .9rem; }
+body #gamePrices .ebay-site { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: .35rem; padding: .85rem .95rem .8rem; background: var(--inset); border: 1px solid var(--line); border-radius: 8px; }
+body #gamePrices .ebay-site:hover { border-color: rgba(var(--glow-silver), .5); }
+body #gamePrices .ebay-flag { display: inline-block; padding: .08rem .45rem; min-width: 0; border: 1px solid var(--line); border-radius: 4px; font-size: .64rem; letter-spacing: .14em; color: var(--body); background: var(--card); }
+body #gamePrices .ebay-now { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .55rem; }
+body #gamePrices .ebay-median { font-size: 1.65rem; font-weight: 700; line-height: 1.1; color: var(--money); }
+body #gamePrices .ebay-rest { display: block; font-size: .72rem; line-height: 1.65; color: var(--dim); }
+body #gamePrices .ebay-site.is-quiet, body #gamePrices .ebay-site:has(.ebay-rest > .ebay-note:only-child) { opacity: .7; }
+body #gamePrices .ebay-site.is-stale .ebay-median { opacity: .55; }
+body #gamePrices > p { margin-top: .9rem; line-height: 1.9; }
+body #gamePrices .chart-open { min-height: 0; margin-right: .35rem; padding: .15rem .55rem; vertical-align: baseline; }
+/* The shop buttons sit in a strip of their own */
+body #gamePrices .price-links { position: relative; margin-top: 1rem; padding: 1.55rem .9rem .85rem; background: var(--inset); border: 1px solid var(--line); border-radius: 8px; }
+body #gamePrices .price-links::before { content: "Where to look"; position: absolute; top: .55rem; left: .9rem; font-family: var(--mono); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
+/* The add bar is also opened from a game's page: lift the page above it, and the Library's back-to-top button */
+body:has(.library-add:not(.hidden)) main { padding-bottom: 14rem; }
+body:has(.library-add:not(.hidden)) .lib-top { bottom: calc(10rem + env(safe-area-inset-bottom, 0px)); }
+
+@media (max-width: 640px) {
+  body .game-hero { padding: 1rem 1rem 1.25rem; }
+  body .game-head { gap: .9rem; }
+  body .game-cover { width: 6.25rem; }
+  body .bg-ps2card h2.game-title { font-size: 1.45rem; }
+  body .game-summary { font-size: .75rem; }
+  body .game-actions { width: 100%; }
+  body .game-add { flex: 1 1 100%; justify-content: center; }
+  body .game-panel { padding: 1rem 1rem 1.25rem; }
+  body #gamePrices .ebay-figures { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; flex-direction: initial; }
+  body #gamePrices .ebay-site { display: flex; padding: .7rem .75rem; }
+  body #gamePrices .ebay-site > .ebay-rest { font-size: .68rem; }
+  body #gamePrices .ebay-median { font-size: 1.3rem; }
+}
