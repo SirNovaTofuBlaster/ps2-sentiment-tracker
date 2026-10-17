@@ -830,9 +830,16 @@
                 // A key in a scanned link. It leaves the address bar at once and is only filled into the sign-in box.
                 const found = hash.match(/^#signin=([0-9a-f]{32}\.[0-9a-f]{64})$/);
                 try { history.replaceState(null, '', location.pathname + (location.search || '')); } catch { /* the key stays in the address */ }
+                loadCrowd();   // this runs before the page's data has arrived, which is when the saved account is normally read
                 if (found && !hasAccount()) scannedKey = found[1];
                 showView('collection', true);
-                paintAccountGate();
+                if (found && hasAccount()) {
+                    // Already signed in: say so on the Account tab instead of leaving a page that looks unchanged.
+                    showCollectionTab('share');
+                    crowdSay(found[1].slice(0, 32) === crowd.id
+                        ? 'This device is already signed in to that account.'
+                        : 'This device is already signed in to a different account. Press "Sign out on this device" first, then scan the code again.');
+                } else paintAccountGate();
                 return 'collection';
             }
             if (hash.startsWith('#game=')) {
@@ -3414,6 +3421,10 @@
 
         /* The account screens: one on My collection itself, one as a dialog when Add is pressed elsewhere. */
         let scannedKey = '';   // a key that arrived in a scanned link ("#signin=..."): filled into the sign-in box, never used without a press of Sign in
+        function crowdForgetScanned() {
+            scannedKey = '';
+            paintAccountGate();
+        }
         function crowdKeyLink() {
             return `${String(location.href || '').split('#')[0]}#signin=${crowd.id}.${crowd.key}`;
         }
@@ -3443,12 +3454,22 @@
                     <div class="account-row"><button type="button" id="gateContinue" class="brand-btn brand-btn-primary" onclick="crowdKeyContinue()" disabled>${accountPending ? `Continue and add ${esc(accountPendingName || 'the game')}` : 'Continue to my collection'}</button></div>
                     <p id="gateMessage" class="account-msg" role="status"></p>`;
             }
+            if (scannedKey) {
+                // The key came in a scanned link: this is the whole screen, so nobody has to scroll to find it.
+                return `<div class="account-eyebrow is-ok">KEY FROM THE CODE YOU SCANNED</div>
+                    <h2 class="account-title">Sign in on this device?</h2>
+                    <p class="account-text">The code carried an account key. Press <b>Sign in</b> to use that account here${collection.length ? `; the ${collection.length} game${collection.length === 1 ? '' : 's'} saved on this device will be sent to it` : ''}. If you did not expect this, press the other button.</p>
+                    <form class="account-signin" onsubmit="crowdSignIn(event); return false" autocomplete="off">
+                        <input type="hidden" id="gateKeyInput" value="${esc(scannedKey)}">
+                        <div class="account-row"><button type="submit" class="brand-btn brand-btn-primary">Sign in</button>
+                            <button type="button" class="brand-btn" onclick="crowdForgetScanned()">No, not this key</button></div></form>
+                    <p id="gateMessage" class="account-msg" role="status"></p>`;
+            }
             const saved = collection.length
                 ? `<div class="account-warn">You already have ${collection.length} game${collection.length === 1 ? '' : 's'} saved on this device. They'll come with you into your new account.</div>` : '';
             const form = `<form class="account-signin" onsubmit="crowdSignIn(event); return false" autocomplete="off">
-                    ${scannedKey ? '<div class="account-eyebrow is-ok">KEY FROM THE CODE YOU SCANNED</div><p class="account-text">Press <b>Sign in</b> to use that account on this device. Your games saved here will be sent to it. If you did not expect this, ignore it.</p>' : ''}
                     <label for="gateKeyInput" class="account-text">${page ? 'Already have a key?' : 'Got a key? Paste it here'}</label>
-                    <div class="account-row"><input type="password" id="gateKeyInput" value="${esc(scannedKey)}" placeholder="Paste your key here" spellcheck="false" class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white min-w-0 flex-1">
+                    <div class="account-row"><input type="password" id="gateKeyInput" placeholder="Paste your key here" spellcheck="false" class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white min-w-0 flex-1">
                         <button type="submit" class="brand-btn">Sign in</button></div></form>`;
             const panels = page ? `<div class="account-panels">
                     <div class="account-panel"><div class="account-eyebrow is-ok">WHAT IS SHARED</div>

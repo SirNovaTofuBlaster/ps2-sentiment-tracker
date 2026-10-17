@@ -3846,6 +3846,20 @@ await check('the account key as a QR code: a valid code, shown only when asked, 
     run('showViewFromAddress()');
     assert.equal(run('scannedKey'), '', 'already signed in: the link is dropped');
     assert.equal(run('crowd.id'), 'a'.repeat(32));
+    assert.equal(run('collectionTab'), 'share', 'and the Account tab says so instead of leaving a page that looks unchanged');
+    assert.match(el('shareMessage').textContent, /already signed in to a different account/);
+    context.location.hash = `#signin=${'a'.repeat(32)}.${'9'.repeat(64)}`;
+    run('showViewFromAddress()');
+    assert.match(el('shareMessage').textContent, /already signed in to that account/);
+    // signed out, the scanned key is the whole screen, with a way to say no
+    run(`crowd = { id: '', key: '', confirmed: false }; scannedKey = ''; collectionTab = 'games'`);
+    context.location.hash = `#signin=${'5'.repeat(32)}.${'6'.repeat(64)}`;
+    run('showViewFromAddress()');
+    assert.match(el('collectionGate').innerHTML, /Sign in on this device\?/);
+    assert.ok(!/Create my anonymous account/.test(el('collectionGate').innerHTML), 'no sign-up screen to scroll past');
+    run('crowdForgetScanned()');
+    assert.match(el('collectionGate').innerHTML, /Create my anonymous account/, '"No, not this key" goes back to the usual screen');
+    assert.equal(run('scannedKey'), '');
     context.location.hash = '';
 });
 
