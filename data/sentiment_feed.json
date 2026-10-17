@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 07:39:35 UTC",
+  "last_updated": "2026-10-17 07:50:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -410,6 +410,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 06:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War and Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749848147",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 06:49 UTC"
     },
     {
       "headline": "Can the Steam Deck make a hotspot?",
@@ -3398,6 +3418,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 01:26 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming R-Type Final",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12882609",
+      "matched_game": "R-Type Final",
+      "matched_games": [
+        "R-Type Final"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 01:24 UTC"
     },
     {
       "headline": "Busco un Romhacker/Modder de PS2 para un problema de **Skin Swap** directo, plisss🙏🏻(code Lyoko quest For infinity)",
@@ -268154,23 +268193,6 @@
       "is_remaster_rumor": false,
       "sentiment": 50,
       "timestamp": "2026-10-03 07:54 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sí, GTA 6 tendrá viaje rápido, pero de una forma original: podrás 'pedir un Uber' y charlar con otros pasajeros",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026276002/si-gta-6-tendra-viaje-rapido-pero-de-una-forma-original-podras-pedir-un-uber-y-charlar-con-otros-pasajeros/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 07:45 UTC",
       "is_digital_only": false
     }
   ]
