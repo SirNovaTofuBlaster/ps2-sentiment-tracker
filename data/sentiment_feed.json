@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 23:50:42 UTC",
+  "last_updated": "2026-10-17 23:53:15 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -609,6 +609,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 22:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749889717",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 22:35 UTC"
     },
     {
       "headline": "Someone reset the count… wait, what?",
@@ -7315,18 +7334,20 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3 FES, TimeSplitters 2, The Bouncer and 28 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Shadow of the Colossus, Okami and 30 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "Persona 3 FES",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Persona 3 FES",
+        "Metal Gear Solid 3: Snake Eater",
+        "Shadow of the Colossus",
+        "Okami",
+        "Persona 3",
+        "God Hand",
         "TimeSplitters 2",
         "The Bouncer",
-        "God Hand",
-        "Shadow of the Colossus",
         "Final Fantasy X",
         "Syphon Filter: The Omega Strain",
         "Soul Calibur 3",
@@ -7347,15 +7368,15 @@
         "The Sopranos",
         "Dark Cloud",
         "God of War",
-        "Persona 3",
         "Grand Theft Auto III",
         "Half-Life",
         "Warship Gunner 2",
         "Black",
-        "Cold Winter"
+        "Cold Winter",
+        "Persona 3 FES"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -13208,14 +13229,15 @@
       "timestamp": "2026-10-17 09:49 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Combat Ace",
+      "headline": "Thread on /vg/ naming Combat Ace and Top Gun",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584763927",
       "matched_game": "Combat Ace",
       "matched_games": [
-        "Combat Ace"
+        "Combat Ace",
+        "Top Gun"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -276990,25 +277012,6 @@
       "hype": 0,
       "timestamp": "2026-10-03 23:53 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Lego Batman freezes only when a second controller is connected",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1wx1gwf/lego_batman_freezes_only_when_a_second_controller/",
-      "matched_game": "LEGO Batman",
-      "matched_games": [
-        "LEGO Batman"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 23:52 UTC"
     }
   ]
 }
