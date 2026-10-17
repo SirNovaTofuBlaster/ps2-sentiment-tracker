@@ -76,4 +76,10 @@ check('the Worker keeps no address, email or name, and never echoes an error', (
     const schema = readFileSync(new URL('../worker/schema.sql', import.meta.url), 'utf8');
     assert.ok(!/\b(email|ip_address|address|name)\b\s+(TEXT|INTEGER)/i.test(schema), 'no personal columns');
 });
+const { build } = await import('../worker/bundle.mjs');
+check('bundle matches lib.js and index.js (run: node worker/bundle.mjs)', () => {
+    const saved = readFileSync(new URL('../worker/spindle-crowd.bundle.js', import.meta.url), 'utf8');
+    assert.equal(saved, build());
+    assert.ok(!/^(import|export (?!default))/m.test(saved), 'one plain file: no imports, and only export default');
+});
 console.log(`worker checks passed (${passed})`);

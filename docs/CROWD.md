@@ -51,3 +51,12 @@ Requests send `Authorization: Bearer <id>.<key>`. The network address is used on
 3. `npx wrangler secret put SALT` (any long random text; never commit it).
 4. `npx wrangler deploy`. The page's address is printed (`https://spindle-crowd.<account>.workers.dev`).
 There is no GitHub Actions workflow and no Cloudflare token in the repository, on purpose (AGENTS.md rule 8).
+
+### Without a terminal (Cloudflare dashboard only)
+`worker/spindle-crowd.bundle.js` is `index.js` and `lib.js` as one file (made by `node worker/bundle.mjs`; a test fails if it is stale).
+1. D1 > `spindle` > **Console**: paste `worker/schema.sql`, run it.
+2. Workers & Pages > **Create** > Worker > name `spindle-crowd` > **Deploy** (the Hello World) > **Edit code**: replace everything with the bundle, **Deploy**.
+3. The Worker's **Settings > Bindings > Add > D1 database**: variable name `DB`, database `spindle`.
+4. **Settings > Variables and Secrets**: add a *Secret* named `SALT` (long random text) and a *Text* variable `ALLOW_ORIGIN` =
+   `https://sirnovatofublaster.github.io,http://localhost:8000`. Deploy again if it asks.
+5. Open `https://<worker>.<account>.workers.dev/api/stats`: it should answer `{"generated":...,"prices":{},"owners":{}}`.
