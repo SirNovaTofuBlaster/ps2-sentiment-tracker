@@ -1,6 +1,6 @@
 # Crowd data (opt-in): how it works
 
-Decided with the maintainer on 2026-10-17. Status: the service (`worker/`) is deployed at https://spindle-crowd.nacmh.workers.dev (2026-10-17) and the dashboard side (My collection > Share data, the game page's collectors' figures) is built.
+Decided with the maintainer on 2026-10-17. Status: the service (`worker/`) is deployed at https://spindle-crowd.nacmh.workers.dev (2026-10-17) and the dashboard side is built: an anonymous account is required to add a game (My collection, or the dialog from the Library and Underrated Add buttons), counts are sent automatically for a signed-in visitor, a Report a purchase tab and an Account tab appear once there is an account, and game pages show the collectors' figures.
 
 ## Why
 eBay gives asking prices. Visitors who own or buy games can give what they actually paid and what they own. Published only when enough
@@ -58,3 +58,8 @@ There is no GitHub Actions workflow and no Cloudflare token in the repository, o
 4. **Settings > Variables and Secrets**: add a *Secret* named `SALT` (long random text) and a *Text* variable `ALLOW_ORIGIN` =
    `https://sirnovatofublaster.github.io,http://localhost:8000`. Deploy again if it asks.
 5. Open `https://<worker>.<account>.workers.dev/api/stats`: it should answer `{"generated":...,"prices":{},"owners":{}}`.
+
+### Why an account is required (2026-10-17, maintainer's decision)
+The maintainer wants every collection to feed the figures: creating an account means agreeing to share the counts (the trade for staying anonymous),
+purchase reports stay optional, a list already saved on a device is carried into the new account, and the key screen must be passed (ticking
+"I've saved my key") before the account can be used. The cost is that a visitor who only wants a private checklist has to make an account first.
