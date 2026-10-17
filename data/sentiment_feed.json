@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 06:40:11 UTC",
+  "last_updated": "2026-10-17 06:42:27 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -54,6 +54,23 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 06:30 UTC"
+    },
+    {
+      "headline": "A savior for Pokemon ROM hack players? EZ Flash DE-B usage guide and real experience",
+      "source": "Forum: Lemmy retrogaming",
+      "source_type": "forum",
+      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
+      "link": "https://lemmy.world/post/53235465",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 06:25 UTC"
     },
     {
       "headline": "Retracted pin in be quiet 12Vhpwr cable?",
@@ -345,6 +362,25 @@
       "match_method": null,
       "matched_in": null,
       "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 05:50 UTC"
+    },
+    {
+      "headline": "Capcom Nintendo Switch 2 and Switch sale live, lowest prices ever for Street Fighter 6, Capcom Fighting Collections, more",
+      "source": "Nintendo Everything",
+      "source_type": "news",
+      "feed": "https://nintendoeverything.com/feed",
+      "link": "https://nintendoeverything.com/capcom-nintendo-switch-2-and-switch-sale-live-lowest-prices-ever-for-street-fighter-6-capcom-fighting-collections-more/",
+      "matched_game": "Capcom Fighting Jam",
+      "matched_games": [
+        "Capcom Fighting Jam"
+      ],
+      "match_score": 88,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": true,
       "is_digital_only": false,
       "sentiment": 50,
       "hype": 0,
