@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 01:23:48 UTC",
+  "last_updated": "2026-10-17 01:37:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -39,6 +39,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 01:12 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Prince of Persia: Warrior Within",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749836014",
+      "matched_game": "Prince of Persia: Warrior Within",
+      "matched_games": [
+        "Prince of Persia: Warrior Within"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 01:04 UTC"
     },
     {
       "headline": "Mew2King, jugar profesional de Super Smash Bros., es descalificado de un torneo tras alerta por chinches",
@@ -3313,7 +3332,7 @@
       "timestamp": "2026-10-16 21:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne, Rule of Rose, Resident Evil Code: Veronica X and 1 more",
+      "headline": "Thread on /v/ naming Max Payne, Resident Evil Code: Veronica X, Astro Boy and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -3321,9 +3340,9 @@
       "matched_game": "Max Payne",
       "matched_games": [
         "Max Payne",
-        "Rule of Rose",
         "Resident Evil Code: Veronica X",
-        "Astro Boy"
+        "Astro Boy",
+        "Rule of Rose"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3982,22 +4001,22 @@
       "timestamp": "2026-10-16 20:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Ecco the Dolphin: Defender of the Future, Final Fantasy XII, Splinter Cell and 3 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Fight Night Round 3, Ecco the Dolphin: Defender of the Future and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749822229",
-      "matched_game": "Ecco the Dolphin: Defender of the Future",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Fight Night Round 3",
         "Ecco the Dolphin: Defender of the Future",
         "Final Fantasy XII",
         "Splinter Cell",
-        "The Getaway",
-        "Fight Night Round 3",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "The Getaway"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -265223,23 +265242,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 01:41 UTC"
-    },
-    {
-      "headline": "The PS2's Weird, Unlicensed Parental Control System [sync-on-luma (Y); 15:42]",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/52654051",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 01:23 UTC"
     }
   ]
 }
