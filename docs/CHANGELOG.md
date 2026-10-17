@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: crowd data service (backend only)
+
+- `worker/`: a Cloudflare Worker and D1 schema for opt-in, anonymous crowd data: random accounts (only the key's hash kept), collection counts per game (sealed, complete, loose) and purchase reports. Figures are published only from 5+ accounts, and a price far from the middle is held back, not deleted. See `docs/CROWD.md`.
+- `tests/worker_check.mjs` (run by `tests/test_worker.py`): 13 offline checks of the rules.
+- Nothing on the dashboard changed and nothing is sent from the page yet. Deploying is the maintainer's step (steps in `docs/CROWD.md`).
+
 ## 2026-10-17: Underrated buttons on every card, and a Back that returns to the page you came from
 
 - Every card in the Underrated grid has Open game page, Add to collection and Find reviews (`underratedButtons()`), not only the game of the day.
