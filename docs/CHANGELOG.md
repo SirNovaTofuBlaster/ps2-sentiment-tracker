@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17: scanning the account QR code now says what happened
+
+- The maintainer scanned the code and "nothing happened". Two causes: on a phone without an account the sign-in box sat far below the long "Create an account" screen, and on a phone already signed in the link was dropped silently. Now a scanned key is the whole screen ("Sign in on this device?", with "No, not this key" to go back), and a phone that is already signed in lands on the Account tab with a line saying it is signed in to that account or to a different one (and to sign out first).
+
 ## 2026-10-17: `try_sources.py` counts the near misses on the 4chan boards
 
 - For each board it now prints, per reason, which library games the strict rules for posts turned away and how often: *spelt differently*, *runs into a number*, *not written as a name* (capitals missing, or an everyday word) and *inside a longer title* (`post_near_misses()` in `scraper.py`, read over subjects, opening comments and the catalog's last replies). Library names and counts only; nothing a poster wrote is printed or kept (rule 12). It is for judging from real boards, in the *Live checks* report of a pull request, which of the rules is losing real mentions before anyone loosens it. Nothing about matching changed.
