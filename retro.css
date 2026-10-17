@@ -895,6 +895,9 @@ body .row-cover-body { flex: 1 1 auto; min-width: 0; }
 /* Editions of a game, on its page (editions.json). */
 .edition-list { list-style: none; margin: 0.5rem 0 0; padding: 0; }
 .edition-item { border-top: 1px solid var(--line); padding: 0.6rem 0; font-size: 0.8rem; }
+.edition-item.has-cover { display: flex; gap: 0.75rem; align-items: flex-start; }
+.edition-body { min-width: 0; flex: 1; }
+.edition-cover { width: 64px; height: auto; flex: none; border-radius: 3px; }
 body .coll-badge-edition { left: .3rem; bottom: .3rem; background: var(--accent); border-color: var(--accent); color: var(--bg); font-weight: 700; letter-spacing: 0.04em; }
 
 /* The shelf: the games named most in the last 24 hours, as box art (Tracker page) */

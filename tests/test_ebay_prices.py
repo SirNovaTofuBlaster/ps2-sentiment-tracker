@@ -3371,6 +3371,11 @@ class EditionTests(unittest.TestCase):
             self.assertTrue(row["require"], row["title"])
             self.assertTrue(row["evidence"] and all(item["source"].startswith("https://") and item["date"] for item in row["evidence"]), row["title"])
             self.assertTrue(row["contents"] and row["released"] and row["publisher"], row["title"])
+        for row in rows:
+            if row.get("cover", "").startswith("covers/"):   # a picture of its own box, kept small in covers/
+                self.assertRegex(row["cover"], r"^covers/[\w.-]+\.jpg$", row["title"])
+                self.assertTrue((path.parent / row["cover"]).is_file(), row["cover"])
+                self.assertLess((path.parent / row["cover"]).stat().st_size, 60000, row["title"])
         self.assertIn("Resident Evil 4 Limited Edition", [row["title"] for row in raw["lists"]["PAL"]])
         self.assertIn("Resident Evil 4 Premium Edition", [row["title"] for row in raw["lists"]["US"]])
 
