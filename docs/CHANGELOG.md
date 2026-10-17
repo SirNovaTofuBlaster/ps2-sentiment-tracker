@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17: game names line up in the feed table
+
+- A row with no headline (4chan's) hid its empty headline cell on every screen size, so its game name sat further left than the others'. The rule now applies only on a phone (max-width 640px), where the table stacks; on a wide screen the cell stays and every game name starts in the same column (measured in headless Chromium at 1280 px: the same left edge for both kinds of row).
+
 ## 2026-10-17: every spelling of a game shows its price
 
 - Found with the "Yazuka" copy (the library has the typo beside "Yakuza"; nobody lists a game under a typo, so it had no price, and `same_game` (#121) could not help because it needed a row for both names). A check of `covers.json` `same` against `latest.json` found about 115 games, 137 spellings, in that state (Alien Homind / Hominid, Soulcalibur 2, FIFA 13, the .hack parts, ...).

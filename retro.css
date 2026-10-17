@@ -1337,8 +1337,11 @@ body .game-link:hover, body .game-link:focus-visible, body .recent-game:not(.und
 }
 body .src-name { color: var(--money); }
 
-/* A 4chan row has no headline of its own (the Game column names the games): no empty block on a phone. */
-body #feedTableBody td[data-col="headline"][data-empty] { display: none; }
+/* A 4chan row has no headline of its own (the Game column names the games): no empty block on a phone. On a wide screen the empty cell stays,
+   so every row's game name starts in the same column. */
+@media (max-width: 640px) {
+  body #feedTableBody td[data-col="headline"][data-empty] { display: none; }
+}
 
 /* ---- Library (2026-10-17): Remove beside Add, a bigger x on a collection cover, and a way back to the top ---- */
 body .library-remove.hidden { display: none; }   /* `body .brand-btn` sets display, which beat Tailwind's .hidden */
