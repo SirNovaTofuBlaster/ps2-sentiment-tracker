@@ -277,6 +277,27 @@ class MatcherRuleTests(unittest.TestCase):
         both = {**row, "headline": "God of War and God of War Ragnarok", "matched_games": ["God of War", "Okami"], "matched_game": "God of War"}
         self.assertEqual(scraper.without_newer_games(both), both, "one place where it stands alone keeps it")
 
+    def test_a_plain_word_or_phrase_is_not_a_game(self):
+        # "Hardware" is half of "Hardware: Online Arena"; "The Cabal" is not a PS2 game.
+        self.assertEqual(self.claims("Retroachievements on ps2 original hardware", ps2_source=True), [])
+        self.assertEqual(self.claims("Do you use hardware or emulator? PS2", ps2_source=True), [])
+        self.assertEqual(self.claims("The Cabal is meeting tonight", ps2_source=True), [])
+        self.assertEqual(self.claims("Hardware: Online Arena on PS2 had servers", ps2_source=True), ["Hardware Online Arena"])
+
+    def test_saved_rows_with_a_non_game_are_cleaned(self):
+        row = {"headline": "The Cabal", "source_type": "news", "matched_game": "The Cabal", "matched_games": ["The Cabal"],
+               "match_score": 100, "match_method": "fuzzy", "matched_in": "body"}
+        cleaned = scraper.without_not_games(row)
+        self.assertIsNone(cleaned["matched_game"])
+        self.assertEqual(cleaned["matched_games"], [])
+        hw = {**row, "headline": "Retroachievements on ps2 original hardware", "matched_game": "Hardware Online Arena",
+              "matched_games": ["Hardware Online Arena"]}
+        self.assertEqual(scraper.without_not_games(hw)["matched_games"], [])
+        named = {**hw, "headline": "Hardware: Online Arena is shutting down"}
+        self.assertEqual(scraper.without_not_games(named), named)
+        board = {**hw, "source_type": "4chan"}
+        self.assertEqual(scraper.without_not_games(board), board)
+
     def test_a_title_that_is_only_a_number_needs_ps2_context(self):
         self.assertEqual(self.claims("Nerial shuts down after 13 years"), [])
         self.assertEqual(self.claims("XIII on PS2 deserves another look"), ["XIII"])
