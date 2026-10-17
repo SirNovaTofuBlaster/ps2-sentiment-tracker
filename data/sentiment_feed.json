@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 09:33:30 UTC",
+  "last_updated": "2026-10-17 09:44:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -224,6 +224,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 08:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Sniper Elite and Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749851940",
+      "matched_game": "Sniper Elite",
+      "matched_games": [
+        "Sniper Elite",
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 08:51 UTC"
     },
     {
       "headline": "My new build, rate !",
@@ -268691,24 +268711,6 @@
       "hype": 0,
       "timestamp": "2026-10-03 09:45 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Metal Gear Solid 4: Guns Of The Patriots: Part 5 –Meccha Octopus | Super Replay",
-      "source": "YouTube: Game Informer",
-      "source_type": "youtube",
-      "feed": "youtube:UCK-65DO2oOxxMwphl2tYtcw",
-      "link": "https://www.youtube.com/watch?v=IhBnxhMJ8kQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 09:41 UTC",
-      "views": 11658
     }
   ]
 }
