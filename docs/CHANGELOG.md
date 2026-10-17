@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17: Library: Remove, a way back to the top, a bigger x
+
+- The Library's add bar has **Remove** (`libraryRemovePicked()`), shown whenever the collection holds the copy the bar's region and condition point at ("Remove one (you have N)" with several); it takes away one copy, un-ticks the tile at none, and refreshes My collection. The add message now says it is there.
+- A round up-arrow button (`#libraryTop`, `updateLibraryTop()`, shown after 700 px of scrolling, above the add bar when that is open, `inert` while hidden, smooth scroll unless the visitor asked for less motion).
+- The x on a My collection cover is 1.9 rem (was 1.5) and 2.6 rem square on a phone: the phone rule `body main button { min-height: 2.75rem }` had been making it a thin pill 1.5 rem wide.
+- Not looked at on a real phone or browser.
+
 ## 2026-10-17: 4chan rows no longer repeat the game name
 
 - The table row's headline cell is empty for a 4chan row (`rowHeadline()` gives `''`, the cell carries `data-empty` and is hidden on a phone) because the Game column already names the games; a game page's list leaves the line out too. Display only.
