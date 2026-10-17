@@ -119,6 +119,18 @@ def try_board(session, job, matcher, ps2_keys):
     dropped = loose - kept
     say(f"  left out by the rules for posts ({sum(dropped.values())} mentions): "
         + (", ".join(f"{title} x{count}" if count > 1 else title for title, count in dropped.most_common(GAMES_SHOWN)) or "nothing"))
+    # The near misses, by why the rules turned them away (scraper.post_near_misses): library names only, never a post.
+    missed = {}
+    for thread in live:
+        posts = [scraper.board_text(thread.get("sub")), scraper.board_text(thread.get("com"))]
+        posts += [scraper.board_text(r.get("com")) for r in (thread.get("last_replies") or []) if isinstance(r, dict)]
+        for post in posts:
+            text = scraper.first_words(post, scraper.MAX_BODY_TOKENS)
+            for title, reason in (scraper.post_near_misses(text, matcher) if text else ()):
+                missed.setdefault(reason, Counter())[title] += 1
+    for reason, counts in sorted(missed.items(), key=lambda pair: -sum(pair[1].values())):
+        say(f"  near miss, {reason} ({sum(counts.values())} mentions of {len(counts)} games): "
+            + ", ".join(f"{title} x{count}" if count > 1 else title for title, count in counts.most_common(GAMES_SHOWN)))
     methods = Counter(f"{i['match_method']}" for i in items)
     say(f"  how they matched: {dict(methods)}; threads naming more than one game: "
         f"{sum(1 for i in items if len(i['matched_games']) > 1)}")
