@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: browsers on one account stay together
+
+- Found by the maintainer: two games added in one browser did not appear in the other. A browser only loaded the account's list when its button was pressed, and every send replaced the saved list, so a stale browser could also wipe a newer one.
+- `crowdSync()` runs when the page opens and when its tab is shown again (at most every 5 minutes; the service allows 60 reads a day): it reads the account's list, merges it game by game (title, region, condition) against `ps2-sentiment-tracker.crowdbase` (the list that browser last saw on the account), then sends when the result differs. A count only this browser changed stays, one only the account changed is taken, both changed takes the larger, a removal travels; with no base (a new browser) it only adds and raises. `crowdSend()` now reads and merges first, and sends nothing when the account cannot be read. Prices stay in the browser that typed them. No Worker change.
+- `tests/dashboard_check.mjs`: a two-browser simulation (add, removal, stale browser, offline, no saved list, throttle).
+
 ## 2026-10-17: "Yazuka" shares Yakuza's price
 
 - The library (`data/ps2_database.json`) holds misspelled entries (Yazuka, Yazuka 2, Yazuka Fury) beside the real ones, and nobody lists a game under the typo, so a copy added to My games as "Yazuka" had no price. `same_game` in `ebay_watchlist.json` now ties each to its correct spelling, so the page shows the Yakuza figure. Only `Yakuza` is priced so far; Yakuza 2 and Yakuza Fury have no figure until the feed names them (or they are pinned).
