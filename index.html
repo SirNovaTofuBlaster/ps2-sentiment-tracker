@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Plus+Jakarta+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="retro.css?v=20261017c">
+    <link rel="stylesheet" href="retro.css?v=20261017d">
 </head>
 <body class="bg-ps2dark min-h-screen flex flex-col selection:bg-ps2neon selection:text-black">
 
@@ -2405,14 +2405,16 @@
                 const query = [text(edition.search), ...(Array.isArray(edition.require) ? edition.require.filter(word => typeof word === 'string') : [])].join(' ');
                 const sources = (Array.isArray(edition.evidence) ? edition.evidence : [])
                     .filter(item => item && typeof item.source === 'string' && /^https:\/\//.test(item.source));
-                return `<li class="edition-item">
+                const picture = coversShown && typeof edition.cover === 'string' && /^covers\/[\w.-]+$/.test(edition.cover)
+                    ? `<img class="edition-cover" src="${esc(edition.cover)}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'">` : '';
+                return `<li class="edition-item${picture ? ' has-cover' : ''}">${picture}<div class="edition-body">
                     <div><b>${esc(text(edition.title))}</b> <span class="level-tag">${esc(region === 'PAL' ? 'PAL' : 'NTSC-U')}</span></div>
                     <div class="text-[11px] text-slate-400">${esc([kinds, text(edition.publisher), text(edition.released)].filter(part => part && !/^not stated/i.test(part)).join(' · '))}</div>
                     <div class="text-xs text-slate-300 mt-1">${esc(text(edition.contents))}${edition.note ? ` <span class="text-slate-400">${esc(text(edition.note))}</span>` : ''}</div>
                     <div class="ebay-figures mt-1">${priceSiteHtml(label, site, currencyOf(label, priceData), now, locale, LEVELS.rare.stale)}</div>
                     <div class="text-[11px] text-slate-400 mt-1">Same search on eBay: <a class="text-cyan-400" href="${safeUrl(listedSearchUrl(label, query))}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>${
                         sources.map((item, number) => ` · <a class="text-cyan-400" href="${safeUrl(item.source)}" target="_blank" rel="noopener noreferrer">source${sources.length > 1 ? ' ' + (number + 1) : ''}</a>`).join('')}</div>
-                </li>`;
+                </div></li>`;
             }).join('');
             return `<h3 class="mt-4">Editions of this game</h3><p class="text-[11px] text-slate-400">Limited and collector's editions, priced on their own: only listings that name the edition count, so a plain copy never moves these numbers. Asking prices, not sales.</p><ul class="edition-list">${items}</ul>`;
         }
@@ -4935,12 +4937,13 @@
         // The address of a game's box art: the region's own picture when there is one, else the other's.
         function coverUrl(title, region = 'US') {
             if (!coversShown || !coverIndex) return '';
-            // An edition (editions.json) uses the box Libretro has for that very edition when the entry names
-            // its file ("cover"), otherwise its game's box in the edition's own region: the plain case, not
+            // An edition (editions.json) uses a picture kept in covers/ when the entry names one ("cover": "covers/x.jpg"),
+            // else the box Libretro has for that very edition when the entry names its file ("cover"), otherwise its game's box in the edition's own region: the plain case, not
             // the steelbook, because the collection has no picture of those.
             const named = editionNamed(title);
             if (named) {
                 const file = named.edition.cover;
+                if (typeof file === 'string' && /^covers\/[\w.-]+$/.test(file)) return file;   // a picture of this very box, kept with the site
                 if (typeof file === 'string' && file && !/[\\/]/.test(file)) return `${COVER_BASE}${encodeURIComponent(file)}.png`;
                 return typeof named.edition.game === 'string' ? coverUrl(named.edition.game, named.region) : '';
             }

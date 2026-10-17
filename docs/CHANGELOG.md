@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: pictures of 12 editions, and Dragon Ball Z Budokai 3 Collector's Edition (PAL)
+
+- The maintainer supplied pictures of 12 PAL editions' own boxes (Killzone, Dakar 2, ICO First Edition, Primal, Metal Gear Solid 3 steelbook, Driver: Parallel Lines, The Godfather, God of War II, Tomb Raider Anniversary, Resident Evil 4, King Kong, Dragon Ball Z Budokai 3). Each is kept at 240 px in `covers/` and named by the edition's `cover` field in `editions.json`; the Library tile, the collection and the edition card on the game page show it, and an edition without one still shows its game's cover. Only a file in `covers/` is accepted there.
+- Added the Dragon Ball Z: Budokai 3 Collector's Edition (PAL) to `editions.json` (62 in all) from a picture of its box and Libretro's box-art list; no page giving its contents could be read, so the entry says so. Every edition was already searchable (`editionTitles()` reads `editions.json`), so this one is too.
+- Not added: Shadow of the Colossus (the picture shows a plain PAL box in a slipcase, and no source for an edition was read) and Resident Evil: The Essentials (a bundle of several games, not an edition).
+
 ## 2026-10-17: 29 more PAL editions (editions.json, 61 in all)
 
 - The list held 32 editions, all from one database's 37 entries. A research pass of public pages added 29 PAL entries: editions named on PriceCharting pages (Killzone, Dakar 2, Guilty Gear XX Accent Core Plus, Juiced 2, Duel Masters, TOCA Race Driver, The Getaway, Devil May Cry 3, Onimusha 3, Naruto: Ultimate Ninja, Shinobi, Silent Hill 2, Final Fantasy X, Metal Gear Solid 3 steelbook, Ultimate Spider-Man) and the Collectors Edition forum's PS2 edition threads (Crash of the Titans Monster Edition, Call of Duty 2: Big Red One, Digital Devil Saga 2, Scarface, Hitman: Blood Money, 24: The Game and SteelBook editions of Area 51, Alone in the Dark, Test Drive Unlimited and four WWE SmackDown vs. Raw games).

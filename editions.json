@@ -1,7 +1,7 @@
 {
  "what": "Known limited, collector's, premium and steelbook PS2 editions of games, for the game page. ebay_prices.py looks each one up once a day, the PAL list on eBay UK and the US list on eBay US, by the game's name plus the words in require, so a plain copy is never counted. Numbers only are kept, in data/prices/latest.json under editions.",
  "checked": "2026-10-17",
- "method": "Hand-made from the Collectors Edition game database (collectorsedition.org/game-db, the PS2 PAL and NTSC lists, 14 and 23 entries; the pages were read one by one on 2026-10-14). 32 of those 37 entries are here. Left out: Dragon Ball Z Budokai 3 Collector's Edition (PAL), Silent Hill 2 Special 2 Disc Set (PAL) and Bully Special Edition (NTSC), whose pages did not load that day; Final Fantasy XI HDD (not a game edition); and one entry not read. Contents are quoted from each entry, packaging in kinds. Japanese editions cannot be priced (only the US and UK sites are), so none are here. Nothing was sent to the database's owners (rule 13). Added 2026-10-17 (29 PAL entries, 61 in all): editions named on PriceCharting pages (each page opened; it gives a title, usually no date, publisher or contents, so those say 'not stated by the sources'), and the Collectors Edition forum's PS2 edition threads (showthread.php?p=13740 and ?p=13192), whose posters (UK PAL) list contents; a poster's claim is quoted as theirs. Shadow of the Colossus Collector's Edition (PriceCharting page would not load) and Dragon Ball Z Budokai 3 Collector's Edition (PAL) are still to add. Japanese editions cannot be priced and box sets of several games are not editions, so neither is here. Nothing was sent to anyone (rule 13).",
+ "method": "Hand-made from the Collectors Edition game database (collectorsedition.org/game-db, the PS2 PAL and NTSC lists, 14 and 23 entries; the pages were read one by one on 2026-10-14). 32 of those 37 entries are here. Left out: Dragon Ball Z Budokai 3 Collector's Edition (PAL), Silent Hill 2 Special 2 Disc Set (PAL) and Bully Special Edition (NTSC), whose pages did not load that day; Final Fantasy XI HDD (not a game edition); and one entry not read. Contents are quoted from each entry, packaging in kinds. Japanese editions cannot be priced (only the US and UK sites are), so none are here. Nothing was sent to the database's owners (rule 13). Added 2026-10-17 (29 PAL entries, 61 in all; a 62nd, Dragon Ball Z Budokai 3 Collector's Edition (PAL), followed the same day): editions named on PriceCharting pages (each page opened; it gives a title, usually no date, publisher or contents, so those say 'not stated by the sources'), and the Collectors Edition forum's PS2 edition threads (showthread.php?p=13740 and ?p=13192), whose posters (UK PAL) list contents; a poster's claim is quoted as theirs. Shadow of the Colossus Collector's Edition (PriceCharting page would not load) and Dragon Ball Z Budokai 3 Collector's Edition (PAL) was added from a picture of its box; Shadow of the Colossus is still to add. Japanese editions cannot be priced and box sets of several games are not editions, so neither is here. Nothing was sent to anyone (rule 13). An entry's `cover` is a small (240 px) picture of its own box kept in covers/ (the maintainer supplied them on 2026-10-17); without one the page uses the game's cover.",
  "lists": {
   "PAL": [
    {
@@ -27,7 +27,8 @@
       "figure": "listed as an edition of this game, with the contents above",
       "date": "2026-10-14"
      }
-    ]
+    ],
+    "cover": "covers/resident-evil-4-limited-edition.jpg"
    },
    {
     "title": "Dragon Ball Z: Budokai Tenkaichi 3 Collector's Edition",
@@ -57,6 +58,30 @@
     ]
    },
    {
+    "title": "Dragon Ball Z: Budokai 3 Collector's Edition",
+    "game": "Dragon Ball Z: Budokai 3",
+    "search": "dragon ball z budokai 3",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "boxed edition"
+    ],
+    "publisher": "Bandai",
+    "released": "not stated by the sources",
+    "contents": "Box reads \"Collector's Edition\" and \"Original Japanese voice-over\"; what else is in it is not stated by the sources.",
+    "note": "Added from a picture of the box the maintainer supplied (2026-10-17) and Libretro's box-art list; no page giving its contents could be read.",
+    "evidence": [
+     {
+      "source": "https://github.com/libretro-thumbnails/Sony_-_PlayStation_2",
+      "figure": "a European box named \"Dragon Ball Z - Budokai 3 - Collector's Edition\" is in the collection",
+      "date": "2026-10-17"
+     }
+    ],
+    "cover": "covers/dragon-ball-z-budokai-3-collectors-edition.jpg"
+   },
+   {
     "title": "Tomb Raider: Anniversary Collector's Edition",
     "game": "Tomb Raider: Anniversary",
     "search": "tomb raider anniversary",
@@ -77,7 +102,8 @@
       "figure": "listed as an edition of this game, with the contents above",
       "date": "2026-10-14"
      }
-    ]
+    ],
+    "cover": "covers/tomb-raider-anniversary-collectors-edition.jpg"
    },
    {
     "title": "God of War II Special Edition",
@@ -103,7 +129,8 @@
       "figure": "listed as an edition of this game, with the contents above",
       "date": "2026-10-14"
      }
-    ]
+    ],
+    "cover": "covers/god-of-war-ii-special-edition.jpg"
    },
    {
     "title": "The Godfather Limited Edition 2 Disc Set",
@@ -127,7 +154,8 @@
       "figure": "listed as an edition of this game, with the contents above",
       "date": "2026-10-14"
      }
-    ]
+    ],
+    "cover": "covers/the-godfather-limited-edition-2-disc-set.jpg"
    },
    {
     "title": "Driver: Parallel Lines Collector's Edition",
@@ -151,7 +179,8 @@
       "figure": "listed as an edition of this game, with the contents above",
       "date": "2026-10-14"
      }
-    ]
+    ],
+    "cover": "covers/driver-parallel-lines-collectors-edition.jpg"
    },
    {
     "title": "Peter Jackson's King Kong Collector's Edition",
@@ -175,7 +204,8 @@
       "figure": "listed as an edition of this game, with the contents above",
       "date": "2026-10-14"
      }
-    ]
+    ],
+    "cover": "covers/king-kong-collectors-edition.jpg"
    },
    {
     "title": "Metal Gear Solid 3: Snake Eater Slipcase Edition",
@@ -244,7 +274,8 @@
       "figure": "listed as an edition of this game, with the contents above",
       "date": "2026-10-14"
      }
-    ]
+    ],
+    "cover": "covers/primal-collectors-edition.jpg"
    },
    {
     "title": "ICO First Edition",
@@ -267,7 +298,8 @@
       "figure": "listed as an edition of this game, with the contents above",
       "date": "2026-10-14"
      }
-    ]
+    ],
+    "cover": "covers/ico-first-edition.jpg"
    },
    {
     "title": "Driver 2 Limited Edition",
@@ -324,7 +356,8 @@
       "figure": "listed as Killzone [Limited Special Edition + Bonus DVD], PAL PlayStation 2, publisher Sony Computer Entertainment Europe",
       "date": "2026-10-17"
      }
-    ]
+    ],
+    "cover": "covers/killzone-collectors-edition.jpg"
    },
    {
     "title": "Dakar 2 Collector's Edition",
@@ -345,7 +378,8 @@
       "figure": "PriceCharting lists this as a separate PAL PS2 release: Dakar 2 [Collector's Edition]; release date, publisher and description are blank on the page",
       "date": "2026-10-17"
      }
-    ]
+    ],
+    "cover": "covers/dakar-2-collectors-edition.jpg"
    },
    {
     "title": "Guilty Gear XX Accent Core Plus Collector's Edition",
@@ -670,7 +704,8 @@
       "figure": "listed as a missing PAL edition in the forum's database-feedback thread; released 04/03/2005, RRP 59.99 pounds, SteelBook only",
       "date": "2026-10-17"
      }
-    ]
+    ],
+    "cover": "covers/metal-gear-solid-3-steelbook-edition.jpg"
    },
    {
     "title": "Crash of the Titans Monster Edition",

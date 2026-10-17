@@ -3011,6 +3011,25 @@ await check('editions: a game page lists its editions with their own prices and 
     }
 });
 
+await check('editions: a picture kept in covers/ is the edition\'s own cover, on its card and in the library', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const file = JSON.parse(read('editions.json'));
+    const withCover = file.lists.PAL.filter(item => /^covers\//.test(item.cover || ''));
+    assert.ok(withCover.length >= 12, 'the pictures supplied are wired to their editions');
+    for (const item of withCover) assert.ok(existsSync(new URL(item.cover, root)), `${item.cover} exists`);
+    run(`editionsData = ${JSON.stringify(file)}; coversShown = true; coverIndex = {}; coverIndexState = 'ready'`);
+    try {
+        assert.equal(run(`coverUrl("Killzone Collector's Edition", 'PAL')`), 'covers/killzone-collectors-edition.jpg');
+        assert.match(run(`editionsHtml('Killzone')`), /<img class="edition-cover" src="covers\/killzone-collectors-edition\.jpg"/);
+        run(`coversShown = false`);
+        assert.doesNotMatch(run(`editionsHtml('Killzone')`), /<img/, 'no picture when covers are switched off');
+        run(`coversShown = true; editionsData = { lists: { PAL: [{ title: 'X Special', game: 'X', cover: '../secret.jpg', contents: 'x' }] } }`);
+        assert.doesNotMatch(run(`editionsHtml('X')`), /<img/, 'only a file in covers/ is used');
+    } finally {
+        run(`editionsData = null; coverIndex = null; coverIndexState = 'idle'`);
+    }
+});
+
 await check('portfolio: the value of My games over time, between the tabs and the list, with what was paid', async () => {
     const run = (code) => vm.runInContext(code, context);
     const saved = evalJson('collection');
@@ -3096,7 +3115,10 @@ await check('editions: covers use the edition\'s own box when Libretro has one, 
     run(`coversShown = true; coverIndex = { 'resident evil 4': ['Resident Evil 4', ' (USA)', ' (Europe) (En,Fr,De,Es,It)'], 'mortal kombat armageddon': ['Mortal Kombat - Armageddon', ' (USA)', ''] }`);
     try {
         const base = 'https://thumbnails.libretro.com/Sony%20-%20PlayStation%202/Named_Boxarts/';
-        assert.equal(run(`coverUrl('Resident Evil 4 Limited Edition', 'US')`), base + encodeURIComponent('Resident Evil 4 (Europe) (En,Fr,De,Es,It)') + '.png', 'the PAL steelbook gets the Europe box, whatever region is asked');
+        assert.equal(run(`coverUrl('Resident Evil 4 Limited Edition', 'US')`), 'covers/resident-evil-4-limited-edition.jpg', 'the PAL steelbook has a picture of its own');
+        run(`editionsData = { lists: { PAL: [{ title: 'Resident Evil 4 Limited Edition', game: 'Resident Evil 4' }] } }`);
+        assert.equal(run(`coverUrl('Resident Evil 4 Limited Edition', 'US')`), base + encodeURIComponent('Resident Evil 4 (Europe) (En,Fr,De,Es,It)') + '.png', 'without a picture of its own, the PAL steelbook gets the Europe box, whatever region is asked');
+        run(`editionsData = ${JSON.stringify(JSON.parse(read('editions.json')))}`);
         assert.equal(run(`coverUrl('Resident Evil 4 Premium Edition', 'PAL')`), base + encodeURIComponent('Resident Evil 4 (USA)') + '.png');
         assert.equal(run(`coverUrl('Mortal Kombat: Armageddon Premium Edition', 'US')`), base + encodeURIComponent('Mortal Kombat - Armageddon (USA) (Premium Edition)') + '.png', 'its own file when the entry names one');
         assert.equal(run(`coverUrl('Driver 2 Limited Edition', 'PAL')`), '', 'no game page, no cover');
