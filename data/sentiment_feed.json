@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 13:18:42 UTC",
+  "last_updated": "2026-10-17 13:21:23 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1512,6 +1512,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 11:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Just Cause",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749856547",
+      "matched_game": "Just Cause",
+      "matched_games": [
+        "Just Cause"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 11:15 UTC"
     },
@@ -5545,15 +5564,16 @@
       "views": 3402
     },
     {
-      "headline": "Thread on /v/ naming Way of the Samurai 2 and Tekken 5",
+      "headline": "Thread on /v/ naming Way of the Samurai, Tekken 5 and Way of the Samurai 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749845334",
-      "matched_game": "Way of the Samurai 2",
+      "matched_game": "Way of the Samurai",
       "matched_games": [
-        "Way of the Samurai 2",
-        "Tekken 5"
+        "Way of the Samurai",
+        "Tekken 5",
+        "Way of the Samurai 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -9455,19 +9475,19 @@
       "timestamp": "2026-10-16 23:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter, Persona 3, Ys: The Ark of Napishtim and 3 more",
+      "headline": "Thread on /v/ naming Dark Chronicle, Dark Cloud 2, Dark Cloud and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749830853",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Dark Chronicle",
       "matched_games": [
-        "Monster Hunter",
-        "Persona 3",
-        "Ys: The Ark of Napishtim",
         "Dark Chronicle",
         "Dark Cloud 2",
-        "Dark Cloud"
+        "Dark Cloud",
+        "Persona 3",
+        "Ys: The Ark of Napishtim",
+        "Monster Hunter"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
