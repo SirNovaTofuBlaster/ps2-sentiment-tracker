@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 15:12:36 UTC",
+  "last_updated": "2026-10-17 15:15:12 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -3099,13 +3099,14 @@
       "views": 702
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming Persona 4 and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749857341",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Persona 4",
       "matched_games": [
+        "Persona 4",
         "Silent Hill 2"
       ],
       "match_score": 100,
@@ -16116,6 +16117,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 19:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Splinter Cell",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749817376",
+      "matched_game": "Splinter Cell",
+      "matched_games": [
+        "Splinter Cell"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 19:16 UTC"
     },
     {
       "headline": "Looking for people to play BO6 with",
@@ -271908,23 +271928,6 @@
       "hype": 0,
       "timestamp": "2026-10-03 15:15 UTC",
       "views": 2976
-    },
-    {
-      "headline": "Ps2 collection value?",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1wwpnpr/ps2_collection_value/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 15:13 UTC"
     }
   ]
 }
