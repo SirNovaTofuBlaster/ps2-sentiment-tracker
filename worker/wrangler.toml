@@ -1,0 +1,15 @@
+name = "spindle-crowd"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+# Pages the dashboard is served from (comma separated). Browsers from anywhere else are refused.
+ALLOW_ORIGIN = "https://sirnovatofublaster.github.io,http://localhost:8000"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "spindle"
+database_id = "b28693a5-1a58-46d0-8358-917f9aa69ee8"   # an identifier, not a secret
+
+# One secret is needed, set from your own computer and never committed:
+#   npx wrangler secret put SALT        (any long random text)

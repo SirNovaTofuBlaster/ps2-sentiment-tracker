@@ -66,6 +66,7 @@ through its **Sources** panel (no sentiment or weights are shown: removed 2026-1
 | `data/prices/index.json` | The PS2 price index per site, and `PAL` (every game on every non-US site together, once two such sites have finished days) (100 on its first day), worked out from every month's history on each run that writes `latest.json`: a chained geometric mean of each game's daily change. Also `rare`: each Rarest list's index and market cap (median × the copies `rare_games.json` estimates). Days and numbers only |
 | `data/prices/series.json` | Each game's daily median and copies per site over the last 90 days, for its price chart; read by the dashboard only when a chart opens |
 | `tests/test_ebay_prices.py` | Offline tests for `ebay_prices.py` and its workflow, including that the key never leaks |
+| `worker/`, `tests/worker_check.mjs`, `tests/test_worker.py` | The opt-in crowd data service (anonymous accounts, collection counts, purchase reports, figures published only from 5+ accounts): a Cloudflare Worker with a D1 database, deployed by hand. Written 2026-10-17; the dashboard side is not built yet. Details in [docs/CROWD.md](docs/CROWD.md) |
 | `.github/workflows/ebay.yml` | Runs `ebay_prices.py` hourly (started by the scraper's loop), after a scraper run ends, and by hand; commits `data/prices/`, and publishes that run's listings to the `ebay-data` branch |
 
 ## Commands
@@ -120,7 +121,9 @@ python ebay_prices.py --plan              # which games would be priced now and 
    (`workflow_dispatch`), and by hand; it must never run on pull requests, must
    always check out `main` (never the code of the run that triggered it), and the scraper
    workflow it follows must never gain a pull-request trigger either. No other script may
-   use a key without the maintainer's explicit decision.
+   use a key without the maintainer's explicit decision. The one decision so far (2026-10-17): the opt-in crowd service in `worker/` (Cloudflare
+   Worker + D1, [docs/CROWD.md](docs/CROWD.md)) holds one secret, `SALT`, set from the maintainer's own computer with `wrangler`; it is deployed by hand, has no
+   workflow and no Cloudflare token in the repository, and never touches `data/` or `main`.
 9. **Commits use a GitHub no-reply email.** Never put personal email addresses in commits,
    messages or files.
 10. **Don't push, fork or open pull requests without the maintainer's explicit OK.** Pushing
