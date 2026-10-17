@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 15:17:28 UTC",
+  "last_updated": "2026-10-17 15:28:50 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -3985,14 +3985,15 @@
       "timestamp": "2026-10-17 10:51 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex",
+      "headline": "Thread on /v/ naming Deus Ex and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749855763",
       "matched_game": "Deus Ex",
       "matched_games": [
-        "Deus Ex"
+        "Deus Ex",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -4714,13 +4715,14 @@
       "timestamp": "2026-10-17 09:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming OutRun 2006: Coast 2 Coast",
+      "headline": "Thread on /v/ naming Resident Evil 4 and OutRun 2006: Coast 2 Coast",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749853958",
-      "matched_game": "OutRun 2006: Coast 2 Coast",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "OutRun 2006: Coast 2 Coast"
       ],
       "match_score": 100,
@@ -9918,16 +9920,17 @@
       "timestamp": "2026-10-17 01:12 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War, Shadow of the Colossus and Odin Sphere",
+      "headline": "Thread on /v/ naming Burnout 3: Takedown, Shadow of the Colossus, Odin Sphere and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749836271",
-      "matched_game": "God of War",
+      "matched_game": "Burnout 3: Takedown",
       "matched_games": [
-        "God of War",
+        "Burnout 3: Takedown",
         "Shadow of the Colossus",
-        "Odin Sphere"
+        "Odin Sphere",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -49733,6 +49736,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-15 15:19 UTC"
+    },
+    {
+      "headline": "Thread on /vm/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /vm/",
+      "source_type": "4chan",
+      "feed": "4chan:vm",
+      "link": "https://boards.4chan.org/vm/thread/3068962",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 15:19 UTC"
     },
@@ -271943,40 +271965,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 15:34 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Arcade controller advice",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wwpxvf/arcade_controller_advice/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 15:25 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is my Pokemon White 2 legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wwpxbq/is_my_pokemon_white_2_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 15:24 UTC",
       "is_digital_only": false
     }
   ]
