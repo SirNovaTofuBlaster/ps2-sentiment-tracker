@@ -412,7 +412,7 @@
               <option value="US">US (NTSC-U)</option>
             </select>
             <label class="sr-only" for="libraryAddCondition">Condition</label>
-            <select id="libraryAddCondition" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+            <select id="libraryAddCondition" onchange="paintLibraryRemove()" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
               <option value="complete">Complete (box and manual)</option>
               <option value="loose">Loose (disc only)</option>
               <option value="sealed">Sealed</option>
@@ -420,12 +420,16 @@
             <label class="sr-only" for="libraryAddPaid">What you paid (optional, per copy)</label>
             <input type="number" id="libraryAddPaid" min="0" step="0.01" inputmode="decimal" placeholder="Paid each (optional)" onkeydown="if (event.key === 'Enter') libraryAddPicked()" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white coll-paid-input" title="What you paid for one copy, in that region's money. Optional: leave it empty to add the game without a price.">
             <button type="button" id="libraryAddButton" onclick="libraryAddPicked()" class="brand-btn brand-btn-primary py-2 px-4"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add to My collection</button>
+            <button type="button" id="libraryRemoveButton" onclick="libraryRemovePicked()" class="library-remove brand-btn hidden"><i class="fa-solid fa-minus" aria-hidden="true"></i> <span id="libraryRemoveLabel">Remove one</span></button>
             <a id="libraryAddOpen" href="#" class="brand-btn" onclick="return libraryOpenPicked(event)">Game page</a>
           </div>
           <p id="libraryAddMessage" class="text-xs text-slate-400 mt-1 min-h-[1rem]" role="status"></p>
         </div>
         <button type="button" class="library-add-close" onclick="libraryClosePicked()" aria-label="Close">&times;</button>
       </div>
+
+      <!-- Appears once the long list has been scrolled down; sits above the add bar when that is open. -->
+      <button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop()" aria-label="Back to the top of the library" title="Back to the top" inert><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
     </div>
 
     <!-- Underrated: one game a day from underrated.json, picked by the date (the same for everyone), then the whole list. -->
@@ -4503,7 +4507,55 @@
             document.getElementById('libraryAddMessage').textContent = have ? `You already own ${have} cop${have === 1 ? 'y' : 'ies'}. Adding another raises the count.` : '';
             document.getElementById('libraryAddOpen').href = `#game=${encodeURIComponent(game.title)}`;
             document.getElementById('libraryAdd').classList.remove('hidden');
+            paintLibraryRemove();
         }
+        // The copy the bar's region and condition point at, if the collection holds one: what "Remove one" would take away.
+        function libraryEntryPicked() {
+            if (!libraryPicked) return null;
+            const region = document.getElementById('libraryAddRegion').value === 'US' ? 'US' : 'PAL';
+            const condition = document.getElementById('libraryAddCondition').value;
+            const title = libraryTitleFor(libraryPicked.game, region);
+            return collection.find(entry => entry.title === title && entry.region === region && entry.condition === condition) || null;
+        }
+        // "Remove one" is there whenever you own the copy the bar is set to: the way back from an add made by mistake.
+        function paintLibraryRemove() {
+            const button = document.getElementById('libraryRemoveButton');
+            if (!button) return;
+            const entry = libraryEntryPicked();
+            button.classList.toggle('hidden', !entry);
+            document.getElementById('libraryRemoveLabel').textContent = entry && entry.qty > 1 ? `Remove one (you have ${entry.qty})` : 'Remove';
+        }
+        function libraryRemovePicked() {
+            const entry = libraryEntryPicked();
+            if (!entry || !libraryPicked) return false;
+            const { game, i } = libraryPicked;
+            const index = collection.indexOf(entry);
+            if (entry.qty > 1) entry.qty -= 1;
+            else collection.splice(index, 1);
+            saveCollection();
+            const have = ownedKeys().get(game.key) || 0;
+            document.getElementById('libraryAddMessage').textContent = `Removed: ${game.title} (${entry.region}, ${COLLECTION_CONDITIONS[entry.condition]}). `
+                + (have ? `You now own ${have}.` : 'It is no longer in My collection.');
+            document.getElementById(`libTile${i}`)?.classList.toggle('is-owned', have > 0);
+            paintLibraryRemove();
+            try { refreshCollection(); } catch { /* the page shows it when opened */ }
+            return false;
+        }
+        // Back to the top of the long list: a round button, there once the page has been scrolled a good way down.
+        const LIBRARY_TOP_AFTER = 700;   // px scrolled before it appears
+        function updateLibraryTop() {
+            const button = document.getElementById('libraryTop');
+            if (!button) return;
+            const show = (window.scrollY || window.pageYOffset || 0) > LIBRARY_TOP_AFTER;
+            button.classList.toggle('is-shown', show);
+            if (show) button.removeAttribute('inert'); else button.setAttribute('inert', '');
+        }
+        function libraryScrollTop() {
+            let calm = false;
+            try { calm = Boolean(window.matchMedia?.('(prefers-reduced-motion: reduce)').matches); } catch { /* smooth is fine */ }
+            window.scrollTo?.({ top: 0, behavior: calm ? 'auto' : 'smooth' });
+        }
+        window.addEventListener('scroll', updateLibraryTop, { passive: true });
         // The PAL / US choice in the bar also flips the picture shown there, and the next ones drawn in the grid.
         function paintLibraryAddCover() {
             if (!libraryPicked) return;
@@ -4516,6 +4568,7 @@
         function libraryRegionChanged() {
             libraryRegion = document.getElementById('libraryAddRegion').value === 'US' ? 'US' : 'PAL';
             paintLibraryAddCover();
+            paintLibraryRemove();
             paintLibraryPaidHint();
         }
         // The price box says which money it means: the region's.
@@ -4556,12 +4609,13 @@
             }
             const have = ownedKeys().get(game.key) || 0;
             const paidNote = paid !== null ? `, paid ${money(paid, currencyOf(COLLECTION_REGIONS[region]), undefined, false)}` : '';
-            message.textContent = `Added: ${game.title} (${region}, ${COLLECTION_CONDITIONS[condition]}${paidNote}). You now own ${have}.`;
+            message.textContent = `Added: ${game.title} (${region}, ${COLLECTION_CONDITIONS[condition]}${paidNote}). You now own ${have}. Added by mistake? Press Remove.`;
             paidBox.value = '';
             const tile = document.getElementById(`libTile${i}`);
             tile?.classList.add('is-owned');
             try { refreshCollection(); } catch { /* the page shows it when opened */ }
             updateCollectionTab();
+            paintLibraryRemove();
             return false;
         }
 
