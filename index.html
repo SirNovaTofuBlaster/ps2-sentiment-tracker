@@ -1250,8 +1250,8 @@
         }
 
         // A game's median on one eBay site, or null when it has none to show.
-        function medianOf(title, label) {
-            const site = priceIndex.get(priceKey(title))?.entry?.[label];
+        function medianOf(title, label, own = false) {
+            const site = (own ? priceOwn : priceIndex).get(priceKey(title))?.entry?.[label];
             const copies = site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) ? site.copies : 0;
             return copies && typeof site.median === 'number' && Number.isFinite(site.median) ? site.median : null;
         }
@@ -1684,7 +1684,8 @@
         // figures are overdue later: the hours a figure there may be old before it is dimmed.
         const SITE_STALE_HOURS = { DE: 30, FR: 56, IT: 30, ES: 80 };   // the PRICE_LOOKUPS entry a figure links to
         let priceData = null;          // data/prices/latest.json as loaded, or null
-        let priceIndex = new Map();    // priceKey(title) -> { title, entry, level, mentions }
+        let priceIndex = new Map();    // priceKey(title) -> { title, entry, level, mentions }, spellings of one game sharing figures
+        let priceOwn = new Map();      // the same before the spellings share: which spelling has a figure of its own
         let renamedKeys = new Set();   // priceKey of every game that has another name on another site (ebay_watchlist.json regional_names)
         let priceWatchlist = null;     // ebay_watchlist.json as loaded, or null
         let priceTrouble = false;      // the price file is there but could not be read or drawn
@@ -1712,6 +1713,44 @@
         const plainText = (text) => String(text ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
             .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
+        // A site's figure that can be shown: it names copies and a median (not "unmatched", not an empty search).
+        const usablePrice = site => site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) && site.copies > 0 && typeof site.median === 'number';
+        // Names of one game: on each site where a name has no figure and another name has, the first takes the other's. A name
+        // with no row at all (the library has "Yazuka" beside "Yakuza", and nobody lists a game under the typo) gets a copy of
+        // the first row that has one. Each name keeps its own row otherwise. Returns true when anything changed.
+        function shareFigures(index, keys) {
+            const rows = keys.map(key => index.get(key)).filter(Boolean);
+            if (!rows.length || (rows.length < 2 && rows.length === keys.length)) return false;
+            const labels = new Set(rows.flatMap(row => Object.keys(row.entry || {})));
+            const merged = {};
+            for (const label of labels) {
+                const donor = rows.find(row => usablePrice(row.entry[label])) || rows.find(row => row.entry[label] !== undefined);
+                if (donor) merged[label] = donor.entry[label];
+            }
+            let changed = false;
+            for (const key of keys) {
+                const row = index.get(key) || { ...rows[0], entry: {} };
+                const take = Object.entries(merged).filter(([label]) => !usablePrice(row.entry[label]));
+                if (!take.length && index.has(key)) continue;
+                index.set(key, { ...row, entry: { ...row.entry, ...Object.fromEntries(take) } });
+                changed = true;
+            }
+            return changed;
+        }
+        // The library's own groups of spellings of one game (covers.json `same`, which also gives the Library one tile for them):
+        // every spelling shows the figure of one that has it. Run when the prices arrive and again when the covers file does.
+        function shareSpellingPrices() {
+            if (!priceIndex || !coverSame || !Object.keys(coverSame).length) return false;
+            const groups = new Map();
+            for (const [spelling, shown] of Object.entries(coverSame)) {
+                if (!groups.has(shown)) groups.set(shown, new Set([shown]));
+                groups.get(shown).add(spelling);
+            }
+            let changed = false;
+            for (const keys of groups.values()) if (shareFigures(priceIndex, [...keys])) changed = true;
+            return changed;
+        }
+
         // watchlist is ebay_watchlist.json: a pinned game may be searched under other words
         // ("Persona 4" for "Shin Megami Tensei: Persona 4"), and the feed uses that name too.
         function setPrices(data, watchlist) {
@@ -1729,22 +1768,10 @@
             const renamed = new Set();
             // Names of one game the library keeps apart ("King's Field IV" in Europe, "King's Field: The Ancient City" in the US):
             // on a site where one name has no figure and another has, the first takes the other's. Each name keeps its own row.
-            const usable = site => site && typeof site === 'object' && !site.unmatched && Number.isFinite(site.copies) && site.copies > 0 && typeof site.median === 'number';
             for (const names of Array.isArray(watchlist?.same_game) ? watchlist.same_game : []) {
                 const keys = (Array.isArray(names) ? names : []).map(name => typeof name === 'string' ? priceKey(name) : '').filter(Boolean);
                 keys.forEach(key => renamed.add(key));    // another region's file may sit under the other name: never called region-only
-                const rows = keys.map(key => index.get(key)).filter(Boolean);
-                if (rows.length < 2) continue;
-                const labels = new Set(rows.flatMap(row => Object.keys(row.entry || {})));
-                const merged = {};
-                for (const label of labels) {
-                    const donor = rows.find(row => usable(row.entry[label])) || rows.find(row => row.entry[label] !== undefined);
-                    if (donor) merged[label] = donor.entry[label];
-                }
-                for (const key of keys) {
-                    const row = index.get(key);
-                    if (row) index.set(key, { ...row, entry: { ...row.entry, ...Object.fromEntries(Object.entries(merged).filter(([label]) => !usable(row.entry[label]))) } });
-                }
+                shareFigures(index, keys);
             }
             // A game the library also files under the name it has on another site ("Project Zero" beside "Fatal Frame",
             // "Ratchet: Gladiator" beside "Ratchet: Deadlocked") is priced once, under the name the feed knows it by
@@ -1760,8 +1787,10 @@
                 }
             }
             priceData = data ?? null;
-            priceIndex = index;
+            priceOwn = index;
+            priceIndex = new Map(index);
             renamedKeys = renamed;
+            shareSpellingPrices();
             try { refreshCollection(); } catch { /* the collection page draws itself when opened */ }
         }
 
@@ -2137,6 +2166,7 @@
                 console.warn('Could not show data/prices/latest.json.', error);
                 priceData = null;
                 priceIndex = new Map();
+                priceOwn = new Map();
                 priceTrouble = true;
                 try { renderPrices(null); } catch { /* the page carries on without prices */ }
             }
@@ -4545,7 +4575,7 @@
         // The spelling to put in the collection for a region: the one eBay has a price for on that region's site, else the shown one.
         function libraryTitleFor(game, region) {
             const label = COLLECTION_REGIONS[region];
-            return game.variants.find(title => medianOf(title, label) !== null) || game.title;
+            return game.variants.find(title => medianOf(title, label, true) !== null) || game.title;
         }
 
         // A cover for the region from any spelling of the game.
@@ -4845,6 +4875,7 @@
                     coverIndex = data.covers;
                     coverLocal = data.local && typeof data.local === 'object' && !Array.isArray(data.local) ? data.local : {};
                     coverSame = data.same && typeof data.same === 'object' && !Array.isArray(data.same) ? data.same : {};
+                    if (shareSpellingPrices()) { try { refreshCollection(); } catch { /* drawn when opened */ } }   // prices that came first
                     librarySorted = null;
                     coverIndexState = 'ready';
                 } else coverIndexState = 'failed';

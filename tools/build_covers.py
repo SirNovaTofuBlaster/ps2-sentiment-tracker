@@ -407,6 +407,7 @@ def loose_key(key):
 
 # Library spellings read by eye as one game that no rule above finds (2026-10-14): a translated or regional title, a longer
 # or shorter subtitle, a typo of a different shape. Each line is one game; the keys are search_terms() keys of library names.
+NOT_SAME = [("in the groove", "eyetoy groove")]   # (spelling, other): never one game, whatever the joins say
 SAME_GAME = (
     ("ace combat the belkan war", "ace combat zero the belkan war"),
     ("air ranger rescue helicopter", "air rescue ranger"),
@@ -695,6 +696,11 @@ def same_game(covers):
         file_key = next((search_terms(covers[k][0])[0] for k in keys if k in covers), "")
         shown = max(keys, key=lambda k: (rarest(k), titles[k][1], difflib.SequenceMatcher(None, k, file_key).ratio(), -len(k)))
         out.update({k: shown for k in keys if k != shown})
+    # Two different games the loose joins put together (checked 2026-10-17: EyeToy: Groove is a dancing game, In the Groove a dance-pad one).
+    for spelling, shown in NOT_SAME:
+        if out.get(spelling) == shown or out.get(shown) == spelling:
+            out.pop(spelling, None)
+            out.pop(shown, None)
     return out
 
 

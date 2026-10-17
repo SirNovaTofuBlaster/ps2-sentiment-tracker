@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: every spelling of a game shows its price
+
+- Found with the "Yazuka" copy (the library has the typo beside "Yakuza"; nobody lists a game under a typo, so it had no price, and `same_game` (#121) could not help because it needed a row for both names). A check of `covers.json` `same` against `latest.json` found about 115 games, 137 spellings, in that state (Alien Homind / Hominid, Soulcalibur 2, FIFA 13, the .hack parts, ...).
+- `shareFigures()` (used for `same_game` and for the library's groups) gives a name with no row a copy of the first row that has one, and a name whose site has no figure the other name's. `shareSpellingPrices()` applies it to every group in `covers.json` `same` when prices arrive and again when the covers file does. `priceOwn` keeps the figures before sharing: the Library still picks the spelling that is priced in the chosen region (`medianOf(title, label, true)`).
+- `covers.json` / `tools/build_covers.py`: EyeToy: Groove and In the Groove are different games and were one group; `NOT_SAME` keeps them apart on a rebuild.
+
 ## 2026-10-17: "Yazuka" shares Yakuza's price
 
 - The library (`data/ps2_database.json`) holds misspelled entries (Yazuka, Yazuka 2, Yazuka Fury) beside the real ones, and nobody lists a game under the typo, so a copy added to My games as "Yazuka" had no price. `same_game` in `ebay_watchlist.json` now ties each to its correct spelling, so the page shows the Yakuza figure. Only `Yakuza` is priced so far; Yakuza 2 and Yakuza Fury have no figure until the feed names them (or they are pinned).

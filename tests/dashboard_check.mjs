@@ -3718,6 +3718,31 @@ await check('retro.css has as many closing braces as opening ones (a lost one sw
     assert.equal(css.split('{').length, css.split('}').length);
 });
 
+await check('a spelling nobody lists on eBay takes the price of the spelling that is priced (Yazuka / Yakuza)', () => {
+    const run = (code) => vm.runInContext(code, context);
+    const prices = `{ currencies: { UK: 'GBP', US: 'USD' }, games: { 'Yakuza': { level: 'normal', mentions: 0, UK: { copies: 23, median: 39.99, checked: '2026-10-17T08:04Z' } } } }`;
+    try {
+        // the library's groups of spellings arrive after the prices
+        run(`coverSame = {}; setPrices(${prices}, null)`);
+        assert.equal(run(`medianOf('Yazuka', 'UK')`), null, 'no group yet: the typo has no figure');
+        run(`coverSame = { [priceKey('Yazuka')]: priceKey('Yakuza'), [priceKey('Yazuka 2')]: priceKey('Yakuza 2') }; shareSpellingPrices()`);
+        assert.equal(run(`medianOf('Yazuka', 'UK')`), 39.99, 'the typo shows the real name\'s price');
+        assert.equal(run(`medianOf('Yazuka 2', 'UK')`), null, 'a group with no priced spelling shows nothing');
+        assert.equal(run(`medianOf('Yazuka', 'UK', true)`), null, 'but its own figure is still none (the Library picks the spelling by that)');
+        // or before the prices
+        run(`setPrices(${prices}, null)`);
+        assert.equal(run(`medianOf('Yazuka', 'UK')`), 39.99, 'groups known first work too');
+        // a pair listed by hand in ebay_watchlist.json, one name with no row at all
+        run(`coverSame = {}; setPrices(${prices}, { same_game: [['Yakuza', 'Yazuka']] })`);
+        assert.equal(run(`medianOf('Yazuka', 'UK')`), 39.99, 'same_game works when one name has no row');
+        // the real files list the pairs
+        const watch = JSON.parse(read('ebay_watchlist.json'));
+        assert.ok(watch.same_game.some(names => names.includes('Yakuza') && names.includes('Yazuka')));
+    } finally {
+        run(`coverSame = {}; setPrices(null, null)`);
+    }
+});
+
 await check('the stylesheet link carries a version, so a new page never meets an old cached retro.css', () => {
     for (const f of ['index.html', 'guide.html']) assert.match(read(f), /href="retro\.css\?v=\d{8}[a-z]?"/, f);
 });
