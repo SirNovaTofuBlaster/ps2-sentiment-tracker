@@ -569,8 +569,10 @@
     "ok": true
   },
   "https://lemmy.world/feeds/c/retrogaming.xml?sort=New": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-10-17 21:59 UTC",
     "latest": "2026-10-17 11:02 UTC",
-    "ok": true
+    "ok": false
   },
   "https://news.xbox.com/en-us/feed/": {
     "error": "HTTP 403",
@@ -705,7 +707,7 @@
     "ok": true
   },
   "https://www.pcgamer.com/rss/": {
-    "latest": "2026-10-17 19:30 UTC",
+    "latest": "2026-10-17 21:52 UTC",
     "ok": true
   },
   "https://www.podserve.fm/series/rss/826/triangle-squared-a-playstation-podcast.rss": {
@@ -721,7 +723,7 @@
     "ok": true
   },
   "https://www.rockpapershotgun.com/feed/": {
-    "latest": "2026-10-17 20:29 UTC",
+    "latest": "2026-10-17 21:50 UTC",
     "ok": true
   },
   "https://www.spreaker.com/show/5008213/episodes/feed": {
