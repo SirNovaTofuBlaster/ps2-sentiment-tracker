@@ -2611,6 +2611,11 @@ await check('Library: every game once, A to Z or by genre, filtered, and a click
     assert.equal(el('libraryRemoveButton').classList.contains('hidden'), true, 'no Complete copy: nothing to remove');
     el('libraryAddCondition').value = 'loose'; run(`paintLibraryRemove()`);
     assert.equal(el('libraryRemoveButton').classList.contains('hidden'), false);
+    // The money sign in front of "Paid each" follows the region
+    el('collectionRegion').value = 'US'; run(`libraryRegion = 'US'; paintPaidSymbols()`);
+    assert.equal(el('collectionPaidSym').textContent, '$'); assert.equal(el('libraryPaidSym').textContent, '$');
+    el('collectionRegion').value = 'PAL'; run(`libraryRegion = 'PAL'; paintPaidSymbols()`);
+    assert.equal(el('collectionPaidSym').textContent, '\u00a3'); assert.equal(el('libraryPaidSym').textContent, '\u00a3');
     // The price paid is optional: empty adds without one, a number is kept, a non-number stops the add
     assert.equal(evalJson(`collection[0].paid`), null, 'no price typed, none kept');
     run(`collection = []`);

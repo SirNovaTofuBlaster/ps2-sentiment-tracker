@@ -407,23 +407,25 @@
           <div id="libraryAddName" class="library-add-name"></div>
           <div class="library-add-fields">
             <label class="sr-only" for="libraryAddRegion">Region</label>
-            <select id="libraryAddRegion" onchange="libraryRegionChanged()" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+            <select id="libraryAddRegion" onchange="libraryRegionChanged()" class="spin-field spin-select spin-gold spin-region">
               <option value="PAL">PAL (UK / Europe)</option>
               <option value="US">US (NTSC-U)</option>
             </select>
             <label class="sr-only" for="libraryAddCondition">Condition</label>
-            <select id="libraryAddCondition" onchange="paintLibraryRemove()" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+            <select id="libraryAddCondition" onchange="paintLibraryRemove()" class="spin-field spin-select spin-rose spin-cond">
               <option value="complete">Complete (box and manual)</option>
               <option value="loose">Loose (disc only)</option>
               <option value="sealed">Sealed</option>
             </select>
             <label class="sr-only" for="libraryAddPaid">What you paid (optional, per copy)</label>
-            <input type="number" id="libraryAddPaid" min="0" step="0.01" inputmode="decimal" placeholder="Paid each (optional)" onkeydown="if (event.key === 'Enter') libraryAddPicked()" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white coll-paid-input" title="What you paid for one copy, in that region's money. Optional: leave it empty to add the game without a price.">
+            <span class="spin-field spin-silver spin-paid"><span class="spin-sym" id="libraryPaidSym" aria-hidden="true">£</span><input type="number" id="libraryAddPaid" min="0" step="0.01" inputmode="decimal" placeholder="Paid each" onkeydown="if (event.key === 'Enter') libraryAddPicked()" title="What you paid for one copy, in that region's money. Optional: leave it empty to add the game without a price."></span>
             <button type="button" id="libraryAddButton" onclick="libraryAddPicked()" class="brand-btn brand-btn-primary py-2 px-4"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add to My collection</button>
+          </div>
+          <div class="library-add-actions">
             <button type="button" id="libraryRemoveButton" onclick="libraryRemovePicked()" class="library-remove brand-btn hidden"><i class="fa-solid fa-minus" aria-hidden="true"></i> <span id="libraryRemoveLabel">Remove one</span></button>
             <a id="libraryAddOpen" href="#" class="brand-btn" onclick="return libraryOpenPicked(event)">Game page</a>
+            <p id="libraryAddMessage" class="library-add-message" role="status"></p>
           </div>
-          <p id="libraryAddMessage" class="text-xs text-slate-400 mt-1 min-h-[1rem]" role="status"></p>
         </div>
         <button type="button" class="library-add-close" onclick="libraryClosePicked()" aria-label="Close">&times;</button>
       </div>
@@ -503,29 +505,29 @@
             <label for="collectionGame" class="sr-only">Search a game to add</label>
             <input type="search" id="collectionGame" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="collectionSuggest"
               placeholder="Search a game to add, e.g. godh…" oninput="onCollectionInput()" onkeydown="onCollectionKey(event)" onfocus="onCollectionInput()" onblur="closeCollectionSuggestions()"
-              class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white outline-none w-full">
+              class="spin-field spin-teal w-full">
             <ul id="collectionSuggest" role="listbox" aria-label="Matching games" class="hidden absolute z-30 left-0 right-0 bg-ps2card border border-ps2border text-sm max-h-80 overflow-y-auto"></ul>
           </div>
           <div class="coll-fields">
             <label class="sr-only" for="collectionRegion">Region</label>
-            <select id="collectionRegion" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+            <select id="collectionRegion" onchange="paintPaidSymbols()" class="spin-field spin-select spin-gold spin-region">
               <option value="PAL">PAL (UK / Europe)</option>
               <option value="US">US (NTSC-U)</option>
             </select>
             <label class="sr-only" for="collectionCondition">Condition</label>
-            <select id="collectionCondition" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200">
+            <select id="collectionCondition" class="spin-field spin-select spin-rose spin-cond">
               <option value="complete">Complete (box and manual)</option>
               <option value="loose">Loose (disc only)</option>
               <option value="sealed">Sealed</option>
             </select>
             <label class="sr-only" for="collectionQty">How many</label>
-            <input type="number" id="collectionQty" min="1" max="99" value="1" class="bg-ps2dark border border-ps2border rounded text-sm px-2 py-2 text-white coll-qty-input" title="How many copies">
+            <input type="number" id="collectionQty" min="1" max="99" value="1" class="spin-field spin-silver spin-qty" title="How many copies">
             <label class="sr-only" for="collectionPaid">What you paid (optional, per copy)</label>
-            <input type="number" id="collectionPaid" min="0" step="0.01" placeholder="Paid each (optional)" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white coll-paid-input" title="What you paid for each copy, in that region's money. Optional.">
+            <span class="spin-field spin-silver spin-paid"><span class="spin-sym" id="collectionPaidSym" aria-hidden="true">£</span><input type="number" id="collectionPaid" min="0" step="0.01" placeholder="Paid each" title="What you paid for each copy, in that region's money. Optional."></span>
             <button type="submit" class="brand-btn brand-btn-primary py-2 px-4"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add</button>
           </div>
         </form>
-        <label class="coll-covers-toggle text-xs text-slate-400 flex items-center gap-2"><input type="checkbox" id="collectionCovers" checked onchange="setCoversShown(this.checked)" class="accent-ps2neon"> Show cover images <span class="text-slate-500">(loaded from the Libretro thumbnail collection)</span></label>
+        <label class="coll-covers-toggle text-xs text-slate-400 flex items-center gap-2"><input type="checkbox" id="collectionCovers" checked onchange="setCoversShown(this.checked)" class="spin-check"> Show cover images <span class="text-slate-500">(loaded from the Libretro thumbnail collection)</span></label>
         <p id="collectionMessage" class="text-xs text-amber-300 mt-2 min-h-[1rem]" role="status"></p>
         <ul id="collectionList" class="coll-grid mt-4"></ul>
         <div class="flex flex-wrap gap-2 mt-4">
@@ -928,6 +930,7 @@
             loadLibrary();   // the search box's names; nothing waits for them
             loadCovers();
             loadCollection();   // what this browser has kept of the visitor's collection
+            paintPaidSymbols();
             loadCrowd();        // the anonymous sharing account, if the visitor made one
             loadGachaState();   // coins, what is left in each machine and the prizes won
             registerServiceWorker();
@@ -4750,11 +4753,13 @@
             paintLibraryPaidHint();
         }
         // The price box says which money it means: the region's.
-        function paintLibraryPaidHint() {
-            const box = document.getElementById('libraryAddPaid');
-            if (!box) return;
-            const code = currencyOf(COLLECTION_REGIONS[libraryRegion === 'US' ? 'US' : 'PAL']);
-            box.placeholder = `Paid each, ${code} (optional)`;
+        function paintLibraryPaidHint() { paintPaidSymbols(); }
+        // The sign in front of a price box follows its region: £ for PAL (eBay UK), $ for US.
+        function paintPaidSymbols() {
+            const sign = (id) => (document.getElementById(id)?.value === 'US' ? '$' : '£');
+            const set = (id, text) => { const node = document.getElementById(id); if (node) node.textContent = text; };
+            set('collectionPaidSym', sign('collectionRegion'));
+            set('libraryPaidSym', libraryRegion === 'US' ? '$' : '£');
         }
         function libraryClosePicked() {
             libraryPicked = null;

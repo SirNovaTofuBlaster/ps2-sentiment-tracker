@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: glowing boxes for the add-game form
+
+- The search, region, condition, quantity and "Paid each" boxes on My collection and the Library's bottom bar, and the Add button, follow the maintainer's mock: a dark box that glows on hover/focus (search teal, region gold, condition rose, quantity and price silver), a blue Add button in the REFRESH style, and a custom blue checkbox for "Show cover images". Classes `spin-field`, `spin-teal|gold|rose|silver`, `spin-select`, `spin-paid`, `spin-check` in `retro.css`; the glow colours are `--glow-*` tokens in `:root`.
+- The £/$ sign in front of "Paid each" follows the region (`paintPaidSymbols()`). The Library bar is two rows: the fields and Add, then Remove / Game page and the message. No behaviour changed.
+
 ## 2026-10-17: Portfolio chart on My games
 
 - Between the My games tabs and the My Collection card (`#portfolioSection`, `renderPortfolio()`, `portfolioModel()`): the value of the list per day, from `data/prices/series.json` (read when My games opens with a list) and `collectionValue()`, so the last point equals the summary's estimate. Today's list valued from each game's first priced day; sealed article prices and editions are constant; US and UK added in GBP (EUR with the button) at the `fx.json` rate, and no chart without the rates when two currencies are mixed.
