@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17: 88 more covers kept with the site (first batch)
+
+- The maintainer supplied 88 box pictures, each file named after a game that had no cover (the list of 282 was made from the library and `covers.json`). Each is kept at 240 px in `covers/` and registered in `covers.json` `local` (`LOCAL` in `tools/build_covers.py`), so it beats the collection's file for that game. 282 games had no cover before; about 195 still have none.
+- Two spellings the Library files as one tile (Disney's Donald Duck Phantomias, and Jak and Daxter Complete Trilogy) got the picture under the spelling the tile shows as well.
+- "Grand Theft Auto Double Pack" is two different boxes: the Grand Theft Auto III and Vice City pack and the Liberty City Stories and Vice City Stories pack. Each is its own library entry with its own picture.
+- Baphomet's Curse: The Sleeping Dragon came twice (the German box and the Broken Sword box); the German one is used.
+
 ## 2026-10-17: Shadow of the Colossus Collector's Edition (PAL) and the Resident Evil: The Essentials cover
 
 - Added the Shadow of the Colossus Collector's Edition (PAL) to `editions.json` (63 in all): a 2006 Sony matte cardboard case with a bi-fold, disc, manual and postcards, read on a collector's page (computinghistory.org.uk); sources disagree on postcards, art cards or posters, and the entry says so. Its picture (supplied by the maintainer) is kept in `covers/`.
