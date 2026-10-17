@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 19:33:37 UTC",
+  "last_updated": "2026-10-17 19:44:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -328,6 +328,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 18:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749877870",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 18:47 UTC"
     },
@@ -274168,23 +274187,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 19:56 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Used to dream of this back in the day…",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1www2h3/used_to_dream_of_this_back_in_the_day/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 19:42 UTC",
       "is_digital_only": false
     }
   ]
