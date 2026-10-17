@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17: Library: optional price paid
+
+- The Library's add bar has a **Paid each** box (optional, in the chosen region's currency, `libraryAddPaid`). Empty adds the game without a price, as before; a number is kept as the copy's `paid`; text that is not a price stops the add with a message. The box empties after each add. Kept on the device like the My collection form's price.
+
 ## 2026-10-17: an anonymous account is needed to add games
 
 - **My collection** shows "Create an account to start your collection" until there is an account. Pressing **Add** on the Library or Underrated page (or the form on My collection) opens a "Create an account to add games" dialog (`requireAccount()`), and the game that was being added is added once the account is live.
