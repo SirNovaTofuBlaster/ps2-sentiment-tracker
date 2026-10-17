@@ -3396,7 +3396,7 @@ await check('a fold button that has nothing to fold really is hidden (Highlights
     run("toggleList('todayList')");
     run("setRecentSort('highlights')");
     assert.equal(toggle(), true, 'Highlights has none, even with the list left open');
-    run("setRecentSort('price')");
+    run("setRecentSort('price')"); run(`renderRecentGames(__many, ${now})`);   // not the live feed: its size changes every day
     assert.equal(toggle(), false, 'and it is back with the list');
     run("toggleList('todayList')");
 });
