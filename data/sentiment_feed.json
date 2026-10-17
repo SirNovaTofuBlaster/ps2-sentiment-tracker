@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 16:09:38 UTC",
+  "last_updated": "2026-10-17 16:12:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1966,6 +1966,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 14:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sopranos",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749863140",
+      "matched_game": "The Sopranos",
+      "matched_games": [
+        "The Sopranos"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 14:04 UTC"
     },
@@ -4507,18 +4526,21 @@
       "timestamp": "2026-10-17 11:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Just Cause",
+      "headline": "Thread on /v/ naming Splinter Cell, Just Cause, Metal Gear Solid 3: Snake Eater and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749856547",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Splinter Cell",
       "matched_games": [
+        "Splinter Cell",
+        "Just Cause",
         "Metal Gear Solid 3: Snake Eater",
-        "Just Cause"
+        "Shadow of the Colossus",
+        "Black"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -272559,23 +272581,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 16:20 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Deadlock is the king of MOBA character designs, and it's all thanks to Valve's embrace of New Yorkyness",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wwqzy6/deadlock_is_the_king_of_moba_character_designs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 16:10 UTC",
       "is_digital_only": false
     }
   ]
