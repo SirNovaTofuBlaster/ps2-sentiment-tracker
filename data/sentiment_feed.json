@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 04:46:42 UTC",
+  "last_updated": "2026-10-17 04:59:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -188,6 +188,25 @@
       "is_remaster_rumor": true,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 04:21 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749843651",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 04:21 UTC"
     },
@@ -5645,7 +5664,7 @@
       "timestamp": "2026-10-16 21:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne, Okami, Monster Hunter and 3 more",
+      "headline": "Thread on /v/ naming Max Payne, Resident Evil Code: Veronica X, Astro Boy and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -5653,11 +5672,11 @@
       "matched_game": "Max Payne",
       "matched_games": [
         "Max Payne",
-        "Okami",
-        "Monster Hunter",
         "Resident Evil Code: Veronica X",
         "Astro Boy",
-        "Rule of Rose"
+        "Rule of Rose",
+        "Okami",
+        "Monster Hunter"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -266791,36 +266810,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 05:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Discover Chronicles of Prozis – An Indie JRPG Inspired by the Classics!",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wwehg4/discover_chronicles_of_prozis_an_indie_jrpg/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "timestamp": "2026-10-03 04:50 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo Switch eShop charts – October 3, 2026 – Minecraft Dungeons 2 sweeps",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-switch-eshop-charts-october-3-2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 04:50 UTC",
       "is_digital_only": false
     }
   ]
