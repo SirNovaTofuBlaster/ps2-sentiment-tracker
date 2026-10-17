@@ -252,6 +252,8 @@ STOPWORDS = {
 # in the headline to count as a match. These distinctive ones do not.
 DISTINCTIVE_SHORT = {"ico", "okami", "vexx", "genji", "kessen"}
 
+POSSESSIVE = re.compile(r"(\w)['\u2019]s\b")
+
 # Library entries that are not PS2 games (2026-10-17: "The Cabal" is an ordinary phrase). They never match,
 # and rows saved with one lose it.
 NOT_GAMES = {"the cabal"}
@@ -448,8 +450,29 @@ class TitleMatcher:
                     and (norm.isdigit() or not any(c.isdigit() for c in norm))
                 self.short[norm] = (title, ambiguous)
         self.aliases = {normalise(k): v for k, v in TITLE_ALIASES.items()}
+        self._add_possessive_aliases(titles)
         self._build_token_index()
         self._build_variants(titles, seen)
+
+    def _add_possessive_aliases(self, titles):
+        """People type "Cabelas Outdoor Adventures" without the apostrophe, which normalise() reads as one
+        word and the library's "Cabela's" as two. A title of three or more words with a possessive in it
+        (at most four words, the longest run the matcher reads) also answers to its spelling without the
+        apostrophe, in any capitals. A spelling two titles share is not used."""
+        found = {}
+        for title in titles:
+            joined = POSSESSIVE.sub(r"\1s", title)
+            if joined == title:
+                continue
+            name = normalise(joined)
+            norm = normalise(title)
+            tokens = name.split()
+            if not 3 <= len(tokens) <= 4 or name in self.aliases or name in self.canonical:
+                continue
+            found.setdefault(name, set()).add(self.canonical.get(norm, title))
+        for name, owners in found.items():
+            if len(owners) == 1:
+                self.aliases[name] = next(iter(owners))
 
     def _build_token_index(self):
         """token -> indices of fuzzy titles containing it, skipping tokens so common

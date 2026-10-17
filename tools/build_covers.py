@@ -377,6 +377,7 @@ LOCAL = {
     "grand theft auto the trilogy": "covers/grand-theft-auto-the-trilogy.jpg",
     "silent hill collection": "covers/silent-hill-collection.jpg",
     "resident evil the essentials": "covers/resident-evil-the-essentials.jpg",
+    "resident evil essentials": "covers/resident-evil-the-essentials.jpg",
     "yazuka": "covers/yazuka.jpg",
     # 2026-10-17, first batch (88 pictures; the maintainer named each file after its game):
     "1945 i 2 the arcade games": "covers/1945-i-ii-the-arcade-games.jpg",
