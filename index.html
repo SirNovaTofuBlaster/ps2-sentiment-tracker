@@ -486,6 +486,15 @@
         <p id="prizesNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
       </div>
       <div id="collectionGate" class="account-gate hidden bg-ps2card border border-ps2border rounded-md p-6"></div>
+      <div id="portfolioSection" class="hidden bg-ps2card border border-ps2border rounded-md p-6 mb-4">
+        <div class="lb-section-header"><h2>Portfolio</h2></div>
+        <div id="portfolioStats" class="portfolio-stats"></div>
+        <div id="portfolioTools" class="chart-tools" role="toolbar" aria-label="Portfolio chart tools"></div>
+        <div id="portfolioLegend" class="chart-legend" aria-live="polite"></div>
+        <div id="portfolioChart" class="chart-canvas"></div>
+        <p id="portfolioKey" class="portfolio-key"><span class="portfolio-paid" aria-hidden="true"></span>What you paid</p>
+        <p class="chart-credit">Charts by <a href="https://www.tradingview.com/" target="_blank" rel="noopener noreferrer">TradingView</a> Lightweight Charts™</p>
+      </div>
       <div id="collectionSection" class="hidden bg-ps2card border border-ps2border rounded-md p-6">
         <div class="lb-section-header"><h2>My Collection</h2></div>
         <p id="collectionSummary" class="text-xs text-slate-400 mb-4"></p>
@@ -2704,10 +2713,11 @@
         }
 
         function setChart(name, setting, value) {
-            const state = name === 'game' ? gameChart : rareChart;
+            const state = name === 'game' ? gameChart : name === 'portfolio' ? portfolioChart : rareChart;
             if (!Object.prototype.hasOwnProperty.call(state, setting)) return;
             state[setting] = value === null ? !state[setting] : value;
             if (name === 'game') renderGameChart();
+            else if (name === 'portfolio') renderPortfolio();
             else renderRareChart();
         }
 
@@ -2769,11 +2779,25 @@
             });
             liveCharts[holderId] = chart;
             const format = { type: 'custom', formatter: spec.format, minMove: 0.01 };
-            const line = spec.style === 'area'
+            const hasPaid = Number.isFinite(spec.paid) && spec.paid > 0;
+            const tone = (name, fallback) => {
+                try { return getComputedStyle(document.documentElement).getPropertyValue(`--${name}`).trim() || fallback; } catch { return fallback; }
+            };
+            const line = spec.style === 'pnl' && hasPaid
+                ? chart.addBaselineSeries({ baseValue: { type: 'price', price: spec.paid }, lineWidth: 2, priceFormat: format,
+                    topLineColor: tone('green', '#2DBFA6'), topFillColor1: seeThrough(tone('green', '#2DBFA6'), 0.32), topFillColor2: seeThrough(tone('green', '#2DBFA6'), 0.04),
+                    bottomLineColor: tone('red', '#F2555C'), bottomFillColor1: seeThrough(tone('red', '#F2555C'), 0.04), bottomFillColor2: seeThrough(tone('red', '#F2555C'), 0.32) })
+                : spec.style === 'area'
                 ? chart.addAreaSeries({ lineColor: colours.accent, topColor: seeThrough(colours.accent, 0.16), bottomColor: seeThrough(colours.accent, 0.16),
                     lineWidth: 2, priceFormat: format })
                 : chart.addLineSeries({ color: colours.accent, lineWidth: 2, priceFormat: format });
             line.setData(spec.points);
+            if (hasPaid) {
+                // The yellow line is what was paid; above it is a profit, below it a loss. An invisible line keeps it inside the scale.
+                line.createPriceLine({ price: spec.paid, color: tone('money', '#F5C52E'), lineWidth: 2, lineStyle: 0, axisLabelVisible: true, title: 'paid' });
+                const floor = chart.addLineSeries({ color: 'rgba(0, 0, 0, 0)', lastValueVisible: false, priceLineVisible: false, crosshairMarkerVisible: false });
+                floor.setData(spec.points.map(({ time }) => ({ time, value: spec.paid })));
+            }
             if (spec.bars) {
                 const bars = chart.addHistogramSeries({ priceScaleId: 'copies', color: seeThrough(colours.dim, 0.35),
                     priceFormat: { type: 'volume' }, lastValueVisible: false, priceLineVisible: false });
@@ -3478,6 +3502,112 @@
             return { worth, paid, unpriced, copies };
         }
 
+        /* ---- Portfolio chart (2026-10-17) ------------------------------------------
+           What the games in My games are worth over time, drawn between the tabs and the list. It is worked out
+           here from data/prices/series.json (each game's daily median asking price per site) and the same
+           collectionValue() the summary uses, so its last point is the summary's number. The list is today's
+           list: a game is valued from the first day it has a price, as if it had always been owned. A copy
+           valued from a public article or an edition's own price is the same on every day. US and UK copies are
+           added up in one currency with the day's ECB rate (data/fx.json); nothing is sent anywhere. */
+        const portfolioChart = { range: 'All', style: 'line' };
+        let portfolioRun = 0;
+
+        function toCurrency(value, from, to) {
+            if (from === to) return value;
+            const rates = fxData?.rates;
+            if (!rates) return null;
+            const euros = from === 'EUR' ? value : (own(rates, from) ? value / rates[from] : null);
+            if (euros === null) return null;
+            return to === 'EUR' ? euros : (own(rates, to) ? euros * rates[to] : null);
+        }
+
+        // { currency, points: [{ time, value }], paid, paidCopies, copies } or null when there is nothing to draw.
+        function portfolioModel(data) {
+            const rows = collection.map(entry => ({ entry, now: collectionValue(entry) })).filter(row => row.now[0] !== null);
+            if (!rows.length || !data) return null;
+            const used = new Set(rows.map(row => row.now[1]));
+            for (const entry of collection) if (entry.paid !== null) used.add(currencyOf(COLLECTION_REGIONS[entry.region]));
+            const currency = showEuro && fxData ? 'EUR' : (used.size > 1 ? (used.has('GBP') ? 'GBP' : [...used][0]) : [...used][0]);
+            const series = [];       // priced from the history
+            const fixed = [];        // the same on every day
+            for (const { entry, now } of rows) {
+                const site = COLLECTION_REGIONS[entry.region];
+                const points = now[2] === 'ebay' && !editionFigure(entry.title) ? gamePoints(data, entry.title, site) : [];
+                const value = toCurrency(now[0], now[1], currency);
+                if (value === null) return null;
+                if (points.length) series.push({ qty: entry.qty, from: now[1], points, now: value });
+                else fixed.push(value * entry.qty);
+            }
+            if (!series.length) return null;
+            const days = [...new Set(series.flatMap(item => item.points.map(point => point.time)))].sort();
+            const fixedTotal = fixed.reduce((sum, value) => sum + value, 0);
+            const cursor = series.map(() => 0);
+            const out = [];
+            days.forEach((day, d) => {
+                let total = fixedTotal;
+                series.forEach((item, i) => {
+                    if (d === days.length - 1) { total += item.now * item.qty; return; }   // today is the summary's own figure
+                    while (cursor[i] + 1 < item.points.length && item.points[cursor[i] + 1].time <= day) cursor[i]++;
+                    const value = toCurrency(item.points[cursor[i]].value, item.from, currency);
+                    total += (value ?? 0) * item.qty;
+                });
+                out.push({ time: day, value: total });
+            });
+            let paid = 0, paidCopies = 0, copies = 0;
+            for (const entry of collection) {
+                copies += entry.qty;
+                if (entry.paid === null) continue;
+                const value = toCurrency(entry.paid, currencyOf(COLLECTION_REGIONS[entry.region]), currency);
+                if (value === null) return null;
+                paid += value * entry.qty;
+                paidCopies += entry.qty;
+            }
+            return { currency, points: out, paid, paidCopies, copies };
+        }
+
+        async function renderPortfolio(locale) {
+            const box = document.getElementById('portfolioSection');
+            if (!box) return;
+            const run = ++portfolioRun;
+            if (!hasAccount() || collectionTab !== 'games' || !collection.length) { box.classList.add('hidden'); return; }
+            const model = portfolioModel(await loadSeries());
+            if (run !== portfolioRun) return;      // a newer draw started meanwhile
+            if (!model || model.points.length < 2) { box.classList.add('hidden'); return; }
+            box.classList.remove('hidden');
+            const hasPaid = model.paid > 0;
+            if (!hasPaid && portfolioChart.style === 'pnl') portfolioChart.style = 'line';
+            const format = (value) => money(value, model.currency, locale, false);
+            const all = model.points;
+            const points = inRange(all, portfolioChart.range);
+            const last = all[all.length - 1], before = all[all.length - 2], first = points[0];
+            const change = (from, to) => {
+                const amount = to - from;
+                const pct = from ? amount / from * 100 : 0;
+                return `<span class="${amount >= 0 ? 'text-emerald-400' : 'text-red-400'}">${amount >= 0 ? '+' : '−'}${esc(format(Math.abs(amount)))} (${amount >= 0 ? '+' : '−'}${Math.abs(pct).toFixed(2)}%)</span>`;
+            };
+            const tile = (name, value, sub) => `<div class="portfolio-tile"><div class="portfolio-name">${esc(name)}</div><div class="portfolio-value">${value}</div><div class="portfolio-sub">${sub || '&nbsp;'}</div></div>`;
+            const gain = last.value - model.paid;
+            document.getElementById('portfolioStats').innerHTML =
+                tile('Value now', esc(format(last.value)), 'median asking prices')
+                + tile('Latest day', change(before.value, last.value), esc(shortDate(before.time, locale)) + ' to ' + esc(shortDate(last.time, locale)))
+                + tile(`Since ${shortDate(first.time, locale)}`, change(first.value, last.value), '')
+                + tile('You paid', hasPaid ? esc(format(model.paid)) : '—', hasPaid
+                    ? `<span class="${gain >= 0 ? 'text-emerald-400' : 'text-red-400'}">${gain >= 0 ? '▲' : '▼'} ${esc(format(Math.abs(gain)))}</span>${model.paidCopies < model.copies ? ` · ${model.paidCopies} of ${model.copies} copies` : ''}`
+                    : 'type a price paid when you add a game');
+            document.getElementById('portfolioTools').innerHTML = chartToolsHtml('portfolio', portfolioChart, [
+                ['range', Object.keys(CHART_RANGES).map(range => [range, range, range === 'All' ? 'Every day kept' : `The last ${CHART_RANGES[range]} days`])],
+                ...(hasPaid ? [['style', [['line', 'Line', 'The value of the collection'], ['pnl', 'Profit / loss', 'Green above what you paid, red below it']]]] : []),
+            ]);
+            const legend = document.getElementById('portfolioLegend');
+            const say = (i) => {
+                const point = points[i ?? points.length - 1];
+                legend.innerHTML = point ? `${esc(shortDate(point.time, locale))} · <b>${esc(format(point.value))}</b>` : '';
+            };
+            say(null);
+            document.getElementById('portfolioKey')?.classList.toggle('hidden', !hasPaid);
+            drawChart('portfolioChart', { points, format, style: portfolioChart.style, paid: hasPaid ? model.paid : null, onHover: say, redraw: () => renderPortfolio() }, locale);
+        }
+
         function renderCollection(locale) {
             const list = document.getElementById('collectionList');
             const summary = document.getElementById('collectionSummary');
@@ -3520,7 +3650,7 @@
                 + 'Values are the median eBay asking price today for that region (PAL on eBay UK, US on eBay US): asking prices, not what anything sold for, and not what a buyer would pay you. '
                 + 'Complete uses the median of complete copies where eBay has them; loose uses the overall median; sealed has no eBay figure, so it uses a dated article price where one exists.'
                 + (collectionKept ? '' : ' This browser would not store the list, so it will be gone when you close the page.');
-            updateCollectionTab();
+            updateCollectionTab();            renderPortfolio(locale);
         }
 
         /* ---- Gacha ----------------------------------------------------------------
@@ -4258,6 +4388,7 @@
                 button.setAttribute?.('aria-selected', String(collectionTab === key));
             }
             if (collectionTab === 'games' && !signedIn) paintAccountGate();
+            renderPortfolio();
             if (collectionTab === 'prizes') renderPrizes();
             if (collectionTab === 'share') { renderShare(); ensureCrowdStats(); }
         }
