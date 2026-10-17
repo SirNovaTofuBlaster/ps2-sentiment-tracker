@@ -1,8 +1,12 @@
 # Changelog
 
+## 2026-10-17: a lost closing brace in retro.css
+
+- Merging the form restyle dropped one `}` that closed a phone-width `@media` block, so every rule after it (the whole Portfolio section, the chart height) sat inside that block and applied only on phones; on a desktop the Portfolio tiles stacked and the chart had no height. Brace added; a test now checks `retro.css` has as many `}` as `{`. `?v=` on the stylesheet link bumped to `20261017c`.
+
 ## 2026-10-17: versioned stylesheet link
 
-- `index.html` and `guide.html` link `retro.css?v=20261017b`. The maintainer saw the new form's markup with the old stylesheet (white boxes, loose £ sign) because GitHub Pages lets browsers keep a file for 10 minutes and the two files were fetched at different times. **Change the `v=` value in both files whenever `retro.css` changes** (a test checks the link has one).
+- `index.html` and `guide.html` link `retro.css?v=20261017c`. The maintainer saw the new form's markup with the old stylesheet (white boxes, loose £ sign) because GitHub Pages lets browsers keep a file for 10 minutes and the two files were fetched at different times. **Change the `v=` value in both files whenever `retro.css` changes** (a test checks the link has one).
 
 ## 2026-10-17: glowing boxes for the add-game form
 
