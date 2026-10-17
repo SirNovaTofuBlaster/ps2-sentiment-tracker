@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 20:35:38 UTC",
+  "last_updated": "2026-10-17 20:38:16 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1641,6 +1641,26 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-17 18:41 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Urban Reign and God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749877476",
+      "matched_game": "Urban Reign",
+      "matched_games": [
+        "Urban Reign",
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 18:40 UTC"
     },
     {
       "headline": "I've had this thing for years",
@@ -4691,14 +4711,14 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dark Cloud, TimeSplitters 2, The Bouncer and 21 more",
+      "headline": "Thread on /v/ naming Persona 3, TimeSplitters 2, The Bouncer and 22 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "Dark Cloud",
+      "matched_game": "Persona 3",
       "matched_games": [
-        "Dark Cloud",
+        "Persona 3",
         "TimeSplitters 2",
         "The Bouncer",
         "God Hand",
@@ -4721,6 +4741,7 @@
         "The Godfather",
         "Rule of Rose",
         "The Sopranos",
+        "Dark Cloud",
         "God of War"
       ],
       "match_score": 100,
@@ -138943,16 +138964,17 @@
       "timestamp": "2026-10-12 05:23 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Splinter Cell, Alone in the Dark and Grand Theft Auto: San Andreas",
+      "headline": "Thread on /vr/ naming Crazy Taxi, Alone in the Dark, Grand Theft Auto: San Andreas and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12873554",
-      "matched_game": "Splinter Cell",
+      "matched_game": "Crazy Taxi",
       "matched_games": [
-        "Splinter Cell",
+        "Crazy Taxi",
         "Alone in the Dark",
-        "Grand Theft Auto: San Andreas"
+        "Grand Theft Auto: San Andreas",
+        "Splinter Cell"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -275135,23 +275157,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 20:42 UTC"
-    },
-    {
-      "headline": "What's the most \"out of place\" difficulty you've seen in a game?",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1wwxdd1/whats_the_most_out_of_place_difficulty_youve_seen/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 20:37 UTC",
-      "is_digital_only": false
     }
   ]
 }
