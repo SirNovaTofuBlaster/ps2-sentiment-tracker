@@ -3722,4 +3722,76 @@ await check('the stylesheet link carries a version, so a new page never meets an
     for (const f of ['index.html', 'guide.html']) assert.match(read(f), /href="retro\.css\?v=\d{8}[a-z]?"/, f);
 });
 
+await check('two browsers on one account: adds, removals and a stale browser all reach the other', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const realStorage = context.localStorage, realFetch = context.fetch;
+    let server = null, offline = false;
+    const puts = [];
+    context.fetch = async (url, options = {}) => {
+        if (offline) throw new Error('offline');
+        if (url.endsWith('/api/collection') && options.method === 'GET') return { status: 200, json: async () => ({ list: server }) };
+        if (url.endsWith('/api/collection') && options.method === 'PUT') { const body = JSON.parse(options.body); server = body.list; puts.push(body); return { status: 200, json: async () => ({}) }; }
+        return { status: 200, json: async () => ({}) };
+    };
+    const storageOf = (kept) => ({ getItem: (key) => (kept.has(key) ? kept.get(key) : null), setItem: (key, value) => { kept.set(key, String(value)); }, removeItem: (key) => { kept.delete(key); } });
+    const browsers = { A: { kept: new Map(), list: [] }, B: { kept: new Map(), list: [] } };
+    let current = null;
+    const enter = (name) => {
+        current = browsers[name];
+        context.localStorage = storageOf(current.kept);
+        run(`crowd = { id: '${'a'.repeat(32)}', key: '${'b'.repeat(64)}', confirmed: true }; collection = ${JSON.stringify(current.list)}`);
+    };
+    const leave = () => { current.list = evalJson('collection'); };
+    const titles = () => evalJson(`collection.map(e => e.title + ' x' + e.qty)`).sort();
+    const sync = async () => { await run('crowdSync(true)'); leave(); };
+    const game = (title, condition = 'complete') => ({ title, region: 'PAL', condition, qty: 1, paid: null });
+    try {
+        // A has a game; it reaches the account, and a brand new browser B picks it up without pressing anything
+        browsers.A.list = [game('Kuon', 'sealed')];
+        enter('A'); await sync();
+        assert.deepEqual(server.map(e => e.title), ['Kuon']);
+        enter('B'); await sync();
+        assert.deepEqual(titles(), ['Kuon x1'], 'a new browser takes in the account list');
+        // A adds a game: B has it after its next sync (the reported bug)
+        enter('A'); run(`collection.push(${JSON.stringify(game('Okami'))})`); await sync();
+        enter('B'); await sync();
+        assert.deepEqual(titles(), ['Kuon x1', 'Okami x1'], 'a game added in A shows up in B');
+        // B takes a game out: A loses it too, and it does not come back
+        enter('B'); run(`collection = collection.filter(e => e.title !== 'Kuon')`); await sync();
+        enter('A'); await sync();
+        assert.deepEqual(titles(), ['Okami x1'], 'a removal reaches the other browser');
+        enter('B'); await sync();
+        assert.deepEqual(titles(), ['Okami x1'], 'and nothing brings it back');
+        // a stale browser adds a game and sends before it has looked: the other browser's game is not lost
+        enter('A'); run(`collection.push(${JSON.stringify(game('Yakuza'))})`); await sync();
+        enter('B'); run(`collection.push(${JSON.stringify(game('Rule of Rose'))})`); await sync();
+        assert.deepEqual(server.map(e => e.title).sort(), ['Okami', 'Rule of Rose', 'Yakuza'], 'the account holds both browsers\' games');
+        assert.deepEqual(titles(), ['Okami x1', 'Rule of Rose x1', 'Yakuza x1']);
+        // prices stay in the browser that typed them
+        enter('B'); run(`collection.find(e => e.title === 'Okami').paid = 25`); await sync();
+        enter('A'); await sync();
+        assert.equal(evalJson(`collection.find(e => e.title === 'Okami').paid`), null);
+        assert.ok(puts.every(body => body.list.every(e => !('paid' in e))), 'no price is ever sent');
+        // the service cannot be reached: nothing is lost here and nothing is sent
+        enter('A'); const before = puts.length; offline = true;
+        run(`collection.push(${JSON.stringify(game('Kuon'))})`); await run('crowdSync(true)'); await run('crowdSend()');
+        offline = false; leave();
+        assert.equal(puts.length, before, 'no send while the account list could not be read');
+        assert.ok(titles().includes('Kuon x1'));
+        // an account with no saved list yet takes nothing away
+        server = null; await sync();
+        assert.ok(titles().includes('Okami x1') && titles().includes('Kuon x1'), 'no list saved: the local one stays and is sent');
+        assert.deepEqual(server.map(e => e.title).sort(), titles().map(t => t.replace(/ x1$/, '')).sort());
+        // visiting the tab syncs at most every few minutes
+        run(`crowdSyncedAt = Date.now()`); const sends = puts.length;
+        run(`collection.push(${JSON.stringify(game('Ico'))})`);
+        assert.equal(await run('crowdSync()'), false, 'a sync just done is not repeated at once');
+        assert.equal(puts.length, sends);
+    } finally {
+        context.localStorage = realStorage;
+        context.fetch = realFetch;
+        run(`crowd = { id: '${'a'.repeat(32)}', key: '${'b'.repeat(64)}', confirmed: true }; crowdStats = null; crowdStatsState = 'idle'; collection = []; accountPending = null; syncCollectionAccess()`);
+    }
+});
+
 console.log(`dashboard checks passed (${passed})`);

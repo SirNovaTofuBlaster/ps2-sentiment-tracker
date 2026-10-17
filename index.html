@@ -932,6 +932,8 @@
             loadCollection();   // what this browser has kept of the visitor's collection
             paintPaidSymbols();
             loadCrowd();        // the anonymous sharing account, if the visitor made one
+            crowdSync(true);    // take in what another browser saved to the account, send what is new here
+            if (typeof document.addEventListener === 'function') document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') crowdSync(); });
             loadGachaState();   // coins, what is left in each machine and the prizes won
             registerServiceWorker();
             loadWikiChecks();   // Wikipedia's "collectible" verdicts; the list is drawn again when they arrive
@@ -3044,10 +3046,12 @@
         -------------------------------------------------------------------- */
         const CROWD_URL = 'https://spindle-crowd.nacmh.workers.dev';
         const CROWD_STORE = 'ps2-sentiment-tracker.crowd';
+        const CROWD_BASE = 'ps2-sentiment-tracker.crowdbase';   // the list as this browser last saw it on the account (for the merge)
+        const CROWD_SYNC_EVERY_MS = 5 * 60 * 1000;   // coming back to the tab syncs at most this often (the service allows 60 reads a day)
         const CROWD_MAX_GAMES = 600;
         // confirmed: the visitor ticked "I've saved my key". Until then the key screen shows instead of the collection.
         let crowd = { id: '', key: '', confirmed: false };
-        let crowdStats = null, crowdStatsState = 'idle', crowdSendTimer = null, crowdBusy = false;
+        let crowdStats = null, crowdStatsState = 'idle', crowdSendTimer = null, crowdBusy = false, crowdSyncedAt = 0;
         let accountPending = null, accountPendingName = '';   // what to do once the account exists (the Add that asked for it)
 
         const hasAccount = () => Boolean(crowd.id) && crowd.confirmed;
@@ -3107,35 +3111,78 @@
             const items = crowdCounts();
             if (items.length > CROWD_MAX_GAMES) { crowdSay(`Only collections of up to ${CROWD_MAX_GAMES} different games can be shared.`); return false; }
             crowdBusy = true;
-            // The list itself goes too (no prices), kept private to the account so a new browser can load it back.
-            const list = collection.map(({ title, region, condition, qty }) => ({ title, region, condition, qty }));
-            const { status } = await crowdCall('PUT', '/api/collection', { items, list });
-            crowdBusy = false;
-            crowdSay(status === 200 ? `Sent the counts for ${items.length} game${items.length === 1 ? '' : 's'}.` : crowdProblem(status));
-            return status === 200;
+            try {
+                // First take in what another browser saved (a stale browser must never overwrite a newer list).
+                const pulled = await crowdPullList(true);
+                if (pulled.status !== 200) { crowdSay(crowdProblem(pulled.status)); return false; }
+                const merged = crowdCounts();
+                // The list itself goes too (no prices), kept private to the account so another browser can load it back.
+                const list = collection.map(({ title, region, condition, qty }) => ({ title, region, condition, qty }));
+                const { status } = await crowdCall('PUT', '/api/collection', { items: merged, list });
+                crowdSay(status === 200 ? `Sent the counts for ${merged.length} game${merged.length === 1 ? '' : 's'}.` : crowdProblem(status));
+                if (status === 200) crowdBaseSave(collection);
+                return status === 200;
+            } finally {
+                crowdBusy = false;
+            }
         }
-        // Loads the list this account saved from another browser and adds what is missing here (never removes anything).
-        // Returns { status, added }.
-        async function crowdPullList() {
+        // What this browser last knew the account to hold, kept per account so a removal can tell "I took it out" from "I never had it".
+        const crowdListKey = (entry) => `${entry.title}|${entry.region}|${entry.condition}`;
+        function crowdBaseLoad() {
+            try {
+                const raw = JSON.parse(localStorage.getItem(CROWD_BASE) || 'null');
+                return raw && raw.id === crowd.id ? cleanCollection(raw.list) : [];
+            } catch { return []; }
+        }
+        function crowdBaseSave(list) {
+            try {
+                localStorage.setItem(CROWD_BASE, JSON.stringify({ id: crowd.id, list: list.map(({ title, region, condition, qty }) => ({ title, region, condition, qty })) }));
+            } catch { /* the next sync then only adds, it never removes */ }
+        }
+        // Brings the account's saved list together with this browser's, game by game (title, region, condition), against what
+        // this browser last saw on the account (the base): a count only this browser changed stays, a count only the account
+        // changed is taken, a count both changed takes the larger, and a game taken out in one place leaves the other.
+        // With no base (a new browser) it only adds and raises, so nothing is ever lost on a first meeting. Prices stay here.
+        // `quiet`: the caller sends next, so no send is scheduled. Returns { status, added, saved, same }; `same` is true
+        // when the merged list equals what the account holds (nothing left to send).
+        async function crowdPullList(quiet = false) {
             const { status, json } = await crowdCall('GET', '/api/collection');
             if (status !== 200) return { status, added: 0 };
-            const saved = cleanCollection(Array.isArray(json?.list) ? json.list : []);
-            let added = 0;
-            for (const entry of saved) {
-                const held = collection.find(e => e.title === entry.title && e.region === entry.region && e.condition === entry.condition);
-                if (held) {
-                    if (entry.qty > held.qty) { added += entry.qty - held.qty; held.qty = entry.qty; }
-                } else if (collection.length < COLLECTION_MAX) {
-                    collection.push({ title: entry.title, region: entry.region, condition: entry.condition, qty: entry.qty, paid: null });
-                    added += entry.qty;
-                }
+            if (!Array.isArray(json?.list)) return { status, added: 0, saved: 0, same: false };   // nothing saved yet: nothing to merge
+            const remote = new Map(cleanCollection(json.list).map(e => [crowdListKey(e), e]));
+            const base = new Map(crowdBaseLoad().map(e => [crowdListKey(e), e]));
+            const local = new Map(collection.map(e => [crowdListKey(e), e]));
+            const next = [];
+            let added = 0, changed = false, same = true;
+            for (const key of new Set([...local.keys(), ...remote.keys(), ...base.keys()])) {
+                const l = local.get(key)?.qty || 0, r = remote.get(key)?.qty || 0, b = base.get(key)?.qty || 0;
+                const qty = l === b ? r : (r === b ? l : Math.max(l, r));
+                if (qty > l) added += qty - l;
+                if (qty !== l) changed = true;
+                if (qty !== r) same = false;
+                const entry = local.get(key) || remote.get(key);
+                if (qty > 0 && next.length < COLLECTION_MAX) next.push({ title: entry.title, region: entry.region, condition: entry.condition, qty, paid: local.get(key)?.paid ?? null });
             }
-            if (added) {
-                saveCollection();
+            if (changed) {
+                collection = next;
+                saveCollection(true);
                 try { refreshCollection(); } catch { /* shown when My collection is opened */ }
                 updateCollectionTab();
             }
-            return { status, added, saved: saved.length };
+            if (same) crowdBaseSave(collection); else if (!quiet) crowdScheduleSend();
+            return { status, added, saved: remote.size, same };
+        }
+        // Syncs this browser with the account: take in the account's list, then send ours when it differs.
+        async function crowdSync(force = false) {
+            if (!hasAccount() || crowdBusy) return false;
+            if (!force && Date.now() - crowdSyncedAt < CROWD_SYNC_EVERY_MS) return false;
+            crowdSyncedAt = Date.now();
+            crowdBusy = true;
+            let result;
+            try { result = await crowdPullList(true); } finally { crowdBusy = false; }
+            if (result.status !== 200) return false;
+            if (!result.same) return crowdSend();
+            return true;
         }
         async function crowdLoadList() {
             if (!hasAccount()) return false;
@@ -3437,7 +3484,7 @@
             updateCollectionTab();
         }
 
-        function saveCollection() {
+        function saveCollection(quiet = false) {
             try {
                 localStorage.setItem(COLLECTION_KEY, JSON.stringify(collection));
                 collectionKept = true;
@@ -3445,7 +3492,7 @@
                 collectionKept = false;   // private window or blocked storage: it lasts until the page closes
             }
             updateCollectionTab();
-            crowdScheduleSend();
+            if (!quiet) crowdScheduleSend();
         }
 
         function updateCollectionTab() {
