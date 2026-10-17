@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-17: an anonymous account is needed to add games
+
+- **My collection** shows "Create an account to start your collection" until there is an account. Pressing **Add** on the Library or Underrated page (or the form on My collection) opens a "Create an account to add games" dialog (`requireAccount()`), and the game that was being added is added once the account is live.
+- Creating the account shows the key first (Copy, Save as a text file, "I've saved my key") before the collection opens; a visitor who closes the page in between sees the key screen again.
+- Having an account means the counts of sealed, complete and loose copies are sent automatically (there is no tick any more). A game list saved on the device before comes along. Signing out hides the games until the key is pasted again; the list stays on the device.
+- New tabs once signed in: **Report a purchase** and **Account** (Copy my key, Send my counts now, Sign out on this device, Delete my account and data).
+- Copy follows the approved preview: "Create", not "Make", and plainer sentences. Yellow is also used for the account screens' small heading, notice and message (`account-eyebrow`, `account-warn`, `account-msg`).
+- `guide.html`: "Accounts and sharing"; AGENTS.md map and `docs/CROWD.md` say the same. `tests/dashboard_check.mjs`: the page checks run signed in; one test covers the gate, the dialog, the key screen, sign in, sign out and delete.
+
 ## 2026-10-17: Share data (opt-in crowd data) on the dashboard
 
 - My collection has a third tab, **Share data**: an anonymous account (random id and key, shown for copying; no email), a tick to send per-game counts of sealed, complete and loose copies, a **Report a purchase** form, sign out, and delete my account and data. Nothing is sent until an account exists and sharing is ticked (`crowdCounts()` sends counts only; one send after a burst of changes).

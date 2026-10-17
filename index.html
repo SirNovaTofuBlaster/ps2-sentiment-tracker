@@ -466,7 +466,8 @@
       <div class="view-tabs coll-tabs" role="tablist" aria-label="My collection">
         <button type="button" id="collTabGames" role="tab" aria-selected="true" aria-controls="collectionSection" onclick="showCollectionTab('games')" class="view-tab is-active">My games</button>
         <button type="button" id="collTabPrizes" role="tab" aria-selected="false" aria-controls="prizesSection" onclick="showCollectionTab('prizes')" class="view-tab hidden">My gacha prizes <span id="collTabPrizesCount" class="view-tab-count hidden"></span></button>
-        <button type="button" id="collTabShare" role="tab" aria-selected="false" aria-controls="shareSection" onclick="showCollectionTab('share')" class="view-tab">Share data</button>
+        <button type="button" id="collTabReport" role="tab" aria-selected="false" aria-controls="reportSection" onclick="showCollectionTab('report')" class="view-tab hidden">Report a purchase</button>
+        <button type="button" id="collTabShare" role="tab" aria-selected="false" aria-controls="shareSection" onclick="showCollectionTab('share')" class="view-tab hidden">Account</button>
       </div>
       <div id="prizesSection" class="hidden bg-ps2card border border-ps2border rounded-md p-6">
         <div class="lb-section-header"><h2>My Gacha Prizes</h2></div>
@@ -478,7 +479,8 @@
         </div>
         <p id="prizesNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
       </div>
-      <div id="collectionSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+      <div id="collectionGate" class="account-gate hidden bg-ps2card border border-ps2border rounded-md p-6"></div>
+      <div id="collectionSection" class="hidden bg-ps2card border border-ps2border rounded-md p-6">
         <div class="lb-section-header"><h2>My Collection</h2></div>
         <p id="collectionSummary" class="text-xs text-slate-400 mb-4"></p>
         <form id="collectionForm" class="collection-form" onsubmit="return addFromForm(event)" autocomplete="off">
@@ -519,32 +521,33 @@
         </div>
         <p id="collectionNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
       </div>
+      <div id="reportSection" class="hidden bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header"><h2>Report a purchase</h2></div>
+        <p class="text-xs text-slate-400 mb-4">What you really paid for one copy. A price is only shown once five different people have reported the same game, region and condition.</p>
+        <form id="reportForm" onsubmit="return crowdReport(event)" autocomplete="off">
+          <label class="sr-only" for="reportGame">Game</label>
+          <input type="text" id="reportGame" list="reportGameList" oninput="crowdSuggest()" placeholder="Game, e.g. Kuon" spellcheck="false" class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white w-full">
+          <datalist id="reportGameList"></datalist>
+          <div class="coll-fields mt-2">
+            <label class="sr-only" for="reportRegion">Region</label>
+            <select id="reportRegion" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200"><option value="PAL">PAL (UK / Europe)</option><option value="US">US (NTSC-U)</option></select>
+            <label class="sr-only" for="reportCondition">Condition</label>
+            <select id="reportCondition" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200"><option value="complete">Complete (box and manual)</option><option value="loose">Loose (disc only)</option><option value="sealed">Sealed</option></select>
+            <label class="sr-only" for="reportPrice">Price paid for one copy</label>
+            <input type="number" id="reportPrice" min="0.01" max="20000" step="0.01" placeholder="Price paid" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white coll-paid-input">
+            <label class="sr-only" for="reportCurrency">Currency</label>
+            <select id="reportCurrency" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200"><option value="GBP">GBP</option><option value="EUR">EUR</option><option value="USD">USD</option></select>
+            <label class="sr-only" for="reportMonth">Month bought</label>
+            <input type="month" id="reportMonth" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white" title="Month you bought it">
+            <button type="submit" class="brand-btn brand-btn-primary py-2 px-4">Send</button>
+          </div>
+        </form>
+        <p id="reportMessage" class="text-xs text-amber-300 mt-3 min-h-[1rem]" role="status"></p>
+      </div>
       <div id="shareSection" class="hidden bg-ps2card border border-ps2border rounded-md p-6">
-        <div class="lb-section-header"><h2>Share data (optional)</h2></div>
+        <div class="lb-section-header"><h2>Account</h2></div>
         <p id="shareSummary" class="text-xs text-slate-400 mb-4"></p>
         <div id="shareAccount"></div>
-        <div id="shareReportBox" class="hidden mt-6">
-          <h3 class="text-sm font-semibold text-white mb-2">Report a purchase</h3>
-          <p class="text-xs text-slate-400 mb-3">What you really paid for a copy. Prices are only shown once five different people have reported the same game, region and condition.</p>
-          <form id="reportForm" class="crowd-form" onsubmit="return crowdReport(event)" autocomplete="off">
-            <label class="sr-only" for="reportGame">Game</label>
-            <input type="text" id="reportGame" list="reportGameList" oninput="crowdSuggest()" placeholder="Game, e.g. Kuon" spellcheck="false" class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white w-full">
-            <datalist id="reportGameList"></datalist>
-            <div class="coll-fields">
-              <label class="sr-only" for="reportRegion">Region</label>
-              <select id="reportRegion" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200"><option value="PAL">PAL (UK / Europe)</option><option value="US">US (NTSC-U)</option></select>
-              <label class="sr-only" for="reportCondition">Condition</label>
-              <select id="reportCondition" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200"><option value="complete">Complete (box and manual)</option><option value="loose">Loose (disc only)</option><option value="sealed">Sealed</option></select>
-              <label class="sr-only" for="reportPrice">Price paid for one copy</label>
-              <input type="number" id="reportPrice" min="0.01" max="20000" step="0.01" placeholder="Price paid" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white coll-paid-input">
-              <label class="sr-only" for="reportCurrency">Currency</label>
-              <select id="reportCurrency" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200"><option value="GBP">GBP</option><option value="EUR">EUR</option><option value="USD">USD</option></select>
-              <label class="sr-only" for="reportMonth">Month bought</label>
-              <input type="month" id="reportMonth" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white" title="Month you bought it">
-              <button type="submit" class="brand-btn brand-btn-primary py-2 px-4">Send</button>
-            </div>
-          </form>
-        </div>
         <p id="shareMessage" class="text-xs text-amber-300 mt-3 min-h-[1rem]" role="status"></p>
         <p id="shareNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
       </div>
@@ -552,6 +555,9 @@
   </main>
 
   <!-- One game's price history, opened from a "chart" button (openGameChart()). -->
+  <div id="accountDialog" class="account-dialog hidden" role="dialog" aria-modal="true" aria-label="Create an account" onkeydown="accountDialogKey(event)" onclick="if (event.target === this) accountDialogClose()">
+    <div class="account-card" id="accountDialogBody"></div>
+  </div>
   <div id="gameChart" class="chart-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="gameChartTitle" onclick="if (event.target === this) closeGameChart()">
     <div class="chart-dialog bg-ps2card">
       <div class="chart-dialog-head">
@@ -773,6 +779,7 @@
             try { document.getElementById(VIEWS[view][1])?.scrollIntoView?.({ inline: 'nearest', block: 'nearest' }); } catch { /* the tab row slides sideways on a phone; nothing to do without it */ }
             drawPending(view);
             currentView = view;
+            if (view === 'collection') { try { syncCollectionAccess(); } catch { /* the tab opens as it was */ } }
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
             if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'gacha' || view === 'underrated') ensureCoverIndex();
             if (view === 'library') ensureGenres();
@@ -2994,23 +3001,28 @@
             return `<p class="rare-note" title="Figures from public articles, not live prices. Most of them repeat PriceCharting; see rare_reference_prices.json for the source and date of each.">Articles (not live): ${parts.join(' · ')}</p>`;
         }
 
-        /* ---- Crowd data (opt-in) -----------------------------------------------
-           Off until the visitor makes an anonymous account on My collection > Share data. Then, and only then, the page can
-           send (1) how many sealed, complete and loose copies they own of each game, if they tick it, and (2) a purchase
-           report they fill in. The service (worker/, docs/CROWD.md) keeps a random id and the hash of a random key, no
-           email, name or address. It publishes a figure only when 5 or more different accounts agree. Reading the
-           published figures asks the service for one file when a game page or this tab opens (it sees the visitor's address).
+        /* ---- Accounts and crowd data ------------------------------------------
+           The collection needs an anonymous account (made on My collection, or when Add is pressed on the Library or
+           Underrated page): a random id and a random key, no email and no name. Having the account means the counts of
+           sealed, complete and loose copies of each game are sent to the service (worker/, docs/CROWD.md) and that
+           purchase reports can be sent. The service keeps a hash of the key, never an address, and publishes a figure
+           only when 5 or more different accounts agree. The list itself stays in this browser. Reading the published
+           figures asks the service for one file when a game page or the Account tab opens (it sees the visitor's address).
         -------------------------------------------------------------------- */
         const CROWD_URL = 'https://spindle-crowd.nacmh.workers.dev';
         const CROWD_STORE = 'ps2-sentiment-tracker.crowd';
         const CROWD_MAX_GAMES = 600;
-        let crowd = { id: '', key: '', share: false };   // the account and the choice, kept in this browser only
+        // confirmed: the visitor ticked "I've saved my key". Until then the key screen shows instead of the collection.
+        let crowd = { id: '', key: '', confirmed: false };
         let crowdStats = null, crowdStatsState = 'idle', crowdSendTimer = null, crowdBusy = false;
+        let accountPending = null, accountPendingName = '';   // what to do once the account exists (the Add that asked for it)
+
+        const hasAccount = () => Boolean(crowd.id) && crowd.confirmed;
 
         function loadCrowd() {
             try {
                 const raw = JSON.parse(localStorage.getItem(CROWD_STORE) || '{}');
-                if (/^[0-9a-f]{32}$/.test(raw?.id) && /^[0-9a-f]{64}$/.test(raw?.key)) crowd = { id: raw.id, key: raw.key, share: raw.share === true };
+                if (/^[0-9a-f]{32}$/.test(raw?.id) && /^[0-9a-f]{64}$/.test(raw?.key)) crowd = { id: raw.id, key: raw.key, confirmed: raw.confirmed !== false };
             } catch { /* no account */ }
         }
         function saveCrowd() {
@@ -3019,8 +3031,10 @@
             } catch { /* the account then lasts until the page closes */ }
         }
         function crowdSay(text) {
-            const box = document.getElementById('shareMessage');
-            if (box) box.textContent = text;
+            for (const id of ['gateMessage', 'shareMessage', 'reportMessage']) {
+                const box = document.getElementById(id);
+                if (box) box.textContent = text;
+            }
         }
         async function crowdCall(method, path, body) {
             if (typeof fetch !== 'function') return { status: 0 };
@@ -3040,7 +3054,7 @@
             return status === 401 ? 'The service did not accept this account. Sign in again with your saved key.'
                 : status === 429 ? 'Too many today. Try again tomorrow.'
                 : status === 400 ? 'The service did not accept that. Check the details.'
-                : 'Could not reach the sharing service. Try again later.';
+                : 'Could not reach the service. Try again in a little while.';
         }
 
         // What My games says, as the service takes it: per game (priceKey), how many sealed, complete and loose copies.
@@ -3056,7 +3070,7 @@
             return [...byGame.values()];
         }
         async function crowdSend() {
-            if (!crowd.id || !crowd.share || crowdBusy) return false;
+            if (!hasAccount() || crowdBusy) return false;
             const items = crowdCounts();
             if (items.length > CROWD_MAX_GAMES) { crowdSay(`Only collections of up to ${CROWD_MAX_GAMES} different games can be shared.`); return false; }
             crowdBusy = true;
@@ -3066,55 +3080,156 @@
             return status === 200;
         }
         function crowdScheduleSend() {
-            if (!crowd.id || !crowd.share || typeof setTimeout !== 'function') return;
+            if (!hasAccount() || typeof setTimeout !== 'function') return;
             clearTimeout(crowdSendTimer);
             crowdSendTimer = setTimeout(() => { crowdSend(); }, 3000);   // one send after a burst of changes
         }
+
+        /* The account screens: one on My collection itself, one as a dialog when Add is pressed elsewhere. */
+        function accountGateHtml(page) {
+            const keyStep = Boolean(crowd.id) && !crowd.confirmed;
+            if (keyStep) {
+                return `<div class="account-eyebrow is-ok">ACCOUNT CREATED</div>
+                    <h2 class="account-title">Save your key before you carry on</h2>
+                    <p class="account-text">This key is your account. You'll need it to get back in on another phone or computer, and nobody, including us, can recover it for you.</p>
+                    <div class="account-key" id="gateKey">${esc(crowd.id)}.${esc(crowd.key)}</div>
+                    <div class="account-row"><button type="button" class="brand-btn brand-btn-primary" onclick="crowdCopyKey()">Copy my key</button>
+                        <button type="button" class="brand-btn" onclick="crowdSaveKeyFile()">Save as a text file</button></div>
+                    <div class="account-warn">A password manager is the safest place to keep it. If you lose it, you can create a new account, but the old one can't be opened again.</div>
+                    <label class="account-tick"><input type="checkbox" id="gateSaved" onchange="crowdKeyTick(this.checked)" class="accent-ps2neon"> I've saved my key</label>
+                    <div class="account-row"><button type="button" id="gateContinue" class="brand-btn brand-btn-primary" onclick="crowdKeyContinue()" disabled>${accountPending ? `Continue and add ${esc(accountPendingName || 'the game')}` : 'Continue to my collection'}</button></div>
+                    <p id="gateMessage" class="account-msg" role="status"></p>`;
+            }
+            const saved = collection.length
+                ? `<div class="account-warn">You already have ${collection.length} game${collection.length === 1 ? '' : 's'} saved on this device. They'll come with you into your new account.</div>` : '';
+            const form = `<form class="account-signin" onsubmit="return crowdSignIn(event)" autocomplete="off">
+                    <label for="gateKeyInput" class="account-text">${page ? 'Already have a key?' : 'Got a key? Paste it here'}</label>
+                    <div class="account-row"><input type="password" id="gateKeyInput" placeholder="Paste your key here" spellcheck="false" class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white min-w-0 flex-1">
+                        <button type="submit" class="brand-btn">Sign in</button></div></form>`;
+            const panels = page ? `<div class="account-panels">
+                    <div class="account-panel"><div class="account-eyebrow is-ok">WHAT IS SHARED</div>
+                        <p>For each game, how many <b>sealed</b>, <b>complete</b> and <b>loose</b> copies you own. A count only shows once five or more people agree, so nobody can pick you out.</p>
+                        <p>If you like, you can also send <b>purchase reports</b>: game, region, condition, price and month.</p></div>
+                    <div class="account-panel"><div class="account-eyebrow is-bad">STAYS PRIVATE</div>
+                        <p>Your name, email or address. What you paid for the games in your list. Your list as a file.</p>
+                        <p class="account-dim">You can delete your account whenever you want, and everything you sent goes with it.</p></div></div>` : '';
+            return `<div class="account-eyebrow">${page ? 'STEP 1 OF 2 · YOUR ACCOUNT' : `ADDING ${esc((accountPendingName || 'A GAME').toUpperCase())}`}</div>
+                <h2 class="account-title">${page ? 'Create an account to start your collection' : 'Create an account to add games'}</h2>
+                <p class="account-text">${page
+                    ? "Spindle's prices get better when collectors share what they own and what they paid. Your account is just a random key, so we never need your email or your name. In return, the counts from your collection help keep the prices honest."
+                    : "Your account is an anonymous random key, so there's nothing to fill in. Your counts of sealed, complete and loose copies help build prices that don't depend on eBay."}</p>
+                <div class="account-row"><button type="button" class="brand-btn brand-btn-primary" onclick="crowdCreate()">Create my anonymous account</button>
+                    ${page ? '<span class="account-dim">It takes a second, and you\'ll get a key to save.</span>' : ''}</div>
+                ${form}${saved}${panels}
+                <p id="gateMessage" class="account-msg" role="status"></p>
+                ${page ? '' : '<div class="account-row"><button type="button" class="account-later" onclick="accountDialogClose()">Not now</button></div>'}`;
+        }
+        function paintAccountGate() {
+            const dialog = document.getElementById('accountDialog');
+            const body = document.getElementById('accountDialogBody');
+            const gate = document.getElementById('collectionGate');
+            const dialogOpen = dialog && !dialog.classList.contains('hidden');
+            if (body) body.innerHTML = dialogOpen ? accountGateHtml(false) : '';
+            if (gate) gate.innerHTML = dialogOpen ? '' : accountGateHtml(true);
+        }
+        function accountDialogOpen() {
+            document.getElementById('accountDialog')?.classList.remove('hidden');
+            paintAccountGate();
+            try { document.querySelector('#accountDialogBody .brand-btn')?.focus?.(); } catch { /* focus is a courtesy */ }
+        }
+        function accountDialogClose() {
+            document.getElementById('accountDialog')?.classList.add('hidden');
+            if (!hasAccount()) accountPending = null;   // "Not now" drops the Add that asked
+            paintAccountGate();
+        }
+        function accountDialogKey(event) {
+            if (event.key === 'Escape') accountDialogClose();
+        }
+        // Called before an Add: true when there is an account; otherwise opens the dialog, and `run` repeats the Add once it exists.
+        function requireAccount(run, name = '') {
+            if (hasAccount()) return true;
+            accountPending = typeof run === 'function' ? run : null;
+            accountPendingName = String(name || '');
+            accountDialogOpen();
+            return false;
+        }
+        function accountDone() {
+            document.getElementById('accountDialog')?.classList.add('hidden');
+            const run = accountPending;
+            accountPending = null;
+            accountPendingName = '';
+            syncCollectionAccess();
+            renderShare();
+            updateCollectionTab();
+            if (typeof run === 'function') { try { run(); } catch { /* the Add shows its own message */ } }
+            crowdSend();
+        }
+        function syncCollectionAccess() {
+            const signedIn = hasAccount();
+            for (const id of ['collTabReport', 'collTabShare']) document.getElementById(id)?.classList.toggle('hidden', !signedIn);
+            showCollectionTab(collectionTab);
+        }
+
         async function crowdCreate() {
-            crowdSay('Making your account…');
+            crowdSay('Creating your account…');
             const { status, json } = await crowdCall('POST', '/api/register');
             if (status !== 201 || !/^[0-9a-f]{32}$/.test(json?.id) || !/^[0-9a-f]{64}$/.test(json?.key)) { crowdSay(crowdProblem(status)); return; }
-            crowd = { id: json.id, key: json.key, share: false };
+            crowd = { id: json.id, key: json.key, confirmed: false };
             saveCrowd();
-            renderShare();
-            crowdSay('Account made. Copy your key now and keep it somewhere safe: it is the only way back in on another device, and nobody (including us) can recover it.');
+            paintAccountGate();
+            showCollectionTab(collectionTab);
+        }
+        function crowdKeyTick(on) {
+            const button = document.getElementById('gateContinue');
+            if (button) button.disabled = !on;
+        }
+        function crowdKeyContinue() {
+            if (document.getElementById('gateSaved')?.checked !== true) { crowdSay('Tick the box once you have saved your key.'); return; }
+            crowd.confirmed = true;
+            saveCrowd();
+            accountDone();
         }
         function crowdSignIn(event) {
             event?.preventDefault?.();
-            const text = String(document.getElementById('shareKeyInput')?.value || '').trim();
+            const text = String(document.getElementById('gateKeyInput')?.value || '').trim();
             const match = text.match(/^([0-9a-f]{32})\.([0-9a-f]{64})$/);
             if (!match) { crowdSay('That is not a key. It looks like two long strings of letters and numbers joined by a dot.'); return false; }
-            crowd = { id: match[1], key: match[2], share: false };
+            crowd = { id: match[1], key: match[2], confirmed: true };
             saveCrowd();
-            renderShare();
-            crowdSay('Signed in on this device.');
+            accountDone();
             return false;
         }
         function crowdSignOut() {
-            crowd = { id: '', key: '', share: false };
+            crowd = { id: '', key: '', confirmed: false };
             saveCrowd();
-            renderShare();
-            crowdSay('Signed out on this device. Your account and what you sent stay on the service until you delete them.');
+            syncCollectionAccess();
+            paintAccountGate();
         }
         async function crowdDelete() {
             if (!crowd.id) return;
             const { status } = await crowdCall('DELETE', '/api/account');
             if (status === 200 || status === 401) {
-                crowd = { id: '', key: '', share: false };
+                crowd = { id: '', key: '', confirmed: false };
                 saveCrowd();
-                renderShare();
+                syncCollectionAccess();
+                paintAccountGate();
                 crowdSay(status === 200 ? 'Your account and everything you sent have been deleted.' : 'That account no longer exists. Signed out.');
             } else crowdSay(crowdProblem(status));
-        }
-        function crowdSetShare(on) {
-            crowd.share = Boolean(on);
-            saveCrowd();
-            if (crowd.share) crowdSend(); else crowdSay('Sharing is off. What you already sent stays until you delete your account.');
         }
         function crowdCopyKey() {
             const text = `${crowd.id}.${crowd.key}`;
             const done = () => crowdSay('Key copied. Paste it somewhere safe.');
             try { navigator.clipboard.writeText(text).then(done, () => crowdSay('Could not copy. Select the key and copy it by hand.')); } catch { crowdSay('Could not copy. Select the key and copy it by hand.'); }
+        }
+        function crowdSaveKeyFile() {
+            try {
+                const blob = new Blob([`Spindle account key (keep it private)\n${crowd.id}.${crowd.key}\n`], { type: 'text/plain' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'spindle-key.txt';
+                link.click();
+                setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+            } catch { crowdSay('Could not save a file. Use Copy my key instead.'); }
         }
 
         function resolveGameName(text) {
@@ -3127,6 +3242,7 @@
         }
         async function crowdReport(event) {
             event?.preventDefault?.();
+            if (!hasAccount()) return false;
             const game = resolveGameName(String(document.getElementById('reportGame').value || '').trim());
             if (!game) { crowdSay('Choose a game from the suggestions (start typing and pick one).'); return false; }
             const price = Number(document.getElementById('reportPrice').value);
@@ -3135,42 +3251,34 @@
                 currency: document.getElementById('reportCurrency').value, price, month: document.getElementById('reportMonth').value };
             const { status } = await crowdCall('POST', '/api/report', body);
             if (status === 201) {
-                crowdSay(`Thank you. Your report for ${game ? game : 'the game'} was sent. It shows on the game's page once five people have reported it.`);
+                crowdSay(`Thank you. Your report for ${game} was sent. It shows on the game's page once five people have reported it.`);
                 document.getElementById('reportPrice').value = '';
                 document.getElementById('reportGame').value = '';
             } else crowdSay(status === 400 ? 'The service did not accept that report. Check the month (not in the future, within two years) and the price.' : crowdProblem(status));
             return false;
         }
 
+        // The Account tab (only once there is an account).
         function renderShare() {
             const box = document.getElementById('shareAccount');
             if (!box) return;
-            const signedIn = Boolean(crowd.id);
+            const signedIn = hasAccount();
             document.getElementById('shareSummary').textContent = signedIn
-                ? 'You have an anonymous account on this device. Everything here is optional.'
-                : 'Help build prices that do not depend on eBay. You make an anonymous account (a random key, no email, no name), and you can share how many copies you own and what you paid for games you bought. Nothing is sent until you do.';
+                ? 'You have an anonymous account on this device. Your collection counts are sent automatically, and purchase reports are up to you.' : '';
             box.innerHTML = signedIn
                 ? `<p class="text-xs text-slate-300 mb-3">Account <span class="font-mono-custom">${esc(crowd.id.slice(0, 8))}…</span></p>
-                   <label class="text-xs text-slate-300 flex items-center gap-2 mb-3"><input type="checkbox" id="shareCounts" ${crowd.share ? 'checked' : ''} onchange="crowdSetShare(this.checked)" class="accent-ps2neon"> Send how many sealed, complete and loose copies of each game I own (counts only)</label>
                    <div class="flex flex-wrap gap-2">
                      <button type="button" class="brand-btn text-ps2neon" onclick="crowdCopyKey()">Copy my key</button>
                      <button type="button" class="brand-btn text-ps2neon" onclick="crowdSend()">Send my counts now</button>
                      <button type="button" class="brand-btn" onclick="crowdSignOut()">Sign out on this device</button>
                      <button type="button" class="brand-btn text-spindle-red" onclick="crowdDelete()">Delete my account and data</button>
-                   </div>`
-                : `<div class="flex flex-wrap gap-2 mb-4"><button type="button" class="brand-btn brand-btn-primary" onclick="crowdCreate()">Make an anonymous account</button></div>
-                   <form onsubmit="return crowdSignIn(event)" class="flex flex-wrap gap-2 items-center" autocomplete="off">
-                     <label class="sr-only" for="shareKeyInput">Your saved key</label>
-                     <input type="password" id="shareKeyInput" placeholder="Already have a key? Paste it here" spellcheck="false" class="bg-ps2dark border border-ps2border rounded text-sm px-3 py-2 text-white min-w-0 flex-1">
-                     <button type="submit" class="brand-btn">Sign in</button>
-                   </form>`;
-            document.getElementById('shareReportBox').classList.toggle('hidden', !signedIn);
+                   </div>` : '';
             const month = document.getElementById('reportMonth');
             if (month && !month.value) month.value = new Date().toISOString().slice(0, 7);
             document.getElementById('shareNote').textContent =
-                'What is sent, and only if you choose to: your account id and key (the service keeps only a hash of the key), per game how many sealed, complete and loose copies you own, and each purchase report (game, region, condition, price, currency, the month you bought it). '
-                + 'Never sent: your name, email, what you paid in My games, or your list as a file. A game goes as its name in plain lower-case words (the same spelling the price lookups use). The service does not store your network address; it uses it for a moment to limit sign-ups. '
-                + 'A price or count is published only when five or more different accounts agree; one far from the others is held back, never deleted. Sign out, or delete your account to remove everything you sent. Lose the key and the account cannot be recovered. '
+                'What gets sent: your account id and key (the service keeps only a hash of the key), how many sealed, complete and loose copies you own of each game, and each purchase report you choose to send (game, region, condition, price, currency and the month you bought it). '
+                + 'A game goes by its plain lower-case name, the same spelling the price lookups use. Your name, email, address, what you paid in My games and your list as a file all stay on your device. The service does not store your network address; it uses it for a moment to limit sign-ups. '
+                + 'A price or count is published only when five or more different accounts agree, and a price far from the others is held back, never deleted. Signing out only forgets the key on this device; deleting your account removes everything you sent. If you lose the key, the account cannot be recovered. '
                 + 'Reading the published figures asks the service for one file when a game page or this tab opens, which shows it your address.';
         }
 
@@ -3354,7 +3462,7 @@
             }).join('');
             ensureCoverIndex();
             document.getElementById('collectionNote').textContent =
-                'Your list is kept only in this browser (there is no login, and it is not sent anywhere unless you turn on Share data), so clearing the browser\'s data or switching device loses it: use Save a backup file to keep a copy, and Load a backup file to restore it. '
+                'Your list is kept only in this browser (there is no login; your counts of how many copies you own go to your anonymous account, and nothing else leaves), so clearing the browser\'s data or switching device loses it: use Save a backup file to keep a copy, and Load a backup file to restore it. '
                 + (coversShown ? 'Cover pictures are the one thing that leaves your browser: it asks thumbnails.libretro.com (the Libretro thumbnail collection) for each cover, which names the game and shows that site your address; untick Show cover images to stop that. Cover art belongs to its publishers and is shown small. ' : '')
                 + 'Values are the median eBay asking price today for that region (PAL on eBay UK, US on eBay US): asking prices, not what anything sold for, and not what a buyer would pay you. '
                 + 'Complete uses the median of complete copies where eBay has them; loose uses the overall median; sealed has no eBay figure, so it uses a dated article price where one exists.'
@@ -3657,6 +3765,7 @@
                 <a class="brand-btn" href="https://www.metacritic.com/search/${esc(encodeURIComponent(game.title))}/" target="_blank" rel="noopener noreferrer">Find reviews <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>`;
         }
         function underratedAdd(title, button) {
+            if (!requireAccount(() => underratedAdd(title, button), title)) return false;
             const ok = addToCollection(title, 'US', 'complete');
             if (button) button.textContent = ok ? 'Added (US, complete)' : 'Could not add';
             if (ok) { try { updateCollectionTab(); refreshCollection(); } catch { /* shown when the tab opens */ } }
@@ -4082,15 +4191,20 @@
 
         // My collection has two lists: the games the visitor owns and the prizes won in the machines.
         function showCollectionTab(name) {
-            collectionTab = name === 'prizes' ? 'prizes' : name === 'share' ? 'share' : 'games';
-            document.getElementById('collectionSection').classList.toggle('hidden', collectionTab !== 'games');
-            document.getElementById('prizesSection').classList.toggle('hidden', collectionTab !== 'prizes');
-            document.getElementById('shareSection').classList.toggle('hidden', collectionTab !== 'share');
-            for (const [id, key] of [['collTabGames', 'games'], ['collTabPrizes', 'prizes'], ['collTabShare', 'share']]) {
+            const signedIn = hasAccount();
+            collectionTab = name === 'prizes' ? 'prizes' : (name === 'share' || name === 'report') && signedIn ? name : 'games';
+            const show = (id, on) => document.getElementById(id)?.classList.toggle('hidden', !on);
+            show('collectionSection', collectionTab === 'games' && signedIn);
+            show('collectionGate', collectionTab === 'games' && !signedIn);
+            show('prizesSection', collectionTab === 'prizes');
+            show('reportSection', collectionTab === 'report');
+            show('shareSection', collectionTab === 'share');
+            for (const [id, key] of [['collTabGames', 'games'], ['collTabPrizes', 'prizes'], ['collTabReport', 'report'], ['collTabShare', 'share']]) {
                 const button = document.getElementById(id);
                 button.classList.toggle('is-active', collectionTab === key);
                 button.setAttribute?.('aria-selected', String(collectionTab === key));
             }
+            if (collectionTab === 'games' && !signedIn) paintAccountGate();
             if (collectionTab === 'prizes') renderPrizes();
             if (collectionTab === 'share') { renderShare(); ensureCrowdStats(); }
         }
@@ -4411,6 +4525,7 @@
         function libraryAddPicked() {
             if (!libraryPicked) return false;
             const { game, i } = libraryPicked;
+            if (!requireAccount(() => libraryAddPicked(), game.title)) return false;
             const region = document.getElementById('libraryAddRegion').value;
             const condition = document.getElementById('libraryAddCondition').value;
             libraryRegion = region === 'US' ? 'US' : 'PAL';
@@ -4604,6 +4719,7 @@
 
         function addFromForm(event) {
             event?.preventDefault?.();
+            if (!requireAccount(() => addFromForm(), '')) return false;
             const message = document.getElementById('collectionMessage');
             const text = document.getElementById('collectionGame').value.trim();
             closeCollectionSuggestions();
