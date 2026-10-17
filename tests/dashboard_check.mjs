@@ -27,6 +27,7 @@ function stubElement(id = '') {
         },
         attributes: {},
         setAttribute(name, value) { this.attributes[name] = String(value); },
+        removeAttribute(name) { delete this.attributes[name]; },
         getAttribute(name) { return this.attributes[name] ?? null; },
         addEventListener() {}, scrollIntoView() {}, focus() {}, reset() {}, click() {}, remove() {},
         appendChild(child) { this.children.push(child); },
@@ -1390,7 +1391,7 @@ await check('games first: what was named in the last day leads, and the table op
         'body .view-tab.hidden', 'body .is-folded > .list-extra', 'body .list-toggle.hidden', 'body .view-tab i, body .view-tab-count:not(.hidden)', 'body .price-links::-webkit-scrollbar', 'body #feedSection thead',
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
         'body .chart-tools::-webkit-scrollbar', 'body .shelf::-webkit-scrollbar', 'body .shelf-arrow.hidden',
-    'body .library-add.hidden', 'body #feedTableBody td[data-col="headline"][data-empty]', 'body .account-dialog.hidden',
+    'body .library-add.hidden', 'body #feedTableBody td[data-col="headline"][data-empty]', 'body .library-remove.hidden', 'body .account-dialog.hidden',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
@@ -2585,11 +2586,31 @@ await check('Library: every game once, A to Z or by genre, filtered, and a click
     el('libraryAddRegion').value = 'US'; el('libraryAddCondition').value = 'loose';
     run(`libraryAddPicked()`);
     assert.deepEqual(evalJson(`collection.map(e => [e.title, e.region, e.condition, e.qty])`), [['God Hand', 'US', 'loose', 1]]);
-    assert.match(el('libraryAddMessage').textContent, /^Added: God Hand \(US, .*\)\. You now own 1\.$/);
+    assert.match(el('libraryAddMessage').textContent, /^Added: God Hand \(US, .*\)\. You now own 1\. Added by mistake\? Press Remove\.$/);
+    assert.equal(el('libraryRemoveButton').classList.contains('hidden'), false, 'right after an add, Remove is offered');
+    assert.equal(el('libraryRemoveLabel').textContent, 'Remove');
     run(`renderLibrary()`);
     assert.match(el('libraryGrid').innerHTML, /lib-tile is-owned/);
     run(`libraryPick(1)`); run(`libraryAddPicked()`);
     assert.equal(evalJson(`collection[0].qty`), 2, 'the same copy again raises the count');
+    assert.equal(el('libraryRemoveLabel').textContent, 'Remove one (you have 2)');
+    // Remove one: back down a copy at a time, the tile stops showing as owned at none, and My collection follows.
+    run(`libraryRemovePicked()`);
+    assert.equal(evalJson(`collection[0].qty`), 1);
+    assert.match(el('libraryAddMessage').textContent, /^Removed: God Hand \(US, Loose\)\. You now own 1\.$/);
+    assert.equal(el('libTile1').classList.contains('is-owned'), true, 'one copy is still owned');
+    run(`libraryRemovePicked()`);
+    assert.deepEqual(evalJson(`collection`), []);
+    assert.match(el('libraryAddMessage').textContent, /It is no longer in My collection\.$/);
+    assert.equal(el('libTile1').classList.contains('is-owned'), false);
+    assert.equal(el('libraryRemoveButton').classList.contains('hidden'), true, 'nothing left to remove at this region and condition');
+    assert.equal(run(`libraryRemovePicked()`), false, 'and pressing it anyway changes nothing');
+    // It follows the bar's own choice: a copy in another condition is not the one removed.
+    run(`libraryAddPicked()`);
+    el('libraryAddCondition').value = 'complete'; run(`paintLibraryRemove()`);
+    assert.equal(el('libraryRemoveButton').classList.contains('hidden'), true, 'no Complete copy: nothing to remove');
+    el('libraryAddCondition').value = 'loose'; run(`paintLibraryRemove()`);
+    assert.equal(el('libraryRemoveButton').classList.contains('hidden'), false);
     // The price paid is optional: empty adds without one, a number is kept, a non-number stops the add
     assert.equal(evalJson(`collection[0].paid`), null, 'no price typed, none kept');
     run(`collection = []`);
@@ -2607,6 +2628,39 @@ await check('Library: every game once, A to Z or by genre, filtered, and a click
     run(`showView('dashboard')`);
     assert.equal(el('libraryAdd').classList.contains('hidden'), true, 'the bar closes when the page is left');
     run(`collection = []`);
+});
+
+await check('Library: a button back to the top after a long scroll, and a bigger x on a collection cover', () => {
+    const run = (code) => vm.runInContext(code, context);
+    const top = el('libraryTop');
+    const scrolled = [];
+    context.window.scrollTo = (options) => scrolled.push(options);
+    context.window.scrollY = 100;
+    run('updateLibraryTop()');
+    assert.equal(top.classList.contains('is-shown'), false, 'near the top there is nothing to go back to');
+    assert.equal(top.getAttribute('inert'), '', 'and Tab skips it');
+    context.window.scrollY = 1500;
+    run('updateLibraryTop()');
+    assert.equal(top.classList.contains('is-shown'), true);
+    assert.equal(top.getAttribute('inert'), null);
+    run('libraryScrollTop()');
+    assert.equal(JSON.stringify(scrolled), JSON.stringify([{ top: 0, behavior: 'smooth' }]));
+    context.window.matchMedia = () => ({ matches: true });
+    run('libraryScrollTop()');
+    assert.equal(JSON.stringify(scrolled[1]), JSON.stringify({ top: 0, behavior: 'auto' }), 'no smooth scrolling when motion is switched off');
+    delete context.window.matchMedia; delete context.window.scrollTo; context.window.scrollY = 0;
+    const page = read('index.html');
+    assert.match(page, /<button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop\(\)" aria-label="Back to the top of the library"[^>]* inert>/);
+    assert.match(page, /window\.addEventListener\('scroll', updateLibraryTop, \{ passive: true \}\);/);
+    const css = read('retro.css');
+    const tail = css.slice(css.indexOf('/* ---- Library (2026-10-17)'));
+    assert.match(tail, /body \.lib-top \{[^}]*position: fixed;[^}]*width: 2\.9rem;[^}]*opacity: 0; pointer-events: none;/);
+    assert.match(tail, /body \.lib-top\.is-shown \{ opacity: 1; pointer-events: auto; transform: none; \}/);
+    assert.match(tail, /body \.library-add:not\(\.hidden\) ~ \.lib-top \{ bottom: calc\(8rem/, 'above the add bar when it is open');
+    assert.match(tail, /@media \(prefers-reduced-motion: reduce\) \{ body \.lib-top \{ transition: none; \} \}/);
+    // The x: 1.9rem on a desktop, 2.6rem square on a phone (the phone rule for buttons made it a thin pill).
+    assert.match(tail, /body \.coll-remove \{ width: 1\.9rem; height: 1\.9rem;/);
+    assert.match(tail, /@media \(max-width: 640px\) \{[^]*body \.coll-remove \{ width: 2\.6rem; min-width: 2\.6rem; height: 2\.6rem; min-height: 2\.6rem;/);
 });
 
 await check('My collection: add, value, keep in the browser, back up and restore; reference prices; installable', async () => {

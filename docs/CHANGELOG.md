@@ -6,6 +6,13 @@
 - `rare_games.json`: PAL Rule of Rose note gains the Italian sealed stock; PAL Manhunt 2 note gains the BBFC refusals of 2007 (with sources).
 - Not added, because no PriceCharting value could be read to rank or value them: Manhunt (Australia RC 2004), Reservoir Dogs, BMX XXX, Leisure Suit Larry: Magna Cum Laude, Shellshock: Nam '67, The Getaway. They are candidates for the next research pass.
 
+## 2026-10-17: Library: Remove, a way back to the top, a bigger x
+
+- The Library's add bar has **Remove** (`libraryRemovePicked()`), shown whenever the collection holds the copy the bar's region and condition point at ("Remove one (you have N)" with several); it takes away one copy, un-ticks the tile at none, and refreshes My collection. The add message now says it is there.
+- A round up-arrow button (`#libraryTop`, `updateLibraryTop()`, shown after 700 px of scrolling, above the add bar when that is open, `inert` while hidden, smooth scroll unless the visitor asked for less motion).
+- The x on a My collection cover is 1.9 rem (was 1.5) and 2.6 rem square on a phone: the phone rule `body main button { min-height: 2.75rem }` had been making it a thin pill 1.5 rem wide.
+- Not looked at on a real phone or browser.
+
 ## 2026-10-17: Library: optional price paid
 
 - The Library's add bar has a **Paid each** box (optional, in the chosen region's currency, `libraryAddPaid`). Empty adds the game without a price, as before; a number is kept as the copy's `paid`; text that is not a price stops the add with a message. The box empties after each add. Kept on the device like the My collection form's price.

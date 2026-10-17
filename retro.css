@@ -1335,6 +1335,26 @@ body .src-name { color: var(--money); }
 /* A 4chan row has no headline of its own (the Game column names the games): no empty block on a phone. */
 body #feedTableBody td[data-col="headline"][data-empty] { display: none; }
 
+/* ---- Library (2026-10-17): Remove beside Add, a bigger x on a collection cover, and a way back to the top ---- */
+body .library-remove.hidden { display: none; }   /* `body .brand-btn` sets display, which beat Tailwind's .hidden */
+body .coll-remove { width: 1.9rem; height: 1.9rem; font-size: 1.2rem; }
+body .coll-remove:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 640px) {
+  /* Thumb-sized, and as wide as it is tall (the phone rule for buttons made it a thin pill). */
+  body .coll-remove { width: 2.6rem; min-width: 2.6rem; height: 2.6rem; min-height: 2.6rem; font-size: 1.6rem; top: .2rem; right: .2rem; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+}
+body .lib-top {
+  position: fixed; right: max(1rem, env(safe-area-inset-right, 0px)); bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 41;
+  width: 2.9rem; height: 2.9rem; min-height: 2.9rem; padding: 0; border-radius: 999px; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; font-size: 1rem;
+  border: 1px solid var(--accent); background: var(--card); color: var(--accent-hi); box-shadow: 0 6px 18px rgba(0, 0, 0, .45);
+  opacity: 0; pointer-events: none; transform: translateY(.6rem);
+  transition: opacity .25s, transform .3s cubic-bezier(.22, 1, .36, 1), background .2s, color .2s;
+}
+body .lib-top.is-shown { opacity: 1; pointer-events: auto; transform: none; }
+body .lib-top:hover, body .lib-top:focus-visible { background: var(--accent); color: var(--bg); }
+body .library-add:not(.hidden) ~ .lib-top { bottom: calc(8rem + env(safe-area-inset-bottom, 0px)); }
+@media (prefers-reduced-motion: reduce) { body .lib-top { transition: none; } }
 /* ---- Accounts (2026-10-17): the screen that stands in for My games until there is an account, and the dialog when Add is pressed elsewhere ---- */
 body .account-gate:not(.hidden) { display: block; }
 body .account-gate > * + *, body .account-card > * + * { margin-top: 1rem; }
