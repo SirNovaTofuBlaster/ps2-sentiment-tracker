@@ -88,7 +88,8 @@ const context = vm.createContext({
     history: { pushState(state, title, address) {
         addressChanges.push(address);
         context.location.hash = String(address).startsWith('#') ? address : '';
-    } },
+    },
+    replaceState(state, title, address) { context.location.hash = String(address).startsWith('#') ? address : ''; } },
 });
 const el = (id) => context.document.getElementById(id);
 vm.runInContext(script, context);
@@ -3789,6 +3790,63 @@ await check('a row with no headline keeps its empty cell on a wide screen, so ev
 
 await check('the stylesheet link carries a version, so a new page never meets an old cached retro.css', () => {
     for (const f of ['index.html', 'guide.html']) assert.match(read(f), /href="retro\.css\?v=\d{8}[a-z]?"/, f);
+});
+
+await check('the account key as a QR code: a valid code, shown only when asked, and a scanned link only fills the sign-in box', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const crypto = await import('node:crypto');
+    const digest = (text) => { const m = evalJson(`qrMatrix(${JSON.stringify(text)})`); return [m.length, crypto.createHash('sha1').update(m.map(r => r.map(Number).join('')).join('\n')).digest('hex')]; };
+    // Golden codes, each decoded by OpenCV's QR reader when they were made (the encoder is ours, so a real scanner is the judge).
+    assert.deepEqual(digest('A'), [21, '66a90bf2fd844de9a1fe95cc9167ef7109763511']);
+    const link = `https://someone.github.io/ps2-sentiment-tracker/#signin=${'1'.repeat(32)}.${'2'.repeat(64)}`;
+    assert.deepEqual(digest(link), [53, 'f26b93ca57314b16f6939afbdd02ec1732f237c7'], 'the key link is a version 9 code');
+    assert.equal(run(`qrMatrix('é')`), null, 'only plain text');
+    assert.equal(run(`qrMatrix('x'.repeat(400))`), null, 'too long for version 10');
+    // the three finder squares and the timing line are where a scanner looks
+    const m = evalJson(`qrMatrix(${JSON.stringify(link)})`);
+    for (const [ox, oy] of [[0, 0], [m.length - 7, 0], [0, m.length - 7]]) {
+        for (let d = 0; d < 7; d++) for (let e = 0; e < 7; e++) {
+            const ring = Math.max(Math.abs(d - 3), Math.abs(e - 3));
+            assert.equal(m[oy + d][ox + e], ring !== 2, 'finder square');
+        }
+    }
+    assert.ok(m[6].slice(8, m.length - 8).every((dark, i) => dark === (i % 2 === 0)), 'timing line');
+    const svg = run(`qrSvg(${JSON.stringify(link)}, 'x')`);
+    assert.match(svg, /^<svg class="qr-code"[^>]*viewBox="0 0 61 61"[^>]*>/);
+    assert.match(svg, /fill="#fff"/, 'black on white whatever the theme');
+    assert.equal(run(`qrSvg('x'.repeat(400))`), '', 'nothing drawn when it does not fit');
+    // nothing is drawn until asked, and the button toggles it
+    run(`crowd = { id: '${'c'.repeat(32)}', key: '${'d'.repeat(64)}', confirmed: false }; accountPending = null; paintAccountGate()`);
+    assert.match(el('collectionGate').innerHTML, /id="gateQr"/);
+    assert.match(el('collectionGate').innerHTML, /Show as a QR code/);
+    assert.ok(!/<svg/.test(el('collectionGate').innerHTML), 'no code until it is asked for');
+    context.location.pathname = '/ps2-sentiment-tracker/';
+    run(`crowdToggleQr('gateQr')`);
+    assert.match(el('gateQr').innerHTML, /<svg class="qr-code"/);
+    assert.match(el('gateQr').innerHTML, /Anyone who scans it can open your account/);
+    run(`crowdToggleQr('gateQr')`);
+    assert.equal(el('gateQr').innerHTML, '', 'pressed again, it closes');
+    assert.match(read('index.html'), /id="shareQr"/, 'the Account tab has it too');
+    // a scanned link: the key leaves the address, fills the box and signs nothing in by itself
+    run(`crowd = { id: '', key: '', confirmed: false }; scannedKey = ''`);
+    context.location.hash = `#signin=${'5'.repeat(32)}.${'6'.repeat(64)}`;
+    run('showViewFromAddress()');
+    assert.equal(context.location.hash.includes('signin') || context.location.hash.includes('5'.repeat(32)), false, 'the key is taken out of the address');
+    assert.equal(run('hasAccount()'), false, 'a link alone signs no one in');
+    assert.equal(run('scannedKey'), `${'5'.repeat(32)}.${'6'.repeat(64)}`);
+    assert.match(el('collectionGate').innerHTML, /KEY FROM THE CODE YOU SCANNED/);
+    assert.match(el('collectionGate').innerHTML, new RegExp(`value="${'5'.repeat(32)}\\.${'6'.repeat(64)}"`));
+    // a link that is not a key is ignored, and one opened while signed in changes nothing
+    run(`scannedKey = ''`);
+    context.location.hash = '#signin=nonsense';
+    run('showViewFromAddress()');
+    assert.equal(run('scannedKey'), '');
+    run(`crowd = { id: '${'a'.repeat(32)}', key: '${'b'.repeat(64)}', confirmed: true }`);
+    context.location.hash = `#signin=${'5'.repeat(32)}.${'6'.repeat(64)}`;
+    run('showViewFromAddress()');
+    assert.equal(run('scannedKey'), '', 'already signed in: the link is dropped');
+    assert.equal(run('crowd.id'), 'a'.repeat(32));
+    context.location.hash = '';
 });
 
 await check('two browsers on one account: adds, removals and a stale browser all reach the other', async () => {
