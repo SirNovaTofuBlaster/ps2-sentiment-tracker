@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 09:04:41 UTC",
+  "last_updated": "2026-10-17 09:15:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -71,18 +71,18 @@
       "timestamp": "2026-10-17 08:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex and Monster Hunter",
+      "headline": "Thread on /v/ naming Monster Hunter and Deus Ex",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749851337",
-      "matched_game": "Deus Ex",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Deus Ex",
-        "Monster Hunter"
+        "Monster Hunter",
+        "Deus Ex"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -567,6 +567,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 07:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming World Fighting",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749849698",
+      "matched_game": "World Fighting",
+      "matched_games": [
+        "World Fighting"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 07:40 UTC"
     },
@@ -268426,23 +268445,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 09:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Omoio, a game library for PS3 and Wii U emulation on Windows",
-      "source": "r/emulation",
-      "source_type": "reddit",
-      "feed": "reddit:emulation",
-      "link": "https://www.reddit.com/r/emulation/comments/1wwiqdu/omoio_a_game_library_for_ps3_and_wii_u_emulation/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 09:11 UTC",
       "is_digital_only": false
     }
   ]
