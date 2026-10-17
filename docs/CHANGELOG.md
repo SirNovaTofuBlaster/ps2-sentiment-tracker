@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17: "Yazuka" shares Yakuza's price
+
+- The library (`data/ps2_database.json`) holds misspelled entries (Yazuka, Yazuka 2, Yazuka Fury) beside the real ones, and nobody lists a game under the typo, so a copy added to My games as "Yazuka" had no price. `same_game` in `ebay_watchlist.json` now ties each to its correct spelling, so the page shows the Yakuza figure. Only `Yakuza` is priced so far; Yakuza 2 and Yakuza Fury have no figure until the feed names them (or they are pinned).
+
 ## 2026-10-17: a lost closing brace in retro.css
 
 - Merging the form restyle dropped one `}` that closed a phone-width `@media` block, so every rule after it (the whole Portfolio section, the chart height) sat inside that block and applied only on phones; on a desktop the Portfolio tiles stacked and the chart had no height. Brace added; a test now checks `retro.css` has as many `}` as `{`. `?v=` on the stylesheet link bumped to `20261017c`.
