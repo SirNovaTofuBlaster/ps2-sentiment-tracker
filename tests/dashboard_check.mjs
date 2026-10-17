@@ -2989,7 +2989,7 @@ await check('editions: a game page lists its editions with their own prices and 
             editions: { PAL: { 'Resident Evil 4 Limited Edition': 'Resident Evil 4 Limited Edition' }, US: {} } }, null)`);
         const found = run(`editionsOfGame('Resident Evil 4').map(item => item.edition.title)`);
         assert.deepEqual(Array.from(found).sort(), ['Resident Evil 4 Collector\'s Pack', 'Resident Evil 4 Limited Edition', 'Resident Evil 4 Premium Edition']);
-        assert.equal(run(`editionsOfGame('Silent Hill 2').length`), 0);
+        assert.equal(run(`editionsOfGame('Okami').length`), 0);
         const html = run(`editionsHtml('Resident Evil 4', Date.parse('2026-10-14T11:00Z'), 'en-GB')`);
         assert.match(html, /Editions of this game/);
         assert.match(html, /Resident Evil 4 Limited Edition/);
