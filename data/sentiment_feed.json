@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 05:43:15 UTC",
+  "last_updated": "2026-10-17 05:56:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -86,6 +86,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 05:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749845823",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 05:31 UTC"
     },
     {
       "headline": "Force 5ghz wifi for eero wifi 7 router",
@@ -207,6 +226,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 05:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Way of the Samurai 2 and Tekken 5",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749845334",
+      "matched_game": "Way of the Samurai 2",
+      "matched_games": [
+        "Way of the Samurai 2",
+        "Tekken 5"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 05:15 UTC"
     },
     {
       "headline": "Wold this Lego set be alright ontop of my PC? It doesn't fit anywhere else.",
@@ -267079,23 +267118,6 @@
       "hype": 1,
       "timestamp": "2026-10-03 06:02 UTC",
       "views": 693736
-    },
-    {
-      "headline": "Dicevaders launch trailer – dice-based roguelike deckbuilder live on Nintendo Switch 2, Switch",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/dicevaders-launch-trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 05:55 UTC",
-      "is_digital_only": false
     }
   ]
 }
