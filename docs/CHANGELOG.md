@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: 29 more PAL editions (editions.json, 61 in all)
+
+- The list held 32 editions, all from one database's 37 entries. A research pass of public pages added 29 PAL entries: editions named on PriceCharting pages (Killzone, Dakar 2, Guilty Gear XX Accent Core Plus, Juiced 2, Duel Masters, TOCA Race Driver, The Getaway, Devil May Cry 3, Onimusha 3, Naruto: Ultimate Ninja, Shinobi, Silent Hill 2, Final Fantasy X, Metal Gear Solid 3 steelbook, Ultimate Spider-Man) and the Collectors Edition forum's PS2 edition threads (Crash of the Titans Monster Edition, Call of Duty 2: Big Red One, Digital Devil Saga 2, Scarface, Hitman: Blood Money, 24: The Game and SteelBook editions of Area 51, Alone in the Dark, Test Drive Unlimited and four WWE SmackDown vs. Raw games).
+- PriceCharting gives a title and almost never a date, publisher or contents, so those fields say "not stated by the sources"; a forum poster's contents are written as "as listed by a forum poster". One PriceCharting date that looked like a placeholder (24 November 2000, on two unrelated games) is not used.
+- Still to add: Shadow of the Colossus Collector's Edition (its PriceCharting page would not load) and Dragon Ball Z Budokai 3 Collector's Edition (PAL). No US editions beyond the original 20 were found on readable pages. Each edition is one more daily search on eBay UK (29 a day).
+
 ## 2026-10-17: game names line up in the feed table
 
 - A row with no headline (4chan's) hid its empty headline cell on every screen size, so its game name sat further left than the others'. The rule now applies only on a phone (max-width 640px), where the table stacks; on a wide screen the cell stays and every game name starts in the same column (measured in headless Chromium at 1280 px: the same left edge for both kinds of row).

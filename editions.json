@@ -1,7 +1,7 @@
 {
  "what": "Known limited, collector's, premium and steelbook PS2 editions of games, for the game page. ebay_prices.py looks each one up once a day, the PAL list on eBay UK and the US list on eBay US, by the game's name plus the words in require, so a plain copy is never counted. Numbers only are kept, in data/prices/latest.json under editions.",
- "checked": "2026-10-14",
- "method": "Hand-made from the Collectors Edition game database (collectorsedition.org/game-db, the PS2 PAL and NTSC lists, 14 and 23 entries; the pages were read one by one on 2026-10-14). 32 of those 37 entries are here. Left out: Dragon Ball Z Budokai 3 Collector's Edition (PAL), Silent Hill 2 Special 2 Disc Set (PAL) and Bully Special Edition (NTSC), whose pages did not load that day; Final Fantasy XI HDD (not a game edition); and one entry not read. Contents are quoted from each entry, packaging in kinds. Japanese editions cannot be priced (only the US and UK sites are), so none are here. Nothing was sent to the database's owners (rule 13).",
+ "checked": "2026-10-17",
+ "method": "Hand-made from the Collectors Edition game database (collectorsedition.org/game-db, the PS2 PAL and NTSC lists, 14 and 23 entries; the pages were read one by one on 2026-10-14). 32 of those 37 entries are here. Left out: Dragon Ball Z Budokai 3 Collector's Edition (PAL), Silent Hill 2 Special 2 Disc Set (PAL) and Bully Special Edition (NTSC), whose pages did not load that day; Final Fantasy XI HDD (not a game edition); and one entry not read. Contents are quoted from each entry, packaging in kinds. Japanese editions cannot be priced (only the US and UK sites are), so none are here. Nothing was sent to the database's owners (rule 13). Added 2026-10-17 (29 PAL entries, 61 in all): editions named on PriceCharting pages (each page opened; it gives a title, usually no date, publisher or contents, so those say 'not stated by the sources'), and the Collectors Edition forum's PS2 edition threads (showthread.php?p=13740 and ?p=13192), whose posters (UK PAL) list contents; a poster's claim is quoted as theirs. Shadow of the Colossus Collector's Edition (PriceCharting page would not load) and Dragon Ball Z Budokai 3 Collector's Edition (PAL) are still to add. Japanese editions cannot be priced and box sets of several games are not editions, so neither is here. Nothing was sent to anyone (rule 13).",
  "lists": {
   "PAL": [
    {
@@ -289,6 +289,696 @@
       "source": "https://collectorsedition.org/game-db?c=PS2&e=PAL",
       "figure": "listed as an edition of this game, with the contents above",
       "date": "2026-10-14"
+     }
+    ]
+   },
+   {
+    "title": "Killzone Collector's Edition",
+    "game": "Killzone",
+    "search": "killzone",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook",
+     "bonus disc"
+    ],
+    "publisher": "Sony Computer Entertainment Europe",
+    "released": "not stated by the sources",
+    "contents": "SteelBook with a bonus disc: making-of documentary, archive footage, production artwork, the game soundtrack and animatics (as listed by a forum poster).",
+    "note": "PriceCharting also lists a 'Limited Special Edition + Bonus DVD' of this game; it is probably the same product, so one entry covers both.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "listed by a poster in the Collectors Edition forum's PS2 edition thread (UK PAL, 'as far as I am aware'); contents as above",
+      "date": "2026-10-17"
+     },
+     {
+      "source": "https://www.pricecharting.com/de/game/58019",
+      "figure": "listed as Killzone [Collector's Edition], PAL PlayStation 2, 1 game disc; no release date or publisher on the page",
+      "date": "2026-10-17"
+     },
+     {
+      "source": "https://www.pricecharting.com/game/9494014",
+      "figure": "listed as Killzone [Limited Special Edition + Bonus DVD], PAL PlayStation 2, publisher Sony Computer Entertainment Europe",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Dakar 2 Collector's Edition",
+    "game": "Paris-Dakar 2",
+    "search": "dakar 2",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/7026078",
+      "figure": "PriceCharting lists this as a separate PAL PS2 release: Dakar 2 [Collector's Edition]; release date, publisher and description are blank on the page",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Guilty Gear XX Accent Core Plus Collector's Edition",
+    "game": "Guilty Gear XX: Accent Core plus",
+    "search": "guilty gear xx accent core plus",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/8573768",
+      "figure": "PriceCharting lists this as a separate PAL PS2 release: Guilty Gear XX Accent Core Plus [Collector's Edition]; release date, publisher and description are blank on the page",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Juiced 2: Hot Import Nights Collector's Edition",
+    "game": "Juiced 2: Hot Import Nights",
+    "search": "juiced 2 hot import nights",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "not stated by the sources",
+    "released": "2007-10-05 (as PriceCharting gives it)",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/6331947",
+      "figure": "PriceCharting lists this as a separate PAL PS2 release: Juiced 2: Hot Import Nights [Collector's Edition], release date October 5, 2007; publisher and description are blank",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Duel Masters Limited Edition",
+    "game": "Duel Masters",
+    "search": "duel masters",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents.",
+    "note": "The page's date (24 November 2000) is the same as another listing's and looks like a placeholder, so it is not used.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/7046051",
+      "figure": "PriceCharting lists this as a separate PAL PS2 release: Duel Masters [Limited Edition]; publisher and description are blank",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "TOCA Race Driver Limited Edition",
+    "game": "TOCA Race Driver",
+    "search": "toca race driver",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "not stated by the sources",
+    "released": "2002-08-23 (as PriceCharting gives it)",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/5177212",
+      "figure": "PriceCharting lists this as a separate PAL PS2 release: TOCA Race Driver [Limited Edition], release date August 23, 2002; publisher and description are blank",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "The Getaway Limited Edition",
+    "game": "The Getaway",
+    "search": "the getaway",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents.",
+    "note": "A different, numbered run for Sony staff (the '100 Million Disc Edition', 1,000 copies) is described in the forum thread; it is not priced here because sellers do not name it that way.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/50200",
+      "figure": "PriceCharting lists this as a separate PAL PS2 release: The Getaway [Limited Edition]; publisher and description are blank, and its date looks like a placeholder",
+      "date": "2026-10-17"
+     },
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "a poster lists a different 'The Getaway - 100 Million Disc Edition' (1,000 copies for Sony staff)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Devil May Cry 3 Special Edition (PAL)",
+    "game": "Devil May Cry 3: Dante's Awakening",
+    "search": "devil may cry 3",
+    "require": [
+     "special edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "slipcase"
+    ],
+    "publisher": "Capcom",
+    "released": "not stated by the sources",
+    "contents": "Amaray case in a horizontal slipcase (as listed by a forum poster); what else is in the box is not stated.",
+    "note": "The US Special Edition (two discs) is a different release and is not in this list.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/de/game/40907",
+      "figure": "listed as Devil May Cry 3 [Special Edition], PAL PlayStation 2, publisher Capcom, 1 game disc; no date",
+      "date": "2026-10-17"
+     },
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "a poster lists 'Devil May Cry 3: Dante's Awakening' in an Amaray case with a horizontal slipcase (believed a GAME exclusive, no source given)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Onimusha 3: Demon Siege Special Edition",
+    "game": "Onimusha 3: Demon Siege",
+    "search": "onimusha 3 demon siege",
+    "require": [
+     "special edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "Capcom",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents (seller titles it shows mention a bonus DVD).",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/9329066",
+      "figure": "PriceCharting lists this as a separate PAL PS2 release: Onimusha 3: Demon Siege [Special Edition], publisher Capcom; release date and description are blank",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Naruto: Ultimate Ninja Special Edition",
+    "game": "Naruto: Ultimate Ninja",
+    "search": "naruto ultimate ninja",
+    "require": [
+     "special edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "Bandai Namco Games",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/9441867",
+      "figure": "PriceCharting lists this as a separate PAL PS2 release: Naruto: Ultimate Ninja [Special Edition], publisher Bandai Namco Games; release date and description are blank",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Shinobi Special Edition",
+    "game": "Shinobi",
+    "search": "shinobi",
+    "require": [
+     "special edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/11532822",
+      "figure": "PriceCharting lists this as a separate PAL PS2 release: Shinobi [Special Edition]; release date, publisher and description are blank",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Ultimate Spider-Man Limited Edition",
+    "game": "Ultimate Spider-Man",
+    "search": "ultimate spider man",
+    "require": [
+     "limited edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "slipcase"
+    ],
+    "publisher": "Activision",
+    "released": "not stated by the sources",
+    "contents": "Amaray case in a horizontal slipcase with a special edition Ultimate Spider-Man comic book (as listed by a forum poster).",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "listed by a poster in the Collectors Edition forum's PS2 edition thread (UK PAL, 'as far as I am aware'); contents as above",
+      "date": "2026-10-17"
+     },
+     {
+      "source": "https://www.pricecharting.com/game/1341244",
+      "figure": "listed as Ultimate Spiderman [Limited Edition], PAL PlayStation 2, publisher Activision",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Silent Hill 2 Collector's Edition",
+    "game": "Silent Hill 2",
+    "search": "silent hill 2",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition and gives no contents.",
+    "note": "Probably the same product as the 'Special 2 Disc Set' below; each is looked up under the name sellers use.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?view=table",
+      "figure": "PriceCharting's PAL PS2 list shows 'Silent Hill 2 [Collector's Edition]' (table read 2026-10-17)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Silent Hill 2 Special 2 Disc Set",
+    "game": "Silent Hill 2",
+    "search": "silent hill 2",
+    "require": [
+     "2 disc"
+    ],
+    "allow": [],
+    "kinds": [
+     "digipak",
+     "bonus disc"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "DigiPak with a bonus disc: making-of featurette, trailers, maker biographies and a collector's sticker (1 of 4), as listed by a forum poster.",
+    "note": "A poster believes it was the first print of the game.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "listed by a poster in the Collectors Edition forum's PS2 edition thread (UK PAL, 'as far as I am aware'); contents as above",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Final Fantasy X Bonus Disc Edition",
+    "game": "Final Fantasy X",
+    "search": "final fantasy x",
+    "require": [
+     "bonus disc"
+    ],
+    "allow": [],
+    "kinds": [
+     "bonus disc"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: PriceCharting lists it as a separate edition ('Bonus Disc Edition') and gives no contents here.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/console/pal-playstation-2?view=table",
+      "figure": "PriceCharting's PAL PS2 list shows 'Final Fantasy X [Bonus Disc Edition]' (table read 2026-10-17)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Metal Gear Solid 3: Snake Eater Steelbook Edition",
+    "game": "Metal Gear Solid 3: Snake Eater",
+    "search": "metal gear solid 3 snake eater",
+    "require": [
+     "steelbook"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "Konami",
+    "released": "2005-03-04 (UK)",
+    "contents": "SteelBook only, as a forum poster lists it ('Limited Metal Edition', RRP 59.99 pounds).",
+    "note": "The slipcase edition above is listed separately.",
+    "evidence": [
+     {
+      "source": "https://www.pricecharting.com/game/1047647",
+      "figure": "listed as Metal Gear Solid 3: Snake Eater [Steelbook], PAL PlayStation 2, publisher Konami, release date March 4, 2005",
+      "date": "2026-10-17"
+     },
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread; released 04/03/2005, RRP 59.99 pounds, SteelBook only",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Crash of the Titans Monster Edition",
+    "game": "Crash of the Titans",
+    "search": "crash of the titans",
+    "require": [
+     "monster edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "slipcase",
+     "bonus disc"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Bonus DVD, an orange furry pencil case, a mobile phone dangler, a Crash sticker set and a removable tattoo set, in a vertical plastic slipcase (as listed by a forum poster).",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "listed by a poster in the Collectors Edition forum's PS2 edition thread (UK PAL, 'as far as I am aware'); contents as above",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Call of Duty 2: Big Red One Collector's Edition (PAL)",
+    "game": "Call of Duty 2: Big Red One",
+    "search": "call of duty 2 big red one",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "metallic cover"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Metallic cover; exclusive multiplayer skins, veterans' historical accounts, a behind-the-scenes feature with Treyarch, cast interviews and multiplayer map tips (as listed by a forum poster).",
+    "note": "The US Collector's Edition (above) is a different release.",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "listed by a poster in the Collectors Edition forum's PS2 edition thread (UK PAL, 'as far as I am aware'); contents as above",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Shin Megami Tensei: Digital Devil Saga 2 Collector's Edition",
+    "game": "Shin Megami Tensei: Digital Devil Saga 2",
+    "search": "digital devil saga 2",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "box"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Two DVD Amaray cases plus a CD soundtrack in a separate Amaray case (as listed by a forum poster).",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "listed by a poster in the Collectors Edition forum's PS2 edition thread (UK PAL, 'as far as I am aware'); contents as above",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "24: The Game SteelBook Limited Edition",
+    "game": "24: The Game",
+    "search": "24 the game",
+    "require": [
+     "steelbook"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "2006-03-17 (UK)",
+    "contents": "SteelBook case only (as listed by a forum poster); RRP 49.99 pounds, thought to be a UK exclusive (unconfirmed).",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread; released 17/03/2006, RRP 49.99 pounds, UK exclusive (unconfirmed by the poster)",
+      "date": "2026-10-17"
+     },
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "the same thread's edition list has '24 The Game' (SteelBook), contents not listed",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Area 51 SteelBook Edition",
+    "game": "Area 51",
+    "search": "area 51",
+    "require": [
+     "steelbook"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "SteelBook case; what else is in the box is not stated by the source.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread (SteelBook edition, no details given)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Alone in the Dark SteelBook Edition",
+    "game": "Alone in the Dark",
+    "search": "alone in the dark",
+    "require": [
+     "steelbook"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "SteelBook case; what else is in the box is not stated by the source.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread (SteelBook edition, no details given)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Test Drive Unlimited SteelBook Edition",
+    "game": "Test Drive Unlimited",
+    "search": "test drive unlimited",
+    "require": [
+     "steelbook"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "SteelBook case; what else is in the box is not stated by the source.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread (SteelBook edition, no details given)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "WWE SmackDown vs. Raw 2006 SteelBook Edition",
+    "game": "WWE SmackDown! vs. Raw 2006",
+    "search": "wwe smackdown vs raw 2006",
+    "require": [
+     "steelbook"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "SteelBook case; what else is in the box is not stated by the source.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread (SteelBook edition, no details given)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "WWE SmackDown vs. Raw 2007 SteelBook Edition",
+    "game": "WWE SmackDown vs. Raw 2007",
+    "search": "wwe smackdown vs raw 2007",
+    "require": [
+     "steelbook"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "SteelBook case; what else is in the box is not stated by the source.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread (SteelBook edition, no details given)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "WWE SmackDown vs. Raw 2008 SteelBook Edition",
+    "game": "WWE SmackDown vs. Raw 2008",
+    "search": "wwe smackdown vs raw 2008",
+    "require": [
+     "steelbook"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "SteelBook case; what else is in the box is not stated by the source.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread (SteelBook edition, no details given)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "WWE SmackDown vs. Raw 2009 SteelBook Edition",
+    "game": "WWE SmackDown! vs. Raw 2009",
+    "search": "wwe smackdown vs raw 2009",
+    "require": [
+     "steelbook"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "SteelBook case; what else is in the box is not stated by the source.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread (SteelBook edition, no details given)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Hitman: Blood Money Collector's Edition",
+    "game": "Hitman: Blood Money",
+    "search": "hitman blood money",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [],
+    "publisher": "not stated by the sources",
+    "released": "not stated by the sources",
+    "contents": "Not stated by the source: a forum poster lists a PAL Collector's Edition and gives no contents.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread (Hitman Blood Money (Collector's Edition), no details given)",
+      "date": "2026-10-17"
+     }
+    ]
+   },
+   {
+    "title": "Scarface: The World Is Yours Collector's Edition",
+    "game": "Scarface: The World Is Yours",
+    "search": "scarface the world is yours",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "steelbook",
+     "slipcase",
+     "bonus disc"
+    ],
+    "publisher": "not stated by the sources",
+    "released": "2006-10-13 (UK)",
+    "contents": "SteelBook in a slipcase: a printed world map, hints and tips, video, concept art and a bonus DVD with making-of videos, interviews and a walkthrough with producer commentary (as listed by forum posters). UK only.",
+    "note": "",
+    "evidence": [
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13192",
+      "figure": "listed as a missing PAL edition in the forum's database-feedback thread; released 13/10/2006, UK only, contents as above",
+      "date": "2026-10-17"
+     },
+     {
+      "source": "https://collectorsedition.org/forums/showthread.php?p=13740",
+      "figure": "listed by a poster in the Collectors Edition forum's PS2 edition thread (UK PAL, 'as far as I am aware') (SteelBook, vertical slipcase, bonus DVD)",
+      "date": "2026-10-17"
      }
     ]
    }
