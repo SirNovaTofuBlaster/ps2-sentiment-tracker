@@ -3743,6 +3743,14 @@ await check('a spelling nobody lists on eBay takes the price of the spelling tha
     }
 });
 
+await check('a row with no headline keeps its empty cell on a wide screen, so every game name starts in the same column', () => {
+    const css = read('retro.css').replace(/\/\*[\s\S]*?\*\//g, '');
+    const rule = 'body #feedTableBody td[data-col="headline"][data-empty] { display: none; }';
+    assert.ok(css.includes(rule));
+    const before = css.slice(0, css.indexOf(rule));
+    assert.match(before.slice(before.lastIndexOf('@media')), /^@media \(max-width: 640px\) \{\s*$/, 'only on a phone');
+});
+
 await check('the stylesheet link carries a version, so a new page never meets an old cached retro.css', () => {
     for (const f of ['index.html', 'guide.html']) assert.match(read(f), /href="retro\.css\?v=\d{8}[a-z]?"/, f);
 });
