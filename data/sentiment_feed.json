@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 21:31:39 UTC",
+  "last_updated": "2026-10-17 21:34:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -32,6 +32,25 @@
       "match_score": 100,
       "match_method": "fuzzy",
       "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 21:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Lake Masters EX",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749885468",
+      "matched_game": "Lake Masters EX",
+      "matched_games": [
+        "Lake Masters EX"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": null,
@@ -5559,17 +5578,16 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3, TimeSplitters 2, The Bouncer and 22 more",
+      "headline": "Thread on /v/ naming God Hand, TimeSplitters 2, The Bouncer and 22 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "Persona 3",
+      "matched_game": "God Hand",
       "matched_games": [
-        "Persona 3",
+        "God Hand",
         "TimeSplitters 2",
         "The Bouncer",
-        "God Hand",
         "Shadow of the Colossus",
         "Final Fantasy X",
         "Syphon Filter: The Omega Strain",
@@ -5590,7 +5608,8 @@
         "Rule of Rose",
         "The Sopranos",
         "Dark Cloud",
-        "God of War"
+        "God of War",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -5683,6 +5702,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 15:49 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Duel Masters",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749868164",
+      "matched_game": "Duel Masters",
+      "matched_games": [
+        "Duel Masters"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 15:49 UTC"
     },
@@ -7451,19 +7489,19 @@
       "timestamp": "2026-10-17 14:04 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, The Sopranos and The Warriors",
+      "headline": "Thread on /v/ naming The Sopranos, The Warriors and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749863140",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "The Sopranos",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
         "The Sopranos",
-        "The Warriors"
+        "The Warriors",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9692,16 +9730,17 @@
       "views": 1574
     },
     {
-      "headline": "Thread on /v/ naming Haunting Ground, Silent Hill 2 and Persona 4",
+      "headline": "Thread on /v/ naming Dynasty Warriors 3, Silent Hill 2, Persona 4 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749857341",
-      "matched_game": "Haunting Ground",
+      "matched_game": "Dynasty Warriors 3",
       "matched_games": [
-        "Haunting Ground",
+        "Dynasty Warriors 3",
         "Silent Hill 2",
-        "Persona 4"
+        "Persona 4",
+        "Haunting Ground"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
