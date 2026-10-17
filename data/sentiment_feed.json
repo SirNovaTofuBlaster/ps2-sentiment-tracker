@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-17 03:03:45 UTC",
+  "last_updated": "2026-10-17 03:17:52 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Shadow of the Colossus",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12882713",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 03:12 UTC"
+    },
     {
       "headline": "ECC Redline",
       "source": "r/pcmasterrace",
@@ -16,6 +35,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 02:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749840113",
+      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_games": [
+        "Jak and Daxter: The Precursor Legacy"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 02:44 UTC"
     },
@@ -2240,6 +2278,30 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 23:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter, Persona 3, Ys: The Ark of Napishtim and 3 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749830853",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "Persona 3",
+        "Ys: The Ark of Napishtim",
+        "Dark Chronicle",
+        "Dark Cloud 2",
+        "Dark Cloud"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 23:18 UTC"
     },
     {
       "headline": "Dusts out PC",
@@ -5179,22 +5241,23 @@
       "timestamp": "2026-10-16 20:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Fight Night Round 3, Ecco the Dolphin: Defender of the Future and 3 more",
+      "headline": "Thread on /v/ naming Red Faction, Fight Night Round 3, Metal Gear Solid 2: Sons of Liberty and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749822229",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Red Faction",
       "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
+        "Red Faction",
         "Fight Night Round 3",
+        "Metal Gear Solid 2: Sons of Liberty",
         "Ecco the Dolphin: Defender of the Future",
         "Final Fantasy XII",
         "Splinter Cell",
         "The Getaway"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -12342,19 +12405,20 @@
       "views": 189874
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, God Hand and Devil May Cry 3",
+      "headline": "Thread on /v/ naming Monster Hunter, God Hand, Devil May Cry 3 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749806990",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Devil May Cry 3: Dante's Awakening",
+        "Monster Hunter",
         "God Hand",
-        "Devil May Cry 3"
+        "Devil May Cry 3",
+        "Devil May Cry 3: Dante's Awakening"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -21901,22 +21965,22 @@
       "timestamp": "2026-10-16 08:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Crazy Taxi, Silent Hill 3, Silent Hill 2 and 6 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Silent Hill 3, Silent Hill 2 and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749788982",
-      "matched_game": "Crazy Taxi",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Crazy Taxi",
+        "Kingdom Hearts",
         "Silent Hill 3",
         "Silent Hill 2",
         "Metal Gear Solid 2: Sons of Liberty",
         "The Lord of the Rings: The Two Towers",
-        "Kingdom Hearts",
         "Dynasty Warriors 3",
         "Max Payne",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Crazy Taxi"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -266009,44 +266073,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 03:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Looking for Dark Fantasy recommendations, or any great less known games",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wwcp1u/looking_for_dark_fantasy_recommendations_or_any/",
-      "matched_game": "Wizadry: Tale of the Forsaken",
-      "matched_games": [
-        "Wizadry: Tale of the Forsaken",
-        "King's Field IV: The Ancient City",
-        "Wizardry: Tales of the Forsaken Land"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-03 03:10 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Learning Company...helping young minds grow in 1991?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wwckrj/the_learning_companyhelping_young_minds_grow_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 03:04 UTC",
       "is_digital_only": false
     }
   ]
