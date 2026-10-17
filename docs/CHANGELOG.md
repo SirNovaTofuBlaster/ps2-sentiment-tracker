@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-17: a device's old games are never passed into an account
+
+- The maintainer's decision: games saved on a device are never sent to an account. **Signing in** to an existing account (a pasted key or a scanned code) now replaces the device's list with the account's, and sends nothing of the old list; if the service does not answer (or refuses the key) the old list is put back and nobody is signed in. A **new account** starts empty: the device's list is cleared when the account is created, because adding games needs an account and so anything saved before is from before accounts. The screens, the guide and the scanned-key screen say so. Before, both carried the device's games into the account.
+
 ## 2026-10-17: scanning the account QR code now says what happened
 
 - The maintainer scanned the code and "nothing happened". Two causes: on a phone without an account the sign-in box sat far below the long "Create an account" screen, and on a phone already signed in the link was dropped silently. Now a scanned key is the whole screen ("Sign in on this device?", with "No, not this key" to go back), and a phone that is already signed in lands on the Account tab with a line saying it is signed in to that account or to a different one (and to sign out first).
