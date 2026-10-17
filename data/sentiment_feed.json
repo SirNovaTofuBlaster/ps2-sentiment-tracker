@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 11:24:36 UTC",
+  "last_updated": "2026-10-17 11:27:07 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1414,6 +1414,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 09:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749853450",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 09:38 UTC"
     },
@@ -11171,7 +11190,7 @@
       "timestamp": "2026-10-16 20:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Warriors and Kessen 3",
+      "headline": "Thread on /v/ naming The Warriors, Kessen and Kessen 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -11179,6 +11198,7 @@
       "matched_game": "The Warriors",
       "matched_games": [
         "The Warriors",
+        "Kessen",
         "Kessen 3"
       ],
       "match_score": 100,
