@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 20:20:07 UTC",
+  "last_updated": "2026-10-17 20:22:37 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -35,6 +35,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 20:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749882218",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 20:10 UTC"
     },
     {
       "headline": "UK - £800-1.2k - suggestions please?",
@@ -2888,20 +2907,21 @@
       "timestamp": "2026-10-17 17:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Warriors Orochi, Wipeout Pulse, Marvel: Ultimate Alliance 2 and 1 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Wipeout Pulse, Marvel: Ultimate Alliance 2 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749872783",
-      "matched_game": "Warriors Orochi",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
-        "Warriors Orochi",
+        "Grand Theft Auto: Vice City",
         "Wipeout Pulse",
         "Marvel: Ultimate Alliance 2",
-        "Star Wars: The Force Unleashed"
+        "Star Wars: The Force Unleashed",
+        "Warriors Orochi"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4654,25 +4674,14 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Phantasy Star Universe, Resident Evil Outbreak, Final Fantasy XII and 21 more",
+      "headline": "Thread on /v/ naming Dark Cloud, TimeSplitters 2, The Bouncer and 21 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "Phantasy Star Universe",
+      "matched_game": "Dark Cloud",
       "matched_games": [
-        "Phantasy Star Universe",
-        "Resident Evil Outbreak",
-        "Final Fantasy XII",
-        "Haunting Ground",
-        "King's Field IV",
-        "Galerians: Ash",
-        "Silent Hill 3",
-        "The Godfather",
-        "Rule of Rose",
-        "The Sopranos",
         "Dark Cloud",
-        "God of War",
         "TimeSplitters 2",
         "The Bouncer",
         "God Hand",
@@ -4684,7 +4693,18 @@
         "Steambot Chronicles",
         "Fatal Frame",
         "Dark Cloud 2",
-        "Rogue Galaxy"
+        "Rogue Galaxy",
+        "Resident Evil Outbreak",
+        "Phantasy Star Universe",
+        "Final Fantasy XII",
+        "Haunting Ground",
+        "King's Field IV",
+        "Galerians: Ash",
+        "Silent Hill 3",
+        "The Godfather",
+        "Rule of Rose",
+        "The Sopranos",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
