@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: every spelling of a game shows its price
+
+- Found with the "Yazuka" copy (the library has the typo beside "Yakuza"; nobody lists a game under a typo, so it had no price, and `same_game` (#121) could not help because it needed a row for both names). A check of `covers.json` `same` against `latest.json` found about 115 games, 137 spellings, in that state (Alien Homind / Hominid, Soulcalibur 2, FIFA 13, the .hack parts, ...).
+- `shareFigures()` (used for `same_game` and for the library's groups) gives a name with no row a copy of the first row that has one, and a name whose site has no figure the other name's. `shareSpellingPrices()` applies it to every group in `covers.json` `same` when prices arrive and again when the covers file does. `priceOwn` keeps the figures before sharing: the Library still picks the spelling that is priced in the chosen region (`medianOf(title, label, true)`).
+- `covers.json` / `tools/build_covers.py`: EyeToy: Groove and In the Groove are different games and were one group; `NOT_SAME` keeps them apart on a rebuild.
+
 ## 2026-10-17: browsers on one account stay together
 
 - Found by the maintainer: two games added in one browser did not appear in the other. A browser only loaded the account's list when its button was pressed, and every send replaced the saved list, so a stale browser could also wipe a newer one.
