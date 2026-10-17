@@ -1519,6 +1519,18 @@ class BoardReplyTests(unittest.TestCase):
             "2": {"replies": 90, "games": []}})
         self.assertNotIn("REPLYWORD", json.dumps(status))
 
+    def test_a_ps2_thread_whose_opening_post_names_no_game_is_read_for_its_replies(self):
+        url = lambda n: f"https://a.4cdn.org/vr/thread/{n}.json"
+        threads = [thread(1, NOW, subject="PS2 general", replies=80), thread(2, NOW, subject="chat", replies=300)]
+        status = {}
+        items, calls = self.scan(threads, status, {url(1): ([self.reply("REPLYWORD Okami and Silent Hill 2")], None)})
+        self.assertEqual([u for u, _ in calls], [url(1)], "only the thread about the PS2 is asked for")
+        self.assertEqual([(i["link"].rsplit("/", 1)[1], i["matched_in"], i["matched_games"]) for i in items],
+                         [("1", "body", ["Okami", "Silent Hill 2"])])
+        self.assertNotIn("REPLYWORD", json.dumps(items) + json.dumps(status))
+        self.assertEqual(scraper.analyze_thread(thread(3, NOW, subject="PS2 general"), self.job, self.matcher, set()), None,
+                         "no game named anywhere: no item")
+
     def test_a_thread_is_asked_for_again_only_when_it_grew_and_a_304_keeps_what_was_known(self):
         url = "https://a.4cdn.org/vr/thread/1.json"
         status = {"4chan:vr": {"threads": {"1": {"replies": 40, "games": ["Ico"], "modified": "Wed, 14 Oct 2026 10:00:00 GMT"}}}}

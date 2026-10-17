@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: 4chan threads about the PS2 are read for their replies even when the opening post names no game
+
+- Before, a thread's own file was read (for the games its replies name) only when its opening post already named a game, so a "PS2 general" thread whose opener names nothing was missed however many games its replies named. Now a thread whose subject or opening comment says PS2 / PlayStation 2 / PCSX2 (`opens_about_ps2()`) is read too, and becomes a row (`matched_in: "body"`) when its replies name a game. A thread about nothing in particular is still not read. Nothing a poster wrote is kept (rule 12): the same notes as before (games, reply count, `Last-Modified`).
+- `BOARD_THREAD_READS` is 20 a board and round (was 12); a thread is asked for again only when its reply count changed, with `If-Modified-Since`, one request a second.
+
 ## 2026-10-17: names typed without the apostrophe, and the Resident Evil Essentials cover
 
 - A 4chan thread naming Cabela's Outdoor Adventures was not flagged: the library spells it with an apostrophe, which the matcher reads as the two words "cabela s", and a post that types "Cabelas" matched nothing. A title of three or four words with a possessive in it (135 of them: Cabela's, Disney's, Baldur's Gate, Tony Hawk's ...) now also answers to its spelling without the apostrophe, in any capitals (`_add_possessive_aliases()`; an alias counts however it is written, like "MGS3"). A spelling two titles share is left out. Still not found: the name with its apostrophe in all lower case, or misspelt ("Cabella's"), because posts need the library's capitals and spelling (rule 12's matcher, `games_in_post()`). Run `tools/regression_check.py` before merging: headlines that write a name without its apostrophe will now match.

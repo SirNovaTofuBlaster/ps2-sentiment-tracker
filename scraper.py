@@ -106,7 +106,7 @@ BOARD_THREAD_JSON_URL = "https://a.4cdn.org/{}/thread/{}.json"
 # 2026-10-07's "opening post only"): the last few replies the catalog carries with each thread, and, for a thread that
 # already names a game, its other replies from the thread's own file. A board reads at most this many such files per run,
 # busiest threads first, and stops after this many seconds of them.
-BOARD_THREAD_READS = 12
+BOARD_THREAD_READS = 20
 BOARD_THREAD_BUDGET = 120
 BOARD_PATTERN = re.compile(r"[a-z0-9]{1,6}")
 BOARD_REQUEST_GAP = 1.1  # seconds between two catalog requests
@@ -1127,6 +1127,12 @@ def reply_games(posts, matcher, ps2_source):
     return found
 
 
+def opens_about_ps2(thread):
+    """Whether a thread's subject or opening comment says PS2 / PlayStation 2 / PCSX2. Only that is looked at; the text
+    is not kept."""
+    return bool(PS2_CONTEXT_PATTERN.search(f"{board_text(thread.get('sub'))} {board_text(thread.get('com'))}"))
+
+
 def analyze_thread(thread, job, matcher, ps2_keys, more_titles=()):
     """An item for a thread that names a PS2 game, in its opening post or in the replies; None for every other thread.
 
@@ -1156,8 +1162,13 @@ def analyze_thread(thread, job, matcher, ps2_keys, more_titles=()):
     heard = reply_games(preview if isinstance(preview, list) else (), matcher, ps2_source)
     if not found and heard:
         found, matched_in = heard, "body"
+    extra = [t for t in more_titles if isinstance(t, str)]
+    if not found and extra and opens_about_ps2(thread):
+        # A thread that is about the PS2 ("PS2 general") but whose opening post names no game: its replies are the
+        # mentions. A thread about nothing in particular is not read further (read_replies() does not ask for it).
+        found, matched_in = [(title, 100, "exact") for title in extra], "body"
     if not found:
-        return None  # replies from the thread's own file only ever add to a thread that is already named
+        return None  # replies from the thread's own file only ever add to a thread that is already named, or about the PS2
     game, score, method = found[0]
     titles = [title for title, _, _ in found]
     for title in [hit[0] for hit in heard] + [t for t in more_titles if isinstance(t, str)]:
@@ -1206,8 +1217,15 @@ def scan_board(session, job, matcher, status, ps2_keys):
         cutoff = (datetime.now(timezone.utc) - timedelta(days=RETENTION_DAYS)).strftime(TIMESTAMP_FORMAT)
         named = [(t, analyze_thread(t, job, matcher, ps2_keys)) for t in threads]
         named = [(t, item) for t, item in named if item and item["timestamp"] >= cutoff]
-        more, kept = read_replies(session, job, matcher, ps2_keys, named, remembered)
-        items = [analyze_thread(t, job, matcher, ps2_keys, more.get(t.get("no"), ())) or item for t, item in named]
+        # Threads about the PS2 whose opening post names no game are read too: their replies hold the names.
+        taken = {t.get("no") for t, _ in named}
+        about = [(t, None) for t in threads if isinstance(t.get("no"), int) and not isinstance(t.get("no"), bool)
+                 and t["no"] not in taken and opens_about_ps2(t)
+                 and (thread_timestamp(t) or "") >= cutoff]
+        reading = named + about
+        more, kept = read_replies(session, job, matcher, ps2_keys, reading, remembered)
+        items = [analyze_thread(t, job, matcher, ps2_keys, more.get(t.get("no"), ())) or item for t, item in reading]
+        items = [item for item in items if item]
         record_success(status, key, max(filter(None, map(thread_timestamp, threads)), default=None))
     if modified:
         # When the board itself last changed, as its server said: sent back next time. It is
