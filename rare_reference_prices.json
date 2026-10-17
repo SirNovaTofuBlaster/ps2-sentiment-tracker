@@ -31,6 +31,18 @@
       "url": "https://unanswered.io/guide/rarest-most-valuable-ps2-games",
       "published": "2026-07-25",
       "article_says_prices_come_from": "PriceCharting, values 'January 2026 where available'"
+    },
+    "cexwatch": {
+      "name": "Time Extension, CeX Retro Watch November 2023",
+      "url": "https://timeextension.com/features/cex-retro-watch-november-2023",
+      "published": "2023-11-17",
+      "article_says_prices_come_from": "CeX's own shop prices"
+    },
+    "animeclick": {
+      "name": "AnimeClick.it, Rule of Rose: a load of sealed copies found in Italy",
+      "url": "https://www.animeclick.it/news/104604-rule-of-rose-trovato-un-carico-di-copie-sigillate-in-italia",
+      "published": "2024-09-11",
+      "article_says_prices_come_from": "none named by the article (average price before and after)"
     }
   },
   "prices": [
@@ -717,6 +729,33 @@
       "currency": "USD",
       "source": "unanswered",
       "note": "'500+'"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "PAL",
+      "condition": "unstated",
+      "price": 570,
+      "currency": "GBP",
+      "source": "cexwatch",
+      "note": "CeX shop price, not a sale"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "PAL",
+      "condition": "unstated",
+      "price": 600,
+      "currency": "USD",
+      "source": "animeclick",
+      "note": "average before Italian stock, per article"
+    },
+    {
+      "title": "Rule of Rose",
+      "region": "PAL",
+      "condition": "unstated",
+      "price": 320,
+      "currency": "USD",
+      "source": "animeclick",
+      "note": "average after Italian stock, per article"
     }
   ]
 }
