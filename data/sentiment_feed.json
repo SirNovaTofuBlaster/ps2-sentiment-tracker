@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 03:17:52 UTC",
+  "last_updated": "2026-10-17 03:31:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -15,6 +15,25 @@
       "match_score": 100,
       "match_method": "fuzzy",
       "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 03:12 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening Special Edition",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749841207",
+      "matched_game": "Devil May Cry 3: Dante's Awakening Special Edition",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening Special Edition"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": null,
@@ -4553,7 +4572,7 @@
       "timestamp": "2026-10-16 21:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne, Resident Evil Code: Veronica X, Astro Boy and 1 more",
+      "headline": "Thread on /v/ naming Max Payne, Okami, Resident Evil Code: Veronica X and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -4561,6 +4580,7 @@
       "matched_game": "Max Payne",
       "matched_games": [
         "Max Payne",
+        "Okami",
         "Resident Evil Code: Veronica X",
         "Astro Boy",
         "Rule of Rose"
@@ -5241,7 +5261,7 @@
       "timestamp": "2026-10-16 20:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Red Faction, Fight Night Round 3, Metal Gear Solid 2: Sons of Liberty and 4 more",
+      "headline": "Thread on /v/ naming Red Faction, Resident Evil 4, Fight Night Round 3 and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -5249,6 +5269,7 @@
       "matched_game": "Red Faction",
       "matched_games": [
         "Red Faction",
+        "Resident Evil 4",
         "Fight Night Round 3",
         "Metal Gear Solid 2: Sons of Liberty",
         "Ecco the Dolphin: Defender of the Future",
@@ -265987,92 +266008,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 03:31 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Get these Pokemon before Pokemon Bank shuts down",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/pokemon-to-get-before-pokemon-bank-shuts-down/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 03:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "My preorders from October to February of 2027",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wwd29h/my_preorders_from_october_to_february_of_2027/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-03 03:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Real or fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wwd26k/real_or_fake/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-03 03:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Horror game recommendations from the current steam sale",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wwd21y/horror_game_recommendations_from_the_current/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-03 03:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "I scored an Oculus Quest headset with both controllers recently for $25",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wwd0rl/i_scored_an_oculus_quest_headset_with_both/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-03 03:28 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "$15 guitar had to get it even with Stage Tour coming in December",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wwcxe4/15_guitar_had_to_get_it_even_with_stage_tour/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 03:22 UTC",
       "is_digital_only": false
     }
   ]
