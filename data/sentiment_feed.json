@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 19:05:20 UTC",
+  "last_updated": "2026-10-17 19:16:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -350,6 +350,26 @@
       "hype": 0,
       "timestamp": "2026-10-17 18:45 UTC",
       "views": 134
+    },
+    {
+      "headline": "Thread on /v/ naming Crouching Tiger Hidden Dragon and Minority Report",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749877693",
+      "matched_game": "Crouching Tiger Hidden Dragon",
+      "matched_games": [
+        "Crouching Tiger Hidden Dragon",
+        "Minority Report"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 18:44 UTC"
     },
     {
       "headline": "Quasimorph Unplayable Due to Blackscreen Crashes on steam deck!",
@@ -1562,14 +1582,15 @@
       "timestamp": "2026-10-17 17:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749873126",
       "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Resident Evil Code: Veronica X"
+        "Resident Evil Code: Veronica X",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -274333,74 +274354,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 19:17 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Any good steampunk styled games?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wwvelo/any_good_steampunk_styled_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 19:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is my Pokemon emerald box and cartridge legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wwvc33/is_my_pokemon_emerald_box_and_cartridge_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 19:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Valorant Player Banned Due To Previous CPU Owner’s Cheating Ways",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/valorant-player-banned-due-to-previous-gpu-owners-cheating-ways-2000739597",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 19:06 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "How to get Astronaut Pikachu in Pokémon Go",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/how-to-get-astronaut-pikachu-in-pokemon-go/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 19:06 UTC",
       "is_digital_only": false
     }
   ]
