@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-10-16 23:59:02 UTC",
+  "last_updated": "2026-10-17 00:12:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vrpg/ naming Final Fantasy XII and Suikoden III",
+      "source": "4chan /vrpg/",
+      "source_type": "4chan",
+      "feed": "4chan:vrpg",
+      "link": "https://boards.4chan.org/vrpg/thread/4131773",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII",
+        "Suikoden III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 00:03 UTC"
+    },
     {
       "headline": "How to bypass need network connection",
       "source": "r/pcmasterrace",
@@ -155,6 +175,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-16 23:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749832010",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 23:40 UTC"
     },
@@ -264716,57 +264755,6 @@
       "sentiment": 50,
       "timestamp": "2026-10-03 00:22 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Games with deep story and character creation",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1ww98yj/games_with_deep_story_and_character_creation/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-03 00:08 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "5 Big Things That Just Changed In The World Of Warcraft: Forever Beta",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/5-big-things-world-of-warcraft-forever-beta-2000739404",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 00:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The WORST PS2 Movie Tie In Game Ever 💀",
-      "source": "YouTube: Dan Gnadt - The PS2 Guy",
-      "source_type": "youtube",
-      "feed": "youtube:UChBb5-4ILVNPsL8xX6a4LpA",
-      "link": "https://www.youtube.com/shorts/318_ZAfsqYw",
-      "matched_game": "Retro",
-      "matched_games": [
-        "Retro",
-        "The Mummy Returns"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-03 00:00 UTC",
-      "views": 64
     }
   ]
 }
