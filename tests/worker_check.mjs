@@ -24,10 +24,10 @@ check('a purchase month must be real, past and not older than two years', () => 
 });
 check('a report needs every field from the allowed lists and a sane price', () => {
     const now = new Date('2026-10-17T12:00:00Z');
-    const good = { game: 'kuon', region: 'PAL', condition: 'complete', currency: 'GBP', price: 120.456, month: '2026-09', source: 'shop' };
+    const good = { game: 'kuon', region: 'PAL', condition: 'complete', currency: 'GBP', price: 120.456, month: '2026-09' };
     assert.deepEqual(lib.cleanReport(good, now), { ...good, price: 120.46 });
     for (const patch of [{ price: 0 }, { price: -3 }, { price: '12' }, { price: 20001 }, { region: 'JP' }, { condition: 'mint' },
-        { currency: 'JPY' }, { source: 'friend' }, { month: '2027-01' }, { game: 'Kuon' }]) assert.equal(lib.cleanReport({ ...good, ...patch }, now), null, JSON.stringify(patch));
+        { currency: 'JPY' }, { month: '2027-01' }, { game: 'Kuon' }]) assert.equal(lib.cleanReport({ ...good, ...patch }, now), null, JSON.stringify(patch));
 });
 check('nothing is published for fewer than five accounts', () => {
     assert.deepEqual(lib.summarise(rows([10, 11, 12, 13])), { published: false, reporters: 4 });

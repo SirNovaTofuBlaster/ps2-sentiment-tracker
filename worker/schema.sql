@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS reports (
   currency  TEXT NOT NULL,
   price     REAL NOT NULL,
   month     TEXT NOT NULL,             -- when it was bought: YYYY-MM
-  source    TEXT NOT NULL,
+  source    TEXT NOT NULL DEFAULT 'other',   -- no longer asked for or sent (2026-10-17); kept so older databases still fit
   created   INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS reports_group ON reports (game, region, condition, currency);

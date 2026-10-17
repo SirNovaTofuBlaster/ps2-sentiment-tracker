@@ -541,8 +541,6 @@
               <select id="reportCurrency" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200"><option value="GBP">GBP</option><option value="EUR">EUR</option><option value="USD">USD</option></select>
               <label class="sr-only" for="reportMonth">Month bought</label>
               <input type="month" id="reportMonth" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-white" title="Month you bought it">
-              <label class="sr-only" for="reportSource">Where</label>
-              <select id="reportSource" class="bg-ps2dark border border-ps2border rounded text-sm px-2.5 py-2 text-slate-200"><option value="ebay">eBay</option><option value="shop">A shop</option><option value="convention">A convention or fair</option><option value="private">A private sale</option><option value="other">Somewhere else</option></select>
               <button type="submit" class="brand-btn brand-btn-primary py-2 px-4">Send</button>
             </div>
           </form>
@@ -3134,7 +3132,7 @@
             const price = Number(document.getElementById('reportPrice').value);
             if (!(price > 0)) { crowdSay('Enter the price you paid for one copy.'); return false; }
             const body = { game: priceKey(game), region: document.getElementById('reportRegion').value, condition: document.getElementById('reportCondition').value,
-                currency: document.getElementById('reportCurrency').value, price, month: document.getElementById('reportMonth').value, source: document.getElementById('reportSource').value };
+                currency: document.getElementById('reportCurrency').value, price, month: document.getElementById('reportMonth').value };
             const { status } = await crowdCall('POST', '/api/report', body);
             if (status === 201) {
                 crowdSay(`Thank you. Your report for ${game ? game : 'the game'} was sent. It shows on the game's page once five people have reported it.`);
@@ -3170,7 +3168,7 @@
             const month = document.getElementById('reportMonth');
             if (month && !month.value) month.value = new Date().toISOString().slice(0, 7);
             document.getElementById('shareNote').textContent =
-                'What is sent, and only if you choose to: your account id and key (the service keeps only a hash of the key), per game how many sealed, complete and loose copies you own, and each purchase report (game, region, condition, price, currency, the month, where you bought it). '
+                'What is sent, and only if you choose to: your account id and key (the service keeps only a hash of the key), per game how many sealed, complete and loose copies you own, and each purchase report (game, region, condition, price, currency, the month you bought it). '
                 + 'Never sent: your name, email, what you paid in My games, or your list as a file. A game goes as its name in plain lower-case words (the same spelling the price lookups use). The service does not store your network address; it uses it for a moment to limit sign-ups. '
                 + 'A price or count is published only when five or more different accounts agree; one far from the others is held back, never deleted. Sign out, or delete your account to remove everything you sent. Lose the key and the account cannot be recovered. '
                 + 'Reading the published figures asks the service for one file when a game page or this tab opens, which shows it your address.';

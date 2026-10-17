@@ -92,7 +92,7 @@ async function addReport(request, env, account) {
     const count = await env.DB.prepare('SELECT COUNT(*) AS n FROM reports WHERE account = ? AND created = ?').bind(account, day).first();
     if (count.n >= MAX_REPORTS_PER_DAY) return reply(request, env, 429, { error: 'too many reports today' });
     await env.DB.prepare('INSERT INTO reports (account, game, region, condition, currency, price, month, source, created) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)')
-        .bind(account, report.game, report.region, report.condition, report.currency, report.price, report.month, report.source, day).run();
+        .bind(account, report.game, report.region, report.condition, report.currency, report.price, report.month, 'other', day).run();
     return reply(request, env, 201, { ok: true });
 }
 

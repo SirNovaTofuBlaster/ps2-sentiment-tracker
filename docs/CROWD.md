@@ -23,8 +23,8 @@ Requests send `Authorization: Bearer <id>.<key>`. The network address is used on
 
 ## What is kept
 - `copies`: per account and game (the dashboard's `priceKey()`), how many sealed, complete-in-box and loose copies (0-99 each).
-- `reports`: per account, game, region (US or PAL), condition, currency (USD, GBP, EUR), price, the month it was bought, and where (eBay, shop,
-  convention, private, other). At most 20 a day per account.
+- `reports`: per account, game, region (US or PAL), condition, currency (USD, GBP, EUR), price and the month it was bought. At most 20 a day per account. (The `source` column from the first version is kept
+  but always holds `other`: "where" is no longer asked for or sent.)
 - Nothing else: no address, no email, no name, no free text. The Worker logs nothing and never echoes an error.
 
 ## What is published (`GET /api/stats`, cached five minutes)

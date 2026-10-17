@@ -3466,10 +3466,11 @@ await check('crowd data: off until an account exists, counts only, figures need 
         // a report
         calls.length = 0;
         el('reportGame').value = 'Kuon'; el('reportPrice').value = '120'; el('reportMonth').value = '2026-09';
-        el('reportRegion').value = 'PAL'; el('reportCondition').value = 'complete'; el('reportCurrency').value = 'GBP'; el('reportSource').value = 'shop';
+        el('reportRegion').value = 'PAL'; el('reportCondition').value = 'complete'; el('reportCurrency').value = 'GBP';
         await run('crowdReport()');
         const post = calls.find(c => c.method === 'POST');
-        assert.deepEqual(post.body, { game: 'kuon', region: 'PAL', condition: 'complete', currency: 'GBP', price: 120, month: '2026-09', source: 'shop' });
+        assert.deepEqual(post.body, { game: 'kuon', region: 'PAL', condition: 'complete', currency: 'GBP', price: 120, month: '2026-09' });
+        assert.ok(!('source' in post.body) && !read('index.html').includes('reportSource'), 'no "where" is asked or sent');
         calls.length = 0;
         el('reportPrice').value = '';
         await run('crowdReport()');
