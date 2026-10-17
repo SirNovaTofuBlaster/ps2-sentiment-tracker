@@ -2998,7 +2998,11 @@ await check('editions: a game page lists its editions with their own prices and 
         assert.match(html, /href="https:\/\/collectorsedition\.org\/game-db\?c=PS2&amp;e=PAL"/, 'and a link to its source');
         assert.match(html, /Premium Edition[\s\S]*not checked yet/, 'an edition not priced yet says so');
         assert.doesNotMatch(run(`priceRows(priceData).map(row => row.title).join('|')`), /Limited Edition/, 'editions are not on the eBay prices list');
-        assert.equal(run(`editionsHtml('Silent Hill 2')`), '');
+        assert.equal(run(`editionsHtml('Okami')`), '');
+        // a field the sources did not give is left out of the line, not printed as "not stated"
+        run(`editionsData = { lists: { PAL: [{ title: 'Kuon Special', game: 'Kuon', publisher: 'not stated by the sources', released: 'not stated by the sources', kinds: ['steelbook'], contents: 'x' }] } }`);
+        assert.doesNotMatch(run(`editionsHtml('Kuon')`), /not stated/);
+        assert.match(run(`editionsHtml('Kuon')`), /steelbook/);
         run(`editionsData = { lists: { PAL: [{ title: 3, game: 'Kuon' }, null, { title: 'x', game: 'Kuon', contents: '<b>' }] } }`);
         assert.match(run(`editionsHtml('Kuon')`), /&lt;b&gt;/, 'odd data is escaped, and an entry without a title is skipped');
     } finally {

@@ -2407,7 +2407,7 @@
                     .filter(item => item && typeof item.source === 'string' && /^https:\/\//.test(item.source));
                 return `<li class="edition-item">
                     <div><b>${esc(text(edition.title))}</b> <span class="level-tag">${esc(region === 'PAL' ? 'PAL' : 'NTSC-U')}</span></div>
-                    <div class="text-[11px] text-slate-400">${esc([kinds, text(edition.publisher), text(edition.released)].filter(Boolean).join(' · '))}</div>
+                    <div class="text-[11px] text-slate-400">${esc([kinds, text(edition.publisher), text(edition.released)].filter(part => part && !/^not stated/i.test(part)).join(' · '))}</div>
                     <div class="text-xs text-slate-300 mt-1">${esc(text(edition.contents))}${edition.note ? ` <span class="text-slate-400">${esc(text(edition.note))}</span>` : ''}</div>
                     <div class="ebay-figures mt-1">${priceSiteHtml(label, site, currencyOf(label, priceData), now, locale, LEVELS.rare.stale)}</div>
                     <div class="text-[11px] text-slate-400 mt-1">Same search on eBay: <a class="text-cyan-400" href="${safeUrl(listedSearchUrl(label, query))}" target="_blank" rel="noopener noreferrer">${esc(label)}</a>${
