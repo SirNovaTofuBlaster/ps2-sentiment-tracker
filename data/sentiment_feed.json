@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 12:26:28 UTC",
+  "last_updated": "2026-10-17 12:37:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -689,6 +689,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 11:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749856596",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 11:17 UTC"
     },
@@ -3624,6 +3643,27 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 07:01 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Alone in the Dark, Guilty Gear X and Grandia II",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12882914",
+      "matched_game": "Alone in the Dark",
+      "matched_games": [
+        "Alone in the Dark",
+        "Guilty Gear X",
+        "Grandia II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 07:01 UTC"
     },
@@ -11640,14 +11680,13 @@
       "timestamp": "2026-10-16 20:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Grand Theft Auto: San Andreas, Fight Night Round 3 and 8 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Fight Night Round 3, Metal Gear Solid 2: Sons of Liberty and 8 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749822229",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
-        "Grand Theft Auto III",
         "Grand Theft Auto: San Andreas",
         "Fight Night Round 3",
         "Metal Gear Solid 2: Sons of Liberty",
@@ -11657,7 +11696,8 @@
         "The Getaway",
         "Red Faction",
         "Resident Evil 4",
-        "Ratchet & Clank"
+        "Ratchet & Clank",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -270198,19 +270238,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 12:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "5 Timeless 'Calvin and Hobbes' Comics That Prove Bill Watterson Is In a League of his Own",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/5-key-strips-calvin-hobbes/",
-      "matched_game": null,
-      "match_score": 0,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "timestamp": "2026-10-03 12:36 UTC",
       "is_digital_only": false
     }
   ]
