@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: more articles behind the Rarest list (Rule of Rose, Manhunt 2)
+
+- `rare_reference_prices.json`: two new sources (Time Extension's CeX Retro Watch, 2023-11-17, and AnimeClick.it, 2024-09-11) and three Rule of Rose PAL points: CeX shop price GBP 570, and the article's average of about $600 before and about $320 after sealed copies turned up in Italy (September 2024). Reference points only; nothing ranks by them.
+- `rare_games.json`: PAL Rule of Rose note gains the Italian sealed stock; PAL Manhunt 2 note gains the BBFC refusals of 2007 (with sources).
+- Not added, because no PriceCharting value could be read to rank or value them: Manhunt (Australia RC 2004), Reservoir Dogs, BMX XXX, Leisure Suit Larry: Magna Cum Laude, Shellshock: Nam '67, The Getaway. They are candidates for the next research pass.
+
 ## 2026-10-17: Library: Remove, a way back to the top, a bigger x
 
 - The Library's add bar has **Remove** (`libraryRemovePicked()`), shown whenever the collection holds the copy the bar's region and condition point at ("Remove one (you have N)" with several); it takes away one copy, un-ticks the tile at none, and refreshes My collection. The add message now says it is there.
