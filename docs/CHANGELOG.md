@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: Underrated buttons on every card, and a Back that returns to the page you came from
+
+- Every card in the Underrated grid has Open game page, Add to collection and Find reviews (`underratedButtons()`), not only the game of the day.
+- A game's page remembers the tab it was opened from (`gameBackTo`, `BACK_LABELS`, `goBack()`): from Underrated the button reads "Back to Underrated"; from any other tab it names that tab; from the search box or a reloaded address it is still "Back to Highlights".
+
 ## 2026-10-17: 4chan rows no longer repeat the game name
 
 - The table row's headline cell is empty for a 4chan row (`rowHeadline()` gives `''`, the cell carries `data-empty` and is hidden on a phone) because the Game column already names the games; a game page's list leaves the line out too. Display only.

@@ -3145,6 +3145,18 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
         run(`visibleFeedData = []; underratedMentionCache = null`);
         assert.equal((el('underratedDays').innerHTML.match(/<li /g) || []).length, 7, 'seven earlier days');
         assert.equal((el('underratedGrid').innerHTML.match(/<li /g) || []).length, 21, 'the games revealed so far');
+        assert.equal((el('underratedGrid').innerHTML.match(/Open game page/g) || []).length, 21, 'every card has Open game page');
+        assert.equal((el('underratedGrid').innerHTML.match(/Add to collection/g) || []).length, 21, 'and Add to collection');
+        assert.equal((el('underratedGrid').innerHTML.match(/Find reviews/g) || []).length, 21, 'and Find reviews');
+        run(`showView('underrated', false); openGame('Rygar: The Legendary Adventure', false)`);
+        assert.match(el('gameBackLabel').textContent, /Back to Underrated/, 'a game opened from Underrated goes back there');
+        run(`goBack()`);
+        assert.equal(run(`currentView`), 'underrated', 'Back returns to the Underrated page');
+        run(`showView('dashboard', false); openGame('Rygar: The Legendary Adventure', false)`);
+        assert.match(el('gameBackLabel').textContent, /Back to Highlights/, 'from the Tracker it still says Highlights');
+        run(`goBack()`);
+        assert.equal(run(`currentView`), 'dashboard');
+        run(`showView('underrated', false)`);
         run(`underratedFilter = 'g:' + underratedData.games[0].genre; renderUnderrated(${dayStamp(launchDay + 20)})`);
         const inGenre = raw.games.slice(0, 21).filter(g => g.genre === raw.games[0].genre).length;
         assert.equal((el('underratedGrid').innerHTML.match(/<li /g) || []).length, inGenre, 'a genre chip narrows the grid');
@@ -3384,7 +3396,7 @@ await check('a fold button that has nothing to fold really is hidden (Highlights
     run("toggleList('todayList')");
     run("setRecentSort('highlights')");
     assert.equal(toggle(), true, 'Highlights has none, even with the list left open');
-    run("setRecentSort('price')");
+    run("setRecentSort('price')"); run(`renderRecentGames(__many, ${now})`);   // not the live feed: its size changes every day
     assert.equal(toggle(), false, 'and it is back with the list');
     run("toggleList('todayList')");
 });
