@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-17 16:42:44 UTC",
+  "last_updated": "2026-10-17 16:53:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584790446",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 16:40 UTC"
+    },
     {
       "headline": "The Oliver Twins Mark 40 Years of Dizzy with New Sega Genesis / Mega Drive Collection",
       "source": "Time Extension",
@@ -69,6 +88,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 16:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749869081",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 16:05 UTC"
     },
@@ -384,14 +422,17 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming TimeSplitters 2",
+      "headline": "Thread on /v/ naming God Hand, Shadow of the Colossus, TimeSplitters 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "TimeSplitters 2",
+      "matched_game": "God Hand",
       "matched_games": [
-        "TimeSplitters 2"
+        "God Hand",
+        "Shadow of the Colossus",
+        "TimeSplitters 2",
+        "The Bouncer"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -272415,146 +272456,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 16:54 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Which roguelike mode add-on has been your favorite?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1wwrym7/which_roguelike_mode_addon_has_been_your_favorite/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-03 16:51 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Accidentally ended up with 5 controllers",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wwrwmn/accidentally_ended_up_with_5_controllers/",
-      "matched_game": "Black",
-      "matched_games": [
-        "Black"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 16:49 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PS2 scratching my disc",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wwrwi3/ps2_scratching_my_disc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 16:49 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Super Adventure Island II",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wwrw6o/super_adventure_island_ii/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 16:48 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "RTX 5090 Buyer Asked To Sign A Resale Loyalty Pledge: ‘NO EXPORT – NO EXCEPTIONS’",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/rtx-5090-buyer-asked-to-sign-a-resale-loyalty-pledge-no-export-no-exceptions-2000739582",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 16:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Looking for game recommendations based on my favorites!",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wwrry1/looking_for_game_recommendations_based_on_my/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-03 16:43 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Final Fantasy 7 Revelation director fought for a disc release because he \"really likes\" physical media",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1wwrrt2/final_fantasy_7_revelation_director_fought_for_a/",
-      "matched_game": "Dirge of Cerberus: Final Fantasy VII",
-      "matched_games": [
-        "Dirge of Cerberus: Final Fantasy VII"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 16:43 UTC",
-      "is_digital_only": true
-    },
-    {
-      "headline": "Metroid Ravenous on same sale as OoT on Amazon",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wwrqla/metroid_ravenous_on_same_sale_as_oot_on_amazon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 16:42 UTC",
       "is_digital_only": false
     }
   ]
