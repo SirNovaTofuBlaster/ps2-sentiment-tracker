@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-17 18:08:18 UTC",
+  "last_updated": "2026-10-17 18:19:52 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749875949",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 18:11 UTC"
+    },
     {
       "headline": "Best players for FC 27 Middle Management Evolution",
       "source": "Destructoid",
@@ -155,6 +174,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 17:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749874805",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 17:51 UTC"
     },
     {
       "headline": "Looking for games with battle ui similar to expedition 33 and persona 5 (options are on: psp, ps2, psvita, nds, 3ds and wii)",
@@ -553,14 +591,15 @@
       "timestamp": "2026-10-17 17:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Wipeout Pulse",
+      "headline": "Thread on /v/ naming Wipeout Pulse and Marvel: Ultimate Alliance 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749872783",
       "matched_game": "Wipeout Pulse",
       "matched_games": [
-        "Wipeout Pulse"
+        "Wipeout Pulse",
+        "Marvel: Ultimate Alliance 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -11200,6 +11239,26 @@
       "timestamp": "2026-10-17 04:31 UTC"
     },
     {
+      "headline": "Thread on /v/ naming God Hand and Rumble Roses",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749843996",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand",
+        "Rumble Roses"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 04:31 UTC"
+    },
+    {
       "headline": "I'll just leave these two comics here.",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -18106,7 +18165,7 @@
       "timestamp": "2026-10-16 20:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Warriors, Samurai Warriors, Kessen 3 and 1 more",
+      "headline": "Thread on /v/ naming The Warriors, Kessen 3, Kessen and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -18114,9 +18173,9 @@
       "matched_game": "The Warriors",
       "matched_games": [
         "The Warriors",
-        "Samurai Warriors",
         "Kessen 3",
-        "Kessen"
+        "Kessen",
+        "Samurai Warriors"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -273605,76 +273664,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 18:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo Find!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wwtzjj/nintendo_find/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 18:16 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Final Fantasy 7 Revelation Director Says It Was ‘Absolutely Essential’ Not To Turn The Remake Into ‘My Own Personal Fan Project’",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/final-fantasy-vii-revelation-director-says-it-was-absolutely-essential-not-to-turn-the-remake-into-my-own-personal-fan-project-2000739591",
-      "matched_game": "Dirge of Cerberus: Final Fantasy VII",
-      "matched_games": [
-        "Dirge of Cerberus: Final Fantasy VII"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-03 18:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Witcher Collection!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wwtyo5/witcher_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 18:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Steam's latest survey shows 32GB RAM overtaking 16GB despite the massive price surge",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1wwtxpu/steams_latest_survey_shows_32gb_ram_overtaking/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 18:13 UTC",
       "is_digital_only": false
     }
   ]
