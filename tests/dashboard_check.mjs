@@ -3030,6 +3030,16 @@ await check('editions: a picture kept in covers/ is the edition\'s own cover, on
     }
 });
 
+await check('the feed table: the game and its prices come before the headline, and an open Shops panel wraps instead of being cut off', () => {
+    const html = read('index.html');
+    assert.ok(html.indexOf('>MATCHED PS2 GAME</th>') > 0 && html.indexOf('>MATCHED PS2 GAME</th>') < html.indexOf('>HEADLINE</th>'), 'the header names the game first');
+    assert.ok(html.indexOf('<td data-col="game"') < html.indexOf('<td data-col="headline"'), 'and so does each row');
+    assert.ok(html.indexOf('<td data-col="headline"') < html.indexOf('<td data-col="action"'), 'the link out stays last');
+    const css = read('retro.css');
+    assert.match(css, /body \.price-region \{[^}]*flex-wrap: wrap/, 'the shop buttons of one region wrap');
+    assert.match(css, /td\[data-col="game"\] \{ width: 46%; min-width: 20rem; \}/, 'the game column has room on a wide screen');
+});
+
 await check('portfolio: the value of My games over time, between the tabs and the list, with what was paid', async () => {
     const run = (code) => vm.runInContext(code, context);
     const saved = evalJson('collection');

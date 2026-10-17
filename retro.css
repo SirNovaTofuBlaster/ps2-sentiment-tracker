@@ -362,7 +362,7 @@ body .price-links {
   margin-top: .55rem;
   line-height: 1;
 }
-body .price-region { display: inline-flex; align-items: center; gap: .4rem; }
+body .price-region { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .4rem; max-width: 100%; }   /* wraps, so an open Shops panel is never cut at the cell's edge */
 body .price-flag {
   font-family: var(--mono);
   font-size: .62rem;
@@ -1468,4 +1468,11 @@ body .portfolio-paid { display: inline-block; width: 1.1rem; border-top: 2px sol
 @media (max-width: 640px) {
   body .portfolio-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   body #portfolioChart.chart-canvas { height: 250px; }
+}
+
+/* ---- Live Ingestion Stream (2026-10-17): the game and its prices come before the headline, and have room ---- */
+@media (min-width: 641px) {
+  body #feedTableBody td[data-col="game"] { width: 46%; min-width: 20rem; }
+  body #feedTableBody td[data-col="headline"] { width: 34%; }
+  body #feedTableBody td[data-col="game"] .shop-inner, body #feedTableBody td[data-col="game"] .price-links { max-width: 100%; }
 }
