@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 23:36:14 UTC",
+  "last_updated": "2026-10-17 23:38:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -7298,15 +7298,13 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Black, Cold Winter, Persona 3 FES and 28 more",
+      "headline": "Thread on /v/ naming Persona 3 FES, TimeSplitters 2, The Bouncer and 28 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "Black",
+      "matched_game": "Persona 3 FES",
       "matched_games": [
-        "Black",
-        "Cold Winter",
         "Persona 3 FES",
         "TimeSplitters 2",
         "The Bouncer",
@@ -7335,10 +7333,12 @@
         "Persona 3",
         "Grand Theft Auto III",
         "Half-Life",
-        "Warship Gunner 2"
+        "Warship Gunner 2",
+        "Black",
+        "Cold Winter"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -277061,25 +277061,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-03 23:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Just finished PaRappa the Rapper 2 Peak game",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wx16gb/just_finished_parappa_the_rapper_2_peak_game/",
-      "matched_game": "PaRappa the Rapper 2",
-      "matched_games": [
-        "PaRappa the Rapper 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 23:36 UTC",
       "is_digital_only": false
     }
   ]
