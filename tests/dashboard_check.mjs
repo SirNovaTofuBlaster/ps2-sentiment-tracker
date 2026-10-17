@@ -3417,4 +3417,93 @@ await check('rows: the game name sits in a box, a source name is yellow, a 4chan
     assert.equal((page.match(/class="src-name/g) || []).length, 3, 'table, game page and the 24-hour list');
 });
 
+await check('crowd data: off until an account exists, counts only, figures need the service to publish them', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    const kept = new Map();
+    const realStorage = context.localStorage, realFetch = context.fetch;
+    context.localStorage = { getItem: (key) => (kept.has(key) ? kept.get(key) : null), setItem: (key, value) => { kept.set(key, String(value)); }, removeItem: (key) => { kept.delete(key); } };
+    const calls = [];
+    context.fetch = async (url, options = {}) => {
+        calls.push({ url, method: options.method, auth: options.headers?.Authorization, body: options.body ? JSON.parse(options.body) : null });
+        if (url.endsWith('/api/register')) return { status: 201, json: async () => ({ id: 'a'.repeat(32), key: 'b'.repeat(64) }) };
+        if (url.endsWith('/api/stats')) return { status: 200, json: async () => ({ generated: 'x', prices: { 'kuon': [{ region: 'PAL', condition: 'complete', currency: 'GBP', median: 120, low: 90, high: 150, reporters: 6 }] }, owners: { 'kuon': { owners: 7, sealed: 1, complete: 5, loose: 2 } } }) };
+        return { status: 200, json: async () => ({}) };
+    };
+    try {
+        run(`crowd = { id: '', key: '', share: false }; crowdStats = null; crowdStatsState = 'idle'; collection = []`);
+        // no account: saving the collection sends nothing
+        run(`addToCollection('Kuon', 'PAL', 'complete', 2)`);
+        assert.equal(run(`crowdSendTimer`), null, 'no send is scheduled without an account');
+        assert.equal(calls.length, 0, 'nothing leaves the browser by itself');
+        // counts: per game, per condition, nothing else
+        run(`addToCollection('Kuon', 'US', 'complete', 3); addToCollection('Kuon', 'PAL', 'sealed', 1)`);
+        assert.deepEqual(evalJson('crowdCounts()'), [{ game: 'kuon', sealed: 1, complete: 5, loose: 0 }]);
+        assert.ok(!/paid|title/.test(JSON.stringify(evalJson('crowdCounts()'))), 'no prices or titles in the counts');
+        // making an account
+        await run('crowdCreate()');
+        assert.equal(calls[0].url, 'https://spindle-crowd.nacmh.workers.dev/api/register');
+        assert.equal(calls[0].auth, undefined, 'registering sends no credentials');
+        assert.equal(run('crowd.id'), 'a'.repeat(32));
+        assert.equal(JSON.parse(kept.get('ps2-sentiment-tracker.crowd')).share, false, 'sharing starts off');
+        // loadCrowd takes only well-formed accounts
+        run('crowd = { id: "", key: "", share: false }; loadCrowd()');
+        assert.equal(run('crowd.id'), 'a'.repeat(32));
+        kept.set('ps2-sentiment-tracker.crowd', JSON.stringify({ id: 'x', key: 'y', share: true }));
+        run('crowd = { id: "", key: "", share: false }; loadCrowd()');
+        assert.equal(run('crowd.id'), '', 'a malformed saved account is ignored');
+        run(`crowd = { id: '${'a'.repeat(32)}', key: '${'b'.repeat(64)}', share: false }`);
+        // not sharing: Send does nothing
+        calls.length = 0;
+        assert.equal(await run('crowdSend()'), false);
+        assert.equal(calls.length, 0);
+        // sharing on: one PUT with the counts and the key
+        run('crowdSetShare(true)');
+        await new Promise(resolve => setTimeout(resolve, 20));
+        const put = calls.find(c => c.method === 'PUT');
+        assert.ok(put && put.url.endsWith('/api/collection'));
+        assert.equal(put.auth, `Bearer ${'a'.repeat(32)}.${'b'.repeat(64)}`);
+        assert.deepEqual(put.body, { items: [{ game: 'kuon', sealed: 1, complete: 5, loose: 0 }] });
+        // a report
+        calls.length = 0;
+        el('reportGame').value = 'Kuon'; el('reportPrice').value = '120'; el('reportMonth').value = '2026-09';
+        el('reportRegion').value = 'PAL'; el('reportCondition').value = 'complete'; el('reportCurrency').value = 'GBP';
+        await run('crowdReport()');
+        const post = calls.find(c => c.method === 'POST');
+        assert.deepEqual(post.body, { game: 'kuon', region: 'PAL', condition: 'complete', currency: 'GBP', price: 120, month: '2026-09' });
+        assert.ok(!('source' in post.body) && !read('index.html').includes('reportSource'), 'no "where" is asked or sent');
+        calls.length = 0;
+        el('reportPrice').value = '';
+        await run('crowdReport()');
+        assert.equal(calls.length, 0, 'no price, nothing sent');
+        // published figures
+        assert.equal(run(`crowdGameHtml('Kuon')`), '', 'nothing before the figures are loaded');
+        await run('ensureCrowdStats()');
+        const html = run(`crowdGameHtml('Kuon')`);
+        assert.match(html, /PAL complete/);
+        assert.match(html, /6 people paid/);
+        assert.match(html, /7 collectors who share/);
+        assert.equal(run(`crowdGameHtml('Some Other Game')`), '', 'a game with no figures shows nothing');
+        // deleting
+        calls.length = 0;
+        await run('crowdDelete()');
+        assert.equal(calls[0].method, 'DELETE');
+        assert.equal(run('crowd.id'), '', 'signed out after deleting');
+        assert.equal(kept.has('ps2-sentiment-tracker.crowd'), false);
+        // the tab and its words
+        run(`showCollectionTab('share')`);
+        assert.equal(el('shareSection').classList.contains('hidden'), false);
+        assert.equal(el('collectionSection').classList.contains('hidden'), true);
+        run(`showCollectionTab('games')`);
+        assert.equal(el('shareSection').classList.contains('hidden'), true);
+        const page = read('index.html');
+        assert.match(page, /id="collTabShare"/);
+        assert.match(read('guide.html'), /Share data \(optional\)/, 'the guide explains it');
+        assert.match(read('guide.html'), /unless you turn on <b class="text-white">Share data<\/b>/, 'and the claim about the list being kept here is true');
+    } finally {
+        context.localStorage = realStorage;
+        context.fetch = realFetch;
+        run(`crowd = { id: '', key: '', share: false }; crowdStats = null; crowdStatsState = 'idle'; collection = []`);
+    }
+});
+
 console.log(`dashboard checks passed (${passed})`);

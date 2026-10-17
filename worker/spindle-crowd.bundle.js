@@ -7,7 +7,6 @@ const BAND = 3;                // a value more than 3x above or below the median
 const REGIONS = ['US', 'PAL'];
 const CONDITIONS = ['sealed', 'complete', 'loose'];
 const CURRENCIES = ['USD', 'GBP', 'EUR'];
-const SOURCES = ['ebay', 'shop', 'convention', 'private', 'other'];
 const MAX_GAMES_PER_ACCOUNT = 600;
 const MAX_COPIES = 99;
 const MAX_REPORTS_PER_DAY = 20;
@@ -44,8 +43,8 @@ function cleanReport(body, now = new Date()) {
     const month = cleanMonth(body?.month, now);
     if (!game || !month || !Number.isFinite(price) || price <= 0 || price > MAX_PRICE) return null;
     if (!REGIONS.includes(body.region) || !CONDITIONS.includes(body.condition)
-        || !CURRENCIES.includes(body.currency) || !SOURCES.includes(body.source)) return null;
-    return { game, region: body.region, condition: body.condition, currency: body.currency, price, month, source: body.source };
+        || !CURRENCIES.includes(body.currency)) return null;
+    return { game, region: body.region, condition: body.condition, currency: body.currency, price, month };
 }
 
 function median(values) {
@@ -181,7 +180,7 @@ async function addReport(request, env, account) {
     const count = await env.DB.prepare('SELECT COUNT(*) AS n FROM reports WHERE account = ? AND created = ?').bind(account, day).first();
     if (count.n >= MAX_REPORTS_PER_DAY) return reply(request, env, 429, { error: 'too many reports today' });
     await env.DB.prepare('INSERT INTO reports (account, game, region, condition, currency, price, month, source, created) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)')
-        .bind(account, report.game, report.region, report.condition, report.currency, report.price, report.month, report.source, day).run();
+        .bind(account, report.game, report.region, report.condition, report.currency, report.price, report.month, 'other', day).run();
     return reply(request, env, 201, { ok: true });
 }
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-17: Share data (opt-in crowd data) on the dashboard
+
+- My collection has a third tab, **Share data**: an anonymous account (random id and key, shown for copying; no email), a tick to send per-game counts of sealed, complete and loose copies, a **Report a purchase** form, sign out, and delete my account and data. Nothing is sent until an account exists and sharing is ticked (`crowdCounts()` sends counts only; one send after a burst of changes).
+- A game's page shows what collectors say they paid and how many share it, from `GET /api/stats` (the service publishes only from 5+ accounts); empty when there are none. Opening a game page or the tab asks the service for that file once per page load.
+- `guide.html` has a Share data section and its "where it is kept" line says the list stays here unless sharing is turned on; AGENTS.md's map says the same.
+- `tests/dashboard_check.mjs`: a test with a fake service (no account means no network, counts only, header, report body, figures, delete).
+
 ## 2026-10-17: crowd data service (backend only)
 
 - `worker/`: a Cloudflare Worker and D1 schema for opt-in, anonymous crowd data: random accounts (only the key's hash kept), collection counts per game (sealed, complete, loose) and purchase reports. Figures are published only from 5+ accounts, and a price far from the middle is held back, not deleted. See `docs/CROWD.md`.

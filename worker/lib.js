@@ -6,7 +6,6 @@ export const BAND = 3;                // a value more than 3x above or below the
 export const REGIONS = ['US', 'PAL'];
 export const CONDITIONS = ['sealed', 'complete', 'loose'];
 export const CURRENCIES = ['USD', 'GBP', 'EUR'];
-export const SOURCES = ['ebay', 'shop', 'convention', 'private', 'other'];
 export const MAX_GAMES_PER_ACCOUNT = 600;
 export const MAX_COPIES = 99;
 export const MAX_REPORTS_PER_DAY = 20;
@@ -43,8 +42,8 @@ export function cleanReport(body, now = new Date()) {
     const month = cleanMonth(body?.month, now);
     if (!game || !month || !Number.isFinite(price) || price <= 0 || price > MAX_PRICE) return null;
     if (!REGIONS.includes(body.region) || !CONDITIONS.includes(body.condition)
-        || !CURRENCIES.includes(body.currency) || !SOURCES.includes(body.source)) return null;
-    return { game, region: body.region, condition: body.condition, currency: body.currency, price, month, source: body.source };
+        || !CURRENCIES.includes(body.currency)) return null;
+    return { game, region: body.region, condition: body.condition, currency: body.currency, price, month };
 }
 
 export function median(values) {
