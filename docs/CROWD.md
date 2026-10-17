@@ -1,6 +1,6 @@
 # Crowd data (opt-in): how it works
 
-Decided with the maintainer on 2026-10-17. Status: the service (`worker/`) is written; the dashboard side is not built yet.
+Decided with the maintainer on 2026-10-17. Status: the service (`worker/`) is deployed at https://spindle-crowd.nacmh.workers.dev (2026-10-17) and the dashboard side (My collection > Share data, the game page's collectors' figures) is built.
 
 ## Why
 eBay gives asking prices. Visitors who own or buy games can give what they actually paid and what they own. Published only when enough
@@ -39,8 +39,6 @@ Requests send `Authorization: Bearer <id>.<key>`. The network address is used on
 - The figures are never compared with eBay on the server; the dashboard may show the two side by side.
 
 ## Not done yet
-- Dashboard: an opt-in "Share my collection" setting (off by default), a "Report a purchase" tab, crowd figures beside the eBay ones, a
-  privacy notice in the guide (what is sent; deletion with the key). Nothing is sent from the page until that is built.
 - Sybil resistance beyond the limits above (account age or agreement weighting).
 - A list check on game keys: today any priceKey-shaped text is accepted, and only groups with 5 accounts are published.
 - At large volumes `/api/stats` should read a precomputed table instead of scanning every row.
