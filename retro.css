@@ -1383,6 +1383,8 @@ body .account-dim { font-size: .8rem; color: var(--dim); }
 body .account-row { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; }
 body .account-signin { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
 body .account-signin .account-row { margin-top: .5rem; flex-wrap: nowrap; }
+body .account-qr:not(:empty) { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; margin: .75rem 0; }
+body .account-qr .qr-code { width: min(15rem, 100%); height: auto; border-radius: 4px; }
 body .account-key { padding: 1rem; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; font-family: var(--mono); font-size: .8rem; line-height: 1.6; color: var(--text); word-break: break-all; user-select: all; }
 body .account-warn { padding: .75rem .9rem; background: var(--money-bg); border: 1px solid var(--money-line); border-radius: 6px; font-size: .8rem; line-height: 1.5; color: var(--money); }
 body .account-tick { display: flex; align-items: center; gap: .6rem; font-size: .9rem; color: var(--text); }

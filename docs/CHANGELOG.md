@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-17: the account key as a QR code
+
+- The key screen and the Account tab can show the key as a QR code. It encodes a link to the site with the key after `#signin=`; a phone's camera opens it, the key leaves the address bar at once and is only filled into the sign-in box (the person still presses Sign in, so a link someone else sends cannot sign a visitor into the sender's account by itself, and a link opened while signed in changes nothing). The code is drawn in the browser by a small encoder in `index.html` (`qrMatrix()`, byte mode, error correction level M, versions 1 to 10); no library and no request. Black on white with a four-module margin in any theme.
+- The encoder is ours, so a real decoder judged it: OpenCV's QR reader decoded 20 strings of 1 to 210 characters (versions 1 to 10) and the exact key link; `tests/dashboard_check.mjs` keeps golden hashes of two codes and checks the finder squares and timing line.
+- A phone's browser may keep the scanned link in its history, which holds the key: the guide says so.
+
 ## 2026-10-17: 4chan threads about the PS2 are read for their replies even when the opening post names no game
 
 - Before, a thread's own file was read (for the games its replies name) only when its opening post already named a game, so a "PS2 general" thread whose opener names nothing was missed however many games its replies named. Now a thread whose subject or opening comment says PS2 / PlayStation 2 / PCSX2 (`opens_about_ps2()`) is read too, and becomes a row (`matched_in: "body"`) when its replies name a game. A thread about nothing in particular is still not read. Nothing a poster wrote is kept (rule 12): the same notes as before (games, reply count, `Last-Modified`).
