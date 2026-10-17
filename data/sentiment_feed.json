@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 05:40:40 UTC",
+  "last_updated": "2026-10-17 05:43:15 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -103,6 +103,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 05:29 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749845728",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 05:28 UTC"
     },
     {
       "headline": "I think I messed up the lossless scaling add-on for decky, maybe even the deck? Any help?",
@@ -358,6 +377,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 04:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Unreal Tournament",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749844416",
+      "matched_game": "Unreal Tournament",
+      "matched_games": [
+        "Unreal Tournament"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 04:45 UTC"
     },
     {
       "headline": "Sharing my tremendous deals i have acquired on the 2nd hand market.",
@@ -6765,21 +6803,21 @@
       "timestamp": "2026-10-16 20:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Fight Night Round 3, Metal Gear Solid 2: Sons of Liberty and 5 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Fight Night Round 3, Ecco the Dolphin: Defender of the Future and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749822229",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
-        "Resident Evil 4",
-        "Fight Night Round 3",
         "Metal Gear Solid 2: Sons of Liberty",
+        "Fight Night Round 3",
         "Ecco the Dolphin: Defender of the Future",
         "Final Fantasy XII",
         "Splinter Cell",
         "The Getaway",
-        "Red Faction"
+        "Red Faction",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
