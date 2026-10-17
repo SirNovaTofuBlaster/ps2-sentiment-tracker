@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 00:53:33 UTC",
+  "last_updated": "2026-10-17 00:56:09 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -208,6 +208,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 00:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Speed Racer",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749834686",
+      "matched_game": "Speed Racer",
+      "matched_games": [
+        "Speed Racer"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 00:36 UTC"
     },
     {
       "headline": "DS Chrono Trigger / Shadow Dragon",
@@ -40282,22 +40301,23 @@
       "timestamp": "2026-10-15 14:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Half-Life, Monster Hunter and 3 more",
+      "headline": "Thread on /v/ naming God Hand, Half-Life, Monster Hunter and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749737750",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "God Hand",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
+        "God Hand",
         "Half-Life",
         "Monster Hunter",
         "God of War II",
         "Kingdom Hearts",
-        "Dark Cloud"
+        "Dark Cloud",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -187157,6 +187177,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 23:10 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Monster Hunter",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12867336",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-08 23:09 UTC"
     },
     {
       "headline": "Star Conflict servers shutdown: schedule",
