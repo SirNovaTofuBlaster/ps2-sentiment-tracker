@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-17: names typed without the apostrophe, and the Resident Evil Essentials cover
+
+- A 4chan thread naming Cabela's Outdoor Adventures was not flagged: the library spells it with an apostrophe, which the matcher reads as the two words "cabela s", and a post that types "Cabelas" matched nothing. A title of three or four words with a possessive in it (135 of them: Cabela's, Disney's, Baldur's Gate, Tony Hawk's ...) now also answers to its spelling without the apostrophe, in any capitals (`_add_possessive_aliases()`; an alias counts however it is written, like "MGS3"). A spelling two titles share is left out. Still not found: the name with its apostrophe in all lower case, or misspelt ("Cabella's"), because posts need the library's capitals and spelling (rule 12's matcher, `games_in_post()`). Run `tools/regression_check.py` before merging: headlines that write a name without its apostrophe will now match.
+- Resident Evil: The Essentials has the cover, but the Rarest list and the price files spell it "Resident Evil Essentials" (no "The"), which had none. The picture is now also registered under that spelling (`LOCAL` in `tools/build_covers.py`).
+
 ## 2026-10-17: "The Cabal" and "hardware" no longer count as games, and Winning Eleven 7 gets prices
 
 - "The Cabal" is in the library's list but is not a game, and it showed on the Highlights. `NOT_GAMES` in `scraper.py` keeps it from matching, and rows already saved lose it (`without_not_games()`).

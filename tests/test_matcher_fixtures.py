@@ -284,6 +284,13 @@ class MatcherRuleTests(unittest.TestCase):
         self.assertEqual(self.claims("The Cabal is meeting tonight", ps2_source=True), [])
         self.assertEqual(self.claims("Hardware: Online Arena on PS2 had servers", ps2_source=True), ["Hardware Online Arena"])
 
+    def test_a_possessive_title_is_found_without_its_apostrophe(self):
+        # Posters write "Cabelas Outdoor Adventures"; the library has "Cabela's Outdoor Adventures".
+        self.assertEqual(scraper.games_in_post("anyone play cabelas outdoor adventures", self.matcher, True),
+                         [("Cabela's Outdoor Adventures", 100, "alias")])
+        self.assertEqual(self.claims("Cabelas Outdoor Adventures 2006 review", ps2_source=True), ["Cabela's Outdoor Adventures 2006"])
+        self.assertEqual(self.claims("Cabela's Outdoor Adventures review", ps2_source=True), ["Cabela's Outdoor Adventures"])
+
     def test_saved_rows_with_a_non_game_are_cleaned(self):
         row = {"headline": "The Cabal", "source_type": "news", "matched_game": "The Cabal", "matched_games": ["The Cabal"],
                "match_score": 100, "match_method": "fuzzy", "matched_in": "body"}
