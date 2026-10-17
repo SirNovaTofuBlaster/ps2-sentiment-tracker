@@ -63,6 +63,14 @@ check('owner counts need five owners and sum the copies', () => {
         { published: true, owners: 5, sealed: 1, complete: 4, loose: 4 });
 });
 const hash = await lib.sha256Hex('abc');
+check('the saved list: title, region, condition and count only, bounded, no markup or control characters', () => {
+    const good = [{ title: 'Kuon', region: 'PAL', condition: 'sealed', qty: 2 }];
+    assert.deepEqual(lib.cleanList(good), good);
+    assert.deepEqual(lib.cleanList([{ ...good[0], paid: 50, extra: 'x' }]), good, 'anything else is dropped, a price included');
+    for (const bad of [[{ ...good[0], title: '' }], [{ ...good[0], title: '<b>x</b>' }], [{ ...good[0], title: 'a'.repeat(101) }], [{ ...good[0], region: 'JP' }],
+        [{ ...good[0], condition: 'mint' }], [{ ...good[0], qty: 0 }], [{ ...good[0], qty: 100 }], [{ ...good[0], qty: 1.5 }], 'x', null,
+        Array.from({ length: lib.MAX_LIST + 1 }, () => good[0])]) assert.equal(lib.cleanList(bad), null);
+});
 check('sha256 matches the known value', () => assert.equal(hash, 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad'));
 check('tokens are random hex of the asked length', () => {
     const a = lib.randomToken(16), b = lib.randomToken(16);

@@ -8,6 +8,7 @@ export const CONDITIONS = ['sealed', 'complete', 'loose'];
 export const CURRENCIES = ['USD', 'GBP', 'EUR'];
 export const MAX_GAMES_PER_ACCOUNT = 600;
 export const MAX_COPIES = 99;
+export const MAX_LIST = 2000;         // entries of the account's own saved list (title, region, condition, count)
 export const MAX_REPORTS_PER_DAY = 20;
 export const MAX_PRICE = 20000;       // in the report's own currency
 export const MONTHS_BACK = 24;
@@ -25,6 +26,22 @@ export function cleanCopies(body) {
     const { sealed, complete, loose } = body ?? {};
     if (!game || ![sealed, complete, loose].every(whole)) return null;
     return { game, sealed, complete, loose };
+}
+
+// The account's own list, kept so a new browser can load it back. Private to the account: never published, never read by stats.
+// No price, name or address: a title (as the dashboard spells it), a region, a condition and how many.
+export function cleanList(list) {
+    if (!Array.isArray(list) || list.length > MAX_LIST) return null;
+    const out = [];
+    for (const item of list) {
+        const title = typeof item?.title === 'string' ? item.title.trim() : '';
+        const qty = item?.qty;
+        // eslint-disable-next-line no-control-regex
+        if (!title || title.length > 100 || /[\u0000-\u001f\u007f<>]/.test(title)) return null;
+        if (!REGIONS.includes(item.region) || !CONDITIONS.includes(item.condition) || !Number.isInteger(qty) || qty < 1 || qty > MAX_COPIES) return null;
+        out.push({ title, region: item.region, condition: item.condition, qty });
+    }
+    return out;
 }
 
 // months: "2026-10". Not in the future, not older than MONTHS_BACK.
