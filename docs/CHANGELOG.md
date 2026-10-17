@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: the Library loads in batches on a phone
+
+- On a phone (640 px or narrower, with IntersectionObserver) the Library draws its first 60 games, then 48 more each time the reader nears the end, with a shimmering bar and "Loading more games…" for a moment between batches (`libraryDrawMore()`, `libraryLoadBatch()`). The A to Z jump buttons draw what they need first. A computer, or a browser without IntersectionObserver, still draws everything at once. The round back-to-top button already existed (it shows after 700 px of scrolling); it is unchanged. Tests cover the batches in `dashboard_check.mjs`.
+
 ## 2026-10-18: a game's own page redesigned, with an Add to My collection button
 
 - The page you land on from search is laid out like the rest of the site: a hero with the box picture (glowing in the site's colours), the name, a tag saying whether the library or the feeds know it, and a full-width **Add to My collection** button that opens the Library's add bar (region, condition, what you paid) for that game, asking for an account first when signed out. Prices are one card per eBay site (the median in the site's money), the shop links sit under "Where to look", and the chart button is smaller. No data, matching or price logic changed; the theme tests list the new hiding rules. The guide describes it.

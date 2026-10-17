@@ -1393,7 +1393,7 @@ await check('games first: what was named in the last day leads, and the table op
         'body #feedTableBody td[data-col="game"][data-unmatched]', 'body #sourceTabs::-webkit-scrollbar', 'body .sources-table > thead', 'body .sources-table td[data-col="remove"]:empty',
         'body .chart-tools::-webkit-scrollbar', 'body .shelf::-webkit-scrollbar', 'body .shelf-arrow.hidden',
     'body .library-add.hidden', 'body #feedTableBody td[data-col="headline"][data-empty]', 'body .library-remove.hidden', 'body .account-dialog.hidden', 'body .portfolio-key.hidden',
-        'body .game-add.hidden', 'body .game-owned:empty', 'body #libraryAddOpen.hidden',
+        'body .game-add.hidden', 'body .game-owned:empty', 'body #libraryAddOpen.hidden', 'body .lib-more.hidden',
     ]);
 
     // The list sits first on the Tracker, above the Demand Index and the table.
@@ -2656,6 +2656,46 @@ await check('Library: a button back to the top after a long scroll, and a bigger
     run('libraryScrollTop()');
     assert.equal(JSON.stringify(scrolled[1]), JSON.stringify({ top: 0, behavior: 'auto' }), 'no smooth scrolling when motion is switched off');
     delete context.window.matchMedia; delete context.window.scrollTo; context.window.scrollY = 0;
+    // A phone draws the library in batches: 60 first, then 48 at a time while the shimmer shows, until none is left.
+    {
+        const originalGet = context.document.getElementById;
+        const sections = new Map(), tiles = { n: 0 };
+        context.document.getElementById = (id) => {
+            if (String(id).startsWith('lib-')) return sections.get(id) || null;
+            return originalGet.call(context.document, id);
+        };
+        const grid = originalGet.call(context.document, 'libraryGrid');
+        grid.insertAdjacentHTML = (where, html) => {
+            for (const m of html.matchAll(/<section class="lib-section" id="([^"]+)"/g)) {
+                sections.set(m[1], { querySelector: () => ({ insertAdjacentHTML: (w, t) => { tiles.n += (t.match(/<li class="lib-tile/g) || []).length; } }) });
+            }
+        };
+        const observed = [];
+        context.IntersectionObserver = class { constructor(cb) { this.cb = cb; } observe(node) { observed.push(node); } disconnect() {} };
+        context.window.matchMedia = () => ({ matches: true });
+        const originalTimeout = context.setTimeout;
+        context.setTimeout = (fn) => { fn(); return 0; };
+        run(`setLibrary(Array.from({ length: 130 }, (_, i) => 'Gamey Game ' + String(i + 1).padStart(3, 'A')))`);
+        run('showView("library")');
+        sections.clear(); tiles.n = 0; observed.length = 0;   // setLibrary already drew once
+        run('renderLibrary()');
+        const more = originalGet.call(context.document, 'libraryMore');
+        assert.equal(evalJson('libraryShown.length'), 130);
+        assert.equal(evalJson('libraryDrawn'), 60, 'a phone draws the first 60 only');
+        assert.equal(tiles.n, 60);
+        assert.equal(more.classList.contains('hidden'), false, 'and shows the shimmer at the end');
+        assert.equal(observed.length, 1, 'it waits for the reader to get near the end');
+        run('libraryLoadBatch()');
+        assert.equal(evalJson('libraryDrawn'), 108);
+        assert.equal(tiles.n, 108);
+        run('libraryLoadBatch()');
+        assert.equal(evalJson('libraryDrawn'), 130, 'the last batch is shorter');
+        assert.equal(more.classList.contains('hidden'), true, 'nothing left, so the shimmer goes');
+        context.document.getElementById = originalGet;
+        delete context.IntersectionObserver; context.setTimeout = originalTimeout; delete context.window.matchMedia; delete grid.insertAdjacentHTML;
+        run(`setLibrary(['The Getaway', 'God Hand'])`);
+        assert.equal(evalJson('libraryDrawn'), evalJson('libraryShown.length'), 'a computer draws everything at once');
+    }
     const page = read('index.html');
     assert.match(page, /<button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop\(\)" aria-label="Back to the top of the library"[^>]* inert>/);
     assert.match(page, /window\.addEventListener\('scroll', updateLibraryTop, \{ passive: true \}\);/);

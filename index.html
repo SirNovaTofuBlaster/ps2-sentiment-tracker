@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Plus+Jakarta+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="retro.css?v=20261018a">
+    <link rel="stylesheet" href="retro.css?v=20261018b">
 </head>
 <body class="bg-ps2dark min-h-screen flex flex-col selection:bg-ps2neon selection:text-black">
 
@@ -412,6 +412,7 @@
         </div>
         <nav id="libraryJump" class="lib-jump" aria-label="Jump to"></nav>
         <div id="libraryGrid"></div>
+        <div id="libraryMore" class="lib-more hidden" role="status" aria-live="polite"><span class="lib-more-bar" aria-hidden="true"></span><span class="lib-more-text">Loading more games…</span></div>
         <p id="libraryNote" class="text-xs text-slate-500 mt-4"></p>
       </div>
 
@@ -4960,13 +4961,22 @@
                 ? (a === LIBRARY_OTHER) - (b === LIBRARY_OTHER) || cmpStr(a, b)
                 : (a === '#') - (b === '#') || cmpStr(a, b));
             libraryShown = names.flatMap(name => groups.get(name));
-            const owned = ownedKeys();
-            let at = 0;
-            grid.innerHTML = names.map(name => {
-                const games = groups.get(name);
-                const tiles = games.map(game => libraryTileHtml(game, at++, owned)).join('');
-                return `<section class="lib-section" id="lib-${esc(name.replace(/[^A-Za-z0-9#]/g, '_'))}"><h3 class="lib-heading">${esc(name)} <span>${games.length.toLocaleString('en')}</span></h3><ul class="lib-grid">${tiles}</ul></section>`;
-            }).join('');
+            libraryGroups = names.map(name => ({ name, games: groups.get(name) }));
+            libraryDrawn = 0;
+            if (libraryLazy()) {
+                // A phone draws the first screens and waits for the reader to come near the end before drawing more.
+                grid.innerHTML = '';
+                libraryDrawMore(LIBRARY_FIRST);
+            } else {
+                const owned = ownedKeys();
+                let at = 0;
+                grid.innerHTML = libraryGroups.map(group => {
+                    const tiles = group.games.map(game => libraryTileHtml(game, at++, owned)).join('');
+                    return `<section class="lib-section" id="${esc(librarySectionId(group.name))}"><h3 class="lib-heading">${esc(group.name)} <span>${group.games.length.toLocaleString('en')}</span></h3><ul class="lib-grid">${tiles}</ul></section>`;
+                }).join('');
+                libraryDrawn = libraryShown.length;
+                paintLibraryMore();
+            }
             jump.innerHTML = names.map(name => `<button type="button" class="lib-jump-btn" onclick="libraryJump(${esc(JSON.stringify(name))})">${esc(name)}</button>`).join('');
             const noun = (n) => `${n.toLocaleString('en')} game${n === 1 ? '' : 's'}`;
             summary.textContent = shown.length === all.length ? `${noun(all.length)}, ${libraryView.sort === 'genre' ? 'by genre, A to Z within each' : 'A to Z'}. Choose a box to add it to My collection.`
@@ -4979,10 +4989,65 @@
                     : 'Genres are a rule of thumb: the Libretro database\'s own genre where it has one, otherwise a guess from the words in the title. "Other" holds the rest.') : '';
         }
 
+        // Long list on a phone: draw a few screens, then a soft shimmer at the end while the next batch is drawn.
+        const LIBRARY_FIRST = 60, LIBRARY_BATCH = 48, LIBRARY_WAIT_MS = 450;
+        let libraryGroups = [], libraryDrawn = 0, libraryMoreBusy = false, libraryObserver = null;
+        function libraryLazy() {
+            try { return typeof IntersectionObserver === 'function' && Boolean(window.matchMedia?.('(max-width: 640px)').matches); } catch { return false; }
+        }
+        function librarySectionId(name) { return `lib-${String(name).replace(/[^A-Za-z0-9#]/g, '_')}`; }
+        function libraryDrawMore(count) {
+            const grid = document.getElementById('libraryGrid');
+            if (!grid) return;
+            const target = Math.min(libraryShown.length, libraryDrawn + count);
+            const owned = ownedKeys();
+            let at = 0;
+            for (const group of libraryGroups) {
+                const start = at, end = at + group.games.length;
+                at = end;
+                if (end <= libraryDrawn || start >= target) continue;
+                const from = Math.max(start, libraryDrawn), to = Math.min(end, target);
+                const tiles = group.games.slice(from - start, to - start).map((game, k) => libraryTileHtml(game, from + k, owned)).join('');
+                const id = librarySectionId(group.name);
+                let section = document.getElementById(id);
+                if (!section) {
+                    grid.insertAdjacentHTML('beforeend', `<section class="lib-section" id="${esc(id)}"><h3 class="lib-heading">${esc(group.name)} <span>${group.games.length.toLocaleString('en')}</span></h3><ul class="lib-grid"></ul></section>`);
+                    section = document.getElementById(id);
+                }
+                section?.querySelector('.lib-grid')?.insertAdjacentHTML('beforeend', tiles);
+            }
+            libraryDrawn = target;
+            paintLibraryMore();
+        }
+        function paintLibraryMore() {
+            const more = document.getElementById('libraryMore');
+            if (!more) return;
+            const left = libraryShown.length - libraryDrawn;
+            more.classList.toggle('hidden', left <= 0);
+            more.classList.remove('is-loading');
+            libraryMoreBusy = false;
+            if (libraryObserver) { libraryObserver.disconnect(); libraryObserver = null; }
+            if (left > 0 && libraryLazy()) {
+                libraryObserver = new IntersectionObserver((entries) => { if (entries.some(e => e.isIntersecting)) libraryLoadBatch(); }, { rootMargin: '300px 0px' });
+                libraryObserver.observe(more);
+            }
+        }
+        function libraryLoadBatch(count = LIBRARY_BATCH, then) {
+            const more = document.getElementById('libraryMore');
+            if (libraryMoreBusy || !more) return;
+            libraryMoreBusy = true;
+            more.classList.add('is-loading');
+            setTimeout(() => { libraryMoreBusy = false; libraryDrawMore(count); if (then) then(); }, LIBRARY_WAIT_MS);
+        }
+
         function redrawLibrary() { drawForView('library', renderLibrary); }
 
         function libraryJump(name) {
-            const section = document.getElementById(`lib-${String(name).replace(/[^A-Za-z0-9#]/g, '_')}`);
+            // On a phone the section may not be drawn yet: draw up to the end of it first.
+            let upTo = 0;
+            for (const group of libraryGroups) { upTo += group.games.length; if (group.name === name) break; }
+            if (upTo > libraryDrawn) libraryDrawMore(upTo - libraryDrawn);
+            const section = document.getElementById(librarySectionId(name));
             section?.scrollIntoView?.({ behavior: 'smooth', block: 'start' });
         }
         function setLibraryFilter(value) { libraryView.filter = String(value ?? ''); redrawLibrary(); }
