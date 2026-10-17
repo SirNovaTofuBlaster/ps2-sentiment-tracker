@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 12:21:35 UTC",
+  "last_updated": "2026-10-17 12:24:13 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -330,6 +330,25 @@
       "hype": 0,
       "timestamp": "2026-10-17 11:41 UTC",
       "views": 148
+    },
+    {
+      "headline": "Thread on /v/ naming SoulCalibur II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749857214",
+      "matched_game": "SoulCalibur II",
+      "matched_games": [
+        "SoulCalibur II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 11:37 UTC"
     },
     {
       "headline": "What are some stinker songs in soundtraks everyone claims is epic or whatever?",
@@ -2507,18 +2526,19 @@
       "timestamp": "2026-10-17 08:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter and Deus Ex",
+      "headline": "Thread on /v/ naming Final Fantasy XII, Deus Ex and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749851337",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
-        "Monster Hunter",
-        "Deus Ex"
+        "Final Fantasy XII",
+        "Deus Ex",
+        "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -10790,7 +10810,7 @@
       "timestamp": "2026-10-16 21:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne, Dark Cloud, Resident Evil Code: Veronica X and 6 more",
+      "headline": "Thread on /v/ naming Max Payne, Resident Evil Code: Veronica X, Astro Boy and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -10798,14 +10818,14 @@
       "matched_game": "Max Payne",
       "matched_games": [
         "Max Payne",
-        "Dark Cloud",
         "Resident Evil Code: Veronica X",
         "Astro Boy",
         "Rule of Rose",
         "Okami",
         "Monster Hunter",
         "Baldur's Gate: Dark Alliance",
-        "The Arcade"
+        "The Arcade",
+        "Dark Cloud"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
