@@ -1,7 +1,7 @@
 {
  "what": "Known limited, collector's, premium and steelbook PS2 editions of games, for the game page. ebay_prices.py looks each one up once a day, the PAL list on eBay UK and the US list on eBay US, by the game's name plus the words in require, so a plain copy is never counted. Numbers only are kept, in data/prices/latest.json under editions.",
  "checked": "2026-10-17",
- "method": "Hand-made from the Collectors Edition game database (collectorsedition.org/game-db, the PS2 PAL and NTSC lists, 14 and 23 entries; the pages were read one by one on 2026-10-14). 32 of those 37 entries are here. Left out: Dragon Ball Z Budokai 3 Collector's Edition (PAL), Silent Hill 2 Special 2 Disc Set (PAL) and Bully Special Edition (NTSC), whose pages did not load that day; Final Fantasy XI HDD (not a game edition); and one entry not read. Contents are quoted from each entry, packaging in kinds. Japanese editions cannot be priced (only the US and UK sites are), so none are here. Nothing was sent to the database's owners (rule 13). Added 2026-10-17 (29 PAL entries, 61 in all; a 62nd, Dragon Ball Z Budokai 3 Collector's Edition (PAL), followed the same day): editions named on PriceCharting pages (each page opened; it gives a title, usually no date, publisher or contents, so those say 'not stated by the sources'), and the Collectors Edition forum's PS2 edition threads (showthread.php?p=13740 and ?p=13192), whose posters (UK PAL) list contents; a poster's claim is quoted as theirs. Shadow of the Colossus Collector's Edition (PriceCharting page would not load) and Dragon Ball Z Budokai 3 Collector's Edition (PAL) was added from a picture of its box; Shadow of the Colossus is still to add. Japanese editions cannot be priced and box sets of several games are not editions, so neither is here. Nothing was sent to anyone (rule 13). An entry's `cover` is a small (240 px) picture of its own box kept in covers/ (the maintainer supplied them on 2026-10-17); without one the page uses the game's cover.",
+ "method": "Hand-made from the Collectors Edition game database (collectorsedition.org/game-db, the PS2 PAL and NTSC lists, 14 and 23 entries; the pages were read one by one on 2026-10-14). 32 of those 37 entries are here. Left out: Dragon Ball Z Budokai 3 Collector's Edition (PAL), Silent Hill 2 Special 2 Disc Set (PAL) and Bully Special Edition (NTSC), whose pages did not load that day; Final Fantasy XI HDD (not a game edition); and one entry not read. Contents are quoted from each entry, packaging in kinds. Japanese editions cannot be priced (only the US and UK sites are), so none are here. Nothing was sent to the database's owners (rule 13). Added 2026-10-17 (29 PAL entries, 61 in all; a 62nd, Dragon Ball Z Budokai 3 Collector's Edition (PAL), followed the same day): editions named on PriceCharting pages (each page opened; it gives a title, usually no date, publisher or contents, so those say 'not stated by the sources'), and the Collectors Edition forum's PS2 edition threads (showthread.php?p=13740 and ?p=13192), whose posters (UK PAL) list contents; a poster's claim is quoted as theirs. Shadow of the Colossus Collector's Edition (PriceCharting page would not load) and Dragon Ball Z Budokai 3 Collector's Edition (PAL) was added from a picture of its box; Shadow of the Colossus Collector's Edition (PAL) was added later the same day from a collector's page (computinghistory.org.uk). Japanese editions cannot be priced and box sets of several games are not editions, so neither is here. Nothing was sent to anyone (rule 13). An entry's `cover` is a small (240 px) picture of its own box kept in covers/ (the maintainer supplied them on 2026-10-17); without one the page uses the game's cover.",
  "lists": {
   "PAL": [
    {
@@ -1016,6 +1016,31 @@
       "date": "2026-10-17"
      }
     ]
+   },
+   {
+    "title": "Shadow of the Colossus Collector's Edition",
+    "game": "Shadow of the Colossus",
+    "search": "shadow of the colossus",
+    "require": [
+     "collectors edition"
+    ],
+    "allow": [],
+    "kinds": [
+     "cardboard case",
+     "slipcase"
+    ],
+    "publisher": "Sony",
+    "released": "2006",
+    "contents": "Matte cardboard case with a bi-fold inside, holding the disc, the manual and 4 postcards (a collector's page says postcards; a reader of another listing says art cards, and the maintainer says posters).",
+    "note": "A plain disc in a normal case was sold as well. Sellers also write \"slipcase\", \"cardboard edition\" or \"limited edition\", which this search will not count; PriceCharting lists it as \"Collector's Edition\".",
+    "evidence": [
+     {
+      "source": "https://www.computinghistory.org.uk/det/60942/Shadow-of-the-Colossus-(Slipcase-Edition)/",
+      "figure": "a 2006 Sony slipcase edition (SCES 53326): matte card case, bi-fold, disc, manual and 4 postcards",
+      "date": "2026-10-17"
+     }
+    ],
+    "cover": "covers/shadow-of-the-colossus-collectors-edition.jpg"
    }
   ],
   "US": [
