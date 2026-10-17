@@ -201,6 +201,7 @@ Before you call something done, prove it; don't assume it.
     with the article's address it replaced the article's own row from the news feed. A
     forum row that still has another source's link is left out of the run.
 - **4chan**
+  - A thread's own file (all its replies) is read when its opening post names a game, and also when it says PS2 / PlayStation 2 / PCSX2 but names none (`opens_about_ps2()`, 2026-10-17: "PS2 general" threads), at most `BOARD_THREAD_READS` a board per round. A thread about nothing in particular is not read.
   - The catalog holds only the post that opens each thread. Most threads on /v/ and /vr/
     have no subject, so most names are found in the comment (`matched_in: "body"`).
   - Headline matching is too loose for posts: the first dry run counted 68 mentions of 50
