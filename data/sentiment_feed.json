@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 00:46:40 UTC",
+  "last_updated": "2026-10-18 00:50:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -278,6 +278,25 @@
       "timestamp": "2026-10-18 00:03 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Zone of the Enders",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749893886",
+      "matched_game": "Zone of the Enders",
+      "matched_games": [
+        "Zone of the Enders"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 00:03 UTC"
+    },
+    {
       "headline": "'I Don't Think We're Seeing It Here': GTA 6 Launch Trailer Not Using PS5's New QSSR Upscaler",
       "source": "Push Square",
       "source_type": "news",
@@ -344,6 +363,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 23:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Splinter Cell and Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749893461",
+      "matched_game": "Splinter Cell",
+      "matched_games": [
+        "Splinter Cell",
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 23:54 UTC"
     },
     {
       "headline": "My PlayStation Station.",
@@ -1526,13 +1565,14 @@
       "timestamp": "2026-10-17 22:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749888901",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
         "Final Fantasy XII"
       ],
       "match_score": 100,
@@ -277730,40 +277770,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 00:59 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Why did video game consoles from the fifth generation onwards switch to RISC CPUs?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wx2m0a/why_did_video_game_consoles_from_the_fifth/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 00:49 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Memory executives expect RAM shortage to continue through 2028",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wx2l13/memory_executives_expect_ram_shortage_to_continue/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 00:48 UTC",
       "is_digital_only": false
     }
   ]
