@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: Marketplace case: PS2 and region bars outside the picture
+
+- The PS2 bar (now read horizontally) sits beside the cover image, and the region / SAMPLE bar below it, both outside the picture so the box art is never covered. Layout only.
+
 ## 2026-10-18: Marketplace case: PS2 on a left spine, region at the bottom
 
 - The black bar across the middle of each case is now a vertical "PS2" spine down the left edge (blue edge, like a game case), and the region (US / PAL) sits in the bottom bar beside SAMPLE. Layout only (`.market-spine`, `.market-face`, `.market-vault`).
