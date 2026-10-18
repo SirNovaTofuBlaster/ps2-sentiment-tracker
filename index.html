@@ -1878,10 +1878,11 @@
         // and is dimmed: a little longer than the gap between that level's checks.
         const LEVELS = {
             surging: { rank: 0, stale: 3, tag: 'surging', hint: 'Rarely mentioned, then named by several sources within a day. Checked on every run for two days.' },
-            staple: { rank: 1, stale: 8, tag: 'staple', hint: 'Named on five or more of the last fourteen days, so one more mention is no news. Checked every 6 hours.' },
-            normal: { rank: 1, stale: 8, tag: '', hint: '' },
+            staple: { rank: 1, stale: 14, tag: 'staple', hint: 'Named on five or more of the last fourteen days, so one more mention is no news. Checked every 12 hours.' },
+            normal: { rank: 1, stale: 14, tag: '', hint: '' },
             dormant: { rank: 2, stale: 30, tag: 'quiet', hint: 'Not mentioned for two weeks. Checked once a day.' },
             underrated: { rank: 2, stale: 30, tag: 'underrated', hint: 'On the Underrated page and not named by the feed. Checked once a day on eBay US and UK, and again as soon as the feed names it.' },
+            collection: { rank: 2, stale: 30, tag: 'collection', hint: 'In someone\'s My collection and not named by the feed. Checked once a day on eBay US and UK, so a game people own has a price.' },
             rare: { rank: 2, stale: 30, tag: 'rarest', hint: 'On the Rarest page and not named by the feed. Checked every 12 hours, on its own region\'s site only, and again as soon as the feed names it.' },
         };
 
@@ -2058,7 +2059,7 @@
             return `<b class="ebay-median ebay-abroad">${esc(money(found.median, currency, locale))}</b><span class="ebay-rest">median from abroad · ${esc(found.copies)} ${found.copies === 1 ? 'copy' : 'copies'} listed in other countries, none in this one</span>`;
         }
 
-        // A steady figure (data/prices/latest.json "steady") is checked every 48 hours, not every 6.
+        // A steady figure (data/prices/latest.json "steady") is checked every 48 hours, not every 12.
         const STEADY_STALE_HOURS = 56;
         const staleFor = (site, hours, label) => Math.max(site && site.steady === true ? Math.max(hours, STEADY_STALE_HOURS) : hours,
             own(SITE_STALE_HOURS, label) ? SITE_STALE_HOURS[label] : 0);

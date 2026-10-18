@@ -84,6 +84,15 @@ check('the Worker keeps no address, email or name, and never echoes an error', (
     const schema = readFileSync(new URL('../worker/schema.sql', import.meta.url), 'utf8');
     assert.ok(!/\b(email|ip_address|address|name)\b\s+(TEXT|INTEGER)/i.test(schema), 'no personal columns');
 });
+check('/api/wanted lists only game names: no account, no count per account, no region', () => {
+    const source = readFileSync(new URL('../worker/index.js', import.meta.url), 'utf8');
+    const body = source.slice(source.indexOf('async function wanted('), source.indexOf('export default'));
+    assert.match(body, /SELECT game, COUNT\(DISTINCT account\) AS n FROM copies/);
+    assert.match(body, /games: rows\.map\(row => row\.game\)/, 'the answer is the names alone');
+    assert.ok(!/region|\.account|sealed,|complete,/.test(body.replace(/sealed \+ complete \+ loose/, '')), 'nothing else is selected or sent');
+    assert.match(source, /pathname === '\/api\/wanted'/);
+    assert.ok(source.indexOf("pathname === '/api/wanted'") < source.indexOf('const account = await authenticate'), 'it is read without an account, before the sign-in check');
+});
 const { build } = await import('../worker/bundle.mjs');
 check('bundle matches lib.js and index.js (run: node worker/bundle.mjs)', () => {
     const saved = readFileSync(new URL('../worker/spindle-crowd.bundle.js', import.meta.url), 'utf8');

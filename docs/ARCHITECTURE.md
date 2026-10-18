@@ -378,16 +378,17 @@ are skipped. Two library spellings that come to the same name are one game.
 | Level | When | Checked |
 |---|---|---|
 | `surging` | At most 1 headline mention in the rest of the window, then named in headlines by 2 or more sources, under different headlines, within 24 hours | Every run, until 48 hours after the last such mention |
-| `staple` | Named in headlines on 5 or more days of the window; never surging | Every 6 hours |
-| `normal` | Any other mention in the window, or pinned | Every 6 hours |
+| `staple` | Named in headlines on 5 or more days of the window; never surging | Every 12 hours (6 until 2026-10-18) |
+| `normal` | Any other mention in the window, or pinned | Every 12 hours (6 until 2026-10-18) |
 | `dormant` | Mentioned before, not in the window | Once a day |
 
 A site added after the first two (`extra` in `MARKETS`; Germany so far) has its own slower clock, `min_every_hours`, whatever a game's level says, and its lookups run after the US and UK ones. Since 2026-10-15 Spain waits 72 hours, France 48, Germany and Italy 24, and on those sites a pair that found no copies waits 48 (`QUIET_EVERY_HOURS`); the US and UK are never slowed.
 
-On top of the levels, a `normal` or `staple` game that has priced the same for days on one site is looked up there every 48 hours (`is_steady()` in `ebay_prices.py`) and goes back to 6 hours as soon as a check differs.
+On top of the levels, a `normal` or `staple` game that has priced the same for days on one site is looked up there every 48 hours (`is_steady()` in `ebay_prices.py`) and goes back to 12 hours as soon as a check differs.
 
 | `rare` | On the Rarest page and not tracked otherwise | Every 12 hours (consoles and editions: daily), on its list's site only |
 | `underrated` | On the Underrated page (`underrated.json`) and not tracked otherwise | Once a day, on the US and UK only |
+| `collection` | In at least one visitor's My collection (the crowd service's `GET /api/wanted`: game names only) and not tracked otherwise | Once a day, on the US and UK only |
 
 A game of the Rarest or Underrated page that the feed names after its last check is looked up again on the US and UK within the hour (`watch`, `latest_mention`, `WATCH_RECHECK_MINUTES`); the euro sites keep their clocks.
 

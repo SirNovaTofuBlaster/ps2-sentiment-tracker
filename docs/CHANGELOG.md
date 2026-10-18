@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-18: normal games every 12 hours; games in collections get priced (level `collection`)
+
+- Why: 4,900 of the 4,900 searches were used by 18:36 UTC, about three quarters of them on the 441 normal games every 6 hours on the US and UK (estimate from the plan, not a measured count), while about 70% of the games added to My collection had no price (only games the feed named, pinned, Rarest and Underrated games were priced).
+- `CHECK_EVERY_HOURS`: `normal` and `staple` 6 to 12 (about 2,200 searches a day saved). The dashboard's overdue time for them is 14 hours (`LEVELS`).
+- New level `collection` (`add_underrated_games(..., level="collection")`, `load_wanted()`, `collection_titles()` in `ebay_prices.py`): the games in anyone's My collection that nothing else tracks, daily on the US and UK. The list comes from the crowd service's new `GET /api/wanted` (names only, at least 1 account; `worker/index.js`, bundle rebuilt). The request carries no key; if it cannot be read, nothing is added and the run goes on. **The Worker must be redeployed by hand** (paste `worker/spindle-crowd.bundle.js`), until then the list is empty and nothing is added.
+- Tests: `CollectionPricingTests`, the Worker check for `/api/wanted`, the dashboard's levels. Older eBay tests about recording now pin the old 6-hour cadence in `Sandbox`; the cadence itself is tested against the real hours.
+
 ## 2026-10-18: Project Zero stays its own tile
 
 - The maintainer asked for Project Zero 1-3 to stay apart from Fatal Frame (the PAL titles are well known as they are): the three folds added in the entry below are removed from `covers.json` and `SAME_GAME`, and the older spellings of Project Zero 2 and 3 are back as before. 13 of the 16 new folds stay.
