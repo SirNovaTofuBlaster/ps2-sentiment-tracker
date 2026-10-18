@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 07:30:45 UTC",
+  "last_updated": "2026-10-18 07:44:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -54,17 +54,19 @@
       "timestamp": "2026-10-18 07:01 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "headline": "Thread on /v/ naming Okami, Odin Sphere and Shadow of the Colossus",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749909261",
-      "matched_game": "Shadow of the Colossus",
+      "matched_game": "Okami",
       "matched_games": [
+        "Okami",
+        "Odin Sphere",
         "Shadow of the Colossus"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1865,6 +1867,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 35,
+      "hype": 0,
+      "timestamp": "2026-10-18 03:26 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Fatal Frame",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749902286",
+      "matched_game": "Fatal Frame",
+      "matched_games": [
+        "Fatal Frame"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 03:26 UTC"
     },
@@ -21179,6 +21200,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 04:49 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming American Idol",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749844495",
+      "matched_game": "American Idol",
+      "matched_games": [
+        "American Idol"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 04:48 UTC"
     },
     {
       "headline": "Single Stick 16gb DDR5 better than 2x8gb DDR5?!!",
