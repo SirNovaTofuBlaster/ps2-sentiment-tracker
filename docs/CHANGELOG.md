@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: My collection gets the back-to-top button and the phone batches
+
+- The round back-to-top button (`#libraryTop`) now sits outside the Library's page and shows on both the Library and My collection once scrolled 700 px (`updateLibraryTop()` checks `currentView`). My collection draws its tiles in the same batches as the Library on a phone (`collectionDrawMore()`, `collectionLoadBatch()`, the `#collectionMore` shimmer); a redraw after a removal keeps what was already on screen. Tests cover both.
+
 ## 2026-10-18: the Library loads in batches on a phone
 
 - On a phone (640 px or narrower, with IntersectionObserver) the Library draws its first 60 games, then 48 more each time the reader nears the end, with a shimmering bar and "Loading more games…" for a moment between batches (`libraryDrawMore()`, `libraryLoadBatch()`). The A to Z jump buttons draw what they need first. A computer, or a browser without IntersectionObserver, still draws everything at once. The round back-to-top button already existed (it shows after 700 px of scrolling); it is unchanged. Tests cover the batches in `dashboard_check.mjs`.
