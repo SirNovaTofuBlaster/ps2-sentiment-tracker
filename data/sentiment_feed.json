@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-18 21:15:01 UTC",
+  "last_updated": "2026-10-18 21:19:03 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Max Payne",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12885324",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 21:16 UTC"
+    },
     {
       "headline": "Thread on /vg/ naming The Thing",
       "source": "4chan /vg/",
@@ -1367,14 +1386,16 @@
       "timestamp": "2026-10-18 19:12 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "headline": "Thread on /v/ naming Shadow of the Colossus, Final Fantasy XII and Okami",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749938969",
       "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "Shadow of the Colossus"
+        "Shadow of the Colossus",
+        "Final Fantasy XII",
+        "Okami"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -289462,40 +289483,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 21:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PS1 Additions Since I Last Shared",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wxquip/ps1_additions_since_i_last_shared/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 21:16 UTC"
-    },
-    {
-      "headline": "PS1 Additions Since I Last Shared",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wxqtj0/ps1_additions_since_i_last_shared/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 21:15 UTC",
       "is_digital_only": false
     }
   ]
