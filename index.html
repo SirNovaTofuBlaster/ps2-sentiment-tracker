@@ -512,7 +512,7 @@
           <label class="market-sort"><span class="sr-only">Sort</span><select id="marketSort" onchange="marketSetSort(this.value)">
             <option value="high">Price: high to low</option><option value="low">Price: low to high</option><option value="title">Title: A to Z</option></select></label>
         </div>
-        <ul id="marketGrid" class="under-grid"></ul>
+        <ul id="marketGrid" class="coll-grid"></ul>
         <p id="marketNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
       </div>
     </div>
@@ -4305,15 +4305,18 @@
             return `<span class="market-ref">${l.cat === 'sealed' ? 'guide' : `eBay ${site} median`} <b>${esc(money(amount, currency))}</b></span>`;
         }
 
+        // A listing is a PS2 game box (a console is a PS2 tile), like the Library and My collection, with the region and SAMPLE on it.
         function marketCardHtml(l) {
             const url = coversShown && l.kind === 'game' ? coverUrl(l.title, l.region) : '';
             const initials = l.kind === 'console' ? 'PS2' : initialsOf(l.title);
-            const link = l.kind === 'game' ? gameLinkHtml(l.title) : esc(l.title);
-            return `<li class="under-card market-card"><div class="under-cover coll-cover" aria-hidden="true"><span class="coll-initials">${esc(initials)}</span>${url
-                ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}</div>
-                <div class="under-body"><div class="under-meta">${esc(l.region)}${l.sample ? ' · <b class="market-sample">SAMPLE</b>' : ''}${l.id ? ' · ' + esc(l.id) : ''}</div>
-                <div class="under-title">${link}</div>
-                <div class="market-ask">${esc(money(l.price, l.currency))}</div>${marketReference(l)}</div></li>`;
+            const inner = `<span class="coll-initials" aria-hidden="true">${esc(initials)}</span>${url
+                ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
+                <span class="coll-badge coll-badge-region">${esc(l.region)}</span>${l.sample ? '<span class="coll-badge coll-badge-edition market-sample-badge">SAMPLE</span>' : ''}`;
+            const cover = l.kind === 'game'
+                ? `<a class="coll-cover" href="#game=${encodeURIComponent(l.title)}" onclick="openGame(${esc(JSON.stringify(l.title))}); return false;" aria-label="${esc(l.title)}">${inner}</a>`
+                : `<span class="coll-cover" role="img" aria-label="${esc(l.title)}">${inner}</span>`;
+            return `<li class="coll-tile market-tile">${cover}<div class="coll-name">${esc(l.title)}</div>
+                <div class="market-ask">${esc(money(l.price, l.currency))}</div>${marketReference(l)}</li>`;
         }
 
         function renderMarketplace() {
@@ -4336,7 +4339,7 @@
             const query = marketQuery.trim().toLowerCase();
             const rows = marketData.listings.filter(l => l.cat === marketCat && (!marketRegion || l.region === marketRegion) && (!query || l.title.toLowerCase().includes(query)));
             rows.sort((a, b) => marketSort === 'title' ? cmpStr(a.title, b.title) : (marketSort === 'low' ? a.price - b.price : b.price - a.price) || cmpStr(a.title, b.title));
-            grid.innerHTML = rows.length ? rows.map(marketCardHtml).join('') : '<li class="text-xs text-slate-400">Nothing matches. Try another kind or region.</li>';
+            grid.innerHTML = rows.length ? rows.map(marketCardHtml).join('') : '<li class="text-xs text-slate-400" style="grid-column: 1 / -1">Nothing matches. Try another kind or region.</li>';
             document.getElementById('marketNote').textContent = 'Asking prices, not what anything sold for. US listings are in dollars and PAL listings in pounds. Reference figures are the tracker\'s eBay medians (used or complete copies), never combined across sites.';
         }
         function marketSetCat(key) { marketCat = key; renderMarketplace(); }

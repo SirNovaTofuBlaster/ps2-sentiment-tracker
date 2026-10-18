@@ -1207,11 +1207,11 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.ok(contrast(tokens.bg, tokens.accent) >= 4.5, 'the filled button: dark on blue');
     assert.ok(contrast(tokens.bg, tokens['accent-hi']) >= 4.5);
 
-    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16; the account screens' small heading, notice and message are yellow (2026-10-17, as in the approved preview); a source's name (subreddit, channel, site) is yellow since 2026-10-16, by the maintainer's request; the median on a game's own page is a price figure, yellow since 2026-10-18; on the Marketplace page the asking price is a price figure, and the sample notice and tag use the same warning yellow as the account notice (2026-10-18).
+    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16; the account screens' small heading, notice and message are yellow (2026-10-17, as in the approved preview); a source's name (subreddit, channel, site) is yellow since 2026-10-16, by the maintainer's request; the median on a game's own page is a price figure, yellow since 2026-10-18; on the Marketplace page the asking price is a price figure, and the sample notice uses the same warning yellow as the account notice (2026-10-18).
     const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
     const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
     assert.ok(yellow.length >= 2, 'at rest and under the pointer');
-    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name|account-eyebrow|account-warn|account-msg|portfolio-paid|ebay-median|market-ask|market-notice|market-sample)\b|\.coll-count/.test(part))), yellow.join(' | '));
+    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name|account-eyebrow|account-warn|account-msg|portfolio-paid|ebay-median|market-ask|market-notice)\b|\.coll-count/.test(part))), yellow.join(' | '));
     assert.match(css, /body \.price-link:hover, body \.price-link:focus-visible \{\s*background: var\(--money\);\s*border-color: var\(--money\);\s*color: var\(--bg\);/);
     // ...by no other route either: every colour is named once, at the top, and the strip's
     // yellow is used by the strip alone; the pages have no yellow of their own.
