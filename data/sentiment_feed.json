@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 16:21:38 UTC",
+  "last_updated": "2026-10-18 16:33:04 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1264,6 +1264,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 14:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749925412",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 14:50 UTC"
     },
     {
       "headline": "What's the best weapon you've ever used in a game?",
@@ -2868,6 +2887,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 13:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Rogue Galaxy",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749921190",
+      "matched_game": "Rogue Galaxy",
+      "matched_games": [
+        "Rogue Galaxy"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 13:07 UTC"
     },
     {
       "headline": "My PlayStation from Japan just came in!",
@@ -13783,17 +13821,18 @@
       "timestamp": "2026-10-17 21:54 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Armored Core Nexus",
+      "headline": "Thread on /v/ naming Top Gun and Armored Core Nexus",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749887459",
-      "matched_game": "Armored Core Nexus",
+      "matched_game": "Top Gun",
       "matched_games": [
+        "Top Gun",
         "Armored Core Nexus"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -285298,57 +285337,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 16:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Gaming Finds at Ross???",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/C0CVi1UTy8E",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 16:26 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Tom Cruise Just Experienced His Worst Opening Weekend In Nearly 20 Years",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/digger-tom-cruise-box-office/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-04 16:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "What does your dream videogame concert look like?",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/what-does-your-dream-videogame-concert-look-like/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 16:21 UTC",
       "is_digital_only": false
     }
   ]
