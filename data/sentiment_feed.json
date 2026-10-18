@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-18 09:24:43 UTC",
+  "last_updated": "2026-10-18 09:38:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749913395",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 09:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Minority Report",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749913231",
+      "matched_game": "Minority Report",
+      "matched_games": [
+        "Minority Report"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 09:14 UTC"
+    },
     {
       "headline": "Hmmm",
       "source": "r/pcmasterrace",
@@ -105216,6 +105254,25 @@
       "hype": 0,
       "timestamp": "2026-10-14 00:56 UTC",
       "views": 56465
+    },
+    {
+      "headline": "Thread on /vrpg/ naming Deus Ex",
+      "source": "4chan /vrpg/",
+      "source_type": "4chan",
+      "feed": "4chan:vrpg",
+      "link": "https://boards.4chan.org/vrpg/thread/4129687",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-14 00:56 UTC"
     },
     {
       "headline": "What JRPGs made good use of the wizardry school premise?",
@@ -281337,60 +281394,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 09:41 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Which game should I start ? ALAN WAKE 2 OR LIFE IS STRANGE",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wxblss/which_game_should_i_start_alan_wake_2_or_life_is/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 09:36 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sony decided to go 100% digital on their games, so I decided to go 100% digital on their consoles. Hopefully I can add a PS5 soon.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1wxbitu/sony_decided_to_go_100_digital_on_their_games_so/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 09:31 UTC",
-      "is_digital_only": true
-    },
-    {
-      "headline": "UK PS2 Game Collection",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wxbh7l/uk_ps2_game_collection/",
-      "matched_game": "Ace Combat 4: Shattered Skies",
-      "matched_games": [
-        "Ace Combat 4: Shattered Skies",
-        "Combat Ace"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 09:28 UTC",
       "is_digital_only": false
     }
   ]
