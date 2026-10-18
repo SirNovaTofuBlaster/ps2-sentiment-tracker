@@ -575,12 +575,14 @@
     "ok": true
   },
   "https://lemmy.world/feeds/c/games.xml?sort=New": {
-    "latest": "2026-10-18 10:33 UTC",
+    "latest": "2026-10-18 13:24 UTC",
     "ok": true
   },
   "https://lemmy.world/feeds/c/retrogaming.xml?sort=New": {
+    "error": "HTTP 503",
+    "failing_since": "2026-10-18 13:30 UTC",
     "latest": "2026-10-18 00:59 UTC",
-    "ok": true
+    "ok": false
   },
   "https://news.xbox.com/en-us/feed/": {
     "error": "HTTP 403",
@@ -699,7 +701,7 @@
     "ok": true
   },
   "https://www.gamespot.com/feeds/mashup/": {
-    "latest": "2026-10-18 12:00 UTC",
+    "latest": "2026-10-18 13:00 UTC",
     "ok": true
   },
   "https://www.gematsu.com/feed": {
@@ -751,7 +753,7 @@
     "ok": true
   },
   "https://www.timeextension.com/feed": {
-    "latest": "2026-10-18 11:00 UTC",
+    "latest": "2026-10-18 13:00 UTC",
     "ok": true
   },
   "https://www.vg247.com/feed": {
