@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-18: Library sorts sequels in number order; 16 more duplicate tiles folded
+
+- The Library's A to Z order compared titles as plain text, so "Ace Combat 04" came before "Ace Combat 5" only by luck, "Final Fantasy 10" would sit before "2", and Roman numerals sorted as letters. It now compares word by word: numbers as numbers (before words), Roman numerals as their value after the first word (`titleTokens()`, `compareTokens()` in index.html; a lone I, V or X counts only at the end or before a number).
+- 16 spellings folded into the tile of the same game (`same` in `covers.json` and `SAME_GAME` in `tools/build_covers.py`): Project Zero 1-3 into Fatal Frame, Sengoku Musou 1, 2, 2 Empires and Moushouden into Samurai Warriors, Shin Sangoku Musou 3 and 4 (with Empires and Moushouden) into Dynasty Warriors 4 and 5, plus Backyard Baseball 2010, Army Men RTS and the long DTM Race Driver 2 title. 3,148 tiles became 3,132.
+- Test: sequel order in `tests/dashboard_check.mjs`.
+
 ## 2026-10-18: Area 51 SteelBook cover; Alone in the Dark SteelBook removed
 
 - The maintainer supplied the box picture of the PAL Area 51 SteelBook Edition (`covers/area-51-steelbook-edition.jpg`, 240 px); it is the entry's `cover`.

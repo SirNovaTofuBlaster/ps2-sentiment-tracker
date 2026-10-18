@@ -660,6 +660,22 @@ def loose_key(key):
 # or shorter subtitle, a typo of a different shape. Each line is one game; the keys are search_terms() keys of library names.
 NOT_SAME = [("in the groove", "eyetoy groove")]   # (spelling, other): never one game, whatever the joins say
 SAME_GAME = (
+    ("backyard baseball 10", "backyard baseball 2010"),
+    ("army men real time strategy", "army men rts"),
+    ("dtm race driver 2", "dtm race driver 2 the ultimate racing simulator also just ultimate racing simulator"),
+    ("fatal frame", "project zero"),
+    ("fatal frame 2 crimson butterfly", "project zero 2"),
+    ("fatal frame 3 the tormented", "project zero 3 tormented"),
+    ("samurai warriors", "sengoku musou"),
+    ("samurai warriors 2", "sengoku musou 2"),
+    ("samurai warriors 2 empires", "sengoku musou 2 empires"),
+    ("samurai warriors xtreme legends", "sengoku musou moushouden"),
+    ("dynasty warriors 4", "shin sangoku musou 3"),
+    ("dynasty warriors 4 empires", "shin sangoku musou 3 empires"),
+    ("dynasty warriors 4 xtreme legends", "shin sangoku musou 3 moushouden"),
+    ("dynasty warriors 5", "shin sangoku musou 4"),
+    ("dynasty warriors 5 empires", "shin sangoku musou 4 empires"),
+    ("dynasty warriors 5 xtreme legends", "shin sangoku musou 4 moushouden"),
     ("ace combat the belkan war", "ace combat zero the belkan war"),
     ("air ranger rescue helicopter", "air rescue ranger"),
     ("ajax club football", "club football ajax amsterdam"),

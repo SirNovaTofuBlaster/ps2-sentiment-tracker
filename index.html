@@ -4936,6 +4936,32 @@
             const key = priceKey(title);
             return own(coverSame, key) ? coverSame[key] : key;
         }
+
+        // Natural order for titles: numbers count as numbers ("Ace Combat 5" before "Ace Combat 10", "04" = 4) and Roman numerals
+        // count as the number they stand for ("Final Fantasy X" before "Final Fantasy XI"), so sequels line up in order. A Roman numeral
+        // is only read after the first word, and a lone I, V or X only at the end or before a number ("Final Fantasy X 2"), so the
+        // pronoun and a name like "Mr. X" are not hurt much. A number sorts before a word, like a digit does in a dictionary.
+        const ROMAN_NUMBERS = { i: 1, ii: 2, iii: 3, iv: 4, v: 5, vi: 6, vii: 7, viii: 8, ix: 9, x: 10, xi: 11, xii: 12, xiii: 13, xiv: 14, xv: 15, xvi: 16, xvii: 17, xviii: 18, xix: 19, xx: 20 };
+        function titleTokens(plain) {
+            const parts = String(plain).replace(/^the /, '').match(/\d+|[a-z]+/g) || [];
+            return parts.map((part, i) => {
+                if (/^\d/.test(part)) return Number(part);
+                if (i > 0 && own(ROMAN_NUMBERS, part)) {
+                    const next = parts[i + 1];
+                    if (part.length > 1 || next === undefined || /^\d/.test(next)) return ROMAN_NUMBERS[part];
+                }
+                return part;
+            });
+        }
+        function compareTokens(a, b) {
+            for (let i = 0; i < a.length && i < b.length; i++) {
+                if (a[i] === b[i]) continue;
+                const an = typeof a[i] === 'number', bn = typeof b[i] === 'number';
+                if (an !== bn) return an ? -1 : 1;
+                return cmpStr(a[i], b[i]);
+            }
+            return a.length - b.length;
+        }
         function libraryEntries() {
             if (librarySorted) return librarySorted;
             const games = new Map();
@@ -4953,8 +4979,8 @@
                 entry.title = entry.title || entry.variants[0];
                 const sortKey = plainText(entry.title).replace(/^the /, '');
                 const first = (sortKey.match(/[a-z0-9]/) || ['#'])[0];
-                return Object.assign(entry, { sortKey, letter: /[a-z]/.test(first) ? first.toUpperCase() : '#' });
-            }).sort((a, b) => cmpStr(a.sortKey, b.sortKey) || cmpStr(a.title, b.title));
+                return Object.assign(entry, { sortKey, tokens: titleTokens(sortKey), letter: /[a-z]/.test(first) ? first.toUpperCase() : '#' });
+            }).sort((a, b) => compareTokens(a.tokens, b.tokens) || cmpStr(a.sortKey, b.sortKey) || cmpStr(a.title, b.title));
             return librarySorted;
         }
 

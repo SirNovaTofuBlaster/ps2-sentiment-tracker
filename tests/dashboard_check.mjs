@@ -2267,6 +2267,20 @@ await check('the EUR button: converts at the ECB rate, marks it, keeps PriceChar
     assert.match(page, /fetch\('data\/fx\.json', \{ cache: 'no-cache' \}\)/);
 });
 
+await check('the Library sorts sequels in number order, and folded spellings (Project Zero / Fatal Frame) are one tile', async () => {
+    const run = (code) => vm.runInContext(code, context);
+    run(`setLibrary(['Ace Combat 5: The Unsung War', 'Ace Combat 04: Shattered Skies', 'Ace Combat Zero', 'Ace Combat 10', 'Fatal Frame', 'Project Zero',
+        'Final Fantasy XII', 'Final Fantasy X', 'Final Fantasy X-2', 'Final Fantasy XI', 'Final Fantasy 9', 'Jak II', 'Jak 3', 'Jak and Daxter', 'Guitar Hero 5', 'Guitar Hero II', 'Guitar Hero'])`);
+    run('librarySorted = null;');
+    const titles = evalJson(`libraryEntries().map(game => game.title.replace(/:/g, ''))`);
+    const at = (title) => titles.indexOf(title);
+    assert.ok(at('Ace Combat 04 Shattered Skies') < at('Ace Combat 5 The Unsung War') && at('Ace Combat 5 The Unsung War') < at('Ace Combat 10') && at('Ace Combat 10') < at('Ace Combat Zero'), 'numbers sort as numbers, before words: ' + titles);
+    assert.ok(at('Final Fantasy 9') < at('Final Fantasy X') && at('Final Fantasy X') < at('Final Fantasy X-2') && at('Final Fantasy X-2') < at('Final Fantasy XI') && at('Final Fantasy XI') < at('Final Fantasy XII'), 'Roman numerals sort by value: ' + titles);
+    assert.ok(at('Guitar Hero') < at('Guitar Hero II') && at('Guitar Hero II') < at('Guitar Hero 5'), 'Roman and Arabic numbers in one order: ' + titles);
+    run(`setLibrary([])`);
+    run('librarySorted = null;');
+});
+
 await check('search suggests from the whole library and opens a game page; the logo goes home; the 24-hour list sorts by rarity', async () => {
     const run = (code) => vm.runInContext(code, context);
     run(`setLibrary(['God Hand', 'Godzilla: Save the Earth', 'Kuon', 'Kingdom Hearts II', 'CY Girls', 'Final Fantasy X', 'Final Fantasy XII', 'Dragon Quest VIII: Journey of the Cursed King'])`);
