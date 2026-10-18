@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 12:57:31 UTC",
+  "last_updated": "2026-10-18 13:00:09 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -3286,6 +3286,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 08:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749912516",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 08:50 UTC"
     },
@@ -11525,18 +11544,18 @@
       "timestamp": "2026-10-17 20:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus and Odin Sphere",
+      "headline": "Thread on /v/ naming Odin Sphere and Shadow of the Colossus",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749883869",
-      "matched_game": "Shadow of the Colossus",
+      "matched_game": "Odin Sphere",
       "matched_games": [
-        "Shadow of the Colossus",
-        "Odin Sphere"
+        "Odin Sphere",
+        "Shadow of the Colossus"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -283467,40 +283486,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 13:00 UTC"
-    },
-    {
-      "headline": "Playing your Super Mario Maker 2 levels LIVE! - Blue Television Games",
-      "source": "YouTube: Blue Television Games",
-      "source_type": "youtube",
-      "feed": "youtube:UCw5YkWj0TfjZrQEgG8u9JjQ",
-      "link": "https://www.youtube.com/watch?v=01wNCffmxLQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 12:59 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is this version of Ruby authentic?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wxf34l/is_this_version_of_ruby_authentic/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 12:58 UTC",
-      "is_digital_only": false
     }
   ]
 }
