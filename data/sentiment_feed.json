@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 14:54:21 UTC",
+  "last_updated": "2026-10-18 14:56:32 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,23 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 14:48 UTC"
+    },
+    {
+      "headline": "God of War Laufey's £130 Collector Box doesn't come with the game",
+      "source": "Eurogamer.net Latest Articles Feed",
+      "source_type": "news",
+      "feed": "https://www.eurogamer.net/feed",
+      "link": "https://www.eurogamer.net/god-of-war-laufey-collector-box-no-game",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 14:47 UTC"
     },
     {
       "headline": "Unsure about what my first gpu for my build should be",
@@ -270,6 +287,25 @@
       "match_score": 0,
       "match_method": null,
       "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 14:30 UTC"
+    },
+    {
+      "headline": "Forza Horizon Is No Longer the King of Video Game Road Trips",
+      "source": "Polygon.com",
+      "source_type": "news",
+      "feed": "https://www.polygon.com/rss/index.xml",
+      "link": "https://www.polygon.com/american-truck-simulator-road-trip-forza-horizon/",
+      "matched_game": "Road Trip",
+      "matched_games": [
+        "Road Trip"
+      ],
+      "match_score": 95,
+      "match_method": "fuzzy",
+      "matched_in": "title",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
