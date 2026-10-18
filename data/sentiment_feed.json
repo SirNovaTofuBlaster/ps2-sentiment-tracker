@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 15:24:39 UTC",
+  "last_updated": "2026-10-18 15:35:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2940,18 +2940,19 @@
       "timestamp": "2026-10-18 11:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening and Monster Hunter",
+      "headline": "Thread on /v/ naming Devil May Cry, Monster Hunter and Devil May Cry 3: Dante's Awakening",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749917924",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_game": "Devil May Cry",
       "matched_games": [
-        "Devil May Cry 3: Dante's Awakening",
-        "Monster Hunter"
+        "Devil May Cry",
+        "Monster Hunter",
+        "Devil May Cry 3: Dante's Awakening"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -284541,78 +284542,6 @@
       "hype": 0,
       "timestamp": "2026-10-04 15:39 UTC",
       "views": 77747
-    },
-    {
-      "headline": "Final Fantasy 7 Revelation no disco era o desejo do diretor",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/final-fantasy-7-revelation-no-disco-era-o-desejo-do-diretor",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:31 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Help! Can’t play Shadow of the Colossus on FreeMcBoot",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wxihyk/help_cant_play_shadow_of_the_colossus_on/",
-      "matched_game": "Shadow of the Colossus",
-      "matched_games": [
-        "Shadow of the Colossus"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:31 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Resident Evil Lady Dimitrescu 1/4 Scale Statue, Thoughts?",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wxih1z/resident_evil_lady_dimitrescu_14_scale_statue/",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 93,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Customized an Apache 4800 for my Switch 2",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1wxifdw/customized_an_apache_4800_for_my_switch_2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:28 UTC",
-      "is_digital_only": false
     }
   ]
 }
