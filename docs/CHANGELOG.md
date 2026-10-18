@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: Marketplace looks like the approved preview
+
+- The maintainer asked for the games to look like the preview's case tiles (label bar, PS2 strip, initials or box art, price, reference line, Watch star) and for the buttons to match the preview's: coloured-dot kind buttons with a glowing active one, a search box with an icon, a joined US/PAL control, a mono sort box. The box-tile version of the same day is replaced; the Watch star is per visit only (nothing stored). New colour tokens in retro.css (--edge, --teal-line, --case-*, --art-*, --stage*). Still sample listings; remove them next time the page changes.
+
 ## 2026-10-18: Marketplace shows game boxes, not cards
 
 - The maintainer said the page is about PS2 games, not cards: listings are now box-art tiles (`coll-grid`, `coll-cover`, region and SAMPLE badges, name, asking price, reference figure), the same look as the Library and My collection. Still sample listings; remove them next time the page changes.

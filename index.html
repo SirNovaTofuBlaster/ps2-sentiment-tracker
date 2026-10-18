@@ -502,17 +502,17 @@
     <!-- Marketplace: listings of rare games and consoles beside the tracker's own eBay medians (marketplace.json). Today every listing is a labelled sample. -->
     <div id="viewMarketplace" role="tabpanel" aria-labelledby="tabMarketplace" class="hidden space-y-8">
       <div id="marketSection" class="bg-ps2card border border-ps2border rounded-md p-6">
-        <div class="lb-section-header"><h2>Marketplace</h2></div>
+        <div class="lb-section-header market-head"><h2>Marketplace: <em id="marketKind">Factory sealed</em></h2></div>
         <p id="marketSummary" class="text-xs text-slate-400 mb-4">Loading the listings…</p>
         <div id="marketNotice" class="market-notice hidden" role="note"></div>
-        <div id="marketCats" class="under-filters" role="group" aria-label="Kind of listing"></div>
+        <div id="marketCats" class="market-cats" role="group" aria-label="Kind of listing"></div>
         <div class="market-controls">
-          <label class="market-search"><span class="sr-only">Search the listings</span><input id="marketSearch" type="search" placeholder="Search a title" autocomplete="off" oninput="marketSetSearch(this.value)"></label>
-          <div id="marketRegions" class="under-filters" role="group" aria-label="Region"></div>
+          <label class="market-search"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i><span class="sr-only">Search the listings</span><input id="marketSearch" type="search" placeholder="Search a title or listing number" autocomplete="off" oninput="marketSetSearch(this.value)"></label>
+          <div id="marketRegions" class="market-seg" role="group" aria-label="Region"></div>
           <label class="market-sort"><span class="sr-only">Sort</span><select id="marketSort" onchange="marketSetSort(this.value)">
             <option value="high">Price: high to low</option><option value="low">Price: low to high</option><option value="title">Title: A to Z</option></select></label>
         </div>
-        <ul id="marketGrid" class="coll-grid"></ul>
+        <ul id="marketGrid" class="market-grid"></ul>
         <p id="marketNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
       </div>
     </div>
@@ -4305,18 +4305,30 @@
             return `<span class="market-ref">${l.cat === 'sealed' ? 'guide' : `eBay ${site} median`} <b>${esc(money(amount, currency))}</b></span>`;
         }
 
-        // A listing is a PS2 game box (a console is a PS2 tile), like the Library and My collection, with the region and SAMPLE on it.
+        // A listing is a PS2 game in a clear case (the look of the approved preview): a label bar, the box art (initials until it loads), the price and the tracker's own figure.
+        const MARKET_LOOK = { sealed: ['SEALED', 'red', 'var(--red)'], cib: ['COMPLETE', 'gold', 'var(--money)'], consoles: ['HARDWARE', 'teal', 'var(--green)'] };
+        const marketWatched = new Set();   // this visit only: nothing is stored or sent
         function marketCardHtml(l) {
+            const [badge, tone] = MARKET_LOOK[l.cat];
             const url = coversShown && l.kind === 'game' ? coverUrl(l.title, l.region) : '';
             const initials = l.kind === 'console' ? 'PS2' : initialsOf(l.title);
-            const inner = `<span class="coll-initials" aria-hidden="true">${esc(initials)}</span>${url
-                ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
-                <span class="coll-badge coll-badge-region">${esc(l.region)}</span>${l.sample ? '<span class="coll-badge coll-badge-edition market-sample-badge">SAMPLE</span>' : ''}`;
-            const cover = l.kind === 'game'
-                ? `<a class="coll-cover" href="#game=${encodeURIComponent(l.title)}" onclick="openGame(${esc(JSON.stringify(l.title))}); return false;" aria-label="${esc(l.title)}">${inner}</a>`
-                : `<span class="coll-cover" role="img" aria-label="${esc(l.title)}">${inner}</span>`;
-            return `<li class="coll-tile market-tile">${cover}<div class="coll-name">${esc(l.title)}</div>
-                <div class="market-ask">${esc(money(l.price, l.currency))}</div>${marketReference(l)}</li>`;
+            const label = l.cat === 'cib' ? 'CIB' : l.cat === 'sealed' ? 'SEALED' : 'CONSOLE';
+            const watching = marketWatched.has(l.id);
+            const title = l.kind === 'game' ? gameLinkHtml(l.title) : esc(l.title);
+            return `<li class="market-slab is-${tone}"><div class="market-stage"><div class="market-case">
+                <div class="market-cert">${esc(label)}</div>
+                <div class="market-art"><div class="market-strip"><span>PS2</span><i>${esc(l.region)}</i></div>
+                    <div class="market-code">${esc(initials)}</div>${url ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
+                    <div class="market-vault">${l.sample ? 'SAMPLE' : 'LISTED'}</div></div></div></div>
+                <div class="market-row"><span class="market-badge">${esc(badge)}</span><span class="market-id">${esc(l.id)}</span></div>
+                <h3 class="market-title">${title}</h3>
+                <div class="market-pricebar"><div class="market-row"><span class="market-ask">${esc(money(l.price, l.currency))}</span>
+                    <button type="button" class="market-watch${watching ? ' is-on' : ''}" aria-pressed="${watching}" onclick="marketToggleWatch(${esc(JSON.stringify(l.id))})"><i class="fa-${watching ? 'solid' : 'regular'} fa-star" aria-hidden="true"></i> ${watching ? 'Watching' : 'Watch'}</button></div>
+                    ${marketReference(l)}</div></li>`;
+        }
+        function marketToggleWatch(id) {
+            if (marketWatched.has(id)) marketWatched.delete(id); else marketWatched.add(id);
+            renderMarketplace();
         }
 
         function renderMarketplace() {
@@ -4332,14 +4344,15 @@
             notice.classList.toggle('hidden', !marketData.sample);
             notice.textContent = marketData.sample ? 'Sample listings: every listing on this page is invented to show the layout. Nothing here is for sale.' : '';
             summary.textContent = 'Rare games and consoles, each beside the tracker\'s own eBay figure for the same game and region.';
+            document.getElementById('marketKind').textContent = MARKET_CATS.find(([key]) => key === marketCat)[1];
             document.getElementById('marketCats').innerHTML = MARKET_CATS.map(([key, label]) =>
-                `<button type="button" class="under-chip${key === marketCat ? ' is-active' : ''}" aria-pressed="${key === marketCat}" onclick="marketSetCat(${esc(JSON.stringify(key))})">${esc(label)}</button>`).join('');
+                `<button type="button" class="market-cat${key === marketCat ? ' is-active' : ''}" aria-pressed="${key === marketCat}" onclick="marketSetCat(${esc(JSON.stringify(key))})"><span class="market-dot" style="background:${MARKET_LOOK[key][2]}"></span>${esc(label)}</button>`).join('');
             document.getElementById('marketRegions').innerHTML = [['', 'All'], ['US', 'US'], ['PAL', 'PAL']].map(([key, label]) =>
-                `<button type="button" class="under-chip${key === marketRegion ? ' is-active' : ''}" aria-pressed="${key === marketRegion}" onclick="marketSetRegion(${esc(JSON.stringify(key))})">${esc(label)}</button>`).join('');
+                `<button type="button" class="${key === marketRegion ? 'is-active' : ''}" aria-pressed="${key === marketRegion}" onclick="marketSetRegion(${esc(JSON.stringify(key))})">${esc(label)}</button>`).join('');
             const query = marketQuery.trim().toLowerCase();
             const rows = marketData.listings.filter(l => l.cat === marketCat && (!marketRegion || l.region === marketRegion) && (!query || l.title.toLowerCase().includes(query)));
             rows.sort((a, b) => marketSort === 'title' ? cmpStr(a.title, b.title) : (marketSort === 'low' ? a.price - b.price : b.price - a.price) || cmpStr(a.title, b.title));
-            grid.innerHTML = rows.length ? rows.map(marketCardHtml).join('') : '<li class="text-xs text-slate-400" style="grid-column: 1 / -1">Nothing matches. Try another kind or region.</li>';
+            grid.innerHTML = rows.length ? rows.map(marketCardHtml).join('') : '<li class="market-empty">Nothing matches. Try another kind or region.</li>';
             document.getElementById('marketNote').textContent = 'Asking prices, not what anything sold for. US listings are in dollars and PAL listings in pounds. Reference figures are the tracker\'s eBay medians (used or complete copies), never combined across sites.';
         }
         function marketSetCat(key) { marketCat = key; renderMarketplace(); }
