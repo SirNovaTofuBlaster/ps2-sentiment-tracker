@@ -2647,7 +2647,11 @@ await check('Library: a button back to the top after a long scroll, and a bigger
     assert.equal(top.classList.contains('is-shown'), false, 'near the top there is nothing to go back to');
     assert.equal(top.getAttribute('inert'), '', 'and Tab skips it');
     context.window.scrollY = 1500;
-    run('updateLibraryTop()');
+    run(`currentView = 'dashboard'; updateLibraryTop()`);
+    assert.equal(top.classList.contains('is-shown'), false, 'only the Library and My collection have it');
+    run(`currentView = 'collection'; updateLibraryTop()`);
+    assert.equal(top.classList.contains('is-shown'), true, 'a long collection has it too');
+    run(`currentView = 'library'; updateLibraryTop()`);
     assert.equal(top.classList.contains('is-shown'), true);
     assert.equal(top.getAttribute('inert'), null);
     run('libraryScrollTop()');
@@ -2696,8 +2700,32 @@ await check('Library: a button back to the top after a long scroll, and a bigger
         run(`setLibrary(['The Getaway', 'God Hand'])`);
         assert.equal(evalJson('libraryDrawn'), evalJson('libraryShown.length'), 'a computer draws everything at once');
     }
+    // A long collection on a phone is drawn in batches too.
+    {
+        const list = el('collectionList');
+        const added = { n: 0 };
+        list.insertAdjacentHTML = (where, html) => { added.n += (html.match(/<li class="coll-tile">/g) || []).length; };
+        const observed = [];
+        context.IntersectionObserver = class { constructor(cb) { this.cb = cb; } observe(node) { observed.push(node); } disconnect() {} };
+        context.window.matchMedia = () => ({ matches: true });
+        const originalTimeout = context.setTimeout;
+        context.setTimeout = (fn) => { fn(); return 0; };
+        run(`collection = Array.from({ length: 130 }, (_, i) => ({ title: 'Game ' + (i + 1), region: 'PAL', condition: 'complete', qty: 1, paid: null }))`);
+        added.n = 0;
+        run('renderCollection()');
+        assert.equal(added.n, 60, 'the first 60 tiles');
+        assert.equal(evalJson('collectionDrawn'), 60);
+        assert.equal(el('collectionMore').classList.contains('hidden'), false);
+        run('collectionLoadBatch()'); run('collectionLoadBatch()');
+        assert.equal(evalJson('collectionDrawn'), 130);
+        assert.equal(el('collectionMore').classList.contains('hidden'), true);
+        run('renderCollection()');
+        assert.equal(evalJson('collectionDrawn'), 130, 'a redraw (after a removal) keeps what was on screen');
+        delete context.IntersectionObserver; context.setTimeout = originalTimeout; delete context.window.matchMedia; delete list.insertAdjacentHTML;
+        run('collection = []; renderCollection()');
+    }
     const page = read('index.html');
-    assert.match(page, /<button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop\(\)" aria-label="Back to the top of the library"[^>]* inert>/);
+    assert.match(page, /<button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop\(\)" aria-label="Back to the top of the list"[^>]* inert>/);
     assert.match(page, /window\.addEventListener\('scroll', updateLibraryTop, \{ passive: true \}\);/);
     const css = read('retro.css');
     const tail = css.slice(css.indexOf('/* ---- Library (2026-10-17)'));

@@ -417,8 +417,6 @@
       </div>
 
 
-      <!-- Appears once the long list has been scrolled down; sits above the add bar when that is open. -->
-      <button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop()" aria-label="Back to the top of the library" title="Back to the top" inert><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
     </div>
 
     <!-- The add bar: opened from a Library box or from a game's page, so it sits outside both pages. -->
@@ -450,6 +448,9 @@
       </div>
       <button type="button" class="library-add-close" onclick="libraryClosePicked()" aria-label="Close">&times;</button>
     </div>
+
+    <!-- Appears once a long list (the Library or My collection) has been scrolled down; sits above the add bar when that is open. -->
+      <button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop()" aria-label="Back to the top of the list" title="Back to the top" inert><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
 
     <!-- Underrated: one game a day from underrated.json, picked by the date (the same for everyone), then the whole list. -->
     <div id="viewUnderrated" role="tabpanel" aria-labelledby="tabUnderrated" class="hidden space-y-8">
@@ -547,6 +548,7 @@
         <label class="coll-covers-toggle text-xs text-slate-400 flex items-center gap-2"><input type="checkbox" id="collectionCovers" checked onchange="setCoversShown(this.checked)" class="spin-check"> Show cover images <span class="text-slate-500">(loaded from the Libretro thumbnail collection)</span></label>
         <p id="collectionMessage" class="text-xs text-amber-300 mt-2 min-h-[1rem]" role="status"></p>
         <ul id="collectionList" class="coll-grid mt-4"></ul>
+        <div id="collectionMore" class="lib-more hidden" role="status" aria-live="polite"><span class="lib-more-bar" aria-hidden="true"></span><span class="lib-more-text">Loading more games…</span></div>
         <div class="flex flex-wrap gap-2 mt-4">
           <button type="button" id="collectionExport" onclick="exportCollection()" class="brand-btn text-ps2neon"><i class="fa-solid fa-download" aria-hidden="true"></i> Save a backup file</button>
           <label class="brand-btn text-ps2neon" for="collectionImport"><i class="fa-solid fa-upload" aria-hidden="true"></i> Load a backup file</label>
@@ -813,6 +815,7 @@
             try { document.getElementById(VIEWS[view][1])?.scrollIntoView?.({ inline: 'nearest', block: 'nearest' }); } catch { /* the tab row slides sideways on a phone; nothing to do without it */ }
             drawPending(view);
             currentView = view;
+            try { updateLibraryTop(); } catch { /* the button only follows the page */ }
             if (view === 'collection') { try { syncCollectionAccess(); } catch { /* the tab opens as it was */ } }
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
             if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'gacha' || view === 'underrated') ensureCoverIndex();
@@ -3947,19 +3950,7 @@
             drawChart('portfolioChart', { points, format, style: portfolioChart.style, paid: hasPaid ? model.paid : null, onHover: say, redraw: () => renderPortfolio() }, locale);
         }
 
-        function renderCollection(locale) {
-            const list = document.getElementById('collectionList');
-            const summary = document.getElementById('collectionSummary');
-            const totals = collectionTotals();
-            const rows = collection.map((entry, index) => ({ entry, index, value: collectionValue(entry) }))
-                .sort((a, b) => ((b.value[0] ?? -1) * b.entry.qty) - ((a.value[0] ?? -1) * a.entry.qty) || cmpStr(a.entry.title, b.entry.title));
-            const sums = Object.entries(totals.worth).map(([currency, amount]) => money(amount, currency, locale)).join(' + ');
-            summary.textContent = collection.length
-                ? `${collection.length} game${collection.length === 1 ? '' : 's'}, ${totals.copies} cop${totals.copies === 1 ? 'y' : 'ies'}. `
-                    + (sums ? `Estimated value ${sums}` : 'No price for any of them yet')
-                    + (totals.unpriced ? ` (${totals.unpriced} cop${totals.unpriced === 1 ? 'y' : 'ies'} without a price)` : '') + '.'
-                : 'Nothing here yet. Search a game, choose its region and condition, and press Add. Your list stays in this browser.';
-            list.innerHTML = rows.map(({ entry, index, value }) => {
+        function collectionTileHtml({ entry, index, value }, locale) {
                 const [amount, currency, basis] = value;
                 const worth = amount === null ? 'no price' : `${money(amount, currency, locale)}${basis === 'article' ? ' (article)' : ''}`;
                 const gain = entry.paid !== null && amount !== null ? (amount >= entry.paid ? ' ▲' : ' ▼') : '';
@@ -3981,7 +3972,64 @@
                     <div class="coll-meta">${esc(COLLECTION_CONDITIONS[entry.condition])}</div>
                     <div class="coll-value${amount === null ? ' is-none' : ''}">${esc(worth)}${gain ? `<span class="${amount >= entry.paid ? 'text-emerald-400' : 'text-red-400'}" title="Against what you paid">${gain}</span>` : ''}</div>
                 </li>`;
-            }).join('');
+        }
+
+        const LIBRARY_FIRST = 60, LIBRARY_BATCH = 48, LIBRARY_WAIT_MS = 450;
+        // My collection on a phone: the same batches as the Library (see libraryDrawMore).
+        let collectionRows = [], collectionLocale, collectionDrawn = 0, collectionMoreBusy = false, collectionObserver = null;
+        function collectionDrawMore(count) {
+            const list = document.getElementById('collectionList');
+            if (!list) return;
+            const target = Math.min(collectionRows.length, collectionDrawn + count);
+            list.insertAdjacentHTML('beforeend', collectionRows.slice(collectionDrawn, target).map(row => collectionTileHtml(row, collectionLocale)).join(''));
+            collectionDrawn = target;
+            paintCollectionMore();
+        }
+        function paintCollectionMore() {
+            const more = document.getElementById('collectionMore');
+            if (!more) return;
+            const left = collectionRows.length - collectionDrawn;
+            more.classList.toggle('hidden', left <= 0);
+            more.classList.remove('is-loading');
+            collectionMoreBusy = false;
+            if (collectionObserver) { collectionObserver.disconnect(); collectionObserver = null; }
+            if (left > 0 && libraryLazy()) {
+                collectionObserver = new IntersectionObserver((entries) => { if (entries.some(e => e.isIntersecting)) collectionLoadBatch(); }, { rootMargin: '300px 0px' });
+                collectionObserver.observe(more);
+            }
+        }
+        function collectionLoadBatch(count = LIBRARY_BATCH) {
+            const more = document.getElementById('collectionMore');
+            if (collectionMoreBusy || !more) return;
+            collectionMoreBusy = true;
+            more.classList.add('is-loading');
+            setTimeout(() => { collectionMoreBusy = false; collectionDrawMore(count); }, LIBRARY_WAIT_MS);
+        }
+
+        function renderCollection(locale) {
+            const list = document.getElementById('collectionList');
+            const summary = document.getElementById('collectionSummary');
+            const totals = collectionTotals();
+            const rows = collection.map((entry, index) => ({ entry, index, value: collectionValue(entry) }))
+                .sort((a, b) => ((b.value[0] ?? -1) * b.entry.qty) - ((a.value[0] ?? -1) * a.entry.qty) || cmpStr(a.entry.title, b.entry.title));
+            const sums = Object.entries(totals.worth).map(([currency, amount]) => money(amount, currency, locale)).join(' + ');
+            summary.textContent = collection.length
+                ? `${collection.length} game${collection.length === 1 ? '' : 's'}, ${totals.copies} cop${totals.copies === 1 ? 'y' : 'ies'}. `
+                    + (sums ? `Estimated value ${sums}` : 'No price for any of them yet')
+                    + (totals.unpriced ? ` (${totals.unpriced} cop${totals.unpriced === 1 ? 'y' : 'ies'} without a price)` : '') + '.'
+                : 'Nothing here yet. Search a game, choose its region and condition, and press Add. Your list stays in this browser.';
+            const redrawn = collectionRows.length ? collectionDrawn : 0;   // a removal redraws what was already on screen
+            collectionRows = rows;
+            collectionLocale = locale;
+            collectionDrawn = 0;
+            if (libraryLazy()) {
+                list.innerHTML = '';
+                collectionDrawMore(Math.max(LIBRARY_FIRST, redrawn));
+            } else {
+                list.innerHTML = rows.map(row => collectionTileHtml(row, locale)).join('');
+                collectionDrawn = rows.length;
+                paintCollectionMore();
+            }
             ensureCoverIndex();
             document.getElementById('collectionNote').textContent =
                 'Your list is kept only in this browser (there is no login; your counts of how many copies you own go to your anonymous account, and nothing else leaves), so clearing the browser\'s data or switching device loses it: use Save a backup file to keep a copy, and Load a backup file to restore it. '
@@ -4990,7 +5038,6 @@
         }
 
         // Long list on a phone: draw a few screens, then a soft shimmer at the end while the next batch is drawn.
-        const LIBRARY_FIRST = 60, LIBRARY_BATCH = 48, LIBRARY_WAIT_MS = 450;
         let libraryGroups = [], libraryDrawn = 0, libraryMoreBusy = false, libraryObserver = null;
         function libraryLazy() {
             try { return typeof IntersectionObserver === 'function' && Boolean(window.matchMedia?.('(max-width: 640px)').matches); } catch { return false; }
@@ -5153,7 +5200,7 @@
         function updateLibraryTop() {
             const button = document.getElementById('libraryTop');
             if (!button) return;
-            const show = (window.scrollY || window.pageYOffset || 0) > LIBRARY_TOP_AFTER;
+            const show = (currentView === 'library' || currentView === 'collection') && (window.scrollY || window.pageYOffset || 0) > LIBRARY_TOP_AFTER;
             button.classList.toggle('is-shown', show);
             if (show) button.removeAttribute('inert'); else button.setAttribute('inert', '');
         }
