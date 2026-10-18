@@ -1,7 +1,46 @@
 {
-  "last_updated": "2026-10-18 21:31:47 UTC",
+  "last_updated": "2026-10-18 21:34:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749946169",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 21:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3 and Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749946194",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3",
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 21:25 UTC"
+    },
     {
       "headline": "4090 water to air swap?",
       "source": "r/pcmasterrace",
@@ -829,6 +868,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 20:26 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749943076",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 20:26 UTC"
     },
@@ -24617,13 +24675,14 @@
       "timestamp": "2026-10-17 17:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Splinter Cell",
+      "headline": "Thread on /v/ naming Half-Life and Splinter Cell",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749874440",
-      "matched_game": "Splinter Cell",
+      "matched_game": "Half-Life",
       "matched_games": [
+        "Half-Life",
         "Splinter Cell"
       ],
       "match_score": 100,
@@ -290052,40 +290111,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 21:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Progress on Top Fifty Favorite Games Collection!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wxr8ee/progress_on_top_fifty_favorite_games_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-04 21:33 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is this Diamond legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wxr7ee/is_this_diamond_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 21:31 UTC",
       "is_digital_only": false
     }
   ]
