@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 07:14:18 UTC",
+  "last_updated": "2026-10-18 07:16:53 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 07:01 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749909261",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 06:55 UTC"
     },
     {
       "headline": "PS2 Elimination Tournament round 10 (159-154)",
@@ -311,14 +330,15 @@
       "timestamp": "2026-10-18 06:23 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming The Thing",
+      "headline": "Thread on /vg/ naming The Thing and The Sopranos",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584860303",
       "matched_game": "The Thing",
       "matched_games": [
-        "The Thing"
+        "The Thing",
+        "The Sopranos"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2445,6 +2465,25 @@
       "timestamp": "2026-10-18 02:34 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Teen Titans",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749900282",
+      "matched_game": "Teen Titans",
+      "matched_games": [
+        "Teen Titans"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 02:34 UTC"
+    },
+    {
       "headline": "My late Grandfather and his tripple monitor setup",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -3789,6 +3828,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 00:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Ultimate Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749895224",
+      "matched_game": "Ultimate Spider-Man",
+      "matched_games": [
+        "Ultimate Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 00:32 UTC"
     },
@@ -280370,25 +280428,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 07:20 UTC"
-    },
-    {
-      "headline": "¿Un juego de Spider-Man infravalorado? Hoy se cumplen 15 años del lanzamiento de Edge of Time",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026277001/un-juego-de-spiderman-infravalorado-hoy-se-cumplen-15-anos-del-lanzamiento-de-edge-of-time/",
-      "matched_game": "Spider-Man",
-      "matched_games": [
-        "Spider-Man"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 07:15 UTC",
-      "is_digital_only": false
     }
   ]
 }
