@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17 23:53:15 UTC",
+  "last_updated": "2026-10-18 00:06:53 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -522,6 +522,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 22:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Alone in the Dark and Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749890190",
+      "matched_game": "Alone in the Dark",
+      "matched_games": [
+        "Alone in the Dark",
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 22:45 UTC"
     },
     {
       "headline": "Thread on /v/ naming Soul Calibur 2",
@@ -7334,20 +7354,17 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Shadow of the Colossus, Okami and 30 more",
+      "headline": "Thread on /v/ naming TimeSplitters 2, The Bouncer, God Hand and 31 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "TimeSplitters 2",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
-        "Shadow of the Colossus",
-        "Okami",
-        "Persona 3",
-        "God Hand",
         "TimeSplitters 2",
         "The Bouncer",
+        "God Hand",
+        "Shadow of the Colossus",
         "Final Fantasy X",
         "Syphon Filter: The Omega Strain",
         "Soul Calibur 3",
@@ -7368,15 +7385,19 @@
         "The Sopranos",
         "Dark Cloud",
         "God of War",
+        "Persona 3",
         "Grand Theft Auto III",
         "Half-Life",
         "Warship Gunner 2",
         "Black",
         "Cold Winter",
-        "Persona 3 FES"
+        "Persona 3 FES",
+        "Metal Gear Solid 3: Snake Eater",
+        "Okami",
+        "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -11604,6 +11625,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 11:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749857042",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 11:31 UTC"
     },
     {
       "headline": "New Street Fighter Movie Ends on the Strangest Song Choice Possible",
@@ -276994,23 +277034,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 00:17 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Capcom ends its string of Ws, embraces AI as ‘essential’ for its future games and projects",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/capcom-embraces-ai/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-03 23:53 UTC",
       "is_digital_only": false
     }
   ]
