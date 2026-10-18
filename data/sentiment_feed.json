@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-18 11:19:52 UTC",
+  "last_updated": "2026-10-18 11:33:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749917442",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 11:27 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
@@ -4666,19 +4685,20 @@
       "timestamp": "2026-10-18 03:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow the Hedgehog, Deus Ex and Final Fantasy X-2",
+      "headline": "Thread on /v/ naming Okami, Deus Ex, Final Fantasy X-2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749902693",
-      "matched_game": "Shadow the Hedgehog",
+      "matched_game": "Okami",
       "matched_games": [
-        "Shadow the Hedgehog",
+        "Okami",
         "Deus Ex",
-        "Final Fantasy X-2"
+        "Final Fantasy X-2",
+        "Shadow the Hedgehog"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -282210,74 +282230,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 11:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "😅😅",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/wTaDh6C-AFk",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 11:31 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "GTA V collectors edition bargain build",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wxdgfd/gta_v_collectors_edition_bargain_build/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 11:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Mega Man 5 NES",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wxdg3d/mega_man_5_nes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 11:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is there a Swap Magic style disc for playing PS1 imports on PS2?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wxdcls/is_there_a_swap_magic_style_disc_for_playing_ps1/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 11:24 UTC",
       "is_digital_only": false
     }
   ]
