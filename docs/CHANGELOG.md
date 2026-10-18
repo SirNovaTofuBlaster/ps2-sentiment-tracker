@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: Marketplace cases bigger
+
+- The case, its bars, the title, price and Watch button are about 45% larger (tiles at least 15rem wide instead of 11.5rem). Size only.
+
 ## 2026-10-18: Marketplace case: PS2 and region bars outside the picture
 
 - The PS2 bar (now read horizontally) sits beside the cover image, and the region / SAMPLE bar below it, both outside the picture so the box art is never covered. Layout only.
