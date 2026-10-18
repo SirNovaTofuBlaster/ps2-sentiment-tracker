@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 22:44:53 UTC",
+  "last_updated": "2026-10-18 22:58:56 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,28 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 22:24 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4, SSX 3, NFL Blitz 2003 and 1 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749949078",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "SSX 3",
+        "NFL Blitz 2003",
+        "Viewtiful Joe"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 22:22 UTC"
     },
     {
       "headline": "Authentic Pokemon Crystal?",
@@ -752,6 +774,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 21:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749946358",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 21:29 UTC"
     },
     {
       "headline": "Looking for sci-fi games where I play under/for/with/as a military regime",
@@ -91897,7 +91938,7 @@
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -290490,57 +290531,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 22:59 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Challenge of the Ancient Empires",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wxszuf/challenge_of_the_ancient_empires/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 22:54 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sonic 4 psx cover i made",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wxsxvd/sonic_4_psx_cover_i_made/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 22:51 UTC"
-    },
-    {
-      "headline": "Please get me out of my gaming slump",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wxsw8a/please_get_me_out_of_my_gaming_slump/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 22:48 UTC",
       "is_digital_only": false
     }
   ]
