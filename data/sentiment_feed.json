@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 04:58:38 UTC",
+  "last_updated": "2026-10-18 05:07:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -341,6 +341,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 03:45 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749902693",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 03:38 UTC"
     },
     {
       "headline": "Can i upgrade my cpu safely?",
@@ -279251,23 +279270,6 @@
       "hype": 0,
       "timestamp": "2026-10-04 05:12 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Radec's PS5 Account Got Hacked, Ace Combat 8, AI Taking Over, Nintendo Achievements | Spawncast #482",
-      "source": "Podcast: SpawnCast",
-      "source_type": "podcast",
-      "feed": "http://feeds.feedburner.com/soundcloud/QbQD",
-      "link": "https://podcasters.spotify.com/pod/show/spawncast5/episodes/Radecs-PS5-Account-Got-Hacked--Ace-Combat-8--AI-Taking-Over--Nintendo-Achievements--Spawncast-482-e3prfob",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 05:03 UTC"
     }
   ]
 }
