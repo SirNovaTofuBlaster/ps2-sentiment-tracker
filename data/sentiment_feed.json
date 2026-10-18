@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 19:37:53 UTC",
+  "last_updated": "2026-10-18 19:40:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2387,6 +2387,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 17:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter and Devil May Cry 3: Dante's Awakening",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749932772",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "Devil May Cry 3: Dante's Awakening"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 17:18 UTC"
     },
@@ -8463,18 +8483,19 @@
       "timestamp": "2026-10-18 11:56 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Silent Hill 2",
+      "headline": "Thread on /v/ naming Half-Life, Resident Evil 4 and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749918519",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Half-Life",
       "matched_games": [
+        "Half-Life",
         "Resident Evil 4",
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -288672,24 +288693,6 @@
       "hype": 0,
       "timestamp": "2026-10-04 19:49 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Minecraft has over 3,000 types of fish!",
-      "source": "YouTube: RetroGamingNow",
-      "source_type": "youtube",
-      "feed": "youtube:UCTWbP-2W-_6mzWLg2oZmT7Q",
-      "link": "https://www.youtube.com/shorts/XqfywtcpI6E",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 19:37 UTC",
-      "views": 17411
     }
   ]
 }
