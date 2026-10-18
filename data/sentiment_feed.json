@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 15:48:37 UTC",
+  "last_updated": "2026-10-18 15:51:19 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -190,6 +190,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 15:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749927591",
+      "matched_game": "Metal Gear Solid 2",
+      "matched_games": [
+        "Metal Gear Solid 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 15:38 UTC"
     },
     {
       "headline": "Do I need a memory card for freehdboot and OPL?",
@@ -1616,6 +1635,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 14:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749924132",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 14:18 UTC"
     },
     {
       "headline": "Upgrade path: RTX 4070 Ti Super to RTX 5080 (+700) or RTX 4090 (+1000)?",
@@ -4703,13 +4741,14 @@
       "timestamp": "2026-10-18 10:51 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Resident Evil Code: Veronica X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749916184",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Resident Evil Code: Veronica X"
       ],
       "match_score": 100,
@@ -10604,6 +10643,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 01:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749898698",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 01:54 UTC"
     },
@@ -285418,40 +285476,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 15:52 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Escassez de memória persistirá até 2028",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/escassez-de-memoria-persistira-ate-2028",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:50 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "(I am mfs)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1wxiwmo/i_am_mfs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:48 UTC",
       "is_digital_only": false
     }
   ]
