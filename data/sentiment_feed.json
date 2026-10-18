@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-18 02:44:47 UTC",
+  "last_updated": "2026-10-18 02:58:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749900649",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 02:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749900331",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 02:35 UTC"
+    },
     {
       "headline": "water in my pc",
       "source": "r/pcmasterrace",
@@ -3226,6 +3264,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 21:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749887082",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 21:46 UTC"
     },
@@ -9423,13 +9480,14 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming TimeSplitters 2, The Bouncer, God Hand and 32 more",
+      "headline": "Thread on /v/ naming Steambot Chronicles, TimeSplitters 2, The Bouncer and 32 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "TimeSplitters 2",
+      "matched_game": "Steambot Chronicles",
       "matched_games": [
+        "Steambot Chronicles",
         "TimeSplitters 2",
         "The Bouncer",
         "God Hand",
@@ -9438,7 +9496,6 @@
         "Syphon Filter: The Omega Strain",
         "Soul Calibur 3",
         "Kingdom Hearts",
-        "Steambot Chronicles",
         "Fatal Frame",
         "Dark Cloud 2",
         "Rogue Galaxy",
@@ -9467,7 +9524,7 @@
         "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
