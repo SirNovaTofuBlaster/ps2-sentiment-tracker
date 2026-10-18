@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 02:31:02 UTC",
+  "last_updated": "2026-10-18 02:44:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -719,6 +719,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 01:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749896973",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 01:11 UTC"
     },
@@ -1449,13 +1468,14 @@
       "timestamp": "2026-10-18 00:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Zone of the Enders",
+      "headline": "Thread on /v/ naming Iron Man and Zone of the Enders",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749893886",
-      "matched_game": "Zone of the Enders",
+      "matched_game": "Iron Man",
       "matched_games": [
+        "Iron Man",
         "Zone of the Enders"
       ],
       "match_score": 100,
@@ -278545,40 +278565,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 02:58 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Fantasy recs for me to buy on Steam autumn sale?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wx4oob/fantasy_recs_for_me_to_buy_on_steam_autumn_sale/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 02:40 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "I found out about this after 20 years thanks to PCSX2",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1wx4o66/i_found_out_about_this_after_20_years_thanks_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 02:39 UTC",
       "is_digital_only": false
     }
   ]
