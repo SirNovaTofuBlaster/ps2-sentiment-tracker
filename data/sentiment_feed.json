@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 13:54:37 UTC",
+  "last_updated": "2026-10-18 13:57:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1699,6 +1699,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 11:41 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749917924",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 11:41 UTC"
     },
@@ -7102,23 +7121,24 @@
       "timestamp": "2026-10-18 03:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Prince of Persia: Warrior Within, Heroes of Might and Magic, Breath of Fire: Dragon Quarter and 4 more",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Deus Ex, Final Fantasy X-2 and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749902693",
-      "matched_game": "Prince of Persia: Warrior Within",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Prince of Persia: Warrior Within",
-        "Heroes of Might and Magic",
-        "Breath of Fire: Dragon Quarter",
+        "Resident Evil Code: Veronica X",
         "Deus Ex",
         "Final Fantasy X-2",
         "Shadow the Hedgehog",
-        "Okami"
+        "Okami",
+        "Prince of Persia: Warrior Within",
+        "Heroes of Might and Magic",
+        "Breath of Fire: Dragon Quarter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -283897,57 +283917,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 14:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Hellblade II: Senua's Saga Review - A systematic and unnecessary dismantling of everything that made the first game interesting.",
-      "source": "r/patientgamers",
-      "source_type": "reddit",
-      "feed": "reddit:patientgamers",
-      "link": "https://www.reddit.com/r/patientgamers/comments/1wxgazf/hellblade_ii_senuas_saga_review_a_systematic_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 13:56 UTC"
-    },
-    {
-      "headline": "PlatinumGames boss hints he wants to expand Bayonetta as Stellar Blade director calls the series \"indispensable\"",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1wxgagx/platinumgames_boss_hints_he_wants_to_expand/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 13:55 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "which particular bundle on steam for the game Alien Isolation would be the best?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wxg9sa/which_particular_bundle_on_steam_for_the_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-04 13:54 UTC",
       "is_digital_only": false
     }
   ]
