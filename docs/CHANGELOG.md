@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: the back-to-top button rides above the add bar on a phone
+
+- The button sat at a fixed height above the Library's add bar, but on a phone the bar stacks its fields and is about 280 px tall, so the button was covered. `libraryMeasureBar()` now measures the bar (and watches it with a ResizeObserver) and sets `--add-bar-h`, which the button's `bottom` uses; the old fixed heights remain as the fallback.
+
 ## 2026-10-18: My collection gets the back-to-top button and the phone batches
 
 - The round back-to-top button (`#libraryTop`) now sits outside the Library's page and shows on both the Library and My collection once scrolled 700 px (`updateLibraryTop()` checks `currentView`). My collection draws its tiles in the same batches as the Library on a phone (`collectionDrawMore()`, `collectionLoadBatch()`, the `#collectionMore` shimmer); a redraw after a removal keeps what was already on screen. Tests cover both.

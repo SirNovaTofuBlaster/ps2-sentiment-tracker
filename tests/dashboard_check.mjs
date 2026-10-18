@@ -2731,7 +2731,7 @@ await check('Library: a button back to the top after a long scroll, and a bigger
     const tail = css.slice(css.indexOf('/* ---- Library (2026-10-17)'));
     assert.match(tail, /body \.lib-top \{[^}]*position: fixed;[^}]*width: 2\.9rem;[^}]*opacity: 0; pointer-events: none;/);
     assert.match(tail, /body \.lib-top\.is-shown \{ opacity: 1; pointer-events: auto; transform: none; \}/);
-    assert.match(tail, /body \.library-add:not\(\.hidden\) ~ \.lib-top \{ bottom: calc\(8rem/, 'above the add bar when it is open');
+    assert.match(tail, /body \.library-add:not\(\.hidden\) ~ \.lib-top \{ bottom: calc\(var\(--add-bar-h, 8rem\)/, 'above the add bar when it is open');
     assert.match(tail, /@media \(prefers-reduced-motion: reduce\) \{ body \.lib-top \{ transition: none; \} \}/);
     // The x: 1.9rem on a desktop, 2.6rem square on a phone (the phone rule for buttons made it a thin pill).
     assert.match(tail, /body \.coll-remove \{ width: 1\.9rem; height: 1\.9rem;/);

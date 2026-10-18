@@ -5161,6 +5161,7 @@
             document.getElementById('libraryAddOpen').classList.toggle('hidden', i < 0);   // opened from the game's own page already
             document.getElementById('libraryAdd').classList.remove('hidden');
             paintLibraryRemove();
+            libraryMeasureBar();
         }
         // The copy the bar's region and condition point at, if the collection holds one: what "Remove one" would take away.
         function libraryEntryPicked() {
@@ -5234,9 +5235,25 @@
             set('collectionPaidSym', sign('collectionRegion'));
             set('libraryPaidSym', libraryRegion === 'US' ? '$' : '£');
         }
+        // The back-to-top button rides above the add bar, whatever height the bar has (a phone stacks its fields and is much taller).
+        function libraryMeasureBar() {
+            try {
+                const bar = document.getElementById('libraryAdd');
+                const open = bar && !bar.classList.contains('hidden');
+                const height = open ? Math.round(bar.offsetHeight || 0) : 0;
+                if (height > 0) document.documentElement.style.setProperty('--add-bar-h', `${height}px`);
+                else document.documentElement.style.removeProperty('--add-bar-h');
+                if (open && !libraryBarWatch && typeof ResizeObserver === 'function') {
+                    libraryBarWatch = new ResizeObserver(() => libraryMeasureBar());
+                    libraryBarWatch.observe(bar);
+                }
+            } catch { /* the button keeps its fixed height above the bar */ }
+        }
+        let libraryBarWatch = null;
         function libraryClosePicked() {
             libraryPicked = null;
             document.getElementById('libraryAdd')?.classList.add('hidden');
+            libraryMeasureBar();
         }
         function libraryOpenPicked(event) {
             event?.preventDefault?.();
