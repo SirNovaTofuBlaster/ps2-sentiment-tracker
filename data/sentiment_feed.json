@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 07:16:53 UTC",
+  "last_updated": "2026-10-18 07:30:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1469,6 +1469,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 04:12 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749903791",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 04:12 UTC"
     },
@@ -3881,6 +3900,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 00:30 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Ace Combat Zero: The Belkan War",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584836070",
+      "matched_game": "Ace Combat Zero: The Belkan War",
+      "matched_games": [
+        "Ace Combat Zero: The Belkan War"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 00:30 UTC"
     },
@@ -48543,13 +48581,14 @@
       "timestamp": "2026-10-16 02:12 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Spy vs. Spy",
+      "headline": "Thread on /vr/ naming Special Forces and Spy vs. Spy",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12880389",
-      "matched_game": "Spy vs. Spy",
+      "matched_game": "Special Forces",
       "matched_games": [
+        "Special Forces",
         "Spy vs. Spy"
       ],
       "match_score": 100,
@@ -280392,42 +280431,6 @@
       "hype": 0,
       "timestamp": "2026-10-04 07:45 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo Switch 2 and Switch file sizes – Kingdom Hearts Collection [1-3], Dragon’s Dogma 2: Dark Arisen, more",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-switch-2-and-switch-file-sizes-kingdom-hearts-collection1-3-dragons-dogma-2-more/",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 07:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Does it make sense of buying ps4 pro in 2026 for aroubd 28k-30k INR from gameloot/gamenation",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1wx9hod/does_it_make_sense_of_buying_ps4_pro_in_2026_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 07:20 UTC"
     }
   ]
 }
