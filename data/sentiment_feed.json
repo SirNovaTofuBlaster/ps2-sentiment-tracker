@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 23:25:36 UTC",
+  "last_updated": "2026-10-18 23:28:14 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -103,6 +103,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 23:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749951642",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 23:12 UTC"
     },
     {
       "headline": "Need game for 3-4 players for MP and Coop PS5",
@@ -1729,17 +1748,17 @@
       "timestamp": "2026-10-18 21:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Final Fantasy X, Persona 3 and 1 more",
+      "headline": "Thread on /v/ naming Final Fantasy X, Persona 3, Kingdom Hearts II and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749946194",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Devil May Cry 3: Dante's Awakening",
         "Final Fantasy X",
         "Persona 3",
-        "Kingdom Hearts II"
+        "Kingdom Hearts II",
+        "Devil May Cry 3: Dante's Awakening"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -1783,6 +1802,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 21:21 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749945872",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 21:20 UTC"
     },
     {
       "headline": "Should I upgrade from 3070 to 5060?",
@@ -8820,18 +8858,19 @@
       "timestamp": "2026-10-18 15:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry and Jak and Daxter: The Precursor Legacy",
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Jak and Daxter: The Precursor Legacy and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749926875",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
       "matched_games": [
-        "Devil May Cry",
-        "Jak and Daxter: The Precursor Legacy"
+        "Devil May Cry 3: Dante's Awakening",
+        "Jak and Daxter: The Precursor Legacy",
+        "Devil May Cry"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9922,14 +9961,15 @@
       "timestamp": "2026-10-18 14:29 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming The Sopranos",
+      "headline": "Thread on /vr/ naming The Sopranos and Reservoir Dogs",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12884784",
       "matched_game": "The Sopranos",
       "matched_games": [
-        "The Sopranos"
+        "The Sopranos",
+        "Reservoir Dogs"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -291306,40 +291346,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 23:30 UTC"
-    },
-    {
-      "headline": "Mi colección hasta el momento de juegos en formato físico #PS5 #PS4#Playstation #Mexico",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wxtoji/mi_colección_hasta_el_momento_de_juegos_en/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 23:27 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "ScratchPsx is a PS1 emulator for MS-DOS, from the 486 to the Pentium II or more",
-      "source": "r/emulation",
-      "source_type": "reddit",
-      "feed": "reddit:emulation",
-      "link": "https://www.reddit.com/r/emulation/comments/1wxtouy/scratchpsx_is_a_ps1_emulator_for_msdos_from_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 23:27 UTC"
     }
   ]
 }
