@@ -1,7 +1,46 @@
 {
-  "last_updated": "2026-10-18 21:48:04 UTC",
+  "last_updated": "2026-10-18 22:02:03 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584930924",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 21:54 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Deus Ex and Half-Life",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12885401",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex",
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 21:53 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Monster Hunter",
       "source": "4chan /v/",
@@ -20,6 +59,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 21:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749946597",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 21:34 UTC"
     },
     {
       "headline": "Thread on /v/ naming Monster Hunter",
@@ -289992,113 +290050,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 22:02 UTC"
-    },
-    {
-      "headline": "Recent Pick-ups",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wxrvpp/recent_pickups/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 22:01 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Weekly Deals Topic - October 04, 2026",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wxrv2q/weekly_deals_topic_october_04_2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 22:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Limited Edition Retro Consoles!",
-      "source": "YouTube: Wicked Gamer & Collector",
-      "source_type": "youtube",
-      "feed": "youtube:UCW_sIU3MaWW5cXSjGqNIvbw",
-      "link": "https://www.youtube.com/shorts/EwdBpJ5iDR8",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 22:00 UTC"
-    },
-    {
-      "headline": "Hunter: The Reckoning – Wayward - PS2 Gameplay 4k 2160p / HD Texture Pack (PCSX2)",
-      "source": "YouTube: John GodGames",
-      "source_type": "youtube",
-      "feed": "youtube:UCLC3kuN_2emyokGE4WStv6w",
-      "link": "https://www.youtube.com/watch?v=E7Pf3q2ILRE",
-      "matched_game": "Hunter the Reckoning: Wayward",
-      "matched_games": [
-        "Hunter the Reckoning: Wayward"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 22:00 UTC",
-      "views": 1775
-    },
-    {
-      "headline": "\"Let The Heroic Games Begin\" - Fire Emblem: Fortune's Weave Brings The Battle To Tetris 99",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/let-the-heroic-games-begin-fire-emblem-fortunes-weave-brings-the-battle-to-tetris-99",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 22:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Thread on /vg/ naming Devil May Cry",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/583401132",
-      "matched_game": "Devil May Cry",
-      "matched_games": [
-        "Devil May Cry"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-04 21:50 UTC"
     }
   ]
 }
