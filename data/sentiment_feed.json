@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 17:43:01 UTC",
+  "last_updated": "2026-10-18 17:45:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -241,6 +241,25 @@
       "timestamp": "2026-10-18 17:24 UTC"
     },
     {
+      "headline": "Thread on /v/ naming God of War II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749933134",
+      "matched_game": "God of War II",
+      "matched_games": [
+        "God of War II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 17:24 UTC"
+    },
+    {
       "headline": "Did I screw up my SSD by doing a long full format and writing zeros to entire capacity?",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -305,6 +324,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 17:21 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749932961",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 17:21 UTC"
     },
@@ -3598,19 +3636,21 @@
       "timestamp": "2026-10-18 14:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Manhunt, Half-Life and Dark Cloud",
+      "headline": "Thread on /v/ naming Shadow of the Colossus, Resident Evil 4, Half-Life and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749925412",
-      "matched_game": "Manhunt",
+      "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "Manhunt",
+        "Shadow of the Colossus",
+        "Resident Evil 4",
         "Half-Life",
-        "Dark Cloud"
+        "Dark Cloud",
+        "Manhunt"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -12809,16 +12849,17 @@
       "timestamp": "2026-10-18 02:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming LEGO Batman, Teen Titans and Spider-Man",
+      "headline": "Thread on /v/ naming God of War, Teen Titans, Spider-Man and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749900282",
-      "matched_game": "LEGO Batman",
+      "matched_game": "God of War",
       "matched_games": [
-        "LEGO Batman",
+        "God of War",
         "Teen Titans",
-        "Spider-Man"
+        "Spider-Man",
+        "LEGO Batman"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -287275,40 +287316,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 17:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "ايام الجيل القديم 😅🖤",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/1PgQsdaFMoI",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 17:44 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is this pokemon platinum authentic?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wxlogk/is_this_pokemon_platinum_authentic/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 17:43 UTC",
       "is_digital_only": false
     }
   ]
