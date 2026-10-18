@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: a shorter page title
+
+- The page title is now "Spindle — PS2 Tracker" (it was "Spindle — tracking the Retro Gaming PS2 Market"), so Firefox's new tab tiles, tabs and bookmarks show it without cutting it off. The installed-app name in `manifest.webmanifest` is unchanged.
+
 ## 2026-10-18: a favicon
 
 - The page had an app icon and a manifest but no `<link rel="icon">`, so Firefox's new tab page showed a grey letter "S" for the site. Added 32 px and 48 px favicons (`icons/favicon-32.png`, `icons/favicon-48.png`, made from `icon-512.png`), the 192 px icon as a `rel="icon"`, and `favicon.ico` (16, 32, 48 px). Firefox keeps the old tile until it re-reads the site.
