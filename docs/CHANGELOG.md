@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: Marketplace case: PS2 on a left spine, region at the bottom
+
+- The black bar across the middle of each case is now a vertical "PS2" spine down the left edge (blue edge, like a game case), and the region (US / PAL) sits in the bottom bar beside SAMPLE. Layout only (`.market-spine`, `.market-face`, `.market-vault`).
+
 ## 2026-10-18: Marketplace looks like the approved preview
 
 - The maintainer asked for the games to look like the preview's case tiles (label bar, PS2 strip, initials or box art, price, reference line, Watch star) and for the buttons to match the preview's: coloured-dot kind buttons with a glowing active one, a search box with an icon, a joined US/PAL control, a mono sort box. The box-tile version of the same day is replaced; the Watch star is per visit only (nothing stored). New colour tokens in retro.css (--edge, --teal-line, --case-*, --art-*, --stage*). Still sample listings; remove them next time the page changes.
