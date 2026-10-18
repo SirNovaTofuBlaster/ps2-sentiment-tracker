@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: a favicon
+
+- The page had an app icon and a manifest but no `<link rel="icon">`, so Firefox's new tab page showed a grey letter "S" for the site. Added 32 px and 48 px favicons (`icons/favicon-32.png`, `icons/favicon-48.png`, made from `icon-512.png`), the 192 px icon as a `rel="icon"`, and `favicon.ico` (16, 32, 48 px). Firefox keeps the old tile until it re-reads the site.
+
 ## 2026-10-18: edit a game in My collection
 
 - A game added with the wrong condition (sealed instead of complete, say) can now be fixed: the condition line under each tile is a button with a pencil (`collectionEditOpen()`), opening a box that is the add bar's twin (`#collectionEdit`, same lift of the page and the back-to-top button via `libraryMeasureBar()`, which now measures whichever `.library-add` box is open). It changes region, condition, copies and the price paid (`collectionEditSave()`); moving a game onto a region and condition already held joins them (copies added, a typed price wins). Another browser sees it as the old entry removed and the new one added, which the three-way merge already handles. Tests in `dashboard_check.mjs`.
