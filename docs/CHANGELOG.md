@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: 53 more covers kept with the site (third batch)
+
+- A third zip of box pictures, each file named after its game: all 53 matched a title on the missing-covers list by name; converted to 240 px JPEGs in `covers/` and added to `LOCAL` and `covers.json`'s `local` like the second batch (the Yazuka picture was replaced by the new file). Two are not ordinary boxes: Starcraft Ghost's is almost all black, and Vans Warped Tour 01's is a screenshot of a shop listing; both were kept as supplied. 37 games remain on the missing list.
+
 ## 2026-10-18: 104 more covers kept with the site (second batch)
 
 - The maintainer supplied a second zip of box pictures, each file named after its game. 103 matched a title on the missing-covers list by name and one by hand (`SCEE Catalogue Video 3+` is "SCEE Catalogue Video 3 plus"); each was converted to a 240 px JPEG in `covers/` (transparent PNGs flattened on white) and added to `LOCAL` in `tools/build_covers.py` and `covers.json`'s `local` (keys are `search_terms()` names). The Resident Evil: The Essentials picture was in the zip again and was replaced by the new file. 90 games remain on the missing list.
