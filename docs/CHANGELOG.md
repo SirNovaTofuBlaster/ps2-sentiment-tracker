@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-18: Area 51 SteelBook cover; Alone in the Dark SteelBook removed
+
+- The maintainer supplied the box picture of the PAL Area 51 SteelBook Edition (`covers/area-51-steelbook-edition.jpg`, 240 px); it is the entry's `cover`.
+- Removed the "Alone in the Dark SteelBook Edition" entry (added 2026-10-17): the Collectors Edition database lists that SteelBook only for Xbox 360 (PAL) and PC, and no PS2 steelbook was found, so it was almost certainly a wrong entry.
+
 ## 2026-10-18: 53 more covers kept with the site (third batch)
 
 - A third zip of box pictures, each file named after its game: all 53 matched a title on the missing-covers list by name; converted to 240 px JPEGs in `covers/` and added to `LOCAL` and `covers.json`'s `local` like the second batch (the Yazuka picture was replaced by the new file). Two are not ordinary boxes: Starcraft Ghost's is almost all black, and Vans Warped Tour 01's is a screenshot of a shop listing; both were kept as supplied. 37 games remain on the missing list.
