@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Plus+Jakarta+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="retro.css?v=20261018b">
+    <link rel="stylesheet" href="retro.css?v=20261018c">
 </head>
 <body class="bg-ps2dark min-h-screen flex flex-col selection:bg-ps2neon selection:text-black">
 
@@ -449,6 +449,33 @@
       <button type="button" class="library-add-close" onclick="libraryClosePicked()" aria-label="Close">&times;</button>
     </div>
 
+    <!-- Edit a game in My collection (condition, region, copies, what was paid). Shares the add bar's look and its lift of the page. -->
+    <div id="collectionEdit" class="library-add coll-edit-sheet hidden" role="dialog" aria-label="Edit this game in My collection">
+      <div class="library-add-body">
+        <div id="collectionEditName" class="library-add-name"></div>
+        <div class="library-add-fields">
+          <label class="sr-only" for="collectionEditRegion">Region</label>
+          <select id="collectionEditRegion" onchange="paintPaidSymbols()" class="spin-field spin-select spin-gold spin-region">
+            <option value="PAL">PAL (UK / Europe)</option>
+            <option value="US">US (NTSC-U)</option>
+          </select>
+          <label class="sr-only" for="collectionEditCondition">Condition</label>
+          <select id="collectionEditCondition" class="spin-field spin-select spin-rose spin-cond">
+            <option value="complete">Complete (box and manual)</option>
+            <option value="loose">Loose (disc only)</option>
+            <option value="sealed">Sealed</option>
+          </select>
+          <label class="sr-only" for="collectionEditQty">Copies</label>
+          <input type="number" id="collectionEditQty" min="1" max="99" step="1" inputmode="numeric" class="spin-field spin-copies" title="How many copies of this region and condition" onkeydown="if (event.key === 'Enter') collectionEditSave()">
+          <label class="sr-only" for="collectionEditPaid">What you paid (optional, per copy)</label>
+          <span class="spin-field spin-silver spin-paid"><span class="spin-sym" id="collectionEditSym" aria-hidden="true">£</span><input type="number" id="collectionEditPaid" min="0" step="0.01" inputmode="decimal" placeholder="Paid each" onkeydown="if (event.key === 'Enter') collectionEditSave()"></span>
+          <button type="button" id="collectionEditSave" onclick="collectionEditSave()" class="brand-btn brand-btn-primary py-2 px-4"><i class="fa-solid fa-check" aria-hidden="true"></i> Save changes</button>
+        </div>
+        <div class="library-add-actions"><p id="collectionEditMessage" class="library-add-message" role="status"></p></div>
+      </div>
+      <button type="button" class="library-add-close" onclick="collectionEditClose()" aria-label="Close">&times;</button>
+    </div>
+
     <!-- Appears once a long list (the Library or My collection) has been scrolled down; sits above the add bar when that is open. -->
       <button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop()" aria-label="Back to the top of the list" title="Back to the top" inert><i class="fa-solid fa-chevron-up" aria-hidden="true"></i></button>
 
@@ -821,6 +848,7 @@
             if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'gacha' || view === 'underrated') ensureCoverIndex();
             if (view === 'library') ensureGenres();
             if (view !== 'library') libraryClosePicked();
+            if (view !== 'collection') collectionEditClose();
             if (view === 'gacha') {
                 try { openGacha(); } catch (error) { console.warn('Could not show the gacha.', error); }
             }
@@ -3969,7 +3997,7 @@
                     </a>
                     <button type="button" class="coll-remove" onclick="removeFromCollection(${index})" aria-label="Remove ${esc(entry.title)}" title="Remove">&times;</button>
                     <div class="coll-name">${esc(entry.title)}</div>
-                    <div class="coll-meta">${esc(COLLECTION_CONDITIONS[entry.condition])}</div>
+                    <button type="button" class="coll-edit" onclick="collectionEditOpen(${index})" aria-label="Edit ${esc(entry.title)}: change condition, region, copies or price paid" title="Edit: change condition, region, copies or price paid"><span>${esc(COLLECTION_CONDITIONS[entry.condition])}</span> <i class="fa-solid fa-pen" aria-hidden="true"></i></button>
                     <div class="coll-value${amount === null ? ' is-none' : ''}">${esc(worth)}${gain ? `<span class="${amount >= entry.paid ? 'text-emerald-400' : 'text-red-400'}" title="Against what you paid">${gain}</span>` : ''}</div>
                 </li>`;
         }
@@ -5234,16 +5262,17 @@
             const set = (id, text) => { const node = document.getElementById(id); if (node) node.textContent = text; };
             set('collectionPaidSym', sign('collectionRegion'));
             set('libraryPaidSym', libraryRegion === 'US' ? '$' : '£');
+            set('collectionEditSym', sign('collectionEditRegion'));
         }
         // The back-to-top button rides above the add bar, whatever height the bar has (a phone stacks its fields and is much taller).
         function libraryMeasureBar() {
             try {
-                const bar = document.getElementById('libraryAdd');
-                const open = bar && !bar.classList.contains('hidden');
-                const height = open ? Math.round(bar.offsetHeight || 0) : 0;
+                const bar = document.querySelector('.library-add:not(.hidden)');   // the Library's add bar or My collection's edit box
+                const height = bar ? Math.round(bar.offsetHeight || 0) : 0;
                 if (height > 0) document.documentElement.style.setProperty('--add-bar-h', `${height}px`);
                 else document.documentElement.style.removeProperty('--add-bar-h');
-                if (open && !libraryBarWatch && typeof ResizeObserver === 'function') {
+                if (libraryBarWatch) { libraryBarWatch.disconnect(); libraryBarWatch = null; }
+                if (bar && typeof ResizeObserver === 'function') {
                     libraryBarWatch = new ResizeObserver(() => libraryMeasureBar());
                     libraryBarWatch.observe(bar);
                 }
@@ -5412,8 +5441,59 @@
             if (!document.getElementById('viewCollection')?.classList.contains('hidden') && collectionTab === 'prizes') renderPrizes();
         }
 
+        // Fix a mistake: change a game's region, condition, copies or what was paid. Moving it to a region and condition
+        // already held joins the two (copies added up, the paid price typed here wins).
+        let collectionEditing = null;   // the entry being edited (the object, so a list that changed underneath is noticed)
+        function collectionEditOpen(index) {
+            const entry = collection[index];
+            if (!entry) return;
+            collectionEditing = entry;
+            document.getElementById('collectionEditName').textContent = entry.title;
+            document.getElementById('collectionEditRegion').value = entry.region;
+            document.getElementById('collectionEditCondition').value = entry.condition;
+            document.getElementById('collectionEditQty').value = String(entry.qty);
+            document.getElementById('collectionEditPaid').value = entry.paid === null ? '' : String(entry.paid);
+            document.getElementById('collectionEditMessage').textContent = '';
+            paintPaidSymbols();
+            document.getElementById('collectionEdit').classList.remove('hidden');
+            libraryMeasureBar();
+        }
+        function collectionEditClose() {
+            collectionEditing = null;
+            document.getElementById('collectionEdit')?.classList.add('hidden');
+            libraryMeasureBar();
+        }
+        function collectionEditSave() {
+            const message = (text) => { document.getElementById('collectionEditMessage').textContent = text; };
+            const entry = collectionEditing;
+            const at = entry ? collection.indexOf(entry) : -1;
+            if (at < 0) { message('This list changed while the box was open. Close it and press Edit again.'); return false; }
+            const region = document.getElementById('collectionEditRegion').value;
+            const condition = document.getElementById('collectionEditCondition').value;
+            const qty = Number(document.getElementById('collectionEditQty').value);
+            const paidText = String(document.getElementById('collectionEditPaid').value).trim();
+            const paid = paidText === '' ? null : Number(paidText);
+            if (!own(COLLECTION_REGIONS, region) || !own(COLLECTION_CONDITIONS, condition)) { message('Choose a region and a condition.'); return false; }
+            if (!Number.isInteger(qty) || qty < 1 || qty > 99) { message('Copies must be a whole number from 1 to 99.'); return false; }
+            if (paid !== null && !(Number.isFinite(paid) && paid >= 0)) { message('What you paid must be a number, or left empty.'); return false; }
+            const other = collection.find(item => item !== entry && item.title === entry.title && item.region === region && item.condition === condition);
+            const price = paid === null ? null : Math.round(paid * 100) / 100;
+            if (other) {
+                other.qty = Math.min(99, other.qty + qty);
+                if (price !== null) other.paid = price;
+                collection.splice(at, 1);
+            } else {
+                Object.assign(entry, { region, condition, qty, paid: price });
+            }
+            collectionEditClose();
+            saveCollection();
+            renderCollection();
+            return true;
+        }
+
         function removeFromCollection(index) {
             if (!Number.isInteger(index) || index < 0 || index >= collection.length) return;
+            collectionEditClose();
             collection.splice(index, 1);
             saveCollection();
             renderCollection();

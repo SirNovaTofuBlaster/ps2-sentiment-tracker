@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: edit a game in My collection
+
+- A game added with the wrong condition (sealed instead of complete, say) can now be fixed: the condition line under each tile is a button with a pencil (`collectionEditOpen()`), opening a box that is the add bar's twin (`#collectionEdit`, same lift of the page and the back-to-top button via `libraryMeasureBar()`, which now measures whichever `.library-add` box is open). It changes region, condition, copies and the price paid (`collectionEditSave()`); moving a game onto a region and condition already held joins them (copies added, a typed price wins). Another browser sees it as the old entry removed and the new one added, which the three-way merge already handles. Tests in `dashboard_check.mjs`.
+
 ## 2026-10-18: the crowd service's daily limits raised (the Worker must be redeployed by hand)
 
 - A game added on the maintainer's phone never reached their desktop: the service allowed an account 60 list reads and 30 saves a day, and a day of adding games one at a time (each add reads the list, then saves it) with sign-in testing used them up, so the sends were refused with 429 and the only message was on the Account tab. Now 600 reads (`LIST_READS_PER_DAY`) and 300 saves (`COLLECTION_SAVES_PER_DAY`). `worker/spindle-crowd.bundle.js` is rebuilt; **nothing changes until the new bundle is pasted into Cloudflare and deployed** (docs/CROWD.md, step 2). The limits reset at midnight UTC.
