@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 17:18:38 UTC",
+  "last_updated": "2026-10-18 17:30:02 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1108,6 +1108,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 15:57 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749928443",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 15:56 UTC"
     },
     {
       "headline": "Force Typhoon - Sidereal Motion - Indie Sci-fi Shoot 'Em Up",
@@ -2494,19 +2513,19 @@
       "timestamp": "2026-10-18 14:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dark Cloud, Manhunt and Half-Life",
+      "headline": "Thread on /v/ naming Manhunt, Half-Life and Dark Cloud",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749925412",
-      "matched_game": "Dark Cloud",
+      "matched_game": "Manhunt",
       "matched_games": [
-        "Dark Cloud",
         "Manhunt",
-        "Half-Life"
+        "Half-Life",
+        "Dark Cloud"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -15054,14 +15073,15 @@
       "views": 1598
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex",
+      "headline": "Thread on /v/ naming Deus Ex and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749887708",
       "matched_game": "Deus Ex",
       "matched_games": [
-        "Deus Ex"
+        "Deus Ex",
+        "Half-Life"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -286239,57 +286259,6 @@
       "hype": 0,
       "timestamp": "2026-10-04 17:36 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Chaotix - strange this never had a re-release.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wxla47/chaotix_strange_this_never_had_a_rerelease/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 17:26 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PlatinumGames wants to expand Bayonetta ‘as a character and broaden her world’",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/platinumgames-plan-for-bayonetta/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 17:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sonic vs bubsy cover ps1 (i made)",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wxl2ry/sonic_vs_bubsy_cover_ps1_i_made/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 17:18 UTC"
     }
   ]
 }
