@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 05:20:21 UTC",
+  "last_updated": "2026-10-18 05:22:55 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -409,6 +409,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 04:26 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Red Faction",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749904191",
+      "matched_game": "Red Faction",
+      "matched_games": [
+        "Red Faction"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 04:24 UTC"
     },
     {
       "headline": "Pearl & White, Real or fake?",
@@ -1875,6 +1894,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 01:50 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Soul Calibur 2",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12884169",
+      "matched_game": "Soul Calibur 2",
+      "matched_games": [
+        "Soul Calibur 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 01:46 UTC"
     },
     {
       "headline": "Just found out I was using my 144hz monitor on 60Hz for 6 years.. Why would it not auto pick the best option? It’s like I got a brand new monitor now.",
@@ -279641,26 +279679,6 @@
       "hype": 0,
       "timestamp": "2026-10-04 05:28 UTC",
       "views": 7525
-    },
-    {
-      "headline": "Nintendo Switch 2 eShop charts – October 4, 2026 – Kingdom Hearts skyrockets to the top",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-switch-2-eshop-charts-october-4-2026/",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts",
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 05:21 UTC",
-      "is_digital_only": false
     }
   ]
 }
