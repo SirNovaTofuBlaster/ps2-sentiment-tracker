@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 11:36:38 UTC",
+  "last_updated": "2026-10-18 11:47:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1180,6 +1180,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 09:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749913748",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 09:31 UTC"
     },
     {
       "headline": "RiptOPL not working.",
@@ -48436,6 +48455,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 07:07 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12880721",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-16 07:06 UTC"
     },
     {
       "headline": "Expensive Pokemon Repros in Hong Kong",
@@ -282262,25 +282300,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 11:47 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "smashing greek mythological creatures on my PS2 is a pleasure I’ll never tire of",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wxdpgo/smashing_greek_mythological_creatures_on_my_ps2/",
-      "matched_game": "God of War",
-      "matched_games": [
-        "God of War"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 11:45 UTC",
       "is_digital_only": false
     }
   ]
