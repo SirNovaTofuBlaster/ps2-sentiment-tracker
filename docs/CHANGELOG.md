@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: Marketplace shows game boxes, not cards
+
+- The maintainer said the page is about PS2 games, not cards: listings are now box-art tiles (`coll-grid`, `coll-cover`, region and SAMPLE badges, name, asking price, reference figure), the same look as the Library and My collection. Still sample listings; remove them next time the page changes.
+
 ## 2026-10-18: Marketplace tab (sample listings); Gacha back on, with 1 or 3 capsules a turn
 
 - New **Marketplace** tab (`viewMarketplace`, `marketplace.json`, `openMarketplace()` in index.html, `.market-*` in retro.css). Chips for Factory sealed / Complete in box / Consoles, a US/PAL filter, a search box and a sort; each card shows the box (or initials), region, asking price and, for a game, the tracker's own figure (`collectionValue()`: complete copies' eBay median, or the newest article guide price for a sealed copy). Built from the Underrated page's chips and cards and the existing `view-tab` tab style, from a design preview the maintainer approved (graded-slab frames, the grader strip and the "Graded slabs" button were dropped at his request).

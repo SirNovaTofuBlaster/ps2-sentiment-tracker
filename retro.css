@@ -1117,8 +1117,9 @@ body .market-search input, body .market-sort select { width: 100%; min-height: 2
 body .market-ask { font-family: var(--mono); font-weight: 700; font-size: 1.1rem; color: var(--money); margin: .25rem 0 .1rem; }
 body .market-ref { display: block; font-family: var(--mono); font-size: .68rem; color: var(--dim); }
 body .market-ref b { color: var(--text); font-weight: 500; }
-body .market-sample { color: var(--money); letter-spacing: .06em; }
-body .market-card .under-title { overflow-wrap: anywhere; }
+body .market-tile .coll-name { overflow-wrap: anywhere; }
+body .market-sample-badge { left: auto; right: .3rem; bottom: .3rem; }
+body .market-tile .market-ask { font-size: .9rem; margin: .15rem 0 0; }
 /* Gacha: how many capsules one press takes */
 body .gacha-qty { display: flex; gap: .4rem; flex-wrap: wrap; }
 body .gacha-qty button { min-height: 2.2rem; padding: .35rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--text); font-family: var(--mono); font-size: .75rem; cursor: pointer; }
