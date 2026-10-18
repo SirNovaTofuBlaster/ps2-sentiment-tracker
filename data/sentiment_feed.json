@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 02:01:44 UTC",
+  "last_updated": "2026-10-18 02:15:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1058,18 +1058,22 @@
       "timestamp": "2026-10-17 23:56 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Splinter Cell and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Metal Gear Solid 2: Sons of Liberty, Splinter Cell and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749893461",
-      "matched_game": "Splinter Cell",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
+        "Metal Gear Solid 3: Snake Eater",
+        "Metal Gear Solid 2: Sons of Liberty",
         "Splinter Cell",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Sniper Elite",
+        "Silent Hill 2",
+        "Silent Hill 4: The Room"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -8902,14 +8906,14 @@
       "timestamp": "2026-10-17 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, TimeSplitters 2, The Bouncer and 32 more",
+      "headline": "Thread on /v/ naming King's Field IV, TimeSplitters 2, The Bouncer and 32 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749868530",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "King's Field IV",
       "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
+        "King's Field IV",
         "TimeSplitters 2",
         "The Bouncer",
         "God Hand",
@@ -8926,7 +8930,6 @@
         "Phantasy Star Universe",
         "Final Fantasy XII",
         "Haunting Ground",
-        "King's Field IV",
         "Galerians: Ash",
         "Silent Hill 3",
         "The Godfather",
@@ -8943,7 +8946,8 @@
         "Persona 3 FES",
         "Metal Gear Solid 3: Snake Eater",
         "Okami",
-        "Monster Hunter"
+        "Monster Hunter",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -14365,6 +14369,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 10:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts and Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749854604",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 10:16 UTC"
     },
     {
       "headline": "'¡Cabrones!': la reacción de Nintendo cuando Sony presentó PSP, según un antiguo jefe de PlayStation",
@@ -278109,108 +278133,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 02:16 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Got this for $40..",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wx45g4/got_this_for_40/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 02:11 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Fourth RuneScape MMO And Many Other Related Updates Announced",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/X7SL4uSWlwA",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-04 02:09 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "ReSkate - A mod for Skate 4 adding offline mode, community dedicated servers and custom map/mod support",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wx43hj/reskate_a_mod_for_skate_4_adding_offline_mode/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 02:08 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "METRO 2033 Redux and Last Light Redux Next Gen Update Announced",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/A4jILbHPfq4",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-04 02:07 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Curious after 10+ yrs",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wx40uh/curious_after_10_yrs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 02:04 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Burning Sword Death Sun Steam Playable Demo Released",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/CPeLYD0QAQk",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 02:04 UTC",
       "is_digital_only": false
     }
   ]
