@@ -39,6 +39,12 @@ Requests send `Authorization: Bearer <id>.<key>`. The network address is used on
   census numbers: the people who sign up are not a random sample of owners, so never present them as copies in existence.
 - The figures are never compared with eBay on the server; the dashboard may show the two side by side.
 
+## `GET /api/wanted` (cached five minutes, no sign-in; added 2026-10-18)
+- The names (the dashboard's `priceKey()`) of games that at least `WANTED_MIN_ACCOUNTS` (1) account holds, most-owned first, at most 3,000. Nothing else:
+  no account, no count, no region. `ebay_prices.py` reads it (`load_wanted()`, no key sent) and prices each game nothing else tracks as level `collection`,
+  daily on eBay US and UK (about 70% of the games people had added had no price, because only games the feed named were priced). A failure to read it adds nothing.
+- With one account a name tells nothing about who holds it. Raise `WANTED_MIN_ACCOUNTS` if that ever stops being true. Redeploy the Worker by hand to turn it on.
+
 ## Not done yet
 - Sybil resistance beyond the limits above (account age or agreement weighting).
 - A list check on game keys: today any priceKey-shaped text is accepted, and only groups with 5 accounts are published.

@@ -78,6 +78,7 @@ from urllib.parse import quote, urlencode
 
 ROOT = Path(__file__).parent
 WATCHLIST_PATH = ROOT / "ebay_watchlist.json"
+WANTED_URL = "https://spindle-crowd.nacmh.workers.dev/api/wanted"   # the crowd service's list of game names held in collections
 UNDERRATED_PATH = ROOT / "underrated.json"      # the Underrated page's games (read only)
 RARE_PATH = ROOT / "rare_games.json"            # the Rarest page's two lists (read only)
 EDITIONS_PATH = ROOT / "editions.json"          # limited and collector's editions, each priced on its own (read only)
@@ -187,7 +188,8 @@ SURGE_HOURS = 24             # a surge is judged over this long...
 SURGE_SOURCES = 2            # ...and needs this many different sources, each with its own headline,
 SURGE_QUIET_MENTIONS = 1     # ...for a game named at most this often in the rest of the window
 SURGE_HOLD_HOURS = 48        # once surging, a game stays surging this long after its last mention
-CHECK_EVERY_HOURS = {"surging": 0, "normal": 6, "staple": 6, "dormant": 24, "underrated": 24, "rare": 12}   # 0 = every run
+CHECK_EVERY_HOURS = {"surging": 0, "normal": 12, "staple": 12, "dormant": 24, "underrated": 24, "collection": 24, "rare": 12}   # 0 = every run
+# (normal and staple were 6 until 2026-10-18; the saved searches price the games in people's collections: "collection")
 RARE_SLOW_KINDS = ("console", "edition")   # level "rare" but still daily: only the Rarest page's games are checked every 12 hours
 # The Rarest page's lists in rare_games.json, and the one site each is priced on: a rare PAL game
 # is a PAL copy, sold in Britain; a rare US game is an American copy.
@@ -205,6 +207,7 @@ STEADY_COPIES_RANGE = 0.30
 STEADY_LOOK_DAYS = 6
 STEADY_SPAN_DAYS = 4
 STEADY_MIN_ROWS = 3
+WANTED_MAX_NAMES = 3000      # the most names read from the crowd service
 EARLY_MINUTES = 30           # a check may come this much early, so "every 6 hours" does not drift to 7
 CHANGE_DAYS = 7              # beside each median, how it compares with the median this long before...
 CHANGE_SLACK_DAYS = 2        # ...as recorded at most this much longer before (a quiet game is checked daily)
@@ -802,11 +805,12 @@ def load_underrated(path=None):
             and key_of(row["title"])]
 
 
-def add_underrated_games(games, titles, library, catalogue):
+def add_underrated_games(games, titles, library, catalogue, level="underrated"):
     """Price the Underrated page's games on the first two sites (US and UK) once a day, so that a
     gem has a figure the day it is shown. A game the feed tracks already keeps its own level and
     sites; a title that is not in the PS2 library, or whose one word is an ordinary word, is left
-    out (the page could not find its figure either). Returns the titles left out."""
+    out (the page could not find its figure either). Returns the titles left out.
+    The games in people's collections are added the same way, as level "collection"."""
     keys = {game["key"] for game in games}
     names = {game["search"] for game in games}
     sites = [market_id for market_id, market in MARKETS.items() if not market.get("extra")]
@@ -827,11 +831,34 @@ def add_underrated_games(games, titles, library, catalogue):
             continue
         games.append({"title": library[key], "key": key, "search": name, "queries": queries, "exclude": [],
                       "pinned": False, "siblings": other_games(library[key], name, catalogue),
-                      "level": "underrated", "mentions": 0, "surging_until": None, "sites": list(sites)})
+                      "level": level, "mentions": 0, "surging_until": None, "sites": list(sites)})
         keys.add(key)
         names.add(name)
     games.sort(key=lambda game: game["title"].lower())
     return left_out
+
+
+def load_wanted(http, url=None):
+    """The game names held in people's collections, from the crowd service (worker/, `GET /api/wanted`: names only,
+    never an account). Any failure gives none: the collections are an extra and must never stop the pricing of the
+    others. The request carries no key."""
+    try:
+        status, text = http.send(url or WANTED_URL, {"Accept": "application/json"})
+        rows = json.loads(text).get("games") if status == 200 else None
+    except (NetworkProblem, ValueError, AttributeError):
+        rows = None
+    if not isinstance(rows, list):
+        return None
+    return [name for name in rows if isinstance(name, str) and 2 <= len(name) <= 100][:WANTED_MAX_NAMES]
+
+
+def collection_titles(names, library, never):
+    """The library titles for the dashboard's names (its priceKey(), which is the name `search_terms()` gives a title),
+    the games on the "never" list left out. A name the library does not have is skipped without a word."""
+    by_name = {}
+    for title in library.values():
+        by_name.setdefault(search_terms(title)[0], title)
+    return [by_name[name] for name in dict.fromkeys(names) if name in by_name and key_of(by_name[name]) not in never]
 
 
 def mark_watched(games, titles):
@@ -1103,7 +1130,7 @@ def due_lookups(games, state, now, history=()):
             if waited is None or waited >= wait - EARLY_MINUTES:
                 overdue = float("inf") if waited is None else waited / max(every, 60)
                 due.append((bool(market.get("extra")), game["level"] != "surging", not game["pinned"],
-                            {"underrated": 1, "rare": 2}.get(game["level"], 0), -overdue, game["title"].lower(), market_id, game))
+                            {"underrated": 1, "collection": 1, "rare": 2}.get(game["level"], 0), -overdue, game["title"].lower(), market_id, game))
     due.sort(key=lambda row: row[:7])        # an extra site comes after the first two, whatever a game's level
     return [(row[7], row[6]) for row in due]
 
@@ -2207,7 +2234,7 @@ def snapshot_of(run, now):
 def describe_plan(games, left_out, lookups, allowance, rare_titles=None, rare_problems=(), consoles=0, edition_titles=None):
     games = [game for game in games if game.get("kind") not in ("console", "edition")]   # counted on lines of their own
     levels = {level: sum(1 for game in games if game["level"] == level) for level in CHECK_EVERY_HOURS}
-    for extra_level in ("underrated", "rare"):
+    for extra_level in ("underrated", "collection", "rare"):
         if not levels[extra_level]:
             del levels[extra_level]   # only there when underrated.json or rare_games.json adds games
     pinned = sum(1 for game in games if game["pinned"])
@@ -2403,6 +2430,13 @@ def main(argv=None):
         games, left_out = plan_games(now, pinned, never, mentions, ever, library, catalogue, state)
         underrated = load_underrated()
         left_out["underrated"] = add_underrated_games(games, underrated, library, catalogue)
+        owned_names = load_wanted(Http())
+        if owned_names is None:
+            say("The list of games in collections could not be read: none of them is added this run.")
+        else:
+            owned = collection_titles(owned_names, library, never)
+            skipped = add_underrated_games(games, owned, library, catalogue, level="collection")
+            say(f"Collections: {len(owned_names)} game names listed, {sum(1 for g in games if g['level'] == 'collection')} not tracked otherwise and added ({len(skipped)} left out).")
         apply_regional_names(games, load_regional_names(), catalogue)
         rare, rare_problems = load_rare()
         rare_titles = add_rare_games(games, rare, catalogue)

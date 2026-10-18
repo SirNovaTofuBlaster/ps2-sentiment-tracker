@@ -276,12 +276,36 @@ async function stats(request, env) {
     return new Response(response.body, { status: 200, headers });
 }
 
+// Which games are in anyone's collection, for the eBay price job (ebay_prices.py), so it can price what people own.
+// Only game names (the dashboard's priceKey), most-owned first; never an account, a count per account or a region. A name is
+// listed from WANTED_MIN_ACCOUNTS accounts (1: a name alone tells nothing about who holds it).
+const WANTED_MIN_ACCOUNTS = 1;
+const WANTED_MAX = 3000;
+async function wanted(request, env) {
+    const cache = caches.default;
+    const cacheKey = new Request(new URL('/api/wanted', request.url).toString());
+    let response = await cache.match(cacheKey);
+    if (!response) {
+        const rows = (await env.DB.prepare(
+            'SELECT game, COUNT(DISTINCT account) AS n FROM copies WHERE sealed + complete + loose > 0 GROUP BY game HAVING n >= ? ORDER BY n DESC, game LIMIT ?')
+            .bind(WANTED_MIN_ACCOUNTS, WANTED_MAX).all()).results;
+        response = new Response(JSON.stringify({ generated: new Date().toISOString(), games: rows.map(row => row.game) }), {
+            headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300' },
+        });
+        await cache.put(cacheKey, response.clone());
+    }
+    const headers = new Headers(response.headers);
+    for (const [name, value] of Object.entries(corsHeaders(request, env))) headers.set(name, value);
+    return new Response(response.body, { status: 200, headers });
+}
+
 export default {
     async fetch(request, env) {
         const { pathname } = new URL(request.url);
         if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(request, env) });
         try {
             if (request.method === 'GET' && pathname === '/api/stats') return await stats(request, env);
+            if (request.method === 'GET' && pathname === '/api/wanted') return await wanted(request, env);
             if (request.method === 'POST' && pathname === '/api/register') return await register(request, env);
             const routes = { 'GET /api/collection': getCollection, 'PUT /api/collection': saveCollection, 'POST /api/report': addReport, 'DELETE /api/account': deleteAccount };
             const handler = routes[`${request.method} ${pathname}`];

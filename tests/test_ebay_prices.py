@@ -53,6 +53,8 @@ EXTRA_SITES = {market_id: ebay_prices.MARKETS.pop(market_id) for market_id in li
 def tearDownModule():
     ebay_prices.MARKETS.update(EXTRA_SITES)
 NOON = datetime(2026, 10, 6, 12, 0, tzinfo=timezone.utc)
+NORMAL_WAIT = ebay_prices.CHECK_EVERY_HOURS["normal"]   # 12 hours since 2026-10-18 (6 before)
+AFTER = NORMAL_WAIT + 1                                 # a little more than that: a normal game is due again
 
 
 def game(title, search=None, exclude=(), siblings=(), level="normal", pinned=False):
@@ -69,13 +71,17 @@ class FakeHttp:
     """Answers the token request, then hands each search to `answer(params, headers)`."""
 
     def __init__(self, answer=None, token_answer=None):
-        self.token_calls, self.searches = [], []
+        self.token_calls, self.searches, self.wanted_calls = [], [], []
+        self.wanted = []      # the crowd service's list of game names held in collections
         self.answer = answer or (lambda params, headers: page())
         self.token_answer = token_answer or (200, {"access_token": TOKEN, "expires_in": 7200,
                                                    "token_type": "Application Access Token"})
 
     def send(self, url, headers, body=None):
-        if url == ebay_prices.TOKEN_URL:
+        if url == ebay_prices.WANTED_URL:
+            self.wanted_calls.append({"url": url, "headers": headers, "body": body})
+            status, payload = 200, {"games": self.wanted}
+        elif url == ebay_prices.TOKEN_URL:
             self.token_calls.append({"headers": headers, "body": body})
             status, payload = self.token_answer
         else:
@@ -161,6 +167,11 @@ class Sandbox:
             patcher = mock.patch.object(ebay_prices, name, value)
             patcher.start()
             test.addCleanup(patcher.stop)
+        # These runs test what is recorded, not how often: the cadence is checked by DueTests and the like against the real
+        # hours, so a normal game here is still due after 6 hours (it was the real value until 2026-10-18).
+        cadence = mock.patch.dict(ebay_prices.CHECK_EVERY_HOURS, {"normal": 6, "staple": 6})
+        cadence.start()
+        test.addCleanup(cadence.stop)
         sleeper = mock.patch.object(ebay_prices.time, "sleep", lambda seconds: None)
         sleeper.start()
         test.addCleanup(sleeper.stop)
@@ -1062,7 +1073,7 @@ class SteadyTests(unittest.TestCase):
     def test_steady_game_waits_48_hours_not_6(self):
         entry = game("Grand Theft Auto San Andreas")
         history = self.rows(entry, "US", 5) + self.rows(entry, "UK", 5)
-        self.assertEqual(self.due(entry, 7, history), 0)
+        self.assertEqual(self.due(entry, AFTER, history), 0)
         self.assertEqual(self.due(entry, 30, history), 0)
         self.assertEqual(self.due(entry, 48, history), 2)
 
@@ -1097,7 +1108,7 @@ class SteadyTests(unittest.TestCase):
 
     def test_without_history_it_stays_on_six_hours(self):
         entry = game("Grand Theft Auto San Andreas")
-        self.assertEqual(self.due(entry, 7, []), 2)
+        self.assertEqual(self.due(entry, AFTER, []), 2)
 
     def test_each_break_in_the_pattern_returns_it_to_six_hours(self):
         entry = game("Grand Theft Auto San Andreas")
@@ -1107,28 +1118,28 @@ class SteadyTests(unittest.TestCase):
                  "nothing found": {1: (0, None)}}
         for name, changes in cases.items():
             history = self.rows(entry, "US", 5, changes) + self.rows(entry, "UK", 5, changes)
-            self.assertEqual(self.due(entry, 7, history), 2, name)
+            self.assertEqual(self.due(entry, AFTER, history), 2, name)
 
     def test_too_little_history_is_not_steady(self):
         entry = game("Grand Theft Auto San Andreas")
-        self.assertEqual(self.due(entry, 7, self.rows(entry, "US", 2) + self.rows(entry, "UK", 2)), 2)
+        self.assertEqual(self.due(entry, AFTER, self.rows(entry, "US", 2) + self.rows(entry, "UK", 2)), 2)
 
     def test_only_normal_and_staple_games_are_slowed(self):
         for level, pinned, expected in (("normal", False, 0), ("staple", False, 0), ("surging", False, 2),
                                         ("dormant", False, 2), ("normal", True, 2)):
             entry = game("Grand Theft Auto San Andreas", level=level, pinned=pinned)
             history = self.rows(entry, "US", 5) + self.rows(entry, "UK", 5)
-            self.assertEqual(self.due(entry, 7 if level != "dormant" else 25, history), expected, (level, pinned))
+            self.assertEqual(self.due(entry, AFTER if level != "dormant" else 25, history), expected, (level, pinned))
 
     def test_one_site_being_steady_does_not_slow_the_other(self):
         entry = game("Grand Theft Auto San Andreas")
         history = self.rows(entry, "US", 5)
-        self.assertEqual(self.due(entry, 7, history), 1)
+        self.assertEqual(self.due(entry, AFTER, history), 1)
 
     def test_bad_rows_are_ignored(self):
         entry = game("Grand Theft Auto San Andreas")
         history = ["junk", [1, 2], ["not a time", entry["title"], "US", 100, 8, 10]] + self.rows(entry, "US", 5)
-        self.assertEqual(self.due(entry, 7, history), 1, "the US is steady and the UK has no history")
+        self.assertEqual(self.due(entry, AFTER, history), 1, "the US is steady and the UK has no history")
 
 
 class ExtraSiteGroundworkTests(unittest.TestCase):
@@ -1154,8 +1165,8 @@ class ExtraSiteGroundworkTests(unittest.TestCase):
         entry = game("Kuon")
         stamp = lambda hours: (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)   # noqa: E731
         with self.markets():
-            state = {"games": {"Kuon": {"US": {"checked": stamp(7)}, "UK": {"checked": stamp(7)},
-                                        "DE": {"checked": stamp(7)}}}}
+            state = {"games": {"Kuon": {"US": {"checked": stamp(AFTER)}, "UK": {"checked": stamp(AFTER)},
+                                        "DE": {"checked": stamp(AFTER)}}}}
             self.assertEqual([m for _, m in ebay_prices.due_lookups([entry], state, NOON)], ["EBAY_GB", "EBAY_US"])
             state["games"]["Kuon"]["DE"]["checked"] = stamp(24)
             self.assertIn("EBAY_DE", [m for _, m in ebay_prices.due_lookups([entry], state, NOON)])
@@ -1281,10 +1292,10 @@ class GermanyTests(unittest.TestCase):
         kuon = sandbox.latest["games"]["Kuon"]
         self.assertEqual({label: kuon[label]["median"] for label in ("US", "UK", "DE")}, {"US": 25.0, "UK": 25.0, "DE": 25.0})
         self.assertEqual({row[2] for row in sandbox.history()}, {"US", "UK", "DE"})
-        sandbox.now = NOON + timedelta(hours=7)
+        sandbox.now = NOON + timedelta(hours=AFTER)
         code, printed, fake = sandbox.run(FakeHttp(answer))
         self.assertIn("Kuon [UK]", printed)
-        self.assertNotIn("Kuon [DE]", printed, "seven hours later the UK and US are due again, Germany is not")
+        self.assertNotIn("Kuon [DE]", printed, "thirteen hours later the UK and US are due again, Germany is not")
         sandbox.now = NOON + timedelta(hours=25)
         code, printed, fake = sandbox.run(FakeHttp(answer))
         self.assertIn("Kuon [DE]", printed)
@@ -1392,7 +1403,7 @@ class DueTests(unittest.TestCase):
         self.assertEqual(self.due([game("Kuon")]), [("Kuon", "EBAY_GB"), ("Kuon", "EBAY_US")])
 
     def test_each_level_waits_its_own_time(self):
-        hours = {"normal": 6, "staple": 6, "dormant": 24}
+        hours = {"normal": 12, "staple": 12, "dormant": 24, "collection": 24}
         self.assertEqual({level: ebay_prices.CHECK_EVERY_HOURS[level] for level in hours}, hours)
         self.assertEqual(ebay_prices.CHECK_EVERY_HOURS["surging"], 0, "a surging game is checked on every run")
         for level, wait in hours.items():
@@ -1404,9 +1415,9 @@ class DueTests(unittest.TestCase):
         minute_ago = (NOON - timedelta(minutes=1)).strftime(ebay_prices.STAMP_FORMAT)
         self.assertEqual(len(self.due([game("Kuon", level="surging")], self.state(Kuon=(minute_ago, minute_ago)))), 2)
 
-    def test_a_check_may_come_half_an_hour_early_so_six_hours_does_not_become_seven(self):
+    def test_a_check_may_come_half_an_hour_early_so_twelve_hours_does_not_become_thirteen(self):
         entry = game("Kuon")
-        for minutes_ago, expected in ((5 * 60 + 29, 0), (5 * 60 + 31, 2)):
+        for minutes_ago, expected in ((11 * 60 + 29, 0), (11 * 60 + 31, 2)):
             stamp = (NOON - timedelta(minutes=minutes_ago)).strftime(ebay_prices.STAMP_FORMAT)
             self.assertEqual(len(self.due([entry], self.state(Kuon=(stamp, stamp)))), expected, minutes_ago)
 
@@ -1418,8 +1429,8 @@ class DueTests(unittest.TestCase):
         stamp = lambda hours: (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)   # noqa: E731
         games = [game("Okami"), game("God Hand"), game("Kuon", level="surging"),
                  game("Silent Hill 2", pinned=True), game("Silent Hill 3")]
-        state = self.state(Okami=(stamp(7), stamp(7)), God_Hand=(stamp(30), stamp(30)), Kuon=(stamp(1), stamp(1)),
-                           Silent_Hill_2=(stamp(6), stamp(6)))
+        state = self.state(Okami=(stamp(AFTER), stamp(AFTER)), God_Hand=(stamp(30), stamp(30)), Kuon=(stamp(1), stamp(1)),
+                           Silent_Hill_2=(stamp(NORMAL_WAIT), stamp(NORMAL_WAIT)))
         order = [title for title, market_id in self.due(games, state) if market_id == "EBAY_US"]
         self.assertEqual(order, ["Kuon", "Silent Hill 2", "Silent Hill 3", "God Hand", "Okami"])
 
@@ -1795,6 +1806,67 @@ class UnderratedPricingTests(unittest.TestCase):
         (self.sandbox.root / "underrated.json").write_text("{nope", encoding="utf-8")
         self.assertEqual(ebay_prices.load_underrated(self.sandbox.root / "underrated.json"), [])
         self.assertEqual(ebay_prices.load_underrated(self.sandbox.root / "absent.json"), [])
+
+
+class CollectionPricingTests(unittest.TestCase):
+    """The games in people's collections (the crowd service's /api/wanted) are priced daily on the US and UK."""
+
+    def setUp(self):
+        self.sandbox = Sandbox(self, feed=[mention("Okami", 5, "r/ps2")])
+
+    def run_with(self, names):
+        fake = FakeHttp(two_copies)
+        fake.wanted = names
+        code, printed, fake = self.sandbox.run(fake)
+        self.assertEqual(code, 0, printed)
+        return printed, fake
+
+    def test_a_collected_game_nobody_else_tracks_is_priced_on_the_us_and_uk(self):
+        printed, fake = self.run_with(["kuon", "okami", "not a game in the library", "black"])
+        asked = {(call["headers"]["X-EBAY-C-MARKETPLACE-ID"], call["params"]["q"]) for call in fake.searches}
+        self.assertIn(("EBAY_US", "kuon"), asked)
+        self.assertIn(("EBAY_GB", "kuon"), asked)
+        entry = self.sandbox.latest["games"]["Kuon"]
+        self.assertEqual((entry["level"], entry["sites"]), ("collection", ["US", "UK"]))
+        self.assertEqual(self.sandbox.latest["games"]["Okami"]["level"], "normal", "a game the feed names keeps its own level")
+        self.assertNotIn("Black", self.sandbox.latest["games"], "an ordinary one-word name is still not priced")
+        self.assertIn("1 collection", printed)
+
+    def test_the_request_carries_no_key_and_asks_for_names_only(self):
+        _, fake = self.run_with(["kuon"])
+        self.assertEqual(len(fake.wanted_calls), 1)
+        call = fake.wanted_calls[0]
+        self.assertEqual(call["url"], ebay_prices.WANTED_URL)
+        self.assertIsNone(call["body"])
+        self.assertNotIn(TOKEN, json.dumps(call))
+        self.assertNotIn("Authorization", call["headers"])
+
+    def test_a_game_on_the_never_list_is_left_out(self):
+        box = Sandbox(self, never=["Kuon"], feed=[])
+        fake = FakeHttp(two_copies)
+        fake.wanted = ["kuon", "okami"]
+        box.run(fake)
+        self.assertNotIn("Kuon", box.latest["games"])
+        self.assertEqual(box.latest["games"]["Okami"]["level"], "collection")
+
+    def test_an_unreadable_list_adds_nothing_and_stops_nothing(self):
+        for answer in ((500, "oops"), (200, "not json"), (200, {"games": "nope"}), (200, {})):
+            fake = FakeHttp(two_copies)
+            fake.send_wanted = answer
+            original = fake.send
+            fake.send = lambda url, headers, body=None, original=original, answer=answer: (
+                (answer[0], answer[1] if isinstance(answer[1], str) else json.dumps(answer[1])) if url == ebay_prices.WANTED_URL
+                else original(url, headers, body))
+            code, printed, fake = self.sandbox.run(fake)
+            self.assertEqual(code, 0, printed)
+            self.assertIn("could not be read", printed)
+            self.assertNotIn("Kuon", self.sandbox.latest["games"])
+
+    def test_the_names_are_the_dashboards_price_keys(self):
+        library = {"kuon": "Kuon", "final fantasy x 2": "Final Fantasy X-2", "tekken 5": "Tekken 5"}
+        titles = ebay_prices.collection_titles(["final fantasy 10 2", "kuon", "kuon", "x"], library, set())
+        self.assertEqual(titles, ["Kuon"], "only a name search_terms() gives a library title counts, once")
+        self.assertEqual(ebay_prices.collection_titles(["tekken 5"], library, {"tekken 5"}), [])
 
 
 class WatchedGameTests(unittest.TestCase):
