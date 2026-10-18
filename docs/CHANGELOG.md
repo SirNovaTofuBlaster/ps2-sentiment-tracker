@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: Project Zero stays its own tile
+
+- The maintainer asked for Project Zero 1-3 to stay apart from Fatal Frame (the PAL titles are well known as they are): the three folds added in the entry below are removed from `covers.json` and `SAME_GAME`, and the older spellings of Project Zero 2 and 3 are back as before. 13 of the 16 new folds stay.
+
 ## 2026-10-18: Library sorts sequels in number order; 16 more duplicate tiles folded
 
 - The Library's A to Z order compared titles as plain text, so "Ace Combat 04" came before "Ace Combat 5" only by luck, "Final Fantasy 10" would sit before "2", and Roman numerals sorted as letters. It now compares word by word: numbers as numbers (before words), Roman numerals as their value after the first word (`titleTokens()`, `compareTokens()` in index.html; a lone I, V or X counts only at the end or before a number).
