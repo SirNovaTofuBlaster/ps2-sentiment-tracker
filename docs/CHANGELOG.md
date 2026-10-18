@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: 104 more covers kept with the site (second batch)
+
+- The maintainer supplied a second zip of box pictures, each file named after its game. 103 matched a title on the missing-covers list by name and one by hand (`SCEE Catalogue Video 3+` is "SCEE Catalogue Video 3 plus"); each was converted to a 240 px JPEG in `covers/` (transparent PNGs flattened on white) and added to `LOCAL` in `tools/build_covers.py` and `covers.json`'s `local` (keys are `search_terms()` names). The Resident Evil: The Essentials picture was in the zip again and was replaced by the new file. 90 games remain on the missing list.
+
 ## 2026-10-18: a shorter page title
 
 - The page title is now "Spindle — PS2 Tracker" (it was "Spindle — tracking the Retro Gaming PS2 Market"), so Firefox's new tab tiles, tabs and bookmarks show it without cutting it off. The installed-app name in `manifest.webmanifest` is unchanged.
