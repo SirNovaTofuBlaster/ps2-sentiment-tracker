@@ -2724,6 +2724,32 @@ await check('Library: a button back to the top after a long scroll, and a bigger
         delete context.IntersectionObserver; context.setTimeout = originalTimeout; delete context.window.matchMedia; delete list.insertAdjacentHTML;
         run('collection = []; renderCollection()');
     }
+    // Editing a game in My collection: change condition, region, copies and price paid; joining a copy that already exists.
+    {
+        run(`collection = [
+            { title: 'Rise to Honor', region: 'PAL', condition: 'sealed', qty: 1, paid: null },
+            { title: 'God Hand', region: 'US', condition: 'sealed', qty: 1, paid: null },
+            { title: 'God Hand', region: 'US', condition: 'complete', qty: 2, paid: 10 }]`);
+        run('collectionEditOpen(0)');
+        assert.equal(el('collectionEdit').classList.contains('hidden'), false, 'the box opens');
+        assert.equal(el('collectionEditCondition').value, 'sealed', 'it starts from what the game is now');
+        el('collectionEditCondition').value = 'complete'; el('collectionEditPaid').value = '12.5';
+        run('collectionEditSave()');
+        assert.deepEqual(evalJson('collection[0]'), { title: 'Rise to Honor', region: 'PAL', condition: 'complete', qty: 1, paid: 12.5 }, 'a sealed copy added by mistake becomes complete');
+        assert.equal(el('collectionEdit').classList.contains('hidden'), true, 'and the box closes');
+        run('collectionEditOpen(1)');
+        el('collectionEditCondition').value = 'complete'; el('collectionEditQty').value = '1'; el('collectionEditPaid').value = '';
+        run('collectionEditSave()');
+        assert.equal(evalJson('collection.length'), 2, 'moving onto a copy that exists joins them');
+        assert.deepEqual(evalJson('collection[1]'), { title: 'God Hand', region: 'US', condition: 'complete', qty: 3, paid: 10 }, 'copies added up; an empty price keeps the one held');
+        run('collectionEditOpen(0)');
+        el('collectionEditQty').value = '0';
+        assert.equal(run('collectionEditSave()'), false);
+        assert.match(el('collectionEditMessage').textContent, /whole number from 1 to 99/);
+        run('collectionEditClose()');
+        assert.deepEqual(evalJson('collection[0].condition'), 'complete', 'a rejected edit changes nothing');
+        run('collection = []; renderCollection()');
+    }
     const page = read('index.html');
     assert.match(page, /<button type="button" id="libraryTop" class="lib-top" onclick="libraryScrollTop\(\)" aria-label="Back to the top of the list"[^>]* inert>/);
     assert.match(page, /window\.addEventListener\('scroll', updateLibraryTop, \{ passive: true \}\);/);

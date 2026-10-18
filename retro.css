@@ -1544,3 +1544,16 @@ body .lib-more-bar { width: 60%; max-width: 14rem; height: .5rem; border-radius:
 body .lib-more.is-loading .lib-more-bar { opacity: .9; animation: lib-shimmer 1s linear infinite; }
 @keyframes lib-shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
 @media (prefers-reduced-motion: reduce) { body .lib-more.is-loading .lib-more-bar { animation: none; } }
+
+/* Editing a game in My collection (2026-10-18): the condition line is a button with a pencil; the edit box is the add bar's twin. */
+body .coll-edit { display: inline-flex; align-items: center; gap: .3rem; padding: .15rem 0; min-height: 0; border: 0; background: none; font-size: .68rem; color: var(--dim); cursor: pointer; text-align: left; }
+body .coll-edit i { font-size: .6rem; opacity: .7; }
+body .coll-edit:hover, body .coll-edit:focus-visible { color: var(--accent-hi); }
+body .coll-edit:focus-visible { outline: 2px solid var(--accent-hi); outline-offset: 2px; }
+body .coll-edit-sheet .spin-copies { width: 5.2rem; }
+body .coll-edit-sheet .library-add-fields .spin-field, body .coll-edit-sheet .library-add-fields .brand-btn { height: 2.65rem; }
+@media (max-width: 640px) { body .coll-edit { font-size: .8rem; padding: .35rem 0; } }
+@media (max-width: 640px) {
+  body .coll-edit-sheet .library-add-fields { grid-template-columns: 5.2rem minmax(0, 1fr); }
+  body .coll-edit-sheet .library-add-fields .brand-btn { grid-column: 1 / -1; justify-content: center; }
+}
