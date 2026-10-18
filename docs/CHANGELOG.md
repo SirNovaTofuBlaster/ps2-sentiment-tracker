@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-18: Marketplace tab (sample listings); Gacha back on, with 1 or 3 capsules a turn
+
+- New **Marketplace** tab (`viewMarketplace`, `marketplace.json`, `openMarketplace()` in index.html, `.market-*` in retro.css). Chips for Factory sealed / Complete in box / Consoles, a US/PAL filter, a search box and a sort; each card shows the box (or initials), region, asking price and, for a game, the tracker's own figure (`collectionValue()`: complete copies' eBay median, or the newest article guide price for a sealed copy). Built from the Underrated page's chips and cards and the existing `view-tab` tab style, from a design preview the maintainer approved (graded-slab frames, the grader strip and the "Graded slabs" button were dropped at his request).
+- **SAMPLE DATA, REMOVE IT NEXT TIME**: `marketplace.json` holds 9 invented listings (3 rare sealed games, 3 rare complete games, 3 rare consoles from `rare_consoles.json`), flagged `"sample": true`; the page shows a yellow notice and a SAMPLE tag on every card. The maintainer asked to be reminded to remove them the next time the Marketplace is changed. Real listings need a data source first (eBay listing titles and links may not be stored, see AGENTS.md).
+- **Gacha** is shown again (it was switched off on 2026-10-16 for a rework): `GACHA_SHOWN = true`, the Gacha and My gacha prizes tabs are plain `view-tab`s. One press can now take 1 or 3 capsules (one coin each; 10 would show if `daily_coins` allowed it): `gachaQty`, `gachaAlso`, `gachaSetQty()`. The pack-opener view of the preview was not built.
+- Tests: Marketplace file and page, the Gacha tab and multi-pull in `tests/dashboard_check.mjs`; the yellow-colour allowance gained the asking price, the notice and the SAMPLE tag. `guide.html` has a Marketplace section and the Gacha's switched-off note is gone.
+
 ## 2026-10-18: normal games every 12 hours; games in collections get priced (level `collection`)
 
 - Why: 4,900 of the 4,900 searches were used by 18:36 UTC, about three quarters of them on the 441 normal games every 6 hours on the US and UK (estimate from the plan, not a measured count), while about 70% of the games added to My collection had no price (only games the feed named, pinned, Rarest and Underrated games were priced).

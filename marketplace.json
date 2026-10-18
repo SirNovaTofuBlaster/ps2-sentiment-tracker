@@ -1,0 +1,15 @@
+{
+  "sample": true,
+  "note": "SAMPLE LISTINGS: made up on 2026-10-18 to show the Marketplace page's layout. The prices are invented, nothing here is for sale, and the whole list must be removed (or replaced with real listings) the next time the Marketplace page is changed. The tests fail if a listing is not marked sample while this flag is true.",
+  "listings": [
+    { "id": "SAMPLE-01", "cat": "sealed", "kind": "game", "title": "Rule of Rose", "region": "PAL", "currency": "GBP", "price": 1450, "sample": true },
+    { "id": "SAMPLE-02", "cat": "sealed", "kind": "game", "title": "Kuon", "region": "US", "currency": "USD", "price": 2900, "sample": true },
+    { "id": "SAMPLE-03", "cat": "sealed", "kind": "game", "title": "Haunting Ground", "region": "US", "currency": "USD", "price": 1100, "sample": true },
+    { "id": "SAMPLE-04", "cat": "cib", "kind": "game", "title": ".hack Quarantine Part 4", "region": "US", "currency": "USD", "price": 430, "sample": true },
+    { "id": "SAMPLE-05", "cat": "cib", "kind": "game", "title": "God Hand", "region": "US", "currency": "USD", "price": 290, "sample": true },
+    { "id": "SAMPLE-06", "cat": "cib", "kind": "game", "title": "Kuon", "region": "PAL", "currency": "GBP", "price": 260, "sample": true },
+    { "id": "SAMPLE-07", "cat": "consoles", "kind": "console", "title": "PS2 European Automobile Color Collection – Super Red", "region": "PAL", "currency": "GBP", "price": 520, "sample": true },
+    { "id": "SAMPLE-08", "cat": "consoles", "kind": "console", "title": "PS2 European Automobile Color Collection – Snow White", "region": "PAL", "currency": "GBP", "price": 480, "sample": true },
+    { "id": "SAMPLE-09", "cat": "consoles", "kind": "console", "title": "PS2 Toys\"R\"Us Toys Blue (SCPH-39000 TB)", "region": "US", "currency": "USD", "price": 640, "sample": true }
+  ]
+}
