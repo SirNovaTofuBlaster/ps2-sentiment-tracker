@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 05:22:55 UTC",
+  "last_updated": "2026-10-18 05:50:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -5426,6 +5426,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 21:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749885127",
+      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_games": [
+        "Grand Theft Auto: Vice City"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 21:09 UTC"
     },
     {
       "headline": "Is this copy of Soulsilver legit?",
@@ -279608,77 +279627,6 @@
       "hype": 0,
       "timestamp": "2026-10-04 05:50 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Should i get pokemon sword/shield, or legends ZA?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wx7uw6/should_i_get_pokemon_swordshield_or_legends_za/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 05:40 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Crimson Desert DLC delayed by 2 weeks, please join me in wishing the devs a fond 'take your time, please drink some water'",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wx7sb1/crimson_desert_dlc_delayed_by_2_weeks_please_join/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 05:36 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Thread on /vg/ naming Kingdom Hearts",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/583326449",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-04 05:30 UTC"
-    },
-    {
-      "headline": "It Can't Be THAT Scary...Right? | Resident Evil Requiem - First Playthrough",
-      "source": "YouTube: PeteDorr",
-      "source_type": "youtube",
-      "feed": "youtube:UCeTvRtfRFyWXdO_ZbyArPjA",
-      "link": "https://www.youtube.com/watch?v=Asp1w8buSeY",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 05:28 UTC",
-      "views": 7525
     }
   ]
 }
