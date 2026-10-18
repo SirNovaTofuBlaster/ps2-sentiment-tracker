@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-18 10:22:44 UTC",
+  "last_updated": "2026-10-18 10:36:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749915349",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 10:24 UTC"
+    },
     {
       "headline": "I want to start learning how to tweak RAM Secondary timings, where to start exactly ?",
       "source": "r/pcmasterrace",
@@ -1320,6 +1339,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 08:23 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749911690",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 08:23 UTC"
     },
@@ -4442,18 +4480,18 @@
       "timestamp": "2026-10-18 02:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749900831",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts II",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -281822,40 +281860,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 10:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "\"A Colossal Upgrade\" - Digital Foundry Delivers Its Tech Verdict For The Witcher 3 Remastered On Switch 2",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/a-colossal-upgrade-digital-foundry-delivers-its-tech-verdict-for-the-witcher-3-remastered-on-switch-2",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-04 10:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Decided to take pics of my collection before I put them into storage",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wxccqe/decided_to_take_pics_of_my_collection_before_i/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 10:24 UTC",
       "is_digital_only": false
     }
   ]
