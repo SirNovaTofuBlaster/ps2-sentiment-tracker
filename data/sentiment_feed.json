@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 12:33:41 UTC",
+  "last_updated": "2026-10-18 12:44:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1111,13 +1111,14 @@
       "timestamp": "2026-10-18 10:49 UTC"
     },
     {
-      "headline": "Thread on /v/ naming LEGO Star Wars",
+      "headline": "Thread on /v/ naming Kingdom Hearts and LEGO Star Wars",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749916145",
-      "matched_game": "LEGO Star Wars",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "LEGO Star Wars"
       ],
       "match_score": 100,
@@ -6223,18 +6224,18 @@
       "timestamp": "2026-10-18 02:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749900831",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts II",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -282911,91 +282912,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 12:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "My PS1 Collection",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wxesa0/my_ps1_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 12:42 UTC"
-    },
-    {
-      "headline": "Help needed connecting PS1 to my TV with a ODV-GBS-C please.",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wxer6n/help_needed_connecting_ps1_to_my_tv_with_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 12:41 UTC"
-    },
-    {
-      "headline": "RuneScape Reignited launches 2 December",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/runescape-reignited-launch-date-2-december-economy-reset",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 12:40 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "كراش الجزء الثاني",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/watch?v=12kKwyhOtMQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 12:40 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "كراش الجزء الثاني",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/eCFGVuSawr0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 12:38 UTC",
       "is_digital_only": false
     }
   ]
