@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 15:51:19 UTC",
+  "last_updated": "2026-10-18 15:53:30 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -30,6 +30,25 @@
       "match_score": 0,
       "match_method": null,
       "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 15:43 UTC"
+    },
+    {
+      "headline": "Epic Games CEO Believes A 'Golden Age Of Gaming' Is Imminent Because of AI",
+      "source": "Polygon.com",
+      "source_type": "news",
+      "feed": "https://www.polygon.com/rss/index.xml",
+      "link": "https://www.polygon.com/epic-games-tim-sweeney-gold-age-of-gaming-ai-development/",
+      "matched_game": "Golden Age of Racing",
+      "matched_games": [
+        "Golden Age of Racing"
+      ],
+      "match_score": 90,
+      "match_method": "fuzzy",
+      "matched_in": "title",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
@@ -379,6 +398,40 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 15:30 UTC"
+    },
+    {
+      "headline": "Deathstroke Actor Reveals Scrapped Batman Film Would've Featured Batgirl And A Shocking Death",
+      "source": "Polygon.com",
+      "source_type": "news",
+      "feed": "https://www.polygon.com/rss/index.xml",
+      "link": "https://www.polygon.com/ben-affleck-batman-movie-plot-details/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 15:30 UTC"
+    },
+    {
+      "headline": "All endings in Tenebris Somnia and how to unlock them",
+      "source": "Destructoid",
+      "source_type": "news",
+      "feed": "https://www.destructoid.com/feed/",
+      "link": "https://www.destructoid.com/all-endings-in-tenebris-somnia-and-how-to-unlock-them/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 15:28 UTC"
     },
     {
       "headline": "Best eshops in Europe for Switch games",
@@ -285457,25 +285510,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 15:54 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "My game collection I’ve added to over the last 12/13 years.",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wxizjs/my_game_collection_ive_added_to_over_the_last/",
-      "matched_game": "XIII",
-      "matched_games": [
-        "XIII"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:52 UTC",
       "is_digital_only": false
     }
   ]
