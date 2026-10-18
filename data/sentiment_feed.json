@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 15:07:55 UTC",
+  "last_updated": "2026-10-18 15:21:54 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2001,6 +2001,26 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-18 12:41 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X-2 and Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749920194",
+      "matched_game": "Final Fantasy X-2",
+      "matched_games": [
+        "Final Fantasy X-2",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 12:40 UTC"
     },
     {
       "headline": "Disposing",
@@ -6961,18 +6981,18 @@
       "timestamp": "2026-10-18 05:56 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X and The Thing",
+      "headline": "Thread on /v/ naming The Thing and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749907361",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "The Thing",
       "matched_games": [
-        "Final Fantasy X",
-        "The Thing"
+        "The Thing",
+        "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9522,19 +9542,20 @@
       "timestamp": "2026-10-18 01:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man, Jak 3 and Cowboy Bebop",
+      "headline": "Thread on /v/ naming Resident Evil 4, Jak 3, Spider-Man and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749898216",
-      "matched_game": "Spider-Man",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Spider-Man",
+        "Resident Evil 4",
         "Jak 3",
+        "Spider-Man",
         "Cowboy Bebop"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -284487,58 +284508,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 15:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is the new Dragon’s Dogma 2: Dark Arisen expansion worth it?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wxi7vi/is_the_new_dragons_dogma_2_dark_arisen_expansion/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:19 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Crysis - PC vs. PS3 | Side by Side",
-      "source": "YouTube: NeoGamer - The Video Game Archive",
-      "source_type": "youtube",
-      "feed": "youtube:UCDC7X5gNh2LxQ2PnN_OKD5g",
-      "link": "https://www.youtube.com/watch?v=CjRmF_-ySew",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:15 UTC",
-      "views": 10992
-    },
-    {
-      "headline": "Astrobot has arrived !",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1wxi4fj/astrobot_has_arrived/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 15:15 UTC",
       "is_digital_only": false
     }
   ]
