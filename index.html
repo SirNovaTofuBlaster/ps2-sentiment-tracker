@@ -4317,9 +4317,9 @@
             const title = l.kind === 'game' ? gameLinkHtml(l.title) : esc(l.title);
             return `<li class="market-slab is-${tone}"><div class="market-stage"><div class="market-case">
                 <div class="market-cert">${esc(label)}</div>
-                <div class="market-art"><div class="market-strip"><span>PS2</span><i>${esc(l.region)}</i></div>
-                    <div class="market-code">${esc(initials)}</div>${url ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
-                    <div class="market-vault">${l.sample ? 'SAMPLE' : 'LISTED'}</div></div></div></div>
+                <div class="market-art"><div class="market-spine"><span>PS2</span></div>
+                    <div class="market-face"><div class="market-code">${esc(initials)}</div>${url ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}
+                    <div class="market-vault"><b>${esc(l.region)}</b><span>${l.sample ? 'SAMPLE' : 'LISTED'}</span></div></div></div></div></div>
                 <div class="market-row"><span class="market-badge">${esc(badge)}</span><span class="market-id">${esc(l.id)}</span></div>
                 <h3 class="market-title">${title}</h3>
                 <div class="market-pricebar"><div class="market-row"><span class="market-ask">${esc(money(l.price, l.currency))}</span>
