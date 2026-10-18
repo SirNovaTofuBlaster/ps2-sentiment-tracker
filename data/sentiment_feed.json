@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-18 20:10:54 UTC",
+  "last_updated": "2026-10-18 20:21:57 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749942517",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 20:15 UTC"
+    },
     {
       "headline": "New Steam Game is Basically Kiki’s Delivery Service in Video Game Form",
       "source": "Polygon.com",
@@ -396,6 +415,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 19:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Tokyo Xtreme Racer",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749938790",
+      "matched_game": "Tokyo Xtreme Racer",
+      "matched_games": [
+        "Tokyo Xtreme Racer"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 19:08 UTC"
     },
     {
       "headline": "Thread on /v/ naming Just Cause",
