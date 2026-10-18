@@ -1364,7 +1364,7 @@ body .lib-top {
 }
 body .lib-top.is-shown { opacity: 1; pointer-events: auto; transform: none; }
 body .lib-top:hover, body .lib-top:focus-visible { background: var(--accent); color: var(--bg); }
-body .library-add:not(.hidden) ~ .lib-top { bottom: calc(8rem + env(safe-area-inset-bottom, 0px)); }
+body .library-add:not(.hidden) ~ .lib-top { bottom: calc(var(--add-bar-h, 8rem) + 1rem + env(safe-area-inset-bottom, 0px)); }
 @media (prefers-reduced-motion: reduce) { body .lib-top { transition: none; } }
 /* ---- Accounts (2026-10-17): the screen that stands in for My games until there is an account, and the dialog when Add is pressed elsewhere ---- */
 body .account-gate:not(.hidden) { display: block; }
@@ -1443,7 +1443,7 @@ body .library-add-actions { display: flex; flex-wrap: wrap; align-items: center;
 body .library-add-actions .brand-btn:hover { border-color: rgba(var(--glow-silver), .6); box-shadow: 0 0 12px rgba(var(--glow-silver), .2); }
 body .library-add-message { flex: 1 1 14rem; min-width: 0; margin: 0; min-height: 1rem; font-size: .75rem; color: var(--dim); }
 body .library-add { align-items: flex-start; }
-body .library-add:not(.hidden) ~ .lib-top { bottom: calc(10rem + env(safe-area-inset-bottom, 0px)); }
+body .library-add:not(.hidden) ~ .lib-top { bottom: calc(var(--add-bar-h, 10rem) + 1rem + env(safe-area-inset-bottom, 0px)); }
 @media (max-width: 640px) {
   body .spin-qty { width: 100%; }
   body .collection-form { flex-direction: column; align-items: stretch; }
@@ -1520,7 +1520,7 @@ body #gamePrices .price-links { position: relative; margin-top: 1rem; padding: 1
 body #gamePrices .price-links::before { content: "Where to look"; position: absolute; top: .55rem; left: .9rem; font-family: var(--mono); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--dim); }
 /* The add bar is also opened from a game's page: lift the page above it, and the Library's back-to-top button */
 body:has(.library-add:not(.hidden)) main { padding-bottom: 14rem; }
-body:has(.library-add:not(.hidden)) .lib-top { bottom: calc(10rem + env(safe-area-inset-bottom, 0px)); }
+body:has(.library-add:not(.hidden)) .lib-top { bottom: calc(var(--add-bar-h, 10rem) + 1rem + env(safe-area-inset-bottom, 0px)); }
 
 @media (max-width: 640px) {
   body .game-hero { padding: 1rem 1rem 1.25rem; }
