@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 23:01:46 UTC",
+  "last_updated": "2026-10-18 23:12:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,45 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 22:59 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming The Thing",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584937408",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 22:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4 and Tony Hawk Underground",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749950795",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4",
+        "Tony Hawk Underground"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 22:55 UTC"
     },
     {
       "headline": "I Used AI to Make a Webpage Game in less than One Day",
@@ -244,6 +283,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 22:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Charlie's Angels",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749948305",
+      "matched_game": "Charlie's Angels",
+      "matched_games": [
+        "Charlie's Angels"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 22:08 UTC"
     },
     {
       "headline": "RTX 5060 Ti 8GB | 13900K | Killzone Shadow Fall Pc Port Test",
@@ -7973,17 +8031,18 @@
       "timestamp": "2026-10-18 15:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy",
+      "headline": "Thread on /v/ naming Devil May Cry and Jak and Daxter: The Precursor Legacy",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749926875",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_game": "Devil May Cry",
       "matched_games": [
+        "Devil May Cry",
         "Jak and Daxter: The Precursor Legacy"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -290527,40 +290586,6 @@
       "hype": 0,
       "timestamp": "2026-10-04 23:15 UTC",
       "views": 25217
-    },
-    {
-      "headline": "horror games that are actually atmospheric and not just jumpscare simulators?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wxtcr4/horror_games_that_are_actually_atmospheric_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 23:11 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pokémon Black 2 doubts on legitimacy.",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wxt66h/pokémon_black_2_doubts_on_legitimacy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 23:02 UTC",
-      "is_digital_only": false
     }
   ]
 }
