@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-18 03:06:40 UTC",
+  "last_updated": "2026-10-18 03:12:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1699,6 +1699,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-17 23:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Clock Tower 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749893305",
+      "matched_game": "Clock Tower 3",
+      "matched_games": [
+        "Clock Tower 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 23:50 UTC"
     },
@@ -7379,14 +7398,15 @@
       "timestamp": "2026-10-17 17:39 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4",
+      "headline": "Thread on /vg/ naming Persona 4 and Persona 3",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584795881",
       "matched_game": "Persona 4",
       "matched_games": [
-        "Persona 4"
+        "Persona 4",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -278571,23 +278591,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 03:13 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Mario Kart 64 tournament winner",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wx578b/mario_kart_64_tournament_winner/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 03:07 UTC",
       "is_digital_only": false
     }
   ]
