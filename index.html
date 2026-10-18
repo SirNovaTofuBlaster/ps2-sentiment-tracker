@@ -3121,7 +3121,7 @@
         const CROWD_URL = 'https://spindle-crowd.nacmh.workers.dev';
         const CROWD_STORE = 'ps2-sentiment-tracker.crowd';
         const CROWD_BASE = 'ps2-sentiment-tracker.crowdbase';   // the list as this browser last saw it on the account (for the merge)
-        const CROWD_SYNC_EVERY_MS = 5 * 60 * 1000;   // coming back to the tab syncs at most this often (the service allows 60 reads a day)
+        const CROWD_SYNC_EVERY_MS = 5 * 60 * 1000;   // coming back to the tab syncs at most this often (the service allows 600 reads a day)
         const CROWD_MAX_GAMES = 600;
         // confirmed: the visitor ticked "I've saved my key". Until then the key screen shows instead of the collection.
         let crowd = { id: '', key: '', confirmed: false };

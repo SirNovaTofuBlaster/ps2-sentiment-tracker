@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-18: the crowd service's daily limits raised (the Worker must be redeployed by hand)
+
+- A game added on the maintainer's phone never reached their desktop: the service allowed an account 60 list reads and 30 saves a day, and a day of adding games one at a time (each add reads the list, then saves it) with sign-in testing used them up, so the sends were refused with 429 and the only message was on the Account tab. Now 600 reads (`LIST_READS_PER_DAY`) and 300 saves (`COLLECTION_SAVES_PER_DAY`). `worker/spindle-crowd.bundle.js` is rebuilt; **nothing changes until the new bundle is pasted into Cloudflare and deployed** (docs/CROWD.md, step 2). The limits reset at midnight UTC.
+
 ## 2026-10-18: the back-to-top button rides above the add bar on a phone
 
 - The button sat at a fixed height above the Library's add bar, but on a phone the bar stacks its fields and is about 280 px tall, so the button was covered. `libraryMeasureBar()` now measures the bar (and watches it with a ResizeObserver) and sets `--add-bar-h`, which the button's `bottom` uses; the old fixed heights remain as the fallback.

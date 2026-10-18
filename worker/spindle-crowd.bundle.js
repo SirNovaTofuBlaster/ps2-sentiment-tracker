@@ -115,7 +115,8 @@ const DAY = 86400000;
 const today = () => Math.floor(Date.now() / DAY);
 const MAX_BODY = 400_000;
 const REGISTER_PER_DAY = 5;           // per hashed network address, rotating daily
-const COLLECTION_SAVES_PER_DAY = 30;  // per account
+const COLLECTION_SAVES_PER_DAY = 300;  // per account (30 until 2026-10-18: a day of adding games one at a time used it up)
+const LIST_READS_PER_DAY = 600;  // per account (60 until 2026-10-18; a send reads the list first, so an add costs two reads)
 
 function corsHeaders(request, env) {
     const allowed = String(env.ALLOW_ORIGIN || '').split(',').map(s => s.trim()).filter(Boolean);
@@ -202,7 +203,7 @@ async function saveCollection(request, env, account) {
 
 // The signed-in account's own saved list; null when none was saved (or the table is not there yet).
 async function getCollection(request, env, account) {
-    if (!await allow(env, 'get:' + account, 60)) return reply(request, env, 429, { error: 'too many today' });
+    if (!await allow(env, 'get:' + account, LIST_READS_PER_DAY)) return reply(request, env, 429, { error: 'too many today' });
     let list = null;
     try {
         const row = await env.DB.prepare('SELECT data FROM lists WHERE account = ?').bind(account).first();
