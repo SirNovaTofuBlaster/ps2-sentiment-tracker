@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-18 06:22:38 UTC",
+  "last_updated": "2026-10-18 06:33:50 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming The Thing",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584860303",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 06:19 UTC"
+    },
     {
       "headline": "Relaxing combat JRPG? PC or Switch 2",
       "source": "r/JRPG",
@@ -5929,17 +5948,19 @@
       "timestamp": "2026-10-17 21:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City",
+      "headline": "Thread on /v/ naming Black, Soul Calibur 3 and Grand Theft Auto: Vice City",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749885127",
-      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_game": "Black",
       "matched_games": [
+        "Black",
+        "Soul Calibur 3",
         "Grand Theft Auto: Vice City"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -280024,25 +280045,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-04 06:35 UTC"
-    },
-    {
-      "headline": "Replaying Champions: Return to Arms. A beloved childhood game!",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1wx8ovr/replaying_champions_return_to_arms_a_beloved/",
-      "matched_game": "Champions: Return to Arms",
-      "matched_games": [
-        "Champions: Return to Arms"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 06:32 UTC",
-      "is_digital_only": false
     }
   ]
 }
