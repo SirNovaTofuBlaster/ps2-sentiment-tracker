@@ -1207,11 +1207,11 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.ok(contrast(tokens.bg, tokens.accent) >= 4.5, 'the filled button: dark on blue');
     assert.ok(contrast(tokens.bg, tokens['accent-hi']) >= 4.5);
 
-    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16; the account screens' small heading, notice and message are yellow (2026-10-17, as in the approved preview); a source's name (subreddit, channel, site) is yellow since 2026-10-16, by the maintainer's request; the median on a game's own page is a price figure, yellow since 2026-10-18.
+    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16; the account screens' small heading, notice and message are yellow (2026-10-17, as in the approved preview); a source's name (subreddit, channel, site) is yellow since 2026-10-16, by the maintainer's request; the median on a game's own page is a price figure, yellow since 2026-10-18; on the Marketplace page the asking price is a price figure, and the sample notice and tag use the same warning yellow as the account notice (2026-10-18).
     const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
     const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
     assert.ok(yellow.length >= 2, 'at rest and under the pointer');
-    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name|account-eyebrow|account-warn|account-msg|portfolio-paid|ebay-median)\b|\.coll-count/.test(part))), yellow.join(' | '));
+    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name|account-eyebrow|account-warn|account-msg|portfolio-paid|ebay-median|market-ask|market-notice|market-sample)\b|\.coll-count/.test(part))), yellow.join(' | '));
     assert.match(css, /body \.price-link:hover, body \.price-link:focus-visible \{\s*background: var\(--money\);\s*border-color: var\(--money\);\s*color: var\(--bg\);/);
     // ...by no other route either: every colour is named once, at the top, and the strip's
     // yellow is used by the strip alone; the pages have no yellow of their own.
@@ -2992,7 +2992,7 @@ await check('My collection: add, value, keep in the browser, back up and restore
     run(`ensureCoverIndex()`);
     await new Promise(done => setTimeout(done, 20));
     assert.match(el('topGamesList').innerHTML, /class="row-cover"/, 'drawn again once the covers list has arrived');
-    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions' \|\| view === 'demand' \|\| view === 'library' \|\| view === 'gacha' \|\| view === 'underrated'\) ensureCoverIndex\(\);/, 'opening any of these pages asks for the covers list');
+    assert.match(read('index.html'), /if \(view === 'rare' \|\| view === 'mentions' \|\| view === 'demand' \|\| view === 'library' \|\| view === 'marketplace' \|\| view === 'gacha' \|\| view === 'underrated'\) ensureCoverIndex\(\);/, 'opening any of these pages asks for the covers list');
     assert.equal(run(`initialsOf('The Legend of Heroes: Trails')`), 'TLO');
     context.fetch = fakeFetch;
     context.localStorage = { getItem: () => null, setItem() {} };
@@ -3350,14 +3350,60 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
     context.confirm = () => true;
     run(`clearPrizes()`);
     assert.match(el('prizesSummary').textContent, /Nothing here yet/);
-    // The Gacha page is switched off (GACHA_SHOWN): no tab, and #gacha falls back to the Tracker.
-    assert.match(read('index.html'), /id="tabGacha"[^>]*class="view-tab hidden"/, 'the Gacha tab is hidden');
-    assert.match(read('index.html'), /id="collTabPrizes"[^>]*class="view-tab hidden"/, 'so is My gacha prizes');
+    // The Gacha page is back on (2026-10-18): its tab and My gacha prizes are plain view tabs, and #gacha opens the page.
+    assert.match(read('index.html'), /id="tabGacha"[^>]*class="view-tab"/, 'the Gacha tab is shown');
+    assert.match(read('index.html'), /id="collTabPrizes"[^>]*class="view-tab"/, 'so is My gacha prizes');
     assert.match(read('retro.css'), /body \.view-tab\.hidden \{ display: none; \}/, 'and the stylesheet lets .hidden win over .view-tab');
-    assert.equal(run(`isView('gacha')`), false, '#gacha does not open the page while it is off');
+    assert.equal(run(`isView('gacha')`), true, '#gacha opens the page');
     run(`showView('gacha')`);
-    assert.equal(el('viewGacha').classList.contains('hidden'), true);
-    assert.equal(el('viewDashboard').classList.contains('hidden'), false);
+    assert.equal(el('viewGacha').classList.contains('hidden'), false);
+    assert.equal(el('viewDashboard').classList.contains('hidden'), true);
+    // One press takes 1 or 3 capsules (one coin each); 10 is offered only when the daily coins allow it.
+    run(`gachaSaved = cleanGachaSaved({}); gachaShown = null; gachaAlso = []; gachaQty = 1; gachaTurning = false; gachaMachineId = 'horror'; renderGacha('en-GB')`);
+    assert.equal((el('gachaQty').innerHTML.match(/<button/g) || []).length, 2, '1 and 3 with three daily coins');
+    run(`gachaSetQty(3)`);
+    assert.equal(run(`gachaQty`), 3);
+    run(`gachaTurn()`);
+    await new Promise(done => setTimeout(done, 5200));
+    assert.equal(run(`gachaSaved.coins`), 0, 'three capsules cost three coins');
+    assert.equal(run(`gachaAlso.length`), 2, 'two more beside the one on the tray');
+    assert.equal(run(`gachaSaved.prizes.length`), 3);
+    assert.match(el('gachaResult').innerHTML, /gacha-more/);
+    run(`gachaSetQty(1); gachaSaved = cleanGachaSaved({}); gachaShown = null; gachaAlso = []`);
+    run(`showView('dashboard')`);
+    // Marketplace: the sample file, its cleaning, the page.
+    {
+        const raw = JSON.parse(read('marketplace.json'));
+        assert.equal(raw.sample, true, 'the listings are samples for now');
+        assert.ok(raw.listings.every(l => l.sample === true), 'every listing says it is a sample while the file does');
+        for (const cat of ['sealed', 'cib', 'consoles']) assert.equal(raw.listings.filter(l => l.cat === cat).length, 3, `three ${cat} examples`);
+        const library = new Set([...JSON.parse(read('data/ps2_database.json')), ...JSON.parse(read('search_extra_titles.json')).titles].map(t => String(t).toLowerCase()));
+        const consoles = new Set(JSON.parse(read('rare_consoles.json')).consoles.map(c => c.name.toLowerCase()));
+        for (const l of raw.listings) {
+            assert.ok(l.kind === 'console' ? consoles.has(l.title.toLowerCase()) : library.has(l.title.toLowerCase()), `${l.title} is a library game or a Rarest-page console`);
+            assert.equal(l.currency, l.region === 'PAL' ? 'GBP' : 'USD');
+        }
+        assert.match(read('index.html'), /id="tabMarketplace"[^>]*class="view-tab"/);
+        assert.equal(run(`cleanMarketData({ listings: [{ title: 'x', cat: 'nope', region: 'US', price: 5 }] })`), null);
+        context.__market = raw;
+        run(`marketData = cleanMarketData(__market); marketFileState = 'ready'; marketCat = 'sealed'; marketRegion = ''; marketQuery = ''; marketSort = 'high'; coversShown = false`);
+        run(`showView('marketplace')`);
+        assert.equal(el('viewMarketplace').classList.contains('hidden'), false);
+        assert.equal(el('marketNotice').classList.contains('hidden'), false, 'the sample notice shows');
+        assert.equal((el('marketGrid').innerHTML.match(/<li /g) || []).length, 3);
+        assert.match(el('marketGrid').innerHTML, /SAMPLE/);
+        assert.ok(el('marketGrid').innerHTML.indexOf('Kuon') < el('marketGrid').innerHTML.indexOf('Rule of Rose'), 'highest asking price first by default (US $2,900 before £1,450 is by number)');
+        run(`marketSetRegion('US')`);
+        assert.equal((el('marketGrid').innerHTML.match(/<li /g) || []).length, 2);
+        run(`marketSetRegion(''); marketSetCat('consoles')`);
+        assert.equal((el('marketGrid').innerHTML.match(/<li /g) || []).length, 3);
+        run(`marketSetSearch('snow')`);
+        assert.equal((el('marketGrid').innerHTML.match(/<li /g) || []).length, 1);
+        run(`marketSetSearch('zzz')`);
+        assert.match(el('marketGrid').innerHTML, /Nothing matches/);
+        assert.doesNotMatch(el('marketGrid').innerHTML, /<script|<img/);
+        run(`marketSetSearch(''); marketSetCat('sealed'); showView('dashboard')`);
+    }
     // Underrated: the file, the daily pick (random, the same all day, no repeat within a round) and the page.
     {
         const raw = JSON.parse(read('underrated.json'));

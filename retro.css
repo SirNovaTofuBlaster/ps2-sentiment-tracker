@@ -1108,6 +1108,24 @@ body .under-card { display: grid; grid-template-columns: 5.5rem 1fr; gap: .8rem;
   body .under-actions .brand-btn { flex: 1 1 100%; min-height: 2.75rem; }
 }
 @media (min-width: 721px) and (max-width: 1000px) { body .under-grid { grid-template-columns: repeat(2, 1fr); } }
+/* ---- Marketplace: reuses the Underrated page's chips and cards ---- */
+body .market-notice { margin-bottom: 1rem; padding: .6rem .8rem; border: 1px solid var(--money); border-radius: 6px; background: rgba(245, 197, 46, .08); color: var(--money); font-size: .75rem; }
+body .market-controls { display: flex; flex-wrap: wrap; gap: .6rem 1rem; align-items: center; margin-bottom: 1rem; }
+body .market-controls .under-filters { margin-bottom: 0; }
+body .market-search { flex: 1 1 14rem; min-width: 0; }
+body .market-search input, body .market-sort select { width: 100%; min-height: 2.2rem; background: var(--inset); border: 1px solid var(--line); border-radius: 6px; padding: .4rem .7rem; color: var(--text); font-size: .8rem; }
+body .market-ask { font-family: var(--mono); font-weight: 700; font-size: 1.1rem; color: var(--money); margin: .25rem 0 .1rem; }
+body .market-ref { display: block; font-family: var(--mono); font-size: .68rem; color: var(--dim); }
+body .market-ref b { color: var(--text); font-weight: 500; }
+body .market-sample { color: var(--money); letter-spacing: .06em; }
+body .market-card .under-title { overflow-wrap: anywhere; }
+/* Gacha: how many capsules one press takes */
+body .gacha-qty { display: flex; gap: .4rem; flex-wrap: wrap; }
+body .gacha-qty button { min-height: 2.2rem; padding: .35rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--text); font-family: var(--mono); font-size: .75rem; cursor: pointer; }
+body .gacha-qty button.is-active { border-color: var(--text); font-weight: 700; }
+body .gacha-qty button:disabled { opacity: .4; cursor: default; }
+body .gacha-more { list-style: none; padding: 0; margin: .75rem 0 0; display: grid; gap: .35rem; font-size: .8rem; }
+body .gacha-more li { display: flex; gap: .6rem; align-items: baseline; flex-wrap: wrap; }
 body .under-attn { margin: 0 0 .75rem; font-size: .72rem; }
 body .under-attn-label { font-family: var(--mono); font-size: .62rem; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); }
 body .under-attn-bar { height: .4rem; border-radius: 3px; background: var(--line); margin: .25rem 0; overflow: hidden; }

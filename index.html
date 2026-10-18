@@ -120,7 +120,8 @@
           <button type="button" id="tabMentions" role="tab" aria-selected="false" aria-controls="viewMentions" onclick="showView('mentions')" class="view-tab"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Most mentioned <span id="tabMentionsCount" class="view-tab-count hidden"></span></button>
           <button type="button" id="tabPrices" role="tab" aria-selected="false" aria-controls="viewPrices" onclick="showView('prices')" class="view-tab"><i class="fa-solid fa-tags" aria-hidden="true"></i> eBay prices <span id="tabPricesCount" class="view-tab-count hidden"></span></button>
           <button type="button" id="tabLibrary" role="tab" aria-selected="false" aria-controls="viewLibrary" onclick="showView('library')" class="view-tab"><i class="fa-solid fa-table-cells" aria-hidden="true"></i> Library</button>
-          <button type="button" id="tabGacha" role="tab" aria-selected="false" aria-controls="viewGacha" onclick="showView('gacha')" class="view-tab hidden"><i class="fa-solid fa-dice" aria-hidden="true"></i> Gacha</button>
+          <button type="button" id="tabMarketplace" role="tab" aria-selected="false" aria-controls="viewMarketplace" onclick="showView('marketplace')" class="view-tab"><i class="fa-solid fa-store" aria-hidden="true"></i> Marketplace</button>
+          <button type="button" id="tabGacha" role="tab" aria-selected="false" aria-controls="viewGacha" onclick="showView('gacha')" class="view-tab"><i class="fa-solid fa-dice" aria-hidden="true"></i> Gacha</button>
           <button type="button" id="tabUnderrated" role="tab" aria-selected="false" aria-controls="viewUnderrated" onclick="showView('underrated')" class="view-tab"><i class="fa-solid fa-gem" aria-hidden="true"></i> Underrated</button>
         </div>
       </div>
@@ -498,6 +499,24 @@
       </div>
     </div>
 
+    <!-- Marketplace: listings of rare games and consoles beside the tracker's own eBay medians (marketplace.json). Today every listing is a labelled sample. -->
+    <div id="viewMarketplace" role="tabpanel" aria-labelledby="tabMarketplace" class="hidden space-y-8">
+      <div id="marketSection" class="bg-ps2card border border-ps2border rounded-md p-6">
+        <div class="lb-section-header"><h2>Marketplace</h2></div>
+        <p id="marketSummary" class="text-xs text-slate-400 mb-4">Loading the listings…</p>
+        <div id="marketNotice" class="market-notice hidden" role="note"></div>
+        <div id="marketCats" class="under-filters" role="group" aria-label="Kind of listing"></div>
+        <div class="market-controls">
+          <label class="market-search"><span class="sr-only">Search the listings</span><input id="marketSearch" type="search" placeholder="Search a title" autocomplete="off" oninput="marketSetSearch(this.value)"></label>
+          <div id="marketRegions" class="under-filters" role="group" aria-label="Region"></div>
+          <label class="market-sort"><span class="sr-only">Sort</span><select id="marketSort" onchange="marketSetSort(this.value)">
+            <option value="high">Price: high to low</option><option value="low">Price: low to high</option><option value="title">Title: A to Z</option></select></label>
+        </div>
+        <ul id="marketGrid" class="under-grid"></ul>
+        <p id="marketNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
+      </div>
+    </div>
+
     <!-- Gacha: four capsule machines (gacha.json). Free: three coins a day, kept in this browser. Prizes go to My collection > My gacha prizes. -->
     <div id="viewGacha" role="tabpanel" aria-labelledby="tabGacha" class="hidden space-y-8">
       <div id="gachaSection" class="bg-ps2card border border-ps2border rounded-md p-6">
@@ -508,6 +527,7 @@
           <div id="gachaMachine" class="gacha-machine" aria-hidden="true"></div>
           <div class="gacha-side">
             <p id="gachaCoins" class="gacha-coins" role="status"></p>
+            <div id="gachaQty" class="gacha-qty" role="group" aria-label="Capsules to take"></div>
             <button type="button" id="gachaTurn" onclick="gachaTurn()" class="brand-btn brand-btn-primary gacha-turn"><i class="fa-solid fa-coins" aria-hidden="true"></i> INSERT COIN</button>
             <div id="gachaOdds" class="gacha-odds"></div>
           </div>
@@ -522,7 +542,7 @@
     <div id="viewCollection" role="tabpanel" aria-labelledby="tabCollection" class="hidden space-y-8">
       <div class="view-tabs coll-tabs" role="tablist" aria-label="My collection">
         <button type="button" id="collTabGames" role="tab" aria-selected="true" aria-controls="collectionSection" onclick="showCollectionTab('games')" class="view-tab is-active">My games</button>
-        <button type="button" id="collTabPrizes" role="tab" aria-selected="false" aria-controls="prizesSection" onclick="showCollectionTab('prizes')" class="view-tab hidden">My gacha prizes <span id="collTabPrizesCount" class="view-tab-count hidden"></span></button>
+        <button type="button" id="collTabPrizes" role="tab" aria-selected="false" aria-controls="prizesSection" onclick="showCollectionTab('prizes')" class="view-tab">My gacha prizes <span id="collTabPrizesCount" class="view-tab-count hidden"></span></button>
         <button type="button" id="collTabReport" role="tab" aria-selected="false" aria-controls="reportSection" onclick="showCollectionTab('report')" class="view-tab hidden">Report a purchase</button>
         <button type="button" id="collTabShare" role="tab" aria-selected="false" aria-controls="shareSection" onclick="showCollectionTab('share')" class="view-tab hidden">Account</button>
       </div>
@@ -801,14 +821,13 @@
             mentions: ['viewMentions', 'tabMentions'],
             prices: ['viewPrices', 'tabPrices'],
             library: ['viewLibrary', 'tabLibrary'],
+            marketplace: ['viewMarketplace', 'tabMarketplace'],
             gacha: ['viewGacha', 'tabGacha'],
             underrated: ['viewUnderrated', 'tabUnderrated'],
             collection: ['viewCollection', 'tabCollection'],
         };
 
-        /* The Gacha page is switched off for now (2026-10-16): its tab, the My gacha prizes tab and the #gacha
-           address are hidden. Set this to true and take `hidden` off the two tab buttons to bring it back. */
-        const GACHA_SHOWN = false;
+        const GACHA_SHOWN = true;   // the Gacha page was switched off on 2026-10-16 while it was reworked; back on 2026-10-18
         const isView = (name) => Object.prototype.hasOwnProperty.call(VIEWS, name) && (name !== 'gacha' || GACHA_SHOWN);
 
         /* A page that is not on screen need not be drawn yet. Its long list (Most mentioned: about 17,000
@@ -849,10 +868,13 @@
             try { updateLibraryTop(); } catch { /* the button only follows the page */ }
             if (view === 'collection') { try { syncCollectionAccess(); } catch { /* the tab opens as it was */ } }
             document.getElementById('shelfSection')?.classList.toggle('hidden', view !== 'dashboard' || !document.getElementById('shelfSection')?.dataset.has);
-            if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'gacha' || view === 'underrated') ensureCoverIndex();
+            if (view === 'rare' || view === 'mentions' || view === 'demand' || view === 'library' || view === 'marketplace' || view === 'gacha' || view === 'underrated') ensureCoverIndex();
             if (view === 'library') ensureGenres();
             if (view !== 'library') libraryClosePicked();
             if (view !== 'collection') collectionEditClose();
+            if (view === 'marketplace') {
+                try { openMarketplace(); } catch (error) { console.warn('Could not show the marketplace.', error); }
+            }
             if (view === 'gacha') {
                 try { openGacha(); } catch (error) { console.warn('Could not show the gacha.', error); }
             }
@@ -4097,6 +4119,8 @@
         let gachaSaved = { day: '', coins: 0, left: {}, prizes: [] };
         let gachaShown = null;         // the capsule on screen: { title, tier, machine, restocked }
         let gachaTurning = false;
+        let gachaQty = 1;              // capsules one press takes: 1, 3 or 10 (one coin each)
+        let gachaAlso = [];            // the earlier capsules of a multi-pull; gachaShown is the last
         let gachaMessage = '';
         let collectionTab = 'games';
 
@@ -4240,6 +4264,100 @@
 
         function redrawGacha() {
             if (!document.getElementById('viewGacha')?.classList.contains('hidden')) renderGacha();
+        }
+
+        /* ---- Marketplace -------------------------------------------------------
+           marketplace.json: listings of rare games and consoles, read only when the tab is opened. Each
+           game listing carries the tracker's own eBay median for the same game and region as its reference
+           (collectionValue()). Nothing can be bought here and nothing is sent. While the file says
+           "sample": true every listing is invented and the page says so; REMOVE THEM when the page is next
+           changed (AGENTS.md, docs/CHANGELOG.md). */
+        const MARKET_CATS = [['sealed', 'Factory sealed'], ['cib', 'Complete in box'], ['consoles', 'Consoles']];
+        let marketData = null, marketFileState = 'idle';
+        let marketCat = 'sealed', marketRegion = '', marketQuery = '', marketSort = 'high';
+
+        function cleanMarketData(raw) {
+            if (!raw || typeof raw !== 'object' || !Array.isArray(raw.listings)) return null;
+            const cats = new Set(MARKET_CATS.map(([key]) => key));
+            const listings = [];
+            for (const l of raw.listings) {
+                if (!l || typeof l.title !== 'string' || !l.title.trim() || !cats.has(l.cat)) continue;
+                if (!(l.region === 'US' || l.region === 'PAL') || !Number.isFinite(l.price) || l.price <= 0) continue;
+                listings.push({
+                    id: String(l.id || '').slice(0, 24),
+                    cat: l.cat,
+                    kind: l.kind === 'console' ? 'console' : 'game',
+                    title: l.title.trim(),
+                    region: l.region,
+                    currency: l.region === 'PAL' ? 'GBP' : 'USD',
+                    price: l.price,
+                    sample: raw.sample === true || l.sample === true,
+                });
+            }
+            return listings.length ? { sample: raw.sample === true, listings } : null;
+        }
+
+        function marketReference(l) {
+            if (l.kind === 'console') return '<span class="market-ref">Rarest page: rare consoles</span>';
+            const [amount, currency] = collectionValue({ title: l.title, region: l.region, condition: l.cat === 'sealed' ? 'sealed' : 'complete' });
+            const site = l.region === 'PAL' ? 'UK' : 'US';
+            if (amount === null) return `<span class="market-ref">${l.cat === 'sealed' ? 'no sealed guide price yet' : `no eBay ${site} price yet`}</span>`;
+            return `<span class="market-ref">${l.cat === 'sealed' ? 'guide' : `eBay ${site} median`} <b>${esc(money(amount, currency))}</b></span>`;
+        }
+
+        function marketCardHtml(l) {
+            const url = coversShown && l.kind === 'game' ? coverUrl(l.title, l.region) : '';
+            const initials = l.kind === 'console' ? 'PS2' : initialsOf(l.title);
+            const link = l.kind === 'game' ? gameLinkHtml(l.title) : esc(l.title);
+            return `<li class="under-card market-card"><div class="under-cover coll-cover" aria-hidden="true"><span class="coll-initials">${esc(initials)}</span>${url
+                ? `<img src="${esc(url)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}</div>
+                <div class="under-body"><div class="under-meta">${esc(l.region)}${l.sample ? ' · <b class="market-sample">SAMPLE</b>' : ''}${l.id ? ' · ' + esc(l.id) : ''}</div>
+                <div class="under-title">${link}</div>
+                <div class="market-ask">${esc(money(l.price, l.currency))}</div>${marketReference(l)}</div></li>`;
+        }
+
+        function renderMarketplace() {
+            const summary = document.getElementById('marketSummary');
+            const grid = document.getElementById('marketGrid');
+            if (!summary || !grid) return;
+            if (!marketData) {
+                summary.textContent = marketFileState === 'failed' ? 'The listings could not be loaded. Try again later.' : 'Loading the listings…';
+                grid.innerHTML = '';
+                return;
+            }
+            const notice = document.getElementById('marketNotice');
+            notice.classList.toggle('hidden', !marketData.sample);
+            notice.textContent = marketData.sample ? 'Sample listings: every listing on this page is invented to show the layout. Nothing here is for sale.' : '';
+            summary.textContent = 'Rare games and consoles, each beside the tracker\'s own eBay figure for the same game and region.';
+            document.getElementById('marketCats').innerHTML = MARKET_CATS.map(([key, label]) =>
+                `<button type="button" class="under-chip${key === marketCat ? ' is-active' : ''}" aria-pressed="${key === marketCat}" onclick="marketSetCat(${esc(JSON.stringify(key))})">${esc(label)}</button>`).join('');
+            document.getElementById('marketRegions').innerHTML = [['', 'All'], ['US', 'US'], ['PAL', 'PAL']].map(([key, label]) =>
+                `<button type="button" class="under-chip${key === marketRegion ? ' is-active' : ''}" aria-pressed="${key === marketRegion}" onclick="marketSetRegion(${esc(JSON.stringify(key))})">${esc(label)}</button>`).join('');
+            const query = marketQuery.trim().toLowerCase();
+            const rows = marketData.listings.filter(l => l.cat === marketCat && (!marketRegion || l.region === marketRegion) && (!query || l.title.toLowerCase().includes(query)));
+            rows.sort((a, b) => marketSort === 'title' ? cmpStr(a.title, b.title) : (marketSort === 'low' ? a.price - b.price : b.price - a.price) || cmpStr(a.title, b.title));
+            grid.innerHTML = rows.length ? rows.map(marketCardHtml).join('') : '<li class="text-xs text-slate-400">Nothing matches. Try another kind or region.</li>';
+            document.getElementById('marketNote').textContent = 'Asking prices, not what anything sold for. US listings are in dollars and PAL listings in pounds. Reference figures are the tracker\'s eBay medians (used or complete copies), never combined across sites.';
+        }
+        function marketSetCat(key) { marketCat = key; renderMarketplace(); }
+        function marketSetRegion(key) { marketRegion = key; renderMarketplace(); }
+        function marketSetSearch(text) { marketQuery = String(text || ''); renderMarketplace(); }
+        function marketSetSort(key) { marketSort = ['high', 'low', 'title'].includes(key) ? key : 'high'; renderMarketplace(); }
+        async function ensureMarketplace() {
+            if (marketFileState === 'ready' || marketFileState === 'loading') return;
+            marketFileState = 'loading';
+            try {
+                const response = await fetch('marketplace.json');
+                marketData = response.ok ? cleanMarketData(await response.json()) : null;
+            } catch {
+                marketData = null;
+            }
+            marketFileState = marketData ? 'ready' : 'failed';
+            redrawMarketplace();
+        }
+        function openMarketplace() { renderMarketplace(); ensureMarketplace(); }
+        function redrawMarketplace() {
+            if (!document.getElementById('viewMarketplace')?.classList.contains('hidden')) renderMarketplace();
         }
 
         /* ---- Underrated -------------------------------------------------------
@@ -4599,6 +4717,7 @@
             if (gachaTurning || !gachaMachineOf(id)) return;
             gachaMachineId = id;
             gachaShown = null;
+            gachaAlso = [];
             gachaMessage = '';
             document.getElementById('gachaMachine').classList.remove('on', 'out', 'pop', 'closing', 'shake');
             renderGacha();
@@ -4613,12 +4732,20 @@
         // game's disc, and the prize is shown. The tray stays out until the next coin, when it closes first.
         async function gachaTurn() {
             if (gachaTurning || gachaFileState !== 'ready') return;
-            const pull = gachaPull(gachaMachineId);
+            // One press takes gachaQty capsules (one coin each, as many as the coins allow); the last one is shown on the tray.
+            const pulls = [];
+            for (let i = 0; i < gachaQty; i++) {
+                const one = gachaPull(gachaMachineId);
+                if (!one) break;
+                pulls.push(one);
+            }
+            const pull = pulls[pulls.length - 1];
             if (!pull) {
                 gachaMessage = 'No coins left today. They come back tomorrow.';
                 renderGacha();
                 return;
             }
+            gachaAlso = pulls.slice(0, -1);
             gachaTurning = true;
             gachaShown = null;
             gachaMessage = '';
@@ -4714,7 +4841,7 @@
             if (!machine) {
                 summary.textContent = gachaFileState === 'failed' ? 'The machines could not be loaded just now. Press REFRESH to try again.' : 'Loading the machines…';
                 document.getElementById('gachaMachine').dataset.built = '';
-                for (const id of ['gachaMachines', 'gachaMachine', 'gachaCoins', 'gachaOdds', 'gachaResult', 'gachaContents', 'gachaNote']) document.getElementById(id).innerHTML = '';
+                for (const id of ['gachaMachines', 'gachaQty', 'gachaMachine', 'gachaCoins', 'gachaOdds', 'gachaResult', 'gachaContents', 'gachaNote']) document.getElementById(id).innerHTML = '';
                 document.getElementById('gachaTurn').disabled = true;
                 return;
             }
@@ -4723,7 +4850,7 @@
             const full = machine.prizes.reduce((sum, prize) => sum + prize.qty, 0);
             const coins = gachaCoinsNow();
             const daily = gachaData.dailyCoins;
-            summary.textContent = `Four machines, ${daily} free coins a day. A turn takes one capsule at random from what is left in the machine, and the prize goes to My collection > My gacha prizes.`;
+            summary.textContent = `Four machines, ${daily} free coins a day. A turn takes 1 or 3 capsules (one coin each) at random from what is left in the machine, and the prize goes to My collection > My gacha prizes.`;
             document.getElementById('gachaMachines').innerHTML = gachaData.machines.map(other => `<button type="button" role="tab" aria-selected="${other.id === machine.id}" onclick="gachaPick(${esc(JSON.stringify(other.id))})"
                 class="view-tab${other.id === machine.id ? ' is-active' : ''}"${gachaTurning ? ' disabled' : ''}>${esc(other.name)}</button>`).join('');
             const machineBox = document.getElementById('gachaMachine');
@@ -4734,6 +4861,9 @@
             document.getElementById('gxPips').innerHTML = gachaPips(Math.min(20, total));
             document.getElementById('gachaCoins').innerHTML = `<span class="gacha-coin-row" aria-hidden="true">${Array.from({ length: daily }, (_, i) =>
                 `<span class="gacha-coin${i < coins ? '' : ' is-spent'}"></span>`).join('')}</span> ${esc(coins)} of ${esc(daily)} coins left today`;
+            if (gachaQty > Math.max(1, Math.min(coins, total))) gachaQty = 1;
+            document.getElementById('gachaQty').innerHTML = [1, 3, 10].filter(n => n <= daily).map(n =>
+                `<button type="button" class="${n === gachaQty ? 'is-active' : ''}" aria-pressed="${n === gachaQty}" onclick="gachaSetQty(${n})"${gachaTurning || n > coins || n > total ? ' disabled' : ''}>${n} ${n === 1 ? 'capsule' : 'capsules'}</button>`).join('');
             const turn = document.getElementById('gachaTurn');
             turn.disabled = gachaTurning || coins < 1;
             const odds = Object.entries(GACHA_TIERS).sort((a, b) => a[1].rank - b[1].rank).map(([tier, info]) => {
@@ -4767,6 +4897,10 @@
             } else if (gachaMessage) {
                 result = `<p class="gacha-wait">${esc(gachaMessage)}</p>`;
             }
+            if (!gachaTurning && gachaShown && gachaShown.machine === machine.id && gachaAlso.length) {
+                result += `<ul class="gacha-more" aria-label="The other capsules from this turn">${gachaAlso.map(p =>
+                    `<li><span class="gacha-tier tier-${esc(p.tier)}">${esc(GACHA_TIERS[p.tier].label)}</span> ${gameLinkHtml(p.title)} <span class="text-xs text-slate-400">${esc(gachaPriceText(p.title, locale))}</span></li>`).join('')}</ul>`;
+            }
             document.getElementById('gachaResult').innerHTML = result;
             document.getElementById('gachaContents').innerHTML = [...machine.prizes].sort((a, b) => GACHA_TIERS[a.tier].rank - GACHA_TIERS[b.tier].rank).map(prize => `
                 <li class="gacha-row tier-${esc(prize.tier)}">${gachaThumbHtml(prize.title)}<span class="gacha-tier tier-${esc(prize.tier)}">${esc(GACHA_TIERS[prize.tier].label)}</span>
@@ -4784,6 +4918,12 @@
             const cover = coversShown ? coverUrl(title, 'US') : '';
             return `<span class="coll-cover gacha-thumb" aria-hidden="true"><span class="coll-initials">${esc(initialsOf(title))}</span>${cover
                 ? `<img src="${esc(cover)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}</span>`;
+        }
+
+        function gachaSetQty(n) {
+            if (gachaTurning || ![1, 3, 10].includes(n)) return;
+            gachaQty = n;
+            renderGacha();
         }
 
         function gachaOpenPrizes() {
@@ -5403,7 +5543,7 @@
             } catch {
                 coverIndexState = 'failed';
             }
-            try { refreshCollection(); paintGameCover(); redrawCoverLists(); redrawGacha(); redrawUnderrated(); } catch { /* the next draw shows them */ }
+            try { refreshCollection(); paintGameCover(); redrawCoverLists(); redrawGacha(); redrawMarketplace(); redrawUnderrated(); } catch { /* the next draw shows them */ }
         }
 
         // The address of a game's box art: the region's own picture when there is one, else the other's.
