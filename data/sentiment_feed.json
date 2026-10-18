@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-18 21:34:41 UTC",
+  "last_updated": "2026-10-18 21:48:04 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749946678",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 21:36 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Monster Hunter",
       "source": "4chan /v/",
@@ -22,18 +41,19 @@
       "timestamp": "2026-10-18 21:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3 and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Kingdom Hearts II and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749946194",
-      "matched_game": "Persona 3",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
       "matched_games": [
-        "Persona 3",
-        "Kingdom Hearts II"
+        "Devil May Cry 3: Dante's Awakening",
+        "Kingdom Hearts II",
+        "Persona 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2869,6 +2889,25 @@
       "is_remaster_rumor": true,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 18:28 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Area 51",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749936569",
+      "matched_game": "Area 51",
+      "matched_games": [
+        "Area 51"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 18:28 UTC"
     },
@@ -290060,58 +290099,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-04 21:50 UTC"
-    },
-    {
-      "headline": "Blizzard Will \"Ship on Time\", Or Else",
-      "source": "YouTube: Bellular News",
-      "source_type": "youtube",
-      "feed": "youtube:UC3nPaf5MeeDTHA2JN7clidg",
-      "link": "https://www.youtube.com/watch?v=hUot626N_C0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 21:41 UTC",
-      "views": 328180
-    },
-    {
-      "headline": "Ocarina Of Time Windows XP PC Port Advertisement - Red Desert [OC]",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wxrcsj/ocarina_of_time_windows_xp_pc_port_advertisement/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 21:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is there any game that is like valheim",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wxrd4v/is_there_any_game_that_is_like_valheim/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 21:38 UTC",
-      "is_digital_only": false
     }
   ]
 }
