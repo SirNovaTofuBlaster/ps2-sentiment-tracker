@@ -1232,7 +1232,7 @@ class GermanyTests(unittest.TestCase):
     def test_the_definition_is_sound(self):
         self.assertEqual((DE["label"], DE["site"], DE["country"], DE["currency"]), ("DE", "www.ebay.de", "DE", "EUR"))
         self.assertTrue(DE["extra"])
-        self.assertEqual(DE["min_every_hours"], 24)
+        self.assertEqual(DE["min_every_hours"], 48)
         self.assertEqual(DE["names_like"], "UK")
         self.assertNotIn("zip", DE, "postage is quoted to Germany, not to a postcode of ours")
         for field in ("foreign", "junk", "incomplete"):
@@ -1296,7 +1296,7 @@ class GermanyTests(unittest.TestCase):
         code, printed, fake = sandbox.run(FakeHttp(answer))
         self.assertIn("Kuon [UK]", printed)
         self.assertNotIn("Kuon [DE]", printed, "thirteen hours later the UK and US are due again, Germany is not")
-        sandbox.now = NOON + timedelta(hours=25)
+        sandbox.now = NOON + timedelta(hours=49)
         code, printed, fake = sandbox.run(FakeHttp(answer))
         self.assertIn("Kuon [DE]", printed)
 
@@ -1313,7 +1313,7 @@ def european_site_tests(name, market_id, market, junk_titles, normal_title, inco
         def test_the_definition_is_sound(self):
             self.assertEqual((market["currency"], market["extra"], market["keyword_only"]), ("EUR", True, True))
             self.assertEqual((market["min_every_hours"], market["names_like"]), (market["min_every_hours"], "UK"))
-            self.assertEqual(market["min_every_hours"], {"DE": 24, "FR": 48, "IT": 24, "ES": 72}[market["label"]])
+            self.assertEqual(market["min_every_hours"], {"DE": 48, "FR": 72, "IT": 48, "ES": 96}[market["label"]])
             self.assertEqual(market["site"], f"www.ebay.{market['country'].lower()}")
             self.assertEqual(market["label"], market["country"])
             for field in ("foreign", "junk", "incomplete"):
@@ -1762,10 +1762,10 @@ class QuietEuroTests(unittest.TestCase):
         patcher.start()
         self.addCleanup(patcher.stop)
 
-    def test_an_empty_german_pair_waits_48_hours_but_a_stocked_one_24(self):
+    def test_a_german_pair_waits_48_hours_whether_stocked_or_empty(self):
         stamp = lambda hours: (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)   # noqa: E731
         for record, hours, due in (({"copies": 0}, 30, False), ({"copies": 0}, 49, True),
-                                   ({"copies": 3}, 25, True), ({"unmatched": True}, 30, False)):
+                                   ({"copies": 3}, 47, False), ({"copies": 3}, 49, True), ({"unmatched": True}, 30, False)):
             entry = game("Kuon")
             state = {"games": {"Kuon": {"DE": dict(record, checked=stamp(hours))}}}
             got = "EBAY_DE" in [m for _, m in ebay_prices.due_lookups([entry], state, NOON)]

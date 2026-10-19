@@ -382,7 +382,7 @@ are skipped. Two library spellings that come to the same name are one game.
 | `normal` | Any other mention in the window, or pinned | Every 12 hours (6 until 2026-10-18) |
 | `dormant` | Mentioned before, not in the window | Once a day |
 
-A site added after the first two (`extra` in `MARKETS`; Germany so far) has its own slower clock, `min_every_hours`, whatever a game's level says, and its lookups run after the US and UK ones. Since 2026-10-15 Spain waits 72 hours, France 48, Germany and Italy 24, and on those sites a pair that found no copies waits 48 (`QUIET_EVERY_HOURS`); the US and UK are never slowed.
+A site added after the first two (`extra` in `MARKETS`; Germany so far) has its own slower clock, `min_every_hours`, whatever a game's level says, and its lookups run after the US and UK ones. Since 2026-10-19 (it was 72 / 48 / 24 / 24 from 2026-10-15) Spain waits 96 hours, France 72, Germany and Italy 48, to save searches: the four euro sites had taken 1,586 of 2,991 lookups on 2026-10-19 for pages few visitors open. A pair that found no copies waits 48 too (`QUIET_EVERY_HOURS`); the US and UK are never slowed.
 
 On top of the levels, a `normal` or `staple` game that has priced the same for days on one site is looked up there every 48 hours (`is_steady()` in `ebay_prices.py`) and goes back to 12 hours as soon as a check differs.
 

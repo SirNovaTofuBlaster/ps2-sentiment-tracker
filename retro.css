@@ -475,6 +475,9 @@ body .ebay-change.is-up { color: var(--green); }
 body .ebay-change.is-down { color: var(--red); }
 /* On the detail page an overdue figure is dimmed, and so is how it moved */
 body .ebay-site.is-stale .ebay-change { opacity: .5; }
+/* The short move beside a list price: "▲ 12%". A rough one (a game with more listings than eBay hands over) is dimmed. */
+body .ebay-move { margin-left: .35rem; font-family: var(--mono); font-size: .68rem; font-weight: 700; }
+body .ebay-move.is-rough { opacity: .55; }
 body .level-tag {
   margin-left: .45rem;
   padding: .1rem .4rem;
