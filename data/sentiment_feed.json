@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 14:38:41 UTC",
+  "last_updated": "2026-10-19 14:41:27 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -84368,13 +84368,14 @@
       "timestamp": "2026-10-15 19:32 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming The Punisher",
+      "headline": "Thread on /vr/ naming The Arcade and The Punisher",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12879850",
-      "matched_game": "The Punisher",
+      "matched_game": "The Arcade",
       "matched_games": [
+        "The Arcade",
         "The Punisher"
       ],
       "match_score": 100,
@@ -200369,17 +200370,18 @@
       "timestamp": "2026-10-10 20:09 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Death by Degrees",
+      "headline": "Thread on /vr/ naming Resident Evil 4 and Death by Degrees",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12870917",
-      "matched_game": "Death by Degrees",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Death by Degrees"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -297698,23 +297700,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 14:41 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Senua Studio Ninja Theory Begins Letting People Go After Two Deals To Save The Studio Fell Through",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/senua-studio-ninja-theory-layoffs-consultation-2000739951",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 14:40 UTC",
       "is_digital_only": false
     }
   ]
