@@ -1,7 +1,28 @@
 {
-  "last_updated": "2026-10-19 12:20:55 UTC",
+  "last_updated": "2026-10-19 12:31:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts, Monster Hunter and Dark Cloud 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749979435",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "Monster Hunter",
+        "Dark Cloud 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 12:26 UTC"
+    },
     {
       "headline": "Witcher 3 Switch 2 patch rolls out today with a number of changes, including alterations to resolution and \"visual clarity\"",
       "source": "Eurogamer.net Latest Articles Feed",
@@ -137,6 +158,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-19 11:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749978209",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 11:51 UTC"
     },
     {
       "headline": "Porque é que jogaria GTA 6 na Xbox? Questiona streamer",
@@ -295689,59 +295729,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 12:36 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PSA: Kingdom Hearts Collection Will Collectively Take Up Over 130GB On Switch 2",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/psa-kingdom-hearts-collection-will-collectively-take-up-over-130gb-on-switch-2",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 12:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Earthbound PC Port Out Now! Alpha With 16:9 Widescreen",
-      "source": "YouTube: Video Game Esoterica",
-      "source_type": "youtube",
-      "feed": "youtube:UCn2pQB4jsCTLUtx2NIkCvUg",
-      "link": "https://www.youtube.com/watch?v=Javdhp11bJ4",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 12:30 UTC"
-    },
-    {
-      "headline": "Planos de eletricidade para gamers a caminho",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/planos-de-eletricidade-para-gamers-a-caminho",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 12:26 UTC",
       "is_digital_only": false
     }
   ]
