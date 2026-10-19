@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-19 04:15:28 UTC",
+  "last_updated": "2026-10-19 04:26:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749964863",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 04:22 UTC"
+    },
     {
       "headline": "PC gaming right now:",
       "source": "r/pcmasterrace",
@@ -156,6 +175,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 03:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming FIFA Street",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749963906",
+      "matched_game": "FIFA Street",
+      "matched_games": [
+        "FIFA Street"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 03:58 UTC"
     },
     {
       "headline": "Is there any reason why one of my Seagate NVME SSDs now identifies as a Samsung?",
@@ -1152,6 +1190,25 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 02:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Ratchet & Clank",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749960023",
+      "matched_game": "Ratchet & Clank",
+      "matched_games": [
+        "Ratchet & Clank"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -292941,57 +292998,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 04:37 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "R.A.M price is oficially out of control",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1wxza00/ram_price_is_oficially_out_of_control/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 04:18 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "She likes to warm her ass on my pc",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1wxz9qu/she_likes_to_warm_her_ass_on_my_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 04:18 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Would you want to live forever in an infinite game?",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/52737383",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 04:16 UTC",
       "is_digital_only": false
     }
   ]
