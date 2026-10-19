@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-19 00:22:39 UTC",
+  "last_updated": "2026-10-19 00:25:13 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749954732",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 00:15 UTC"
+    },
     {
       "headline": "Pokemon Platinum CIB Real or Fake?",
       "source": "r/gameverifying",
@@ -291663,23 +291682,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 00:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pick Ups from RetroGameCon (Syr, NY)",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wxusx2/pick_ups_from_retrogamecon_syr_ny/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 00:22 UTC",
       "is_digital_only": false
     }
   ]
