@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 06:09:15 UTC",
+  "last_updated": "2026-10-19 06:34:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -173,6 +173,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 05:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749967632",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 05:43 UTC"
     },
@@ -6534,13 +6553,14 @@
       "timestamp": "2026-10-18 20:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy XII and Dark Cloud 2",
+      "headline": "Thread on /v/ naming Dragon Quest VIII: Journey of the Cursed King, Final Fantasy X, Final Fantasy XII and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749943076",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Dragon Quest VIII: Journey of the Cursed King",
       "matched_games": [
+        "Dragon Quest VIII: Journey of the Cursed King",
         "Final Fantasy X",
         "Final Fantasy XII",
         "Dark Cloud 2"
@@ -293626,42 +293646,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 06:34 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "My collection of vintage consoles, and games ( PS2, N64)",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wy1etu/my_collection_of_vintage_consoles_and_games_ps2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 06:27 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "El director de Final Fantasy 7 Revelation luchó por su edición física: 'Hice todo lo que pude'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026278001/el-director-de-final-fantasy-7-revelation-lucho-por-su-edicion-fisica-hice-todo-lo-que-pude/",
-      "matched_game": "Dirge of Cerberus: Final Fantasy VII",
-      "matched_games": [
-        "Dirge of Cerberus: Final Fantasy VII"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 06:15 UTC",
       "is_digital_only": false
     }
   ]
