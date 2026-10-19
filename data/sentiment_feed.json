@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 15:35:33 UTC",
+  "last_updated": "2026-10-19 15:38:14 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -662,6 +662,25 @@
       "hype": 0,
       "timestamp": "2026-10-19 15:02 UTC",
       "views": 789
+    },
+    {
+      "headline": "Thread on /v/ naming Guitar Hero",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749986347",
+      "matched_game": "Guitar Hero",
+      "matched_games": [
+        "Guitar Hero"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 15:02 UTC"
     },
     {
       "headline": "GameSir Nova Lite 2 review",
@@ -1593,6 +1612,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 14:16 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Zone of the Enders",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749984048",
+      "matched_game": "Zone of the Enders",
+      "matched_games": [
+        "Zone of the Enders"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 14:16 UTC"
     },
@@ -22957,16 +22995,16 @@
       "timestamp": "2026-10-18 14:29 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming The Sopranos, The Warriors and Reservoir Dogs",
+      "headline": "Thread on /vr/ naming The Warriors, Reservoir Dogs and The Sopranos",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12884784",
-      "matched_game": "The Sopranos",
+      "matched_game": "The Warriors",
       "matched_games": [
-        "The Sopranos",
         "The Warriors",
-        "Reservoir Dogs"
+        "Reservoir Dogs",
+        "The Sopranos"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -298586,57 +298624,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 15:39 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Low end story game for after classes",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wybqg2/low_end_story_game_for_after_classes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 15:37 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Borderlands MMO is officially saved and playable in English, 11 years after its shutdown and 17 months after restoration efforts began: \"We did it\"",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wybore/the_borderlands_mmo_is_officially_saved_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 15:36 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Resident Evil’s 30th birthday plans in Japan include themed cocktails and pop star-style photo cards",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/resident-evil-30th-birthday-japan-themed-cocktails-photo-cards/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 15:35 UTC",
       "is_digital_only": false
     }
   ]
