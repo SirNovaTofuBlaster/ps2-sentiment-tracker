@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 00:55:39 UTC",
+  "last_updated": "2026-10-19 01:06:54 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -780,6 +780,25 @@
       "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
         "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 23:12 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749951640",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -5362,17 +5381,18 @@
       "timestamp": "2026-10-18 18:28 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Area 51",
+      "headline": "Thread on /v/ naming Forbidden Siren and Area 51",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749936569",
-      "matched_game": "Area 51",
+      "matched_game": "Forbidden Siren",
       "matched_games": [
+        "Forbidden Siren",
         "Area 51"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9601,16 +9621,17 @@
       "timestamp": "2026-10-18 15:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Jak and Daxter: The Precursor Legacy and Devil May Cry",
+      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy, Ratchet & Clank, Devil May Cry and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749926875",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_game": "Jak and Daxter: The Precursor Legacy",
       "matched_games": [
-        "Devil May Cry 3: Dante's Awakening",
         "Jak and Daxter: The Precursor Legacy",
-        "Devil May Cry"
+        "Ratchet & Clank",
+        "Devil May Cry",
+        "Devil May Cry 3: Dante's Awakening"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -59279,7 +59300,7 @@
       "timestamp": "2026-10-16 11:30 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming TimeSplitters: Future Perfect, Grand Theft Auto III, Metal Gear Solid 3: Snake Eater and 1 more",
+      "headline": "Thread on /vr/ naming TimeSplitters: Future Perfect, Spider-Man, Grand Theft Auto III and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -59287,6 +59308,7 @@
       "matched_game": "TimeSplitters: Future Perfect",
       "matched_games": [
         "TimeSplitters: Future Perfect",
+        "Spider-Man",
         "Grand Theft Auto III",
         "Metal Gear Solid 3: Snake Eater",
         "Resident Evil 4"
@@ -291588,42 +291610,6 @@
       "hype": 0,
       "timestamp": "2026-10-05 01:10 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Best REMASTERS of all time (not REMAKES)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wxvl7d/best_remasters_of_all_time_not_remakes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "sentiment": 60,
-      "hype": 2,
-      "timestamp": "2026-10-05 01:02 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Fiat Punto 1.8 HGT from Juiced #ps2 #shorts",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/shorts/vCtsJ5AidCc",
-      "matched_game": "Juiced",
-      "matched_games": [
-        "Juiced"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 01:00 UTC"
     }
   ]
 }
