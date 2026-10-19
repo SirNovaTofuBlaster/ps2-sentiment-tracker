@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-19: The Game Post added
+
+- **News source**: The Game Post (`https://thegamepost.com/feed/`, press, in Major Global Outlets & Magazines), at the maintainer's request after the tracker had caught a Star Wars Battlefront story only through a Giant Bomb video. The address is the usual WordPress one and has **not been tried live** (the development workspace cannot reach the site): read its row in `feed_status.json` after the next scraper run, and switch it off with a `note` if it fails. A failing news feed is the same as any other.
+- Star Wars Battlefront stories about a newer game keep matching the PS2 titles: the maintainer wants that, as the new game is a sequel to them. Nothing was added to `NEWER_GAME_FOLLOWERS`.
+
 ## 2026-10-19: fewer false "surging" games; a log of where the searches go
 
 - **Surging**: reading the feed back, both games that cost most were wrong flags. Road Trip: three ordinary uses of "road trip" (a Polygon piece, two Reddit questions). Way of the Samurai: one "Game Appreciation #3" post shared to three subreddits, its words in a different order each time. A surge now needs at least two *different stories* (headlines with the same words in another order are one) and at least one mention matched by the exact name, an alias or a variant, not only a fuzzy match (`level_of()`, `sure` on a mention). Replaying the feed hour by hour from 17 to 19 October: the old rule flagged Shrek 2, The Simpsons Game, World Fighting, Deus Ex, Way of the Samurai, New York Race and Road Trip; the new one keeps Shrek 2 and Deus Ex and drops the rest. A surging game costs about 50 searches a day against about 5.6 for a normal one, so each wrong flag wasted roughly 90% of its searches.
