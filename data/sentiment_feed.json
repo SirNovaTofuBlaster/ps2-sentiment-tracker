@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 20:55:45 UTC",
+  "last_updated": "2026-10-19 20:58:25 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -54,6 +54,25 @@
       "timestamp": "2026-10-19 20:51 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750004975",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 20:50 UTC"
+    },
+    {
       "headline": "e waste find",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -84,6 +103,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 20:47 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585038823",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 20:47 UTC"
     },
@@ -400,6 +438,25 @@
       "timestamp": "2026-10-19 20:28 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12887203",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 20:28 UTC"
+    },
+    {
       "headline": "Towa and the Guardians of the Sacred Tree | Part 3",
       "source": "YouTube: Bandai Namco Entertainment America",
       "source_type": "youtube",
@@ -416,6 +473,25 @@
       "hype": 0,
       "timestamp": "2026-10-19 20:27 UTC",
       "views": 307
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750003869",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 20:27 UTC"
     },
     {
       "headline": "Thread on /vg/ naming Monster Hunter",
@@ -1236,17 +1312,18 @@
       "timestamp": "2026-10-19 19:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Guitar Hero and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750001686",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Guitar Hero",
       "matched_games": [
+        "Guitar Hero",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6484,7 +6561,7 @@
       "timestamp": "2026-10-19 15:42 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 3, Silent Hill 2 and Alone in the Dark",
+      "headline": "Thread on /v/ naming Silent Hill 3, Alone in the Dark, Silent Hill 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -6492,8 +6569,9 @@
       "matched_game": "Silent Hill 3",
       "matched_games": [
         "Silent Hill 3",
+        "Alone in the Dark",
         "Silent Hill 2",
-        "Alone in the Dark"
+        "ICO"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -13944,20 +14022,21 @@
       "timestamp": "2026-10-19 09:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War, Okami, Beyond Good & Evil and 4 more",
+      "headline": "Thread on /v/ naming The Warriors, Okami, Beyond Good & Evil and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749973428",
-      "matched_game": "God of War",
+      "matched_game": "The Warriors",
       "matched_games": [
-        "God of War",
+        "The Warriors",
         "Okami",
         "Beyond Good & Evil",
         "The Godfather",
         "Grand Theft Auto III",
         "Spider-Man",
-        "Max Payne"
+        "Max Payne",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -302566,25 +302645,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 21:00 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Pro Evolution Soccer",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/583507269",
-      "matched_game": "Pro Evolution Soccer",
-      "matched_games": [
-        "Pro Evolution Soccer"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-05 20:57 UTC",
-      "is_digital_only": false
     }
   ]
 }
