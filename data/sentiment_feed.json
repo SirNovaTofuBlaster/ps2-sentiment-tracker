@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-19 02:21:23 UTC",
+  "last_updated": "2026-10-19 02:32:50 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749960021",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 02:15 UTC"
+    },
     {
       "headline": "Atelier Ryza: Ever Darkness & the Secret Hideout DX Review **Spoilers**",
       "source": "r/JRPG",
@@ -18,6 +37,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 02:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749959949",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 02:13 UTC"
     },
     {
       "headline": "Shadow of the Colossus native PC port: my fork now runs ~40-49 FPS in the Shrine (was ~29), with optional FSR 3 frame generation",
@@ -107,13 +145,14 @@
       "timestamp": "2026-10-19 02:01 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Sims",
+      "headline": "Thread on /v/ naming The Sims 2 and The Sims",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749959359",
-      "matched_game": "The Sims",
+      "matched_game": "The Sims 2",
       "matched_games": [
+        "The Sims 2",
         "The Sims"
       ],
       "match_score": 100,
@@ -7545,6 +7584,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 17:29 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Space Channel 5",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749933372",
+      "matched_game": "Space Channel 5",
+      "matched_games": [
+        "Space Channel 5"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 17:29 UTC"
     },
@@ -292152,40 +292210,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 02:33 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "A RX 9070 XT is about five dollars cheaper than a RTX 5060 TI 16GB. This is outrageous. Do not buy Nvidia unless you absolutely need to.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1wxx7zz/a_rx_9070_xt_is_about_five_dollars_cheaper_than_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 02:26 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "An OpenAI model was caught trying to cheat at StarCraft, and of course it did it by stealing a human's work",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wxx6oe/an_openai_model_was_caught_trying_to_cheat_at/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 02:24 UTC",
       "is_digital_only": false
     }
   ]
