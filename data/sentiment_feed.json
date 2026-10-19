@@ -1,7 +1,46 @@
 {
-  "last_updated": "2026-10-19 03:29:48 UTC",
+  "last_updated": "2026-10-19 03:43:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Ape Escape 3",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12885816",
+      "matched_game": "Ape Escape 3",
+      "matched_games": [
+        "Ape Escape 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 03:28 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X and The Arcade",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749962551",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X",
+        "The Arcade"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 03:20 UTC"
+    },
     {
       "headline": "I guess they’re replacing Physical Discs with these…",
       "source": "r/playstation",
@@ -764,15 +803,16 @@
       "timestamp": "2026-10-19 02:01 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Sims and The Sims 2",
+      "headline": "Thread on /v/ naming The Sims 2, The Sims and The Sims 2: Castaway",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749959359",
-      "matched_game": "The Sims",
+      "matched_game": "The Sims 2",
       "matched_games": [
+        "The Sims 2",
         "The Sims",
-        "The Sims 2"
+        "The Sims 2: Castaway"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2482,6 +2522,28 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 23:07 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life, Odin Sphere, Silent Hill 3 and 1 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749951359",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life",
+        "Odin Sphere",
+        "Silent Hill 3",
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 23:07 UTC"
     },
@@ -292541,57 +292603,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 03:48 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nice (kinda rare?) pickup for $25",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wxylml/nice_kinda_rare_pickup_for_25/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:40 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Will there ever be a ps2 equivalent to the m64",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wxyl01/will_there_ever_be_a_ps2_equivalent_to_the_m64/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:39 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The New Denpa Men to end service on December 6",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/the-new-denpa-men-to-end-service-on-december-6",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:38 UTC",
       "is_digital_only": false
     }
   ]
