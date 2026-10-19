@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-18 23:55:46 UTC",
+  "last_updated": "2026-10-19 00:09:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming King Arthur",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749954342",
+      "matched_game": "King Arthur",
+      "matched_games": [
+        "King Arthur"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 00:07 UTC"
+    },
     {
       "headline": "Thread on /vg/ naming Devil May Cry",
       "source": "4chan /vg/",
@@ -291213,93 +291232,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 00:10 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Game not getting pass intro??",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1wxuibc/game_not_getting_pass_intro/",
-      "matched_game": "Grand Theft Auto: Vice City",
-      "matched_games": [
-        "Grand Theft Auto: Vice City"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 00:07 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Rpg games with radiant quests",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wxug61/rpg_games_with_radiant_quests/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 00:04 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Weekly Question Thread",
-      "source": "r/emulation",
-      "source_type": "reddit",
-      "feed": "reddit:emulation",
-      "link": "https://www.reddit.com/r/emulation/comments/1wxuda7/weekly_question_thread/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 00:01 UTC"
-    },
-    {
-      "headline": "Fire Emblem Fans Need to Play 2017's Stellar Revenge-Saga RPG",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/fire-emblem-tales-of-berseria/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 00:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Looking for active online PVE game",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wxu8ly/looking_for_active_online_pve_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-04 23:55 UTC",
       "is_digital_only": false
     }
   ]
