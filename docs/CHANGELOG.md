@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-19: fewer false "surging" games; a log of where the searches go
+
+- **Surging**: reading the feed back, both games that cost most were wrong flags. Road Trip: three ordinary uses of "road trip" (a Polygon piece, two Reddit questions). Way of the Samurai: one "Game Appreciation #3" post shared to three subreddits, its words in a different order each time. A surge now needs at least two *different stories* (headlines with the same words in another order are one) and at least one mention matched by the exact name, an alias or a variant, not only a fuzzy match (`level_of()`, `sure` on a mention). Replaying the feed hour by hour from 17 to 19 October: the old rule flagged Shrek 2, The Simpsons Game, World Fighting, Deus Ex, Way of the Samurai, New York Race and Road Trip; the new one keeps Shrek 2 and Deus Ex and drops the rest. A surging game costs about 50 searches a day against about 5.6 for a normal one, so each wrong flag wasted roughly 90% of its searches.
+- **Search log**: `ebay_prices.py` now writes `data/prices/searches.json`: for each UTC day (14 kept), the searches spent by level and site, and by game (the 400 dearest). Our own game names and counts only. `python tools/search_report.py [day] [--games N]` prints it. A failed search, the keyword second search and the Rarest extras count, as they do against the allowance; `other` is whatever no game owns (the diagnosis lookup).
+- Tests: `LevelTests` (cross-post, fuzzy-only), `SearchLogTests`.
+
 ## 2026-10-19: red and green arrows in every list; euro sites checked less often
 
 - **Arrows**: `priceMoveHtml()` puts a short "▲ 12%" (teal) or "▼ 8%" (red) beside a price wherever a list shows one (eBay prices, Most mentioned, Library, Underrated, Demand, the front-page shelf) and beside the eBay median on a Marketplace card. It is the same week-before comparison as the game page's bracket (`weekBefore()`; a game with under a week of history compares with its oldest check at least 3 days old). Nothing is shown when the median is unchanged or there is no earlier figure. A game with more listings than eBay hands over (`truncated`, figure for the cheapest 200) gets a dimmed arrow whose hover text says it can move without a real change.

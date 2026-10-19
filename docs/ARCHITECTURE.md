@@ -377,7 +377,7 @@ are skipped. Two library spellings that come to the same name are one game.
 
 | Level | When | Checked |
 |---|---|---|
-| `surging` | At most 1 headline mention in the rest of the window, then named in headlines by 2 or more sources, under different headlines, within 24 hours | Every run, until 48 hours after the last such mention |
+| `surging` | At most 1 headline mention in the rest of the window, then named in headlines by 2 or more sources, under different stories (the same words in another order are one story), at least one matched by exact name, alias or variant (not only fuzzily), within 24 hours | Every run, until 48 hours after the last such mention |
 | `staple` | Named in headlines on 5 or more days of the window; never surging | Every 12 hours (6 until 2026-10-18) |
 | `normal` | Any other mention in the window, or pinned | Every 12 hours (6 until 2026-10-18) |
 | `dormant` | Mentioned before, not in the window | Once a day |
