@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 00:25:13 UTC",
+  "last_updated": "2026-10-19 00:38:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -349,6 +349,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 23:45 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming No One Lives Forever and Hitman: Blood Money",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749953261",
+      "matched_game": "No One Lives Forever",
+      "matched_games": [
+        "No One Lives Forever",
+        "Hitman: Blood Money"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 23:45 UTC"
     },
@@ -4604,6 +4624,25 @@
       "timestamp": "2026-10-18 19:06 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749938717",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 19:06 UTC"
+    },
+    {
       "headline": "Here's my sonic game collection",
       "source": "r/gamecollecting",
       "source_type": "reddit",
@@ -6323,6 +6362,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 17:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sopranos",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749933705",
+      "matched_game": "The Sopranos",
+      "matched_games": [
+        "The Sopranos"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 17:35 UTC"
     },
@@ -11854,6 +11912,25 @@
       "timestamp": "2026-10-18 13:09 UTC"
     },
     {
+      "headline": "Thread on /v/ naming ICO",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749921235",
+      "matched_game": "ICO",
+      "matched_games": [
+        "ICO"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 13:08 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming Monster Hunter and Rogue Galaxy",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -12323,16 +12400,16 @@
       "timestamp": "2026-10-18 12:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy X-2 and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Kingdom Hearts II, Final Fantasy X-2 and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749920194",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
-        "Final Fantasy X",
+        "Kingdom Hearts II",
         "Final Fantasy X-2",
-        "Kingdom Hearts II"
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -291612,76 +291689,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 00:42 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Horizon Zero Dawn, is it worth it?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wxuzji/horizon_zero_dawn_is_it_worth_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 00:31 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo Switch eShop latest sales: lowest prices ever for Fate/Hollow Ataraxia Remastered, Fate/Stay Night Remastered Winter Burrow, more",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-switch-eshop-latest-sales-lowest-prices-ever-for-fate-hollow-ataraxia-remastered-fate-stay-night-remastered-winter-burrow-more/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 2,
-      "timestamp": "2026-10-05 00:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "LeBron James with his PS2 & GTA: Vice City (2003)",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wxuytj/lebron_james_with_his_ps2_gta_vice_city_2003/",
-      "matched_game": "Grand Theft Auto: Vice City",
-      "matched_games": [
-        "Grand Theft Auto: Vice City"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 00:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Suneast marketing 2TB MicroSD Express card that holds 100+ Switch 2 games",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1wxuytt/suneast_marketing_2tb_microsd_express_card_that/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 00:30 UTC",
       "is_digital_only": false
     }
   ]
