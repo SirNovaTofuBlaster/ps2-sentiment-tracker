@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 21:25:46 UTC",
+  "last_updated": "2026-10-19 21:39:48 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -33,6 +33,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 21:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750005683",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 21:04 UTC"
     },
@@ -523,14 +542,15 @@
       "timestamp": "2026-10-19 20:28 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /vr/ naming Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12887203",
       "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -302507,91 +302527,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 21:39 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "If you use an SD2PSX, I'd like to introduce you to SD2Cloud",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wyl3mm/if_you_use_an_sd2psx_id_like_to_introduce_you_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 21:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is this game fake or legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wyl2v4/is_this_game_fake_or_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 21:37 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "How to do a Post Stall Maneuver (PSM) in Ace Combat 8: Wings of Theve",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/how-to-do-a-post-stall-maneuver-psm-in-ace-combat-8-wings-of-theve/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 21:34 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "All 'Freeze Frame' camera locations in Control Resonant",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/control-resonant-freeze-frame-camera-instant-photo-locations/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 21:33 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Zelda: Ocarina of Time Controller's Best Replacement Is $30 Cheaper Right Now",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/ocarina-of-time-pro-controller-totk/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-05 21:26 UTC",
       "is_digital_only": false
     }
   ]
