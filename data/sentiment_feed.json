@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 14:43:46 UTC",
+  "last_updated": "2026-10-19 14:54:58 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -327,6 +327,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-10-19 14:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749984376",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 14:22 UTC"
     },
@@ -2154,6 +2173,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 12:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749980308",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 12:51 UTC"
     },
     {
       "headline": "Pokémon Platinum - PAL Spain",
@@ -50659,7 +50697,7 @@
       "timestamp": "2026-10-17 03:17 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Shadow of the Colossus and ICO",
+      "headline": "Thread on /vr/ naming Shadow of the Colossus, Final Fantasy X and ICO",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -50667,6 +50705,7 @@
       "matched_game": "Shadow of the Colossus",
       "matched_games": [
         "Shadow of the Colossus",
+        "Final Fantasy X",
         "ICO"
       ],
       "match_score": 100,
@@ -297819,91 +297858,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 14:56 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Ninja Theory developers announce they are facing redundancy, as the studio starts laying off staff following widespread Xbox cuts",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/ninja-theory-hellblade-developers-layoffs-xbox-cuts",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-05 14:53 UTC"
-    },
-    {
-      "headline": "Looking for great graphics small games",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wyakvj/looking_for_great_graphics_small_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-05 14:52 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Can you help me ID this mod?",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wyak6e/can_you_help_me_id_this_mod/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 14:51 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Final Fantasy Resonance creará nostalgia entre los fans: recupera características clásicas de FF5 y FF6",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026278025/final-fantasy-resonance-creara-nostalgia-entre-los-fans-recupera-caracteristicas-clasicas-de-ff5-y-ff6/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 14:48 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Ace Combat 8 vuela alto y destroza el récord de jugadores de la saga en Steam en su primer fin de semana",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026278024/ace-combat-8-vuela-alto-y-destroza-el-record-de-jugadores-de-la-saga-en-steam-en-su-primer-fin-de-semana/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 14:45 UTC",
       "is_digital_only": false
     }
   ]
