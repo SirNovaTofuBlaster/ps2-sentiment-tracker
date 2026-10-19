@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-19: red and green arrows in every list; euro sites checked less often
+
+- **Arrows**: `priceMoveHtml()` puts a short "▲ 12%" (teal) or "▼ 8%" (red) beside a price wherever a list shows one (eBay prices, Most mentioned, Library, Underrated, Demand, the front-page shelf) and beside the eBay median on a Marketplace card. It is the same week-before comparison as the game page's bracket (`weekBefore()`; a game with under a week of history compares with its oldest check at least 3 days old). Nothing is shown when the median is unchanged or there is no earlier figure. A game with more listings than eBay hands over (`truncated`, figure for the cheapest 200) gets a dimmed arrow whose hover text says it can move without a real change.
+- **Savings**: the euro sites' own clocks (`min_every_hours`) went from Germany 24, France 48, Italy 24, Spain 72 to Germany 48, France 72, Italy 48, Spain 96; the dashboard's dim times (`SITE_STALE_HOURS`) from 30, 56, 30, 80 to 54, 80, 54, 104. Why: reading the day's checks back from `latest.json`, the four euro sites took 1,586 of 2,991 game-site lookups on 2026-10-19 (Germany 469, Italy 450, Spain 406, France 261). The expected saving is roughly 650 searches a day (about 13% of the 4,900), by estimate; read `searches` in `latest.json` after a day. A euro figure also needs a longer history before it shows an arrow.
+- Tests: arrows in the list rows (including the truncated case) in `tests/dashboard_check.mjs`; the clocks in `tests/test_ebay_prices.py`.
+
 ## 2026-10-18: Marketplace cases bigger
 
 - The case, its bars, the title, price and Watch button are about 45% larger (tiles at least 15rem wide instead of 11.5rem). Size only.

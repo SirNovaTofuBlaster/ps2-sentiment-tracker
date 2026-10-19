@@ -134,7 +134,7 @@ MARKETS = {
     # knowledge of how German sellers list games, not yet checked against live listings: the first
     # run's listings file on the ebay-data branch shows what each rule left out.
     "EBAY_DE": {"label": "DE", "site": "www.ebay.de", "country": "DE", "currency": "EUR",
-                "extra": True, "min_every_hours": 24, "names_like": "UK",
+                "extra": True, "min_every_hours": 48, "names_like": "UK",
                 # Keyword search only: the probe counted listings by the words "ps2" and the category, which
                 # works; the "Platform" item specific is named and valued in German there, and a wrong
                 # guess would fail every lookup. The title must say PS2 or PlayStation 2 (PLATFORM_WORDS).
@@ -151,7 +151,7 @@ MARKETS = {
     # France (switched on 2026-10-14): as Germany, with French sellers' words, written the same way
     # (no accents) and equally not yet checked against live listings.
     "EBAY_FR": {"label": "FR", "site": "www.ebay.fr", "country": "FR", "currency": "EUR",
-                "extra": True, "min_every_hours": 48, "names_like": "UK", "keyword_only": True,
+                "extra": True, "min_every_hours": 72, "names_like": "UK", "keyword_only": True,
                 "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
                 "junk": ("boite seule", "boitier seul", "notice seule", "livret seul", "jaquette seule", "coque seule",
                          "sans jeu", "sans disque", "boitier vide", "boite vide", "defectueux", "en panne",
@@ -161,7 +161,7 @@ MARKETS = {
                                "disque seul", "jeu seul", "cd seul", "dvd seul", "loose")},
     # Italy (switched on 2026-10-14): as Germany and France, with Italian sellers' words.
     "EBAY_IT": {"label": "IT", "site": "www.ebay.it", "country": "IT", "currency": "EUR",
-                "extra": True, "min_every_hours": 24, "names_like": "UK", "keyword_only": True,
+                "extra": True, "min_every_hours": 48, "names_like": "UK", "keyword_only": True,
                 "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
                 "junk": ("solo scatola", "solo custodia", "solo manuale", "solo libretto", "solo copertina",
                          "senza gioco", "senza disco", "custodia vuota", "scatola vuota", "difettoso",
@@ -171,7 +171,7 @@ MARKETS = {
                                "senza copertina", "solo disco", "solo gioco", "solo cd", "sfuso")},
     # Spain (switched on 2026-10-14): as the others, with Spanish sellers' words.
     "EBAY_ES": {"label": "ES", "site": "www.ebay.es", "country": "ES", "currency": "EUR",
-                "extra": True, "min_every_hours": 72, "names_like": "UK", "keyword_only": True,
+                "extra": True, "min_every_hours": 96, "names_like": "UK", "keyword_only": True,
                 "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
                 "junk": ("solo caja", "solo carcasa", "solo manual", "solo funda", "solo portada", "sin juego",
                          "sin disco", "caja vacia", "estuche vacio", "defectuoso", "roto", "no funciona",

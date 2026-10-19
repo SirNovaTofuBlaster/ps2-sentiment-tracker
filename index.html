@@ -1583,13 +1583,14 @@
             }
             // Where a game never came out ("PAL only": no US copy to find), the dash says "n/a" and why.
             const only = regionOnly(name);
-            const quote = (flag, text, hint) => text
-                ? `<span class="shelf-quote" title="${esc(hint)}"><span class="shelf-flag">${flag}</span><b>${esc(text)}</b></span>`
+            const row = priceIndex.get(priceKey(name));
+            const quote = (flag, text, hint, move = '') => text
+                ? `<span class="shelf-quote" title="${esc(hint)}"><span class="shelf-flag">${flag}</span><b>${esc(text)}</b>${move}</span>`
                 : (flag === 'US' && only === 'PAL') || (flag !== 'US' && only === 'US')
                     ? `<span class="shelf-quote is-none" title="${only === 'PAL' ? 'Only released in Europe and Australia (PAL), so there is no US copy to price' : 'Only released in the US and Canada (NTSC-U), so there is no UK or euro copy to price'}"><span class="shelf-flag">${flag}</span><b>n/a</b></span>`
                     : `<span class="shelf-quote is-none" title="No copies priced"><span class="shelf-flag">${flag}</span><b>&ndash;</b></span>`;
-            return `<span class="shelf-quotes">${quote('US', us === null ? '' : money(us, currencyOf('US')), 'Median asking price on eBay US')}${
-                quote('UK', uk === null ? '' : money(uk, currencyOf('UK')), 'Median asking price on eBay UK')}${
+            return `<span class="shelf-quotes">${quote('US', us === null ? '' : money(us, currencyOf('US')), 'Median asking price on eBay US', row ? priceMoveHtml(row.entry.US, currencyOf('US')) : '')}${
+                quote('UK', uk === null ? '' : money(uk, currencyOf('UK')), 'Median asking price on eBay UK', row ? priceMoveHtml(row.entry.UK, currencyOf('UK')) : '')}${
                 quote('EU', euro?.text ?? '', euro?.hint ?? '')}</span>`;
         }
 
@@ -1780,7 +1781,7 @@
         const PRICE_SEARCH = { US: 'ebay-us', UK: 'ebay-uk', DE: 'ebay-de', FR: 'ebay-fr', IT: 'ebay-it', ES: 'ebay-es' };
         // A site added later is checked less often (min_every_hours in ebay_prices.py), so its
         // figures are overdue later: the hours a figure there may be old before it is dimmed.
-        const SITE_STALE_HOURS = { DE: 30, FR: 56, IT: 30, ES: 80 };   // the PRICE_LOOKUPS entry a figure links to
+        const SITE_STALE_HOURS = { DE: 54, FR: 80, IT: 54, ES: 104 };   // the PRICE_LOOKUPS entry a figure links to
         let priceData = null;          // data/prices/latest.json as loaded, or null
         let priceIndex = new Map();    // priceKey(title) -> { title, entry, level, mentions }, spellings of one game sharing figures
         let priceOwn = new Map();      // the same before the spellings share: which spelling has a figure of its own
@@ -2123,6 +2124,27 @@
         // The short version used in every list: US median, UK median, and the cheapest euro
         // median (the lowest of the German, French, Italian and Spanish ones). Everything else
         // (copies, cheapest copy, week change, charts, links) is on the game's own page.
+        // The short form of the week's move for a list row: "▲ 12%" in teal, "▼ 8%" in red, nothing when the
+        // median is the same or there is no week-old figure yet. A game with more listings than eBay hands over
+        // (truncated: the figure is for the cheapest 200) can move without any real change, so its arrow is dimmed and says so.
+        function priceMoveHtml(site, currency, locale) {
+            const week = weekBefore(site);
+            if (!week) return '';
+            const shownAs = (value) => (value >= 100 ? Math.round(value) : Math.round(value * 100) / 100);
+            const before = shownAs(week.median);
+            const diff = Math.round((shownAs(site.median) - before) * 100) / 100;
+            if (diff === 0) return '';
+            const up = diff > 0;
+            const pct = Math.round(Math.abs(diff) / before * 1000) / 10;
+            const shown = !up && pct >= 99.5 ? '>99' : pct >= 10 ? String(Math.round(pct)) : pct >= 0.1 ? pct.toFixed(1) : '<0.1';
+            let day = '';
+            try { day = cachedFormat('date', locale, { day: 'numeric', month: 'short' }).format(new Date(Date.parse(week.checked))); } catch { /* only a hint */ }
+            const rough = site.truncated === true;
+            const hint = `Median ${up ? 'up' : 'down'} ${shown}% since ${day || 'a week ago'} (was ${money(week.median, currency, locale)})`
+                + (rough ? '. This game has more listings than eBay hands over, so the figure covers the cheapest 200 and can move without a real change.' : '.');
+            return `<span class="ebay-change ebay-move ${up ? 'is-up' : 'is-down'}${rough ? ' is-rough' : ''}" title="${esc(hint)}">${up ? '▲' : '▼'} ${esc(shown)}%</span>`;
+        }
+
         function compactPriceHtml(title, now = Date.now(), locale) {
             const row = priceIndex.get(priceKey(title));
             if (!row) return '';
@@ -2143,7 +2165,7 @@
                 const hint = currency === 'EUR' ? `Lowest median asking price across the euro eBay sites: eBay ${label}. Open the game's page for every site.`
                     : `Median asking price on eBay ${label}. Open the game's page for the detail.`;
                 const note = age.stale && age.text ? ` Last checked ${age.text}: later than usual.` : '';
-                return `<span class="ebay-quote${age.stale ? ' is-stale' : ''}" title="${esc(hint + note)}"><span class="ebay-flag">${esc(currency === 'EUR' ? 'from ' + label : label)}</span><b>${esc(money(site.median, currency, locale))}</b></span>`;
+                return `<span class="ebay-quote${age.stale ? ' is-stale' : ''}" title="${esc(hint + note)}"><span class="ebay-flag">${esc(currency === 'EUR' ? 'from ' + label : label)}</span><b>${esc(money(site.median, currency, locale))}</b>${priceMoveHtml(site, currency, locale)}</span>`;
             });
             return `<span class="ebay-quotes">${figures.join('')}</span>`;
         }
@@ -4302,7 +4324,8 @@
             const [amount, currency] = collectionValue({ title: l.title, region: l.region, condition: l.cat === 'sealed' ? 'sealed' : 'complete' });
             const site = l.region === 'PAL' ? 'UK' : 'US';
             if (amount === null) return `<span class="market-ref">${l.cat === 'sealed' ? 'no sealed guide price yet' : `no eBay ${site} price yet`}</span>`;
-            return `<span class="market-ref">${l.cat === 'sealed' ? 'guide' : `eBay ${site} median`} <b>${esc(money(amount, currency))}</b></span>`;
+            const entry = l.cat === 'sealed' ? null : priceIndex.get(priceKey(l.title))?.entry?.[site];
+            return `<span class="market-ref">${l.cat === 'sealed' ? 'guide' : `eBay ${site} median`} <b>${esc(money(amount, currency))}</b>${entry ? ' ' + priceMoveHtml(entry, currency) : ''}</span>`;
         }
 
         // A listing is a PS2 game in a clear case (the look of the approved preview): a label bar, the box art (initials until it loads), the price and the tracker's own figure.

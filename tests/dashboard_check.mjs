@@ -1670,7 +1670,15 @@ await check('prices: the last day\'s games are ordered by price, and a median sa
 
     // The change beside each median is on the game's page; the list keeps only the short form.
     const detail = (name) => vm.runInContext(`gamePriceDetailHtml(${JSON.stringify(name)}, ${now}, 'en-GB')`, context);
-    assert.doesNotMatch(rows.join(''), /ebay-change/, 'no week change in the list');
+    // The list carries the short form since 2026-10-19: "▲ 3.2%" in teal, "▼ 20%" in red, nothing for no change or no week-old figure.
+    const listed = (name) => rows.find(html => html.includes('>' + name + '<'));
+    assert.match(listed('Persona 4'), /ebay-change ebay-move is-up"[^>]*>▲ 3\.2%</);
+    assert.match(listed('Dollars Only'), /ebay-change ebay-move is-down"[^>]*>▼ 20%</);
+    assert.doesNotMatch(listed('Dear UK'), /ebay-move/, 'no change: no arrow');
+    assert.doesNotMatch(listed('Also Dear UK'), /ebay-move/, 'no week-old figure: no arrow');
+    assert.doesNotMatch(rows.join(''), /\(£\d/, 'the bracketed amount stays on the game page');
+    context.__rough = { checked: '2026-10-14T10:00Z', copies: 90, median: 6, truncated: true, week: { checked: '2026-10-07T10:00Z', median: 14 } };
+    assert.match(vm.runInContext(`priceMoveHtml(__rough, 'USD', 'en-GB')`, context), /ebay-move is-down is-rough"[^>]*cheapest 200[^>]*>▼ 57%</, 'a truncated game is dimmed and says why');
     assert.match(detail('Persona 4'), /<b class="ebay-median">£73\.49<\/b> <span class="ebay-change is-up" title="A week before \((?:7 Oct|Oct 7)\) the median was £71\.19: up £2\.30, 3\.2%\.">\(£2\.30 ▲ 3\.2%\)<\/span>/);
     assert.match(detail('Dear UK'), /<b class="ebay-median">£80\.00<\/b> <span class="ebay-change" title="A week before \((?:7 Oct|Oct 7)\) the median was £80\.00: the same\.">\(no change\)<\/span>/);
     assert.match(detail('Also Dear UK'), /<b class="ebay-median">£80\.00<\/b><span class="ebay-rest">/, 'no figure from a week before: nothing in brackets');
