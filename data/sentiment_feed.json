@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 21:52:53 UTC",
+  "last_updated": "2026-10-19 21:55:30 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -1684,15 +1684,15 @@
       "timestamp": "2026-10-19 20:28 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /vr/ naming Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12887203",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -1753,6 +1753,25 @@
       "match_score": 100,
       "match_method": "fuzzy",
       "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 20:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750003760",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": null,
@@ -8402,13 +8421,14 @@
       "timestamp": "2026-10-19 15:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War",
+      "headline": "Thread on /v/ naming King Arthur and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749987510",
-      "matched_game": "God of War",
+      "matched_game": "King Arthur",
       "matched_games": [
+        "King Arthur",
         "God of War"
       ],
       "match_score": 100,
@@ -303548,23 +303568,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 21:56 UTC"
-    },
-    {
-      "headline": "The Batman 2 Halts Production as Director Matt Reeves Steps Away - IGN Daily Fix",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=q3shh0cNq6U",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 21:53 UTC",
-      "is_digital_only": false
     }
   ]
 }
