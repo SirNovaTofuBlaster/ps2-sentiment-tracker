@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 17:29:44 UTC",
+  "last_updated": "2026-10-19 17:32:31 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -484,6 +484,26 @@
       "hype": 0,
       "timestamp": "2026-10-19 17:02 UTC",
       "views": 252
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4 and Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749992726",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 17:02 UTC"
     },
     {
       "headline": "I have added completely realistic Uber driving to Grand Theft Auto 5",
@@ -1445,13 +1465,14 @@
       "timestamp": "2026-10-19 16:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Wild ARMs 3",
+      "headline": "Thread on /v/ naming Jade Cocoon 2 and Wild ARMs 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749990050",
-      "matched_game": "Wild ARMs 3",
+      "matched_game": "Jade Cocoon 2",
       "matched_games": [
+        "Jade Cocoon 2",
         "Wild ARMs 3"
       ],
       "match_score": 100,
@@ -299897,40 +299918,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 17:35 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Someone At Marvel Thinks We’re All Stupid",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/avengers-endgame-encore-doomsday-post-credits-scenes-2000740008",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 17:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Gears of War: E-Day review – Despite my fears, the best Gears in years",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/reviews/gears-of-war-eday-review/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-05 17:30 UTC",
       "is_digital_only": false
     }
   ]
