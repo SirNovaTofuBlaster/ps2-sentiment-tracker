@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-19 02:32:50 UTC",
+  "last_updated": "2026-10-19 02:46:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Persona 3 FES",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749960340",
+      "matched_game": "Persona 3 FES",
+      "matched_games": [
+        "Persona 3 FES"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 02:23 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Resident Evil 4",
       "source": "4chan /v/",
@@ -7588,14 +7607,15 @@
       "timestamp": "2026-10-18 17:29 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Space Channel 5",
+      "headline": "Thread on /v/ naming Space Channel 5 and Altered Beast",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749933372",
       "matched_game": "Space Channel 5",
       "matched_games": [
-        "Space Channel 5"
+        "Space Channel 5",
+        "Altered Beast"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -292140,76 +292160,6 @@
       "sentiment": 35,
       "hype": 0,
       "timestamp": "2026-10-05 02:49 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Wild Arms 1 not working",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1wxxkyc/wild_arms_1_not_working/",
-      "matched_game": "Wild ARMs: Alter Code F",
-      "matched_games": [
-        "Wild ARMs: Alter Code F"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 02:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Zelda: Ocarina of Time's Link and Epona Get Official New Lego Set",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/the-legend-of-zelda-ocarina-of-time-lego-set/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 02:36 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Cleaned out a shed and look at what I found!",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1wxxdrs/cleaned_out_a_shed_and_look_at_what_i_found/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 02:34 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "After a year of hunting I finally got it... 🥲",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wxxddk/after_a_year_of_hunting_i_finally_got_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 02:33 UTC",
       "is_digital_only": false
     }
   ]
