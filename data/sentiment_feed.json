@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 12:44:27 UTC",
+  "last_updated": "2026-10-19 12:47:07 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -167,6 +167,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 12:26 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Splinter Cell",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749979414",
+      "matched_game": "Splinter Cell",
+      "matched_games": [
+        "Splinter Cell"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 12:25 UTC"
     },
     {
       "headline": "My ps5 is behaving weird",
@@ -2758,6 +2777,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-19 09:19 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Deus Ex",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584984326",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 09:18 UTC"
     },
     {
       "headline": "Stalker 2 [PS5]",
@@ -16764,18 +16802,19 @@
       "timestamp": "2026-10-18 16:04 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Silent Hill 2, Kingdom Hearts and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749928806",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Resident Evil 4",
-        "Kingdom Hearts"
+        "Silent Hill 2",
+        "Kingdom Hearts",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -20209,18 +20248,18 @@
       "timestamp": "2026-10-18 13:14 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Alone in the Dark and Grand Theft Auto III",
+      "headline": "Thread on /vr/ naming Grand Theft Auto III and Alone in the Dark",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12884690",
-      "matched_game": "Alone in the Dark",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Alone in the Dark",
-        "Grand Theft Auto III"
+        "Grand Theft Auto III",
+        "Alone in the Dark"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -296251,40 +296290,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 12:48 UTC"
-    },
-    {
-      "headline": "Feature: Last Chance to Buy These 40+ PS5, PS4 Games in PS Store's Autumn Adventures Sale",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/features/last-chance-to-buy-these-40plus-ps5-ps4-games-in-ps-stores-autumn-adventures-sale",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 12:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Dead by Daylight studio is hiring for a triple-A Sci-Fi first-person shooter with \"a high realism bar\"",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/dead-by-daylight-behaviour-interactive-triple-a-sci-fi-shooter",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 12:44 UTC"
     }
   ]
 }
