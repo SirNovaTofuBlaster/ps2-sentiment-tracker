@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 18:26:43 UTC",
+  "last_updated": "2026-10-19 18:29:26 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -86,6 +86,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 18:20 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Area 51",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585024713",
+      "matched_game": "Area 51",
+      "matched_games": [
+        "Area 51"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 18:19 UTC"
     },
     {
       "headline": "Forgot sudo password Kon ask for original. No keyboard for other way. Does Factory reset work?",
@@ -843,6 +862,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 17:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749994545",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 17:36 UTC"
     },
     {
       "headline": "I am looking for games like Umamusume: Pretty derby",
@@ -3808,18 +3846,19 @@
       "timestamp": "2026-10-19 15:31 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Blade 2 and Persona 4",
+      "headline": "Thread on /v/ naming Monster Hunter, Persona 4 and Blade 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749987885",
-      "matched_game": "Blade 2",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Blade 2",
-        "Persona 4"
+        "Monster Hunter",
+        "Persona 4",
+        "Blade 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -300780,57 +300819,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 18:35 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Working on bringing something unobtainable to my collection...",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1wyg8ig/working_on_bringing_something_unobtainable_to_my/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 18:28 UTC"
-    },
-    {
-      "headline": "Finally added a Playstation 5 Development kit to my collection.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1wyg71h/finally_added_a_playstation_5_development_kit_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 18:27 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "'The Batman Part II' pausa temporalmente su rodaje por asuntos personales del director Matt Reeves",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/the-batman-part-ii/114894/the-batman-part-ii-pausa-rodaje-matt-reeves",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 18:26 UTC",
       "is_digital_only": false
     }
   ]
