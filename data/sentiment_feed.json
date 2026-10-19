@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 04:26:44 UTC",
+  "last_updated": "2026-10-19 04:40:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -541,6 +541,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 03:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Armored Core 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749962460",
+      "matched_game": "Armored Core 3",
+      "matched_games": [
+        "Armored Core 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 03:17 UTC"
     },
     {
       "headline": "I guess they’re replacing Physical Discs with these…",
@@ -1092,15 +1111,16 @@
       "timestamp": "2026-10-19 02:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming King Arthur and Peter Pan",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Peter Pan and King Arthur",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749960249",
-      "matched_game": "King Arthur",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "King Arthur",
-        "Peter Pan"
+        "Kingdom Hearts",
+        "Peter Pan",
+        "King Arthur"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -12998,16 +13018,16 @@
       "timestamp": "2026-10-18 14:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X-2, Final Fantasy X and Final Fantasy XII",
+      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy XII and Final Fantasy X-2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749924684",
-      "matched_game": "Final Fantasy X-2",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy X-2",
         "Final Fantasy X",
-        "Final Fantasy XII"
+        "Final Fantasy XII",
+        "Final Fantasy X-2"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -292981,23 +293001,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 04:45 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "The Seamic's analog stick isn't working properly.",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1wxzlmn/the_seamics_analog_stick_isnt_working_properly/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 04:37 UTC",
       "is_digital_only": false
     }
   ]
