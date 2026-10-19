@@ -923,6 +923,17 @@ class LevelTests(unittest.TestCase):
         for mentions in (once, one_source_twice, cross_posted, only_in_the_text, too_far_apart):
             self.assertEqual(self.level(mentions)[0], "normal", mentions)
 
+    def test_a_post_shared_with_its_words_in_another_order_is_one_story(self):
+        # 2026-10-19: "Game Appreciation #3: Way of the Samurai" on three subreddits made Way of the Samurai surge.
+        shared = [self.said(20, "r/ps2", "game appreciation 3 kuon"), self.said(19, "r/ps2homebrew", "game appreciation kuon 3")]
+        self.assertEqual(self.level(shared)[0], "normal")
+
+    def test_mentions_that_only_fuzzily_resemble_the_name_do_not_start_a_surge(self):
+        # 2026-10-19: three ordinary uses of "road trip" made Road Trip surge.
+        fuzzy = [{**self.said(20, "r/gaming"), "sure": False}, {**self.said(3, "Polygon"), "sure": False}]
+        self.assertEqual(self.level(fuzzy)[0], "normal")
+        self.assertEqual(self.level([fuzzy[0], {**fuzzy[1], "sure": True}])[0], "surging")
+
     def test_a_surge_is_held_for_two_days_after_the_last_mention_then_ends(self):
         mentions = [self.said(20, "r/ps2"), self.said(3, "Eurogamer")]
         level, named, until = self.level(mentions)
@@ -3486,3 +3497,31 @@ class EditionNameClashTests(unittest.TestCase):
         self.assertEqual(placed["US"], {"Resident Evil 4 Premium Edition": "Resident Evil 4 Premium Edition"})
         self.assertEqual(len(games), 1, "no second game is made for it")
         self.assertNotEqual(games[0].get("kind"), "edition")
+
+
+class SearchLogTests(unittest.TestCase):
+    GAME = {"title": "Kuon", "level": "normal"}
+
+    def run_of(self, *spent, other=0):
+        return {"spent": [(game, market, n) for game, market, n in spent], "other_searches": other}
+
+    def test_searches_are_added_by_level_site_and_game(self):
+        log = ebay_prices.update_search_log({}, self.run_of((self.GAME, "EBAY_US", 2), (self.GAME, "EBAY_GB", 1), other=3), NOON)
+        day = log["days"]["2026-10-06"]
+        self.assertEqual(day["total"], 6)
+        self.assertEqual(day["other"], 3)
+        self.assertEqual(day["levels"]["normal"], {"US": 2, "UK": 1})
+        self.assertEqual(day["games"], {"Kuon": 3})
+        again = ebay_prices.update_search_log(log, self.run_of((self.GAME, "EBAY_US", 2)), NOON)
+        self.assertEqual(again["days"]["2026-10-06"]["games"], {"Kuon": 5})
+
+    def test_a_new_day_starts_afresh_and_only_14_days_are_kept(self):
+        log = {}
+        for day in range(20):
+            log = ebay_prices.update_search_log(log, self.run_of((self.GAME, "EBAY_US", 1)), NOON + timedelta(days=day))
+        self.assertEqual(len(log["days"]), 14)
+        self.assertTrue(all(entry["total"] == 1 for entry in log["days"].values()))
+
+    def test_only_our_own_names_and_counts_are_kept(self):
+        log = ebay_prices.update_search_log({}, self.run_of((self.GAME, "EBAY_US", 2)), NOON)
+        self.assertNotIn("http", json.dumps(log))

@@ -612,7 +612,8 @@ def load_mentions():
                 mentions.append({"key": key_of(title), "when": when,
                                  "source": str(item.get("source") or ""),
                                  "headline": " ".join(words(item.get("headline")))[:80],
-                                 "in_headline": item.get("matched_in") != "body"})
+                                 "in_headline": item.get("matched_in") != "body",
+                                 "sure": item.get("match_method") != "fuzzy"})
     for path in sorted(Path(ARCHIVE_DIR).glob("20*.json")):
         for row in read_json(path, []):
             if isinstance(row, dict) and isinstance(row.get("g"), str) and key_of(row["g"]):
@@ -679,9 +680,14 @@ def level_of(mentions, now, held_until, pinned=False):
 
     if len({m["when"].date() for m in named}) >= STAPLE_DAYS:
         return "staple", len(named), None
+    # Several sources count only when their headlines differ in more than word order (one post shared to three
+    # subreddits is one story), and at least one must name the game by its exact name, an alias or a known variant:
+    # headlines that only fuzzily resemble it were ordinary phrases ("road trip", 2026-10-19).
+    stories = {frozenset(m["headline"].split()) for m in recent}
     if (before <= SURGE_QUIET_MENTIONS
             and len({m["source"] for m in recent}) >= SURGE_SOURCES
-            and len({m["headline"] for m in recent}) >= SURGE_SOURCES):
+            and len(stories) >= SURGE_SOURCES
+            and any(m.get("sure", True) for m in recent)):
         until = max(m["when"] for m in recent) + timedelta(hours=SURGE_HOLD_HOURS)
         held_until = max(held_until, until) if held_until else until
     if held_until and now < held_until:
@@ -1690,7 +1696,7 @@ def check_all(http_client, client_id, client_secret, lookups, allowance, known_g
     if with_diagnosis and lookups:
         diagnose(http_client, token, lookups[0][0], counter, secrets)
 
-    started, results, stopped, silent = time.monotonic(), [], "", 0
+    started, results, stopped, silent, spent = time.monotonic(), [], "", 0, []
     for game, market_id in lookups:
         if counter["searches"] + 2 > allowance:
             stopped = "this run's allowance of searches is used"
@@ -1698,8 +1704,10 @@ def check_all(http_client, client_id, client_secret, lookups, allowance, known_g
         if time.monotonic() - started > TIME_BUDGET:
             stopped = "this run's time is up"
             break
+        searches_before = counter["searches"]
         try:
             result = check_market(http_client, token, game, market_id, counter)
+            spent.append((game, market_id, counter["searches"] - searches_before))
         except LimitReached as exc:
             stopped = f"eBay says the allowance of searches is used up ({redact(exc, secrets)})"
             break
@@ -1720,7 +1728,38 @@ def check_all(http_client, client_id, client_secret, lookups, allowance, known_g
             if failed == len(results) or (not known_good and failed + empty == len(results)):
                 stopped = f"the first {len(results)} lookups all failed or came back empty"
                 break
-    return {"results": results, "searches": counter["searches"], "stopped": stopped}
+    return {"results": results, "searches": counter["searches"], "stopped": stopped, "spent": spent,
+            "other_searches": counter["searches"] - sum(count for _, _, count in spent)}
+
+
+SEARCH_LOG_NAME = "searches.json"       # which levels, sites and games the day's searches went to
+SEARCH_LOG_DAYS = 14
+SEARCH_LOG_GAMES = 400                  # most expensive games kept per day
+
+
+def update_search_log(old, run, now):
+    """The search log after a run: for each UTC day, searches by level and site, and by game. Our own game names and
+    counts only (never a listing). Same rules as the allowance counter: a failed search and the second, keyword search
+    both count. `other` holds the run's test lookups that belong to no game."""
+    today = now.strftime("%Y-%m-%d")
+    days = {day: entry for day, entry in ((old or {}).get("days") or {}).items() if isinstance(entry, dict)}
+    day = days.get(today) or {"total": 0, "other": 0, "levels": {}, "games": {}}
+    for game, market_id, count in run.get("spent") or ():
+        label = MARKETS[market_id]["label"]
+        by_site = day["levels"].setdefault(game.get("level", "normal") if game.get("kind") not in ("console", "edition")
+                                           else game["kind"] + "s", {})
+        by_site[label] = by_site.get(label, 0) + count
+        day["games"][game["title"]] = day["games"].get(game["title"], 0) + count
+        day["total"] += count
+    day["other"] += run.get("other_searches", 0)
+    day["total"] += run.get("other_searches", 0)
+    top = sorted(day["games"].items(), key=lambda pair: (-pair[1], pair[0]))[:SEARCH_LOG_GAMES]
+    day["games"] = dict(top)
+    days[today] = day
+    keep = sorted(days)[-SEARCH_LOG_DAYS:]
+    return {"what": ("Eblay searches spent, by UTC day: by level and site, and by game (the most expensive "
+                     f"{SEARCH_LOG_GAMES}). Our own game names and counts only.").replace("Eblay", "eBay"),
+            "days": {d: days[d] for d in keep}}
 
 
 def verdict(results, state):
@@ -2508,6 +2547,11 @@ def main(argv=None):
         say(f"STOPPED: {exc}")
         return 1
     write_latest(latest_path, latest)
+    try:
+        log_path = latest_path.parent / SEARCH_LOG_NAME
+        write_latest(log_path, update_search_log(read_json(log_path, {}), run, now))
+    except (OSError, ValueError, KeyError) as exc:
+        say(f"The search log was not updated ({exc.__class__.__name__}).")
     # The month before is enough history for most of the index, but every month is read so
     # that it never restarts; a month that cannot be read leaves the index as it was.
     every_month = []
