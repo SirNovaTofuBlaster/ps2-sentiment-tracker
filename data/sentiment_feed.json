@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 03:43:49 UTC",
+  "last_updated": "2026-10-19 03:57:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -346,6 +346,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 02:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749961037",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 02:39 UTC"
     },
     {
       "headline": "Looking for a predator like game where have to fight an invisible enemy or hard to see enemy",
@@ -2420,6 +2439,25 @@
       "timestamp": "2026-10-18 23:14 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Dokapon Kingdom",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749951715",
+      "matched_game": "Dokapon Kingdom",
+      "matched_games": [
+        "Dokapon Kingdom"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 23:14 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -2983,6 +3021,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 22:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749950242",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 22:45 UTC"
     },
     {
       "headline": "Recommend truly aimless, task-less, low stakes game",
@@ -13717,17 +13774,18 @@
       "timestamp": "2026-10-18 13:14 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Grand Theft Auto III",
+      "headline": "Thread on /vr/ naming Alone in the Dark and Grand Theft Auto III",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12884690",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Alone in the Dark",
       "matched_games": [
+        "Alone in the Dark",
         "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -292519,91 +292577,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 03:58 UTC"
-    },
-    {
-      "headline": "What was it like playing Super Metroid upon release?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wxyuca/what_was_it_like_playing_super_metroid_upon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:54 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "I made a Decky plugin that turns your Steam Deck home screen into a rotary dial you spin with the trackpad",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1wxytcw/i_made_a_decky_plugin_that_turns_your_steam_deck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:52 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Are these legitimate?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wxysje/are_these_legitimate/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:51 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Famitsu’s most wanted games – October 4, 2026 – Kirby and the World Beyond makes first appearance",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/famitsus-most-wanted-games-october-4-2026-kirby-and-the-world-beyond-makes-first-appearance/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:50 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Thank you for the feedback: added 2 cursor trackpad support to Mini Chess",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1wxyqb9/thank_you_for_the_feedback_added_2_cursor/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:48 UTC",
-      "is_digital_only": false
     }
   ]
 }
