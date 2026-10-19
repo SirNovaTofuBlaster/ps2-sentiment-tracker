@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 06:37:39 UTC",
+  "last_updated": "2026-10-19 06:48:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -35,6 +35,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 06:12 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Genji",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749968569",
+      "matched_game": "Genji",
+      "matched_games": [
+        "Genji"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 06:12 UTC"
     },
@@ -626,6 +645,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 04:48 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749965665",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 04:44 UTC"
     },
     {
       "headline": "\"I was there\" - Reliving history is a potential that gaming should embrace",
@@ -13943,16 +13981,16 @@
       "timestamp": "2026-10-18 14:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy XII and Final Fantasy X-2",
+      "headline": "Thread on /v/ naming Final Fantasy X-2, Final Fantasy X and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749924684",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Final Fantasy X-2",
       "matched_games": [
+        "Final Fantasy X-2",
         "Final Fantasy X",
-        "Final Fantasy XII",
-        "Final Fantasy X-2"
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
