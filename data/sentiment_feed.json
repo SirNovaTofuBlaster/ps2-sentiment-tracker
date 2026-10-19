@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 03:13:32 UTC",
+  "last_updated": "2026-10-19 03:16:02 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -462,6 +462,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 02:21 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming King Arthur and Peter Pan",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749960249",
+      "matched_game": "King Arthur",
+      "matched_games": [
+        "King Arthur",
+        "Peter Pan"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 02:20 UTC"
     },
     {
       "headline": "Despite being slow sometimes I 100% midnight club 3. Just wanted to share the pagani zonda. I hope this is ok to post.",
@@ -292604,23 +292624,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 03:17 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "September pickups",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wxy5cp/september_pickups/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:15 UTC",
       "is_digital_only": false
     }
   ]
