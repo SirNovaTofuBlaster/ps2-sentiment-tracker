@@ -384,6 +384,7 @@ These are the original sources, moved unchanged from `scraper.py` into feeds.jso
 | PC Gamer | Major Global Outlets & Magazines | https://www.pcgamer.com/rss/ |
 | Nintendo Everything | Major Global Outlets & Magazines | https://nintendoeverything.com/feed |
 | Kotaku | Major Global Outlets & Magazines | https://kotaku.com/rss |
+| The Game Post | Major Global Outlets & Magazines | https://thegamepost.com/feed/ (2026-10-19, not yet tried live) |
 | Polygon | Major Global Outlets & Magazines | https://www.polygon.com/rss/index.xml |
 | VG247 | Major Global Outlets & Magazines | https://www.vg247.com/feed |
 | Rock Paper Shotgun | Major Global Outlets & Magazines | https://www.rockpapershotgun.com/feed/ |

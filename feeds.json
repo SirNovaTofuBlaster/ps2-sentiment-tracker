@@ -151,6 +151,15 @@
     },
     {
       "type": "news",
+      "name": "The Game Post",
+      "url": "https://thegamepost.com/feed/",
+      "group": "Major Global Outlets & Magazines",
+      "role": "press",
+      "enabled": true,
+      "note": "Added 2026-10-19 at the maintainer's request (it ran 'Star Wars Battlefront 3 Could Be Developed by Destiny 2 Maker Bungie' on 2026-10-19). Feed address is the usual WordPress one, not yet tried live: this workspace cannot reach the site. Read its row in feed_status.json after the next scraper run."
+    },
+    {
+      "type": "news",
       "name": "PlayStation.Blog",
       "url": "https://blog.playstation.com/feed/",
       "group": "Official Platform Blogs",
