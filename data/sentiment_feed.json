@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 19:58:53 UTC",
+  "last_updated": "2026-10-19 20:01:33 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -5066,6 +5066,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 15:57 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand and Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749989209",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand",
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 15:57 UTC"
     },
@@ -81415,15 +81435,16 @@
       "timestamp": "2026-10-16 07:05 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Need for Speed Underground 2 and V-Rally 3",
+      "headline": "Thread on /vr/ naming Midnight Club 2, V-Rally 3 and Need for Speed Underground 2",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12880718",
-      "matched_game": "Need for Speed Underground 2",
+      "matched_game": "Midnight Club 2",
       "matched_games": [
-        "Need for Speed Underground 2",
-        "V-Rally 3"
+        "Midnight Club 2",
+        "V-Rally 3",
+        "Need for Speed Underground 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -301860,57 +301881,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 20:01 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Someone Made A Fun Soccer Romhack For Ocarina Of Time And—God Damnit, It Uses AI-Generated Code",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/ocarina-of-time-romhack-soccerina-of-time-2000740026",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 20:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Multi-Stage Boss Fights Are the Worst Video Game Mechanic of All Time",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/multi-stage-boss-fights-worst-video-game-mechanic/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-05 20:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Overwatch - Official Season 5: A Grim Doctrine Launch Trailer",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=2ZC1WMLeQh0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 20:00 UTC",
       "is_digital_only": false
     }
   ]
