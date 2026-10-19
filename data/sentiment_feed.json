@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-19 14:20:46 UTC",
+  "last_updated": "2026-10-19 14:25:53 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585002316",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 14:13 UTC"
+    },
     {
       "headline": "Saros' Biggest Update Yet Officially Gets Release Date and Full Details",
       "source": "Polygon.com",
@@ -52,6 +71,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-19 14:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749983391",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 14:03 UTC"
     },
     {
       "headline": "BeamNG.drive Is an Astonishing Driving Sim in Search of a Game",
@@ -6843,6 +6881,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 04:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749965841",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 04:49 UTC"
     },
     {
       "headline": "All i have is 8 gb vram to offer </3",
@@ -14536,13 +14593,14 @@
       "timestamp": "2026-10-18 18:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Ape Escape 3",
+      "headline": "Thread on /v/ naming Urban Chaos: Riot Response and Ape Escape 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749938185",
-      "matched_game": "Ape Escape 3",
+      "matched_game": "Urban Chaos: Riot Response",
       "matched_games": [
+        "Urban Chaos: Riot Response",
         "Ape Escape 3"
       ],
       "match_score": 100,
@@ -296808,40 +296866,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 14:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Zelda and Banjo Recompiled Devs Go To War With AI Vibe-Coded ‘Slopcomps’",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/zelda-and-banjo-recompiled-devs-go-to-war-with-ai-vibe-coded-slopcomps-2000739936",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 14:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Escritora de GTA 6 diz que Lucia está ao nível de Arthur Morgan e Niko Bellic",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/escritora-de-gta-6-diz-que-lucia-esta-ao-nivel-de-arthur-morgan-e-niko-bellic",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 14:22 UTC",
       "is_digital_only": false
     }
   ]
