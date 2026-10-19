@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 08:55:42 UTC",
+  "last_updated": "2026-10-19 08:58:17 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2095,6 +2095,25 @@
       "timestamp": "2026-10-19 04:59 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Just Cause",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749966026",
+      "matched_game": "Just Cause",
+      "matched_games": [
+        "Just Cause"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 04:54 UTC"
+    },
+    {
       "headline": "games for single lonely men?",
       "source": "r/gamingsuggestions",
       "source_type": "reddit",
@@ -3663,16 +3682,16 @@
       "timestamp": "2026-10-19 02:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming King Arthur, Peter Pan and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Peter Pan and King Arthur",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749960249",
-      "matched_game": "King Arthur",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "King Arthur",
+        "Kingdom Hearts",
         "Peter Pan",
-        "Kingdom Hearts"
+        "King Arthur"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -10582,14 +10601,15 @@
       "timestamp": "2026-10-18 18:13 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Top Gun",
+      "headline": "Thread on /vg/ naming Top Gun and Burnout Revenge",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/584907965",
       "matched_game": "Top Gun",
       "matched_games": [
-        "Top Gun"
+        "Top Gun",
+        "Burnout Revenge"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -73027,6 +73047,25 @@
       "hype": 0,
       "timestamp": "2026-10-15 23:50 UTC",
       "views": 4570
+    },
+    {
+      "headline": "Thread on /vr/ naming ICO",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12880268",
+      "matched_game": "ICO",
+      "matched_games": [
+        "ICO"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-15 23:49 UTC"
     },
     {
       "headline": "Looking for a cooking game !",
@@ -294739,23 +294778,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 08:58 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Check out some of the most highly rated Steam Deck Verified games from September 2026",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1wy3ng6/check_out_some_of_the_most_highly_rated_steam/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 08:57 UTC",
       "is_digital_only": false
     }
   ]
