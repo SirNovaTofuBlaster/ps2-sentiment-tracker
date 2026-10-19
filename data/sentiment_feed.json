@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-19 13:17:53 UTC",
+  "last_updated": "2026-10-19 13:28:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Guitar Hero",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749981842",
+      "matched_game": "Guitar Hero",
+      "matched_games": [
+        "Guitar Hero"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 13:27 UTC"
+    },
     {
       "headline": "Littlelands launches in Early Access on November 16",
       "source": "Gematsu",
@@ -714,6 +733,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 12:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749978739",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 12:05 UTC"
     },
@@ -296184,59 +296222,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 13:28 UTC"
-    },
-    {
-      "headline": "Let’s Play Through Kingdom Hearts Together (No, Seriously)",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/kingdom-hearts-collection-switch-xbox-ps5-review-recap-2000739938",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 13:25 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "GTA 6 writer says the series has never had \"much focus on national politics\" beyond GTA 4's war on terror, and the latest entry won't get \"too specific\"",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/gta-6-writer-says-the-series-has-never-had-much-focus-on-national-politics-beyond-gta-4s-war-on-terror-and-the-latest-entry-wont-get-too-specific",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 13:23 UTC"
-    },
-    {
-      "headline": "Hellblade studio Ninja Theory has started laying off staff, following Xbox’s announcement that it faces closure",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1wy8evi/hellblade_studio_ninja_theory_has_started_laying/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-05 13:21 UTC",
-      "is_digital_only": false
     }
   ]
 }
