@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 10:08:41 UTC",
+  "last_updated": "2026-10-19 10:22:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -377,6 +377,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 09:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Okami and Beyond Good & Evil",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/749973428",
+      "matched_game": "Okami",
+      "matched_games": [
+        "Okami",
+        "Beyond Good & Evil"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 09:06 UTC"
     },
@@ -294785,78 +294805,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-05 10:23 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Help with SMB",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wy4you/help_with_smb/",
-      "matched_game": "Grand Theft Auto: Liberty City Stories",
-      "matched_games": [
-        "Grand Theft Auto: Liberty City Stories",
-        "Grand Theft Auto: San Andreas",
-        "God of War II"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 10:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Essencelord, A Brand New RPG For Game Boy Color, Is Now Crowdfunding On Kickstarter",
-      "source": "Time Extension",
-      "source_type": "news",
-      "feed": "https://www.timeextension.com/feed",
-      "link": "https://www.timeextension.com/news/2026/10/essencelord-a-brand-new-rpg-for-game-boy-color-is-now-crowdfunding-on-kickstarter",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 10:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Ultimate Legacy Piece Tier List – Best Sword, Style & Ability",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/legacy-piece-tier-list/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-05 10:08 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Los creadores de Dead by Daylight trabajan en un nuevo FPS de ciencia ficción y gráficos realistas",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026278015/los-creadores-de-dead-by-daylight-trabajan-en-un-nuevo-fps-de-ciencia-ficcion-y-graficos-realistas/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 10:08 UTC",
       "is_digital_only": false
     }
   ]
