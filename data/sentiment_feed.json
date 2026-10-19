@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-19 03:18:16 UTC",
+  "last_updated": "2026-10-19 03:29:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -764,15 +764,15 @@
       "timestamp": "2026-10-19 02:01 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Sims 2 and The Sims",
+      "headline": "Thread on /v/ naming The Sims and The Sims 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749959359",
-      "matched_game": "The Sims 2",
+      "matched_game": "The Sims",
       "matched_games": [
-        "The Sims 2",
-        "The Sims"
+        "The Sims",
+        "The Sims 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -7263,6 +7263,25 @@
       ],
       "match_score": 100,
       "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-18 18:13 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/584907965",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -292574,91 +292593,6 @@
       "hype": 0,
       "timestamp": "2026-10-05 03:38 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Valor Mortis Release Date And Game Details Revealed",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/382L2MjItrs",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:24 UTC"
-    },
-    {
-      "headline": "My PS2 And PS3 Collection",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wxya15/my_ps2_and_ps3_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:22 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "My PS2 And PS3 Collection",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1wxy9lq/my_ps2_and_ps3_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:21 UTC"
-    },
-    {
-      "headline": "REPO MAN Open World RPG Details Revealed",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/S3OAgP1r_Jo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:20 UTC"
-    },
-    {
-      "headline": "Call of Duty Modern Warfare 4 DMZ Worldbuilder Trailer Released",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/eJhl5SuGxEE",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-05 03:18 UTC"
     }
   ]
 }
