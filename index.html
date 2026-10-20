@@ -1005,8 +1005,9 @@
                 async function fetchSentimentData() {
             setBadge('Fetching JSON...', 'info');
 
-            // Unsaved source edits survive a refresh; only the feed health is reloaded then.
-            if (feedConfig) await loadFeedStatus(); else await loadSources();
+            // Unsaved source edits survive a refresh; only the feed health is reloaded then. The sources and the feed are
+            // fetched at the same time.
+            const sourcesLoaded = feedConfig ? loadFeedStatus() : loadSources();
 
             let data = fallbackData;
             feedPartial = false;
@@ -1034,6 +1035,7 @@
                 setBadge('Fallback Mock Mode', 'info');
             }
 
+            await sourcesLoaded;
             allFeedData = data.items || [];
             const sync = document.getElementById('lastUpdated');
             sync.innerText = formatLocalTime(data.last_updated) || 'Just now';
@@ -1049,13 +1051,16 @@
             loadGachaState();   // coins, what is left in each machine and the prizes won
             registerServiceWorker();
             loadWikiChecks();   // Wikipedia's "collectible" verdicts; the list is drawn again when they arrive
-            // Prices first: every list below shows them beside its games. The Underrated file comes last: Highlights mixes its games in.
-            await loadFx();
-            await loadPrices();
-            await loadRare();
-            await loadDemand();
-            await loadDigitalArchive();
-            await ensureUnderrated();
+            // The Tracker is drawn at once; the rest arrives after it and the lists are drawn again. Prices come after the
+            // euro rate and before the Rarest page and the Demand Index, which show them; the digital-only archive and the
+            // Underrated file (Highlights mixes its games in) do not wait for either.
+            refreshDashboard();
+            const priced = (async () => {
+                await loadFx();
+                await loadPrices();
+                await Promise.all([loadRare(), loadDemand()]);
+            })();
+            await Promise.all([priced, loadDigitalArchive(), ensureUnderrated()]);
             refreshDashboard();
         }
 

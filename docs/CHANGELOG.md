@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-10-20: the Tracker is drawn before the other files arrive
+
+- **Why**: `fetchSentimentData()` fetched feeds.json, then the feed, then the euro rate, prices (three files), the Rarest page (four), the Demand Index, the digital-only archive and the Underrated file one after the other, and drew the Tracker only after the last. Every one of those waits was in front of the first screen.
+- **Now**: the sources and the feed are fetched at the same time; the Tracker is drawn as soon as both are in; the euro rate, prices, then the Rarest page and Demand Index (which show prices) follow in that order, while the digital-only archive and the Underrated file are fetched alongside; the lists are drawn again when all are in. The order that matters (prices before the lists that show them) is kept and pinned by a test. No visible change except that the Tracker appears sooner and prices fill in after it.
+
 ## 2026-10-20: the page opens on a short copy of the feed
 
 - **Why**: `data/sentiment_feed.json` is 10.7 MB (1.3 MB compressed) and the page downloaded and parsed all of it before showing the Tracker, although 90% of its rows name no game (16,133 of 18,008 on 2026-10-20) and the default list shows only games.

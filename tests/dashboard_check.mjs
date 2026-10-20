@@ -971,8 +971,11 @@ await check('prices are read from the site itself, with no token, before the lis
     await vm.runInContext('loadPrices()', context);
     assert.match(el('pricesEmpty').textContent, /^No prices yet\./);
 
-    assert.match(read('index.html'), /await loadPrices\(\);\s*await loadRare\(\);\s*await loadDemand\(\);\s*await loadDigitalArchive\(\);\s*await ensureUnderrated\(\);\s*refreshDashboard\(\);/,
+    const page = read('index.html');
+    assert.match(page, /await loadFx\(\);\s*await loadPrices\(\);\s*await Promise\.all\(\[loadRare\(\), loadDemand\(\)\]\);/,
         'prices are loaded before the lists that show them');
+    assert.match(page, /refreshDashboard\(\);\s*const priced = \(async \(\) => \{[\s\S]*?\}\)\(\);\s*await Promise\.all\(\[priced, loadDigitalArchive\(\), ensureUnderrated\(\)\]\);\s*refreshDashboard\(\);/,
+        'the Tracker is drawn before the other files arrive and again after them');
 });
 
 await check('four pages in one: Tracker, Rarest, Most mentioned and eBay prices', () => {
@@ -4131,6 +4134,7 @@ await check('the short snapshot opens the Tracker; the full one is fetched only 
     const rest = [row(3), row(4), row(5)];
     const fullItems = [...kept, ...rest];
     const realFetch = context.fetch;
+    const warnBefore = context.console.warn;
     const asked = [];
     context.fetch = async (url) => {
         asked.push(String(url));
@@ -4164,12 +4168,14 @@ await check('the short snapshot opens the Tracker; the full one is fetched only 
         // A fetch that fails leaves the short list on screen with a message
         asked.length = 0;
         context.fetch = async () => { throw new Error('offline'); };
+        context.console.warn = () => {};
         run(`feedPartial = true; feedFullState = 'idle'; allFeedData = __kept; refreshDashboard();`);
         await new Promise(resolve => setTimeout(resolve, 20));
         assert.equal(run('feedFullState'), 'failed');
         assert.match(el('feedSummary').textContent, /could not be loaded/);
         assert.equal(el('feedTableBody').children.length, 2);
     } finally {
+        context.console.warn = warnBefore;
         context.fetch = realFetch;
         run(`feedPartial = false; feedOmitted = {}; feedOldest = null; feedFullState = 'idle'; document.getElementById('filterSelect').value = ${JSON.stringify(defaults.filterSelect)};`);
     }
