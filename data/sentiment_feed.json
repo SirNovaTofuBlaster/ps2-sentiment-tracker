@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-20 03:41:25 UTC",
+  "last_updated": "2026-10-20 03:52:48 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750023570",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 03:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750023472",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 03:47 UTC"
+    },
     {
       "headline": "LOUD’s keyboard lineup from the Champions Shanghai final",
       "source": "r/pcmasterrace",
@@ -452,6 +490,26 @@
       "timestamp": "2026-10-20 02:40 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Monster Hunter and Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750020791",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 02:40 UTC"
+    },
+    {
       "headline": "Help needed with psbbn",
       "source": "r/ps2homebrew",
       "source_type": "reddit",
@@ -798,6 +856,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 02:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750019441",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 02:09 UTC"
     },
     {
       "headline": "Looking for a new keyboard",
@@ -7261,13 +7338,14 @@
       "timestamp": "2026-10-19 19:56 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming The Mummy and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750002316",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "The Mummy",
       "matched_games": [
+        "The Mummy",
         "Resident Evil 4"
       ],
       "match_score": 100,
@@ -306677,40 +306755,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 03:58 UTC"
-    },
-    {
-      "headline": "Should I buy Silent Hill Townfall?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wysrko/should_i_buy_silent_hill_townfall/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 03:48 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Angelian Trigger coming to PC on December 10, PS5 in 2027",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/angelian-trigger-coming-to-pc-on-december-10-ps5-in-2027",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 03:41 UTC",
-      "is_digital_only": false
     }
   ]
 }
