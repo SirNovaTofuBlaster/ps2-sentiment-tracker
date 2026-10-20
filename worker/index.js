@@ -184,7 +184,11 @@ async function wanted(request, env) {
         const rows = (await env.DB.prepare(
             'SELECT game, COUNT(DISTINCT account) AS n FROM copies WHERE sealed + complete + loose > 0 GROUP BY game HAVING n >= ? ORDER BY n DESC, game LIMIT ?')
             .bind(WANTED_MIN_ACCOUNTS, WANTED_MAX).all()).results;
-        response = new Response(JSON.stringify({ generated: new Date().toISOString(), games: rows.map(row => row.game) }), {
+        // The names of the games held sealed by anyone (the same rule, names alone): the price job also looks for new copies of these.
+        const sealed = (await env.DB.prepare(
+            'SELECT game, COUNT(DISTINCT account) AS n FROM copies WHERE sealed > 0 GROUP BY game HAVING n >= ? ORDER BY n DESC, game LIMIT ?')
+            .bind(WANTED_MIN_ACCOUNTS, WANTED_MAX).all()).results;
+        response = new Response(JSON.stringify({ generated: new Date().toISOString(), games: rows.map(row => row.game), sealed: sealed.map(row => row.game) }), {
             headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=300' },
         });
         await cache.put(cacheKey, response.clone());
