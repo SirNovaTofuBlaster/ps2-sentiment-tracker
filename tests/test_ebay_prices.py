@@ -73,6 +73,7 @@ class FakeHttp:
     def __init__(self, answer=None, token_answer=None):
         self.token_calls, self.searches, self.wanted_calls = [], [], []
         self.wanted = []      # the crowd service's list of game names held in collections
+        self.sealed = []      # ...and the names of those held sealed
         self.answer = answer or (lambda params, headers: page())
         self.token_answer = token_answer or (200, {"access_token": TOKEN, "expires_in": 7200,
                                                    "token_type": "Application Access Token"})
@@ -80,7 +81,7 @@ class FakeHttp:
     def send(self, url, headers, body=None):
         if url == ebay_prices.WANTED_URL:
             self.wanted_calls.append({"url": url, "headers": headers, "body": body})
-            status, payload = 200, {"games": self.wanted}
+            status, payload = 200, {"games": self.wanted, "sealed": self.sealed}
         elif url == ebay_prices.TOKEN_URL:
             self.token_calls.append({"headers": headers, "body": body})
             status, payload = self.token_answer
@@ -1842,6 +1843,62 @@ class CollectionPricingTests(unittest.TestCase):
         self.assertEqual(self.sandbox.latest["games"]["Okami"]["level"], "normal", "a game the feed names keeps its own level")
         self.assertNotIn("Black", self.sandbox.latest["games"], "an ordinary one-word name is still not priced")
         self.assertIn("1 collection", printed)
+
+    NEW_FILTER = "1000|1500|1750"
+
+    def sealed_answer(self, params, headers):
+        if self.NEW_FILTER in params.get("filter", ""):
+            currency = "GBP" if headers["X-EBAY-C-MARKETPLACE-ID"] == "EBAY_GB" else "USD"
+            return page(listing("Kuon PS2 Factory Sealed", 300.0, currency=currency, item_id=7, condition="New"),
+                        listing("Kuon (PS2) brand new", 340.0, currency=currency, item_id=8, condition="New"))
+        return two_copies(params, headers)
+
+    def test_a_game_held_sealed_gets_a_search_for_new_copies_on_the_us_and_uk_once_a_day(self):
+        fake = FakeHttp(self.sealed_answer)
+        fake.wanted, fake.sealed = ["kuon", "okami"], ["kuon"]
+        code, printed, fake = self.sandbox.run(fake)
+        self.assertEqual(code, 0, printed)
+        new = [c for c in fake.searches if self.NEW_FILTER in c["params"].get("filter", "")]
+        self.assertEqual(sorted(c["headers"]["X-EBAY-C-MARKETPLACE-ID"] for c in new), ["EBAY_GB", "EBAY_US"])
+        self.assertTrue(all(c["params"]["q"].startswith("kuon") for c in new), "only the sealed game")
+        us = self.sandbox.latest["games"]["Kuon"]["US"]
+        self.assertEqual(us["new"], {"copies": 2, "lowest": 300.0, "median": 320.0})
+        self.assertEqual(us["copies"], 2, "the used figures never include them")
+        self.assertIn("new_checked", us)
+        self.assertNotIn("new_checked", self.sandbox.latest["games"]["Okami"]["US"])
+        # Four hours later the lookups are not due again, and nor are the new copies.
+        self.sandbox.now = NOON + timedelta(hours=13)
+        fake2 = FakeHttp(self.sealed_answer)
+        fake2.wanted, fake2.sealed = ["kuon", "okami"], ["kuon"]
+        self.sandbox.run(fake2)
+        self.assertFalse([c for c in fake2.searches if self.NEW_FILTER in c["params"].get("filter", "")],
+                         "asked within 24 hours")
+        self.assertIn("new", self.sandbox.latest["games"]["Kuon"]["US"], "the last answer is kept")
+        self.sandbox.now = NOON + timedelta(hours=26)
+        fake3 = FakeHttp(self.sealed_answer)
+        fake3.wanted, fake3.sealed = ["kuon", "okami"], ["kuon"]
+        self.sandbox.run(fake3)
+        self.assertEqual(len([c for c in fake3.searches if self.NEW_FILTER in c["params"].get("filter", "")]), 2)
+
+    def test_new_copies_are_only_searched_while_the_day_has_room(self):
+        self.sandbox.write("data/prices/latest.json", {"searches": {"day": "2026-10-06", "used": 4100}, "games": {}})
+        fake = FakeHttp(self.sealed_answer)
+        fake.wanted, fake.sealed = ["kuon"], ["kuon"]
+        code, printed, fake = self.sandbox.run(fake)
+        self.assertEqual(code, 0, printed)
+        self.assertTrue(fake.searches, "the ordinary lookups still go ahead")
+        self.assertFalse([c for c in fake.searches if self.NEW_FILTER in c["params"].get("filter", "")])
+        self.assertNotIn("new_checked", self.sandbox.latest["games"]["Kuon"]["US"])
+
+    def test_an_older_service_without_the_sealed_list_changes_nothing(self):
+        fake = FakeHttp(self.sealed_answer)
+        fake.wanted = ["kuon"]
+        original = fake.send
+        fake.send = lambda url, headers, body=None: ((200, json.dumps({"games": ["kuon"]})) if url == ebay_prices.WANTED_URL
+                                                      else original(url, headers, body))
+        code, printed, fake = self.sandbox.run(fake)
+        self.assertEqual(code, 0, printed)
+        self.assertFalse([c for c in fake.searches if self.NEW_FILTER in c["params"].get("filter", "")])
 
     def test_the_request_carries_no_key_and_asks_for_names_only(self):
         _, fake = self.run_with(["kuon"])

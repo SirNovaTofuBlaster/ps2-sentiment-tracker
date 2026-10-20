@@ -208,6 +208,8 @@ STEADY_LOOK_DAYS = 6
 STEADY_SPAN_DAYS = 4
 STEADY_MIN_ROWS = 3
 WANTED_MAX_NAMES = 3000      # the most names read from the crowd service
+SEALED_EVERY_HOURS = 24      # a game held sealed in a collection gets a search for new copies this often, on the US and UK...
+SEALED_RESERVE = 900         # ...only while the day has used fewer than DAILY_SEARCHES minus this: the lookups come first
 EARLY_MINUTES = 30           # a check may come this much early, so "every 6 hours" does not drift to 7
 CHANGE_DAYS = 7              # beside each median, how it compares with the median this long before...
 CHANGE_SLACK_DAYS = 2        # ...as recorded at most this much longer before (a quiet game is checked daily)
@@ -844,10 +846,10 @@ def add_underrated_games(games, titles, library, catalogue, level="underrated"):
     return left_out
 
 
-def load_wanted(http, url=None):
+def load_wanted(http, url=None, with_sealed=False):
     """The game names held in people's collections, from the crowd service (worker/, `GET /api/wanted`: names only,
     never an account). Any failure gives none: the collections are an extra and must never stop the pricing of the
-    others. The request carries no key."""
+    others. The request carries no key. With `with_sealed`, (names, names of the games held sealed) or None."""
     try:
         status, text = http.send(url or WANTED_URL, {"Accept": "application/json"})
         rows = json.loads(text).get("games") if status == 200 else None
@@ -855,7 +857,12 @@ def load_wanted(http, url=None):
         rows = None
     if not isinstance(rows, list):
         return None
-    return [name for name in rows if isinstance(name, str) and 2 <= len(name) <= 100][:WANTED_MAX_NAMES]
+    names = [name for name in rows if isinstance(name, str) and 2 <= len(name) <= 100][:WANTED_MAX_NAMES]
+    if not with_sealed:
+        return names
+    sealed = json.loads(text).get("sealed")
+    sealed = [name for name in sealed if isinstance(name, str) and 2 <= len(name) <= 100][:WANTED_MAX_NAMES] if isinstance(sealed, list) else []
+    return names, sealed
 
 
 def collection_titles(names, library, never):
@@ -865,6 +872,27 @@ def collection_titles(names, library, never):
     for title in library.values():
         by_name.setdefault(search_terms(title)[0], title)
     return [by_name[name] for name in dict.fromkeys(names) if name in by_name and key_of(by_name[name]) not in never]
+
+
+def mark_sealed(games, titles, state, now):
+    """Flag the games people hold sealed (`titles`) that are due a search for new copies: on the US and UK, when the last one
+    is `SEALED_EVERY_HOURS` old or there was none. It rides on the game's next ordinary lookup there (`check_market()`), only
+    while the day has room (`SEALED_RESERVE`). The Rarest page's games already get one and are left alone."""
+    keys = {key_of(title) for title in titles}
+    prior = prior_games(state)
+    ids = [market_id for market_id in ("EBAY_US", "EBAY_GB") if market_id in MARKETS]
+    for game in games:
+        if game["key"] not in keys or game.get("kind") in ("console", "edition") or game.get("new_tier"):
+            continue
+        entry = prior.get(game["key"]) or {}
+        due = []
+        for market_id in ids:
+            site = entry.get(MARKETS[market_id]["label"])
+            asked = parse_stamp(site.get("new_checked")) if isinstance(site, dict) else None
+            if asked is None or now - asked >= timedelta(hours=SEALED_EVERY_HOURS) - timedelta(minutes=EARLY_MINUTES):
+                due.append(market_id)
+        if due:
+            game["sealed_tier"] = due
 
 
 def mark_watched(games, titles):
@@ -1533,6 +1561,10 @@ def check_market(http_client, token, game, market_id, counter):
         if not result.get("counted"):
             # No used copy is listed in the site's own country: a Rarest game's copies are often sold from abroad.
             result["abroad"] = check_abroad_copies(http_client, token, game, market_id, counter, keyword_search)
+    elif market_id in (game.get("sealed_tier") or ()) and counter["searches"] < counter.get("sealed_room", 0):
+        # A game people hold sealed: one more search for its new copies, counted apart like the Rarest page's.
+        result["new"] = check_new_copies(http_client, token, game, market_id, counter, keyword_search)
+        result["new_asked"] = True
     return result
 
 
@@ -1684,7 +1716,7 @@ def check_game(http_client, token, game, secrets, markets=("EBAY_GB", "EBAY_US")
 
 
 def check_all(http_client, client_id, client_secret, lookups, allowance, known_good=True,
-              with_diagnosis=False):
+              with_diagnosis=False, sealed_room=0):
     """Work through the due lookups until they, the allowance or the time run out.
 
     Returns {"results": [(game, market id, result)], "searches": n, "stopped": why or ""}.
@@ -1692,7 +1724,7 @@ def check_all(http_client, client_id, client_secret, lookups, allowance, known_g
     every lookup comes back empty means the search itself is broken, and the run ends early."""
     token, basic = get_token(http_client, client_id, client_secret)
     secrets = (client_id, client_secret, token, basic)
-    counter = {"searches": 0}
+    counter = {"searches": 0, "sealed_room": sealed_room}   # sealed copies are searched while this run has used fewer
     if with_diagnosis and lookups:
         diagnose(http_client, token, lookups[0][0], counter, secrets)
 
@@ -1815,6 +1847,8 @@ def numbers_of(result, stamp):
     new = result.get("new")
     if isinstance(new, dict) and new.get("counted"):
         entry["new"] = {"copies": new["counted"], "lowest": new["lowest"], "median": new["median"]}
+    if result.get("new_asked"):
+        entry["new_checked"] = stamp          # even when no new copy is listed: it is not asked again for 24 hours
     abroad = result.get("abroad")
     if isinstance(abroad, dict) and abroad.get("counted"):
         entry["abroad"] = {"copies": abroad["counted"], "lowest": abroad["lowest"], "median": abroad["median"]}
@@ -1868,6 +1902,10 @@ def update_records(state, games, run, now, rare_titles=None, edition_titles=None
                 new["recorded"] = today                                     # the day of its latest history row
                 if label in game.get("steady_on", ()):
                     new["steady"] = True        # checked every 48 hours, so the dashboard must not call it overdue
+            asked = parse_stamp(old.get("new_checked")) if old else None
+            if asked and now - asked < timedelta(hours=3 * SEALED_EVERY_HOURS) and "new_checked" not in new and "new" not in new:
+                # This lookup did not ask for new copies (no room left, or not due): keep the last answer and its time, for 3 days.
+                new = {**new, **{key: old[key] for key in ("new", "new_checked") if key in old}}
             entry[label] = new
         latest_games[game["title"]] = entry
 
@@ -2469,7 +2507,8 @@ def main(argv=None):
         games, left_out = plan_games(now, pinned, never, mentions, ever, library, catalogue, state)
         underrated = load_underrated()
         left_out["underrated"] = add_underrated_games(games, underrated, library, catalogue)
-        owned_names = load_wanted(Http())
+        wanted_lists = load_wanted(Http(), with_sealed=True)
+        owned_names, sealed_names = wanted_lists if wanted_lists else (None, [])
         if owned_names is None:
             say("The list of games in collections could not be read: none of them is added this run.")
         else:
@@ -2477,6 +2516,7 @@ def main(argv=None):
             skipped = add_underrated_games(games, owned, library, catalogue, level="collection")
             say(f"Collections: {len(owned_names)} game names listed, {sum(1 for g in games if g['level'] == 'collection')} not tracked otherwise and added ({len(skipped)} left out).")
         apply_regional_names(games, load_regional_names(), catalogue)
+        sealed_titles = collection_titles(sealed_names, library, never)
         rare, rare_problems = load_rare()
         rare_titles = add_rare_games(games, rare, catalogue)
         editions, edition_problems = load_rare(EDITIONS_PATH, kind="edition")
@@ -2484,6 +2524,7 @@ def main(argv=None):
         consoles, console_problems = load_consoles()
         consoles_priced = add_consoles(games, consoles)
         mark_watched(games, underrated + [entry["title"] for entry in rare])
+        mark_sealed(games, sealed_titles, state, now)
         rare_problems = rare_problems + console_problems + [f"editions.json: {problem}" for problem in edition_problems]
         if wanted:
             # Started by hand to see why one game shows no copies somewhere: counts for the search with one
@@ -2524,7 +2565,8 @@ def main(argv=None):
             )
         known_good = any(isinstance(site, dict) and site.get("copies") for entry in state.get("games", {}).values()
                          for site in entry.values())
-        run = check_all(Http(), client_id, client_secret, lookups, allowance, known_good, with_diagnosis)
+        run = check_all(Http(), client_id, client_secret, lookups, allowance, known_good, with_diagnosis,
+                        sealed_room=max(0, DAILY_SEARCHES - SEALED_RESERVE - used_today))
     except EbayError as exc:
         say(f"STOPPED: {redact(exc, (client_id, client_secret))}")
         return 1

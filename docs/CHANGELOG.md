@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-20: new copies searched for sealed games in collections
+
+- Games someone holds **sealed** now get a search for new and sealed copies (`mark_sealed()`, `check_new_copies()`, the Rarest page's second look) on eBay US and UK, about once a day, riding on the game's ordinary lookup there. It runs only while the day has used fewer than 4,000 of the 4,900 searches (`SEALED_RESERVE` 900), so lookups always come first. The result is `new` (copies, lowest, median) and `new_checked` in `latest.json`; the game page shows "new from" as it does for Rarest games. Never in the used medians, history or index. Cost: at most one extra search per sealed-held game and site a day.
+- The crowd service's `GET /api/wanted` gains `sealed` (names of games held sealed; names only). **The Worker must be redeployed by hand with the new bundle**; until then nothing changes (an answer without `sealed` adds no searches).
+- Tests: `tests/test_ebay_prices.py` (once a day, no room, older service), `tests/worker_check.mjs`.
+
 ## 2026-10-19: The Game Post added
 
 - **News source**: The Game Post (`https://thegamepost.com/feed/`, press, in Major Global Outlets & Magazines), at the maintainer's request after the tracker had caught a Star Wars Battlefront story only through a Giant Bomb video. The address is the usual WordPress one and has **not been tried live** (the development workspace cannot reach the site): read its row in `feed_status.json` after the next scraper run, and switch it off with a `note` if it fails. A failing news feed is the same as any other.
