@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 08:23:21 UTC",
+  "last_updated": "2026-10-20 08:25:57 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -429,7 +429,7 @@
       "timestamp": "2026-10-20 07:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts II, The Shield and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -437,6 +437,7 @@
       "matched_game": "Kingdom Hearts II",
       "matched_games": [
         "Kingdom Hearts II",
+        "The Shield",
         "Kingdom Hearts"
       ],
       "match_score": 100,
@@ -6249,6 +6250,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 23:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Van Helsing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750011582",
+      "matched_game": "Van Helsing",
+      "matched_games": [
+        "Van Helsing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 23:04 UTC"
     },
@@ -308468,25 +308488,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 08:39 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Kingdom Hearts ocupará más de la mitad del almacenamiento de Switch 2: la colección pesa 131 GB",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026279010/kingdom-hearts-ocupara-mas-de-la-mitad-de-la-memoria-de-switch-2-la-coleccion-pesa-131-gb/",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 08:23 UTC",
       "is_digital_only": false
     }
   ]
