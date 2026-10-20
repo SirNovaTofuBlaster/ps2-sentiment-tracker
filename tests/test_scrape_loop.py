@@ -378,7 +378,7 @@ class ToolTests(unittest.TestCase):
                       '                        if last_reddit is not None:\n'
                       '                            time.sleep(max(0.0, scraper.REDDIT_REQUEST_GAP - (time.monotonic() - last_reddit)))', tryer)
         check = (ROOT / "tools" / "regression_check.py").read_text(encoding="utf-8")
-        self.assertIn('for name in ("STATUS_PATH", "YOUTUBE_IDS_PATH", "POLL_STATE_PATH"):  # never the repository\'s data/', check)
+        self.assertIn('for name in ("RECENT_PATH", "STATUS_PATH", "YOUTUBE_IDS_PATH", "POLL_STATE_PATH"):  # never the repository\'s data/', check)
         self.assertIn("REDDIT_SPACING = 65", check)
         self.assertIn('    config.pop("poll_every_hours", None)', check, "an older reference must accept the copied feeds.json")
 

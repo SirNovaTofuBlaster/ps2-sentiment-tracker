@@ -110,7 +110,7 @@ def run_offline(module, index, cache, titles, extra_patches):
                mock.patch.object(module, "fetch_feed", side_effect=fake_fetch),
                mock.patch.object(module, "load_ps2_titles", return_value=titles),
                *extra_patches(data)]
-    for name in ("STATUS_PATH", "YOUTUBE_IDS_PATH", "POLL_STATE_PATH"):  # never the repository's data/
+    for name in ("RECENT_PATH", "STATUS_PATH", "YOUTUBE_IDS_PATH", "POLL_STATE_PATH"):  # never the repository's data/
         if hasattr(module, name):
             patches.append(mock.patch.object(module, name, data / f"{name.lower()}.json"))
     for name in ("REDDIT_REQUEST_GAP", "BOARD_REQUEST_GAP"):  # the feeds are on disk: no need to wait

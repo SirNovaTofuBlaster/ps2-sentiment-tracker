@@ -27,6 +27,7 @@ ROOT = Path(__file__).parent
 DATA_DIR = ROOT / "data"
 DB_PATH = DATA_DIR / "ps2_database.json"
 OUTPUT_PATH = DATA_DIR / "sentiment_feed.json"
+RECENT_PATH = DATA_DIR / "sentiment_recent.json"   # the same snapshot without the rows that name no game (the dashboard loads it first)
 STATUS_PATH = DATA_DIR / "feed_status.json"
 YOUTUBE_IDS_PATH = DATA_DIR / "youtube_channels.json"  # channel link -> channel ID, filled by the scraper
 POLL_STATE_PATH = DATA_DIR / "poll_state.json"  # when each source type was last fetched
@@ -1510,6 +1511,26 @@ def write_whole(path, text):
     os.replace(partial, path)
 
 
+def recent_snapshot(output):
+    """The dashboard's first-load file: the snapshot's rows that name a PS2 game or are flagged (remaster news, digital-only
+    news), and, for the others, only how many there are per source and when the oldest row is, so that the page's counts
+    and its "Items · N days" label stay right. About a tenth of the full file's size (2026-10-20: 2,268 of 18,008 rows)."""
+    kept, omitted = [], {}
+    for item in output["items"]:
+        if item.get("matched_game") or item.get("matched_games") or item.get("is_remaster_rumor") or item.get("is_digital_only"):
+            kept.append(item)
+        else:
+            omitted[item.get("feed")] = omitted.get(item.get("feed"), 0) + 1
+    return {
+        "last_updated": output["last_updated"],
+        "total_tracked_feeds": output["total_tracked_feeds"],
+        "partial": True,                 # rows that name no game are in sentiment_feed.json only
+        "oldest": min((i["timestamp"] for i in output["items"] if i.get("timestamp")), default=None),
+        "omitted": dict(sorted(omitted.items(), key=lambda pair: str(pair[0]))),
+        "items": kept,
+    }
+
+
 def save_json_if_changed(path, value, previous):
     if value != previous:
         write_whole(path, json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n")
@@ -1850,6 +1871,7 @@ def run_scraper():
         "items": merged_items,
     }
     write_whole(OUTPUT_PATH, json.dumps(output, indent=2, ensure_ascii=False) + "\n")
+    write_whole(RECENT_PATH, json.dumps(recent_snapshot(output), ensure_ascii=False, separators=(",", ":")) + "\n")
     print(f"Saved {len(merged_items)} items ({len(items)} fetched this run, {matched} matched a PS2 game "
           f"({from_body} from body text), {core_failures} news/Reddit and {extra_failures} other "
           f"feed failures, {skipped} skipped) to {OUTPUT_PATH}")

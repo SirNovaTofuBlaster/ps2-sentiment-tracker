@@ -13,6 +13,7 @@ against the PS2 library, flags remaster/remake news and scores sentiment. From 4
 only which games a thread names (rule 12). It writes:
 
 - `data/sentiment_feed.json`: the snapshot
+- `data/sentiment_recent.json`: the same snapshot without the rows that name no game (and, for those, only counts per source); the dashboard opens on it and loads the full file when Everything is chosen
 - `data/feed_status.json`: per-feed health
 - `data/youtube_channels.json`: remembered IDs for YouTube channels added by link
 - `data/poll_state.json`: when each source type was last fetched (each has its own clock)

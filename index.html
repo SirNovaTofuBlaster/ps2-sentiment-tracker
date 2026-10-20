@@ -684,6 +684,13 @@
         };
 
         let allFeedData = [];
+        // data/sentiment_recent.json (the scraper writes it with the full snapshot) holds only the rows that name a game or are
+        // flagged, plus how many rows of each source it left out; the page opens on it (a tenth of the size) and loads
+        // data/sentiment_feed.json only when the Everything list is asked for.
+        let feedPartial = false;
+        let feedOmitted = {};
+        let feedOldest = null;
+        let feedFullState = 'idle';   // idle, loading, failed
         let visibleFeedData = [];   // allFeedData minus items from switched-off sources
         let tableItems = [];
         let currentPage = 1;
@@ -1002,10 +1009,25 @@
             if (feedConfig) await loadFeedStatus(); else await loadSources();
 
             let data = fallbackData;
+            feedPartial = false;
+            feedOmitted = {};
+            feedOldest = null;
+            feedFullState = 'idle';
             try {
-                const response = await fetch('data/sentiment_feed.json');
-                if (!response.ok) throw new Error('File not found');
-                data = await response.json();
+                // The short file first; the full one when it is missing or damaged.
+                let response = null;
+                try { response = await fetch('data/sentiment_recent.json'); } catch { response = null; }
+                const recent = response && response.ok ? await response.json().catch(() => null) : null;
+                if (recent && recent.partial === true && Array.isArray(recent.items)) {
+                    data = recent;
+                    feedPartial = true;
+                    feedOmitted = recent.omitted && typeof recent.omitted === 'object' ? recent.omitted : {};
+                    feedOldest = typeof recent.oldest === 'string' ? recent.oldest : null;
+                } else {
+                    response = await fetch('data/sentiment_feed.json');
+                    if (!response.ok) throw new Error('File not found');
+                    data = await response.json();
+                }
                 setBadge('Live GitHub JSON', 'success');
             } catch (error) {
                 console.warn('Could not load data/sentiment_feed.json. Falling back to mock dataset.', error);
@@ -1043,6 +1065,8 @@
         // one line in a phone's half-width tile.
         function itemsLabel(items, now = Date.now()) {
             let oldest = Infinity;
+            // The rows the short file leaves out may be older than any it holds.
+            if (feedPartial && feedOldest) oldest = parseUtc(feedOldest)?.getTime() ?? Infinity;
             for (const item of items) {
                 const when = parseUtc(item.timestamp)?.getTime();
                 if (when < oldest) oldest = when;
@@ -1052,8 +1076,37 @@
             return `Items · ${days} day${days === 1 ? '' : 's'}`;
         }
 
+        // How many rows the short file leaves out, from sources that are switched on.
+        function omittedCount() {
+            if (!feedPartial) return 0;
+            let count = 0;
+            for (const [feed, n] of Object.entries(feedOmitted)) {
+                if (Number.isInteger(n) && sourcesByKey.get(feed)?.enabled !== false) count += n;
+            }
+            return count;
+        }
+
+        // The full snapshot, fetched when the Everything list is asked for; the page then draws again with every row.
+        async function loadFullFeed() {
+            if (!feedPartial || feedFullState === 'loading') return;
+            feedFullState = 'loading';
+            try {
+                const response = await fetch('data/sentiment_feed.json');
+                if (!response.ok) throw new Error('File not found');
+                const data = await response.json();
+                if (!Array.isArray(data.items)) throw new Error('No items');
+                allFeedData = data.items;
+                feedPartial = false;
+                feedFullState = 'idle';
+            } catch (error) {
+                console.warn('Could not load data/sentiment_feed.json.', error);
+                feedFullState = 'failed';
+            }
+            refreshDashboard();
+        }
+
         function processAndRender(items) {
-            document.getElementById('statTotalItems').innerText = items.length;
+            document.getElementById('statTotalItems').innerText = items.length + omittedCount();
             // The stand-in data shown before the first scrape has no window to speak of.
             document.getElementById('statTotalLabel').textContent = itemsLabel(allFeedData === fallbackData.items ? [] : allFeedData);
             document.getElementById('statRemasters').innerText = items.filter(i => i.is_remaster_rumor).length;
@@ -6020,8 +6073,11 @@
 
             // What is on show and what is not, so that nobody takes the short list for the whole
             // feed. The number is of the rows actually shown, with the box and the menus applied.
-            const total = visibleFeedData.length;
+            const omitted = omittedCount();
+            const total = visibleFeedData.length + omitted;
             const naming = visibleFeedData.filter(namesGame).length;
+            // Everything includes rows that name no game, which the short file leaves out: fetch the full one.
+            if (feedPartial && filterType === 'all' && gameFilter === null && feedFullState === 'idle') loadFullFeed();
             const flagged = visibleFeedData.filter(item => item.is_remaster_rumor).length;
             const digital = visibleFeedData.filter(item => item.is_digital_only === true);
             // ("Listing", not "Showing": the line under the table says "Showing 1–100 of 412", which
@@ -6052,6 +6108,11 @@
                 summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(digital.length)} about digital-only games and discs going away.`
                     : `${count(digital.length)} of ${items(total)} ${one(digital.length, 'is', 'are')} about digital-only games and discs going away, `
                         + `${count(lastWeek)} of them in the last 7 days. Any game, not only PS2.${digitalKeptText()}`;
+            } else if (feedPartial) {
+                // Asked for Everything while only the short file is loaded: it is on its way (or could not be fetched).
+                summary.textContent = feedFullState === 'failed'
+                    ? `The other ${count(omitted)} headlines could not be loaded. Showing the ${items(visibleFeedData.length)} that name a PS2 game or are flagged.`
+                    : `Loading the other ${count(omitted)} headlines (about 1 MB)...`;
             } else {
                 summary.textContent = narrowed ? `Listing ${count(rows.length)} of the ${items(total)} in the feed.`
                     : `Everything: ${items(total)}, ${count(naming)} of them naming a PS2 game.`;
