@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 18:54:44 UTC",
+  "last_updated": "2026-10-20 18:58:52 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -2313,6 +2313,25 @@
       "timestamp": "2026-10-20 17:07 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Vexx",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12888675",
+      "matched_game": "Vexx",
+      "matched_games": [
+        "Vexx"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 17:06 UTC"
+    },
+    {
       "headline": "Recovering from PVP Games - Challenging PVE Game I Can Sink Thousands of Hours Into? Not Soulsborne.",
       "source": "r/gamingsuggestions",
       "source_type": "reddit",
@@ -4032,19 +4051,19 @@
       "timestamp": "2026-10-20 16:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Metal Gear Solid 2: Sons of Liberty and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750050783",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts II",
         "Kingdom Hearts",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -315755,40 +315774,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 18:58 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Today’s deliveries, can’t wait to play Star Wars. 🤘🏻🔥🦑",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wzawkg/todays_deliveries_cant_wait_to_play_star_wars/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 18:54 UTC"
-    },
-    {
-      "headline": "Today’s deliveries, can’t wait to play Star Wars. 🤘🏻🔥🦑",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1wzawyq/todays_deliveries_cant_wait_to_play_star_wars/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 18:54 UTC"
     }
   ]
 }
