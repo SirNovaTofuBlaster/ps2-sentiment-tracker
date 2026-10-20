@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 04:49:42 UTC",
+  "last_updated": "2026-10-20 05:03:46 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -481,6 +481,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 03:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750022756",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 03:28 UTC"
     },
     {
       "headline": "Are there any games like Battlefield 6? I know there is Battlebit remastered but its basically on its last leg.",
@@ -1684,14 +1703,15 @@
       "timestamp": "2026-10-20 01:34 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Top Gun",
+      "headline": "Thread on /vg/ naming Top Gun and Shadow the Hedgehog",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/585063908",
       "matched_game": "Top Gun",
       "matched_games": [
-        "Top Gun"
+        "Top Gun",
+        "Shadow the Hedgehog"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -306911,112 +306931,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 05:09 UTC",
       "views": 1549
-    },
-    {
-      "headline": "Stephen King’s New Near-Perfect 8-Part Series Officially Releases on Prime Video This Week",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/stephen-king-carrie-prime-video/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 05:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Honda CR-X from Juiced #ps2 #shorts",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/shorts/C7_CBSYDG-c",
-      "matched_game": "Juiced",
-      "matched_games": [
-        "Juiced"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 05:00 UTC"
-    },
-    {
-      "headline": "Úna-Minh Kavanagh, writer, producer and Irish-language game localiser (Among Us, VVVVVV).",
-      "source": "Podcast: My Perfect Console with Simon Parkin",
-      "source_type": "podcast",
-      "feed": "https://feeds.acast.com/public/shows/63b458521043e00011114396",
-      "link": "https://shows.acast.com/my-perfect-console/episodes/una-minh-kavanagh-writer-producer-and-irish-language-game-lo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 05:00 UTC"
-    },
-    {
-      "headline": "Best years in gaming: 1991",
-      "source": "Podcast: Arcade Attack Retro Gaming Podcast",
-      "source_type": "podcast",
-      "feed": "https://feed.podbean.com/arcadeattackpodcast/feed.xml",
-      "link": "https://arcadeattackpodcast.podbean.com/e/best-years-in-gaming-1991/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 05:00 UTC"
-    },
-    {
-      "headline": "Nintendo Announces Another Switch 2 Hardware Bundle",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/nintendo-announces-another-switch-2-hardware-bundle",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-06 04:55 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Does anyone know of any good stands to display Vita Games + a few Switch Games",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wytx0b/does_anyone_know_of_any_good_stands_to_display/",
-      "matched_game": "Black",
-      "matched_games": [
-        "Black"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 04:53 UTC",
-      "is_digital_only": false
     }
   ]
 }
