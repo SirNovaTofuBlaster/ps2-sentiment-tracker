@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 05:06:39 UTC",
+  "last_updated": "2026-10-20 05:17:51 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -951,6 +951,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 02:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750020816",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 02:41 UTC"
     },
     {
       "headline": "Got a long flight ahead. Looking for games to play on my phone",
@@ -3454,13 +3473,14 @@
       "timestamp": "2026-10-19 23:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Crazy Taxi",
+      "headline": "Thread on /v/ naming Space Channel 5 and Crazy Taxi",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750012737",
-      "matched_game": "Crazy Taxi",
+      "matched_game": "Space Channel 5",
       "matched_games": [
+        "Space Channel 5",
         "Crazy Taxi"
       ],
       "match_score": 100,
@@ -4048,16 +4068,17 @@
       "timestamp": "2026-10-19 22:59 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Steambot Chronicles, Monster Hunter and Midnight Club",
+      "headline": "Thread on /v/ naming Phantom Brave, Monster Hunter, Midnight Club and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750011372",
-      "matched_game": "Steambot Chronicles",
+      "matched_game": "Phantom Brave",
       "matched_games": [
-        "Steambot Chronicles",
+        "Phantom Brave",
         "Monster Hunter",
-        "Midnight Club"
+        "Midnight Club",
+        "Steambot Chronicles"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -306896,58 +306917,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 05:20 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "A couple of my childhood favorites",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wyu9cx/a_couple_of_my_childhood_favorites/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 05:13 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Metroid fusion legitimate label?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wyu6tf/metroid_fusion_legitimate_label/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 05:09 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Leon to the rescue (of my heartrate) | Resident Evil Requiem - First Playthrough (pt3)",
-      "source": "YouTube: PeteDorr",
-      "source_type": "youtube",
-      "feed": "youtube:UCeTvRtfRFyWXdO_ZbyArPjA",
-      "link": "https://www.youtube.com/watch?v=BqH9ztVM4Ww",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 05:09 UTC",
-      "views": 1549
     }
   ]
 }
