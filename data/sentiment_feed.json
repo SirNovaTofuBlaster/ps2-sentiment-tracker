@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 22:38:44 UTC",
+  "last_updated": "2026-10-20 22:48:49 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -138,6 +138,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 35,
+      "hype": 0,
+      "timestamp": "2026-10-20 22:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750071620",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 22:00 UTC"
     },
@@ -865,6 +884,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-20 21:24 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Drakengard 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750069634",
+      "matched_game": "Drakengard 2",
+      "matched_games": [
+        "Drakengard 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 21:21 UTC"
     },
     {
       "headline": "The Magic: The Gathering Machine Go BRRR As It Makes $600 Million In Three Months",
@@ -2790,18 +2828,21 @@
       "timestamp": "2026-10-20 19:37 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Final Fantasy X",
+      "headline": "Thread on /v/ naming Deus Ex, Metal Gear Solid 3: Snake Eater, Final Fantasy X and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750063264",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Metal Gear Solid 3: Snake Eater",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy X-2",
+        "Charlie's Angels"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5538,6 +5579,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 17:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XI",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750057410",
+      "matched_game": "Final Fantasy XI",
+      "matched_games": [
+        "Final Fantasy XI"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 17:58 UTC"
     },
@@ -11802,7 +11862,7 @@
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -318462,40 +318522,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 22:49 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "i format my memori card by mistake",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1wzgnmf/i_format_my_memori_card_by_mistake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 22:47 UTC"
-    },
-    {
-      "headline": "I forgot how much I love physical games",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1wzgnia/i_forgot_how_much_i_love_physical_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 22:47 UTC"
     }
   ]
 }
