@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 23:06:42 UTC",
+  "last_updated": "2026-10-20 23:17:51 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -1316,6 +1316,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 21:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750071327",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 21:54 UTC"
     },
@@ -5206,13 +5225,14 @@
       "timestamp": "2026-10-20 18:38 UTC"
     },
     {
-      "headline": "Thread on /vrpg/ naming Romancing SaGa",
+      "headline": "Thread on /vrpg/ naming The Sims and Romancing SaGa",
       "source": "4chan /vrpg/",
       "source_type": "4chan",
       "feed": "4chan:vrpg",
       "link": "https://boards.4chan.org/vrpg/thread/4135571",
-      "matched_game": "Romancing SaGa",
+      "matched_game": "The Sims",
       "matched_games": [
+        "The Sims",
         "Romancing SaGa"
       ],
       "match_score": 100,
@@ -11205,6 +11225,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 15:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750047767",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 15:17 UTC"
     },
@@ -50957,7 +50996,7 @@
       "timestamp": "2026-10-18 21:54 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Deus Ex and Half-Life",
+      "headline": "Thread on /vr/ naming Deus Ex, Half-Life and Red Faction 2",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -50965,7 +51004,8 @@
       "matched_game": "Deus Ex",
       "matched_games": [
         "Deus Ex",
-        "Half-Life"
+        "Half-Life",
+        "Red Faction 2"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -319168,108 +319208,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 23:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "La estrategia previa de Game Pass dejó a Xbox en \"libre caída\", según la CEO Asha Sharma",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/xbox/114920/la-estrategia-previa-de-game-pass-dejo-a-xbox-en-libre-caida-segun-la-ceo-asha-sharma",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 23:15 UTC"
-    },
-    {
-      "headline": "Xbox garante direitos exclusivos de streaming para GTA 6",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/xbox-garante-direitos-exclusivos-de-streaming-para-gta-6",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 23:13 UTC"
-    },
-    {
-      "headline": "[SW:Galactic Racer]×Galactic Racer + Nemesis System would go really HARD.",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wzh7el/swgalactic_racergalactic_racer_nemesis_system/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 23:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Tile matchers - Taipei and Shanghai II",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wzh5pk/tile_matchers_taipei_and_shanghai_ii/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 23:10 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "XBOX Secures Exclusive Game Streaming Rights for GTA 6. Which means it will likely be playable on PC come launch, with a catch.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1wzh5w4/xbox_secures_exclusive_game_streaming_rights_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 23:10 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "XBOX Secures Exclusive Game Streaming Rights for GTA 6",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1wzh4ga/xbox_secures_exclusive_game_streaming_rights_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 23:08 UTC",
       "is_digital_only": false
     }
   ]
