@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 02:42:08 UTC",
+  "last_updated": "2026-10-20 03:09:52 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -16,6 +16,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 35,
+      "hype": 0,
+      "timestamp": "2026-10-20 02:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750020614",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas",
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 02:36 UTC"
     },
@@ -1461,6 +1481,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 00:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750015646",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 00:38 UTC"
     },
     {
       "headline": "PS2 OPL don't detect my pendrive",
@@ -306344,91 +306383,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 03:16 UTC"
-    },
-    {
-      "headline": "I Demade Super Mario Bros 3 for the Gameboy! (DMG, SGB, Color)",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wys0wf/i_demade_super_mario_bros_3_for_the_gameboy_dmg/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 03:08 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Bleak Survival City-Builder 'Frostpunk' Is Finally Coming To The Switch",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/bleak-survival-city-builder-frostpunk-is-finally-coming-to-the-switch",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 02:55 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "just received and it doesn’t work",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wyroz7/just_received_and_it_doesnt_work/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 02:50 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Mewgenics or SW: Zero Company?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wyrokf/mewgenics_or_sw_zero_company/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 02:50 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Mail day",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wyrj3m/mail_day/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 02:42 UTC",
-      "is_digital_only": false
     }
   ]
 }
