@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 19:11:58 UTC",
+  "last_updated": "2026-10-20 19:14:44 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -6812,17 +6812,18 @@
       "timestamp": "2026-10-20 15:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life, Max Payne, Unreal Tournament and 1 more",
+      "headline": "Thread on /v/ naming Baldur's Gate: Dark Alliance, Half-Life, Unreal Tournament and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750047068",
-      "matched_game": "Half-Life",
+      "matched_game": "Baldur's Gate: Dark Alliance",
       "matched_games": [
+        "Baldur's Gate: Dark Alliance",
         "Half-Life",
-        "Max Payne",
         "Unreal Tournament",
-        "Grand Theft Auto: San Andreas"
+        "Grand Theft Auto: San Andreas",
+        "Max Payne"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -10865,13 +10866,14 @@
       "timestamp": "2026-10-20 12:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Castlevania: Lament of Innocence",
+      "headline": "Thread on /v/ naming Persona 4 and Castlevania: Lament of Innocence",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750039696",
-      "matched_game": "Castlevania: Lament of Innocence",
+      "matched_game": "Persona 4",
       "matched_games": [
+        "Persona 4",
         "Castlevania: Lament of Innocence"
       ],
       "match_score": 100,
@@ -16064,6 +16066,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 06:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man and Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750029160",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man",
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 06:42 UTC"
     },
     {
       "headline": "Which game brought you the most wow factor when you first saw it?",
@@ -316432,78 +316454,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 19:16 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "How the actual feck are you supposed to beat Level 15 of Spider-Man: The Movie: The Game if you get fried by drones from another fecking continent even if you don't touch a single fecking light!?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wzbezk/how_the_actual_feck_are_you_supposed_to_beat/",
-      "matched_game": "Spider-Man: The Movie",
-      "matched_games": [
-        "Spider-Man: The Movie"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 19:13 UTC"
-    },
-    {
-      "headline": "How the actual feck are you supposed to beat Level 15 of Spider-Man: The Movie: The Game if you get fried by drones from another fecking continent even if you don't touch a single fecking light!?",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1wzbdwa/how_the_actual_feck_are_you_supposed_to_beat/",
-      "matched_game": "Spider-Man: The Movie",
-      "matched_games": [
-        "Spider-Man: The Movie"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 19:12 UTC"
-    },
-    {
-      "headline": "Component cable choices for GBSC Pro",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wzbco6/component_cable_choices_for_gbsc_pro/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 19:11 UTC"
-    },
-    {
-      "headline": "Metroid Dread – Cane and Rinse No.734",
-      "source": "Podcast: The Cane and Rinse videogame podcast",
-      "source_type": "podcast",
-      "feed": "https://caneandrinse.com/feed/podcast/",
-      "link": "https://caneandrinse.com/metroid-dread/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 19:11 UTC"
     }
   ]
 }
