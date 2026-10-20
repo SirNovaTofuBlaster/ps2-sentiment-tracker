@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 21:49:03 UTC",
+  "last_updated": "2026-10-20 21:51:44 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 23:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750070969",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 21:46 UTC"
     },
     {
       "headline": "'If you can’t show your game to the world without fearing it’ll be cloned, something’s broken' says Moonlighter studio on its canceled demo",
@@ -7860,15 +7879,16 @@
       "timestamp": "2026-10-20 16:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II and Dead or Alive 2",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Dead or Alive 2 and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750050547",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Kingdom Hearts II",
-        "Dead or Alive 2"
+        "Resident Evil Code: Veronica X",
+        "Dead or Alive 2",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -10708,20 +10728,20 @@
       "timestamp": "2026-10-20 14:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Silent Hill 3, Resident Evil 4, Katamari Damacy and 1 more",
+      "headline": "Thread on /vr/ naming Resident Evil 4, Silent Hill 3, Katamari Damacy and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888319",
-      "matched_game": "Silent Hill 3",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Silent Hill 3",
         "Resident Evil 4",
+        "Silent Hill 3",
         "Katamari Damacy",
         "God Hand"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
