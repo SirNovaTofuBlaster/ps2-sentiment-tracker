@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 20:09:45 UTC",
+  "last_updated": "2026-10-20 20:12:28 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -6548,17 +6548,18 @@
       "timestamp": "2026-10-20 16:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dead or Alive 2",
+      "headline": "Thread on /v/ naming Kingdom Hearts II and Dead or Alive 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750050547",
-      "matched_game": "Dead or Alive 2",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
+        "Kingdom Hearts II",
         "Dead or Alive 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -20992,13 +20993,14 @@
       "timestamp": "2026-10-20 01:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Devil May Cry and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750017223",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Devil May Cry",
       "matched_games": [
+        "Devil May Cry",
         "Monster Hunter"
       ],
       "match_score": 100,
@@ -317314,23 +317316,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 20:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "First time buying games off of Ebay.",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wzcxgo/first_time_buying_games_off_of_ebay/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:11 UTC",
       "is_digital_only": false
     }
   ]
