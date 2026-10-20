@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-20 08:28:16 UTC",
+  "last_updated": "2026-10-20 08:39:38 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750031980",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 08:32 UTC"
+    },
     {
       "headline": "this is buck nasty like huh??? And this is why the people putting playstation games on pc because wtf is he talking about??",
       "source": "r/pcmasterrace",
@@ -514,19 +533,19 @@
       "timestamp": "2026-10-20 07:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, The Shield and Kingdom Hearts",
+      "headline": "Thread on /v/ naming The Shield, Kingdom Hearts and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750030479",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "The Shield",
       "matched_games": [
-        "Kingdom Hearts II",
         "The Shield",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
