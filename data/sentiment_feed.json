@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 03:52:48 UTC",
+  "last_updated": "2026-10-20 04:06:52 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -90,6 +90,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 03:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750022513",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 03:21 UTC"
     },
     {
       "headline": "Looking for a new game to sink a ton of time into that I can sink tons of time into that fit certain niches(RPGs, Roguelites, Level-based, etc)",
@@ -839,6 +858,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 02:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750019602",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 02:12 UTC"
     },
     {
       "headline": "Picked this up today and it had the Slurpee coupons!",
@@ -2942,6 +2980,25 @@
       "matched_game": "Spider-Man 3",
       "matched_games": [
         "Spider-Man 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 23:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Crazy Taxi",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750012737",
+      "matched_game": "Crazy Taxi",
+      "matched_games": [
+        "Crazy Taxi"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -24640,16 +24697,16 @@
       "timestamp": "2026-10-19 02:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming King Arthur, Peter Pan and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Peter Pan and King Arthur",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749960249",
-      "matched_game": "King Arthur",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "King Arthur",
+        "Kingdom Hearts",
         "Peter Pan",
-        "Kingdom Hearts"
+        "King Arthur"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -78582,17 +78639,19 @@
       "timestamp": "2026-10-16 16:15 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Space Channel 5",
+      "headline": "Thread on /vr/ naming Dead or Alive 2, Crazy Taxi and Space Channel 5",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12881395",
-      "matched_game": "Space Channel 5",
+      "matched_game": "Dead or Alive 2",
       "matched_games": [
+        "Dead or Alive 2",
+        "Crazy Taxi",
         "Space Channel 5"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -306721,40 +306780,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 04:11 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "61 Years Later, Clint Eastwood's 132-Minute Legendary Western Sequel Is Free on YouTube",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/for-a-few-dollars-more-clint-eastwood-free-on-youtube-october-2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 04:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "A Chinese Player's DSi Story: From Emulators to DQ9 Fan Translation Freezes — The Handheld That Stayed With Me",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/52780211",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 03:58 UTC"
     }
   ]
 }
