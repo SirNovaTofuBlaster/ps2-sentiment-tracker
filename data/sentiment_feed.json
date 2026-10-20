@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 19:22:41 UTC",
+  "last_updated": "2026-10-20 19:28:57 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -33,6 +33,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 19:16 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585141273",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 19:16 UTC"
     },
@@ -1110,6 +1129,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 18:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War II and God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750058739",
+      "matched_game": "God of War II",
+      "matched_games": [
+        "God of War II",
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 18:22 UTC"
     },
@@ -8209,17 +8248,18 @@
       "timestamp": "2026-10-20 14:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "headline": "Thread on /vr/ naming Silent Hill 3 and Resident Evil 4",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888319",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Silent Hill 3",
       "matched_games": [
+        "Silent Hill 3",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -21442,6 +21482,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 23:23 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Alone in the Dark 4 and Alone in the Dark",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12887432",
+      "matched_game": "Alone in the Dark 4",
+      "matched_games": [
+        "Alone in the Dark 4",
+        "Alone in the Dark"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 23:23 UTC"
     },
@@ -316504,109 +316564,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 19:30 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "A Scary-Looking New Conjuring Game Just Got Announced, And It’s Out Next Week On Netflix",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/a-scary-looking-new-conjuring-game-just-got-announced-and-its-out-next-week-on-netflix/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-06 19:26 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pokemon gold and yellow ,need verification.",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wzbqei/pokemon_gold_and_yellow_need_verification/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 19:25 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "نسخة دايفز",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/rBk7eITB6k4",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 19:24 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "السامبا ذكريات",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/J_Ia5eOPqL0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 19:23 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Cancelled MMO spin-off Borderlands Online is playable once again, and the team behind the unofficial project thankfully didn't use any genAI to get it running",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/cancelled-mmo-spin-off-borderlands-online-is-playable-once-again-and-the-team-behind-the-unofficial-project-thankfully-didnt-use-any-genai-to-get-it-running",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 19:22 UTC"
-    },
-    {
-      "headline": "Fallout 76: Mischief Night",
-      "source": "YouTube: Bethesda Softworks",
-      "source_type": "youtube",
-      "feed": "youtube:UCvZHe-SP3xC7DdOk4Ri8QBw",
-      "link": "https://www.youtube.com/shorts/iF8txm7gfBg",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 19:22 UTC",
-      "views": 24066
     }
   ]
 }
