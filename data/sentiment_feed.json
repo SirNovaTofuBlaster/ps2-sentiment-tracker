@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 00:01:44 UTC",
+  "last_updated": "2026-10-20 00:15:47 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -9625,18 +9625,19 @@
       "timestamp": "2026-10-19 15:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God Hand and Persona 3",
+      "headline": "Thread on /v/ naming Final Fantasy XII, Persona 3 and God Hand",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749989209",
-      "matched_game": "God Hand",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
-        "God Hand",
-        "Persona 3"
+        "Final Fantasy XII",
+        "Persona 3",
+        "God Hand"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -304833,74 +304834,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 00:16 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Gears of War: E-Day: ¿Por qué Baird y Cole no forman parte del escuadrón en la precuela?",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/gears-of-war-e-day/114905/gears-of-war-e-day-baird-y-cole-lore",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 00:14 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Need an immersive single player (PC) RPG like cyberpunk",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wyoii5/need_an_immersive_single_player_pc_rpg_like/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 00:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pokemon Crystal(New Battery)",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wyoefz/pokemon_crystalnew_battery/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 00:07 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pokemon Ruby Version",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wyodn6/pokemon_ruby_version/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 00:06 UTC",
       "is_digital_only": false
     }
   ]
