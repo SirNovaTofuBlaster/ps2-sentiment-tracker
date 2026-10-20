@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 23:01:43 UTC",
+  "last_updated": "2026-10-20 23:04:27 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -8711,20 +8711,21 @@
       "timestamp": "2026-10-20 16:48 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Speed Racer, Shadow of the Colossus, ICO and 1 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Shadow of the Colossus, ICO and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750053327",
-      "matched_game": "Speed Racer",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Speed Racer",
+        "Grand Theft Auto III",
         "Shadow of the Colossus",
         "ICO",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Speed Racer"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -12742,7 +12743,7 @@
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -23636,18 +23637,19 @@
       "timestamp": "2026-10-20 02:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Deus Ex, Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750019441",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Metal Gear Solid 3: Snake Eater",
         "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -319213,40 +319215,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 23:04 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Super Street Fighter 2 (SNES)",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wzgzxi/super_street_fighter_2_snes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 23:02 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Ggez every game",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wzgypv/ggez_every_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 23:01 UTC",
       "is_digital_only": false
     }
   ]
