@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 00:18:01 UTC",
+  "last_updated": "2026-10-20 00:29:49 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -786,6 +786,26 @@
       "timestamp": "2026-10-19 22:59 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Monster Hunter and Midnight Club",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750011372",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "Midnight Club"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 22:59 UTC"
+    },
+    {
       "headline": "Build",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -1144,6 +1164,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 22:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750010238",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 22:35 UTC"
     },
@@ -3534,6 +3573,25 @@
       "is_remaster_rumor": true,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-19 20:42 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750004641",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 20:42 UTC"
     },
@@ -301579,6 +301637,25 @@
       "is_digital_only": false
     },
     {
+      "headline": "Thread on /vst/ naming Grand Theft Auto III",
+      "source": "4chan /vst/",
+      "source_type": "4chan",
+      "feed": "4chan:vst",
+      "link": "https://boards.4chan.org/vst/thread/2500490",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-06 10:38 UTC"
+    },
+    {
       "headline": "Custom Spider-Man ps5 controller",
       "source": "r/playstation",
       "source_type": "reddit",
@@ -304819,40 +304896,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 00:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Cyber Citizen ShockMan Collection (LRG #266) (OP #620)",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wyot4u/cyber_citizen_shockman_collection_lrg_266_op_620/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 00:26 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Fries can wait, the Full Combo cannot",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1wyoons/fries_can_wait_the_full_combo_cannot/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 00:20 UTC",
       "is_digital_only": false
     }
   ]
