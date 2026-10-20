@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 18:26:43 UTC",
+  "last_updated": "2026-10-20 18:30:51 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 23:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750059019",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 18:28 UTC"
     },
     {
       "headline": "Arctic Eggs planned for Nintendo Switch release",
@@ -2275,17 +2294,17 @@
       "timestamp": "2026-10-20 17:01 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Final Fantasy X-2, Metal Gear Solid 2: Sons of Liberty and 1 more",
+      "headline": "Thread on /v/ naming Final Fantasy X-2, Metal Gear Solid 2: Sons of Liberty, Final Fantasy X and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750054159",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Final Fantasy X-2",
       "matched_games": [
-        "Resident Evil 4",
         "Final Fantasy X-2",
         "Metal Gear Solid 2: Sons of Liberty",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -3872,6 +3891,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 16:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dead or Alive 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750050547",
+      "matched_game": "Dead or Alive 2",
+      "matched_games": [
+        "Dead or Alive 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 16:03 UTC"
     },
@@ -5973,18 +6011,18 @@
       "timestamp": "2026-10-20 14:51 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750046259",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Kingdom Hearts",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6908,6 +6946,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 14:12 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Area 51",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585112586",
+      "matched_game": "Area 51",
+      "matched_games": [
+        "Area 51"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 14:11 UTC"
     },
     {
       "headline": "Vamos entrar numa era de ouro dos videojogos, diz líder da Epic Games",
@@ -315726,60 +315783,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 18:30 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Honestly the best $6.00 I've ever spent. Basically a coked out Gears Of War.",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wza8m4/honestly_the_best_600_ive_ever_spent_basically_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 18:28 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is my Fat PS2 completely dead?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wza7cj/is_my_fat_ps2_completely_dead/",
-      "matched_game": "Black",
-      "matched_games": [
-        "Black",
-        "WWE SmackDown! vs. RAW"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 18:27 UTC"
-    },
-    {
-      "headline": "A IA é a nova prioridade da Skydance para o futuro da DC e Harry Potter",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/a-ia-e-a-nova-prioridade-da-skydance-para-o-futuro-da-dc-e-harry-potter",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 18:26 UTC"
     }
   ]
 }
