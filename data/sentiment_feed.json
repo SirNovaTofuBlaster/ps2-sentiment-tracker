@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 20:25:46 UTC",
+  "last_updated": "2026-10-20 20:39:54 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -591,6 +591,25 @@
       "timestamp": "2026-10-20 19:46 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750063862",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 19:46 UTC"
+    },
+    {
       "headline": "got this a while back finally got around messing with it",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -794,6 +813,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 19:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750062898",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 19:31 UTC"
     },
     {
       "headline": "EA Boxing Series Fight Night Back for Another Round, New Game Teased",
@@ -9517,7 +9555,7 @@
       "timestamp": "2026-10-20 14:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Silent Hill 3, Katamari Damacy, God Hand and 1 more",
+      "headline": "Thread on /vr/ naming Silent Hill 3, Resident Evil 4, Katamari Damacy and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -9525,9 +9563,9 @@
       "matched_game": "Silent Hill 3",
       "matched_games": [
         "Silent Hill 3",
+        "Resident Evil 4",
         "Katamari Damacy",
-        "God Hand",
-        "Resident Evil 4"
+        "God Hand"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -83089,27 +83127,28 @@
       "timestamp": "2026-10-17 07:01 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Marvel vs. Capcom 2, Alone in the Dark, Guilty Gear X and 8 more",
+      "headline": "Thread on /vr/ naming Grand Theft Auto: Vice City, Grand Theft Auto III, Alone in the Dark and 9 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12882914",
-      "matched_game": "Marvel vs. Capcom 2",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
-        "Marvel vs. Capcom 2",
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III",
         "Alone in the Dark",
         "Guilty Gear X",
         "Grandia II",
-        "Grand Theft Auto III",
         "Resident Evil 4",
         "Resident Evil Code: Veronica X",
         "Dead or Alive 2",
         "Crazy Taxi",
         "Space Race",
+        "Marvel vs. Capcom 2",
         "Space Channel 5"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -317232,91 +317271,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 20:41 UTC"
-    },
-    {
-      "headline": "I actually love this game",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wzdm1d/i_actually_love_this_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:38 UTC"
-    },
-    {
-      "headline": "Best PS2 Games This Week | Spyro, Scarface & Mortal Kombat",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wzdiu1/best_ps2_games_this_week_spyro_scarface_mortal/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:35 UTC"
-    },
-    {
-      "headline": "You and I both know you're not sleeping well in this economy, so have a gander at Sheeps, a roguelite about counting sheep pouring out of a strange portal",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/you-and-i-both-know-youre-not-sleeping-well-in-this-economy-so-have-a-gander-at-sheeps-a-roguelite-about-counting-sheep-pouring-out-of-a-strange-portal",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:32 UTC"
-    },
-    {
-      "headline": "Best PS2 Games This Week | Spyro, Scarface & Mortal Kombat",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1wzdgc5/best_ps2_games_this_week_spyro_scarface_mortal/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:32 UTC"
-    },
-    {
-      "headline": "Im new to PC gaming, looking for a singleplayer game.",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wzddb5/im_new_to_pc_gaming_looking_for_a_singleplayer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:29 UTC",
-      "is_digital_only": false
     }
   ]
 }
