@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 22:10:42 UTC",
+  "last_updated": "2026-10-20 22:20:48 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 23:00 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585158698",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 22:07 UTC"
     },
     {
       "headline": "Devs of open-city crime sim Samson have gone bankrupt 📉",
@@ -3352,15 +3371,15 @@
       "timestamp": "2026-10-20 19:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X-2 and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy X-2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750061336",
-      "matched_game": "Final Fantasy X-2",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy X-2",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy X-2"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -11665,21 +11684,21 @@
       "timestamp": "2026-10-20 14:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Silent Hill 2, Silent Hill 3, Resident Evil 4 and 2 more",
+      "headline": "Thread on /vr/ naming Resident Evil 4, Silent Hill 3, Katamari Damacy and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888319",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Silent Hill 2",
-        "Silent Hill 3",
         "Resident Evil 4",
+        "Silent Hill 3",
         "Katamari Damacy",
-        "God Hand"
+        "God Hand",
+        "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -318508,108 +318527,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 22:24 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "My tiny collection 🎮💙",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1wzfzeo/my_tiny_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 22:16 UTC"
-    },
-    {
-      "headline": "October 2026 PS Plus Essential Games Available to Download Now",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/october-2026-ps-plus-essential-games-available-to-download-now",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 22:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Real or fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wzfy4f/real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 22:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Marketplace haul for a new Zelda fan!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wzfxqq/marketplace_haul_for_a_new_zelda_fan/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 22:14 UTC"
-    },
-    {
-      "headline": "Warhammer 40,000: Boltgun 2 - Official Vashtorr Reveal Trailer",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1wzfvd2/warhammer_40000_boltgun_2_official_vashtorr/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 22:11 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Help",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wzfumb/help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 22:10 UTC",
       "is_digital_only": false
     }
   ]
