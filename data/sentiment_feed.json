@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 16:34:42 UTC",
+  "last_updated": "2026-10-20 16:37:25 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -1072,6 +1072,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 15:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Avatar: The Last Airbender",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750049014",
+      "matched_game": "Avatar: The Last Airbender",
+      "matched_games": [
+        "Avatar: The Last Airbender"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 15:38 UTC"
     },
@@ -8641,13 +8660,14 @@
       "timestamp": "2026-10-20 09:48 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Devil May Cry 3",
+      "headline": "Thread on /vr/ naming Baldur's Gate: Dark Alliance and Devil May Cry 3",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12887996",
-      "matched_game": "Devil May Cry 3",
+      "matched_game": "Baldur's Gate: Dark Alliance",
       "matched_games": [
+        "Baldur's Gate: Dark Alliance",
         "Devil May Cry 3"
       ],
       "match_score": 100,
@@ -12574,13 +12594,14 @@
       "timestamp": "2026-10-20 04:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Reservoir Dogs",
+      "headline": "Thread on /v/ naming Half-Life and Reservoir Dogs",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750023910",
-      "matched_game": "Reservoir Dogs",
+      "matched_game": "Half-Life",
       "matched_games": [
+        "Half-Life",
         "Reservoir Dogs"
       ],
       "match_score": 100,
