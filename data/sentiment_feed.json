@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 04:33:32 UTC",
+  "last_updated": "2026-10-20 04:49:42 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -237,6 +237,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 04:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750023949",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 04:02 UTC"
     },
     {
       "headline": "Salvage Run - a free browser game about knowing when to bank",
@@ -1302,13 +1321,14 @@
       "timestamp": "2026-10-20 02:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750019441",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
         "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
@@ -306996,23 +307016,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 04:53 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Which of These Games From the Steam Autumn Sale Should I Buy?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1wytq44/which_of_these_games_from_the_steam_autumn_sale/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 04:42 UTC",
       "is_digital_only": false
     }
   ]
