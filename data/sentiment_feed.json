@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 21:06:49 UTC",
+  "last_updated": "2026-10-20 21:09:30 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -50,6 +50,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 21:02 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750068584",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 21:02 UTC"
     },
@@ -535,6 +554,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-20 20:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750066869",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 20:33 UTC"
     },
     {
       "headline": "I have seen the future of sports games and it is called just volleyball",
@@ -2359,6 +2397,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 18:58 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Champions: Return to Arms",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12888786",
+      "matched_game": "Champions: Return to Arms",
+      "matched_games": [
+        "Champions: Return to Arms"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 18:57 UTC"
     },
     {
       "headline": "'La Odisea' de Christopher Nolan llega a plataformas digitales este 18 de noviembre con 90 minutos de material inédito",
@@ -13217,18 +13274,19 @@
       "timestamp": "2026-10-20 12:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 4 and Castlevania: Lament of Innocence",
+      "headline": "Thread on /v/ naming Okami, Castlevania: Lament of Innocence and Persona 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750039696",
-      "matched_game": "Persona 4",
+      "matched_game": "Okami",
       "matched_games": [
-        "Persona 4",
-        "Castlevania: Lament of Innocence"
+        "Okami",
+        "Castlevania: Lament of Innocence",
+        "Persona 4"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -317760,60 +317818,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-06 21:13 UTC"
-    },
-    {
-      "headline": "Actor de Star Wars rechazó volver para Andor tras pedirle que se cortara sus rastas",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/star-wars-movie/114912/actor-de-star-wars-rechazo-volver-para-andor-tras-pedirle-que-se-cortara-sus-rastas",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 21:08 UTC"
-    },
-    {
-      "headline": "EA Teases Official Return to Dead Space in New Battlefield Trailer",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/battlefield-6-dead-space-teaser-game-mode/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 21:07 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Successful after work game hunt! (With a ps3 steal)",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wzeaxi/successful_after_work_game_hunt_with_a_ps3_steal/",
-      "matched_game": "Valkyrie Profile 2: Silmeria",
-      "matched_games": [
-        "Valkyrie Profile 2: Silmeria",
-        "God of War"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 21:06 UTC"
     }
   ]
 }
