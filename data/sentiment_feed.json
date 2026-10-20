@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 21:14:41 UTC",
+  "last_updated": "2026-10-20 21:22:50 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -1642,6 +1642,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 19:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750063264",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 19:37 UTC"
     },
@@ -17987,17 +18007,19 @@
       "timestamp": "2026-10-20 07:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming ICO",
+      "headline": "Thread on /v/ naming Rock Band, ICO and Iron Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750030517",
-      "matched_game": "ICO",
+      "matched_game": "Rock Band",
       "matched_games": [
-        "ICO"
+        "Rock Band",
+        "ICO",
+        "Iron Man"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -317834,57 +317856,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 21:22 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "I am trying to 100% every main Yoshi game. This is my progress so far.",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wzeowu/i_am_trying_to_100_every_main_yoshi_game_this_is/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 21:21 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Appreciation Post for 20 of my favorite PS2 Games",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1wzenp5/appreciation_post_for_20_of_my_favorite_ps2_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 21:20 UTC"
-    },
-    {
-      "headline": "Giant Bombcast 961: Thumb Parry",
-      "source": "Podcast: Giant Bombcast",
-      "source_type": "podcast",
-      "feed": "https://www.spreaker.com/show/5928697/episodes/feed",
-      "link": "https://www.spreaker.com/episode/giant-bombcast-961-thumb-parry--75601834",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 21:15 UTC"
     }
   ]
 }
