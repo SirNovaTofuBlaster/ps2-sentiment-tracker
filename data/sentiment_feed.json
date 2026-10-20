@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 16:37:25 UTC",
+  "last_updated": "2026-10-20 16:51:03 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 23:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750052985",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 16:42 UTC"
     },
     {
       "headline": "How long is the Modern Warfare 4 campaign?",
@@ -1531,6 +1550,25 @@
       "timestamp": "2026-10-20 15:22 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750048030",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 15:22 UTC"
+    },
+    {
       "headline": "Smash Bros. director Masahiro Sakurai warns AI could lead to unoriginal, unplayable games",
       "source": "Nintendo Everything",
       "source_type": "news",
@@ -2420,17 +2458,18 @@
       "timestamp": "2026-10-20 14:51 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750046259",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3781,6 +3820,25 @@
       "timestamp": "2026-10-20 13:57 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750043346",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 13:57 UTC"
+    },
+    {
       "headline": "I Put SteamOS on the NEW OLED Xbox Ally X!",
       "source": "YouTube: ETA PRIME",
       "source_type": "youtube",
@@ -4210,6 +4268,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 13:42 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Worms 3D",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750042502",
+      "matched_game": "Worms 3D",
+      "matched_games": [
+        "Worms 3D"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 13:38 UTC"
     },
     {
       "headline": "25 Games From The October 2026 Steam Next Fest That You Should Check Out",
@@ -14609,6 +14686,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 01:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750017223",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 01:16 UTC"
     },
     {
       "headline": "What other marvel characters would you like to see get their own stand alone game title made by insomniac?",
@@ -313356,143 +313452,6 @@
       "sentiment": 35,
       "hype": 0,
       "timestamp": "2026-10-06 16:52 UTC"
-    },
-    {
-      "headline": "Watch Dogs: Legion poderá receber Director's Cut",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/watch-dogs-legion-podera-receber-directors-cut",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 16:50 UTC"
-    },
-    {
-      "headline": "The Journeyman Project 3",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wz7ktc/the_journeyman_project_3/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 16:48 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "No tiene las mejores reseñas, pero está arrasando en Steam: AION 2 sorprende con sus jugadores simultáneos",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026279036/no-tiene-las-mejores-resenas-pero-esta-arrasando-en-steam-aion-2-sorprende-con-sus-jugadores-simultaneos/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 16:46 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pokémon Pearl French version",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wz7gsz/pokémon_pearl_french_version/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 16:43 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "EB Games announces first ever Nintendo store-within-a-store in North America",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/eb-games-announces-first-ever-nintendo-store-within-a-store-in-north-america/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-06 16:42 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "El actor de Nathan Drake estaría interesado al '110 %' en participar en un nuevo juego de Uncharted",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026279035/el-actor-de-nathan-drake-estaria-interesado-al-110-en-participar-en-un-nuevo-juego-de-uncharted/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 16:40 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Can We Become The Fastest Racer In The Galaxy? Star Wars: Galactic Racer PS5 Pro Gameplay",
-      "source": "YouTube: PlayStation Access",
-      "source_type": "youtube",
-      "feed": "youtube:UC6yzV_xgKn8r77FkcmZyMSg",
-      "link": "https://www.youtube.com/watch?v=QWX2ZxGRaQo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 16:38 UTC",
-      "views": 42564
-    },
-    {
-      "headline": "How do people enjoy playing big, cinematic AAA games on the deck?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1wz7au7/how_do_people_enjoy_playing_big_cinematic_aaa/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 16:37 UTC",
-      "is_digital_only": false
     }
   ]
 }
