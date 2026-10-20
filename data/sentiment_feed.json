@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 05:30:32 UTC",
+  "last_updated": "2026-10-20 05:33:08 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -5120,6 +5120,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 22:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow the Hedgehog and Crash of the Titans",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750009526",
+      "matched_game": "Shadow the Hedgehog",
+      "matched_games": [
+        "Shadow the Hedgehog",
+        "Crash of the Titans"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 22:19 UTC"
     },
     {
       "headline": "Thread on /vg/ naming Battlestar Galactica",
@@ -307135,23 +307155,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 05:38 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pokemon Diamond DS - Real or fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wyujwd/pokemon_diamond_ds_real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 05:31 UTC",
       "is_digital_only": false
     }
   ]
