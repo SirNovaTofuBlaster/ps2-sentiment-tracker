@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 18:14:13 UTC",
+  "last_updated": "2026-10-20 18:17:00 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 23:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Death by Degrees",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750058106",
+      "matched_game": "Death by Degrees",
+      "matched_games": [
+        "Death by Degrees"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 18:11 UTC"
     },
     {
       "headline": "DreamWorks Shrek 2 Remastered - Official Announce Trailer",
@@ -350,6 +369,25 @@
       "timestamp": "2026-10-20 17:52 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750057123",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 17:52 UTC"
+    },
+    {
       "headline": "Star Wars Is Throwing Its Own Super Bowl, with an Original Cast Member Returning",
       "source": "Polygon.com",
       "source_type": "news",
@@ -623,6 +661,25 @@
       "is_digital_only": false,
       "sentiment": 50,
       "hype": 2,
+      "timestamp": "2026-10-20 17:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shrek 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750056395",
+      "matched_game": "Shrek 2",
+      "matched_games": [
+        "Shrek 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
       "timestamp": "2026-10-20 17:40 UTC"
     },
     {
@@ -3336,17 +3393,18 @@
       "timestamp": "2026-10-20 16:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750050783",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
         "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5081,13 +5139,14 @@
       "timestamp": "2026-10-20 15:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life and Devil May Cry",
+      "headline": "Thread on /v/ naming Max Payne, Half-Life and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750047021",
-      "matched_game": "Half-Life",
+      "matched_game": "Max Payne",
       "matched_games": [
+        "Max Payne",
         "Half-Life",
         "Devil May Cry"
       ],
@@ -16824,6 +16883,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 02:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750020384",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 02:31 UTC"
     },
     {
       "headline": "Culdcept BEGINS for PC launches October 28",
@@ -315430,23 +315508,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 18:17 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Which NES game would you say has the best soundtrack?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1wz9u6a/which_nes_game_would_you_say_has_the_best/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 18:14 UTC",
       "is_digital_only": false
     }
   ]
