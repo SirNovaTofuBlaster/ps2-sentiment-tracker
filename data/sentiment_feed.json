@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-20 02:15:53 UTC",
+  "last_updated": "2026-10-20 02:26:47 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750019668",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 02:14 UTC"
+    },
     {
       "headline": "Stuck?",
       "source": "r/pcmasterrace",
@@ -126,6 +145,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 01:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750018031",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 01:35 UTC"
     },
     {
       "headline": "How do I make custom builds of smash remix + extra on steam deck",
@@ -1411,7 +1449,7 @@
         "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -64676,6 +64714,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 02:58 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12882691",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-17 02:48 UTC"
     },
     {
       "headline": "Recent Pickups",
@@ -305800,57 +305857,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 02:26 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Ya’ll I need help finding a game",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wyr76x/yall_i_need_help_finding_a_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 02:24 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PS2 Games Recommendations",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1wyr43j/ps2_games_recommendations/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 02:20 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Current Game Collection",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wyr0mg/current_game_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 02:15 UTC",
       "is_digital_only": false
     }
   ]
