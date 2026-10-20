@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 01:45:16 UTC",
+  "last_updated": "2026-10-20 01:58:53 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -145,14 +145,16 @@
       "timestamp": "2026-10-20 01:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3 FES",
+      "headline": "Thread on /v/ naming Persona 3 FES, Persona 3 and Persona 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750017992",
       "matched_game": "Persona 3 FES",
       "matched_games": [
-        "Persona 3 FES"
+        "Persona 3 FES",
+        "Persona 3",
+        "Persona 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -2252,13 +2254,14 @@
       "timestamp": "2026-10-19 22:59 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter and Midnight Club",
+      "headline": "Thread on /v/ naming Steambot Chronicles, Monster Hunter and Midnight Club",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750011372",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Steambot Chronicles",
       "matched_games": [
+        "Steambot Chronicles",
         "Monster Hunter",
         "Midnight Club"
       ],
@@ -19165,16 +19168,17 @@
       "timestamp": "2026-10-19 09:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Godfather, Okami, Beyond Good & Evil and 6 more",
+      "headline": "Thread on /v/ naming Final Fantasy X, Okami, Beyond Good & Evil and 7 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/749973428",
-      "matched_game": "The Godfather",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "The Godfather",
+        "Final Fantasy X",
         "Okami",
         "Beyond Good & Evil",
+        "The Godfather",
         "Grand Theft Auto III",
         "Spider-Man",
         "Max Payne",
@@ -19183,7 +19187,7 @@
         "Sonic Heroes"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -305810,91 +305814,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 02:15 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo Releases 'Hello, Peach!' And 'Hello, Luigi!' App For Switch & Mobile Devices",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/nintendo-releases-hello-peach-and-hello-luigi-app-for-switch-and-mobile-devices",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 01:55 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "James Gunn texted DCU's Frank Grillo after sharing a fake poster with Wonder Woman on it. #dcu #ign",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/shorts/nmvi9kzwBiM",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 01:54 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Best Point and Clicks?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wyqk8n/best_point_and_clicks/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-06 01:52 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Finally Took The Gaming Stuff Home From Mom n Dad's.",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wyqi0o/finally_took_the_gaming_stuff_home_from_mom_n_dads/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 01:49 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "STRANGER THAN HEAVEN 1943 Minami Underworld Fully Detailed",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/watch?v=5seytc95zwo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 01:45 UTC"
     }
   ]
 }
