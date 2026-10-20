@@ -458,8 +458,10 @@
     "ok": true
   },
   "https://blast-processing.com/feeds/posts/default": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-10-20 03:41 UTC",
     "latest": "2024-02-07 05:48 UTC",
-    "ok": true
+    "ok": false
   },
   "https://blog.playstation.com/feed/": {
     "latest": "2026-10-19 12:05 UTC",
@@ -604,7 +606,7 @@
     "ok": true
   },
   "https://lemmy.world/feeds/c/games.xml?sort=New": {
-    "latest": "2026-10-19 18:52 UTC",
+    "latest": "2026-10-20 03:13 UTC",
     "ok": true
   },
   "https://lemmy.world/feeds/c/retrogaming.xml?sort=New": {
