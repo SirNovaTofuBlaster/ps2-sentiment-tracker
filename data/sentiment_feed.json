@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 22:04:39 UTC",
+  "last_updated": "2026-10-20 22:07:16 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -3246,6 +3246,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 19:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X-2 and Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750061336",
+      "matched_game": "Final Fantasy X-2",
+      "matched_games": [
+        "Final Fantasy X-2",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 19:06 UTC"
     },
@@ -11543,20 +11563,21 @@
       "timestamp": "2026-10-20 14:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4, Silent Hill 3, Katamari Damacy and 1 more",
+      "headline": "Thread on /vr/ naming Silent Hill 2, Silent Hill 3, Resident Evil 4 and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888319",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Resident Evil 4",
+        "Silent Hill 2",
         "Silent Hill 3",
+        "Resident Evil 4",
         "Katamari Damacy",
         "God Hand"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -318523,23 +318544,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 22:07 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "E-Day is here. Play Gears of War: E-Day on XBOX and PC now. #gearsofwar #XBOX #emergencebegins",
-      "source": "YouTube: XBOX",
-      "source_type": "youtube",
-      "feed": "youtube:UCjBp_7RuDBUYbd1LegWEJ8g",
-      "link": "https://www.youtube.com/shorts/bZI8eG9FfVY",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 22:05 UTC"
     }
   ]
 }
