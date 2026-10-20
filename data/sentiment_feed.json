@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 20:46:42 UTC",
+  "last_updated": "2026-10-20 20:53:50 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -35,6 +35,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 20:45 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750067429",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 20:43 UTC"
     },
     {
       "headline": "The First Kingdom Hearts Featured Final Fantasy In A Way I Wish The Series Would Again",
@@ -5663,6 +5682,28 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 16:48 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Speed Racer, Shadow of the Colossus, ICO and 1 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750053327",
+      "matched_game": "Speed Racer",
+      "matched_games": [
+        "Speed Racer",
+        "Shadow of the Colossus",
+        "ICO",
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 16:48 UTC"
     },
@@ -15252,18 +15293,19 @@
       "timestamp": "2026-10-20 09:48 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Baldur's Gate: Dark Alliance and Devil May Cry 3",
+      "headline": "Thread on /vr/ naming God of War II, Devil May Cry 3 and Baldur's Gate: Dark Alliance",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12887996",
-      "matched_game": "Baldur's Gate: Dark Alliance",
+      "matched_game": "God of War II",
       "matched_games": [
-        "Baldur's Gate: Dark Alliance",
-        "Devil May Cry 3"
+        "God of War II",
+        "Devil May Cry 3",
+        "Baldur's Gate: Dark Alliance"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -317275,74 +317317,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-06 20:53 UTC"
-    },
-    {
-      "headline": "Controller collection. +1",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1wzdwzn/controller_collection_1/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:50 UTC"
-    },
-    {
-      "headline": "Total War SHOGUN 2 - Complete Edition - Game Overview",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1wzduxq/total_war_shogun_2_complete_edition_game_overview/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:48 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Sifu adaptará sus brutales combates de kung-fu a dispositivos móviles el 12 de octubre",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/sifu/114917/sifu-dispositivos-moviles-android-ios",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:47 UTC"
-    },
-    {
-      "headline": "226: Sonic Mpreg Discord Servers",
-      "source": "Podcast: The Jeff Gerstmann Show - A Podcast About Video Games",
-      "source_type": "podcast",
-      "feed": "https://feeds.megaphone.fm/QCD5913450294",
-      "link": "https://pdst.fm/e/pscrb.fm/rss/p/mgln.ai/e/433/claritaspod.com/measure/traffic.megaphone.fm/QCD8852671140.mp3",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 20:46 UTC"
     }
   ]
 }
