@@ -695,7 +695,7 @@ class RunScraperTests(unittest.TestCase):
         self.board_changed = {self.VR_URL: "Wed, 07 Oct 2026 13:31:02 GMT", self.V_URL: "Wed, 07 Oct 2026 13:47:59 GMT"}
         data_dir = self.tmp / "data"
         paths = {"DATA_DIR": data_dir, "DB_PATH": data_dir / "ps2_database.json",
-                 "OUTPUT_PATH": data_dir / "sentiment_feed.json", "STATUS_PATH": data_dir / "feed_status.json",
+                 "OUTPUT_PATH": data_dir / "sentiment_feed.json", "RECENT_PATH": data_dir / "sentiment_recent.json", "STATUS_PATH": data_dir / "feed_status.json",
                  "YOUTUBE_IDS_PATH": data_dir / "youtube_channels.json", "POLL_STATE_PATH": data_dir / "poll_state.json",
                  "FEEDS_PATH": self.tmp / "feeds.json"}
         for name, value in paths.items():
@@ -744,6 +744,20 @@ class RunScraperTests(unittest.TestCase):
 
     def item(self, output, headline, source):
         return next(i for i in output["items"] if i["headline"] == headline and i["source"] == source)
+
+    def test_the_recent_file_has_the_rows_that_name_a_game_or_are_flagged_and_counts_of_the_rest(self):
+        output, _ = self.run_scraper()
+        recent = json.loads(scraper.RECENT_PATH.read_text(encoding="utf-8"))
+        wanted = lambda i: bool(i.get("matched_game") or i.get("matched_games") or i.get("is_remaster_rumor") or i.get("is_digital_only"))
+        self.assertTrue(recent["partial"])
+        self.assertEqual(recent["items"], [i for i in output["items"] if wanted(i)])
+        others = [i for i in output["items"] if not wanted(i)]
+        self.assertEqual(sum(recent["omitted"].values()), len(others))
+        for feed in {i["feed"] for i in others}:
+            self.assertEqual(recent["omitted"][feed], sum(1 for i in others if i["feed"] == feed))
+        self.assertEqual(recent["oldest"], min(i["timestamp"] for i in output["items"]))
+        self.assertEqual((recent["last_updated"], recent["total_tracked_feeds"]), (output["last_updated"], output["total_tracked_feeds"]))
+        self.assertEqual(len(recent["items"]) + len(others), len(output["items"]), "every row is either kept or counted")
 
     def test_all_source_types_end_up_in_the_snapshot(self):
         output, status = self.run_scraper()

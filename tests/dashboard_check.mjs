@@ -4122,4 +4122,57 @@ await check('two browsers on one account: adds, removals and a stale browser all
     }
 });
 
+await check('the short snapshot opens the Tracker; the full one is fetched only for Everything', async () => {
+    const feeds = JSON.parse(read('feeds.json'));
+    const src = feeds.sources.find(s => s.enabled && s.type === 'news');
+    const row = (n, extra = {}) => ({ headline: `Row ${n}`, source: src.name, source_type: 'news', feed: src.url, link: `https://example.com/${n}`,
+        matched_game: null, is_remaster_rumor: false, timestamp: '2026-10-19 08:00 UTC', ...extra });
+    const kept = [row(1, { matched_game: 'Okami' }), row(2, { is_remaster_rumor: true })];
+    const rest = [row(3), row(4), row(5)];
+    const fullItems = [...kept, ...rest];
+    const realFetch = context.fetch;
+    const asked = [];
+    context.fetch = async (url) => {
+        asked.push(String(url));
+        const reply = (body) => ({ ok: true, status: 200, json: async () => body });
+        if (String(url) === 'data/sentiment_feed.json') return reply({ last_updated: 'x', items: fullItems });
+        return { ok: false, status: 404, json: async () => ({}) };
+    };
+    const run = (code) => vm.runInContext(code, context);
+    try {
+        context.__kept = kept;
+        run(`feedConfig = JSON.parse(${JSON.stringify(read('feeds.json'))}); baseConfigText = configJson(); rebuildSourceIndex();
+             feedPartial = true; feedFullState = 'idle'; feedOldest = '2026-10-06 15:07 UTC';
+             feedOmitted = { [sourceKey(feedConfig.sources.find(s => s.enabled && s.type === 'news'))]: 3,
+                             [sourceKey(feedConfig.sources.find(s => s.enabled && s.type === 'reddit'))]: 40 };
+             sourcesByKey.get(sourceKey(feedConfig.sources.find(s => s.enabled && s.type === 'reddit'))).enabled = false;
+             allFeedData = __kept; document.getElementById('filterSelect').value = 'matched'; refreshDashboard();`);
+        assert.equal(el('statTotalItems').innerText, 5, 'the rows it holds plus those it left out, switched-off sources not counted');
+        assert.match(el('statTotalLabel').textContent, /Items · \d+ days?/);
+        assert.ok(!asked.length, 'nothing more is fetched for PS2 Games Only');
+        assert.match(el('feedSummary').textContent, /of 5 items/);
+        assert.match(el('feedSummary').textContent, /the other 4/);
+        // Everything: the full file is fetched once and the page draws again with every row
+        el('filterSelect').value = 'all';
+        run('onFeedFilterChange()');
+        await new Promise(resolve => setTimeout(resolve, 20));
+        assert.deepEqual(asked, ['data/sentiment_feed.json']);
+        assert.equal(run('feedPartial'), false);
+        assert.equal(run('allFeedData').length, 5);
+        assert.equal(el('statTotalItems').innerText, 5);
+        assert.match(el('feedSummary').textContent, /Everything: 5 items, 1 of them naming a PS2 game/);
+        // A fetch that fails leaves the short list on screen with a message
+        asked.length = 0;
+        context.fetch = async () => { throw new Error('offline'); };
+        run(`feedPartial = true; feedFullState = 'idle'; allFeedData = __kept; refreshDashboard();`);
+        await new Promise(resolve => setTimeout(resolve, 20));
+        assert.equal(run('feedFullState'), 'failed');
+        assert.match(el('feedSummary').textContent, /could not be loaded/);
+        assert.equal(el('feedTableBody').children.length, 2);
+    } finally {
+        context.fetch = realFetch;
+        run(`feedPartial = false; feedOmitted = {}; feedOldest = null; feedFullState = 'idle'; document.getElementById('filterSelect').value = ${JSON.stringify(defaults.filterSelect)};`);
+    }
+});
+
 console.log(`dashboard checks passed (${passed})`);

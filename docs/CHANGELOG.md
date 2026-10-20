@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-20: the page opens on a short copy of the feed
+
+- **Why**: `data/sentiment_feed.json` is 10.7 MB (1.3 MB compressed) and the page downloaded and parsed all of it before showing the Tracker, although 90% of its rows name no game (16,133 of 18,008 on 2026-10-20) and the default list shows only games.
+- **`data/sentiment_recent.json`** (new, written by `scraper.py` in the same step as the full snapshot, `recent_snapshot()`): the rows that name a game or are flagged (remaster news, digital-only news) in full, and for the rest only `omitted` (how many per `feed`), `oldest` (the oldest timestamp) and `partial: true`. 2,268 rows, 1.06 MB, about 150 KB compressed. The full file is unchanged and still what `archive.py`, `demand.py` and `ebay_prices.py` read.
+- **Page**: opens on the short file (`feedPartial`), counts the left-out rows into the Items tile and the line above the table (switched-off sources excluded), and fetches the full file (`loadFullFeed()`) only when **Everything** is chosen. A missing or damaged short file means the full one is loaded as before; a failed full load leaves the short list with a message.
+- Tests: `tests/test_scraper.py` (the short file's contents), `tests/dashboard_check.mjs` (counts, nothing fetched for PS2 Games Only, fetch on Everything, failure). `RECENT_PATH` is patched in the scraper tests and in `tools/regression_check.py` so neither writes the repository's `data/`.
+
 ## 2026-10-20: new copies searched for sealed games in collections
 
 - Games someone holds **sealed** now get a search for new and sealed copies (`mark_sealed()`, `check_new_copies()`, the Rarest page's second look) on eBay US and UK, about once a day, riding on the game's ordinary lookup there. It runs only while the day has used fewer than 4,000 of the 4,900 searches (`SEALED_RESERVE` 900), so lookups always come first. The result is `new` (copies, lowest, median) and `new_checked` in `latest.json`; the game page shows "new from" as it does for Rarest games. Never in the used medians, history or index. Cost: at most one extra search per sealed-held game and site a day.
