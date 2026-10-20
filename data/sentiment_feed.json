@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-20 17:30:47 UTC",
+  "last_updated": "2026-10-20 17:33:31 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -364,13 +364,14 @@
       "timestamp": "2026-10-20 17:01 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750054159",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Final Fantasy X"
       ],
       "match_score": 100,
@@ -1060,14 +1061,16 @@
       "timestamp": "2026-10-20 16:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Rule of Rose",
+      "headline": "Thread on /v/ naming Haunting Ground, Rule of Rose and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750052712",
-      "matched_game": "Rule of Rose",
+      "matched_game": "Haunting Ground",
       "matched_games": [
-        "Rule of Rose"
+        "Haunting Ground",
+        "Rule of Rose",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1728,6 +1731,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 16:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750050856",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 16:09 UTC"
     },
@@ -4572,6 +4594,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 14:24 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Sphinx and The Cursed Mummy",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750044764",
+      "matched_game": "Sphinx and The Cursed Mummy",
+      "matched_games": [
+        "Sphinx and The Cursed Mummy"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 14:24 UTC"
     },
@@ -314270,91 +314311,6 @@
       "hype": 0,
       "timestamp": "2026-10-06 17:33 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "How do you evaluate games?",
-      "source": "r/truegaming",
-      "source_type": "reddit",
-      "feed": "reddit:truegaming",
-      "link": "https://www.reddit.com/r/truegaming/comments/1wz8qpr/how_do_you_evaluate_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 17:32 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Space Harrier Fans, You Need to Keep an Eye on This PS5 Arcade Shooter",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/space-harrier-fans-you-need-to-keep-an-eye-on-this-ps5-arcade-shooter",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 17:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Warship Game Steals Nonsensical Aircraft Design And Then Tries To Sell It In-Game For $700",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/modern-warships-artstorm-plagiarism-alex-brady-war-thunder-2000740997",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 17:30 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "\"Your word is undeniable truth\": Can't be bothered to find evidence in Warhammer 40,000: Dark Heresy? It's fine, because no matter what, you're always right",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/your-word-is-undeniable-truth-cant-be-bothered-to-find-evidence-in-warhammer-40000-dark-heresy-its-fine-because-no-matter-what-youre-always-right",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 17:30 UTC"
-    },
-    {
-      "headline": "Take out some monsters and then turn them into take-out in the post-apocalyptic tycoon survival sim Midwest 90: Rapid City, out in early access next month",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/take-out-some-monsters-and-then-turn-them-into-take-out-in-the-post-apocalyptic-tycoon-survival-sim-midwest-90-rapid-city-out-in-early-access-next-month",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-06 17:30 UTC"
     }
   ]
 }
