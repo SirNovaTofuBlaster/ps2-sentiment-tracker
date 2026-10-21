@@ -874,10 +874,17 @@ def collection_titles(names, library, never):
     return [by_name[name] for name in dict.fromkeys(names) if name in by_name and key_of(by_name[name]) not in never]
 
 
-def mark_sealed(games, titles, state, now):
+def sealed_used_so_far(state, now):
+    used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
+    return used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0
+
+
+def mark_sealed(games, titles, state, now, room=1):
     """Flag the games people hold sealed (`titles`) that are due a search for new copies: on the US and UK, when the last one
     is `SEALED_EVERY_HOURS` old or there was none. It rides on the game's next ordinary lookup there (`check_market()`), only
     while the day has room (`SEALED_RESERVE`). The Rarest page's games already get one and are left alone."""
+    if room <= 0:
+        return                      # the day has no spare searches: nothing is flagged, so no lookup is made for it
     keys = {key_of(title) for title in titles}
     prior = prior_games(state)
     ids = [market_id for market_id in ("EBAY_US", "EBAY_GB") if market_id in MARKETS]
@@ -1161,12 +1168,14 @@ def due_lookups(games, state, now, history=()):
                 # A game of the Rarest or Underrated page was named after its last check: look again now (a
                 # mention can be the start of a rush), whatever its clock. The euro sites keep their own.
                 wait = min(wait, WATCH_RECHECK_MINUTES)
-            if waited is None or waited >= wait - EARLY_MINUTES:
+            sealed_due = market_id in (game.get("sealed_tier") or ())
+            if sealed_due or waited is None or waited >= wait - EARLY_MINUTES:
                 overdue = float("inf") if waited is None else waited / max(every, 60)
-                due.append((bool(market.get("extra")), game["level"] != "surging", not game["pinned"],
+                # A game held sealed in a collection is due on its own (its new copies are asked with the lookup), and first.
+                due.append((bool(market.get("extra")), not sealed_due, game["level"] != "surging", not game["pinned"],
                             {"underrated": 1, "collection": 1, "rare": 2}.get(game["level"], 0), -overdue, game["title"].lower(), market_id, game))
-    due.sort(key=lambda row: row[:7])        # an extra site comes after the first two, whatever a game's level
-    return [(row[7], row[6]) for row in due]
+    due.sort(key=lambda row: row[:8])        # an extra site comes after the first two, whatever a game's level
+    return [(row[8], row[7]) for row in due]
 
 
 # ======================================================================================
@@ -2524,7 +2533,8 @@ def main(argv=None):
         consoles, console_problems = load_consoles()
         consoles_priced = add_consoles(games, consoles)
         mark_watched(games, underrated + [entry["title"] for entry in rare])
-        mark_sealed(games, sealed_titles, state, now)
+        mark_sealed(games, sealed_titles, state, now,
+                    room=DAILY_SEARCHES - SEALED_RESERVE - (sealed_used_so_far(state, now)))
         rare_problems = rare_problems + console_problems + [f"editions.json: {problem}" for problem in edition_problems]
         if wanted:
             # Started by hand to see why one game shows no copies somewhere: counts for the search with one

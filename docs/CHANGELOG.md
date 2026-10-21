@@ -19,6 +19,10 @@
 - **Page**: opens on the short file (`feedPartial`), counts the left-out rows into the Items tile and the line above the table (switched-off sources excluded), and fetches the full file (`loadFullFeed()`) only when **Everything** is chosen. A missing or damaged short file means the full one is loaded as before; a failed full load leaves the short list with a message.
 - Tests: `tests/test_scraper.py` (the short file's contents), `tests/dashboard_check.mjs` (counts, nothing fetched for PS2 Games Only, fetch on Everything, failure). `RECENT_PATH` is patched in the scraper tests and in `tools/regression_check.py` so neither writes the repository's `data/`.
 
+## 2026-10-22: sealed games are looked up on their own
+
+- Sealed-held games showed no price because the new-copies search only rode on the game's ordinary lookup (every 12-24 hours) and only while the day had used under 4,000 searches, which today's busy day passed in the afternoon (18 games got it). A sealed game due its daily search is now a due lookup in itself (`due_lookups()`, first in line on the US and UK), and `mark_sealed(room=...)` flags nothing once the day has no room. Cost unchanged: one used plus one new search per sealed game, site and day.
+
 ## 2026-10-20: new copies searched for sealed games in collections
 
 - Games someone holds **sealed** now get a search for new and sealed copies (`mark_sealed()`, `check_new_copies()`, the Rarest page's second look) on eBay US and UK, about once a day, riding on the game's ordinary lookup there. It runs only while the day has used fewer than 4,000 of the 4,900 searches (`SEALED_RESERVE` 900), so lookups always come first. The result is `new` (copies, lowest, median) and `new_checked` in `latest.json`; the game page shows "new from" as it does for Rarest games. Never in the used medians, history or index. Cost: at most one extra search per sealed-held game and site a day.

@@ -1853,6 +1853,18 @@ class CollectionPricingTests(unittest.TestCase):
                         listing("Kuon (PS2) brand new", 340.0, currency=currency, item_id=8, condition="New"))
         return two_copies(params, headers)
 
+    def test_a_sealed_game_is_due_on_its_own_and_first_and_only_while_the_day_has_room(self):
+        game = {"key": "kuon", "title": "Kuon", "level": "normal", "pinned": False, "search": "kuon", "sealed_tier": ["EBAY_US", "EBAY_GB"]}
+        other = {"key": "okami", "title": "Okami", "level": "normal", "pinned": False, "search": "okami"}
+        now = NOON
+        stamp = now.strftime("%Y-%m-%dT%H:%MZ")
+        state = {"games": {k: {s: {"checked": stamp} for s in ("US", "UK", "DE", "FR", "IT", "ES")} for k in ("kuon", "okami")}}
+        due = ebay_prices.due_lookups([other, game], state, now)
+        self.assertEqual(sorted((g["key"], m) for g, m in due), [("kuon", "EBAY_GB"), ("kuon", "EBAY_US")], "just checked, yet sealed is due")
+        flagged = {"key": "kuon", "title": "Kuon", "level": "normal", "kind": "game"}
+        ebay_prices.mark_sealed([flagged], ["Kuon"], {}, now, room=0)
+        self.assertNotIn("sealed_tier", flagged, "no room, no flag")
+
     def test_a_game_held_sealed_gets_a_search_for_new_copies_on_the_us_and_uk_once_a_day(self):
         fake = FakeHttp(self.sealed_answer)
         fake.wanted, fake.sealed = ["kuon", "okami"], ["kuon"]
