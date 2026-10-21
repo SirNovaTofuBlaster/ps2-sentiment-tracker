@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-21 01:00:35 UTC",
+  "last_updated": "2026-10-21 01:11:45 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -330,14 +330,15 @@
       "timestamp": "2026-10-21 00:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750079385",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3543,17 +3544,18 @@
       "views": 145434
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Deus Ex and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750069136",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -320118,96 +320120,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-07 01:15 UTC"
-    },
-    {
-      "headline": "Limited Run Game Switch 2 list",
-      "source": "r/LimitedPrintGames",
-      "source_type": "reddit",
-      "feed": "reddit:limitedprintgames",
-      "link": "https://www.reddit.com/r/LimitedPrintGames/comments/1wzjkgn/limited_run_game_switch_2_list/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 01:06 UTC"
-    },
-    {
-      "headline": "Looking for a noob friendly online multiplayer rpg game on steam",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wzjj6s/looking_for_a_noob_friendly_online_multiplayer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 01:04 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PSA: Astral Chain (PEGI) available at VGP",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1wzjfwt/psa_astral_chain_pegi_available_at_vgp/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 01:00 UTC"
-    },
-    {
-      "headline": "Tokyo Xtreme Racer: Drift 2 PS2 Gameplay HD (PCSX2 v2.9) DLSS 5",
-      "source": "YouTube: xTimelessGaming",
-      "source_type": "youtube",
-      "feed": "youtube:UC7c5IWuVuiYVdKxcQ3Bpvbg",
-      "link": "https://www.youtube.com/watch?v=OCLfdevI8SI",
-      "matched_game": "Tokyo Xtreme Racer Drift",
-      "matched_games": [
-        "Tokyo Xtreme Racer Drift"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 01:00 UTC",
-      "views": 29294
-    },
-    {
-      "headline": "VW Beetle GLS 1.8T from Juiced #ps2 #shorts",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/shorts/UpDhpy__Xfs",
-      "matched_game": "Juiced",
-      "matched_games": [
-        "Juiced"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 01:00 UTC"
     }
   ]
 }
