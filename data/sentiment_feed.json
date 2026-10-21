@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-21 01:11:45 UTC",
+  "last_updated": "2026-10-21 01:25:43 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750081680",
+      "matched_game": "Metal Gear Solid 2",
+      "matched_games": [
+        "Metal Gear Solid 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-21 01:18 UTC"
+    },
     {
       "headline": "Red Rising Is Officially Returning In 2027",
       "source": "Polygon.com",
@@ -7373,6 +7392,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 18:16 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Plan",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750058389",
+      "matched_game": "The Plan",
+      "matched_games": [
+        "The Plan"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 18:16 UTC"
     },
@@ -320086,40 +320124,6 @@
       "hype": 0,
       "timestamp": "2026-10-07 01:27 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Pokemon Moon",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wzjs9a/pokemon_moon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 01:17 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Rise Of The Tomb Raider Switch 2 Limited Run Physical Release Announced",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/rise-of-the-tomb-raider-switch-2-limited-run-physical-release-announced",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-07 01:15 UTC"
     }
   ]
 }
