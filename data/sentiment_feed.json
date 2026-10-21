@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-21 00:55:41 UTC",
+  "last_updated": "2026-10-21 00:58:19 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -188,6 +188,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 00:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750079759",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-21 00:37 UTC"
     },
     {
       "headline": "1990 something Compaq to make a good sleeper?",
@@ -5226,14 +5245,15 @@
       "timestamp": "2026-10-20 19:47 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Genji",
+      "headline": "Thread on /vr/ naming Genji and Final Fantasy X",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888861",
       "matched_game": "Genji",
       "matched_games": [
-        "Genji"
+        "Genji",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -320171,40 +320191,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-07 01:00 UTC"
-    },
-    {
-      "headline": "Today’s pick ups.",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1wzje3n/todays_pick_ups/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 00:57 UTC"
-    },
-    {
-      "headline": "Is it rude to play video games with loud buttons on public transit?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wzjd33/is_it_rude_to_play_video_games_with_loud_buttons/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 00:56 UTC",
-      "is_digital_only": false
     }
   ]
 }
