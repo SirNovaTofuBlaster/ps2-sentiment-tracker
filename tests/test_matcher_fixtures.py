@@ -319,6 +319,36 @@ class MatcherRuleTests(unittest.TestCase):
         self.assertEqual(self.claims("Nerial shuts down after 13 years"), [])
         self.assertEqual(self.claims("XIII on PS2 deserves another look"), ["XIII"])
 
+    def test_a_number_only_title_needs_its_letters_not_just_the_digits(self):
+        # 2026-10-21: a voltage, a version and a count each made "XIII" surge on eBay, because the matcher reads XIII as 13.
+        self.assertEqual(self.claims("Will the PS2 work fine with 13.5-14.5V?", ps2_source=True), [])
+        self.assertEqual(self.claims("GoldHen 13.52 - PS2 Games not working.", ps2_source=True), [])
+        self.assertNotIn("XIII", self.claims("Beating EVERY PS2 Game #145 - OG Persona 4 (part 13)", ps2_source=True))
+        self.assertEqual(self.claims("XIII might be my new favorite PS2 multiplayer game", ps2_source=True), ["XIII"])
+        self.assertEqual(self.claims("I replayed XIII. Still great on PS2", ps2_source=True), ["XIII"])
+        self.assertEqual(self.claims("xiii on ps2 deserves a remake", ps2_source=True), ["XIII"])
+
+    def test_the_word_retro_is_not_the_game_retro(self):
+        # 2026-10-21: 50 rows in two weeks, 44 of them from the word in a text that also said PS2 ("Retroid Pocket Duo").
+        for text in ("Hands on With The Retroid Pocket Duo; A Little More Magic This Time. It even plays PS2 games",
+                     "Sony PVM-1390 retro setup", "Looking for a retro cozy game up to the PS2 era"):
+            self.assertEqual(self.claims(text, ps2_source=True), [], text)
+        row = {"headline": "Sony PVM-1390 retro setup", "source_type": "reddit", "matched_game": "Retro",
+               "matched_games": ["Retro"], "match_score": 100, "match_method": "exact", "matched_in": "title"}
+        cleaned = scraper.without_not_games(row)
+        self.assertEqual((cleaned["matched_game"], cleaned["matched_games"]), (None, []))
+
+    def test_saved_rows_that_reached_a_number_title_through_digits_are_cleaned(self):
+        row = {"headline": "GoldHen 13.52 - PS2 Games not working.", "source_type": "reddit", "matched_game": "XIII",
+               "matched_games": ["XIII"], "match_score": 100, "match_method": "exact", "matched_in": "title"}
+        self.assertEqual(scraper.without_not_games(row)["matched_games"], [])
+        real = {**row, "headline": "XIII might be my new favorite PS2 multiplayer game"}
+        self.assertEqual(scraper.without_not_games(real), real)
+        body = {**row, "matched_in": "body"}
+        self.assertEqual(scraper.without_not_games(body), body, "a body match has no text to check")
+        board = {**row, "source_type": "4chan"}
+        self.assertEqual(scraper.without_not_games(board), board, "a board row is never reread")
+
     def test_a_word_with_a_digit_in_it_has_to_be_in_the_text(self):
         self.assertEqual(self.claims("Street Fighter 6 - Character Guide: Arjun | PS5 & PS4 Games"), [])
         self.assertEqual(self.claims("Street Fighter EX3 was a PS2 launch title"), ["Street Fighter EX3"])

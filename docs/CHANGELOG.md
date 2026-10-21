@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-21: "Retro" is not a game, and "XIII" needs its letters
+
+- **Retro**: the library has a PS2 game called *Retro*, and the ordinary word matched it. 50 rows in the last two weeks named it (44 only through the text underneath, mostly a post or video that also said PS2), among them a Lemmy thread about the *Retroid* Pocket Duo handheld, "Sony PVM-1390 retro setup" and "Looking for a retro cozy game". It is now in `NOT_GAMES` with "The Cabal", so it never matches and saved rows lose it (`without_not_games()`). Its eBay figures were never kept (a one-word ordinary title is not priced), so nothing else changes.
+- **XIII**: the matcher reads the Roman numeral as 13, so any 13 in a PS2 text named the game: "13.5-14.5V" (a power supply), "GoldHen 13.52" (a version), "part 13". Two of those, from different subreddits within a day, made XIII a "surging" game on eBay (36 searches on 2026-10-21). A title that is only a number now needs its own letters in the text, as a word and not before a decimal (`written_as_title()`); saved rows matched from a headline's digits lose it. A row matched from a body cannot be checked and stays until it ages out. The surge flag already set runs out by itself (2026-10-22 14:31 UTC).
+- Other one-word titles that look like ordinary words and are named a lot through the text underneath (14 days, 2026-10-21): Black (30 rows, 19 from a body), Scaler (12, all from a body), Gift (5). Not changed: Black and Scaler are real games and a video "scaler" is also a retro-gaming term; each needs a look at its rows first.
+- Tests: `MatcherRuleTests` (decimals and versions, the word retro, saved rows).
+
 ## 2026-10-20: the Tracker is drawn before the other files arrive
 
 - **Why**: `fetchSentimentData()` fetched feeds.json, then the feed, then the euro rate, prices (three files), the Rarest page (four), the Demand Index, the digital-only archive and the Underrated file one after the other, and drew the Tracker only after the last. Every one of those waits was in front of the first screen.

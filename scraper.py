@@ -255,9 +255,10 @@ DISTINCTIVE_SHORT = {"ico", "okami", "vexx", "genji", "kessen"}
 
 POSSESSIVE = re.compile(r"(\w)['\u2019]s\b")
 
-# Library entries that are not PS2 games (2026-10-17: "The Cabal" is an ordinary phrase). They never match,
-# and rows saved with one lose it.
-NOT_GAMES = {"the cabal"}
+# Library entries that are not PS2 games (2026-10-17: "The Cabal" is an ordinary phrase; 2026-10-21: "Retro" was
+# named by 50 rows in two weeks, 44 of them only because the word "retro" stood in a text that also said PS2).
+# They never match, and rows saved with one lose it.
+NOT_GAMES = {"the cabal", "retro"}
 
 # Half a title that is only an ordinary word ("Hardware" from "Hardware: Online Arena" claimed every text
 # about consoles and hardware, 2026-10-17). Such a half is not a name; the whole title still matches.
@@ -355,6 +356,13 @@ def clean_title(raw):
     if match:
         title = f"{match.group(2)} {match.group(1)}{match.group(3) or ''}"
     return title or None
+
+
+def written_as_title(title, text):
+    """Whether `text` writes `title` itself, as a word of its own: the letters of "XIII", not a "13" that came from
+    a voltage ("13.5-14.5V"), a version ("GoldHen 13.52") or a count. Used for a title that is only a number, which
+    normalise() turns into digits like every other 13 in the text (2026-10-21)."""
+    return bool(re.search(rf"(?<![\w.]){re.escape(title)}(?!\w)(?!\.\d)", text or "", re.IGNORECASE))
 
 
 def normalise(text):
@@ -667,6 +675,8 @@ class TitleMatcher:
             if gram in self.short:
                 title, ambiguous = self.short[gram]
                 if ambiguous and not has_context:
+                    continue
+                if gram.isdigit() and not written_as_title(title, text):
                     continue
                 add(title, 100, "exact", gram)
         for gram in ordered:
@@ -1662,8 +1672,9 @@ def within_ceiling(items, ceiling=None):
 
 
 def without_not_games(item):
-    """Drops from a saved row every title in NOT_GAMES, and "Hardware Online Arena" unless its headline
-    writes the whole name (rows saved when "hardware" alone matched it). 4chan rows are cleaned from their
+    """Drops from a saved row every title in NOT_GAMES, "Hardware Online Arena" unless its headline
+    writes the whole name (rows saved when "hardware" alone matched it), and a number-only title ("XIII") that a
+    headline reached only through digits. 4chan rows are cleaned from their
     game list only: their headline is the scraper's own (rule 12)."""
     games = item.get("matched_games") or ([item["matched_game"]] if item.get("matched_game") else [])
     if not games:
@@ -1675,6 +1686,11 @@ def without_not_games(item):
         if name in NOT_GAMES:
             continue
         if name == "hardware online arena" and item.get("source_type") != "4chan" and name not in headline:
+            continue
+        # A title that is only a number, matched from the headline's digits ("13.5-14.5V" for "XIII"): its letters
+        # have to be in the headline. A row matched from a body has no text to check and is left alone.
+        if name.isdigit() and item.get("source_type") != "4chan" and item.get("matched_in") == "title" \
+                and not written_as_title(game, item.get("headline")):
             continue
         kept.append(game)
     if kept == games:
