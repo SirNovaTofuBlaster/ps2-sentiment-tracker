@@ -1392,7 +1392,7 @@ class BoardTests(unittest.TestCase):
         check(["I-Ninja"], "I-Ninja was fun")
         check(["Jak X: Combat Racing"], "Jak X: Combat Racing")
         # A title that is only a number names the game only as the library writes it.
-        self.assertEqual(loose("I was 13 when I got my PS2"), ["XIII"])
+        self.assertEqual(loose("I was 13 when I got my PS2"), [], "the digits alone no longer name XIII (2026-10-21)")
         check([], "I was 13 when I got my PS2", "My PS2 died after 13 years")
         check(["XIII"], "XIII on PS2 was underrated", "xiii is a good ps2 shooter")
         # A number that is counting something is not part of a name.
