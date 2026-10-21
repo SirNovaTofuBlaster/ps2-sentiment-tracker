@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-20 23:58:42 UTC",
+  "last_updated": "2026-10-21 00:01:21 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kill Switch",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750077723",
+      "matched_game": "Kill Switch",
+      "matched_games": [
+        "Kill Switch"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-20 23:56 UTC"
+    },
     {
       "headline": "Possibility of future backwards compatibility?",
       "source": "r/playstation",
@@ -519,6 +538,29 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 23:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Scooby Doo! Night of 100 Frights, Ghostbusters: The Video Game, Casper Spirit Dimensions and 2 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750075243",
+      "matched_game": "Scooby Doo! Night of 100 Frights",
+      "matched_games": [
+        "Scooby Doo! Night of 100 Frights",
+        "Ghostbusters: The Video Game",
+        "Casper Spirit Dimensions",
+        "Scooby Doo! Unmasked",
+        "Monster House"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 23:10 UTC"
     },
@@ -1977,17 +2019,18 @@
       "timestamp": "2026-10-20 21:54 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Shadow of the Colossus",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750071327",
-      "matched_game": "Shadow of the Colossus",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Shadow of the Colossus"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -8399,6 +8442,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 17:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Tenchu: Wrath of Heaven",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750055220",
+      "matched_game": "Tenchu: Wrath of Heaven",
+      "matched_games": [
+        "Tenchu: Wrath of Heaven"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 17:19 UTC"
     },
@@ -319631,42 +319693,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-07 00:01 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pushing The Warhammer Survivors Demo to Its Limits",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=mWQX4Z-aKKQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 00:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "I wish there was a remake of this game or another game that has a pvp mode like there was in Splinter Cell: Blacklist!",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wzi7tn/i_wish_there_was_a_remake_of_this_game_or_another/",
-      "matched_game": "Splinter Cell",
-      "matched_games": [
-        "Splinter Cell"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-07 00:00 UTC",
       "is_digital_only": false
     }
   ]
