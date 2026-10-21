@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-21 05:43:47 UTC",
+  "last_updated": "2026-10-21 06:11:38 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -1023,7 +1023,8 @@
       "link": "https://lemmy.world/post/53402702",
       "matched_game": "Retro",
       "matched_games": [
-        "Retro"
+        "Retro",
+        "XIII"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -2200,13 +2201,11 @@
       "source_type": "forum",
       "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
       "link": "https://lemmy.world/post/53400221",
-      "matched_game": "XIII",
-      "matched_games": [
-        "XIII"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
@@ -321533,92 +321532,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-07 06:11 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PlayStation Fan Gets PSN Account Hacked, Raising Questions Over Sony's Security",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1wzp2ia/playstation_fan_gets_psn_account_hacked_raising/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 06:10 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "One of the best and easily in my top 10 JRPGs from the PS1 era .",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1wzoxij/one_of_the_best_and_easily_in_my_top_10_jrpgs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-07 06:01 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "FINAL FANTASY VII EVER CRISIS | Final Trailer",
-      "source": "YouTube: Square Enix",
-      "source_type": "youtube",
-      "feed": "youtube:UCA5SLTAVA6unn1M-6lbo1NA",
-      "link": "https://www.youtube.com/watch?v=uA1rHCKIkI8",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 06:00 UTC",
-      "views": 142213
-    },
-    {
-      "headline": "Star Citizen answers select player questions about flight, damage, and bugged missions",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/52821371",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-07 05:50 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Looking for a RPG",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1wzonm6/looking_for_a_rpg/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 05:44 UTC",
       "is_digital_only": false
     }
   ]
