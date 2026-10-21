@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-21 05:39:27 UTC",
+  "last_updated": "2026-10-21 05:43:47 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -1990,6 +1990,23 @@
       "timestamp": "2026-10-21 01:55 UTC"
     },
     {
+      "headline": "Ubisoft's Extreme Sports Playground 'Riders Republic' Launches On Switch 2 This December",
+      "source": "Nintendo Life",
+      "source_type": "news",
+      "feed": "https://www.nintendolife.com/feeds/latest",
+      "link": "https://www.nintendolife.com/news/2026/10/ubisofts-extreme-sports-playground-riders-republic-launches-on-switch-2-this-december",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-21 01:55 UTC"
+    },
+    {
       "headline": "Got this 3 the other day.",
       "source": "r/ps2",
       "source_type": "reddit",
@@ -2183,11 +2200,13 @@
       "source_type": "forum",
       "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
       "link": "https://lemmy.world/post/53400221",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
+      "matched_game": "XIII",
+      "matched_games": [
+        "XIII"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
@@ -321600,23 +321619,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-07 05:44 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Nintendo DS pokemon games",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1wzol45/nintendo_ds_pokemon_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-07 05:40 UTC",
       "is_digital_only": false
     }
   ]
