@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 06:20:22 UTC",
+  "last_updated": "2026-10-22 06:22:59 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -617,6 +617,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-22 04:42 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750105016",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 04:42 UTC"
     },
@@ -1349,6 +1368,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 03:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man and Silent Hill 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750101760",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man",
+        "Silent Hill 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 03:31 UTC"
     },
     {
       "headline": "Funny how a little piece of the past can take you right back",
@@ -115355,10 +115394,10 @@
         "Grand Theft Auto: Vice City",
         "Grand Theft Auto III",
         "Resident Evil 4",
+        "Resident Evil Code: Veronica X",
         "Alone in the Dark",
         "Guilty Gear X",
         "Grandia II",
-        "Resident Evil Code: Veronica X",
         "Dead or Alive 2",
         "Crazy Taxi",
         "Space Race",
@@ -329180,40 +329219,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 06:24 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Which one should I get",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x0jk9k/which_one_should_i_get/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 06:20 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Does anyone else find owning a really expensive Desktop PC to be a little stressful at times?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0jjyo/does_anyone_else_find_owning_a_really_expensive/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 06:20 UTC",
       "is_digital_only": false
     }
   ]
