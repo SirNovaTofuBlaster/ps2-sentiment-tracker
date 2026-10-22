@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 23:08:43 UTC",
+  "last_updated": "2026-10-22 23:12:48 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -158,18 +158,18 @@
       "timestamp": "2026-10-22 22:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening Special Edition and Devil May Cry",
+      "headline": "Thread on /v/ naming Devil May Cry and Devil May Cry 3: Dante's Awakening Special Edition",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750163234",
-      "matched_game": "Devil May Cry 3: Dante's Awakening Special Edition",
+      "matched_game": "Devil May Cry",
       "matched_games": [
-        "Devil May Cry 3: Dante's Awakening Special Edition",
-        "Devil May Cry"
+        "Devil May Cry",
+        "Devil May Cry 3: Dante's Awakening Special Edition"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2458,8 +2458,8 @@
         "Metal Gear Solid 3: Snake Eater",
         "God Hand",
         "Yakuza 2",
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Romancing SaGa"
+        "Romancing SaGa",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -9768,6 +9768,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 35,
+      "hype": 0,
+      "timestamp": "2026-10-22 15:45 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750134271",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 15:45 UTC"
     },
@@ -327973,110 +327992,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 23:12 UTC"
-    },
-    {
-      "headline": "I’ve been gaming on a 1920x1080 144Hz monitor for more than 10 years, and I’m finally thinking about upgrading.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x15pie/ive_been_gaming_on_a_1920x1080_144hz_monitor_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 23:11 UTC"
-    },
-    {
-      "headline": "100$ a tb for 990pro.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x15pbu/100_a_tb_for_990pro/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 23:11 UTC"
-    },
-    {
-      "headline": "Star Conflict servers shutdown: schedule",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1x15ola/star_conflict_servers_shutdown_schedule/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 23:10 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Monster Hunter",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12867336",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-08 23:09 UTC"
-    },
-    {
-      "headline": "Star Conflict servers shutdown: schedule",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x15nfw/star_conflict_servers_shutdown_schedule/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 23:08 UTC"
-    },
-    {
-      "headline": "I’ve been gaming on a 1920x1080 144Hz monitor for more than 10 years, and I’m finally thinking about upgrading.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x15nau/ive_been_gaming_on_a_1920x1080_144hz_monitor_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 23:08 UTC"
     }
   ]
 }
