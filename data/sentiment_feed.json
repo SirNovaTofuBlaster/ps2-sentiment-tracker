@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 19:43:47 UTC",
+  "last_updated": "2026-10-22 19:54:58 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 20:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750152237",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 19:53 UTC"
     },
     {
       "headline": "Delta Emulator Gets Huge 2.0 Update And iPhone Duo Support",
@@ -1404,17 +1423,18 @@
       "timestamp": "2026-10-22 18:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life",
+      "headline": "Thread on /v/ naming Deus Ex and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750146407",
-      "matched_game": "Half-Life",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1508,6 +1528,25 @@
       "hype": 0,
       "timestamp": "2026-10-22 18:19 UTC",
       "views": 629
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750145913",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 18:19 UTC"
     },
     {
       "headline": "Bought 2 memory cards",
@@ -7997,7 +8036,7 @@
       "views": 16787
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Metal Gear Solid 2, Final Fantasy X and 3 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Resident Evil 4, Grand Theft Auto: San Andreas and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -8005,11 +8044,11 @@
       "matched_game": "Grand Theft Auto III",
       "matched_games": [
         "Grand Theft Auto III",
+        "Resident Evil 4",
+        "Grand Theft Auto: San Andreas",
         "Metal Gear Solid 2",
         "Final Fantasy X",
-        "Silent Hill 2",
-        "Resident Evil 4",
-        "Grand Theft Auto: San Andreas"
+        "Silent Hill 2"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -328087,178 +328126,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 19:54 UTC"
-    },
-    {
-      "headline": "Got this gem of a PC locally for $700.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x10wlh/got_this_gem_of_a_pc_locally_for_700/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:52 UTC"
-    },
-    {
-      "headline": "Anyone know why this appeared?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x10v8j/anyone_know_why_this_appeared/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:51 UTC"
-    },
-    {
-      "headline": "Looking for a game that doesn’t feel so heavy to get into (not open world)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x10twb/looking_for_a_game_that_doesnt_feel_so_heavy_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:50 UTC"
-    },
-    {
-      "headline": "Is it normal that when Frutiger Aero LARPers actually try to use an old Windows 7 laptop, they find out that it’s a slow old piece of junk instead of fancy glossy transparent bubbles and ambience music?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x10ucg/is_it_normal_that_when_frutiger_aero_larpers/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:50 UTC"
-    },
-    {
-      "headline": "extract all clips, screenshots and recordings",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x10tfl/extract_all_clips_screenshots_and_recordings/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:49 UTC"
-    },
-    {
-      "headline": "Did I possibly damage my GPU? High hotspot temps",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x10rg0/did_i_possibly_damage_my_gpu_high_hotspot_temps/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:47 UTC"
-    },
-    {
-      "headline": "Anyone else think it's a huge flaw to have a ton of playable characters but a small party limit?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x10p8b/anyone_else_think_its_a_huge_flaw_to_have_a_ton/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:45 UTC"
-    },
-    {
-      "headline": "A $2,000 PC is just a very elaborate Stardew Valley launcher.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x10ou4/a_2000_pc_is_just_a_very_elaborate_stardew_valley/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:44 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Spider-Man",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749306874",
-      "matched_game": "Spider-Man",
-      "matched_games": [
-        "Spider-Man"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:43 UTC"
-    },
-    {
-      "headline": "Intel has patented an RGB processor",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x10npa/intel_has_patented_an_rgb_processor/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:43 UTC"
     }
   ]
 }
