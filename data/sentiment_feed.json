@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 05:23:30 UTC",
+  "last_updated": "2026-10-22 05:26:12 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -329,6 +329,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 04:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750104682",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 04:34 UTC"
     },
     {
       "headline": "Thread on /v/ naming Grand Theft Auto III",
@@ -27392,6 +27411,27 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-20 23:51 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Rule of Rose, God Hand and Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750077475",
+      "matched_game": "Rule of Rose",
+      "matched_games": [
+        "Rule of Rose",
+        "God Hand",
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 23:51 UTC"
     },
@@ -79379,7 +79419,7 @@
       "timestamp": "2026-10-18 21:54 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Deus Ex, Half-Life and Red Faction 2",
+      "headline": "Thread on /vr/ naming Deus Ex, Half-Life, Unreal Tournament and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -79388,6 +79428,7 @@
       "matched_games": [
         "Deus Ex",
         "Half-Life",
+        "Unreal Tournament",
         "Red Faction 2"
       ],
       "match_score": 100,
@@ -140408,21 +140449,21 @@
       "timestamp": "2026-10-16 07:05 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming FlatOut 2, Choro Q, V-Rally 3 and 2 more",
+      "headline": "Thread on /vr/ naming Choro Q, V-Rally 3, Need for Speed Underground 2 and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12880718",
-      "matched_game": "FlatOut 2",
+      "matched_game": "Choro Q",
       "matched_games": [
-        "FlatOut 2",
         "Choro Q",
         "V-Rally 3",
         "Need for Speed Underground 2",
-        "Midnight Club 2"
+        "Midnight Club 2",
+        "FlatOut 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -329112,23 +329153,6 @@
       "hype": 0,
       "timestamp": "2026-10-08 05:33 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Round Up: The Reviews For Dragon's Dogma 2: Dark Arisen Are In",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/round-up-the-reviews-for-dragons-dogma-2-dark-arisen-are-in",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 05:25 UTC"
     }
   ]
 }
