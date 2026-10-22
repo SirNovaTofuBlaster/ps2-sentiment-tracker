@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 04:26:27 UTC",
+  "last_updated": "2026-10-22 04:29:03 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -105,14 +105,15 @@
       "timestamp": "2026-10-22 04:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750103569",
       "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3196,13 +3197,14 @@
       "timestamp": "2026-10-22 00:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Sims",
+      "headline": "Thread on /v/ naming Iron Man and The Sims",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750090269",
-      "matched_game": "The Sims",
+      "matched_game": "Iron Man",
       "matched_games": [
+        "Iron Man",
         "The Sims"
       ],
       "match_score": 100,
@@ -75292,6 +75294,25 @@
       "timestamp": "2026-10-19 02:48 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12885778",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-19 02:48 UTC"
+    },
+    {
       "headline": "*NEW PC won't boot from usb on TUF B550 WIFI 2",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -86991,6 +87012,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-18 15:01 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming MX World Tour featuring Jamie Little",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12884837",
+      "matched_game": "MX World Tour featuring Jamie Little",
+      "matched_games": [
+        "MX World Tour featuring Jamie Little"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 15:01 UTC"
     },
@@ -174226,6 +174266,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-14 22:45 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12878296",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-14 22:45 UTC"
     },
@@ -328925,24 +328984,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 04:31 UTC"
-    },
-    {
-      "headline": "Can I survive my first playthrough of Slender: The Arrival?",
-      "source": "YouTube: PeteDorr",
-      "source_type": "youtube",
-      "feed": "youtube:UCeTvRtfRFyWXdO_ZbyArPjA",
-      "link": "https://www.youtube.com/watch?v=A8BCwIg3c5g",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 04:28 UTC",
-      "views": 2624
     }
   ]
 }
