@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 09:11:36 UTC",
+  "last_updated": "2026-10-22 09:14:13 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -329,6 +329,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 08:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750114310",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 08:36 UTC"
     },
     {
       "headline": "Is swapping out gpu fix the problem?",
@@ -329683,57 +329702,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 09:14 UTC"
-    },
-    {
-      "headline": "Produtora de Star Wars Zero Company chama de volta funcionários",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/produtora-de-star-wars-zero-company-chama-de-volta-funcionarios",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 09:13 UTC"
-    },
-    {
-      "headline": "Today is a good day!! Thank you Lego website!!",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x0m7z0/today_is_a_good_day_thank_you_lego_website/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 09:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "PC Gamer magazine's new issue is on sale now: World of Warcraft: Forever",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/pc-gamer-magazines-new-issue-is-on-sale-now-world-of-warcraft-forever/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 09:11 UTC"
     }
   ]
 }
