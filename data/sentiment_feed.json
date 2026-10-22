@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 03:05:39 UTC",
+  "last_updated": "2026-10-22 03:16:48 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 02:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750100089",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 02:58 UTC"
     },
     {
       "headline": "Thread on /vr/ naming Silent Hill 4: The Room and Resident Evil 4",
@@ -442,7 +461,7 @@
       "timestamp": "2026-10-22 02:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Monster House and Astro Boy",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Monster House, Astro Boy and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -451,7 +470,8 @@
       "matched_games": [
         "Kingdom Hearts",
         "Monster House",
-        "Astro Boy"
+        "Astro Boy",
+        "Special Forces"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -24340,6 +24360,25 @@
       "timestamp": "2026-10-21 01:10 UTC"
     },
     {
+      "headline": "Thread on /v/ naming The Thing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750081348",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-21 01:10 UTC"
+    },
+    {
       "headline": "$9 pickup. Is this any good?",
       "source": "r/PlaystationCollectors",
       "source_type": "reddit",
@@ -29094,17 +29133,18 @@
       "timestamp": "2026-10-20 20:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Final Fantasy XI and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750066869",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Final Fantasy XI",
       "matched_games": [
+        "Final Fantasy XI",
         "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -328284,108 +328324,6 @@
       "hype": 0,
       "timestamp": "2026-10-08 03:16 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "TGP 5060 LOCK AT 55W WITH HyperX OMEN 15 inch Gaming Laptop PC 15-ga0070wm",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0gar8/tgp_5060_lock_at_55w_with_hyperx_omen_15_inch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-08 03:15 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "What happens to Switch 2 Game-Key Cards if Nintendo’s servers eventually shut down?",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1x0g84t/what_happens_to_switch_2_gamekey_cards_if/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 03:11 UTC"
-    },
-    {
-      "headline": "Looking for more sci-fi RPGs",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x0g8fd/looking_for_more_scifi_rpgs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 03:11 UTC"
-    },
-    {
-      "headline": "Heroic Launcher Hogwarts Legacy crashes on Steamdeck",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x0g5zn/heroic_launcher_hogwarts_legacy_crashes_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 03:08 UTC"
-    },
-    {
-      "headline": "Is this real? Pokemon Heartgold",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x0g582/is_this_real_pokemon_heartgold/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 03:06 UTC"
-    },
-    {
-      "headline": "Chrono Cross: A Lesson in Why You Should Keep Plot/Lore Simple [Full Spoilers]",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x0g4sz/chrono_cross_a_lesson_in_why_you_should_keep/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 03:06 UTC"
     }
   ]
 }
