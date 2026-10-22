@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-22 04:31:17 UTC",
+  "last_updated": "2026-10-22 04:42:48 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750104663",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 04:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750104523",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 04:30 UTC"
+    },
     {
       "headline": "swipe typing and predictive text for steam deck!",
       "source": "r/SteamDeck",
@@ -4128,18 +4166,18 @@
       "views": 2142
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X and The Hobbit",
+      "headline": "Thread on /v/ naming The Hobbit and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750085028",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "The Hobbit",
       "matched_games": [
-        "Final Fantasy X",
-        "The Hobbit"
+        "The Hobbit",
+        "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -328950,57 +328988,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 04:43 UTC"
-    },
-    {
-      "headline": "Look Outside or No I'm Not a Human (or both)?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x0hu7n/look_outside_or_no_im_not_a_human_or_both/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 04:38 UTC"
-    },
-    {
-      "headline": "Unusual mark on heatsink",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0ht5d/unusual_mark_on_heatsink/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 04:37 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Is It Worth It? – Episode 113: Dragon’s Crown Pro",
-      "source": "Podcast: Retro RPG Podcast",
-      "source_type": "podcast",
-      "feed": "https://retrorpg.net/?feed=podcast",
-      "link": "https://retrorpg.net/?p=3455",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 04:31 UTC"
     }
   ]
 }
