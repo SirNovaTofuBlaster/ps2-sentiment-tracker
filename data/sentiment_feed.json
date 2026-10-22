@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 16:47:29 UTC",
+  "last_updated": "2026-10-22 16:50:10 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -34,6 +34,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-22 16:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dragon Quest VIII: Journey of the Cursed King",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750138516",
+      "matched_game": "Dragon Quest VIII: Journey of the Cursed King",
+      "matched_games": [
+        "Dragon Quest VIII: Journey of the Cursed King"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 16:43 UTC"
     },
@@ -1428,6 +1447,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-22 15:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750134396",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 15:47 UTC"
     },
@@ -6365,7 +6403,7 @@
       "timestamp": "2026-10-22 12:30 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Astro Boy and God Hand",
+      "headline": "Thread on /vr/ naming Astro Boy, God Hand and Star Wars: Episode III: Revenge of the Sith",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -6373,7 +6411,8 @@
       "matched_game": "Astro Boy",
       "matched_games": [
         "Astro Boy",
-        "God Hand"
+        "God Hand",
+        "Star Wars: Episode III: Revenge of the Sith"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -54336,22 +54375,22 @@
       "timestamp": "2026-10-20 14:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Grand Theft Auto: Vice City, Resident Evil 4, Silent Hill 3 and 3 more",
+      "headline": "Thread on /vr/ naming Resident Evil 4, Silent Hill 3, Katamari Damacy and 3 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888319",
-      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Grand Theft Auto: Vice City",
         "Resident Evil 4",
         "Silent Hill 3",
         "Katamari Damacy",
         "God Hand",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Grand Theft Auto: Vice City"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -59946,16 +59985,17 @@
       "timestamp": "2026-10-20 09:48 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming God of War II, Devil May Cry 3 and Baldur's Gate: Dark Alliance",
+      "headline": "Thread on /vr/ naming Devil May Cry 3: Dante's Awakening, Devil May Cry 3, Baldur's Gate: Dark Alliance and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12887996",
-      "matched_game": "God of War II",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
       "matched_games": [
-        "God of War II",
+        "Devil May Cry 3: Dante's Awakening",
         "Devil May Cry 3",
-        "Baldur's Gate: Dark Alliance"
+        "Baldur's Gate: Dark Alliance",
+        "God of War II"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -328613,76 +328653,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-08 16:50 UTC"
-    },
-    {
-      "headline": "Sulfur sets release date on Nintendo Switch, Switch 2 version announced",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/sulfur-sets-release-date-on-nintendo-switch-switch-2-version-announced/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-08 16:49 UTC"
-    },
-    {
-      "headline": "Was the 7th Console Generation Really That Bleak for JRPGs?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x0w0jf/was_the_7th_console_generation_really_that_bleak/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 16:48 UTC"
-    },
-    {
-      "headline": "SpeedBreaker: the definitive Xbox 360 version of NFS: Most Wanted (2005), recompiled to run natively with enhancements on ALL Steam hardware & Mac (free, open source, bring your own disc)",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x0vzyb/speedbreaker_the_definitive_xbox_360_version_of/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 16:47 UTC"
-    },
-    {
-      "headline": "Un veterano de BioWare culpa a EA por el fracaso del último Dragon Age: 'Los plazos se cambiaban continuamente'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026281035/un-veterano-de-bioware-culpa-a-ea-por-el-fracaso-del-ultimo-dragon-age-los-plazos-se-cambiaban-continuamente/",
-      "matched_game": "Dragon Rage",
-      "matched_games": [
-        "Dragon Rage"
-      ],
-      "match_score": 95,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 16:47 UTC"
     }
   ]
 }
