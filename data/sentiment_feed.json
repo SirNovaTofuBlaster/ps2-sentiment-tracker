@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 22:56:10 UTC",
+  "last_updated": "2026-10-22 22:58:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -120,6 +120,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-22 22:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening Special Edition and Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750163234",
+      "matched_game": "Devil May Cry 3: Dante's Awakening Special Edition",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening Special Edition",
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 22:46 UTC"
     },
@@ -2377,7 +2397,7 @@
       "timestamp": "2026-10-22 20:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, God Hand, Yakuza 2 and 1 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, God Hand, Yakuza 2 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -2387,6 +2407,7 @@
         "Metal Gear Solid 3: Snake Eater",
         "God Hand",
         "Yakuza 2",
+        "Metal Gear Solid 2: Sons of Liberty",
         "Romancing SaGa"
       ],
       "match_score": 100,
@@ -136403,25 +136424,25 @@
       "timestamp": "2026-10-17 07:01 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil Code: Veronica X, Alone in the Dark, Guilty Gear X and 9 more",
+      "headline": "Thread on /vr/ naming Grand Theft Auto: Vice City, Grand Theft Auto III, Resident Evil 4 and 9 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12882914",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
-        "Resident Evil Code: Veronica X",
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III",
+        "Resident Evil 4",
         "Alone in the Dark",
         "Guilty Gear X",
         "Grandia II",
-        "Grand Theft Auto III",
-        "Resident Evil 4",
+        "Resident Evil Code: Veronica X",
         "Dead or Alive 2",
         "Crazy Taxi",
         "Space Race",
         "Marvel vs. Capcom 2",
-        "Space Channel 5",
-        "Grand Theft Auto: Vice City"
+        "Space Channel 5"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -328163,40 +328184,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 22:58 UTC"
-    },
-    {
-      "headline": "What PSU wattage for the following setup",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x15dla/what_psu_wattage_for_the_following_setup/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 22:56 UTC"
-    },
-    {
-      "headline": "Has this ever happened to anybody else?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x15ddb/has_this_ever_happened_to_anybody_else/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 22:56 UTC"
     }
   ]
 }
