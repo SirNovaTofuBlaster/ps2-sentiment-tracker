@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-10-22 04:59:41 UTC",
+  "last_updated": "2026-10-22 05:10:50 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Project Zero and Fatal Frame",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750105751",
+      "matched_game": "Project Zero",
+      "matched_games": [
+        "Project Zero",
+        "Fatal Frame"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 04:59 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Grand Theft Auto III",
       "source": "4chan /v/",
@@ -4202,18 +4222,18 @@
       "views": 2142
     },
     {
-      "headline": "Thread on /v/ naming The Hobbit and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and The Hobbit",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750085028",
-      "matched_game": "The Hobbit",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "The Hobbit",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "The Hobbit"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -328801,42 +328821,6 @@
       "hype": 0,
       "timestamp": "2026-10-08 05:11 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Laica announced for PC – survival horror game about quiet life with a girl in space",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/laica-announced-for-pc-survival-horror-game-about-quiet-life-with-a-girl-in-space",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-08 05:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "VW Golf MKIV from Juiced #ps2 #shorts",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/shorts/-IFx2PQPa88",
-      "matched_game": "Juiced",
-      "matched_games": [
-        "Juiced"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 05:00 UTC"
     }
   ]
 }
