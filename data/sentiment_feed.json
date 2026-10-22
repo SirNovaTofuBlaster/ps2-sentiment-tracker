@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 00:12:07 UTC",
+  "last_updated": "2026-10-22 00:23:48 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -94,18 +94,18 @@
       "timestamp": "2026-10-21 23:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Combat Ace and Armored Core 2",
+      "headline": "Thread on /v/ naming Armored Core 2 and Combat Ace",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750085901",
-      "matched_game": "Combat Ace",
+      "matched_game": "Armored Core 2",
       "matched_games": [
-        "Combat Ace",
-        "Armored Core 2"
+        "Armored Core 2",
+        "Combat Ace"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -135809,16 +135809,17 @@
       "timestamp": "2026-10-16 07:05 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Midnight Club 2, V-Rally 3 and Need for Speed Underground 2",
+      "headline": "Thread on /vr/ naming FlatOut 2, V-Rally 3, Need for Speed Underground 2 and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12880718",
-      "matched_game": "Midnight Club 2",
+      "matched_game": "FlatOut 2",
       "matched_games": [
-        "Midnight Club 2",
+        "FlatOut 2",
         "V-Rally 3",
-        "Need for Speed Underground 2"
+        "Need for Speed Underground 2",
+        "Midnight Club 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -327539,57 +327540,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 00:23 UTC"
-    },
-    {
-      "headline": "See you next week boss",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x0ctj4/see_you_next_week_boss/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 00:20 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Bought a refurbished steamed deck",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x0csdd/bought_a_refurbished_steamed_deck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 00:19 UTC"
-    },
-    {
-      "headline": "Anyone Else Playing Letalis? Could You Please Save Me",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x0cnkb/anyone_else_playing_letalis_could_you_please_save/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 00:12 UTC"
     }
   ]
 }
