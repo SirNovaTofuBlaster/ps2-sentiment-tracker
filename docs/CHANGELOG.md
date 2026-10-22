@@ -19,6 +19,11 @@
 - **Page**: opens on the short file (`feedPartial`), counts the left-out rows into the Items tile and the line above the table (switched-off sources excluded), and fetches the full file (`loadFullFeed()`) only when **Everything** is chosen. A missing or damaged short file means the full one is loaded as before; a failed full load leaves the short list with a message.
 - Tests: `tests/test_scraper.py` (the short file's contents), `tests/dashboard_check.mjs` (counts, nothing fetched for PS2 Games Only, fetch on Everything, failure). `RECENT_PATH` is patched in the scraper tests and in `tools/regression_check.py` so neither writes the repository's `data/`.
 
+## 2026-10-22: unmatched games asked again by name + "ps2"; dangnadt added
+
+- When the PS2 item-specific search returns listings and none names the game (`unmatched`, e.g. Baroque on eBay UK), `check_market()` now asks once more by keyword, `<name> ps2`, with no item specific, and keeps that answer if it finds the game. Cost: one extra search per unmatched game and site per check (about 8 games). A game still unmatched after both stays unmatched.
+- YouTube channel **dangnadt** added by link (`feeds.json`, group Retro: reviews & history, role press). Not verified from the sandbox; read its resolved name and size in `feed_status.json` after the first round.
+
 ## 2026-10-22: sealed games are looked up on their own
 
 - Sealed-held games showed no price because the new-copies search only rode on the game's ordinary lookup (every 12-24 hours) and only while the day had used under 4,000 searches, which today's busy day passed in the afternoon (18 games got it). A sealed game due its daily search is now a due lookup in itself (`due_lookups()`, first in line on the US and UK), and `mark_sealed(room=...)` flags nothing once the day has no room. Cost unchanged: one used plus one new search per sealed game, site and day.
