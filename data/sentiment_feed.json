@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 19:38:49 UTC",
+  "last_updated": "2026-10-22 19:41:33 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -3651,6 +3651,26 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-22 16:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War and King Arthur",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750139508",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "King Arthur"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 16:55 UTC"
     },
     {
       "headline": "Blame the low-profit generating content, not the buyers, not the profit-making entity.",
@@ -328086,74 +328106,6 @@
       "sentiment": 35,
       "hype": 0,
       "timestamp": "2026-10-08 19:41 UTC"
-    },
-    {
-      "headline": "Please help me figure out what my gaming taste is?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x10ley/please_help_me_figure_out_what_my_gaming_taste_is/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:40 UTC"
-    },
-    {
-      "headline": "Control saga",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x10jno/control_saga/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:39 UTC"
-    },
-    {
-      "headline": "Which Keyboard Should I Buy?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x10kgk/which_keyboard_should_i_buy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:39 UTC"
-    },
-    {
-      "headline": "Is this the best thermal paste pattern?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x10ins/is_this_the_best_thermal_paste_pattern/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-08 19:38 UTC"
     }
   ]
 }
