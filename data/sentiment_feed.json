@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 11:05:32 UTC",
+  "last_updated": "2026-10-22 11:08:13 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -928,6 +928,25 @@
       "timestamp": "2026-10-22 09:49 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Rumble Roses",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750116927",
+      "matched_game": "Rumble Roses",
+      "matched_games": [
+        "Rumble Roses"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 09:49 UTC"
+    },
+    {
       "headline": "Plugin menu is gone (help)",
       "source": "r/SteamDeck",
       "source_type": "reddit",
@@ -1045,6 +1064,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-22 09:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shrek 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750116290",
+      "matched_game": "Shrek 2",
+      "matched_games": [
+        "Shrek 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 09:32 UTC"
     },
@@ -36198,18 +36236,18 @@
       "timestamp": "2026-10-20 19:47 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Genji and Final Fantasy X",
+      "headline": "Thread on /vr/ naming Final Fantasy X and Genji",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888861",
-      "matched_game": "Genji",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Genji",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Genji"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -329485,40 +329523,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 11:08 UTC"
-    },
-    {
-      "headline": "Video Game Research Direction",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x0o2y0/video_game_research_direction/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 11:07 UTC"
-    },
-    {
-      "headline": "How to solve Haunted Library Puzzle #7 in Disney Dreamlight Valley Haunted Floating Festival event",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/how-to-solve-haunted-library-puzzle-7-in-disney-dreamlight-valley-haunted-floating-festival-event/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 11:06 UTC"
     }
   ]
 }
