@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 02:32:27 UTC",
+  "last_updated": "2026-10-22 02:35:06 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -69,6 +69,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 02:23 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585199760",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 02:22 UTC"
     },
     {
       "headline": "user benchmark, pretty much the same price ~$40 diffrence, event here owm benchmarks shows the 9070 xt being so much better",
@@ -225,6 +244,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 02:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750097338",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 02:09 UTC"
     },
     {
       "headline": "Steam deck Running WoW but won’t load shop?",
@@ -2876,6 +2914,25 @@
       "hype": 0,
       "timestamp": "2026-10-21 23:04 UTC",
       "views": 2225
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750083247",
+      "matched_game": "Spider-Man 3",
+      "matched_games": [
+        "Spider-Man 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-21 23:04 UTC"
     },
     {
       "headline": "Thread on /v/ naming Godzilla Unleashed",
@@ -39159,13 +39216,14 @@
       "timestamp": "2026-10-20 14:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4, Silent Hill 3, Katamari Damacy and 2 more",
+      "headline": "Thread on /vr/ naming Grand Theft Auto: Vice City, Resident Evil 4, Silent Hill 3 and 3 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888319",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
+        "Grand Theft Auto: Vice City",
         "Resident Evil 4",
         "Silent Hill 3",
         "Katamari Damacy",
@@ -39173,7 +39231,7 @@
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -328524,40 +328582,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 02:35 UTC"
-    },
-    {
-      "headline": "Prime Day Deal - FFVII Remake",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x0fh0s/prime_day_deal_ffvii_remake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-08 02:33 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Do I need to flip any of my fans or am I good?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0fggg/do_i_need_to_flip_any_of_my_fans_or_am_i_good/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 02:32 UTC",
-      "is_digital_only": false
     }
   ]
 }
