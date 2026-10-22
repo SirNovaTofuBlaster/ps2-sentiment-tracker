@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-10-22 02:48:45 UTC",
+  "last_updated": "2026-10-22 03:02:46 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Silent Hill 4: The Room and Resident Evil 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12889751",
+      "matched_game": "Silent Hill 4: The Room",
+      "matched_games": [
+        "Silent Hill 4: The Room",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 02:48 UTC"
+    },
     {
       "headline": "Moving Out 2",
       "source": "r/gamingsuggestions",
@@ -388,14 +408,16 @@
       "timestamp": "2026-10-22 02:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Monster House and Astro Boy",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750097005",
       "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Monster House",
+        "Astro Boy"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2466,7 +2488,7 @@
         "Combat Ace"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3064,13 +3086,14 @@
       "timestamp": "2026-10-21 23:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3",
+      "headline": "Thread on /v/ naming King's Field IV and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750083042",
-      "matched_game": "Persona 3",
+      "matched_game": "King's Field IV",
       "matched_games": [
+        "King's Field IV",
         "Persona 3"
       ],
       "match_score": 100,
@@ -38937,7 +38960,7 @@
       "timestamp": "2026-10-20 14:35 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Final Fantasy XI and Persona 4",
+      "headline": "Thread on /vg/ naming Final Fantasy XI, Persona 4 and Final Fantasy XII",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -38945,7 +38968,8 @@
       "matched_game": "Final Fantasy XI",
       "matched_games": [
         "Final Fantasy XI",
-        "Persona 4"
+        "Persona 4",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -101140,13 +101164,14 @@
       "timestamp": "2026-10-17 19:30 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Final Fantasy X",
+      "headline": "Thread on /vr/ naming Resident Evil 4 and Final Fantasy X",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12883696",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Final Fantasy X"
       ],
       "match_score": 100,
@@ -328344,144 +328369,6 @@
       "hype": 0,
       "timestamp": "2026-10-08 03:04 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Looking for game recommendations",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x0g0aw/looking_for_game_recommendations/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 03:00 UTC"
-    },
-    {
-      "headline": "Faaast Penguin - FPX: Badlands Trailer | PS5 Games",
-      "source": "YouTube: PlayStation",
-      "source_type": "youtube",
-      "feed": "youtube:UC-2Y8dQb0S6DtpxNgAKoJKA",
-      "link": "https://www.youtube.com/watch?v=yjl5aU6DCmY",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 03:00 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Need a grindy game with minimal story.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x0fyun/need_a_grindy_game_with_minimal_story/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 02:58 UTC"
-    },
-    {
-      "headline": "More Artifacts from the dark age",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0fymn/more_artifacts_from_the_dark_age/",
-      "matched_game": "Dark Angel",
-      "matched_games": [
-        "Dark Angel"
-      ],
-      "match_score": 89,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 02:57 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Pc building is getting more expensive by the day and I’ve wanted to build one for awhile; so I finally committed",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0fyk5/pc_building_is_getting_more_expensive_by_the_day/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 02:57 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Any recommendations for relatively affordable desks that can fit a setup?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0fy4r/any_recommendations_for_relatively_affordable/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 02:57 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Last Day of Prime Day Deals",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/fK-A8u4L2rY",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 02:53 UTC"
-    },
-    {
-      "headline": "I want to do a Firion solo run in FF2 pixel remaster any tips?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x0fsv8/i_want_to_do_a_firion_solo_run_in_ff2_pixel/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-08 02:49 UTC"
     }
   ]
 }
