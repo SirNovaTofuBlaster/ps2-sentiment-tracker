@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 18:41:34 UTC",
+  "last_updated": "2026-10-22 18:44:28 UTC",
   "total_tracked_feeds": 256,
   "items": [
     {
@@ -429,6 +429,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-22 18:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750145429",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 18:13 UTC"
     },
@@ -6691,15 +6710,19 @@
       "views": 14815
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Resident Evil 4",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Metal Gear Solid 2, Final Fantasy X and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750129325",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Resident Evil 4"
+        "Grand Theft Auto III",
+        "Metal Gear Solid 2",
+        "Final Fantasy X",
+        "Silent Hill 2",
+        "Resident Evil 4",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -9771,19 +9794,19 @@
       "timestamp": "2026-10-22 12:30 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Astro Boy, God Hand and Star Wars: Episode III: Revenge of the Sith",
+      "headline": "Thread on /vr/ naming Star Wars: Episode III: Revenge of the Sith, Astro Boy and God Hand",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12890291",
-      "matched_game": "Astro Boy",
+      "matched_game": "Star Wars: Episode III: Revenge of the Sith",
       "matched_games": [
+        "Star Wars: Episode III: Revenge of the Sith",
         "Astro Boy",
-        "God Hand",
-        "Star Wars: Episode III: Revenge of the Sith"
+        "God Hand"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -15742,16 +15765,17 @@
       "timestamp": "2026-10-22 05:28 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 2 and The Thing",
+      "headline": "Thread on /v/ naming The Thing, Silent Hill 2, Resident Evil 4 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750106946",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "The Thing",
       "matched_games": [
-        "Resident Evil 4",
+        "The Thing",
         "Silent Hill 2",
-        "The Thing"
+        "Resident Evil 4",
+        "Burnout 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -57838,23 +57862,23 @@
       "timestamp": "2026-10-20 14:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Grand Theft Auto: San Andreas, Resident Evil 4, Silent Hill 3 and 4 more",
+      "headline": "Thread on /vr/ naming Resident Evil 4, Silent Hill 3, Katamari Damacy and 4 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888319",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
         "Resident Evil 4",
         "Silent Hill 3",
         "Katamari Damacy",
         "God Hand",
         "Silent Hill 2",
-        "Grand Theft Auto: Vice City"
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -191343,14 +191367,15 @@
       "timestamp": "2026-10-14 22:45 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "headline": "Thread on /vr/ naming Resident Evil 4 and Burnout 3",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12878296",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Burnout 3"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -328236,91 +328261,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 18:45 UTC"
-    },
-    {
-      "headline": "My current laptop, should I buy a PC?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0z2hs/my_current_laptop_should_i_buy_a_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 18:43 UTC"
-    },
-    {
-      "headline": "Have any \"I can't believe that worked\" moments in gaming?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x0z17b/have_any_i_cant_believe_that_worked_moments_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 18:41 UTC"
-    },
-    {
-      "headline": "Forza Horizon 6 - PS5 Trailer",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x0z12f/forza_horizon_6_ps5_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 18:41 UTC"
-    },
-    {
-      "headline": "RTX 4080S undervolt: Afterburner doesn’t start with Windows + strange VRAM OC behavior",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0z0es/rtx_4080s_undervolt_afterburner_doesnt_start_with/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 18:41 UTC"
-    },
-    {
-      "headline": "Pokemon GO - Official Community Spotlight",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=OgPVn-pNyu4",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 18:41 UTC"
     }
   ]
 }
