@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-22 04:02:41 UTC",
+  "last_updated": "2026-10-22 04:13:49 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750103569",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 04:07 UTC"
+    },
     {
       "headline": "All party members in Final Fantasy Resonance",
       "source": "Polygon.com",
@@ -328599,40 +328618,6 @@
       "hype": 0,
       "timestamp": "2026-10-08 04:15 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Collecting handhelds and modding them all to look like the 1999 Pokemon GBC",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x0h7od/collecting_handhelds_and_modding_them_all_to_look/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 04:03 UTC"
-    },
-    {
-      "headline": "Resident Evil Requiem Writer Leaks Details About Upcoming DLC",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/DLuWE1ImRFs",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-08 04:02 UTC"
     }
   ]
 }
