@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22 21:01:47 UTC",
+  "last_updated": "2026-10-22 21:04:29 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1070,6 +1070,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-10-22 20:01 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750152829",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 20:01 UTC"
     },
@@ -328175,57 +328194,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-08 21:04 UTC"
-    },
-    {
-      "headline": "The original Halo is having a renaissance, and it’s no thanks to Microsoft",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/the-original-halo-is-having-a-renaissance-and-its-no-thanks-to-microsoft/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 21:03 UTC"
-    },
-    {
-      "headline": "The Final Fantasy VII Revelation Cast Reveal Their Favorite Co-Stars In The Game To Act Against",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/final-fantasy-7-revelation-voice-cast-interview-nycc-panel-2000742718",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-08 21:02 UTC"
-    },
-    {
-      "headline": "Razer Scammed me out of my PC because It was bought second-hand... What do I do?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x12oyw/razer_scammed_me_out_of_my_pc_because_it_was/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 21:01 UTC"
     }
   ]
 }
