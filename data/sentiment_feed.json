@@ -1,7 +1,66 @@
 {
-  "last_updated": "2026-10-22 13:04:13 UTC",
+  "last_updated": "2026-10-22 13:15:51 UTC",
   "total_tracked_feeds": 256,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3 and Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750124753",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "Dynasty Warriors 3",
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 13:05 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Deus Ex",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585241231",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 13:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750124593",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 13:02 UTC"
+    },
     {
       "headline": "4,300-Piece FanBrix Build of Lara Croft Manor Coming to Celebrate Tomb Raider's 30th Anniversary",
       "source": "Time Extension",
@@ -314,14 +373,15 @@
       "timestamp": "2026-10-22 12:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man",
+      "headline": "Thread on /v/ naming Spider-Man and Spider-Man 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750123112",
       "matched_game": "Spider-Man",
       "matched_games": [
-        "Spider-Man"
+        "Spider-Man",
+        "Spider-Man 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3871,14 +3931,16 @@
       "timestamp": "2026-10-22 08:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4, Deus Ex and Kill Switch",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750114801",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Deus Ex",
+        "Kill Switch"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -329090,180 +329152,6 @@
       "hype": 1,
       "timestamp": "2026-10-08 13:15 UTC",
       "is_digital_only": false
-    },
-    {
-      "headline": "Xbox cria divisão XP para adaptar jogos ao cinema e televisão",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/xbox-cria-divisao-xp-para-adaptar-jogos-ao-cinema-e-televisao",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:14 UTC"
-    },
-    {
-      "headline": "NBA 2K27 Tops Madden NFL 27 In August, Shocking Absolutely Nobody",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/nba-2k27-tops-madden-nfl-27-in-august-shocking-absolutely-nobody/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:14 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Best-selling games in the U.S. for August 2026 – Nintendo Switch 2 boosts Elden Ring to the top 10, Big Walk makes the list",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/best-selling-games-in-the-u-s-for-august-2026-nintendo-switch-2-boosts-elden-ring-to-the-top-10-big-walk-makes-the-list/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "At least he's ready :)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x0qk9n/at_least_hes_ready/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:12 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "My top 11 games from 1980-1984",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x0qfil/my_top_11_games_from_19801984/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:06 UTC"
-    },
-    {
-      "headline": "KINGDOM HEARTS Collection [I ~ III] Launch Trailer",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x0qf9k/kingdom_hearts_collection_i_iii_launch_trailer/",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:06 UTC"
-    },
-    {
-      "headline": "What should I do in this situation 🤔",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x0qfrq/what_should_i_do_in_this_situation/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:06 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Thread on /v/ naming Dynasty Warriors 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749283445",
-      "matched_game": "Dynasty Warriors 3",
-      "matched_games": [
-        "Dynasty Warriors 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:05 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Famitsu Sales: 9/28/26 – 10/4/27",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/famitsu-sales-9-28-26-10-4-27",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:05 UTC",
-      "is_digital_only": false
-    },
-    {
-      "headline": "Neon Abyss 2 | Out Now Trailer",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x0qepa/neon_abyss_2_out_now_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-08 13:05 UTC"
     }
   ]
 }
