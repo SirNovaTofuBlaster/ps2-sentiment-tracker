@@ -1564,7 +1564,18 @@ def check_market(http_client, token, game, market_id, counter):
 
     if status != 200:
         return {**base, "status": "error", "answered": status != 0, "error": error_text(status, payload)}
-    result = {**base, **summarise(payload, game, market, keyword_search)}
+    summary = summarise(payload, game, market, keyword_search)
+    if summary["status"] == "unmatched" and not keyword_search:
+        # The PS2 item specific returned listings, none of them this game ("Baroque": other PS2 listings that mention
+        # the word). Ask again the way a person would, by the name and "ps2" with no item specific; that search finds
+        # the game's copies when sellers left the specific blank.
+        time.sleep(REQUEST_PAUSE)
+        retry_status, retry_payload = fetch(http_client, token, game, market_id, counter, by_aspect=False)
+        if retry_status == 200:
+            retried = summarise(retry_payload, game, market, True)
+            if retried["status"] != "unmatched":
+                keyword_search, payload, summary = True, retry_payload, retried
+    result = {**base, **summary}
     if game.get("new_tier") and market_id in game["new_tier"]:
         result["new"] = check_new_copies(http_client, token, game, market_id, counter, keyword_search)
         if not result.get("counted"):

@@ -766,6 +766,17 @@ class FallbackTests(Quiet):
         self.assertTrue(result["truncated"], "one of the two searches had more than it returned")
         self.assertTrue(result["search_url"].startswith("https://www.ebay.com/sch/i.html?_nkw=kingdom%20hearts%202%20ps2"))
 
+    def test_an_unmatched_game_is_asked_again_by_name_and_ps2_and_found(self):
+        seen = []
+        def answer(params, headers):
+            seen.append(params["q"])
+            if params["q"].endswith(" ps2"):
+                return page(listing("Baroque PS2 Sony PlayStation 2 game", 120, item_id=5))
+            return page(listing("Jak 3 PS2", 9, item_id=1))
+        result = ebay_prices.check_market(FakeHttp(answer), TOKEN, game("Baroque"), "EBAY_US", {"searches": 0})
+        self.assertEqual((result["status"], result["counted"], result["platform_filter"]), ("ok", 1, "keyword"))
+        self.assertEqual(seen[-1], "baroque ps2")
+
     def test_listings_that_never_name_the_game_are_unmatched_not_zero_copies(self):
         fake = FakeHttp(lambda params, headers: page(listing("Jak 3 PS2", 9, item_id=1), listing("Jak II PS2", 8, item_id=2)))
         jak = game("Jak X")
@@ -2872,7 +2883,7 @@ class EndToEndTests(unittest.TestCase):
         self.assertTrue(filters[2].startswith("conditions:{USED},"))
         self.assertEqual(filters[3], "buyingOptions:{FIXED_PRICE},itemLocationCountry:US")
         self.assertEqual(fake.searches[1]["params"]["q"], "silent hill 2 ps2")
-        self.assertEqual(self.sandbox.latest["searches"]["used"], 8 + 4)
+        self.assertEqual(self.sandbox.latest["searches"]["used"], 8 + 4 + 2, "Kuon is unmatched on both sites and is asked again by keyword")
         self.assertNotIn("Search check", self.sandbox.run(env={**KEY, "EBAY_DIAGNOSE": ""})[1])
         self.assertNotIn("24.99", printed)
 

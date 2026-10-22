@@ -5289,6 +5289,15 @@
       "group": "4chan game boards",
       "role": "anonymous",
       "enabled": true
+    },
+    {
+      "type": "youtube",
+      "name": "dangnadt",
+      "channel_url": "https://www.youtube.com/@dangnadt",
+      "group": "Retro: reviews & history",
+      "role": "press",
+      "enabled": true,
+      "note": "Added 2026-10-22 by channel link at the maintainer's request. Not checked from the development sandbox (YouTube is unreachable there): the scraper resolves the channel ID on its first run; check the resolved name and size in feed_status.json, since a handle can point at a namesake or not exist."
     }
   ]
 }
