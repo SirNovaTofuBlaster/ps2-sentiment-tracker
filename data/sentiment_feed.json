@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 16:04:44 UTC",
+  "last_updated": "2026-10-23 16:07:29 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -139,6 +139,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 15:55 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12892209",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 15:54 UTC"
     },
     {
       "headline": "It came early!",
@@ -1039,6 +1058,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 15:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4 and Pro Evolution Soccer 6",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750203854",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Pro Evolution Soccer 6"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 15:05 UTC"
     },
@@ -2612,13 +2651,14 @@
       "timestamp": "2026-10-23 14:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War",
+      "headline": "Thread on /v/ naming Spider-Man 2 and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750200581",
-      "matched_game": "God of War",
+      "matched_game": "Spider-Man 2",
       "matched_games": [
+        "Spider-Man 2",
         "God of War"
       ],
       "match_score": 100,
@@ -2784,6 +2824,26 @@
       "hype": 0,
       "timestamp": "2026-10-23 14:01 UTC",
       "views": 313
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life and Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750200381",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life",
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 14:01 UTC"
     },
     {
       "headline": "Dragon Ball Sparking! Zero SUPER LIMIT-BREAKING NEO | Limit Breaker Journey",
@@ -3135,6 +3195,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 13:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750200107",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 13:55 UTC"
     },
@@ -9152,16 +9231,17 @@
       "timestamp": "2026-10-23 07:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life, Legend of Kay, Final Fantasy X and 4 more",
+      "headline": "Thread on /v/ naming Dynasty Warriors 3, Legend of Kay, Final Fantasy X and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750187106",
-      "matched_game": "Half-Life",
+      "matched_game": "Dynasty Warriors 3",
       "matched_games": [
-        "Half-Life",
+        "Dynasty Warriors 3",
         "Legend of Kay",
         "Final Fantasy X",
+        "Half-Life",
         "Silent Hill 2",
         "Resident Evil 4",
         "Fatal Frame",
@@ -330009,74 +330089,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 16:07 UTC"
-    },
-    {
-      "headline": "STAR WARS Zero Company has reached 1 million units sold",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x1pclq/star_wars_zero_company_has_reached_1_million/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 16:06 UTC"
-    },
-    {
-      "headline": "What old game (10-15yrs) are you still playing in 2026 ?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x1pbw1/what_old_game_1015yrs_are_you_still_playing_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 16:05 UTC"
-    },
-    {
-      "headline": "Cannot run Vintage Story, or any non steam programs because of forced compatibility.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x1pbt3/cannot_run_vintage_story_or_any_non_steam/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 16:05 UTC"
-    },
-    {
-      "headline": "Legendary RPG Creator Is Officially Taking His Game Back from Electronic Arts",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/richard-garriott-ultima-creator-taking-his-back-copyright/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 16:04 UTC"
     }
   ]
 }
