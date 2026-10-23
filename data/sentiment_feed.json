@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 08:28:25 UTC",
+  "last_updated": "2026-10-23 08:31:02 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -987,6 +987,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 06:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750184851",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 06:36 UTC"
     },
     {
       "headline": "Has anyone tried the AMPINEL external load balancer to protect a graphics card from burning? This seems to be the only real, definitive solution to the problem, but I can't find any reviews anywhere.",
@@ -5261,6 +5280,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 00:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Okami and Beyond Good & Evil",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750168294",
+      "matched_game": "Okami",
+      "matched_games": [
+        "Okami",
+        "Beyond Good & Evil"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 00:10 UTC"
     },
@@ -328927,40 +328966,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 08:33 UTC"
-    },
-    {
-      "headline": "Keyboard help?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x1fxp3/keyboard_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 08:30 UTC"
-    },
-    {
-      "headline": "Daredevil diz que está num jogo da SEGA não anunciado",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/daredevil-diz-que-esta-num-jogo-da-sega-nao-anunciado",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 08:30 UTC"
     }
   ]
 }
