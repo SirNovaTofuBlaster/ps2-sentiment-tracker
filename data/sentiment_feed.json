@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 12:16:17 UTC",
+  "last_updated": "2026-10-23 12:18:56 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -203,6 +203,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 11:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Silent Hill 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750194956",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Silent Hill 3"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 11:58 UTC"
     },
@@ -1054,7 +1074,7 @@
         "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2230,6 +2250,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 09:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Blade 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750190210",
+      "matched_game": "Blade 2",
+      "matched_games": [
+        "Blade 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 09:32 UTC"
     },
     {
       "headline": "Cute-'Em-Ups Cotton Reboot! And Cotton Reboot: High Tension! glide onto PS5 and Nintendo Switch Today",
@@ -3472,7 +3511,7 @@
       "timestamp": "2026-10-23 07:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Legend of Kay, Final Fantasy X and 1 more",
+      "headline": "Thread on /v/ naming Silent Hill 2, Resident Evil 4, Legend of Kay and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -3480,6 +3519,7 @@
       "matched_game": "Silent Hill 2",
       "matched_games": [
         "Silent Hill 2",
+        "Resident Evil 4",
         "Legend of Kay",
         "Final Fantasy X",
         "Half-Life"
@@ -328994,23 +329034,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 12:18 UTC"
-    },
-    {
-      "headline": "What do you think?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x1jtt3/what_do_you_think/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 12:16 UTC"
     }
   ]
 }
