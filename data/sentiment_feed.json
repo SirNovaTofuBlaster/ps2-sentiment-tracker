@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 20:49:48 UTC",
+  "last_updated": "2026-10-23 20:52:30 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -140,6 +140,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 20:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts and Dynasty Warriors 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750223823",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "Dynasty Warriors 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 20:36 UTC"
     },
@@ -5079,18 +5099,19 @@
       "timestamp": "2026-10-23 16:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening and Spider-Man",
+      "headline": "Thread on /v/ naming Monster Hunter, Spider-Man and Devil May Cry 3: Dante's Awakening",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750210224",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Devil May Cry 3: Dante's Awakening",
-        "Spider-Man"
+        "Monster Hunter",
+        "Spider-Man",
+        "Devil May Cry 3: Dante's Awakening"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5823,19 +5844,21 @@
       "timestamp": "2026-10-23 16:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 3, The Thing and Dynasty Warriors 3",
+      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3, BloodRayne 2 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750208210",
-      "matched_game": "Silent Hill 3",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Silent Hill 3",
-        "The Thing",
-        "Dynasty Warriors 3"
+        "BloodRayne 2",
+        "Dynasty Warriors 3",
+        "The Thing"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -8025,18 +8048,19 @@
       "timestamp": "2026-10-23 15:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Pro Evolution Soccer 6, Resident Evil 4 and 2 more",
+      "headline": "Thread on /v/ naming We Love Katamari, Pro Evolution Soccer 6, Resident Evil 4 and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750203854",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "We Love Katamari",
       "matched_games": [
-        "Kingdom Hearts II",
+        "We Love Katamari",
         "Pro Evolution Soccer 6",
         "Resident Evil 4",
         "Ape Escape 3",
-        "Dark Cloud 2"
+        "Dark Cloud 2",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -331002,23 +331026,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 20:52 UTC"
-    },
-    {
-      "headline": "35% of Wolverine Sales Were Physical Discs - IGN Daily Fix",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=2tEQuqPImbI",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 20:50 UTC"
     }
   ]
 }
