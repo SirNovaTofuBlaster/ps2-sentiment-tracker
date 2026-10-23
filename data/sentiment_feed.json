@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 07:06:01 UTC",
+  "last_updated": "2026-10-23 07:17:47 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -343,6 +343,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 05:45 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750183217",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 05:45 UTC"
     },
@@ -328115,57 +328134,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 07:19 UTC"
-    },
-    {
-      "headline": "How to get the Acolyte in Risk of Rain 2 Hallowed Concepts",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/how-to-get-the-acolyte-in-risk-of-rain-2-hallowed-concepts/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 07:15 UTC"
-    },
-    {
-      "headline": "Mafia 3: Definitive Edition llega por sorpresa a PS5 y XBOX Series con 60 FPS y una actualización gratis",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026282003/mafia-3-definitive-edition-llega-por-sorpresa-a-ps5-y-xbox-series-con-60-fps-y-una-actualizacion-gratis/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 07:12 UTC"
-    },
-    {
-      "headline": "My Cat wants a Steamdeck?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x1eo4g/my_cat_wants_a_steamdeck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 07:08 UTC"
     }
   ]
 }
