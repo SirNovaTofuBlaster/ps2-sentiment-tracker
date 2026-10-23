@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-23 19:37:12 UTC",
+  "last_updated": "2026-10-23 19:39:56 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750220046",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 19:37 UTC"
+    },
     {
       "headline": "18 Best Retro Handhelds Of 2026 [All Reviewed]",
       "source": "Retro Dodo",
@@ -5959,7 +5978,7 @@
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -15650,15 +15669,18 @@
       "timestamp": "2026-10-23 04:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus and Project Zero",
+      "headline": "Thread on /v/ naming Silent Hill 2, Time Crisis 2, Project Zero and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750180719",
-      "matched_game": "Shadow of the Colossus",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
+        "Time Crisis 2",
+        "Project Zero",
         "Shadow of the Colossus",
-        "Project Zero"
+        "God Hand"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -329855,23 +329877,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 19:39 UTC"
-    },
-    {
-      "headline": "trying to play fallout 76 on ps4 but it says stream instead of download?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x1utam/trying_to_play_fallout_76_on_ps4_but_it_says/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 19:37 UTC"
     }
   ]
 }
