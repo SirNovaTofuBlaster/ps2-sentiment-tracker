@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 19:52:41 UTC",
+  "last_updated": "2026-10-23 19:55:22 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -174,14 +174,17 @@
       "timestamp": "2026-10-23 19:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Gran Turismo 3 A-Spec, Grand Theft Auto: San Andreas and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750220046",
       "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Grand Theft Auto III"
+        "Grand Theft Auto III",
+        "Gran Turismo 3 A-Spec",
+        "Grand Theft Auto: San Andreas",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -4523,13 +4526,15 @@
       "timestamp": "2026-10-23 16:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dynasty Warriors 3",
+      "headline": "Thread on /v/ naming Silent Hill 3, The Thing and Dynasty Warriors 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750208210",
-      "matched_game": "Dynasty Warriors 3",
+      "matched_game": "Silent Hill 3",
       "matched_games": [
+        "Silent Hill 3",
+        "The Thing",
         "Dynasty Warriors 3"
       ],
       "match_score": 100,
@@ -15727,6 +15732,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 06:44 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Fatal Frame",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12891572",
+      "matched_game": "Fatal Frame",
+      "matched_games": [
+        "Fatal Frame"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 06:43 UTC"
     },
     {
       "headline": "Sign the Petition",
@@ -330712,58 +330736,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 19:55 UTC"
-    },
-    {
-      "headline": "Steam Frame updates: Reservation timing, software updates, and more",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x1v8ke/steam_frame_updates_reservation_timing_software/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 19:54 UTC"
-    },
-    {
-      "headline": "Predicting Kinda Funny's Top 100 Games! - Kinda Funny Gamescast",
-      "source": "YouTube: Kinda Funny Games",
-      "source_type": "youtube",
-      "feed": "youtube:UCT6QFE3peNry9PdO5uGj96g",
-      "link": "https://www.youtube.com/watch?v=kF0GOReZYmw",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 19:53 UTC",
-      "views": 37888
-    },
-    {
-      "headline": "Games that you would still recommend to anyone to this day?",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1x1v78d/games_that_you_would_still_recommend_to_anyone_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 19:53 UTC"
     }
   ]
 }
