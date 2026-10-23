@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 00:50:27 UTC",
+  "last_updated": "2026-10-23 00:53:11 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -6582,20 +6582,21 @@
       "views": 1247
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter, Resident Evil Code: Veronica X, Silent Hill 2 and 1 more",
+      "headline": "Thread on /v/ naming Final Fantasy XII, Resident Evil Code: Veronica X, Silent Hill 2 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750145913",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
-        "Monster Hunter",
+        "Final Fantasy XII",
         "Resident Evil Code: Veronica X",
         "Silent Hill 2",
-        "God Hand"
+        "God Hand",
+        "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -19866,7 +19867,7 @@
       "timestamp": "2026-10-22 08:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 4: The Room, Deus Ex and 1 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Deus Ex, Kill Switch and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -19874,9 +19875,9 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4",
-        "Silent Hill 4: The Room",
         "Deus Ex",
-        "Kill Switch"
+        "Kill Switch",
+        "Silent Hill 4: The Room"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -327975,40 +327976,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 00:55 UTC"
-    },
-    {
-      "headline": "Ram and it’s worth.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x17tr8/ram_and_its_worth/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 00:52 UTC"
-    },
-    {
-      "headline": "Looking for - Dragon games!",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x17t5s/looking_for_dragon_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 00:51 UTC"
     }
   ]
 }
