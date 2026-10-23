@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 05:52:46 UTC",
+  "last_updated": "2026-10-23 06:06:47 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -122,6 +122,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 05:07 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750181789",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 05:03 UTC"
     },
     {
       "headline": "Games like Assassin's creed pirates on android?",
@@ -31141,7 +31160,7 @@
       "timestamp": "2026-10-21 23:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter, Persona 3, King's Field IV and 1 more",
+      "headline": "Thread on /v/ naming Monster Hunter, Half-Life, Persona 3 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -31149,6 +31168,7 @@
       "matched_game": "Monster Hunter",
       "matched_games": [
         "Monster Hunter",
+        "Half-Life",
         "Persona 3",
         "King's Field IV",
         "Kingdom Hearts"
@@ -328118,74 +328138,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-09 06:10 UTC"
-    },
-    {
-      "headline": "Silly question.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x1dnkz/silly_question/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 06:04 UTC"
-    },
-    {
-      "headline": "Free Talk Friday!",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x1dkka/free_talk_friday/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 06:00 UTC"
-    },
-    {
-      "headline": "[ASRock B450 Steel Legend] Enabling Secure Boot Causes System to Boot Directly into BIOS Instead of Windows",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x1dkq7/asrock_b450_steel_legend_enabling_secure_boot/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 06:00 UTC"
-    },
-    {
-      "headline": "Anyone have a system preference in terms of playing certain genres of jrpgs on?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x1dia2/anyone_have_a_system_preference_in_terms_of/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 05:56 UTC"
     }
   ]
 }
