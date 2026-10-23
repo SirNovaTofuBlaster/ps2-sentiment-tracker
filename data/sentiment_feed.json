@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 05:41:08 UTC",
+  "last_updated": "2026-10-23 05:52:46 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -2812,6 +2812,25 @@
       ],
       "match_score": 100,
       "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 00:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750170161",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -31122,16 +31141,17 @@
       "timestamp": "2026-10-21 23:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Persona 3 and King's Field IV",
+      "headline": "Thread on /v/ naming Monster Hunter, Persona 3, King's Field IV and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750083042",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Kingdom Hearts",
+        "Monster Hunter",
         "Persona 3",
-        "King's Field IV"
+        "King's Field IV",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -328166,108 +328186,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 05:56 UTC"
-    },
-    {
-      "headline": "Why isn't nerve gear a real console today?",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/52902647",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 05:50 UTC"
-    },
-    {
-      "headline": "Which motherboard should I go with for a 7800X3D + 32GB 6000MHz RAM + 9070 XT build?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x1ddx1/which_motherboard_should_i_go_with_for_a_7800x3d/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 05:49 UTC"
-    },
-    {
-      "headline": "What is wrong with my computer?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x1dcxd/what_is_wrong_with_my_computer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 05:47 UTC"
-    },
-    {
-      "headline": "Is this platinum box legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x1db87/is_this_platinum_box_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 05:44 UTC"
-    },
-    {
-      "headline": "Do I need a GPU anti-sag bracket, or is this amount of sag normal?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x1da08/do_i_need_a_gpu_antisag_bracket_or_is_this_amount/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 05:42 UTC"
-    },
-    {
-      "headline": "Guncon 2 Troubleshooting on my PVM CRTs.",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x1d94u/guncon_2_troubleshooting_on_my_pvm_crts/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 05:41 UTC"
     }
   ]
 }
