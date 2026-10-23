@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 14:10:25 UTC",
+  "last_updated": "2026-10-23 14:13:09 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -33,6 +33,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 14:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750200581",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 14:05 UTC"
     },
@@ -690,6 +709,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 13:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750199080",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 13:33 UTC"
     },
@@ -3459,13 +3497,14 @@
       "timestamp": "2026-10-23 10:51 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Devil May Cry and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750192560",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Devil May Cry",
       "matched_games": [
+        "Devil May Cry",
         "Final Fantasy X"
       ],
       "match_score": 100,
@@ -6049,22 +6088,23 @@
       "timestamp": "2026-10-23 07:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Fatal Frame, Legend of Kay, Final Fantasy X and 3 more",
+      "headline": "Thread on /v/ naming Harry Potter and The Prisoner of Azkaban, Legend of Kay, Final Fantasy X and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750187106",
-      "matched_game": "Fatal Frame",
+      "matched_game": "Harry Potter and The Prisoner of Azkaban",
       "matched_games": [
-        "Fatal Frame",
+        "Harry Potter and The Prisoner of Azkaban",
         "Legend of Kay",
         "Final Fantasy X",
         "Half-Life",
         "Silent Hill 2",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Fatal Frame"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -329427,40 +329467,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-09 14:15 UTC"
-    },
-    {
-      "headline": "World First! RuneScape quest completed on PlayStation 2",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x1mfaq/world_first_runescape_quest_completed_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 14:11 UTC"
-    },
-    {
-      "headline": "Draw maps of a vampiric lighthouse that defies logic in This Is Not For You, the latest horror game inspired by House of Leaves",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/draw-maps-of-a-vampiric-lighthouse-that-defies-logic-in-this-is-not-for-you-the-latest-horror-game-inspired-by-house-of-leaves",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 14:10 UTC"
     }
   ]
 }
