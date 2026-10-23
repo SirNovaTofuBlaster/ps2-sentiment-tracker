@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-23 08:13:04 UTC",
+  "last_updated": "2026-10-23 08:15:44 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -35,6 +35,26 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-23 08:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Legend of Kay and Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750187106",
+      "matched_game": "Legend of Kay",
+      "matched_games": [
+        "Legend of Kay",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 07:50 UTC"
     },
     {
       "headline": "Nueva pista sobre Half-Life 3: un compositor menciona HLX, el proyecto secreto de Valve",
@@ -26373,6 +26393,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 06:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750110016",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 06:43 UTC"
     },
     {
       "headline": "Future of AAA games",
@@ -328602,25 +328641,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-09 08:15 UTC"
-    },
-    {
-      "headline": "Black Screen after starting game",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x1fozr/black_screen_after_starting_game/",
-      "matched_game": "Black",
-      "matched_games": [
-        "Black"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-09 08:14 UTC"
     }
   ]
 }
