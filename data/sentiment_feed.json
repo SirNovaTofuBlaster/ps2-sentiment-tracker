@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 20:34:48 UTC",
+  "last_updated": "2026-10-24 20:37:28 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -69,6 +69,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 20:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Haunting Ground",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750286913",
+      "matched_game": "Haunting Ground",
+      "matched_games": [
+        "Haunting Ground"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 20:23 UTC"
     },
     {
       "headline": "Today’s game haul! Got some bangers! $1 each!",
@@ -538,6 +557,25 @@
       "timestamp": "2026-10-24 19:52 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Odin Sphere",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750285347",
+      "matched_game": "Odin Sphere",
+      "matched_games": [
+        "Odin Sphere"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 19:52 UTC"
+    },
+    {
       "headline": "searching for a chill rpg game",
       "source": "r/ShouldIbuythisgame",
       "source_type": "reddit",
@@ -744,6 +782,25 @@
       "timestamp": "2026-10-24 19:43 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Shadow the Hedgehog",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12894267",
+      "matched_game": "Shadow the Hedgehog",
+      "matched_games": [
+        "Shadow the Hedgehog"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 19:43 UTC"
+    },
+    {
       "headline": "Well it finally happened to me.",
       "source": "r/NSCollectors",
       "source_type": "reddit",
@@ -933,17 +990,18 @@
       "timestamp": "2026-10-24 19:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Time Crisis 2",
+      "headline": "Thread on /v/ naming Area 51 and Time Crisis 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750284286",
-      "matched_game": "Time Crisis 2",
+      "matched_game": "Area 51",
       "matched_games": [
+        "Area 51",
         "Time Crisis 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1191,19 +1249,19 @@
       "timestamp": "2026-10-24 19:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Silent Hill 2 and Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /v/ naming Silent Hill 2, Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750283259",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
         "Silent Hill 2",
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2024,13 +2082,16 @@
       "timestamp": "2026-10-24 18:29 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Sonic Unleashed",
+      "headline": "Thread on /v/ naming Haunting Ground, Clock Tower 3, Rule of Rose and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750280947",
-      "matched_game": "Sonic Unleashed",
+      "matched_game": "Haunting Ground",
       "matched_games": [
+        "Haunting Ground",
+        "Clock Tower 3",
+        "Rule of Rose",
         "Sonic Unleashed"
       ],
       "match_score": 100,
@@ -31794,7 +31855,7 @@
       "timestamp": "2026-10-23 13:40 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4 and Persona 3",
+      "headline": "Thread on /vg/ naming Persona 4, Persona 3 and Kingdom Hearts",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -31802,7 +31863,8 @@
       "matched_game": "Persona 4",
       "matched_games": [
         "Persona 4",
-        "Persona 3"
+        "Persona 3",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -332766,74 +332828,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 20:37 UTC"
-    },
-    {
-      "headline": "PCIE melted in GPU (only 1 pin)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2pe9w/pcie_melted_in_gpu_only_1_pin/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:36 UTC"
-    },
-    {
-      "headline": "Help me",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2pe2x/help_me/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:36 UTC"
-    },
-    {
-      "headline": "Me still today",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2pcl3/me_still_today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:34 UTC"
-    },
-    {
-      "headline": "Went a got a ps2 today",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x2pcs7/went_a_got_a_ps2_today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:34 UTC"
     }
   ]
 }
