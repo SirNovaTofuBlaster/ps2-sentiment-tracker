@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 15:49:40 UTC",
+  "last_updated": "2026-10-24 15:52:22 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -467,6 +467,27 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-24 15:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Kingdom Hearts II and Ghost Rider",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750269809",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening",
+        "Kingdom Hearts II",
+        "Ghost Rider"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 15:13 UTC"
     },
@@ -1284,6 +1305,25 @@
       "timestamp": "2026-10-24 14:16 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12893838",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 14:16 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -1676,6 +1716,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-24 13:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Burnout 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750265962",
+      "matched_game": "Burnout 3",
+      "matched_games": [
+        "Burnout 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 13:58 UTC"
     },
@@ -27530,18 +27589,19 @@
       "timestamp": "2026-10-23 12:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Rock Band and Midnight Club",
+      "headline": "Thread on /v/ naming Deus Ex, Midnight Club and Rock Band",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750196263",
-      "matched_game": "Rock Band",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Rock Band",
-        "Midnight Club"
+        "Deus Ex",
+        "Midnight Club",
+        "Rock Band"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -332205,57 +332265,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 15:52 UTC"
-    },
-    {
-      "headline": "Anyone know any less known, niche Ninja fantasy games? That i can play on Pc or Ps5 without emulators",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x2ikry/anyone_know_any_less_known_niche_ninja_fantasy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 15:50 UTC"
-    },
-    {
-      "headline": "Thoughts on this RTX 5080 / 9850X3D build for 4K OLED gaming?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2il7a/thoughts_on_this_rtx_5080_9850x3d_build_for_4k/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 15:50 UTC"
-    },
-    {
-      "headline": "PS2 Repair Failures :(",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x2ikll/ps2_repair_failures/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 15:50 UTC"
     }
   ]
 }
