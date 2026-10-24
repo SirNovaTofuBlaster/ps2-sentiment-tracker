@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 11:04:34 UTC",
+  "last_updated": "2026-10-24 11:07:04 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -293,6 +293,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 10:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming LEGO Batman",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750257741",
+      "matched_game": "LEGO Batman",
+      "matched_games": [
+        "LEGO Batman"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 10:16 UTC"
     },
     {
       "headline": "Dan Houser lo confirma: las portadas de GTA son todas iguales por consecuencia del 11-S",
@@ -4749,15 +4768,15 @@
       "timestamp": "2026-10-24 03:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X and Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Resident Evil Code: Veronica X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750243023",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil Code: Veronica X",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Resident Evil Code: Veronica X"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -10779,6 +10798,26 @@
       "matched_game": "God of War",
       "matched_games": [
         "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 20:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter and The Shield",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750224545",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "The Shield"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -17982,15 +18021,15 @@
       "views": 37582
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4 and Resident Evil Code: Veronica X",
+      "headline": "Thread on /vr/ naming Resident Evil Code: Veronica X and Resident Evil 4",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12892209",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Resident Evil 4",
-        "Resident Evil Code: Veronica X"
+        "Resident Evil Code: Veronica X",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
