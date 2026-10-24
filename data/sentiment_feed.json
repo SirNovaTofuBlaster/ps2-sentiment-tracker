@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 01:34:39 UTC",
+  "last_updated": "2026-10-24 01:37:17 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -241,6 +241,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-24 00:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750237598",
+      "matched_game": "Silent Hill 3",
+      "matched_games": [
+        "Silent Hill 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 00:55 UTC"
     },
@@ -2322,6 +2341,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 22:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750230771",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 22:35 UTC"
     },
@@ -10677,21 +10715,23 @@
       "timestamp": "2026-10-23 16:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3, BloodRayne 2 and 2 more",
+      "headline": "Thread on /v/ naming Echo Night: Beyond, King's Field IV, Dynasty Warriors 3 and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750208210",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Echo Night: Beyond",
       "matched_games": [
-        "Silent Hill 2",
-        "Silent Hill 3",
-        "BloodRayne 2",
+        "Echo Night: Beyond",
+        "King's Field IV",
         "Dynasty Warriors 3",
-        "The Thing"
+        "Silent Hill 3",
+        "The Thing",
+        "Silent Hill 2",
+        "BloodRayne 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -331475,40 +331515,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 01:37 UTC"
-    },
-    {
-      "headline": "uhhhh",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x22u0k/uhhhh/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 01:35 UTC"
-    },
-    {
-      "headline": "why is there a LAN port?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x22ts2/why_is_there_a_lan_port/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 01:35 UTC"
     }
   ]
 }
