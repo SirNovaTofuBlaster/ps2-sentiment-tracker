@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 06:19:39 UTC",
+  "last_updated": "2026-10-24 06:22:13 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -823,6 +823,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 04:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750247065",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 04:37 UTC"
     },
     {
       "headline": "One ARGB Fan not work Correctly,Does anyone know why this is happening, and how can it be fixed? There were no issues before this happen today",
@@ -5560,7 +5579,7 @@
       "timestamp": "2026-10-23 22:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3, Klonoa 2: Lunatea's Veil, LEGO Star Wars and 2 more",
+      "headline": "Thread on /v/ naming Devil May Cry 3, Metal Gear Solid 2: Sons of Liberty, Red Faction and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -5568,10 +5587,10 @@
       "matched_game": "Devil May Cry 3",
       "matched_games": [
         "Devil May Cry 3",
-        "Klonoa 2: Lunatea's Veil",
-        "LEGO Star Wars",
         "Metal Gear Solid 2: Sons of Liberty",
-        "Red Faction"
+        "Red Faction",
+        "Klonoa 2: Lunatea's Veil",
+        "LEGO Star Wars"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -12992,20 +13011,20 @@
       "timestamp": "2026-10-23 16:52 UTC"
     },
     {
-      "headline": "Thread on /vrpg/ naming Tales of the Abyss, Final Fantasy X, Kingdom Hearts II and 4 more",
+      "headline": "Thread on /vrpg/ naming La Pucelle Tactics, Digimon World 4, Phantom Brave and 4 more",
       "source": "4chan /vrpg/",
       "source_type": "4chan",
       "feed": "4chan:vrpg",
       "link": "https://boards.4chan.org/vrpg/thread/4137672",
-      "matched_game": "Tales of the Abyss",
+      "matched_game": "La Pucelle Tactics",
       "matched_games": [
+        "La Pucelle Tactics",
+        "Digimon World 4",
+        "Phantom Brave",
         "Tales of the Abyss",
         "Final Fantasy X",
         "Kingdom Hearts II",
-        "Rogue Galaxy",
-        "La Pucelle Tactics",
-        "Digimon World 4",
-        "Phantom Brave"
+        "Rogue Galaxy"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -332095,59 +332114,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 06:27 UTC"
-    },
-    {
-      "headline": "Battery from 51% to 0%",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x27zdk/battery_from_51_to_0/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 06:21 UTC"
-    },
-    {
-      "headline": "426: Xbox gets exclusive GTA 6 deal ... or not, Asha talks Project Helix, Xbox XP movies & TV",
-      "source": "Podcast: The XB2 — An Xbox & Gaming Podcast",
-      "source_type": "podcast",
-      "feed": "https://feeds.megaphone.fm/NSR2628308212",
-      "link": "https://traffic.megaphone.fm/NSR5306718938.mp3",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 06:21 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Teenage Mutant Ninja Turtles",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12869864",
-      "matched_game": "Teenage Mutant Ninja Turtles",
-      "matched_games": [
-        "Teenage Mutant Ninja Turtles"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-10 06:19 UTC"
     }
   ]
 }
