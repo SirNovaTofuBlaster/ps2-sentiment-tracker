@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 03:28:38 UTC",
+  "last_updated": "2026-10-24 03:31:15 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1626,19 +1626,22 @@
       "timestamp": "2026-10-24 00:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Grand Theft Auto: San Andreas and Miami Vice",
+      "headline": "Thread on /v/ naming The Sopranos, Grand Theft Auto: Vice City, Grand Theft Auto: San Andreas and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750236959",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "The Sopranos",
       "matched_games": [
-        "Grand Theft Auto III",
+        "The Sopranos",
+        "Grand Theft Auto: Vice City",
         "Grand Theft Auto: San Andreas",
-        "Miami Vice"
+        "Miami Vice",
+        "Grand Theft Auto III",
+        "Spider-Man"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3719,6 +3722,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 22:31 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming God of War II",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12892839",
+      "matched_game": "God of War II",
+      "matched_games": [
+        "God of War II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -10248,13 +10270,14 @@
       "timestamp": "2026-10-23 17:29 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man",
+      "headline": "Thread on /v/ naming Capcom Fighting Evolution and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750212032",
-      "matched_game": "Spider-Man",
+      "matched_game": "Capcom Fighting Evolution",
       "matched_games": [
+        "Capcom Fighting Evolution",
         "Spider-Man"
       ],
       "match_score": 100,
@@ -32411,6 +32434,25 @@
       "match_score": 100,
       "match_method": "alias",
       "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-22 19:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Romancing SaGa",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750152192",
+      "matched_game": "Romancing SaGa",
+      "matched_games": [
+        "Romancing SaGa"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": null,
@@ -331726,57 +331768,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 03:32 UTC"
-    },
-    {
-      "headline": "Blow dryer for the win!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x24zip/blow_dryer_for_the_win/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 03:30 UTC"
-    },
-    {
-      "headline": "When family tech support goes wrong?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x24yws/when_family_tech_support_goes_wrong/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 03:29 UTC"
-    },
-    {
-      "headline": "Holy grail acquired",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x24yfb/holy_grail_acquired/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 03:28 UTC"
     }
   ]
 }
