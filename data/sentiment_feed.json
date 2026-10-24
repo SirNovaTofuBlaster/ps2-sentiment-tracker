@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 04:55:43 UTC",
+  "last_updated": "2026-10-24 04:58:40 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -295,6 +295,23 @@
       "is_digital_only": false,
       "sentiment": 50,
       "hype": 0,
+      "timestamp": "2026-10-24 04:00 UTC"
+    },
+    {
+      "headline": "Zelda: Ocarina of Time remake details you may have missed",
+      "source": "Nintendo Everything",
+      "source_type": "news",
+      "feed": "https://nintendoeverything.com/feed",
+      "link": "https://nintendoeverything.com/zelda-ocarina-of-time-details-you-may-have-missed/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": true,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 1,
       "timestamp": "2026-10-24 04:00 UTC"
     },
     {
@@ -331601,25 +331618,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 04:58 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Far East of Eden",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12869801",
-      "matched_game": "Far East of Eden",
-      "matched_games": [
-        "Far East of Eden"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-10 04:56 UTC"
     }
   ]
 }
