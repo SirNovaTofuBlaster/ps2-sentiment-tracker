@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 06:35:46 UTC",
+  "last_updated": "2026-10-24 06:49:46 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -193,6 +193,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 05:49 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750249450",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 05:48 UTC"
     },
     {
       "headline": "Opinion on this RTX 5090 Prebuilt",
@@ -6934,14 +6953,15 @@
       "timestamp": "2026-10-23 21:12 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Armored Core 2",
+      "headline": "Thread on /vg/ naming Armored Core 2 and Top Gun",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/585399924",
       "matched_game": "Armored Core 2",
       "matched_games": [
-        "Armored Core 2"
+        "Armored Core 2",
+        "Top Gun"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -331980,77 +332000,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 06:52 UTC"
-    },
-    {
-      "headline": "Just got my dream computer.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x28efo/just_got_my_dream_computer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 06:47 UTC"
-    },
-    {
-      "headline": "Need help with my PS2 fat",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1x28ath/need_help_with_my_ps2_fat/",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Bully"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 06:41 UTC"
-    },
-    {
-      "headline": "MSI Afterburner stats monitoring stopped showing up in games after I tried out the AMD Adrenalin stat monitoring.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2880v/msi_afterburner_stats_monitoring_stopped_showing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 06:36 UTC"
-    },
-    {
-      "headline": "SteamDeck Not Booting, flashing LED when Plugged In..",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x287z8/steamdeck_not_booting_flashing_led_when_plugged_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 06:36 UTC"
     }
   ]
 }
