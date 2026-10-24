@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 02:31:39 UTC",
+  "last_updated": "2026-10-24 02:34:16 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -222,6 +222,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-24 02:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Gregory Horror Show",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750240827",
+      "matched_game": "Gregory Horror Show",
+      "matched_games": [
+        "Gregory Horror Show"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 02:08 UTC"
     },
     {
       "headline": "Tela louca sem parar",
@@ -6081,6 +6100,28 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 20:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Ultimate Spider-Man, Spider-Man 2, God Hand and 1 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750222519",
+      "matched_game": "Ultimate Spider-Man",
+      "matched_games": [
+        "Ultimate Spider-Man",
+        "Spider-Man 2",
+        "God Hand",
+        "Metal Slug 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 20:17 UTC"
     },
     {
       "headline": "SCARYTOWN MAMA PUMPKIN PIE JUMPSCARE #roblox #jumpscare #scaryobby",
@@ -26303,16 +26344,16 @@
       "timestamp": "2026-10-23 01:12 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Half-Life, Destroy All Humans! and Silent Hill 3",
+      "headline": "Thread on /vr/ naming Destroy All Humans!, Silent Hill 3 and Half-Life",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12891336",
-      "matched_game": "Half-Life",
+      "matched_game": "Destroy All Humans!",
       "matched_games": [
-        "Half-Life",
         "Destroy All Humans!",
-        "Silent Hill 3"
+        "Silent Hill 3",
+        "Half-Life"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -331707,40 +331748,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 02:39 UTC"
-    },
-    {
-      "headline": "There's countless \"Metroidvania\" clones out there, but are there any games that instead took inspiration from Wonder Boy/Monster World?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x23y2q/theres_countless_metroidvania_clones_out_there/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 02:33 UTC"
-    },
-    {
-      "headline": "Games with different style than these",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x23x2v/games_with_different_style_than_these/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 02:32 UTC"
     }
   ]
 }
