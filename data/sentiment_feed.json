@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 03:44:45 UTC",
+  "last_updated": "2026-10-24 03:58:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1305,6 +1305,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 01:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750238456",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 01:14 UTC"
     },
     {
       "headline": "Thread on /v/ naming Dragon Ball Z: Budokai Tenkaichi 2, Dragon Ball Z: Budokai Tenkaichi 3 and Dragon Ball Z: Budokai Tenkaichi",
@@ -6130,7 +6149,7 @@
       "timestamp": "2026-10-23 20:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Resident Evil 4 and Dynasty Warriors 3",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3 and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -6138,8 +6157,8 @@
       "matched_game": "Kingdom Hearts",
       "matched_games": [
         "Kingdom Hearts",
-        "Resident Evil 4",
-        "Dynasty Warriors 3"
+        "Dynasty Warriors 3",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -331597,129 +331616,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 03:58 UTC"
-    },
-    {
-      "headline": "Fatal Fury: City Of The Wolves Announces Tekken Collab",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/fatal-fury-city-of-the-wolves-announces-tekken-collab",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-10 03:55 UTC"
-    },
-    {
-      "headline": "Cuál es el Winning eleven",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x25ei3/cuál_es_el_winning_eleven/",
-      "matched_game": "Winning Eleven: Pro Evolution Soccer 2007",
-      "matched_games": [
-        "Winning Eleven: Pro Evolution Soccer 2007"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 03:53 UTC"
-    },
-    {
-      "headline": "Cuál es el Winning eleven",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1x25epx/cuál_es_el_winning_eleven/",
-      "matched_game": "Winning Eleven: Pro Evolution Soccer 2007",
-      "matched_games": [
-        "Winning Eleven: Pro Evolution Soccer 2007"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 03:53 UTC"
-    },
-    {
-      "headline": "Games that feel like driving in GTA V, but the game is just about driving?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x25czp/games_that_feel_like_driving_in_gta_v_but_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 03:51 UTC"
-    },
-    {
-      "headline": "Playstation and the kytyps5",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x25c8u/playstation_and_the_kytyps5/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 03:50 UTC"
-    },
-    {
-      "headline": "yo am I ass or is Trails in the Sky 1st chapter kinda hard even on normal difficulty?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x25cih/yo_am_i_ass_or_is_trails_in_the_sky_1st_chapter/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 03:50 UTC"
-    },
-    {
-      "headline": "Is this ranger legit ?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x25bvb/is_this_ranger_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 03:49 UTC"
     }
   ]
 }
