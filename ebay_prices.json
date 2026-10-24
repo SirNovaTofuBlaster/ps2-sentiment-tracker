@@ -1,0 +1,309 @@
+{
+  "fetched_at": "2026-10-24T15:37:09Z",
+  "what": "Asking prices of used Buy It Now listings still for sale on eBay. Not sold prices.",
+  "source": "eBay Browse API",
+  "markets": {
+    "EBAY_US": {
+      "label": "US",
+      "site": "www.ebay.com",
+      "currency": "USD"
+    },
+    "EBAY_GB": {
+      "label": "UK",
+      "site": "www.ebay.co.uk",
+      "currency": "GBP"
+    },
+    "EBAY_DE": {
+      "label": "DE",
+      "site": "www.ebay.de",
+      "currency": "EUR"
+    },
+    "EBAY_FR": {
+      "label": "FR",
+      "site": "www.ebay.fr",
+      "currency": "EUR"
+    },
+    "EBAY_IT": {
+      "label": "IT",
+      "site": "www.ebay.it",
+      "currency": "EUR"
+    },
+    "EBAY_ES": {
+      "label": "ES",
+      "site": "www.ebay.es",
+      "currency": "EUR"
+    }
+  },
+  "searches_used": 5,
+  "stopped_early": "",
+  "games": [
+    {
+      "title": "Armored Core Nexus",
+      "level": "normal",
+      "search": "armored core nexus",
+      "queries": [
+        "armored core nexus"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=armored%20core%20nexus%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 4,
+          "fetched": 4,
+          "truncated": false,
+          "counted": 3,
+          "skipped": {
+            "import": 1
+          },
+          "skipped_examples": {
+            "import": [
+              "ARMORED CORE NEXUS Sony PlayStation 2 PS2 Play2 JAP No Manual"
+            ]
+          },
+          "lowest": 29.95,
+          "median": 39.9,
+          "postage_known": 3,
+          "median_postage": 5.0,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "Armored Core Nexus PS2 SOLO DISCOS Y MANUAL PAL España Play Station 2",
+              "price": 29.95,
+              "postage": 7.07,
+              "condition": "En muy buen estado",
+              "listed": "2024-10-31T21:14:24.000Z",
+              "url": "https://www.ebay.es/itm/296786809297"
+            },
+            {
+              "title": "Armored Core Nexus PS2 pal España playstation 2",
+              "price": 39.9,
+              "postage": 4.99,
+              "condition": "En muy buen estado",
+              "listed": "2026-06-04T16:54:41.000Z",
+              "url": "https://www.ebay.es/itm/278054756076"
+            },
+            {
+              "title": "Armored Core Nexus PS2 PAL España Completo Castellano PlayStation 2 Original",
+              "price": 90.0,
+              "postage": 5.0,
+              "condition": "En muy buen estado",
+              "listed": "2025-10-18T05:57:24.000Z",
+              "url": "https://www.ebay.es/itm/257162177415"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Grand Theft Auto: Vice City Stories",
+      "level": "normal",
+      "search": "grand theft auto vice city stories",
+      "queries": [
+        "grand theft auto vice city stories"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=grand%20theft%20auto%20vice%20city%20stories%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 1,
+          "fetched": 1,
+          "truncated": false,
+          "counted": 1,
+          "skipped": {},
+          "skipped_examples": {},
+          "lowest": 79.99,
+          "median": 79.99,
+          "postage_known": 1,
+          "median_postage": 9.96,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "GRAND THEFT AUTO VICE CITY STORIES GTA CON POSTER PARA LA SONY PS2 BUEN ESTADO",
+              "price": 79.99,
+              "postage": 9.96,
+              "condition": "En muy buen estado",
+              "listed": "2026-07-28T17:50:17.000Z",
+              "url": "https://www.ebay.es/itm/407104458874"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "SOCOM 3: U.S. Navy SEALs",
+      "level": "normal",
+      "search": "socom 3 u s navy seals",
+      "queries": [
+        "socom 3 u s navy seals"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=socom%203%20u%20s%20navy%20seals%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 5,
+          "fetched": 5,
+          "truncated": false,
+          "counted": 1,
+          "skipped": {
+            "other_game": 4
+          },
+          "skipped_examples": {
+            "other_game": [
+              "PS2 Playstation 2 - SOCOM 3 III : US U.S. NAVY SEALS",
+              "SOCOM 3: U.S. Navy SEALs (1ª Edición) | Exclusivo PS2 | PAL España ES | Completo",
+              "JUEGOS DE PLAYSTATION PLAY STATION 2 PS2 PSTWO DESDE 4,95€ + 150 DISPONIBLES",
+              "PLAYSTATION 2 - PS2 JUEGOS COMPLETOS - VERSION PAL - ELIGE EL TUYO DE LA LISTA"
+            ]
+          },
+          "lowest": 39.99,
+          "median": 39.99,
+          "postage_known": 1,
+          "median_postage": 9.96,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "SOCOM 3 U.S. NAVY SEALS PARA LA SONY PLAY STATION 2 PS2 USADO EN BUEN ESTADO",
+              "price": 39.99,
+              "postage": 9.96,
+              "condition": "En buen estado",
+              "listed": "2026-03-28T20:23:58.000Z",
+              "url": "https://www.ebay.es/itm/406810313701"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Soul Calibur 2",
+      "level": "normal",
+      "search": "soul calibur 2",
+      "queries": [
+        "soul calibur 2"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=soul%20calibur%202%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 19,
+          "fetched": 19,
+          "truncated": false,
+          "counted": 3,
+          "skipped": {
+            "other_game": 16
+          },
+          "skipped_examples": {
+            "other_game": [
+              "PS2 Playstation 2 - SOULCALIBUR Soul Calibur III 3",
+              "Soulcalibur II 2 - PS2 PAL/ES",
+              "JUEGOS DE PLAYSTATION PLAY STATION 2 PS2 PSTWO DESDE 4,95€ + 150 DISPONIBLES",
+              "PS2 - SOULCALIBUR III , PAL ESPAÑOL , COMPLETO",
+              "SOULCALIBUR 3 -PS2- USADO GARANTIZADO - ENVÍO CERTIFICADO"
+            ]
+          },
+          "lowest": 15.0,
+          "median": 22.0,
+          "postage_known": 3,
+          "median_postage": 6.8,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "Soul Calibur II PS2 PAL ESPAÑA PAL ESP PLAYSTATION 2 !! Envio combinado !!",
+              "price": 15.0,
+              "postage": 6.9,
+              "condition": "En buen estado",
+              "listed": "2023-10-04T10:01:45.000Z",
+              "url": "https://www.ebay.es/itm/225802234233"
+            },
+            {
+              "title": "SOUL CALIBUR II SONY PS2 PLAY STATION INV-3792",
+              "price": 22.0,
+              "postage": 6.8,
+              "condition": "En buen estado",
+              "listed": "2025-02-21T09:26:30.000Z",
+              "url": "https://www.ebay.es/itm/326454337821"
+            },
+            {
+              "title": "Soul Calibur II PS2 PAL España Completo Castellano PlayStation 2 Original Namco",
+              "price": 35.0,
+              "postage": 5.0,
+              "condition": "En buen estado",
+              "listed": "2026-05-29T15:13:04.000Z",
+              "url": "https://www.ebay.es/itm/257534597954"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Space Channel 5",
+      "level": "normal",
+      "search": "space channel 5",
+      "queries": [
+        "space channel 5"
+      ],
+      "left_out_if_named": [
+        "space channel 5 part 2"
+      ],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=space%20channel%205%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 3,
+          "fetched": 3,
+          "truncated": false,
+          "counted": 2,
+          "skipped": {
+            "other_game": 1
+          },
+          "skipped_examples": {
+            "other_game": [
+              "Ps2 Space Channel 5 Part 2 Pal Esp"
+            ]
+          },
+          "lowest": 25.0,
+          "median": 37.5,
+          "postage_known": 2,
+          "median_postage": 3.0,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "SPACE CHANNEL 5 PLAYSTATION 2 PS2 SEGA SPANISH PROMOTIONAL PAL",
+              "price": 25.0,
+              "postage": 6.0,
+              "condition": "Como nuevo",
+              "listed": "2025-09-30T15:55:23.000Z",
+              "url": "https://www.ebay.es/itm/286849883750"
+            },
+            {
+              "title": "SPACE CHANNEL 5 PROMO ONLY - PLAYSTATION 2 PS2 PLAY STATION 2 - PAL ESPAÑA",
+              "price": 49.99,
+              "postage": 0.0,
+              "condition": "En buen estado",
+              "listed": "2021-07-22T21:18:17.000Z",
+              "url": "https://www.ebay.es/itm/133826739278"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
