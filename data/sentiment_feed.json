@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-24 21:36:51 UTC",
+  "last_updated": "2026-10-24 21:47:58 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750290639",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 21:34 UTC"
+    },
     {
       "headline": "Metal Gear Solid 4 is the only one that doesn't work",
       "source": "r/patientgamers",
@@ -552,19 +571,19 @@
       "timestamp": "2026-10-24 20:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Kingdom Hearts and Auto Modellista",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Auto Modellista and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750288058",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Resident Evil 4",
         "Kingdom Hearts",
-        "Auto Modellista"
+        "Auto Modellista",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -660,14 +679,15 @@
       "timestamp": "2026-10-24 20:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "headline": "Thread on /v/ naming Shadow of the Colossus and ICO",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750287753",
       "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "Shadow of the Colossus"
+        "Shadow of the Colossus",
+        "ICO"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1127,14 +1147,15 @@
       "timestamp": "2026-10-24 20:11 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Top Gun",
+      "headline": "Thread on /vg/ naming Top Gun and The Thing",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/585508610",
       "matched_game": "Top Gun",
       "matched_games": [
-        "Top Gun"
+        "Top Gun",
+        "The Thing"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -4794,18 +4815,19 @@
       "timestamp": "2026-10-24 17:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Rogue Galaxy and Final Fantasy XII",
+      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy XII and Rogue Galaxy",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750276228",
-      "matched_game": "Rogue Galaxy",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Rogue Galaxy",
-        "Final Fantasy XII"
+        "Final Fantasy X",
+        "Final Fantasy XII",
+        "Rogue Galaxy"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -10524,6 +10546,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-24 11:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Thing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750260228",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 11:33 UTC"
     },
@@ -72426,6 +72467,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-21 22:45 UTC"
+    },
+    {
+      "headline": "Thread on /vrpg/ naming Deus Ex",
+      "source": "4chan /vrpg/",
+      "source_type": "4chan",
+      "feed": "4chan:vrpg",
+      "link": "https://boards.4chan.org/vrpg/thread/4135963",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-21 22:45 UTC"
     },
@@ -332823,145 +332883,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 21:47 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Area 51 and Top Gun",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/584059165",
-      "matched_game": "Area 51",
-      "matched_games": [
-        "Area 51",
-        "Top Gun"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:44 UTC"
-    },
-    {
-      "headline": "My Current Completed List So Far This Year",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x2qxgx/my_current_completed_list_so_far_this_year/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:43 UTC"
-    },
-    {
-      "headline": "Is the games you download on your system is yours forever?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x2qwmg/is_the_games_you_download_on_your_system_is_yours/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:42 UTC"
-    },
-    {
-      "headline": "Is this legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x2qv3w/is_this_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:40 UTC"
-    },
-    {
-      "headline": "I just got a new computer and monitor and it does this on startup. Any ideas?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2qt20/i_just_got_a_new_computer_and_monitor_and_it_does/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:38 UTC"
-    },
-    {
-      "headline": "Resident Evil Requiem And 007 First Light Are The Best Selling Games Of 2026 In The US So Far",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1x2qsy2/resident_evil_requiem_and_007_first_light_are_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:37 UTC"
-    },
-    {
-      "headline": "Resident Evil Requiem And 007 First Light Are The Best Selling Games Of 2026 In The US So Far",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2qs3u/resident_evil_requiem_and_007_first_light_are_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:36 UTC"
-    },
-    {
-      "headline": "What is this \"Trailing\" Effect Called when Framegen is On (and How to Mitigate it)?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2qrsr/what_is_this_trailing_effect_called_when_framegen/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:36 UTC"
     }
   ]
 }
