@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 20:50:51 UTC",
+  "last_updated": "2026-10-24 21:04:57 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1340,19 +1340,19 @@
       "timestamp": "2026-10-24 19:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Silent Hill 2 and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750283259",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Silent Hill 2",
         "Metal Gear Solid 3: Snake Eater",
+        "Silent Hill 2",
         "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -15312,6 +15312,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 02:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War and Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750241865",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 02:32 UTC"
     },
     {
       "headline": "Tim Worthington N64 RGB mod. CS75 or CS# sync for Retro Gaming Cables Universal SNES SCART cable?",
@@ -42045,16 +42065,16 @@
       "timestamp": "2026-10-23 01:12 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Destroy All Humans!, Silent Hill 3 and Half-Life",
+      "headline": "Thread on /vr/ naming Half-Life, Destroy All Humans! and Silent Hill 3",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12891336",
-      "matched_game": "Destroy All Humans!",
+      "matched_game": "Half-Life",
       "matched_games": [
+        "Half-Life",
         "Destroy All Humans!",
-        "Silent Hill 3",
-        "Half-Life"
+        "Silent Hill 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -332568,167 +332588,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 21:06 UTC"
-    },
-    {
-      "headline": "Vibe coders don't know when to stop: GTA 5, Modern Warfare 2, and Halo are all playable in browsers until the lawyers come knocking",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2pza9/vibe_coders_dont_know_when_to_stop_gta_5_modern/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:01 UTC"
-    },
-    {
-      "headline": "Black Myth: Wukong sequel devs said no to AI because of Christopher Nolan’s The Odyssey",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/black-myth-wukong-sequel-devs-said-no-to-ai-because-of-christopher-nolans-the-odyssey/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:00 UTC"
-    },
-    {
-      "headline": "Daytona USA Recomp Out NOW! The Arcade Original",
-      "source": "YouTube: Video Game Esoterica",
-      "source_type": "youtube",
-      "feed": "youtube:UCn2pQB4jsCTLUtx2NIkCvUg",
-      "link": "https://www.youtube.com/watch?v=EafWURqb2vc",
-      "matched_game": "The Arcade",
-      "matched_games": [
-        "The Arcade"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:00 UTC",
-      "views": 25524
-    },
-    {
-      "headline": "RDR2 and expired DLC",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x2pwva/rdr2_and_expired_dlc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:58 UTC"
-    },
-    {
-      "headline": "San Andreas file loading issues... How to get around this alleged incompatible version error?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x2ptq2/san_andreas_file_loading_issues_how_to_get_around/",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:54 UTC"
-    },
-    {
-      "headline": "minecraft runs at 60 fps in desktop mode, and runs at 8fps on gaming mode. how should i fix that?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x2ptgg/minecraft_runs_at_60_fps_in_desktop_mode_and_runs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:54 UTC"
-    },
-    {
-      "headline": "RK Keyboard (?) going crazy",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2pryd/rk_keyboard_going_crazy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:52 UTC"
-    },
-    {
-      "headline": "Does anyone know how to fix this?it only shows on one account on the but I checked the store and it’s not in there.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x2pr0f/does_anyone_know_how_to_fix_thisit_only_shows_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:51 UTC"
-    },
-    {
-      "headline": "Japan Konami Dendou Collection?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x2pqfh/japan_konami_dendou_collection/",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
-      "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:50 UTC"
     }
   ]
 }
