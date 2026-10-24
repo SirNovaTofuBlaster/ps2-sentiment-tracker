@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 05:38:44 UTC",
+  "last_updated": "2026-10-24 05:52:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1075,6 +1075,25 @@
       "timestamp": "2026-10-24 03:16 UTC"
     },
     {
+      "headline": "Thread on /v/ naming ICO",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750243751",
+      "matched_game": "ICO",
+      "matched_games": [
+        "ICO"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 03:16 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming The Sims",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -1352,17 +1371,19 @@
       "timestamp": "2026-10-24 02:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Blade 2",
+      "headline": "Thread on /v/ naming Iron Man, Blade 2 and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750242309",
-      "matched_game": "Blade 2",
+      "matched_game": "Iron Man",
       "matched_games": [
-        "Blade 2"
+        "Iron Man",
+        "Blade 2",
+        "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6411,6 +6432,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-23 21:12 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Armored Core 2",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585399924",
+      "matched_game": "Armored Core 2",
+      "matched_games": [
+        "Armored Core 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-23 21:11 UTC"
     },
     {
       "headline": "I made an open-source alternative to the Turing 3.5\" screen software. It runs at 20–30 FPS instead of ~1 FPS.",
