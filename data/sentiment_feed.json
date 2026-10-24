@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-24 20:10:40 UTC",
+  "last_updated": "2026-10-24 20:21:58 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Shadow of Rome",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12894318",
+      "matched_game": "Shadow of Rome",
+      "matched_games": [
+        "Shadow of Rome"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 20:19 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585508610",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 20:10 UTC"
+    },
     {
       "headline": "The 5 least-scary scary games for people who are scared of scary games",
       "source": "Polygon.com",
@@ -52,6 +90,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 19:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750285408",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 19:53 UTC"
     },
     {
       "headline": "Thread on /v/ naming Resident Evil 4",
@@ -124,6 +181,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 19:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Time Crisis 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750284286",
+      "matched_game": "Time Crisis 2",
+      "matched_games": [
+        "Time Crisis 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 19:33 UTC"
     },
     {
       "headline": "Which ps3, Wii u, GameCube games are you playing on the deck?",
@@ -1850,6 +1926,26 @@
       "views": 741
     },
     {
+      "headline": "Thread on /v/ naming Tokyo Xtreme Racer and Burnout 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750279329",
+      "matched_game": "Tokyo Xtreme Racer",
+      "matched_games": [
+        "Tokyo Xtreme Racer",
+        "Burnout 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 17:59 UTC"
+    },
+    {
       "headline": "An oldie but a goodie !",
       "source": "r/NSCollectors",
       "source_type": "reddit",
@@ -2987,19 +3083,19 @@
       "timestamp": "2026-10-24 17:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Hulk, Resident Evil 4 and Resident Evil Code: Veronica X",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Resident Evil 4 and The Hulk",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750276178",
-      "matched_game": "The Hulk",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "The Hulk",
+        "Resident Evil Code: Veronica X",
         "Resident Evil 4",
-        "Resident Evil Code: Veronica X"
+        "The Hulk"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -20287,7 +20383,7 @@
       "timestamp": "2026-10-23 20:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, God of War, Dynasty Warriors 3 and 1 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Dynasty Warriors 3, Resident Evil 4 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -20295,9 +20391,9 @@
       "matched_game": "Kingdom Hearts",
       "matched_games": [
         "Kingdom Hearts",
-        "God of War",
         "Dynasty Warriors 3",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -34264,7 +34360,7 @@
       "timestamp": "2026-10-23 10:40 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Final Fantasy XI, Final Fantasy XII and Genji",
+      "headline": "Thread on /vg/ naming Final Fantasy XI, Final Fantasy XII, Genji and 1 more",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -34273,7 +34369,8 @@
       "matched_games": [
         "Final Fantasy XI",
         "Final Fantasy XII",
-        "Genji"
+        "Genji",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -332159,108 +332256,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 20:21 UTC"
-    },
-    {
-      "headline": "New pickup!",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x2p10k/new_pickup/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:20 UTC"
-    },
-    {
-      "headline": "RTX 4090 crashing A LOT - Faulty cable?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2p0mj/rtx_4090_crashing_a_lot_faulty_cable/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:20 UTC"
-    },
-    {
-      "headline": "bullet hells that are structured?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x2ozlu/bullet_hells_that_are_structured/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:18 UTC"
-    },
-    {
-      "headline": "PC restarts when opening FIFA 27. What's causing this issue?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2ovu6/pc_restarts_when_opening_fifa_27_whats_causing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:14 UTC"
-    },
-    {
-      "headline": "GTA V playable in browser immediately nuked — unofficial WebAssembly port built with AI gets taken down within hours of going live",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x2oup3/gta_v_playable_in_browser_immediately_nuked/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:12 UTC"
-    },
-    {
-      "headline": "So, is Sackboy dead?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x2osom/so_is_sackboy_dead/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 20:10 UTC"
     }
   ]
 }
