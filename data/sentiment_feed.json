@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 14:52:42 UTC",
+  "last_updated": "2026-10-24 14:55:17 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -192,6 +192,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 14:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shrek 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750267605",
+      "matched_game": "Shrek 2",
+      "matched_games": [
+        "Shrek 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 14:33 UTC"
     },
     {
       "headline": "Bom dia, meu ps5 fat tem q fazer rebaling de APU e memórias. Vale a pena fazer ou melhor comprar um novo ?",
@@ -4537,13 +4556,15 @@
       "timestamp": "2026-10-24 08:51 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Grand Theft Auto: Vice City, Grand Theft Auto: San Andreas, Grand Theft Auto III and 6 more",
+      "headline": "Thread on /vr/ naming Okami, Shadow of the Colossus, Grand Theft Auto: Vice City and 8 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12893558",
-      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_game": "Okami",
       "matched_games": [
+        "Okami",
+        "Shadow of the Colossus",
         "Grand Theft Auto: Vice City",
         "Grand Theft Auto: San Andreas",
         "Grand Theft Auto III",
@@ -4555,7 +4576,7 @@
         "Tekken 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -332506,75 +332527,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 14:55 UTC"
-    },
-    {
-      "headline": "Professionals have standards",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2h9aw/professionals_have_standards/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 14:54 UTC"
-    },
-    {
-      "headline": "The TRUTH About Zelda Ocarina Of Time Vs. GTA 6....",
-      "source": "YouTube: RGT 85",
-      "source_type": "youtube",
-      "feed": "youtube:UCA5RGaQc-a8tIX_AqTTmWdw",
-      "link": "https://www.youtube.com/watch?v=rwhCq5HknlU",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 14:53 UTC",
-      "views": 92863
-    },
-    {
-      "headline": "60 Years Later, the Best 'Great Pumpkin, Charlie Brown' Quote Is Still an All-Time 'Peanuts' Classic",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/great-pumpkin-charlie-brown-best-quote-movie/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 80,
-      "hype": 0,
-      "timestamp": "2026-10-10 14:53 UTC"
-    },
-    {
-      "headline": "Well well well…",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2h7j8/well_well_well/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 14:52 UTC"
     }
   ]
 }
