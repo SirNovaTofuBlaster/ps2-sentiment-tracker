@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 21:31:43 UTC",
+  "last_updated": "2026-10-24 21:34:36 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -535,17 +535,19 @@
       "timestamp": "2026-10-24 20:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Auto Modellista",
+      "headline": "Thread on /v/ naming Resident Evil 4, Kingdom Hearts and Auto Modellista",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750288058",
-      "matched_game": "Auto Modellista",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
+        "Kingdom Hearts",
         "Auto Modellista"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2062,16 +2064,16 @@
       "timestamp": "2026-10-24 19:16 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Silent Hill 2 and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Silent Hill 2 and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750283259",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
+        "Metal Gear Solid 2: Sons of Liberty",
         "Silent Hill 2",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -4812,15 +4814,15 @@
       "timestamp": "2026-10-24 17:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Resident Evil 4 and The Hulk",
+      "headline": "Thread on /v/ naming Resident Evil 4, Resident Evil Code: Veronica X and The Hulk",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750276178",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil Code: Veronica X",
         "Resident Evil 4",
+        "Resident Evil Code: Veronica X",
         "The Hulk"
       ],
       "match_score": 100,
@@ -5142,7 +5144,7 @@
         "Dark Cloud"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -10301,6 +10303,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 11:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Iron Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750261045",
+      "matched_game": "Iron Man",
+      "matched_games": [
+        "Iron Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 11:57 UTC"
     },
     {
       "headline": "Texas has suspended 17 data center construction permits and shut down automated portal that rubber-stamped projects | Tom's Hardware",
@@ -32796,7 +32817,7 @@
       "timestamp": "2026-10-23 13:40 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4, Persona 3 and Kingdom Hearts",
+      "headline": "Thread on /vg/ naming Persona 4, Persona 3, Kingdom Hearts and 1 more",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -32805,7 +32826,8 @@
       "matched_games": [
         "Persona 4",
         "Persona 3",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -332993,40 +333015,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 21:34 UTC"
-    },
-    {
-      "headline": "Resident Evil Requiem And 007 First Light Are The Best Selling Games Of 2026 In The US So Far",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x2qno2/resident_evil_requiem_and_007_first_light_are_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:31 UTC"
-    },
-    {
-      "headline": "Pls help me out my gaming slump",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x2qnua/pls_help_me_out_my_gaming_slump/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 21:31 UTC"
     }
   ]
 }
