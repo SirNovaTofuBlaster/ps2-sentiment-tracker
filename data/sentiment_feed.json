@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 04:30:24 UTC",
+  "last_updated": "2026-10-24 04:41:43 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -706,15 +706,15 @@
       "timestamp": "2026-10-24 03:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Resident Evil Code: Veronica X",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750243023",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Resident Evil 4",
-        "Resident Evil Code: Veronica X"
+        "Resident Evil Code: Veronica X",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -1963,6 +1963,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-24 00:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Winx Club and Marvel Nemesis: Rise of the Imperfects",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750237760",
+      "matched_game": "Winx Club",
+      "matched_games": [
+        "Winx Club",
+        "Marvel Nemesis: Rise of the Imperfects"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 00:58 UTC"
     },
@@ -331674,127 +331694,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 04:41 UTC"
-    },
-    {
-      "headline": "NES displays with artifacts and gobly gook",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x268js/nes_displays_with_artifacts_and_gobly_gook/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 04:39 UTC"
-    },
-    {
-      "headline": "Sonic Racing CrossWorlds Year Two Updates Announced",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/pCMk_P2eHNE",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-10 04:39 UTC"
-    },
-    {
-      "headline": "Outward 2 Early Access Release Date Officially Announced",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/ZKC56s5nSLU",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-10 04:39 UTC"
-    },
-    {
-      "headline": "Wanted to expand on another posters Sonic post",
-      "source": "r/LimitedPrintGames",
-      "source_type": "reddit",
-      "feed": "reddit:limitedprintgames",
-      "link": "https://www.reddit.com/r/LimitedPrintGames/comments/1x267ka/wanted_to_expand_on_another_posters_sonic_post/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 04:38 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/583988929",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-10 04:38 UTC"
-    },
-    {
-      "headline": "Stronghold 4 New Demo And Early Access Release Date Announced",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/kJCl73QZHtY",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-10 04:38 UTC"
-    },
-    {
-      "headline": "PS6 and next-gen Xbox chips reportedly taped out, Kepler claims 40 TFLOPS for PS6 and 56 for Helix - VideoCardz.com",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x262k6/ps6_and_nextgen_xbox_chips_reportedly_taped_out/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 04:30 UTC"
     }
   ]
 }
