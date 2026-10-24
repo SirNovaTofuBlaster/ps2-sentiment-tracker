@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 23:28:25 UTC",
+  "last_updated": "2026-10-24 23:30:39 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -15,6 +15,23 @@
       "match_score": 100,
       "match_method": "fuzzy",
       "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-24 23:22 UTC"
+    },
+    {
+      "headline": "All Jigsaw Pieces locations in We Were Here Tomorrow",
+      "source": "Destructoid",
+      "source_type": "news",
+      "feed": "https://www.destructoid.com/feed/",
+      "link": "https://www.destructoid.com/all-jigsaw-pieces-locations-in-we-were-here-tomorrow/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
@@ -332560,42 +332577,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 23:30 UTC"
-    },
-    {
-      "headline": "My cozy space",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x2t5o1/my_cozy_space/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 23:29 UTC"
-    },
-    {
-      "headline": "What settings do I need for Ratchet Deadlocked?",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1x2t4zx/what_settings_do_i_need_for_ratchet_deadlocked/",
-      "matched_game": "Ratchet: Deadlocked",
-      "matched_games": [
-        "Ratchet: Deadlocked"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 23:28 UTC"
     }
   ]
 }
