@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 02:34:16 UTC",
+  "last_updated": "2026-10-24 02:47:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -411,6 +411,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 01:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750240107",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 01:51 UTC"
     },
     {
       "headline": "Is my copy of Emerald real?",
@@ -1742,6 +1761,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-24 00:14 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Metal Gear Solid 2: Sons of Liberty and Silent Hill 2",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12892960",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 00:14 UTC"
     },
@@ -22039,17 +22078,18 @@
       "timestamp": "2026-10-23 07:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Legend of Kay, Final Fantasy X and 6 more",
+      "headline": "Thread on /v/ naming Monster House, Legend of Kay, Final Fantasy X and 7 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750187106",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Monster House",
       "matched_games": [
-        "Silent Hill 2",
+        "Monster House",
         "Legend of Kay",
         "Final Fantasy X",
         "Half-Life",
+        "Silent Hill 2",
         "Resident Evil 4",
         "Fatal Frame",
         "Harry Potter and The Prisoner of Azkaban",
@@ -22057,7 +22097,7 @@
         "Ratchet & Clank"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -331661,93 +331701,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 02:48 UTC"
-    },
-    {
-      "headline": "Macbook Neo Tutorial: Disable Memory Swap (And SIP is re-enabled)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2469k/macbook_neo_tutorial_disable_memory_swap_and_sip/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 02:46 UTC"
-    },
-    {
-      "headline": "Looking for a Matching Secondary Monitor",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x24599/looking_for_a_matching_secondary_monitor/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 02:44 UTC"
-    },
-    {
-      "headline": "Looking for a funny story game?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x2434h/looking_for_a_funny_story_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 02:41 UTC"
-    },
-    {
-      "headline": "Modern Retro Games: Your Thoughts?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x242dh/modern_retro_games_your_thoughts/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 02:40 UTC"
-    },
-    {
-      "headline": "Can't figure out what's wrong with my disc drive",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x2422e/cant_figure_out_whats_wrong_with_my_disc_drive/",
-      "matched_game": "Persona 4",
-      "matched_games": [
-        "Persona 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 02:39 UTC"
     }
   ]
 }
