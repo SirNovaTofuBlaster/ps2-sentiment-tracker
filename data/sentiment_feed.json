@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-10-24 07:21:42 UTC",
+  "last_updated": "2026-10-24 07:32:39 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Persona 3 and Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750252718",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3",
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 07:26 UTC"
+    },
     {
       "headline": "Finish building my pc did I mount the Aio correctly?",
       "source": "r/pcmasterrace",
@@ -2851,13 +2871,14 @@
       "timestamp": "2026-10-24 02:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Fantastic Four",
+      "headline": "Thread on /v/ naming Iron Man and Fantastic Four",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750241976",
-      "matched_game": "Fantastic Four",
+      "matched_game": "Iron Man",
       "matched_games": [
+        "Iron Man",
         "Fantastic Four"
       ],
       "match_score": 100,
@@ -332523,74 +332544,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-10 07:33 UTC"
-    },
-    {
-      "headline": "Carrying case for family of steamdecks",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x2930l/carrying_case_for_family_of_steamdecks/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 07:28 UTC"
-    },
-    {
-      "headline": "Old Gods of Asgard - One of the most random parts of any game I’ve played. And one of the absolute best! - Alan Wake 2",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x292a0/old_gods_of_asgard_one_of_the_most_random_parts/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-10 07:27 UTC"
-    },
-    {
-      "headline": "Help with Remote Play",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x292ey/help_with_remote_play/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 07:27 UTC"
-    },
-    {
-      "headline": "Anyone use an external ssd for gaming?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x290ku/anyone_use_an_external_ssd_for_gaming/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 07:24 UTC"
     }
   ]
 }
