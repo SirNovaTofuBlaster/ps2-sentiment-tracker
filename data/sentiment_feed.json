@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-24 13:55:40 UTC",
+  "last_updated": "2026-10-24 13:58:15 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -139,14 +139,16 @@
       "timestamp": "2026-10-24 13:45 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "headline": "Thread on /vr/ naming Resident Evil 4, Judge Dredd: Dredd vs. Death and Rogue Trooper",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12893742",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Judge Dredd: Dredd vs. Death",
+        "Rogue Trooper"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -862,6 +864,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 12:57 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming TOCA Race Driver",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750263117",
+      "matched_game": "TOCA Race Driver",
+      "matched_games": [
+        "TOCA Race Driver"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 12:54 UTC"
     },
     {
       "headline": "Looking at upgrading my PC for the first time since 2018. Graphics card prices are absolutely insane. What are your recommendations?",
@@ -4229,14 +4250,13 @@
       "timestamp": "2026-10-24 07:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Top Gun, Half-Life and 6 more",
+      "headline": "Thread on /v/ naming Top Gun, Half-Life, Resident Evil 4 and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750253018",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Top Gun",
       "matched_games": [
-        "Silent Hill 2",
         "Top Gun",
         "Half-Life",
         "Resident Evil 4",
@@ -4244,10 +4264,11 @@
         "LEGO Star Wars",
         "Final Fantasy XII",
         "Miami Vice",
-        "Dynasty Warriors 3"
+        "Dynasty Warriors 3",
+        "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -8852,22 +8873,22 @@
       "timestamp": "2026-10-24 00:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Sopranos, Grand Theft Auto: Vice City, Grand Theft Auto: San Andreas and 3 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Grand Theft Auto: San Andreas, Miami Vice and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750236959",
-      "matched_game": "The Sopranos",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "The Sopranos",
-        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III",
         "Grand Theft Auto: San Andreas",
         "Miami Vice",
-        "Grand Theft Auto III",
-        "Spider-Man"
+        "Spider-Man",
+        "The Sopranos",
+        "Grand Theft Auto: Vice City"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -332532,40 +332553,6 @@
       "hype": 0,
       "timestamp": "2026-10-10 14:00 UTC",
       "views": 6315
-    },
-    {
-      "headline": "Dual Orb (Super Famicom JRPG #8) — The Ultimate Grind: A 53-Hour Endurance Test That Never Knows When to End",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x2fy7o/dual_orb_super_famicom_jrpg_8_the_ultimate_grind/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 13:57 UTC"
-    },
-    {
-      "headline": "Is Total Warhammer 3 (upgrade pack) a big improvement over 1 and 2?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x2fwiu/is_total_warhammer_3_upgrade_pack_a_big/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-10 13:55 UTC"
     }
   ]
 }
