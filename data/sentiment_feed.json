@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 14:44:15 UTC",
+  "last_updated": "2026-10-25 14:55:48 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -640,13 +640,14 @@
       "timestamp": "2026-10-25 13:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne",
+      "headline": "Thread on /v/ naming Tales of the Abyss and Max Payne",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750329183",
-      "matched_game": "Max Payne",
+      "matched_game": "Tales of the Abyss",
       "matched_games": [
+        "Tales of the Abyss",
         "Max Payne"
       ],
       "match_score": 100,
@@ -1508,6 +1509,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 13:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750326867",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 13:03 UTC"
     },
     {
       "headline": "My hacked PS5 about to play steam games, what does that make it?",
@@ -333413,91 +333433,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-11 14:56 UTC"
-    },
-    {
-      "headline": "Rate my gaming mouse",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3a6mx/rate_my_gaming_mouse/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 14:52 UTC"
-    },
-    {
-      "headline": "Bloodborne Installer (now for Steam Deck & Linux) - Automated Setup, Xbox UI, Upscaled Graphics & QoL Mods",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x3a46u/bloodborne_installer_now_for_steam_deck_linux/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 14:50 UTC"
-    },
-    {
-      "headline": "Clive Barker’s Hellraiser: Revival - Launch Trailer",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1x3a3gu/clive_barkers_hellraiser_revival_launch_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-11 14:49 UTC"
-    },
-    {
-      "headline": "Is this a good cheap upgrade for my pc?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3a1yv/is_this_a_good_cheap_upgrade_for_my_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 14:47 UTC"
-    },
-    {
-      "headline": "Why does my pc do this?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x39zbc/why_does_my_pc_do_this/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 14:44 UTC"
     }
   ]
 }
