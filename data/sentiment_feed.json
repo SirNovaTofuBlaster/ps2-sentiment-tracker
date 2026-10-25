@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 02:16:37 UTC",
+  "last_updated": "2026-10-25 02:19:15 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -258,7 +258,7 @@
       "timestamp": "2026-10-25 01:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Demon Chaos",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Demon Chaos and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -266,7 +266,8 @@
       "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
         "Metal Gear Solid 2: Sons of Liberty",
-        "Demon Chaos"
+        "Demon Chaos",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -6117,6 +6118,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-24 18:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Splinter Cell",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750282202",
+      "matched_game": "Splinter Cell",
+      "matched_games": [
+        "Splinter Cell"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 18:53 UTC"
     },
@@ -333013,23 +333033,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 02:20 UTC"
-    },
-    {
-      "headline": "Games like stardew valley, have you tried any of these?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x2wgn8/games_like_stardew_valley_have_you_tried_any_of/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 02:18 UTC"
     }
   ]
 }
