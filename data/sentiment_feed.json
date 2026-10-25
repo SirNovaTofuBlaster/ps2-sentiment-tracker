@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 17:31:05 UTC",
+  "last_updated": "2026-10-25 17:33:48 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -69,6 +69,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 17:21 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Blade 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750339426",
+      "matched_game": "Blade 2",
+      "matched_games": [
+        "Blade 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 17:20 UTC"
     },
     {
       "headline": "Armita's Search - Raiders World Studio - Story-driven tactical deckbuilder about growing up in a post-apocalyptic world",
@@ -5228,18 +5247,19 @@
       "timestamp": "2026-10-25 12:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Monster Hunter, Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750325742",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Monster Hunter",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -333769,23 +333789,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 17:33 UTC"
-    },
-    {
-      "headline": "Sonic the Hedgehog is hitting mid-life at full speed with a Dragon Ball-inspired anime short",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/sonic-the-hedgehog-is-hitting-mid-life-at-full-speed-with-a-dragon-ball-inspired-anime-short/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 17:31 UTC"
     }
   ]
 }
