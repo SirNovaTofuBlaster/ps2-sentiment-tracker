@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 21:19:38 UTC",
+  "last_updated": "2026-10-25 21:22:16 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -3152,6 +3152,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-25 18:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750342561",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 18:20 UTC"
     },
@@ -34851,6 +34870,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 05:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750248538",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 05:20 UTC"
     },
     {
       "headline": "Shatterhand is an underrated masterpiece",
@@ -332467,14 +332505,13 @@
       "timestamp": "2026-10-12 00:12 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming God of War II, Resident Evil 4, Dead or Alive 2 and 13 more",
+      "headline": "Thread on /vr/ naming Resident Evil 4, Dead or Alive 2, Wacky Races and 13 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12873183",
-      "matched_game": "God of War II",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "God of War II",
         "Resident Evil 4",
         "Dead or Alive 2",
         "Wacky Races",
@@ -332484,6 +332521,7 @@
         "ICO",
         "Metal Gear Solid 2: Sons of Liberty",
         "Grand Theft Auto: San Andreas",
+        "God of War II",
         "Space Channel 5",
         "Half-Life",
         "Space Channel 5: Part 2",
@@ -332492,7 +332530,7 @@
         "Grandia II"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -334547,125 +334585,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-11 21:26 UTC"
-    },
-    {
-      "headline": "PS2 slim powet button turns green after pressing and immediately goes back to red",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x3jvv3/ps2_slim_powet_button_turns_green_after_pressing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:21 UTC"
-    },
-    {
-      "headline": "So far,which one of the Playstation productions movies is your favorite?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x3jvu3/so_farwhich_one_of_the_playstation_productions/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:21 UTC"
-    },
-    {
-      "headline": "Erings 1.0 release (Saturn emulator) - GPU rendering, upscaling, performance improvements and more",
-      "source": "r/emulation",
-      "source_type": "reddit",
-      "feed": "reddit:emulation",
-      "link": "https://www.reddit.com/r/emulation/comments/1x3jvxl/erings_10_release_saturn_emulator_gpu_rendering/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:21 UTC"
-    },
-    {
-      "headline": "Looking for a new wireless gaming headset",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3jvgv/looking_for_a_new_wireless_gaming_headset/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:20 UTC"
-    },
-    {
-      "headline": "Does anyone know about any good games with a really good backstory and is free?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x3jtwh/does_anyone_know_about_any_good_games_with_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:19 UTC"
-    },
-    {
-      "headline": "Been waiting on Logitech for YEARS to recognize Linux as a valid operating system to support with their software. Instead, they release software for Googlebook which is only a week old...",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3juch/been_waiting_on_logitech_for_years_to_recognize/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:19 UTC"
-    },
-    {
-      "headline": "Mitsubishi Diamond Pro 740sb",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x3ju0s/mitsubishi_diamond_pro_740sb/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:19 UTC"
     }
   ]
 }
