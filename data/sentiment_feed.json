@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 13:42:23 UTC",
+  "last_updated": "2026-10-25 13:44:55 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -118,6 +118,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-25 13:27 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Slug 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750327902",
+      "matched_game": "Metal Slug 4",
+      "matched_games": [
+        "Metal Slug 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 13:27 UTC"
     },
@@ -333385,40 +333404,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 13:44 UTC"
-    },
-    {
-      "headline": "Finally got around to recording some TSFP Online, was a blast <3",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x38jry/finally_got_around_to_recording_some_tsfp_online/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 13:43 UTC"
-    },
-    {
-      "headline": "Mimic Busters - Tape Corps - Multiplayer hide and seek game where you can create your own disguises",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x38jg2/mimic_busters_tape_corps_multiplayer_hide_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 13:42 UTC"
     }
   ]
 }
