@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 11:48:22 UTC",
+  "last_updated": "2026-10-25 11:50:52 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1051,6 +1051,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 10:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Road Trip",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750320812",
+      "matched_game": "Road Trip",
+      "matched_games": [
+        "Road Trip"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 10:12 UTC"
     },
     {
       "headline": "Looking for games where you can actually fail without it being game over",
@@ -321893,19 +321912,16 @@
       "timestamp": "2026-10-12 00:12 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil Code: Veronica X, Marvel vs. Capcom 2, Dead or Alive 2 and 13 more",
+      "headline": "Thread on /vr/ naming God of War II, Resident Evil 4, Dead or Alive 2 and 13 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12873183",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "God of War II",
       "matched_games": [
-        "Resident Evil Code: Veronica X",
-        "Marvel vs. Capcom 2",
-        "Dead or Alive 2",
-        "Grandia II",
         "God of War II",
         "Resident Evil 4",
+        "Dead or Alive 2",
         "Wacky Races",
         "Gran Turismo 4",
         "Final Fantasy XII",
@@ -321915,10 +321931,13 @@
         "Grand Theft Auto: San Andreas",
         "Space Channel 5",
         "Half-Life",
-        "Space Channel 5: Part 2"
+        "Space Channel 5: Part 2",
+        "Resident Evil Code: Veronica X",
+        "Marvel vs. Capcom 2",
+        "Grandia II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -333657,23 +333676,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 11:52 UTC"
-    },
-    {
-      "headline": "VIGILANTE سيارات حربية",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/2a-5ZQLF0DM",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 11:48 UTC"
     }
   ]
 }
