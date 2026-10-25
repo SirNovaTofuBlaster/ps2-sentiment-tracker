@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-25 05:23:46 UTC",
+  "last_updated": "2026-10-25 05:37:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750312018",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 05:24 UTC"
+    },
     {
       "headline": "The Pink Robot - TAKE FIVE STUDIOS - A fast-paced action roguelite where a cat fights through distorted memories",
       "source": "r/Games",
@@ -1357,14 +1376,19 @@
       "timestamp": "2026-10-25 02:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Steambot Chronicles, The Getaway, Shadow of Rome and 6 more",
+      "headline": "Thread on /v/ naming Final Fantasy X, Phantasy Star Universe, Dark Cloud and 13 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750305590",
-      "matched_game": "Steambot Chronicles",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Steambot Chronicles",
+        "Final Fantasy X",
+        "Phantasy Star Universe",
+        "Dark Cloud",
+        "Test Drive: Eve of Destruction",
+        "Enthusia Professional Racing",
+        "Downhill Domination",
         "The Getaway",
         "Shadow of Rome",
         "Tony Hawk Underground",
@@ -1372,10 +1396,12 @@
         "God of War",
         "Klonoa 2: Lunatea's Veil",
         "Urban Reign",
-        "Gradius V"
+        "Gradius V",
+        "Steambot Chronicles",
+        "The Red Star"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1452,6 +1478,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-25 02:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750305227",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 02:32 UTC"
     },
@@ -333044,59 +333089,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 05:37 UTC"
-    },
-    {
-      "headline": "Dyno tested at 450hp",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2zzro/dyno_tested_at_450hp/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 05:33 UTC"
-    },
-    {
-      "headline": "PC Building Advice",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2zx7m/pc_building_advice/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 05:29 UTC"
-    },
-    {
-      "headline": "I hate the gameplay of Phantasy Star 2.",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x2zxam/i_hate_the_gameplay_of_phantasy_star_2/",
-      "matched_game": "Dragon Quest: The Journey of the Cursed King",
-      "matched_games": [
-        "Dragon Quest: The Journey of the Cursed King"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 05:29 UTC"
     }
   ]
 }
