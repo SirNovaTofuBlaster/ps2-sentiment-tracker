@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-25 00:27:37 UTC",
+  "last_updated": "2026-10-25 00:38:57 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750299447",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 00:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750299370",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 00:23 UTC"
+    },
     {
       "headline": "Issue with MAME Emus",
       "source": "r/SteamDeck",
@@ -485,13 +523,14 @@
       "timestamp": "2026-10-24 23:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Sonic Heroes",
+      "headline": "Thread on /v/ naming Shadow the Hedgehog and Sonic Heroes",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750296492",
-      "matched_game": "Sonic Heroes",
+      "matched_game": "Shadow the Hedgehog",
       "matched_games": [
+        "Shadow the Hedgehog",
         "Sonic Heroes"
       ],
       "match_score": 100,
@@ -3417,18 +3456,19 @@
       "timestamp": "2026-10-24 19:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Resident Evil 4",
+      "headline": "Thread on /v/ naming Monster Hunter, Resident Evil 4 and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750285536",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Resident Evil 4"
+        "Monster Hunter",
+        "Resident Evil 4",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4223,16 +4263,16 @@
       "timestamp": "2026-10-24 19:16 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Silent Hill 2 and Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /v/ naming Silent Hill 2, Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750283259",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
         "Silent Hill 2",
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -6994,7 +7034,7 @@
       "timestamp": "2026-10-24 17:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy XII and Rogue Galaxy",
+      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy XII, Rogue Galaxy and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -7003,7 +7043,9 @@
       "matched_games": [
         "Final Fantasy X",
         "Final Fantasy XII",
-        "Rogue Galaxy"
+        "Rogue Galaxy",
+        "Kingdom Hearts",
+        "Twisted Metal Black"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -332547,91 +332589,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 00:38 UTC"
-    },
-    {
-      "headline": "N64 original and the latest one on PS5!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x2uj5y/n64_original_and_the_latest_one_on_ps5/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 00:37 UTC"
-    },
-    {
-      "headline": "Dragon Ball: Sparking! ZERO Announces Cross-Play In New Road Map",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/dragon-ball-sparking-zero-announces-cross-play-in-new-road-map",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-11 00:30 UTC"
-    },
-    {
-      "headline": "What did I do to get 5 completely different moonlight shortcuts 🤔",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x2uef4/what_did_i_do_to_get_5_completely_different/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 00:30 UTC"
-    },
-    {
-      "headline": "Help Connecting 5070ti",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2udih/help_connecting_5070ti/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 00:29 UTC"
-    },
-    {
-      "headline": "Thought I didn't need it at the time",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2udi3/thought_i_didnt_need_it_at_the_time/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 00:29 UTC"
     }
   ]
 }
