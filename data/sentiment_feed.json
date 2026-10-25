@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 00:07:07 UTC",
+  "last_updated": "2026-10-25 00:09:48 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1778,6 +1778,25 @@
       "hype": 0,
       "timestamp": "2026-10-24 21:01 UTC",
       "views": 34
+    },
+    {
+      "headline": "Thread on /v/ naming Unreal Tournament",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750288950",
+      "matched_game": "Unreal Tournament",
+      "matched_games": [
+        "Unreal Tournament"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 21:01 UTC"
     },
     {
       "headline": "5 Cozy Horror Books to Read This Fall That Are Perfect From Start to Finish",
@@ -332188,23 +332207,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 00:11 UTC"
-    },
-    {
-      "headline": "I'm running into issues trying to enable Resizable Bar",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2tyl0/im_running_into_issues_trying_to_enable_resizable/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 00:08 UTC"
     }
   ]
 }
