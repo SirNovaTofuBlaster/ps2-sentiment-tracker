@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 07:35:39 UTC",
+  "last_updated": "2026-10-25 07:47:52 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1017,6 +1017,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 04:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750310925",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 04:55 UTC"
     },
     {
       "headline": "Games like Cyberpunk 2077?",
@@ -2518,14 +2537,14 @@
       "timestamp": "2026-10-25 02:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Suikoden III, The Getaway, Shadow of Rome and 19 more",
+      "headline": "Thread on /v/ naming The Lord of the Rings: The Return of the King, The Getaway, Shadow of Rome and 21 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750305590",
-      "matched_game": "Suikoden III",
+      "matched_game": "The Lord of the Rings: The Return of the King",
       "matched_games": [
-        "Suikoden III",
+        "The Lord of the Rings: The Return of the King",
         "The Getaway",
         "Shadow of Rome",
         "Tony Hawk Underground",
@@ -2546,10 +2565,12 @@
         "Contra: Shattered Soldier",
         "We Love Katamari",
         "Katamari Damacy",
-        "R-Type Final"
+        "R-Type Final",
+        "Suikoden III",
+        "Jackie Chan Adventures"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -333331,127 +333352,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 07:48 UTC"
-    },
-    {
-      "headline": "How is this game?",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1x326g2/how_is_this_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 07:45 UTC"
-    },
-    {
-      "headline": "¿Cuánto durará Phantom Blade Zero? Su director responde: 'Cada segundo será divertido y emocionante'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026284002/cuanto-durara-phantom-blade-zero-su-director-responde-cada-segundo-sera-divertido-y-emocionante/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 07:45 UTC"
-    },
-    {
-      "headline": "PC problem",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3253d/pc_problem/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 07:43 UTC"
-    },
-    {
-      "headline": "Any halloween recommendations for a good scare? (I already have the games I've shown as images, and I live in the UK so don't recommend games that don't have Pal releases)",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x323j2/any_halloween_recommendations_for_a_good_scare_i/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 07:40 UTC"
-    },
-    {
-      "headline": "Older Low end PC Exclusive Reccomendations For A First Time Player",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x323eg/older_low_end_pc_exclusive_reccomendations_for_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 07:40 UTC"
-    },
-    {
-      "headline": "Nintendo Switch 2 and Switch file sizes – Call of Duty: Modern Warfare 4, Resident Evil 2-4, more",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-switch-2-and-switch-file-sizes-call-duty-modern-warfare-4-resident-evil-2-3-4-more/",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 94,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 07:40 UTC"
-    },
-    {
-      "headline": "7900XTX or 4080 Super",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x321y8/7900xtx_or_4080_super/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 07:38 UTC"
     }
   ]
 }
