@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 08:57:33 UTC",
+  "last_updated": "2026-10-25 09:00:06 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -87,6 +87,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 08:47 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Devil May Cry",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585567169",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 08:46 UTC"
     },
     {
       "headline": "Pokémon Emerald German Version",
@@ -669,15 +688,16 @@
       "timestamp": "2026-10-25 07:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III and Grand Theft Auto: Vice City Stories",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City Stories, Grand Theft Auto: Vice City and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750316021",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Grand Theft Auto: Vice City Stories",
       "matched_games": [
-        "Grand Theft Auto III",
-        "Grand Theft Auto: Vice City Stories"
+        "Grand Theft Auto: Vice City Stories",
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -3366,15 +3386,15 @@
       "timestamp": "2026-10-25 02:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dark Chronicle, Fatal Frame, The Getaway and 23 more",
+      "headline": "Thread on /v/ naming Final Fantasy X, Gradius V, The Getaway and 24 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750305590",
-      "matched_game": "Dark Chronicle",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Dark Chronicle",
-        "Fatal Frame",
+        "Final Fantasy X",
+        "Gradius V",
         "The Getaway",
         "Shadow of Rome",
         "Tony Hawk Underground",
@@ -3382,10 +3402,8 @@
         "God of War",
         "Klonoa 2: Lunatea's Veil",
         "Urban Reign",
-        "Gradius V",
         "Steambot Chronicles",
         "The Red Star",
-        "Final Fantasy X",
         "Phantasy Star Universe",
         "Dark Cloud",
         "Test Drive: Eve of Destruction",
@@ -3398,10 +3416,13 @@
         "R-Type Final",
         "Suikoden III",
         "Jackie Chan Adventures",
-        "The Lord of the Rings: The Return of the King"
+        "The Lord of the Rings: The Return of the King",
+        "Dark Chronicle",
+        "Fatal Frame",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
