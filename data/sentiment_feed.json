@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 01:19:40 UTC",
+  "last_updated": "2026-10-25 01:22:19 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -389,13 +389,14 @@
       "timestamp": "2026-10-25 00:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming X-Men Legends and Spider-Man",
+      "headline": "Thread on /v/ naming Spider-Man 2, X-Men Legends and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750300317",
-      "matched_game": "X-Men Legends",
+      "matched_game": "Spider-Man 2",
       "matched_games": [
+        "Spider-Man 2",
         "X-Men Legends",
         "Spider-Man"
       ],
@@ -859,6 +860,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 23:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750297807",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-24 23:50 UTC"
     },
     {
       "headline": "Socorro!! Soltou um fio do meu desbloqueio e não sei a onde soldar!!",
@@ -332633,40 +332653,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 01:26 UTC"
-    },
-    {
-      "headline": "Every frame in this game is wallpaper worthy!",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x2ve9x/every_frame_in_this_game_is_wallpaper_worthy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 01:21 UTC"
-    },
-    {
-      "headline": "New additions added to collection",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1x2vd6t/new_additions_added_to_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 01:20 UTC"
     }
   ]
 }
