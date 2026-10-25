@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 08:33:40 UTC",
+  "last_updated": "2026-10-25 08:44:44 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1922,6 +1922,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 04:08 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3 FES",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750309196",
+      "matched_game": "Persona 3 FES",
+      "matched_games": [
+        "Persona 3 FES"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 04:07 UTC"
     },
     {
       "headline": "The total overhaul mod for TES3: Morrowind, Morrowind Rebirth, releases another update (v 7.2)",
@@ -333293,40 +333312,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 08:44 UTC"
-    },
-    {
-      "headline": "MCHOSE G3 V2 Pro vs. ATK VXE R1 Pro vs. DeathAdder V3 (Wired) Which one should I get",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x332bq/mchose_g3_v2_pro_vs_atk_vxe_r1_pro_vs_deathadder/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 08:40 UTC"
-    },
-    {
-      "headline": "FEED ME MORE BRAINS - Sheraf Games - A first person incremental about feeding a lovecraftian god",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x32ydu/feed_me_more_brains_sheraf_games_a_first_person/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-11 08:34 UTC"
     }
   ]
 }
