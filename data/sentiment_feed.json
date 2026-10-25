@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 08:05:35 UTC",
+  "last_updated": "2026-10-25 08:16:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -2849,7 +2849,7 @@
       "timestamp": "2026-10-25 02:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dark Chronicle, The Getaway, Shadow of Rome and 22 more",
+      "headline": "Thread on /v/ naming Dark Chronicle, Fatal Frame, The Getaway and 23 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -2857,6 +2857,7 @@
       "matched_game": "Dark Chronicle",
       "matched_games": [
         "Dark Chronicle",
+        "Fatal Frame",
         "The Getaway",
         "Shadow of Rome",
         "Tony Hawk Underground",
@@ -4463,21 +4464,21 @@
       "timestamp": "2026-10-25 00:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex, Viewtiful Joe, X-Men Legends and 2 more",
+      "headline": "Thread on /v/ naming Spider-Man 2, Spider-Man, X-Men Legends and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750300317",
-      "matched_game": "Deus Ex",
+      "matched_game": "Spider-Man 2",
       "matched_games": [
-        "Deus Ex",
-        "Viewtiful Joe",
-        "X-Men Legends",
+        "Spider-Man 2",
         "Spider-Man",
-        "Spider-Man 2"
+        "X-Men Legends",
+        "Deus Ex",
+        "Viewtiful Joe"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -333288,40 +333289,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 08:17 UTC"
-    },
-    {
-      "headline": "Resident Evil 3 con voces en español es una realidad: así es el proyecto de doblaje organizado por fans del juego",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026284003/resident-evil-3-con-voces-en-espanol-es-una-realidad-asi-es-el-proyecto-de-doblaje-organizado-por-fans-del-juego/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 08:15 UTC"
-    },
-    {
-      "headline": "looking for games with customizable mobile bases.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x32l2m/looking_for_games_with_customizable_mobile_bases/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 08:10 UTC"
     }
   ]
 }
