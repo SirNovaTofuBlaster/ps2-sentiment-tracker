@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-25 01:24:33 UTC",
+  "last_updated": "2026-10-25 01:35:52 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750302530",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 01:30 UTC"
+    },
     {
       "headline": "An Original Wizball Artist Is Helping Fix the Game Nearly 40 Years Later",
       "source": "Forum: Lemmy retrogaming",
@@ -33,6 +52,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 70,
+      "hype": 0,
+      "timestamp": "2026-10-25 01:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750302132",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 01:20 UTC"
     },
@@ -3335,19 +3373,19 @@
       "timestamp": "2026-10-24 20:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Auto Modellista and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Auto Modellista and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750288058",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Resident Evil 4",
+        "Kingdom Hearts",
         "Auto Modellista",
-        "Kingdom Hearts"
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4650,15 +4688,15 @@
       "timestamp": "2026-10-24 19:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and God Hand",
+      "headline": "Thread on /v/ naming God Hand and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750284332",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "God Hand",
       "matched_games": [
-        "Silent Hill 2",
-        "God Hand"
+        "God Hand",
+        "Silent Hill 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -332633,77 +332671,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 01:40 UTC"
-    },
-    {
-      "headline": "random garbage I found",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x2vmf5/random_garbage_i_found/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 01:33 UTC"
-    },
-    {
-      "headline": "Are you gonna play GTA 6 on a tv screen or monitor?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x2vmbi/are_you_gonna_play_gta_6_on_a_tv_screen_or_monitor/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 01:33 UTC"
-    },
-    {
-      "headline": "Games that were originally Anime but were changed internationally",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x2vib1/games_that_were_originally_anime_but_were_changed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 01:27 UTC"
-    },
-    {
-      "headline": "Midnight Blue finally arrived, and from across the room it looks black 😅",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x2vhor/midnight_blue_finally_arrived_and_from_across_the/",
-      "matched_game": "Black",
-      "matched_games": [
-        "Black",
-        "Silent Hill 4: The Room"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 01:26 UTC"
     }
   ]
 }
