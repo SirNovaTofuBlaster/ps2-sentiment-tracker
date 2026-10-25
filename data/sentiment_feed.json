@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 07:02:31 UTC",
+  "last_updated": "2026-10-25 07:05:01 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -52,6 +52,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 06:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Project Zero and Fatal Frame",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750315214",
+      "matched_game": "Project Zero",
+      "matched_games": [
+        "Project Zero",
+        "Fatal Frame"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 06:56 UTC"
     },
     {
       "headline": "Writing How much do you guys spend on games each month?",
@@ -318871,15 +318891,17 @@
       "timestamp": "2026-10-12 00:12 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4, Dead or Alive 2, Wacky Races and 10 more",
+      "headline": "Thread on /vr/ naming Dead or Alive 2, Resident Evil Code: Veronica X, Marvel vs. Capcom 2 and 13 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12873183",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Dead or Alive 2",
       "matched_games": [
-        "Resident Evil 4",
         "Dead or Alive 2",
+        "Resident Evil Code: Veronica X",
+        "Marvel vs. Capcom 2",
+        "Grandia II",
         "Wacky Races",
         "Gran Turismo 4",
         "Final Fantasy XII",
@@ -318887,13 +318909,14 @@
         "ICO",
         "Metal Gear Solid 2: Sons of Liberty",
         "Grand Theft Auto: San Andreas",
+        "Resident Evil 4",
         "God of War II",
         "Space Channel 5",
         "Half-Life",
         "Space Channel 5: Part 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -333631,40 +333654,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 07:06 UTC"
-    },
-    {
-      "headline": "My first build",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x31hmk/my_first_build/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 07:03 UTC"
-    },
-    {
-      "headline": "Need a new rpg",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x31h24/need_a_new_rpg/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 07:02 UTC"
     }
   ]
 }
