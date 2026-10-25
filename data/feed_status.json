@@ -832,7 +832,7 @@
     "ok": true
   },
   "reddit:games": {
-    "latest": "2026-10-25 05:02 UTC",
+    "latest": "2026-10-25 05:41 UTC",
     "ok": true
   },
   "reddit:gameverifying": {
@@ -840,11 +840,11 @@
     "ok": true
   },
   "reddit:gaming": {
-    "latest": "2026-10-25 04:45 UTC",
+    "latest": "2026-10-25 05:55 UTC",
     "ok": true
   },
   "reddit:gamingsuggestions": {
-    "latest": "2026-10-25 04:54 UTC",
+    "latest": "2026-10-25 05:31 UTC",
     "ok": true
   },
   "reddit:jrpg": {
@@ -872,11 +872,11 @@
     "ok": true
   },
   "reddit:pcmasterrace": {
-    "latest": "2026-10-25 04:57 UTC",
+    "latest": "2026-10-25 05:50 UTC",
     "ok": true
   },
   "reddit:pcsx2": {
-    "latest": "2026-10-25 04:42 UTC",
+    "latest": "2026-10-25 05:04 UTC",
     "ok": true
   },
   "reddit:playstation": {
@@ -908,11 +908,11 @@
     "ok": true
   },
   "reddit:shouldibuythisgame": {
-    "latest": "2026-10-25 00:47 UTC",
+    "latest": "2026-10-25 05:51 UTC",
     "ok": true
   },
   "reddit:steamdeck": {
-    "latest": "2026-10-25 04:46 UTC",
+    "latest": "2026-10-25 05:41 UTC",
     "ok": true
   },
   "reddit:steelbook": {
@@ -976,7 +976,7 @@
     "ok": false
   },
   "youtube:UC3IYhdamzjvEJ9CwkQa4RAw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-25 00:12 UTC",
     "latest": "2026-10-24 18:06 UTC",
     "ok": false
@@ -1012,7 +1012,7 @@
     "ok": false
   },
   "youtube:UC5bKSAZBvV9AKlBJPG0Py-A": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-25 03:03 UTC",
     "latest": "2026-10-21 07:22 UTC",
     "ok": false
@@ -1078,7 +1078,7 @@
     "ok": false
   },
   "youtube:UC9PBzalIcEQCsiIkq36PyUA": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-25 02:06 UTC",
     "latest": "2026-10-22 14:00 UTC",
     "ok": false
@@ -1264,7 +1264,7 @@
     "ok": false
   },
   "youtube:UCSuhUzpdXg9jme6eN6HA_IA": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-25 04:57 UTC",
     "latest": "2026-10-16 14:18 UTC",
     "ok": false
@@ -1312,7 +1312,7 @@
     "ok": false
   },
   "youtube:UCW_sIU3MaWW5cXSjGqNIvbw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-25 00:12 UTC",
     "latest": "2026-10-24 11:00 UTC",
     "ok": false
@@ -1360,7 +1360,7 @@
     "ok": false
   },
   "youtube:UCZrxXp1reP8E353rZsB3jaA": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-25 00:12 UTC",
     "latest": "2026-10-23 17:54 UTC",
     "ok": false
@@ -1432,7 +1432,7 @@
     "ok": false
   },
   "youtube:UCgHPug_ZesHYlCA-Jc25VgQ": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-25 00:12 UTC",
     "latest": "2026-10-24 16:44 UTC",
     "ok": false
@@ -1636,8 +1636,10 @@
     "ok": false
   },
   "youtube:https://www.youtube.com/@lastgamer": {
+    "error": "HTTP 404",
+    "failing_since": "2026-10-25 05:54 UTC",
     "latest": "2023-05-29 20:00 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:https://www.youtube.com/@legallyinsanegamer": {
     "error": "HTTP 404",
