@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 21:35:47 UTC",
+  "last_updated": "2026-10-25 21:49:50 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -120,6 +120,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 21:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750351341",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 21:04 UTC"
     },
     {
       "headline": "Elfie: A Sand Plan - Pressed Elephant - Help a small rotund elephant build sandcastles in this relaxing spatial reasoning puzzle game! 100% positive with over 200 player reviews!",
@@ -3207,15 +3226,15 @@
       "timestamp": "2026-10-25 18:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X and Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Resident Evil Code: Veronica X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750342561",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil Code: Veronica X",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Resident Evil Code: Veronica X"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -4475,15 +4494,16 @@
       "timestamp": "2026-10-25 17:12 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII and Grandia II",
+      "headline": "Thread on /v/ naming Final Fantasy X, Grandia II and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750338907",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy XII",
-        "Grandia II"
+        "Final Fantasy X",
+        "Grandia II",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -334306,145 +334326,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 21:49 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Pro Evolution Soccer",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/584162561",
-      "matched_game": "Pro Evolution Soccer",
-      "matched_games": [
-        "Pro Evolution Soccer"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:46 UTC"
-    },
-    {
-      "headline": "Witcher 3 Remaster",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x3kgve/witcher_3_remaster/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-11 21:46 UTC"
-    },
-    {
-      "headline": "Pokémon Pin Sets",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/7M41VVNVp4E",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:45 UTC",
-      "views": 2258
-    },
-    {
-      "headline": "So i drove by a yard sale today to buy a Link Shield...",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x3keo9/so_i_drove_by_a_yard_sale_today_to_buy_a_link/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:43 UTC"
-    },
-    {
-      "headline": "Game progress loss when ran with lutris",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x3kdc6/game_progress_loss_when_ran_with_lutris/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:42 UTC"
-    },
-    {
-      "headline": "DS lite",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x3kciq/ds_lite/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:41 UTC"
-    },
-    {
-      "headline": "Is.. is this gaming?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3kcw4/is_is_this_gaming/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:41 UTC"
-    },
-    {
-      "headline": "Games with cutscenes like Ninja Gaiden on NES?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x3k9we/games_with_cutscenes_like_ninja_gaiden_on_nes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 21:38 UTC"
     }
   ]
 }
