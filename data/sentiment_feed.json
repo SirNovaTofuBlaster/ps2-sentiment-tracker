@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 16:33:48 UTC",
+  "last_updated": "2026-10-25 16:36:34 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1645,6 +1645,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 15:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dynasty Warriors 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750332270",
+      "matched_game": "Dynasty Warriors 3",
+      "matched_games": [
+        "Dynasty Warriors 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 15:03 UTC"
     },
     {
       "headline": "Putting Control Resonant Under A Microscope Is Rewarding In An Unexpected Way",
@@ -3559,18 +3578,19 @@
       "timestamp": "2026-10-25 13:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Deus Ex",
+      "headline": "Thread on /v/ naming Max Payne, Deus Ex and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750326867",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Max Payne",
       "matched_games": [
-        "Resident Evil 4",
-        "Deus Ex"
+        "Max Payne",
+        "Deus Ex",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -8150,6 +8170,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-25 05:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry and Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750312759",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry",
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 05:47 UTC"
     },
@@ -333529,23 +333569,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 16:37 UTC"
-    },
-    {
-      "headline": "7 year old pc upgrade",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3cohg/7_year_old_pc_upgrade/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 16:33 UTC"
     }
   ]
 }
