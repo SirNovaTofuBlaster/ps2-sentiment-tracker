@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 18:28:50 UTC",
+  "last_updated": "2026-10-25 18:31:30 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -186,6 +186,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-25 18:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750342041",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 18:11 UTC"
     },
@@ -3808,14 +3827,16 @@
       "timestamp": "2026-10-25 15:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God Hand",
+      "headline": "Thread on /v/ naming God Hand, Grand Theft Auto: San Andreas and Red Faction",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750332076",
       "matched_game": "God Hand",
       "matched_games": [
-        "God Hand"
+        "God Hand",
+        "Grand Theft Auto: San Andreas",
+        "Red Faction"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -6322,6 +6343,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 12:29 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Crimson Tears",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750325461",
+      "matched_game": "Crimson Tears",
+      "matched_games": [
+        "Crimson Tears"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 12:27 UTC"
     },
     {
       "headline": "SimCity 4 - Pushing the limit of a 23 year old game",
@@ -333830,57 +333870,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 18:33 UTC"
-    },
-    {
-      "headline": "Pokémon White version i bought yesterday",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x3fndj/pokémon_white_version_i_bought_yesterday/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 18:30 UTC"
-    },
-    {
-      "headline": "Asus prime Ap304 build EATX",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3flh0/asus_prime_ap304_build_eatx/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 18:28 UTC"
-    },
-    {
-      "headline": "‘I am not an AI friendly actor:’ Nic Cage takes colossal W even though it likely means the end of Spider-Noir for good",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/nicholas-cage-no-longer-working-with-amazon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 18:28 UTC"
     }
   ]
 }
