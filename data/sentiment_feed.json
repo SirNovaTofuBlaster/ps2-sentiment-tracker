@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-25 10:56:07 UTC",
+  "last_updated": "2026-10-25 11:07:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -500,6 +500,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 10:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750320660",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 10:06 UTC"
     },
     {
       "headline": "Game with a constant progression , to sink hours upon hours into?",
@@ -4469,6 +4488,25 @@
       "timestamp": "2026-10-25 03:09 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750306760",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 03:08 UTC"
+    },
+    {
       "headline": "LF best -$140 dollar wireless headset",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -6412,7 +6450,7 @@
       "timestamp": "2026-10-25 00:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man 2, Spider-Man, X-Men Legends and 2 more",
+      "headline": "Thread on /v/ naming Spider-Man 2, Spider-Man, Spider-Man: Web of Shadows and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -6421,6 +6459,8 @@
       "matched_games": [
         "Spider-Man 2",
         "Spider-Man",
+        "Spider-Man: Web of Shadows",
+        "Ultimate Spider-Man",
         "X-Men Legends",
         "Deus Ex",
         "Viewtiful Joe"
@@ -321267,16 +321307,16 @@
       "timestamp": "2026-10-12 00:12 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Dead or Alive 2, Resident Evil Code: Veronica X, Marvel vs. Capcom 2 and 13 more",
+      "headline": "Thread on /vr/ naming Resident Evil Code: Veronica X, Marvel vs. Capcom 2, Dead or Alive 2 and 13 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12873183",
-      "matched_game": "Dead or Alive 2",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Dead or Alive 2",
         "Resident Evil Code: Veronica X",
         "Marvel vs. Capcom 2",
+        "Dead or Alive 2",
         "Grandia II",
         "God of War II",
         "Resident Evil 4",
@@ -321292,7 +321332,7 @@
         "Space Channel 5: Part 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -333594,143 +333634,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-11 11:07 UTC"
-    },
-    {
-      "headline": "Weekly Self-Promotion Megathread",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x35di5/weekly_selfpromotion_megathread/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 11:01 UTC"
-    },
-    {
-      "headline": "Retro Recap: All The Classic Gaming News From The Past Week (October 11th 2026)",
-      "source": "Time Extension",
-      "source_type": "news",
-      "feed": "https://www.timeextension.com/feed",
-      "link": "https://www.timeextension.com/features/retro-recap-all-the-classic-gaming-news-from-the-past-week-october-11th-2026",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-11 11:00 UTC"
-    },
-    {
-      "headline": "Deadlock's City Never Sleeps update makes Valve's MOBA my favorite videogame setting in years",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/moba/deadlocks-city-never-sleeps-update-makes-valves-moba-my-favorite-videogame-setting-in-years/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-11 11:00 UTC"
-    },
-    {
-      "headline": "Stephen King's Favorite Stephen King Movie, That Critics Hated, Is Officially on Netflix",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/stephen-king-the-boogeyman-adaptation/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-11 11:00 UTC"
-    },
-    {
-      "headline": "CottageCore llegará a PC en abril de 2027 con construcción libre y gestión de pueblos",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026284009/cottagecore-llegara-a-pc-en-abril-de-2027-con-construccion-libre-y-gestion-de-pueblos/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 11:00 UTC"
-    },
-    {
-      "headline": "Should You Buy This $150,- Bartop Solution In 2026",
-      "source": "YouTube: Wicked Gamer & Collector",
-      "source_type": "youtube",
-      "feed": "youtube:UCW_sIU3MaWW5cXSjGqNIvbw",
-      "link": "https://www.youtube.com/watch?v=aaIpZ7VCVJ8",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 11:00 UTC",
-      "views": 11740
-    },
-    {
-      "headline": "For the love of god someone tell m e how to put this space bat back together I'm about to have a fucking meltdown, insane how they make it this difficult to just pop in a key.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x35cbx/for_the_love_of_god_someone_tell_m_e_how_to_put/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-11 10:59 UTC"
-    },
-    {
-      "headline": "Is my AIO dead?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x35bzs/is_my_aio_dead/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-11 10:58 UTC"
     }
   ]
 }
