@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 12:31:35 UTC",
+  "last_updated": "2026-10-26 12:34:14 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -189,6 +189,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-10-26 12:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750385127",
+      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_games": [
+        "Jak and Daxter: The Precursor Legacy"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 12:11 UTC"
     },
@@ -5699,17 +5718,18 @@
       "views": 35383
     },
     {
-      "headline": "Thread on /v/ naming God Hand, Shin Megami Tensei: Nocturne, Devil May Cry 3: Dante's Awakening and 1 more",
+      "headline": "Thread on /v/ naming Shadow of the Colossus, Shin Megami Tensei: Nocturne, Devil May Cry 3: Dante's Awakening and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750368843",
-      "matched_game": "God Hand",
+      "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "God Hand",
+        "Shadow of the Colossus",
         "Shin Megami Tensei: Nocturne",
         "Devil May Cry 3: Dante's Awakening",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "God Hand"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -335326,57 +335346,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 12:34 UTC"
-    },
-    {
-      "headline": "Should I meet in public for marketplace exchanges.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x40n1o/should_i_meet_in_public_for_marketplace_exchanges/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 12:33 UTC"
-    },
-    {
-      "headline": "The movies pc game",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x40mkz/the_movies_pc_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 12:32 UTC"
-    },
-    {
-      "headline": "This week in PC games: play a human-eating Katamari from outer space, take over a nature reserve in Planet Zoo 2, and battle Napoleonic body horror in Valor Mortis",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/this-week-in-pc-games-play-a-human-eating-katamari-from-outer-space-take-over-a-nature-reserve-in-planet-zoo-2-and-battle-napoleonic-body-horror-in-valor-mortis",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 12:31 UTC"
     }
   ]
 }
