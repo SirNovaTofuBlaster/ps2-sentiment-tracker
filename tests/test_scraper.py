@@ -534,8 +534,11 @@ class EntryHelperTests(unittest.TestCase):
 
     def test_ps2_sources_give_ps2_context_to_ambiguous_titles(self):
         matcher = scraper.TitleMatcher(scraper.FALLBACK_TITLES)
-        self.assertIsNone(matcher.match("Black is still great")[0])
-        self.assertEqual(matcher.match("Black is still great", ps2_source=True)[0], "Black")
+        self.assertIsNone(matcher.match("Bully is still great")[0])
+        self.assertEqual(matcher.match("Bully is still great", ps2_source=True)[0], "Bully")
+        self.assertEqual(matcher.match("Bully on PS2 is still great")[0], "Bully")
+        # Black is an ORDINARY_TITLES word (2026-10-26): a PS2 source is not enough, the text must say PS2.
+        self.assertIsNone(matcher.match("Black is still great", ps2_source=True)[0])
         self.assertEqual(matcher.match("Black on PS2 is still great")[0], "Black")
 
 

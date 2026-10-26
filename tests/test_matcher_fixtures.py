@@ -411,3 +411,57 @@ class LookalikeTests(unittest.TestCase):
         self.assertEqual((cleaned["matched_game"], cleaned["matched_games"]), (None, []))
         real = {**row, "headline": "Dragon Rage on PS2", "match_score": 100}
         self.assertIs(scraper.without_not_games(real), real)
+
+
+class OrdinaryAndNewerGameTests(unittest.TestCase):
+    """2026-10-26: ordinary words, newer games with a PS2 name, and numbers borrowed from elsewhere in the text."""
+
+    def setUp(self):
+        self.matcher = scraper.TitleMatcher(
+            ["Black", "Bully", "Gift", "Road Trip", "Scaler", "Half-Life", "Monster Hunter", "Max Payne", "Max Payne 2: The Fall of Max Payne", "Miami Vice", "Crazy Taxi",
+             "Kingdom Hearts", "Kingdom Hearts II", "Persona 4", "Persona 3 FES", "Resident Evil 4", "Gran Turismo 4",
+             "Tomb Raider: Anniversary", "Star Wars Battlefront", "Star Wars Battlefront II", "NBA Street"])
+
+    def named(self, text, ps2_source=False, context_text=""):
+        return [title for title, _, _ in self.matcher.match_all(text, ps2_source=ps2_source, context_text=context_text)]
+
+    def test_an_ordinary_word_needs_the_text_itself_to_say_ps2_even_in_a_ps2_source(self):
+        for text in ("The game that i dont remember", "My girlfriend bought these for me as a Christmas gift",
+                     "My set up for a 5 hour road trip", "One Modern Console Replaces All Retro Models! scaler"):
+            self.assertEqual(self.named(text, ps2_source=True), [], text)
+        self.assertEqual(self.named("Black on PS2 is underrated"), ["Black"])
+        self.assertEqual(self.named("Is Black worth it?", ps2_source=True, context_text="Ps2 help?"), ["Black"], "the headline's PS2 counts for a body")
+
+    def test_bully_is_kept_when_it_is_written_with_a_capital(self):
+        self.assertEqual(self.named("20th anniversary of Bully and Destroy All Humans! 2", ps2_source=True), ["Bully"])
+        self.assertEqual(self.named("they used to bully me for this", ps2_source=True), [])
+
+    def test_newer_games_that_share_a_ps2_name_do_not_count(self):
+        for text in ("Half Life 2- HP Pavilion dv6", "Monster Hunter Outlanders - Official Trailer", "Max Payne 3 multiplayer on PC",
+                     "Miami Vice reboot first look", "Crazy Taxi: Los Santos edition"):
+            self.assertEqual(self.named(text, ps2_source=True), [], text)
+        self.assertEqual(self.named("Monster Hunter on the PS2 was Japan only"), ["Monster Hunter"])
+        self.assertEqual(self.named("Kingdom Hearts 2 [8]"), ["Kingdom Hearts II"])
+        self.assertEqual(self.named("Famitsu's most wanted: Persona 4 Revival", ps2_source=True), ["Persona 4"], "a remake is PS2 franchise news (a fixture)")
+        self.assertEqual(self.named("Max Payne 2: The Fall of Max Payne on PS2"), ["Max Payne 2: The Fall of Max Payne"])
+
+    def test_a_number_that_belongs_to_another_phrase_does_not_complete_a_title(self):
+        self.assertEqual(self.named("Memes that sums up my experience with 4 of Resident Evil's action focused games"), [])
+        self.assertEqual(self.named("Gran Turismo 7's Spec IV launches today"), [])
+        self.assertEqual(self.named("Would you want a Street Fighter x Mortal Kombat crossover?"), [])
+        self.assertEqual(self.named("Happy 26th Anniversary to PlayStation 2"), [])
+        self.assertEqual(self.named("Resident Evil 4 on PS2"), ["Resident Evil 4"])
+        self.assertIn("Star Wars Battlefront II", self.named("Star Wars Battlefront 3 Could Be Developed by Destiny 2 Maker Bungie"), "a sequel's own number still counts")
+
+    def test_saved_rows_with_these_are_cleaned(self):
+        def row(headline, game, **kw):
+            return {"headline": headline, "source_type": "reddit", "matched_game": game, "matched_games": [game], "match_score": 100,
+                    "match_method": "exact", "matched_in": "title", **kw}
+        gone = scraper.without_not_games(row("My girlfriend bought these as a Christmas gift", "Gift"))
+        self.assertEqual((gone["matched_game"], gone["matched_games"]), (None, []))
+        kept = row("Black is great on PS2", "Black")
+        self.assertIs(scraper.without_not_games(kept), kept)
+        capital = row("20th anniversary of Bully", "Bully")
+        self.assertIs(scraper.without_not_games(capital), capital)
+        newer = scraper.without_newer_games(row("Max Payne 3 multiplayer on PC", "Max Payne"))
+        self.assertEqual(newer["matched_games"], [])

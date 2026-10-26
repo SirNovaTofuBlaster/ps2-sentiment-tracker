@@ -268,7 +268,18 @@ LOOKALIKES = {
     "astro boy": ("astro bot",),
     "crash tag team racing": ("crash team racing",),
     "legend of herkules": ("legend of heroes",),
+    "nba street": ("street fighter",),
+    "gran turismo 4": ("gran turismo 5", "gran turismo 6", "gran turismo 7", "gran turismo sport"),
 }
+
+# Library titles that are ordinary words or phrases ("Black", "a Christmas gift", "a road trip"). In a text that does not
+# itself say PS2 (headline and body together), such a name is not taken for the game, whatever the source: a PS2
+# subreddit's post that merely uses the word is not about the game (2026-10-26: Black 22 rows, Scaler 9, Bully 9,
+# Gift 4, Road Trip 4, Gun 3, World Fighting 3).
+ORDINARY_TITLES = {"black", "gift", "gun", "scaler", "road trip", "world fighting", "bully"}
+# ...except these, when the text writes the name with a capital letter ("20th anniversary of Bully"): a real name far
+# more often than the lower-case verb.
+CAPITALISED_NAMES = {"bully"}
 
 
 def names_lookalike(title, text_norm):
@@ -279,7 +290,7 @@ def names_lookalike(title, text_norm):
 
 # Half a title that is only an ordinary word ("Hardware" from "Hardware: Online Arena" claimed every text
 # about consoles and hardware, 2026-10-17). Such a half is not a name; the whole title still matches.
-GENERIC_HALVES = {"hardware"}
+GENERIC_HALVES = {"hardware", "anniversary"}   # "anniversary" (Tomb Raider: Anniversary) claimed "Happy 26th Anniversary to PlayStation 2", 2026-10-26
 
 # Abbreviations and alternate names that fuzzy matching can't bridge. Roman/Arabic
 # pairs are handled by normalisation now, so only true abbreviations belong here.
@@ -324,6 +335,16 @@ TITLE_ALIASES = {
 # followed by one of them. Add a series here when a newer game of the same name floods the feed.
 NEWER_GAME_FOLLOWERS = {
     "god of war": (("ragnarok",), ("ragnarök",), ("2018",), ("laufey",)),
+    # 2026-10-26: each filled the feed with rows about a newer game (Half-Life 2 19 rows, Monster Hunter 28, Max Payne 14,
+    # Spider-Man 14). The PS2 had one Half-Life (a port of the first game) and no sequel. Not listed on purpose: remakes and
+    # sequels the maintainer's fixtures count ("Persona 4 Revival", "Kingdom Hearts I-III"): they are PS2 franchise news.
+    "half life": (("2",), ("3",), ("alyx",), ("blue", "shift"), ("opposing", "force")),
+    "monster hunter": (("wilds",), ("world",), ("rise",), ("stories",), ("outlanders",), ("now",), ("sunbreak",), ("iceborne",), ("puzzles",)),
+    "max payne": (("3",), ("remake",), ("1", "2"), ("1", "and", "2")),
+    "spider man": (("miles",), ("morales",), ("remastered",), ("remake",), ("4",)),
+    "miami vice": (("reboot",), ("ps5",), ("movie",), ("film",)),
+    "crazy taxi": (("los",), ("city",)),
+    "midnight club": (("los",), ("la",)),
 }
 
 
@@ -606,6 +627,16 @@ class TitleMatcher:
             title = self.fuzzy_titles[index]
             if names_lookalike(title, gram):
                 continue
+            # A title that ends in a number ("Resident Evil 4") is not named by a run of words with no number in it, the
+            # number being somewhere else in the text ("4 of Resident Evil's action games"). Another number is a
+            # sequel's name and still counts ("Star Wars Battlefront 3" for Battlefront II).
+            if self.fuzzy_norms[index].split()[-1].isdigit() and not any(word.isdigit() for word in gram.split()):
+                continue
+            # A run that starts or ends on a filler word the title does not ("a street" for NBA Street) is a stray match.
+            spoken, named = gram.split(), self.fuzzy_norms[index].split()
+            if len(named) > 1 and ((spoken[0] in STOPWORDS and spoken[0] != named[0])
+                                   or (spoken[-1] in STOPWORDS and spoken[-1] != named[-1])):
+                continue
             score = round(hit[1])
             if title not in found or score > found[title][0]:
                 found[title] = (score, gram)
@@ -669,8 +700,9 @@ class TitleMatcher:
                 kept.append(claim)
         return kept
 
-    def match_all(self, text, ps2_source=False, threshold=MATCH_THRESHOLD):
-        """Every PS2 title the text mentions, best first, as (title, score, method)."""
+    def match_all(self, text, ps2_source=False, threshold=MATCH_THRESHOLD, context_text=""):
+        """Every PS2 title the text mentions, best first, as (title, score, method). `context_text` is more text of the
+        same item (a body's headline) that may say PS2 for the ORDINARY_TITLES rule."""
         norm = normalise(text)
         if not norm:
             return []
@@ -706,6 +738,9 @@ class TitleMatcher:
                 add(title, 92, "variant", gram)
         for title, score, gram in self._fuzzy_matches(norm, threshold):
             add(title, score, "fuzzy", gram)
+        if not PS2_CONTEXT_PATTERN.search(f"{context_text} {text}"):
+            claims = [claim for claim in claims if normalise(claim[0]) not in ORDINARY_TITLES
+                      or (normalise(claim[0]) in CAPITALISED_NAMES and re.search(rf"\b{re.escape(claim[0])}\b", text))]
         claims = self._drop_contained(tokens, claims)
         return [(title, score, method) for title, score, method, _ in self._drop_newer_games(tokens, claims)]
 
@@ -941,7 +976,7 @@ def analyze_entry(entry, feed, job, matcher, first_seen, ps2_keys, repeated_link
         # harder and the item has to be about the PS2 one way or another.
         body = entry_body(entry)
         if body and (ps2_source or PS2_CONTEXT_PATTERN.search(f"{headline} {body}")):
-            found = matcher.match_all(body, ps2_source=ps2_source, threshold=BODY_MATCH_THRESHOLD)
+            found = matcher.match_all(body, ps2_source=ps2_source, threshold=BODY_MATCH_THRESHOLD, context_text=headline)
             matched_in = "body" if found else None
     game, score, method = found[0] if found else (None, 0, None)
     timestamp, dated = entry_timestamp(entry)
@@ -1710,6 +1745,10 @@ def without_not_games(item):
         # have to be in the headline. A row matched from a body has no text to check and is left alone.
         if name.isdigit() and item.get("source_type") != "4chan" and item.get("matched_in") == "title" \
                 and not written_as_title(game, item.get("headline")):
+            continue
+        # An ordinary-word title in a row whose headline does not say PS2 (its body may have, which is not kept here).
+        if name in ORDINARY_TITLES and item.get("source_type") != "4chan" and not PS2_CONTEXT_PATTERN.search(item.get("headline") or "") \
+                and not (name in CAPITALISED_NAMES and re.search(rf"\b{re.escape(game)}\b", item.get("headline") or "")):
             continue
         # A lookalike's name ("Dragon Age") that the fuzzy pass once took for the PS2 title: the headline has to name the
         # title itself. Only a headline match is checked; a body match has no text here.
