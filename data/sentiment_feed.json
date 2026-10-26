@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 15:41:43 UTC",
+  "last_updated": "2026-10-26 15:44:26 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1094,6 +1094,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 14:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War and Devil May Cry 3: Dante's Awakening",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750391761",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "Devil May Cry 3: Dante's Awakening"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 14:47 UTC"
     },
@@ -31241,17 +31261,18 @@
       "timestamp": "2026-10-25 03:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Deus Ex and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750306760",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -335402,57 +335423,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 15:46 UTC"
-    },
-    {
-      "headline": "Monster Lily, the Somewhat Perverted Roguelike, Now Has Icon Graphics! (Trailer)",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1x45aev/monster_lily_the_somewhat_perverted_roguelike_now/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 15:43 UTC"
-    },
-    {
-      "headline": "Do consoles have 1% low FPS metrics just like PCs?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x45aby/do_consoles_have_1_low_fps_metrics_just_like_pcs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 15:43 UTC"
-    },
-    {
-      "headline": "Hello guys i have this annoying problem almost in every game and in every place in games i am tired of it for real,the borders or any other stuff jiggles like that no matter in which resolution im playing if i lock frame rate to 45fps it would be reduced but why playing on this fps while i have room",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x45973/hello_guys_i_have_this_annoying_problem_almost_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 15:42 UTC"
     }
   ]
 }
