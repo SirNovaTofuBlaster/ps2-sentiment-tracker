@@ -1175,8 +1175,8 @@ class ExtraSiteGroundworkTests(unittest.TestCase):
         return mock.patch.dict(ebay_prices.MARKETS, {"EBAY_DE": self.DE})
 
     def test_the_search_allowance_leaves_a_little_room_under_five_thousand(self):
-        self.assertEqual(ebay_prices.DAILY_SEARCHES, 4900)
-        self.assertLessEqual(ebay_prices.DAILY_SEARCHES, 5000 - 100)
+        self.assertEqual(ebay_prices.DAILY_SEARCHES, 4950)
+        self.assertLessEqual(ebay_prices.DAILY_SEARCHES, 5000 - 50)
         self.assertGreater(ebay_prices.DAILY_SEARCHES, ebay_prices.MAX_SEARCHES_PER_RUN)
 
     def test_the_two_first_sites_are_untouched(self):

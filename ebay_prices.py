@@ -223,7 +223,7 @@ WATCH_RECHECK_MINUTES = 60   # a watched game named in the feed since its last c
 QUIET_EVERY_HOURS = 48       # a game that had no copies (or whose words found none) at its last check waits this long
 
 # ---- How much of eBay's allowance (5,000 searches a day) a run may use ---------------
-DAILY_SEARCHES = 4900        # stop for the day here, leaving room for runs started by hand
+DAILY_SEARCHES = 4950        # stop for the day here, leaving room for runs started by hand
 MAX_SEARCHES_PER_RUN = 500   # and never more than this in one run
 TIME_BUDGET = 420            # seconds; whatever is still due then waits for the next run
 
