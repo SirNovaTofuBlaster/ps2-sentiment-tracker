@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 04:55:24 UTC",
+  "last_updated": "2026-10-26 04:57:56 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -866,6 +866,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 03:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750368094",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 02:59 UTC"
     },
     {
       "headline": "Is the Shine Megami Tensei series considered the dark souls of JRPGs?",
@@ -13086,6 +13105,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-25 15:08 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Burnout 3: Takedown",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750332527",
+      "matched_game": "Burnout 3: Takedown",
+      "matched_games": [
+        "Burnout 3: Takedown"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 15:08 UTC"
     },
@@ -335632,40 +335670,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 05:00 UTC"
-    },
-    {
-      "headline": "Ram Dunk *emotional*",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3syie/ram_dunk_emotional/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 04:56 UTC"
-    },
-    {
-      "headline": "thermal pad vs heatsink for nvme",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3sxx0/thermal_pad_vs_heatsink_for_nvme/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 04:55 UTC"
     }
   ]
 }
