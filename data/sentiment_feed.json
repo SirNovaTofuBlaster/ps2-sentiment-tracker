@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-26 02:04:36 UTC",
+  "last_updated": "2026-10-26 02:07:14 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /vrpg/ naming Wild ARMs 3",
+      "source": "4chan /vrpg/",
+      "source_type": "4chan",
+      "feed": "4chan:vrpg",
+      "link": "https://boards.4chan.org/vrpg/thread/4140073",
+      "matched_game": "Wild ARMs 3",
+      "matched_games": [
+        "Wild ARMs 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 02:05 UTC"
+    },
     {
       "headline": "am5 cpu socket",
       "source": "r/pcmasterrace",
@@ -343,7 +362,7 @@
       "timestamp": "2026-10-26 01:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -351,7 +370,8 @@
       "matched_game": "Kingdom Hearts",
       "matched_games": [
         "Kingdom Hearts",
-        "Kingdom Hearts II"
+        "Kingdom Hearts II",
+        "Devil May Cry"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -13519,7 +13539,7 @@
       "timestamp": "2026-10-25 13:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex, Monster Hunter, Max Payne and 2 more",
+      "headline": "Thread on /v/ naming Deus Ex, Resident Evil 4, Max Payne and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -13527,10 +13547,10 @@
       "matched_game": "Deus Ex",
       "matched_games": [
         "Deus Ex",
-        "Monster Hunter",
-        "Max Payne",
         "Resident Evil 4",
-        "Spider-Man 2"
+        "Max Payne",
+        "Spider-Man 2",
+        "Monster Hunter"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -232529,17 +232549,18 @@
       "timestamp": "2026-10-16 07:05 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Midnight Club 2, Road Trip Adventure, V-Rally 3 and 4 more",
+      "headline": "Thread on /vr/ naming Road Trip Adventure, Road Trip, V-Rally 3 and 5 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12880718",
-      "matched_game": "Midnight Club 2",
+      "matched_game": "Road Trip Adventure",
       "matched_games": [
-        "Midnight Club 2",
         "Road Trip Adventure",
+        "Road Trip",
         "V-Rally 3",
         "Need for Speed Underground 2",
+        "Midnight Club 2",
         "FlatOut 2",
         "Choro Q",
         "MTX Mototrax"
@@ -335549,40 +335570,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 02:08 UTC"
-    },
-    {
-      "headline": "Looking for phone games for anxiety / OCD",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x3ptqh/looking_for_phone_games_for_anxiety_ocd/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 02:06 UTC"
-    },
-    {
-      "headline": "PC occasionally shuts off without BSoD.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3prt7/pc_occasionally_shuts_off_without_bsod/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 02:04 UTC"
     }
   ]
 }
