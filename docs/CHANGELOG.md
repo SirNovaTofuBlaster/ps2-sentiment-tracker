@@ -19,6 +19,11 @@
 - **Page**: opens on the short file (`feedPartial`), counts the left-out rows into the Items tile and the line above the table (switched-off sources excluded), and fetches the full file (`loadFullFeed()`) only when **Everything** is chosen. A missing or damaged short file means the full one is loaded as before; a failed full load leaves the short list with a message.
 - Tests: `tests/test_scraper.py` (the short file's contents), `tests/dashboard_check.mjs` (counts, nothing fetched for PS2 Games Only, fetch on Everything, failure). `RECENT_PATH` is patched in the scraper tests and in `tools/regression_check.py` so neither writes the repository's `data/`.
 
+## 2026-10-26: Dragon Age is not Dragon Rage
+
+- The fuzzy matcher scored "Dragon Age" 95 against the PS2 game *Dragon Rage*, so every Dragon Age headline (17 rows in the feed, from Vandal, Reddit and others) counted for it and showed its eBay prices. `LOOKALIKES` in `scraper.py` names famous games one letter from a PS2 title, which never fuzzy-match it: Dragon Age / Dragon Rage, Astro Bot / Astro Boy (8 rows), Crash Team Racing / Crash Tag Team Racing (4 rows), Legend of Heroes / Legend of Herkules. A real mention of the PS2 title still matches, other misspellings are still forgiven in headlines, and saved rows that took a lookalike for the title are cleaned (`without_not_games()`). `tests/test_matcher_fixtures.py` (`LookalikeTests`); the old expectation that a headline "gets the benefit of the doubt" for Dragon Age is changed.
+- Left alone: about 30 other one-off fuzzy false matches in the feed (Road Trip from "road trips", Open Season from "Season 3", Monopoly...). Each is a single row; add a pair to `LOOKALIKES` or raise the threshold if one repeats.
+
 ## 2026-10-26: search log by level and game
 
 - `data/prices/searches.json` gains `level_games` per day: the 100 most searched games of each level (`SEARCH_LOG_LEVEL_GAMES`), so the cost of ordinary games can be told from Rarest ones. `python tools/search_report.py --level normal` prints one level. Days before this have none; our own game names and counts only.

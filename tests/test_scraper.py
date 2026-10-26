@@ -1344,8 +1344,10 @@ class BoardTests(unittest.TestCase):
 
         # --- the whole name, spelt as the library spells it ---
         # A near miss is usually another game. A headline is given the benefit of the doubt; a post is not.
-        for text, wrong in (("Dragon Age general", "Dragon Rage"), ("Legend of Heroes thread", "Legend of Herkules")):
-            self.assertEqual((loose(text), named(text)), ([wrong], []), text)
+        # (Dragon Age and Legend of Heroes are named in LOOKALIKES since 2026-10-26: not even a headline takes them.)
+        for text in ("Dragon Age general", "Legend of Heroes thread"):
+            self.assertEqual((loose(text), named(text)), ([], []), text)
+        self.assertEqual(loose("Silent Hil 2 is great"), ["Silent Hill 2"], "a headline still forgives other misspellings")
         self.assertEqual((loose("Silent Hil 2 is great"), named("Silent Hil 2 is great")), (["Silent Hill 2"], []), "a number does not excuse a misspelling")
         # Half a title is not its name, even where the text mentions the console (a headline's rule).
         self.assertEqual(loose("my ps2 is in the room next to the tv"), ["Silent Hill 4: The Room"])
