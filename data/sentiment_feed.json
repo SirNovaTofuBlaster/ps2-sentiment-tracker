@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-10-26 11:34:31 UTC",
+  "last_updated": "2026-10-26 11:37:01 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Max Payne and Spartan Total Warrior",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750383710",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne",
+        "Spartan Total Warrior"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 11:29 UTC"
+    },
     {
       "headline": "Is this normal on native settings? Notice edges around miles when moving, this 1080p native max settings dlaa",
       "source": "r/pcmasterrace",
@@ -346,6 +366,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 10:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750382563",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 10:52 UTC"
     },
     {
       "headline": "This came with unexpected goodies.",
@@ -3875,22 +3914,22 @@
       "timestamp": "2026-10-26 04:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Metal Gear Solid 3: Snake Eater, Deus Ex and 3 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Metal Gear Solid 3: Snake Eater, Deus Ex and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750371635",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Grand Theft Auto III",
+        "Resident Evil 4",
         "Metal Gear Solid 3: Snake Eater",
         "Deus Ex",
         "Prince of Persia: Sands of Time",
-        "Resident Evil 4",
-        "Half-Life"
+        "Half-Life",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -335239,40 +335278,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 11:38 UTC"
-    },
-    {
-      "headline": "Mafia 3 DE new update tryout on steamdeck?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x3zhfe/mafia_3_de_new_update_tryout_on_steamdeck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 11:34 UTC"
-    },
-    {
-      "headline": "All weapon stencils in ARC Raiders and how to get them",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/all-weapon-stencils-in-arc-raiders-and-how-to-get-them/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 11:34 UTC"
     }
   ]
 }
