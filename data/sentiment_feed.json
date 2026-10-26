@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 15:27:09 UTC",
+  "last_updated": "2026-10-26 15:29:41 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -11011,6 +11011,25 @@
       "timestamp": "2026-10-26 01:36 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Battlestar Galactica",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750364179",
+      "matched_game": "Battlestar Galactica",
+      "matched_games": [
+        "Battlestar Galactica"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 01:36 UTC"
+    },
+    {
       "headline": "Just one pc I said",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -15224,17 +15243,18 @@
       "timestamp": "2026-10-25 21:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Haunting Ground and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750351341",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Haunting Ground",
       "matched_games": [
+        "Haunting Ground",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
