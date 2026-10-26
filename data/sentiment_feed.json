@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 19:16:41 UTC",
+  "last_updated": "2026-10-26 19:19:14 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -69,6 +69,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 19:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 4: The Room",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750406327",
+      "matched_game": "Silent Hill 4: The Room",
+      "matched_games": [
+        "Silent Hill 4: The Room"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 19:09 UTC"
     },
     {
       "headline": "Making fun of a friend",
@@ -895,6 +914,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 18:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Chaos Legion",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750404205",
+      "matched_game": "Chaos Legion",
+      "matched_games": [
+        "Chaos Legion"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 18:33 UTC"
     },
     {
       "headline": "20 Exceptional Cosplay Outfits From New York Comic Con 2026",
@@ -3138,13 +3176,14 @@
       "views": 376
     },
     {
-      "headline": "Thread on /v/ naming Alone in the Dark",
+      "headline": "Thread on /v/ naming Half-Life and Alone in the Dark",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750398789",
-      "matched_game": "Alone in the Dark",
+      "matched_game": "Half-Life",
       "matched_games": [
+        "Half-Life",
         "Alone in the Dark"
       ],
       "match_score": 100,
@@ -55745,7 +55784,7 @@
       "timestamp": "2026-10-24 06:32 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Alone in the Dark, Fatal Frame, Resident Evil Outbreak and 3 more",
+      "headline": "Thread on /vg/ naming Alone in the Dark, Fatal Frame, Resident Evil Outbreak and 4 more",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -55757,7 +55796,8 @@
         "Resident Evil Outbreak",
         "Resident Evil 4",
         "Silent Hill 4: The Room",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Project Zero II"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -336533,40 +336573,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 19:19 UTC"
-    },
-    {
-      "headline": "I just got 1tb oled deck, and I’m wondering , which skin from where if I’m looking for a cool(subjective)thin looking skin.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x4b4yp/i_just_got_1tb_oled_deck_and_im_wondering_which/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 19:18 UTC"
-    },
-    {
-      "headline": "Can't figure out what to do for cooling",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4b31q/cant_figure_out_what_to_do_for_cooling/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 19:16 UTC"
     }
   ]
 }
