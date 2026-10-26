@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 14:45:48 UTC",
+  "last_updated": "2026-10-26 14:48:27 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -3160,6 +3160,25 @@
       "hype": 0,
       "timestamp": "2026-10-26 12:00 UTC",
       "views": 367
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750384735",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 12:00 UTC"
     },
     {
       "headline": "Artcraft apps on Steamdeck",
@@ -21211,6 +21230,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-25 15:10 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Virtua Fighter 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12895259",
+      "matched_game": "Virtua Fighter 4",
+      "matched_games": [
+        "Virtua Fighter 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 15:10 UTC"
     },
@@ -335075,40 +335113,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 14:50 UTC"
-    },
-    {
-      "headline": "The team behind StrataWx is opening its own flight sim store, and developers keep 85%",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x43sis/the_team_behind_stratawx_is_opening_its_own/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 14:46 UTC"
-    },
-    {
-      "headline": "Looking for friend slop",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x43ruh/looking_for_friend_slop/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 14:45 UTC"
     }
   ]
 }
