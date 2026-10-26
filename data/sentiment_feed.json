@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-10-26 23:39:38 UTC",
+  "last_updated": "2026-10-26 23:51:02 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Monster Hunter",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585752034",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 23:45 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750421519",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 23:40 UTC"
+    },
     {
       "headline": "Here’s Another Mass Effect 5 Leak To Break Your Heart",
       "source": "GameSpot - All Content",
@@ -524,18 +562,18 @@
       "timestamp": "2026-10-26 22:37 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Viewtiful Joe, Jak 3, Resident Evil 4 and 2 more",
+      "headline": "Thread on /v/ naming Sonic Heroes, Jak 3, Resident Evil 4 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750418030",
-      "matched_game": "Viewtiful Joe",
+      "matched_game": "Sonic Heroes",
       "matched_games": [
-        "Viewtiful Joe",
+        "Sonic Heroes",
         "Jak 3",
         "Resident Evil 4",
         "MegaMan X7",
-        "Sonic Heroes"
+        "Viewtiful Joe"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3475,6 +3513,26 @@
       "matched_game": "Devil May Cry 3",
       "matched_games": [
         "Devil May Cry 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 20:02 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Nano Breaker and God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750409269",
+      "matched_game": "Nano Breaker",
+      "matched_games": [
+        "Nano Breaker",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -14096,17 +14154,18 @@
       "views": 803
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Deus Ex and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750387081",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337577,125 +337636,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 23:54 UTC"
-    },
-    {
-      "headline": "ROG Crosshair X870E Hero suddenly lost all motherboard/fan RGB (Aura sees devices, but nothing lights up)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4hpcn/rog_crosshair_x870e_hero_suddenly_lost_all/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:49 UTC"
-    },
-    {
-      "headline": "Forgot cpu at work, boss threw away",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4ho0e/forgot_cpu_at_work_boss_threw_away/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:48 UTC"
-    },
-    {
-      "headline": "Ben Affleck califica los reshoots de 'Liga de la Justicia' como el peor punto de su carrera",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/justice-league-movie/115014/ben-affleck-liga-de-la-justicia-reshoots-peor-momento-carrera-zack-snyder",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:46 UTC"
-    },
-    {
-      "headline": "Games where you play with a narrator",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x4hm2u/games_where_you_play_with_a_narrator/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:45 UTC"
-    },
-    {
-      "headline": "Does anybody know how to get the English Patch for Boku no Natsuyasumi 2 working on original hardware?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x4hjtj/does_anybody_know_how_to_get_the_english_patch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:42 UTC"
-    },
-    {
-      "headline": "Looking for a physical logic game",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x4hjii/looking_for_a_physical_logic_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:42 UTC"
-    },
-    {
-      "headline": "Guys finally get it:D",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4hji0/guys_finally_get_itd/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:42 UTC"
     }
   ]
 }
