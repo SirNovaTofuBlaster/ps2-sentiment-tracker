@@ -230,6 +230,7 @@ Before you call something done, prove it; don't assume it.
     therefore also attaches its report to the run as notices (`check-runs/<job id>/annotations`).
 - **Newer games with a PS2 name**
   - A PS2 title is often the first words of a newer game's name (God of War, 2026-10-15: "God of War Ragnarök" filled the feed). `NEWER_GAME_FOLLOWERS` in `scraper.py` names the words that, right after the title, make a text about the newer game; add the series there when one floods the feed (a new entry needs a test in `tests/test_matcher_fixtures.py`). Old rows are cleaned from their headline by `without_newer_games()`.
+  - False matches (2026-10-26): `LOOKALIKES` (a famous game one letter from a PS2 title, such as Dragon Age / Dragon Rage), `ORDINARY_TITLES` (titles that are ordinary words need PS2 in the text itself, not just in the source; `CAPITALISED_NAMES` for Bully) and `NEWER_GAME_FOLLOWERS` stop them. Replay the feed's headlines through old and new code before adding to them (see docs/CHANGELOG.md, 2026-10-26); the maintainer's fixtures count remakes and sequels such as Persona 4 Revival as PS2 news, so do not list those.
 - **Reddit**
   - Unauthenticated access allows about one request a minute; quick test loops get 429s.
   - The multireddit uses the "hot" listing, so small subreddits can look quiet.

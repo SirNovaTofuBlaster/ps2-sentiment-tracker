@@ -534,8 +534,11 @@ class EntryHelperTests(unittest.TestCase):
 
     def test_ps2_sources_give_ps2_context_to_ambiguous_titles(self):
         matcher = scraper.TitleMatcher(scraper.FALLBACK_TITLES)
-        self.assertIsNone(matcher.match("Black is still great")[0])
-        self.assertEqual(matcher.match("Black is still great", ps2_source=True)[0], "Black")
+        self.assertIsNone(matcher.match("Bully is still great")[0])
+        self.assertEqual(matcher.match("Bully is still great", ps2_source=True)[0], "Bully")
+        self.assertEqual(matcher.match("Bully on PS2 is still great")[0], "Bully")
+        # Black is an ORDINARY_TITLES word (2026-10-26): a PS2 source is not enough, the text must say PS2.
+        self.assertIsNone(matcher.match("Black is still great", ps2_source=True)[0])
         self.assertEqual(matcher.match("Black on PS2 is still great")[0], "Black")
 
 
@@ -1028,9 +1031,11 @@ class RunScraperTests(unittest.TestCase):
 
     def test_ps2_role_decides_ambiguous_matches(self):
         output, _ = self.run_scraper()
-        self.assertEqual(self.item(output, "Black is still great", "r/ps2")["matched_game"], "Black")
+        # Black is an ORDINARY_TITLES word since 2026-10-26: the PS2 role no longer decides it, the text must say PS2
+        # (the ambiguous titles outside that list still follow the role: test_ps2_sources_give_ps2_context_to_ambiguous_titles).
+        self.assertIsNone(self.item(output, "Black is still great", "r/ps2")["matched_game"])
         self.assertIsNone(self.item(output, "Black is still great", "r/gaming")["matched_game"])
-        self.assertEqual(self.item(output, "Black - full playthrough", "YouTube: PS2 Channel")["matched_game"], "Black")
+        self.assertIsNone(self.item(output, "Black - full playthrough", "YouTube: PS2 Channel")["matched_game"])
 
     def test_disabled_sources_are_never_fetched_and_extras_skip_rate_limit_waits(self):
         self.run_scraper()
