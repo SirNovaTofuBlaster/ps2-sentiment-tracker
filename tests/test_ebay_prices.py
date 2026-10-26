@@ -2264,6 +2264,19 @@ class RareListTests(unittest.TestCase):
         self.assertEqual([entry["title"] for entry in games], ["Scarface"])
         self.assertNotIn("require", games[0])
 
+    def test_the_rarest_pal_games_are_also_priced_on_the_euro_sites(self):
+        def entry(title, rank, list_name="PAL"):
+            phrase, queries = ebay_prices.search_terms(title)
+            return {"list": list_name, "rank": rank, "title": title, "search": phrase, "queries": queries, "require": [],
+                    "exclude": [], "allow": [], "kind": None, "other_title": None}
+        games = []
+        with mock.patch.dict(ebay_prices.MARKETS, EXTRA_SITES):
+            ebay_prices.add_rare_games(games, [entry("Ocean Commander", 7), entry("Lowly Rare Game", 90), entry("Kuon Two", 3, "US")], {})
+        sites = {g["title"]: g["sites"] for g in games}
+        self.assertEqual(sites["Ocean Commander"], ["EBAY_GB", "EBAY_DE", "EBAY_FR", "EBAY_IT", "EBAY_ES"])
+        self.assertEqual(sites["Lowly Rare Game"], ["EBAY_GB"], "past the top 50: the British site only")
+        self.assertEqual(sites["Kuon Two"], ["EBAY_US"], "the US list is never priced in Europe")
+
     def test_the_librarys_other_spelling_of_the_same_game_is_not_another_game(self):
         self.sandbox.write("data/ps2_database.json", Sandbox.LIBRARY + ["R.A.D. Robot Alchemic Drive", "Robot Alchemic Drive Turbo"])
         _, catalogue = ebay_prices.load_library()

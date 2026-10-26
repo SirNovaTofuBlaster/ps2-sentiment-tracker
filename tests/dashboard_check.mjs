@@ -1880,7 +1880,9 @@ await check('the Rarest page: two lists of the rarest games, each with its own s
 
     const page = read('index.html');
     assert.match(page, /const RARE_SITE = \{ PAL: 'UK', US: 'US' \};/);
+    assert.match(page, /const RARE_EURO_SITES = \{ PAL: \['DE', 'FR', 'IT', 'ES'\] \};/);
     const python = read('ebay_prices.py');
+    assert.match(python, /RARE_EURO_SITES = \{"PAL": \("EBAY_DE", "EBAY_FR", "EBAY_IT", "EBAY_ES"\)\}/, 'the page and the price job agree on the euro sites of the rarest PAL games');
     assert.match(python, /RARE_SITES = \{"PAL": "EBAY_GB", "US": "EBAY_US"\}/, 'the page and the price job agree on which site prices which list');
 });
 
