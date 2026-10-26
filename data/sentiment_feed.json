@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 00:10:34 UTC",
+  "last_updated": "2026-10-26 00:13:16 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -241,6 +241,25 @@
       "timestamp": "2026-10-26 00:00 UTC"
     },
     {
+      "headline": "Thread on /vg/ naming Pro Evolution Soccer",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585649149",
+      "matched_game": "Pro Evolution Soccer",
+      "matched_games": [
+        "Pro Evolution Soccer"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 00:00 UTC"
+    },
+    {
       "headline": "Issue with dock",
       "source": "r/SteamDeck",
       "source_type": "reddit",
@@ -307,6 +326,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 23:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jak 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750359415",
+      "matched_game": "Jak 3",
+      "matched_games": [
+        "Jak 3"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 23:50 UTC"
     },
     {
       "headline": "Laptop is making weird sounds and trying to fix it",
@@ -123768,17 +123806,18 @@
       "timestamp": "2026-10-20 18:48 UTC"
     },
     {
-      "headline": "Thread on /vrpg/ naming The Sims",
+      "headline": "Thread on /vrpg/ naming Deus Ex and The Sims",
       "source": "4chan /vrpg/",
       "source_type": "4chan",
       "feed": "4chan:vrpg",
       "link": "https://boards.4chan.org/vrpg/thread/4135591",
-      "matched_game": "The Sims",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "The Sims"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -230997,19 +231036,20 @@
       "timestamp": "2026-10-16 07:05 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming MTX Mototrax, V-Rally 3, Need for Speed Underground 2 and 3 more",
+      "headline": "Thread on /vr/ naming Midnight Club 2, Road Trip Adventure, V-Rally 3 and 4 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12880718",
-      "matched_game": "MTX Mototrax",
+      "matched_game": "Midnight Club 2",
       "matched_games": [
-        "MTX Mototrax",
+        "Midnight Club 2",
+        "Road Trip Adventure",
         "V-Rally 3",
         "Need for Speed Underground 2",
-        "Midnight Club 2",
         "FlatOut 2",
-        "Choro Q"
+        "Choro Q",
+        "MTX Mototrax"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -335335,40 +335375,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 00:13 UTC"
-    },
-    {
-      "headline": "Guys, I just tried the online emulator and I can proudly say, fuck all resellers!",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1x3nlbm/guys_i_just_tried_the_online_emulator_and_i_can/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 00:12 UTC"
-    },
-    {
-      "headline": "Should I buy terraria?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x3nkut/should_i_buy_terraria/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 00:12 UTC"
     }
   ]
 }
