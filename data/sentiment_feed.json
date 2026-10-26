@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 20:00:08 UTC",
+  "last_updated": "2026-10-26 20:02:54 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -3458,18 +3458,19 @@
       "views": 376
     },
     {
-      "headline": "Thread on /v/ naming Half-Life and Alone in the Dark",
+      "headline": "Thread on /v/ naming Resident Evil 4, Alone in the Dark and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750398789",
-      "matched_game": "Half-Life",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Half-Life",
-        "Alone in the Dark"
+        "Resident Evil 4",
+        "Alone in the Dark",
+        "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -12740,17 +12741,19 @@
       "timestamp": "2026-10-26 09:37 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Rogue Galaxy",
+      "headline": "Thread on /v/ naming Final Fantasy X, Kingdom Hearts and Rogue Galaxy",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750380482",
-      "matched_game": "Rogue Galaxy",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
+        "Kingdom Hearts",
         "Rogue Galaxy"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -18486,6 +18489,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 00:26 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750360890",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 00:25 UTC"
     },
     {
       "headline": "Console to PC after 25 years of gaming.",
@@ -336077,74 +336099,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 20:02 UTC"
-    },
-    {
-      "headline": "Issues with monitor, any help?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4cayn/issues_with_monitor_any_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 20:01 UTC"
-    },
-    {
-      "headline": "Shadow of the Road - Official Anime Opening Trailer | IGN Fall Fan Fest 2026",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=AA9fqcep7cM",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 20:00 UTC"
-    },
-    {
-      "headline": "Fans Accuse Sonic Racing: CrossWorlds Of Breaking Deluxe Edition Promise After Revealing FF7 DLC: ‘Paid $100 For This Sh*t, Guess I Learned My Lesson’",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/fans-accuse-sonic-racing-crossworlds-of-breaking-deluxe-edition-promise-after-revealing-ff7-dlc-paid-100-for-this-sht-guess-i-learned-my-lesson-2000744567",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 20:00 UTC"
-    },
-    {
-      "headline": "'Avater: Seven Haven' Showrunners Officially Reinforce a Major Fan Theory",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/avatar-seven-havens-creators-interview-map-theory/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 20:00 UTC"
     }
   ]
 }
