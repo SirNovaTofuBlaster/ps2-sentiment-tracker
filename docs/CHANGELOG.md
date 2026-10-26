@@ -19,6 +19,10 @@
 - **Page**: opens on the short file (`feedPartial`), counts the left-out rows into the Items tile and the line above the table (switched-off sources excluded), and fetches the full file (`loadFullFeed()`) only when **Everything** is chosen. A missing or damaged short file means the full one is loaded as before; a failed full load leaves the short list with a message.
 - Tests: `tests/test_scraper.py` (the short file's contents), `tests/dashboard_check.mjs` (counts, nothing fetched for PS2 Games Only, fetch on Everything, failure). `RECENT_PATH` is patched in the scraper tests and in `tools/regression_check.py` so neither writes the repository's `data/`.
 
+## 2026-10-26: daily eBay searches 4,900 to 4,950
+
+- `DAILY_SEARCHES` is 4,950 of eBay's default 5,000, leaving 50 for runs started by hand. The sealed-copy searches therefore run while the day has used under 4,050 (`SEALED_RESERVE` 900 unchanged). More than 5,000 needs eBay's own approval of a higher limit; nobody here applies for it (rule 13).
+
 ## 2026-10-26: Hanuman: The Boy Warrior
 
 - The game's page said "Not in the PS2 library" because the Rarest list spells it "Hanuman: The Boy Warrior" and the library (PCSX2's name) "Hanuman: Boy Warrior". The page's library check now ignores "the" anywhere in a name (`renderGamePage()`).

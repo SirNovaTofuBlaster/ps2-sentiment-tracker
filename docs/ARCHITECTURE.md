@@ -393,7 +393,7 @@ On top of the levels, a `normal` or `staple` game that has priced the same for d
 A game of the Rarest or Underrated page that the feed names after its last check is looked up again on the US and UK within the hour (`watch`, `latest_mention`, `WATCH_RECHECK_MINUTES`); the euro sites keep their clocks.
 
 A mention found only in an item's body text keeps a game `normal` but never makes it surge. A
-run uses at most 500 searches and stops for the day at 4,900 of eBay's 5,000; surging games go
+run uses at most 500 searches and stops for the day at 4,950 of eBay's 5,000; surging games go
 first, then pinned ones, then whatever is longest overdue. What is left waits for the next run.
 
 **What it asks.** eBay's Browse API, with an application token from the client-credentials
