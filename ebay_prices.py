@@ -1795,6 +1795,7 @@ def check_all(http_client, client_id, client_secret, lookups, allowance, known_g
 SEARCH_LOG_NAME = "searches.json"       # which levels, sites and games the day's searches went to
 SEARCH_LOG_DAYS = 14
 SEARCH_LOG_GAMES = 400                  # most expensive games kept per day
+SEARCH_LOG_LEVEL_GAMES = 100            # and per level (`level_games`, since 2026-10-26)
 
 
 def update_search_log(old, run, now):
@@ -1809,16 +1810,21 @@ def update_search_log(old, run, now):
         by_site = day["levels"].setdefault(game.get("level", "normal") if game.get("kind") not in ("console", "edition")
                                            else game["kind"] + "s", {})
         by_site[label] = by_site.get(label, 0) + count
+        level_name = game.get("level", "normal") if game.get("kind") not in ("console", "edition") else game["kind"] + "s"
+        in_level = day.setdefault("level_games", {}).setdefault(level_name, {})
+        in_level[game["title"]] = in_level.get(game["title"], 0) + count
         day["games"][game["title"]] = day["games"].get(game["title"], 0) + count
         day["total"] += count
     day["other"] += run.get("other_searches", 0)
     day["total"] += run.get("other_searches", 0)
     top = sorted(day["games"].items(), key=lambda pair: (-pair[1], pair[0]))[:SEARCH_LOG_GAMES]
     day["games"] = dict(top)
+    for level_name, titles in (day.get("level_games") or {}).items():
+        day["level_games"][level_name] = dict(sorted(titles.items(), key=lambda pair: (-pair[1], pair[0]))[:SEARCH_LOG_LEVEL_GAMES])
     days[today] = day
     keep = sorted(days)[-SEARCH_LOG_DAYS:]
     return {"what": ("Eblay searches spent, by UTC day: by level and site, and by game (the most expensive "
-                     f"{SEARCH_LOG_GAMES}). Our own game names and counts only.").replace("Eblay", "eBay"),
+                     f"{SEARCH_LOG_GAMES}; and the top {SEARCH_LOG_LEVEL_GAMES} of each level, `level_games`). Our own game names and counts only.").replace("Eblay", "eBay"),
             "days": {d: days[d] for d in keep}}
 
 
