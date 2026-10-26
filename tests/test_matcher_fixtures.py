@@ -381,3 +381,33 @@ def report() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(report())
+
+
+class LookalikeTests(unittest.TestCase):
+    """2026-10-26: a famous game one letter from a PS2 title must not match it."""
+
+    def setUp(self):
+        self.matcher = scraper.TitleMatcher(["Dragon Rage", "Astro Boy", "Crash Tag Team Racing", "Silent Hill 2"])
+
+    def named(self, text):
+        return [title for title, _, _ in self.matcher.match_all(text)]
+
+    def test_the_lookalikes_do_not_match(self):
+        for text in ("El cierre de BioWare: piden salvar al estudio de Mass Effect y Dragon Age",
+                     "Do I play Dragon Age The Veilguard first?", "Lego Astro Bot Set", "100% Astro bot on PC today",
+                     "Crash Team Racing Nitro-Fueled PC Port on Steam Deck"):
+            self.assertEqual(self.named(text), [], text)
+
+    def test_the_real_titles_still_match_and_other_typos_are_still_forgiven(self):
+        self.assertEqual(self.named("Dragon Rage is a PS2 oddity"), ["Dragon Rage"])
+        self.assertEqual(self.named("Astro Boy: The Video Game review"), ["Astro Boy"])
+        self.assertEqual(self.named("Crash Tag Team Racing remembered"), ["Crash Tag Team Racing"])
+        self.assertEqual(self.named("Silent Hil 2 is great"), ["Silent Hill 2"])
+
+    def test_saved_rows_that_took_a_lookalike_for_the_title_are_cleaned(self):
+        row = {"headline": "Do I play Dragon Age The Veilguard first?", "source_type": "reddit", "matched_game": "Dragon Rage",
+               "matched_games": ["Dragon Rage"], "match_score": 95, "match_method": "fuzzy", "matched_in": "title"}
+        cleaned = scraper.without_not_games(row)
+        self.assertEqual((cleaned["matched_game"], cleaned["matched_games"]), (None, []))
+        real = {**row, "headline": "Dragon Rage on PS2", "match_score": 100}
+        self.assertIs(scraper.without_not_games(real), real)

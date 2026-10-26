@@ -260,6 +260,23 @@ POSSESSIVE = re.compile(r"(\w)['\u2019]s\b")
 # They never match, and rows saved with one lose it.
 NOT_GAMES = {"the cabal", "retro"}
 
+# A famous game one letter away from a PS2 title: the fuzzy pass must not take the first for the second (2026-10-26:
+# "Dragon Age" filled the feed as Dragon Rage, 17 rows; "Astro Bot" as Astro Boy, 8; "Crash Team Racing Nitro-Fueled"
+# as Crash Tag Team Racing, 4). Library title (normalised) -> the other game's names, which never match it by fuzz.
+LOOKALIKES = {
+    "dragon rage": ("dragon age",),
+    "astro boy": ("astro bot",),
+    "crash tag team racing": ("crash team racing",),
+    "legend of herkules": ("legend of heroes",),
+}
+
+
+def names_lookalike(title, text_norm):
+    """True when the normalised text has a run of words that is a lookalike's name for this title."""
+    padded = f" {text_norm} "
+    return any(f" {other} " in padded for other in LOOKALIKES.get(normalise(title), ()))
+
+
 # Half a title that is only an ordinary word ("Hardware" from "Hardware: Online Arena" claimed every text
 # about consoles and hardware, 2026-10-17). Such a half is not a name; the whole title still matches.
 GENERIC_HALVES = {"hardware"}
@@ -587,6 +604,8 @@ class TitleMatcher:
             if not self.fuzzy_required[index] <= token_set:
                 continue
             title = self.fuzzy_titles[index]
+            if names_lookalike(title, gram):
+                continue
             score = round(hit[1])
             if title not in found or score > found[title][0]:
                 found[title] = (score, gram)
@@ -1691,6 +1710,11 @@ def without_not_games(item):
         # have to be in the headline. A row matched from a body has no text to check and is left alone.
         if name.isdigit() and item.get("source_type") != "4chan" and item.get("matched_in") == "title" \
                 and not written_as_title(game, item.get("headline")):
+            continue
+        # A lookalike's name ("Dragon Age") that the fuzzy pass once took for the PS2 title: the headline has to name the
+        # title itself. Only a headline match is checked; a body match has no text here.
+        if item.get("source_type") != "4chan" and item.get("matched_in") == "title" \
+                and item.get("match_method") == "fuzzy" and names_lookalike(game, headline) and name not in headline:
             continue
         kept.append(game)
     if kept == games:
