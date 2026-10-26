@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 10:19:10 UTC",
+  "last_updated": "2026-10-26 10:24:46 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -7840,21 +7840,21 @@
       "timestamp": "2026-10-25 22:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Resident Evil 4, Haunting Ground and 2 more",
+      "headline": "Thread on /v/ naming Haunting Ground, Resident Evil 4, Final Fantasy X and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750354884",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "Haunting Ground",
       "matched_games": [
-        "Resident Evil Code: Veronica X",
-        "Resident Evil 4",
         "Haunting Ground",
-        "Devil May Cry",
-        "Final Fantasy X"
+        "Resident Evil 4",
+        "Final Fantasy X",
+        "Resident Evil Code: Veronica X",
+        "Devil May Cry"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -335047,57 +335047,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 10:25 UTC"
-    },
-    {
-      "headline": "Bluetooth adapter for wired headphones",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3y8uq/bluetooth_adapter_for_wired_headphones/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 10:23 UTC"
-    },
-    {
-      "headline": "TV On Cold Boot",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3y8ub/tv_on_cold_boot/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 10:23 UTC"
-    },
-    {
-      "headline": "سلاحف النينجا",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/3d_OPTt7wUc",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 10:19 UTC"
     }
   ]
 }
