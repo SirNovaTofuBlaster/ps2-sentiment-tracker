@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 09:15:52 UTC",
+  "last_updated": "2026-10-26 09:27:38 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -2733,6 +2733,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 03:16 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3, Klonoa 2: Lunatea's Veil and Dynasty Warriors 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750368692",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3",
+        "Klonoa 2: Lunatea's Veil",
+        "Dynasty Warriors 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 03:15 UTC"
     },
     {
       "headline": "Steam Week in Review: AI disclosures enter the discourse again, as Epic CEO calls them 'just as partisan as mandatory political essays'",
@@ -334972,76 +334993,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 09:29 UTC"
-    },
-    {
-      "headline": "Novo anime Naruto revelado",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/novo-anime-naruto-revelado",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 09:26 UTC"
-    },
-    {
-      "headline": "Ich suche gute Storygames",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x3x9z2/ich_suche_gute_storygames/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 09:24 UTC"
-    },
-    {
-      "headline": "Dual monitor arm for ultrawide and normal size?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3x9ey/dual_monitor_arm_for_ultrawide_and_normal_size/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 09:23 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749536492",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
-      "matched_games": [
-        "Metal Gear Solid 3: Snake Eater"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-12 09:15 UTC"
     }
   ]
 }
