@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 21:45:39 UTC",
+  "last_updated": "2026-10-26 21:56:53 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 23:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750414423",
+      "matched_game": "Shadow Hearts",
+      "matched_games": [
+        "Shadow Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 21:35 UTC"
     },
     {
       "headline": "The developer of one of my favorite 2020s RPGs does it because of BioWare: 'Baldur's Gate 1 is the first game I truly loved'",
@@ -2286,6 +2305,25 @@
       "timestamp": "2026-10-26 19:34 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Sly 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750407736",
+      "matched_game": "Sly 3",
+      "matched_games": [
+        "Sly 3"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 19:34 UTC"
+    },
+    {
       "headline": "Resident Evil 2 Remake",
       "source": "r/gamecollecting",
       "source_type": "reddit",
@@ -2533,17 +2571,19 @@
       "timestamp": "2026-10-26 19:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Soul Calibur 2",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Silent Hill 2 and Soul Calibur 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750406980",
-      "matched_game": "Soul Calibur 2",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
+        "Grand Theft Auto III",
+        "Silent Hill 2",
         "Soul Calibur 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -336992,161 +337032,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 21:58 UTC"
-    },
-    {
-      "headline": "Nintendo Switch Sports Resort - Imágenes",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/nintendo/115005/nintendo-switch-sports-resort-imagenes",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 21:54 UTC"
-    },
-    {
-      "headline": "Are resident evil 2 remake, 3 and 4 physical copy going to be for pal and Japan only?",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1x4f2ne/are_resident_evil_2_remake_3_and_4_physical_copy/",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 93,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-12 21:51 UTC"
-    },
-    {
-      "headline": "Is this for 700$ a good deal",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4f2d6/is_this_for_700_a_good_deal/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 21:50 UTC"
-    },
-    {
-      "headline": "All classes and unlock requirements in Fire Emblem Fortune's Weave",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/fire-emblem-fortunes-weave-classes-unlock-secret/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 21:50 UTC"
-    },
-    {
-      "headline": "Finally finished",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4f00d/finally_finished/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 21:48 UTC"
-    },
-    {
-      "headline": "Looking for a gloomy preferably victorian era open world game with both country side and cities",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x4ez7p/looking_for_a_gloomy_preferably_victorian_era/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 21:47 UTC"
-    },
-    {
-      "headline": "GPU Help",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4eyx1/gpu_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 21:46 UTC"
-    },
-    {
-      "headline": "Describe a final boss/main villain of a JRPG you've played in as silly a way as possible and see if people can guess who it is.",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x4eyrm/describe_a_final_bossmain_villain_of_a_jrpg_youve/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 21:46 UTC"
-    },
-    {
-      "headline": "at what point does collecting ps2 games become a separate hobby from playing them?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x4excu/at_what_point_does_collecting_ps2_games_become_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 21:45 UTC"
     }
   ]
 }
