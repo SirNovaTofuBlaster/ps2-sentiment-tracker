@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 18:19:45 UTC",
+  "last_updated": "2026-10-26 18:22:23 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -564,6 +564,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 17:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750402005",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 17:54 UTC"
     },
@@ -1559,6 +1578,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 17:08 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750399074",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 17:05 UTC"
     },
     {
       "headline": "Steam Scream V Fest 2026",
@@ -336525,110 +336563,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 18:25 UTC"
-    },
-    {
-      "headline": "Do you have unexpected happy place/cosy games that help you get out of slumps?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x49kba/do_you_have_unexpected_happy_placecosy_games_that/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:21 UTC"
-    },
-    {
-      "headline": "Is the \"Sony movie game\" a real thing?",
-      "source": "r/truegaming",
-      "source_type": "reddit",
-      "feed": "reddit:truegaming",
-      "link": "https://www.reddit.com/r/truegaming/comments/1x49kp6/is_the_sony_movie_game_a_real_thing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:21 UTC"
-    },
-    {
-      "headline": "No Man's Sky is somehow coming to mobile, and Hello Games says it's partly thanks to Light No Fire",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/no-mans-sky-coming-mobile-hello-games-thanks-to-light-no-fire",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:20 UTC"
-    },
-    {
-      "headline": "Show me yours",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x49jb3/show_me_yours/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:20 UTC"
-    },
-    {
-      "headline": "Could you recommend a game?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x49jhn/could_you_recommend_a_game/",
-      "matched_game": "Dirge of Cerberus: Final Fantasy VII",
-      "matched_games": [
-        "Dirge of Cerberus: Final Fantasy VII"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:20 UTC"
-    },
-    {
-      "headline": "Who to pick in the FC 27 Super Lig Future Stars SBC",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/who-to-pick-from-fc-27-super-lig-future-stars-pick-sbc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:19 UTC"
     }
   ]
 }
