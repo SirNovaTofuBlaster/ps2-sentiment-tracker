@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 23:11:19 UTC",
+  "last_updated": "2026-10-26 23:22:53 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -35,6 +35,44 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 23:10 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585748831",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 23:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750419693",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 23:06 UTC"
     },
     {
       "headline": "Thread on /v/ naming Ape Escape 3 and Metal Gear Solid 3: Snake Eater",
@@ -4366,19 +4404,19 @@
       "timestamp": "2026-10-26 19:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Soul Calibur 2, Grand Theft Auto III and Silent Hill 2",
+      "headline": "Thread on /v/ naming Silent Hill 2, Soul Calibur 2 and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750406980",
-      "matched_game": "Soul Calibur 2",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Soul Calibur 2",
-        "Grand Theft Auto III",
-        "Silent Hill 2"
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337602,133 +337640,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 23:22 UTC"
-    },
-    {
-      "headline": "Looking for games that fit a spesific vibe! Very ps2 era type",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x4h3ld/looking_for_games_that_fit_a_spesific_vibe_very/",
-      "matched_game": "Dirge of Cerberus: Final Fantasy VII",
-      "matched_games": [
-        "Dirge of Cerberus: Final Fantasy VII",
-        "Beatdown: Fists of Vengeance",
-        "Resident Evil 4",
-        "10,000 Bullets",
-        "Devil May Cry",
-        "Chaos Legion",
-        "The Bouncer"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:21 UTC"
-    },
-    {
-      "headline": "I need help deciding which CPU",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4h3a5/i_need_help_deciding_which_cpu/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:21 UTC"
-    },
-    {
-      "headline": "Dragon Ball: Sparking! Zero Super-Limit Breaking NEO | The Return Trailer",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1x4h1ze/dragon_ball_sparking_zero_superlimit_breaking_neo/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:19 UTC"
-    },
-    {
-      "headline": "Help replacing cmos batter",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4h29y/help_replacing_cmos_batter/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:19 UTC"
-    },
-    {
-      "headline": "Clive Barker’s | HELLRAISER REVIVAL",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1x4h2gs/clive_barkers_hellraiser_revival/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-12 23:19 UTC"
-    },
-    {
-      "headline": "Pokemon Black (CIB)",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x4gyve/pokemon_black_cib/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:15 UTC"
-    },
-    {
-      "headline": "I need to know if i'm doing something right here",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4gzad/i_need_to_know_if_im_doing_something_right_here/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 23:15 UTC"
     }
   ]
 }
