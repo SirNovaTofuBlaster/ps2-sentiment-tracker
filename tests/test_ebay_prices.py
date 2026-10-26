@@ -3608,6 +3608,14 @@ class SearchLogTests(unittest.TestCase):
         again = ebay_prices.update_search_log(log, self.run_of((self.GAME, "EBAY_US", 2)), NOON)
         self.assertEqual(again["days"]["2026-10-06"]["games"], {"Kuon": 5})
 
+    def test_the_top_games_of_each_level_are_kept_apart(self):
+        rare = {"title": "Kuon", "level": "rare"}
+        other = {"title": "Okami", "level": "normal"}
+        log = ebay_prices.update_search_log({}, self.run_of((self.GAME, "EBAY_US", 2), (rare, "EBAY_GB", 1), (other, "EBAY_US", 4)), NOON)
+        day = log["days"]["2026-10-06"]
+        self.assertEqual(day["level_games"], {"normal": {"Okami": 4, "Kuon": 2}, "rare": {"Kuon": 1}})
+        self.assertEqual(day["games"], {"Okami": 4, "Kuon": 3})
+
     def test_a_new_day_starts_afresh_and_only_14_days_are_kept(self):
         log = {}
         for day in range(20):
