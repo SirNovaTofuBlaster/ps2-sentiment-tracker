@@ -2298,7 +2298,7 @@ class RareListTests(unittest.TestCase):
         raw = json.loads((ROOT / "rare_games.json").read_text(encoding="utf-8"))
         entries, problems = ebay_prices.load_rare(ROOT / "rare_games.json")
         self.assertEqual(problems, [f'{name} "{title}": not priced, "{word}" is an ordinary word' for name, title, word in (
-            ("PAL", "Buccaneer", "buccaneer"), ("PAL", "Jello", "jello"), ("PAL", "Hanuman: The Boy Warrior", "hanuman"),
+            ("PAL", "Buccaneer", "buccaneer"), ("PAL", "Jello", "jello"),
             ("PAL", "Nightshade", "nightshade"),
             ("PAL", "Obscure", "obscure"), ("US", "Obscure", "obscure"))])
         for name in ("PAL", "US"):

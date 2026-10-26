@@ -19,6 +19,11 @@
 - **Page**: opens on the short file (`feedPartial`), counts the left-out rows into the Items tile and the line above the table (switched-off sources excluded), and fetches the full file (`loadFullFeed()`) only when **Everything** is chosen. A missing or damaged short file means the full one is loaded as before; a failed full load leaves the short list with a message.
 - Tests: `tests/test_scraper.py` (the short file's contents), `tests/dashboard_check.mjs` (counts, nothing fetched for PS2 Games Only, fetch on Everything, failure). `RECENT_PATH` is patched in the scraper tests and in `tools/regression_check.py` so neither writes the repository's `data/`.
 
+## 2026-10-26: Hanuman: The Boy Warrior
+
+- The game's page said "Not in the PS2 library" because the Rarest list spells it "Hanuman: The Boy Warrior" and the library (PCSX2's name) "Hanuman: Boy Warrior". The page's library check now ignores "the" anywhere in a name (`renderGamePage()`).
+- Its Rarest search words were just "hanuman", a one-word name, so it was never priced. They are now "hanuman boy warrior" (a listing's "the" is ignored by the name check), so it gets a UK price and, as a top-50 PAL game, euro prices.
+
 ## 2026-10-26: the rarest PAL games on the euro eBay sites
 
 - The first `RARE_EURO_TOP` (50) games of the Rarest PAL list are also looked up on eBay Germany, France, Italy and Spain (`RARE_EURO_SITES`, added to the game's `sites` in `add_rare_games()`), on those sites' own clocks (48 / 72 / 48 / 96 hours), so about 80 extra searches a day by estimate (50 games x (0.5 + 0.33 + 0.5 + 0.25) lookups a day; read `tools/search_report.py` after a day). Games the feed tracks were already priced there. Used copies only; the new/sealed and abroad second looks stay on the UK site, and the PAL index and market cap still use the UK figures alone.

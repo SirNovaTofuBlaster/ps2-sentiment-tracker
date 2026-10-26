@@ -1267,7 +1267,9 @@
             gameCoverTitle = title;
             ensureCoverIndex();
             paintGameCover();
-            const inLibrary = library.some(game => game.plains.includes(plainText(title)) || priceKey(game.title) === priceKey(title));
+            const bare = text => plainText(text).replace(/\bthe\b/g, ' ').replace(/\s+/g, ' ').trim();   // "Hanuman: The Boy Warrior" is the library's "Hanuman: Boy Warrior"
+            const inLibrary = library.some(game => game.plains.includes(plainText(title)) || priceKey(game.title) === priceKey(title)
+                || game.plains.some(name => bare(name) === bare(title)));
             document.getElementById('gameSummary').textContent = items.length
                 ? `${items.length.toLocaleString('en')} item${items.length === 1 ? '' : 's'} in the feed from the last ${FEED_DAYS} days name this game`
                     + (items.length > GAME_ITEMS_MAX ? `; the newest ${GAME_ITEMS_MAX} are listed.` : '.')
