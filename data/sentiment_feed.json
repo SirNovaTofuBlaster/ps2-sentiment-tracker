@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 10:37:36 UTC",
+  "last_updated": "2026-10-26 10:40:11 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1358,6 +1358,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-10-26 08:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Soul Calibur 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750378594",
+      "matched_game": "Soul Calibur 2",
+      "matched_games": [
+        "Soul Calibur 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 08:30 UTC"
     },
@@ -3214,21 +3233,22 @@
       "timestamp": "2026-10-26 04:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life, Metal Gear Solid 3: Snake Eater, Deus Ex and 2 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Metal Gear Solid 3: Snake Eater, Deus Ex and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750371635",
-      "matched_game": "Half-Life",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Half-Life",
+        "Grand Theft Auto III",
         "Metal Gear Solid 3: Snake Eater",
         "Deus Ex",
         "Prince of Persia: Sands of Time",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -8411,7 +8431,7 @@
       "timestamp": "2026-10-25 22:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Haunting Ground, Resident Evil 4, Final Fantasy X and 2 more",
+      "headline": "Thread on /v/ naming Haunting Ground, Rule of Rose, Resident Evil 4 and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -8419,6 +8439,7 @@
       "matched_game": "Haunting Ground",
       "matched_games": [
         "Haunting Ground",
+        "Rule of Rose",
         "Resident Evil 4",
         "Final Fantasy X",
         "Resident Evil Code: Veronica X",
@@ -335431,57 +335452,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 10:43 UTC"
-    },
-    {
-      "headline": "First ever build (and she's a leftie)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3yhw5/first_ever_build_and_shes_a_leftie/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 10:39 UTC"
-    },
-    {
-      "headline": "Tainted grail: Fall of avalon constantly crashes",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x3ygp5/tainted_grail_fall_of_avalon_constantly_crashes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 10:37 UTC"
-    },
-    {
-      "headline": "Geralt - We're at a Funeral...",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x3yh0c/geralt_were_at_a_funeral/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 10:37 UTC"
     }
   ]
 }
