@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 20:15:36 UTC",
+  "last_updated": "2026-10-26 20:18:20 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 23:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750410057",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 20:16 UTC"
     },
     {
       "headline": "Question about preorder of gta 6",
@@ -102,6 +121,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 20:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming LEGO Batman",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750409417",
+      "matched_game": "LEGO Batman",
+      "matched_games": [
+        "LEGO Batman"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 20:05 UTC"
     },
@@ -633,6 +671,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 19:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750407915",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 19:37 UTC"
     },
@@ -37657,7 +37714,7 @@
       "views": 280
     },
     {
-      "headline": "Thread on /vg/ naming Kingdom Hearts, Kingdom Hearts II and The Bouncer",
+      "headline": "Thread on /vg/ naming Kingdom Hearts, Kingdom Hearts II, The Bouncer and 1 more",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -37666,7 +37723,8 @@
       "matched_games": [
         "Kingdom Hearts",
         "Kingdom Hearts II",
-        "The Bouncer"
+        "The Bouncer",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -142654,18 +142712,18 @@
       "timestamp": "2026-10-20 19:47 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Final Fantasy X and Genji",
+      "headline": "Thread on /vr/ naming Genji and Final Fantasy X",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12888861",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Genji",
       "matched_games": [
-        "Final Fantasy X",
-        "Genji"
+        "Genji",
+        "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -336856,74 +336914,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 20:20 UTC"
-    },
-    {
-      "headline": "Did hit Jackpot?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4cpvu/did_hit_jackpot/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 20:17 UTC"
-    },
-    {
-      "headline": "do I have enough ram for gta 6",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4cpbc/do_i_have_enough_ram_for_gta_6/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 20:17 UTC"
-    },
-    {
-      "headline": "Upgrade to a laptop?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4co8q/upgrade_to_a_laptop/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 20:16 UTC"
-    },
-    {
-      "headline": "I made Net-Merge which uses all network connections on windows to speed up Steam and IDM downloads",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4cnbq/i_made_netmerge_which_uses_all_network/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 20:15 UTC"
     }
   ]
 }
