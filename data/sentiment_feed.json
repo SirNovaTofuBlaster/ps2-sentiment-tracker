@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 02:34:43 UTC",
+  "last_updated": "2026-10-26 02:48:43 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -362,7 +362,7 @@
       "timestamp": "2026-10-26 01:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Final Fantasy X and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -370,6 +370,7 @@
       "matched_game": "Kingdom Hearts",
       "matched_games": [
         "Kingdom Hearts",
+        "Final Fantasy X",
         "Kingdom Hearts II"
       ],
       "match_score": 100,
@@ -397,6 +398,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 01:23 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750363480",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 01:22 UTC"
     },
     {
       "headline": "Thread on /v/ naming Half-Life",
@@ -571,6 +591,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 01:01 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Tales of the Abyss",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750362473",
+      "matched_game": "Tales of the Abyss",
+      "matched_games": [
+        "Tales of the Abyss"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 01:01 UTC"
     },
@@ -335160,125 +335199,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 02:49 UTC"
-    },
-    {
-      "headline": "Cross platform 8 player?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x3qisk/cross_platform_8_player/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 02:43 UTC"
-    },
-    {
-      "headline": "Never before seen color at Target",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x3qi8k/never_before_seen_color_at_target/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 02:42 UTC"
-    },
-    {
-      "headline": "Real platinum?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x3qfdp/real_platinum/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 02:38 UTC"
-    },
-    {
-      "headline": "How Do You Launch your Games?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3qepo/how_do_you_launch_your_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 02:37 UTC"
-    },
-    {
-      "headline": "Long Time Gamers, Finally Building the Collection",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1x3qed2/long_time_gamers_finally_building_the_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 02:37 UTC"
-    },
-    {
-      "headline": "How do i properly print a PS2 disk saver?",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1x3qdmr/how_do_i_properly_print_a_ps2_disk_saver/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 02:36 UTC"
-    },
-    {
-      "headline": "Please help me fix this.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x3qe3c/please_help_me_fix_this/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 02:36 UTC"
     }
   ]
 }
