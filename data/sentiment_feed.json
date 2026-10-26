@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 07:46:25 UTC",
+  "last_updated": "2026-10-26 07:48:59 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1990,19 +1990,20 @@
       "views": 30063
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Resident Evil 4 and Shin Megami Tensei: Nocturne",
+      "headline": "Thread on /v/ naming God Hand, Shin Megami Tensei: Nocturne, Devil May Cry 3: Dante's Awakening and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750368843",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_game": "God Hand",
       "matched_games": [
+        "God Hand",
+        "Shin Megami Tensei: Nocturne",
         "Devil May Cry 3: Dante's Awakening",
-        "Resident Evil 4",
-        "Shin Megami Tensei: Nocturne"
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
