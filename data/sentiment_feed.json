@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 01:07:38 UTC",
+  "last_updated": "2026-10-26 01:10:14 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -4878,15 +4878,16 @@
       "timestamp": "2026-10-25 19:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X and Persona 3",
+      "headline": "Thread on /v/ naming Final Fantasy XII, Persona 3 and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750347927",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
-        "Final Fantasy X",
-        "Persona 3"
+        "Final Fantasy XII",
+        "Persona 3",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -10932,21 +10933,22 @@
       "timestamp": "2026-10-25 15:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, God Hand, Grand Theft Auto: San Andreas and 2 more",
+      "headline": "Thread on /v/ naming Okami, God Hand, Grand Theft Auto: San Andreas and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750332076",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Okami",
       "matched_games": [
-        "Resident Evil 4",
+        "Okami",
         "God Hand",
         "Grand Theft Auto: San Andreas",
         "Red Faction",
-        "Devil May Cry 3: Dante's Awakening"
+        "Devil May Cry 3: Dante's Awakening",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -19149,6 +19151,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-25 03:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming SSX Tricky",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750307750",
+      "matched_game": "SSX Tricky",
+      "matched_games": [
+        "SSX Tricky"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 03:32 UTC"
     },
@@ -335652,42 +335673,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 01:12 UTC"
-    },
-    {
-      "headline": "Just completed Shadow Hearts! The Judgement Ring was unexpected.",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x3op3f/just_completed_shadow_hearts_the_judgement_ring/",
-      "matched_game": "Shadow Hearts",
-      "matched_games": [
-        "Shadow Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 01:08 UTC"
-    },
-    {
-      "headline": "Street fighter 6 or Redout 2?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x3oog5/street_fighter_6_or_redout_2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 01:07 UTC"
     }
   ]
 }
