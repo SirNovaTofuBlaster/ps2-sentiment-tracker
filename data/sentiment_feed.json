@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 18:01:47 UTC",
+  "last_updated": "2026-10-26 18:06:53 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1875,6 +1875,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 16:16 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750396437",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 16:16 UTC"
     },
@@ -12740,24 +12759,24 @@
       "timestamp": "2026-10-26 04:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Ape Escape 2, Metal Gear Solid 3: Snake Eater and 5 more",
+      "headline": "Thread on /v/ naming Ape Escape 2, Metal Gear Solid 3: Snake Eater, Deus Ex and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750371635",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Ape Escape 2",
       "matched_games": [
-        "Resident Evil 4",
         "Ape Escape 2",
         "Metal Gear Solid 3: Snake Eater",
         "Deus Ex",
         "Prince of Persia: Sands of Time",
+        "Resident Evil 4",
         "Half-Life",
         "Grand Theft Auto III",
         "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -14084,6 +14103,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 02:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Arcade",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750367107",
+      "matched_game": "The Arcade",
+      "matched_games": [
+        "The Arcade"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 02:39 UTC"
     },
@@ -335817,94 +335855,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 18:08 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Persona 4 and Persona 3",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/584245154",
-      "matched_game": "Persona 4",
-      "matched_games": [
-        "Persona 4",
-        "Persona 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:05 UTC"
-    },
-    {
-      "headline": "After almost 3 decades, StarCraft Brood War finally gets good netcode (rollback)",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x493sg/after_almost_3_decades_starcraft_brood_war/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:04 UTC"
-    },
-    {
-      "headline": "Thermal pads on the Gigabyte RTX 4060 Eagle OC 8G",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x493wn/thermal_pads_on_the_gigabyte_rtx_4060_eagle_oc_8g/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:04 UTC"
-    },
-    {
-      "headline": "Nvidia habría dejado de fabricar la RTX 5090 para priorizar sus gráficas profesionales para IA",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026285024/nvidia-habria-dejado-de-fabricar-la-rtx-5090-para-priorizar-sus-graficas-profesionales-para-ia/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:04 UTC"
-    },
-    {
-      "headline": "Should I be worried",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x490f5/should_i_be_worried/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 18:01 UTC"
     }
   ]
 }
