@@ -194,6 +194,10 @@ RARE_SLOW_KINDS = ("console", "edition")   # level "rare" but still daily: only 
 # The Rarest page's lists in rare_games.json, and the one site each is priced on: a rare PAL game
 # is a PAL copy, sold in Britain; a rare US game is an American copy.
 RARE_SITES = {"PAL": "EBAY_GB", "US": "EBAY_US"}
+# The rarest PAL games are also looked up on the euro sites (2026-10-26): a PAL disc that no British seller lists is
+# often for sale in Italy or Germany. Only the first RARE_EURO_TOP of the list, on those sites' own (slow) clocks.
+RARE_EURO_SITES = {"PAL": ("EBAY_DE", "EBAY_FR", "EBAY_IT", "EBAY_ES")}
+RARE_EURO_TOP = 50
 # A steady game on one site (normal or staple only): at least STEADY_MIN_COPIES listed every time it was
 # checked in the last STEADY_LOOK_DAYS days, the median within STEADY_PRICE_RANGE of its middle value, the
 # number of copies within STEADY_COPIES_RANGE of its middle value, and checks spanning STEADY_SPAN_DAYS.
@@ -968,7 +972,7 @@ def load_rare(path=None, kind=None):
                 problems.append(f'{list_name} "{title}": the search words do not work for eBay')
                 continue
             other = row.get("other_title")
-            entries.append({"list": list_name, "title": title.strip(), "search": phrase, "queries": queries,
+            entries.append({"list": list_name, "rank": position, "title": title.strip(), "search": phrase, "queries": queries,
                             "require": require, "exclude": exclude, "allow": sorted(allow), "kind": kind,
                             "other_title": other.strip() if isinstance(other, str) and key_of(other) else None})
     return entries, problems
@@ -1027,6 +1031,10 @@ def add_rare_games(games, rare, catalogue):
                 owners[key] = game
             if market_id not in game["sites"]:
                 game["sites"].append(market_id)
+            if not entry.get("kind") and entry.get("rank", RARE_EURO_TOP + 1) <= RARE_EURO_TOP:
+                for extra in RARE_EURO_SITES.get(entry["list"], ()):
+                    if extra in MARKETS and extra not in game["sites"]:
+                        game["sites"].append(extra)
             game["exclude"] = sorted(set(game["exclude"]) | set(entry["exclude"]))
         # Its new and sealed copies are counted too, on this list's site: a rare game's copies are often that. This
         # includes a game the feed already tracks (Kuon): its used lookup is reused, and it was left without the

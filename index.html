@@ -2443,6 +2443,7 @@
            latest.json says which game in its "games" holds each entry's figures.
         -------------------------------------------------------------------- */
         const RARE_SITE = { PAL: 'UK', US: 'US' };   // as RARE_SITES in ebay_prices.py
+        const RARE_EURO_SITES = { PAL: ['DE', 'FR', 'IT', 'ES'] };   // as RARE_EURO_SITES in ebay_prices.py: the rarest PAL games are priced there too
         const RARE_VIEWS = ['PAL', 'US', 'Consoles'];
         const RARE_OTHER = { PAL: 'US name', US: 'PAL name' };
         const RARE_FLAGS = {
@@ -2676,7 +2677,12 @@
                         ? `<p class="rare-aka">${esc(RARE_OTHER[region])}: ${esc(entry.other_title)}</p>` : ''}
                     <div class="ebay-figures">${unpriced
                         ? `<span class="ebay-site is-quiet"><span class="ebay-flag">${esc(label)}</span><span class="ebay-note" title="Not looked up on eBay: its search words would also count other games' listings (a name that is an everyday word) or cannot be used. The eBay price job's log names the reason.">not priced</span></span>`
-                        : priceSiteHtml(label, site, currency, now, locale, LEVELS[prices?.level || 'rare'].stale)}</div>
+                        : priceSiteHtml(label, site, currency, now, locale, LEVELS[prices?.level || 'rare'].stale)}${
+                        (RARE_EURO_SITES[region] || []).map(euro => {
+                            const found = prices?.entry?.[euro];
+                            return found && typeof found === 'object' && !found.unmatched && Number.isFinite(found.copies) && found.copies > 0
+                                ? priceSiteHtml(euro, found, currencyOf(euro), now, locale, LEVELS.rare.stale) : '';
+                        }).join('')}</div>
                     ${rarePriceChartingHtml(entry.title, region)}
                     ${referenceHtml(entry.title, region, locale)}
                     <p class="rare-note">${typeof entry.note === 'string' && entry.note ? `${esc(entry.note)} ` : ''}${sources.length
