@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-26 09:45:00 UTC",
+  "last_updated": "2026-10-26 09:56:44 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -129603,18 +129603,19 @@
       "timestamp": "2026-10-20 18:48 UTC"
     },
     {
-      "headline": "Thread on /vrpg/ naming Deus Ex and The Sims",
+      "headline": "Thread on /vrpg/ naming Half-Life, The Sims and Deus Ex",
       "source": "4chan /vrpg/",
       "source_type": "4chan",
       "feed": "4chan:vrpg",
       "link": "https://boards.4chan.org/vrpg/thread/4135591",
-      "matched_game": "Deus Ex",
+      "matched_game": "Half-Life",
       "matched_games": [
-        "Deus Ex",
-        "The Sims"
+        "Half-Life",
+        "The Sims",
+        "Deus Ex"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -335151,57 +335152,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 09:57 UTC"
-    },
-    {
-      "headline": "Cost Effective VRAM",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x3xp9o/cost_effective_vram/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 09:50 UTC"
-    },
-    {
-      "headline": "What are your favorite games for a quick 10-minute brain break?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x3xolc/what_are_your_favorite_games_for_a_quick_10minute/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-12 09:49 UTC"
-    },
-    {
-      "headline": "Finally got a gaming pc!!!, but it doesnt feel the same anymore",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x3xmkn/finally_got_a_gaming_pc_but_it_doesnt_feel_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 09:46 UTC"
     }
   ]
 }
