@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-26 03:06:14 UTC",
+  "last_updated": "2026-10-26 03:17:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Jak II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750368437",
+      "matched_game": "Jak II",
+      "matched_games": [
+        "Jak II"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 03:07 UTC"
+    },
     {
       "headline": "Is the Shine Megami Tensei series considered the dark souls of JRPGs?",
       "source": "r/JRPG",
@@ -1032,7 +1051,7 @@
       "timestamp": "2026-10-26 01:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Final Fantasy X and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1040,8 +1059,8 @@
       "matched_game": "Kingdom Hearts",
       "matched_games": [
         "Kingdom Hearts",
-        "Final Fantasy X",
-        "Kingdom Hearts II"
+        "Kingdom Hearts II",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -335597,74 +335616,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-12 03:19 UTC"
-    },
-    {
-      "headline": "Pokémon SV question (revision)",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1x3r4wx/pokémon_sv_question_revision/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 03:15 UTC"
-    },
-    {
-      "headline": "Looking for my next great single player journey",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x3r50b/looking_for_my_next_great_single_player_journey/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-12 03:15 UTC"
-    },
-    {
-      "headline": "[Solved] No HDMI signal when power connected to dock.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x3r4cv/solved_no_hdmi_signal_when_power_connected_to_dock/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 03:14 UTC"
-    },
-    {
-      "headline": "Help I need to like Genshin account to a new PlayStation account",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x3qyr1/help_i_need_to_like_genshin_account_to_a_new/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-12 03:06 UTC"
     }
   ]
 }
