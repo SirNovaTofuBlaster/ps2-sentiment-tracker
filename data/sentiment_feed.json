@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-10-26 23:06:29 UTC",
+  "last_updated": "2026-10-26 23:09:06 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Ape Escape 3 and Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750419576",
+      "matched_game": "Ape Escape 3",
+      "matched_games": [
+        "Ape Escape 3",
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 23:04 UTC"
+    },
     {
       "headline": "Gorgeous game bought ten years ago loving the update",
       "source": "r/playstation",
@@ -52,6 +72,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 23:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster House",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750419240",
+      "matched_game": "Monster House",
+      "matched_games": [
+        "Monster House"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 22:58 UTC"
     },
     {
       "headline": "Hotel Barcelona is now available DRM-free on GOG",
@@ -243,19 +282,21 @@
       "timestamp": "2026-10-26 22:37 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak 3, Resident Evil 4 and MegaMan X7",
+      "headline": "Thread on /v/ naming Viewtiful Joe, Jak 3, Resident Evil 4 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750418030",
-      "matched_game": "Jak 3",
+      "matched_game": "Viewtiful Joe",
       "matched_games": [
+        "Viewtiful Joe",
         "Jak 3",
         "Resident Evil 4",
-        "MegaMan X7"
+        "MegaMan X7",
+        "Sonic Heroes"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1561,6 +1602,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 21:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Iron Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750413441",
+      "matched_game": "Iron Man",
+      "matched_games": [
+        "Iron Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 21:17 UTC"
     },
@@ -2884,14 +2944,15 @@
       "timestamp": "2026-10-26 20:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750410057",
       "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
