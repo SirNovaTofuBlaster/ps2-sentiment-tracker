@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 06:42:44 UTC",
+  "last_updated": "2026-10-27 06:45:21 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -205,6 +205,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-27 06:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Total Overdose",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750437301",
+      "matched_game": "Total Overdose",
+      "matched_games": [
+        "Total Overdose"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 06:13 UTC"
     },
@@ -3870,15 +3889,15 @@
       "timestamp": "2026-10-27 00:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II and Final Fantasy X",
+      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750423447",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
-        "Kingdom Hearts",
         "Kingdom Hearts II",
+        "Kingdom Hearts",
         "Final Fantasy X"
       ],
       "match_score": 100,
@@ -339030,23 +339049,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-13 06:45 UTC"
-    },
-    {
-      "headline": "Demons Souls Remake test. World 2-2 Flamelurker Boss fight (runback). 2k 60fps. I almost forgot I was palying it on my PC. Really great performance. I will try beating the whole game. I have had some really great experiences playing it on my PS5 Pro but play it on PC is like Witnessing a miracle.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4pk9j/demons_souls_remake_test_world_22_flamelurker/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 70,
-      "hype": 1,
-      "timestamp": "2026-10-13 06:43 UTC"
     }
   ]
 }
