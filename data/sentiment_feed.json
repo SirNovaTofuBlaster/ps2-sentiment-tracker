@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 00:03:38 UTC",
+  "last_updated": "2026-10-27 00:06:23 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 23:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Burnout Revenge",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750422129",
+      "matched_game": "Burnout Revenge",
+      "matched_games": [
+        "Burnout Revenge"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 23:52 UTC"
     },
     {
       "headline": "Resin/Hard Mouse and Keyboard Pads",
@@ -4829,17 +4848,18 @@
       "timestamp": "2026-10-26 19:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Sly 3",
+      "headline": "Thread on /v/ naming Secret Agent Clank and Sly 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750407736",
-      "matched_game": "Sly 3",
+      "matched_game": "Secret Agent Clank",
       "matched_games": [
+        "Secret Agent Clank",
         "Sly 3"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5478,18 +5498,19 @@
       "timestamp": "2026-10-26 19:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Monster Hunter",
+      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750406167",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
+        "Kingdom Hearts II",
         "Kingdom Hearts",
         "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338062,41 +338083,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-13 00:09 UTC"
-    },
-    {
-      "headline": "PC won’t turn on after installing new GPU",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4i202/pc_wont_turn_on_after_installing_new_gpu/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 00:05 UTC"
-    },
-    {
-      "headline": "Mike Ruins Top 100 :(",
-      "source": "YouTube: Kinda Funny Games",
-      "source_type": "youtube",
-      "feed": "youtube:UCT6QFE3peNry9PdO5uGj96g",
-      "link": "https://www.youtube.com/shorts/RFoyGsZSWvY",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 00:03 UTC",
-      "views": 18845
     }
   ]
 }
