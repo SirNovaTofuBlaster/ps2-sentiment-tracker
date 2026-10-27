@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 15:15:52 UTC",
+  "last_updated": "2026-10-27 15:18:38 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -2437,6 +2437,26 @@
       "timestamp": "2026-10-27 13:20 UTC"
     },
     {
+      "headline": "Thread on /v/ naming The Incredible Hulk and Spider-Man 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750449659",
+      "matched_game": "The Incredible Hulk",
+      "matched_games": [
+        "The Incredible Hulk",
+        "Spider-Man 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 13:20 UTC"
+    },
+    {
       "headline": "Game suggestions that are worth playing with gf?",
       "source": "r/gamingsuggestions",
       "source_type": "reddit",
@@ -4325,18 +4345,18 @@
       "timestamp": "2026-10-27 11:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X and Grandia II",
+      "headline": "Thread on /v/ naming Grandia II and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750445821",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Grandia II",
       "matched_games": [
-        "Final Fantasy X",
-        "Grandia II"
+        "Grandia II",
+        "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -15032,13 +15052,14 @@
       "timestamp": "2026-10-26 21:54 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man",
+      "headline": "Thread on /v/ naming Iron Man and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750415559",
-      "matched_game": "Spider-Man",
+      "matched_game": "Iron Man",
       "matched_games": [
+        "Iron Man",
         "Spider-Man"
       ],
       "match_score": 100,
@@ -339278,130 +339299,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-13 15:18 UTC"
-    },
-    {
-      "headline": "'Ruins and Reverberations' quest walkthrough in Arc Raiders",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/arc-raiders-ruins-and-reverberations-quest-walkthrough-cielo-sereno-observatory-crawlspace-antenna/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 15:17 UTC"
-    },
-    {
-      "headline": "Pokemon Ruby",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x4zf6y/pokemon_ruby/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 15:17 UTC"
-    },
-    {
-      "headline": "Is $350 a good price for a 512 LCD deck?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x4zekf/is_350_a_good_price_for_a_512_lcd_deck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 15:17 UTC"
-    },
-    {
-      "headline": "Rumour: GTA 6 Will Be Ported to PC in Record Time Following Its Debut on PS5",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/rumour-gta-6-will-be-ported-to-pc-in-record-time-following-its-debut-on-ps5",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 15:15 UTC"
-    },
-    {
-      "headline": "Pokemon Platinum",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x4zd1i/pokemon_platinum/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 15:15 UTC"
-    },
-    {
-      "headline": "Why E3 2001 Made Rockstar Nervous About GTA 3",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=5dsQx-RpAfY",
-      "matched_game": "Grand Theft Auto III",
-      "matched_games": [
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 15:15 UTC"
-    },
-    {
-      "headline": "Splinter Cell: Chaos Theory | PS2 Gameplay | Pixel FX Retro GEM HDMI Mod",
-      "source": "YouTube: NeoGamer - The Video Game Archive",
-      "source_type": "youtube",
-      "feed": "youtube:UCDC7X5gNh2LxQ2PnN_OKD5g",
-      "link": "https://www.youtube.com/watch?v=X08Si38KKYs",
-      "matched_game": "Splinter Cell",
-      "matched_games": [
-        "Splinter Cell"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 15:15 UTC",
-      "views": 2343
     }
   ]
 }
