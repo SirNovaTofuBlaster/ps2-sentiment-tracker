@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 02:13:47 UTC",
+  "last_updated": "2026-10-27 02:27:48 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1214,17 +1214,18 @@
       "timestamp": "2026-10-27 00:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Viewtiful Joe",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750423653",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Viewtiful Joe"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338427,74 +338428,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-13 02:27 UTC"
-    },
-    {
-      "headline": "Hi everyone! Has anyone here upgraded RTX 3070 from 8GB to 16GB of Vram?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4kwjw/hi_everyone_has_anyone_here_upgraded_rtx_3070/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 02:24 UTC"
-    },
-    {
-      "headline": "Games Event Criticised After Dumping Sponsor Over 'Zionist' Allegations",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x4kuki/games_event_criticised_after_dumping_sponsor_over/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 02:21 UTC"
-    },
-    {
-      "headline": "Wacom Intuos issues",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x4krdi/wacom_intuos_issues/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 02:17 UTC"
-    },
-    {
-      "headline": "Gaming Suggestions for i3 10th gen",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x4kpew/gaming_suggestions_for_i3_10th_gen/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 02:14 UTC"
     }
   ]
 }
