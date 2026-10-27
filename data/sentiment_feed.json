@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 19:04:39 UTC",
+  "last_updated": "2026-10-27 19:07:13 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -93,6 +93,25 @@
       "timestamp": "2026-10-27 18:53 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Need for Speed Underground 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750467626",
+      "matched_game": "Need for Speed Underground 2",
+      "matched_games": [
+        "Need for Speed Underground 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 18:53 UTC"
+    },
+    {
       "headline": "Built a self-hosted voice/chat app because I was waiting for too much for a simple noise cancelling from TS. Mostly AI-written, roast away.",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -106,6 +125,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-27 18:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750467550",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 18:52 UTC"
     },
@@ -2872,17 +2910,18 @@
       "timestamp": "2026-10-27 16:51 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750460526",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
+        "Resident Evil Code: Veronica X",
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338767,59 +338806,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-13 19:09 UTC"
-    },
-    {
-      "headline": "Battlefield 6 Now Lets You Instantly Unlock All Guns At 100% Mastery For $30",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/battlefield-6-now-lets-you-instantly-unlock-all-guns-at-100-mastery-for-30/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 19:05 UTC"
-    },
-    {
-      "headline": "If you’re in Houston area, check out the Goodwill next to City Center, (Katy Fwy). [more in description]",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x55lr5/if_youre_in_houston_area_check_out_the_goodwill/",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 19:04 UTC"
-    },
-    {
-      "headline": "Introducing XBOX LABS",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x55l35/introducing_xbox_labs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 19:04 UTC"
     }
   ]
 }
