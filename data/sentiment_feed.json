@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 23:49:40 UTC",
+  "last_updated": "2026-10-27 23:52:17 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -84,6 +84,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-27 23:40 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585861351",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 23:40 UTC"
     },
@@ -394,6 +413,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 23:19 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12899458",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 23:16 UTC"
     },
     {
       "headline": "Phantom Blade Zero release countdown: Exact date and time",
@@ -956,17 +994,18 @@
       "timestamp": "2026-10-27 22:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Red Faction",
+      "headline": "Thread on /v/ naming Final Fantasy X and Red Faction",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750480621",
-      "matched_game": "Red Faction",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
         "Red Faction"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339338,41 +339377,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-13 23:52 UTC"
-    },
-    {
-      "headline": "How well do yall think Attack on Titan 3 will run on Steamdeck?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x5cjjo/how_well_do_yall_think_attack_on_titan_3_will_run/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 23:51 UTC"
-    },
-    {
-      "headline": "God of War Laufey Collector Box does not come with the game, only physical merch! #godofwar #laufey",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/shorts/yOOMfgZ217E",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 23:50 UTC",
-      "views": 14644
     }
   ]
 }
