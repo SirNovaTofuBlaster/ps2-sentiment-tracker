@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 11:27:42 UTC",
+  "last_updated": "2026-10-27 11:30:20 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1824,14 +1824,16 @@
       "views": 141
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4, Devil May Cry 3: Dante's Awakening and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750441864",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Devil May Cry 3: Dante's Awakening",
+        "Monster Hunter"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2407,6 +2409,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-27 08:27 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750440651",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 08:27 UTC"
     },
@@ -10571,13 +10592,14 @@
       "timestamp": "2026-10-26 21:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Worms 3D and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750413830",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Worms 3D",
       "matched_games": [
+        "Worms 3D",
         "Kingdom Hearts"
       ],
       "match_score": 100,
@@ -339174,40 +339196,6 @@
       "hype": 0,
       "timestamp": "2026-10-13 11:30 UTC",
       "views": 31365
-    },
-    {
-      "headline": "Microsoft patched a bug that allowed you to bypass Windows 11's Microsoft account requirement by just clicking on a \"Learn more\" link during PC set up",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4u4ub/microsoft_patched_a_bug_that_allowed_you_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-13 11:29 UTC"
-    },
-    {
-      "headline": "Tamanho de Modern Warfare 4 na PS5 ultrapassa os 150 GB",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/tamanho-de-modern-warfare-4-na-ps5-ultrapassa-os-150-gb",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 11:27 UTC"
     }
   ]
 }
