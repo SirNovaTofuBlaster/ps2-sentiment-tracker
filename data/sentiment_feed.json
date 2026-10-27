@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-27 07:44:35 UTC",
+  "last_updated": "2026-10-27 07:55:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Unreal Tournament",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750439613",
+      "matched_game": "Unreal Tournament",
+      "matched_games": [
+        "Unreal Tournament"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 07:42 UTC"
+    },
     {
       "headline": "Can u use these as analog replacements if I don't use gyro or care for gyro using the analog sticks?",
       "source": "r/SteamDeck",
@@ -449,6 +468,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 06:22 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Bee Movie Game and TNA iMPACT!",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12898195",
+      "matched_game": "Bee Movie Game",
+      "matched_games": [
+        "Bee Movie Game",
+        "TNA iMPACT!"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 06:20 UTC"
     },
     {
       "headline": "Gigabyte B850 Gaming X WIFI6E - VGA LED error",
@@ -338903,23 +338942,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-13 07:57 UTC"
-    },
-    {
-      "headline": "whys my pc crying",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4qlp2/whys_my_pc_crying/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 07:51 UTC"
     }
   ]
 }
