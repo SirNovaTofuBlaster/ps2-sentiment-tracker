@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 13:21:44 UTC",
+  "last_updated": "2026-10-27 13:24:23 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -3803,7 +3803,7 @@
       "views": 272
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Devil May Cry 3: Dante's Awakening and Monster Hunter",
+      "headline": "Thread on /v/ naming Resident Evil 4, Monster Hunter and Devil May Cry 3: Dante's Awakening",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -3811,8 +3811,8 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4",
-        "Devil May Cry 3: Dante's Awakening",
-        "Monster Hunter"
+        "Monster Hunter",
+        "Devil May Cry 3: Dante's Awakening"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -4131,6 +4131,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-27 09:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750441424",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 09:00 UTC"
     },
@@ -6315,6 +6334,25 @@
       "hype": 0,
       "timestamp": "2026-10-27 04:54 UTC",
       "views": 321
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750434925",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 04:53 UTC"
     },
     {
       "headline": "8 Most Entertaining Sci-Fi Books of the 21st Century That Are Impossible to Put Down",
@@ -22044,16 +22082,16 @@
       "timestamp": "2026-10-26 15:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Iron Man, Spider-Man and LEGO Batman",
+      "headline": "Thread on /v/ naming LEGO Batman, Spider-Man and Iron Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750393673",
-      "matched_game": "Iron Man",
+      "matched_game": "LEGO Batman",
       "matched_games": [
-        "Iron Man",
+        "LEGO Batman",
         "Spider-Man",
-        "LEGO Batman"
+        "Iron Man"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -339426,40 +339464,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-13 13:24 UTC"
-    },
-    {
-      "headline": "Pokemon Diamond Real/Fake ? 21 day resubmit",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x4wj5r/pokemon_diamond_realfake_21_day_resubmit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 13:23 UTC"
-    },
-    {
-      "headline": "minimap awareness",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4wj8i/minimap_awareness/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 13:23 UTC"
     }
   ]
 }
