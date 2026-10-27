@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 14:18:51 UTC",
+  "last_updated": "2026-10-27 14:21:28 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -506,6 +506,25 @@
       "timestamp": "2026-10-27 13:54 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Sniper Elite",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750451253",
+      "matched_game": "Sniper Elite",
+      "matched_games": [
+        "Sniper Elite"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 13:54 UTC"
+    },
+    {
       "headline": "My physical psp collection (360+ games) – Almost 10 years of collecting!",
       "source": "r/playstation",
       "source_type": "reddit",
@@ -987,19 +1006,19 @@
       "timestamp": "2026-10-27 13:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex, Splinter Cell and Just Cause",
+      "headline": "Thread on /v/ naming Just Cause, Deus Ex and Splinter Cell",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750449864",
-      "matched_game": "Deus Ex",
+      "matched_game": "Just Cause",
       "matched_games": [
+        "Just Cause",
         "Deus Ex",
-        "Splinter Cell",
-        "Just Cause"
+        "Splinter Cell"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2938,7 +2957,7 @@
         "Grandia II"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6494,6 +6513,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 07:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750438859",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 07:12 UTC"
     },
     {
       "headline": "Does everyone gotta do ts?",
@@ -339290,108 +339328,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-13 14:21 UTC"
-    },
-    {
-      "headline": "REPLACED coming to Android on December 8",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/replaced-coming-to-android-on-december-8",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 14:20 UTC"
-    },
-    {
-      "headline": "Former PlayStation Head Reflects On His Time At The Company: ‘What Headquarters Says Isn’t Important. We’re PlayStation!’",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/former-playstation-head-reflects-on-his-time-at-the-company-what-headquarters-says-isnt-important-were-playstation-2000745235",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 14:20 UTC"
-    },
-    {
-      "headline": "God of War Laufey’s Collector Edition Continues a Frustrating Trend",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/god-of-war-laufey-collectors-edition-no-game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 14:20 UTC"
-    },
-    {
-      "headline": "Apparently there's a genre of games called \"Magic tower\" games? It's so niche that I can't even find that category on steam. Do you know any games of this genre?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x4xycr/apparently_theres_a_genre_of_games_called_magic/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 14:20 UTC"
-    },
-    {
-      "headline": "Best Final Fantasy game to get back into it?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x4xw4u/best_final_fantasy_game_to_get_back_into_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-13 14:18 UTC"
-    },
-    {
-      "headline": "Replaced - Official Mobile Announcement Teaser",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=vJmEaU-b0x8",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-13 14:18 UTC"
     }
   ]
 }
