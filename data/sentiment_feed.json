@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 01:05:45 UTC",
+  "last_updated": "2026-10-27 01:16:54 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -241,17 +241,18 @@
       "timestamp": "2026-10-27 00:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War",
+      "headline": "Thread on /v/ naming God of War II and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750424141",
-      "matched_game": "God of War",
+      "matched_game": "God of War II",
       "matched_games": [
+        "God of War II",
         "God of War"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -292,6 +293,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 00:28 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750423820",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 00:26 UTC"
     },
     {
       "headline": "Fresh from Japan",
@@ -1089,6 +1109,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 23:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750420705",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 23:25 UTC"
     },
@@ -338106,74 +338145,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-13 01:20 UTC"
-    },
-    {
-      "headline": "External HHD Placement",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x4jgsq/external_hhd_placement/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 01:14 UTC"
-    },
-    {
-      "headline": "Lenovo LOQ 17 vs Asus TUF A18",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4jgfb/lenovo_loq_17_vs_asus_tuf_a18/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 01:13 UTC"
-    },
-    {
-      "headline": "pc sometimes makes a buzzing or a bzzt sound and freezes",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x4jdfp/pc_sometimes_makes_a_buzzing_or_a_bzzt_sound_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-13 01:09 UTC"
-    },
-    {
-      "headline": "Open World, Great World Building, NPC Interactions",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x4jcku/open_world_great_world_building_npc_interactions/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-13 01:08 UTC"
     }
   ]
 }
