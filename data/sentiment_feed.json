@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27 05:45:47 UTC",
+  "last_updated": "2026-10-27 05:48:25 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -209,14 +209,15 @@
       "timestamp": "2026-10-27 05:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Alone in the Dark",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750435319",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Alone in the Dark"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -778,6 +779,25 @@
       "timestamp": "2026-10-27 03:58 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750433126",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 03:58 UTC"
+    },
+    {
       "headline": "Recent jrpg's with great things to do once you get the airship for overworld exploration? Particularly talking about getting OP early like farming or colliseum end game fights once you get the airship.",
       "source": "r/JRPG",
       "source_type": "reddit",
@@ -948,6 +968,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-27 03:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750432426",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 03:38 UTC"
     },
@@ -3402,19 +3441,19 @@
       "timestamp": "2026-10-27 00:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Final Fantasy X and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Final Fantasy X and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750423447",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts II",
+        "Kingdom Hearts",
         "Final Fantasy X",
-        "Kingdom Hearts"
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3795,7 +3834,7 @@
         "Silent Hill 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4007,6 +4046,25 @@
       "match_score": 100,
       "match_method": "fuzzy",
       "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-26 23:45 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Kingdom Hearts",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12897774",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": null,
@@ -89204,6 +89262,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-23 09:44 UTC"
+    },
+    {
+      "headline": "Thread on /vrpg/ naming The Thing",
+      "source": "4chan /vrpg/",
+      "source_type": "4chan",
+      "feed": "4chan:vrpg",
+      "link": "https://boards.4chan.org/vrpg/thread/4137445",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 09:44 UTC"
     },
