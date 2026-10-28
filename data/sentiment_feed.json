@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 14:05:38 UTC",
+  "last_updated": "2026-10-28 14:08:18 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -2635,6 +2635,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-28 11:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex and The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750507608",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex",
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 11:36 UTC"
     },
@@ -32376,19 +32396,20 @@
       "timestamp": "2026-10-27 03:35 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Alone in the Dark, Unreal Tournament, Half-Life and 3 more",
+      "headline": "Thread on /vr/ naming Max Payne, Devil May Cry 3: Dante's Awakening, Metal Gear Solid 3: Snake Eater and 4 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12898029",
-      "matched_game": "Alone in the Dark",
+      "matched_game": "Max Payne",
       "matched_games": [
-        "Alone in the Dark",
-        "Unreal Tournament",
-        "Half-Life",
+        "Max Payne",
         "Devil May Cry 3: Dante's Awakening",
         "Metal Gear Solid 3: Snake Eater",
-        "Burnout 3"
+        "Burnout 3",
+        "Alone in the Dark",
+        "Unreal Tournament",
+        "Half-Life"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338798,76 +338819,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 14:08 UTC"
-    },
-    {
-      "headline": "Is Game Testing/QA a thing of the past?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x5s69b/is_game_testingqa_a_thing_of_the_past/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 14:07 UTC"
-    },
-    {
-      "headline": "God of War 2 screen fix?",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1x5s5gx/god_of_war_2_screen_fix/",
-      "matched_game": "God of War II",
-      "matched_games": [
-        "God of War II"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 14:06 UTC"
-    },
-    {
-      "headline": "Is there any real alternative to Destiny 2, other than The Division?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x5s5ac/is_there_any_real_alternative_to_destiny_2_other/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 14:06 UTC"
-    },
-    {
-      "headline": "Nintendo Just Dropped A New 4 Minute Zelda: Ocarina Of Time Remake Trailer",
-      "source": "Retro Dodo",
-      "source_type": "news",
-      "feed": "https://retrododo.com/feed/",
-      "link": "https://retrododo.com/nintendo-just-dropped-a-new-4-minute-zelda-ocarina-of-time-remake-trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-14 14:05 UTC"
     }
   ]
 }
