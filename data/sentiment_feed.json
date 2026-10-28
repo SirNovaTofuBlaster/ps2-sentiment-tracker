@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-28 06:45:40 UTC",
+  "last_updated": "2026-10-28 06:59:42 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/585893612",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-28 06:50 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Kuon",
       "source": "4chan /v/",
@@ -382,6 +401,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 05:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Shield",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750497692",
+      "matched_game": "The Shield",
+      "matched_games": [
+        "The Shield"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-28 05:33 UTC"
     },
     {
       "headline": "rate my (growing) ps2 collection",
@@ -2230,15 +2268,15 @@
       "timestamp": "2026-10-28 02:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, God of War and Silent Hill 2",
+      "headline": "Thread on /v/ naming God of War, Resident Evil 4 and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750490609",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "God of War",
       "matched_games": [
-        "Resident Evil 4",
         "God of War",
+        "Resident Evil 4",
         "Silent Hill 2"
       ],
       "match_score": 100,
@@ -339175,108 +339213,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 07:00 UTC"
-    },
-    {
-      "headline": "This has to be a scam",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5kfm7/this_has_to_be_a_scam/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 06:56 UTC"
-    },
-    {
-      "headline": "Looking for games with systems like most Isekai animes (no luck)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x5kdrb/looking_for_games_with_systems_like_most_isekai/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 06:53 UTC"
-    },
-    {
-      "headline": "NVIDIA muestra DLSS 5 en Hogwarts Legacy y algunos jugadores se quejan de que apenas se nota la diferencia",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026287003/nvidia-muestra-dlss-5-en-hogwarts-legacy-y-ahora-algunos-jugadores-se-quejan-de-que-apenas-se-nota-la-diferencia/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 06:53 UTC"
-    },
-    {
-      "headline": "Discover store not working.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x5kcgw/discover_store_not_working/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 06:51 UTC"
-    },
-    {
-      "headline": "Looking for games with systems like most Isekai animes (no luck)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x5kc6d/looking_for_games_with_systems_like_most_isekai/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 06:50 UTC"
-    },
-    {
-      "headline": "Bsod",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5kabj/bsod/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 06:47 UTC"
     }
   ]
 }
