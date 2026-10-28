@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 10:17:32 UTC",
+  "last_updated": "2026-10-28 10:20:12 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 10:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750504729",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-28 10:06 UTC"
     },
     {
       "headline": "NES CIB Floating LED Shelves",
@@ -379,14 +398,15 @@
       "timestamp": "2026-10-28 09:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750503452",
       "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Resident Evil Code: Veronica X"
+        "Resident Evil Code: Veronica X",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -1029,7 +1049,7 @@
       "timestamp": "2026-10-28 08:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII, Kingdom Hearts II, Kingdom Hearts and 2 more",
+      "headline": "Thread on /v/ naming Final Fantasy XII, Final Fantasy X, Silent Hill 3 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1037,10 +1057,10 @@
       "matched_game": "Final Fantasy XII",
       "matched_games": [
         "Final Fantasy XII",
-        "Kingdom Hearts II",
-        "Kingdom Hearts",
         "Final Fantasy X",
-        "Silent Hill 3"
+        "Silent Hill 3",
+        "Kingdom Hearts II",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -7667,7 +7687,7 @@
       "timestamp": "2026-10-27 22:56 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Alone in the Dark, Haunting Ground, Fatal Frame and 1 more",
+      "headline": "Thread on /v/ naming Alone in the Dark, Haunting Ground, Fatal Frame and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -7677,6 +7697,7 @@
         "Alone in the Dark",
         "Haunting Ground",
         "Fatal Frame",
+        "Resident Evil 4",
         "Monster Hunter"
       ],
       "match_score": 100,
@@ -339564,23 +339585,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 10:20 UTC"
-    },
-    {
-      "headline": "Going Medieval - Diplomacy Update: Diplomacy options, mercs, evolved trade and more!",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x5nj92/going_medieval_diplomacy_update_diplomacy_options/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 10:18 UTC"
     }
   ]
 }
