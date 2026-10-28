@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-28 09:20:33 UTC",
+  "last_updated": "2026-10-28 09:23:09 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750503452",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-28 09:20 UTC"
+    },
     {
       "headline": "Microsoft And Epic Games Suddenly Agree That AI Is Theft",
       "source": "r/pcgaming",
@@ -1295,18 +1314,18 @@
       "timestamp": "2026-10-28 06:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kuon and Haunting Ground",
+      "headline": "Thread on /v/ naming Haunting Ground and Kuon",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750499575",
-      "matched_game": "Kuon",
+      "matched_game": "Haunting Ground",
       "matched_games": [
-        "Kuon",
-        "Haunting Ground"
+        "Haunting Ground",
+        "Kuon"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339900,76 +339919,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-14 09:23 UTC"
-    },
-    {
-      "headline": "Vaiana já tem data Disney+",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/vaiana-ja-tem-data-disney",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 09:20 UTC"
-    },
-    {
-      "headline": "What PC part do people overspend on the most?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5mlrx/what_pc_part_do_people_overspend_on_the_most/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 09:20 UTC"
-    },
-    {
-      "headline": "ステューピッド・ネバー・ダイズ | WebCM 爆速成長編",
-      "source": "YouTube: SEGA",
-      "source_type": "youtube",
-      "feed": "youtube:UCVkqs_Q88BDmyaWwjYJ8_Ig",
-      "link": "https://www.youtube.com/shorts/TgL1J-W-Q_8",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 09:20 UTC",
-      "views": 340814
-    },
-    {
-      "headline": "Castlevania: Belmont's Curse OST (ESRB) | Bloody Tears | KONAMI",
-      "source": "YouTube: Konami",
-      "source_type": "youtube",
-      "feed": "youtube:UCwkUBN7foWU9GcY5cFmso-Q",
-      "link": "https://www.youtube.com/watch?v=l69l4AymPkQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 09:20 UTC",
-      "views": 338406
     }
   ]
 }
