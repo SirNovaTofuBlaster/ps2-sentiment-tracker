@@ -691,6 +691,38 @@ await check('eBay prices page: every game, surging first, a line per site', () =
     assert.equal(el('pricesEmpty').classList.contains('hidden'), true);
     assert.match(read('index.html'), /<input type="text" id="pricesSearch" oninput="filterPrices\(\)"/, 'typing in the box searches');
 
+    // Sorting (2026-10-28): highest / lowest now, biggest rise / fall in a week, highest / lowest logged, on one site.
+    {
+        const site = (median, week, copies = 5) => ({ checked: '2026-10-06T11:00Z', copies, lowest: median, median, postage: 0,
+            ...(week ? { week: { checked: '2026-09-29T11:00Z', median: week } } : {}) });
+        const sorted = { currencies: { US: '$', UK: 'GBP' }, games: {
+            Alpha: { level: 'normal', mentions: 9, US: site(50, 40), UK: site(10, 10) },
+            Bravo: { level: 'normal', mentions: 5, US: site(20, 40) },
+            Charlie: { level: 'normal', mentions: 3, US: site(80, 80) },
+            Delta: { level: 'normal', mentions: 1, US: site(500, 100, 1) },          // one copy: never tops a rise
+            Echo: { level: 'normal', mentions: 0, UK: site(7, null) } } };
+        showPrices(sorted);
+        const order = () => titles(el('pricesList').innerHTML);
+        const pick = (mode, siteName = 'US') => { vm.runInContext(`setPricesSort(${JSON.stringify(mode)}, ${JSON.stringify(siteName)})`, context); return order(); };
+        assert.deepEqual(pick('default'), ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo']);
+        assert.deepEqual(pick('high'), ['Delta', 'Charlie', 'Alpha', 'Bravo', 'Echo'], 'dearest first; a game with no US figure follows');
+        assert.deepEqual(pick('low'), ['Bravo', 'Alpha', 'Charlie', 'Delta', 'Echo']);
+        assert.deepEqual(pick('rise'), ['Alpha', 'Charlie', 'Bravo', 'Delta', 'Echo'], 'a one-copy game has no rise; Charlie did not move');
+        assert.deepEqual(pick('fall'), ['Bravo', 'Charlie', 'Alpha', 'Delta', 'Echo']);
+        assert.match(el('pricesSummary').textContent, /sorted by biggest fall this week on eBay US \(3 games have a figure/);
+        assert.deepEqual(pick('high', 'UK'), ['Alpha', 'Echo', 'Bravo', 'Charlie', 'Delta']);
+        // Logged prices come from series.json (days after its start, median, copies).
+        vm.runInContext(`seriesData = { start: '2026-10-01', games: { Alpha: { US: [[1, 90, 4], [2, 30, 4]] }, Bravo: { US: [[1, 25, 4], [2, 15, 4]] } } }`, context);
+        assert.deepEqual(pick('peak'), ['Delta', 'Alpha', 'Charlie', 'Bravo', 'Echo'], 'the highest of the history and today\'s figure; a game with no US figure follows');
+        assert.deepEqual(pick('floor'), ['Bravo', 'Alpha', 'Charlie', 'Delta', 'Echo']);
+        assert.match(el('pricesList').innerHTML, /US lowest median logged 15\.00 \$ on Oct 3, 2026 \(now 20\.00 \$\)/);
+        vm.runInContext(`seriesData = null; pricesSeriesFailed = true`, context);
+        assert.deepEqual(pick('peak').length, 5, 'without the history file nothing is lost');
+        vm.runInContext(`pricesSeriesFailed = false; setPricesSort('default', 'US')`, context);
+        assert.match(read('index.html'), /<select id="pricesSort" onchange="setPricesSort\(this\.value, undefined\)"/);
+        assert.match(read('guide.html'), /Sort by/);
+    }
+
     // Without a price file the page says what to do instead of sitting empty.
     for (const missing of [null, {}, { games: [] }, { games: {} }]) {
         assert.equal(showPrices(missing), '', `no rows for ${JSON.stringify(missing)}`);

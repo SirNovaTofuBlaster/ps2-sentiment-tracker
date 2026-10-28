@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-28: sorting the eBay prices tab
+
+- **Sort by** (highest / lowest price now, biggest rise / fall this week, highest / lowest price logged) and **on** (US, UK, DE, FR, IT, ES) above the list on the eBay prices tab. One site at a time, since sites are never combined.
+- Rise and fall use the `week` median in `latest.json` and need 3+ copies listed. Logged high and low are the highest and lowest daily medians of `series.json` (90 days) plus today's figure (`gamePoints()`); the file is loaded when one of those two is first chosen. Games with no figure on the site follow. Nothing in `data/` or the scrapers changed.
+- Tests: sorting checks in `tests/dashboard_check.mjs`; `guide.html` describes it.
+
 ## 2026-10-21: "Retro" is not a game, and "XIII" needs its letters
 
 - **Retro**: the library has a PS2 game called *Retro*, and the ordinary word matched it. 50 rows in the last two weeks named it (44 only through the text underneath, mostly a post or video that also said PS2), among them a Lemmy thread about the *Retroid* Pocket Duo handheld, "Sony PVM-1390 retro setup" and "Looking for a retro cozy game". It is now in `NOT_GAMES` with "The Cabal", so it never matches and saved rows lose it (`without_not_games()`). Its eBay figures were never kept (a one-word ordinary title is not priced), so nothing else changes.

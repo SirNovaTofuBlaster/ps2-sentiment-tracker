@@ -381,6 +381,23 @@
           </div>
           <input type="text" id="pricesSearch" oninput="filterPrices()" placeholder="Find a game..." aria-label="Find a game" class="bg-ps2dark border border-ps2border rounded text-xs px-3 py-2 text-white outline-none w-full sm:w-64">
         </div>
+        <div class="flex flex-wrap items-center gap-2 mb-3 text-xs">
+          <label for="pricesSort" class="text-slate-400">Sort by</label>
+          <select id="pricesSort" onchange="setPricesSort(this.value, undefined)" aria-label="Sort the games" class="bg-ps2dark border border-ps2border rounded text-xs px-2 py-2 text-white">
+            <option value="default">Surging first, then most mentioned</option>
+            <option value="high">Highest price now</option>
+            <option value="low">Lowest price now</option>
+            <option value="rise">Biggest rise this week</option>
+            <option value="fall">Biggest fall this week</option>
+            <option value="peak">Highest price logged</option>
+            <option value="floor">Lowest price logged</option>
+          </select>
+          <label for="pricesSite" class="text-slate-400">on</label>
+          <select id="pricesSite" onchange="setPricesSort(undefined, this.value)" aria-label="Which eBay site the sort uses" class="bg-ps2dark border border-ps2border rounded text-xs px-2 py-2 text-white">
+            <option value="US">eBay US</option><option value="UK">eBay UK</option><option value="DE">eBay DE</option>
+            <option value="FR">eBay FR</option><option value="IT">eBay IT</option><option value="ES">eBay ES</option>
+          </select>
+        </div>
         <ol id="pricesList" class="zebra"></ol>
         <p id="pricesEmpty" class="hidden text-xs text-slate-400 leading-relaxed"></p>
       </div>
@@ -2285,12 +2302,15 @@
             const wanted = priceKey(typed);
             const searching = Boolean(plain || wanted);
             const rows = searching ? all.filter(row => (plain && plainText(row.title).includes(plain))
-                || (wanted && priceKey(row.title).includes(wanted))) : all;
+                || (wanted && priceKey(row.title).includes(wanted))) :all.slice();
             const surging = all.filter(row => row.level === 'surging').length;
+            const ordered = sortPriceRows(rows, pricesSortMode, pricesSortSite, now, locale);
+            rows.splice(0, rows.length, ...ordered.rows);
             document.getElementById('pricesSummary').textContent =
                 `What sellers are asking for used copies on eBay right now, not what anything sold for · ${all.length} games`
                 + (surging ? ` · ${surging} surging` : '')
-                + (searching ? ` · ${rows.length} shown` : '');
+                + (searching ? ` · ${rows.length} shown` : '')
+                + ordered.note;
             empty.textContent = rows.length ? '' : 'No priced game has that in its name. A game is priced once the feed has mentioned it, '
                 + 'unless its name is one ordinary word (Black, Cars, The Sims) or it is not in the PS2 library. '
                 + 'The games on the Rarest page are priced too.';
@@ -2305,6 +2325,7 @@
                             ? ` <span class="level-tag level-${esc(row.level)}" title="${esc(level.hint)}">${esc(level.tag)}</span>` : ''}</span>
                         ${compactPriceHtml(row.title, now, locale) || '<span class="ebay-note">no price yet</span>'}
                     </div>
+                    ${ordered.notes.has(row.title) ? `<p class="text-[11px] text-slate-400 mt-1">${ordered.notes.get(row.title)}</p>` : ''}
                     ${priceLookupHtml(row.title, true)}
                 </li>`;
             }).join('');
@@ -2312,6 +2333,60 @@
         }
 
         const filterPrices = () => renderPrices();
+
+        // Sorting the eBay prices tab (2026-10-28). The sort looks at one site at a time (`pricesSortSite`), because a
+        // US and a UK median are never combined. "Now" is the latest median; a rise or fall is the latest median against
+        // the one of a week before (`week`), for games with 3+ copies listed (one cheap copy would top every list);
+        // "logged" is the highest or lowest daily median in series.json (the last 90 finished days, plus today's figure).
+        let pricesSortMode = 'default';
+        let pricesSortSite = 'US';
+        let pricesSeriesFailed = false;
+        const PRICE_SORT_NAMES = { high: 'highest price now', low: 'lowest price now', rise: 'biggest rise this week',
+            fall: 'biggest fall this week', peak: 'highest price logged', floor: 'lowest price logged' };
+
+        function setPricesSort(mode, site) {
+            if (mode !== undefined && (mode === 'default' || own(PRICE_SORT_NAMES, mode))) pricesSortMode = mode;
+            if (site !== undefined && PRICE_SITES.includes(site)) pricesSortSite = site;
+            renderPrices();
+        }
+
+        function sortPriceRows(rows, mode, site, now, locale) {
+            const notes = new Map();
+            if (mode === 'default' || !own(PRICE_SORT_NAMES, mode)) return { rows, notes, note: '' };
+            const currency = currencyOf(site, priceData);
+            const logged = mode === 'peak' || mode === 'floor';
+            if (logged && !seriesData && !pricesSeriesFailed) {
+                loadSeries().then(data => { if (!data) pricesSeriesFailed = true; renderPrices(); });
+                return { rows, notes, note: ' · loading the logged prices...' };
+            }
+            const figure = (row) => {
+                const entry = row.entry[site];
+                if (!entry || typeof entry !== 'object' || entry.unmatched || !Number.isFinite(entry.copies) || entry.copies < 1
+                    || typeof entry.median !== 'number' || !Number.isFinite(entry.median)) return null;
+                if (mode === 'high' || mode === 'low') return { value: entry.median, text: `${site} median ${money(entry.median, currency, locale)}` };
+                if (mode === 'rise' || mode === 'fall') {
+                    const week = weekBefore(entry);
+                    if (!week || entry.copies < 3) return null;
+                    const change = (entry.median - week.median) / week.median * 100;
+                    const shown = Math.abs(change) >= 10 ? Math.round(Math.abs(change)) : (Math.round(Math.abs(change) * 10) / 10);
+                    return { value: change, text: `${site} ${change >= 0 ? '▲' : '▼'} ${shown}% in a week: ${money(week.median, currency, locale)} to ${money(entry.median, currency, locale)}` };
+                }
+                const points = gamePoints(seriesData, row.title, site);
+                if (!points.length) return null;
+                const best = points.reduce((a, b) => ((mode === 'peak' ? b.value > a.value : b.value < a.value) ? b : a));
+                return { value: best.value, text: `${site} ${mode === 'peak' ? 'highest' : 'lowest'} median logged ${money(best.value, currency, locale)} on ${shortDate(best.time, locale)}`
+                    + ` (now ${money(entry.median, currency, locale)})` };
+            };
+            const scored = rows.map(row => ({ row, found: figure(row) }));
+            const biggestFirst = mode === 'high' || mode === 'rise' || mode === 'peak';
+            scored.sort((a, b) => (a.found ? 0 : 1) - (b.found ? 0 : 1)
+                || (a.found ? (biggestFirst ? b.found.value - a.found.value : a.found.value - b.found.value) : 0)
+                || a.row.title.localeCompare(b.row.title));
+            for (const { row, found } of scored) if (found) notes.set(row.title, esc(found.text));
+            const have = scored.filter(item => item.found).length;
+            return { rows: scored.map(item => item.row), notes,
+                note: ` · sorted by ${PRICE_SORT_NAMES[mode]} on eBay ${site} (${have} games have a figure; the rest follow)` };
+        }
 
         async function loadPrices() {
             // "missing" is a plain 404: the price job has not run yet. "failed" is anything else:
