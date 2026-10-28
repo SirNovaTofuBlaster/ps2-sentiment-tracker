@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 08:39:46 UTC",
+  "last_updated": "2026-10-28 08:53:43 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -88,7 +88,7 @@
       "timestamp": "2026-10-28 08:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy XII, Silent Hill 3 and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -96,6 +96,7 @@
       "matched_game": "Final Fantasy XII",
       "matched_games": [
         "Final Fantasy XII",
+        "Silent Hill 3",
         "Final Fantasy X"
       ],
       "match_score": 100,
@@ -1092,6 +1093,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 06:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750498753",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-28 06:10 UTC"
     },
     {
       "headline": "Casual Sport Series: Badminton PS4 no longer on Playstation store",
@@ -339886,57 +339906,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 08:54 UTC"
-    },
-    {
-      "headline": "Ni siquiera su pareja puede probar Haunted Chocolatier: el creador de Stardew Valley explica por qué",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026287010/ni-siquiera-su-pareja-puede-probar-haunted-chocolatier-el-creador-de-stardew-valley-explica-por-que/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 08:47 UTC"
-    },
-    {
-      "headline": "I will turn off my PC tonight, I promise.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5lzvh/i_will_turn_off_my_pc_tonight_i_promise/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 08:39 UTC"
-    },
-    {
-      "headline": "Didn't even know this was a thing",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1x5lzhu/didnt_even_know_this_was_a_thing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 08:39 UTC"
     }
   ]
 }
