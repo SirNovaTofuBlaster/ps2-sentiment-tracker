@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 05:08:42 UTC",
+  "last_updated": "2026-10-28 05:19:51 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -380,6 +380,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-28 03:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750494370",
+      "matched_game": "Silent Hill 3",
+      "matched_games": [
+        "Silent Hill 3"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 03:55 UTC"
     },
@@ -1245,15 +1264,16 @@
       "timestamp": "2026-10-28 02:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War and Resident Evil 4",
+      "headline": "Thread on /v/ naming Silent Hill 2, Resident Evil 4 and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750490609",
-      "matched_game": "God of War",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "God of War",
-        "Resident Evil 4"
+        "Silent Hill 2",
+        "Resident Evil 4",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -6210,6 +6230,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-27 20:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750474851",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 20:59 UTC"
     },
@@ -339086,74 +339125,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 05:19 UTC"
-    },
-    {
-      "headline": "Old school PS ONE slim modding",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1x5iudy/old_school_ps_one_slim_modding/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 05:18 UTC"
-    },
-    {
-      "headline": "Best PC for under $1500?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5itzt/best_pc_for_under_1500/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-14 05:17 UTC"
-    },
-    {
-      "headline": "Made a free site that puts PSU certification and test results in one place — looking for feedback from builders",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5isj2/made_a_free_site_that_puts_psu_certification_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 05:15 UTC"
-    },
-    {
-      "headline": "Earthbound is great.",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x5ioos/earthbound_is_great/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-14 05:08 UTC"
     }
   ]
 }
