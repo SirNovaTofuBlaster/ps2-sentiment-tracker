@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 01:43:40 UTC",
+  "last_updated": "2026-10-28 01:46:21 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -67,6 +67,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-10-28 01:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750488787",
+      "matched_game": "Shadow Hearts",
+      "matched_games": [
+        "Shadow Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 01:33 UTC"
     },
@@ -21171,7 +21190,7 @@
       "timestamp": "2026-10-27 06:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Need for Speed Underground 2, Dynasty Warriors 3 and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Need for Speed Underground 2, Burnout 3, Dynasty Warriors 3 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -21179,6 +21198,7 @@
       "matched_game": "Need for Speed Underground 2",
       "matched_games": [
         "Need for Speed Underground 2",
+        "Burnout 3",
         "Dynasty Warriors 3",
         "Kingdom Hearts"
       ],
@@ -339390,42 +339410,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 01:46 UTC"
-    },
-    {
-      "headline": "Debating of upgrading to a RTX 5080",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5ewb9/debating_of_upgrading_to_a_rtx_5080/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 01:45 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Splinter Cell",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749647109",
-      "matched_game": "Splinter Cell",
-      "matched_games": [
-        "Splinter Cell"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-14 01:44 UTC"
     }
   ]
 }
