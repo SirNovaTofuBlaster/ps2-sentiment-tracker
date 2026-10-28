@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 07:42:42 UTC",
+  "last_updated": "2026-10-28 07:56:42 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -2938,19 +2938,19 @@
       "timestamp": "2026-10-28 02:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War, Resident Evil 4 and Silent Hill 2",
+      "headline": "Thread on /v/ naming Resident Evil 4, God of War and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750490609",
-      "matched_game": "God of War",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "God of War",
         "Resident Evil 4",
+        "God of War",
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4696,14 +4696,15 @@
       "timestamp": "2026-10-28 00:09 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "headline": "Thread on /vr/ naming Resident Evil 4 and Silent Hill 3",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12899587",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Silent Hill 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -339830,57 +339831,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 07:56 UTC"
-    },
-    {
-      "headline": "Helldivers 2 presenta su nuevo bono de guerra, centrado en francotiradores y el camuflaje",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026287007/helldivers-2-presenta-su-nuevo-bono-de-guerra-centrado-en-francotiradores-y-el-camuflaje/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 07:50 UTC"
-    },
-    {
-      "headline": "Aesthetic fix for Inverted AIO Pump",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5l5qo/aesthetic_fix_for_inverted_aio_pump/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 07:44 UTC"
-    },
-    {
-      "headline": "Little tweaks.",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x5l4i9/little_tweaks/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 07:42 UTC"
     }
   ]
 }
