@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 06:29:25 UTC",
+  "last_updated": "2026-10-28 06:32:01 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -118,6 +118,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-28 06:08 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 4: The Room and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750498689",
+      "matched_game": "Silent Hill 4: The Room",
+      "matched_games": [
+        "Silent Hill 4: The Room",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 06:08 UTC"
     },
@@ -980,15 +1000,15 @@
       "timestamp": "2026-10-28 04:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3 and Persona 4",
+      "headline": "Thread on /v/ naming Persona 4 and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750495374",
-      "matched_game": "Persona 3",
+      "matched_game": "Persona 4",
       "matched_games": [
-        "Persona 3",
-        "Persona 4"
+        "Persona 4",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1342,13 +1362,14 @@
       "timestamp": "2026-10-28 03:48 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750493873",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
         "Final Fantasy X"
       ],
       "match_score": 100,
@@ -339337,23 +339358,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 06:33 UTC"
-    },
-    {
-      "headline": "Finally Achievement Notifications Plugin (v1.6.2) Multi-Language Achievements, Steam Machine Compatibility, Share card and more",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x5k11u/finally_achievement_notifications_plugin_v162/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 06:31 UTC"
     }
   ]
 }
