@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 12:11:39 UTC",
+  "last_updated": "2026-10-28 12:14:22 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1892,6 +1892,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 09:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750504406",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-28 09:54 UTC"
     },
     {
       "headline": "This part on my new B550 EAGLE motherboard is a bit wobbly. Am I cooked?",
@@ -4653,13 +4672,14 @@
       "timestamp": "2026-10-28 04:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life",
+      "headline": "Thread on /v/ naming Unreal Tournament and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750496387",
-      "matched_game": "Half-Life",
+      "matched_game": "Unreal Tournament",
       "matched_games": [
+        "Unreal Tournament",
         "Half-Life"
       ],
       "match_score": 100,
@@ -9559,9 +9579,9 @@
         "Alone in the Dark",
         "Haunting Ground",
         "Fatal Frame",
+        "Clock Tower 3",
         "Monster Hunter",
-        "Resident Evil 4",
-        "Clock Tower 3"
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -33232,6 +33252,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 23:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Curse: The Eye of Isis",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750422191",
+      "matched_game": "Curse: The Eye of Isis",
+      "matched_games": [
+        "Curse: The Eye of Isis"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 23:54 UTC"
     },
@@ -339417,42 +339456,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 12:17 UTC"
-    },
-    {
-      "headline": "Persona 3 reload on switch 2 is beautiful",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x5pl0z/persona_3_reload_on_switch_2_is_beautiful/",
-      "matched_game": "Persona 3",
-      "matched_games": [
-        "Persona 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 12:12 UTC"
-    },
-    {
-      "headline": "I mean the game is absolutely peak",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5pkst/i_mean_the_game_is_absolutely_peak/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 12:12 UTC"
     }
   ]
 }
