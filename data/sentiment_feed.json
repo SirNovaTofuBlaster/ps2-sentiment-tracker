@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-28 03:43:29 UTC",
+  "last_updated": "2026-10-28 03:54:50 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750493873",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-28 03:41 UTC"
+    },
     {
       "headline": "Bought a used psu Today",
       "source": "r/pcmasterrace",
@@ -723,15 +742,15 @@
       "timestamp": "2026-10-28 02:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War and Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750490609",
-      "matched_game": "God of War",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "God of War",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -24101,19 +24120,22 @@
       "timestamp": "2026-10-27 03:35 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Metal Gear Solid 3: Snake Eater, Burnout 3 and Devil May Cry 3: Dante's Awakening",
+      "headline": "Thread on /vr/ naming Alone in the Dark, Unreal Tournament, Half-Life and 3 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12898029",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Alone in the Dark",
       "matched_games": [
+        "Alone in the Dark",
+        "Unreal Tournament",
+        "Half-Life",
+        "Devil May Cry 3: Dante's Awakening",
         "Metal Gear Solid 3: Snake Eater",
-        "Burnout 3",
-        "Devil May Cry 3: Dante's Awakening"
+        "Burnout 3"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339266,74 +339288,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 03:54 UTC"
-    },
-    {
-      "headline": "Tengo mi xbox360 allí guardada y bueno bastantes juegos, es una buena idea conservarla o venderla o regalarla? Tipo fue mi primera consola que compré con mi dinero",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5hbpl/tengo_mi_xbox360_allí_guardada_y_bueno_bastantes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 03:50 UTC"
-    },
-    {
-      "headline": "Is this enough airflow for my RTX 2060 Super?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5hbin/is_this_enough_airflow_for_my_rtx_2060_super/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 03:50 UTC"
-    },
-    {
-      "headline": "Microsoft confirms a Windows 11 bug is causing mouse input stutter in games, and it’s not your mouse or drivers’ fault. A fix is rolling out with the October update, and it also seems to address AMD GPU errors!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5ha6v/microsoft_confirms_a_windows_11_bug_is_causing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-14 03:48 UTC"
-    },
-    {
-      "headline": "Something like a collectible TCG/deckbuilder, but more open-ended?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x5h7p3/something_like_a_collectible_tcgdeckbuilder_but/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 03:44 UTC"
     }
   ]
 }
