@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 08:28:06 UTC",
+  "last_updated": "2026-10-28 08:39:46 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -306,6 +306,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-28 07:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Genji",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750500904",
+      "matched_game": "Genji",
+      "matched_games": [
+        "Genji"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 07:33 UTC"
     },
@@ -2806,6 +2825,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-28 03:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Phantom Brave",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750492471",
+      "matched_game": "Phantom Brave",
+      "matched_games": [
+        "Phantom Brave"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 03:05 UTC"
     },
@@ -339899,57 +339937,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-14 08:39 UTC"
-    },
-    {
-      "headline": "Xbox announces what sounds like a generative AI-focused game-making department, Xbox Labs, while avoiding mentioning AI",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/xbox-labs-genai-game-ports-vibe-code",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-14 08:35 UTC"
-    },
-    {
-      "headline": "My Gpu came back to Life.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x5lwn0/my_gpu_came_back_to_life/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 08:33 UTC"
-    },
-    {
-      "headline": "Recommend me a good detective/logic game",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x5lvms/recommend_me_a_good_detectivelogic_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-14 08:31 UTC"
     }
   ]
 }
