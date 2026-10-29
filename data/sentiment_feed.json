@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 13:50:44 UTC",
+  "last_updated": "2026-10-29 13:53:21 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -5894,6 +5894,25 @@
       "timestamp": "2026-10-29 06:39 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Naruto: Ultimate Ninja",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750560727",
+      "matched_game": "Naruto: Ultimate Ninja",
+      "matched_games": [
+        "Naruto: Ultimate Ninja"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 06:39 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming Deus Ex",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -10686,14 +10705,15 @@
       "timestamp": "2026-10-29 00:45 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "headline": "Thread on /vr/ naming Resident Evil 4 and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12901887",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -339561,80 +339581,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-15 13:53 UTC"
-    },
-    {
-      "headline": "How do i fix my framerate behaving like this on Unity and Davinci Resolve?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x6m84s/how_do_i_fix_my_framerate_behaving_like_this_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 13:52 UTC"
-    },
-    {
-      "headline": "Help, I can't buy The Order 1886",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x6m7so/help_i_cant_buy_the_order_1886/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 13:52 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749735964",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-15 13:51 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Burnout 3: Takedown, Gran Turismo 4 and Burnout 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749735896",
-      "matched_game": "Burnout 3: Takedown",
-      "matched_games": [
-        "Burnout 3: Takedown",
-        "Gran Turismo 4",
-        "Burnout 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-15 13:50 UTC"
     }
   ]
 }
