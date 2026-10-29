@@ -740,11 +740,11 @@
     "ok": true
   },
   "reddit:games": {
-    "latest": "2026-10-29 03:21 UTC",
+    "latest": "2026-10-29 05:15 UTC",
     "ok": true
   },
   "reddit:gameverifying": {
-    "latest": "2026-10-29 03:29 UTC",
+    "latest": "2026-10-29 06:02 UTC",
     "ok": true
   },
   "reddit:gaming": {
@@ -752,7 +752,7 @@
     "ok": true
   },
   "reddit:gamingsuggestions": {
-    "latest": "2026-10-29 05:00 UTC",
+    "latest": "2026-10-29 06:10 UTC",
     "ok": true
   },
   "reddit:jrpg": {
@@ -764,7 +764,7 @@
     "ok": true
   },
   "reddit:nintendoswitch": {
-    "latest": "2026-10-29 05:03 UTC",
+    "latest": "2026-10-29 05:51 UTC",
     "ok": true
   },
   "reddit:nscollectors": {
@@ -780,7 +780,7 @@
     "ok": true
   },
   "reddit:pcmasterrace": {
-    "latest": "2026-10-29 05:03 UTC",
+    "latest": "2026-10-29 06:09 UTC",
     "ok": true
   },
   "reddit:pcsx2": {
@@ -800,7 +800,7 @@
     "ok": true
   },
   "reddit:ps2": {
-    "latest": "2026-10-29 04:32 UTC",
+    "latest": "2026-10-29 05:28 UTC",
     "ok": true
   },
   "reddit:ps2homebrew": {
@@ -812,7 +812,7 @@
     "ok": true
   },
   "reddit:retrogaming": {
-    "latest": "2026-10-29 04:28 UTC",
+    "latest": "2026-10-29 05:56 UTC",
     "ok": true
   },
   "reddit:shouldibuythisgame": {
@@ -820,7 +820,7 @@
     "ok": true
   },
   "reddit:steamdeck": {
-    "latest": "2026-10-29 04:09 UTC",
+    "latest": "2026-10-29 06:10 UTC",
     "ok": true
   },
   "reddit:steelbook": {
@@ -842,7 +842,7 @@
     "ok": false
   },
   "youtube:UC0KU8F9jJqSLS11LRXvFWmg": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-10-29 00:21 UTC",
     "latest": "2026-10-28 17:00 UTC",
     "ok": false
@@ -896,8 +896,10 @@
     "ok": false
   },
   "youtube:UC3nPaf5MeeDTHA2JN7clidg": {
+    "error": "HTTP 404",
+    "failing_since": "2026-10-29 06:03 UTC",
     "latest": "2026-10-27 22:41 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UC4CsqctrGOn4NTz09sAhXwQ": {
     "error": "HTTP 404",
@@ -924,7 +926,7 @@
     "ok": false
   },
   "youtube:UC6VcWc1rAoWdBCM0JxrRQ3A": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-29 01:18 UTC",
     "latest": "2026-10-15 13:00 UTC",
     "ok": false
@@ -1026,7 +1028,7 @@
     "ok": false
   },
   "youtube:UCE5dIscvDxrb7CD5uiJJOiw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-29 00:21 UTC",
     "latest": "2026-10-24 15:29 UTC",
     "ok": false
@@ -1038,13 +1040,13 @@
     "ok": false
   },
   "youtube:UCEp20NgOZHmgWdbQdHSxgjw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-29 03:12 UTC",
     "latest": "2026-09-11 15:24 UTC",
     "ok": false
   },
   "youtube:UCFLwN7vRu8M057qJF8TsBaA": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-29 00:21 UTC",
     "latest": "2026-09-25 21:27 UTC",
     "ok": false
@@ -1092,7 +1094,7 @@
     "ok": false
   },
   "youtube:UCKy1dAqELo0zrOtPkf0eTMw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-29 00:21 UTC",
     "latest": "2026-10-28 22:00 UTC",
     "ok": false
@@ -1122,7 +1124,7 @@
     "ok": false
   },
   "youtube:UCNvzD7Z-g64bPXxGzaQaa4g": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-10-29 00:21 UTC",
     "latest": "2026-10-28 18:17 UTC",
     "ok": false
@@ -1224,7 +1226,7 @@
     "ok": false
   },
   "youtube:UCWoSKWs8h6lFdiEDAjuIfpA": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-10-29 00:21 UTC",
     "latest": "2026-08-11 13:00 UTC",
     "ok": false
@@ -1458,7 +1460,7 @@
     "ok": false
   },
   "youtube:UCsvn_Po0SmunchJYOWpOxMg": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-10-29 03:12 UTC",
     "latest": "2026-10-27 19:30 UTC",
     "ok": false
