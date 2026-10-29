@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 22:23:48 UTC",
+  "last_updated": "2026-10-29 22:26:25 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -33,6 +33,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-29 22:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Need for Speed Underground 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750602909",
+      "matched_game": "Need for Speed Underground 2",
+      "matched_games": [
+        "Need for Speed Underground 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-29 22:15 UTC"
     },
@@ -2944,28 +2963,32 @@
       "timestamp": "2026-10-29 19:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Onimusha: Warlords, Resident Evil 4, Ty the Tasmanian Tiger 2: Bush Rescue and 9 more",
+      "headline": "Thread on /v/ naming Ty the Tasmanian Tiger 2: Bush Rescue, Deus Ex, Grand Theft Auto: San Andreas and 13 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750594840",
-      "matched_game": "Onimusha: Warlords",
+      "matched_game": "Ty the Tasmanian Tiger 2: Bush Rescue",
       "matched_games": [
-        "Onimusha: Warlords",
-        "Resident Evil 4",
         "Ty the Tasmanian Tiger 2: Bush Rescue",
         "Deus Ex",
         "Grand Theft Auto: San Andreas",
         "Ty the Tasmanian Tiger",
+        "Resident Evil Code: Veronica X",
+        "Silpheed: The Lost Planet",
+        "Final Fantasy X",
+        "Stretch Panic",
         "SpongeBob SquarePants: Battle for Bikini Bottom",
+        "Resident Evil 4",
         "Silent Hill 2",
         "Alone in the Dark",
         "Jak II",
         "Hitman: Contracts",
-        "Devil May Cry"
+        "Devil May Cry",
+        "Onimusha: Warlords"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3778,6 +3801,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-29 19:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Plan",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750592103",
+      "matched_game": "The Plan",
+      "matched_games": [
+        "The Plan"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-29 19:04 UTC"
     },
@@ -339741,40 +339783,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 22:26 UTC"
-    },
-    {
-      "headline": "Time Lord - Beat",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x6zfzn/time_lord_beat/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 22:24 UTC"
-    },
-    {
-      "headline": "Two Separate ddr4 2x8gb kits, struggling to not have computer full freezes even at 2133 MT/s",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x6zeu0/two_separate_ddr4_2x8gb_kits_struggling_to_not/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 22:23 UTC"
     }
   ]
 }
