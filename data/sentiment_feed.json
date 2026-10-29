@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 21:26:47 UTC",
+  "last_updated": "2026-10-29 21:29:28 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -742,6 +742,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 20:45 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750598121",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 20:44 UTC"
     },
     {
       "headline": "Sega Genesis Model 1",
@@ -2013,21 +2032,21 @@
       "timestamp": "2026-10-29 19:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry, Onimusha: Warlords, Resident Evil 4 and 5 more",
+      "headline": "Thread on /v/ naming Onimusha: Warlords, Resident Evil 4, SpongeBob SquarePants: Battle for Bikini Bottom and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750594840",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Onimusha: Warlords",
       "matched_games": [
-        "Devil May Cry",
         "Onimusha: Warlords",
         "Resident Evil 4",
         "SpongeBob SquarePants: Battle for Bikini Bottom",
         "Silent Hill 2",
         "Alone in the Dark",
         "Jak II",
-        "Hitman: Contracts"
+        "Hitman: Contracts",
+        "Devil May Cry"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -12842,6 +12861,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-29 13:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750572856",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 13:12 UTC"
     },
     {
       "headline": "Legit ?",
@@ -76106,19 +76144,20 @@
       "timestamp": "2026-10-26 23:45 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Astro Boy, Spider-Man and Big Mutha Truckers",
+      "headline": "Thread on /vr/ naming Final Fantasy X, Spider-Man, Big Mutha Truckers and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12897774",
-      "matched_game": "Astro Boy",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Astro Boy",
+        "Final Fantasy X",
         "Spider-Man",
-        "Big Mutha Truckers"
+        "Big Mutha Truckers",
+        "Astro Boy"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339873,23 +339912,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 21:29 UTC"
-    },
-    {
-      "headline": "If I sign into my account on someone else’s ps5, then before leaving, press delete user,…",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x6y4eg/if_i_sign_into_my_account_on_someone_elses_ps5/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 21:27 UTC"
     }
   ]
 }
