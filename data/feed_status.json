@@ -428,8 +428,10 @@
     "ok": true
   },
   "https://blog.playstation.com/feed/": {
+    "error": "HTTP 502",
+    "failing_since": "2026-10-29 22:56 UTC",
     "latest": "2026-10-29 02:03 UTC",
-    "ok": true
+    "ok": false
   },
   "https://caneandrinse.com/feed/podcast/": {
     "latest": "2026-10-27 18:05 UTC",
@@ -566,11 +568,11 @@
     "ok": true
   },
   "https://latam.ign.com/feed.xml": {
-    "latest": "2026-10-29 21:05 UTC",
+    "latest": "2026-10-29 22:42 UTC",
     "ok": true
   },
   "https://lemmy.world/feeds/c/games.xml?sort=New": {
-    "latest": "2026-10-29 19:29 UTC",
+    "latest": "2026-10-29 22:55 UTC",
     "ok": true
   },
   "https://lemmy.world/feeds/c/retrogaming.xml?sort=New": {
@@ -728,7 +730,7 @@
     "ok": true
   },
   "https://www.rockpapershotgun.com/feed/": {
-    "latest": "2026-10-29 21:27 UTC",
+    "latest": "2026-10-29 22:53 UTC",
     "ok": true
   },
   "https://www.spreaker.com/show/5008213/episodes/feed": {
