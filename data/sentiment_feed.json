@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-29 03:28:23 UTC",
+  "last_updated": "2026-10-29 03:39:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Dual Hearts",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12902156",
+      "matched_game": "Dual Hearts",
+      "matched_games": [
+        "Dual Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 03:24 UTC"
+    },
     {
       "headline": "Dokapon Kingdom: Connect 2 announced for Switch 2, Switch, and PC",
       "source": "Gematsu",
@@ -4808,15 +4827,15 @@
       "timestamp": "2026-10-28 22:31 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Unreal Tournament and Half-Life",
+      "headline": "Thread on /v/ naming Half-Life and Unreal Tournament",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750540847",
-      "matched_game": "Unreal Tournament",
+      "matched_game": "Half-Life",
       "matched_games": [
-        "Unreal Tournament",
-        "Half-Life"
+        "Half-Life",
+        "Unreal Tournament"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -340480,77 +340499,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 03:40 UTC"
-    },
-    {
-      "headline": "recommendations on what to with hand me down pc",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x6be76/recommendations_on_what_to_with_hand_me_down_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 03:38 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Area 51 and Top Gun",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/584515839",
-      "matched_game": "Area 51",
-      "matched_games": [
-        "Area 51",
-        "Top Gun"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-15 03:37 UTC"
-    },
-    {
-      "headline": "Idle simulation game Gundam Blitz Order announced for iOS, Android",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/idle-simulation-game-gundam-blitz-order-announced-for-ios-android",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-15 03:31 UTC"
-    },
-    {
-      "headline": "Should I wait out the RAM, GPU and SSD crisis?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x6b8l2/should_i_wait_out_the_ram_gpu_and_ssd_crisis/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 03:30 UTC"
     }
   ]
 }
