@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 04:25:06 UTC",
+  "last_updated": "2026-10-29 04:36:47 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -345,6 +345,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 03:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750554903",
+      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_games": [
+        "Grand Theft Auto: Vice City"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 03:39 UTC"
     },
     {
       "headline": "Phantom Blade Zero - Frame Gen",
@@ -946,6 +965,27 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-29 02:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Devil May Cry 3 and King Arthur",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750552489",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening",
+        "Devil May Cry 3",
+        "King Arthur"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 02:35 UTC"
     },
     {
       "headline": "Fallout 2: New Reno Area Design",
@@ -7486,17 +7526,18 @@
       "views": 20
     },
     {
-      "headline": "Thread on /v/ naming Blade 2",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Blade 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750535514",
-      "matched_game": "Blade 2",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
+        "Grand Theft Auto: San Andreas",
         "Blade 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -340351,155 +340392,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 04:48 UTC"
-    },
-    {
-      "headline": "ICYMI: Zelda: Ocarina Of Time On Switch 2 Has A Museum & Boss Time Trial Mode",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/icymi-zelda-ocarina-of-time-on-switch-2-has-a-museum-and-boss-time-trial-mode",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 04:35 UTC"
-    },
-    {
-      "headline": "Why don't PC games have surround sound like Atmos when the console versions do?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x6cfbs/why_dont_pc_games_have_surround_sound_like_atmos/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 04:35 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749716997",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
-      "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Metal Gear Solid 3: Snake Eater"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-15 04:33 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming God Hand, Devil May Cry and Sonic Unleashed",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749716963",
-      "matched_game": "God Hand",
-      "matched_games": [
-        "God Hand",
-        "Devil May Cry",
-        "Sonic Unleashed"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-15 04:32 UTC"
-    },
-    {
-      "headline": "I recently did a case swap and all went pretty smoothly and my PC works great, but one of my hard drives is not recognized what to do?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x6cbuf/i_recently_did_a_case_swap_and_all_went_pretty/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-15 04:30 UTC"
-    },
-    {
-      "headline": "Walmart worker in the 90s changed my gaming life for the better.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x6catw/walmart_worker_in_the_90s_changed_my_gaming_life/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 04:28 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Armored Core 2: Another Age, Armored Core 3, Burnout 3 and 2 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749716804",
-      "matched_game": "Armored Core 2: Another Age",
-      "matched_games": [
-        "Armored Core 2: Another Age",
-        "Armored Core 3",
-        "Burnout 3",
-        "God of War",
-        "Grand Theft Auto: Vice City"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-15 04:28 UTC"
-    },
-    {
-      "headline": "Is this legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x6c9id/is_this_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 04:26 UTC"
     }
   ]
 }
