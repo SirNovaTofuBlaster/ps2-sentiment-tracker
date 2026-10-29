@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 22:06:03 UTC",
+  "last_updated": "2026-10-29 22:10:47 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -20,6 +20,25 @@
       "timestamp": "2026-10-29 21:53 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750601860",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 21:53 UTC"
+    },
+    {
       "headline": "'None of these people have ever made a game,' BioWare co-founder Greg Zeschuk says of game industry executives: 'They just don't know how it works'",
       "source": "PCGamer latest",
       "source_type": "news",
@@ -35,6 +54,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 21:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750601457",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 21:45 UTC"
     },
     {
       "headline": "Spirit Halloween 2026: The Kotaku Review",
@@ -9881,17 +9919,18 @@
       "timestamp": "2026-10-29 15:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man",
+      "headline": "Thread on /v/ naming Final Fantasy XII and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750578674",
-      "matched_game": "Spider-Man",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
+        "Final Fantasy XII",
         "Spider-Man"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339275,76 +339314,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-15 22:11 UTC"
-    },
-    {
-      "headline": "Been a long time since I hit at a Goodwill!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x6z3te/been_a_long_time_since_i_hit_at_a_goodwill/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 22:09 UTC"
-    },
-    {
-      "headline": "Steam Achievement Sets Now in Beta",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x6z3of/steam_achievement_sets_now_in_beta/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 22:09 UTC"
-    },
-    {
-      "headline": "Need a fantasy game like LOTR or The hobbit",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x6z3ir/need_a_fantasy_game_like_lotr_or_the_hobbit/",
-      "matched_game": "The Hobbit",
-      "matched_games": [
-        "The Hobbit"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 22:09 UTC"
-    },
-    {
-      "headline": "Looking for the perfect roommates game (PS5)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x6z1om/looking_for_the_perfect_roommates_game_ps5/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-15 22:07 UTC"
     }
   ]
 }
