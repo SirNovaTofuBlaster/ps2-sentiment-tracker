@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 09:05:34 UTC",
+  "last_updated": "2026-10-29 09:07:58 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18442,6 +18442,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-28 15:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750519028",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 15:50 UTC"
     },
@@ -340590,40 +340609,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 09:08 UTC"
-    },
-    {
-      "headline": "Castlevania Belmont's curse Xbox physical fully on disc?",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x6gr9y/castlevania_belmonts_curse_xbox_physical_fully_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 09:06 UTC"
-    },
-    {
-      "headline": "Pokémon Celebrates the Holidays Early with a Festive Merch Collection",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/pokemon-seasonal-merch-holiday-2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 09:05 UTC"
     }
   ]
 }
