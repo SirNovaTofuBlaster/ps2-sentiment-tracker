@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 01:29:29 UTC",
+  "last_updated": "2026-10-29 01:32:16 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -69,6 +69,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 01:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750548808",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 01:12 UTC"
     },
     {
       "headline": "Temperature of my new 5700X",
@@ -1440,7 +1459,7 @@
       "timestamp": "2026-10-28 23:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 3, Silent Hill 2 and Silent Hill 4: The Room",
+      "headline": "Thread on /v/ naming Silent Hill 3, Silent Hill 4: The Room and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1448,8 +1467,8 @@
       "matched_game": "Silent Hill 3",
       "matched_games": [
         "Silent Hill 3",
-        "Silent Hill 2",
-        "Silent Hill 4: The Room"
+        "Silent Hill 4: The Room",
+        "Silent Hill 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2171,17 +2190,18 @@
       "timestamp": "2026-10-28 23:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "headline": "Thread on /v/ naming God of War and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750542561",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "God of War",
       "matched_games": [
+        "God of War",
         "Final Fantasy XII"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -18758,17 +18778,18 @@
       "views": 102610
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Deus Ex",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750508354",
-      "matched_game": "Deus Ex",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
+        "Metal Gear Solid 3: Snake Eater",
         "Deus Ex"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339859,58 +339880,6 @@
       "hype": 0,
       "timestamp": "2026-10-15 01:32 UTC",
       "views": 51199
-    },
-    {
-      "headline": "The 10 Most Underrated RPGs of the Last Decade, Ranked",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/best-rpgs-underrated-last-decade/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-15 01:30 UTC"
-    },
-    {
-      "headline": "CALLING ALL HABITUAL GAME RECOMMENDERS: What titles am I missing for a 5&8 yro with an EVERDRIVE GB X3???",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x68wu9/calling_all_habitual_game_recommenders_what/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 01:30 UTC"
-    },
-    {
-      "headline": "Enshrouded 1.0 - Mining With Our Bows!",
-      "source": "YouTube: VanossGaming",
-      "source_type": "youtube",
-      "feed": "youtube:UCKqH_9mk1waLgBiL2vT5b9g",
-      "link": "https://www.youtube.com/watch?v=RDgMau5kh00",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 01:30 UTC",
-      "views": 572900
     }
   ]
 }
