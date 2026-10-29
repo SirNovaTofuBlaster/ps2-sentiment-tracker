@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 16:41:41 UTC",
+  "last_updated": "2026-10-29 16:44:24 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -3646,13 +3646,14 @@
       "timestamp": "2026-10-29 14:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dragon Rage",
+      "headline": "Thread on /v/ naming Monster Hunter and Dragon Rage",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750576370",
-      "matched_game": "Dragon Rage",
+      "matched_game": "Monster Hunter",
       "matched_games": [
+        "Monster Hunter",
         "Dragon Rage"
       ],
       "match_score": 100,
@@ -34540,7 +34541,7 @@
         "Crazy Taxi"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -68817,16 +68818,16 @@
       "timestamp": "2026-10-26 23:45 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Big Mutha Truckers, Astro Boy and Spider-Man",
+      "headline": "Thread on /vr/ naming Astro Boy, Spider-Man and Big Mutha Truckers",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12897774",
-      "matched_game": "Big Mutha Truckers",
+      "matched_game": "Astro Boy",
       "matched_games": [
-        "Big Mutha Truckers",
         "Astro Boy",
-        "Spider-Man"
+        "Spider-Man",
+        "Big Mutha Truckers"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -340082,57 +340083,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 16:44 UTC"
-    },
-    {
-      "headline": "demanding games",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x6qqlj/demanding_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 16:43 UTC"
-    },
-    {
-      "headline": "HelixSR 1.9.0 (DLSS 3.7) on Steam Deck is unbelievable.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x6qqju/helixsr_190_dlss_37_on_steam_deck_is_unbelievable/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 16:43 UTC"
-    },
-    {
-      "headline": "Nvidia vs Amd Framegen",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x6qoy6/nvidia_vs_amd_framegen/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 16:42 UTC"
     }
   ]
 }
