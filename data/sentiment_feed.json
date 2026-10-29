@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 00:32:26 UTC",
+  "last_updated": "2026-10-29 00:35:03 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18938,6 +18938,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-28 11:02 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750506397",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 11:02 UTC"
     },
@@ -53439,15 +53458,15 @@
       "timestamp": "2026-10-26 21:54 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Iron Man and Spider-Man",
+      "headline": "Thread on /v/ naming Spider-Man and Iron Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750415559",
-      "matched_game": "Iron Man",
+      "matched_game": "Spider-Man",
       "matched_games": [
-        "Iron Man",
-        "Spider-Man"
+        "Spider-Man",
+        "Iron Man"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -339992,112 +340011,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 00:36 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749707010",
-      "matched_game": "Kingdom Hearts II",
-      "matched_games": [
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-15 00:34 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749707027",
-      "matched_game": "Grand Theft Auto III",
-      "matched_games": [
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-15 00:34 UTC"
-    },
-    {
-      "headline": "Let's play some Minecraft",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x67rwd/lets_play_some_minecraft/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 00:33 UTC"
-    },
-    {
-      "headline": "A PS4, PS4 Pro and PS3 Metal Gear Solid",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x67rqc/a_ps4_ps4_pro_and_ps3_metal_gear_solid/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 00:33 UTC"
-    },
-    {
-      "headline": "I added this RAM to a saved list back in January 2025 and decided to check on it today. It was around $200 back then. Whoops.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x67r7t/i_added_this_ram_to_a_saved_list_back_in_january/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 00:32 UTC"
-    },
-    {
-      "headline": "Grimbeard - Parasite Eve II (PS1) - Review",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x67r5m/grimbeard_parasite_eve_ii_ps1_review/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 00:32 UTC"
     }
   ]
 }
