@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-29 05:19:48 UTC",
+  "last_updated": "2026-10-29 05:22:00 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -42,6 +42,23 @@
       "source_type": "reddit",
       "feed": "reddit:gamingsuggestions",
       "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xiaxup/games_with_genuinely_good_writing_that_arent/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-29 05:00 UTC"
+    },
+    {
+      "headline": "Nintendo Music – list of all games included",
+      "source": "Nintendo Everything",
+      "source_type": "news",
+      "feed": "https://nintendoeverything.com/feed",
+      "link": "https://nintendoeverything.com/nintendo-music-list-of-all-games-included/",
       "matched_game": null,
       "matched_games": [],
       "match_score": 0,
@@ -1027,6 +1044,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-29 03:06 UTC"
+    },
+    {
+      "headline": "Dokapon Kingdom Connect 2 revealed for Nintendo Switch 2 and Switch",
+      "source": "Nintendo Everything",
+      "source_type": "news",
+      "feed": "https://nintendoeverything.com/feed",
+      "link": "https://nintendoeverything.com/dokapon-kingdom-connect-2-revealed-for-nintendo-switch-2-and-switch/",
+      "matched_game": "Dokapon Kingdom",
+      "matched_games": [
+        "Dokapon Kingdom"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-29 03:04 UTC"
     },
     {
       "headline": "Zelda themed custom designs being distributed in New Horizons",
@@ -147673,23 +147709,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 01:02 UTC"
-    },
-    {
-      "headline": "Nintendo Music – list of all games included",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/nintendo-music-list-of-all-games-included/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 01:00 UTC"
     },
     {
       "headline": "ARMS added to Nintendo Music",
@@ -340466,40 +340485,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-15 05:23 UTC"
-    },
-    {
-      "headline": "Any fun games built around mathematics or equations?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x6d7fu/any_fun_games_built_around_mathematics_or/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 05:21 UTC"
-    },
-    {
-      "headline": "MMCE + FreeMCBoot/OSDMenu Causes My PS2 Unable to Boot DVDs",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1x6d6fp/mmce_freemcbootosdmenu_causes_my_ps2_unable_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-15 05:19 UTC"
     }
   ]
 }
