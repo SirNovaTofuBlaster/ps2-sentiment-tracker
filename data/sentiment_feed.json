@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 09:30:12 UTC",
+  "last_updated": "2026-10-30 09:34:50 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -69,6 +69,26 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-30 09:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Thing and Dark Angel",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750627679",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing",
+        "Dark Angel"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 09:01 UTC"
     },
     {
       "headline": "5 Classic JRPGs with Virtually Perfect Battle Systems",
@@ -5855,17 +5875,17 @@
       "timestamp": "2026-10-29 23:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Rogue Galaxy, Dark Chronicle, Dark Cloud and 1 more",
+      "headline": "Thread on /v/ naming Dark Cloud 2, Dark Cloud, Rogue Galaxy and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750606760",
-      "matched_game": "Rogue Galaxy",
+      "matched_game": "Dark Cloud 2",
       "matched_games": [
-        "Rogue Galaxy",
-        "Dark Chronicle",
+        "Dark Cloud 2",
         "Dark Cloud",
-        "Dark Cloud 2"
+        "Rogue Galaxy",
+        "Dark Chronicle"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338602,76 +338622,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 09:35 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749791251",
-      "matched_game": "Resident Evil Code: Veronica X",
-      "matched_games": [
-        "Resident Evil Code: Veronica X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-16 09:32 UTC"
-    },
-    {
-      "headline": "Jagex cancela RuneScape Reignited apenas 12 días después de anunciarlo tras las críticas de los jugadores",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026289011/jagex-cancela-runescape-reignited-apenas-12-dias-despues-de-anunciarlo-tras-las-criticas-de-los-jugadores/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 09:31 UTC"
-    },
-    {
-      "headline": "Steven Spielberg and Stanley Kubrick's Near-Perfect Sci-Fi Fairytale Is Officially Back on Streaming",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/steven-spielberg-sci-fi-pinocchio-streaming-peacock-october-2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-16 09:30 UTC"
-    },
-    {
-      "headline": "'Peak', The Beloved Indie Climber, Scales October's Stacked Switch 2 Release Schedule",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/peak-the-beloved-indie-climber-scales-octobers-stacked-switch-2-release-schedule",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 09:30 UTC"
     }
   ]
 }
