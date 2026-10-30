@@ -3592,6 +3592,46 @@ class EditionNameClashTests(unittest.TestCase):
         self.assertNotEqual(games[0].get("kind"), "edition")
 
 
+class RespaceAndNearMissTests(Quiet):
+    """2026-10-30: a name sellers split into words is still the game; the left-out listings that nearly were are counted."""
+
+    def summary(self, *items, wanted, market=US, keyword=False):
+        return ebay_prices.summarise(page(*items)[1], wanted, market, keyword)
+
+    def test_a_name_written_as_two_words_is_the_game(self):
+        splitters = game("TimeSplitters: Future Perfect")
+        result = self.summary(listing("Jeu sony PS2 : TIME SPLITTERS FUTURE PERFECT - complet", 20, "EUR", item_id=1), wanted=splitters, market=DE)
+        self.assertEqual((result["status"], result["counted"]), ("ok", 1))
+
+    def test_only_long_words_are_joined_and_a_following_number_still_makes_a_sequel(self):
+        splitters = game("TimeSplitters")
+        self.assertEqual(self.summary(listing("Time Splitters 2 PS2", 20, item_id=1), wanted=splitters)["counted"], 0)
+        self.assertEqual(self.summary(listing("Time Splitters PS2", 20, item_id=2), wanted=splitters)["counted"], 1)
+        self.assertIsNone(ebay_prices.respace("silent hill 2", "silent hill 2"), "an exact match needs no joining")
+        self.assertEqual(ebay_prices.respace("sil ent hill 2 ps2", "silent hill 2"), "silent hill 2 ps2", "a word of 5+ letters may be split")
+        self.assertIsNone(ebay_prices.respace("ho p 2", "hop 2"), "short words are never glued")
+        self.assertIsNone(ebay_prices.respace("time splitters 2", "timesplitters 3"), "other words still have to agree")
+
+    def test_unmatched_pairs_count_how_the_left_out_listings_nearly_matched(self):
+        turtles = game("Teenage Mutant Ninja Turtles 3: Mutant Nightmare", search="Turtles 3 Mutant Nightmare")
+        result = self.summary(listing("TEENAGE MUTANT NINJA TURTLES 3 TMNT MUTANT NIGHTMARE PS2", 20, item_id=1),
+                              listing("Board games PS2 value", 5, item_id=2), wanted=turtles)
+        self.assertEqual((result["status"], result["near"]), ("unmatched", {"scattered": 1}))
+        hunters = self.summary(listing("Zombie Hunters 2 PS2", 10, item_id=3), wanted=game("Zombie Hunters"))
+        self.assertEqual(hunters["near"], {"number": 1})
+        self.assertNotIn("near", self.summary(listing("Silent Hill 2 PS2", 10, item_id=4), wanted=SH2))
+        counted = ebay_prices.summarise(page(listing("Silent Hill 2 PS2", 10, item_id=5), listing("Silent Hill 3 PS2", 10, item_id=6))[1], SH2, US, False)
+        self.assertNotIn("near", counted, "pairs that counted a copy keep no near misses")
+
+    def test_the_search_log_adds_near_misses_by_kind_and_game_without_any_title(self):
+        kuon = {"title": "Kuon", "level": "normal"}
+        run = {"spent": [], "other_searches": 0, "results": [(kuon, "EBAY_US", {"near": {"scattered": 2, "number": 1}}),
+                                                                (kuon, "EBAY_GB", {"near": {"scattered": 1}}), (kuon, "EBAY_DE", {})]}
+        day = ebay_prices.update_search_log({}, run, NOON)["days"]["2026-10-06"]
+        self.assertEqual(day["near"], {"scattered": 3, "number": 1})
+        self.assertEqual(day["near_games"], {"Kuon": {"scattered": 3, "number": 1}})
+
+
 class SearchLogTests(unittest.TestCase):
     GAME = {"title": "Kuon", "level": "normal"}
 

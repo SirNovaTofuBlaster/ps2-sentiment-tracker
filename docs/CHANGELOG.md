@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-30: finding why games are "unmatched" (near misses) and names sellers split in two
+
+- **Near misses**: when a lookup counts no copy, the listings left out as another game are sorted by how close they came to the name and only counted: `number` (the name is there but runs into another number, or the listing names another number of the series), `sibling`, `scattered` (every word of the name is in the listing, not together: "Turtles 3 TMNT Mutant Nightmare") and `partial`. Written to `data/prices/searches.json` as `near` (per day) and `near_games` (per game, top 100); never a title. `python tools/search_report.py` prints them. Read a day of them before loosening anything else.
+- **First fix, `respace()`**: sellers write "TIME SPLITTERS FUTURE PERFECT" for the library's "TimeSplitters Future Perfect". A word of 5+ letters of the game's name may now be written as two or three words in a listing; the number rules still apply ("Time Splitters 2" is not "TimeSplitters"). Found by reading the `ebay-data` branch's left-out examples (counts only are kept in `data/`).
+- Not done: extra words inside the name (the TMNT case) stay out; that is the `scattered` count to watch.
+- Tests: `RespaceAndNearMissTests`.
+
 ## 2026-10-30: NBA Street 2 is no longer searched
 
 - Sellers list the game as "NBA Street Vol. 2", which is another library entry that already has copies on five sites; "NBA Street 2" found listings on four of its six sites but none named it. It is on the `never` list in `ebay_watchlist.json`, and the page shows the Vol. 2 figure for it (`covers.json` `same`). NFL Street 2, Splashdown and the other unmatched games were left as they were: the `ebay-data` branch is from 2026-10-13, so what eBay returns for them could not be read; use **check_game** to see.

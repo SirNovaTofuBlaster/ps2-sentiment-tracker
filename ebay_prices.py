@@ -1364,6 +1364,51 @@ def names_this_game(text, phrase):
     return True
 
 
+def respace(text, phrase):
+    """The listing's words with a run that spells the game's name with different spacing put into the game's own
+    words, or None. Sellers write "TIME SPLITTERS FUTURE PERFECT" for the library's "TimeSplitters Future
+    Perfect" (2026-10-30). Only a word of 5+ letters may be written as two or three words, so a number or a short
+    word is never glued; the rewritten text is then judged by the same rules as any other (a following number
+    still makes it a sequel). Both arguments are in the evened-out form of name_words()."""
+    tokens, found = phrase.split(), text.split()
+    if not tokens:
+        return None
+    for start in range(len(found)):
+        at, joined = start, False
+        for token in tokens:
+            for size in (1, 2, 3):
+                if " ".join(found[at:at + size]) == token or (
+                        size > 1 and token.isalpha() and len(token) >= 5 and "".join(found[at:at + size]) == token):
+                    joined = joined or size > 1
+                    at += size
+                    break
+            else:
+                break
+        else:
+            if joined:
+                return " ".join(found[:start] + tokens + found[at:])
+    return None
+
+
+def near_miss(text, phrase, siblings=()):
+    """Why a listing that was left out as another game still looks like this one, or None when it looks like nothing:
+    "number" (the name is there but runs into another number, or the listing names another number of the series),
+    "sibling" (it names a sibling entry), "scattered" (every word of the name is there, not together) or "partial"
+    (at least half of them, and two). Counts for the search log only; no title is kept."""
+    tokens = phrase.split()
+    found = set(text.split())
+    if has_phrase(text, [phrase]) or names_another_entry(text, phrase):
+        return "number"
+    if has_phrase(text, list(siblings)):
+        return "sibling"
+    present = sum(1 for token in tokens if token in found)
+    if tokens and present == len(tokens) and len(tokens) > 1:
+        return "scattered"
+    if len(tokens) > 1 and present >= max(2, (len(tokens) + 1) // 2):
+        return "partial"
+    return None
+
+
 def names_another_entry(text, phrase):
     """True when a numbered game's title also names another number in the series.
 
@@ -1431,6 +1476,10 @@ def reject_reason(item, game, market, keyword_search, sealed_ok=False):
         return "other_game"
     # Both sides lose any "the", so a listing that adds or drops one is still the game.
     bare, search = the_less(name_text), the_less(game["search"])
+    if not names_this_game(bare, search):
+        spaced = respace(bare, search)          # "time splitters" for "timesplitters"
+        if spaced is not None:
+            bare = spaced
     if not names_this_game(bare, search) or names_another_entry(bare, search) \
             or has_phrase(bare, [the_less(sibling) for sibling in game.get("siblings") or ()]) \
             or not all(has_phrase(bare, [the_less(words_needed)]) for words_needed in game.get("require") or ()):
@@ -1479,6 +1528,17 @@ def summarise(payload, game, market, keyword_search, sealed_ok=False):
             "confirmed": has_phrase(" ".join(words(item.get("title"))), COMPLETE_PHRASES),
         })
 
+    near = {}
+    if items and not kept and game.get("kind") not in ("console", "edition"):
+        # Nothing counted: of the listings left out as another game, how many nearly were this one. Counts only.
+        search = the_less(game["search"])
+        siblings = [the_less(sibling) for sibling in game.get("siblings") or ()]
+        for item in items:
+            if reject_reason(item, game, market, keyword_search, sealed_ok) == "other_game":
+                kind = near_miss(the_less(" ".join(name_words(item.get("title")))), search, siblings)
+                if kind:
+                    near[kind] = near.get(kind, 0) + 1
+
     total = payload.get("total")
     on_ebay = total if isinstance(total, int) and total >= len(items) else len(items)
     # eBay returned listings and not one of them names this game: that is not "no copies for
@@ -1495,6 +1555,8 @@ def summarise(payload, game, market, keyword_search, sealed_ok=False):
         "skipped": dict(sorted(skipped.items())),
         "skipped_examples": dict(sorted(examples.items())),   # a few left-out titles per reason
     }
+    if near:
+        result["near"] = dict(sorted(near.items()))
     warning = first_message(payload.get("warnings"))
     if warning:
         result["warning"] = warning
@@ -1815,6 +1877,16 @@ def update_search_log(old, run, now):
         in_level[game["title"]] = in_level.get(game["title"], 0) + count
         day["games"][game["title"]] = day["games"].get(game["title"], 0) + count
         day["total"] += count
+    for game, market_id, result in run.get("results") or ():
+        # Near misses (2026-10-30): for the pairs that counted nothing, how many left-out listings nearly named the game.
+        # Counts by kind and by our own game name; no listing is kept.
+        for kind, count in (result.get("near") or {}).items():
+            day.setdefault("near", {})[kind] = day.get("near", {}).get(kind, 0) + count
+            per_game = day.setdefault("near_games", {}).setdefault(game["title"], {})
+            per_game[kind] = per_game.get(kind, 0) + count
+    if day.get("near_games"):
+        keep_games = sorted(day["near_games"].items(), key=lambda pair: (-sum(pair[1].values()), pair[0]))[:SEARCH_LOG_LEVEL_GAMES]
+        day["near_games"] = dict(keep_games)
     day["other"] += run.get("other_searches", 0)
     day["total"] += run.get("other_searches", 0)
     top = sorted(day["games"].items(), key=lambda pair: (-pair[1], pair[0]))[:SEARCH_LOG_GAMES]

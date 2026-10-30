@@ -314,6 +314,7 @@ Before you call something done, prove it; don't assume it.
   - When eBay returns listings and none of them names the game, the game is marked
     `unmatched` in `latest.json` and gets no history row: that means "these search words do
     not find it", not "no copies for sale". Fix it by pinning the game with its own `search`.
+    Since 2026-10-30 `searches.json` also holds `near` / `near_games`: for pairs that counted nothing, how many left-out listings nearly named the game (`number`, `sibling`, `scattered`, `partial`; counts only, `tools/search_report.py` prints them), and `respace()` lets a word of 5+ letters be written as two or three words in a listing. Read the near misses before changing the name rule again.
     The listings file on the `ebay-data` branch shows what was returned and why it was left out.
   - `data/prices/` files are never rebuilt from nothing: if `latest.json` or the month's
     history cannot be read, the run stops before asking eBay. Restore the file from its git
