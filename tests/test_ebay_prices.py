@@ -1911,6 +1911,65 @@ class MergeRunTests(unittest.TestCase):
         self.assertNotIn("silent hill 3", {search["params"]["q"].replace(" ps2", "") for search in fake.searches})
 
 
+class CheaperChecksTests(unittest.TestCase):
+    """2026-10-30: cheap common copies wait 48 hours, quiet games are looked at weekly on the euro sites, steady limits are wider."""
+
+    @staticmethod
+    def stamp(hours):
+        return (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)
+
+    def state(self, title, hours, **figures):
+        return {"games": {title: {label: dict({"checked": self.stamp(hours)}, **figures) for label in ("US", "UK", "DE")}}}
+
+    def due(self, entry, state):
+        return [market for _, market in ebay_prices.due_lookups([entry], state, NOON)]
+
+    def test_a_cheap_common_game_waits_48_hours_on_the_us_and_uk_and_is_marked_steady(self):
+        entry = game("Kuon")
+        state = self.state("Kuon", 30, copies=40, median=6.0)
+        self.assertEqual(self.due(entry, state), [])
+        self.assertEqual(sorted(entry["steady_on"]), ["UK", "US"])
+        self.assertEqual(sorted(self.due(game("Kuon"), self.state("Kuon", 49, copies=40, median=6.0))), ["EBAY_GB", "EBAY_US"])
+
+    def test_a_dearer_or_scarcer_game_keeps_its_normal_clock(self):
+        for figures in (dict(copies=40, median=12.0), dict(copies=19, median=6.0), dict(copies=40, median=None), dict(unmatched=True)):
+            entry = game("Kuon")
+            self.assertEqual(sorted(self.due(entry, self.state("Kuon", AFTER, **figures))), ["EBAY_GB", "EBAY_US"], figures)
+
+    def test_pinned_and_surging_games_are_never_slowed_that_way(self):
+        for change in ({"pinned": True}, {"level": "surging"}):
+            entry = dict(game("Kuon"), **change)
+            self.assertEqual(sorted(self.due(entry, self.state("Kuon", AFTER, copies=40, median=6.0))), ["EBAY_GB", "EBAY_US"], change)
+
+    @mock.patch.dict(ebay_prices.MARKETS, EXTRA_SITES)
+    def test_a_quiet_game_is_looked_up_weekly_on_a_euro_site_and_marked_slow(self):
+        for market in ebay_prices.MARKETS.values():
+            market["min_every_hours"] = 0
+        entry = game("Kuon", level="dormant")
+        state = self.state("Kuon", 100, copies=5, median=30.0)
+        self.assertNotIn("EBAY_DE", self.due(entry, state))
+        self.assertIn("DE", entry["slow_on"])
+        self.assertIn("EBAY_DE", self.due(game("Kuon", level="dormant"), self.state("Kuon", 170, copies=5, median=30.0)))
+        normal = game("Kuon")
+        self.assertIn("EBAY_DE", self.due(normal, self.state("Kuon", 100, copies=5, median=30.0)))
+        self.assertEqual(normal["slow_on"], [])
+
+    def test_the_figure_of_a_slow_pair_carries_the_mark(self):
+        entry = game("Kuon", level="dormant")
+        entry["slow_on"], entry["steady_on"] = ["DE"], []
+        result = {"status": "ok", "counted": 5, "lowest": 8.0, "median": 10.0, "truncated": False,
+                  "median_postage": None, "fetched": 5, "on_ebay": 5}
+        with mock.patch.dict(ebay_prices.MARKETS, EXTRA_SITES):
+            latest, _ = ebay_prices.update_records({}, [entry], {"results": [(entry, "EBAY_DE", result)], "searches": 1}, NOON)
+        self.assertIs(latest["games"]["Kuon"]["DE"]["slow"], True)
+
+    def test_the_steady_limits_are_the_wider_ones(self):
+        self.assertEqual((ebay_prices.STEADY_MIN_COPIES, ebay_prices.STEADY_PRICE_RANGE, ebay_prices.STEADY_COPIES_RANGE), (20, 0.15, 0.40))
+        rows = [(NOON - timedelta(days=d), 25 + d, 10.0 + d * 0.2) for d in range(5, -1, -1)]
+        self.assertTrue(ebay_prices.is_steady(rows, NOON))
+        self.assertFalse(ebay_prices.is_steady([(w, 15, m) for w, _, m in rows], NOON), "under 20 copies is not steady")
+
+
 class QuietEuroTests(unittest.TestCase):
     def setUp(self):
         patcher = mock.patch.dict(ebay_prices.MARKETS, {"EBAY_DE": DE})
