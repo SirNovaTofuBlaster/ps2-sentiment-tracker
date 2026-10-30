@@ -1,6 +1,44 @@
 {
  "what": "Weekly numbers for spellings merged into another by ebay_prices.merge_duplicates: the spelling's own copies and median at its last look, and the keeper's at that moment. Numbers only; python tools/merged_report.py reads it.",
  "spellings": {
+  "ATV Off-Road": {
+   "keeper": "ATV Offroad Fury",
+   "UK": {
+    "checked": "2026-10-30T22:25Z",
+    "copies": 4,
+    "median": 12.9,
+    "unmatched": false,
+    "keeper_copies": 4,
+    "keeper_median": 13.78
+   },
+   "US": {
+    "checked": "2026-10-30T22:25Z",
+    "copies": null,
+    "median": null,
+    "unmatched": true,
+    "keeper_copies": 33,
+    "keeper_median": 5.72
+   }
+  },
+  "ATV Off-Road Fury": {
+   "keeper": "ATV Offroad Fury",
+   "UK": {
+    "checked": "2026-10-30T22:25Z",
+    "copies": 3,
+    "median": 22.98,
+    "unmatched": false,
+    "keeper_copies": 4,
+    "keeper_median": 13.78
+   },
+   "US": {
+    "checked": "2026-10-30T22:25Z",
+    "copies": 1,
+    "median": 4.99,
+    "unmatched": false,
+    "keeper_copies": 33,
+    "keeper_median": 5.72
+   }
+  },
   "Ace Combat 04: Shattered Skies": {
    "keeper": "Ace Combat 4: Shattered Skies",
    "US": {
@@ -360,6 +398,25 @@
     "unmatched": false,
     "keeper_copies": 15,
     "keeper_median": 81.82
+   }
+  },
+  "Soul Calibur 3": {
+   "keeper": "SoulCalibur III",
+   "UK": {
+    "checked": "2026-10-30T22:25Z",
+    "copies": 14,
+    "median": 16.13,
+    "unmatched": false,
+    "keeper_copies": 21,
+    "keeper_median": 16.1
+   },
+   "US": {
+    "checked": "2026-10-30T22:25Z",
+    "copies": 19,
+    "median": 22.0,
+    "unmatched": false,
+    "keeper_copies": 23,
+    "keeper_median": 14.0
    }
   },
   "SoulCalibur II": {
