@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-30: unmatched games wait 48 hours on the US and UK
+
+- Of 872 tracked games, 143 had a site whose search found listings but none naming the game (`unmatched`, 222 pairs: 66 on the US/UK, 156 on the euro sites). Each such lookup costs two searches (the PS2 item-specific search and the retry by name and "ps2"), and the US/UK ones were repeated twice a day.
+- A US or UK pair whose last check was `unmatched` is now asked every 48 hours (`QUIET_EVERY_HOURS`), as the euro sites already were. Games with no copies listed, pinned, surging, Rarest and collection games keep their pace.
+- Looked at and left alone: duplicate library spellings of one game (about 40 groups, roughly 70 searches a day) cost less than the unmatched pairs and some are different releases; only three of the unmatched games have a priced sibling, so a `never` list would not pay.
+- Test: `QuietUnmatchedUsUkTests`.
+
 ## 2026-10-28: sorting the eBay prices tab
 
 - **Sort by** (highest / lowest price now, biggest rise / fall this week, highest / lowest price logged) and **on** (US, UK, DE, FR, IT, ES) above the list on the eBay prices tab. One site at a time, since sites are never combined.

@@ -1795,6 +1795,30 @@ class QuietEuroTests(unittest.TestCase):
             self.assertEqual(got, due, (record, hours))
 
 
+class QuietUnmatchedUsUkTests(unittest.TestCase):
+    """2026-10-30: a US or UK pair whose words found nothing waits 48 hours; empty-but-matched pairs, the Rarest page,
+    collections and pinned games keep their pace."""
+
+    def due(self, entry, record, hours, markets=("EBAY_US", "EBAY_GB")):
+        stamp = (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)
+        state = {"games": {entry["key"] if "key" in entry else entry["title"]: {"US": dict(record, checked=stamp), "UK": dict(record, checked=stamp)}}}
+        return [m for _, m in ebay_prices.due_lookups([entry], state, NOON) if m in markets]
+
+    def test_unmatched_waits_48_hours_on_the_us_and_uk(self):
+        entry = game("Kuon")
+        self.assertEqual(self.due(entry, {"unmatched": True}, 30), [])
+        self.assertEqual(sorted(self.due(entry, {"unmatched": True}, 49)), ["EBAY_GB", "EBAY_US"])
+        self.assertEqual(entry["steady_on"], ["US", "UK"])
+
+    def test_other_pairs_keep_their_pace(self):
+        self.assertEqual(sorted(self.due(game("Kuon"), {"copies": 0}, 13)), ["EBAY_GB", "EBAY_US"], "no copies listed is still asked twice a day")
+        self.assertEqual(sorted(self.due(game("Kuon", level="collection"), {"unmatched": True}, 25)), ["EBAY_GB", "EBAY_US"])
+        self.assertEqual(sorted(self.due(game("Kuon", level="surging"), {"unmatched": True}, 1)), ["EBAY_GB", "EBAY_US"])
+        pinned = game("Kuon")
+        pinned["pinned"] = True
+        self.assertEqual(sorted(self.due(pinned, {"unmatched": True}, 13)), ["EBAY_GB", "EBAY_US"])
+
+
 class UnderratedPricingTests(unittest.TestCase):
     def setUp(self):
         self.sandbox = Sandbox(self, feed=[])
