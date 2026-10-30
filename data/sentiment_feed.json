@@ -1,7 +1,24 @@
 {
-  "last_updated": "2026-10-30 00:20:15 UTC",
+  "last_updated": "2026-10-30 00:22:28 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Resonance of Fate Enhanced Remaster now available for PS5, PC",
+      "source": "Gematsu",
+      "source_type": "news",
+      "feed": "https://www.gematsu.com/feed",
+      "link": "https://www.gematsu.com/2026/10/resonance-of-fate-enhanced-remaster-now-available-for-ps5-pc",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": true,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 1,
+      "timestamp": "2026-10-30 00:15 UTC"
+    },
     {
       "headline": "Advice for re-pasting Asus Rog 4090",
       "source": "r/pcmasterrace",
@@ -171,6 +188,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 23:59 UTC"
+    },
+    {
+      "headline": "Reddit will switch to a 'logged-in only experience'",
+      "source": "PCGamer latest",
+      "source_type": "news",
+      "feed": "https://www.pcgamer.com/rss/",
+      "link": "https://www.pcgamer.com/software/ai/reddit-will-switch-to-a-logged-in-only-experience/",
+      "matched_game": "Kill Switch",
+      "matched_games": [
+        "Kill Switch"
+      ],
+      "match_score": 91,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-29 23:58 UTC"
     },
     {
       "headline": "Is this an A tier PSU?",
@@ -339786,40 +339822,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 00:22 UTC"
-    },
-    {
-      "headline": "My ps2 journey ended before it even started",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1x7203g/my_ps2_journey_ended_before_it_even_started/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 00:20 UTC"
-    },
-    {
-      "headline": "Rep. Ritchie Torres Announces Congressional Legislation To Protect Video Game Ownership: 'If You Pay For It, You Own It'",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53185421",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-16 00:20 UTC"
     }
   ]
 }
