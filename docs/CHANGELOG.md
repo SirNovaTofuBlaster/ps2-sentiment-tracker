@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-30: NBA Street 2 is no longer searched
+
+- Sellers list the game as "NBA Street Vol. 2", which is another library entry that already has copies on five sites; "NBA Street 2" found listings on four of its six sites but none named it. It is on the `never` list in `ebay_watchlist.json`, and the page shows the Vol. 2 figure for it (`covers.json` `same`). NFL Street 2, Splashdown and the other unmatched games were left as they were: the `ebay-data` branch is from 2026-10-13, so what eBay returns for them could not be read; use **check_game** to see.
+
 ## 2026-10-30: unmatched games wait 48 hours on the US and UK
 
 - Of 872 tracked games, 143 had a site whose search found listings but none naming the game (`unmatched`, 222 pairs: 66 on the US/UK, 156 on the euro sites). Each such lookup costs two searches (the PS2 item-specific search and the retry by name and "ps2"), and the US/UK ones were repeated twice a day.
