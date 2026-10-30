@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 23:05:29 UTC",
+  "last_updated": "2026-10-30 23:08:13 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -101,6 +101,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-30 22:55 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/586193557",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 22:55 UTC"
     },
@@ -337912,57 +337931,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 23:08 UTC"
-    },
-    {
-      "headline": "free games with a set protagonist / trying to break a bad habit",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x7uth8/free_games_with_a_set_protagonist_trying_to_break/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 23:06 UTC"
-    },
-    {
-      "headline": "Weltall (Unofficial Xenogears Unreal Engine PC Port)",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x7utbv/weltall_unofficial_xenogears_unreal_engine_pc_port/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 23:06 UTC"
-    },
-    {
-      "headline": "When it comes to Team size: What do you prefer? Exact or Extra?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x7usdq/when_it_comes_to_team_size_what_do_you_prefer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 23:05 UTC"
     }
   ]
 }
