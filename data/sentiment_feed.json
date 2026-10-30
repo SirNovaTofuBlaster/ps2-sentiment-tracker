@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-30 13:35:27 UTC",
+  "last_updated": "2026-10-30 13:38:06 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Maximo: Ghosts to Glory",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12904379",
+      "matched_game": "Maximo: Ghosts to Glory",
+      "matched_games": [
+        "Maximo: Ghosts to Glory"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 13:33 UTC"
+    },
     {
       "headline": "The AI crash is here!!!",
       "source": "r/pcmasterrace",
@@ -52,6 +71,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 13:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750636184",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 13:25 UTC"
     },
     {
       "headline": "Mutated Dinosaur survival horror game?",
@@ -10629,18 +10667,19 @@
       "timestamp": "2026-10-29 22:53 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Silent Hill 3, Silent Hill 2 and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750604852",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Silent Hill 3",
       "matched_games": [
+        "Silent Hill 3",
         "Silent Hill 2",
         "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338749,57 +338788,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 13:38 UTC"
-    },
-    {
-      "headline": "Natural hot-spot temps for a rtx 2070 8gb during gaming session?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7ggao/natural_hotspot_temps_for_a_rtx_2070_8gb_during/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 13:37 UTC"
-    },
-    {
-      "headline": "Pokemon Sapphire legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x7gfy3/pokemon_sapphire_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 13:36 UTC"
-    },
-    {
-      "headline": "Suggest GPU",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7gec6/suggest_gpu/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 13:35 UTC"
     }
   ]
 }
