@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 20:54:08 UTC",
+  "last_updated": "2026-10-30 20:59:02 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1899,13 +1899,14 @@
       "timestamp": "2026-10-30 18:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming The Hobbit and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750653781",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "The Hobbit",
       "matched_games": [
+        "The Hobbit",
         "Silent Hill 2"
       ],
       "match_score": 100,
@@ -2023,13 +2024,14 @@
       "timestamp": "2026-10-30 18:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 2, Devil May Cry 3 and Devil May Cry",
+      "headline": "Thread on /v/ naming LEGO Batman, Devil May Cry 2, Devil May Cry 3 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750653442",
-      "matched_game": "Devil May Cry 2",
+      "matched_game": "LEGO Batman",
       "matched_games": [
+        "LEGO Batman",
         "Devil May Cry 2",
         "Devil May Cry 3",
         "Devil May Cry"
@@ -8574,6 +8576,30 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-30 14:49 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter, Devil May Cry 3: Dante's Awakening, Resident Evil 4 and 3 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750639886",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "Devil May Cry 3: Dante's Awakening",
+        "Resident Evil 4",
+        "Devil May Cry 2",
+        "Clock Tower 3",
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 14:49 UTC"
     },
@@ -16115,13 +16141,14 @@
       "timestamp": "2026-10-30 05:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy XII and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750621518",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
         "Final Fantasy XII",
         "Kingdom Hearts"
       ],
@@ -75055,6 +75082,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 23:19 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Okami",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12899459",
+      "matched_game": "Okami",
+      "matched_games": [
+        "Okami"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-27 23:17 UTC"
     },
     {
       "headline": "Thread on /vr/ naming Resident Evil 4 and Resident Evil Code: Veronica X",
@@ -337569,59 +337615,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 21:00 UTC"
-    },
-    {
-      "headline": "Which gaming laptop is the best value for engineering studies and gaming? RTX 4050 vs 5050 vs 5060",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7ru1s/which_gaming_laptop_is_the_best_value_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-16 20:58 UTC"
-    },
-    {
-      "headline": "The \"coop-anything\" repo, a 'reverse engineer anything' like repo that lets you make ANY existing game co-op. I have already succeeded in deus ex, zelda: ocarina of time, stalker games, dungeon keeper, and fallout NV is WIP but close.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x7rszb/the_coopanything_repo_a_reverse_engineer_anything/",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 20:57 UTC"
-    },
-    {
-      "headline": "Good mini pc or laptop for just discord?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7rsnq/good_mini_pc_or_laptop_for_just_discord/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 20:57 UTC"
     }
   ]
 }
