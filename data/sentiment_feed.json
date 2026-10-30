@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 02:44:39 UTC",
+  "last_updated": "2026-10-30 02:55:59 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -20,6 +20,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 02:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750614806",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 02:19 UTC"
     },
     {
       "headline": "Petit Planet launches December 4",
@@ -179,14 +198,18 @@
       "timestamp": "2026-10-30 01:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Forgotten Realms: Demon Stone",
+      "headline": "Thread on /v/ naming Forgotten Realms: Demon Stone, X-Men Legends II: Rise of Apocalypse, X-Men: The Official Game and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750613690",
       "matched_game": "Forgotten Realms: Demon Stone",
       "matched_games": [
-        "Forgotten Realms: Demon Stone"
+        "Forgotten Realms: Demon Stone",
+        "X-Men Legends II: Rise of Apocalypse",
+        "X-Men: The Official Game",
+        "X-Men: Next Dimension",
+        "X-Men Legends"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -332,6 +355,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 01:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Alone in the Dark",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750612969",
+      "matched_game": "Alone in the Dark",
+      "matched_games": [
+        "Alone in the Dark"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 01:39 UTC"
     },
     {
       "headline": "Hi",
@@ -1008,6 +1050,25 @@
       ],
       "match_score": 100,
       "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 00:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750610195",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2758,6 +2819,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-29 22:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III and Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750604927",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III",
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-29 22:55 UTC"
     },
@@ -339389,165 +339470,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-16 02:55 UTC"
-    },
-    {
-      "headline": "Example of DLSS 5.0 AI being used on PS2's FFX. Thoughts?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x74ylm/example_of_dlss_50_ai_being_used_on_ps2s_ffx/",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 02:50 UTC"
-    },
-    {
-      "headline": "Gaming on a 486 Toshiba T1950CT",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x74w34/gaming_on_a_486_toshiba_t1950ct/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 02:47 UTC"
-    },
-    {
-      "headline": "Bust a Groove 2",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x74vnb/bust_a_groove_2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 02:46 UTC"
-    },
-    {
-      "headline": "French pokemon diamond",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x74vje/french_pokemon_diamond/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 02:46 UTC"
-    },
-    {
-      "headline": "RMA'd an MSI G27QPX and they're offering me a MAG 275QPF X30. Upgrade or Downgrade?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x74vtm/rmad_an_msi_g27qpx_and_theyre_offering_me_a_mag/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 02:46 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/584623407",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-16 02:45 UTC"
-    },
-    {
-      "headline": "PS2's \"Smoothing Filter\" for PS1 games. Off on the Left. Filter \"On\" on the right. Do you guys use the smoothing filter for PS1 games or nah?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x74v6j/ps2s_smoothing_filter_for_ps1_games_off_on_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 02:45 UTC"
-    },
-    {
-      "headline": "GTA San Andreas US TV Spot (2004)",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x74uxc/gta_san_andreas_us_tv_spot_2004/",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 02:45 UTC"
-    },
-    {
-      "headline": "Good substitute for Stardew Valley?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x74unb/good_substitute_for_stardew_valley/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 02:44 UTC"
     }
   ]
 }
