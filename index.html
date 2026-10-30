@@ -1858,7 +1858,7 @@
         const PRICE_SEARCH = { US: 'ebay-us', UK: 'ebay-uk', DE: 'ebay-de', FR: 'ebay-fr', IT: 'ebay-it', ES: 'ebay-es' };
         // A site added later is checked less often (min_every_hours in ebay_prices.py), so its
         // figures are overdue later: the hours a figure there may be old before it is dimmed.
-        const SITE_STALE_HOURS = { DE: 54, FR: 80, IT: 54, ES: 104 };   // the PRICE_LOOKUPS entry a figure links to
+        const SITE_STALE_HOURS = { DE: 80, FR: 80, IT: 80, ES: 104 };   // the PRICE_LOOKUPS entry a figure links to
         let priceData = null;          // data/prices/latest.json as loaded, or null
         let priceIndex = new Map();    // priceKey(title) -> { title, entry, level, mentions }, spellings of one game sharing figures
         let priceOwn = new Map();      // the same before the spellings share: which spelling has a figure of its own
@@ -1978,8 +1978,8 @@
         // and is dimmed: a little longer than the gap between that level's checks.
         const LEVELS = {
             surging: { rank: 0, stale: 3, tag: 'surging', hint: 'Rarely mentioned, then named by several sources within a day. Checked on every run for two days.' },
-            staple: { rank: 1, stale: 14, tag: 'staple', hint: 'Named on five or more of the last fourteen days, so one more mention is no news. Checked every 12 hours.' },
-            normal: { rank: 1, stale: 14, tag: '', hint: '' },
+            staple: { rank: 1, stale: 20, tag: 'staple', hint: 'Named on five or more of the last fourteen days, so one more mention is no news. Checked every 18 hours.' },
+            normal: { rank: 1, stale: 20, tag: '', hint: '' },
             dormant: { rank: 2, stale: 30, tag: 'quiet', hint: 'Not mentioned for two weeks. Checked once a day.' },
             underrated: { rank: 2, stale: 30, tag: 'underrated', hint: 'On the Underrated page and not named by the feed. Checked once a day on eBay US and UK, and again as soon as the feed names it.' },
             collection: { rank: 2, stale: 30, tag: 'collection', hint: 'In someone\'s My collection and not named by the feed. Checked once a day on eBay US and UK, so a game people own has a price.' },

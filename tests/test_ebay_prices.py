@@ -53,7 +53,7 @@ EXTRA_SITES = {market_id: ebay_prices.MARKETS.pop(market_id) for market_id in li
 def tearDownModule():
     ebay_prices.MARKETS.update(EXTRA_SITES)
 NOON = datetime(2026, 10, 6, 12, 0, tzinfo=timezone.utc)
-NORMAL_WAIT = ebay_prices.CHECK_EVERY_HOURS["normal"]   # 12 hours since 2026-10-18 (6 before)
+NORMAL_WAIT = ebay_prices.CHECK_EVERY_HOURS["normal"]   # 18 hours since 2026-10-30 (12 from 2026-10-18, 6 before)
 AFTER = NORMAL_WAIT + 1                                 # a little more than that: a normal game is due again
 
 
@@ -1255,7 +1255,7 @@ class GermanyTests(unittest.TestCase):
     def test_the_definition_is_sound(self):
         self.assertEqual((DE["label"], DE["site"], DE["country"], DE["currency"]), ("DE", "www.ebay.de", "DE", "EUR"))
         self.assertTrue(DE["extra"])
-        self.assertEqual(DE["min_every_hours"], 48)
+        self.assertEqual(DE["min_every_hours"], 72)
         self.assertEqual(DE["names_like"], "UK")
         self.assertNotIn("zip", DE, "postage is quoted to Germany, not to a postcode of ours")
         for field in ("foreign", "junk", "incomplete"):
@@ -1332,8 +1332,8 @@ class GermanyTests(unittest.TestCase):
         sandbox.now = NOON + timedelta(hours=AFTER)
         code, printed, fake = sandbox.run(FakeHttp(answer))
         self.assertIn("Kuon [UK]", printed)
-        self.assertNotIn("Kuon [DE]", printed, "thirteen hours later the UK and US are due again, Germany is not")
-        sandbox.now = NOON + timedelta(hours=49)
+        self.assertNotIn("Kuon [DE]", printed, "nineteen hours later the UK and US are due again, Germany is not")
+        sandbox.now = NOON + timedelta(hours=73)
         code, printed, fake = sandbox.run(FakeHttp(answer))
         self.assertIn("Kuon [DE]", printed)
 
@@ -1350,7 +1350,7 @@ def european_site_tests(name, market_id, market, junk_titles, normal_title, inco
         def test_the_definition_is_sound(self):
             self.assertEqual((market["currency"], market["extra"], market["keyword_only"]), ("EUR", True, True))
             self.assertEqual((market["min_every_hours"], market["names_like"]), (market["min_every_hours"], "UK"))
-            self.assertEqual(market["min_every_hours"], {"DE": 48, "FR": 72, "IT": 48, "ES": 96}[market["label"]])
+            self.assertEqual(market["min_every_hours"], {"DE": 72, "FR": 72, "IT": 72, "ES": 96}[market["label"]])
             self.assertEqual(market["site"], f"www.ebay.{market['country'].lower()}")
             self.assertEqual(market["label"], market["country"])
             for field in ("foreign", "junk", "incomplete"):
@@ -1440,7 +1440,7 @@ class DueTests(unittest.TestCase):
         self.assertEqual(self.due([game("Kuon")]), [("Kuon", "EBAY_GB"), ("Kuon", "EBAY_US")])
 
     def test_each_level_waits_its_own_time(self):
-        hours = {"normal": 12, "staple": 12, "dormant": 24, "collection": 24}
+        hours = {"normal": 18, "staple": 18, "dormant": 24, "collection": 24}
         self.assertEqual({level: ebay_prices.CHECK_EVERY_HOURS[level] for level in hours}, hours)
         self.assertEqual(ebay_prices.CHECK_EVERY_HOURS["surging"], 0, "a surging game is checked on every run")
         for level, wait in hours.items():
@@ -1452,9 +1452,9 @@ class DueTests(unittest.TestCase):
         minute_ago = (NOON - timedelta(minutes=1)).strftime(ebay_prices.STAMP_FORMAT)
         self.assertEqual(len(self.due([game("Kuon", level="surging")], self.state(Kuon=(minute_ago, minute_ago)))), 2)
 
-    def test_a_check_may_come_half_an_hour_early_so_twelve_hours_does_not_become_thirteen(self):
+    def test_a_check_may_come_half_an_hour_early_so_eighteen_hours_does_not_become_nineteen(self):
         entry = game("Kuon")
-        for minutes_ago, expected in ((11 * 60 + 29, 0), (11 * 60 + 31, 2)):
+        for minutes_ago, expected in ((17 * 60 + 29, 0), (17 * 60 + 31, 2)):
             stamp = (NOON - timedelta(minutes=minutes_ago)).strftime(ebay_prices.STAMP_FORMAT)
             self.assertEqual(len(self.due([entry], self.state(Kuon=(stamp, stamp)))), expected, minutes_ago)
 
@@ -1799,10 +1799,10 @@ class QuietEuroTests(unittest.TestCase):
         patcher.start()
         self.addCleanup(patcher.stop)
 
-    def test_a_german_pair_waits_48_hours_whether_stocked_or_empty(self):
+    def test_a_german_pair_waits_72_hours_whether_stocked_or_empty(self):
         stamp = lambda hours: (NOON - timedelta(hours=hours)).strftime(ebay_prices.STAMP_FORMAT)   # noqa: E731
-        for record, hours, due in (({"copies": 0}, 30, False), ({"copies": 0}, 49, True),
-                                   ({"copies": 3}, 47, False), ({"copies": 3}, 49, True), ({"unmatched": True}, 30, False)):
+        for record, hours, due in (({"copies": 0}, 30, False), ({"copies": 0}, 49, False), ({"copies": 0}, 73, True),
+                                   ({"copies": 3}, 49, False), ({"copies": 3}, 73, True), ({"unmatched": True}, 30, False)):
             entry = game("Kuon")
             state = {"games": {"Kuon": {"DE": dict(record, checked=stamp(hours))}}}
             got = "EBAY_DE" in [m for _, m in ebay_prices.due_lookups([entry], state, NOON)]
