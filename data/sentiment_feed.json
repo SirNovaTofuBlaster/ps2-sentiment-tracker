@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 21:46:39 UTC",
+  "last_updated": "2026-10-30 21:55:53 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -54,6 +54,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-30 21:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750662757",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 21:29 UTC"
     },
     {
       "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening",
@@ -1977,17 +1996,18 @@
       "timestamp": "2026-10-30 19:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Jak and Daxter: The Precursor Legacy",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750656448",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "Jak and Daxter: The Precursor Legacy"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6919,6 +6939,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-30 16:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750644195",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 16:14 UTC"
     },
@@ -337597,132 +337636,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 21:55 UTC"
-    },
-    {
-      "headline": "9060 XT 16GB vs 9070 GRE 12GB",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7t6kq/9060_xt_16gb_vs_9070_gre_12gb/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:54 UTC"
-    },
-    {
-      "headline": "Very strange technical issue..",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x7t4ty/very_strange_technical_issue/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:53 UTC"
-    },
-    {
-      "headline": "[UK] Is this prebuilt a decent deal?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7t4ih/uk_is_this_prebuilt_a_decent_deal/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:52 UTC"
-    },
-    {
-      "headline": "Built my new pc!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7t3p6/built_my_new_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:51 UTC"
-    },
-    {
-      "headline": "Are these DS games legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x7t2en/are_these_ds_games_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:50 UTC"
-    },
-    {
-      "headline": "On the fence about a Wireview? I was too",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7t03z/on_the_fence_about_a_wireview_i_was_too/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:47 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Sonic Unleashed, Call of Duty 3, Splinter Cell and 3 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749825971",
-      "matched_game": "Sonic Unleashed",
-      "matched_games": [
-        "Sonic Unleashed",
-        "Call of Duty 3",
-        "Splinter Cell",
-        "God of War",
-        "Shadow of the Colossus",
-        "Black"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:46 UTC"
     }
   ]
 }
