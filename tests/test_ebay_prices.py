@@ -158,6 +158,7 @@ class Sandbox:
         for name, value in (("WATCHLIST_PATH", self.root / "ebay_watchlist.json"),
                             ("RARE_PATH", self.root / "rare_games.json"),
                             ("UNDERRATED_PATH", self.root / "underrated.json"),
+                            ("COVERS_PATH", self.root / "covers.json"),
                             ("EDITIONS_PATH", self.root / "editions.json"),
                             ("CONSOLES_PATH", self.root / "rare_consoles.json"),
                             ("FEED_PATH", self.data / "sentiment_feed.json"),
@@ -1791,6 +1792,123 @@ class QuietTests(unittest.TestCase):
         code, printed, fake = self.sandbox.run(FakeHttp(lambda params, headers: two_copies(params, headers)))
         self.assertNotIn("Nothing is due", printed, "after 48 hours it is asked again")
         self.assertGreater(self.sandbox.latest["games"]["Kuon"]["UK"].get("copies", 0), 0)
+
+
+class MergeSpellingsTests(unittest.TestCase):
+    """One spelling stands for a group of spellings of one game; the others are looked at weekly to prove nothing is missed."""
+
+    SAME = {"soul calibur 2": "soulcalibur 2"}
+
+    @staticmethod
+    def state(**copies):
+        """state(Soul_Calibur_2=(37, 73)) -> that title had 37 copies on the US and 73 on the UK at its last check."""
+        return {"games": {title.replace("_", " "): {label: {"checked": "2026-10-06T06:00Z", "copies": n}
+                                                    for label, n in zip(("US", "UK"), pair)}
+                          for title, pair in copies.items()}}
+
+    def merge(self, games, state, groups=()):
+        return ebay_prices.merge_duplicates(games, state, self.SAME, [list(g) for g in groups])
+
+    def test_the_spelling_with_fewer_copies_everywhere_is_dropped_and_the_busier_one_stands(self):
+        a, b = game("Soul Calibur 2"), game("SoulCalibur II")
+        kept, dropped, apart = self.merge([a, b], self.state(Soul_Calibur_2=(37, 73), SoulCalibur_II=(18, 49)))
+        self.assertEqual([g["title"] for g in kept], ["Soul Calibur 2"])
+        self.assertEqual([(g["title"], k["title"]) for g, k in dropped], [("SoulCalibur II", "Soul Calibur 2")])
+        self.assertEqual(apart, [])
+
+    def test_a_spelling_that_finds_more_on_either_site_is_kept_apart(self):
+        a, b = game("Soul Calibur 2"), game("SoulCalibur II")
+        kept, dropped, apart = self.merge([a, b], self.state(Soul_Calibur_2=(37, 10), SoulCalibur_II=(18, 49)))
+        self.assertEqual(len(kept), 2)
+        self.assertFalse(dropped)
+        self.assertEqual(apart, ["Soul Calibur 2"], "the busier spelling overall stands, and the other site would lose copies the keeper cannot see")
+
+    def test_a_pinned_game_is_the_keeper_and_a_pinned_game_is_never_dropped(self):
+        a, b = game("Soul Calibur 2"), game("SoulCalibur II", pinned=True)
+        kept, dropped, _ = self.merge([a, b], self.state(Soul_Calibur_2=(1, 1), SoulCalibur_II=(90, 90)))
+        self.assertEqual([(g["title"], k["title"]) for g, k in dropped], [("Soul Calibur 2", "SoulCalibur II")])
+        busier = game("Soul Calibur 2")
+        kept, dropped, apart = self.merge([busier, b], self.state(Soul_Calibur_2=(90, 90), SoulCalibur_II=(1, 1)))
+        self.assertEqual((len(kept), dropped, apart), (2, [], ["Soul Calibur 2"]), "the pinned game stands and is not dropped, even if the other finds more")
+
+    def test_surging_rare_and_unchecked_games_stay_as_they_are(self):
+        state = self.state(Soul_Calibur_2=(37, 73), SoulCalibur_II=(1, 1))
+        for change in ({"level": "surging"}, {"level": "rare"}, {"level": "underrated"}, {"level": "collection"}, {"sites": ["EBAY_GB"]}):
+            a, b = game("Soul Calibur 2"), dict(game("SoulCalibur II"), **change)
+            kept, dropped, _ = self.merge([a, b], state)
+            self.assertFalse(dropped, change)
+        a, b = game("Soul Calibur 2"), game("SoulCalibur II")
+        self.assertFalse(self.merge([a, b], {})[1], "with no figures nobody knows which spelling finds more")
+
+    def test_the_watchlists_same_game_lists_join_titles_the_covers_file_does_not(self):
+        a, b = game("Project Zero"), game("Fatal Frame")
+        kept, dropped, _ = self.merge([a, b], self.state(Project_Zero=(2, 9), Fatal_Frame=(30, 20)), groups=[["Project Zero", "Fatal Frame"]])
+        self.assertEqual([(g["title"], k["title"]) for g, k in dropped], [("Project Zero", "Fatal Frame")])
+
+    def test_the_keeper_inherits_mentions_the_faster_level_and_sealed_sites(self):
+        a, b = game("Soul Calibur 2", level="dormant"), game("SoulCalibur II", level="staple")
+        a["mentions"], b["mentions"], b["sealed_tier"] = 1, 6, ["EBAY_US"]
+        kept, dropped, _ = self.merge([a, b], self.state(Soul_Calibur_2=(37, 73), SoulCalibur_II=(18, 49)))
+        self.assertEqual((kept[0]["mentions"], kept[0]["level"], kept[0]["sealed_tier"]), (7, "staple", ["EBAY_US"]))
+
+    def test_a_dropped_spelling_is_looked_at_weekly_on_the_us_and_uk_only_and_marked_merged(self):
+        a, b = game("Soul Calibur 2"), game("SoulCalibur II")
+        kept, dropped, _ = self.merge([a, b], self.state(Soul_Calibur_2=(37, 73), SoulCalibur_II=(18, 49)))
+        looks = ebay_prices.audit_lookups(dropped, {}, NOON)
+        self.assertEqual([(g["title"], m, g["level"], g["audit"]) for g, m in looks],
+                         [("SoulCalibur II", "EBAY_GB", "merged", True), ("SoulCalibur II", "EBAY_US", "merged", True)])
+        week = (NOON - timedelta(hours=ebay_prices.MERGED_AUDIT_HOURS - 1)).strftime(ebay_prices.STAMP_FORMAT)
+        old = {"spellings": {"SoulCalibur II": {"UK": {"checked": week}, "US": {"checked": week}}}}
+        self.assertEqual(ebay_prices.audit_lookups(dropped, old, NOON), [], "not yet a week")
+        self.assertEqual(len(ebay_prices.audit_lookups(dropped, old, NOON + timedelta(hours=2))), 2)
+
+    def test_the_audit_file_holds_numbers_beside_the_keepers_and_forgets_spellings_no_longer_merged(self):
+        a, b = game("Soul Calibur 2"), game("SoulCalibur II")
+        _, dropped, _ = self.merge([a, b], self.state(Soul_Calibur_2=(37, 73), SoulCalibur_II=(18, 49)))
+        result = {"status": "ok", "counted": 5, "on_ebay": 9, "truncated": False, "median": 20.0, "lowest": 10.0}
+        latest = {"games": {"Soul Calibur 2": {"US": {"copies": 37, "median": 25.0}}}}
+        old = {"spellings": {"Gone Game": {"US": {"checked": "x"}}}}
+        audit = ebay_prices.update_audit(old, dropped, [(dict(dropped[0][0], level="merged", audit=True), "EBAY_US", result)], latest, NOON)
+        self.assertEqual(list(audit["spellings"]), ["SoulCalibur II"])
+        row = audit["spellings"]["SoulCalibur II"]
+        self.assertEqual((row["keeper"], row["US"]["copies"], row["US"]["keeper_copies"], row["US"]["keeper_median"]),
+                         ("Soul Calibur 2", 5, 37, 25.0))
+        self.assertNotIn("UK", row)
+
+
+class MergeRunTests(unittest.TestCase):
+    """The whole job with two spellings of one game: one is searched, the other is looked at weekly into audit.json."""
+
+    def setUp(self):
+        self.box = Sandbox(self, feed=[mention("Silent Hill 2", 50, "A"), mention("Silent Hill 2", 120, "A"),
+                                       mention("Silent Hill 3", 60, "A"), mention("Silent Hill 3", 130, "A")])
+        self.box.write("covers.json", {"same": {"silent hill 3": "silent hill 2"}})
+        stamp = (NOON - timedelta(hours=40)).strftime(ebay_prices.STAMP_FORMAT)
+        figures = lambda n: {label: {"checked": stamp, "copies": n, "lowest": 5.0, "median": 9.0} for label in ("US", "UK")}   # noqa: E731
+        self.box.write("data/prices/latest.json", {"currencies": {"US": "USD", "UK": "GBP"},
+                                                   "games": {"Silent Hill 2": dict(figures(50), level="normal", mentions=2),
+                                                             "Silent Hill 3": dict(figures(10), level="normal", mentions=2)}})
+        self.box.write("data/prices/2026-10.json", [])
+
+    def test_only_the_busier_spelling_is_searched_and_kept_in_latest(self):
+        code, printed, fake = self.box.run()
+        self.assertEqual(code, 0, printed)
+        asked = {search["params"]["q"].replace(" ps2", "") for search in fake.searches}
+        self.assertIn("silent hill 2", asked)
+        self.assertIn("silent hill 3", asked, "the dropped spelling is looked at once, as its weekly audit")
+        self.assertIn("Spellings of one game: 1 merged", printed)
+        self.assertNotIn("Silent Hill 3", self.box.latest["games"], "the dashboard shows it the keeper's figure instead")
+        audit = json.loads((self.box.data / "prices" / "audit.json").read_text(encoding="utf-8"))
+        row = audit["spellings"]["Silent Hill 3"]
+        self.assertEqual((row["keeper"], row["US"]["copies"], row["UK"]["copies"]), ("Silent Hill 2", 2, 2))
+        self.assertTrue(all("checked" in row[label] and "title" not in row[label] for label in ("US", "UK")))
+
+    def test_the_second_run_does_not_look_again_for_a_week(self):
+        self.box.run()
+        self.box.now = NOON + timedelta(hours=30)
+        code, printed, fake = self.box.run()
+        self.assertEqual(code, 0, printed)
+        self.assertNotIn("silent hill 3", {search["params"]["q"].replace(" ps2", "") for search in fake.searches})
 
 
 class QuietEuroTests(unittest.TestCase):

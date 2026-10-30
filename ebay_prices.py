@@ -91,6 +91,9 @@ LIBRARY_PATH = DATA_DIR / "ps2_database.json"     # the PS2 library (read only)
 PRICES_DIR = DATA_DIR / "prices"                  # written here: numbers only
 LATEST_NAME = "latest.json"
 INDEX_NAME = "index.json"                         # the PS2 price index, worked out from the history
+COVERS_PATH = ROOT / "covers.json"               # its `same` groups spellings of one game (read only)
+AUDIT_NAME = "audit.json"                         # weekly numbers for the spellings merged away, beside their keeper's
+MERGED_AUDIT_HOURS = 168
 SERIES_NAME = "series.json"                       # each game's daily median, for its chart on the dashboard
 SERIES_DAYS = 90
 SERIES_EPOCH = "2026-10-01"                      # series.json counts days from here, so old points never change
@@ -807,6 +810,148 @@ def plan_games(now, pinned, never, mentions, ever, library, catalogue, state):
             by_key.get(game["key"], []), now, held, game["pinned"])
         game["latest_mention"] = max((m["when"] for m in by_key.get(game["key"], [])), default=None)
     return sorted(games.values(), key=lambda game: game["title"].lower()), left_out
+
+
+
+# ======================================================================================
+# Spellings of one game (2026-10-30)
+# ======================================================================================
+
+def load_same_groups():
+    """(covers.json `same`: {name: the name it is one game with}, the watchlist's `same_game` lists of titles).
+    Both are read only; a missing or damaged file gives none, so nothing is merged."""
+    covers = read_json(COVERS_PATH, {})
+    same = covers.get("same") if isinstance(covers, dict) else None
+    same = {k: v for k, v in same.items() if isinstance(k, str) and isinstance(v, str)} if isinstance(same, dict) else {}
+    watch = read_json(WATCHLIST_PATH, {})
+    lists = watch.get("same_game") if isinstance(watch, dict) else None
+    lists = [[t for t in group if isinstance(t, str)] for group in lists or [] if isinstance(group, list)]
+    return same, lists
+
+
+def merge_duplicates(games, state, same, same_game):
+    """(games to look up, [(dropped game, the game that stands for it)], [titles kept apart]).
+
+    The library files one game under several spellings ("Soul Calibur 2" / "SoulCalibur II"; covers.json `same`
+    and the watchlist's `same_game` say which), and each was searched on every site. One spelling now stands for
+    the group: the one with the most copies listed at the last checks. A spelling is dropped only where it is safe:
+    it is no more productive than the keeper on the US *and* the UK (so no site loses a copy the keeper cannot see),
+    it is not pinned, not surging, and not on a Rarest, Underrated or collection list. The dashboard already shows a
+    dropped spelling the keeper's figure (shareSpellingPrices), and `audit.json` checks it weekly to prove the keeper
+    is not missing copies. Sealed copies, mentions and the faster level of the dropped spelling pass to the keeper."""
+    parent = {}
+
+    def find(a):
+        while parent.setdefault(a, a) != a:
+            parent[a] = parent[parent[a]]
+            a = parent[a]
+        return a
+
+    def union(a, b):
+        parent[find(a)] = find(b)
+
+    node_of = {}
+    for game in games:
+        name = search_terms(game["title"])[0]
+        node_of[game["key"]] = "n:" + same.get(name, name)
+    by_key = {game["key"]: game for game in games}
+    for group in same_game:
+        keys = [key_of(title) for title in group if key_of(title) in by_key]
+        for other in keys[1:]:
+            union(node_of[keys[0]], node_of[other])
+    groups = {}
+    for game in games:
+        groups.setdefault(find(node_of[game["key"]]), []).append(game)
+
+    previous = prior_games(state)
+    sites = [market["label"] for market in MARKETS.values() if not market.get("extra")]
+
+    def copies(game, label):
+        entry = (previous.get(game["key"]) or {}).get(label)
+        return entry.get("copies") or 0 if isinstance(entry, dict) else 0
+
+    def has_data(game):
+        return any(isinstance((previous.get(game["key"]) or {}).get(label), dict) for label in sites)
+
+    def fixed(game):      # stays as it is: a special page's game, a console or edition, a pinned or surging one
+        return (game.get("kind") in ("console", "edition") or game.get("sites") or game["pinned"]
+                or game["level"] not in ("normal", "staple", "dormant"))
+
+    dropped, apart = [], []
+    for members in groups.values():
+        if len(members) < 2:
+            continue
+        candidates = [g for g in members if not g.get("sites") and g.get("kind") not in ("console", "edition")
+                      and g["level"] != "surging" and has_data(g)]
+        pinned_here = [g for g in candidates if g["pinned"]]
+        candidates = pinned_here or candidates
+        if not candidates:
+            apart += [g["title"] for g in members]
+            continue
+        keeper = max(candidates, key=lambda g: (sum(copies(g, label) for label in sites), -len(g["title"]), g["title"]))
+        for game in sorted(members, key=lambda g: g["title"].lower()):
+            if game is keeper:
+                continue
+            if fixed(game) or any(copies(game, label) > copies(keeper, label) for label in sites):
+                apart.append(game["title"])
+                continue
+            dropped.append((game, keeper))
+            keeper["mentions"] += game["mentions"]
+            if game.get("latest_mention") and (keeper.get("latest_mention") is None or game["latest_mention"] > keeper["latest_mention"]):
+                keeper["latest_mention"] = game["latest_mention"]
+            if game.get("sealed_tier"):
+                keeper["sealed_tier"] = sorted(set(keeper.get("sealed_tier") or ()) | set(game["sealed_tier"]))
+            if keeper["level"] in ("normal", "staple", "dormant") and game["level"] in ("normal", "staple", "dormant") \
+                    and CHECK_EVERY_HOURS[game["level"]] < CHECK_EVERY_HOURS[keeper["level"]]:
+                keeper["level"] = game["level"]
+    gone = {id(game) for game, _ in dropped}
+    return [game for game in games if id(game) not in gone], dropped, sorted(apart)
+
+
+def audit_lookups(dropped, audit, now):
+    """The weekly looks at the merged-away spellings, on the US and UK only: [(game marked level "merged", market id)].
+    They come after every other lookup, so they never take a search from a game the page shows."""
+    due = []
+    old = (audit or {}).get("spellings") or {}
+    for game, _keeper in dropped:
+        for market_id, market in MARKETS.items():
+            if market.get("extra"):
+                continue
+            entry = (old.get(game["title"]) or {}).get(market["label"])
+            checked = parse_stamp(entry.get("checked")) if isinstance(entry, dict) else None
+            if checked is None or (now - checked).total_seconds() / 3600 >= MERGED_AUDIT_HOURS:
+                due.append((dict(game, level="merged", audit=True), market_id))
+    due.sort(key=lambda row: (row[0]["title"].lower(), row[1]))
+    return due
+
+
+def update_audit(old, dropped, results, latest, now):
+    """audit.json after a run: for each merged-away spelling and site, its own numbers at its last weekly look and the
+    keeper's from latest.json at that moment. Numbers only; a spelling that is no longer merged is forgotten."""
+    stamp = now.strftime(STAMP_FORMAT)
+    spellings = {}
+    previous = (old or {}).get("spellings") or {}
+    for game, keeper in dropped:
+        entry = {"keeper": keeper["title"]}
+        for label in [m["label"] for m in MARKETS.values() if not m.get("extra")]:
+            kept = (previous.get(game["title"]) or {}).get(label)
+            if isinstance(kept, dict):
+                entry[label] = kept
+        spellings[game["title"]] = entry
+    labels = {market_id: market["label"] for market_id, market in MARKETS.items()}
+    for game, market_id, result in results:
+        if result["status"] == "error" or game["title"] not in spellings:
+            continue
+        label = labels[market_id]
+        own = numbers_of(result, stamp)
+        there = ((latest.get("games") or {}).get(spellings[game["title"]]["keeper"]) or {}).get(label)
+        row = {"checked": stamp, "copies": own.get("copies"), "median": own.get("median"), "unmatched": own.get("unmatched", False)}
+        if isinstance(there, dict):
+            row["keeper_copies"], row["keeper_median"] = there.get("copies"), there.get("median")
+        spellings[game["title"]][label] = row
+    return {"what": "Weekly numbers for spellings merged into another by ebay_prices.merge_duplicates: the spelling's own copies and median "
+                    "at its last look, and the keeper's at that moment. Numbers only; python tools/merged_report.py reads it.",
+            "spellings": dict(sorted(spellings.items()))}
 
 
 def load_underrated(path=None):
@@ -2652,11 +2797,19 @@ def main(argv=None):
             if os.environ.get("GITHUB_ACTIONS") == "true":
                 print(annotation(f"Search check: {game['title']}", lines), flush=True)
             return 0
+        same, same_game = load_same_groups()
+        games, merged, apart = merge_duplicates(games, state, same, same_game)
         lookups = due_lookups(games, state, now, earlier + history)
+        audit = read_json(PRICES_DIR / AUDIT_NAME, {})
+        extra_looks = audit_lookups(merged, audit, now)
         used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
         used_today = used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0
         allowance = min(MAX_SEARCHES_PER_RUN, DAILY_SEARCHES - used_today)
         describe_plan(games, left_out, lookups, allowance, rare_titles if rare else None, rare_problems, consoles_priced, edition_titles if editions else None)
+        if merged or apart:
+            shown = "; ".join(f"{game['title']} into {keeper['title']}" for game, keeper in merged[:10]) + (f" and {len(merged) - 10} more" if len(merged) > 10 else "")
+            say(f"Spellings of one game: {len(merged)} merged into another ({shown}); {len(apart)} kept apart; {len(extra_looks)} weekly looks due.")
+        lookups = lookups + extra_looks
         if args.plan:
             return 0
         if not lookups:
@@ -2684,6 +2837,9 @@ def main(argv=None):
         f"{len(lookups) - len(run['results'])} left for the next run.")
     if run["stopped"]:
         say(f"Stopped early: {run['stopped']}.")
+    audit_results = [row for row in run["results"] if row[0].get("audit")]
+    run_all = run
+    run = dict(run, results=[row for row in run["results"] if not row[0].get("audit")])
     problem = verdict(run["results"], state)
     if problem:
         say(f"STOPPED: {problem}")
@@ -2699,7 +2855,9 @@ def main(argv=None):
     write_latest(latest_path, latest)
     try:
         log_path = latest_path.parent / SEARCH_LOG_NAME
-        write_latest(log_path, update_search_log(read_json(log_path, {}), run, now))
+        write_latest(log_path, update_search_log(read_json(log_path, {}), run_all, now))
+        if merged or audit:
+            write_latest(PRICES_DIR / AUDIT_NAME, update_audit(audit, merged, audit_results, latest, now))
     except (OSError, ValueError, KeyError) as exc:
         say(f"The search log was not updated ({exc.__class__.__name__}).")
     # The month before is enough history for most of the index, but every month is read so
@@ -2720,9 +2878,9 @@ def main(argv=None):
         write_latest(PRICES_DIR / INDEX_NAME, index_file(every_month, latest, now, before if isinstance(before, list) else ()))
         write_series(PRICES_DIR / SERIES_NAME, series_file(every_month, now))
     say(f"Wrote {LATEST_NAME} and added {len(rows)} rows to this month's price history.")
-    if run["results"]:
+    if run_all["results"]:
         args.out.parent.mkdir(parents=True, exist_ok=True)
-        args.out.write_text(json.dumps(snapshot_of(run, now), indent=2, ensure_ascii=False) + "\n",
+        args.out.write_text(json.dumps(snapshot_of(run_all, now), indent=2, ensure_ascii=False) + "\n",
                             encoding="utf-8")
     return 0
 
