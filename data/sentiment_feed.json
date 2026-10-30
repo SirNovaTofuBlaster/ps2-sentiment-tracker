@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 22:43:40 UTC",
+  "last_updated": "2026-10-30 22:52:57 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 22:42 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750666134",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 22:33 UTC"
     },
     {
       "headline": "Sam Altman Thinks It’s Good If You Can’t Afford RAM For Your PC",
@@ -52,6 +71,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 22:26 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2, Deus Ex and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750665545",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2",
+        "Deus Ex",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 22:21 UTC"
     },
     {
       "headline": "Thread on /v/ naming God of War",
@@ -545,14 +585,20 @@
       "timestamp": "2026-10-30 21:37 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X, Silent Hill 2, Grand Theft Auto III and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750663079",
       "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Silent Hill 2",
+        "Grand Theft Auto III",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Metal Gear Solid 3: Snake Eater",
+        "Resident Evil 4",
+        "Sonic Heroes"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -4100,18 +4146,20 @@
       "timestamp": "2026-10-30 18:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Devil May Cry 2, Devil May Cry 3 and 2 more",
+      "headline": "Thread on /v/ naming God of War II, God of War, Devil May Cry 2 and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750653442",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "God of War II",
       "matched_games": [
-        "Final Fantasy X",
+        "God of War II",
+        "God of War",
         "Devil May Cry 2",
         "Devil May Cry 3",
         "Devil May Cry",
-        "LEGO Batman"
+        "LEGO Batman",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -16641,16 +16689,18 @@
       "timestamp": "2026-10-30 09:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, The Thing and Dark Angel",
+      "headline": "Thread on /v/ naming Fatal Frame, The Thing, Dark Angel and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750627679",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Fatal Frame",
       "matched_games": [
-        "Silent Hill 2",
+        "Fatal Frame",
         "The Thing",
-        "Dark Angel"
+        "Dark Angel",
+        "Silent Hill 2",
+        "Ghost Rider"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -18275,7 +18325,7 @@
       "timestamp": "2026-10-30 05:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy XII and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Final Fantasy X, Kingdom Hearts and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -18283,8 +18333,8 @@
       "matched_game": "Final Fantasy X",
       "matched_games": [
         "Final Fantasy X",
-        "Final Fantasy XII",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -337594,212 +337644,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 22:52 UTC"
-    },
-    {
-      "headline": "Fate/EXTRA Record TIMES Vol.1",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x7uggu/fateextra_record_times_vol1/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:50 UTC"
-    },
-    {
-      "headline": "Fate/EXTRA Record TIMES Vol.1",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x7ugqn/fateextra_record_times_vol1/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:50 UTC"
-    },
-    {
-      "headline": "New Additions",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1x7uerv/new_additions/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:48 UTC"
-    },
-    {
-      "headline": "Game recommendations for a 60 year old just getting into gaming",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x7ue8g/game_recommendations_for_a_60_year_old_just/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:47 UTC"
-    },
-    {
-      "headline": "Elon Musk presenta el nuevo Roadster volador y desata asombro y escepticismo",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/elon-musk/115078/elon-musk-presenta-el-nuevo-roadster-volador-y-desata-asombro-y-escepticismo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:47 UTC"
-    },
-    {
-      "headline": "Red Safe Code in Call of Duty: Modern Warfare 4 Following Orders",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/red-safe-code-in-call-of-duty-modern-warfare-4-following-orders/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:46 UTC"
-    },
-    {
-      "headline": "This is stupid, why Samsung?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7ucv7/this_is_stupid_why_samsung/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:45 UTC"
-    },
-    {
-      "headline": "The Ocarina of Time Remake Is Stunning",
-      "source": "Podcast: The Game Informer Show",
-      "source_type": "podcast",
-      "feed": "https://www.spreaker.com/show/6639255/episodes/feed",
-      "link": "https://www.spreaker.com/episode/the-ocarina-of-time-remake-is-stunning--75830823",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-16 22:45 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749829180",
-      "matched_game": "Kingdom Hearts II",
-      "matched_games": [
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:45 UTC"
-    },
-    {
-      "headline": "Real or fake emerald",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x7ubmf/real_or_fake_emerald/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:44 UTC"
-    },
-    {
-      "headline": "Been a PlayStation and Nintendo player for the past few years, and just built my first PC and would love to hear Xbox PC/Steam suggestions that I may have missed!",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x7ubms/been_a_playstation_and_nintendo_player_for_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:44 UTC"
-    },
-    {
-      "headline": "looking for a game with smooth like combat",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x7ub3p/looking_for_a_game_with_smooth_like_combat/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 22:43 UTC"
     }
   ]
 }
