@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-30: slower checks to save searches (18-hour cycle, Germany and Italy every 72 hours)
+
+- `CHECK_EVERY_HOURS`: `normal` and `staple` games 12 → 18 hours on the US and UK. The Rarest page's games (`rare`) stay at 12 hours; quiet, collection and Underrated games stay daily.
+- Germany and Italy `min_every_hours` 48 → 72 (France was already 72, Spain 96). `SITE_STALE_HOURS` in index.html is now 80 for DE, FR and IT (104 for ES), so a figure is dimmed only after its whole interval.
+- The dashboard dims a normal or staple figure after 20 hours (was 14) and says "Checked every 18 hours".
+- Tests: cadence and half-hour-early tests moved to 18 hours, the euro clocks to 72, dashboard fixtures aged to match.
+
 ## 2026-10-30: a German name for The Two Towers; a site's own renames come first
 
 - `regional_names` now takes a list for a euro site (`"DE"`) and it is read **before** the UK's rules that site borrows (`names_like`); before, a list of its own would have replaced them. Germany: "Lord of the Rings, The: The Two Towers" is searched as "Herr der Ringe: Die zwei Turme" (accents are dropped, as everywhere); German sellers list it as "(Der) Herr der Ringe: Die zwei Türme", seen in public eBay.de item titles in a web search, nothing from the API. The English wording no longer counts on Germany for this game.

@@ -134,7 +134,7 @@ MARKETS = {
     # knowledge of how German sellers list games, not yet checked against live listings: the first
     # run's listings file on the ebay-data branch shows what each rule left out.
     "EBAY_DE": {"label": "DE", "site": "www.ebay.de", "country": "DE", "currency": "EUR",
-                "extra": True, "min_every_hours": 48, "names_like": "UK",
+                "extra": True, "min_every_hours": 72, "names_like": "UK",
                 # Keyword search only: the probe counted listings by the words "ps2" and the category, which
                 # works; the "Platform" item specific is named and valued in German there, and a wrong
                 # guess would fail every lookup. The title must say PS2 or PlayStation 2 (PLATFORM_WORDS).
@@ -161,7 +161,7 @@ MARKETS = {
                                "disque seul", "jeu seul", "cd seul", "dvd seul", "loose")},
     # Italy (switched on 2026-10-14): as Germany and France, with Italian sellers' words.
     "EBAY_IT": {"label": "IT", "site": "www.ebay.it", "country": "IT", "currency": "EUR",
-                "extra": True, "min_every_hours": 48, "names_like": "UK", "keyword_only": True,
+                "extra": True, "min_every_hours": 72, "names_like": "UK", "keyword_only": True,
                 "foreign": ("ntsc", "usa", "us version", "us import", "slus", "scus"),
                 "junk": ("solo scatola", "solo custodia", "solo manuale", "solo libretto", "solo copertina",
                          "senza gioco", "senza disco", "custodia vuota", "scatola vuota", "difettoso",
@@ -188,7 +188,7 @@ SURGE_HOURS = 24             # a surge is judged over this long...
 SURGE_SOURCES = 2            # ...and needs this many different sources, each with its own headline,
 SURGE_QUIET_MENTIONS = 1     # ...for a game named at most this often in the rest of the window
 SURGE_HOLD_HOURS = 48        # once surging, a game stays surging this long after its last mention
-CHECK_EVERY_HOURS = {"surging": 0, "normal": 12, "staple": 12, "dormant": 24, "underrated": 24, "collection": 24, "rare": 12}   # 0 = every run
+CHECK_EVERY_HOURS = {"surging": 0, "normal": 18, "staple": 18, "dormant": 24, "underrated": 24, "collection": 24, "rare": 12}   # 0 = every run
 # (normal and staple were 6 until 2026-10-18; the saved searches price the games in people's collections: "collection")
 RARE_SLOW_KINDS = ("console", "edition")   # level "rare" but still daily: only the Rarest page's games are checked every 12 hours
 # The Rarest page's lists in rare_games.json, and the one site each is priced on: a rare PAL game

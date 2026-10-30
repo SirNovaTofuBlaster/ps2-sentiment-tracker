@@ -614,7 +614,7 @@ const samplePrices = () => ({
     games: {
         'Silent Hill 2': { level: 'staple', mentions: 9, pinned: true,
             US: { checked: '2026-10-06T10:00Z', copies: 97, lowest: 120, median: 220, postage: 5.99, truncated: true },
-            UK: { checked: '2026-10-05T19:00Z', copies: 47, lowest: 52.7, median: 104.69, postage: 3.29 } },
+            UK: { checked: '2026-10-05T11:00Z', copies: 47, lowest: 52.7, median: 104.69, postage: 3.29 } },
         'Gitaroo Man': { level: 'surging', mentions: 2, surging_until: '2026-10-08T09:00Z',
             US: { checked: '2026-10-06T11:50Z', copies: 1, lowest: 139.5, median: 139.5, postage: null } },
         'Jak X': { level: 'normal', mentions: 3,
@@ -648,7 +648,7 @@ await check('eBay prices page: every game, surging first, a line per site', () =
     // A row is the name (a link to the game's page), the US and UK medians and the cheapest euro one. Nothing else.
     assert.match(html, /<a class="game-link" href="#game=Silent%20Hill%202" onclick="return openGameLink\(event, &quot;Silent Hill 2&quot;\)"[^>]*>Silent Hill 2<\/a>/);
     assert.match(html, /<span class="ebay-quote" title="[^"]*"><span class="ebay-flag">US<\/span><b>\$220<\/b><\/span>/);
-    assert.match(html, /<span class="ebay-quote is-stale" title="[^"]*"><span class="ebay-flag">UK<\/span><b>£105<\/b><\/span>/, 'a staple is checked every 12 hours, so 17 hours is overdue');
+    assert.match(html, /<span class="ebay-quote is-stale" title="[^"]*"><span class="ebay-flag">UK<\/span><b>£105<\/b><\/span>/, 'a staple is checked every 18 hours, so 25 hours is overdue');
     assert.match(html, /<span class="ebay-quote" title="[^"]*"><span class="ebay-flag">US<\/span><b>\$34\.99<\/b><\/span>/, 'a quiet game is checked once a day, so 16 hours is not');
     assert.match(html, /<span class="ebay-note">no price yet<\/span>/, 'a game with no figure says so');
     assert.doesNotMatch(html, /<img/, 'titles are escaped');
@@ -799,7 +799,7 @@ await check("eBay medians sit beside a game's name wherever one is shown", async
     const page = gamePage('Silent Hill 2');
     assert.match(page, /<b class="ebay-median">\$220<\/b><span class="ebay-rest">median · from \$120 · 97<span title="[^"]*">\+<\/span> copies <span class="ebay-age" title="When eBay was last asked">· 2h ago<\/span>/);
     assert.match(page, /<b class="ebay-median">£105<\/b><span class="ebay-rest">median · from £52\.70 · 47 copies /);
-    assert.match(page, /<span class="ebay-site is-stale"><span class="ebay-flag">UK<\/span>/, 'a staple is checked every 12 hours, so 17 hours is overdue');
+    assert.match(page, /<span class="ebay-site is-stale"><span class="ebay-flag">UK<\/span>/, 'a staple is checked every 18 hours, so 25 hours is overdue');
     assert.match(page, /class="chart-open"/);
     assert.match(page, /class="price-links"/);
     assert.match(page, /href="https:\/\/www\.ebay\.com\/sch\/i\.html\?_nkw=Silent%20Hill%202%20ps2&amp;_sacat=139973&amp;LH_ItemCondition=2750%7C3000%7C4000%7C5000&amp;LH_BIN=1&amp;LH_PrefLoc=1"/);
@@ -907,7 +907,7 @@ await check('eBay prices: money and ages read naturally', () => {
     assert.equal(evalJson("staleFor({}, 8)"), 8);
     assert.equal(evalJson("staleFor(null, 8)"), 8);
     assert.deepEqual(evalJson('Object.fromEntries(Object.entries(LEVELS).map(([name, level]) => [name, level.stale]))'),
-        { surging: 3, staple: 14, normal: 14, dormant: 30, underrated: 30, collection: 30, rare: 30 }, 'normal games are checked every 12 hours; the rarest, quiet and collection games daily');
+        { surging: 3, staple: 20, normal: 20, dormant: 30, underrated: 30, collection: 30, rare: 30 }, 'normal games are checked every 18 hours; the rarest, quiet and collection games daily');
     assert.deepEqual(age('not a time'), { text: '', stale: true });
     assert.deepEqual(age('2026-10-06T13:00Z'), { text: '1 min ago', stale: false }, 'a clock that is slightly off does not show a negative age');
 });
@@ -1944,7 +1944,7 @@ await check('the sites the page shows are the ones the price job prices, each on
     assert.ok(evalJson("SITE_STALE_HOURS.DE") > Number(slower[1]), 'overdue only after a whole check interval and a bit more');
     assert.equal(evalJson("staleFor({}, 8, 'DE')"), evalJson('SITE_STALE_HOURS.DE'));
     assert.equal(evalJson("staleFor({}, 8, 'UK')"), 8, 'the UK is as before');
-    assert.equal(evalJson("staleFor({ steady: true }, 8, 'DE')"), 56);
+    assert.equal(evalJson("staleFor({ steady: true }, 8, 'DE')"), evalJson('SITE_STALE_HOURS.DE'), 'a site\'s own allowance is already longer than the steady one');
     // A German figure is shown in euros, beside its flag, and is not dimmed after nine hours.
     const html = evalJson(`priceSiteHtml('DE', { checked: '2026-10-06T03:00Z', copies: 12, lowest: 8, median: 14.5, postage: 3 }, 'EUR', ${Date.parse('2026-10-06T12:00:00Z')}, 'en-GB', staleFor({}, 8, 'DE'))`);
     assert.match(html, /<span class="ebay-flag">DE<\/span>/);
