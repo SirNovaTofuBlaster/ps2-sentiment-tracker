@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-30: one search for each game that has two spellings, with a weekly check that nothing is missed
+
+- `merge_duplicates()` groups the tracked games by `covers.json` `same` and the watchlist's `same_game` and searches only the spelling that found most copies at the last checks. A spelling is folded in only if it never finds more copies than the keeper on the US or the UK, is not pinned or surging and is not a Rarest, Underrated or collection game; its mentions, faster level and sealed sites go to the keeper. On the data of 2026-10-30 that is 24 spellings folded into their twin and 22 kept apart (36 groups).
+- A folded spelling leaves `latest.json`; the dashboard already gives such a spelling the keeper's figure, so nothing visible changes except 24 fewer rows on the eBay prices tab.
+- **Tracking**: each folded spelling is searched once a week on the US and UK (level `merged`, last in the queue) and `data/prices/audit.json` keeps its copies and median beside the keeper's from the same moment. `python tools/merged_report.py` flags any that find 3+ more copies and 1.5x the keeper's, which would mean the keeper's words miss copies.
+- Tests: `MergeSpellingsTests`, `MergeRunTests` (the whole job writes `audit.json`, drops the twin from `latest.json`, and waits a week).
+
 ## 2026-10-30: slower checks to save searches (18-hour cycle, Germany and Italy every 72 hours)
 
 - `CHECK_EVERY_HOURS`: `normal` and `staple` games 12 → 18 hours on the US and UK. The Rarest page's games (`rare`) stay at 12 hours; quiet, collection and Underrated games stay daily.

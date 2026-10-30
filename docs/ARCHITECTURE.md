@@ -386,6 +386,8 @@ A site added after the first two (`extra` in `MARKETS`; Germany so far) has its 
 
 On top of the levels, a `normal` or `staple` game that has priced the same for days on one site is looked up there every 48 hours (`is_steady()` in `ebay_prices.py`) and goes back to 18 hours as soon as a check differs.
 
+Spellings of one game (2026-10-30): before lookups are planned, `merge_duplicates()` groups the tracked games by `covers.json` `same` and the watchlist's `same_game`. In each group the spelling with the most copies at the last checks stands; another spelling is dropped only when it never found more copies than the keeper on the US or the UK, is not pinned or surging and is not on a Rarest, Underrated or collection list. Its mentions, faster level and sealed sites pass to the keeper. A dropped spelling leaves `latest.json` (so the dashboard's `shareSpellingPrices` gives it the keeper's figure), and `audit_lookups()` looks at it once a week on the US and UK after every other lookup; `update_audit()` writes the result beside the keeper's figure of that moment to `data/prices/audit.json`, which `tools/merged_report.py` reads. The searches show in `searches.json` under level `merged`.
+
 | `rare` | On the Rarest page and not tracked otherwise | Every 12 hours (consoles and editions: daily), on its list's site only |
 | `underrated` | On the Underrated page (`underrated.json`) and not tracked otherwise | Once a day, on the US and UK only |
 | `collection` | In at least one visitor's My collection (the crowd service's `GET /api/wanted`: game names only) and not tracked otherwise | Once a day, on the US and UK only |
