@@ -208,9 +208,17 @@ RARE_EURO_TOP = 50
 # the first nine days of history (docs/VERIFICATION.md): 0.4% of flagged moments saw a move over 10% within
 # the next two days.
 STEADY_EVERY_HOURS = 48
-STEADY_MIN_COPIES = 50
-STEADY_PRICE_RANGE = 0.10
-STEADY_COPIES_RANGE = 0.30
+STEADY_MIN_COPIES = 20      # 50 / 10% / 30% until 2026-10-30: the replay of that day found 206 + 122 steady US/UK pairs, these limits 290 + 236
+STEADY_PRICE_RANGE = 0.15
+STEADY_COPIES_RANGE = 0.40
+# A cheap common copy on the US or UK (2026-10-30): a normal or staple, unpinned game with CHEAP_MIN_COPIES or more listed whose
+# median asking price is under the site's limit (dollars on the US, pounds on the UK) is worth little per copy, so a move matters
+# less; it waits STEADY_EVERY_HOURS like a steady game and is marked steady, until a check lifts the median to the limit.
+CHEAP_COMMON_MEDIAN = {"US": 10.0, "UK": 8.0}
+CHEAP_MIN_COPIES = 20
+# A quiet (dormant) game on a euro site (2026-10-30): nobody has named it for two weeks, so it is looked up there weekly.
+# The figure is marked `slow`, and the dashboard dims it only after SLOW_STALE_HOURS (index.html).
+DORMANT_EURO_EVERY_HOURS = 168
 STEADY_LOOK_DAYS = 6
 STEADY_SPAN_DAYS = 4
 STEADY_MIN_ROWS = 3
@@ -1294,6 +1302,7 @@ def due_lookups(games, state, now, history=()):
         if game["level"] == "rare" and game.get("kind") in RARE_SLOW_KINDS:
             every = CHECK_EVERY_HOURS["dormant"] * 60     # consoles and editions: once a day, as before
         game["steady_on"] = []          # the sites on which it waits 48 hours, so the dashboard knows
+        game["slow_on"] = []            # the euro sites on which a quiet game waits a week
         for market_id, market in MARKETS.items():
             if game.get("sites"):                  # a game only on the Rarest page: its own list's site
                 if market_id not in game["sites"]:
@@ -1308,6 +1317,16 @@ def due_lookups(games, state, now, history=()):
                     and is_steady(steady_rows.get((game["key"], market["label"]), ()), now)):
                 wait = STEADY_EVERY_HOURS * 60
                 game["steady_on"].append(market["label"])
+            cheap_limit = CHEAP_COMMON_MEDIAN.get(market["label"])
+            if (cheap_limit and game["level"] in ("normal", "staple") and not game["pinned"] and isinstance(entry, dict)
+                    and isinstance(entry.get("copies"), int) and entry["copies"] >= CHEAP_MIN_COPIES
+                    and isinstance(entry.get("median"), (int, float)) and 0 < entry["median"] < cheap_limit):
+                wait = max(wait, STEADY_EVERY_HOURS * 60)
+                if market["label"] not in game["steady_on"]:
+                    game["steady_on"].append(market["label"])
+            if market.get("extra") and game["level"] == "dormant" and not game["pinned"] and checked:
+                wait = max(wait, DORMANT_EURO_EVERY_HOURS * 60)
+                game["slow_on"].append(market["label"])
             if (market.get("extra") and game["level"] != "surging" and not game["pinned"] and checked
                     and game["level"] != "rare"
                     and isinstance(entry, dict) and (entry.get("unmatched") or entry.get("copies") == 0)):
@@ -2144,6 +2163,10 @@ def update_records(state, games, run, now, rare_titles=None, edition_titles=None
                         old = {**old, "steady": True}
                     elif old.get("steady") and label not in game.get("steady_on", ()):
                         old = {key: value for key, value in old.items() if key != "steady"}
+                    if label in game.get("slow_on", ()) and "copies" in old and old.get("slow") is not True:
+                        old = {**old, "slow": True}
+                    elif old.get("slow") and label not in game.get("slow_on", ()):
+                        old = {key: value for key, value in old.items() if key != "slow"}
                     entry[label] = old
                 continue
             if "copies" in new:                 # a real answer; "unmatched" has no figures to record
@@ -2154,6 +2177,8 @@ def update_records(state, games, run, now, rare_titles=None, edition_titles=None
                 new["recorded"] = today                                     # the day of its latest history row
                 if label in game.get("steady_on", ()):
                     new["steady"] = True        # checked every 48 hours, so the dashboard must not call it overdue
+                if label in game.get("slow_on", ()):
+                    new["slow"] = True          # a quiet game on a euro site: checked weekly
             asked = parse_stamp(old.get("new_checked")) if old else None
             if asked and now - asked < timedelta(hours=3 * SEALED_EVERY_HOURS) and "new_checked" not in new and "new" not in new:
                 # This lookup did not ask for new copies (no room left, or not due): keep the last answer and its time, for 3 days.

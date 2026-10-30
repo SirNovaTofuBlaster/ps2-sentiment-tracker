@@ -904,6 +904,8 @@ await check('eBay prices: money and ages read naturally', () => {
     assert.equal(evalJson("staleFor({ steady: true }, 30)"), 56);
     assert.equal(evalJson("staleFor({ steady: true }, 3)"), 56);
     assert.equal(evalJson("staleFor({ steady: 'yes' }, 8)"), 8, 'only true counts');
+    assert.equal(evalJson("staleFor({ slow: true }, 30)"), 176, 'a quiet game on a euro site is checked weekly');
+    assert.equal(evalJson("staleFor({ slow: 'yes' }, 30)"), 30, 'only true counts');
     assert.equal(evalJson("staleFor({}, 8)"), 8);
     assert.equal(evalJson("staleFor(null, 8)"), 8);
     assert.deepEqual(evalJson('Object.fromEntries(Object.entries(LEVELS).map(([name, level]) => [name, level.stale]))'),

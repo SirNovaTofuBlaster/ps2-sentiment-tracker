@@ -726,3 +726,10 @@ Chosen: 50 copies, 10%. The built rule also looks 6 days back and allows copies 
 a game checked every 48 hours has fewer rows; on the same history it flags 217 pairs. Worst case: a
 steady game's price change appears up to two days late. Self-review only (no second reviewer yet).
 Revisit with a longer history.
+
+## 2026-10-30: wider steady limits, cheap commons, weekly quiet games on euro sites
+
+- Replay of `data/prices/2026-10.json` (53,672 rows) at 10:00 UTC on 2026-10-30 over the 579 normal/staple unpinned games: steady pairs US/UK were 206/122 with the old limits (50 copies, 10%, 30%), 290/236 with 20/15%/40% (chosen), 343/308 with 10/20%/50% and 382/380 with 5/25%/60% (both judged too loose: a 20-25% move could go unseen for two days).
+- A steady pair is checked every 48 hours instead of 18, so each extra pair saves about 0.8 lookups a day: roughly 200 searches a day for the chosen limits. This is an estimate; read `searches.json` after a day.
+- Cheap commons: 129 US games had 20+ copies at a median under $10 on 2026-10-30. Quiet games on the euro sites took about 120 of that day's searches (a partial day).
+- Self-review only.

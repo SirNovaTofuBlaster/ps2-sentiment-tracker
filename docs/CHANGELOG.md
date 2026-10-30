@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-30: cheaper checks for steady, cheap and quiet games
+
+- Steady limits widened: 20+ copies at every check (was 50), median within 15% (was 10%), copies within 40% (was 30%). Replay of the history on 2026-10-30: 206 US + 122 UK steady pairs before, 290 + 236 after (about 200 fewer searches a day). Re-run the replay (the replay: build `steady_index()` from the month file, then count `is_steady()` over the tracked pairs with the three limits changed) before loosening further.
+- Cheap common copies: a normal or staple, unpinned game on the US or UK with 20+ copies and a median under $10 (US) or £8 (UK) is looked up every 48 hours and marked steady (about 129 games on the US at the time).
+- Quiet (dormant) games on the euro sites are looked up weekly (about 120 searches a day before); their figure carries `slow: true` and the dashboard dims it only after 176 hours. US and UK are unchanged.
+- Untouched on purpose: the Rarest page (12 hours), consoles and editions.
+- Tests: `CheaperChecksTests`, a `slow` check in `dashboard_check.mjs`.
+
 ## 2026-10-30: one search for each game that has two spellings, with a weekly check that nothing is missed
 
 - `merge_duplicates()` groups the tracked games by `covers.json` `same` and the watchlist's `same_game` and searches only the spelling that found most copies at the last checks. A spelling is folded in only if it never finds more copies than the keeper on the US or the UK, is not pinned or surging and is not a Rarest, Underrated or collection game; its mentions, faster level and sealed sites go to the keeper. On the data of 2026-10-30 that is 24 spellings folded into their twin and 22 kept apart (36 groups).

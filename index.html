@@ -2161,7 +2161,10 @@
 
         // A steady figure (data/prices/latest.json "steady") is checked every 48 hours, not every 12.
         const STEADY_STALE_HOURS = 56;
-        const staleFor = (site, hours, label) => Math.max(site && site.steady === true ? Math.max(hours, STEADY_STALE_HOURS) : hours,
+        // A slow figure ("slow": a quiet game on a euro site) is checked weekly.
+        const SLOW_STALE_HOURS = 176;
+        const staleFor = (site, hours, label) => Math.max(site && site.slow === true ? Math.max(hours, SLOW_STALE_HOURS)
+            : site && site.steady === true ? Math.max(hours, STEADY_STALE_HOURS) : hours,
             own(SITE_STALE_HOURS, label) ? SITE_STALE_HOURS[label] : 0);
 
         function priceSiteHtml(label, site, currency, now, locale, staleHours) {
