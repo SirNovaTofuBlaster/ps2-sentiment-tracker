@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 07:53:29 UTC",
+  "last_updated": "2026-10-30 07:56:04 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-30 07:42 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming ICO",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750625313",
+      "matched_game": "ICO",
+      "matched_games": [
+        "ICO"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 07:38 UTC"
     },
     {
       "headline": "Looking for games that just feel cool / have cool finally.",
@@ -2747,16 +2766,18 @@
       "timestamp": "2026-10-30 02:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, God of War and Final Fantasy X",
+      "headline": "Thread on /v/ naming Eternal Ring, Final Fantasy X, Kingdom Hearts and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750614749",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Eternal Ring",
       "matched_games": [
+        "Eternal Ring",
+        "Final Fantasy X",
         "Kingdom Hearts",
         "God of War",
-        "Final Fantasy X"
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -339246,40 +339267,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 07:56 UTC"
-    },
-    {
-      "headline": "Pokémon platinum with bunch of other seemingly real carts. Fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x7a5ud/pokémon_platinum_with_bunch_of_other_seemingly/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 07:53 UTC"
-    },
-    {
-      "headline": "Is it just me or are game prices finally starting to feel reasonable again?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x7a5uw/is_it_just_me_or_are_game_prices_finally_starting/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 07:53 UTC"
     }
   ]
 }
