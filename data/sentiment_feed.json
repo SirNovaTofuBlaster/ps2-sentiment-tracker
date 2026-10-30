@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 19:17:27 UTC",
+  "last_updated": "2026-10-30 19:20:08 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -4051,18 +4051,18 @@
       "timestamp": "2026-10-30 16:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Fatal Frame and Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Fatal Frame",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750643872",
-      "matched_game": "Fatal Frame",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Fatal Frame",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Fatal Frame"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6931,15 +6931,17 @@
       "timestamp": "2026-10-30 14:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Deus Ex",
+      "headline": "Thread on /v/ naming Resident Evil 4, Metal Gear Solid 2: Sons of Liberty, Deus Ex and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750639291",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Metal Gear Solid 2: Sons of Liberty",
-        "Deus Ex"
+        "Deus Ex",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -337664,23 +337666,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 19:22 UTC"
-    },
-    {
-      "headline": "Rockstar delayed pc release after they saw this photo",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7pbse/rockstar_delayed_pc_release_after_they_saw_this/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 19:19 UTC"
     }
   ]
 }
