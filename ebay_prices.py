@@ -1169,14 +1169,6 @@ def due_lookups(games, state, now, history=()):
                 # changes, so it is asked every 48 hours (US and UK are never slowed this way); the dashboard gives it the steady figures' longer allowance.
                 wait = max(wait, QUIET_EVERY_HOURS * 60)
                 game["steady_on"].append(market["label"])
-            if (not market.get("extra") and game["level"] not in ("surging", "rare", "collection") and not game["pinned"] and checked
-                    and isinstance(entry, dict) and entry.get("unmatched")):
-                # US and UK, 2026-10-30: a game whose words found nothing at the last check (the listings came back but none
-                # named it, even after the second search by name and "ps2") is asked every 48 hours, not twice a day. Each such
-                # lookup costs two searches and about 70 pairs were doing it twice a day. Games with no copies listed are
-                # not slowed here: a copy appearing is news. Rarest, collection and pinned games keep their pace.
-                wait = max(wait, QUIET_EVERY_HOURS * 60)
-                game["steady_on"].append(market["label"])
             wait = max(wait, market.get("min_every_hours", 0) * 60)
             mentioned = game.get("latest_mention")
             if (game.get("watch") and not market.get("extra") and mentioned is not None and checked is not None

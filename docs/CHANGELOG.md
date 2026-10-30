@@ -4,12 +4,9 @@
 
 - Sellers list the game as "NBA Street Vol. 2", which is another library entry that already has copies on five sites; "NBA Street 2" found listings on four of its six sites but none named it. It is on the `never` list in `ebay_watchlist.json`, and the page shows the Vol. 2 figure for it (`covers.json` `same`). NFL Street 2, Splashdown and the other unmatched games were left as they were: the `ebay-data` branch is from 2026-10-13, so what eBay returns for them could not be read; use **check_game** to see.
 
-## 2026-10-30: unmatched games wait 48 hours on the US and UK
+## 2026-10-30: unmatched games are back on the 12-hour clock (revert)
 
-- Of 872 tracked games, 143 had a site whose search found listings but none naming the game (`unmatched`, 222 pairs: 66 on the US/UK, 156 on the euro sites). Each such lookup costs two searches (the PS2 item-specific search and the retry by name and "ps2"), and the US/UK ones were repeated twice a day.
-- A US or UK pair whose last check was `unmatched` is now asked every 48 hours (`QUIET_EVERY_HOURS`), as the euro sites already were. Games with no copies listed, pinned, surging, Rarest and collection games keep their pace.
-- Looked at and left alone: duplicate library spellings of one game (about 40 groups, roughly 70 searches a day) cost less than the unmatched pairs and some are different releases; only three of the unmatched games have a priced sibling, so a `never` list would not pay.
-- Test: `QuietUnmatchedUsUkTests`.
+- The 48-hour wait for unmatched US and UK pairs (the entry that stood here, PR #172) is reverted at the maintainer's request: it saved searches but hid the cause. The cause (why 143 games have a site whose listings never name them) is still to be found.
 
 ## 2026-10-28: sorting the eBay prices tab
 
