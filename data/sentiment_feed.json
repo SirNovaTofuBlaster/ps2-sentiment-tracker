@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 21:11:33 UTC",
+  "last_updated": "2026-10-30 21:14:19 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -273,6 +273,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 20:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750660608",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 20:52 UTC"
     },
     {
       "headline": "Searching for old Point and Click Game",
@@ -741,17 +760,18 @@
       "timestamp": "2026-10-30 20:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry",
+      "headline": "Thread on /v/ naming Deus Ex and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750658601",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Devil May Cry"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1236,13 +1256,14 @@
       "timestamp": "2026-10-30 20:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man",
+      "headline": "Thread on /v/ naming Just Cause and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750657589",
-      "matched_game": "Spider-Man",
+      "matched_game": "Just Cause",
       "matched_games": [
+        "Just Cause",
         "Spider-Man"
       ],
       "match_score": 100,
@@ -1877,6 +1898,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-30 19:28 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Burnout 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750655635",
+      "matched_game": "Burnout 3",
+      "matched_games": [
+        "Burnout 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 19:28 UTC"
     },
@@ -2758,17 +2798,18 @@
       "timestamp": "2026-10-30 18:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming LEGO Batman, Devil May Cry 2, Devil May Cry 3 and 1 more",
+      "headline": "Thread on /v/ naming Final Fantasy X, Devil May Cry 2, Devil May Cry 3 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750653442",
-      "matched_game": "LEGO Batman",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "LEGO Batman",
+        "Final Fantasy X",
         "Devil May Cry 2",
         "Devil May Cry 3",
-        "Devil May Cry"
+        "Devil May Cry",
+        "LEGO Batman"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338032,74 +338073,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-16 21:14 UTC"
-    },
-    {
-      "headline": "Real or fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x7s71s/real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:13 UTC"
-    },
-    {
-      "headline": "Help with setting up sideways wiimote gyro tilt controls on dolphin",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x7s7gf/help_with_setting_up_sideways_wiimote_gyro_tilt/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:13 UTC"
-    },
-    {
-      "headline": "[Story Time!] Checked out a new store today..",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x7s5z2/story_time_checked_out_a_new_store_today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:11 UTC"
-    },
-    {
-      "headline": "about to buy a used 2080, im not making a mistake right?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7s61r/about_to_buy_a_used_2080_im_not_making_a_mistake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 21:11 UTC"
     }
   ]
 }
