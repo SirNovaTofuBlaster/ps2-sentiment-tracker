@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 18:20:28 UTC",
+  "last_updated": "2026-10-30 18:23:12 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -118,6 +118,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-30 18:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Da Vinci Code",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750650810",
+      "matched_game": "The Da Vinci Code",
+      "matched_games": [
+        "The Da Vinci Code"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 18:09 UTC"
     },
@@ -18289,19 +18308,20 @@
       "timestamp": "2026-10-29 22:53 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Silent Hill 2 and Silent Hill 3",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Silent Hill 2, Kingdom Hearts II and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750604852",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Kingdom Hearts II",
+        "Metal Gear Solid 3: Snake Eater",
         "Silent Hill 2",
+        "Kingdom Hearts II",
         "Silent Hill 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -158319,7 +158339,7 @@
       "timestamp": "2026-10-24 06:32 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Alone in the Dark, Fatal Frame, Resident Evil Outbreak and 6 more",
+      "headline": "Thread on /vg/ naming Alone in the Dark, Fatal Frame, Resident Evil Outbreak and 7 more",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -158334,7 +158354,8 @@
         "Silent Hill 2",
         "Project Zero II",
         "Silent Hill 3",
-        "The Punisher"
+        "The Punisher",
+        "Resident Evil Code: Veronica X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -337647,98 +337668,6 @@
       "hype": 0,
       "timestamp": "2026-10-16 18:23 UTC",
       "views": 58808
-    },
-    {
-      "headline": "Thread on /v/ naming Katamari Damacy and Grand Theft Auto: San Andreas",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749814413",
-      "matched_game": "Katamari Damacy",
-      "matched_games": [
-        "Katamari Damacy",
-        "Grand Theft Auto: San Andreas"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-16 18:22 UTC"
-    },
-    {
-      "headline": "Se filtra 'Shrek 2 Remastered': El clásico juego de 2004 regresará en 4K y con cooperativo para 4 jugadores",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/shrek-2-the-game/115074/shrek-2-remastered",
-      "matched_game": "Shrek 2",
-      "matched_games": [
-        "Shrek 2"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-16 18:22 UTC"
-    },
-    {
-      "headline": "Watch Out GTA 6, A Shrek 2 Remaster Was Just Announced",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/shrek-2-remaster-leaks-looks-amazing-and-i-need-it-now/",
-      "matched_game": "Shrek 2",
-      "matched_games": [
-        "Shrek 2"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 2,
-      "timestamp": "2026-10-16 18:21 UTC"
-    },
-    {
-      "headline": "We thought someone would've made this game by now...",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x7ntte/we_thought_someone_wouldve_made_this_game_by_now/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 18:21 UTC"
-    },
-    {
-      "headline": "All FC 27 Ultimate Gauntlet 2 rewards and tasks",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/all-fc-27-ultimate-gauntlet-2-rewards-and-tasks/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 18:20 UTC"
     }
   ]
 }
