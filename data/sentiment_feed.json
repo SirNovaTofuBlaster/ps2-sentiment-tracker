@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 05:02:29 UTC",
+  "last_updated": "2026-10-30 05:05:17 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -71,6 +71,26 @@
       "timestamp": "2026-10-30 04:50 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Grand Theft Auto III and Silent Hill 4: The Room",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12903864",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III",
+        "Silent Hill 4: The Room"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 04:50 UTC"
+    },
+    {
       "headline": "Help me choose my next game after Fortune's Weave!!",
       "source": "r/JRPG",
       "source_type": "reddit",
@@ -86,6 +106,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 04:49 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/586109191",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 04:47 UTC"
     },
     {
       "headline": "Is it weird to collect PS3 games even though I don’t own the console?",
@@ -135,6 +174,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-30 04:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750620015",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 04:38 UTC"
     },
@@ -343,6 +401,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 04:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750618983",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 04:09 UTC"
     },
     {
       "headline": "Nintendo Today - Happy Halloween 2026",
@@ -680,18 +757,18 @@
       "timestamp": "2026-10-30 03:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Half-Life",
+      "headline": "Thread on /v/ naming Half-Life and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750617456",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Half-Life",
       "matched_games": [
-        "Resident Evil 4",
-        "Half-Life"
+        "Half-Life",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1093,6 +1170,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 02:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X-2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750615885",
+      "matched_game": "Final Fantasy X-2",
+      "matched_games": [
+        "Final Fantasy X-2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 02:44 UTC"
     },
     {
       "headline": "There goes any hope of me getting a 9060 XT",
@@ -8703,7 +8799,7 @@
         "Persona 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
