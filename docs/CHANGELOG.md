@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-30: a German name for The Two Towers; a site's own renames come first
+
+- `regional_names` now takes a list for a euro site (`"DE"`) and it is read **before** the UK's rules that site borrows (`names_like`); before, a list of its own would have replaced them. Germany: "Lord of the Rings, The: The Two Towers" is searched as "Herr der Ringe: Die zwei Turme" (accents are dropped, as everywhere); German sellers list it as "(Der) Herr der Ringe: Die zwei Türme", seen in public eBay.de item titles in a web search, nothing from the API. The English wording no longer counts on Germany for this game.
+- Cross-check of the 142 unmatched games (2026-10-30): 81 are unmatched only on euro sites and have copies elsewhere, 39 are unmatched on the US or UK as well but have copies somewhere, 15 are matched nowhere. Looking up the official titles of the likeliest ones found that most keep their English name abroad (Shrek SuperSlam is "Shrek SuperSlam" on eBay.de), so a missing language is the cause for few of them; many are probably "no copy of exactly this game listed there", which eBay's loose keyword search hides by returning other games. The `near` counts (PR #175) will say which. Only the Two Towers was renamed.
+- Tests: `GermanyTests` (own names first, a German listing counts, the English one does not).
+
 ## 2026-10-30: finding why games are "unmatched" (near misses) and names sellers split in two
 
 - **Near misses**: when a lookup counts no copy, the listings left out as another game are sorted by how close they came to the name and only counted: `number` (the name is there but runs into another number, or the listing names another number of the series), `sibling`, `scattered` (every word of the name is in the listing, not together: "Turtles 3 TMNT Mutant Nightmare") and `partial`. Written to `data/prices/searches.json` as `near` (per day) and `near_games` (per game, top 100); never a title. `python tools/search_report.py` prints them. Read a day of them before loosening anything else.

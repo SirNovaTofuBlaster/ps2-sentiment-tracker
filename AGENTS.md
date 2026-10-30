@@ -305,7 +305,7 @@ Before you call something done, prove it; don't assume it.
     is Canis Canem Edit). Searched under the US name, eBay UK finds no PAL copy (Fatal Frame 2
     showed 0 copies on 2026-10-08 while eBay US had 16). `regional_names` in
     `ebay_watchlist.json` renames the start of a game's name per site; the UK search, the name
-    check and the list of other games (`siblings`) all use the renamed words. Add a rule there,
+    check and the list of other games (`siblings`) all use the renamed words. A euro site may have a list of its own (`"DE"`, since 2026-10-30): it is read before the UK's rules that site borrows. Add a rule there,
     with the PAL box title, when a UK figure is missing for a game that sold in Europe.
   - A listing is checked against a game's name with every "the" removed from both (`the_less()`, 2026-10-14):
     sellers write "Prince of Persia: The Sands of Time" for the library's "Sands of Time", which used to leave
