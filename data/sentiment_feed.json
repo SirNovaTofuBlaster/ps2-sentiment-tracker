@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 04:24:49 UTC",
+  "last_updated": "2026-10-30 04:38:50 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -37,6 +37,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 04:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750618217",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 03:49 UTC"
     },
     {
       "headline": "Thread on /v/ naming Persona 4, Final Fantasy X and Deus Ex",
@@ -96,17 +115,18 @@
       "timestamp": "2026-10-30 03:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750617456",
-      "matched_game": "Half-Life",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1351,6 +1371,25 @@
       "timestamp": "2026-10-30 01:19 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750612039",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 01:18 UTC"
+    },
+    {
       "headline": "Steam Deck showing KDE login rather than going into gaming mode?",
       "source": "r/SteamDeck",
       "source_type": "reddit",
@@ -1811,20 +1850,21 @@
       "timestamp": "2026-10-30 00:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Fatal Frame, Kingdom Hearts, Haunting Ground and 1 more",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Haunting Ground, Silent Hill 3 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750609938",
-      "matched_game": "Fatal Frame",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Fatal Frame",
-        "Kingdom Hearts",
+        "Resident Evil Code: Veronica X",
         "Haunting Ground",
-        "Silent Hill 3"
+        "Silent Hill 3",
+        "Fatal Frame",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -7484,15 +7524,15 @@
       "timestamp": "2026-10-29 19:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy X-2 and Silent Hill 2",
+      "headline": "Thread on /v/ naming Final Fantasy X-2, Final Fantasy X and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750594304",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Final Fantasy X-2",
       "matched_games": [
-        "Final Fantasy X",
         "Final Fantasy X-2",
+        "Final Fantasy X",
         "Silent Hill 2"
       ],
       "match_score": 100,
@@ -27666,18 +27706,19 @@
       "timestamp": "2026-10-29 01:48 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming NHL 2001 and Smuggler's Run",
+      "headline": "Thread on /vr/ naming Final Fantasy X, NHL 2001 and Smuggler's Run",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12901991",
-      "matched_game": "NHL 2001",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
         "NHL 2001",
         "Smuggler's Run"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338962,96 +339003,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 04:38 UTC"
-    },
-    {
-      "headline": "Is DDR5 actually that important?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x76y07/is_ddr5_actually_that_important/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 04:37 UTC"
-    },
-    {
-      "headline": "Thread on /vm/ naming Top Gun",
-      "source": "4chan /vm/",
-      "source_type": "4chan",
-      "feed": "4chan:vm",
-      "link": "https://boards.4chan.org/vm/thread/3073669",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-16 04:34 UTC"
-    },
-    {
-      "headline": "🎃🧠👁️🫀Here some retro games that went all-in on body horror.🫁🦴🦶🎃",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x76uu7/here_some_retro_games_that_went_allin_on_body/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 04:32 UTC"
-    },
-    {
-      "headline": "Help me understand this concept.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x76sqb/help_me_understand_this_concept/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 04:29 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Persona 3 and Persona 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749781759",
-      "matched_game": "Persona 3",
-      "matched_games": [
-        "Persona 3",
-        "Persona 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-16 04:27 UTC"
     }
   ]
 }
