@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 05:59:29 UTC",
+  "last_updated": "2026-10-30 06:02:07 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -258,6 +258,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-30 05:12 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750620965",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 05:12 UTC"
     },
@@ -1259,17 +1278,19 @@
       "timestamp": "2026-10-30 03:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex",
+      "headline": "Thread on /v/ naming LEGO Star Wars, Sonic Riders and Deus Ex",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750617143",
-      "matched_game": "Deus Ex",
+      "matched_game": "LEGO Star Wars",
       "matched_games": [
+        "LEGO Star Wars",
+        "Sonic Riders",
         "Deus Ex"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339513,57 +339534,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 06:03 UTC"
-    },
-    {
-      "headline": "PEAK pone fecha a su llegada a PS5, XBOX Series y Switch 2 y confirma su edición física en España",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026289001/peak-pone-fecha-a-su-llegada-a-ps5-xbox-series-y-switch-2-y-confirma-su-edicion-fisica-en-espana/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 06:01 UTC"
-    },
-    {
-      "headline": "Free Talk Friday!",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x78c7p/free_talk_friday/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 06:00 UTC"
-    },
-    {
-      "headline": "Famitsu software sales (10/5/26 – 10/11/26) – Top 30",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/famitsu-software-sales-10-5-26-10-11-26-top-30/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 06:00 UTC"
     }
   ]
 }
