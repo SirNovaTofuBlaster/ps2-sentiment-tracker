@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-30 05:09:46 UTC",
+  "last_updated": "2026-10-30 05:18:48 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750620787",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 05:06 UTC"
+    },
     {
       "headline": "Day 834 of posting a Daily Screenshot from the games I've been playing",
       "source": "Forum: Lemmy games",
@@ -28644,19 +28663,19 @@
       "timestamp": "2026-10-29 01:48 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Final Fantasy X, NHL 2001 and Smuggler's Run",
+      "headline": "Thread on /vr/ naming NHL 2001, Smuggler's Run and Final Fantasy X",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12901991",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "NHL 2001",
       "matched_games": [
-        "Final Fantasy X",
         "NHL 2001",
-        "Smuggler's Run"
+        "Smuggler's Run",
+        "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339562,94 +339581,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 05:19 UTC"
-    },
-    {
-      "headline": "WSIB Games with easy/story/baby modes?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x77mwg/wsib_games_with_easystorybaby_modes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 05:17 UTC"
-    },
-    {
-      "headline": "Regarding Xbox - Big Walk by House House",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x77lf5/regarding_xbox_big_walk_by_house_house/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 05:14 UTC"
-    },
-    {
-      "headline": "So I guess computers are just done for?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x77l6k/so_i_guess_computers_are_just_done_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 05:14 UTC"
-    },
-    {
-      "headline": "Can PS2 games blow my kids’ minds today???",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1x77jd2/can_ps2_games_blow_my_kids_minds_today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 05:11 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X and Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749783273",
-      "matched_game": "Resident Evil Code: Veronica X",
-      "matched_games": [
-        "Resident Evil Code: Veronica X",
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-16 05:09 UTC"
     }
   ]
 }
