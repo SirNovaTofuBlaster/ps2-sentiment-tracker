@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 03:08:37 UTC",
+  "last_updated": "2026-10-30 03:11:18 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -362,6 +362,27 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 02:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts, God of War and Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750614749",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "God of War",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 02:18 UTC"
     },
     {
       "headline": "I just dug up my old PlayStation Vita 1000 handheld from 2012 in the basement of my house tonight!",
@@ -339703,26 +339724,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 03:12 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Kingdom Hearts",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749778889",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-16 03:10 UTC"
     }
   ]
 }
