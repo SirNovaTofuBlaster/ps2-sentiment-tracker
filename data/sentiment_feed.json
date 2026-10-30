@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 10:44:30 UTC",
+  "last_updated": "2026-10-30 10:47:09 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1149,13 +1149,14 @@
       "timestamp": "2026-10-30 08:56 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man 2",
+      "headline": "Thread on /v/ naming The Warriors and Spider-Man 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750627462",
-      "matched_game": "Spider-Man 2",
+      "matched_game": "The Warriors",
       "matched_games": [
+        "The Warriors",
         "Spider-Man 2"
       ],
       "match_score": 100,
@@ -2665,6 +2666,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-30 05:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming One Piece: Grand Battle",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750621137",
+      "matched_game": "One Piece: Grand Battle",
+      "matched_games": [
+        "One Piece: Grand Battle"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 05:17 UTC"
     },
@@ -338769,40 +338789,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-16 10:47 UTC"
-    },
-    {
-      "headline": "Echt ? Deutsche Version",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x7cwmi/echt_deutsche_version/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-16 10:44 UTC"
-    },
-    {
-      "headline": "Semifinals: The brutal war to determine the best RTS unit of all time needs your votes",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/rts/semifinals-the-brutal-war-to-determine-the-best-rts-unit-of-all-time-needs-your-votes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-16 10:44 UTC"
     }
   ]
 }
