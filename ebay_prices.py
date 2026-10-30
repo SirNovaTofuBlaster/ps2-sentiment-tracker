@@ -728,9 +728,10 @@ def load_regional_names(path=None):
                 raise EbayError(f'{name}: rename {position} for {label} ("{rename["to"]}") does not work as eBay '
                                 'search words: use the full name, of two words or more.')
             rules.setdefault(labels[label], []).append((old, old_queries[0], new, new_queries[0]))
-    for market_id, market in MARKETS.items():          # a site that goes by another site's names
-        if market.get("names_like") and market_id not in rules:
-            rules[market_id] = list(rules.get(labels[market["names_like"]], ()))
+    for market_id, market in MARKETS.items():          # a site that goes by another site's names...
+        if market.get("names_like"):
+            # ...and by its own first (2026-10-30): a rule written for Germany wins, the UK's still apply to the rest.
+            rules[market_id] = list(rules.get(market_id, ())) + list(rules.get(labels[market["names_like"]], ()))
     return rules
 
 

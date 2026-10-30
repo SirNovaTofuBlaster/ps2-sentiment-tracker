@@ -1292,7 +1292,21 @@ class GermanyTests(unittest.TestCase):
     def test_the_names_germany_sells_games_under_are_the_uks(self):
         rules = ebay_prices.load_regional_names()
         self.assertTrue(rules["EBAY_GB"], "the UK has renames")
-        self.assertEqual(rules["EBAY_DE"], rules["EBAY_GB"])
+        self.assertEqual(rules["EBAY_DE"][-len(rules["EBAY_GB"]):], rules["EBAY_GB"], "the UK's renames still apply on Germany")
+
+    def test_germany_has_its_own_names_first_and_a_german_listing_counts(self):
+        """2026-10-30: German sellers list the third-person-less "Herr der Ringe: Die zwei Turme"."""
+        rules = ebay_prices.load_regional_names()
+        towers = game("Lord of the Rings, The: The Two Towers")
+        placed = ebay_prices.apply_regional_names([dict(towers, siblings=[])], rules, [])[0]
+        self.assertEqual(placed["markets"]["EBAY_DE"]["search"], "herr der ringe die zwei turme")
+        on_de = ebay_prices.for_market(placed, "EBAY_DE")
+        for number, title in enumerate(("Der Herr der Ringe: Die zwei T\u00fcrme PlayStation 2 (PS2) Spiel komplett",
+                                        "Herr der Ringe Die zwei T\u00fcrme Playstation 2 PS2"), 1):
+            result = ebay_prices.summarise(page(listing(title, 12, "EUR", item_id=number))[1], on_de, DE, True)
+            self.assertEqual(result["counted"], 1, title)
+        english = ebay_prices.summarise(page(listing("Lord of the Rings The Two Towers PS2", 12, "EUR", item_id=9))[1], on_de, DE, True)
+        self.assertEqual(english["counted"], 0, "on Germany the German name is the one asked for")
 
     def test_it_is_priced_in_euros_on_its_own_slower_clock_and_the_first_two_sites_are_unchanged(self):
         sandbox = Sandbox(self, feed=[mention("Kuon", 5, "r/ps2")])
@@ -2781,6 +2795,7 @@ class RegionalNameTests(unittest.TestCase):
         self.sandbox.write("ebay_watchlist.json", {"games": []})
         self.assertEqual(self.rules(), {}, "the list is optional")
 
+    @mock.patch.dict(ebay_prices.MARKETS, EXTRA_SITES)   # the committed file names Germany too
     def test_the_committed_renames_load_and_rename_real_library_titles(self):
         rules = ebay_prices.load_regional_names(ROOT / "ebay_watchlist.json")["EBAY_GB"]
         for title, uk in (("Fatal Frame 2: Crimson Butterfly", "project zero 2 crimson butterfly"),
@@ -3560,6 +3575,7 @@ class WinningEleven7Tests(unittest.TestCase):
     """Winning Eleven 7 World Soccer: International showed no price (2026-10-17): sellers write "Winning Eleven 7
     International", and on eBay UK it is Pro Evolution Soccer 3, so the library's long name matched no listing."""
 
+    @mock.patch.dict(ebay_prices.MARKETS, EXTRA_SITES)   # the committed file names Germany too
     def test_it_is_searched_by_its_short_name_and_by_its_pal_name_on_the_euro_and_uk_sites(self):
         pinned, _ = ebay_prices.load_watchlist()
         game = next(row for row in pinned if row["title"] == "Winning Eleven 7 World Soccer: International")
