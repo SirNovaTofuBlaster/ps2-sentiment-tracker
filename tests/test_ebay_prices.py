@@ -1941,10 +1941,11 @@ class CheaperChecksTests(unittest.TestCase):
             entry = dict(game("Kuon"), **change)
             self.assertEqual(sorted(self.due(entry, self.state("Kuon", AFTER, copies=40, median=6.0))), ["EBAY_GB", "EBAY_US"], change)
 
-    @mock.patch.dict(ebay_prices.MARKETS, EXTRA_SITES)
     def test_a_quiet_game_is_looked_up_weekly_on_a_euro_site_and_marked_slow(self):
-        for market in ebay_prices.MARKETS.values():
-            market["min_every_hours"] = 0
+        free = {market_id: dict(market, min_every_hours=0) for market_id, market in EXTRA_SITES.items()}
+        patcher = mock.patch.dict(ebay_prices.MARKETS, free)
+        patcher.start()
+        self.addCleanup(patcher.stop)
         entry = game("Kuon", level="dormant")
         state = self.state("Kuon", 100, copies=5, median=30.0)
         self.assertNotIn("EBAY_DE", self.due(entry, state))
