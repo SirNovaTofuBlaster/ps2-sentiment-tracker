@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 02:03:36 UTC",
+  "last_updated": "2026-10-31 02:12:51 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1721,6 +1721,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-30 23:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Sonic Riders",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750670370",
+      "matched_game": "Sonic Riders",
+      "matched_games": [
+        "Sonic Riders"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 23:58 UTC"
     },
@@ -147378,7 +147397,7 @@
       "views": 310
     },
     {
-      "headline": "Thread on /vg/ naming Kingdom Hearts, Kingdom Hearts II, The Bouncer and 1 more",
+      "headline": "Thread on /vg/ naming Kingdom Hearts, Kingdom Hearts II, The Bouncer and 3 more",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -147388,7 +147407,9 @@
         "Kingdom Hearts",
         "Kingdom Hearts II",
         "The Bouncer",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Fight Club",
+        "Home Alone"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338224,78 +338245,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 02:12 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749838809",
-      "matched_game": "Resident Evil Code: Veronica X",
-      "matched_games": [
-        "Resident Evil Code: Veronica X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 02:10 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Deus Ex",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749838735",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 02:09 UTC"
-    },
-    {
-      "headline": "EmuDeck not launching",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x7ygwp/emudeck_not_launching/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 02:08 UTC"
-    },
-    {
-      "headline": "If Steam was ordered by law to shut down within 30 days, which games in your backlog are you racing to finish?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7yg9v/if_steam_was_ordered_by_law_to_shut_down_within/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 02:07 UTC"
     }
   ]
 }
