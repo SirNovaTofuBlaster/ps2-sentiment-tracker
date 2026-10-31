@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 19:42:04 UTC",
+  "last_updated": "2026-10-31 19:46:54 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -7155,17 +7155,18 @@
       "timestamp": "2026-10-31 13:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750698615",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "Final Fantasy XII"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9375,18 +9376,19 @@
       "timestamp": "2026-10-31 09:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Max Payne",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Max Payne and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750692932",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
-        "Max Payne"
+        "Kingdom Hearts",
+        "Max Payne",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338047,111 +338049,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 19:50 UTC"
-    },
-    {
-      "headline": "Survive The Apocalypse (Available on Steam Next Fest)",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1x8jc2z/survive_the_apocalypse_available_on_steam_next/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 19:45 UTC"
-    },
-    {
-      "headline": "Mess around sandbox with vehicles and weapons.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x8jc4s/mess_around_sandbox_with_vehicles_and_weapons/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 19:45 UTC"
-    },
-    {
-      "headline": "(UK) Will this run games at 1080p? And it it a terrible deal?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8jaxo/uk_will_this_run_games_at_1080p_and_it_it_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-17 19:44 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749880902",
-      "matched_game": "Kingdom Hearts II",
-      "matched_games": [
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 19:44 UTC"
-    },
-    {
-      "headline": "Let’s talk about the RTX 5050",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8j9by/lets_talk_about_the_rtx_5050/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 19:42 UTC"
-    },
-    {
-      "headline": "ROBLOX PIGGY 2 ALL JUMPSCARES",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/watch?v=kjbnUPr9IHA",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 19:42 UTC",
-      "views": 7933
     }
   ]
 }
