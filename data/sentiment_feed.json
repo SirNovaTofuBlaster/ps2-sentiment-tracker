@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 11:33:40 UTC",
+  "last_updated": "2026-10-31 11:42:52 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -532,6 +532,25 @@
       "matched_game": "Monster Hunter",
       "matched_games": [
         "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 10:28 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750694062",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1354,19 +1373,19 @@
       "timestamp": "2026-10-31 09:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Gregory Horror Show, Resident Evil 4, Fatal Frame and 3 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Fatal Frame, The Godfather and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750692487",
-      "matched_game": "Gregory Horror Show",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Gregory Horror Show",
         "Resident Evil 4",
         "Fatal Frame",
         "The Godfather",
         "Spider-Man",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Gregory Horror Show"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1762,18 +1781,18 @@
       "timestamp": "2026-10-31 08:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750691165",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
-        "Kingdom Hearts",
-        "Kingdom Hearts II"
+        "Kingdom Hearts II",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338170,134 +338189,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 11:45 UTC"
-    },
-    {
-      "headline": "What If Video Games Came on VHS? One Modder Is Finding Out",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53243466",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 11:41 UTC"
-    },
-    {
-      "headline": "GUN",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/YwnsZojEK_A",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 11:41 UTC",
-      "views": 3496
-    },
-    {
-      "headline": "Thread on /v/ naming Cowboy Bebop, Persona 4, Silent Hill 2 and 2 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749857341",
-      "matched_game": "Cowboy Bebop",
-      "matched_games": [
-        "Cowboy Bebop",
-        "Persona 4",
-        "Silent Hill 2",
-        "Haunting Ground",
-        "Dynasty Warriors 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 11:41 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming SoulCalibur II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749857214",
-      "matched_game": "SoulCalibur II",
-      "matched_games": [
-        "SoulCalibur II"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 11:37 UTC"
-    },
-    {
-      "headline": "What are some stinker songs in soundtraks everyone claims is epic or whatever?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x881wj/what_are_some_stinker_songs_in_soundtraks/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 11:35 UTC"
-    },
-    {
-      "headline": "What was the last game that you were very excited & waiting by desktop/ps5 for the release time gate open, to download and play?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x881a5/what_was_the_last_game_that_you_were_very_excited/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 11:34 UTC"
-    },
-    {
-      "headline": "Pokémon Platinum (French Version)",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x880gb/pokémon_platinum_french_version/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 11:33 UTC"
     }
   ]
 }
