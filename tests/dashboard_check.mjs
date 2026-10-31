@@ -3451,6 +3451,40 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
         assert.doesNotMatch(el('marketGrid').innerHTML, /<script|<img/);
         run(`marketSetSearch(''); marketSetCat('sealed'); showView('dashboard')`);
     }
+    // Worst: the file, its two regions and the page.
+    {
+        const raw = JSON.parse(read('worst_games.json'));
+        const database = JSON.parse(read('data/ps2_database.json'));
+        const library = new Set((Array.isArray(database) ? database : database.games || []).map(g => typeof g === 'string' ? g : g.title || g.name));
+        assert.ok(raw.games.length >= 10, 'the games found so far');
+        for (const g of raw.games) {
+            assert.ok(library.has(g.title), `${g.title} is a library name`);
+            assert.match(g.url, /^https:\/\//, `${g.title} has a source link`);
+            assert.ok(Array.isArray(g.regions) && g.regions.every(r => r === 'PAL' || r === 'US'), `${g.title}: regions are PAL and US only`);
+            assert.ok(g.score === null || (Number.isFinite(g.score) && g.score >= 0 && g.score <= 100), `${g.title}: a score out of 100 or none`);
+        }
+        assert.ok(raw.games.some(g => g.regions.includes('PAL')) && raw.games.some(g => g.regions.includes('US')), 'both regions have games');
+        run(`worstData = cleanWorstData(${JSON.stringify(raw)}); worstFileState = 'ready'; worstRegion = 'PAL'`);
+        run(`showView('worst', false)`);
+        assert.equal(el('viewWorst').classList.contains('hidden'), false);
+        assert.equal(el('tabWorst').classList.contains('is-active'), true);
+        assert.equal(run(`isView('worst')`), true, '#worst opens the page');
+        const pal = el('worstList').innerHTML;
+        assert.ok(pal.indexOf('Little Britain') < pal.indexOf('Gravity Games'), 'worst score first');
+        assert.ok(pal.indexOf('Gravity Games') < pal.indexOf('Charlie'), 'a game with no score last');
+        assert.doesNotMatch(pal, /Mike Tyson/, 'a game of unconfirmed region is not in a region list');
+        assert.match(el('worstOther').innerHTML, /Mike Tyson/);
+        run(`worstSetRegion('US')`);
+        assert.match(el('worstList').innerHTML, /Gravity Games/);
+        assert.doesNotMatch(el('worstList').innerHTML, /Little Britain/, 'a PAL-only game is not in the US list');
+        assert.equal(run(`worstSetRegion('XX')`), undefined);
+        assert.equal(run(`worstRegion`), 'US', 'an unknown region changes nothing');
+        const bad = evalJson(`cleanWorstData({ games: [{ title: '<img src=x>', regions: ['PAL','JP'], score: 'x', url: 'javascript:alert(1)' }, { title: '' }, 5] })`);
+        assert.deepEqual([bad.games.length, bad.games[0].regions, bad.games[0].score, bad.games[0].url], [1, ['PAL'], null, '']);
+        run(`worstData = null; worstFileState = 'failed'; renderWorst()`);
+        assert.match(el('worstSummary').textContent, /could not be loaded/);
+        run(`showView('dashboard', false)`);
+    }
     // Underrated: the file, the daily pick (random, the same all day, no repeat within a round) and the page.
     {
         const raw = JSON.parse(read('underrated.json'));

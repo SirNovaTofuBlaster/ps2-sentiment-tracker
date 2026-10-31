@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-31: the Worst page
+
+- New tab **Worst**, right of Rarest (`#worst`): the lowest critic scores found for PS2 games, worst first, with PAL and US buttons and each game's eBay figures where the tracker already prices it (4 of the 11 on the day: Mike Tyson Heavyweight Boxing, MTV's Celebrity Deathmatch, Fight Club, Charlie's Angels). Games whose release region no page confirmed are listed apart ("region not confirmed"), not placed in a region.
+- `worst_games.json` holds 11 games read from Wikipedia and one blog; Charlie's Angels is PAL-only on PS2 and has no PS2 score (its Metacritic 23 is the GameCube version). No popular-vote ranking: none could be read.
+- retro.css `v=20261031a`. Tests: a Worst block in `dashboard_check.mjs` (library names, source links, regions, order, bad input). Guide: "Ten pages", `#worst` and a section.
+
 ## 2026-10-30: cheaper checks for steady, cheap and quiet games
 
 - Steady limits widened: 20+ copies at every check (was 50), median within 15% (was 10%), copies within 40% (was 30%). Replay of the history on 2026-10-30: 206 US + 122 UK steady pairs before, 290 + 236 after (about 200 fewer searches a day). Re-run the replay (the replay: build `steady_index()` from the month file, then count `is_steady()` over the tracked pairs with the three limits changed) before loosening further.
