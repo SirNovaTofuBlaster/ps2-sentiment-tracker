@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 02:35:48 UTC",
+  "last_updated": "2026-10-31 02:40:50 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -5880,6 +5880,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 20:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750657696",
+      "matched_game": "The Sims 2",
+      "matched_games": [
+        "The Sims 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 20:02 UTC"
     },
     {
       "headline": "Would you buy this tote for $40?",
@@ -338258,40 +338277,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 02:43 UTC"
-    },
-    {
-      "headline": "Steam Deck OLED / The Last Guardian - New PC Port Performance / SteamOS 3.9.2",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x7z1by/steam_deck_oled_the_last_guardian_new_pc_port/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 02:38 UTC"
-    },
-    {
-      "headline": "I beat DQ 11 on the switch 1, do you think I should get the Switch 2 version?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x7yzjh/i_beat_dq_11_on_the_switch_1_do_you_think_i/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 02:35 UTC"
     }
   ]
 }
