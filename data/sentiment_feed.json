@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 06:41:26 UTC",
+  "last_updated": "2026-10-31 06:44:02 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1018,6 +1018,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 04:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750684167",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 04:30 UTC"
     },
@@ -6843,19 +6862,20 @@
       "timestamp": "2026-10-30 21:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter, Kingdom Hearts II and Urban Reign",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Kingdom Hearts II, Urban Reign and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750662757",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
-        "Monster Hunter",
+        "Grand Theft Auto: Vice City",
         "Kingdom Hearts II",
-        "Urban Reign"
+        "Urban Reign",
+        "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338577,40 +338597,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 06:45 UTC"
-    },
-    {
-      "headline": "is my cabel managment cooked?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x839ig/is_my_cabel_managment_cooked/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 06:41 UTC"
-    },
-    {
-      "headline": "Submarine Survival Horror Game Heavy Metal Death Can available now for PS5",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x8396u/submarine_survival_horror_game_heavy_metal_death/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 06:41 UTC"
     }
   ]
 }
