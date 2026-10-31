@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 02:53:28 UTC",
+  "last_updated": "2026-10-31 02:56:10 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -203,6 +203,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 02:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Arcade",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750678205",
+      "matched_game": "The Arcade",
+      "matched_games": [
+        "The Arcade"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 02:35 UTC"
     },
@@ -957,6 +976,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 01:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4 and Yakuza 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750675190",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4",
+        "Yakuza 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 01:36 UTC"
     },
     {
       "headline": "Is low level ssd health reliable?",
@@ -2492,14 +2531,16 @@
       "timestamp": "2026-10-30 23:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Sonic Riders",
+      "headline": "Thread on /v/ naming Sonic Heroes, Sonic Riders and Shadow the Hedgehog",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750670370",
-      "matched_game": "Sonic Riders",
+      "matched_game": "Sonic Heroes",
       "matched_games": [
-        "Sonic Riders"
+        "Sonic Heroes",
+        "Sonic Riders",
+        "Shadow the Hedgehog"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -12782,17 +12823,18 @@
       "timestamp": "2026-10-30 15:57 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming SOCOM",
+      "headline": "Thread on /vr/ naming Splinter Cell and SOCOM",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12904829",
-      "matched_game": "SOCOM",
+      "matched_game": "Splinter Cell",
       "matched_games": [
+        "Splinter Cell",
         "SOCOM"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -51905,6 +51947,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 01:54 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Burnout Revenge",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12902008",
+      "matched_game": "Burnout Revenge",
+      "matched_games": [
+        "Burnout Revenge"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-29 01:51 UTC"
     },
     {
       "headline": "Thread on /v/ naming Cowboy Bebop, Final Fantasy X and Grandia II",
