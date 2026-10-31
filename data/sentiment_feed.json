@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 20:34:42 UTC",
+  "last_updated": "2026-10-31 20:43:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -33,6 +33,28 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 20:01 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4, Splinter Cell, Guitar Hero and 1 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750719428",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Splinter Cell",
+        "Guitar Hero",
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 20:01 UTC"
     },
@@ -4261,6 +4283,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 16:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Plan",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750707397",
+      "matched_game": "The Plan",
+      "matched_games": [
+        "The Plan"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 16:15 UTC"
     },
@@ -337991,93 +338032,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 20:43 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Persona 3",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12883781",
-      "matched_game": "Persona 3",
-      "matched_games": [
-        "Persona 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:42 UTC"
-    },
-    {
-      "headline": "Gta 5 psvita port in the final stages of development",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x8kmx9/gta_5_psvita_port_in_the_final_stages_of/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:40 UTC"
-    },
-    {
-      "headline": "Open source PS2 BIOS",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1x8kiw7/open_source_ps2_bios/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:35 UTC"
-    },
-    {
-      "headline": "Games which allow you to create insane scenarios.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x8khor/games_which_allow_you_to_create_insane_scenarios/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:34 UTC"
-    },
-    {
-      "headline": "Games which allow you to create insane scenarios.",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x8khhj/games_which_allow_you_to_create_insane_scenarios/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:34 UTC"
     }
   ]
 }
