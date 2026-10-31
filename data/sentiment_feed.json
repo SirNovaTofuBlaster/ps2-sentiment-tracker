@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 21:53:29 UTC",
+  "last_updated": "2026-10-31 21:56:17 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -271,6 +271,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 21:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750724239",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 21:33 UTC"
     },
@@ -775,6 +795,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 20:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750721857",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 20:49 UTC"
     },
     {
       "headline": "SIB Octoparh 0 if I didnt like the first ?",
@@ -8114,6 +8153,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 14:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750702118",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 14:22 UTC"
     },
@@ -338501,43 +338559,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 21:56 UTC"
-    },
-    {
-      "headline": "I'm trying to share a video clip of a game from my Playstation app onto Reddit but it's saying something went wrong plz help",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x8mbvh/im_trying_to_share_a_video_clip_of_a_game_from_my/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:54 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Top Gun and Armored Core Nexus",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749887459",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun",
-        "Armored Core Nexus"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:53 UTC"
     }
   ]
 }
