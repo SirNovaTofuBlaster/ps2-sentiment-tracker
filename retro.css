@@ -1136,6 +1136,18 @@ body .market-search i { position: absolute; left: .8rem; top: 50%; transform: tr
 body .market-search input, body .market-sort select { width: 100%; min-height: 2.4rem; background: var(--inset); border: 1px solid var(--line); border-radius: 6px; color: var(--text); font-size: .8rem; }
 body .market-search input { padding: .5rem .8rem .5rem 2.3rem; }
 body .market-sort select { padding: .5rem .8rem; font-family: var(--mono); font-size: .7rem; text-transform: uppercase; }
+body .worst-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: .5rem; }
+body .worst-row { display: grid; grid-template-columns: 1.6rem 4.2rem minmax(0, 1fr) auto; align-items: center; gap: .6rem; padding: .6rem .7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); }
+body .worst-rank { font-family: var(--mono); font-size: .7rem; color: var(--dim); text-align: right; }
+body .worst-score { font-family: var(--mono); font-size: .72rem; color: var(--dim); text-align: center; border: 1px solid var(--red-line); border-radius: 4px; padding: .2rem .3rem; }
+body .worst-score b { font-size: 1rem; color: var(--text); }
+body .worst-score.is-none { border-color: var(--line); }
+body .worst-title { font-size: .85rem; font-weight: 600; overflow-wrap: anywhere; }
+body .worst-scale { font-family: var(--mono); font-size: .62rem; font-weight: 400; color: var(--dim); }
+body .worst-note { font-size: .7rem; color: var(--dim); line-height: 1.4; }
+body .worst-note a { text-decoration: underline; }
+body .worst-noprice { font-size: .68rem; color: var(--dim); }
+@media (max-width: 640px) { body .worst-row { grid-template-columns: 1.4rem 3.6rem minmax(0, 1fr); } body .worst-price { grid-column: 3; } }
 body .market-seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
 body .market-seg button { min-height: 2.4rem; padding: .4rem .9rem; background: var(--inset); border: 0; border-right: 1px solid var(--line); color: var(--dim); font-family: var(--mono); font-size: .72rem; cursor: pointer; }
 body .market-seg button:last-child { border-right: 0; }
