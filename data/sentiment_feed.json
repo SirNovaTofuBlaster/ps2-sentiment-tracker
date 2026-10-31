@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 15:14:26 UTC",
+  "last_updated": "2026-10-31 15:17:03 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -4457,6 +4457,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 09:45 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750692932",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 09:41 UTC"
     },
     {
       "headline": "Difficulty settings in games can be good or bad",
@@ -13612,20 +13631,21 @@
       "timestamp": "2026-10-30 21:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 3, Kingdom Hearts II, Urban Reign and 4 more",
+      "headline": "Thread on /v/ naming The Thing, Kingdom Hearts II, Urban Reign and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750662757",
-      "matched_game": "Silent Hill 3",
+      "matched_game": "The Thing",
       "matched_games": [
-        "Silent Hill 3",
+        "The Thing",
         "Kingdom Hearts II",
         "Urban Reign",
         "Monster Hunter",
         "Grand Theft Auto: Vice City",
         "Grand Theft Auto: San Andreas",
-        "Fatal Frame"
+        "Fatal Frame",
+        "Silent Hill 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -192766,13 +192786,14 @@
       "timestamp": "2026-10-23 15:39 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Dragon Blaze",
+      "headline": "Thread on /vr/ naming The Arcade and Dragon Blaze",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12892158",
-      "matched_game": "Dragon Blaze",
+      "matched_game": "The Arcade",
       "matched_games": [
+        "The Arcade",
         "Dragon Blaze"
       ],
       "match_score": 100,
@@ -338225,75 +338246,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 15:18 UTC"
-    },
-    {
-      "headline": "Docked Switch 2 games for player with poor eyesight?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x8crb9/docked_switch_2_games_for_player_with_poor/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 15:16 UTC"
-    },
-    {
-      "headline": "Death in the Water 2 now on Iphone?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x8cqni/death_in_the_water_2_now_on_iphone/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 15:15 UTC"
-    },
-    {
-      "headline": "Resident Evil 5 - PS3 Frame Rate Analysis",
-      "source": "YouTube: NeoGamer - The Video Game Archive",
-      "source_type": "youtube",
-      "feed": "youtube:UCDC7X5gNh2LxQ2PnN_OKD5g",
-      "link": "https://www.youtube.com/watch?v=Ndnb37gU-r4",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 15:15 UTC",
-      "views": 5321
-    },
-    {
-      "headline": "Patrio Viper venom ddr5 + asus rog strix b850-i EXPO not posting",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8cp3x/patrio_viper_venom_ddr5_asus_rog_strix_b850i_expo/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 15:14 UTC"
     }
   ]
 }
