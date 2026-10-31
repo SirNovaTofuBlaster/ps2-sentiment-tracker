@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 05:51:22 UTC",
+  "last_updated": "2026-10-31 06:00:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -430,6 +430,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 04:41 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming ICO",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750684528",
+      "matched_game": "ICO",
+      "matched_games": [
+        "ICO"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 04:39 UTC"
     },
     {
       "headline": "Free laptop from my neighbor. Any good?",
@@ -338565,40 +338584,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 06:00 UTC"
-    },
-    {
-      "headline": "Nintendo employee binder",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x82jue/nintendo_employee_binder/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 05:58 UTC"
-    },
-    {
-      "headline": "Tech founder criticized for vibe coding game about shooting 'zombies' in San Francisco's poorest neighborhood",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x82fy7/tech_founder_criticized_for_vibe_coding_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 05:51 UTC"
     }
   ]
 }
