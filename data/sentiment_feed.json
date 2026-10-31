@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 00:02:27 UTC",
+  "last_updated": "2026-10-31 00:05:05 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -5895,13 +5895,14 @@
       "timestamp": "2026-10-30 18:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man",
+      "headline": "Thread on /v/ naming Gauntlet: Dark Legacy and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750652535",
-      "matched_game": "Spider-Man",
+      "matched_game": "Gauntlet: Dark Legacy",
       "matched_games": [
+        "Gauntlet: Dark Legacy",
         "Spider-Man"
       ],
       "match_score": 100,
@@ -49226,24 +49227,24 @@
       "timestamp": "2026-10-29 01:48 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Armored Core 2, NHL 2001, Smuggler's Run and 5 more",
+      "headline": "Thread on /vr/ naming NHL 2001, Smuggler's Run, Final Fantasy X and 5 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12901991",
-      "matched_game": "Armored Core 2",
+      "matched_game": "NHL 2001",
       "matched_games": [
-        "Armored Core 2",
         "NHL 2001",
         "Smuggler's Run",
         "Final Fantasy X",
         "SSX",
         "Dynasty Warriors 2",
+        "Armored Core 2",
         "Midnight Club",
         "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -150430,13 +150431,14 @@
       "timestamp": "2026-10-24 22:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "headline": "Thread on /vr/ naming Half-Life and Resident Evil 4",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12894436",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Half-Life",
       "matched_games": [
+        "Half-Life",
         "Resident Evil 4"
       ],
       "match_score": 100,
@@ -337987,43 +337989,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 00:05 UTC"
-    },
-    {
-      "headline": "There's something about the Blood of Dawnwalker.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x7w1sh/theres_something_about_the_blood_of_dawnwalker/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 00:04 UTC"
-    },
-    {
-      "headline": "Thread on /vrpg/ naming Final Fantasy XII and Suikoden III",
-      "source": "4chan /vrpg/",
-      "source_type": "4chan",
-      "feed": "4chan:vrpg",
-      "link": "https://boards.4chan.org/vrpg/thread/4131773",
-      "matched_game": "Final Fantasy XII",
-      "matched_games": [
-        "Final Fantasy XII",
-        "Suikoden III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 00:03 UTC"
     }
   ]
 }
