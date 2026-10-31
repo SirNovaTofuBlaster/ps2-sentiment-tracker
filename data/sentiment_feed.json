@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 20:06:58 UTC",
+  "last_updated": "2026-10-31 20:15:46 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -3231,6 +3231,26 @@
       ],
       "match_score": 100,
       "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 16:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2 and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750709513",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338324,112 +338344,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 20:17 UTC"
-    },
-    {
-      "headline": "Wich one of these pre builts would you choose?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8k0v7/wich_one_of_these_pre_builts_would_you_choose/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:14 UTC"
-    },
-    {
-      "headline": "Anyone else have too many fans?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8k02q/anyone_else_have_too_many_fans/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:13 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749882218",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:10 UTC"
-    },
-    {
-      "headline": "Age of empires 2",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x8jwri/age_of_empires_2/",
-      "matched_game": "Age of Empires II: Age of Kings",
-      "matched_games": [
-        "Age of Empires II: Age of Kings"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:09 UTC"
-    },
-    {
-      "headline": "UK - £800-1.2k - suggestions please?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8jw7q/uk_80012k_suggestions_please/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:08 UTC"
-    },
-    {
-      "headline": "Steam Deck Oled won’t charge anymore?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x8jvyn/steam_deck_oled_wont_charge_anymore/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 20:08 UTC"
     }
   ]
 }
