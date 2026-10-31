@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 05:03:49 UTC",
+  "last_updated": "2026-10-31 05:17:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1373,6 +1373,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 02:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750677945",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 02:30 UTC"
     },
@@ -53112,14 +53131,15 @@
       "timestamp": "2026-10-29 01:54 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Burnout Revenge",
+      "headline": "Thread on /vr/ naming Burnout Revenge and Burnout 3",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12902008",
       "matched_game": "Burnout Revenge",
       "matched_games": [
-        "Burnout Revenge"
+        "Burnout Revenge",
+        "Burnout 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338553,132 +338573,6 @@
       "hype": 0,
       "timestamp": "2026-10-17 05:17 UTC",
       "views": 3567
-    },
-    {
-      "headline": "Thread on /v/ naming Way of the Samurai, Tekken 5 and Way of the Samurai 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749845334",
-      "matched_game": "Way of the Samurai",
-      "matched_games": [
-        "Way of the Samurai",
-        "Tekken 5",
-        "Way of the Samurai 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 05:15 UTC"
-    },
-    {
-      "headline": "Wold this Lego set be alright ontop of my PC? It doesn't fit anywhere else.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x81saj/wold_this_lego_set_be_alright_ontop_of_my_pc_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 05:12 UTC"
-    },
-    {
-      "headline": "got my ps 5 pro stolen",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x81qrd/got_my_ps_5_pro_stolen/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 05:10 UTC"
-    },
-    {
-      "headline": "Let's Play Need For Speed Most Wanted 2012 (PS3) - Part 3",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/watch?v=GndziKI28zM",
-      "matched_game": "Need for Speed Most Wanted",
-      "matched_games": [
-        "Need for Speed Most Wanted"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 05:08 UTC",
-      "views": 1369
-    },
-    {
-      "headline": "Some advice on this build for 2650 CAD",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x81pb3/some_advice_on_this_build_for_2650_cad/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 05:07 UTC"
-    },
-    {
-      "headline": "deal finder",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x81ov5/deal_finder/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 05:07 UTC"
-    },
-    {
-      "headline": "Need help verifying before buying",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x81mhw/need_help_verifying_before_buying/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 05:03 UTC"
     }
   ]
 }
