@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-10-31 10:36:35 UTC",
+  "last_updated": "2026-10-31 10:45:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750694067",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 10:28 UTC"
+    },
     {
       "headline": "Is this bad for Airflow",
       "source": "r/pcmasterrace",
@@ -175,14 +194,15 @@
       "timestamp": "2026-10-31 10:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dynasty Warriors 3",
+      "headline": "Thread on /v/ naming Dynasty Warriors 3 and Samurai Warriors",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750693492",
       "matched_game": "Dynasty Warriors 3",
       "matched_games": [
-        "Dynasty Warriors 3"
+        "Dynasty Warriors 3",
+        "Samurai Warriors"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -448,6 +468,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 09:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750693075",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 09:48 UTC"
     },
     {
       "headline": "Can’t get this game to work",
@@ -1163,15 +1202,15 @@
       "timestamp": "2026-10-31 08:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Rule of Rose and Fatal Frame",
+      "headline": "Thread on /v/ naming Fatal Frame and Rule of Rose",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750691191",
-      "matched_game": "Rule of Rose",
+      "matched_game": "Fatal Frame",
       "matched_games": [
-        "Rule of Rose",
-        "Fatal Frame"
+        "Fatal Frame",
+        "Rule of Rose"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -13279,15 +13318,15 @@
       "timestamp": "2026-10-30 18:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Eternal Ring and King's Field IV",
+      "headline": "Thread on /v/ naming King's Field IV and Eternal Ring",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750653171",
-      "matched_game": "Eternal Ring",
+      "matched_game": "King's Field IV",
       "matched_games": [
-        "Eternal Ring",
-        "King's Field IV"
+        "King's Field IV",
+        "Eternal Ring"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -13487,13 +13526,14 @@
       "timestamp": "2026-10-30 18:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dark Cloud, Spider-Man, Gauntlet: Dark Legacy and 2 more",
+      "headline": "Thread on /v/ naming Dark Chronicle, Dark Cloud, Spider-Man and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750652535",
-      "matched_game": "Dark Cloud",
+      "matched_game": "Dark Chronicle",
       "matched_games": [
+        "Dark Chronicle",
         "Dark Cloud",
         "Spider-Man",
         "Gauntlet: Dark Legacy",
@@ -338684,57 +338724,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 10:45 UTC"
-    },
-    {
-      "headline": "How did I do?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8760y/how_did_i_do/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 10:43 UTC"
-    },
-    {
-      "headline": "Didn’t know a pc could be AMD and Intel",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x873e0/didnt_know_a_pc_could_be_amd_and_intel/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 10:39 UTC"
-    },
-    {
-      "headline": "Ps1 emu",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1x8729s/ps1_emu/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 10:37 UTC"
     }
   ]
 }
