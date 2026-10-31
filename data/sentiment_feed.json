@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 09:37:25 UTC",
+  "last_updated": "2026-10-31 09:39:39 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -134,6 +134,27 @@
       "match_score": 0,
       "match_method": null,
       "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 09:15 UTC"
+    },
+    {
+      "headline": "Es un GTA olvidado pero también de los más queridos y hoy se cumplen 20 años desde su lanzamiento original",
+      "source": "Vandal",
+      "source_type": "news",
+      "feed": "https://vandal.elespanol.com/xml.cgi",
+      "link": "https://vandal.elespanol.com/noticia/2026304005/es-un-gta-olvidado-pero-tambien-de-los-mas-queridos-y-hoy-se-cumplen-20-anos-desde-su-lanzamiento-original/",
+      "matched_game": "Grand Theft Auto: Vice City Stories",
+      "matched_games": [
+        "Grand Theft Auto: Vice City Stories",
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III"
+      ],
+      "match_score": 92,
+      "match_method": "variant",
+      "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
@@ -956,6 +977,23 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 07:39 UTC"
+    },
+    {
+      "headline": "The Séance of Blake Manor launch trailer – Nintendo Switch 2 receives supernatural detective game",
+      "source": "Nintendo Everything",
+      "source_type": "news",
+      "feed": "https://nintendoeverything.com/feed",
+      "link": "https://nintendoeverything.com/the-seance-of-blake-manor-launch-trailer/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 07:33 UTC"
     },
     {
       "headline": "Just built my first pc! Is it bad?",
@@ -338806,42 +338844,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 09:39 UTC"
-    },
-    {
-      "headline": "Day 821 of posting a Daily Screenshot from the games I've been playing",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53239777",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 09:38 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749853450",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 09:38 UTC"
     }
   ]
 }
