@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 21:03:52 UTC",
+  "last_updated": "2026-10-31 21:12:50 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18,6 +18,44 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 21:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750722476",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 21:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750722304",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 20:57 UTC"
     },
     {
       "headline": "Thread on /v/ naming The Arcade",
@@ -4222,15 +4260,16 @@
       "timestamp": "2026-10-31 16:59 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Resident Evil 4",
+      "headline": "Thread on /v/ naming Killer 7, Resident Evil 4 and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750709513",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Killer 7",
       "matched_games": [
-        "Silent Hill 2",
-        "Resident Evil 4"
+        "Killer 7",
+        "Resident Evil 4",
+        "Silent Hill 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -11956,7 +11995,7 @@
       "timestamp": "2026-10-31 08:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts II, Final Fantasy X-2, Kingdom Hearts and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -11964,7 +12003,9 @@
       "matched_game": "Kingdom Hearts II",
       "matched_games": [
         "Kingdom Hearts II",
-        "Kingdom Hearts"
+        "Final Fantasy X-2",
+        "Kingdom Hearts",
+        "Jak and Daxter: The Precursor Legacy"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -338496,199 +338537,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-17 21:13 UTC"
-    },
-    {
-      "headline": "Slot for Miyoo Flip",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x8ld98/slot_for_miyoo_flip/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:11 UTC"
-    },
-    {
-      "headline": "CPU upgrade worth it? 3700X to 5800X3D",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8lchj/cpu_upgrade_worth_it_3700x_to_5800x3d/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:10 UTC"
-    },
-    {
-      "headline": "The Mortuary Assistant Film Director Jeremiah Kipp Passes Away",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/the-mortuary-assistant-film-director-jeremiah-kipp-passes-away-2000747075",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:10 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Black, Soul Calibur 3 and Grand Theft Auto: Vice City",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749885127",
-      "matched_game": "Black",
-      "matched_games": [
-        "Black",
-        "Soul Calibur 3",
-        "Grand Theft Auto: Vice City"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:09 UTC"
-    },
-    {
-      "headline": "Is this copy of Soulsilver legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x8l9lg/is_this_copy_of_soulsilver_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:07 UTC"
-    },
-    {
-      "headline": "Why became these CPU cooler clips the norm?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8l9iq/why_became_these_cpu_cooler_clips_the_norm/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:07 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749885080",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:07 UTC"
-    },
-    {
-      "headline": "Brand new original PlayStation 1",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1x8l9cc/brand_new_original_playstation_1/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:06 UTC"
-    },
-    {
-      "headline": "Brand new original PlayStation 1",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1x8l7r4/brand_new_original_playstation_1/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:05 UTC"
-    },
-    {
-      "headline": "Used Claude to fix Oblivion Remastered performance",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8l87i/used_claude_to_fix_oblivion_remastered_performance/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-17 21:05 UTC"
-    },
-    {
-      "headline": "Solid recomp of Army of Two (Xbox 360) on PC - Coop, Keyboard and mouse, 4K, 240FPS",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8l6rc/solid_recomp_of_army_of_two_xbox_360_on_pc_coop/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 21:03 UTC"
     }
   ]
 }
