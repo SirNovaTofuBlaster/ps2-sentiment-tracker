@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 17:43:44 UTC",
+  "last_updated": "2026-10-31 17:52:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -90,6 +90,44 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 17:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750710305",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 17:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750710201",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 17:12 UTC"
     },
     {
       "headline": "Physical PC games could make a comeback thanks to GOG: \"I really hope that we'll be able to do it\"",
@@ -4905,6 +4943,25 @@
       "timestamp": "2026-10-31 13:00 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750698615",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 12:57 UTC"
+    },
+    {
       "headline": "I'm trying to record my gameplay on my phone but the audio is very distorted?",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -7369,23 +7426,23 @@
       "timestamp": "2026-10-31 09:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Final Fantasy XII, The Godfather and 4 more",
+      "headline": "Thread on /v/ naming Final Fantasy XII, The Godfather, Spider-Man and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750692487",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
-        "Resident Evil 4",
         "Final Fantasy XII",
         "The Godfather",
         "Spider-Man",
         "Silent Hill 2",
         "Gregory Horror Show",
+        "Resident Evil 4",
         "Fatal Frame"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337823,79 +337880,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 17:52 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749874805",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 17:51 UTC"
-    },
-    {
-      "headline": "Looking for games with battle ui similar to expedition 33 and persona 5 (options are on: psp, ps2, psvita, nds, 3ds and wii)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x8gj4w/looking_for_games_with_battle_ui_similar_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 17:50 UTC"
-    },
-    {
-      "headline": "Gpu increase by 60% from the time I bought it a month ago",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8giz9/gpu_increase_by_60_from_the_time_i_bought_it_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 17:50 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life and Splinter Cell",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749874440",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life",
-        "Splinter Cell"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 17:45 UTC"
     }
   ]
 }
