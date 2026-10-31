@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 12:23:32 UTC",
+  "last_updated": "2026-10-31 12:26:06 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -69,6 +69,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 12:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Urban Reign",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750697024",
+      "matched_game": "Urban Reign",
+      "matched_games": [
+        "Urban Reign"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 12:10 UTC"
     },
     {
       "headline": "Sulfur or Probably Stolen?",
@@ -338104,23 +338123,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 12:30 UTC"
-    },
-    {
-      "headline": "New Laptop",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x88yfp/new_laptop/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 12:24 UTC"
     }
   ]
 }
