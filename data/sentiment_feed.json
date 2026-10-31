@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 06:48:25 UTC",
+  "last_updated": "2026-10-31 06:57:39 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1173,6 +1173,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 04:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Just Cause",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750683825",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas",
+        "Just Cause"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 04:22 UTC"
     },
@@ -6896,7 +6916,7 @@
       "timestamp": "2026-10-30 21:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Kingdom Hearts II, Urban Reign and 1 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Grand Theft Auto: San Andreas, Kingdom Hearts II and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -6904,6 +6924,7 @@
       "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
         "Grand Theft Auto: Vice City",
+        "Grand Theft Auto: San Andreas",
         "Kingdom Hearts II",
         "Urban Reign",
         "Monster Hunter"
@@ -30254,13 +30275,14 @@
       "timestamp": "2026-10-29 22:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Soul Calibur 2",
+      "headline": "Thread on /v/ naming Devil May Cry and Soul Calibur 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750604086",
-      "matched_game": "Soul Calibur 2",
+      "matched_game": "Devil May Cry",
       "matched_games": [
+        "Devil May Cry",
         "Soul Calibur 2"
       ],
       "match_score": 100,
@@ -338450,96 +338472,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 07:00 UTC"
-    },
-    {
-      "headline": "BSOD when attempting to launch a game, or close it. \"PAGE_FAULT_IN_NONPAGED_AREA\"",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x83h9g/bsod_when_attempting_to_launch_a_game_or_close_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 06:55 UTC"
-    },
-    {
-      "headline": "9800X3D Idle Temps",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x83gtl/9800x3d_idle_temps/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 06:54 UTC"
-    },
-    {
-      "headline": "Requesting verification before buying",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x83ges/requesting_verification_before_buying/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 06:53 UTC"
-    },
-    {
-      "headline": "Gaming PC vs PS5 vs Pre-Owned PS5 Pro for a 4K 120Hz Samsung TV",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x83g8u/gaming_pc_vs_ps5_vs_preowned_ps5_pro_for_a_4k/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 06:53 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Max Payne, God of War, Half-Life and 1 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749848147",
-      "matched_game": "Max Payne",
-      "matched_games": [
-        "Max Payne",
-        "God of War",
-        "Half-Life",
-        "Alone in the Dark"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 06:49 UTC"
     }
   ]
 }
