@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 11:26:30 UTC",
+  "last_updated": "2026-10-31 11:29:07 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1139,7 +1139,7 @@
       "timestamp": "2026-10-31 09:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Gregory Horror Show, Resident Evil 4, The Godfather and 2 more",
+      "headline": "Thread on /v/ naming Gregory Horror Show, Resident Evil 4, Fatal Frame and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1148,6 +1148,7 @@
       "matched_games": [
         "Gregory Horror Show",
         "Resident Evil 4",
+        "Fatal Frame",
         "The Godfather",
         "Spider-Man",
         "Silent Hill 2"
@@ -9981,21 +9982,22 @@
       "timestamp": "2026-10-30 21:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Grand Theft Auto: San Andreas, Kingdom Hearts II and 2 more",
+      "headline": "Thread on /v/ naming Fatal Frame, Kingdom Hearts II, Urban Reign and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750662757",
-      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_game": "Fatal Frame",
       "matched_games": [
-        "Grand Theft Auto: Vice City",
-        "Grand Theft Auto: San Andreas",
+        "Fatal Frame",
         "Kingdom Hearts II",
         "Urban Reign",
-        "Monster Hunter"
+        "Monster Hunter",
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -284771,19 +284773,19 @@
       "timestamp": "2026-10-19 20:28 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Half-Life, Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /vr/ naming Metal Gear Solid 3: Snake Eater, Metal Gear Solid 2: Sons of Liberty and Half-Life",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12887203",
-      "matched_game": "Half-Life",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Half-Life",
         "Metal Gear Solid 3: Snake Eater",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338171,40 +338173,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 11:29 UTC"
-    },
-    {
-      "headline": "Decompiled my keyboards software",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x87x0q/decompiled_my_keyboards_software/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 11:28 UTC"
-    },
-    {
-      "headline": "Best game on switch 2 with an amazing story and solid combat?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x87w3m/best_game_on_switch_2_with_an_amazing_story_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 70,
-      "hype": 0,
-      "timestamp": "2026-10-17 11:26 UTC"
     }
   ]
 }
