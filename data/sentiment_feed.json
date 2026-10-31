@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 23:25:39 UTC",
+  "last_updated": "2026-10-31 23:34:53 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-11-01 00:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750729623",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 23:18 UTC"
     },
     {
       "headline": "Andy Weir's New Time-Travel Sci-fi Thriller Officially Arrives Nov. 5",
@@ -52,6 +71,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 23:01 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Need for Speed Carbon and Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750728702",
+      "matched_game": "Need for Speed Carbon",
+      "matched_games": [
+        "Need for Speed Carbon",
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 22:59 UTC"
     },
     {
       "headline": "complete noob at pc building, will this (link below) work with my specs?",
@@ -961,6 +1000,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 21:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Sonic Heroes and Shadow the Hedgehog",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750725373",
+      "matched_game": "Sonic Heroes",
+      "matched_games": [
+        "Sonic Heroes",
+        "Shadow the Hedgehog"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 21:55 UTC"
     },
@@ -3025,6 +3084,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 19:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4, Persona 3 and Crazy Taxi",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750718987",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4",
+        "Persona 3",
+        "Crazy Taxi"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 19:53 UTC"
     },
     {
       "headline": "Liked RDR2, didn't like Witcher 3, should I buy Cyberpunk 2077?",
@@ -9422,13 +9502,14 @@
       "timestamp": "2026-10-31 14:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3",
+      "headline": "Thread on /v/ naming Final Fantasy XII and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750702118",
-      "matched_game": "Persona 3",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
+        "Final Fantasy XII",
         "Persona 3"
       ],
       "match_score": 100,
@@ -13996,20 +14077,20 @@
       "timestamp": "2026-10-31 08:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts, Jak and Daxter: The Precursor Legacy and 1 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II, Jak and Daxter: The Precursor Legacy and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750691165",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts II",
         "Kingdom Hearts",
+        "Kingdom Hearts II",
         "Jak and Daxter: The Precursor Legacy",
         "Final Fantasy X-2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338617,128 +338698,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 23:35 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749892526",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 23:33 UTC"
-    },
-    {
-      "headline": "I played D4 and Grim Dawn. What should I buy next?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x8odvg/i_played_d4_and_grim_dawn_what_should_i_buy_next/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 23:30 UTC"
-    },
-    {
-      "headline": "I got a new pc rate it 1-10",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8odiz/i_got_a_new_pc_rate_it_110/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 23:30 UTC"
-    },
-    {
-      "headline": "Outrageous snipe in Wardogs 🎯",
-      "source": "YouTube: PC Gamer",
-      "source_type": "youtube",
-      "feed": "youtube:UCgaPRP68bbyHnfkPhWWBrNw",
-      "link": "https://www.youtube.com/shorts/pjPam6qc6sQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 23:30 UTC",
-      "views": 2077
-    },
-    {
-      "headline": "I think im to far gone",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8od9w/i_think_im_to_far_gone/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 23:29 UTC"
-    },
-    {
-      "headline": "DS Pokémon games check",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x8obau/ds_pokémon_games_check/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 23:27 UTC"
-    },
-    {
-      "headline": "All Yellow Supply Crate Locations in Call of Duty: Modern Warfare 4 Stranded",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/all-yellow-supply-crate-locations-in-call-of-duty-modern-warfare-4-stranded/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 23:25 UTC"
     }
   ]
 }
