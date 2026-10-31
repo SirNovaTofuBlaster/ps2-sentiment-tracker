@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 08:35:30 UTC",
+  "last_updated": "2026-10-31 08:38:00 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -88,14 +88,15 @@
       "timestamp": "2026-10-31 08:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750690731",
       "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -64277,6 +64278,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-28 18:32 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12901157",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 18:32 UTC"
     },
@@ -338696,42 +338716,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 08:41 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Odin Sphere",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749851507",
-      "matched_game": "Odin Sphere",
-      "matched_games": [
-        "Odin Sphere"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 08:37 UTC"
-    },
-    {
-      "headline": "What's ur guys opinion",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x854jz/whats_ur_guys_opinion/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 08:35 UTC"
     }
   ]
 }
