@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 16:11:27 UTC",
+  "last_updated": "2026-10-31 16:14:10 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -5478,6 +5478,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 09:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750692721",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 09:32 UTC"
     },
@@ -81370,21 +81389,21 @@
       "timestamp": "2026-10-28 12:22 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Grandia II, Dead or Alive 2, Crazy Taxi and 2 more",
+      "headline": "Thread on /vr/ naming Dead or Alive 2, Crazy Taxi, Jak and Daxter: The Precursor Legacy and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12900361",
-      "matched_game": "Grandia II",
+      "matched_game": "Dead or Alive 2",
       "matched_games": [
-        "Grandia II",
         "Dead or Alive 2",
         "Crazy Taxi",
         "Jak and Daxter: The Precursor Legacy",
-        "SoulCalibur II"
+        "SoulCalibur II",
+        "Grandia II"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337867,40 +337886,6 @@
       "hype": 0,
       "timestamp": "2026-10-17 16:15 UTC",
       "views": 35915
-    },
-    {
-      "headline": "Me after finishing The Midnight Walk",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x8e5ck/me_after_finishing_the_midnight_walk/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 16:13 UTC"
-    },
-    {
-      "headline": "I saw this on my wife's phone",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x8e5ir/i_saw_this_on_my_wifes_phone/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 16:13 UTC"
     }
   ]
 }
