@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 04:47:27 UTC",
+  "last_updated": "2026-10-31 04:50:03 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -69,6 +69,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 04:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750684356",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 04:34 UTC"
     },
     {
       "headline": "Bible Buffet 4 Screw Variant",
@@ -7295,16 +7314,16 @@
       "timestamp": "2026-10-30 20:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Devil May Cry and Deus Ex",
+      "headline": "Thread on /v/ naming Devil May Cry, Deus Ex and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750658601",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Devil May Cry",
       "matched_games": [
-        "Final Fantasy X",
         "Devil May Cry",
-        "Deus Ex"
+        "Deus Ex",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -7811,15 +7830,17 @@
       "timestamp": "2026-10-30 20:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Just Cause and Spider-Man",
+      "headline": "Thread on /v/ naming Justice League Heroes, Spider-Man, Just Cause and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750657589",
-      "matched_game": "Just Cause",
+      "matched_game": "Justice League Heroes",
       "matched_games": [
+        "Justice League Heroes",
+        "Spider-Man",
         "Just Cause",
-        "Spider-Man"
+        "The Sopranos"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338743,42 +338764,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 04:50 UTC"
-    },
-    {
-      "headline": "Order of the Sinking Star has sold 45% more units on Steam in its first week than The Witness did",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x81dll/order_of_the_sinking_star_has_sold_45_more_units/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 04:49 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming American Idol",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749844495",
-      "matched_game": "American Idol",
-      "matched_games": [
-        "American Idol"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-17 04:48 UTC"
     }
   ]
 }
