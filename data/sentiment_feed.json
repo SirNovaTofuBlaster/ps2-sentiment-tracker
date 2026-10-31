@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-31 00:18:50 UTC",
+  "last_updated": "2026-10-31 00:32:52 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1430,20 +1430,20 @@
       "timestamp": "2026-10-30 22:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex, Silent Hill 2, Resident Evil 4 and 1 more",
+      "headline": "Thread on /v/ naming Silent Hill 2, Deus Ex, Resident Evil 4 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750665545",
-      "matched_game": "Deus Ex",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Deus Ex",
         "Silent Hill 2",
+        "Deus Ex",
         "Resident Evil 4",
         "ICO"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4410,6 +4410,25 @@
       "timestamp": "2026-10-30 19:46 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750656778",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-30 19:46 UTC"
+    },
+    {
       "headline": "Castlevania: Belmont’s Curse: The Kotaku Review",
       "source": "Kotaku",
       "source_type": "news",
@@ -5716,20 +5735,20 @@
       "timestamp": "2026-10-30 18:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War, Devil May Cry 2, Devil May Cry 3 and 5 more",
+      "headline": "Thread on /v/ naming LEGO Batman, Devil May Cry 2, Devil May Cry 3 and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750653442",
-      "matched_game": "God of War",
+      "matched_game": "LEGO Batman",
       "matched_games": [
-        "God of War",
+        "LEGO Batman",
         "Devil May Cry 2",
         "Devil May Cry 3",
         "Devil May Cry",
-        "LEGO Batman",
         "Final Fantasy X",
         "God of War II",
+        "God of War",
         "Spider-Man"
       ],
       "match_score": 100,
@@ -337921,111 +337940,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-17 00:32 UTC"
-    },
-    {
-      "headline": "Reminder: Sonic Racing: CrossWorlds \"Final Content Drop Of Year One\" Is Now Available",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/reminder-sonic-racing-crossworlds-final-content-drop-of-year-one-is-now-available",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 00:30 UTC"
-    },
-    {
-      "headline": "Finally got these!",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x7wk7i/finally_got_these/",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
-      "matched_games": [
-        "Jak and Daxter: The Precursor Legacy"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 00:29 UTC"
-    },
-    {
-      "headline": "Is there anyway this is real? A 5070 setup for under $1400?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7whdl/is_there_anyway_this_is_real_a_5070_setup_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 00:25 UTC"
-    },
-    {
-      "headline": "Nathan Fielder & Lance Oppenheim's You Can See Everything is a 10/10 Masterpiece. #ign #review #doc",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/shorts/Vkg33lhGkps",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-17 00:25 UTC",
-      "views": 102512
-    },
-    {
-      "headline": "Nicolas Cage y Antonio Banderas protagonizarán la quinta temporada de True Detective",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/true-detective/115081/nicolas-cage-y-antonio-banderas-protagonizaran-la-quinta-temporada-de-true-detective",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 00:19 UTC"
-    },
-    {
-      "headline": "Question about fan curves and temps",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x7wc83/question_about_fan_curves_and_temps/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-17 00:18 UTC"
     }
   ]
 }
