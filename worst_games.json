@@ -1,10 +1,12 @@
 {
-  "what": "The Worst page: PS2 games that critics scored lowest, by release region. Made by hand from public pages on 2026-10-31; a partial list, not a ranking of every game. Scores come from different aggregators (Metacritic 0-100, GameRankings %), so the order within a list is only a rough guide. A game's region is set only where a page said where it was released; the rest are listed as 'region not confirmed'. No popular-vote ranking is included: none could be read. Add a game only with a source you read.",
+  "what": "The Worst page: PS2 games that critics scored lowest, by release region. Made by hand from public pages on 2026-10-31; a partial list, not a ranking of every game. Scores come from different aggregators (Metacritic 0-100, GameRankings %), so the order within a list is only a rough guide. A game is listed under every region its Wikipedia page gives a PS2 release date for; Metacritic scores are not split by region, so a game released in both appears in both lists with the same score. No popular-vote ranking is included: none could be read. Add a game only with a source you read.",
   "checked": "2026-10-31",
   "games": [
     {
       "title": "Little Britain: The Video Game",
-      "regions": ["PAL"],
+      "regions": [
+        "PAL"
+      ],
       "score": 16,
       "scale": "GameRankings %",
       "note": "Eurogamer 1/10, PALGN 1.5/10. Released in Europe on 2 February 2007.",
@@ -13,7 +15,10 @@
     },
     {
       "title": "Gravity Games Bike: Street Vert. Dirt",
-      "regions": ["US", "PAL"],
+      "regions": [
+        "US",
+        "PAL"
+      ],
       "score": 24,
       "scale": "Metacritic",
       "note": "PS2 Metascore 24 (Xbox 15). Released in North America on 27 June 2002 and in Europe on 27 September 2002.",
@@ -22,7 +27,9 @@
     },
     {
       "title": "Charlie's Angels",
-      "regions": ["PAL"],
+      "regions": [
+        "PAL"
+      ],
       "score": null,
       "scale": "",
       "note": "The PS2 version came out in Europe only (4 July 2003). Its famous Metacritic 23 is the GameCube version; no PS2 score was found.",
@@ -31,84 +38,110 @@
     },
     {
       "title": "GoDai: Elemental Force",
-      "regions": [],
+      "regions": [
+        "US",
+        "PAL"
+      ],
       "score": 27,
       "scale": "Metacritic",
-      "note": "IGN gave it 2.5/10. Released 21 January 2002.",
-      "source": "The Filibuster Blog",
-      "url": "https://thefilibusterblog.com/top-10-lowest-rated-games-from-the-ps2-era/"
+      "note": "IGN 2.5/10, GameSpot 3.3/10, GameSpy 17%. Released in North America on 21 January 2002 and in Europe on 1 March 2002.",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/GoDai:_Elemental_Force"
     },
     {
       "title": "MTV's Celebrity Deathmatch",
-      "regions": [],
+      "regions": [
+        "US",
+        "PAL"
+      ],
       "score": 32,
       "scale": "Metacritic",
-      "note": "Score as listed by the source; not checked against Metacritic.",
-      "source": "The Filibuster Blog",
-      "url": "https://thefilibusterblog.com/top-10-lowest-rated-games-from-the-ps2-era/"
+      "note": "Metacritic 32 for PS2, GameRankings 37%. North America 14 October 2003, Europe 31 October 2003 (the page does not label the dates by platform, so assigning them to PS2 is inferred).",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Celebrity_Deathmatch_(video_game)"
     },
     {
       "title": "Mike Tyson Heavyweight Boxing",
-      "regions": [],
+      "regions": [
+        "US",
+        "PAL"
+      ],
       "score": 33,
       "scale": "Metacritic",
-      "note": "Released 26 June 2002.",
-      "source": "The Filibuster Blog",
-      "url": "https://thefilibusterblog.com/top-10-lowest-rated-games-from-the-ps2-era/"
+      "note": "GameSpot 2.5/10, IGN 2.6/10. PS2 released in Europe on 7 June 2002 and in North America on 26 June 2002.",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Mike_Tyson_Heavyweight_Boxing"
     },
     {
       "title": "McFarlane's Evil Prophecy",
-      "regions": [],
+      "regions": [
+        "US",
+        "PAL"
+      ],
       "score": 34,
       "scale": "Metacritic",
-      "note": "Score as listed by the source; not checked against Metacritic.",
-      "source": "The Filibuster Blog",
-      "url": "https://thefilibusterblog.com/top-10-lowest-rated-games-from-the-ps2-era/"
+      "note": "Released in North America on 15 June 2004 and in Europe on 15 October 2004.",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/McFarlane%27s_Evil_Prophecy"
     },
     {
       "title": "Fugitive Hunter: War on Terror",
-      "regions": [],
+      "regions": [
+        "US",
+        "PAL"
+      ],
       "score": 35,
       "scale": "Metacritic",
-      "note": "Score as listed by the source; not checked against Metacritic.",
-      "source": "The Filibuster Blog",
-      "url": "https://thefilibusterblog.com/top-10-lowest-rated-games-from-the-ps2-era/"
+      "note": "Called America's 10 Most Wanted in Europe. North America 18 November 2003, Europe 6 August 2004.",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/America%27s_10_Most_Wanted"
     },
     {
       "title": "Fight Club",
-      "regions": [],
+      "regions": [
+        "US",
+        "PAL"
+      ],
       "score": 36,
       "scale": "Metacritic",
-      "note": "Score as listed by the source; not checked against Metacritic.",
-      "source": "The Filibuster Blog",
-      "url": "https://thefilibusterblog.com/top-10-lowest-rated-games-from-the-ps2-era/"
+      "note": "Metacritic 36, GameRankings 36.84%. North America 16 November 2004, Europe 10 December 2004.",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fight_Club_(video_game)"
     },
     {
       "title": "The Shield",
-      "regions": [],
+      "regions": [
+        "US",
+        "PAL"
+      ],
       "score": 36,
       "scale": "Metacritic",
-      "note": "Score as listed by the source; not checked against Metacritic.",
-      "source": "The Filibuster Blog",
-      "url": "https://thefilibusterblog.com/top-10-lowest-rated-games-from-the-ps2-era/"
+      "note": "Metacritic 36, GameRankings 38.10%. North America 9 January 2007, Europe 1 June 2007.",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/The_Shield_(video_game)"
     },
     {
       "title": "Fantastic 4: Rise of Silver Surfer",
-      "regions": [],
+      "regions": [
+        "US"
+      ],
       "score": 36,
       "scale": "Metacritic",
-      "note": "Score as listed by the source; not checked against Metacritic.",
-      "source": "The Filibuster Blog",
-      "url": "https://thefilibusterblog.com/top-10-lowest-rated-games-from-the-ps2-era/"
+      "note": "Metacritic 36, GameRankings 43.44%. North America 15 June 2007; the page's European date is ambiguous, so it is listed for the US only.",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fantastic_Four:_Rise_of_the_Silver_Surfer_(video_game)"
     },
     {
       "title": "Aqua Teen Hunger Force: Zombie Ninja Pro-Am",
-      "regions": [],
+      "regions": [
+        "US",
+        "PAL"
+      ],
       "score": 37,
       "scale": "Metacritic",
-      "note": "Score as listed by the source; not checked against Metacritic.",
-      "source": "The Filibuster Blog",
-      "url": "https://thefilibusterblog.com/top-10-lowest-rated-games-from-the-ps2-era/"
+      "note": "Metacritic 37, GameRankings 42.06%. North America 5 November 2007, Europe 16 November 2007.",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Aqua_Teen_Hunger_Force_Zombie_Ninja_Pro-Am"
     }
   ]
 }

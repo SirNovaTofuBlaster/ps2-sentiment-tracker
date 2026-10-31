@@ -1,9 +1,11 @@
 # Changelog
 
-## 2026-10-31: the Worst page
+## 2026-10-31: the Worst page (regions confirmed from Wikipedia)
 
-- New tab **Worst**, right of Rarest (`#worst`): the lowest critic scores found for PS2 games, worst first, with PAL and US buttons and each game's eBay figures where the tracker already prices it (4 of the 11 on the day: Mike Tyson Heavyweight Boxing, MTV's Celebrity Deathmatch, Fight Club, Charlie's Angels). Games whose release region no page confirmed are listed apart ("region not confirmed"), not placed in a region.
-- `worst_games.json` holds 11 games read from Wikipedia and one blog; Charlie's Angels is PAL-only on PS2 and has no PS2 score (its Metacritic 23 is the GameCube version). No popular-vote ranking: none could be read.
+- Follow-up: the nine games whose region was not confirmed were read on their Wikipedia pages (release dates by region, Metacritic and GameRankings for PS2). Eight were released in North America and Europe and are in both lists; Fantastic 4: Rise of the Silver Surfer is in the US list only (its European date is ambiguous on the page). Fugitive Hunter: War on Terror was America's 10 Most Wanted in Europe. The 'region not confirmed' list is hidden while empty. Celebrity Deathmatch's dates are not labelled by platform on its page, which is noted on the row.
+
+- New tab **Worst**, right of Rarest (`#worst`): the lowest critic scores found for PS2 games, worst first, with PAL and US buttons and each game's eBay figures where the tracker already prices it (4 of the 12 on the day: Mike Tyson Heavyweight Boxing, MTV's Celebrity Deathmatch, Fight Club, Charlie's Angels). Games whose release region no page confirmed are listed apart ("region not confirmed"), not placed in a region.
+- `worst_games.json` holds 12 games read from Wikipedia and one blog; Charlie's Angels is PAL-only on PS2 and has no PS2 score (its Metacritic 23 is the GameCube version). No popular-vote ranking: none could be read.
 - retro.css `v=20261031a`. Tests: a Worst block in `dashboard_check.mjs` (library names, source links, regions, order, bad input). Guide: "Ten pages", `#worst` and a section.
 
 ## 2026-10-30: cheaper checks for steady, cheap and quiet games
