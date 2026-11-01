@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 20:20:40 UTC",
+  "last_updated": "2026-11-01 20:29:50 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1018,14 +1018,15 @@
       "timestamp": "2026-11-01 18:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750773732",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -1636,6 +1637,25 @@
       "timestamp": "2026-11-01 18:19 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750772258",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 18:18 UTC"
+    },
+    {
       "headline": "What are the best PC ports of classic games for the steam deck?",
       "source": "r/SteamDeck",
       "source_type": "reddit",
@@ -1774,6 +1794,25 @@
       ],
       "match_score": 100,
       "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 18:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750772057",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -40077,13 +40116,14 @@
       "timestamp": "2026-10-30 21:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750663025",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "Devil May Cry"
       ],
       "match_score": 100,
@@ -337705,148 +337745,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 20:29 UTC"
-    },
-    {
-      "headline": "Cleaning Arc the Lad collection box",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1x9di4m/cleaning_arc_the_lad_collection_box/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:28 UTC"
-    },
-    {
-      "headline": "Need verification for Pokemon white 2",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x9dg5h/need_verification_for_pokemon_white_2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:26 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Summoner 2, Final Fantasy X, Final Fantasy XII and 2 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749943076",
-      "matched_game": "Summoner 2",
-      "matched_games": [
-        "Summoner 2",
-        "Final Fantasy X",
-        "Final Fantasy XII",
-        "Dark Cloud 2",
-        "Dragon Quest VIII: Journey of the Cursed King"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:26 UTC"
-    },
-    {
-      "headline": "Port de fallout 1 para ps2",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1x9decf/port_de_fallout_1_para_ps2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:24 UTC"
-    },
-    {
-      "headline": "Where Do You Source New Additions to Your Collection?",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x9de71/where_do_you_source_new_additions_to_your/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:23 UTC"
-    },
-    {
-      "headline": "Deep cleaned my 25+ year old PlayStation 1 controller",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x9de5h/deep_cleaned_my_25_year_old_playstation_1/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:23 UTC"
-    },
-    {
-      "headline": "Gravity Circuit 2 | Demo Launch Trailer",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1x9dde6/gravity_circuit_2_demo_launch_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:22 UTC"
-    },
-    {
-      "headline": "Giveaway winner from pcmasterrace x TCL collab giving my Opinion on the TCL 27G64",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9dcp8/giveaway_winner_from_pcmasterrace_x_tcl_collab/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:22 UTC"
     }
   ]
 }
