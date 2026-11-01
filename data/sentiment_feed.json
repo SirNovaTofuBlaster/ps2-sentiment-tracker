@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 13:06:13 UTC",
+  "last_updated": "2026-11-01 13:08:50 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1253,6 +1253,25 @@
       "timestamp": "2026-11-01 11:33 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750754951",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 11:33 UTC"
+    },
+    {
       "headline": "Computer Crashing With No Known Error Reports",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -1739,19 +1758,20 @@
       "timestamp": "2026-11-01 11:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X-2, Final Fantasy X and Persona 4",
+      "headline": "Thread on /v/ naming Persona 3 FES, Persona 4, Final Fantasy X and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750754001",
-      "matched_game": "Final Fantasy X-2",
+      "matched_game": "Persona 3 FES",
       "matched_games": [
-        "Final Fantasy X-2",
+        "Persona 3 FES",
+        "Persona 4",
         "Final Fantasy X",
-        "Persona 4"
+        "Final Fantasy X-2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3444,21 +3464,22 @@
       "timestamp": "2026-11-01 08:51 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life, Max Payne, Resident Evil 4 and 2 more",
+      "headline": "Thread on /v/ naming Final Fantasy X, Max Payne, Resident Evil 4 and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750750492",
-      "matched_game": "Half-Life",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Half-Life",
+        "Final Fantasy X",
         "Max Payne",
         "Resident Evil 4",
         "Dark Cloud",
-        "Monster Hunter"
+        "Monster Hunter",
+        "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9039,16 +9060,17 @@
       "timestamp": "2026-10-31 23:11 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Kingdom Hearts II and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy XII, Kingdom Hearts II, Final Fantasy X and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750729278",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
-        "Resident Evil 4",
+        "Final Fantasy XII",
         "Kingdom Hearts II",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -15031,6 +15053,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-31 17:24 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII and Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750710787",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII",
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 17:24 UTC"
     },
@@ -338318,43 +338360,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 13:08 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter and Rogue Galaxy",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749921190",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter",
-        "Rogue Galaxy"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 13:07 UTC"
-    },
-    {
-      "headline": "My PlayStation from Japan just came in!",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x92s6y/my_playstation_from_japan_just_came_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 13:06 UTC"
     }
   ]
 }
