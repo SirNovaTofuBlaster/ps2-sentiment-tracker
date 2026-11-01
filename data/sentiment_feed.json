@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 10:30:42 UTC",
+  "last_updated": "2026-11-01 10:44:42 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -278,6 +278,25 @@
       "timestamp": "2026-11-01 10:00 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Shrek 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750752231",
+      "matched_game": "Shrek 2",
+      "matched_games": [
+        "Shrek 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 09:58 UTC"
+    },
+    {
       "headline": "Sam Altman argues that it's bad you want DRAM in your computer and not a data center, actually",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -325,6 +344,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-01 09:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Yakuza 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750752000",
+      "matched_game": "Yakuza 2",
+      "matched_games": [
+        "Yakuza 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 09:47 UTC"
     },
@@ -2904,17 +2942,18 @@
       "views": 576
     },
     {
-      "headline": "Thread on /v/ naming Persona 3",
+      "headline": "Thread on /v/ naming Deus Ex and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750744423",
-      "matched_game": "Persona 3",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Persona 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6518,13 +6557,14 @@
       "timestamp": "2026-10-31 23:11 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II and Final Fantasy X",
+      "headline": "Thread on /v/ naming Resident Evil 4, Kingdom Hearts II and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750729278",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Kingdom Hearts II",
         "Final Fantasy X"
       ],
@@ -338104,113 +338144,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 10:45 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Unreal Tournament",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749915913",
-      "matched_game": "Unreal Tournament",
-      "matched_games": [
-        "Unreal Tournament"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:41 UTC"
-    },
-    {
-      "headline": "Norco - The new weird? A very unsettling visual novel/point and click",
-      "source": "r/patientgamers",
-      "source_type": "reddit",
-      "feed": "reddit:patientgamers",
-      "link": "https://www.reddit.com/r/patientgamers/comments/1x902hh/norco_the_new_weird_a_very_unsettling_visual/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:39 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun and Gallop Racer",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/584872936",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun",
-        "Gallop Racer"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:38 UTC"
-    },
-    {
-      "headline": "Problem with uefi secure boot",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x900yh/problem_with_uefi_secure_boot/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:36 UTC"
-    },
-    {
-      "headline": "Why Sony Really Cancelled PHYSINT",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53282267",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:33 UTC"
-    },
-    {
-      "headline": "want to ask that if i can use my ps4 controller to play infamous second son pc port?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8zx5z/want_to_ask_that_if_i_can_use_my_ps4_controller/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:30 UTC"
     }
   ]
 }
