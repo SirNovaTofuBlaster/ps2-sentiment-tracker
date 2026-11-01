@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 21:46:36 UTC",
+  "last_updated": "2026-11-01 21:55:51 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -35,6 +35,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 21:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750783204",
+      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_games": [
+        "Jak and Daxter: The Precursor Legacy"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 21:35 UTC"
     },
     {
       "headline": "Rate my setup (spent all day fooling with my grandpa‘s old XPS 420)",
@@ -86,6 +105,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 21:33 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Grand Theft Auto: Vice City and Grand Theft Auto III",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12908001",
+      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_games": [
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 21:32 UTC"
     },
     {
       "headline": "How can I use new/more ram for better performance?",
@@ -1135,17 +1174,18 @@
       "timestamp": "2026-11-01 20:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750779140",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
+        "Kingdom Hearts II",
         "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3402,15 +3442,15 @@
       "timestamp": "2026-11-01 18:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 4: The Room, Silent Hill 2 and Silent Hill 3",
+      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 4: The Room and Silent Hill 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750772247",
-      "matched_game": "Silent Hill 4: The Room",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Silent Hill 4: The Room",
         "Silent Hill 2",
+        "Silent Hill 4: The Room",
         "Silent Hill 3"
       ],
       "match_score": 100,
@@ -98126,16 +98166,17 @@
       "timestamp": "2026-10-28 18:32 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Metal Gear Solid 2: Sons of Liberty, Metal Gear Solid 3: Snake Eater and Grand Theft Auto: San Andreas",
+      "headline": "Thread on /vr/ naming Devil May Cry 3: Dante's Awakening, Grand Theft Auto: San Andreas, Metal Gear Solid 2: Sons of Liberty and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12901157",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
       "matched_games": [
+        "Devil May Cry 3: Dante's Awakening",
+        "Grand Theft Auto: San Andreas",
         "Metal Gear Solid 2: Sons of Liberty",
-        "Metal Gear Solid 3: Snake Eater",
-        "Grand Theft Auto: San Andreas"
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -338194,152 +338235,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 21:56 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/584930924",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:54 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Deus Ex, Half-Life, Red Faction 2 and 1 more",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12885401",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex",
-        "Half-Life",
-        "Red Faction 2",
-        "Unreal Tournament"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:53 UTC"
-    },
-    {
-      "headline": "Looking for advice/ help",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1x9fhie/looking_for_advice_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:52 UTC"
-    },
-    {
-      "headline": "What’s the best way to play sly Cooper on deck",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x9ffo1/whats_the_best_way_to_play_sly_cooper_on_deck/",
-      "matched_game": "LEGO Star Wars II: The Original Trilogy",
-      "matched_games": [
-        "LEGO Star Wars II: The Original Trilogy"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:50 UTC"
-    },
-    {
-      "headline": "Consequences of placing the NVIDIA sticker on my case when I use Radeon",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9fey6/consequences_of_placing_the_nvidia_sticker_on_my/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:49 UTC"
-    },
-    {
-      "headline": "Where Can I find this cable? Lian Li TL Controller HUB",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9femi/where_can_i_find_this_cable_lian_li_tl_controller/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:48 UTC"
-    },
-    {
-      "headline": "Sudden low performance on LA Noire?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x9fep8/sudden_low_performance_on_la_noire/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:48 UTC"
-    },
-    {
-      "headline": "🔴LIVE! WE ARE BACK! JP Pump Continues? MASSIVE Pokemon Auction Next Sunday!",
-      "source": "YouTube: GetTheGreg",
-      "source_type": "youtube",
-      "feed": "youtube:https://www.youtube.com/@getthegreg",
-      "link": "https://www.youtube.com/watch?v=oE3AXY7SE2g",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:47 UTC",
-      "views": 193
     }
   ]
 }
