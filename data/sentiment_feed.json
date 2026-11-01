@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 10:21:27 UTC",
+  "last_updated": "2026-11-01 10:30:42 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -963,6 +963,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 08:51 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4 and Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750750492",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 08:49 UTC"
     },
     {
       "headline": "Air cooling vs aio",
@@ -338191,76 +338211,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 10:30 UTC"
-    },
-    {
-      "headline": "Necesito ayuda vale la pena rtx 4090 3700 dolares?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8zv5e/necesito_ayuda_vale_la_pena_rtx_4090_3700_dolares/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:26 UTC"
-    },
-    {
-      "headline": "Starmax - Tangleroots - a sci-fi roguelike bag-builder where you explore hostile planets and scavenge for resources",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x8zue2/starmax_tangleroots_a_scifi_roguelike_bagbuilder/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:25 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Deus Ex",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749915349",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:24 UTC"
-    },
-    {
-      "headline": "PS5 vs PS5 Pro for story driven games is the upgrade actually worth it",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x8ztc9/ps5_vs_ps5_pro_for_story_driven_games_is_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 10:23 UTC"
     }
   ]
 }
