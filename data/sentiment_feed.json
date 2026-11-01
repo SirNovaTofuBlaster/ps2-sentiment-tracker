@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 06:42:44 UTC",
+  "last_updated": "2026-11-01 06:56:41 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -415,6 +415,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-01 05:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Winx Club",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750745316",
+      "matched_game": "Winx Club",
+      "matched_games": [
+        "Winx Club"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 05:30 UTC"
     },
@@ -338297,114 +338316,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 07:01 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Okami, Odin Sphere and Shadow of the Colossus",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749909261",
-      "matched_game": "Okami",
-      "matched_games": [
-        "Okami",
-        "Odin Sphere",
-        "Shadow of the Colossus"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 06:55 UTC"
-    },
-    {
-      "headline": "PS2 Elimination Tournament round 10 (159-154)",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x8wg2d/ps2_elimination_tournament_round_10_159154/",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex",
-        "Def Jam: Fight for New York",
-        "Ace Combat 4: Shattered Skies",
-        "Ace Combat 5: The Unsung War",
-        "Burnout 2: Point of Impact",
-        "Champions of Norrath",
-        "Beyond Good and Evil",
-        "Aggressive Inline",
-        "Colin McRae Rally 3",
-        "Fight Night Round 2",
-        "Burnout Revenge",
-        "Call of Duty 3",
-        "Devil May Cry",
-        "Ape Escape 2",
-        "Ape Escape 3",
-        "Dark Cloud 2",
-        "Dark Cloud",
-        "Burnout 3"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 06:52 UTC"
-    },
-    {
-      "headline": "Once Human | Free Ocean DLC: Isles of Abyss Gameplay Trailer",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x8waua/once_human_free_ocean_dlc_isles_of_abyss_gameplay/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 06:43 UTC"
-    },
-    {
-      "headline": "Butaro's Overtime Office - BronzeOrange Games - A funny desktop companion idler where you try to escape the corporate 9 to 5.",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x8waq1/butaros_overtime_office_bronzeorange_games_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 06:43 UTC"
-    },
-    {
-      "headline": "Anyway to stream games over different network and control your PC at the same time to put the PC to sleep?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x8wb5d/anyway_to_stream_games_over_different_network_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 06:43 UTC"
     }
   ]
 }
