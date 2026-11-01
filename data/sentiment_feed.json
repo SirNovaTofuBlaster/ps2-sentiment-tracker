@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 07:23:26 UTC",
+  "last_updated": "2026-11-01 07:26:00 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -273,6 +273,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 06:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750747283",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 06:38 UTC"
     },
     {
       "headline": "Is Dragon Dogma 2 worth buying?",
@@ -1411,6 +1430,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-01 04:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750742747",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 04:11 UTC"
     },
@@ -2588,6 +2626,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 01:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XI",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750735824",
+      "matched_game": "Final Fantasy XI",
+      "matched_games": [
+        "Final Fantasy XI"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 01:26 UTC"
     },
     {
       "headline": "Any non mmo with mmo style raids/dungeons? No online only",
@@ -338586,23 +338643,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 07:27 UTC"
-    },
-    {
-      "headline": "Black screen on restart",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8wzyk/black_screen_on_restart/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 07:24 UTC"
     }
   ]
 }
