@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-01 06:33:23 UTC",
+  "last_updated": "2026-11-01 06:42:44 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750747143",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 06:33 UTC"
+    },
     {
       "headline": "What’s a game I should play before the end of the year?",
       "source": "r/ShouldIbuythisgame",
@@ -156,6 +175,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 05:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750745996",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 05:55 UTC"
     },
     {
       "headline": "Europe",
@@ -338367,91 +338405,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 06:43 UTC"
-    },
-    {
-      "headline": "$5 slim ps2",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x8w9qr/5_slim_ps2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 06:41 UTC"
-    },
-    {
-      "headline": "Looking for a PC controller like the original non-DualShock PlayStation controller.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x8w8ca/looking_for_a_pc_controller_like_the_original/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 06:39 UTC"
-    },
-    {
-      "headline": "2nd Monitor Games That Are Not OSRS",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x8w8t0/2nd_monitor_games_that_are_not_osrs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 06:39 UTC"
-    },
-    {
-      "headline": "Am i able to use a different graphics card?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8w7pw/am_i_able_to_use_a_different_graphics_card/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 06:37 UTC"
-    },
-    {
-      "headline": "Tales of Eternia Remastered - Launch Trailer",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1x8w5qg/tales_of_eternia_remastered_launch_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-18 06:34 UTC"
     }
   ]
 }
