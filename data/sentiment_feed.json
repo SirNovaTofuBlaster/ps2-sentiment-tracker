@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 09:24:26 UTC",
+  "last_updated": "2026-11-01 09:33:43 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -188,6 +188,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-01 09:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750750803",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 09:00 UTC"
     },
@@ -338269,112 +338288,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 09:33 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming God Hand",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749913748",
-      "matched_game": "God Hand",
-      "matched_games": [
-        "God Hand"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 09:31 UTC"
-    },
-    {
-      "headline": "RiptOPL not working.",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1x8yytc/riptopl_not_working/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 09:29 UTC"
-    },
-    {
-      "headline": "There won't be any consequences for games being decompiled/reverse engineered. Because even if AAA companies would make their games require a connection to their servers, or even if the companies crashed, we'll have enough games for a lifetime anyway.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8yyg9/there_wont_be_any_consequences_for_games_being/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 09:28 UTC"
-    },
-    {
-      "headline": "Small collection coming along,would love recommendations for games",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x8yxnj/small_collection_coming_alongwould_love/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-18 09:27 UTC"
-    },
-    {
-      "headline": "This new 3H Penta Tandem is magic",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8yxqx/this_new_3h_penta_tandem_is_magic/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 09:27 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749913550",
-      "matched_game": "Silent Hill 3",
-      "matched_games": [
-        "Silent Hill 3"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 09:25 UTC"
     }
   ]
 }
