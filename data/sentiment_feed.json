@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 20:49:26 UTC",
+  "last_updated": "2026-11-01 20:58:47 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -273,6 +273,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 20:23 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750779140",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 20:20 UTC"
     },
     {
       "headline": "Games through usb",
@@ -2713,6 +2732,25 @@
       ],
       "match_score": 100,
       "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 18:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750771828",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6334,7 +6372,7 @@
       "timestamp": "2026-11-01 15:20 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4 and Persona 3",
+      "headline": "Thread on /vg/ naming Persona 4, Persona 3 and Persona 3 FES",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -6342,7 +6380,8 @@
       "matched_game": "Persona 4",
       "matched_games": [
         "Persona 4",
-        "Persona 3"
+        "Persona 3",
+        "Persona 3 FES"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -29157,14 +29196,15 @@
       "timestamp": "2026-10-31 13:26 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Final Fantasy XI",
+      "headline": "Thread on /vg/ naming Final Fantasy XI and Final Fantasy X",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/586253029",
       "matched_game": "Final Fantasy XI",
       "matched_games": [
-        "Final Fantasy XI"
+        "Final Fantasy XI",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338145,74 +338185,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 20:58 UTC"
-    },
-    {
-      "headline": "Diablo Survivors Mod and How to install it",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x9e7ld/diablo_survivors_mod_and_how_to_install_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:57 UTC"
-    },
-    {
-      "headline": "Video Game Decomp Hub Closes Due To AI: ‘The Community Aspect Of Decompilation Has Been Broken’",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/video-game-decomp-hub-closes-due-to-ai-the-community-aspect-of-decompilation-has-been-broken-2000747302",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:51 UTC"
-    },
-    {
-      "headline": "Ths same thing used to hapen to me, what was going on?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9e2ea/ths_same_thing_used_to_hapen_to_me_what_was_going/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:51 UTC"
-    },
-    {
-      "headline": "Haul from my local gamexchange",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x9e1ko/haul_from_my_local_gamexchange/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:50 UTC"
     }
   ]
 }
