@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 07:05:38 UTC",
+  "last_updated": "2026-11-01 07:10:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -37,6 +37,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 06:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Red Dead Revolver",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750746667",
+      "matched_game": "Red Dead Revolver",
+      "matched_games": [
+        "Red Dead Revolver"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 06:19 UTC"
     },
     {
       "headline": "Future looks bleak",
@@ -3305,19 +3324,19 @@
       "timestamp": "2026-11-01 00:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Yakuza, Yakuza 2 and Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Yakuza and Yakuza 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750731809",
-      "matched_game": "Yakuza",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
+        "Metal Gear Solid 3: Snake Eater",
         "Yakuza",
-        "Yakuza 2",
-        "Metal Gear Solid 3: Snake Eater"
+        "Yakuza 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338227,59 +338246,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 07:15 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749909659",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 07:09 UTC"
-    },
-    {
-      "headline": "I managed to revive the console after a long time",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x8wq2o/i_managed_to_revive_the_console_after_a_long_time/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 07:08 UTC"
-    },
-    {
-      "headline": "This can cause a fire??",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x8wobg/this_can_cause_a_fire/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 07:05 UTC"
     }
   ]
 }
