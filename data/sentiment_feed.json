@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 01:48:31 UTC",
+  "last_updated": "2026-11-01 01:57:47 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -332,6 +332,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-01 01:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750735259",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 01:14 UTC"
     },
     {
       "headline": "Black friday",
@@ -1194,14 +1213,16 @@
       "timestamp": "2026-11-01 00:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Yakuza and Yakuza 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750731809",
       "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Yakuza",
+        "Yakuza 2"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -339066,93 +339087,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 01:58 UTC"
-    },
-    {
-      "headline": "trying to turn my dad into a gamer",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x8r9j8/trying_to_turn_my_dad_into_a_gamer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 01:56 UTC"
-    },
-    {
-      "headline": "How do I gift GTA6 for Christmas",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x8r7we/how_do_i_gift_gta6_for_christmas/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 01:54 UTC"
-    },
-    {
-      "headline": "Game stuck on 0% downloading content when trying to play",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x8r8c8/game_stuck_on_0_downloading_content_when_trying/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 01:54 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749898698",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 01:54 UTC"
-    },
-    {
-      "headline": "Did I just buy a fake Emerald?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x8r58p/did_i_just_buy_a_fake_emerald/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 01:50 UTC"
     }
   ]
 }
