@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 21:39:26 UTC",
+  "last_updated": "2026-11-01 21:42:05 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -309,6 +309,44 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 21:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750781423",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 21:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3 FES",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750781368",
+      "matched_game": "Persona 3 FES",
+      "matched_games": [
+        "Persona 3 FES"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 21:02 UTC"
     },
     {
       "headline": "Crimson Desert or Phantom Blade 0?",
@@ -819,6 +857,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 20:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 3 and Silent Hill 4: The Room",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750779935",
+      "matched_game": "Silent Hill 3",
+      "matched_games": [
+        "Silent Hill 3",
+        "Silent Hill 4: The Room"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 20:36 UTC"
     },
     {
       "headline": "Hoping somebody here knows any games about the main character being of the supernatural who is surviving in the apocalypse",
@@ -1655,6 +1713,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 19:42 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dead or Alive 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750777005",
+      "matched_game": "Dead or Alive 2",
+      "matched_games": [
+        "Dead or Alive 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 19:41 UTC"
     },
     {
       "headline": "Rgb on mobo stopped working",
@@ -3347,15 +3424,16 @@
       "timestamp": "2026-11-01 18:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Gran Turismo 4 and LEGO Batman",
+      "headline": "Thread on /v/ naming God of War, LEGO Batman and Gran Turismo 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750772108",
-      "matched_game": "Gran Turismo 4",
+      "matched_game": "God of War",
       "matched_games": [
-        "Gran Turismo 4",
-        "LEGO Batman"
+        "God of War",
+        "LEGO Batman",
+        "Gran Turismo 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338299,43 +338377,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 21:42 UTC"
-    },
-    {
-      "headline": "so my old lian li galahad is crapping the bed",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9f88p/so_my_old_lian_li_galahad_is_crapping_the_bed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:40 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Deus Ex and The Sims",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749946878",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex",
-        "The Sims"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 21:39 UTC"
     }
   ]
 }
