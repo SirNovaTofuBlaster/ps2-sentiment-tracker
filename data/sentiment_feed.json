@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 12:09:14 UTC",
+  "last_updated": "2026-11-01 12:11:48 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -517,6 +517,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 11:21 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750754590",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 11:20 UTC"
     },
     {
       "headline": "Strap on back of case",
@@ -5329,6 +5348,26 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 03:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4 and Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750740364",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4",
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 03:13 UTC"
     },
     {
       "headline": "Patrick Stewart's Perfect 'Simpsons' Episode Reveals the Beloved Actor's Secret Weapon",
@@ -338092,23 +338131,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 12:11 UTC"
-    },
-    {
-      "headline": "My Very First PC",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x91oo3/my_very_first_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 12:10 UTC"
     }
   ]
 }
