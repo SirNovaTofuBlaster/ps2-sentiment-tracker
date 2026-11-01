@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 23:40:44 UTC",
+  "last_updated": "2026-11-01 23:49:56 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -443,6 +443,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-01 23:01 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Odin Sphere",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750787636",
+      "matched_game": "Odin Sphere",
+      "matched_games": [
+        "Odin Sphere"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 23:01 UTC"
     },
@@ -338528,60 +338547,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 23:52 UTC"
-    },
-    {
-      "headline": "Missing 3-port connector for CPU fan?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9hx97/missing_3port_connector_for_cpu_fan/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 23:45 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming No One Lives Forever and Hitman: Blood Money",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749953261",
-      "matched_game": "No One Lives Forever",
-      "matched_games": [
-        "No One Lives Forever",
-        "Hitman: Blood Money"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 23:45 UTC"
-    },
-    {
-      "headline": "What 4k upscaler to get?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x9hw4i/what_4k_upscaler_to_get/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 23:44 UTC"
     }
   ]
 }
