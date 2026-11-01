@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 22:43:52 UTC",
+  "last_updated": "2026-11-01 22:52:56 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18,6 +18,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 22:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3 and Silent Hill 4: The Room",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750786519",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2",
+        "Silent Hill 3",
+        "Silent Hill 4: The Room"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 22:38 UTC"
     },
     {
       "headline": "Should I buy Dragons Dogma 2 or Crimson Desert?",
@@ -3780,7 +3801,7 @@
         "Final Fantasy XII"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4424,13 +4445,14 @@
       "timestamp": "2026-11-01 18:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 4: The Room and Silent Hill 3",
+      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 2, Silent Hill 4: The Room and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750772247",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Silent Hill 2",
         "Silent Hill 4: The Room",
         "Silent Hill 3"
@@ -31216,7 +31238,7 @@
       "timestamp": "2026-10-31 13:26 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Final Fantasy XI and Final Fantasy X",
+      "headline": "Thread on /vg/ naming Final Fantasy XI, Final Fantasy X and Persona 4",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -31224,7 +31246,8 @@
       "matched_game": "Final Fantasy XI",
       "matched_games": [
         "Final Fantasy XI",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Persona 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338405,163 +338428,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 22:52 UTC"
-    },
-    {
-      "headline": "Can it run Crysis?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9gsr9/can_it_run_crysis/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:51 UTC"
-    },
-    {
-      "headline": "Copy of Pokemon Black Real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x9grgp/copy_of_pokemon_black_real/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:49 UTC"
-    },
-    {
-      "headline": "Why won't the game read my controller?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x9grfn/why_wont_the_game_read_my_controller/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:49 UTC"
-    },
-    {
-      "headline": "I Used AI to Make a Webpage Game in less than One Day",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53307008",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:48 UTC"
-    },
-    {
-      "headline": "Would this need a complete replacement or would fixing it be worth it?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9gr3m/would_this_need_a_complete_replacement_or_would/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:48 UTC"
-    },
-    {
-      "headline": "I had to clean one of my controllers because my kid spilt juice on it. I decided to remix all of them in the process",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x9gqen/i_had_to_clean_one_of_my_controllers_because_my/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:47 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749950242",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:45 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy XI",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749950163",
-      "matched_game": "Final Fantasy XI",
-      "matched_games": [
-        "Final Fantasy XI"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:44 UTC"
-    },
-    {
-      "headline": "Recommend truly aimless, task-less, low stakes game",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x9gmsf/recommend_truly_aimless_taskless_low_stakes_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:43 UTC"
     }
   ]
 }
