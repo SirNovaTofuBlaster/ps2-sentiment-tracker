@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 19:04:49 UTC",
+  "last_updated": "2026-11-01 19:18:46 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -700,6 +700,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 70,
+      "hype": 0,
+      "timestamp": "2026-11-01 18:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2 and Silent Hill 4: The Room",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750772247",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2",
+        "Silent Hill 4: The Room"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 18:17 UTC"
     },
@@ -1539,6 +1559,25 @@
       "timestamp": "2026-11-01 17:33 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750769983",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 17:33 UTC"
+    },
+    {
       "headline": "J'ai mis ma vieille DDR3 G.Skill en vitrine. Sam Altman ne l'aura JAMAIS !!",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -1868,13 +1907,14 @@
       "timestamp": "2026-11-01 17:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Sonic Heroes",
+      "headline": "Thread on /v/ naming Shadow the Hedgehog and Sonic Heroes",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750769214",
-      "matched_game": "Sonic Heroes",
+      "matched_game": "Shadow the Hedgehog",
       "matched_games": [
+        "Shadow the Hedgehog",
         "Sonic Heroes"
       ],
       "match_score": 100,
@@ -337811,187 +337851,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 19:19 UTC"
-    },
-    {
-      "headline": "Looking for a new game to play with my wife",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x9bqew/looking_for_a_new_game_to_play_with_my_wife/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:17 UTC"
-    },
-    {
-      "headline": "Exil Island - a top-down survival game where home needs walls",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x9bms2/exil_island_a_topdown_survival_game_where_home/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:13 UTC"
-    },
-    {
-      "headline": "Just doubled my ram",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9bmnl/just_doubled_my_ram/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:13 UTC"
-    },
-    {
-      "headline": "Wife is addicted to Dead by Daylight. Please help. Need alternative game.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x9bl76/wife_is_addicted_to_dead_by_daylight_please_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:12 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Shadow of the Colossus, Final Fantasy XII and Okami",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749938969",
-      "matched_game": "Shadow of the Colossus",
-      "matched_games": [
-        "Shadow of the Colossus",
-        "Final Fantasy XII",
-        "Okami"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:11 UTC"
-    },
-    {
-      "headline": "American megatrends screen?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9bka2/american_megatrends_screen/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:11 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Burnout 3 and Tokyo Xtreme Racer",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749938790",
-      "matched_game": "Burnout 3",
-      "matched_games": [
-        "Burnout 3",
-        "Tokyo Xtreme Racer"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:08 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Just Cause",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749938727",
-      "matched_game": "Just Cause",
-      "matched_games": [
-        "Just Cause"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:06 UTC"
-    },
-    {
-      "headline": "My friend told me to put into sleep mode while it downloading helldivers 2 is thid what he meant",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x9bg5n/my_friend_told_me_to_put_into_sleep_mode_while_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:06 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749938717",
-      "matched_game": "Grand Theft Auto III",
-      "matched_games": [
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 19:06 UTC"
     }
   ]
 }
