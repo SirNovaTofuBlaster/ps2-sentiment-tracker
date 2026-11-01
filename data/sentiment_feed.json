@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 20:42:21 UTC",
+  "last_updated": "2026-11-01 20:44:58 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -3115,6 +3115,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-01 17:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750770510",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 17:44 UTC"
     },
@@ -6243,14 +6262,15 @@
       "timestamp": "2026-11-01 15:20 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4",
+      "headline": "Thread on /vg/ naming Persona 4 and Persona 3",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/586378162",
       "matched_game": "Persona 4",
       "matched_games": [
-        "Persona 4"
+        "Persona 4",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338189,59 +338209,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 20:45 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749944000",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:43 UTC"
-    },
-    {
-      "headline": "All carry-forward content in Call of Duty: Modern Warfare 4 and Warzone",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/all-carry-forward-content-in-call-of-duty-modern-warfare-4-and-warzone/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:42 UTC"
-    },
-    {
-      "headline": "Splatter house 3! Perfect game for spooky season.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x9dugn/splatter_house_3_perfect_game_for_spooky_season/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-18 20:42 UTC"
     }
   ]
 }
