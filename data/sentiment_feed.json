@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 11:12:04 UTC",
+  "last_updated": "2026-11-01 11:14:33 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -77482,13 +77482,14 @@
       "timestamp": "2026-10-29 01:48 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming NHL 2001, Smuggler's Run, Final Fantasy X and 6 more",
+      "headline": "Thread on /vr/ naming Street Fighter EX3, NHL 2001, Smuggler's Run and 6 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12901991",
-      "matched_game": "NHL 2001",
+      "matched_game": "Street Fighter EX3",
       "matched_games": [
+        "Street Fighter EX3",
         "NHL 2001",
         "Smuggler's Run",
         "Final Fantasy X",
@@ -77496,11 +77497,10 @@
         "Dynasty Warriors 2",
         "Armored Core 2",
         "Midnight Club",
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Street Fighter EX3"
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338371,40 +338371,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-18 11:14 UTC"
-    },
-    {
-      "headline": "AS NOLAN INTENDED",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1x90nau/as_nolan_intended/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 11:12 UTC"
-    },
-    {
-      "headline": "The smell of a new PC/old PC shop, back to PC-gaming after 20 years",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x90n6j/the_smell_of_a_new_pcold_pc_shop_back_to_pcgaming/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 11:12 UTC"
     }
   ]
 }
