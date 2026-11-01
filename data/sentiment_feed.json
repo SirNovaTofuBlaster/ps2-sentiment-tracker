@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 22:36:26 UTC",
+  "last_updated": "2026-11-01 22:39:17 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -887,18 +887,18 @@
       "timestamp": "2026-11-01 21:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy and Twisted Metal Black",
+      "headline": "Thread on /v/ naming Twisted Metal Black and Jak and Daxter: The Precursor Legacy",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750783204",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_game": "Twisted Metal Black",
       "matched_games": [
-        "Jak and Daxter: The Precursor Legacy",
-        "Twisted Metal Black"
+        "Twisted Metal Black",
+        "Jak and Daxter: The Precursor Legacy"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -958,15 +958,15 @@
       "timestamp": "2026-11-01 21:33 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Grand Theft Auto: Vice City and Grand Theft Auto III",
+      "headline": "Thread on /vr/ naming Grand Theft Auto III and Grand Theft Auto: Vice City",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12908001",
-      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Grand Theft Auto: Vice City",
-        "Grand Theft Auto III"
+        "Grand Theft Auto III",
+        "Grand Theft Auto: Vice City"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -2064,18 +2064,18 @@
       "timestamp": "2026-11-01 20:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750779140",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts II",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4403,6 +4403,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 18:16 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750772162",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -15625,6 +15644,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 06:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming King's Field IV",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750746415",
+      "matched_game": "King's Field IV",
+      "matched_games": [
+        "King's Field IV"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 06:11 UTC"
     },
     {
       "headline": "Future looks bleak",
@@ -338471,74 +338509,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-18 22:40 UTC"
-    },
-    {
-      "headline": "Looking for a roguelike where every run feels chaotic and unique, with a deep synergistic strategy component.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x9giw7/looking_for_a_roguelike_where_every_run_feels/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:38 UTC"
-    },
-    {
-      "headline": "Geolympia - MCS - A geography trivia game with daily puzzles and 1v1 duels",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x9gin3/geolympia_mcs_a_geography_trivia_game_with_daily/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:37 UTC"
-    },
-    {
-      "headline": "Banishers or Hell is Us?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1x9gipa/banishers_or_hell_is_us/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:37 UTC"
-    },
-    {
-      "headline": "23 devs teamed up to make a free game of 'innovative yet questionable volume sliders,' and it feels like browser-based WarioWare",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/23-devs-teamed-up-to-make-a-free-game-of-innovative-yet-questionable-volume-sliders-and-it-feels-like-browser-based-warioware/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 22:36 UTC"
     }
   ]
 }
