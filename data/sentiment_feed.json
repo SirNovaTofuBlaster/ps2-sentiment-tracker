@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 08:41:40 UTC",
+  "last_updated": "2026-11-02 08:50:38 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -596,6 +596,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-02 07:29 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750808471",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 07:29 UTC"
     },
@@ -338878,57 +338897,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 08:50 UTC"
-    },
-    {
-      "headline": "Help finding more games",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x9riyb/help_finding_more_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:42 UTC"
-    },
-    {
-      "headline": "[ Removed by Reddit ]",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9rim1/removed_by_reddit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:41 UTC"
-    },
-    {
-      "headline": "La promoción de GTA 6 sigue sorprendiendo: réplicas de los vehículos del juego recorren las calles de Miami",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026292010/la-promocion-de-gta-6-sigue-sorprendiendo-replicas-de-los-vehiculos-del-juego-recorren-las-calles-de-miami/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:41 UTC"
     }
   ]
 }
