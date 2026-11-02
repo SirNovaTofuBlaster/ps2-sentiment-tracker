@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 23:49:56 UTC",
+  "last_updated": "2026-11-02 00:03:55 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 00:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Ratchet and Clank: Up Your Arsenal",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750790152",
+      "matched_game": "Ratchet and Clank: Up Your Arsenal",
+      "matched_games": [
+        "Ratchet and Clank: Up Your Arsenal"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 23:50 UTC"
     },
     {
       "headline": "What’s next? Accessory Recommendations",
@@ -861,19 +880,19 @@
       "timestamp": "2026-11-01 22:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 3, Silent Hill 2 and Silent Hill 4: The Room",
+      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3 and Silent Hill 4: The Room",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750786519",
-      "matched_game": "Silent Hill 3",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Silent Hill 3",
         "Silent Hill 2",
+        "Silent Hill 3",
         "Silent Hill 4: The Room"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1120,18 +1139,18 @@
       "timestamp": "2026-11-01 22:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus and ICO",
+      "headline": "Thread on /v/ naming ICO and Shadow of the Colossus",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750785698",
-      "matched_game": "Shadow of the Colossus",
+      "matched_game": "ICO",
       "matched_games": [
-        "Shadow of the Colossus",
-        "ICO"
+        "ICO",
+        "Shadow of the Colossus"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -18465,17 +18484,18 @@
       "timestamp": "2026-11-01 02:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750739397",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338405,148 +338425,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 00:03 UTC"
-    },
-    {
-      "headline": "Linux 7.3 released with faster I/O performance, AMD Zen 6 preparations & more",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9i98d/linux_73_released_with_faster_io_performance_amd/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 00:01 UTC"
-    },
-    {
-      "headline": "Monday's What did you buy last week? - October 19, 2026",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1x9i8lk/mondays_what_did_you_buy_last_week_october_19_2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 00:00 UTC"
-    },
-    {
-      "headline": "Weekly Question Thread",
-      "source": "r/emulation",
-      "source_type": "reddit",
-      "feed": "reddit:emulation",
-      "link": "https://www.reddit.com/r/emulation/comments/1x9i808/weekly_question_thread/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 00:00 UTC"
-    },
-    {
-      "headline": "Excitebike 64’s Creators Made This Weird PS2 Game!",
-      "source": "YouTube: Dan Gnadt - The PS2 Guy",
-      "source_type": "youtube",
-      "feed": "youtube:UChBb5-4ILVNPsL8xX6a4LpA",
-      "link": "https://www.youtube.com/shorts/J5VtWN4atRo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 00:00 UTC",
-      "views": 302
-    },
-    {
-      "headline": "Underground Security Inc - KRNK Studios - Roguelite Dungeon Defender",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x9i5dr/underground_security_inc_krnk_studios_roguelite/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 23:57 UTC"
-    },
-    {
-      "headline": "PC freezes/hard-resets with no BSOD — happens at idle AND under load, no error log.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9i4sl/pc_freezeshardresets_with_no_bsod_happens_at_idle/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 23:56 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Devil May Cry, Naruto: Ultimate Ninja, The Thing and 1 more",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/584942914",
-      "matched_game": "Devil May Cry",
-      "matched_games": [
-        "Devil May Cry",
-        "Naruto: Ultimate Ninja",
-        "The Thing",
-        "Rock Band"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-18 23:54 UTC"
-    },
-    {
-      "headline": "How much would you spend for this. Better than the NTSC? Imo i like box better, comes out from the side instead. Doesn’t have the comic though",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1x9i1ue/how_much_would_you_spend_for_this_better_than_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-18 23:52 UTC"
     }
   ]
 }
