@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 20:05:40 UTC",
+  "last_updated": "2026-11-02 20:14:50 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -139,6 +139,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 19:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex and Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750837157",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex",
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 19:37 UTC"
     },
     {
       "headline": "Thread on /v/ naming Max Payne",
@@ -8647,18 +8667,19 @@
       "timestamp": "2026-11-02 13:31 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /v/ naming Silent Hill 3, Metal Gear Solid 3: Snake Eater and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750819354",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Silent Hill 3",
       "matched_games": [
-        "Silent Hill 2",
-        "Metal Gear Solid 3: Snake Eater"
+        "Silent Hill 3",
+        "Metal Gear Solid 3: Snake Eater",
+        "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -194272,6 +194293,25 @@
       "timestamp": "2026-10-25 19:35 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Tekken 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12895586",
+      "matched_game": "Tekken 4",
+      "matched_games": [
+        "Tekken 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-25 19:35 UTC"
+    },
+    {
       "headline": "9070xt or 5070ti?",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -339003,76 +339043,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 20:15 UTC"
-    },
-    {
-      "headline": "Possibly dead motherboard",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa7mt1/possibly_dead_motherboard/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 20:10 UTC"
-    },
-    {
-      "headline": "Best upscaler for spider man with lsfg vk for best 60fps?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xa7lhf/best_upscaler_for_spider_man_with_lsfg_vk_for/",
-      "matched_game": "Spider-Man",
-      "matched_games": [
-        "Spider-Man"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 70,
-      "hype": 0,
-      "timestamp": "2026-10-19 20:09 UTC"
-    },
-    {
-      "headline": "Looking for a game of any genre where you play as a crusader or an empire during the crusades.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xa7l49/looking_for_a_game_of_any_genre_where_you_play_as/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 20:08 UTC"
-    },
-    {
-      "headline": "RTX 5090 prices in Europe: up 31% in 30 days",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa7iew/rtx_5090_prices_in_europe_up_31_in_30_days/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 20:06 UTC"
     }
   ]
 }
