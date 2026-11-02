@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 10:57:11 UTC",
+  "last_updated": "2026-11-02 10:59:46 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1184,6 +1184,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 08:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Naruto: Ultimate Ninja",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750810445",
+      "matched_game": "Naruto: Ultimate Ninja",
+      "matched_games": [
+        "Naruto: Ultimate Ninja"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 08:46 UTC"
     },
@@ -3317,6 +3336,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 04:57 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming King's Field IV",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750803660",
+      "matched_game": "King's Field IV",
+      "matched_games": [
+        "King's Field IV"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5768,13 +5806,14 @@
       "timestamp": "2026-11-02 01:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dora the Explorer",
+      "headline": "Thread on /v/ naming Spider-Man and Dora the Explorer",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750795417",
-      "matched_game": "Dora the Explorer",
+      "matched_game": "Spider-Man",
       "matched_games": [
+        "Spider-Man",
         "Dora the Explorer"
       ],
       "match_score": 100,
@@ -339015,40 +339054,6 @@
       "hype": 0,
       "timestamp": "2026-10-19 11:00 UTC",
       "views": 47861
-    },
-    {
-      "headline": "Is this copy real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x9trlp/is_this_copy_real/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 10:58 UTC"
-    },
-    {
-      "headline": "Linux Kernel 7.3 Release is Good News For Gamers Short on VRAM",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9tr54/linux_kernel_73_release_is_good_news_for_gamers/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 10:57 UTC"
     }
   ]
 }
