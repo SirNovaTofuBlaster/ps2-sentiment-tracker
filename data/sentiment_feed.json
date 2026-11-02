@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-11-02 02:02:39 UTC",
+  "last_updated": "2026-11-02 02:11:53 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Ultimate Spider-Man and Spider-Man 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750796332",
+      "matched_game": "Ultimate Spider-Man",
+      "matched_games": [
+        "Ultimate Spider-Man",
+        "Spider-Man 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 01:56 UTC"
+    },
     {
       "headline": "Thread on /vr/ naming Resident Evil 4",
       "source": "4chan /vr/",
@@ -1668,6 +1688,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-01 23:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X-2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750787815",
+      "matched_game": "Final Fantasy X-2",
+      "matched_games": [
+        "Final Fantasy X-2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 23:04 UTC"
     },
@@ -338518,76 +338557,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 02:12 UTC"
-    },
-    {
-      "headline": "Rebuilding my old Alienware 3080 10gb build for a friend.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9kt69/rebuilding_my_old_alienware_3080_10gb_build_for_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 02:09 UTC"
-    },
-    {
-      "headline": "The disparities between sprites and their portraits always gives me a good laugh",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x9ksks/the_disparities_between_sprites_and_their/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 02:08 UTC"
-    },
-    {
-      "headline": "GBA games real or fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x9kpde/gba_games_real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 02:03 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749959476",
-      "matched_game": "Resident Evil Code: Veronica X",
-      "matched_games": [
-        "Resident Evil Code: Veronica X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 02:03 UTC"
     }
   ]
 }
