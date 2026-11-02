@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 09:19:41 UTC",
+  "last_updated": "2026-11-02 09:33:43 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1044,7 +1044,7 @@
       "timestamp": "2026-11-02 07:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II, Metal Gear Solid 2: Sons of Liberty and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1052,7 +1052,9 @@
       "matched_game": "Kingdom Hearts",
       "matched_games": [
         "Kingdom Hearts",
-        "Kingdom Hearts II"
+        "Kingdom Hearts II",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2207,18 +2209,18 @@
       "timestamp": "2026-11-02 04:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750803656",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts II",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339036,76 +339038,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 09:33 UTC"
-    },
-    {
-      "headline": "Looking to play some ROM hacks on the deck. Not sure where to start",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x9s9u1/looking_to_play_some_rom_hacks_on_the_deck_not/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 09:28 UTC"
-    },
-    {
-      "headline": "Street Fighter em 1º nos cinemas",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/street-fighter-em-1o-nos-cinemas",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 09:26 UTC"
-    },
-    {
-      "headline": "Amazon Luna llega a Prime Video en España: ya puedes jugar desde tu televisor sin consola ni pagar más",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026292013/amazon-luna-llega-a-prime-video-en-espana-ya-puedes-jugar-desde-tu-televisor-sin-consola-ni-pagar-mas/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 09:25 UTC"
-    },
-    {
-      "headline": "¿Dónde se ve mejor? Comparan Resident Evil 4 Remake en Switch 2 vs PS5 y Steam Deck",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026292012/donde-se-ve-mejor-comparan-resident-evil-4-remake-en-switch-2-vs-ps5-y-steam-deck/",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-19 09:19 UTC"
     }
   ]
 }
