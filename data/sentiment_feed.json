@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 19:37:40 UTC",
+  "last_updated": "2026-11-02 19:46:52 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -35,6 +35,44 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 00:30 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Monster Hunter",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/586519364",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 19:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750837018",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 19:34 UTC"
     },
     {
       "headline": "LGR Thrifts [Ep.52] It's Spherical!",
@@ -3973,6 +4011,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 16:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750827679",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 16:35 UTC"
     },
@@ -339422,221 +339479,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 19:46 UTC"
-    },
-    {
-      "headline": "2x16gb ddr5 - WTB",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa6xbv/2x16gb_ddr5_wtb/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:45 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Guitar Hero and Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750001686",
-      "matched_game": "Guitar Hero",
-      "matched_games": [
-        "Guitar Hero",
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:45 UTC"
-    },
-    {
-      "headline": "Subject: Request for an AM4/AM5 Escape Pod: Formal Defection from Team Blue",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa6x3s/subject_request_for_an_am4am5_escape_pod_formal/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:44 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Alone in the Dark",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750001578",
-      "matched_game": "Alone in the Dark",
-      "matched_games": [
-        "Alone in the Dark"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:44 UTC"
-    },
-    {
-      "headline": "New Build and new game room.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa6u53/new_build_and_new_game_room/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:41 UTC"
-    },
-    {
-      "headline": "PCSX2 freezes when loading the next minigame or finishing a cutscene in SpongeBob: Lights, Camera, Pants! — any fix?",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xa6t2s/pcsx2_freezes_when_loading_the_next_minigame_or/",
-      "matched_game": "SpongeBob: Happy Squared Pack",
-      "matched_games": [
-        "SpongeBob: Happy Squared Pack"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:40 UTC"
-    },
-    {
-      "headline": "What feels better in your experience: 60fps with frame gen, or 30fps with only rendered frames?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa6t5c/what_feels_better_in_your_experience_60fps_with/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:40 UTC"
-    },
-    {
-      "headline": "Rumor: Disney in Talks With Bungie and DICE, as Seach Is on for Development Partner for Star Wars Battlefront 3",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa6s5x/rumor_disney_in_talks_with_bungie_and_dice_as/",
-      "matched_game": "Star Wars Battlefront",
-      "matched_games": [
-        "Star Wars Battlefront"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:39 UTC"
-    },
-    {
-      "headline": "Thread on /vm/ naming The Warriors",
-      "source": "4chan /vm/",
-      "source_type": "4chan",
-      "feed": "4chan:vm",
-      "link": "https://boards.4chan.org/vm/thread/3089776",
-      "matched_game": "The Warriors",
-      "matched_games": [
-        "The Warriors"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:39 UTC"
-    },
-    {
-      "headline": "Rate my specs and prices",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa6rb0/rate_my_specs_and_prices/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:38 UTC"
-    },
-    {
-      "headline": "How come my shader cache size limit is 16GB and there is 18.5GB used?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa6prl/how_come_my_shader_cache_size_limit_is_16gb_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:37 UTC"
-    },
-    {
-      "headline": "Crashes and Freezing - A little help",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xa6qhq/crashes_and_freezing_a_little_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:37 UTC"
     }
   ]
 }
