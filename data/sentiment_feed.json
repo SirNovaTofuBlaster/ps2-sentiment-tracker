@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 14:45:28 UTC",
+  "last_updated": "2026-11-02 14:48:12 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1873,6 +1873,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 12:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750818174",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 12:57 UTC"
     },
     {
       "headline": "Should I buy grey zone warfare to play solo ?",
@@ -5215,13 +5234,14 @@
       "timestamp": "2026-11-02 08:54 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750810570",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
         "Final Fantasy XII"
       ],
       "match_score": 100,
@@ -338714,23 +338734,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-19 14:48 UTC"
-    },
-    {
-      "headline": "Debería comprar GTA VI en cuenta de Nueva Zelanda?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1x9yty4/debería_comprar_gta_vi_en_cuenta_de_nueva_zelanda/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 14:45 UTC"
     }
   ]
 }
