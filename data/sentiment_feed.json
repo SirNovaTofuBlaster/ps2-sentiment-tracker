@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 18:33:29 UTC",
+  "last_updated": "2026-11-02 18:36:14 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -188,6 +188,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 18:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750832929",
+      "matched_game": "Spider-Man 2",
+      "matched_games": [
+        "Spider-Man 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 18:21 UTC"
     },
     {
       "headline": "A demo is now available for Pikmin 4 – Nintendo Switch 2 Edition + Dandori Academy",
@@ -2408,6 +2427,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 16:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex and Unreal Tournament",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750827828",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex",
+        "Unreal Tournament"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 16:38 UTC"
     },
@@ -28051,13 +28090,14 @@
       "timestamp": "2026-11-01 14:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Katamari Damacy",
+      "headline": "Thread on /v/ naming Shadow of Rome and Katamari Damacy",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750761221",
-      "matched_game": "Katamari Damacy",
+      "matched_game": "Shadow of Rome",
       "matched_games": [
+        "Shadow of Rome",
         "Katamari Damacy"
       ],
       "match_score": 100,
@@ -339222,23 +339262,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 18:36 UTC"
-    },
-    {
-      "headline": "Any information or help pricing",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xa50wk/any_information_or_help_pricing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 18:35 UTC"
     }
   ]
 }
