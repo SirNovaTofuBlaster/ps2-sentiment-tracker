@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 22:21:28 UTC",
+  "last_updated": "2026-11-02 22:24:10 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -118,6 +118,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 22:13 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Pro Evolution Soccer",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/586535383",
+      "matched_game": "Pro Evolution Soccer",
+      "matched_games": [
+        "Pro Evolution Soccer"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 22:13 UTC"
     },
@@ -11265,6 +11284,25 @@
       "timestamp": "2026-11-02 13:58 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Everybody's Golf",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750820328",
+      "matched_game": "Everybody's Golf",
+      "matched_games": [
+        "Everybody's Golf"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 13:56 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming Red Dead Revolver",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -11660,16 +11698,17 @@
       "timestamp": "2026-11-02 13:31 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 3, Metal Gear Solid 3: Snake Eater and Silent Hill 2",
+      "headline": "Thread on /v/ naming Astro Boy, Metal Gear Solid 3: Snake Eater, Silent Hill 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750819354",
-      "matched_game": "Silent Hill 3",
+      "matched_game": "Astro Boy",
       "matched_games": [
-        "Silent Hill 3",
+        "Astro Boy",
         "Metal Gear Solid 3: Snake Eater",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Silent Hill 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -339219,91 +339258,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 22:24 UTC"
-    },
-    {
-      "headline": "Pokemon black and white real or fake",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xab0s5/pokemon_black_and_white_real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 22:22 UTC"
-    },
-    {
-      "headline": "Remember the games that came with Windows XP? I made all five playable in your browser",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xab0rk/remember_the_games_that_came_with_windows_xp_i/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 22:22 UTC"
-    },
-    {
-      "headline": "Me resisting the urge to upgrade and waiting on the AI bubble to \"burst\"",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xab0s0/me_resisting_the_urge_to_upgrade_and_waiting_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 22:22 UTC"
-    },
-    {
-      "headline": "I'm on my fourth attempt at Baldur's Gate 3 and I'm not sure if I should stick with it",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xaazda/im_on_my_fourth_attempt_at_baldurs_gate_3_and_im/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 22:21 UTC"
-    },
-    {
-      "headline": "Help with GPU",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xaaziy/help_with_gpu/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 22:21 UTC"
     }
   ]
 }
