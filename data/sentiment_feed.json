@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 08:22:38 UTC",
+  "last_updated": "2026-11-02 08:36:43 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1617,14 +1617,15 @@
       "timestamp": "2026-11-02 04:59 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750803656",
       "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -2763,6 +2764,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 03:16 UTC"
+    },
+    {
+      "headline": "Thread on /vm/ naming The Thing",
+      "source": "4chan /vm/",
+      "source_type": "4chan",
+      "feed": "4chan:vm",
+      "link": "https://boards.4chan.org/vm/thread/3146198",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 03:13 UTC"
     },
     {
       "headline": "Games with a sense of upward progression",
@@ -10419,13 +10439,14 @@
       "timestamp": "2026-11-01 18:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Final Fantasy XII, Resident Evil Code: Veronica X and 3 more",
+      "headline": "Thread on /v/ naming God of War II, Resident Evil 4, Final Fantasy XII and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750773732",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "God of War II",
       "matched_games": [
+        "God of War II",
         "Resident Evil 4",
         "Final Fantasy XII",
         "Resident Evil Code: Veronica X",
@@ -10434,7 +10455,7 @@
         "Silent Hill 3"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338942,166 +338963,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 08:36 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749972464",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:34 UTC"
-    },
-    {
-      "headline": "Will Crysis be ported to browser?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9re2g/will_crysis_be_ported_to_browser/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:33 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun and Monster Hunter",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/584981706",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun",
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:29 UTC"
-    },
-    {
-      "headline": "Court Approves Denuvos Subpoenas For Voices38: Valve, Reddit, And Discord Will Have To Share Payment Info And Login Data",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x9rbcq/court_approves_denuvos_subpoenas_for_voices38/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:28 UTC"
-    },
-    {
-      "headline": "Motorsport Manager 2: First Trailer",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1x9rakc/motorsport_manager_2_first_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:27 UTC"
-    },
-    {
-      "headline": "¿Qué es exactamente Final Fantasy Resonance y por qué los fans de la saga están tan entusiasmados con él?",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026292009/que-es-exactamente-final-fantasy-resonance-y-por-que-los-fans-de-la-saga-estan-tan-entusiasmados-con-el/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:27 UTC"
-    },
-    {
-      "headline": "Best mouse and keyboard",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x9r9zl/best_mouse_and_keyboard/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:26 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749972251",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:26 UTC"
-    },
-    {
-      "headline": "Court Approves Denuvos Subpoenas For Voices38: Valve, Reddit, And Discord Will Have To Share Payment Info And Login Data",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9r9os/court_approves_denuvos_subpoenas_for_voices38/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 08:25 UTC"
     }
   ]
 }
