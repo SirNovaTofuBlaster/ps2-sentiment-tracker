@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 18:11:40 UTC",
+  "last_updated": "2026-11-02 18:20:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -3974,7 +3974,7 @@
       "timestamp": "2026-11-02 15:17 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4, Black, Shadow of the Colossus and 2 more",
+      "headline": "Thread on /vr/ naming Resident Evil 4, Metal Gear Solid 3: Snake Eater, Final Fantasy X and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -3982,13 +3982,13 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4",
-        "Black",
-        "Shadow of the Colossus",
         "Metal Gear Solid 3: Snake Eater",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Black",
+        "Shadow of the Colossus"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -7406,6 +7406,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 12:41 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Way of the Samurai 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750817559",
+      "matched_game": "Way of the Samurai 2",
+      "matched_games": [
+        "Way of the Samurai 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 12:40 UTC"
     },
     {
       "headline": "About latest Sam Altman quote",
@@ -17742,20 +17761,22 @@
       "timestamp": "2026-11-01 22:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3, Silent Hill 4: The Room and 1 more",
+      "headline": "Thread on /v/ naming Splinter Cell, Persona 4, Silent Hill 2 and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750786519",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Splinter Cell",
       "matched_games": [
+        "Splinter Cell",
+        "Persona 4",
         "Silent Hill 2",
         "Silent Hill 3",
         "Silent Hill 4: The Room",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -19676,6 +19697,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-01 20:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Iron Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750780536",
+      "matched_game": "Iron Man",
+      "matched_games": [
+        "Iron Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 20:47 UTC"
     },
@@ -338745,147 +338785,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 18:20 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Area 51",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/585024713",
-      "matched_game": "Area 51",
-      "matched_games": [
-        "Area 51"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 18:19 UTC"
-    },
-    {
-      "headline": "Forgot sudo password Kon ask for original. No keyboard for other way. Does Factory reset work?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xa4jr2/forgot_sudo_password_kon_ask_for_original_no/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 18:18 UTC"
-    },
-    {
-      "headline": "Who here can/can't tell 60FPS from higher frame rates for fast moving objects?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa4i4y/who_here_cancant_tell_60fps_from_higher_frame/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 18:16 UTC"
-    },
-    {
-      "headline": "Pokémon platinum",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xa4goe/pokémon_platinum/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 18:14 UTC"
-    },
-    {
-      "headline": "Will Buying a PS6 Bankrupt You? - Kinda Funny Games Daily LIVE 10.19.26",
-      "source": "YouTube: Kinda Funny Games",
-      "source_type": "youtube",
-      "feed": "youtube:UCT6QFE3peNry9PdO5uGj96g",
-      "link": "https://www.youtube.com/watch?v=N2HRQV_1bEA",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 18:12 UTC",
-      "views": 36233
-    },
-    {
-      "headline": "I was called to check a brand new setup...",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa4dx2/i_was_called_to_check_a_brand_new_setup/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 18:12 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming The Simpsons: Hit & Run",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749996661",
-      "matched_game": "The Simpsons: Hit & Run",
-      "matched_games": [
-        "The Simpsons: Hit & Run"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 18:12 UTC"
-    },
-    {
-      "headline": "Bungie shares new update on exactly when we’ll hear more about Destiny 2 Unvaulting",
-      "source": "The Game Post",
-      "source_type": "news",
-      "feed": "https://thegamepost.com/feed/",
-      "link": "https://thegamepost.com/bungie-new-update-more-about-destiny-2-unvaulting/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 18:11 UTC"
     }
   ]
 }
