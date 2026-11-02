@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 06:17:08 UTC",
+  "last_updated": "2026-11-02 06:28:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -18,6 +18,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 06:08 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750805937",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 06:05 UTC"
     },
     {
       "headline": "Looking for an open world rpg but like kerbal space program/state of decay 2",
@@ -504,6 +524,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 04:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750802849",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 04:32 UTC"
     },
     {
       "headline": "Thread on /v/ naming Silent Hill 2",
@@ -36100,7 +36139,7 @@
       "timestamp": "2026-10-31 13:42 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil Code: Veronica X, Judge Dredd: Dredd vs. Death and Rogue Trooper",
+      "headline": "Thread on /vr/ naming Resident Evil Code: Veronica X, Resident Evil 4, Judge Dredd: Dredd vs. Death and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -36108,6 +36147,7 @@
       "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
         "Resident Evil Code: Veronica X",
+        "Resident Evil 4",
         "Judge Dredd: Dredd vs. Death",
         "Rogue Trooper"
       ],
@@ -338658,76 +338698,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 06:28 UTC"
-    },
-    {
-      "headline": "What should I play next? In need of assistance",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x9peo1/what_should_i_play_next_in_need_of_assistance/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 06:27 UTC"
-    },
-    {
-      "headline": "SD accessories recommendation?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x9pdt3/sd_accessories_recommendation/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 06:25 UTC"
-    },
-    {
-      "headline": "Slipgate Classic Beta 1.0 - Quake rebuilt on the Half-Life engine (full 32-map build)",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/53318795",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-19 06:22 UTC"
-    },
-    {
-      "headline": "Anyone else still think about the Rollcage Stage II soundtrack? I made a PS1-style DnB mix as a tribute",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1x9pc3v/anyone_else_still_think_about_the_rollcage_stage/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 06:22 UTC"
     }
   ]
 }
