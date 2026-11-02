@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 07:09:18 UTC",
+  "last_updated": "2026-11-02 07:12:01 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -2097,15 +2097,15 @@
       "timestamp": "2026-11-02 02:49 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750798665",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -3040,6 +3040,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 01:29 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming War of the Monsters",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750795054",
+      "matched_game": "War of the Monsters",
+      "matched_games": [
+        "War of the Monsters"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 01:29 UTC"
     },
@@ -31426,6 +31445,25 @@
       "hype": 0,
       "timestamp": "2026-10-31 17:30 UTC",
       "views": 59581
+    },
+    {
+      "headline": "Thread on /vr/ naming Grand Theft Auto III",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12906367",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-10-31 17:30 UTC"
     },
     {
       "headline": "Suggest me videogame , in the link Is game i played",
@@ -338593,23 +338631,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 07:17 UTC"
-    },
-    {
-      "headline": "How do i upgrade my 13 year old pc",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9q400/how_do_i_upgrade_my_13_year_old_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 07:11 UTC"
     }
   ]
 }
