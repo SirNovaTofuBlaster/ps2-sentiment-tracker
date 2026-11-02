@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 19:30:27 UTC",
+  "last_updated": "2026-11-02 19:33:10 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -9548,14 +9548,16 @@
       "timestamp": "2026-11-02 12:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Way of the Samurai 2",
+      "headline": "Thread on /v/ naming Monster Hunter, Way of the Samurai 2 and Ty the Tasmanian Tiger",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750817559",
-      "matched_game": "Way of the Samurai 2",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Way of the Samurai 2"
+        "Monster Hunter",
+        "Way of the Samurai 2",
+        "Ty the Tasmanian Tiger"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -11579,6 +11581,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 10:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750813071",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 10:21 UTC"
     },
     {
       "headline": "Why does Streaming from pc to steamdeck is so awfull",
@@ -339527,42 +339548,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 19:34 UTC"
-    },
-    {
-      "headline": "Is it time to sell?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xa6k7h/is_it_time_to_sell/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:31 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Duel Masters",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750000793",
-      "matched_game": "Duel Masters",
-      "matched_games": [
-        "Duel Masters"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 19:31 UTC"
     }
   ]
 }
