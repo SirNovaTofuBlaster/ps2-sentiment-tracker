@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 17:18:08 UTC",
+  "last_updated": "2026-11-02 17:23:57 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -152,6 +152,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 17:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750829046",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 17:04 UTC"
     },
@@ -2706,16 +2725,18 @@
       "timestamp": "2026-11-02 15:17 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Final Fantasy X, Metal Gear Solid 3: Snake Eater and Resident Evil 4",
+      "headline": "Thread on /vr/ naming Resident Evil 4, Black, Shadow of the Colossus and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12909146",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Final Fantasy X",
+        "Resident Evil 4",
+        "Black",
+        "Shadow of the Colossus",
         "Metal Gear Solid 3: Snake Eater",
-        "Resident Evil 4"
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -8574,6 +8595,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 09:41 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Final Fantasy X",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12908880",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 09:40 UTC"
     },
     {
       "headline": "NVIDIA RTX 5080 24GB January launch in doubt",
@@ -338817,57 +338857,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 17:23 UTC"
-    },
-    {
-      "headline": "Arc Raiders player numbers hit a six-month high following the release of the extraction shooter's huge Frozen Trails update",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/arc-raiders-frozen-trails-player-numbers-six-month-high",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 17:22 UTC"
-    },
-    {
-      "headline": "Looking for a new game. Good rpg with story and lots to explore that’s not repetitive.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xa2y7h/looking_for_a_new_game_good_rpg_with_story_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 17:20 UTC"
-    },
-    {
-      "headline": "Suggestions for a headset.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa2wsz/suggestions_for_a_headset/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 17:18 UTC"
     }
   ]
 }
