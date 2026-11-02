@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 09:03:11 UTC",
+  "last_updated": "2026-11-02 09:05:42 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -2116,18 +2116,18 @@
       "timestamp": "2026-11-02 04:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750803656",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
-        "Kingdom Hearts",
-        "Kingdom Hearts II"
+        "Kingdom Hearts II",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9546,7 +9546,7 @@
       "timestamp": "2026-11-01 20:01 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Freedom Fighters, The Suffering, Kill Switch and 2 more",
+      "headline": "Thread on /vr/ naming Freedom Fighters, The Suffering, Ghost Rider and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -9555,9 +9555,9 @@
       "matched_games": [
         "Freedom Fighters",
         "The Suffering",
-        "Kill Switch",
         "Ghost Rider",
-        "Metal Arms: Glitch in the System"
+        "Metal Arms: Glitch in the System",
+        "Kill Switch"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -11598,17 +11598,18 @@
       "timestamp": "2026-11-01 18:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Killer 7, Persona 3, Shadow Hearts: From the New World and 1 more",
+      "headline": "Thread on /v/ naming The Snow Queen Quest, Persona 3, Shadow Hearts: From the New World and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750772258",
-      "matched_game": "Killer 7",
+      "matched_game": "The Snow Queen Quest",
       "matched_games": [
-        "Killer 7",
+        "The Snow Queen Quest",
         "Persona 3",
         "Shadow Hearts: From the New World",
-        "Ar Tonelico"
+        "Ar Tonelico",
+        "Killer 7"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -339133,23 +339134,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-19 09:06 UTC"
-    },
-    {
-      "headline": "Might have Info-Stealing Malware, Please Help",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9rvad/might_have_infostealing_malware_please_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 09:03 UTC"
     }
   ]
 }
