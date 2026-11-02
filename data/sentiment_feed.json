@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 06:12:18 UTC",
+  "last_updated": "2026-11-02 06:14:57 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -156,6 +156,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 05:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII, Shadow of the Colossus and The Getaway",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750804609",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII",
+        "Shadow of the Colossus",
+        "The Getaway"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 05:25 UTC"
     },
     {
       "headline": "How do I run this on the Steam Deck?",
@@ -4884,7 +4905,7 @@
       "timestamp": "2026-11-01 22:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Resident Evil 4, Silent Hill 3 and 1 more",
+      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3, Silent Hill 4: The Room and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -4892,9 +4913,9 @@
       "matched_game": "Silent Hill 2",
       "matched_games": [
         "Silent Hill 2",
-        "Resident Evil 4",
         "Silent Hill 3",
-        "Silent Hill 4: The Room"
+        "Silent Hill 4: The Room",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -338724,59 +338745,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 06:16 UTC"
-    },
-    {
-      "headline": "Game Freak pone fin a las grandes actualizaciones de Beast of Reincarnation tras solo dos meses",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026292001/game-freak-pone-fin-a-las-grandes-actualizaciones-de-beast-of-reincarnation-tras-solo-dos-meses/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 06:12 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Genji",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749968569",
-      "matched_game": "Genji",
-      "matched_games": [
-        "Genji"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 06:12 UTC"
-    },
-    {
-      "headline": "Open MW steam deck companion app tests",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x9p6dn/open_mw_steam_deck_companion_app_tests/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 06:12 UTC"
     }
   ]
 }
