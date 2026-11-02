@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 21:24:28 UTC",
+  "last_updated": "2026-11-02 21:27:11 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -479,6 +479,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 20:49 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Hobbit",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750841352",
+      "matched_game": "The Hobbit",
+      "matched_games": [
+        "The Hobbit"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 20:49 UTC"
     },
@@ -5186,6 +5205,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 17:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Captain Scarlet and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750829057",
+      "matched_game": "Captain Scarlet",
+      "matched_games": [
+        "Captain Scarlet",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 17:04 UTC"
     },
@@ -339212,40 +339251,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 21:28 UTC"
-    },
-    {
-      "headline": "Mi playstation 2 no lee los discos de los juegos",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1xa9mf3/mi_playstation_2_no_lee_los_discos_de_los_juegos/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:26 UTC"
-    },
-    {
-      "headline": "Do we want/need new TV shows for retro gaming, like the old 90s GamePro TV but modern?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xa9lwk/do_we_wantneed_new_tv_shows_for_retro_gaming_like/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:25 UTC"
     }
   ]
 }
