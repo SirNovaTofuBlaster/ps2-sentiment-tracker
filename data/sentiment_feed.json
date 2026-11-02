@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 21:02:40 UTC",
+  "last_updated": "2026-11-02 21:11:56 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 21:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming King of Fighters 2003",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750841936",
+      "matched_game": "King of Fighters 2003",
+      "matched_games": [
+        "King of Fighters 2003"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 20:59 UTC"
     },
     {
       "headline": "Developers, Creators, And Fans Remember BioWare: ‘I’ve Been Trying To Replicate That Feeling For Almost My Whole Life’",
@@ -120,6 +139,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 20:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750840061",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 20:27 UTC"
     },
     {
       "headline": "Do you care that discs are being taken away in the future?",
@@ -6745,18 +6783,18 @@
       "timestamp": "2026-11-02 15:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne and Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Max Payne",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750824696",
-      "matched_game": "Max Payne",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Max Payne",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Max Payne"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -7334,21 +7372,21 @@
       "timestamp": "2026-11-02 15:17 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4, Metal Gear Solid 3: Snake Eater, Final Fantasy X and 2 more",
+      "headline": "Thread on /vr/ naming Metal Gear Solid 3: Snake Eater, Resident Evil 4, Final Fantasy X and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12909146",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Resident Evil 4",
         "Metal Gear Solid 3: Snake Eater",
+        "Resident Evil 4",
         "Final Fantasy X",
         "Black",
         "Shadow of the Colossus"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -25870,19 +25908,20 @@
       "timestamp": "2026-11-01 18:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry, Persona 3, Shadow Hearts: From the New World and 3 more",
+      "headline": "Thread on /v/ naming Persona 4, Persona 3, Shadow Hearts: From the New World and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750772258",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Persona 4",
       "matched_games": [
-        "Devil May Cry",
+        "Persona 4",
         "Persona 3",
         "Shadow Hearts: From the New World",
         "Ar Tonelico",
         "Killer 7",
-        "The Snow Queen Quest"
+        "The Snow Queen Quest",
+        "Devil May Cry"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338716,181 +338755,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 21:11 UTC"
-    },
-    {
-      "headline": "Pc randomly crashes when Gaming",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xa97ng/pc_randomly_crashes_when_gaming/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:10 UTC"
-    },
-    {
-      "headline": "Peter Jackson desmiente la cancelación de 'The Lord of the Rings: Shadow of the Past' y confirma que sigue en guión",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/gallery/115088/the-lord-of-the-rings-shadow-of-the-past",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:08 UTC"
-    },
-    {
-      "headline": "deception and manipulation games…?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xa95vp/deception_and_manipulation_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:08 UTC"
-    },
-    {
-      "headline": "Best arcade hunting games?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xa95jd/best_arcade_hunting_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:08 UTC"
-    },
-    {
-      "headline": "Any good dark fantasy game",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xa93b0/any_good_dark_fantasy_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:05 UTC"
-    },
-    {
-      "headline": "The witcher 3 fully shuts off my deck",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xa93fz/the_witcher_3_fully_shuts_off_my_deck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:05 UTC"
-    },
-    {
-      "headline": "Samson studio shuts down as console success ‘wasn’t enough to get the company across the finish line’",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/samson-studio-shuts-down-console-success-wasnt-enough/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:04 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750005683",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:04 UTC"
-    },
-    {
-      "headline": "Everything That Went Wrong with Top 100 - The Kinda Funny Podcast",
-      "source": "YouTube: Kinda Funny Games",
-      "source_type": "youtube",
-      "feed": "youtube:UCT6QFE3peNry9PdO5uGj96g",
-      "link": "https://www.youtube.com/watch?v=QCopa24icdE",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:04 UTC",
-      "views": 40614
-    },
-    {
-      "headline": "3 buttons pulling up the pause menu?",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xa90ti/3_buttons_pulling_up_the_pause_menu/",
-      "matched_game": "Kingdom Hearts II",
-      "matched_games": [
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 21:03 UTC"
     }
   ]
 }
