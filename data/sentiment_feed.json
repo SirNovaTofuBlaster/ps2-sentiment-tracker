@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 03:21:19 UTC",
+  "last_updated": "2026-11-02 03:24:01 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -964,6 +964,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 01:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750796118",
+      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_games": [
+        "Grand Theft Auto: Vice City"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 01:50 UTC"
     },
@@ -7380,18 +7399,19 @@
       "timestamp": "2026-11-01 18:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Resident Evil 4, Final Fantasy XII and 2 more",
+      "headline": "Thread on /v/ naming Silent Hill 3, Resident Evil 4, Final Fantasy XII and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750773732",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Silent Hill 3",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
+        "Silent Hill 3",
         "Resident Evil 4",
         "Final Fantasy XII",
         "Resident Evil Code: Veronica X",
-        "Silent Hill 4: The Room"
+        "Silent Hill 4: The Room",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -8002,13 +8022,14 @@
       "timestamp": "2026-11-01 18:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3",
+      "headline": "Thread on /v/ naming Shadow Hearts: From the New World and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750772258",
-      "matched_game": "Persona 3",
+      "matched_game": "Shadow Hearts: From the New World",
       "matched_games": [
+        "Shadow Hearts: From the New World",
         "Persona 3"
       ],
       "match_score": 100,
@@ -338922,59 +338943,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 03:25 UTC"
-    },
-    {
-      "headline": "Romancing SaGa 1 Minstrel Song Review",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x9m7ym/romancing_saga_1_minstrel_song_review/",
-      "matched_game": "Romancing SaGa",
-      "matched_games": [
-        "Romancing SaGa"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 03:23 UTC"
-    },
-    {
-      "headline": "December marks 1 year",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x9m7a2/december_marks_1_year/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 03:22 UTC"
-    },
-    {
-      "headline": "Slay the Spire Controller Issue.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1x9m6qs/slay_the_spire_controller_issue/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 03:21 UTC"
     }
   ]
 }
