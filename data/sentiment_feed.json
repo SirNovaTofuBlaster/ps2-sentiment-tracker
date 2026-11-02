@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 00:11:58 UTC",
+  "last_updated": "2026-11-02 00:17:52 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -20,14 +20,34 @@
       "timestamp": "2026-11-02 00:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Ratchet and Clank: Up Your Arsenal",
+      "headline": "Thread on /v/ naming Final Fantasy X-2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750790421",
+      "matched_game": "Final Fantasy X-2",
+      "matched_games": [
+        "Final Fantasy X-2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-01 23:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Ratchet and Clank: Up Your Arsenal and Burnout 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750790152",
       "matched_game": "Ratchet and Clank: Up Your Arsenal",
       "matched_games": [
-        "Ratchet and Clank: Up Your Arsenal"
+        "Ratchet and Clank: Up Your Arsenal",
+        "Burnout 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1803,6 +1823,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-01 21:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750783625",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 21:44 UTC"
     },
@@ -338251,93 +338290,6 @@
       "hype": 0,
       "timestamp": "2026-10-19 00:20 UTC",
       "views": 879331
-    },
-    {
-      "headline": "Buffy PS2 PVM-1390",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1x9ikr9/buffy_ps2_pvm1390/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 00:16 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749954732",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 00:15 UTC"
-    },
-    {
-      "headline": "Pokemon Platinum CIB Real or Fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1x9ih6o/pokemon_platinum_cib_real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 00:11 UTC"
-    },
-    {
-      "headline": "Non-Horror Liminal Space",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x9igzq/nonhorror_liminal_space/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 00:11 UTC"
-    },
-    {
-      "headline": "Nier Replicant, Nier Gestalt, Nier",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x9igua/nier_replicant_nier_gestalt_nier/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 00:11 UTC"
     }
   ]
 }
