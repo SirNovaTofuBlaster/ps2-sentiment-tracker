@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 01:27:19 UTC",
+  "last_updated": "2026-11-02 01:30:02 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -6031,7 +6031,7 @@
       "timestamp": "2026-11-01 18:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Final Fantasy XII and Resident Evil Code: Veronica X",
+      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 4: The Room, Final Fantasy XII and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -6039,6 +6039,7 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4",
+        "Silent Hill 4: The Room",
         "Final Fantasy XII",
         "Resident Evil Code: Veronica X"
       ],
@@ -17399,6 +17400,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-01 07:10 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Genji",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12907128",
+      "matched_game": "Genji",
+      "matched_games": [
+        "Genji"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-01 07:10 UTC"
     },
@@ -153462,6 +153482,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-10-26 18:23 UTC"
+    },
+    {
+      "headline": "Thread on /vst/ naming Half-Life",
+      "source": "4chan /vst/",
+      "source_type": "4chan",
+      "feed": "4chan:vst",
+      "link": "https://boards.4chan.org/vst/thread/2510499",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 18:23 UTC"
     },
@@ -338858,59 +338897,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 01:30 UTC"
-    },
-    {
-      "headline": "$1409.00 Canadian dollars.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9k0z9/140900_canadian_dollars/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 01:29 UTC"
-    },
-    {
-      "headline": "Most far-fetched, harebrained, mind-blowing plot twist or plot device in jrpg or adjacent?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1x9k129/most_farfetched_harebrained_mindblowing_plot/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 01:29 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming The Hobbit",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12885683",
-      "matched_game": "The Hobbit",
-      "matched_games": [
-        "The Hobbit"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 01:29 UTC"
     }
   ]
 }
