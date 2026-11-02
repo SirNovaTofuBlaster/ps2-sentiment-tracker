@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 05:22:20 UTC",
+  "last_updated": "2026-11-02 05:31:54 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -260,6 +260,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 04:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750802806",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 04:31 UTC"
     },
     {
       "headline": "And they say M$ is being pushy about their own browser...",
@@ -2821,6 +2840,27 @@
       "timestamp": "2026-11-02 00:39 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Monster Hunter, Yakuza 2 and Odin Sphere",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750792226",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "Yakuza 2",
+        "Odin Sphere"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 00:31 UTC"
+    },
+    {
       "headline": "Is this Legit?",
       "source": "r/gameverifying",
       "source_type": "reddit",
@@ -3336,7 +3376,7 @@
       "timestamp": "2026-11-01 23:53 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Ratchet and Clank: Up Your Arsenal and Burnout 3",
+      "headline": "Thread on /v/ naming Resident Evil 4, Dead or Alive 2, Ratchet and Clank: Up Your Arsenal and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -3344,6 +3384,7 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4",
+        "Dead or Alive 2",
         "Ratchet and Clank: Up Your Arsenal",
         "Burnout 3"
       ],
@@ -338960,57 +339001,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 05:33 UTC"
-    },
-    {
-      "headline": "16 and just finished building my dream gaming pc",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9oepy/16_and_just_finished_building_my_dream_gaming_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 05:26 UTC"
-    },
-    {
-      "headline": "Good games with minimal or no tutorial",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1x9oe7y/good_games_with_minimal_or_no_tutorial/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 05:25 UTC"
-    },
-    {
-      "headline": "Any recommendations for acrylic cases to display Xbox controllers (pinned to a wall)",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1x9odp2/any_recommendations_for_acrylic_cases_to_display/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 05:24 UTC"
     }
   ]
 }
