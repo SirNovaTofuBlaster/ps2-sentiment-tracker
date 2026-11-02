@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-02 05:54:07 UTC",
+  "last_updated": "2026-11-02 05:59:49 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1349,6 +1349,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 02:59 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Sonic Heroes",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12908548",
+      "matched_game": "Sonic Heroes",
+      "matched_games": [
+        "Sonic Heroes"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 02:58 UTC"
     },
     {
       "headline": "Lost somewhere in space",
@@ -9307,15 +9326,16 @@
       "timestamp": "2026-11-01 18:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow Hearts: From the New World and Persona 3",
+      "headline": "Thread on /v/ naming Ar Tonelico, Persona 3 and Shadow Hearts: From the New World",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750772258",
-      "matched_game": "Shadow Hearts: From the New World",
+      "matched_game": "Ar Tonelico",
       "matched_games": [
-        "Shadow Hearts: From the New World",
-        "Persona 3"
+        "Ar Tonelico",
+        "Persona 3",
+        "Shadow Hearts: From the New World"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338726,110 +338746,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-19 06:00 UTC"
-    },
-    {
-      "headline": "Hi everyone, I need help enabling Secure Boot.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9oxpq/hi_everyone_i_need_help_enabling_secure_boot/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 05:58 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Tony Hawk's Underground 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/749968093",
-      "matched_game": "Tony Hawk's Underground 2",
-      "matched_games": [
-        "Tony Hawk's Underground 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-19 05:58 UTC"
-    },
-    {
-      "headline": "Silent Hill 1",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1x9ox38/silent_hill_1/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 05:57 UTC"
-    },
-    {
-      "headline": "How do you configure game resolution and upscalers properly?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1x9ovz1/how_do_you_configure_game_resolution_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 05:55 UTC"
-    },
-    {
-      "headline": "Retro 2D platformers that could have made a successful jump to 3D?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1x9ov90/retro_2d_platformers_that_could_have_made_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 05:54 UTC"
-    },
-    {
-      "headline": "I want to get my wife into gaming but I don’t know how",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1x9ovt9/i_want_to_get_my_wife_into_gaming_but_i_dont_know/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-19 05:54 UTC"
     }
   ]
 }
