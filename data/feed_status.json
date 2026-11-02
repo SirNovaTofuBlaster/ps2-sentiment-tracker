@@ -899,7 +899,7 @@
     "ok": false
   },
   "youtube:UC0fDG3byEcMtbOqPMymDNbw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 02:29 UTC",
     "latest": "2026-10-02 16:55 UTC",
     "ok": false
@@ -911,7 +911,7 @@
     "ok": false
   },
   "youtube:UC1wdop56K-ORxh37G6-fs7A": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 02:29 UTC",
     "latest": "2026-10-27 23:00 UTC",
     "ok": false
@@ -929,14 +929,16 @@
     "ok": false
   },
   "youtube:UC3IYhdamzjvEJ9CwkQa4RAw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-31 21:35 UTC",
     "ok": false
   },
   "youtube:UC3ltptWa0xfrDweghW94Acg": {
+    "error": "HTTP 404",
+    "failing_since": "2026-11-02 04:23 UTC",
     "latest": "2026-11-01 06:16 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UC3nPaf5MeeDTHA2JN7clidg": {
     "error": "HTTP 404",
@@ -1005,8 +1007,10 @@
     "ok": false
   },
   "youtube:UC7qPftDWPw9XuExpSgfkmJQ": {
+    "error": "HTTP 404",
+    "failing_since": "2026-11-02 04:23 UTC",
     "latest": "2026-10-29 11:17 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UC81naFdSS2bKzj51XDVltBQ": {
     "error": "HTTP 404",
@@ -1015,7 +1019,7 @@
     "ok": false
   },
   "youtube:UC8uT9cgJorJPWu7ITLGo9Ww": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 02:29 UTC",
     "latest": "2026-10-26 23:41 UTC",
     "ok": false
@@ -1039,13 +1043,13 @@
     "ok": false
   },
   "youtube:UCA5RGaQc-a8tIX_AqTTmWdw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-11-01 15:51 UTC",
     "ok": false
   },
   "youtube:UCA5SLTAVA6unn1M-6lbo1NA": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 00:35 UTC",
     "latest": "2026-10-28 17:00 UTC",
     "ok": false
@@ -1069,7 +1073,7 @@
     "ok": false
   },
   "youtube:UCE5dIscvDxrb7CD5uiJJOiw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 02:29 UTC",
     "latest": "2026-10-31 15:30 UTC",
     "ok": false
@@ -1135,7 +1139,7 @@
     "ok": false
   },
   "youtube:UCKy1dAqELo0zrOtPkf0eTMw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 02:29 UTC",
     "latest": "2026-11-01 19:54 UTC",
     "ok": false
@@ -1165,10 +1169,8 @@
     "ok": false
   },
   "youtube:UCNvzD7Z-g64bPXxGzaQaa4g": {
-    "error": "HTTP 404",
-    "failing_since": "2026-11-02 02:29 UTC",
     "latest": "2026-11-01 16:30 UTC",
-    "ok": false
+    "ok": true
   },
   "youtube:UCPYJR2EIu0_MJaDeSGwkIVw": {
     "error": "HTTP 404",
@@ -1189,24 +1191,26 @@
     "ok": false
   },
   "youtube:UCRg2tBkpKYDxOKtX3GvLZcQ": {
-    "error": "HTTP 404",
-    "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-29 11:07 UTC",
-    "ok": false
-  },
-  "youtube:UCRl0tzAFRKfNvAQnnfvIR9A": {
-    "latest": "2026-10-21 07:00 UTC",
     "ok": true
   },
+  "youtube:UCRl0tzAFRKfNvAQnnfvIR9A": {
+    "error": "HTTP 404",
+    "failing_since": "2026-11-02 04:23 UTC",
+    "latest": "2026-10-21 07:00 UTC",
+    "ok": false
+  },
   "youtube:UCRwh3TVQszgmDK6UHzHNdQQ": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-11-01 17:15 UTC",
     "ok": false
   },
   "youtube:UCS5Oz6CHmeoF7vSad0qqXfw": {
+    "error": "HTTP 404",
+    "failing_since": "2026-11-02 04:23 UTC",
     "latest": "2026-09-29 17:00 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UCSuhUzpdXg9jme6eN6HA_IA": {
     "error": "HTTP 404",
@@ -1233,7 +1237,7 @@
     "ok": false
   },
   "youtube:UCTdwY9mYjI9mbuLJ7Zx2How": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-25 00:07 UTC",
     "ok": false
@@ -1245,7 +1249,7 @@
     "ok": false
   },
   "youtube:UCVkqs_Q88BDmyaWwjYJ8_Ig": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 00:35 UTC",
     "latest": "2026-10-30 07:27 UTC",
     "ok": false
@@ -1275,7 +1279,7 @@
     "ok": false
   },
   "youtube:UCXspo7eyvzUh2k9d4JGLNRg": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-11-01 17:00 UTC",
     "ok": false
@@ -1287,12 +1291,16 @@
     "ok": false
   },
   "youtube:UCYzPXprvl5Y-Sf0g4vX-m6g": {
+    "error": "HTTP 404",
+    "failing_since": "2026-11-02 04:23 UTC",
     "latest": "2026-10-31 15:30 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UCZ7AeeVbyslLM_8-nVy2B8Q": {
+    "error": "HTTP 404",
+    "failing_since": "2026-11-02 04:23 UTC",
     "latest": "2026-10-31 13:00 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UCZKyj7wDE51SMbkrRBT6SdA": {
     "error": "HTTP 404",
@@ -1307,19 +1315,19 @@
     "ok": false
   },
   "youtube:UC_0CVCfC_3iuHqmyClu59Uw": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-11-01 15:07 UTC",
     "ok": false
   },
   "youtube:UC_ntXHv-XdKCD7CPynVvnQw": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-11-02 00:35 UTC",
     "latest": "2026-10-30 09:42 UTC",
     "ok": false
   },
   "youtube:UCbI-X9F07inmxYvQKDBOU7Q": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-11-01 16:00 UTC",
     "ok": false
@@ -1331,7 +1339,7 @@
     "ok": false
   },
   "youtube:UCciKycgzURdymx-GRSY2_dA": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-21 06:30 UTC",
     "ok": false
@@ -1349,7 +1357,7 @@
     "ok": false
   },
   "youtube:UCfBLXTwLoUpDAkHcHizW3Jg": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-30 15:02 UTC",
     "ok": false
@@ -1367,7 +1375,7 @@
     "ok": false
   },
   "youtube:UCg83RGdRpwfvoFEuE2zWKZA": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-23 17:38 UTC",
     "ok": false
@@ -1385,7 +1393,7 @@
     "ok": false
   },
   "youtube:UCgaPRP68bbyHnfkPhWWBrNw": {
-    "error": "HTTP 404",
+    "error": "HTTP 500",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-11-01 00:30 UTC",
     "ok": false
@@ -1409,10 +1417,8 @@
     "ok": false
   },
   "youtube:UCjBp_7RuDBUYbd1LegWEJ8g": {
-    "error": "HTTP 404",
-    "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-30 17:00 UTC",
-    "ok": false
+    "ok": true
   },
   "youtube:UCjFaPUcJU1vwk193mnW_w1w": {
     "error": "HTTP 404",
@@ -1433,7 +1439,7 @@
     "ok": false
   },
   "youtube:UCmeds0MLhjfkjD_5acPnFlQ": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-30 22:50 UTC",
     "ok": false
@@ -1445,10 +1451,8 @@
     "ok": false
   },
   "youtube:UCoIXnB865l9Ex9zs4OIXTdQ": {
-    "error": "HTTP 404",
-    "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-11-01 20:05 UTC",
-    "ok": false
+    "ok": true
   },
   "youtube:UCoZQiN0o7f36H7PaW4fVhFw": {
     "error": "HTTP 404",
@@ -1469,13 +1473,11 @@
     "ok": false
   },
   "youtube:UCpvtp7mH0Cdq8FQUxcjDq0Q": {
-    "error": "HTTP 500",
-    "failing_since": "2026-11-02 03:26 UTC",
-    "latest": "2026-11-01 23:58 UTC",
-    "ok": false
+    "latest": "2026-11-02 04:16 UTC",
+    "ok": true
   },
   "youtube:UCqDS7KWjAPKv-7ZSlro9OiQ": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 02:29 UTC",
     "latest": "2026-09-13 21:32 UTC",
     "ok": false
@@ -1493,10 +1495,8 @@
     "ok": false
   },
   "youtube:UCsvn_Po0SmunchJYOWpOxMg": {
-    "error": "HTTP 404",
-    "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-27 19:30 UTC",
-    "ok": false
+    "ok": true
   },
   "youtube:UCtUbO6rBht0daVIOGML3c8w": {
     "error": "HTTP 404",
@@ -1523,7 +1523,7 @@
     "ok": false
   },
   "youtube:UCwUiHJUm1wpSaUXiQt_H12A": {
-    "error": "HTTP 500",
+    "error": "HTTP 404",
     "failing_since": "2026-11-02 01:32 UTC",
     "latest": "2026-10-30 19:05 UTC",
     "ok": false
