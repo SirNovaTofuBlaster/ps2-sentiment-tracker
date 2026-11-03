@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 13:52:41 UTC",
+  "last_updated": "2026-11-03 13:57:42 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -283,6 +283,25 @@
       "matched_game": "Final Fantasy X",
       "matched_games": [
         "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 13:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750879560",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -5991,14 +6010,16 @@
       "timestamp": "2026-11-03 05:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 2 and Resident Evil Code: Veronica X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750864396",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Silent Hill 2",
+        "Resident Evil Code: Veronica X"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -338290,92 +338311,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 13:57 UTC"
-    },
-    {
-      "headline": "I Put SteamOS on the NEW OLED Xbox Ally X!",
-      "source": "YouTube: ETA PRIME",
-      "source_type": "youtube",
-      "feed": "youtube:UC_0CVCfC_3iuHqmyClu59Uw",
-      "link": "https://www.youtube.com/watch?v=1rCIkrpA9MA",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:56 UTC",
-      "views": 155195
-    },
-    {
-      "headline": "The state of PC hardware",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xassmk/the_state_of_pc_hardware/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:54 UTC"
-    },
-    {
-      "headline": "Final Fantasy Resonance - Review Thread",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xasrz1/final_fantasy_resonance_review_thread/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:54 UTC"
-    },
-    {
-      "headline": "Set for life",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/53377757",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:54 UTC"
-    },
-    {
-      "headline": "need help writing a list of games I'll play next year when i get a new laptop",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xasqd0/need_help_writing_a_list_of_games_ill_play_next/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:52 UTC"
     }
   ]
 }
