@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 12:28:42 UTC",
+  "last_updated": "2026-11-03 12:31:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -69,6 +69,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 12:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750876901",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 12:02 UTC"
     },
     {
       "headline": "GoldenEye 007 Is, Surprisingly, Among 14 Titles Being Removed from Xbox Game Pass",
@@ -4506,7 +4525,7 @@
       "timestamp": "2026-11-03 05:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Resident Evil 4 and Silent Hill 2",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Silent Hill 2 and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -4514,8 +4533,8 @@
       "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
         "Resident Evil Code: Veronica X",
-        "Resident Evil 4",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -8638,6 +8657,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 23:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Iron Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750851862",
+      "matched_game": "Iron Man",
+      "matched_games": [
+        "Iron Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 23:59 UTC"
     },
@@ -339063,91 +339101,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 12:31 UTC"
-    },
-    {
-      "headline": "Infested DX, a Callback to Classic DOS Horror Graphic Adventures, Is Coming to Steam Next Week",
-      "source": "Time Extension",
-      "source_type": "news",
-      "feed": "https://www.timeextension.com/feed",
-      "link": "https://www.timeextension.com/news/2026/10/infested-dx-a-callback-to-classic-dos-horror-graphic-adventures-is-coming-to-steam-next-week",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-20 12:30 UTC"
-    },
-    {
-      "headline": "Rumour: Iconic RPG Vampire: The Masquerade - Bloodlines Is Being Remastered",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/rumour-iconic-rpg-vampire-the-masquerade-bloodlines-is-being-remastered",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-20 12:30 UTC"
-    },
-    {
-      "headline": "Co-op Roguelites with a clear(er) division of roles?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xaquln/coop_roguelites_with_a_clearer_division_of_roles/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 12:30 UTC"
-    },
-    {
-      "headline": "Steam Next Fest has become next-to-worthless as AI slop infests a list of 8,000 demos",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xaqure/steam_next_fest_has_become_nexttoworthless_as_ai/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 12:30 UTC"
-    },
-    {
-      "headline": "Laptop RAM stick to Desktop using adapter",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xaqul9/laptop_ram_stick_to_desktop_using_adapter/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 12:30 UTC"
     }
   ]
 }
