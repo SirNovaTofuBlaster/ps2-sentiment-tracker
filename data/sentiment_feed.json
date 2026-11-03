@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 21:29:54 UTC",
+  "last_updated": "2026-11-03 21:40:59 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1741,6 +1741,26 @@
       "views": 1742
     },
     {
+      "headline": "Thread on /v/ naming BloodRayne 2 and Aeon Flux",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750900169",
+      "matched_game": "BloodRayne 2",
+      "matched_games": [
+        "BloodRayne 2",
+        "Aeon Flux"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 19:38 UTC"
+    },
+    {
       "headline": "First time in history that console emulator catched on with current gen",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -2680,18 +2700,18 @@
       "timestamp": "2026-11-03 18:54 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Kingdom Hearts II",
+      "headline": "Thread on /v/ naming Kingdom Hearts II and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750897451",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
-        "Kingdom Hearts",
-        "Kingdom Hearts II"
+        "Kingdom Hearts II",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337802,92 +337822,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 21:40 UTC"
-    },
-    {
-      "headline": "An Ode to Tank Controls: How did Resident Evil devs find the right balance between clunky, scary, and frusterating?",
-      "source": "r/truegaming",
-      "source_type": "reddit",
-      "feed": "reddit:truegaming",
-      "link": "https://www.reddit.com/r/truegaming/comments/1xb4xjk/an_ode_to_tank_controls_how_did_resident_evil/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 21:35 UTC"
-    },
-    {
-      "headline": "'If you can’t show your game to the world without fearing it’ll be cloned, something’s broken' says Moonlighter studio on its canceled demo",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/gaming-industry/if-you-cant-show-your-game-to-the-world-without-fearing-itll-be-cloned-somethings-broken-says-moonlighter-studio-on-its-canceled-demo/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-20 21:34 UTC"
-    },
-    {
-      "headline": "Retro pick ups!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xb4v39/retro_pick_ups/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 21:32 UTC"
-    },
-    {
-      "headline": "Playing E33 and it is very, very French",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xb4rzo/playing_e33_and_it_is_very_very_french/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 21:29 UTC"
-    },
-    {
-      "headline": "The Next Xbox Might Cost Nearly $2000",
-      "source": "YouTube: GameSpot",
-      "source_type": "youtube",
-      "feed": "youtube:UCbu2SsF-Or3Rsn3NxqODImw",
-      "link": "https://www.youtube.com/shorts/PfBSmyjgh_Y",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 21:29 UTC",
-      "views": 8893
     }
   ]
 }
