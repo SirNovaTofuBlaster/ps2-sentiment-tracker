@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 07:10:47 UTC",
+  "last_updated": "2026-11-03 07:24:44 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -71,6 +71,44 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 06:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750867261",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 06:38 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Special Forces",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12910960",
+      "matched_game": "Special Forces",
+      "matched_games": [
+        "Special Forces"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 06:37 UTC"
     },
     {
       "headline": "Thread on /v/ naming Splinter Cell",
@@ -339081,59 +339119,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-20 07:24 UTC"
-    },
-    {
-      "headline": "Is this coil whine? Might need the internet’s help on this one.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xalkz1/is_this_coil_whine_might_need_the_internets_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 07:21 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750030215",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-20 07:21 UTC"
-    },
-    {
-      "headline": "Found this game on my childhood computer",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xalgza/found_this_game_on_my_childhood_computer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 07:14 UTC"
     }
   ]
 }
