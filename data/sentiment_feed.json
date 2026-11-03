@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-03 02:39:46 UTC",
+  "last_updated": "2026-11-03 02:44:41 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Suikoden series on PCSX2",
+      "source": "Forum: Lemmy retrogaming",
+      "source_type": "forum",
+      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
+      "link": "https://lemmy.world/post/53924247",
+      "matched_game": "Suikoden IV",
+      "matched_games": [
+        "Suikoden IV"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-03 02:27 UTC"
+    },
     {
       "headline": "Metroid: Samus Returns PC \"Port\" Out NOW! A Single Screen Mod Masterpiece",
       "source": "YouTube: Video Game Esoterica",
@@ -339410,79 +339429,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 02:47 UTC"
-    },
-    {
-      "headline": "Giant Bomb has released their own Video Game Tracker!",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xagmys/giant_bomb_has_released_their_own_video_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 02:43 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Deus Ex",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750020816",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-20 02:41 UTC"
-    },
-    {
-      "headline": "Got a long flight ahead. Looking for games to play on my phone",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xagl76/got_a_long_flight_ahead_looking_for_games_to_play/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 02:40 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter and Persona 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750020791",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter",
-        "Persona 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-20 02:40 UTC"
     }
   ]
 }
