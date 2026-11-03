@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 15:16:41 UTC",
+  "last_updated": "2026-11-03 15:22:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -824,6 +824,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 14:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750881514",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 14:10 UTC"
     },
     {
       "headline": "Review: The Legend of Zelda: Ocarina of Time remake is superb, streamlined and safe",
@@ -337370,128 +337389,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 15:22 UTC"
-    },
-    {
-      "headline": "Smash Bros. director Masahiro Sakurai warns AI could lead to unoriginal, unplayable games",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/smash-bros-director-masahiro-sakurai-warns-ai-could-lead-to-unoriginal-unplayable-games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-20 15:20 UTC"
-    },
-    {
-      "headline": "Battlefield 6 x Dead Space - Official Convergence Event Trailer",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=-pzuWs86fiE",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 15:18 UTC",
-      "views": 5718
-    },
-    {
-      "headline": "SNES RetroTink vs Analogue Super Nt",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xauw5h/snes_retrotink_vs_analogue_super_nt/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 15:17 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750047767",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-20 15:17 UTC"
-    },
-    {
-      "headline": "New GPU to play modern games at 1440p 60fps consistently",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xauuzi/new_gpu_to_play_modern_games_at_1440p_60fps/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 15:16 UTC"
-    },
-    {
-      "headline": "All Castlevania: Belmont’s Curse Endings Explained",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/all-castlevania-belmonts-curse-endings-explained/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 15:16 UTC"
-    },
-    {
-      "headline": "How To Solve The Star Chart Puzzles In Castlevania: Belmont’s Curse",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/how-to-solve-the-star-chart-puzzles-in-castlevania-belmonts-curse/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 15:16 UTC"
     }
   ]
 }
