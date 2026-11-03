@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-11-03 01:47:42 UTC",
+  "last_updated": "2026-11-03 01:56:46 UTC",
   "total_tracked_feeds": 257,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Persona 4",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/586556441",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 01:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Simpsons Game",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750856725",
+      "matched_game": "The Simpsons Game",
+      "matched_games": [
+        "The Simpsons Game"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 01:43 UTC"
+    },
     {
       "headline": "Johnny Depp admite regressar a Pirates of the Caribbean para uma última despedida",
       "source": "Eurogamer.pt Latest Articles Feed",
@@ -378,6 +416,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 00:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Xena: Warrior Princess and Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750854485",
+      "matched_game": "Xena: Warrior Princess",
+      "matched_games": [
+        "Xena: Warrior Princess",
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 00:53 UTC"
     },
     {
       "headline": "Pokemon platinum real?",
@@ -12894,14 +12952,15 @@
       "timestamp": "2026-11-02 15:11 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750823559",
       "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -339177,40 +339236,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-20 01:56 UTC"
-    },
-    {
-      "headline": "#270 - BLARGS MOVING AWAY 🙁",
-      "source": "Podcast: GOONS",
-      "source_type": "podcast",
-      "feed": "https://feeds.megaphone.fm/GOONSMEDIALLC6622958176",
-      "link": "https://s.gum.fm/s-69a76f5bc76d0b29a4243488/traffic.megaphone.fm/GOONSMEDIALLC4750080000.mp3",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 01:55 UTC"
-    },
-    {
-      "headline": "Corsair fan half lights up ?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xafhz5/corsair_fan_half_lights_up/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 01:47 UTC"
     }
   ]
 }
