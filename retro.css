@@ -1136,18 +1136,31 @@ body .market-search i { position: absolute; left: .8rem; top: 50%; transform: tr
 body .market-search input, body .market-sort select { width: 100%; min-height: 2.4rem; background: var(--inset); border: 1px solid var(--line); border-radius: 6px; color: var(--text); font-size: .8rem; }
 body .market-search input { padding: .5rem .8rem .5rem 2.3rem; }
 body .market-sort select { padding: .5rem .8rem; font-family: var(--mono); font-size: .7rem; text-transform: uppercase; }
-body .worst-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: .5rem; }
-body .worst-row { display: grid; grid-template-columns: 1.6rem 4.2rem minmax(0, 1fr) auto; align-items: center; gap: .6rem; padding: .6rem .7rem; border: 1px solid var(--line); border-radius: 6px; background: var(--card); }
-body .worst-rank { font-family: var(--mono); font-size: .7rem; color: var(--dim); text-align: right; }
-body .worst-score { font-family: var(--mono); font-size: .72rem; color: var(--dim); text-align: center; border: 1px solid var(--red-line); border-radius: 4px; padding: .2rem .3rem; }
-body .worst-score b { font-size: 1rem; color: var(--text); }
-body .worst-score.is-none { border-color: var(--line); }
-body .worst-title { font-size: .85rem; font-weight: 600; overflow-wrap: anywhere; }
-body .worst-scale { font-family: var(--mono); font-size: .62rem; font-weight: 400; color: var(--dim); }
-body .worst-note { font-size: .7rem; color: var(--dim); line-height: 1.4; }
-body .worst-note a { text-decoration: underline; }
+body .worst-list { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; flex-direction: column; gap: .6rem; }
+body .worst-row { display: grid; grid-template-columns: 1.8rem 5.2rem minmax(0, 1fr) auto; align-items: center; gap: .9rem; padding: .8rem 1rem; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+body .worst-row:first-child { border-color: var(--red-line); }
+body .worst-rank { font-family: var(--mono); font-size: .9rem; font-weight: 700; color: var(--dim); text-align: right; }
+/* The score: a block the same size for every game, darker red the worse it is; the scale it was measured on sits under it. */
+body .worst-score { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .1rem; min-height: 3.6rem; padding: .35rem .3rem; border: 1px solid var(--red-line); border-radius: 6px; background: var(--inset); font-family: var(--mono); }
+body .worst-score b { font-size: 1.5rem; line-height: 1; font-weight: 700; color: var(--text); }
+body .worst-score b small { font-size: .75rem; font-weight: 400; color: var(--dim); }
+body .worst-score i { font-style: normal; font-size: .54rem; letter-spacing: .02em; text-transform: uppercase; color: var(--dim); text-align: center; }
+body .worst-score.is-awful { border-color: var(--red); background: color-mix(in srgb, var(--red) 14%, var(--inset)); }
+body .worst-score.is-awful b { color: var(--red); }
+body .worst-score.is-bad { border-color: color-mix(in srgb, var(--red) 55%, var(--line)); }
+body .worst-score.is-none { border-color: var(--line); border-style: dashed; }
+body .worst-score.is-none b { color: var(--dim); }
+body .worst-title { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem .1rem; font-size: .95rem; font-weight: 600; overflow-wrap: anywhere; }
+body .worst-title .worst-region { margin-left: .35rem; }
+body .worst-note { margin-top: .4rem; font-size: .72rem; color: var(--dim); line-height: 1.5; max-width: 62ch; }
+body .worst-note a { color: var(--body); text-decoration: underline; text-underline-offset: 2px; }
+body .worst-price { min-width: 9rem; text-align: right; }
 body .worst-noprice { font-size: .68rem; color: var(--dim); }
-@media (max-width: 640px) { body .worst-row { grid-template-columns: 1.4rem 3.6rem minmax(0, 1fr); } body .worst-price { grid-column: 3; } }
+@media (max-width: 640px) {
+  body .worst-row { grid-template-columns: 1.1rem 4.2rem minmax(0, 1fr); gap: .5rem .7rem; padding: .75rem; }
+  body .worst-rank { font-size: .75rem; }
+  body .worst-price { grid-column: 1 / -1; text-align: left; min-width: 0; padding-top: .55rem; border-top: 1px solid var(--rule); }
+}
 body .market-seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
 body .market-seg button { min-height: 2.4rem; padding: .4rem .9rem; background: var(--inset); border: 0; border-right: 1px solid var(--line); color: var(--dim); font-family: var(--mono); font-size: .72rem; cursor: pointer; }
 body .market-seg button:last-child { border-right: 0; }
@@ -1640,4 +1653,45 @@ body .coll-edit-sheet .library-add-fields .spin-field, body .coll-edit-sheet .li
 @media (max-width: 640px) {
   body .coll-edit-sheet .library-add-fields { grid-template-columns: 5.2rem minmax(0, 1fr); }
   body .coll-edit-sheet .library-add-fields .brand-btn { grid-column: 1 / -1; justify-content: center; }
+}
+
+/* ---- Rarest page cards (2026-11-03) ----------------------------------------
+   One card per game: rank and box art on the left; the name, tags and the PriceCharting guide
+   on top; one small tile per eBay site; the release note; sources folded away. */
+body .rr-card { display: grid; grid-template-columns: 2.6rem 4.25rem minmax(0, 1fr); gap: .25rem .9rem; align-items: start; }
+body #rareList > .rr-card { margin: 0 0 .6rem; padding: .9rem 1rem; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+body #rareList > .rr-card:first-child { border-color: var(--edge); }
+body .rr-rank { font-family: var(--mono); font-size: 1.05rem; font-weight: 700; color: var(--dim); padding-top: .15rem; }
+body .rr-card:first-child .rr-rank { color: var(--text); }
+/* The box is there whether or not the picture loads (the host can be down), so the card never collapses. */
+body .rr-cover { position: relative; display: flex; align-items: center; justify-content: center; width: 4.25rem; aspect-ratio: 5 / 7; overflow: hidden; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); }
+body .rr-initials { font-family: var(--mono); font-size: .8rem; color: var(--dim); }
+body .rr-cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+body .rr-main { min-width: 0; }
+body .rr-head { display: flex; align-items: flex-start; justify-content: space-between; gap: .75rem; }
+body .rr-title-block { min-width: 0; }
+body .rr-title { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .1rem; margin: 0; font-size: 1rem; line-height: 1.3; }
+body .rr-title .level-tag { margin-left: .35rem; }
+body .rr-guide { flex: none; display: flex; align-items: baseline; gap: .4rem; flex-wrap: wrap; justify-content: flex-end; font-family: var(--mono); }
+body .rr-guide-label { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); }
+body .rr-guide-value { font-size: 1rem; color: var(--money); }
+body .rr-prices { display: grid; grid-template-columns: repeat(auto-fill, minmax(15.5rem, 1fr)); gap: .5rem; margin-top: .7rem; }
+body .rr-prices .ebay-site { display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .5rem; padding: .5rem .65rem; border: 1px solid var(--line); border-radius: 6px; background: var(--inset); }
+body .rr-prices .ebay-flag { min-width: 0; padding: .05rem .35rem; border: 1px solid var(--line); border-radius: 3px; color: var(--body); }
+body .rr-prices .ebay-rest { flex-basis: 100%; line-height: 1.5; }
+body .rr-prices .ebay-site.is-quiet { opacity: .75; }
+body .rr-note { margin-top: .6rem; }
+body .rr-more { margin-top: .5rem; }
+body .rr-more summary { display: block; width: fit-content; cursor: pointer; list-style: none; font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--dim); }
+body .rr-more summary::before { content: '+ '; }
+body .rr-more[open] summary::before { content: '\2212 '; }
+body .rr-more summary:hover { color: var(--text); }
+@media (max-width: 640px) {
+  body .rr-card { grid-template-columns: 3.4rem minmax(0, 1fr); }
+  body .rr-rank { grid-column: 1; grid-row: 1; padding-top: 0; font-size: .9rem; }
+  body .rr-cover { grid-column: 1; grid-row: 2; width: 3.4rem; }
+  body .rr-main { grid-column: 2; grid-row: 1 / span 2; }
+  body .rr-head { flex-direction: column; gap: .35rem; }
+  body .rr-guide { justify-content: flex-start; }
+  body .rr-prices { grid-template-columns: 1fr; }
 }

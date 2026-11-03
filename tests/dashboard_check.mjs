@@ -721,6 +721,22 @@ await check('eBay prices page: every game, surging first, a line per site', () =
         vm.runInContext(`pricesSeriesFailed = false; setPricesSort('default', 'US')`, context);
         assert.match(read('index.html'), /<select id="pricesSort" onchange="setPricesSort\(this\.value, undefined\)"/);
         assert.match(read('guide.html'), /Sort by/);
+    
+        // Show (2026-11-03): choosing a site lists only the games that site has a figure for, and sorts on it.
+        const show = (siteName) => { vm.runInContext(`setPricesShow(${JSON.stringify(siteName)})`, context); return order(); };
+        assert.deepEqual(show('UK'), ['Alpha', 'Echo'], 'only the games with a UK figure');
+        assert.match(el('pricesSummary').textContent, / · 2 of 5 with a figure on eBay UK/);
+        assert.match(el('pricesList').innerHTML, /<span class="ebay-flag">UK<\/span>/, 'each row shows that site\'s figure');
+        assert.equal(evalJson('pricesSortSite'), 'UK', 'the sort follows the site');
+        assert.deepEqual(show('US'), ['Alpha', 'Bravo', 'Charlie', 'Delta']);
+        assert.deepEqual(show('DE'), [], 'a site with no figures lists nothing');
+        assert.match(el('pricesEmpty').textContent, /has a figure on eBay DE yet\. Choose All games/);
+        vm.runInContext(`setPricesShow('XX')`, context);
+        assert.equal(evalJson('pricesShowSite'), 'DE', 'an unknown site changes nothing');
+        assert.deepEqual(show('ALL'), ['Alpha', 'Bravo', 'Charlie', 'Delta', 'Echo'], 'All games lists them all again');
+        vm.runInContext(`setPricesSort('default', 'US')`, context);
+        assert.match(read('index.html'), /<select id="pricesShow" onchange="setPricesShow\(this\.value\)"/);
+        assert.match(read('guide.html'), /Only priced on eBay/);
     }
 
     // Without a price file the page says what to do instead of sitting empty.
@@ -1244,11 +1260,11 @@ await check('the theme: four colours with one job each, readable on every ground
     assert.ok(contrast(tokens.bg, tokens.accent) >= 4.5, 'the filled button: dark on blue');
     assert.ok(contrast(tokens.bg, tokens['accent-hi']) >= 4.5);
 
-    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16; the account screens' small heading, notice and message are yellow (2026-10-17, as in the approved preview); a source's name (subreddit, channel, site) is yellow since 2026-10-16, by the maintainer's request; the median on a game's own page is a price figure, yellow since 2026-10-18; on the Marketplace page the asking price is a price figure, the label and the gold box outline of a complete copy on the Marketplace, and the sample notice uses the same warning yellow as the account notice (2026-10-18).
+    // Yellow has few jobs: a price figure, and the keepsake colour of the collection button and badges. The shop buttons have their own colours since 2026-10-16; the account screens' small heading, notice and message are yellow (2026-10-17, as in the approved preview); a source's name (subreddit, channel, site) is yellow since 2026-10-16, by the maintainer's request; the median on a game's own page is a price figure, yellow since 2026-10-18; on the Marketplace page the asking price is a price figure, the label and the gold box outline of a complete copy on the Marketplace, and the sample notice uses the same warning yellow as the account notice (2026-10-18); the guide figure on a Rarest card is a price figure too (2026-11-03).
     const rules = [...css.replace(/\/\*[\s\S]*?\*\//g, '').matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(m => [m[1].trim(), m[2]]);
     const yellow = rules.filter(([, body]) => /var\(--money/.test(body)).map(([selector]) => selector);
     assert.ok(yellow.length >= 2, 'at rest and under the pointer');
-    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name|account-eyebrow|account-warn|account-msg|portfolio-paid|ebay-median|market-ask|market-notice|market-badge|market-slab)\b|\.coll-count/.test(part))), yellow.join(' | '));
+    assert.ok(yellow.every(selector => selector.split(',').every(part => /\.(?:price-link|shelf-quote|brand-btn-collection|coll-badge-qty|src-name|account-eyebrow|account-warn|account-msg|portfolio-paid|ebay-median|rr-guide-value|market-ask|market-notice|market-badge|market-slab)\b|\.coll-count/.test(part))), yellow.join(' | '));
     assert.match(css, /body \.price-link:hover, body \.price-link:focus-visible \{\s*background: var\(--money\);\s*border-color: var\(--money\);\s*color: var\(--bg\);/);
     // ...by no other route either: every colour is named once, at the top, and the strip's
     // yellow is used by the strip alone; the pages have no yellow of their own.
@@ -1824,7 +1840,7 @@ await check('the Rarest page: two lists of the rarest games, each with its own s
         vm.runInContext(`setPrices(__rarePrices, null); rareRegion = ${JSON.stringify(region)}; renderRare(__rare, ${now}, 'en-GB')`, context);
         return el('rareList').innerHTML.split('<li ').slice(1);
     };
-    const rowOf = (rows, title) => rows.find(html => new RegExp(`#\\d+ ${esc(title).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}[< ]`).test(html));
+    const rowOf = (rows, title) => rows.find(html => new RegExp(`class="rr-title"><a [^>]*>${esc(title).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</a>`).test(html));
 
     const pal = draw('PAL');
     const palCount = rareFile.lists.PAL.length;
@@ -1833,12 +1849,12 @@ await check('the Rarest page: two lists of the rarest games, each with its own s
     assert.equal(pal.length, palCount);
     assert.equal(pal.filter(html => html.includes('list-extra')).length, palCount - 25, 'twenty-five shown, the rest a click away');
     const sengoku = rowOf(pal, 'Sengoku Anthology');
-    assert.match(sengoku, /#2 Sengoku Anthology/);
-    assert.match(sengoku, /guide \$860/);
+    assert.match(sengoku, /rr-rank">#2</);
+    assert.match(sengoku, /rr-guide-value[^>]*>\$860</);
     assert.match(sengoku, /<span class="ebay-flag">UK<\/span><b class="ebay-median">£410<\/b>/, 'its own site\'s median');
     assert.doesNotMatch(sengoku, /ebay-flag">US/, 'and only that site');
     assert.match(sengoku, /Sources: <a href="https:\/\/www\.pricecharting\.com\/[^"]*"[^>]*>pricecharting\.com<\/a>, <a [^>]*>racketboy\.com<\/a>/);
-    assert.match(pal[0], new RegExp(`#1 ${esc(rareFile.lists.PAL[0].title)}`), 'in the order of the file');
+    assert.match(pal[0], new RegExp(`rr-rank">#1<[\\s\\S]*>${esc(rareFile.lists.PAL[0].title)}</a>`), 'in the order of the file');
     assert.match(rowOf(pal, 'Project Zero 2: Crimson Butterfly'), /£55\.00/, 'the price job says which game holds the figures');
     assert.match(rowOf(pal, 'Project Zero 2: Crimson Butterfly'), /US name: Fatal Frame II: Crimson Butterfly/);
     assert.match(rowOf(pal, 'Kuon'), /£300/, 'without a word from the price job, the game of the same name');
@@ -1855,7 +1871,7 @@ await check('the Rarest page: two lists of the rarest games, each with its own s
 
     const us = draw('US');
     assert.equal(us.length, rareFile.lists.US.length);
-    assert.match(us[0], /#1 Kuon/);
+    assert.match(us[0], /rr-rank">#1<[\s\S]*>Kuon<\/a>/);
     assert.match(us[0], /<span class="ebay-flag">US<\/span><b class="ebay-median">\$900<\/b>/);
     assert.match(rowOf(us, 'Fatal Frame II: Crimson Butterfly'), /\$150/);
     assert.equal(evalJson("document.getElementById('rareRegionUS').getAttribute('aria-pressed')"), 'true');
@@ -1869,9 +1885,10 @@ await check('the Rarest page: two lists of the rarest games, each with its own s
     vm.runInContext(`renderRare(__hostile, ${now}, 'en-GB')`, context);
     const hostile = el('rareList').innerHTML;
     assert.doesNotMatch(hostile, /<img|<script|<i>|javascript:|<b>/);
-    assert.match(hostile, /#1 &lt;img/, 'a rank that is not a number gives way to the position');
-    assert.doesNotMatch(hostile, /guide/);
-    assert.equal((hostile.match(/<a /g) || []).length, 2, "its source link and the PriceCharting search");
+    assert.match(hostile, /rr-rank">#1</, 'a rank that is not a number gives way to the position');
+    assert.match(hostile, /&lt;img/);
+    assert.doesNotMatch(hostile, /rr-guide-value/);
+    assert.equal((hostile.match(/<a /g) || []).length, 3, "its name's link to its page, its source link and the PriceCharting search");
     assert.equal((hostile.match(/rare-flag/g) || []).length, 1);
     assert.doesNotMatch(el('rareSummary').textContent, /PriceCharting,/, 'no date that is not a date');
 
@@ -1963,7 +1980,7 @@ await check('the Rarest page: a note shows its own release-fact links, and only 
     ] } };
     vm.runInContext(`setPrices(null, null); rareRegion = 'PAL'; renderRare(__rare, ${Date.parse('2026-10-16T12:00:00Z')}, 'en-GB')`, context);
     const rows = el('rareList').innerHTML.split('<li ').slice(1);
-    assert.match(rows[0], /Out in Europe first\. [^]*Release facts: <a href="https:\/\/en\.wikipedia\.org\/wiki\/Kuon"[^>]*>en\.wikipedia\.org<\/a>/);
+    assert.match(rows[0], /Out in Europe first\.[^]*Release facts: <a href="https:\/\/en\.wikipedia\.org\/wiki\/Kuon"[^>]*>en\.wikipedia\.org<\/a>/);
     assert.ok(!rows[0].includes('javascript:'), 'a link that is not https is not drawn');
     assert.ok(!rows[1].includes('Release facts'), 'no sources, no line');
 });
@@ -2255,7 +2272,7 @@ await check('the Rarest charts: index and market cap per list, a game\'s history
 
     // The game's page offers the chart (the lists keep only the short prices).
     const page = read('index.html');
-    assert.match(page, /\$\{prices\s*\? ` \$\{chartButtonHtml\(prices\.title, label\)\}` : ''\}/);
+    assert.match(page, /\$\{prices\s*\? ` \$\{chartButtonHtml\(prices\.title, label\)\}` : ''\}|\$\{prices \? chartButtonHtml\(prices\.title, label\) : ''\}/);
     assert.match(page, /chartButtonHtml\(row\.title, sites\.includes\('UK'\) \? 'UK' : sites\[0\]\)/);
     assert.match(page, /lightweight-charts@\d+\.\d+\.\d+\/dist\/lightweight-charts\.standalone\.production\.js/, 'a fixed version');
     assert.equal((page.match(/Charts by <a href="https:\/\/www\.tradingview\.com\/"/g) || []).length, 3, 'the library\'s credit under every chart');
