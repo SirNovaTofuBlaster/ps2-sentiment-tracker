@@ -588,8 +588,10 @@
     "ok": true
   },
   "https://lemmy.world/feeds/c/games.xml?sort=New": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-11-03 05:07 UTC",
     "latest": "2026-11-02 22:41 UTC",
-    "ok": true
+    "ok": false
   },
   "https://lemmy.world/feeds/c/retrogaming.xml?sort=New": {
     "latest": "2026-11-03 02:27 UTC",
@@ -718,7 +720,7 @@
     "ok": true
   },
   "https://www.gematsu.com/feed": {
-    "latest": "2026-11-02 17:20 UTC",
+    "latest": "2026-11-02 23:05 UTC",
     "ok": true
   },
   "https://www.nintendolife.com/feeds/latest": {
@@ -738,7 +740,7 @@
     "ok": true
   },
   "https://www.polygon.com/rss/index.xml": {
-    "latest": "2026-11-03 00:47 UTC",
+    "latest": "2026-11-03 05:01 UTC",
     "ok": true
   },
   "https://www.pushsquare.com/feeds/latest": {
