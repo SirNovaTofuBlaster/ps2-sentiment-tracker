@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 23:23:40 UTC",
+  "last_updated": "2026-11-03 23:34:57 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -291,6 +291,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-03 22:57 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Van Helsing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750911820",
+      "matched_game": "Van Helsing",
+      "matched_games": [
+        "Van Helsing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-03 22:57 UTC"
     },
@@ -1591,6 +1610,29 @@
       "timestamp": "2026-11-03 21:52 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming Prince of Persia: Sands of Time, Castlevania: Curse of Darkness, Burnout 3: Takedown and 2 more",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12912067",
+      "matched_game": "Prince of Persia: Sands of Time",
+      "matched_games": [
+        "Prince of Persia: Sands of Time",
+        "Castlevania: Curse of Darkness",
+        "Burnout 3: Takedown",
+        "Splinter Cell",
+        "The Warriors"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 21:51 UTC"
+    },
+    {
       "headline": "Small/medium scale games to play for the next 2 weeks?",
       "source": "r/gamingsuggestions",
       "source_type": "reddit",
@@ -2556,6 +2598,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 20:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming FIFA '07",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750904461",
+      "matched_game": "FIFA '07",
+      "matched_games": [
+        "FIFA '07"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 20:52 UTC"
     },
     {
       "headline": "Xbox’s Arkane Studios Attracts Multiple Bidders, Including Ubisoft",
@@ -5475,16 +5536,18 @@
       "timestamp": "2026-11-03 18:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Cold Winter, Midnight Club and Splinter Cell",
+      "headline": "Thread on /v/ naming Rumble Roses, Midnight Club, Splinter Cell and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750896210",
-      "matched_game": "Cold Winter",
+      "matched_game": "Rumble Roses",
       "matched_games": [
-        "Cold Winter",
+        "Rumble Roses",
         "Midnight Club",
-        "Splinter Cell"
+        "Splinter Cell",
+        "Cold Winter",
+        "The Punisher"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -337803,145 +337866,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 23:37 UTC"
-    },
-    {
-      "headline": "Call of Duty: Modern Warfare 4 - DMZ Beginner's Guide",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=5L48ScoonvA",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 23:33 UTC",
-      "views": 58429
-    },
-    {
-      "headline": "I feel like I tried everything, trying to get my memcard pro2 to read from the SD port.",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1xb7ksw/i_feel_like_i_tried_everything_trying_to_get_my/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 23:31 UTC"
-    },
-    {
-      "headline": "Skyrim SE runs terrible on OLED now, what happened?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xb7kcu/skyrim_se_runs_terrible_on_oled_now_what_happened/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-20 23:31 UTC"
-    },
-    {
-      "headline": "DMZ Gameplay: Call of Duty Modern Warfare 4",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=Y1nWXLbZbF0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 23:30 UTC",
-      "views": 38709
-    },
-    {
-      "headline": "Working hotdog vendors | Modding GTA 5 into GTA 6 🌭",
-      "source": "YouTube: PC Gamer",
-      "source_type": "youtube",
-      "feed": "youtube:UCgaPRP68bbyHnfkPhWWBrNw",
-      "link": "https://www.youtube.com/shorts/PugbfdIc-qA",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 23:30 UTC",
-      "views": 2201
-    },
-    {
-      "headline": "Surprise! Aspyr Is Remastering A Shrek Game",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/surprise-aspyr-is-remastering-a-shrek-game",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-20 23:30 UTC"
-    },
-    {
-      "headline": "Xbox Game Pass recebe 9 novos jogos, incluindo Final Fantasy VII Remake",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/xbox-game-pass-recebe-9-novos-jogos-incluindo-final-fantasy-vii-remake",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-20 23:24 UTC"
-    },
-    {
-      "headline": "AMD officially announces FSR 4.1 for Radeon RX 6000 GPUs, says \"we made it better\" | Club386",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xb7ff8/amd_officially_announces_fsr_41_for_radeon_rx/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-20 23:24 UTC"
     }
   ]
 }
