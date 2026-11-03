@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 03:41:39 UTC",
+  "last_updated": "2026-11-03 03:50:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -4336,6 +4336,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 22:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Peter Pan",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750845941",
+      "matched_game": "Peter Pan",
+      "matched_games": [
+        "Peter Pan"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 22:10 UTC"
     },
@@ -339350,59 +339369,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 03:50 UTC"
-    },
-    {
-      "headline": "My bad yall 😭",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xahwz0/my_bad_yall/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 03:48 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Persona 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750023472",
-      "matched_game": "Persona 3",
-      "matched_games": [
-        "Persona 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-20 03:47 UTC"
-    },
-    {
-      "headline": "Linux ppl (including me) are crazy",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xahv1g/linux_ppl_including_me_are_crazy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 03:45 UTC"
     }
   ]
 }
