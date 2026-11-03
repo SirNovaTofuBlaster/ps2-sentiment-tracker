@@ -509,7 +509,7 @@
         <p id="worstSummary" class="text-xs text-slate-400 mb-4">Loading the list…</p>
         <div id="worstRegions" class="market-seg" role="group" aria-label="Region"></div>
         <ol id="worstList" class="worst-list"></ol>
-        <h3 class="gacha-h3">Score found, release region not confirmed</h3>
+        <h3 id="worstOtherHead" class="gacha-h3">Score found, release region not confirmed</h3>
         <ol id="worstOther" class="worst-list"></ol>
         <p id="worstNote" class="text-[11px] text-slate-500 mt-4 leading-relaxed"></p>
       </div>
@@ -4618,11 +4618,12 @@
             const games = worstData.games;
             const here = worstSorted(games.filter(g => g.regions.includes(worstRegion)));
             const rest = worstSorted(games.filter(g => !g.regions.length));
-            summary.textContent = `The lowest critic scores found for PS2 games released in ${worstRegion === 'PAL' ? 'Europe (PAL)' : 'North America (US)'}, worst first. A partial list, made by hand from public pages.`;
+            summary.textContent = `The lowest critic scores found for PS2 games released in ${worstRegion === 'PAL' ? 'Europe (PAL)' : 'North America (US)'}, worst first. A partial list, made by hand from public pages; a game released in both regions is in both lists.`;
             document.getElementById('worstRegions').innerHTML = WORST_REGIONS.map(region =>
                 `<button type="button" class="${region === worstRegion ? 'is-active' : ''}" aria-pressed="${region === worstRegion}" onclick="worstSetRegion(${esc(JSON.stringify(region))})">${region} (${games.filter(g => g.regions.includes(region)).length})</button>`).join('');
             list.innerHTML = here.length ? here.map((g, i) => worstRowHtml(g, i + 1)).join('') : '<li class="text-xs text-slate-400">Nothing found for this region yet.</li>';
             other.innerHTML = rest.map((g, i) => worstRowHtml(g, i + 1)).join('');
+            document.getElementById('worstOtherHead')?.classList.toggle('hidden', !rest.length);
             document.getElementById('worstNote').textContent = 'Scores come from different places (Metacritic is out of 100, GameRankings is a percentage), so the order is only a rough guide. '
                 + 'Prices are what sellers ask for used copies on eBay, shown only for games the tracker already prices. No popular-vote ranking is included' + (worstData.checked ? `. Checked ${worstData.checked}.` : '.');
         }
