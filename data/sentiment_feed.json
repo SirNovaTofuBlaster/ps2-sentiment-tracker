@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 05:00:27 UTC",
+  "last_updated": "2026-11-03 05:02:59 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -2223,13 +2223,15 @@
       "timestamp": "2026-11-03 01:01 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Snow Queen Quest",
+      "headline": "Thread on /v/ naming Persona 3, Persona 4 and The Snow Queen Quest",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750854848",
-      "matched_game": "The Snow Queen Quest",
+      "matched_game": "Persona 3",
       "matched_games": [
+        "Persona 3",
+        "Persona 4",
         "The Snow Queen Quest"
       ],
       "match_score": 100,
@@ -7523,6 +7525,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-02 20:31 UTC"
+    },
+    {
+      "headline": "Thread on /vrpg/ naming Beyond Good & Evil",
+      "source": "4chan /vrpg/",
+      "source_type": "4chan",
+      "feed": "4chan:vrpg",
+      "link": "https://boards.4chan.org/vrpg/thread/4147400",
+      "matched_game": "Beyond Good & Evil",
+      "matched_games": [
+        "Beyond Good & Evil"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 20:31 UTC"
     },
@@ -339656,43 +339677,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 05:03 UTC"
-    },
-    {
-      "headline": "Daryl Baxter, author and journalist (The Making of Tomb Raider).",
-      "source": "Podcast: My Perfect Console with Simon Parkin",
-      "source_type": "podcast",
-      "feed": "https://feeds.acast.com/public/shows/63b458521043e00011114396",
-      "link": "https://shows.acast.com/my-perfect-console/episodes/daryl-baxter-author-and-journalist-the-making-of-tomb-raider",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 05:00 UTC"
-    },
-    {
-      "headline": "Nissan 300Z from Juiced #playstation2 #shorts",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/shorts/1jE4sEkcX6Q",
-      "matched_game": "Juiced",
-      "matched_games": [
-        "Juiced"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 05:00 UTC",
-      "views": 841
     }
   ]
 }
