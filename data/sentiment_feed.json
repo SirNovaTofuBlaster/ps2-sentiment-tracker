@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 07:58:20 UTC",
+  "last_updated": "2026-11-03 08:07:40 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1862,6 +1862,27 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-03 03:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kung Fu Panda, Final Fantasy X and God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750860896",
+      "matched_game": "Kung Fu Panda",
+      "matched_games": [
+        "Kung Fu Panda",
+        "Final Fantasy X",
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-03 03:33 UTC"
     },
@@ -339013,74 +339034,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 08:07 UTC"
-    },
-    {
-      "headline": "Everything New In The Once Human Isles Of Abyss Scenario",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/once-human-isles-of-abyss-everything-new-added/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 08:05 UTC"
-    },
-    {
-      "headline": "Did I get a good deal? Or was it stolen?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xam65v/did_i_get_a_good_deal_or_was_it_stolen/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 08:00 UTC"
-    },
-    {
-      "headline": "5 Best Halloween 'Peanuts' Comics That Don't Involve the Great Pumpkin",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/peanuts-charlie-brown-best-halloween-strips/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 70,
-      "hype": 0,
-      "timestamp": "2026-10-20 08:00 UTC"
-    },
-    {
-      "headline": "Extra key for surrounddead for you guy",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xam4wb/extra_key_for_surrounddead_for_you_guy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 07:58 UTC"
     }
   ]
 }
