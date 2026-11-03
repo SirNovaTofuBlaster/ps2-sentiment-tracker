@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 06:04:23 UTC",
+  "last_updated": "2026-11-03 06:13:45 UTC",
   "total_tracked_feeds": 257,
   "items": [
     {
@@ -1331,6 +1331,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 02:57 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Genji",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750859575",
+      "matched_game": "Genji",
+      "matched_games": [
+        "Genji"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 02:56 UTC"
     },
     {
       "headline": "Final Fantasy XIV Fan Festival Tokyo 2026 Keynote - Damiani's Reactions",
@@ -339464,78 +339483,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 06:14 UTC"
-    },
-    {
-      "headline": "I cant choose.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xakg7d/i_cant_choose/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 06:12 UTC"
-    },
-    {
-      "headline": "Got a 2070 super for $10",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xakfpz/got_a_2070_super_for_10/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 06:11 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2, Metal Gear Solid 3: Snake Eater and King Arthur",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750028136",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2",
-        "Metal Gear Solid 3: Snake Eater",
-        "King Arthur"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-20 06:07 UTC"
-    },
-    {
-      "headline": "Trying to add new games to my MX4SIO card, but for some reason the ones highlighted are giving me trouble since they don't show up on RiptOPL. Does anyone know what it could be?",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1xakbt3/trying_to_add_new_games_to_my_mx4sio_card_but_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 06:05 UTC"
     }
   ]
 }
