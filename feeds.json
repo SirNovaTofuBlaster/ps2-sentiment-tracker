@@ -3351,8 +3351,8 @@
       "channel_url": "https://www.youtube.com/@RMCRetro",
       "group": "Retro: reviews & history",
       "role": "press",
-      "enabled": true,
-      "note": "Added 2026-10-16 by channel link (the maintainer's list of retro channels): the scraper resolves the channel ID on its first run; check the resolved name and size in feed_status.json, since a handle can point at a namesake."
+      "enabled": false,
+      "note": "2026-11-03: switched off. The @RMCRetro handle 404s because the channel was renamed The Retro Collective (@TheRetroCollective), and it is already listed above under that name (UCLEoyoOKZK0idGqSc6Pi23w), so this entry only duplicated it. Earlier: Added 2026-10-16 by channel link (the maintainer's list of retro channels): the scraper resolves the channel ID on its first run; check the resolved name and size in feed_status.json, since a handle can point at a namesake."
     },
     {
       "type": "youtube",
@@ -3374,12 +3374,12 @@
     },
     {
       "type": "youtube",
-      "name": "The Ben Heck Show",
-      "channel_url": "https://www.youtube.com/@benheck",
+      "name": "Ben Heck Hacks",
+      "channel_id": "UCgeStlUnitobx8QcSxTw2aQ",
       "group": "Retro: reviews & history",
       "role": "press",
       "enabled": true,
-      "note": "Added 2026-10-16 by channel link (the maintainer's list of retro channels): the scraper resolves the channel ID on its first run; check the resolved name and size in feed_status.json, since a handle can point at a namesake."
+      "note": "2026-11-03: the @benheck handle 404s; Ben Heck's own channel is Ben Heck Hacks (@BenHeckHacks), ID read from its channel page. The Ben Heck Show itself is on element14's channel and is not listed. Not yet fetched as a feed: check feed_status.json after the next run. Earlier: Added 2026-10-16 by channel link (the maintainer's list of retro channels)"
     },
     {
       "type": "youtube",
@@ -3437,12 +3437,12 @@
     },
     {
       "type": "youtube",
-      "name": "Rigg'd Games",
-      "channel_url": "https://www.youtube.com/@RiggdGames",
+      "name": "John Riggs (Rigg'd Games)",
+      "channel_id": "UC8cZ9g1sopNc50D9NqVBbug",
       "group": "Retro: reviews & history",
       "role": "press",
       "enabled": true,
-      "note": "Added 2026-10-16 by channel link (the maintainer's list of retro channels): the scraper resolves the channel ID on its first run; check the resolved name and size in feed_status.json, since a handle can point at a namesake."
+      "note": "2026-11-03: the @RiggdGames handle 404s. The Welcome to Rigg'd Games trailer is uploaded by the channel JohnRiggs, whose ID is used here; it is John Riggs of Rigg'd Games, but no page confirmed it is the only channel he runs. Not yet fetched as a feed: check the name and size in feed_status.json after the next run. Earlier: Added 2026-10-16 by channel link (the maintainer's list of retro channels)"
     },
     {
       "type": "youtube",
@@ -5296,8 +5296,8 @@
       "channel_url": "https://www.youtube.com/@dangnadt",
       "group": "Retro: reviews & history",
       "role": "press",
-      "enabled": true,
-      "note": "Added 2026-10-22 by channel link at the maintainer's request. Not checked from the development sandbox (YouTube is unreachable there): the scraper resolves the channel ID on its first run; check the resolved name and size in feed_status.json, since a handle can point at a namesake or not exist."
+      "enabled": false,
+      "note": "2026-11-03: switched off: the same channel is already listed as Dan Gnadt - The PS2 Guy (UChBb5-4ILVNPsL8xX6a4LpA), so the scraper reported it as a duplicate on every run."
     }
   ]
 }
