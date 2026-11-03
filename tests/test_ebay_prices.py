@@ -8,6 +8,7 @@ writes, and above all that the key never leaks."""
 
 import base64
 import contextlib
+import importlib.util
 import io
 import json
 import os
@@ -1830,6 +1831,48 @@ class MergeSpellingsTests(unittest.TestCase):
         busier = game("Soul Calibur 2")
         kept, dropped, apart = self.merge([busier, b], self.state(Soul_Calibur_2=(90, 90), SoulCalibur_II=(1, 1)))
         self.assertEqual((len(kept), dropped, apart), (2, [], ["Soul Calibur 2"]), "the pinned game stands and is not dropped, even if the other finds more")
+
+    def test_the_weekly_audit_undoes_a_merge_that_loses_copies(self):
+        """2026-11-03: SoulCalibur II listed 120 UK copies to Soul Calibur 2's 73, so it is searched again."""
+        a, b = game("Soul Calibur 2"), game("SoulCalibur II")
+        state = self.state(Soul_Calibur_2=(37, 73), SoulCalibur_II=(18, 49))
+        audit = {"spellings": {"SoulCalibur II": {"keeper": "Soul Calibur 2",
+                                                  "US": {"copies": 101, "keeper_copies": 37},
+                                                  "UK": {"copies": 120, "keeper_copies": 73}}}}
+        self.assertEqual(ebay_prices.audit_flagged(audit), {"SoulCalibur II"})
+        kept, dropped, apart = ebay_prices.merge_duplicates([a, b], state, self.SAME, [], audit)
+        self.assertEqual(len(kept), 2)
+        self.assertFalse(dropped)
+        self.assertEqual(apart, ["SoulCalibur II"])
+        # without the audit the same figures merge them, as before
+        self.assertEqual(len(ebay_prices.merge_duplicates([game("Soul Calibur 2"), game("SoulCalibur II")], state, self.SAME, [])[1]), 1)
+
+    def test_the_audit_flags_only_a_clear_gap_on_the_us_or_uk(self):
+        def flagged(own, keeper, **more):
+            row = dict({"copies": own, "keeper_copies": keeper}, **more)
+            return bool(ebay_prices.audit_flagged({"spellings": {"X": {"keeper": "Y", "US": row}}}))
+        self.assertTrue(flagged(30, 20))                      # 10 more and 1.5 times
+        self.assertFalse(flagged(22, 20), "2 more is noise")
+        self.assertFalse(flagged(100, 98), "3 more but not half as many again")
+        self.assertFalse(flagged(30, 20, unmatched=True), "a search that found nothing says nothing")
+        self.assertFalse(flagged(None, 20))
+        self.assertFalse(ebay_prices.audit_flagged({}))
+        self.assertFalse(ebay_prices.audit_flagged({"spellings": {"X": {"keeper": "Y", "DE": {"copies": 90, "keeper_copies": 1}}}}), "only the US and UK")
+
+    def test_the_limits_match_the_report_tool(self):
+        spec = importlib.util.spec_from_file_location("merged_report", ROOT / "tools" / "merged_report.py")
+        report = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(report)
+        self.assertEqual((ebay_prices.MERGED_MORE_COPIES, ebay_prices.MERGED_MORE_RATIO), (report.MORE_COPIES, report.MORE_RATIO))
+
+    def test_soulcalibur_ii_is_pinned_so_both_spellings_are_searched(self):
+        watch = json.loads((ROOT / "ebay_watchlist.json").read_text(encoding="utf-8"))
+        titles = [row["title"] for row in watch["games"]]
+        self.assertIn("SoulCalibur II", titles)
+        self.assertLessEqual(len(titles), 100)
+        a, b = game("Soul Calibur 2"), game("SoulCalibur II", pinned=True)
+        kept, dropped, apart = self.merge([a, b], self.state(Soul_Calibur_2=(37, 73)))
+        self.assertEqual((len(kept), dropped), (2, []))
 
     def test_surging_rare_and_unchecked_games_stay_as_they_are(self):
         state = self.state(Soul_Calibur_2=(37, 73), SoulCalibur_II=(1, 1))

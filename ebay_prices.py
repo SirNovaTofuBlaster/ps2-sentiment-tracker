@@ -92,6 +92,7 @@ PRICES_DIR = DATA_DIR / "prices"                  # written here: numbers only
 LATEST_NAME = "latest.json"
 INDEX_NAME = "index.json"                         # the PS2 price index, worked out from the history
 COVERS_PATH = ROOT / "covers.json"               # its `same` groups spellings of one game (read only)
+MERGED_MORE_COPIES, MERGED_MORE_RATIO = 3, 1.5      # a merged-away spelling that lists this many more copies than its keeper (and this much more) is un-merged (same limits as tools/merged_report.py)
 AUDIT_NAME = "audit.json"                         # weekly numbers for the spellings merged away, beside their keeper's
 MERGED_AUDIT_HOURS = 168
 SERIES_NAME = "series.json"                       # each game's daily median, for its chart on the dashboard
@@ -837,7 +838,22 @@ def load_same_groups():
     return same, lists
 
 
-def merge_duplicates(games, state, same, same_game):
+def audit_flagged(audit):
+    """Titles of merged-away spellings whose weekly look (audit.json) found 3 or more copies more than their keeper, and at
+    least half as many again, on the US or the UK: the keeper's search words are missing copies there."""
+    flagged = set()
+    for title, entry in ((audit or {}).get("spellings") or {}).items():
+        for label in ("US", "UK"):
+            row = (entry or {}).get(label)
+            if not isinstance(row, dict) or row.get("unmatched"):
+                continue
+            own, keeper = row.get("copies"), row.get("keeper_copies")
+            if isinstance(own, int) and isinstance(keeper, int) and own >= keeper + MERGED_MORE_COPIES and own >= keeper * MERGED_MORE_RATIO:
+                flagged.add(title)
+    return flagged
+
+
+def merge_duplicates(games, state, same, same_game, audit=None):
     """(games to look up, [(dropped game, the game that stands for it)], [titles kept apart]).
 
     The library files one game under several spellings ("Soul Calibur 2" / "SoulCalibur II"; covers.json `same`
@@ -846,7 +862,10 @@ def merge_duplicates(games, state, same, same_game):
     it is no more productive than the keeper on the US *and* the UK (so no site loses a copy the keeper cannot see),
     it is not pinned, not surging, and not on a Rarest, Underrated or collection list. The dashboard already shows a
     dropped spelling the keeper's figure (shareSpellingPrices), and `audit.json` checks it weekly to prove the keeper
-    is not missing copies. Sealed copies, mentions and the faster level of the dropped spelling pass to the keeper."""
+    is not missing copies. Sealed copies, mentions and the faster level of the dropped spelling pass to the keeper.
+    A spelling that the audit has flagged (audit_flagged) is not merged: it is searched every cycle like the keeper, so
+    a merge that turns out to lose copies undoes itself (2026-11-03: SoulCalibur II listed 120 UK copies to Soul Calibur 2's 73)."""
+    flagged = audit_flagged(audit)
     parent = {}
 
     def find(a):
@@ -900,7 +919,7 @@ def merge_duplicates(games, state, same, same_game):
         for game in sorted(members, key=lambda g: g["title"].lower()):
             if game is keeper:
                 continue
-            if fixed(game) or any(copies(game, label) > copies(keeper, label) for label in sites):
+            if fixed(game) or game["title"] in flagged or any(copies(game, label) > copies(keeper, label) for label in sites):
                 apart.append(game["title"])
                 continue
             dropped.append((game, keeper))
@@ -2823,9 +2842,9 @@ def main(argv=None):
                 print(annotation(f"Search check: {game['title']}", lines), flush=True)
             return 0
         same, same_game = load_same_groups()
-        games, merged, apart = merge_duplicates(games, state, same, same_game)
-        lookups = due_lookups(games, state, now, earlier + history)
         audit = read_json(PRICES_DIR / AUDIT_NAME, {})
+        games, merged, apart = merge_duplicates(games, state, same, same_game, audit)
+        lookups = due_lookups(games, state, now, earlier + history)
         extra_looks = audit_lookups(merged, audit, now)
         used = state.get("searches") if isinstance(state.get("searches"), dict) else {}
         used_today = used.get("used", 0) if used.get("day") == now.strftime("%Y-%m-%d") else 0
@@ -2833,7 +2852,7 @@ def main(argv=None):
         describe_plan(games, left_out, lookups, allowance, rare_titles if rare else None, rare_problems, consoles_priced, edition_titles if editions else None)
         if merged or apart:
             shown = "; ".join(f"{game['title']} into {keeper['title']}" for game, keeper in merged[:10]) + (f" and {len(merged) - 10} more" if len(merged) > 10 else "")
-            say(f"Spellings of one game: {len(merged)} merged into another ({shown}); {len(apart)} kept apart; {len(extra_looks)} weekly looks due.")
+            say(f"Spellings of one game: {len(merged)} merged into another ({shown}); {len(apart)} kept apart{f' ({len(audit_flagged(audit))} un-merged by the weekly audit)' if audit_flagged(audit) else ''}; {len(extra_looks)} weekly looks due.")
         lookups = lookups + extra_looks
         if args.plan:
             return 0
