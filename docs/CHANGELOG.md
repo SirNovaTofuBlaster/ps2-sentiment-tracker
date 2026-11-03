@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-03: a merge that loses copies undoes itself (SoulCalibur II)
+
+- The first weekly audit (`tools/merged_report.py`) flagged SoulCalibur II: searched on its own it listed 120 UK and 101 US copies, against 73 and 37 for the kept Soul Calibur 2. Prices agreed (UK median 6.52 vs 6.50), so only copy counts were understated.
+- Fix 1: SoulCalibur II is pinned in `ebay_watchlist.json`, so both spellings are searched every cycle.
+- Fix 2: `merge_duplicates()` now takes the audit; `audit_flagged()` names any folded spelling that lists 3+ more copies and 1.5x the keeper's on the US or UK, and such a spelling is kept apart (searched every cycle). The limits are `MERGED_MORE_COPIES` / `MERGED_MORE_RATIO`, equal to the report tool's (a test checks it). The log line says how many were un-merged by the audit; on the live data it was 1.
+- Tests: `MergeSpellingsTests` (audit undoes a merge, the thresholds, limits equal to the tool's, the pin).
+
 ## 2026-11-03: Rarest cards, a Worst page redesign and eight more games, a working site filter on eBay prices, YouTube handles
 
 - **Rarest page**: each game is a card (`.rr-card`): rank and box art on the left, the name (a link to the game's page) with its tags, the PriceCharting guide figure and the chart button on the right, one tile per eBay site, the release note, and a folded **Sources & price guides** line (PriceCharting link, article figures, source links). The box is always drawn, with the game's initials behind the picture, so a cover host that is down no longer collapses the card. Guide figures are yellow (a price figure; the theme test's list names `rr-guide-value`). `renderRare()` keeps the same data and prices; only the markup changed, and the Rarest assertions in `dashboard_check.mjs` follow it.
