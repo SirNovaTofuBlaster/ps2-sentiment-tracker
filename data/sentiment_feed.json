@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 13:41:53 UTC",
+  "last_updated": "2026-11-03 13:44:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -206,6 +206,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-03 13:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750879191",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-03 13:11 UTC"
     },
@@ -906,6 +925,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-03 12:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750877273",
+      "matched_game": "Silent Hill 3",
+      "matched_games": [
+        "Silent Hill 3"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-03 12:15 UTC"
     },
@@ -5749,15 +5787,13 @@
       "timestamp": "2026-11-03 05:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Silent Hill 2 and Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750864396",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil Code: Veronica X",
-        "Silent Hill 2",
         "Resident Evil 4"
       ],
       "match_score": 100,
@@ -338360,127 +338396,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-20 13:46 UTC"
-    },
-    {
-      "headline": "XIII might be my new favorite PS2 multiplayer game. Very glad I gave this one a chance.",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xasio5/xiii_might_be_my_new_favorite_ps2_multiplayer/",
-      "matched_game": "XIII",
-      "matched_games": [
-        "XIII"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:43 UTC"
-    },
-    {
-      "headline": "I'm not sure if the Steam Frame hits any corners in this bouncing screensaver, but maybe if I watch long enough the headset will come down in price",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/hardware/vr-hardware/im-not-sure-if-the-steam-frame-hits-any-corners-in-this-bouncing-screensaver-but-maybe-if-i-watch-long-enough-the-headset-will-come-down-in-price/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:43 UTC"
-    },
-    {
-      "headline": "This is how long it’d take you to replay every single GTA",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/how-long-to-replay-every-gta/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:43 UTC"
-    },
-    {
-      "headline": "GTA 6 es tan gigantesco que ningún desarrollador de Rockstar lo conoce a fondo",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026293020/gta-6-es-tan-gigantesco-que-ningun-desarrollador-de-rockstar-lo-conoce-a-fondo/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:43 UTC"
-    },
-    {
-      "headline": "Upgrade from 5800XT to 5800X3D for DLSS 4K gaming?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xasi15/upgrade_from_5800xt_to_5800x3d_for_dlss_4k_gaming/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:42 UTC"
-    },
-    {
-      "headline": "Let's make a Steam Next Fest curated list of non-slop demos you recommend!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xashsr/lets_make_a_steam_next_fest_curated_list_of/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:42 UTC"
-    },
-    {
-      "headline": "[Test] i7 3960X in 2026 - Overclocking to 4.4 GHz - X79 experience and discussion",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xashru/test_i7_3960x_in_2026_overclocking_to_44_ghz_x79/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-20 13:42 UTC"
     }
   ]
 }
