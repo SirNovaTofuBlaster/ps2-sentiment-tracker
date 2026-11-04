@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 07:51:33 UTC",
+  "last_updated": "2026-11-04 07:54:10 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -647,13 +647,14 @@
       "timestamp": "2026-11-04 06:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Thing",
+      "headline": "Thread on /v/ naming Alone in the Dark and The Thing",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750929535",
-      "matched_game": "The Thing",
+      "matched_game": "Alone in the Dark",
       "matched_games": [
+        "Alone in the Dark",
         "The Thing"
       ],
       "match_score": 100,
@@ -717,6 +718,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 06:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Soul Calibur 3 and Tekken 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750929240",
+      "matched_game": "Soul Calibur 3",
+      "matched_games": [
+        "Soul Calibur 3",
+        "Tekken 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 06:05 UTC"
     },
     {
       "headline": "PC player craving a good FPS that isn't a hero shooter, battle Royale or extraction shooter",
@@ -6670,6 +6691,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 21:48 UTC"
+    },
+    {
+      "headline": "Thread on /vm/ naming Top Gun",
+      "source": "4chan /vm/",
+      "source_type": "4chan",
+      "feed": "4chan:vm",
+      "link": "https://boards.4chan.org/vm/thread/3153609",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 21:47 UTC"
     },
     {
       "headline": "I would like to play a game about troubled people going on an adventure",
