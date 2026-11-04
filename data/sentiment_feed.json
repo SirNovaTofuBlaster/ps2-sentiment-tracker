@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 17:22:42 UTC",
+  "last_updated": "2026-11-04 17:25:25 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -154,6 +154,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 17:10 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Pro Evolution Soccer",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/586743292",
+      "matched_game": "Pro Evolution Soccer",
+      "matched_games": [
+        "Pro Evolution Soccer"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 17:09 UTC"
     },
     {
       "headline": "Xenotilt is getting a Physical Release VIA PM Studios (Switch 1, Switch 2, PS5, Xbox Series)",
@@ -1817,13 +1836,14 @@
       "timestamp": "2026-11-04 15:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Need for Speed Underground 2",
+      "headline": "Thread on /v/ naming Resident Evil Outbreak and Need for Speed Underground 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750947541",
-      "matched_game": "Need for Speed Underground 2",
+      "matched_game": "Resident Evil Outbreak",
       "matched_games": [
+        "Resident Evil Outbreak",
         "Need for Speed Underground 2"
       ],
       "match_score": 100,
@@ -13095,7 +13115,7 @@
       "timestamp": "2026-11-04 02:19 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Spider-Man and Blade 2",
+      "headline": "Thread on /vr/ naming Spider-Man, Combat Ace and Blade 2",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -13103,6 +13123,7 @@
       "matched_game": "Spider-Man",
       "matched_games": [
         "Spider-Man",
+        "Combat Ace",
         "Blade 2"
       ],
       "match_score": 100,
@@ -35893,18 +35914,19 @@
       "timestamp": "2026-11-03 05:30 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Half-Life and Resident Evil 4",
+      "headline": "Thread on /vr/ naming Okami, Resident Evil 4 and Half-Life",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12910915",
-      "matched_game": "Half-Life",
+      "matched_game": "Okami",
       "matched_games": [
-        "Half-Life",
-        "Resident Evil 4"
+        "Okami",
+        "Resident Evil 4",
+        "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -67753,16 +67775,16 @@
       "timestamp": "2026-11-01 20:47 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man, Iron Man and The Thing",
+      "headline": "Thread on /v/ naming The Thing, Iron Man and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750780536",
-      "matched_game": "Spider-Man",
+      "matched_game": "The Thing",
       "matched_games": [
-        "Spider-Man",
+        "The Thing",
         "Iron Man",
-        "The Thing"
+        "Spider-Man"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338271,159 +338293,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 17:26 UTC"
-    },
-    {
-      "headline": "All Prestige unlocks in Modern Warfare 4 multiplayer – Prestige mode rewards",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/all-prestige-unlocks-in-modern-warfare-4-multiplayer-prestige-mode-rewards/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 17:24 UTC"
-    },
-    {
-      "headline": "BioWare Officially Shutting Down and New Mass Effect Canceled",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/ea-bioware-closure-mass-efffect-5-canceled/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 17:23 UTC"
-    },
-    {
-      "headline": "I wrote a GPU driver for Linux on the PS2 and it was a waste of time.",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1xbteme/i_wrote_a_gpu_driver_for_linux_on_the_ps2_and_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 17:23 UTC"
-    },
-    {
-      "headline": "I wrote a GPU driver for Linux on the PS2 and it was a waste of time.",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xbteec/i_wrote_a_gpu_driver_for_linux_on_the_ps2_and_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 17:23 UTC"
-    },
-    {
-      "headline": "Hot Take: Let the gaming industry crash",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xbtemm/hot_take_let_the_gaming_industry_crash/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 17:23 UTC"
-    },
-    {
-      "headline": "Please give me some help before I start.",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xbteuf/please_give_me_some_help_before_i_start/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 17:23 UTC"
-    },
-    {
-      "headline": "EA cierra Bioware, cancela el próximo Mass Effect y despide a 400 personas",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026294028/ea-cierra-bioware-cancela-el-proximo-mass-effect-y-despide-a-400-personas/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 17:22 UTC"
-    },
-    {
-      "headline": "My PC make a sort of... resonating noise?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbte85/my_pc_make_a_sort_of_resonating_noise/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 17:22 UTC"
-    },
-    {
-      "headline": "Black Friday question",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbte8t/black_friday_question/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 17:22 UTC"
     }
   ]
 }
