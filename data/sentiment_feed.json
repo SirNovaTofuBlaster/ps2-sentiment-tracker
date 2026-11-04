@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 10:19:41 UTC",
+  "last_updated": "2026-11-04 10:29:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -86,6 +86,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 09:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750934953",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 09:53 UTC"
     },
     {
       "headline": "Crazy Taxi Meets GTA In 'Downtown Dash', A New Arcade-Style Racing Game For Your Atari Jaguar",
@@ -11346,17 +11365,17 @@
       "timestamp": "2026-11-03 19:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Iron Man, Spider-Man, Area 51 and 1 more",
+      "headline": "Thread on /v/ naming Spider-Man, Area 51, Shadow the Hedgehog and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750899148",
-      "matched_game": "Iron Man",
+      "matched_game": "Spider-Man",
       "matched_games": [
-        "Iron Man",
         "Spider-Man",
         "Area 51",
-        "Shadow the Hedgehog"
+        "Shadow the Hedgehog",
+        "Iron Man"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338068,108 +338087,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 10:34 UTC"
-    },
-    {
-      "headline": "Raiden Project is this week’s Console Archives game on Nintendo Switch 2",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/raiden-project-is-this-weeks-console-archives-game-on-nintendo-switch-2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 10:28 UTC"
-    },
-    {
-      "headline": "Así sonaría GTA 6 con voces en español: dos actores de doblaje ponen voz a Jason y Lucía en un vídeo no oficial",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026294014/asi-sonaria-gta-6-con-voces-en-espanol-dos-actores-de-doblaje-ponen-voz-a-jason-y-lucia-en-un-video-no-oficial/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 10:28 UTC"
-    },
-    {
-      "headline": "My humble gaming collection (rockstar collection)",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xbjf2u/my_humble_gaming_collection_rockstar_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 10:23 UTC"
-    },
-    {
-      "headline": "Need a replacement screen asap",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xbjfgp/need_a_replacement_screen_asap/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 10:23 UTC"
-    },
-    {
-      "headline": "PlayStation Store",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xbjerx/playstation_store/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 10:22 UTC"
-    },
-    {
-      "headline": "Nova atualização da PS5 tenta travar pirataria antes de GTA 6",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/nova-atualizacao-da-ps5-tenta-travar-pirataria-antes-de-gta-6",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 10:21 UTC"
     }
   ]
 }
