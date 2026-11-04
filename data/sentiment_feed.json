@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 02:09:32 UTC",
+  "last_updated": "2026-11-04 02:12:14 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -120,6 +120,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 01:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Phantasy Star Universe, Viewtiful Joe and SoulCalibur II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750919698",
+      "matched_game": "Phantasy Star Universe",
+      "matched_games": [
+        "Phantasy Star Universe",
+        "Viewtiful Joe",
+        "SoulCalibur II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 01:38 UTC"
     },
     {
       "headline": "Sand Land and Tsubasa : RONC",
@@ -838,14 +859,16 @@
       "timestamp": "2026-11-04 00:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex",
+      "headline": "Thread on /v/ naming Deus Ex, Resident Evil 4 and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750916659",
       "matched_game": "Deus Ex",
       "matched_games": [
-        "Deus Ex"
+        "Deus Ex",
+        "Resident Evil 4",
+        "Half-Life"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -3514,13 +3537,14 @@
       "timestamp": "2026-11-03 21:59 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Sonic Unleashed",
+      "headline": "Thread on /v/ naming Spider-Man 2, Kingdom Hearts and Sonic Unleashed",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750908375",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Spider-Man 2",
       "matched_games": [
+        "Spider-Man 2",
         "Kingdom Hearts",
         "Sonic Unleashed"
       ],
@@ -7346,17 +7370,18 @@
       "views": 1345
     },
     {
-      "headline": "Thread on /v/ naming Persona 3",
+      "headline": "Thread on /v/ naming Black and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750897073",
-      "matched_game": "Persona 3",
+      "matched_game": "Black",
       "matched_games": [
+        "Black",
         "Persona 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -46480,18 +46505,18 @@
       "timestamp": "2026-11-02 06:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life and Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750806263",
-      "matched_game": "Half-Life",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Half-Life",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337803,23 +337828,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 02:12 UTC"
-    },
-    {
-      "headline": "I'm searching for a case that doesn't exist.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbawor/im_searching_for_a_case_that_doesnt_exist/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 02:09 UTC"
     }
   ]
 }
