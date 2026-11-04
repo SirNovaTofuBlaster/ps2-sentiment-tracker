@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 14:31:29 UTC",
+  "last_updated": "2026-11-04 14:34:06 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -606,6 +606,25 @@
       "timestamp": "2026-11-04 13:49 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750942603",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 13:46 UTC"
+    },
+    {
       "headline": "First Phantom Blade Zero PS5 Update Makes an Early, Deadly Boss Easier",
       "source": "Push Square",
       "source_type": "news",
@@ -675,14 +694,15 @@
       "timestamp": "2026-11-04 13:42 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "headline": "Thread on /v/ naming Shadow of the Colossus and ICO",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750942373",
       "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "Shadow of the Colossus"
+        "Shadow of the Colossus",
+        "ICO"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -6927,19 +6947,19 @@
       "timestamp": "2026-11-04 06:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, The Thing and Alone in the Dark",
+      "headline": "Thread on /v/ naming The Thing, Alone in the Dark and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750929535",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "The Thing",
       "matched_games": [
-        "Resident Evil 4",
         "The Thing",
-        "Alone in the Dark"
+        "Alone in the Dark",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338517,108 +338537,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 14:34 UTC"
-    },
-    {
-      "headline": "Lower Perceived input lag on Nvidia VS AMD",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbotv8/lower_perceived_input_lag_on_nvidia_vs_amd/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 14:33 UTC"
-    },
-    {
-      "headline": "how bad is it?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xbotgd/how_bad_is_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 14:33 UTC"
-    },
-    {
-      "headline": "Star Ocean (SNES, 1996)",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xbosik/star_ocean_snes_1996/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 14:32 UTC"
-    },
-    {
-      "headline": "[pc][new] there was this pixel art game where you had to time all of your attacks kinda like the skill check in dbd",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xbosw5/pcnew_there_was_this_pixel_art_game_where_you_had/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 14:32 UTC"
-    },
-    {
-      "headline": "Bios update help!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbos31/bios_update_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 14:31 UTC"
-    },
-    {
-      "headline": "How to find a dynamic op phone in DMZ in Modern Warfare 4",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/mw4-modern-warfare-4-dmz-dynamic-op-phone/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 14:31 UTC"
     }
   ]
 }
