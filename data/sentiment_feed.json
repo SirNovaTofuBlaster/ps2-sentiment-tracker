@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 08:48:38 UTC",
+  "last_updated": "2026-11-04 08:51:13 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -5810,18 +5810,19 @@
       "timestamp": "2026-11-03 23:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Red Dead Revolver, Midnight Club 2 and 2 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Spider-Man, Grand Theft Auto III and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750912651",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
+        "Grand Theft Auto: San Andreas",
+        "Spider-Man",
         "Grand Theft Auto III",
         "Red Dead Revolver",
         "Midnight Club 2",
-        "Max Payne",
-        "Spider-Man"
+        "Max Payne"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -28725,21 +28726,21 @@
       "timestamp": "2026-11-03 01:01 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Ar Tonelico, Silent Hill 2, Persona 3 and 2 more",
+      "headline": "Thread on /v/ naming Silent Hill 2, Persona 3, The Snow Queen Quest and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750854848",
-      "matched_game": "Ar Tonelico",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Ar Tonelico",
         "Silent Hill 2",
         "Persona 3",
         "The Snow Queen Quest",
-        "Persona 4"
+        "Persona 4",
+        "Ar Tonelico"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338186,23 +338187,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 08:57 UTC"
-    },
-    {
-      "headline": "Real, or are fakes getting good?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xbhwer/real_or_are_fakes_getting_good/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 08:50 UTC"
     }
   ]
 }
