@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 18:19:43 UTC",
+  "last_updated": "2026-11-04 18:22:22 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1556,6 +1556,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-04 17:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750951793",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-04 17:10 UTC"
     },
@@ -8797,6 +8816,25 @@
       "views": 17014
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750937710",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 11:30 UTC"
+    },
+    {
       "headline": "What specs should i get?",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -14778,7 +14816,7 @@
       "timestamp": "2026-11-04 02:19 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Spider-Man, Combat Ace and Blade 2",
+      "headline": "Thread on /vr/ naming Spider-Man, Blade 2 and Combat Ace",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -14786,8 +14824,8 @@
       "matched_game": "Spider-Man",
       "matched_games": [
         "Spider-Man",
-        "Combat Ace",
-        "Blade 2"
+        "Blade 2",
+        "Combat Ace"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -16862,7 +16900,7 @@
       "timestamp": "2026-11-03 23:48 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Final Fantasy XI and Final Fantasy XII",
+      "headline": "Thread on /vg/ naming Final Fantasy XI, Final Fantasy XII and Final Fantasy X",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -16870,7 +16908,8 @@
       "matched_game": "Final Fantasy XI",
       "matched_games": [
         "Final Fantasy XI",
-        "Final Fantasy XII"
+        "Final Fantasy XII",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338579,91 +338618,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-21 18:22 UTC"
-    },
-    {
-      "headline": "MapleStory Classic World Is Now Live",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xbv1ht/maplestory_classic_world_is_now_live/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-21 18:21 UTC"
-    },
-    {
-      "headline": "What multiplayer game has the least toxic community?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xbv0a1/what_multiplayer_game_has_the_least_toxic/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 18:20 UTC"
-    },
-    {
-      "headline": "EA Cancels New Mass Effect, Pauses New Sims Game, And All The Other  Big EA News That Just Happened",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/ea-kills-bioware-cancels-new-mass-effect-pauses-new-sims-game-and-all-the-other-big-ea-news-that-just-happened/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 18:20 UTC"
-    },
-    {
-      "headline": "Here Are The Games EA Says It Will Still Make Amid Cancelations And 400 Layoffs: ‘We’re The Number One Publisher In Western HD Gaming’",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/here-are-the-games-ea-says-it-will-still-make-amid-cancelations-and-400-layoffs-were-the-number-one-publisher-in-western-hd-gaming-2000748390",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 18:19 UTC"
-    },
-    {
-      "headline": "Steam Deck Mini is inevitable, probably happens before Deck 2.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xbuzsl/steam_deck_mini_is_inevitable_probably_happens/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 18:19 UTC"
     }
   ]
 }
