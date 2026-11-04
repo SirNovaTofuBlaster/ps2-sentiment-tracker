@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 09:04:45 UTC",
+  "last_updated": "2026-11-04 09:18:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1264,18 +1264,19 @@
       "timestamp": "2026-11-04 06:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Thing and Alone in the Dark",
+      "headline": "Thread on /v/ naming Resident Evil 4, The Thing and Alone in the Dark",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750929535",
-      "matched_game": "The Thing",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "The Thing",
         "Alone in the Dark"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2623,6 +2624,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 03:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750924439",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 03:32 UTC"
     },
     {
       "headline": "Beating EVERY PS2 Game #145 - OG Persona 4 (part 30)",
@@ -338051,57 +338071,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 09:18 UTC"
-    },
-    {
-      "headline": "installing NVSE on the deck— what am i missing?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xbiafn/installing_nvse_on_the_deck_what_am_i_missing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 09:14 UTC"
-    },
-    {
-      "headline": "Good build for 550",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbi8lk/good_build_for_550/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 09:11 UTC"
-    },
-    {
-      "headline": "Xbox Helix a $1200 mais vale ficar na fábrica",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/xbox-helix-a-1200-mais-vale-ficar-na-fabrica",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 09:10 UTC"
     }
   ]
 }
