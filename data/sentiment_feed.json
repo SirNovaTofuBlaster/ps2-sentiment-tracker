@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 02:39:51 UTC",
+  "last_updated": "2026-11-04 02:53:52 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -40,6 +40,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-04 02:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Arcade",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750921419",
+      "matched_game": "The Arcade",
+      "matched_games": [
+        "The Arcade"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 02:16 UTC"
     },
     {
       "headline": "Uncharted Nathan Drake collection - No BF sale?",
@@ -7814,14 +7833,13 @@
       "timestamp": "2026-11-03 18:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Everybody's Golf, The Warriors, Midnight Club and 9 more",
+      "headline": "Thread on /v/ naming The Warriors, Midnight Club, Splinter Cell and 9 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750896210",
-      "matched_game": "Everybody's Golf",
+      "matched_game": "The Warriors",
       "matched_games": [
-        "Everybody's Golf",
         "The Warriors",
         "Midnight Club",
         "Splinter Cell",
@@ -7832,7 +7850,8 @@
         "Persona 3 FES",
         "Devil May Cry 3",
         "Soul Calibur 2",
-        "Soul Calibur 3"
+        "Soul Calibur 3",
+        "Everybody's Golf"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -337421,125 +337440,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 02:53 UTC"
-    },
-    {
-      "headline": "Quiero armarme una pc",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbbrli/quiero_armarme_una_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 02:52 UTC"
-    },
-    {
-      "headline": "Our collection so far what yall think??",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xbbqgt/our_collection_so_far_what_yall_think/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 02:50 UTC"
-    },
-    {
-      "headline": "Various switch games on sale (for short, intermittent gaming sessions)",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xbbphb/various_switch_games_on_sale_for_short/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 02:49 UTC"
-    },
-    {
-      "headline": "Phineas Horton? Disney Just Officially Made a Forgotten Marvel Legend Into MCU Canon",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/visionquest-original-human-torch-phineas-horton-explainer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 02:45 UTC"
-    },
-    {
-      "headline": "How to get FSR 4 Lite to work?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xbblyr/how_to_get_fsr_4_lite_to_work/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 02:44 UTC"
-    },
-    {
-      "headline": "Screen is black when I launch a game",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbbiz6/screen_is_black_when_i_launch_a_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 02:40 UTC"
-    },
-    {
-      "headline": "Control PC from 2 floors away?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbbi26/control_pc_from_2_floors_away/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 02:39 UTC"
     }
   ]
 }
