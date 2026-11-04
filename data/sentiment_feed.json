@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 04:03:33 UTC",
+  "last_updated": "2026-11-04 04:06:00 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -103,6 +103,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 03:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750924623",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 03:39 UTC"
     },
     {
       "headline": "Japanese PS2",
@@ -4929,15 +4948,15 @@
       "timestamp": "2026-11-03 21:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750907394",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy XII",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -337735,57 +337754,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 04:06 UTC"
-    },
-    {
-      "headline": "This sub just became the AI sloppy top jerkfest overnight",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbd6tm/this_sub_just_became_the_ai_sloppy_top_jerkfest/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 04:05 UTC"
-    },
-    {
-      "headline": "524: Bullets Go Faster",
-      "source": "Podcast: The Computer Game Show",
-      "source_type": "podcast",
-      "feed": "https://feed.podbean.com/thecomputergameshow/feed.xml",
-      "link": "https://thecomputergameshow.podbean.com/e/524-bullets-go-faster/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 04:05 UTC"
-    },
-    {
-      "headline": "Just got this today, is it real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xbd54c/just_got_this_today_is_it_real/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 04:03 UTC"
     }
   ]
 }
