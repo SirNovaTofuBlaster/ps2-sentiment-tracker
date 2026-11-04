@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 06:54:33 UTC",
+  "last_updated": "2026-11-04 06:57:07 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1271,6 +1271,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 03:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Iron Man and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750925069",
+      "matched_game": "Iron Man",
+      "matched_games": [
+        "Iron Man",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 03:53 UTC"
     },
     {
       "headline": "Advice on LLM Rig",
@@ -337933,23 +337953,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 06:57 UTC"
-    },
-    {
-      "headline": "Hey im trying to get a TP-Link Archer TX20U Nano functioning and would like some help (idk if this is the exact sub for this?)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbg2t8/hey_im_trying_to_get_a_tplink_archer_tx20u_nano/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 06:55 UTC"
     }
   ]
 }
