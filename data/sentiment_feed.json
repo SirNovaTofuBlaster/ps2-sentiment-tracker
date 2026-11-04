@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 11:16:06 UTC",
+  "last_updated": "2026-11-04 11:27:38 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -679,6 +679,25 @@
       "timestamp": "2026-11-04 10:03 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750935191",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 10:03 UTC"
+    },
+    {
       "headline": "Multiple Bidders Have Offered To Buy Arkane Lyon From Xbox",
       "source": "YouTube: Mithrie - Gaming News",
       "source_type": "youtube",
@@ -938,14 +957,15 @@
       "timestamp": "2026-11-04 09:47 UTC"
     },
     {
-      "headline": "Thread on /v/ naming X-Men Origins: Wolverine",
+      "headline": "Thread on /v/ naming X-Men Origins: Wolverine and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750934751",
       "matched_game": "X-Men Origins: Wolverine",
       "matched_games": [
-        "X-Men Origins: Wolverine"
+        "X-Men Origins: Wolverine",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338235,125 +338255,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 11:30 UTC"
-    },
-    {
-      "headline": "[Dev Post] We're a team of 4 making Archetype Blue, a story-driven JRPG with roguelike deckbuilding combat. Our Next Fest demo is out!",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xbkk8t/dev_post_were_a_team_of_4_making_archetype_blue_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 11:26 UTC"
-    },
-    {
-      "headline": "Even Call of Duty has a parry now and it's kind of brilliant - but do we need it in every game?",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/call-of-duty-modern-warfare-4-parry-melee-best-moments",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-21 11:22 UTC"
-    },
-    {
-      "headline": "[PLUGIN] New FSR 4.1.2 On Steam Deck ! Decky OptiScaler — v0.0.9 (FSR 4 Lite on OptiScaler v10)",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xbkg9m/plugin_new_fsr_412_on_steam_deck_decky_optiscaler/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 11:20 UTC"
-    },
-    {
-      "headline": "Vendas físicas de Resident Evil: Requiem na PlayStation superam o total do jogo na Xbox",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/vendas-fisicas-de-resident-evil-requiem-na-playstation-superam-o-total-do-jogo-na-xbox",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 11:19 UTC"
-    },
-    {
-      "headline": "Resident Evil físico na PlayStation bateu todas as vendas da Xbox",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/resident-evil-fisico-na-playstation-bateu-todas-as-vendas-da-xbox",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 11:19 UTC"
-    },
-    {
-      "headline": "Reserva Hell is Us para Switch 2 en GAME y llévate un cómic de regalo para saber lo que ocurrió antes del juego",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026294016/reserva-hell-is-us-para-switch-2-en-game-y-llevate-un-comic-de-regalo-para-saber-lo-que-ocurrio-antes-del-juego/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 11:18 UTC"
-    },
-    {
-      "headline": "Magical Craft: My Enchanted Dress Shop getting Nintendo Switch western release [update: now launching today]",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/magical-craft-my-enchanted-dress-shop-getting-nintendo-switch-western-release/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 11:18 UTC"
     }
   ]
 }
