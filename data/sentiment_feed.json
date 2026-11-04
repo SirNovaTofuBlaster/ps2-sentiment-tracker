@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 01:17:30 UTC",
+  "last_updated": "2026-11-04 01:28:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2802,6 +2802,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 22:07 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750908912",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-03 22:06 UTC"
     },
     {
       "headline": "Raziel - Soul riverPSX",
@@ -5915,7 +5934,7 @@
       "timestamp": "2026-11-03 19:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man and Area 51",
+      "headline": "Thread on /v/ naming Spider-Man, Shadow the Hedgehog and Area 51",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -5923,6 +5942,7 @@
       "matched_game": "Spider-Man",
       "matched_games": [
         "Spider-Man",
+        "Shadow the Hedgehog",
         "Area 51"
       ],
       "match_score": 100,
@@ -21474,17 +21494,18 @@
       "timestamp": "2026-11-03 05:30 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "headline": "Thread on /vr/ naming Half-Life and Resident Evil 4",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12910915",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Half-Life",
       "matched_games": [
+        "Half-Life",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337893,80 +337914,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 01:28 UTC"
-    },
-    {
-      "headline": "Which are the best extraction game to begin with",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xb9zqg/which_are_the_best_extraction_game_to_begin_with/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-21 01:25 UTC"
-    },
-    {
-      "headline": "New build powering on but no post",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xb9xn4/new_build_powering_on_but_no_post/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 01:22 UTC"
-    },
-    {
-      "headline": "Real or fake Pokemon Pearl",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xb9x5j/real_or_fake_pokemon_pearl/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 01:21 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life, Metal Gear Solid 2, Metal Gear Solid 2: Sons of Liberty and 2 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750081680",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life",
-        "Metal Gear Solid 2",
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Resident Evil 4",
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-21 01:18 UTC"
     }
   ]
 }
