@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-04 03:42:40 UTC",
+  "last_updated": "2026-11-04 03:50:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -190,6 +190,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 02:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Warriors",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750922327",
+      "matched_game": "The Warriors",
+      "matched_games": [
+        "The Warriors"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 02:36 UTC"
     },
     {
       "headline": "Is something like this possible with decky?",
@@ -8434,14 +8453,14 @@
       "timestamp": "2026-11-03 18:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Warriors, Midnight Club, Splinter Cell and 9 more",
+      "headline": "Thread on /v/ naming Soul Calibur 2, Midnight Club, Splinter Cell and 12 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750896210",
-      "matched_game": "The Warriors",
+      "matched_game": "Soul Calibur 2",
       "matched_games": [
-        "The Warriors",
+        "Soul Calibur 2",
         "Midnight Club",
         "Splinter Cell",
         "Cold Winter",
@@ -8450,9 +8469,12 @@
         "Star Wars Bounty Hunter",
         "Persona 3 FES",
         "Devil May Cry 3",
-        "Soul Calibur 2",
         "Soul Calibur 3",
-        "Everybody's Golf"
+        "Everybody's Golf",
+        "The Warriors",
+        "Burnout Revenge",
+        "Burnout 3",
+        "Resident Evil Code: Veronica X"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -337527,23 +337549,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-21 03:51 UTC"
-    },
-    {
-      "headline": "New build who dis",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xbcslf/new_build_who_dis/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-21 03:44 UTC"
     }
   ]
 }
