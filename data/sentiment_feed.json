@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 05:43:23 UTC",
+  "last_updated": "2026-11-05 05:45:55 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1095,6 +1095,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-05 04:16 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750983843",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 04:15 UTC"
     },
     {
       "headline": "Yall saved me once before. How's this one? Legit?",
@@ -337996,57 +338015,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 05:46 UTC"
-    },
-    {
-      "headline": "How to get C++ Coding set up on a steam deck?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xcaaqo/how_to_get_c_coding_set_up_on_a_steam_deck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:44 UTC"
-    },
-    {
-      "headline": "Steamdeck OLED Joystick Replacement Advice",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xcaapp/steamdeck_oled_joystick_replacement_advice/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:44 UTC"
-    },
-    {
-      "headline": "No power to deck",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xcaa5t/no_power_to_deck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:43 UTC"
     }
   ]
 }
