@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 12:22:24 UTC",
+  "last_updated": "2026-11-05 12:24:59 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -5094,20 +5094,20 @@
       "timestamp": "2026-11-05 05:48 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Blade 2, Way of the Samurai, Samurai Warriors 2 and 1 more",
+      "headline": "Thread on /v/ naming Way of the Samurai 2, Samurai Warriors 2, Blade 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750986741",
-      "matched_game": "Blade 2",
+      "matched_game": "Way of the Samurai 2",
       "matched_games": [
-        "Blade 2",
-        "Way of the Samurai",
+        "Way of the Samurai 2",
         "Samurai Warriors 2",
-        "Way of the Samurai 2"
+        "Blade 2",
+        "Way of the Samurai"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -14325,6 +14325,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 19:49 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Harry Potter and The Chamber of Secrets",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750959929",
+      "matched_game": "Harry Potter and The Chamber of Secrets",
+      "matched_games": [
+        "Harry Potter and The Chamber of Secrets"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 19:47 UTC"
     },
     {
       "headline": "NIGHTMARE Mama Pumpkin Pie JUMPSCARE #roblox #jumpscare #scaryobby",
@@ -62566,6 +62585,25 @@
       "hype": 0,
       "timestamp": "2026-11-02 20:41 UTC",
       "views": 896
+    },
+    {
+      "headline": "Thread on /vr/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12909861",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-02 20:41 UTC"
     },
     {
       "headline": "Games like Silent Hill Townfall that are less annoying?",
@@ -338184,91 +338222,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 12:24 UTC"
-    },
-    {
-      "headline": "Resident Evil makers Capcom reveal data breach has affected over 11 million Capcom ID accounts, warn against potential phishing emails",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53459023",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 12:23 UTC"
-    },
-    {
-      "headline": "PS5 Dynamic pricing is atrocious. Demon souls is on sale if you are lucky.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xch3yu/ps5_dynamic_pricing_is_atrocious_demon_souls_is/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 12:23 UTC"
-    },
-    {
-      "headline": "My game failed Valve's controller-support review twice. Here's what was broken, and what it took to play properly on the Deck (solo dev, free demo)",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xch3u7/my_game_failed_valves_controllersupport_review/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-22 12:23 UTC"
-    },
-    {
-      "headline": "Raridade da Namco nas consolas 30 anos depois",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/raridade-da-namco-nas-consolas-30-anos-depois",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 12:22 UTC"
-    },
-    {
-      "headline": "Elon crying about China will flood the RAM market by 2028",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xch349/elon_crying_about_china_will_flood_the_ram_market/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 12:22 UTC"
     }
   ]
 }
