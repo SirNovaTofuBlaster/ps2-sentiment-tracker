@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 09:31:26 UTC",
+  "last_updated": "2026-11-05 09:33:57 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -641,7 +641,7 @@
       "timestamp": "2026-11-05 08:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex and Monster Hunter",
+      "headline": "Thread on /v/ naming Deus Ex, Monster Hunter and Crash Twinsanity",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -649,7 +649,8 @@
       "matched_game": "Deus Ex",
       "matched_games": [
         "Deus Ex",
-        "Monster Hunter"
+        "Monster Hunter",
+        "Crash Twinsanity"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -2684,18 +2685,19 @@
       "timestamp": "2026-11-05 05:48 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Way of the Samurai 2 and Samurai Warriors 2",
+      "headline": "Thread on /v/ naming Blade 2, Samurai Warriors 2 and Way of the Samurai 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750986741",
-      "matched_game": "Way of the Samurai 2",
+      "matched_game": "Blade 2",
       "matched_games": [
-        "Way of the Samurai 2",
-        "Samurai Warriors 2"
+        "Blade 2",
+        "Samurai Warriors 2",
+        "Way of the Samurai 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3151,6 +3153,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-05 05:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750985412",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 05:03 UTC"
     },
     {
       "headline": "All bottle locations in Ocarina of Time",
@@ -338586,95 +338607,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-22 09:40 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750116283",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:32 UTC"
-    },
-    {
-      "headline": "Cat Valente (ME: Annihilation) was one of the writers on the next game",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xcdy2i/cat_valente_me_annihilation_was_one_of_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:32 UTC"
-    },
-    {
-      "headline": "Any games with unique classes like Trickster from Dragon dogma 2?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xcdy2n/any_games_with_unique_classes_like_trickster_from/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:32 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Shrek 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750116290",
-      "matched_game": "Shrek 2",
-      "matched_games": [
-        "Shrek 2"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:32 UTC"
-    },
-    {
-      "headline": "Do Not Feed the Monkeys 2099 releases for Nintendo Switch today",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/do-not-feed-the-monkeys-2099-releases-for-nintendo-switch-today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:31 UTC"
     }
   ]
 }
