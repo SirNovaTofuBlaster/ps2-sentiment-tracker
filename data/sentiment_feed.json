@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-05 14:16:28 UTC",
+  "last_updated": "2026-11-05 14:18:57 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Area 51",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/586839457",
+      "matched_game": "Area 51",
+      "matched_games": [
+        "Area 51"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 14:14 UTC"
+    },
     {
       "headline": "I can't get into gaming mode",
       "source": "r/SteamDeck",
@@ -5169,19 +5188,19 @@
       "timestamp": "2026-11-05 08:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Sonic Heroes, Final Fantasy X and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Final Fantasy X, Kingdom Hearts and Sonic Heroes",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750992202",
-      "matched_game": "Sonic Heroes",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Sonic Heroes",
         "Final Fantasy X",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Sonic Heroes"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9728,6 +9747,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-11-05 03:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Thing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750981340",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 03:08 UTC"
     },
     {
       "headline": "Only one pop corn",
@@ -337724,58 +337762,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 14:18 UTC"
-    },
-    {
-      "headline": "No more waiting on shaders to compile as Nvidia's latest driver adds advanced shader delivery: users report lower RAM usage in Call of Duty: Modern Warfare 4 and Gears of War: E-Day",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/hardware/graphics-cards/no-more-waiting-on-shaders-to-compile-as-nvidias-latest-driver-adds-advanced-shader-delivery-users-report-lower-ram-usage-in-call-of-duty-modern-warfare-4-and-gears-of-war-e-day/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 14:17 UTC"
-    },
-    {
-      "headline": "World War Z - Official Viral State Update Announcement Trailer",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=RM1cQGlNN1I",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-22 14:16 UTC",
-      "views": 51171
-    },
-    {
-      "headline": "El 'remaster' de un JRPG de PSX vence a Castlevania: Belmont's Curse en las ventas japonesas",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026295019/el-remaster-de-un-jrpg-de-psx-vence-a-castlevania-belmonts-curse-en-las-ventas-japonesas/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-22 14:16 UTC"
     }
   ]
 }
