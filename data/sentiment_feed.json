@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-05 05:48:11 UTC",
+  "last_updated": "2026-11-05 05:59:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Samurai Warriors 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750986741",
+      "matched_game": "Samurai Warriors 2",
+      "matched_games": [
+        "Samurai Warriors 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 05:47 UTC"
+    },
     {
       "headline": "I found him in the streets",
       "source": "r/pcmasterrace",
@@ -1531,14 +1550,15 @@
       "timestamp": "2026-11-05 03:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "headline": "Thread on /v/ naming Shadow of the Colossus and ICO",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750982274",
       "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "Shadow of the Colossus"
+        "Shadow of the Colossus",
+        "ICO"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -9055,19 +9075,20 @@
       "timestamp": "2026-11-04 19:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Shadow Hearts and Haunting Ground",
+      "headline": "Thread on /v/ naming Radiata Stories, Silent Hill 2, Shadow Hearts and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750957984",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Radiata Stories",
       "matched_games": [
+        "Radiata Stories",
         "Silent Hill 2",
         "Shadow Hearts",
         "Haunting Ground"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337944,77 +337965,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 06:07 UTC"
-    },
-    {
-      "headline": "Getting ready for GTA VI",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xcajn7/getting_ready_for_gta_vi/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:58 UTC"
-    },
-    {
-      "headline": "MORTAL KOMBAT شاولن مونكس",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/watch?v=2Wz5s5Ylgrc",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:57 UTC",
-      "views": 1439
-    },
-    {
-      "headline": "Thread on /v/ naming The Sims",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750107924",
-      "matched_game": "The Sims",
-      "matched_games": [
-        "The Sims"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:52 UTC"
-    },
-    {
-      "headline": "Thoughts on this prebuilt",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xcaem7/thoughts_on_this_prebuilt/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:50 UTC"
     }
   ]
 }
