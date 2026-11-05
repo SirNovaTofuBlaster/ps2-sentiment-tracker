@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 05:19:01 UTC",
+  "last_updated": "2026-11-05 05:30:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -841,6 +841,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-05 03:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750983237",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-05 03:59 UTC"
     },
@@ -337743,80 +337762,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 05:31 UTC"
-    },
-    {
-      "headline": "Xbox wants you to pay 24 to 40 cents per hour to stream games you already bought",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xca1d9/xbox_wants_you_to_pay_24_to_40_cents_per_hour_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:28 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Devil May Cry, Silent Hill 2, The Thing and 2 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750106946",
-      "matched_game": "Devil May Cry",
-      "matched_games": [
-        "Devil May Cry",
-        "Silent Hill 2",
-        "The Thing",
-        "Resident Evil 4",
-        "Burnout 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:28 UTC"
-    },
-    {
-      "headline": "What brand / model tv do you guys recommend for gaming in my living room ?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xca02a/what_brand_model_tv_do_you_guys_recommend_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:26 UTC"
-    },
-    {
-      "headline": "“BioWare is closing…”",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xc9xe8/bioware_is_closing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 05:22 UTC"
     }
   ]
 }
