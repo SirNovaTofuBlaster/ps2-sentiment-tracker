@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 09:36:12 UTC",
+  "last_updated": "2026-11-05 09:47:40 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -480,17 +480,18 @@
       "timestamp": "2026-11-05 08:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750992202",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -31911,6 +31912,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-03 23:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750913254",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-03 23:25 UTC"
     },
@@ -338622,110 +338642,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 09:49 UTC"
-    },
-    {
-      "headline": "Plugin menu is gone (help)",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xce58j/plugin_menu_is_gone_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:45 UTC"
-    },
-    {
-      "headline": "Phantom Blade Zero Will Get a Physical Release, But There's a Catch",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/phantom-blade-zero-physical-release-disc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:43 UTC"
-    },
-    {
-      "headline": "PS2:思い出のゲーム！",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xce4j0/ps2思い出のゲーム/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:43 UTC"
-    },
-    {
-      "headline": "First Time PS2 Disassembly: How it went, what broke, what to avoid",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xce4g4/first_time_ps2_disassembly_how_it_went_what_broke/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:43 UTC"
-    },
-    {
-      "headline": "Nintendo Switch 2 has been jailbroken",
-      "source": "r/emulation",
-      "source_type": "reddit",
-      "feed": "reddit:emulation",
-      "link": "https://www.reddit.com/r/emulation/comments/1xce3np/nintendo_switch_2_has_been_jailbroken/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:42 UTC"
-    },
-    {
-      "headline": "Ranking The Best PS2 Emulators On Android (All Tested)",
-      "source": "Retro Dodo",
-      "source_type": "news",
-      "feed": "https://retrododo.com/feed/",
-      "link": "https://retrododo.com/best-ps2-emulators-on-android/",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:40 UTC"
     }
   ]
 }
