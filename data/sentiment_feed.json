@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 00:01:24 UTC",
+  "last_updated": "2026-11-05 00:03:59 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -222,6 +222,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 23:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750971979",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-04 23:38 UTC"
     },
     {
       "headline": "SIB Torchlight III?",
@@ -2190,7 +2209,7 @@
       "timestamp": "2026-11-04 21:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Splinter Cell, Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
+      "headline": "Thread on /v/ naming Splinter Cell, Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -2198,8 +2217,8 @@
       "matched_game": "Splinter Cell",
       "matched_games": [
         "Splinter Cell",
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -4483,15 +4502,16 @@
       "timestamp": "2026-11-04 19:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry and The Punisher",
+      "headline": "Thread on /v/ naming Devil May Cry 3, The Punisher and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750958979",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Devil May Cry 3",
       "matched_games": [
-        "Devil May Cry",
-        "The Punisher"
+        "Devil May Cry 3",
+        "The Punisher",
+        "Devil May Cry"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
