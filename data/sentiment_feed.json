@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 19:58:35 UTC",
+  "last_updated": "2026-11-05 20:01:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1283,6 +1283,25 @@
       "timestamp": "2026-11-05 18:47 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751016280",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 18:47 UTC"
+    },
+    {
       "headline": "Finally brought my DOOM statue collection together! 🤘",
       "source": "r/gamecollecting",
       "source_type": "reddit",
@@ -1439,19 +1458,20 @@
       "timestamp": "2026-11-05 18:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming LEGO Star Wars II: The Original Trilogy, Need for Speed Most Wanted and Spider-Man 2",
+      "headline": "Thread on /v/ naming Namco Museum, LEGO Star Wars II: The Original Trilogy, Need for Speed Most Wanted and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751015860",
-      "matched_game": "LEGO Star Wars II: The Original Trilogy",
+      "matched_game": "Namco Museum",
       "matched_games": [
+        "Namco Museum",
         "LEGO Star Wars II: The Original Trilogy",
         "Need for Speed Most Wanted",
         "Spider-Man 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4391,6 +4411,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-05 16:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Ghost Rider",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751010486",
+      "matched_game": "Ghost Rider",
+      "matched_games": [
+        "Ghost Rider"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 16:58 UTC"
     },
     {
       "headline": "No sound coming from Playstation",
@@ -18015,6 +18054,25 @@
       ],
       "match_score": 100,
       "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 04:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Gift",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750984631",
+      "matched_game": "The Gift",
+      "matched_games": [
+        "The Gift"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338348,59 +338406,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 20:01 UTC"
-    },
-    {
-      "headline": "Sid Meier's Civilization games: the oral history",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/civilization-games-oral-history/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 20:00 UTC"
-    },
-    {
-      "headline": "Halloween: The Game - Official Halloween 2018 Michael Myers Reveal Trailer",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=GDRs_-zR-QU",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 20:00 UTC",
-      "views": 52403
-    },
-    {
-      "headline": "The complete history of Civilization, as told by Sid Meier and more | Full Documentary",
-      "source": "YouTube: Polygon",
-      "source_type": "youtube",
-      "feed": "youtube:UCuVxaQDraOja6xKidcmoufA",
-      "link": "https://www.youtube.com/watch?v=SdfxTXCw15s",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 20:00 UTC",
-      "views": 74189
     }
   ]
 }
