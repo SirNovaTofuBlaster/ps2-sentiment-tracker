@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-05: box art on the Worst page
+
+- Each Worst card has a cover box (`.worst-cover`, beside the score) drawn from `coverUrl(title, region)` for the region being shown (the game's first region for the unplaced list), with the game's initials behind the picture so a down cover host leaves a tidy box, like the Rarest cards. No data change. retro.css `v=20261105a`. Test: every Worst row has a cover box. Guide updated.
+
 ## 2026-11-03: a merge that loses copies undoes itself (SoulCalibur II)
 
 - The first weekly audit (`tools/merged_report.py`) flagged SoulCalibur II: searched on its own it listed 120 UK and 101 US copies, against 73 and 37 for the kept Soul Calibur 2. Prices agreed (UK median 6.52 vs 6.50), so only copy counts were understated.
