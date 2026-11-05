@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 09:06:56 UTC",
+  "last_updated": "2026-11-05 09:18:37 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-05 09:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750992202",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 08:51 UTC"
     },
     {
       "headline": "Beyond Nen Hunter Exam Guide & How to Get Nen",
@@ -1800,6 +1819,25 @@
       "hype": 1,
       "timestamp": "2026-11-05 06:23 UTC",
       "views": 40
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750987904",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 06:22 UTC"
     },
     {
       "headline": "Was haltet ihr von meinem Build?",
@@ -338242,150 +338280,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 09:18 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/585227404",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:17 UTC"
-    },
-    {
-      "headline": "Ps1 Jailbreak?",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xcdp7o/ps1_jailbreak/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:17 UTC"
-    },
-    {
-      "headline": "Remake de Dragon Ball Super exibe grandes melhorias",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/remake-de-dragon-ball-super-exibe-grandes-melhorias",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-22 09:15 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Metal Gear Solid 3: Snake Eater, Zone of the Enders and Ace Combat Zero: The Belkan War",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/585227263",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
-      "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
-        "Zone of the Enders",
-        "Ace Combat Zero: The Belkan War"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:14 UTC"
-    },
-    {
-      "headline": "Xbox cloud gaming prices revealed, with 50 hours of ad-free game-time priced $11.99",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/xbox-cloud-gaming-prices-revealed",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:10 UTC"
-    },
-    {
-      "headline": "MW4 Standard vs Vault",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xcdlfh/mw4_standard_vs_vault/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:10 UTC"
-    },
-    {
-      "headline": "Everyone playing BeamNG.Drive on ps5!",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xcdk4s/everyone_playing_beamngdrive_on_ps5/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 09:08 UTC"
-    },
-    {
-      "headline": "Shrek 2 Remastered anunciado",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/shrek-2-remastered-anunciado",
-      "matched_game": "Shrek 2",
-      "matched_games": [
-        "Shrek 2"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-22 09:06 UTC"
     }
   ]
 }
