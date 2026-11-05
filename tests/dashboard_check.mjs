@@ -3490,6 +3490,8 @@ await check('Gacha: four machines of twenty capsules, free coins, prizes kept un
         assert.ok(pal.indexOf('Little Britain') < pal.indexOf('Gravity Games'), 'worst score first');
         assert.ok(pal.indexOf('Gravity Games') < pal.indexOf('Charlie'), 'a game with no score last');
         assert.match(pal, /Mike Tyson/, 'a game released in both regions is in the PAL list');
+        assert.equal((pal.match(/class="worst-row"/g) || []).length, (pal.match(/class="worst-cover"/g) || []).length, 'every Worst card draws a box for its cover, with initials behind the picture');
+        assert.match(pal, /class="worst-cover" aria-hidden="true"><span class="rr-initials">/);
         assert.doesNotMatch(pal, /Rise of Silver Surfer/, 'a game with no confirmed European date is not in the PAL list');
         run(`worstData.games.push({ title: 'Fake Unplaced Game', regions: [], score: 40, scale: 'Metacritic', note: '', source: '', url: '' }); renderWorst()`);
         assert.match(el('worstOther').innerHTML, /Fake Unplaced Game/, 'a game with no confirmed region is listed apart');

@@ -37,7 +37,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Plus+Jakarta+Sans:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="retro.css?v=20261103b">
+    <link rel="stylesheet" href="retro.css?v=20261105a">
 </head>
 <body class="bg-ps2dark min-h-screen flex flex-col selection:bg-ps2neon selection:text-black">
 
@@ -4642,7 +4642,11 @@
                 : `<span class="worst-score is-${level}" title="${esc(g.scale)}"><b>${esc(String(g.score))}${g.scale === 'GameRankings %' ? '<small>%</small>' : ''}</b><i>${esc(scaleName)}</i></span>`;
             const source = g.url ? `<a href="${esc(g.url)}" target="_blank" rel="noopener noreferrer">${esc(g.source || 'source')}</a>` : esc(g.source);
             const regions = (g.regions || []).map(region => `<span class="level-tag worst-region">${esc(region)}</span>`).join('');
-            return `<li class="worst-row"><span class="worst-rank">${number}</span>${score}
+            const region = (g.regions || []).includes(worstRegion) ? worstRegion : ((g.regions || [])[0] || 'US');
+            const coverSrc = coverUrl(g.title, region);
+            const cover = `<span class="worst-cover" aria-hidden="true"><span class="rr-initials">${esc(initialsOf(g.title))}</span>${coverSrc
+                ? `<img src="${esc(coverSrc)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.style.display='none'">` : ''}</span>`;
+            return `<li class="worst-row"><span class="worst-rank">${number}</span>${cover}${score}
                 <div class="worst-body"><div class="worst-title">${gameLinkHtml(g.title)}${regions}</div>
                 <div class="worst-note">${esc(g.note)}${source ? ` <span class="worst-source">· ${source}</span>` : ''}</div></div>
                 <div class="worst-price">${price || '<span class="worst-noprice">no price tracked</span>'}</div></li>`;
