@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 00:06:16 UTC",
+  "last_updated": "2026-11-05 00:17:50 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -562,6 +562,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-04 23:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750971173",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-04 23:22 UTC"
     },
@@ -8268,14 +8287,15 @@
       "timestamp": "2026-11-04 17:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War",
+      "headline": "Thread on /v/ naming God of War and Persona 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750951793",
       "matched_game": "God of War",
       "matched_games": [
-        "God of War"
+        "God of War",
+        "Persona 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -23823,7 +23843,7 @@
       "timestamp": "2026-11-03 23:48 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Final Fantasy XI, Final Fantasy XII and Final Fantasy X",
+      "headline": "Thread on /vg/ naming Final Fantasy XI, Final Fantasy XII, Final Fantasy X and 1 more",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -23832,7 +23852,8 @@
       "matched_games": [
         "Final Fantasy XI",
         "Final Fantasy XII",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338658,197 +338679,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-22 00:17 UTC"
-    },
-    {
-      "headline": "Hitman: Absolution Switch 2 Edition via LRG",
-      "source": "r/LimitedPrintGames",
-      "source_type": "reddit",
-      "feed": "reddit:limitedprintgames",
-      "link": "https://www.reddit.com/r/LimitedPrintGames/comments/1xc3tzk/hitman_absolution_switch_2_edition_via_lrg/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:14 UTC"
-    },
-    {
-      "headline": "Games where I can chill with strangers, doing a certain profession",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xc3tel/games_where_i_can_chill_with_strangers_doing_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:13 UTC"
-    },
-    {
-      "headline": "PC game with pure, great non-cheeseable combat with great feeling of satisfaction for progressing (a la Sekiro)?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xc3t4l/pc_game_with_pure_great_noncheeseable_combat_with/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 70,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:13 UTC"
-    },
-    {
-      "headline": "Budget motherboard+ i5 14600k",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xc3t9v/budget_motherboard_i5_14600k/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:13 UTC"
-    },
-    {
-      "headline": "Holy crap, they're making Serious Sam: The Third Encounter",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/fps/holy-crap-theyre-making-serious-sam-the-third-encounter/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:12 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Okami",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750089430",
-      "matched_game": "Okami",
-      "matched_games": [
-        "Okami"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:12 UTC"
-    },
-    {
-      "headline": "Pokemon Silver Box",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xc3qqs/pokemon_silver_box/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:09 UTC"
-    },
-    {
-      "headline": "what are some security measures you're taking to combat the PHP exploits?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xc3pxv/what_are_some_security_measures_youre_taking_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:08 UTC"
-    },
-    {
-      "headline": "Soundtrack button on games?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xc3ptr/soundtrack_button_on_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:08 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750088997",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:07 UTC"
-    },
-    {
-      "headline": "Update: RX 9060 XT 16GB from Temu (Wall of text; Unbox video in the comment.)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xc3oib/update_rx_9060_xt_16gb_from_temu_wall_of_text/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 00:06 UTC"
     }
   ]
 }
