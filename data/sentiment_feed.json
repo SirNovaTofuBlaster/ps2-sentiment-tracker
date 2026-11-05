@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 18:04:35 UTC",
+  "last_updated": "2026-11-05 18:07:14 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -240,6 +240,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-05 17:49 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming BloodRayne 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751013168",
+      "matched_game": "BloodRayne 2",
+      "matched_games": [
+        "BloodRayne 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-05 17:49 UTC"
     },
@@ -338016,76 +338035,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 18:07 UTC"
-    },
-    {
-      "headline": "Any tips on how to get better at PvP?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xcq18v/any_tips_on_how_to_get_better_at_pvp/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 18:06 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming LEGO Batman",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750144909",
-      "matched_game": "LEGO Batman",
-      "matched_games": [
-        "LEGO Batman"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 18:05 UTC"
-    },
-    {
-      "headline": "Filtran un tráiler del Mass Effect cancelado tras el cierre de BioWare: 'Llevaba meses preparado'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026295029/filtran-un-trailer-del-mass-effect-cancelado-tras-el-cierre-de-bioware-llevaba-meses-preparado/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 18:04 UTC"
-    },
-    {
-      "headline": "A unified remote access ecosystem: an open software hub (USBridge Streamer and popular solutions like Sunshine, PunkFunk, and Vibepollo) + a low-latency DIY KVM.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xcpyxb/a_unified_remote_access_ecosystem_an_open/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 18:04 UTC"
     }
   ]
 }
