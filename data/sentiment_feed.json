@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-05 20:55:43 UTC",
+  "last_updated": "2026-11-05 20:58:25 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2754,18 +2754,18 @@
       "timestamp": "2026-11-05 18:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Namco Museum, Kingdom Hearts, LEGO Star Wars II: The Original Trilogy and 2 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, LEGO Star Wars II: The Original Trilogy, Need for Speed Most Wanted and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751015860",
-      "matched_game": "Namco Museum",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Namco Museum",
         "Kingdom Hearts",
         "LEGO Star Wars II: The Original Trilogy",
         "Need for Speed Most Wanted",
-        "Spider-Man 2"
+        "Spider-Man 2",
+        "Namco Museum"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -11197,17 +11197,18 @@
       "timestamp": "2026-11-05 13:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming King's Field IV",
+      "headline": "Thread on /v/ naming Okami and King's Field IV",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751000997",
-      "matched_game": "King's Field IV",
+      "matched_game": "Okami",
       "matched_games": [
+        "Okami",
         "King's Field IV"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -13187,7 +13188,7 @@
       "timestamp": "2026-11-05 11:53 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Alone in the Dark and Fatal Frame",
+      "headline": "Thread on /vg/ naming Alone in the Dark, Fatal Frame and Resident Evil 4",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -13195,7 +13196,8 @@
       "matched_game": "Alone in the Dark",
       "matched_games": [
         "Alone in the Dark",
-        "Fatal Frame"
+        "Fatal Frame",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338577,23 +338579,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-22 20:58 UTC"
-    },
-    {
-      "headline": "Are these real or fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xculi2/are_these_real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 20:56 UTC"
     }
   ]
 }
