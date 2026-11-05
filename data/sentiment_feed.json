@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-11-05 04:22:02 UTC",
+  "last_updated": "2026-11-05 04:33:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Monster Hunter",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/586806985",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 04:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dokapon Kingdom",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750984212",
+      "matched_game": "Dokapon Kingdom",
+      "matched_games": [
+        "Dokapon Kingdom"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 04:26 UTC"
+    },
     {
       "headline": "Honkai: Nexus Anima launches in spring 2027; final closed beta test begins November 25",
       "source": "Gematsu",
@@ -2164,6 +2202,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-05 00:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/750974152",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 00:23 UTC"
     },
     {
       "headline": "Friend says this is a dumb place to put my PC but it's obviously fine. There's no way it would fall.",
@@ -337347,97 +337404,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-22 04:33 UTC"
-    },
-    {
-      "headline": "So about BioWare…",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xc90ex/so_about_bioware/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 04:31 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming God Hand",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750104523",
-      "matched_game": "God Hand",
-      "matched_games": [
-        "God Hand"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 04:30 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750104505",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 04:29 UTC"
-    },
-    {
-      "headline": "MouseComputer A620M",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xc8vol/mousecomputer_a620m/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-22 04:24 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Phantom Brave",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750104263",
-      "matched_game": "Phantom Brave",
-      "matched_games": [
-        "Phantom Brave"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-22 04:23 UTC"
     }
   ]
 }
