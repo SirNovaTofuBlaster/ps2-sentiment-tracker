@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 16:52:35 UTC",
+  "last_updated": "2026-11-06 16:55:17 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -7942,6 +7942,25 @@
       "timestamp": "2026-11-06 09:30 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Virtual On Marz",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751051467",
+      "matched_game": "Virtual On Marz",
+      "matched_games": [
+        "Virtual On Marz"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 09:30 UTC"
+    },
+    {
       "headline": "EA lança clássicos restaurados no PC",
       "source": "Eurogamer.pt Latest Articles Feed",
       "source_type": "news",
@@ -8408,19 +8427,19 @@
       "timestamp": "2026-11-06 08:53 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Warriors, Resident Evil 4 and Silent Hill 2",
+      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 2 and The Warriors",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751050473",
-      "matched_game": "The Warriors",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "The Warriors",
         "Resident Evil 4",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "The Warriors"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -83319,14 +83338,15 @@
       "timestamp": "2026-11-03 10:47 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming King's Field IV",
+      "headline": "Thread on /vr/ naming King's Field IV and Eternal Ring",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12911167",
       "matched_game": "King's Field IV",
       "matched_games": [
-        "King's Field IV"
+        "King's Field IV",
+        "Eternal Ring"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -337604,66 +337624,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 16:55 UTC"
-    },
-    {
-      "headline": "Thank You For 25 Million Players!",
-      "source": "YouTube: Bethesda Softworks",
-      "source_type": "youtube",
-      "feed": "youtube:UCvZHe-SP3xC7DdOk4Ri8QBw",
-      "link": "https://www.youtube.com/shorts/VE1OTFlFNms",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:53 UTC",
-      "views": 34496
-    },
-    {
-      "headline": "Sony Doubles Down on Officially Ditching Physical Media",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/sony-blu-ray-exit-physical-media-playstation-no-discs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:52 UTC"
-    },
-    {
-      "headline": "Thread on /vrpg/ naming La Pucelle Tactics, Digimon World 4, Phantom Brave and 4 more",
-      "source": "4chan /vrpg/",
-      "source_type": "4chan",
-      "feed": "4chan:vrpg",
-      "link": "https://boards.4chan.org/vrpg/thread/4137672",
-      "matched_game": "La Pucelle Tactics",
-      "matched_games": [
-        "La Pucelle Tactics",
-        "Digimon World 4",
-        "Phantom Brave",
-        "Tales of the Abyss",
-        "Final Fantasy X",
-        "Kingdom Hearts II",
-        "Rogue Galaxy"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:52 UTC"
     }
   ]
 }
