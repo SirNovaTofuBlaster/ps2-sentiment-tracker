@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 03:09:52 UTC",
+  "last_updated": "2026-11-06 03:21:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1760,13 +1760,14 @@
       "timestamp": "2026-11-06 00:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Arcade",
+      "headline": "Thread on /v/ naming LEGO Star Wars and The Arcade",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751032190",
-      "matched_game": "The Arcade",
+      "matched_game": "LEGO Star Wars",
       "matched_games": [
+        "LEGO Star Wars",
         "The Arcade"
       ],
       "match_score": 100,
@@ -3194,7 +3195,7 @@
       "timestamp": "2026-11-05 22:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Black, Resident Evil Outbreak, Monster Hunter and 1 more",
+      "headline": "Thread on /v/ naming Black, Max Payne, Resident Evil Outbreak and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -3202,6 +3203,7 @@
       "matched_game": "Black",
       "matched_games": [
         "Black",
+        "Max Payne",
         "Resident Evil Outbreak",
         "Monster Hunter",
         "Romancing SaGa"
@@ -4385,21 +4387,23 @@
       "timestamp": "2026-11-05 21:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Tales of Legendia, Warriors Orochi, Resident Evil Code: Veronica X and 2 more",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Crash Twinsanity, Warriors Orochi and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751024756",
-      "matched_game": "Tales of Legendia",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Tales of Legendia",
-        "Warriors Orochi",
         "Resident Evil Code: Veronica X",
+        "Crash Twinsanity",
+        "Warriors Orochi",
         "Devil May Cry 2",
-        "Digimon Rumble Arena 2"
+        "Digimon Rumble Arena 2",
+        "Tales of Legendia",
+        "Metal Arms: Glitch in the System"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337899,162 +337903,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 03:23 UTC"
-    },
-    {
-      "headline": "Slayers Club Live | DOOM: The Dark Ages | Revelations w/ Hugo Martin - Ch. 34 Argent D'Nur!",
-      "source": "YouTube: Bethesda Softworks",
-      "source_type": "youtube",
-      "feed": "youtube:UCvZHe-SP3xC7DdOk4Ri8QBw",
-      "link": "https://www.youtube.com/watch?v=QcGJE-FtfCw",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 03:17 UTC",
-      "views": 44415
-    },
-    {
-      "headline": "Games in the vein of Shiver(2017)?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xd2x7q/games_in_the_vein_of_shiver2017/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 03:15 UTC"
-    },
-    {
-      "headline": "Yes of course",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xd2wwq/yes_of_course/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 03:15 UTC"
-    },
-    {
-      "headline": "Heh heh heh.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xd2vl0/heh_heh_heh/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 03:13 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Gregory Horror Show",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750177431",
-      "matched_game": "Gregory Horror Show",
-      "matched_games": [
-        "Gregory Horror Show"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 03:12 UTC"
-    },
-    {
-      "headline": "Caught in a dilemma: have 32gb slow (2400mhz) DDR4, can't decide on whether to go Intel or AMD platform",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xd2ubw/caught_in_a_dilemma_have_32gb_slow_2400mhz_ddr4/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 03:11 UTC"
-    },
-    {
-      "headline": "Pc failing to turn on, running out of ideas",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xd2tzq/pc_failing_to_turn_on_running_out_of_ideas/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 03:11 UTC"
-    },
-    {
-      "headline": "My soundbar isnt working properly.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xd2tds/my_soundbar_isnt_working_properly/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 03:10 UTC"
-    },
-    {
-      "headline": "Steam deck support",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xd2tm1/steam_deck_support/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 03:10 UTC"
     }
   ]
 }
