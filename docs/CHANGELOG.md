@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-06: Tailwind built ahead of time (faster first paint)
+
+- `index.html` and `guide.html` no longer load `cdn.tailwindcss.com` (the Play CDN: a ~400 KB script that blocks the first paint, then scans the page and generates CSS in every visitor's browser on every load; Tailwind says it is not for production). They link `tailwind.css` (17 KB, 4 KB compressed) and `tailwind-guide.css` (9 KB), made by `tools/build_tailwind.mjs` with the same Play build (3.4.17) and the same settings, so the rules are the ones the CDN made. Placed last in `<head>`, where the CDN's style sat, so the cascade is unchanged.
+- Checked: the computed colour, font, size, spacing, display, border and width of every visible element on all eleven dashboard pages at 1200 px and 400 px, and on the guide, are identical to the CDN version (0 differences; with the stylesheet blocked, 24 views differ, so the check can fail). Lab timing (headless Chromium, 4x slower CPU): first contentful paint 888 ms -> 216 ms with no network limit; 5.8 s -> 1.7 s on emulated slow 4G with the script uncompressed (a real CDN compresses it, so read that as a direction, not a promise).
+- The stylesheet is a superset: every word in the page's source is offered to Tailwind, so a class in a script template that is drawn only in some state is styled too. `tests/test_tailwind_css.py` fails when the pages load the CDN again, a built file is missing, or a class in the markup is not built.
+- The service worker keeps the stylesheet with the rest of the site, so the installed site is styled offline (the CDN script could not be).
+
 ## 2026-11-05: box art on the Worst page
 
 - Each Worst card has a cover box (`.worst-cover`, beside the score) drawn from `coverUrl(title, region)` for the region being shown (the game's first region for the unplaced list), with the game's initials behind the picture so a down cover host leaves a tidy box, like the Rarest cards. No data change. retro.css `v=20261105a`. Test: every Worst row has a cover box. Guide updated.
