@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 15:55:31 UTC",
+  "last_updated": "2026-11-06 15:58:10 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -6819,17 +6819,18 @@
       "timestamp": "2026-11-06 08:48 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Ratchet & Clank, Kingdom Hearts, Persona 3 and 1 more",
+      "headline": "Thread on /v/ naming God of War, Kingdom Hearts, Persona 3 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751050248",
-      "matched_game": "Ratchet & Clank",
+      "matched_game": "God of War",
       "matched_games": [
-        "Ratchet & Clank",
+        "God of War",
         "Kingdom Hearts",
         "Persona 3",
-        "Persona 4"
+        "Persona 4",
+        "Ratchet & Clank"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -20671,6 +20672,25 @@
       "hype": 0,
       "timestamp": "2026-11-05 18:05 UTC",
       "views": 4218
+    },
+    {
+      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12915784",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 18:05 UTC"
     },
     {
       "headline": "Naruto continua a gerar milhões de euros em 2026",
@@ -337645,75 +337665,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 15:58 UTC"
-    },
-    {
-      "headline": "Information on Mass Effect Universe revealed",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xdhy5v/information_on_mass_effect_universe_revealed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 15:57 UTC"
-    },
-    {
-      "headline": "Htchiness/ slowdown on Tony Hawk games?",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xdhxct/htchiness_slowdown_on_tony_hawk_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 15:56 UTC"
-    },
-    {
-      "headline": "how do I remove this glass panel on my pc?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xdhwdo/how_do_i_remove_this_glass_panel_on_my_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 15:55 UTC"
-    },
-    {
-      "headline": "Dragon Ball Sparking! Zero Super Limit-Breaking Neo - Official Limit Breaker Journey Trailer",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=_TtYdxUstmA",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 15:55 UTC",
-      "views": 37582
     }
   ]
 }
