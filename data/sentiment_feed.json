@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 11:15:21 UTC",
+  "last_updated": "2026-11-06 11:26:42 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -307,6 +307,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 10:49 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War and Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751053805",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 10:48 UTC"
     },
     {
       "headline": "How To Find Hyrule Castle Town In Ocarina Of Time Remake",
@@ -3905,6 +3925,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 04:41 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Splinter Cell",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751043132",
+      "matched_game": "Splinter Cell",
+      "matched_games": [
+        "Splinter Cell"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 04:40 UTC"
     },
     {
       "headline": "Which would be better?",
@@ -338533,59 +338572,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 11:27 UTC"
-    },
-    {
-      "headline": "Accurate af thumbnail",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xdbcty/accurate_af_thumbnail/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:24 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750193641",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
-      "matched_games": [
-        "Metal Gear Solid 3: Snake Eater"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:22 UTC"
-    },
-    {
-      "headline": "Ps3 physical list",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xdbate/ps3_physical_list/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:21 UTC"
     }
   ]
 }
