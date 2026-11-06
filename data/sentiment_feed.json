@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 20:40:40 UTC",
+  "last_updated": "2026-11-06 20:43:16 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -70,6 +70,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 20:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Odin Sphere",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751078213",
+      "matched_game": "Odin Sphere",
+      "matched_games": [
+        "Odin Sphere"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 20:27 UTC"
     },
     {
       "headline": "Is upgrade from an integrated Intel HD 530 to a GTX 1650 that big for gaming?",
@@ -227,16 +246,17 @@
       "timestamp": "2026-11-06 20:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Spy Hunter, Shadow the Hedgehog and Special Forces",
+      "headline": "Thread on /vr/ naming Shadow the Hedgehog, Special Forces, Resident Evil Code: Veronica X and 1 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12917838",
-      "matched_game": "Spy Hunter",
+      "matched_game": "Shadow the Hedgehog",
       "matched_games": [
-        "Spy Hunter",
         "Shadow the Hedgehog",
-        "Special Forces"
+        "Special Forces",
+        "Resident Evil Code: Veronica X",
+        "Spy Hunter"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -39584,20 +39604,21 @@
       "timestamp": "2026-11-05 09:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X-2, Final Fantasy XII, Final Fantasy X and 1 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Final Fantasy X-2, Final Fantasy XII and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750993985",
-      "matched_game": "Final Fantasy X-2",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "Final Fantasy X-2",
         "Final Fantasy XII",
         "Final Fantasy X",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338209,80 +338230,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 20:43 UTC"
-    },
-    {
-      "headline": "GTA RESIDENT EVIL",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/YKR-dBU4k6A",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 20:41 UTC",
-      "views": 3212
-    },
-    {
-      "headline": "GOD OF WAR 1",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/mH7QLwcTjNc",
-      "matched_game": "God of War",
-      "matched_games": [
-        "God of War"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 20:40 UTC",
-      "views": 3946
-    },
-    {
-      "headline": "Travis Knight critica la estrategia del estudio con 'Masters of the Universe': \"El streaming les importaba más\"",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/masters-of-the-universe/115149/masters-of-the-universe-amazon-fe",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 20:40 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Alone in the Dark",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750224127",
-      "matched_game": "Alone in the Dark",
-      "matched_games": [
-        "Alone in the Dark"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 20:40 UTC"
     }
   ]
 }
