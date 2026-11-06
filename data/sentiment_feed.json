@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 05:33:15 UTC",
+  "last_updated": "2026-11-06 05:44:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -67,6 +67,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-06 05:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751044309",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-06 05:15 UTC"
     },
@@ -655,6 +674,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-06 04:23 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751042581",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-06 04:23 UTC"
     },
@@ -150035,18 +150073,19 @@
       "timestamp": "2026-10-30 20:37 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming The Sims, Silent Hill 4: The Room, Burnout 3 and 2 more",
+      "headline": "Thread on /vr/ naming Beat Down: Fists of Vengeance, Silent Hill 4: The Room, Burnout 3 and 3 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12905156",
-      "matched_game": "The Sims",
+      "matched_game": "Beat Down: Fists of Vengeance",
       "matched_games": [
-        "The Sims",
+        "Beat Down: Fists of Vengeance",
         "Silent Hill 4: The Room",
         "Burnout 3",
         "Fatal Frame",
-        "Cold Winter"
+        "Cold Winter",
+        "The Sims"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338653,40 +338692,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 05:45 UTC"
-    },
-    {
-      "headline": "Can you remove the shroud/fans from a GPU?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xd5ipx/can_you_remove_the_shroudfans_from_a_gpu/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 05:36 UTC"
-    },
-    {
-      "headline": "Pokémon Diamond is it real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xd5h6v/pokémon_diamond_is_it_real/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 05:34 UTC"
     }
   ]
 }
