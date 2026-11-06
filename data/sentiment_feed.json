@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 06:01:42 UTC",
+  "last_updated": "2026-11-06 06:12:40 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -11378,6 +11378,27 @@
       "hype": 0,
       "timestamp": "2026-11-05 17:52 UTC",
       "views": 1123
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Grand Theft Auto III and Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751013362",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto III",
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 17:52 UTC"
     },
     {
       "headline": "The shiny new Xbox PC app is going live today",
@@ -53338,14 +53359,15 @@
       "timestamp": "2026-11-04 01:08 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Katamari Damacy",
+      "headline": "Thread on /vr/ naming Katamari Damacy and Kingdom Hearts",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12912653",
       "matched_game": "Katamari Damacy",
       "matched_games": [
-        "Katamari Damacy"
+        "Katamari Damacy",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338374,130 +338396,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 06:23 UTC"
-    },
-    {
-      "headline": "Players Choice in Myrtle Beach SC",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xd640l/players_choice_in_myrtle_beach_sc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 06:10 UTC"
-    },
-    {
-      "headline": "Favourite ‘retro’ re release on the switch so far?",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xd63j5/favourite_retro_re_release_on_the_switch_so_far/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-23 06:09 UTC"
-    },
-    {
-      "headline": "Pokemon platinum",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xd62fu/pokemon_platinum/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 06:08 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter and Sonic Riders",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750183903",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter",
-        "Sonic Riders"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 06:08 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Rally Championship",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750183896",
-      "matched_game": "Rally Championship",
-      "matched_games": [
-        "Rally Championship"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 06:07 UTC"
-    },
-    {
-      "headline": "JRPGs that surprised you by having a huge tone shift",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xd60km/jrpgs_that_surprised_you_by_having_a_huge_tone/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 06:05 UTC"
-    },
-    {
-      "headline": "Top 100 Atari 2600 Games: #25 & #26",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xd5zqz/top_100_atari_2600_games_25_26/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 06:03 UTC"
     }
   ]
 }
