@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 00:19:43 UTC",
+  "last_updated": "2026-11-06 00:30:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -365,6 +365,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-05 23:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751030158",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-05 23:22 UTC"
     },
@@ -7876,7 +7895,7 @@
       "timestamp": "2026-11-05 17:19 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Haunting Ground",
+      "headline": "Thread on /v/ naming Resident Evil 4, Haunting Ground and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -7884,7 +7903,8 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4",
-        "Haunting Ground"
+        "Haunting Ground",
+        "Devil May Cry"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338081,93 +338101,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 00:30 UTC"
-    },
-    {
-      "headline": "No Rest For The Wicked",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xczipn/no_rest_for_the_wicked/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 00:29 UTC"
-    },
-    {
-      "headline": "Thank you Bio-Ware",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xczhzo/thank_you_bioware/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 00:28 UTC"
-    },
-    {
-      "headline": "Regarding rear sticker Fans",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xcze33/regarding_rear_sticker_fans/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 00:23 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750168890",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 00:21 UTC"
-    },
-    {
-      "headline": "X870E: Is a 64 MB BIOS really necessary for Zen 6, or is 32 MB enough?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xczc12/x870e_is_a_64_mb_bios_really_necessary_for_zen_6/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 00:20 UTC"
     }
   ]
 }
