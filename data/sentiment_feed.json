@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 05:04:02 UTC",
+  "last_updated": "2026-11-06 05:15:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2271,6 +2271,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 01:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kung Fu Panda, Black and Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751035080",
+      "matched_game": "Kung Fu Panda",
+      "matched_games": [
+        "Kung Fu Panda",
+        "Black",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 01:11 UTC"
     },
     {
       "headline": "Anyone else unable to install the Battle.Net launcher?",
@@ -12955,6 +12976,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-05 16:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751009430",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-05 16:38 UTC"
     },
@@ -338233,76 +338273,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 05:23 UTC"
-    },
-    {
-      "headline": "BT4 Hair Texture Replacement",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xd52mj/bt4_hair_texture_replacement/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 05:11 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Secret Service",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750182076",
-      "matched_game": "Secret Service",
-      "matched_games": [
-        "Secret Service"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 05:10 UTC"
-    },
-    {
-      "headline": "Magazines that tricked you into getting a janky game",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xd51q4/magazines_that_tricked_you_into_getting_a_janky/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-23 05:09 UTC"
-    },
-    {
-      "headline": "BeamNG.drive is the surprise hit of 2026 on the Playstation Store, have you played it ?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xd503c/beamngdrive_is_the_surprise_hit_of_2026_on_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 05:07 UTC"
     }
   ]
 }
