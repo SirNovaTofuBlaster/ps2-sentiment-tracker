@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 13:04:28 UTC",
+  "last_updated": "2026-11-06 13:07:01 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1614,6 +1614,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 11:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2 and Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751054651",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2",
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 11:16 UTC"
     },
     {
       "headline": "New PS Plus Perks Revealed, Includes Discounts and Free Trials",
@@ -338556,74 +338576,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 13:08 UTC"
-    },
-    {
-      "headline": "Call Of Duty Ads On Xbox Are Even More Annoying This Year With Modern Warfare 4",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/call-of-duty-ads-on-xbox-are-even-more-annoying-this-year-with-modern-warfare-4/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 13:05 UTC"
-    },
-    {
-      "headline": "Consigue Call of Duty: Modern Warfare 4 y otras novedades al mejor precio con las ofertas de Instant Gaming",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026296016/consigue-call-of-duty-modern-warfare-4-y-otras-novedades-al-mejor-precio-con-las-ofertas-de-instant-gaming/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 13:05 UTC"
-    },
-    {
-      "headline": "Games from the thrift store. Real or not?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xddh61/games_from_the_thrift_store_real_or_not/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 13:04 UTC"
-    },
-    {
-      "headline": "A Canadian Politician Says BioWare Devs Should Be Given Government Funding To Buy The Studio And Get Back To Making Mass Effect",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/a-canadian-politician-says-bioware-devs-should-be-given-government-funding-to-buy-the-studio-and-get-back-to-making-mass-effect-2000749088",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 13:04 UTC"
     }
   ]
 }
