@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 18:46:36 UTC",
+  "last_updated": "2026-11-06 18:49:15 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -11740,21 +11740,22 @@
       "timestamp": "2026-11-06 08:53 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Silent Hill 2, Resident Evil 4 and 2 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Cowboy Bebop, Silent Hill 2 and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751050473",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Final Fantasy X",
-        "Silent Hill 2",
         "Resident Evil 4",
+        "Cowboy Bebop",
+        "Silent Hill 2",
         "The Warriors",
-        "Marvel: Ultimate Alliance 2"
+        "Marvel: Ultimate Alliance 2",
+        "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -86653,18 +86654,18 @@
       "timestamp": "2026-11-03 10:47 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming King's Field IV and Eternal Ring",
+      "headline": "Thread on /vr/ naming Eternal Ring and King's Field IV",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12911167",
-      "matched_game": "King's Field IV",
+      "matched_game": "Eternal Ring",
       "matched_games": [
-        "King's Field IV",
-        "Eternal Ring"
+        "Eternal Ring",
+        "King's Field IV"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338274,41 +338275,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 18:49 UTC"
-    },
-    {
-      "headline": "ROBLOX SCARYTOWN in SCARYLAND Full Game + Jumpscares",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/watch?v=oRsn-cf6jfs",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 18:47 UTC",
-      "views": 1249
-    },
-    {
-      "headline": "Stellar Blade reacciona con entusiasmo a \"EVE Protocol\", el nuevo crossover de Overwatch",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/stellar-blade/115147/stellar-blade-overwatch",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 18:47 UTC"
     }
   ]
 }
