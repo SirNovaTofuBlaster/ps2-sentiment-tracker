@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 23:31:28 UTC",
+  "last_updated": "2026-11-06 23:34:07 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -190,18 +190,19 @@
       "timestamp": "2026-11-06 23:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Spider-Man 2",
+      "headline": "Thread on /v/ naming 25 to Life, Grand Theft Auto: San Andreas and Spider-Man 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751086191",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "25 to Life",
       "matched_games": [
+        "25 to Life",
         "Grand Theft Auto: San Andreas",
         "Spider-Man 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5882,6 +5883,25 @@
       "timestamp": "2026-11-06 18:34 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Unreal Tournament",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751072668",
+      "matched_game": "Unreal Tournament",
+      "matched_games": [
+        "Unreal Tournament"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 18:34 UTC"
+    },
+    {
       "headline": "Battery is replaced, but motherboard check out otherwise?",
       "source": "r/gameverifying",
       "source_type": "reddit",
@@ -6431,6 +6451,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-06 18:08 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751071360",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-06 18:08 UTC"
     },
@@ -24684,6 +24723,25 @@
       "hype": 1,
       "timestamp": "2026-11-05 23:34 UTC",
       "views": 487
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751030669",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 23:33 UTC"
     },
     {
       "headline": "Aplicação Xbox no PC recebe atualização e fica 60% mais rápida",
@@ -338338,23 +338396,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 23:35 UTC"
-    },
-    {
-      "headline": "Disney's Officially Bringing Back a '90s Cartoon Icon After 35 Years",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/darkwing-duck-reboot-disney-plus/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 23:33 UTC"
     }
   ]
 }
