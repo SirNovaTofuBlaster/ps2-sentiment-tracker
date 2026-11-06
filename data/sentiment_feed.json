@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 11:43:43 UTC",
+  "last_updated": "2026-11-06 11:54:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 11:28 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Battle Engine Aquila",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751054995",
+      "matched_game": "Battle Engine Aquila",
+      "matched_games": [
+        "Battle Engine Aquila"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 11:27 UTC"
     },
     {
       "headline": "New PS Plus Perks Revealed, Includes Discounts and Free Trials",
@@ -360,19 +379,19 @@
       "timestamp": "2026-11-06 10:49 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War, Max Payne and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X, God of War and Max Payne",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751053805",
-      "matched_game": "God of War",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
         "God of War",
-        "Max Payne",
-        "Final Fantasy X"
+        "Max Payne"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338221,169 +338240,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 11:58 UTC"
-    },
-    {
-      "headline": "FATAL FURY: City of the Wolves | Nintendo Switch 2 Promo Video",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xdbwby/fatal_fury_city_of_the_wolves_nintendo_switch_2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:52 UTC"
-    },
-    {
-      "headline": "Considering the RTX 5070 over the RX 9070 XT!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xdbv9q/considering_the_rtx_5070_over_the_rx_9070_xt/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:51 UTC"
-    },
-    {
-      "headline": "good horror games for laptop",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xdbv6e/good_horror_games_for_laptop/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:50 UTC"
-    },
-    {
-      "headline": "help regarding fan RPMs",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xdbui8/help_regarding_fan_rpms/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:50 UTC"
-    },
-    {
-      "headline": "We visited the LEGO PlayStation Immersive Event in London!",
-      "source": "YouTube: PlayStation Access",
-      "source_type": "youtube",
-      "feed": "youtube:UC6yzV_xgKn8r77FkcmZyMSg",
-      "link": "https://www.youtube.com/watch?v=JXBSYFHHYfA",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:49 UTC",
-      "views": 6523
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750194568",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:48 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Devil May Cry and Tomb Raider: Legend",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750194586",
-      "matched_game": "Devil May Cry",
-      "matched_games": [
-        "Devil May Cry",
-        "Tomb Raider: Legend"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:48 UTC"
-    },
-    {
-      "headline": "Help! PC turning on & off",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xdbru2/help_pc_turning_on_off/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:46 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Spider-Man, God of War and Jak and Daxter: The Precursor Legacy",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750194390",
-      "matched_game": "Spider-Man",
-      "matched_games": [
-        "Spider-Man",
-        "God of War",
-        "Jak and Daxter: The Precursor Legacy"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 11:43 UTC"
     }
   ]
 }
