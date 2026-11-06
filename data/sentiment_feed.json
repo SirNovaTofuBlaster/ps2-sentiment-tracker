@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 07:01:44 UTC",
+  "last_updated": "2026-11-06 07:09:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2338,23 +2338,23 @@
       "timestamp": "2026-11-06 02:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Kingdom Hearts, Final Fantasy X and 4 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Final Fantasy X, God of War and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751037948",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Silent Hill 2",
         "Kingdom Hearts",
         "Final Fantasy X",
         "God of War",
         "Spider-Man",
         "Final Fantasy X-2",
-        "Final Fantasy XII"
+        "Final Fantasy XII",
+        "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -53756,15 +53756,15 @@
       "timestamp": "2026-11-04 01:08 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Katamari Damacy and Kingdom Hearts",
+      "headline": "Thread on /vr/ naming Kingdom Hearts and Katamari Damacy",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12912653",
-      "matched_game": "Katamari Damacy",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Katamari Damacy",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Katamari Damacy"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338353,57 +338353,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 07:11 UTC"
-    },
-    {
-      "headline": "Alright OLED bros, hit me with your BEST HDR showcases from the last 1-2 years!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xd70dz/alright_oled_bros_hit_me_with_your_best_hdr/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-23 07:04 UTC"
-    },
-    {
-      "headline": "9070xt Dual Monitor setup",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xd70av/9070xt_dual_monitor_setup/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 07:04 UTC"
-    },
-    {
-      "headline": "/r/NintendoSwitch's Daily Question Thread (10/23/2026)",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1xd6ymx/rnintendoswitchs_daily_question_thread_10232026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 07:02 UTC"
     }
   ]
 }
