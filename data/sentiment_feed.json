@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 06:25:26 UTC",
+  "last_updated": "2026-11-06 06:28:03 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -5516,7 +5516,7 @@
       "timestamp": "2026-11-05 22:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Black, Resident Evil Outbreak, Monster Hunter and 2 more",
+      "headline": "Thread on /v/ naming Black, King's Field IV, Shadow of the Colossus and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -5524,6 +5524,9 @@
       "matched_game": "Black",
       "matched_games": [
         "Black",
+        "King's Field IV",
+        "Shadow of the Colossus",
+        "ICO",
         "Resident Evil Outbreak",
         "Monster Hunter",
         "Romancing SaGa",
@@ -8170,6 +8173,26 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-05 20:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4 and Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751020674",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 20:12 UTC"
     },
     {
       "headline": "Pokemon Y real or fake?",
@@ -338668,40 +338691,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 06:28 UTC"
-    },
-    {
-      "headline": "hi fellow pc gamers im using a huawei matebook d15 laptop im 12 years old how do i convince my parents to buy me a gaming pc",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xd6dj7/hi_fellow_pc_gamers_im_using_a_huawei_matebook/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 06:26 UTC"
-    },
-    {
-      "headline": "KytyPS5 on GTX 1650 - Astro Bot (PS5 Emulator)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xd6cug/kytyps5_on_gtx_1650_astro_bot_ps5_emulator/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 06:25 UTC"
     }
   ]
 }
