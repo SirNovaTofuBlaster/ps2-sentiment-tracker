@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 21:37:40 UTC",
+  "last_updated": "2026-11-06 21:40:23 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -393,6 +393,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-06 21:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dokapon Kingdom",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751080397",
+      "matched_game": "Dokapon Kingdom",
+      "matched_games": [
+        "Dokapon Kingdom"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-06 21:09 UTC"
     },
@@ -338175,23 +338194,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-23 21:40 UTC"
-    },
-    {
-      "headline": "How can I use Curve Optimizer for x3d chips?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xdqwxx/how_can_i_use_curve_optimizer_for_x3d_chips/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 21:39 UTC"
     }
   ]
 }
