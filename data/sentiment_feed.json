@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 12:07:30 UTC",
+  "last_updated": "2026-11-06 12:10:04 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -103,6 +103,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 11:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Fantastic Four",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751055757",
+      "matched_game": "Fantastic Four",
+      "matched_games": [
+        "Fantastic Four"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 11:54 UTC"
     },
     {
       "headline": "Can you rate my \"old\" config please ?",
@@ -338411,40 +338430,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 12:10 UTC"
-    },
-    {
-      "headline": "OpenZ: a free 3D remake of the 1996 RTS Z, now with a jungle level and a hero squad (1.1)",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53496847",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-23 12:09 UTC"
-    },
-    {
-      "headline": "What makes a good \"last episode\" of Futurama?",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/video/what-makes-a-good-last-episode-of-futurama/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 12:08 UTC"
     }
   ]
 }
