@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-06 18:25:43 UTC",
+  "last_updated": "2026-11-06 18:33:55 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Pro Evolution Soccer",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/586966483",
+      "matched_game": "Pro Evolution Soccer",
+      "matched_games": [
+        "Pro Evolution Soccer"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 18:20 UTC"
+    },
     {
       "headline": "A Truck Demanding EA ‘Save Mass Effect’ Is Currently Driving Around The Company’s Headquarters",
       "source": "Kotaku",
@@ -10055,13 +10074,14 @@
       "timestamp": "2026-11-06 09:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Virtual On Marz",
+      "headline": "Thread on /v/ naming Persona 3 and Virtual On Marz",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751051467",
-      "matched_game": "Virtual On Marz",
+      "matched_game": "Persona 3",
       "matched_games": [
+        "Persona 3",
         "Virtual On Marz"
       ],
       "match_score": 100,
@@ -10559,20 +10579,21 @@
       "timestamp": "2026-11-06 08:53 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Marvel: Ultimate Alliance 2, Silent Hill 2, Resident Evil 4 and 1 more",
+      "headline": "Thread on /v/ naming Final Fantasy X, Silent Hill 2, Resident Evil 4 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751050473",
-      "matched_game": "Marvel: Ultimate Alliance 2",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Marvel: Ultimate Alliance 2",
+        "Final Fantasy X",
         "Silent Hill 2",
         "Resident Evil 4",
-        "The Warriors"
+        "The Warriors",
+        "Marvel: Ultimate Alliance 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -10615,18 +10636,18 @@
       "timestamp": "2026-11-06 08:48 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War, Kingdom Hearts, Persona 3 and 2 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Persona 3, Persona 4 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751050248",
-      "matched_game": "God of War",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "God of War",
         "Kingdom Hearts",
         "Persona 3",
         "Persona 4",
-        "Ratchet & Clank"
+        "Ratchet & Clank",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -337492,97 +337513,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-23 18:33 UTC"
-    },
-    {
-      "headline": "My Collection (and storage system)",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xdm16q/my_collection_and_storage_system/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 18:29 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Ratchet & Clank",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750215879",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Ratchet & Clank"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 18:28 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter and Kingdom Hearts",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750215867",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter",
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-23 18:28 UTC"
-    },
-    {
-      "headline": "Is it bad for the Pulse Elite to be used at max volume?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xdlyzc/is_it_bad_for_the_pulse_elite_to_be_used_at_max/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 18:27 UTC"
-    },
-    {
-      "headline": "Turn your phone into a zero-latency PC hardware monitor! (Built with Python + AI)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xdlwsh/turn_your_phone_into_a_zerolatency_pc_hardware/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 18:25 UTC"
     }
   ]
 }
