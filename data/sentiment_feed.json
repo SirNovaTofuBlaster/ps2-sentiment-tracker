@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06 16:28:42 UTC",
+  "last_updated": "2026-11-06 16:39:54 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1696,17 +1696,18 @@
       "timestamp": "2026-11-06 14:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751062209",
-      "matched_game": "Half-Life",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6704,6 +6705,25 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 09:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Odin Sphere",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751051550",
+      "matched_game": "Odin Sphere",
+      "matched_games": [
+        "Odin Sphere"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -32515,16 +32535,16 @@
       "timestamp": "2026-11-05 09:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy X-2, Final Fantasy XII and 1 more",
+      "headline": "Thread on /v/ naming Final Fantasy X-2, Final Fantasy XII, Final Fantasy X and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/750993985",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Final Fantasy X-2",
       "matched_games": [
-        "Final Fantasy X",
         "Final Fantasy X-2",
         "Final Fantasy XII",
+        "Final Fantasy X",
         "Resident Evil 4"
       ],
       "match_score": 100,
@@ -82107,6 +82127,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-03 10:47 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming King's Field IV",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12911167",
+      "matched_game": "King's Field IV",
+      "matched_games": [
+        "King's Field IV"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-03 10:47 UTC"
     },
@@ -336746,142 +336785,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-23 16:39 UTC"
-    },
-    {
-      "headline": "Front Mission: Gun Hazard (SNES). If Square Enix would do Cybernator, this would be the result.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xdizf1/front_mission_gun_hazard_snes_if_square_enix/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:34 UTC"
-    },
-    {
-      "headline": "Non-Action RPG with Great Story?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xdiz9g/nonaction_rpg_with_great_story/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:34 UTC"
-    },
-    {
-      "headline": "7th Saga",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xdixyk/7th_saga/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:33 UTC"
-    },
-    {
-      "headline": "Prime Video's New Fallout TV Series Sets 2027 Release Date",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/fallout-shelter-the-experiment-reality-series-release-date/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:32 UTC"
-    },
-    {
-      "headline": "'We're Victims of Xbox's Change in Strategy': Dishonored Dev Has Weeks to Save Itself",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/were-victims-of-xboxs-change-in-strategy-dishonored-dev-has-weeks-to-save-itself",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:30 UTC"
-    },
-    {
-      "headline": "BioWare staff \"should be given the first opportunity and the federal support\" to buy the studio and keep it running, says Canadian political party leader",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/bioware-staff-should-be-given-the-first-opportunity-and-the-federal-support-to-buy-the-studio-and-keep-it-running-says-canadian-political-party-leader",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:30 UTC"
-    },
-    {
-      "headline": "Fortnite llegará a Linux y eso es una buena noticia para quienes tengan Steam Deck",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026296030/fortnite-llegara-a-linux-y-eso-es-una-buena-noticia-para-quienes-tengan-steam-deck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:30 UTC"
-    },
-    {
-      "headline": "WoW: Forever’s Divisive Layering Will See Major Improvements For Launch, Blizzard Says",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/wow-forevers-divisive-layering-will-see-major-improvements-for-launch-blizzard-says/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-23 16:29 UTC"
     }
   ]
 }
