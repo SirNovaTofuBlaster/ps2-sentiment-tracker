@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-07 21:22:28 UTC",
+  "last_updated": "2026-11-07 21:25:05 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751144390",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 21:18 UTC"
+    },
     {
       "headline": "Im looking for a immersive singleplayer storygame on XBOX series X.",
       "source": "r/gamingsuggestions",
@@ -8029,7 +8048,7 @@
       "timestamp": "2026-11-07 14:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Silent Hill 2, Jak and Daxter: The Precursor Legacy and 6 more",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Devil May Cry, Splinter Cell and 7 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -8037,9 +8056,10 @@
       "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
         "Resident Evil Code: Veronica X",
+        "Devil May Cry",
+        "Splinter Cell",
         "Silent Hill 2",
         "Jak and Daxter: The Precursor Legacy",
-        "Splinter Cell",
         "Persona 4",
         "Spider-Man",
         "Resident Evil 4",
@@ -45696,6 +45716,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-05 22:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751026897",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 22:13 UTC"
     },
     {
       "headline": "Been praying on their downfalls for a while now",
@@ -338570,41 +338609,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 21:25 UTC"
-    },
-    {
-      "headline": "$600 on ONE N64 Game???",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/SNOyqI-uBd8",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 21:24 UTC",
-      "views": 5814
-    },
-    {
-      "headline": "How easily can you transfer a hard drive to a new motherboard?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xekal7/how_easily_can_you_transfer_a_hard_drive_to_a_new/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 21:23 UTC"
     }
   ]
 }
