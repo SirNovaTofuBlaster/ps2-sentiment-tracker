@@ -1,0 +1,2807 @@
+{
+  "fetched_at": "2026-11-07T20:13:05Z",
+  "what": "Asking prices of used Buy It Now listings still for sale on eBay. Not sold prices.",
+  "source": "eBay Browse API",
+  "markets": {
+    "EBAY_US": {
+      "label": "US",
+      "site": "www.ebay.com",
+      "currency": "USD"
+    },
+    "EBAY_GB": {
+      "label": "UK",
+      "site": "www.ebay.co.uk",
+      "currency": "GBP"
+    },
+    "EBAY_DE": {
+      "label": "DE",
+      "site": "www.ebay.de",
+      "currency": "EUR"
+    },
+    "EBAY_FR": {
+      "label": "FR",
+      "site": "www.ebay.fr",
+      "currency": "EUR"
+    },
+    "EBAY_IT": {
+      "label": "IT",
+      "site": "www.ebay.it",
+      "currency": "EUR"
+    },
+    "EBAY_ES": {
+      "label": "ES",
+      "site": "www.ebay.es",
+      "currency": "EUR"
+    }
+  },
+  "searches_used": 38,
+  "stopped_early": "",
+  "games": [
+    {
+      "title": "Midnight Club",
+      "level": "surging",
+      "search": "midnight club",
+      "queries": [
+        "midnight club"
+      ],
+      "left_out_if_named": [
+        "midnight club 2",
+        "midnight club 3 dub edition",
+        "midnight club 3 dub edition remix"
+      ],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=midnight%20club%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 170,
+          "fetched": 170,
+          "truncated": false,
+          "counted": 49,
+          "skipped": {
+            "incomplete": 2,
+            "not_a_copy": 5,
+            "other_game": 114
+          },
+          "skipped_examples": {
+            "incomplete": [
+              "Midnight Club: Street Racing PS2 Game No Manual Tested PAL PlayStation 2",
+              "Midnight Club Street Racing PS2 Disc NMC PAL PlayStation 2 Platinum No Manual"
+            ],
+            "not_a_copy": [
+              "Official PS2 Magazine Demo Disc 54 Christmas 2004 Getaway / Midnight Club - VGC",
+              "4 x PS2 Games Bundle - Includes Batman, Midnight Club & More *Not Tested*",
+              "PlayStation 2 10 Game Bundle Sonic Heroes Midnight Club Lord Of The Rings…",
+              "Ps2 Games Bundle x8 GTA 3, Sonic Hero, Midnight Club, Sonic Mega Collection Ect",
+              "PlayStation 2 PS2 Racing game bundle - 7 games juiced midnight club road rage"
+            ],
+            "other_game": [
+              "SONY PLAYSTATION 2 PS2 GAMES TITLES A-N *CHEAPEST ON EBAY* SAVE ON MULTIPLE BUYS",
+              "Sony Playstation 2 Disc Pick Your Own Multi Buy",
+              "Midnight Club II by Rockstar for PlayStation 2 on PAL disc. Untested.",
+              "Midnight Club II 2 PS2 PAL Disc Only Very Good Tested Working Rockstar Games",
+              "Midnight Club II"
+            ]
+          },
+          "lowest": 3.66,
+          "median": 6.99,
+          "postage_known": 49,
+          "median_postage": 0.91,
+          "confirmed_counted": 17,
+          "confirmed_median": 6.52,
+          "listings": [
+            {
+              "title": "Midnight Club Sony PS2 PAL",
+              "price": 3.66,
+              "postage": 2.72,
+              "condition": "Very Good",
+              "listed": "2025-10-08T15:36:11.000Z",
+              "url": "https://www.ebay.co.uk/itm/177474180608"
+            },
+            {
+              "title": "PS2 - MIDNIGHT CLUB STREET RACING COMPLETE PAL UK BOXED GAME",
+              "price": 3.99,
+              "postage": 2.5,
+              "condition": "Good",
+              "listed": "2025-11-24T17:07:35.000Z",
+              "url": "https://www.ebay.co.uk/itm/317581669693"
+            },
+            {
+              "title": "MIDNIGHT CLUB STREET RACING - SONY PLAYSTATION 2 PS2",
+              "price": 4.37,
+              "postage": 0.91,
+              "condition": "Very Good",
+              "listed": "2026-09-23T10:25:44.000Z",
+              "url": "https://www.ebay.co.uk/itm/820161746801"
+            },
+            {
+              "title": "Midnight Club: Street Racing - Sony Platinum PlayStation 2 PS2 Game",
+              "price": 4.38,
+              "postage": 2.7,
+              "condition": "Very Good",
+              "listed": "2026-10-26T14:33:11.000Z",
+              "url": "https://www.ebay.co.uk/itm/800840969085"
+            },
+            {
+              "title": "Midnight Club: Street Racing - Sony Platinum PlayStation 2 PS2 Game with Manual",
+              "price": 4.75,
+              "postage": 2.72,
+              "condition": "Good",
+              "listed": "2026-03-28T15:55:00.000Z",
+              "url": "https://www.ebay.co.uk/itm/267622708346"
+            },
+            {
+              "title": "MIDNIGHT CLUB STREET RACING - SONY PLAYSTATION 2 PS2",
+              "price": 4.95,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-06-03T17:14:24.000Z",
+              "url": "https://www.ebay.co.uk/itm/157966831574"
+            },
+            {
+              "title": "Midnight Club Platinum by Take 2 PS2 Game",
+              "price": 4.99,
+              "postage": 2.1,
+              "condition": "Good",
+              "listed": "2024-06-19T13:10:34.000Z",
+              "url": "https://www.ebay.co.uk/itm/285918061566"
+            },
+            {
+              "title": "Midnight Club PS2",
+              "price": 5.0,
+              "postage": 2.99,
+              "condition": "Good",
+              "listed": "2026-11-05T22:18:43.000Z",
+              "url": "https://www.ebay.co.uk/itm/960159307031"
+            },
+            {
+              "title": "Midnight Club: Street Racing for PlayStation 2 Complete with Manual",
+              "price": 5.3,
+              "postage": 2.72,
+              "condition": "Good",
+              "listed": "2025-07-06T16:29:07.000Z",
+              "url": "https://www.ebay.co.uk/itm/205600580509"
+            },
+            {
+              "title": "Midnight Club Street Racing PS2 PlayStation 2 Game Tested Working PAL",
+              "price": 5.34,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-09-17T14:21:48.000Z",
+              "url": "https://www.ebay.co.uk/itm/227525917105"
+            }
+          ]
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=midnight%20club%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 2029,
+          "fetched": 200,
+          "truncated": true,
+          "counted": 50,
+          "skipped": {
+            "incomplete": 43,
+            "not_a_copy": 1,
+            "other_game": 106
+          },
+          "skipped_examples": {
+            "incomplete": [
+              "midnight club street racing ps2 (Sony PlayStation 2 disc only)",
+              "Midnight Club Night Racing [GH] - Loose Sony PS2 Playstation 2 Disc",
+              "MIDNIGHT CLUB: STREET RACING (PS2) Action Racing Simulation *DISC ONLY*",
+              "Midnight Club Street Racing Sony PlayStation 2 2000 PS2 Greatest Hits/ Disc Only",
+              "Midnight Club: Street Racing (Sony PlayStation 2, 2000) disc only"
+            ],
+            "not_a_copy": [
+              "Midnight Club Street Racing (Sony PlayStation 2 PS2) DISC & Manual ONLY TESTED"
+            ],
+            "other_game": [
+              "Smuggler's Run (Sony PlayStation 2, 2002)",
+              "Smugglers Run 2 PlayStation 2 PS2 Disk And Case",
+              "Smuggler's Run Greatest Hits (Sony PlayStation 2, 2002)",
+              "Smuggler's Run [Greatest Hits] (PlayStation 2, PS2) Disc Only",
+              "PlayStation 2 - Smuggler's Run - Sony PS2 Disc Only"
+            ]
+          },
+          "lowest": 1.99,
+          "median": 7.0,
+          "postage_known": 50,
+          "median_postage": 4.0,
+          "confirmed_counted": 13,
+          "confirmed_median": 10.99,
+          "listings": [
+            {
+              "title": "PlayStation2 : Midnight Club: Street Racing VideoGames",
+              "price": 1.99,
+              "postage": 7.08,
+              "condition": "Very Good",
+              "listed": "2017-11-20T08:46:28.000Z",
+              "url": "https://www.ebay.com/itm/272945042680"
+            },
+            {
+              "title": "Rockstar Games Midnight Club: Street Racing PS2 T-Teen NTSC-U/C Street",
+              "price": 3.75,
+              "postage": 6.45,
+              "condition": "Good",
+              "listed": "2026-07-31T03:29:06.000Z",
+              "url": "https://www.ebay.com/itm/800435971567"
+            },
+            {
+              "title": "Midnight Club: Street Racing (Sony PlayStation 2, 2000) Tested",
+              "price": 3.99,
+              "postage": 6.35,
+              "condition": "Good",
+              "listed": "2025-04-29T01:54:33.000Z",
+              "url": "https://www.ebay.com/itm/226726188683"
+            },
+            {
+              "title": "Midnight Club: Street Racing (Sony PlayStation 2, 2000) CD ONLY!!",
+              "price": 3.99,
+              "postage": 6.45,
+              "condition": "Good",
+              "listed": "2020-08-23T04:50:58.000Z",
+              "url": "https://www.ebay.com/itm/313193551499"
+            },
+            {
+              "title": "Midnight Club: Street Racing (Greatest Hits) - Playstation 2 PS2 Game - Tested",
+              "price": 4.0,
+              "postage": 7.08,
+              "condition": "Good",
+              "listed": "2021-04-22T17:57:02.000Z",
+              "url": "https://www.ebay.com/itm/124693098404"
+            },
+            {
+              "title": "Midnight Club: Street Racing (Sony PlayStation 2, 2000)",
+              "price": 4.3,
+              "postage": 6.45,
+              "condition": "Like New",
+              "listed": "2025-02-22T23:00:32.000Z",
+              "url": "https://www.ebay.com/itm/286353568705"
+            },
+            {
+              "title": "Midnight Club Street Racing - Sony PlayStation 2",
+              "price": 4.99,
+              "postage": 6.45,
+              "condition": "Very Good",
+              "listed": "2024-09-01T05:35:03.000Z",
+              "url": "https://www.ebay.com/itm/266973541189"
+            },
+            {
+              "title": "Midnight Club: Street Racing (Sony PlayStation 2, 2000)",
+              "price": 4.99,
+              "postage": 6.35,
+              "condition": "Very Good",
+              "listed": "2026-02-01T19:27:25.000Z",
+              "url": "https://www.ebay.com/itm/287115212299"
+            },
+            {
+              "title": "Midnight Club: Street Racing (Sony PlayStation 2, 2000)",
+              "price": 4.99,
+              "postage": 6.45,
+              "condition": "Like New",
+              "listed": "2023-01-23T00:05:18.000Z",
+              "url": "https://www.ebay.com/itm/295486932479"
+            },
+            {
+              "title": "Midnight Club: Street Racing Greatest Hits for Sony PlayStation 2 2002 Disc Case",
+              "price": 4.99,
+              "postage": 6.35,
+              "condition": "Good",
+              "listed": "2026-03-09T03:21:41.000Z",
+              "url": "https://www.ebay.com/itm/298102875824"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Silent Hill 2",
+      "level": "staple",
+      "search": "silent hill 2",
+      "queries": [
+        "silent hill 2"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=silent%20hill%202%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 148,
+          "fetched": 148,
+          "truncated": false,
+          "counted": 47,
+          "skipped": {
+            "import": 3,
+            "incomplete": 3,
+            "not_a_copy": 6,
+            "other_game": 89
+          },
+          "skipped_examples": {
+            "import": [
+              "Konami Silent Hill 2 The Best PS2 NTSC-J 2002 Survival Horror SLPM-65051",
+              "Silent Hill 2. Konami. PS2. NTSC-J (Reversible/Alternate cover).",
+              "Silent Hill 2 - Complete In Box - Sony PlayStation 2 NTSC USA Version TESTED 🔥"
+            ],
+            "incomplete": [
+              "Silent Hill 2 + Bonus Disc PS2 PAL - Disc Only",
+              "Konami Silent Hill 2 Special Edition 2 Disc Set PS2 PAL 15 2002 No Manual",
+              "Silent Hill 2 Director’s Cut (PlayStation 2, 2003) No Manual"
+            ],
+            "not_a_copy": [
+              "SILENT HILL 2 DEMO PS2 PlayStation World DVD - February 2001 Vol. 3",
+              "Action Replay Ultimate Cheats For Silent Hill 2 - PS2",
+              "Silent Hill 2 Directors Cut - Platinum - PS2 - CASE & ARTWORK ONLY",
+              "Ps2 / Playstation 2 Action Replay Ultimate Cheats for Silent Hill 2",
+              "Ps2 Bundle X 3 Flintstones Super Bust A Move Silent Hill 2 Control Pads"
+            ],
+            "other_game": [
+              "PS2 Official Magazine UK Silent Hill 3 Demo Volume 80 2006",
+              "Demo disc cd for PS2 from Official Playstation 2 UK magazine choose from list",
+              "Demo Disc 50 Official UK Playstation 2 Magazine - Sony PS2 - Silent Hill 4",
+              "PlayStation 2 PSW Preview DVD Vol. 27 Features Indiana Jones / Silent Hill - VGC",
+              "Official Playstation 2 Magazine UK (OPSM2) Selection - 2003-2007"
+            ]
+          },
+          "lowest": 52.7,
+          "median": 104.7,
+          "postage_known": 47,
+          "median_postage": 3.13,
+          "confirmed_counted": 18,
+          "confirmed_median": 114.49,
+          "listings": [
+            {
+              "title": "Silent Hill 2 Ps2 PlayStation 2 No Outer Cover Comes With Manuel",
+              "price": 52.7,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2026-09-01T08:11:02.000Z",
+              "url": "https://www.ebay.co.uk/itm/800595087035"
+            },
+            {
+              "title": "Konami Silent Hill 2 (PS2) Special Edition 2 Disc Set PAL UK 15 2001 N/Manual",
+              "price": 63.1,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-11-06T17:36:10.000Z",
+              "url": "https://www.ebay.co.uk/itm/168843689632"
+            },
+            {
+              "title": "Konami Silent Hill 2 (PS2) Special Edition 2 Disc Set PAL UK 15 2001 N/Manual",
+              "price": 63.1,
+              "postage": 3.38,
+              "condition": "Good",
+              "listed": "2026-10-27T14:09:19.000Z",
+              "url": "https://www.ebay.co.uk/itm/820283792386"
+            },
+            {
+              "title": "Silent Hill 2 - PlayStation 2 - Special 2-Disc Edition - Tested - Inc Manual",
+              "price": 71.43,
+              "postage": 2.94,
+              "condition": "Very Good",
+              "listed": "2026-08-24T06:22:02.000Z",
+              "url": "https://www.ebay.co.uk/itm/158217632276"
+            },
+            {
+              "title": "Silent Hill 2 Special Edition (PlayStation2, 2001)",
+              "price": 73.0,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2026-08-18T10:22:59.000Z",
+              "url": "https://www.ebay.co.uk/itm/227480923950"
+            },
+            {
+              "title": "Konami Silent Hill 2 PS2 PAL Special Edition Survival Horror 2001 SLES-50382",
+              "price": 73.5,
+              "postage": 2.94,
+              "condition": "Good",
+              "listed": "2026-11-01T20:12:24.000Z",
+              "url": "https://www.ebay.co.uk/itm/227593170729"
+            },
+            {
+              "title": "Silent Hill 2 Director's Cut PlayStation 2 Dutch pal Version With Box & Manual",
+              "price": 78.7,
+              "postage": 3.38,
+              "condition": "Good",
+              "listed": "2026-11-06T22:03:35.000Z",
+              "url": "https://www.ebay.co.uk/itm/407345457061"
+            },
+            {
+              "title": "Silent Hill 2 Special Edition PS2 PAL 2 Disc Set Complete Tested Working",
+              "price": 79.95,
+              "postage": 3.11,
+              "condition": "Good",
+              "listed": "2026-11-06T19:21:20.000Z",
+              "url": "https://www.ebay.co.uk/itm/820325112555"
+            },
+            {
+              "title": "Konami Silent Hill 2 Special Edition 2 Disc Set PS2 PAL 2001 SLES-50382",
+              "price": 79.99,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2026-10-13T18:13:16.000Z",
+              "url": "https://www.ebay.co.uk/itm/800791732251"
+            },
+            {
+              "title": "Silent Hill 2 Special Edition (PlayStation2, 2001)",
+              "price": 83.9,
+              "postage": 3.11,
+              "condition": "Good",
+              "listed": "2026-03-30T13:50:44.000Z",
+              "url": "https://www.ebay.co.uk/itm/257433474850"
+            }
+          ],
+          "new": {
+            "counted": 2,
+            "lowest": 73.5,
+            "median": 104.25,
+            "listings": [
+              {
+                "title": "Silent Hill 2 Director’s Cut (PlayStation 2, 2003) NEW",
+                "price": 73.5,
+                "postage": 2.7,
+                "condition": "New",
+                "listed": "2026-10-26T16:17:39.000Z",
+                "url": "https://www.ebay.co.uk/itm/237145399812"
+              },
+              {
+                "title": "Silent Hill 2 PS2 disc framed artwork",
+                "price": 135.0,
+                "postage": 0.0,
+                "condition": "New",
+                "listed": "2026-01-17T16:24:56.000Z",
+                "url": "https://www.ebay.co.uk/itm/306716279586"
+              }
+            ]
+          }
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=silent%20hill%202%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 299,
+          "fetched": 200,
+          "truncated": true,
+          "counted": 74,
+          "skipped": {
+            "import": 12,
+            "incomplete": 25,
+            "not_a_copy": 1,
+            "other_game": 88
+          },
+          "skipped_examples": {
+            "import": [
+              "Silent Hill 2 CIB SONY PS PlayStation 2 PS2 JP Japanese Japan Import US Seller",
+              "Silent Hill 2 JAPAN VER Playstation 2 Japanese Import JP PS2 NTSC-J US Seller",
+              "Konami Silent Hill 2 for Sony PlayStation 2, 2001, NTSC-J (Japan), Manual",
+              "Playstation 2 Silent Hill 2 Saigo no Uta Japan PS2 game US Seller",
+              "Silent Hill 2 Japan PlayStation 2 PS2 CIB Complete Manual Registration Card"
+            ],
+            "incomplete": [
+              "Silent Hill 2 PS2 Konami 2001 Survival Horror (DISC ONLY) Tested and Works Great",
+              "Silent Hill 2 (Sony PlayStation 2, 2001) No Manual-EX Rental Case Rental Sticker",
+              "Silent Hill 2 (Playstation 2 PS2) Black Label Disc Only - Tested & Ships Fast 🔥",
+              "Silent Hill 2 PlayStation 2 PS2 DISC ONLY - TESTED",
+              "Silent Hill 2 (PlayStation 2, 2001) Black Label Disc Only Tested & Works"
+            ],
+            "not_a_copy": [
+              "Silent Hill 2 Greatest Hits (PlayStation 2) BOX ONLY"
+            ],
+            "other_game": [
+              "CIB (Sony PS2, 2004) Jam Pack Demo Disk Volume 11 - MGS3, Silent Hill 4, Jak 3",
+              "PS2 : JAMPACK SUMMER 2003 !! With SILENT HILL !! Complete w/Manual",
+              "Smuggler’s Run 2: Hostile Territory (Sony PlayStation 2, 2001) PS2 Game + Manual",
+              "Jampack Summer 2003 - Sony PlayStation 2 CIB Silent Hill 3 Demo Complete Seepics",
+              "Sony Jampack Summer 2003 (PS2, NTSC-U/C) RP-M Demo Compilation Silent Hill CIB"
+            ]
+          },
+          "lowest": 19.99,
+          "median": 223.99,
+          "postage_known": 74,
+          "median_postage": 6.54,
+          "confirmed_counted": 48,
+          "confirmed_median": 227.64,
+          "listings": [
+            {
+              "title": "Silent Hill 2 Countertop Standee B PS2 (Scarred Forever)",
+              "price": 19.99,
+              "postage": 8.55,
+              "condition": "Very Good",
+              "listed": "2026-05-05T02:46:57.000Z",
+              "url": "https://www.ebay.com/itm/389976825614"
+            },
+            {
+              "title": "Silent Hill 2 (PlayStation 2, 2001)",
+              "price": 150.0,
+              "postage": 8.8,
+              "condition": "Like New",
+              "listed": "2024-08-02T01:56:05.000Z",
+              "url": "https://www.ebay.com/itm/395569197066"
+            },
+            {
+              "title": "Silent Hill 2 PS2",
+              "price": 175.0,
+              "postage": 6.45,
+              "condition": "Like New",
+              "listed": "2025-02-17T22:57:50.000Z",
+              "url": "https://www.ebay.com/itm/356583756371"
+            },
+            {
+              "title": "Konami Silent Hill 2 (PS2) Horror M NTSC-U/C Silent Hill Series",
+              "price": 180.0,
+              "postage": 6.45,
+              "condition": "Like New",
+              "listed": "2026-10-30T20:30:12.000Z",
+              "url": "https://www.ebay.com/itm/940053046891"
+            },
+            {
+              "title": "Silent Hill 2 PS2",
+              "price": 189.99,
+              "postage": 6.35,
+              "condition": "Very Good",
+              "listed": "2026-08-16T19:00:11.000Z",
+              "url": "https://www.ebay.com/itm/267759254276"
+            },
+            {
+              "title": "Konami Silent Hill 2 PlayStation 2 Greatest Hits Box With Game",
+              "price": 190.0,
+              "postage": 6.59,
+              "condition": "Very Good",
+              "listed": "2026-10-24T19:58:25.000Z",
+              "url": "https://www.ebay.com/itm/137872053640"
+            },
+            {
+              "title": "Silent Hill 2 Greatest Hits (Sony PlayStation 2, 2002)",
+              "price": 190.0,
+              "postage": 6.54,
+              "condition": "Good",
+              "listed": "2026-10-07T13:06:12.000Z",
+              "url": "https://www.ebay.com/itm/407273447529"
+            },
+            {
+              "title": "Silent Hill 2 PS2 PlayStation 2 Complete CIB with Reg Card Black Label",
+              "price": 195.0,
+              "postage": 6.23,
+              "condition": "Very Good",
+              "listed": "2026-11-06T23:00:26.000Z",
+              "url": "https://www.ebay.com/itm/287710347194"
+            },
+            {
+              "title": "Silent Hill 2 (Sony PlayStation 2, 2001) Complete PS2 case + art + manual + card",
+              "price": 195.99,
+              "postage": 6.45,
+              "condition": "Very Good",
+              "listed": "2026-11-04T22:29:36.000Z",
+              "url": "https://www.ebay.com/itm/377622248108"
+            },
+            {
+              "title": "Silent Hill 2 - PlayStation 2 (PS2) Complete (CIB) Black Label",
+              "price": 199.97,
+              "postage": 5.88,
+              "condition": "Very Good",
+              "listed": "2026-09-25T12:59:25.000Z",
+              "url": "https://www.ebay.com/itm/377522096432"
+            }
+          ],
+          "new": {
+            "counted": 7,
+            "lowest": 1100.0,
+            "median": 2499.99,
+            "listings": [
+              {
+                "title": "SILENT HILL 2 NEW SEALED Sony PS2 PlayStation 2 Greatest Hits W/hangtag Rare 🔥",
+                "price": 1100.0,
+                "postage": 6.3,
+                "condition": "Brand New",
+                "listed": "2026-10-21T19:21:35.000Z",
+                "url": "https://www.ebay.com/itm/287663659605"
+              },
+              {
+                "title": "SILENT HILL 2 FACTORY SEALED PS2 PLAYSTATION 2 BRAND NEW (MVP041431)",
+                "price": 1199.99,
+                "postage": 0.0,
+                "condition": "Brand New",
+                "listed": "2026-09-26T23:04:53.000Z",
+                "url": "https://www.ebay.com/itm/168725748373"
+              },
+              {
+                "title": "PS2 Silent Hill 2 Black Label Factory Sealed NEW",
+                "price": 1299.99,
+                "postage": 10.05,
+                "condition": "Brand New",
+                "listed": "2026-09-20T01:58:28.000Z",
+                "url": "https://www.ebay.com/itm/366679781732"
+              },
+              {
+                "title": "Silent Hill 2 (PlayStation 2) Brand New Sealed And Graded 1st Print Black Label",
+                "price": 2499.99,
+                "postage": 7.73,
+                "condition": "Brand New",
+                "listed": "2026-10-03T17:10:08.000Z",
+                "url": "https://www.ebay.com/itm/920004559666"
+              },
+              {
+                "title": "PS2 Silent Hill 2 Black Label Factory Sealed Collectors Quality Condition",
+                "price": 2999.0,
+                "postage": 14.05,
+                "condition": "Brand New",
+                "listed": "2022-02-15T01:14:23.000Z",
+                "url": "https://www.ebay.com/itm/265550358955"
+              },
+              {
+                "title": "Silent Hill 2",
+                "price": 4000.0,
+                "postage": 7.08,
+                "condition": "Brand New",
+                "listed": "2025-04-09T14:41:09.000Z",
+                "url": "https://www.ebay.com/itm/127043337196"
+              },
+              {
+                "title": "PSA 9.8 A+ Silent Hill 2 Sony PlayStation 2 PS2 KONAMI Sealed New First Print",
+                "price": 10000.0,
+                "postage": 18.0,
+                "condition": "Brand New",
+                "listed": "2026-10-10T01:18:54.000Z",
+                "url": "https://www.ebay.com/itm/960045605808"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "title": "Crash of the Titans",
+      "level": "normal",
+      "search": "crash of the titans",
+      "queries": [
+        "crash of the titans"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=crash%20of%20the%20titans%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 74,
+          "fetched": 74,
+          "truncated": false,
+          "counted": 57,
+          "skipped": {
+            "incomplete": 3,
+            "not_a_copy": 2,
+            "other_game": 11,
+            "other_platform": 1
+          },
+          "skipped_examples": {
+            "incomplete": [
+              "Crash of the Titans (PS2) | - Playstation 2 - Disc Only",
+              "Crash of the Titans (Playstation 2 PS2) *NO BOX * NO MANUAL*",
+              "Crash of the Titans - PLATSTATION 2 - DISC ONLY - vgc -"
+            ],
+            "not_a_copy": [
+              "Crash of the titans Manual Only - Sony Playstation 2 Ps2",
+              "PS2 Bundle: TimeSplitters + Crash of the Titans (PAL, Complete with Manuals)"
+            ],
+            "other_game": [
+              "Sony Playstation 2 (PS2) Disc Only Video Games - PAL - Offer Available (List 1)",
+              "PS2 GAMES",
+              "PlayStation 2 PS2 Games - Listing 4 Various PS2",
+              "PS2 GAMES",
+              "4X Ps2 Games No Box’s"
+            ],
+            "other_platform": [
+              "Crash Of The Titans Xbox 360 Game Clamshell Case PAL"
+            ]
+          },
+          "lowest": 5.0,
+          "median": 11.89,
+          "postage_known": 57,
+          "median_postage": 2.7,
+          "confirmed_counted": 20,
+          "confirmed_median": 10.8,
+          "listings": [
+            {
+              "title": "Sierra Crash of the Titans Crash Bandicoot PS2 PAL PG Action Adventure Manual",
+              "price": 5.0,
+              "postage": 2.7,
+              "condition": "Very Good",
+              "listed": "2026-11-06T16:41:31.000Z",
+              "url": "https://www.ebay.co.uk/itm/820324709736"
+            },
+            {
+              "title": "Crash Twinsanity & Crash of the Titans *Manuals Only* No Games PS2 PlayStation 2",
+              "price": 5.56,
+              "postage": 2.72,
+              "condition": "Very Good",
+              "listed": "2026-10-30T13:59:06.000Z",
+              "url": "https://www.ebay.co.uk/itm/366771487386"
+            },
+            {
+              "title": "Sierra Crash of the Titans (Sony PlayStation 2) PAL PEGI 7",
+              "price": 6.52,
+              "postage": 2.72,
+              "condition": "Good",
+              "listed": "2026-09-21T19:00:20.000Z",
+              "url": "https://www.ebay.co.uk/itm/336805857039"
+            },
+            {
+              "title": "Crash of the Titans Sony PlayStation 2 Game ps2",
+              "price": 7.58,
+              "postage": 0.91,
+              "condition": "Good",
+              "listed": "2026-11-02T21:55:39.000Z",
+              "url": "https://www.ebay.co.uk/itm/940060779215"
+            },
+            {
+              "title": "Crash Of Titans PlayStation 2 PS2 (PAL) - With Manual",
+              "price": 7.99,
+              "postage": 2.72,
+              "condition": "Good",
+              "listed": "2026-10-11T14:32:21.000Z",
+              "url": "https://www.ebay.co.uk/itm/117460861191"
+            },
+            {
+              "title": "Sierra Crash of the Titans PS2 PAL PEGI 7 Manual Included Action Adventure",
+              "price": 7.99,
+              "postage": 1.99,
+              "condition": "Good",
+              "listed": "2026-10-28T16:38:31.000Z",
+              "url": "https://www.ebay.co.uk/itm/257822106300"
+            },
+            {
+              "title": "Crash of the Titans (PS2) PEGI 7+ Platform Highly Rated eBay Seller Great Prices",
+              "price": 8.37,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2019-04-20T07:07:06.000Z",
+              "url": "https://www.ebay.co.uk/itm/382910966952"
+            },
+            {
+              "title": "Crash of the Titans (PS2) with manual",
+              "price": 8.65,
+              "postage": 2.6,
+              "condition": "Very Good",
+              "listed": "2023-10-01T14:49:06.000Z",
+              "url": "https://www.ebay.co.uk/itm/155805320864"
+            },
+            {
+              "title": "Untested - Crash of the Titans (Sony PlayStation 2, 2008)",
+              "price": 8.66,
+              "postage": 2.7,
+              "condition": "Very Good",
+              "listed": "2026-02-07T18:31:04.000Z",
+              "url": "https://www.ebay.co.uk/itm/406679225355"
+            },
+            {
+              "title": "Crash of the Titans for Sony PlayStation 2 PAL Game",
+              "price": 8.75,
+              "postage": 0.87,
+              "condition": "Good",
+              "listed": "2025-07-23T14:25:01.000Z",
+              "url": "https://www.ebay.co.uk/itm/357339362071"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Ape Escape 3",
+      "level": "normal",
+      "search": "ape escape 3",
+      "queries": [
+        "ape escape 3"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=ape%20escape%203%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 12,
+          "fetched": 12,
+          "truncated": false,
+          "counted": 8,
+          "skipped": {
+            "import": 1,
+            "incomplete": 1,
+            "not_a_copy": 1,
+            "other_game": 1
+          },
+          "skipped_examples": {
+            "import": [
+              "Ape Escape 3 Sony PlayStation 2 Japan NTSC-J Manual Box UK Seller PS2"
+            ],
+            "incomplete": [
+              "Ape Escape 3 Sony PlayStation 2 PS2 - Black Label - Case & Game Disc No Manual"
+            ],
+            "not_a_copy": [
+              "Ape Escape 3 PS2 BOX AND MANUAL ONLY NO GAME DISC"
+            ],
+            "other_game": [
+              "Demo disc cd for PS2 from Official Playstation 2 UK magazine choose from list"
+            ]
+          },
+          "lowest": 41.47,
+          "median": 89.99,
+          "postage_known": 8,
+          "median_postage": 3.11,
+          "confirmed_counted": 5,
+          "confirmed_median": 89.99,
+          "listings": [
+            {
+              "title": "Ape Escape 3 PS2 PAL Promo Promotional Full Game Disc Rare SCES-53642",
+              "price": 41.47,
+              "postage": 2.72,
+              "condition": "Like New",
+              "listed": "2026-09-18T22:17:22.000Z",
+              "url": "https://www.ebay.co.uk/itm/158307267930"
+            },
+            {
+              "title": "Ape Escape 3 PS2 PAL Manual Included",
+              "price": 82.99,
+              "postage": 3.11,
+              "condition": "Good",
+              "listed": "2026-10-01T20:11:43.000Z",
+              "url": "https://www.ebay.co.uk/itm/307209302673"
+            },
+            {
+              "title": "Ape Escape 3 PS2 PAL UK Edition With Manual",
+              "price": 89.09,
+              "postage": 3.13,
+              "condition": "Very Good",
+              "listed": "2026-10-27T17:50:47.000Z",
+              "url": "https://www.ebay.co.uk/itm/407320390089"
+            },
+            {
+              "title": "Ape Escape 3 Complete - PS2 UK PAL",
+              "price": 89.99,
+              "postage": 3.13,
+              "condition": "Good",
+              "listed": "2026-05-13T14:00:15.000Z",
+              "url": "https://www.ebay.co.uk/itm/178131156579"
+            },
+            {
+              "title": "Ape Escape 3 PS2 Playstation Game Complete With Manual PAL CIB",
+              "price": 89.99,
+              "postage": 3.11,
+              "condition": "Very Good",
+              "listed": "2026-09-27T12:16:19.000Z",
+              "url": "https://www.ebay.co.uk/itm/366695191838"
+            },
+            {
+              "title": "Ape Escape 3 PS2 - UK PAL",
+              "price": 100.0,
+              "postage": 0.0,
+              "condition": "Like New",
+              "listed": "2026-05-09T21:13:45.000Z",
+              "url": "https://www.ebay.co.uk/itm/127855912045"
+            },
+            {
+              "title": "Ape Escape 3 (PS2, 2006) PAL, Complete",
+              "price": 100.0,
+              "postage": 3.11,
+              "condition": "Very Good",
+              "listed": "2026-10-28T16:13:47.000Z",
+              "url": "https://www.ebay.co.uk/itm/327427840874"
+            },
+            {
+              "title": "Ape Escape 3 - Sony PS2 PlayStation 2 Kids Action Adventure Strategy Video Game",
+              "price": 145.74,
+              "postage": 0.0,
+              "condition": "Like New",
+              "listed": "2025-10-06T23:06:36.000Z",
+              "url": "https://www.ebay.co.uk/itm/127416484269"
+            }
+          ],
+          "new": {
+            "counted": 2,
+            "lowest": 299.99,
+            "median": 662.84,
+            "listings": [
+              {
+                "title": "PS2 Ape Escape 3, New And Factory Sealed",
+                "price": 299.99,
+                "postage": 0.0,
+                "condition": "New",
+                "listed": "2026-03-12T12:05:42.000Z",
+                "url": "https://www.ebay.co.uk/itm/277796125331"
+              },
+              {
+                "title": "APE ESCAPE 3 SONY PLAYSTATION 2 PS2 OFFICIAL UK PAL",
+                "price": 1025.68,
+                "postage": 0.0,
+                "condition": "New",
+                "listed": "2021-10-15T15:38:56.000Z",
+                "url": "https://www.ebay.co.uk/itm/203652389752"
+              }
+            ]
+          }
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=ape%20escape%203%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 158,
+          "fetched": 158,
+          "truncated": false,
+          "counted": 18,
+          "skipped": {
+            "import": 4,
+            "incomplete": 6,
+            "not_a_copy": 2,
+            "other_game": 128
+          },
+          "skipped_examples": {
+            "import": [
+              "Saru Getchu 3 (Ape Escape 3) PlayStation 2 The Best JPN (Region Locked)",
+              "Ape Escape 3 (Saru Get You 3) PlayStation 2 NTSC-J Japan JPN(Region Locked)",
+              "Ape Escape 3 PS2 Japan The Best Of Series (Untested)",
+              "Ape Escape 3 PS2 Japan The Best Of Series US Seller"
+            ],
+            "incomplete": [
+              "Ape Escape 3 Sony PlayStation 2 PS2 Disc Only Tested Authentic Black Label 2006",
+              "Ape Escape 3 for Sony PS2 Disc Only",
+              "Ape Escape 3 Sony PlayStation 2, 2006, No Manual Tested Working",
+              "Ape Escape 3 PlayStation 2- no manual (Tested & Works)",
+              "Ape Escape 3 PS2 PlayStation 2 Pristine Disc Only Authentic + Warranty Included"
+            ],
+            "not_a_copy": [
+              "Ape Escape 3 (Sony PlayStation 2, 2006) PS2 Black Label Demo Disc RARE",
+              "Ape Escape 3 w/ Registration Card NO GAME"
+            ],
+            "other_game": [
+              "Gacha Mecha Stadium Saru Battle Ape Escape No Manual PS PlayStation 2 PS2 Japan",
+              "Saru Get You 2 Ape Escape Best No Manual PS PlayStation 2 PS2 JP Japan Import",
+              "Pre-Owned Ape Escape 2 the Best PlayStation2 Japan Import- NO MANUAL",
+              "Playstation Magazine Issue 71 Playstation 2 Tested and Works",
+              "7 The Cavalry of Molmorth (PlayStation 2) PS2 Japan Import NTSC-J PLEASE READ!!!"
+            ]
+          },
+          "lowest": 54.0,
+          "median": 85.0,
+          "postage_known": 18,
+          "median_postage": 6.6,
+          "confirmed_counted": 10,
+          "confirmed_median": 85.0,
+          "listings": [
+            {
+              "title": "Ape Escape 3 - Sony PS2 PlayStation 2- Game & Box - Tested",
+              "price": 54.0,
+              "postage": 6.74,
+              "condition": "Good",
+              "listed": "2026-11-07T14:21:40.000Z",
+              "url": "https://www.ebay.com/itm/117509526919"
+            },
+            {
+              "title": "Ape Escape 3 (Sony PlayStation 2, 2006) Tested Game & Case PS2",
+              "price": 64.99,
+              "postage": 9.07,
+              "condition": "Good",
+              "listed": "2026-11-06T22:04:52.000Z",
+              "url": "https://www.ebay.com/itm/407345459508"
+            },
+            {
+              "title": "Ape Escape 3 PlayStation 2 PS2 Tested Working",
+              "price": 70.0,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2026-11-03T05:10:58.000Z",
+              "url": "https://www.ebay.com/itm/840087239007"
+            },
+            {
+              "title": "Ape Escape 3 (Sony PlayStation 2, 2006) CIB Case Manual Game Disc Reg Card",
+              "price": 74.99,
+              "postage": 5.99,
+              "condition": "Good",
+              "listed": "2026-10-23T15:45:41.000Z",
+              "url": "https://www.ebay.com/itm/307245905240"
+            },
+            {
+              "title": "Ape Escape 3 PS2 PlayStation 2 CIB Complete Pre-owned - Tested & Working",
+              "price": 76.99,
+              "postage": 6.45,
+              "condition": "Good",
+              "listed": "2026-11-05T20:38:44.000Z",
+              "url": "https://www.ebay.com/itm/880086786036"
+            },
+            {
+              "title": "Sony Ape Escape 3 PlayStation 2 2006 NTSC Manual Included Action Adventure",
+              "price": 79.99,
+              "postage": 6.45,
+              "condition": "Good",
+              "listed": "2026-07-10T17:19:32.000Z",
+              "url": "https://www.ebay.com/itm/137502343611"
+            },
+            {
+              "title": "Sony Ape Escape 3 PS2 E10+ NTSC-U/C Action Adventure Manual Included",
+              "price": 80.0,
+              "postage": 6.35,
+              "condition": "Very Good",
+              "listed": "2026-11-07T14:44:37.000Z",
+              "url": "https://www.ebay.com/itm/257840615181"
+            },
+            {
+              "title": "Ape Escape 3 - PS2",
+              "price": 82.0,
+              "postage": 0.0,
+              "condition": "Like New",
+              "listed": "2026-10-29T17:53:58.000Z",
+              "url": "https://www.ebay.com/itm/860095460520"
+            },
+            {
+              "title": "Ape Escape 3 PS2 — Pristine CIB",
+              "price": 84.99,
+              "postage": 6.94,
+              "condition": "Like New",
+              "listed": "2026-10-30T21:41:08.000Z",
+              "url": "https://www.ebay.com/itm/900052343357"
+            },
+            {
+              "title": "Ape Escape 3 PS2 CIB with Booklet TESTED AUTHENTIC Black Label VERY CLEAN",
+              "price": 85.0,
+              "postage": 7.08,
+              "condition": "Very Good",
+              "listed": "2026-11-02T20:04:46.000Z",
+              "url": "https://www.ebay.com/itm/128171081824"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Castlevania: Curse of Darkness",
+      "level": "normal",
+      "search": "castlevania curse of darkness",
+      "queries": [
+        "castlevania curse of darkness"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=castlevania%20curse%20of%20darkness%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 12,
+          "fetched": 12,
+          "truncated": false,
+          "counted": 10,
+          "skipped": {
+            "other_game": 2
+          },
+          "skipped_examples": {
+            "other_game": [
+              "Nanobreaker PS2 RARE PRESS PROMO DISC Full Game",
+              "Nanobreaker PS2 PROMO RARE PS2 Promotional Nano Breaker Konami UK PAL (FULL GAME"
+            ]
+          },
+          "lowest": 104.69,
+          "median": 138.45,
+          "postage_known": 10,
+          "median_postage": 3.71,
+          "confirmed_counted": 4,
+          "confirmed_median": 130.35,
+          "listings": [
+            {
+              "title": "Castlevania curse of darkness full game promo Game PlayStation 2 PAL",
+              "price": 104.69,
+              "postage": 3.5,
+              "condition": "Like New",
+              "listed": "2024-11-11T15:56:40.000Z",
+              "url": "https://www.ebay.co.uk/itm/196801734416"
+            },
+            {
+              "title": "Castlevania Curse Of Darkness PS2 PAL Edition With Manual",
+              "price": 124.45,
+              "postage": 3.98,
+              "condition": "Very Good",
+              "listed": "2025-12-12T22:21:16.000Z",
+              "url": "https://www.ebay.co.uk/itm/406474483229"
+            },
+            {
+              "title": "Castlevania: Curse of Darkness Complete - PS2 UK PAL",
+              "price": 129.99,
+              "postage": 3.98,
+              "condition": "Good",
+              "listed": "2026-05-07T12:43:04.000Z",
+              "url": "https://www.ebay.co.uk/itm/178113405257"
+            },
+            {
+              "title": "Castlevania Curse of Darkness Sony PlayStation 2 Complete",
+              "price": 130.7,
+              "postage": 3.92,
+              "condition": "Very Good",
+              "listed": "2026-04-23T17:31:01.000Z",
+              "url": "https://www.ebay.co.uk/itm/358479261620"
+            },
+            {
+              "title": "Castlevania Curse of Darkness for PS2 PlayStation 2 UK PAL Promo Disk",
+              "price": 135.9,
+              "postage": 3.98,
+              "condition": "Like New",
+              "listed": "2025-05-10T20:20:28.000Z",
+              "url": "https://www.ebay.co.uk/itm/256927096001"
+            },
+            {
+              "title": "Castlevania Curse of Darkness Complete With All Inserts Gc Used Rare PS2 UK PAL",
+              "price": 141.0,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-03-16T16:06:08.000Z",
+              "url": "https://www.ebay.co.uk/itm/406773370227"
+            },
+            {
+              "title": "Castlevania Curse of Darkness Press Promo Disc PS2 Full Game PAL RARE",
+              "price": 149.99,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-03-20T17:43:04.000Z",
+              "url": "https://www.ebay.co.uk/itm/188188192426"
+            },
+            {
+              "title": "CASTLEVANIA CURSE OF DARKNESS PS2 PROMO RARE SONY PLAYSTATION 2 (FULL GAME, PAL)",
+              "price": 187.9,
+              "postage": 0.0,
+              "condition": "Like New",
+              "listed": "2020-12-29T02:18:42.000Z",
+              "url": "https://www.ebay.co.uk/itm/124505078544"
+            },
+            {
+              "title": "Castlevania Curse of Darkness PS2 PROMO RARE PlayStation 2 UK PAL (FULL GAME)",
+              "price": 208.69,
+              "postage": 5.88,
+              "condition": "Like New",
+              "listed": "2023-03-27T08:03:08.000Z",
+              "url": "https://www.ebay.co.uk/itm/125847697007"
+            },
+            {
+              "title": "Castlevania Curse of Darkness Sony PS2 PlayStation 2 Action Adventure Video Game",
+              "price": 269.99,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2025-10-06T22:56:42.000Z",
+              "url": "https://www.ebay.co.uk/itm/127416475953"
+            }
+          ],
+          "new": {
+            "counted": 7,
+            "lowest": 151.5,
+            "median": 199.99,
+            "listings": [
+              {
+                "title": "Castlevania: Curse Of Darkness. UK PAL. New & Factory Sealed.",
+                "price": 151.5,
+                "postage": 0.0,
+                "condition": "New",
+                "listed": "2026-09-29T09:09:47.000Z",
+                "url": "https://www.ebay.co.uk/itm/198675092267"
+              },
+              {
+                "title": "Playstation 2 Game: Castlevania Curse Of Darkness (Superb Factory Sealed) UK PAL",
+                "price": 187.9,
+                "postage": 5.88,
+                "condition": "New",
+                "listed": "2026-10-28T17:50:57.000Z",
+                "url": "https://www.ebay.co.uk/itm/407322820034"
+              },
+              {
+                "title": "Playstation 2 Game: Castlevania Curse Of Darkness (Superb Factory Sealed) UK PAL",
+                "price": 198.29,
+                "postage": 0.0,
+                "condition": "New",
+                "listed": "2026-08-26T22:40:57.000Z",
+                "url": "https://www.ebay.co.uk/itm/188845702652"
+              },
+              {
+                "title": "Castlevania Curse Of Darkness PS2 PAL new sealed",
+                "price": 199.99,
+                "postage": 0.0,
+                "condition": "New",
+                "listed": "2022-10-09T09:05:32.000Z",
+                "url": "https://www.ebay.co.uk/itm/225197806638"
+              },
+              {
+                "title": "Playstation 2 Castlevania Curse Of Darkness Sealed UK PAL UKG Graded 85 +",
+                "price": 269.99,
+                "postage": 0.0,
+                "condition": "New",
+                "listed": "2026-02-01T16:20:24.000Z",
+                "url": "https://www.ebay.co.uk/itm/336416251666"
+              },
+              {
+                "title": "Castlevania Curse Of Darkness Factory Sealed UK PAL Brand New PS2 PlayStation 2",
+                "price": 289.99,
+                "postage": 10.48,
+                "condition": "New",
+                "listed": "2026-05-02T19:12:52.000Z",
+                "url": "https://www.ebay.co.uk/itm/358512085087"
+              },
+              {
+                "title": "UK Graded Castlevania Curse of Darkness PS2 - UK PAL New Factory Sealed UKG 85+",
+                "price": 295.0,
+                "postage": 15.0,
+                "condition": "New",
+                "listed": "2026-10-11T18:14:06.000Z",
+                "url": "https://www.ebay.co.uk/itm/860033749008"
+              }
+            ]
+          }
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=castlevania%20curse%20of%20darkness%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 8,
+          "fetched": 8,
+          "truncated": false,
+          "counted": 2,
+          "skipped": {
+            "import": 3,
+            "incomplete": 1,
+            "not_a_copy": 1,
+            "other_game": 1
+          },
+          "skipped_examples": {
+            "import": [
+              "Playstation 2 Castlevania Curse of Darkness Japan PS2 game US Seller",
+              "JP Castlevania Curse of Darkness PlayStation 2 PS2 US Seller",
+              "Castlevania: Curse of Darkness Akumajo Dracula CIB Complete in Box JAPAN Version"
+            ],
+            "incomplete": [
+              "Castlevania: Curse of Darkness PS2 missing manual see description"
+            ],
+            "not_a_copy": [
+              "Ps2 rpg Rare horror lot Evil Dead Regeneration castlevania curse of darkness Jaw"
+            ],
+            "other_game": [
+              "Sony PlayStation 2 PS2 Games Cleaned Tested Disc Only - You Pick & Choose #A-C"
+            ]
+          },
+          "lowest": 109.95,
+          "median": 117.47,
+          "postage_known": 2,
+          "median_postage": 9.5,
+          "confirmed_counted": 2,
+          "confirmed_median": 117.47,
+          "listings": [
+            {
+              "title": "Castlevania Curse Of Darkness PlayStation 2 Complete In Box CIB Tested",
+              "price": 109.95,
+              "postage": 8.8,
+              "condition": "Very Good",
+              "listed": "2026-11-04T23:55:51.000Z",
+              "url": "https://www.ebay.com/itm/960155299251"
+            },
+            {
+              "title": "Castlevania Curse of Darkness PS2 + Lament Of Innocence Complete CIB Tested",
+              "price": 124.99,
+              "postage": 10.2,
+              "condition": "Good",
+              "listed": "2026-11-05T23:18:39.000Z",
+              "url": "https://www.ebay.com/itm/257837516231"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Deer Hunter",
+      "level": "normal",
+      "search": "deer hunter",
+      "queries": [
+        "deer hunter"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=deer%20hunter%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "none",
+          "platform_filter": "keyword",
+          "on_ebay": 0,
+          "fetched": 0,
+          "truncated": false,
+          "counted": 0,
+          "skipped": {},
+          "skipped_examples": {}
+        }
+      }
+    },
+    {
+      "title": "Gradius III & IV",
+      "level": "normal",
+      "search": "gradius 3 4",
+      "queries": [
+        "gradius iii iv",
+        "gradius 3 4"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=gradius%203%204%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 14,
+          "fetched": 14,
+          "truncated": false,
+          "counted": 8,
+          "skipped": {
+            "import": 2,
+            "other_game": 4
+          },
+          "skipped_examples": {
+            "import": [
+              "Gradius III and IV NTSC-J Japanese PlayStation 2 Game",
+              "Gradius III and IV JPN Game Complete In Box For Sony PS2 Playstation 2"
+            ],
+            "other_game": [
+              "Gradius III and IV 3 & 4 - Sony Playstation 2 PS2 Japanese Game STG SHMUP NTSC-J",
+              "Japanese Sony PlayStation 2 PS2 Japan Games * Big choice *Only pay Shipping Once",
+              "Gradius III and IV 3 & 4 (Konami, 2000) Sony PlayStation 2 PS2 UK PAL",
+              "Gradius III and IV 3 & 4 - Sony Playstation 2 PS2 Japanese Game STG SHMUP NTSC-J"
+            ]
+          },
+          "lowest": 43.34,
+          "median": 89.99,
+          "postage_known": 8,
+          "median_postage": 0.0,
+          "confirmed_counted": 3,
+          "confirmed_median": 44.99,
+          "listings": [
+            {
+              "title": "Gradius III and IV - PlayStation 2 PS2 Complete PAL",
+              "price": 43.34,
+              "postage": 2.7,
+              "condition": "Very Good",
+              "listed": "2026-09-12T15:38:56.000Z",
+              "url": "https://www.ebay.co.uk/itm/327354939365"
+            },
+            {
+              "title": "Gradius III & IV PS2 PAL PlayStation 2 Game Complete with Manual Tested Working",
+              "price": 44.99,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-05-27T20:18:51.000Z",
+              "url": "https://www.ebay.co.uk/itm/318370994805"
+            },
+            {
+              "title": "Gradius III and IV - PS2 UK PAL",
+              "price": 47.49,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-04-21T10:14:24.000Z",
+              "url": "https://www.ebay.co.uk/itm/358470188264"
+            },
+            {
+              "title": "Gradius III, IV and V - PS2 UK PAL",
+              "price": 79.99,
+              "postage": 3.13,
+              "condition": "Good",
+              "listed": "2026-05-07T12:43:04.000Z",
+              "url": "https://www.ebay.co.uk/itm/178113405254"
+            },
+            {
+              "title": "Gradius III & IV PS2 - UK PAL VGC CIB - High Quality Packing - Tracked",
+              "price": 99.99,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2026-10-09T23:16:03.000Z",
+              "url": "https://www.ebay.co.uk/itm/267809342986"
+            },
+            {
+              "title": "Gradius 3 & 4",
+              "price": 128.99,
+              "postage": 0.0,
+              "condition": "Like New",
+              "listed": "2026-09-20T18:31:44.000Z",
+              "url": "https://www.ebay.co.uk/itm/198655551281"
+            },
+            {
+              "title": "Gradius III and IV - Sony PS2 PlayStation 2 Action Adventure Shooter Video Game",
+              "price": 136.99,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2025-11-27T01:15:57.000Z",
+              "url": "https://www.ebay.co.uk/itm/127527552999"
+            },
+            {
+              "title": "Gradius III & IV PS2 PlayStation 2 Video Game Mint Condition UK Release",
+              "price": 162.99,
+              "postage": 0.0,
+              "condition": "Like New",
+              "listed": "2024-02-03T20:00:01.000Z",
+              "url": "https://www.ebay.co.uk/itm/256398940612"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "GunGriffon Blaze",
+      "level": "normal",
+      "search": "gungriffon blaze",
+      "queries": [
+        "gungriffon blaze"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=gungriffon%20blaze%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 24,
+          "fetched": 24,
+          "truncated": false,
+          "counted": 18,
+          "skipped": {
+            "import": 2,
+            "incomplete": 1,
+            "other_game": 3
+          },
+          "skipped_examples": {
+            "import": [
+              "Gungriffon Blaze JAPAN Ver PS2 Japan Import JP Playstation 2",
+              "Gungriffon Blaze Japanese Playstation 2 Capcom"
+            ],
+            "incomplete": [
+              "Gungriffon Blaze PlayStation 2 no manual"
+            ],
+            "other_game": [
+              "Choose Your Own PS2 game (Titles starting with A-L) - With Combined Postage",
+              "Gungriffon PlayStation 2 PS2 Game Complete With Manual Boxed",
+              "Japanese Sony PlayStation 2 PS2 Japan Games * Big choice *Only pay Shipping Once"
+            ]
+          },
+          "lowest": 4.91,
+          "median": 8.56,
+          "postage_known": 18,
+          "median_postage": 0.0,
+          "confirmed_counted": 5,
+          "confirmed_median": 8.99,
+          "listings": [
+            {
+              "title": "Gungriffon Blaze PS2 PlayStation 2 Game with Manual",
+              "price": 4.91,
+              "postage": 2.94,
+              "condition": "Good",
+              "listed": "2026-07-08T11:13:40.000Z",
+              "url": "https://www.ebay.co.uk/itm/327252821328"
+            },
+            {
+              "title": "GUNGRIFFON BLAZE PS2 COMPLETE UK PAL - PLAYSTATION 2 - FREE UK POST",
+              "price": 6.89,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-10-25T18:53:59.000Z",
+              "url": "https://www.ebay.co.uk/itm/377597020404"
+            },
+            {
+              "title": "GunGRIFFON Blaze PS2 PAL Mech Combat Simulator Sony PlayStation 2 AWGS",
+              "price": 6.95,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2025-11-23T13:02:39.000Z",
+              "url": "https://www.ebay.co.uk/itm/157493386088"
+            },
+            {
+              "title": "Gun Griffon Blaze (PS2 / CD)",
+              "price": 6.98,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2025-12-01T14:18:18.000Z",
+              "url": "https://www.ebay.co.uk/itm/306637234408"
+            },
+            {
+              "title": "GunGriffon Blaze | PS2 PlayStation 2 | Used",
+              "price": 6.99,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2025-07-14T12:00:02.000Z",
+              "url": "https://www.ebay.co.uk/itm/277269758530"
+            },
+            {
+              "title": "GunGriffon Blaze | PS2 PlayStation 2 | Used",
+              "price": 7.54,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2025-09-28T14:54:03.000Z",
+              "url": "https://www.ebay.co.uk/itm/146860013916"
+            },
+            {
+              "title": "Gungriffon Blaze - PlayStation 2 - PS2 - PAL - UK",
+              "price": 7.59,
+              "postage": 2.72,
+              "condition": "Good",
+              "listed": "2026-01-21T16:29:55.000Z",
+              "url": "https://www.ebay.co.uk/itm/157627819542"
+            },
+            {
+              "title": "GunGriffon: Blaze (Sony PlayStation 2 2001) Video Game Quality Guaranteed",
+              "price": 8.11,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-10-21T14:53:37.000Z",
+              "url": "https://www.ebay.co.uk/itm/820262865232"
+            },
+            {
+              "title": "Gungriffon Blaze - Playstation 2 PS2",
+              "price": 8.12,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2025-11-05T14:28:24.000Z",
+              "url": "https://www.ebay.co.uk/itm/297738556979"
+            },
+            {
+              "title": "Gungriffon Blaze - Playstation 2 PS2 with manual, nice clean disc",
+              "price": 8.99,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2026-04-04T12:10:11.000Z",
+              "url": "https://www.ebay.co.uk/itm/236736038988"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Kung Fu Panda",
+      "level": "normal",
+      "search": "kung fu panda",
+      "queries": [
+        "kung fu panda"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=kung%20fu%20panda%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 29,
+          "fetched": 29,
+          "truncated": false,
+          "counted": 17,
+          "skipped": {
+            "incomplete": 1,
+            "other_game": 11
+          },
+          "skipped_examples": {
+            "incomplete": [
+              "Kung Fu Panda Sony (PS2) Video Game No Manual PAL - Tested GC"
+            ],
+            "other_game": [
+              "Sony Playstation 2 Games, With Free Postage",
+              "PS2 GAMES",
+              "Choose Your Own PS2 Game Disc Only (Titles starting with A-L)",
+              "Choose Your Own PS2 game (Titles starting with A-L) - With Combined Postage",
+              "PlayStation 2 Games [PAL UK, No Manual, Tested]"
+            ]
+          },
+          "lowest": 2.88,
+          "median": 15.97,
+          "postage_known": 17,
+          "median_postage": 0.0,
+          "confirmed_counted": 3,
+          "confirmed_median": 20.43,
+          "listings": [
+            {
+              "title": "Kung Fu Panda PS2 PAL - Activision Multiplayer Action Adventure (SLES-55293)",
+              "price": 2.88,
+              "postage": 2.72,
+              "condition": "Very Good",
+              "listed": "2026-08-10T18:52:25.000Z",
+              "url": "https://www.ebay.co.uk/itm/287517102278"
+            },
+            {
+              "title": "Kung Fu Panda Playstation PS2 PAL",
+              "price": 4.38,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2026-10-26T16:43:12.000Z",
+              "url": "https://www.ebay.co.uk/itm/128157764304"
+            },
+            {
+              "title": "Kung Fu Panda - Sony PS2 PlayStation 2 Game (Bx36)",
+              "price": 5.45,
+              "postage": 3.0,
+              "condition": "Very Good",
+              "listed": "2025-03-02T15:44:21.000Z",
+              "url": "https://www.ebay.co.uk/itm/276914351202"
+            },
+            {
+              "title": "Kung Fu Panda Playstation PS2 Video Game Manual PAL",
+              "price": 5.45,
+              "postage": 1.55,
+              "condition": "Like New",
+              "listed": "2025-09-16T22:31:10.000Z",
+              "url": "https://www.ebay.co.uk/itm/326776556799"
+            },
+            {
+              "title": "Kung Fu Panda - PS2 UK PAL",
+              "price": 8.99,
+              "postage": 2.72,
+              "condition": "Good",
+              "listed": "2026-07-30T16:40:30.000Z",
+              "url": "https://www.ebay.co.uk/itm/178357380063"
+            },
+            {
+              "title": "PlayStation 2 Game Kung Fu Panda. Activist on And Dreamworks",
+              "price": 9.19,
+              "postage": 0.0,
+              "condition": "Very Good",
+              "listed": "2025-07-15T16:39:52.000Z",
+              "url": "https://www.ebay.co.uk/itm/146710395327"
+            },
+            {
+              "title": "Kung Fu Panda - Sony PlayStation 2 PS2 - PAL - Complete",
+              "price": 10.01,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2025-02-13T18:39:44.000Z",
+              "url": "https://www.ebay.co.uk/itm/276866205308"
+            },
+            {
+              "title": "Kung Fu Panda (PS2) *NEAR MINT*",
+              "price": 14.94,
+              "postage": 0.0,
+              "condition": "Like New",
+              "listed": "2024-06-16T06:58:28.000Z",
+              "url": "https://www.ebay.co.uk/itm/145836099078"
+            },
+            {
+              "title": "Kung Fu Panda - Platinum Edition (PS2)",
+              "price": 15.97,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-10-30T21:41:29.000Z",
+              "url": "https://www.ebay.co.uk/itm/960134343059"
+            },
+            {
+              "title": "PS2 Kung Fu Panda , with manual PRISTINE",
+              "price": 20.43,
+              "postage": 2.72,
+              "condition": "Like New",
+              "listed": "2026-03-23T16:14:24.000Z",
+              "url": "https://www.ebay.co.uk/itm/206161520595"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Resident Evil: The Essentials",
+      "level": "normal",
+      "search": "resident evil the essentials",
+      "queries": [
+        "resident evil the essentials"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=resident%20evil%20the%20essentials%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "none",
+          "platform_filter": "keyword",
+          "on_ebay": 0,
+          "fetched": 0,
+          "truncated": false,
+          "counted": 0,
+          "skipped": {},
+          "skipped_examples": {}
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=resident%20evil%20the%20essentials%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 1,
+          "fetched": 1,
+          "truncated": false,
+          "counted": 1,
+          "skipped": {},
+          "skipped_examples": {},
+          "lowest": 250.0,
+          "median": 250.0,
+          "postage_known": 1,
+          "median_postage": 7.08,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "Capcom Resident Evil: The Essentials Compilation PS2 M Survival Horror NTSC-U/C",
+              "price": 250.0,
+              "postage": 7.08,
+              "condition": "Very Good",
+              "listed": "2026-09-27T21:48:39.000Z",
+              "url": "https://www.ebay.com/itm/128102017541"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Vexx",
+      "level": "normal",
+      "search": "vexx",
+      "queries": [
+        "vexx"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=vexx%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 32,
+          "fetched": 32,
+          "truncated": false,
+          "counted": 22,
+          "skipped": {
+            "incomplete": 4,
+            "not_a_copy": 1,
+            "other_game": 5
+          },
+          "skipped_examples": {
+            "incomplete": [
+              "Vexx | Sony Playstation 2 PS2 PSTWO Game | Disc Only",
+              "Vexx - Playstation 2 - No Manual -,",
+              "Vexx - PlayStation 2 PS2 Game - No Manual",
+              "Vexx - PlayStation 2 / PS2 - PAL - DISC ONLY!"
+            ],
+            "not_a_copy": [
+              "Vexx Scaler Free Running Sony PlayStation 2 Bundle CIB PAL UK PS2"
+            ],
+            "other_game": [
+              "PlayStation 2 PS2 Games DISC ONLY - GREAT Selection - ALL PAL REGION ALL TESTED",
+              "Sony Playstation 2 Games PS2 Make Your Selection Q-Z",
+              "PS2 PlayStation 2 Games (Platform Arcade Fighting Sim Puzzle Family Kids) UK PAL",
+              "ps2 game vex",
+              "PlayStation 2 PS2 Games - Listing 3 Various PS2"
+            ]
+          },
+          "lowest": 3.31,
+          "median": 8.33,
+          "postage_known": 22,
+          "median_postage": 2.15,
+          "confirmed_counted": 4,
+          "confirmed_median": 6.39,
+          "listings": [
+            {
+              "title": "Vexx Sony Playstation 2 PS2 PAL Tested & Working",
+              "price": 3.31,
+              "postage": 2.0,
+              "condition": "Very Good",
+              "listed": "2026-02-25T22:22:06.000Z",
+              "url": "https://www.ebay.co.uk/itm/287164928220"
+            },
+            {
+              "title": "Vexx Game for Sony PlayStation 2",
+              "price": 3.4,
+              "postage": 1.55,
+              "condition": "Good",
+              "listed": "2025-07-24T12:45:01.000Z",
+              "url": "https://www.ebay.co.uk/itm/357346426686"
+            },
+            {
+              "title": "Vexx (Sony PlayStation 2, PAL) Acclaim ELSPA 11+",
+              "price": 5.0,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2026-09-23T10:38:27.000Z",
+              "url": "https://www.ebay.co.uk/itm/336808782978"
+            },
+            {
+              "title": "Vexx PlayStation 2 game, complete with manual",
+              "price": 5.18,
+              "postage": 2.7,
+              "condition": "Good",
+              "listed": "2026-01-29T16:59:59.000Z",
+              "url": "https://www.ebay.co.uk/itm/117007761595"
+            },
+            {
+              "title": "Vexx Sony PlayStation 2 PS2 PAL ELSPA 3+ Manual Included Acclaim",
+              "price": 5.18,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-10-29T14:32:42.000Z",
+              "url": "https://www.ebay.co.uk/itm/168824699249"
+            },
+            {
+              "title": "PlayStation 2 Vexx Has Some Minor Scratches. See Pics Game Tested.",
+              "price": 5.45,
+              "postage": 2.72,
+              "condition": "Very Good",
+              "listed": "2026-08-20T12:13:34.000Z",
+              "url": "https://www.ebay.co.uk/itm/820026805681"
+            },
+            {
+              "title": "Vexx (PS2)",
+              "price": 5.81,
+              "postage": 2.7,
+              "condition": "Very Good",
+              "listed": "2025-11-29T17:25:03.000Z",
+              "url": "https://www.ebay.co.uk/itm/177627360539"
+            },
+            {
+              "title": "Vexx (Sony PlayStation 2) - PAL - PS2",
+              "price": 6.51,
+              "postage": 2.7,
+              "condition": "Very Good",
+              "listed": "2025-04-11T19:41:40.000Z",
+              "url": "https://www.ebay.co.uk/itm/286479797059"
+            },
+            {
+              "title": "Vexx - PS2 UK PAL",
+              "price": 6.99,
+              "postage": 2.72,
+              "condition": "Good",
+              "listed": "2026-05-15T11:37:00.000Z",
+              "url": "https://www.ebay.co.uk/itm/178136403244"
+            },
+            {
+              "title": "Vexx PS2 Sony Playstation 2, 2003 Video Game Complete With Manuals PS2 Tested",
+              "price": 7.59,
+              "postage": 2.3,
+              "condition": "Good",
+              "listed": "2024-01-10T19:55:40.000Z",
+              "url": "https://www.ebay.co.uk/itm/145546526647"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "True Crime: Streets of LA",
+      "level": "normal",
+      "search": "true crime streets of la",
+      "queries": [
+        "true crime streets of la"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_DE": {
+          "search_url": "https://www.ebay.de/sch/i.html?_nkw=true%20crime%20streets%20of%20la%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 71,
+          "fetched": 71,
+          "truncated": false,
+          "counted": 53,
+          "skipped": {
+            "import": 1,
+            "incomplete": 1,
+            "not_a_copy": 3,
+            "other_game": 13
+          },
+          "skipped_examples": {
+            "import": [
+              "PS2 / Sony Playstation 2 - True Crime: Streets of LA JAPAN nur CD"
+            ],
+            "incomplete": [
+              "PS2 / Sony Playstation 2 - True Crime - Streets of LA nur CD"
+            ],
+            "not_a_copy": [
+              "Sony Playstation 2 PS2 PAL OVP True Crime Streets of LA + Killzone Bundle",
+              "PlayStation 2 ps2 Spielesammlung Fire Warrior Und True Crime Streets Of LA",
+              "Max Payne 2 & True Crime Streets of LA (PS2) – Bundle USK 18"
+            ],
+            "other_game": [
+              "Playstation 2 - PS2 - Spiele Sammlung - Einzelne Titel zur Auswahl - Rabatt mgl.",
+              "PS2 & PS3 Spiele zum Aussuchen | Technisch Einwandfrei | Versandkostenfrei!",
+              "⚡🎮 PlayStation 2 PS2 USK18 GTA CoD Medal of Honor Silent Hill Resident Evil 🎮⚡",
+              "PS2, Playstation 2 verschiedene Titel – Auswahl – gebraucht",
+              "Sony PlayStation 2 PS2 Spiele Auswahl Games GTA Resident Evil ⚡️ BLITZVERSAND"
+            ]
+          },
+          "lowest": 3.7,
+          "median": 8.9,
+          "postage_known": 53,
+          "median_postage": 1.99,
+          "confirmed_counted": 2,
+          "confirmed_median": 19.51,
+          "listings": [
+            {
+              "title": "True Crime: Streets of LA | Sony Playstation 2 Spiel | USK 18 Disc | Ps2",
+              "price": 3.7,
+              "postage": 7.9,
+              "condition": "Sehr gut",
+              "listed": "2026-07-21T00:13:21.000Z",
+              "url": "https://www.ebay.de/itm/117313533817"
+            },
+            {
+              "title": "True Crime Streets of La Platinum PS2 - PlayStation 2, USK 18 Guter Zustand",
+              "price": 3.96,
+              "postage": 8.18,
+              "condition": "Gut",
+              "listed": "2026-01-23T04:35:57.000Z",
+              "url": "https://www.ebay.de/itm/257323612731"
+            },
+            {
+              "title": "True Crime Streets Of LA PlayStation 2 Ohne Original Verpackung",
+              "price": 4.06,
+              "postage": 8.18,
+              "condition": "Gut",
+              "listed": "2025-03-09T13:37:20.000Z",
+              "url": "https://www.ebay.de/itm/356648736020"
+            },
+            {
+              "title": "True Crime: Streets of LA (PS2, USK18) – Actionspiel",
+              "price": 4.99,
+              "postage": 8.18,
+              "condition": "Sehr gut",
+              "listed": "2025-10-05T17:58:20.000Z",
+              "url": "https://www.ebay.de/itm/167839315335"
+            },
+            {
+              "title": "True Crime: Streets of LA • PS2 (PAL) • Platinum • Activision • K-03",
+              "price": 5.0,
+              "postage": 1.8,
+              "condition": "Gut",
+              "listed": "2026-10-15T20:21:14.000Z",
+              "url": "https://www.ebay.de/itm/307233248719"
+            },
+            {
+              "title": "True Crime: Streets of LA Platinum + Handbuch - PS2 PAL, PlayStation, CIB",
+              "price": 5.69,
+              "postage": 8.18,
+              "condition": "Sehr gut",
+              "listed": "2026-09-29T19:39:24.000Z",
+              "url": "https://www.ebay.de/itm/398444545856"
+            },
+            {
+              "title": "True Crime Streets of LA – PS2 PlayStation 2 | Guter Zustand",
+              "price": 5.99,
+              "postage": 1.99,
+              "condition": "Gut",
+              "listed": "2026-11-01T20:01:45.000Z",
+              "url": "https://www.ebay.de/itm/147661122232"
+            },
+            {
+              "title": "Playstation 2 PS2 True Crime Streets of LA OVP gebraucht, getestet",
+              "price": 5.99,
+              "postage": 6.99,
+              "condition": "Gut",
+              "listed": "2021-05-27T16:07:37.000Z",
+              "url": "https://www.ebay.de/itm/393359991143"
+            },
+            {
+              "title": "True Crime: Streets of LA – PlayStation 2 / PS2 Spiel – PAL – USK ab 18",
+              "price": 6.59,
+              "postage": 8.18,
+              "condition": "Neuwertig",
+              "listed": "2026-11-04T03:15:04.000Z",
+              "url": "https://www.ebay.de/itm/168836512776"
+            },
+            {
+              "title": "Sony PS2 Playstation 2 True Crime Streets of LA in OVP",
+              "price": 6.79,
+              "postage": 0.0,
+              "condition": "Gut",
+              "listed": "2025-05-03T15:07:49.000Z",
+              "url": "https://www.ebay.de/itm/197280540020"
+            }
+          ]
+        },
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=true%20crime%20streets%20of%20la%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 4,
+          "fetched": 4,
+          "truncated": false,
+          "counted": 3,
+          "skipped": {
+            "other_game": 1
+          },
+          "skipped_examples": {
+            "other_game": [
+              "PLAYSTATION 2 - PS2 JUEGOS COMPLETOS - VERSION PAL - ELIGE EL TUYO DE LA LISTA"
+            ]
+          },
+          "lowest": 12.0,
+          "median": 14.95,
+          "postage_known": 3,
+          "median_postage": 0.0,
+          "confirmed_counted": 1,
+          "confirmed_median": 12.0,
+          "listings": [
+            {
+              "title": "TRUE CRIME STREETS OF LA PLAYSTATION 2 PS2 PLATINUM SPANISH PAL COMPLETE",
+              "price": 12.0,
+              "postage": 6.0,
+              "condition": "En buen estado",
+              "listed": "2025-07-21T14:36:52.000Z",
+              "url": "https://www.ebay.es/itm/286721819455"
+            },
+            {
+              "title": "True Crime: Streets of LA | PS2 PlayStation2 | PAL España ES | Completo",
+              "price": 14.95,
+              "postage": 0.0,
+              "condition": "En muy buen estado",
+              "listed": "2026-10-12T13:23:28.000Z",
+              "url": "https://www.ebay.es/itm/377564560540"
+            },
+            {
+              "title": "True Crime Streets of LA | Play Station 2 | PS2 | PAL ESPAÑA",
+              "price": 18.0,
+              "postage": 0.0,
+              "condition": "En muy buen estado",
+              "listed": "2026-01-27T21:54:57.000Z",
+              "url": "https://www.ebay.es/itm/168116172074"
+            }
+          ]
+        },
+        "EBAY_FR": {
+          "search_url": "https://www.ebay.fr/sch/i.html?_nkw=true%20crime%20streets%20of%20la%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 48,
+          "fetched": 48,
+          "truncated": false,
+          "counted": 32,
+          "skipped": {
+            "incomplete": 4,
+            "not_a_copy": 4,
+            "other_game": 8
+          },
+          "skipped_examples": {
+            "incomplete": [
+              "True Crime Streets of LA sans notice sur Playstation 2 PS2 FR TBE",
+              "Jeux Vidéo True Crime Streets of LA complet Playstation 2 - PS2 sans notice",
+              "jeu TRUE CRIME STREETS OF LA pour PLAYSTATION 2 en francais PS2 game loose",
+              "True Crime Streets of LA PS2 PAL | CD Seul | PlayStation 2 | Action"
+            ],
+            "not_a_copy": [
+              "Boîte Vide TRUE CRIME STREETS OF LA SONY PS2 PLAYSTATION 2",
+              "CD AVEC CODES ACTION REPLAY TRUE CRIME STREETS OF LA SONY PS2 PLAYSTATION 2 VF",
+              "Demo - True Crime Streets Of LA - Promo - PlayStation 2 / PS2 - PAL - Activision",
+              "True Crime: Streets of LA DEMO PS2 PAL Tested - Activision Press NFR"
+            ],
+            "other_game": [
+              "jeu sony ps2 playstation 2 cd seul ou avec notice PLUSIEURS JEUX loose",
+              "True crime street of la Playstation 2 PS2 bon état",
+              "Jeu seul TRUE CRIME STREET OF LA sur playstation 2 PS2 en loose francais action",
+              "TRUE CRIME STREET OF LA - PS2 - VF - BOITE CD LIVRET",
+              "TRUE CRIME street of LA - Sony Playstation 2 PS2 - PAL - avec notice"
+            ]
+          },
+          "lowest": 2.99,
+          "median": 9.46,
+          "postage_known": 32,
+          "median_postage": 3.0,
+          "confirmed_counted": 1,
+          "confirmed_median": 10.79,
+          "listings": [
+            {
+              "title": "Jaquette de jeu True crime streets of LA - console Sony playstation 2",
+              "price": 2.99,
+              "postage": 2.9,
+              "condition": "Très bon état",
+              "listed": "2022-10-21T10:30:42.000Z",
+              "url": "https://www.ebay.fr/itm/285009618007"
+            },
+            {
+              "title": "Sony Playstation PS2 - True Crime : Streets of LA - PAL",
+              "price": 4.49,
+              "postage": 3.99,
+              "condition": "Bon état",
+              "listed": "2019-09-24T07:21:08.000Z",
+              "url": "https://www.ebay.fr/itm/163877223854"
+            },
+            {
+              "title": "True crime streets of la - Jeux PS2 - Avec Notice - Occasion",
+              "price": 4.99,
+              "postage": 4.5,
+              "condition": "Bon état",
+              "listed": "2026-04-24T08:18:51.000Z",
+              "url": "https://www.ebay.fr/itm/298258365766"
+            },
+            {
+              "title": "True Crime Streets of La Jeu Playstation 2 PS2 avec Notice",
+              "price": 5.9,
+              "postage": 3.9,
+              "condition": "Très bon état",
+              "listed": "2022-09-29T15:21:22.000Z",
+              "url": "https://www.ebay.fr/itm/155184081751"
+            },
+            {
+              "title": "Jeu Playstation PS2 - True Crime Streets of LA - Activision 2003 - PAL FR",
+              "price": 5.99,
+              "postage": 2.5,
+              "condition": "Bon état",
+              "listed": "2026-04-08T02:48:31.000Z",
+              "url": "https://www.ebay.fr/itm/178031688940"
+            },
+            {
+              "title": "TRUE CRIME Streets Of LA Sony Playstation 2 PS2 Fra",
+              "price": 6.5,
+              "postage": 5.0,
+              "condition": "Très bon état",
+              "listed": "2024-03-25T23:04:00.000Z",
+              "url": "https://www.ebay.fr/itm/145687405993"
+            },
+            {
+              "title": "True Crime: Streets Of LA - Jeu PS2 Playstation Sony",
+              "price": 6.52,
+              "postage": 5.0,
+              "condition": "Bon état",
+              "listed": "2021-04-12T07:21:55.000Z",
+              "url": "https://www.ebay.fr/itm/174729211516"
+            },
+            {
+              "title": "TRUE CRIME STREETS OF LA - PS2 - PlayStation 2 - PAL",
+              "price": 6.52,
+              "postage": 5.0,
+              "condition": "Bon état",
+              "listed": "2024-07-27T09:39:53.000Z",
+              "url": "https://www.ebay.fr/itm/365033874747"
+            },
+            {
+              "title": "Ps2 Playstation 2 Jaquette Cover True Crime Streets Of La",
+              "price": 6.99,
+              "postage": 3.5,
+              "condition": "Bon état",
+              "listed": "2025-12-04T08:43:23.000Z",
+              "url": "https://www.ebay.fr/itm/136815437402"
+            },
+            {
+              "title": "Jeu PS2 True Crime Streets of LA complet vintage Activision PAL",
+              "price": 6.99,
+              "postage": 3.0,
+              "condition": "Bon état",
+              "listed": "2025-06-14T09:55:10.000Z",
+              "url": "https://www.ebay.fr/itm/316986394720"
+            }
+          ]
+        },
+        "EBAY_IT": {
+          "search_url": "https://www.ebay.it/sch/i.html?_nkw=true%20crime%20streets%20of%20la%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 70,
+          "fetched": 70,
+          "truncated": false,
+          "counted": 48,
+          "skipped": {
+            "import": 1,
+            "incomplete": 5,
+            "other_game": 15,
+            "other_platform": 1
+          },
+          "skipped_examples": {
+            "import": [
+              "True Crime - Streets Of LA PS2 JAP USATO"
+            ],
+            "incomplete": [
+              "True Crime: Streets of LA. (solo disco) PS2 USATO",
+              "True Crime: Streets of LA - Solo Disco Uk - Per PS2 PlayStation 2",
+              "True Crime Streets of LA PS2 Sony Playstation 2 senza manuale",
+              "True Crime: Streets of LA - Solo Disco Multi - Per PS2 PlayStation 2",
+              "TRUE CRIME STREETS OF LA PLAYSTATION 2 PS2 solo CD gioco ita"
+            ],
+            "other_game": [
+              "Scegli il Tuo Gioco PS2 – PlayStation 2 –Vari titoli GTA Gran Turismo Crash",
+              "True Crime Street Of LA Ps2 Playstation 2 ITA",
+              "PS2 : TRUE CRIME : STREETS OF L.A. - Completo, ITALIANO ! CONSEGNA 24/48 H",
+              "LEGGETE BENE, Solo Copertina Originale - NO GIOCO per PS2 PlayStation 2",
+              "PS2 : TRUE CRIME : STREETS OF L.A. - Completo, ITALIANO ! PLAYSTATION 2 LA"
+            ],
+            "other_platform": [
+              "TRUE CRIME STREETS OF LA CON LIBRETTO COPERTINA IN ITALIANO PER PS2 NO PS1"
+            ]
+          },
+          "lowest": 4.9,
+          "median": 10.99,
+          "postage_known": 48,
+          "median_postage": 5.0,
+          "confirmed_counted": 1,
+          "confirmed_median": 8.11,
+          "listings": [
+            {
+              "title": "True Crime Streets of LA - Sony Playstation 2 PS2 - PAL",
+              "price": 4.9,
+              "postage": 5.95,
+              "condition": "Buone condizioni",
+              "listed": "2014-06-21T17:05:59.000Z",
+              "url": "https://www.ebay.it/itm/321439785064"
+            },
+            {
+              "title": "videogioco ps2 TRUE CRIME STREETS OF LA PlayStation 2",
+              "price": 5.98,
+              "postage": 7.5,
+              "condition": "Ottime condizioni",
+              "listed": "2021-10-10T14:28:02.000Z",
+              "url": "https://www.ebay.it/itm/294451539852"
+            },
+            {
+              "title": "True Crime Streets of LA - NO MANUALE - Per Sony PS2 PlayStation 2",
+              "price": 6.0,
+              "postage": 5.95,
+              "condition": "Buone condizioni",
+              "listed": "2025-02-19T11:03:41.000Z",
+              "url": "https://www.ebay.it/itm/387967304120"
+            },
+            {
+              "title": "True Crime Streets of LA - NO MANUALE - Per Sony PS2 PlayStation 2",
+              "price": 7.0,
+              "postage": 5.95,
+              "condition": "Buone condizioni",
+              "listed": "2025-02-21T12:27:49.000Z",
+              "url": "https://www.ebay.it/itm/387978001542"
+            },
+            {
+              "title": "True Crime: Streets of LA - Pal Ita - Per Sony PS2 PlayStation 2",
+              "price": 7.59,
+              "postage": 5.0,
+              "condition": "Buone condizioni",
+              "listed": "2026-05-31T13:22:00.000Z",
+              "url": "https://www.ebay.it/itm/178180472561"
+            },
+            {
+              "title": "true crime Streets Of LA - PlayStation 2- Videogioco PS2 Videogame sparatutto",
+              "price": 7.59,
+              "postage": 4.9,
+              "condition": "Ottime condizioni",
+              "listed": "2022-08-31T15:26:00.000Z",
+              "url": "https://www.ebay.it/itm/374235105058"
+            },
+            {
+              "title": "True Crime Streets Of LA Sony Playstation 2 PS2 Game Complete + Manual PAL IT",
+              "price": 8.11,
+              "postage": 5.6,
+              "condition": "Ottime condizioni",
+              "listed": "2024-05-23T04:02:57.000Z",
+              "url": "https://www.ebay.it/itm/387025668787"
+            },
+            {
+              "title": "SONY PS2 TRUE CRIME STREETS OF LA PAL ITA",
+              "price": 8.65,
+              "postage": 0.0,
+              "condition": "Buone condizioni",
+              "listed": "2026-09-14T11:38:20.000Z",
+              "url": "https://www.ebay.it/itm/227521090707"
+            },
+            {
+              "title": "Activision True Crime: Streets of LA PS2 PAL Italiano PEGI 16 2003 SLES-51466",
+              "price": 8.66,
+              "postage": 7.0,
+              "condition": "Buone condizioni",
+              "listed": "2026-09-03T08:54:08.000Z",
+              "url": "https://www.ebay.it/itm/327339700886"
+            },
+            {
+              "title": "True Crime Streets of LA - Sony Playstation 2 PS2 - PAL",
+              "price": 8.9,
+              "postage": 5.95,
+              "condition": "Buone condizioni",
+              "listed": "2026-01-27T15:19:02.000Z",
+              "url": "https://www.ebay.it/itm/366154624998"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Alone in the Dark 4",
+      "level": "dormant",
+      "search": "alone in the dark 4",
+      "queries": [
+        "alone in the dark 4"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_DE": {
+          "search_url": "https://www.ebay.de/sch/i.html?_nkw=alone%20in%20the%20dark%204%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "unmatched",
+          "platform_filter": "keyword",
+          "on_ebay": 1,
+          "fetched": 1,
+          "truncated": false,
+          "counted": 0,
+          "skipped": {
+            "other_game": 1
+          },
+          "skipped_examples": {
+            "other_game": [
+              "PS2 Spiele Konvolut 4x: Star Wars 3 Matrix Alone in the Dark Street Worrier Gut"
+            ]
+          },
+          "near": {
+            "partial": 1
+          }
+        },
+        "EBAY_IT": {
+          "search_url": "https://www.ebay.it/sch/i.html?_nkw=alone%20in%20the%20dark%204%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "unmatched",
+          "platform_filter": "keyword",
+          "on_ebay": 1,
+          "fetched": 1,
+          "truncated": false,
+          "counted": 0,
+          "skipped": {
+            "other_game": 1
+          },
+          "skipped_examples": {
+            "other_game": [
+              "LOTTO ALONE IN THE DARK + THE NEW NIGHTMARE + RESIDENT EVIL 4 - PS2 PAL ITA"
+            ]
+          },
+          "near": {
+            "scattered": 1
+          }
+        }
+      }
+    },
+    {
+      "title": "Cy Girls",
+      "level": "normal",
+      "search": "cy girls",
+      "queries": [
+        "cy girls"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=cy%20girls%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 2,
+          "fetched": 2,
+          "truncated": false,
+          "counted": 1,
+          "skipped": {
+            "other_game": 1
+          },
+          "skipped_examples": {
+            "other_game": [
+              "JUEGOS PLAYSTATION 2 PS2 SOLO DISCO. ENVÍO GRATIS."
+            ]
+          },
+          "lowest": 60.0,
+          "median": 60.0,
+          "postage_known": 1,
+          "median_postage": 7.0,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "CY GIRLS PS2 PAL ESPAÑA",
+              "price": 60.0,
+              "postage": 7.0,
+              "condition": "En buen estado",
+              "listed": "2023-03-01T16:21:08.000Z",
+              "url": "https://www.ebay.es/itm/394489583881"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Ice Age 2: The Meltdown",
+      "level": "normal",
+      "search": "ice age 2 the meltdown",
+      "queries": [
+        "ice age 2 the meltdown"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=ice%20age%202%20the%20meltdown%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 5,
+          "fetched": 5,
+          "truncated": false,
+          "counted": 4,
+          "skipped": {
+            "other_game": 1
+          },
+          "skipped_examples": {
+            "other_game": [
+              "JUEGOS PS1 PS2 VERSION PROMO PLAYSTATION. PRESS RAROS PRENSA. ELIGE EL TUYO."
+            ]
+          },
+          "lowest": 3.67,
+          "median": 3.83,
+          "postage_known": 1,
+          "median_postage": 5.49,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "Ice Age 2: The Meltdown PS2 Sony PlayStation 2 PAL Francia Español Caja Completa",
+              "price": 3.67,
+              "postage": null,
+              "condition": "Bon état",
+              "listed": "2026-06-11T18:30:05.000Z",
+              "url": "https://www.ebay.es/itm/377253830791"
+            },
+            {
+              "title": "Ice Age 2: The Meltdown PS2 Sony PlayStation 2 PAL Italia Español Completo",
+              "price": 3.67,
+              "postage": null,
+              "condition": "Buone condizioni",
+              "listed": "2026-06-11T18:30:09.000Z",
+              "url": "https://www.ebay.es/itm/377253831041"
+            },
+            {
+              "title": "Ice Age 2: The Meltdown PS2 Sony PlayStation 2 PAL España Español Completo Caja",
+              "price": 3.99,
+              "postage": 5.49,
+              "condition": "En buen estado",
+              "listed": "2026-06-04T18:26:36.000Z",
+              "url": "https://www.ebay.es/itm/377234550492"
+            },
+            {
+              "title": "Ice Age 2: The Meltdown PS2 Sony PlayStation 2 PAL Deutschland Español EMBALAJE ORIGINAL",
+              "price": 3.99,
+              "postage": null,
+              "condition": "Gut",
+              "listed": "2026-06-05T19:40:14.000Z",
+              "url": "https://www.ebay.es/itm/377237764126"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Star Wars Bounty Hunter",
+      "level": "normal",
+      "search": "star wars bounty hunter",
+      "queries": [
+        "star wars bounty hunter"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=star%20wars%20bounty%20hunter%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 3,
+          "fetched": 3,
+          "truncated": false,
+          "counted": 2,
+          "skipped": {
+            "other_game": 1
+          },
+          "skipped_examples": {
+            "other_game": [
+              "ELIJER TU JUEGOS PLAYSTATION 2"
+            ]
+          },
+          "lowest": 50.0,
+          "median": 55.0,
+          "postage_known": 2,
+          "median_postage": 7.98,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "Star Wars: Bounty Hunter PS2 | PAL España",
+              "price": 50.0,
+              "postage": 5.99,
+              "condition": "En muy buen estado",
+              "listed": "2026-02-08T17:44:27.000Z",
+              "url": "https://www.ebay.es/itm/257351046171"
+            },
+            {
+              "title": "STAR WARS BOUNTY HUNTER DE LUCASARTS PARA LA SONY PS2 USADO EN BUEN ESTADO",
+              "price": 59.99,
+              "postage": 9.96,
+              "condition": "En buen estado",
+              "listed": "2024-09-14T22:15:54.000Z",
+              "url": "https://www.ebay.es/itm/405229685518"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Shrek Superslam",
+      "level": "normal",
+      "search": "shrek superslam",
+      "queries": [
+        "shrek superslam"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_DE": {
+          "search_url": "https://www.ebay.de/sch/i.html?_nkw=shrek%20superslam%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 4,
+          "fetched": 4,
+          "truncated": false,
+          "counted": 2,
+          "skipped": {
+            "other_game": 2
+          },
+          "skipped_examples": {
+            "other_game": [
+              "PS2 Spiele | Kinder Spiele Spieleauswahl ab 6 Jahren | Playstation 2 Spyro Jak",
+              "Playstation 2 Spiele Auswahl PS2 Spielesammlung"
+            ]
+          },
+          "lowest": 9.99,
+          "median": 24.99,
+          "postage_known": 2,
+          "median_postage": 1.5,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "Shrek Super Slam für PS2 mit OVP und Buch !Auf FR,SP &NL! Gute Zustand!",
+              "price": 9.99,
+              "postage": 3.0,
+              "condition": "Gut",
+              "listed": "2026-07-21T18:23:28.000Z",
+              "url": "https://www.ebay.de/itm/398200332182"
+            },
+            {
+              "title": "Sony Playstation 2 Promo Spiel : Shrek Super Slam - Vollversion | PS2 OVP PAL",
+              "price": 39.99,
+              "postage": 0.0,
+              "condition": "Sehr gut",
+              "listed": "2023-11-08T08:56:45.000Z",
+              "url": "https://www.ebay.de/itm/196070638886"
+            }
+          ]
+        },
+        "EBAY_FR": {
+          "search_url": "https://www.ebay.fr/sch/i.html?_nkw=shrek%20superslam%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 1,
+          "fetched": 1,
+          "truncated": false,
+          "counted": 1,
+          "skipped": {},
+          "skipped_examples": {},
+          "lowest": 19.9,
+          "median": 19.9,
+          "postage_known": 1,
+          "median_postage": 3.1,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "DreamWork’s Shrek SuperSlam - Promo Press - Sony PlayStation PS2 - PAL EN",
+              "price": 19.9,
+              "postage": 3.1,
+              "condition": "Bon état",
+              "listed": "2023-07-04T06:07:45.000Z",
+              "url": "https://www.ebay.fr/itm/145171041068"
+            }
+          ]
+        },
+        "EBAY_IT": {
+          "search_url": "https://www.ebay.it/sch/i.html?_nkw=shrek%20superslam%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 26,
+          "fetched": 26,
+          "truncated": false,
+          "counted": 21,
+          "skipped": {
+            "incomplete": 2,
+            "other_game": 3
+          },
+          "skipped_examples": {
+            "incomplete": [
+              "PS2 SONY PLAYSTATION 2 SHREK SUPERSLAM SHREK SUPER SLAM senza manuale",
+              "Shrek SuperSlam - Solo Disco Pal - Per Sony PS2 PlayStation 2"
+            ],
+            "other_game": [
+              "Lotto GIOCHI PS2 Playstation 2 - SCEGLI I TUOI GIOCHI (M-Z)",
+              "Ps2 Playstation 2 Gioco A Scelta tra i Migliori Titoli FF Crash GTA Rayman KH",
+              "Canis Canem Edit PS2 Sony Playstation 2 PAL UK gioco usato COMPLETO"
+            ]
+          },
+          "lowest": 5.99,
+          "median": 11.57,
+          "postage_known": 20,
+          "median_postage": 5.7,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "Shrek SuperSlam Sony Ps2 Play Station 2 Pal",
+              "price": 5.99,
+              "postage": 5.9,
+              "condition": "Ottime condizioni",
+              "listed": "2024-11-08T15:44:50.000Z",
+              "url": "https://www.ebay.it/itm/335663088406"
+            },
+            {
+              "title": "SHREK SUPER SLAM per play station 2 ps2 SONY solo il disco in foto",
+              "price": 7.48,
+              "postage": 1.45,
+              "condition": "Ottime condizioni",
+              "listed": "2024-11-07T15:10:41.000Z",
+              "url": "https://www.ebay.it/itm/167071697257"
+            },
+            {
+              "title": "SHREK SUPER SLAM PS2 PLAYSTATION 2 COMPLETO VERS ITA",
+              "price": 7.9,
+              "postage": 4.99,
+              "condition": "Buone condizioni",
+              "listed": "2026-04-21T18:44:46.000Z",
+              "url": "https://www.ebay.it/itm/257468064676"
+            },
+            {
+              "title": "Shrek SuperSlam - Pal Ita - Per Sony PS2 PlayStation 2",
+              "price": 9.73,
+              "postage": 8.0,
+              "condition": "Ottime condizioni",
+              "listed": "2025-09-03T22:10:56.000Z",
+              "url": "https://www.ebay.it/itm/376525884283"
+            },
+            {
+              "title": "Shrek Super Slam per PS2 - PlayStation 2 PAL",
+              "price": 9.9,
+              "postage": 8.0,
+              "condition": "Ottime condizioni",
+              "listed": "2014-06-16T16:43:46.000Z",
+              "url": "https://www.ebay.it/itm/181439931600"
+            },
+            {
+              "title": "Gioco Shrek SuperSlam per PS2 Playstation 2",
+              "price": 9.9,
+              "postage": 5.99,
+              "condition": "Buone condizioni",
+              "listed": "2026-10-31T18:13:12.000Z",
+              "url": "https://www.ebay.it/itm/198760392939"
+            },
+            {
+              "title": "Shrek SuperSlam PS2",
+              "price": 9.91,
+              "postage": 2.9,
+              "condition": "Come nuovo",
+              "listed": "2026-03-01T07:20:38.000Z",
+              "url": "https://www.ebay.it/itm/327023555359"
+            },
+            {
+              "title": "Shrek-SuperSlam-Ps2-Play Station 2-Pal",
+              "price": 10.0,
+              "postage": 7.0,
+              "condition": "Buone condizioni",
+              "listed": "2023-12-21T14:26:46.000Z",
+              "url": "https://www.ebay.it/itm/315045472732"
+            },
+            {
+              "title": "Shrek SuperSlam - NO MANUALE - Per Sony PS2 PlayStation 2",
+              "price": 10.5,
+              "postage": 5.95,
+              "condition": "Buone condizioni",
+              "listed": "2026-04-16T09:21:01.000Z",
+              "url": "https://www.ebay.it/itm/389896874952"
+            },
+            {
+              "title": "SHREK SUPERSLAM PS2 PAL ITALIANO PLAYSTATION 2 drramworks super slam",
+              "price": 10.79,
+              "postage": 5.01,
+              "condition": "Buone condizioni",
+              "listed": "2022-01-26T10:22:21.000Z",
+              "url": "https://www.ebay.it/itm/325016567529"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Blood Rayne",
+      "level": "merged",
+      "search": "blood rayne",
+      "queries": [
+        "blood rayne"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_GB": {
+          "search_url": "https://www.ebay.co.uk/sch/i.html?_nkw=blood%20rayne%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "GBP",
+          "status": "unmatched",
+          "platform_filter": "item_specific",
+          "on_ebay": 18,
+          "fetched": 18,
+          "truncated": false,
+          "counted": 0,
+          "skipped": {
+            "other_game": 18
+          },
+          "skipped_examples": {
+            "other_game": [
+              "PS2 Game Bloodrayne",
+              "BloodRayne PS2 PlayStation 2 Game Complete With Manual",
+              "Sony Playstation 2 Games PS2 Make Your Selection A-H",
+              "BloodRayne PS2 PlayStation 2 Game Complete With Manual",
+              "Majesco BloodRayne Sony PlayStation 2 PS2 PAL 2002 15 Action Manual Included"
+            ]
+          }
+        },
+        "EBAY_US": {
+          "search_url": "https://www.ebay.com/sch/i.html?_nkw=blood%20rayne%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "USD",
+          "status": "ok",
+          "platform_filter": "item_specific",
+          "on_ebay": 122,
+          "fetched": 122,
+          "truncated": false,
+          "counted": 3,
+          "skipped": {
+            "incomplete": 1,
+            "other_game": 118
+          },
+          "skipped_examples": {
+            "incomplete": [
+              "PS2 Playstation 2 - BLOODRAYNE Blood Rayne DISC ONLY"
+            ],
+            "other_game": [
+              "BloodRayne 2 PlayStation 2 Artwork Only READ DESCRIPTION",
+              "BloodRayne 2 PlayStation 2 PS2 Disc Only Loose Disc Tested",
+              "BloodRayne (Sony PlayStation 2, 2002) PS2 Disc Only TESTED",
+              "Sony PlayStation 2 PS2 DISC Only TESTED BloodRayne 2002",
+              "BloodRayne (Sony PlayStation 2, 2001) PS2 *Complete*"
+            ]
+          },
+          "lowest": 14.99,
+          "median": 15.99,
+          "postage_known": 3,
+          "median_postage": 4.99,
+          "confirmed_counted": 2,
+          "confirmed_median": 15.49,
+          "listings": [
+            {
+              "title": "TEKKEN 4 PLAYSTATION 2 GAME AND MANUAL PLAY STATION PS2 COMPLETE blood rayne",
+              "price": 14.99,
+              "postage": 4.99,
+              "condition": "Good",
+              "listed": "2025-12-31T20:23:17.000Z",
+              "url": "https://www.ebay.com/itm/236557991035"
+            },
+            {
+              "title": "RYGAR PLAYSTATION 2 GAME AND MANUAL PLAY STATION PS2 COMPLETE blood rayne",
+              "price": 15.99,
+              "postage": 4.99,
+              "condition": "Good",
+              "listed": "2025-12-31T23:35:36.000Z",
+              "url": "https://www.ebay.com/itm/236558156215"
+            },
+            {
+              "title": "Blood Rayne PlayStation 2",
+              "price": 22.96,
+              "postage": 0.0,
+              "condition": "Good",
+              "listed": "2026-11-06T18:02:20.000Z",
+              "url": "https://www.ebay.com/itm/800885705670"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
