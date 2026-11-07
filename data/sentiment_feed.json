@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 00:28:25 UTC",
+  "last_updated": "2026-11-07 00:31:12 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -568,6 +568,25 @@
       "timestamp": "2026-11-06 23:41 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751087983",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 23:40 UTC"
+    },
+    {
       "headline": "Here's what's in Path of Exile 2’s huge 1.0 release, coming in December",
       "source": "PCGamer latest",
       "source_type": "news",
@@ -807,6 +826,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 23:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751086835",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 23:16 UTC"
     },
     {
       "headline": "I have no idea what is causing my ps5 to turn off.",
@@ -17335,18 +17373,19 @@
       "timestamp": "2026-11-06 10:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Half-Life, Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751053181",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Half-Life",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Half-Life",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338238,40 +338277,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 00:31 UTC"
-    },
-    {
-      "headline": "CatchCat: El nuevo fenómeno móvil al estilo Pokémon GO que te invita a cazar y coleccionar gatos reales en la calle",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/catchcat/115155/catchcat-el-juego-movil-estilo-pokemon-go-para-cazar-gatos-reales-en-la-calle",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 00:30 UTC"
-    },
-    {
-      "headline": "BioWare Is No More, But Its Impact On Queer Representation In Video Games Will Live On Forever",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xduplh/bioware_is_no_more_but_its_impact_on_queer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 00:30 UTC"
     }
   ]
 }
