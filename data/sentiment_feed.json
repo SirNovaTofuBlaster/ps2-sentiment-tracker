@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 09:01:20 UTC",
+  "last_updated": "2026-11-07 09:03:55 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -677,6 +677,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 07:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Death by Degrees",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751109287",
+      "matched_game": "Death by Degrees",
+      "matched_games": [
+        "Death by Degrees"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 07:38 UTC"
     },
     {
       "headline": "Jump Space announced for PS5. Coming Q1 2027",
@@ -4367,18 +4386,20 @@
       "timestamp": "2026-11-07 01:29 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Red Faction and Resident Evil Code: Veronica X",
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Resident Evil Code: Veronica X, Red Faction and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751094050",
-      "matched_game": "Red Faction",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
       "matched_games": [
+        "Devil May Cry 3: Dante's Awakening",
+        "Resident Evil Code: Veronica X",
         "Red Faction",
-        "Resident Evil Code: Veronica X"
+        "ICO"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -18123,21 +18144,22 @@
       "timestamp": "2026-11-06 15:12 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Odin Sphere, Dynasty Warriors 3 and 2 more",
+      "headline": "Thread on /v/ naming The Thing, Odin Sphere, Dynasty Warriors 3 and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751062913",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "The Thing",
       "matched_games": [
-        "Resident Evil 4",
+        "The Thing",
         "Odin Sphere",
         "Dynasty Warriors 3",
         "Red Faction",
-        "Destroy All Humans!"
+        "Destroy All Humans!",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
