@@ -1,7 +1,46 @@
 {
-  "last_updated": "2026-11-07 19:44:45 UTC",
+  "last_updated": "2026-11-07 19:58:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus and Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751139596",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus",
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 19:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751139307",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 19:47 UTC"
+    },
     {
       "headline": "Former Rockstar Developer Says They Should Hurry Up On GTA 6’s PC Version Before AI Gets There First",
       "source": "Kotaku",
@@ -71,17 +110,19 @@
       "timestamp": "2026-11-07 19:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Odin Sphere",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Odin Sphere and Hitman: Contracts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751137858",
-      "matched_game": "Odin Sphere",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Odin Sphere"
+        "Grand Theft Auto III",
+        "Odin Sphere",
+        "Hitman: Contracts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1814,6 +1855,25 @@
       "timestamp": "2026-11-07 18:00 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751133260",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 18:00 UTC"
+    },
+    {
       "headline": "Is this pc good?",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -2226,17 +2286,18 @@
       "timestamp": "2026-11-07 17:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Killer 7",
+      "headline": "Thread on /v/ naming Deus Ex and Killer 7",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751131750",
-      "matched_game": "Killer 7",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Killer 7"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2967,6 +3028,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 16:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Teenage Mutant Ninja Turtles and Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751129865",
+      "matched_game": "Teenage Mutant Ninja Turtles",
+      "matched_games": [
+        "Teenage Mutant Ninja Turtles",
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 16:56 UTC"
     },
@@ -3788,14 +3869,14 @@
       "timestamp": "2026-11-07 16:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Blood Rayne, Disaster Report, Juiced 2: Hot Import Nights and 6 more",
+      "headline": "Thread on /v/ naming Shadow of the Colossus, Disaster Report, Juiced 2: Hot Import Nights and 7 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751127686",
-      "matched_game": "Blood Rayne",
+      "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "Blood Rayne",
+        "Shadow of the Colossus",
         "Disaster Report",
         "Juiced 2: Hot Import Nights",
         "Max Payne",
@@ -3803,7 +3884,8 @@
         "SSX Tricky",
         "Splinter Cell",
         "True Crime: Streets of LA",
-        "Devil May Cry"
+        "Devil May Cry",
+        "Blood Rayne"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -6489,6 +6571,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 13:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751121446",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 13:53 UTC"
     },
     {
       "headline": "Thread on /vr/ naming Alone in the Dark",
@@ -337644,274 +337745,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 19:58 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4, Metal Gear Solid 2: Sons of Liberty and Monster Hunter",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750285536",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4",
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:56 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750285408",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
-      "matched_games": [
-        "Devil May Cry 3: Dante's Awakening"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:53 UTC"
-    },
-    {
-      "headline": "Power fantasy game with pistols",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xei4df/power_fantasy_game_with_pistols/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:52 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Odin Sphere",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750285347",
-      "matched_game": "Odin Sphere",
-      "matched_games": [
-        "Odin Sphere"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:52 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming 18 Wheeler and Altered Beast",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750285312",
-      "matched_game": "18 Wheeler",
-      "matched_games": [
-        "18 Wheeler",
-        "Altered Beast"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:52 UTC"
-    },
-    {
-      "headline": "searching for a chill rpg game",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xei36s/searching_for_a_chill_rpg_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:51 UTC"
-    },
-    {
-      "headline": "Any tips on how to pair??",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xei3o4/any_tips_on_how_to_pair/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:51 UTC"
-    },
-    {
-      "headline": "Does anyone know what this file in the Saved Data Utility (PS3) folder is?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xei2k3/does_anyone_know_what_this_file_in_the_saved_data/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:50 UTC"
-    },
-    {
-      "headline": "Specs to get into PC gaming",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xei1u7/specs_to_get_into_pc_gaming/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:49 UTC"
-    },
-    {
-      "headline": "How do I turn off controller inputs when streaming a game from my PC to my Deck?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xei0vr/how_do_i_turn_off_controller_inputs_when/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:48 UTC"
-    },
-    {
-      "headline": "Can I download video from dvd to my Playstation ?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xehzz4/can_i_download_video_from_dvd_to_my_playstation/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:47 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750284978",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:46 UTC"
-    },
-    {
-      "headline": "So if you happened to rent/play this as a kid what was your initial reaction to this moment in Demon's Crest?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xehz6y/so_if_you_happened_to_rentplay_this_as_a_kid_what/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:46 UTC"
-    },
-    {
-      "headline": "Would more reliable background Epic downloads help you on Steam Deck?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xehzi5/would_more_reliable_background_epic_downloads/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:46 UTC"
-    },
-    {
-      "headline": "Legend Of Zelda Producer Eiji Aonuma Knighted By French Ministry Of Culture",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/legend-of-zelda-producer-eiji-aonuma-knighted-by-french-ministry-of-culture-2000749331",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:45 UTC"
     }
   ]
 }
