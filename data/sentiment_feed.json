@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 11:52:23 UTC",
+  "last_updated": "2026-11-07 11:54:55 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1219,6 +1219,25 @@
       "hype": 1,
       "timestamp": "2026-11-07 09:35 UTC",
       "views": 170
+    },
+    {
+      "headline": "Thread on /v/ naming Peter Pan",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751112802",
+      "matched_game": "Peter Pan",
+      "matched_games": [
+        "Peter Pan"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 09:35 UTC"
     },
     {
       "headline": "BioWare’s Last Days Featured In Upcoming Documentary",
@@ -4107,17 +4126,19 @@
       "timestamp": "2026-11-07 04:29 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Half-Life and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751102713",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
+        "Grand Theft Auto: San Andreas",
+        "Half-Life",
         "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338449,23 +338470,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-24 11:57 UTC"
-    },
-    {
-      "headline": "Texas has suspended 17 data center construction permits and shut down automated portal that rubber-stamped projects | Tom's Hardware",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xe6oij/texas_has_suspended_17_data_center_construction/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 11:53 UTC"
     }
   ]
 }
