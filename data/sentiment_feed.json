@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 17:34:27 UTC",
+  "last_updated": "2026-11-07 17:37:06 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -912,6 +912,25 @@
       "timestamp": "2026-11-07 16:43 UTC"
     },
     {
+      "headline": "Thread on /v/ naming The Sopranos",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751129193",
+      "matched_game": "The Sopranos",
+      "matched_games": [
+        "The Sopranos"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 16:43 UTC"
+    },
+    {
       "headline": "Day 18: Which is the best Rhythm Game on PS1?",
       "source": "r/psx",
       "source_type": "reddit",
@@ -1437,18 +1456,18 @@
       "timestamp": "2026-11-07 16:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming SSX Tricky, Max Payne, Disaster Report and 2 more",
+      "headline": "Thread on /v/ naming Max Payne, Disaster Report, Juiced 2: Hot Import Nights and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751127686",
-      "matched_game": "SSX Tricky",
+      "matched_game": "Max Payne",
       "matched_games": [
-        "SSX Tricky",
         "Max Payne",
         "Disaster Report",
         "Juiced 2: Hot Import Nights",
-        "The Suffering"
+        "The Suffering",
+        "SSX Tricky"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338125,57 +338144,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 17:39 UTC"
-    },
-    {
-      "headline": "How a data centre united one Final Fantasy XIV community",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xeeqm6/how_a_data_centre_united_one_final_fantasy_xiv/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 17:36 UTC"
-    },
-    {
-      "headline": "searching for energy shields or protection domes",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xeepjg/searching_for_energy_shields_or_protection_domes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 17:35 UTC"
-    },
-    {
-      "headline": "Random shower thought",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xeeop0/random_shower_thought/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 17:34 UTC"
     }
   ]
 }
