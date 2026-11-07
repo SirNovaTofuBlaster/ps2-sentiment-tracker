@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 03:35:57 UTC",
+  "last_updated": "2026-11-07 03:49:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -41,6 +41,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 03:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751099589",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 03:16 UTC"
     },
     {
       "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
@@ -338308,76 +338327,6 @@
       "hype": 0,
       "timestamp": "2026-10-24 03:50 UTC",
       "views": 252
-    },
-    {
-      "headline": "I can't afford ddr5 or am5 CPUs, do I go am4 or save up more?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xdygud/i_cant_afford_ddr5_or_am5_cpus_do_i_go_am4_or/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 03:47 UTC"
-    },
-    {
-      "headline": "Xbox’s first chief operating officer is out after just a few months",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xdygzd/xboxs_first_chief_operating_officer_is_out_after/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 03:47 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming King Arthur",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750244805",
-      "matched_game": "King Arthur",
-      "matched_games": [
-        "King Arthur"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 03:38 UTC"
-    },
-    {
-      "headline": "[ Removed by Reddit ]",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1xdy93r/removed_by_reddit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 03:35 UTC"
     }
   ]
 }
