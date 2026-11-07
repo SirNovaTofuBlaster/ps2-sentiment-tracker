@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-07 02:55:39 UTC",
+  "last_updated": "2026-11-07 03:06:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monkey Island 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751098463",
+      "matched_game": "Monkey Island 4",
+      "matched_games": [
+        "Monkey Island 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 02:50 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Marvel: Ultimate Alliance",
       "source": "4chan /v/",
@@ -6274,7 +6293,7 @@
         "Final Fantasy X-2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337879,96 +337898,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 03:08 UTC"
-    },
-    {
-      "headline": "Microsoft was using Windows 11's speed test to push Bing, now it's quietly backing down",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xdxnkn/microsoft_was_using_windows_11s_speed_test_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 03:03 UTC"
-    },
-    {
-      "headline": "Steam Deck Headphone Issue",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xdxmty/steam_deck_headphone_issue/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 03:02 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4, Resident Evil Code: Veronica X, The Thing and 1 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750243023",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4",
-        "Resident Evil Code: Veronica X",
-        "The Thing",
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 03:01 UTC"
-    },
-    {
-      "headline": "How to play burned dvds on fat PS2 for beginners?",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1xdxm30/how_to_play_burned_dvds_on_fat_ps2_for_beginners/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 03:01 UTC"
-    },
-    {
-      "headline": "WSIB next if I really loved AC Odyssey?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xdxhub/wsib_next_if_i_really_loved_ac_odyssey/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-24 02:55 UTC"
     }
   ]
 }
