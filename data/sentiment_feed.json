@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 14:43:29 UTC",
+  "last_updated": "2026-11-07 14:46:08 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -54,6 +54,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 14:31 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751123107",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 14:31 UTC"
     },
@@ -523,6 +542,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 14:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Urban Reign",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751121870",
+      "matched_game": "Urban Reign",
+      "matched_games": [
+        "Urban Reign"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 14:04 UTC"
     },
     {
       "headline": "Daily Simple Questions Thread - November 07, 2026",
@@ -2935,6 +2973,25 @@
       "timestamp": "2026-11-07 10:44 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751114695",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 10:39 UTC"
+    },
+    {
       "headline": "I recently got a PS5, but I’m still using a Full HD 1080p TV with a 60Hz refresh rate.",
       "source": "r/playstation",
       "source_type": "reddit",
@@ -4369,19 +4426,19 @@
       "timestamp": "2026-11-07 08:31 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Armored Core 2, Project Zero II, Silent Hill 2 and 3 more",
+      "headline": "Thread on /v/ naming Project Zero II, Silent Hill 2, Fatal Frame and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751110794",
-      "matched_game": "Armored Core 2",
+      "matched_game": "Project Zero II",
       "matched_games": [
-        "Armored Core 2",
         "Project Zero II",
         "Silent Hill 2",
         "Fatal Frame",
         "Resident Evil 4",
-        "The Warriors"
+        "The Warriors",
+        "Armored Core 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -139922,7 +139979,7 @@
       "timestamp": "2026-11-01 20:01 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Freedom Fighters, The Suffering, Kill Switch and 4 more",
+      "headline": "Thread on /vr/ naming Freedom Fighters, The Suffering, Second Sight and 6 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -139931,11 +139988,13 @@
       "matched_games": [
         "Freedom Fighters",
         "The Suffering",
+        "Second Sight",
+        "25 to Life",
+        "Max Payne",
         "Kill Switch",
         "Ghost Rider",
         "Metal Arms: Glitch in the System",
-        "The Punisher",
-        "Max Payne"
+        "The Punisher"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338070,57 +338129,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 14:48 UTC"
-    },
-    {
-      "headline": "Can someone suggest any mac games under 30Gb ?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xeagez/can_someone_suggest_any_mac_games_under_30gb/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 14:43 UTC"
-    },
-    {
-      "headline": "Is my gpu cooked?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xeagfm/is_my_gpu_cooked/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 14:43 UTC"
-    },
-    {
-      "headline": "Was this a fair price for the 1TB OLED?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xeag9v/was_this_a_fair_price_for_the_1tb_oled/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 14:43 UTC"
     }
   ]
 }
