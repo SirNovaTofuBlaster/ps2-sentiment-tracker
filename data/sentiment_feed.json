@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 10:55:23 UTC",
+  "last_updated": "2026-11-07 10:57:58 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -517,6 +517,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 09:50 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751113208",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 09:49 UTC"
     },
     {
       "headline": "Pool of Radiance: Ruins of Myth Drannor is now available on GOG and Steam",
@@ -1270,14 +1289,15 @@
       "timestamp": "2026-11-07 08:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry",
+      "headline": "Thread on /v/ naming Devil May Cry and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751110865",
       "matched_game": "Devil May Cry",
       "matched_games": [
-        "Devil May Cry"
+        "Devil May Cry",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338361,74 +338381,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 11:00 UTC"
-    },
-    {
-      "headline": "5 Years Later, Radeon Finally Delivers - FSR 4.1 on RDNA 2 Tested",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xe5ns6/5_years_later_radeon_finally_delivers_fsr_41_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:56 UTC"
-    },
-    {
-      "headline": "I need help with the Command Prompt popping up for 2 seconds every time I start my PC.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xe5nyt/i_need_help_with_the_command_prompt_popping_up/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:56 UTC"
-    },
-    {
-      "headline": "5 Years Later, Radeon Finally Delivers - FSR 4.1 on RDNA 2 Tested",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xe5ni0/5_years_later_radeon_finally_delivers_fsr_41_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:55 UTC"
-    },
-    {
-      "headline": "Which one would you take?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xe5nnq/which_one_would_you_take/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:55 UTC"
     }
   ]
 }
