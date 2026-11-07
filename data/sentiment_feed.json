@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 10:14:37 UTC",
+  "last_updated": "2026-11-07 10:28:40 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -242,6 +242,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 09:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751112636",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 09:31 UTC"
     },
     {
       "headline": "Alternative to Diablo",
@@ -24645,18 +24664,19 @@
       "timestamp": "2026-11-06 09:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3 and Virtual On Marz",
+      "headline": "Thread on /v/ naming Final Fantasy X, Virtual On Marz and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751051467",
-      "matched_game": "Persona 3",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Persona 3",
-        "Virtual On Marz"
+        "Final Fantasy X",
+        "Virtual On Marz",
+        "Persona 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338145,129 +338165,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 10:28 UTC"
-    },
-    {
-      "headline": "Pokemon Platinum",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xe56mz/pokemon_platinum/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:27 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750257879",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:21 UTC"
-    },
-    {
-      "headline": "I Think Rocket League has one of the best starting tutorials in recent games",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xe52wd/i_think_rocket_league_has_one_of_the_best/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:20 UTC"
-    },
-    {
-      "headline": "Has anybody noticed many or all of your devices are just much slower than normal?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xe50vz/has_anybody_noticed_many_or_all_of_your_devices/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:17 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming LEGO Batman",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750257741",
-      "matched_game": "LEGO Batman",
-      "matched_games": [
-        "LEGO Batman"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:16 UTC"
-    },
-    {
-      "headline": "Dan Houser lo confirma: las portadas de GTA son todas iguales por consecuencia del 11-S",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026297008/dan-houser-lo-confirma-las-portadas-de-gta-son-todas-iguales-por-consecuencia-del-11s/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:15 UTC"
-    },
-    {
-      "headline": "lifetime collection",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xe4zfw/lifetime_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 10:14 UTC"
     }
   ]
 }
