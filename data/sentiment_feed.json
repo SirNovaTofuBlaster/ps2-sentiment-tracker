@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 19:28:28 UTC",
+  "last_updated": "2026-11-07 19:31:08 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -50,6 +50,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 19:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Odin Sphere",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751137858",
+      "matched_game": "Odin Sphere",
+      "matched_games": [
+        "Odin Sphere"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 19:20 UTC"
     },
@@ -137,6 +156,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 19:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751137473",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 19:13 UTC"
     },
     {
       "headline": "Open world games that reward exploring away from the main path/missions?",
@@ -1323,13 +1361,14 @@
       "timestamp": "2026-11-07 18:14 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Guilty Gear XX: Accent Core plus and Grand Theft Auto: Vice City",
+      "headline": "Thread on /v/ naming Tony Hawk's Underground 2, Guilty Gear XX: Accent Core plus and Grand Theft Auto: Vice City",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751133962",
-      "matched_game": "Guilty Gear XX: Accent Core plus",
+      "matched_game": "Tony Hawk's Underground 2",
       "matched_games": [
+        "Tony Hawk's Underground 2",
         "Guilty Gear XX: Accent Core plus",
         "Grand Theft Auto: Vice City"
       ],
@@ -2239,6 +2278,26 @@
       "hype": 0,
       "timestamp": "2026-11-07 17:20 UTC",
       "views": 182
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter and Grand Theft Auto: Vice City",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751131069",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "Grand Theft Auto: Vice City"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 17:20 UTC"
     },
     {
       "headline": "Are they Real? German Diamond and Pearl. (thats the only picture i have)",
@@ -3661,18 +3720,21 @@
       "timestamp": "2026-11-07 16:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne, Disaster Report, Juiced 2: Hot Import Nights and 2 more",
+      "headline": "Thread on /v/ naming Devil May Cry, Disaster Report, Juiced 2: Hot Import Nights and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751127686",
-      "matched_game": "Max Payne",
+      "matched_game": "Devil May Cry",
       "matched_games": [
-        "Max Payne",
+        "Devil May Cry",
         "Disaster Report",
         "Juiced 2: Hot Import Nights",
+        "Max Payne",
         "The Suffering",
-        "SSX Tricky"
+        "SSX Tricky",
+        "Splinter Cell",
+        "True Crime: Streets of LA"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -5670,21 +5732,22 @@
       "timestamp": "2026-11-07 14:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Alone in the Dark, Silent Hill 2, Jak and Daxter: The Precursor Legacy and 5 more",
+      "headline": "Thread on /v/ naming Ratchet & Clank, Silent Hill 2, Jak and Daxter: The Precursor Legacy and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751122673",
-      "matched_game": "Alone in the Dark",
+      "matched_game": "Ratchet & Clank",
       "matched_games": [
-        "Alone in the Dark",
+        "Ratchet & Clank",
         "Silent Hill 2",
         "Jak and Daxter: The Precursor Legacy",
         "Resident Evil Code: Veronica X",
         "Splinter Cell",
         "Persona 4",
         "Spider-Man",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Alone in the Dark"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -9244,14 +9307,16 @@
       "timestamp": "2026-11-07 09:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Metal Gear Solid 2: Sons of Liberty and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751113208",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Metal Gear Solid 3: Snake Eater",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Monster Hunter"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -338080,94 +338145,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 19:32 UTC"
-    },
-    {
-      "headline": "I Spent $1,000 on RARE N64 Games at Retro Fest Arkansas!",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/watch?v=LcA11tHGHgk",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:30 UTC",
-      "views": 5828
-    },
-    {
-      "headline": "Friend gave this to me cause he doesn’t play pokemon , is it real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xehkya/friend_gave_this_to_me_cause_he_doesnt_play/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:30 UTC"
-    },
-    {
-      "headline": "Quick question about ps2 versions.",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xehk4o/quick_question_about_ps2_versions/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:29 UTC"
-    },
-    {
-      "headline": "The Alters - Conceptual novelty helps simple pieces come together for a satisfying whole.",
-      "source": "r/patientgamers",
-      "source_type": "reddit",
-      "feed": "reddit:patientgamers",
-      "link": "https://www.reddit.com/r/patientgamers/comments/1xehj7c/the_alters_conceptual_novelty_helps_simple_pieces/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:28 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming 18 Wheeler",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750283965",
-      "matched_game": "18 Wheeler",
-      "matched_games": [
-        "18 Wheeler"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 19:28 UTC"
     }
   ]
 }
