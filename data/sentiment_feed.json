@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 08:09:00 UTC",
+  "last_updated": "2026-11-07 08:20:38 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -805,6 +805,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 06:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Iron Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751106369",
+      "matched_game": "Iron Man",
+      "matched_games": [
+        "Iron Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 06:06 UTC"
     },
@@ -18897,6 +18916,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-11-06 14:07 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751060102",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 14:03 UTC"
     },
     {
       "headline": "Zelda: Ocarina Of Time Remake Involved Xenoblade Chronicles Creator Monolith Soft",
@@ -338263,91 +338301,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 08:23 UTC"
-    },
-    {
-      "headline": "Quick question guys!",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xe34j1/quick_question_guys/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 08:19 UTC"
-    },
-    {
-      "headline": "bro fuck you",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xe344b/bro_fuck_you/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 08:18 UTC"
-    },
-    {
-      "headline": "Estados Unidos podría tener una ley de protección a los gamers que asegure la propiedad de los juegos digitales",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026297004/estados-unidos-podria-tener-una-ley-de-proteccion-a-los-gamers-que-asegure-la-propiedad-de-los-juegos-digitales/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 08:15 UTC"
-    },
-    {
-      "headline": "Day 828 of posting a Daily Screenshot from the games I've been playing",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53528978",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 08:13 UTC"
-    },
-    {
-      "headline": "Looking for Project Tokyo Dolls game files or preservation community",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xe30y1/looking_for_project_tokyo_dolls_game_files_or/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 08:12 UTC"
     }
   ]
 }
