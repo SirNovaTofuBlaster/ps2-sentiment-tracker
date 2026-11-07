@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 01:58:39 UTC",
+  "last_updated": "2026-11-07 02:09:50 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -111,6 +111,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 01:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751094050",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 01:28 UTC"
     },
     {
       "headline": "Former Nintendo of America president Doug Bowser originally said “hell no” to working at Nintendo",
@@ -11093,13 +11112,14 @@
       "timestamp": "2026-11-06 16:30 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Yakuza",
+      "headline": "Thread on /vr/ naming Blade 2 and Yakuza",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12917148",
-      "matched_game": "Yakuza",
+      "matched_game": "Blade 2",
       "matched_games": [
+        "Blade 2",
         "Yakuza"
       ],
       "match_score": 100,
@@ -337808,110 +337828,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-24 02:11 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Gregory Horror Show",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750240827",
-      "matched_game": "Gregory Horror Show",
-      "matched_games": [
-        "Gregory Horror Show"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 02:08 UTC"
-    },
-    {
-      "headline": "Tela louca sem parar",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xdwk5k/tela_louca_sem_parar/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 02:05 UTC"
-    },
-    {
-      "headline": "Are any of these real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xdwhrw/are_any_of_these_real/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 02:02 UTC"
-    },
-    {
-      "headline": "Games where you collect procedurally generated items",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xdwhgk/games_where_you_collect_procedurally_generated/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 02:02 UTC"
-    },
-    {
-      "headline": "Looking for Single Player RPGs like GOT",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xdwg8r/looking_for_single_player_rpgs_like_got/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 02:00 UTC"
-    },
-    {
-      "headline": "Talking Point: What Are You Playing This Weekend? - Issue 655",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/features/talking-point-what-are-you-playing-this-weekend-issue-655",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 02:00 UTC"
     }
   ]
 }
