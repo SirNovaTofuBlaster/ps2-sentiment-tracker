@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-07 12:49:30 UTC",
+  "last_updated": "2026-11-07 12:52:04 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751119010",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 12:48 UTC"
+    },
     {
       "headline": "Whats the best 1080p gpu?",
       "source": "r/pcmasterrace",
@@ -1946,19 +1965,19 @@
       "timestamp": "2026-11-07 09:22 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Sonic Unleashed, Deus Ex and Ratchet: Deadlocked",
+      "headline": "Thread on /v/ naming Deus Ex, Ratchet: Deadlocked and Sonic Unleashed",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751112376",
-      "matched_game": "Sonic Unleashed",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Sonic Unleashed",
         "Deus Ex",
-        "Ratchet: Deadlocked"
+        "Ratchet: Deadlocked",
+        "Sonic Unleashed"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9930,6 +9949,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 22:23 UTC"
+    },
+    {
+      "headline": "Thread on /vmg/ naming Grand Theft Auto: Vice City",
+      "source": "4chan /vmg/",
+      "source_type": "4chan",
+      "feed": "4chan:vmg",
+      "link": "https://boards.4chan.org/vmg/thread/2254322",
+      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_games": [
+        "Grand Theft Auto: Vice City"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-06 22:22 UTC"
     },
     {
       "headline": "Thread on /v/ naming The Sims",
@@ -338311,23 +338349,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 12:52 UTC"
-    },
-    {
-      "headline": "Why do I get low FPS at 16:9 but high FPS at 4:3?",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xe7tmm/why_do_i_get_low_fps_at_169_but_high_fps_at_43/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 12:49 UTC"
     }
   ]
 }
