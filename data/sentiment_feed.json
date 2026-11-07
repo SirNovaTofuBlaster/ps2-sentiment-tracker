@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 20:01:40 UTC",
+  "last_updated": "2026-11-07 20:12:54 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -314,6 +314,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 19:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Red Dead Revolver",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751137537",
+      "matched_game": "Red Dead Revolver",
+      "matched_games": [
+        "Red Dead Revolver"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 19:14 UTC"
     },
@@ -4012,6 +4031,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 16:07 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751127648",
+      "matched_game": "Spider-Man 2",
+      "matched_games": [
+        "Spider-Man 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 16:07 UTC"
     },
@@ -11305,17 +11343,18 @@
       "timestamp": "2026-11-07 06:57 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Kuon",
+      "headline": "Thread on /vr/ naming Resident Evil 4 and Kuon",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12918837",
-      "matched_game": "Kuon",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Kuon"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337587,147 +337626,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 20:12 UTC"
-    },
-    {
-      "headline": "My Hellraiser collector's edition finally came in!",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xeilg2/my_hellraiser_collectors_edition_finally_came_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 20:11 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun and The Thing",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/585508610",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun",
-        "The Thing"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 20:10 UTC"
-    },
-    {
-      "headline": "Different roles can give co-op games more replay value",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xeij8u/different_roles_can_give_coop_games_more_replay/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 20:09 UTC"
-    },
-    {
-      "headline": "Prebuilt",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xeiii5/prebuilt/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 20:08 UTC"
-    },
-    {
-      "headline": "AROS.games - Retro OS for Gamers",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xeig5l/arosgames_retro_os_for_gamers/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 20:05 UTC"
-    },
-    {
-      "headline": "Non-Steam storage is 79GB",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xeiffs/nonsteam_storage_is_79gb/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 20:04 UTC"
-    },
-    {
-      "headline": "Where to find a 64mb Fmcb card or cheaper copy of vcs?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xeiea9/where_to_find_a_64mb_fmcb_card_or_cheaper_copy_of/",
-      "matched_game": "Mortal Kombat: Deception",
-      "matched_games": [
-        "Mortal Kombat: Deception"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 20:03 UTC"
-    },
-    {
-      "headline": "Starship Troopers: Extermination - Flying Hoppers, Camp Rasczak, and more",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xeiebv/starship_troopers_extermination_flying_hoppers/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 20:03 UTC"
     }
   ]
 }
