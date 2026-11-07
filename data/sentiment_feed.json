@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 18:31:34 UTC",
+  "last_updated": "2026-11-07 18:34:16 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -243,14 +243,15 @@
       "timestamp": "2026-11-07 18:14 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Guilty Gear XX: Accent Core plus",
+      "headline": "Thread on /v/ naming Guilty Gear XX: Accent Core plus and Grand Theft Auto: Vice City",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751133962",
       "matched_game": "Guilty Gear XX: Accent Core plus",
       "matched_games": [
-        "Guilty Gear XX: Accent Core plus"
+        "Guilty Gear XX: Accent Core plus",
+        "Grand Theft Auto: Vice City"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -377,6 +378,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 18:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751133424",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 18:03 UTC"
     },
@@ -4496,18 +4516,20 @@
       "timestamp": "2026-11-07 14:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy, Resident Evil Code: Veronica X, Splinter Cell and 2 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 2, Jak and Daxter: The Precursor Legacy and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751122673",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
+        "Silent Hill 2",
         "Jak and Daxter: The Precursor Legacy",
         "Resident Evil Code: Veronica X",
         "Splinter Cell",
         "Persona 4",
-        "Silent Hill 2"
+        "Spider-Man"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -5180,6 +5202,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 13:55 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Alone in the Dark",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12919201",
+      "matched_game": "Alone in the Dark",
+      "matched_games": [
+        "Alone in the Dark"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 13:51 UTC"
     },
     {
       "headline": "Bought a card yesterday, still hasn’t been cleared.",
@@ -7717,6 +7758,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 10:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Bard's Tale",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751113910",
+      "matched_game": "Bard's Tale",
+      "matched_games": [
+        "Bard's Tale"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 10:12 UTC"
     },
     {
       "headline": "Day 842 of posting a Daily Screenshot from the games I've been playing",
@@ -337981,57 +338041,6 @@
       "hype": 0,
       "timestamp": "2026-10-24 18:34 UTC",
       "views": 599
-    },
-    {
-      "headline": "Hi! Is this GER Pokemom White 2 original?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xeg66i/hi_is_this_ger_pokemom_white_2_original/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 18:33 UTC"
-    },
-    {
-      "headline": "Need a new PSU and I need to know which 12V-2x6 to get for my 4090.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xeg4gv/need_a_new_psu_and_i_need_to_know_which_12v2x6_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 18:31 UTC"
-    },
-    {
-      "headline": "Bottleneck question",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xeg44g/bottleneck_question/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 18:31 UTC"
     }
   ]
 }
