@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-07 05:18:20 UTC",
+  "last_updated": "2026-11-07 05:29:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -193,15 +193,15 @@
       "timestamp": "2026-11-07 04:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Alone in the Dark and Silent Hill 2",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Alone in the Dark",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751103358",
-      "matched_game": "Alone in the Dark",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Alone in the Dark",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Alone in the Dark"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -634,6 +634,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 03:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Midnight Club",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751101316",
+      "matched_game": "Midnight Club",
+      "matched_games": [
+        "Midnight Club"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 03:54 UTC"
     },
@@ -338280,112 +338299,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-24 05:29 UTC"
-    },
-    {
-      "headline": "Bought a used RTX 3070 from a \"vouched\" seller. OCCT shows 26 VRAM errors, seller says \"don't worry about it\" and blames cracked games and telling me I don't know much about graphics cards. Need advice.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xe0av3/bought_a_used_rtx_3070_from_a_vouched_seller_occt/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 05:28 UTC"
-    },
-    {
-      "headline": "Games always showing the RSOD",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1xe09yk/games_always_showing_the_rsod/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 05:27 UTC"
-    },
-    {
-      "headline": "The new update removed this wallpaper! where can I find it now?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xe09gd/the_new_update_removed_this_wallpaper_where_can_i/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-24 05:26 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750248712",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 05:25 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Devil May Cry",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750248538",
-      "matched_game": "Devil May Cry",
-      "matched_games": [
-        "Devil May Cry"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-24 05:20 UTC"
-    },
-    {
-      "headline": "Shatterhand is an underrated masterpiece",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xe053l/shatterhand_is_an_underrated_masterpiece/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 70,
-      "hype": 0,
-      "timestamp": "2026-10-24 05:19 UTC"
     }
   ]
 }
