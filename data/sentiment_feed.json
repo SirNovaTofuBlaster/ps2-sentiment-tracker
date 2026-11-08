@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 06:28:41 UTC",
+  "last_updated": "2026-11-08 06:39:40 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2192,6 +2192,28 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 02:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Tony Hawk's Underground 2, Tony Hawk's Underground, Shadow Hearts and 1 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751161183",
+      "matched_game": "Tony Hawk's Underground 2",
+      "matched_games": [
+        "Tony Hawk's Underground 2",
+        "Tony Hawk's Underground",
+        "Shadow Hearts",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 02:02 UTC"
     },
     {
       "headline": "Hands Down, Best Accessory I Have Ever Bought for the Deck",
@@ -55482,6 +55504,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-05 19:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Okami",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751017949",
+      "matched_game": "Okami",
+      "matched_games": [
+        "Okami"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-05 19:17 UTC"
     },
@@ -338127,26 +338168,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 06:39 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Taxi 3 and Crazy Taxi",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750314238",
-      "matched_game": "Taxi 3",
-      "matched_games": [
-        "Taxi 3",
-        "Crazy Taxi"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 06:28 UTC"
     }
   ]
 }
