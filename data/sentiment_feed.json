@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 00:18:15 UTC",
+  "last_updated": "2026-11-08 00:29:37 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2320,6 +2320,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 21:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Guitar Hero",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751144342",
+      "matched_game": "Guitar Hero",
+      "matched_games": [
+        "Guitar Hero"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 21:17 UTC"
     },
@@ -338653,148 +338672,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-10-25 00:30 UTC"
-    },
-    {
-      "headline": "Buzzing Sound Coming from New GPU",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xeo7xc/buzzing_sound_coming_from_new_gpu/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 00:26 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750299447",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 00:25 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming The Sims",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750299478",
-      "matched_game": "The Sims",
-      "matched_games": [
-        "The Sims"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 00:25 UTC"
-    },
-    {
-      "headline": "My library",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xeo6jq/my_library/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 00:24 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750299370",
-      "matched_game": "Grand Theft Auto III",
-      "matched_games": [
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 00:23 UTC"
-    },
-    {
-      "headline": "UGREEN Video Capture Card 1080p video grabber - will this work to connect my deck to an ipad 10.9 10th gen and use it as a monitor ?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xeo519/ugreen_video_capture_card_1080p_video_grabber/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 00:22 UTC"
-    },
-    {
-      "headline": "Issue with MAME Emus",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xeo492/issue_with_mame_emus/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 00:21 UTC"
-    },
-    {
-      "headline": "Gen 4 Pokemon",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xeo1zv/gen_4_pokemon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 00:18 UTC"
     }
   ]
 }
