@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 23:01:22 UTC",
+  "last_updated": "2026-11-08 23:04:02 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -598,6 +598,26 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-08 22:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Odin Sphere and The Bard's Tale",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751210734",
+      "matched_game": "Odin Sphere",
+      "matched_games": [
+        "Odin Sphere",
+        "The Bard's Tale"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 22:04 UTC"
     },
     {
       "headline": "Just like new!",
@@ -3348,13 +3368,14 @@
       "timestamp": "2026-11-08 19:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751200790",
-      "matched_game": "Persona 3",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "Persona 3"
       ],
       "match_score": 100,
@@ -8050,6 +8071,26 @@
       "timestamp": "2026-11-08 15:20 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil 4 and Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751189645",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 15:19 UTC"
+    },
+    {
       "headline": "SG Racing - Beastflaps - A ridiculous pixel-art kart racer for 1–4 players",
       "source": "r/Games",
       "source_type": "reddit",
@@ -8067,17 +8108,18 @@
       "timestamp": "2026-11-08 15:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening",
+      "headline": "Thread on /v/ naming Sonic Heroes and Devil May Cry 3: Dante's Awakening",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751189594",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_game": "Sonic Heroes",
       "matched_games": [
+        "Sonic Heroes",
         "Devil May Cry 3: Dante's Awakening"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338856,60 +338898,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-25 23:05 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Spider-Man and Spider-Man 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750357242",
-      "matched_game": "Spider-Man",
-      "matched_games": [
-        "Spider-Man",
-        "Spider-Man 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 23:03 UTC"
-    },
-    {
-      "headline": "Issues reading certain PS2 Games (Parasite Eve & Kingsfield)",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1xfgjd7/issues_reading_certain_ps2_games_parasite_eve/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 23:02 UTC"
-    },
-    {
-      "headline": "Is it Worth Upgrading My Monitor?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfgik4/is_it_worth_upgrading_my_monitor/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 23:01 UTC"
     }
   ]
 }
