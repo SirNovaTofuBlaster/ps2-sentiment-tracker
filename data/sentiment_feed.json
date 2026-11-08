@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 10:40:19 UTC",
+  "last_updated": "2026-11-08 10:42:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -204,6 +204,25 @@
       ],
       "match_score": 100,
       "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 10:21 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751179264",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338988,42 +339007,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 10:42 UTC"
-    },
-    {
-      "headline": "Zeravault TD - Yigit Ozcifci - A challenging old-school tower defense game for iPhone",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xez4x0/zeravault_td_yigit_ozcifci_a_challenging/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 10:41 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750321762",
-      "matched_game": "Final Fantasy XII",
-      "matched_games": [
-        "Final Fantasy XII"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 10:41 UTC"
     }
   ]
 }
