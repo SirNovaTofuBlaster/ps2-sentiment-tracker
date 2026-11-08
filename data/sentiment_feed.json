@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 22:04:30 UTC",
+  "last_updated": "2026-11-08 22:07:02 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -6953,6 +6953,25 @@
       "timestamp": "2026-11-08 15:46 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Need for Speed Underground 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751190727",
+      "matched_game": "Need for Speed Underground 2",
+      "matched_games": [
+        "Need for Speed Underground 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 15:43 UTC"
+    },
+    {
       "headline": "What is the best way to travel with a PC?",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -7309,6 +7328,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-08 15:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751189594",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-08 15:18 UTC"
     },
@@ -28678,7 +28716,7 @@
       "timestamp": "2026-11-07 15:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Deus Ex and Half-Life",
+      "headline": "Thread on /vr/ naming Deus Ex, Half-Life and Max Payne",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -28686,7 +28724,8 @@
       "matched_game": "Deus Ex",
       "matched_games": [
         "Deus Ex",
-        "Half-Life"
+        "Half-Life",
+        "Max Payne"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -339053,76 +339092,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 22:07 UTC"
-    },
-    {
-      "headline": "DF Retro: Inside The Embracer Games Archive (Massive physical game + game hardware for developers, researchers etc)",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xff90x/df_retro_inside_the_embracer_games_archive/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 22:06 UTC"
-    },
-    {
-      "headline": "Internet speed",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xff924/internet_speed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 22:06 UTC"
-    },
-    {
-      "headline": "PLEASE recommend similar games to Lego Batman legacy of dark knight",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xff780/please_recommend_similar_games_to_lego_batman/",
-      "matched_game": "LEGO Batman",
-      "matched_games": [
-        "LEGO Batman"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 22:04 UTC"
-    },
-    {
-      "headline": "Crossbow from Exidy on MiSTer FPGA",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xff6wt/crossbow_from_exidy_on_mister_fpga/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 22:04 UTC"
     }
   ]
 }
