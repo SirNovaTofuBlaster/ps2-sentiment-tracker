@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 06:52:27 UTC",
+  "last_updated": "2026-11-08 06:54:57 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -732,6 +732,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-08 05:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751170394",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-08 05:36 UTC"
     },
@@ -16232,18 +16251,19 @@
       "timestamp": "2026-11-07 13:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII and Final Fantasy X",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Final Fantasy X and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751119749",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Final Fantasy XII",
-        "Final Fantasy X"
+        "Kingdom Hearts",
+        "Final Fantasy X",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
