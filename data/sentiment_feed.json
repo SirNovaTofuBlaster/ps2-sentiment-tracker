@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 05:55:25 UTC",
+  "last_updated": "2026-11-08 05:57:59 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -636,17 +636,18 @@
       "timestamp": "2026-11-08 04:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming The Thing and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751168427",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "The Thing",
       "matched_games": [
+        "The Thing",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4773,21 +4774,22 @@
       "timestamp": "2026-11-07 22:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God Hand, Final Fantasy X, Silent Hill 2 and 5 more",
+      "headline": "Thread on /v/ naming Silent Hill 2, Final Fantasy X, Resident Evil 4 and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751149183",
-      "matched_game": "God Hand",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "God Hand",
-        "Final Fantasy X",
         "Silent Hill 2",
+        "Final Fantasy X",
         "Resident Evil 4",
         "Space Channel 5",
         "Max Payne",
         "Metal Gear Solid 3: Snake Eater",
-        "Half-Life"
+        "Half-Life",
+        "God Hand",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338320,57 +338322,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 05:59 UTC"
-    },
-    {
-      "headline": "im looking for some pc games any ideas",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xeufd4/im_looking_for_some_pc_games_any_ideas/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 05:56 UTC"
-    },
-    {
-      "headline": "PSA: Call Of Duty: Modern Warfare 4 Switch 2 Update Now Live, Here Are The Details",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/psa-call-of-duty-modern-warfare-4-switch-2-update-now-live-here-are-the-details",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 05:55 UTC"
-    },
-    {
-      "headline": "Elden Ring Movie's Reported $200 Million Budget Makes It A24's Most Expensive Film Ever — and It's Not Close",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xeuekw/elden_ring_movies_reported_200_million_budget/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 05:55 UTC"
     }
   ]
 }
