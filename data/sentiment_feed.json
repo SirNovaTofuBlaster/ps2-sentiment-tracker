@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 11:37:23 UTC",
+  "last_updated": "2026-11-08 11:39:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -103,6 +103,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 11:28 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Winx Club",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751181185",
+      "matched_game": "Winx Club",
+      "matched_games": [
+        "Winx Club"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 11:27 UTC"
     },
     {
       "headline": "Looking for games under 70$ for PS4 (read desc)",
@@ -4577,15 +4596,15 @@
       "timestamp": "2026-11-08 04:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3 and Persona 4",
+      "headline": "Thread on /v/ naming Persona 4 and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751168320",
-      "matched_game": "Persona 3",
+      "matched_game": "Persona 4",
       "matched_games": [
-        "Persona 3",
-        "Persona 4"
+        "Persona 4",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -5374,6 +5393,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-08 03:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751164516",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-08 03:11 UTC"
     },
@@ -339255,93 +339293,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 11:42 UTC"
-    },
-    {
-      "headline": "Any massive RPGs for PC with focus on interactivity?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xf05as/any_massive_rpgs_for_pc_with_focus_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 11:38 UTC"
-    },
-    {
-      "headline": "CPU Damage or just needs a clean?!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xf05jv/cpu_damage_or_just_needs_a_clean/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 11:38 UTC"
-    },
-    {
-      "headline": "This is peak emulation | Gran Turismo 4",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xf05ig/this_is_peak_emulation_gran_turismo_4/",
-      "matched_game": "Gran Turismo 4",
-      "matched_games": [
-        "Gran Turismo 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 11:38 UTC"
-    },
-    {
-      "headline": "Anytime Interested?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xf04xn/anytime_interested/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 11:37 UTC"
-    },
-    {
-      "headline": "Not as bad as I thought(MAYBE)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xf04m0/not_as_bad_as_i_thoughtmaybe/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 11:37 UTC"
     }
   ]
 }
