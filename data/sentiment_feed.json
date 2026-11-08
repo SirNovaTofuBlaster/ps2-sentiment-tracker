@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 15:25:19 UTC",
+  "last_updated": "2026-11-08 15:27:54 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -588,6 +588,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 14:42 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751187971",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 14:40 UTC"
     },
     {
       "headline": "Should I play the Ocarina of Time remake if I didn't like Breath of the Wild?",
@@ -12709,6 +12728,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 22:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts, Half-Life and Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751148075",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "Half-Life",
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-07 22:21 UTC"
     },
     {
       "headline": "I made a motherboard temperature bridge for SignalRGB — looking for hardware testers",
@@ -339072,40 +339112,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 15:28 UTC"
-    },
-    {
-      "headline": "RATS!! - Lanza Studios (solo dev). A Co-op tower defense for up to four farmhands who fight on foot, build mid-wave, and bowl rats into a catfish",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xf58f7/rats_lanza_studios_solo_dev_a_coop_tower_defense/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 15:26 UTC"
-    },
-    {
-      "headline": "'This is the bit where the comet hits the earth and the dinosaurs die:' Tim Sweeney revisits scathing 26-year-old eulogy for beloved studio Looking Glass",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/gaming-industry/this-is-the-bit-where-the-comet-hits-the-earth-and-the-dinosaurs-die-tim-sweeney-revisits-scathing-26-year-old-eulogy-for-beloved-studio-looking-glass/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 15:26 UTC"
     }
   ]
 }
