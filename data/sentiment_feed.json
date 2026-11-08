@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 03:04:28 UTC",
+  "last_updated": "2026-11-08 03:09:10 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -76,6 +76,23 @@
       "source_type": "reddit",
       "feed": "reddit:gamingsuggestions",
       "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xqo27i/which_title_is_most_synonymous_to/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-08 02:54 UTC"
+    },
+    {
+      "headline": "How to Play Every GTA Game in 2026",
+      "source": "Polygon.com",
+      "source_type": "news",
+      "feed": "https://www.polygon.com/rss/index.xml",
+      "link": "https://www.polygon.com/gta-games-all-2026-where-to-play/",
       "matched_game": null,
       "matched_games": [],
       "match_score": 0,
@@ -205,6 +222,23 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-08 02:43 UTC"
+    },
+    {
+      "headline": "8 Near-Perfect BioWare Games That Aged Like Fine Wine",
+      "source": "Polygon.com",
+      "source_type": "news",
+      "feed": "https://www.polygon.com/rss/index.xml",
+      "link": "https://www.polygon.com/top-bioware-games/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-08 02:43 UTC"
     },
@@ -338607,62 +338641,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 03:09 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Deus Ex and Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750306760",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex",
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 03:08 UTC"
-    },
-    {
-      "headline": "LF best -$140 dollar wireless headset",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xere6v/lf_best_140_dollar_wireless_headset/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-25 03:07 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Persona 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750306630",
-      "matched_game": "Persona 4",
-      "matched_games": [
-        "Persona 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 03:06 UTC"
     }
   ]
 }
