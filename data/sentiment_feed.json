@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 20:10:19 UTC",
+  "last_updated": "2026-11-08 20:12:55 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1082,6 +1082,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-08 18:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Red Faction",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751200450",
+      "matched_game": "Red Faction",
+      "matched_games": [
+        "Red Faction"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-08 18:54 UTC"
     },
@@ -9623,6 +9642,29 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 10:45 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Grand Theft Auto: San Andreas, Destroy All Humans!, Splinter Cell and 2 more",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12920694",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas",
+        "Destroy All Humans!",
+        "Splinter Cell",
+        "The Suffering",
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 10:44 UTC"
     },
     {
       "headline": "Which Silent Hill game should I buy on black Friday sale?",
@@ -60637,6 +60679,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-06 02:51 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Final Fantasy X",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12916451",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-06 02:51 UTC"
     },
