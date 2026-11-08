@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-11-08 01:15:08 UTC",
+  "last_updated": "2026-11-08 01:26:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
-      "headline": "Thread on /v/ naming Shadow of Rome, Chaos Legion and Ghost Rider",
+      "headline": "Thread on /v/ naming Shadow of Rome, Chaos Legion, Ghost Rider and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -12,7 +12,10 @@
       "matched_games": [
         "Shadow of Rome",
         "Chaos Legion",
-        "Ghost Rider"
+        "Ghost Rider",
+        "Spartan Total Warrior",
+        "Disaster Report",
+        "Raw Danger"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -260,6 +263,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 00:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751156352",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 00:37 UTC"
     },
     {
       "headline": "Sensitive power delivery",
@@ -9153,15 +9175,14 @@
       "timestamp": "2026-11-07 16:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne 2: The Fall of Max Payne, Cold Fear, Disaster Report and 10 more",
+      "headline": "Thread on /v/ naming The Sims: Bustin' Out, Disaster Report, Juiced 2: Hot Import Nights and 11 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751127686",
-      "matched_game": "Max Payne 2: The Fall of Max Payne",
+      "matched_game": "The Sims: Bustin' Out",
       "matched_games": [
-        "Max Payne 2: The Fall of Max Payne",
-        "Cold Fear",
+        "The Sims: Bustin' Out",
         "Disaster Report",
         "Juiced 2: Hot Import Nights",
         "Max Payne",
@@ -9172,10 +9193,12 @@
         "Devil May Cry",
         "Blood Rayne",
         "Shadow of the Colossus",
-        "Marc Ecko's Getting Up: Contents Under Pressure"
+        "Marc Ecko's Getting Up: Contents Under Pressure",
+        "Max Payne 2: The Fall of Max Payne",
+        "Cold Fear"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -39811,20 +39834,21 @@
       "timestamp": "2026-11-06 09:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God Hand, Virtual On Marz, Persona 3 and 1 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Virtual On Marz, Persona 3 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751051467",
-      "matched_game": "God Hand",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "God Hand",
+        "Resident Evil 4",
         "Virtual On Marz",
         "Persona 3",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "God Hand"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338599,146 +338623,6 @@
       "hype": 0,
       "timestamp": "2026-10-25 01:27 UTC",
       "views": 893
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750302306",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 01:24 UTC"
-    },
-    {
-      "headline": "An Original Wizball Artist Is Helping Fix the Game Nearly 40 Years Later",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/53559454",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 01:22 UTC"
-    },
-    {
-      "headline": "58 Years Later, Captain Kirk's Best Star Trek Quote Is the Greatest Line in Sci-Fi History",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/best-star-trek-original-series-quote-captain-kirk/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 70,
-      "hype": 0,
-      "timestamp": "2026-10-25 01:20 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750302132",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
-      "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 01:20 UTC"
-    },
-    {
-      "headline": "Is FSR implementation that bad? Struggling between RX 9070 (€800) and RTX 5070 (€880) for a €1800 1440p build.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xepb87/is_fsr_implementation_that_bad_struggling_between/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 01:20 UTC"
-    },
-    {
-      "headline": "Customer Support Ratings Megathread, worthwhile?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xepanu/customer_support_ratings_megathread_worthwhile/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 01:19 UTC"
-    },
-    {
-      "headline": "IFComp 2026 Winners Announced",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xep9k0/ifcomp_2026_winners_announced/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-25 01:17 UTC"
-    },
-    {
-      "headline": "Does no one here on this subreddit like fps fantasy? No love for Clive Barker's Undying? Also, why is it so hard to get rpg recommendations on this subreddit?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xep8da/does_no_one_here_on_this_subreddit_like_fps/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 40,
-      "hype": 0,
-      "timestamp": "2026-10-25 01:16 UTC"
     }
   ]
 }
