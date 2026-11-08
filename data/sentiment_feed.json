@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 10:42:44 UTC",
+  "last_updated": "2026-11-08 10:44:57 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -78,6 +78,23 @@
       "source_type": "reddit",
       "feed": "reddit:gamingsuggestions",
       "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xqvg1n/alternative_game_suggestions/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-08 10:30 UTC"
+    },
+    {
+      "headline": "68 Years Later, Peanuts’ Most Mysterious Character Is Finally Making Her Official Debut — But There's a Catch",
+      "source": "Polygon.com",
+      "source_type": "news",
+      "feed": "https://www.polygon.com/rss/index.xml",
+      "link": "https://www.polygon.com/charlie-brown-pencil-pal-history-peanuts/",
       "matched_game": null,
       "matched_games": [],
       "match_score": 0,
@@ -1123,6 +1140,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 08:45 UTC"
+    },
+    {
+      "headline": "Nintendo Switch 2 and Switch file sizes – Metaphor: ReFantazio, Pikmin 4 for Switch 2, Shrek 2 Remastered, Sonic Pico Park, more",
+      "source": "Nintendo Everything",
+      "source_type": "news",
+      "feed": "https://nintendoeverything.com/feed",
+      "link": "https://nintendoeverything.com/nintendo-switch-2-and-switch-file-sizes-metaphor-refantzio-pikmin-4-switch-2-shrek-2-remastered-sonic-pico-park-more/",
+      "matched_game": "Shrek 2",
+      "matched_games": [
+        "Shrek 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "title",
+      "is_remaster_rumor": true,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 1,
+      "timestamp": "2026-11-08 08:40 UTC"
     },
     {
       "headline": "Pain from wearing headphones with thin glasses.",
@@ -338973,40 +339009,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 10:44 UTC"
-    },
-    {
-      "headline": "RTX 5090s being dismantled and desoldered by the thousands for AI servers | Tom's Hardware",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xez64k/rtx_5090s_being_dismantled_and_desoldered_by_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 10:43 UTC"
-    },
-    {
-      "headline": "I modded Gran Turismo 1 (PS1 PAL) to make prize cars purchasable — Gran Turismo Ultimate is released!",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xez5lc/i_modded_gran_turismo_1_ps1_pal_to_make_prize/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 10:42 UTC"
     }
   ]
 }
