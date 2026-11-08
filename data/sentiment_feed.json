@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-08 09:19:41 UTC",
+  "last_updated": "2026-11-08 09:30:37 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751177745",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 09:27 UTC"
+    },
     {
       "headline": "La comunidad rescata Dino Crisis 2: un modder lo transforma en un increíble juego 3D",
       "source": "Vandal",
@@ -3788,6 +3807,25 @@
       "timestamp": "2026-11-08 02:37 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751163037",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 02:37 UTC"
+    },
+    {
       "headline": "Games That have Submarines as bases",
       "source": "r/gamingsuggestions",
       "source_type": "reddit",
@@ -6967,14 +7005,14 @@
       "timestamp": "2026-11-07 22:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Arcana Heart, Final Fantasy X, Silent Hill 2 and 7 more",
+      "headline": "Thread on /v/ naming God Hand, Final Fantasy X, Silent Hill 2 and 8 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751149183",
-      "matched_game": "Arcana Heart",
+      "matched_game": "God Hand",
       "matched_games": [
-        "Arcana Heart",
+        "God Hand",
         "Final Fantasy X",
         "Silent Hill 2",
         "Resident Evil 4",
@@ -6982,8 +7020,9 @@
         "Max Payne",
         "Metal Gear Solid 3: Snake Eater",
         "Half-Life",
-        "God Hand",
-        "Grand Theft Auto: San Andreas"
+        "Grand Theft Auto: San Andreas",
+        "Arcana Heart",
+        "The Hulk"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338694,76 +338733,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-25 09:30 UTC"
-    },
-    {
-      "headline": "I built a free browser strategy MMO about economy, politics and war – looking for first players and feedback",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53570352",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 09:29 UTC"
-    },
-    {
-      "headline": "Is this a scratch or a defect on my PS5 DualSense controller?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xexwi9/is_this_a_scratch_or_a_defect_on_my_ps5_dualsense/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 09:27 UTC"
-    },
-    {
-      "headline": "CPU bottle neck",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xexu2w/cpu_bottle_neck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 09:23 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Romancing SaGa",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750319382",
-      "matched_game": "Romancing SaGa",
-      "matched_games": [
-        "Romancing SaGa"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-25 09:20 UTC"
     }
   ]
 }
