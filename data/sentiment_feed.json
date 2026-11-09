@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 04:43:18 UTC",
+  "last_updated": "2026-11-09 04:45:50 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -192,14 +192,15 @@
       "timestamp": "2026-11-09 04:27 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4",
+      "headline": "Thread on /vg/ naming Persona 4 and Persona 3",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/587237342",
       "matched_game": "Persona 4",
       "matched_games": [
-        "Persona 4"
+        "Persona 4",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -6086,15 +6087,16 @@
       "timestamp": "2026-11-08 20:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Medal of Honor Frontline and Yakuza 2",
+      "headline": "Thread on /v/ naming Suikoden III, Yakuza 2 and Medal of Honor Frontline",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751205763",
-      "matched_game": "Medal of Honor Frontline",
+      "matched_game": "Suikoden III",
       "matched_games": [
-        "Medal of Honor Frontline",
-        "Yakuza 2"
+        "Suikoden III",
+        "Yakuza 2",
+        "Medal of Honor Frontline"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338611,23 +338613,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 04:48 UTC"
-    },
-    {
-      "headline": "omen 45L/ Asus g700",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfnifk/omen_45l_asus_g700/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 04:43 UTC"
     }
   ]
 }
