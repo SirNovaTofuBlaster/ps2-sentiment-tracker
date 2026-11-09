@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 02:49:22 UTC",
+  "last_updated": "2026-11-09 02:51:55 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1250,6 +1250,26 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 00:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3 and Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751219249",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3",
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 00:42 UTC"
     },
     {
       "headline": "Thread on /v/ naming Jackie Chan Adventures and God of War",
@@ -3592,18 +3612,18 @@
       "timestamp": "2026-11-08 21:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter and Okami",
+      "headline": "Thread on /v/ naming Okami and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751210142",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Okami",
       "matched_games": [
-        "Monster Hunter",
-        "Okami"
+        "Okami",
+        "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338532,91 +338552,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 02:51 UTC"
-    },
-    {
-      "headline": "Taking offers on some 5090s I held onto",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfle5p/taking_offers_on_some_5090s_i_held_onto/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:50 UTC"
-    },
-    {
-      "headline": "Chrono Trigger",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xfldho/chrono_trigger/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:49 UTC"
-    },
-    {
-      "headline": "I want to upgrade to Ryzen 7 5700X3D",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfldsv/i_want_to_upgrade_to_ryzen_7_5700x3d/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:49 UTC"
-    },
-    {
-      "headline": "Settings in JRPGs you would love to see explored",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xfldmr/settings_in_jrpgs_you_would_love_to_see_explored/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:49 UTC"
-    },
-    {
-      "headline": "Accidentally pressing the volume button while steam deck booting video was running",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xflddp/accidentally_pressing_the_volume_button_while/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:49 UTC"
     }
   ]
 }
