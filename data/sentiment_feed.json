@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 05:56:46 UTC",
+  "last_updated": "2026-11-09 06:10:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -3750,6 +3750,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-08 23:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Guitar Hero II and Guitar Hero",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751215986",
+      "matched_game": "Guitar Hero II",
+      "matched_games": [
+        "Guitar Hero II",
+        "Guitar Hero"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-08 23:46 UTC"
     },
@@ -12810,20 +12830,21 @@
       "timestamp": "2026-11-08 15:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts, Final Fantasy XII and 1 more",
+      "headline": "Thread on /v/ naming God of War, Final Fantasy XII, Resident Evil 4 and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751189645",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "God of War",
       "matched_games": [
-        "Kingdom Hearts II",
-        "Kingdom Hearts",
+        "God of War",
         "Final Fantasy XII",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Kingdom Hearts II",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338449,171 +338470,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 06:12 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Unreal Tournament, Need for Speed Underground 2 and Grand Theft Auto: San Andreas",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750374559",
-      "matched_game": "Unreal Tournament",
-      "matched_games": [
-        "Unreal Tournament",
-        "Need for Speed Underground 2",
-        "Grand Theft Auto: San Andreas"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 06:09 UTC"
-    },
-    {
-      "headline": "What games would you guys recommend, collection also? Appreciate it 👍🏻",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1xfow0c/what_games_would_you_guys_recommend_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 06:06 UTC"
-    },
-    {
-      "headline": "Tomb Raider: Legacy of Atlantis gets a new teaser video",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/tomb-raider-legacy-of-atlantis-gets-a-new-teaser-video/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 06:05 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Open Season",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12896374",
-      "matched_game": "Open Season",
-      "matched_games": [
-        "Open Season"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 06:05 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming God of War and God of War II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750374458",
-      "matched_game": "God of War",
-      "matched_games": [
-        "God of War",
-        "God of War II"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 06:04 UTC"
-    },
-    {
-      "headline": "What games would you guys recommend, also collection? Appreciate it 👍🏻",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xfoua0/what_games_would_you_guys_recommend_also/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 06:03 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy X-2 and Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750374394",
-      "matched_game": "Final Fantasy X-2",
-      "matched_games": [
-        "Final Fantasy X-2",
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 06:02 UTC"
-    },
-    {
-      "headline": "Making Friends Monday! Share your game tags here!",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xfoscx/making_friends_monday_share_your_game_tags_here/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 06:00 UTC"
-    },
-    {
-      "headline": "Sonic X Shadow Generations reaches three million sales",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/sonic-x-shadow-generations-reaches-three-million-sales/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 05:57 UTC"
     }
   ]
 }
