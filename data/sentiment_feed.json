@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 01:52:26 UTC",
+  "last_updated": "2026-11-09 01:55:06 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -190,14 +190,15 @@
       "timestamp": "2026-11-09 01:38 UTC"
     },
     {
-      "headline": "Thread on /v/ naming I-Ninja",
+      "headline": "Thread on /v/ naming I-Ninja and Ninjabread Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751222054",
       "matched_game": "I-Ninja",
       "matched_games": [
-        "I-Ninja"
+        "I-Ninja",
+        "Ninjabread Man"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -986,6 +987,25 @@
       "timestamp": "2026-11-09 00:28 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751218404",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 00:28 UTC"
+    },
+    {
       "headline": "Why are my videos through ps store so QUIET",
       "source": "r/playstation",
       "source_type": "reddit",
@@ -1229,18 +1249,22 @@
       "timestamp": "2026-11-09 00:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jade Cocoon 2 and Dark Cloud",
+      "headline": "Thread on /v/ naming Kuon, Steambot Chronicles, Rule of Rose and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751217282",
-      "matched_game": "Jade Cocoon 2",
+      "matched_game": "Kuon",
       "matched_games": [
+        "Kuon",
+        "Steambot Chronicles",
+        "Rule of Rose",
+        "Haunting Ground",
         "Jade Cocoon 2",
         "Dark Cloud"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1627,18 +1651,18 @@
       "timestamp": "2026-11-08 23:42 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Grand Theft Auto III and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751215747",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Grand Theft Auto III"
+        "Grand Theft Auto III",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -20550,26 +20574,27 @@
       "timestamp": "2026-11-08 02:04 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry, Final Fantasy X, Shadow Hearts and 7 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Shadow Hearts, Final Fantasy X and 8 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751161183",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Devil May Cry",
-        "Final Fantasy X",
+        "Resident Evil 4",
         "Shadow Hearts",
+        "Final Fantasy X",
         "Tony Hawk's Underground 2",
         "Tony Hawk's Underground",
         "Persona 3",
         "Monster Hunter",
+        "Devil May Cry",
         "Max Payne",
         "God of War",
         "Battlestar Galactica"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
