@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 20:52:30 UTC",
+  "last_updated": "2026-11-09 20:55:12 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -393,6 +393,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-09 20:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751270685",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 20:16 UTC"
     },
     {
       "headline": "Thread on /v/ naming Ratchet & Clank",
@@ -233961,19 +233980,19 @@
       "timestamp": "2026-10-30 20:37 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Beat Down: Fists of Vengeance, Silent Hill 4: The Room, Burnout 3 and 3 more",
+      "headline": "Thread on /vr/ naming Burnout 3, Silent Hill 4: The Room, Fatal Frame and 3 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12905156",
-      "matched_game": "Beat Down: Fists of Vengeance",
+      "matched_game": "Burnout 3",
       "matched_games": [
-        "Beat Down: Fists of Vengeance",
-        "Silent Hill 4: The Room",
         "Burnout 3",
+        "Silent Hill 4: The Room",
         "Fatal Frame",
         "Cold Winter",
-        "The Sims"
+        "The Sims",
+        "Beat Down: Fists of Vengeance"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -337297,23 +337316,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 20:58 UTC"
-    },
-    {
-      "headline": "This joypad is fantastic.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xg8un4/this_joypad_is_fantastic/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 20:52 UTC"
     }
   ]
 }
