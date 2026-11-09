@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 17:04:30 UTC",
+  "last_updated": "2026-11-09 17:07:11 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1997,18 +1997,19 @@
       "timestamp": "2026-11-09 15:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Silent Hill 3",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Silent Hill 2 and Silent Hill 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751254291",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
+        "Grand Theft Auto: Vice City",
         "Silent Hill 2",
         "Silent Hill 3"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2151,6 +2152,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-09 15:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Haunting Ground",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751253930",
+      "matched_game": "Haunting Ground",
+      "matched_games": [
+        "Haunting Ground"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 15:32 UTC"
     },
@@ -337713,62 +337733,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 17:08 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Deus Ex",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750399074",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4",
-        "Deus Ex"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 17:05 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming The Sims",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12897127",
-      "matched_game": "The Sims",
-      "matched_games": [
-        "The Sims"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 17:05 UTC"
-    },
-    {
-      "headline": "Steam Scream V Fest 2026",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xg2oiw/steam_scream_v_fest_2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 17:04 UTC"
     }
   ]
 }
