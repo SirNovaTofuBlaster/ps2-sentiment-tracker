@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-08 23:58:20 UTC",
+  "last_updated": "2026-11-09 00:00:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -67,6 +67,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-08 23:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751216040",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-08 23:47 UTC"
     },
@@ -3779,6 +3798,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 19:23 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751201957",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 19:22 UTC"
     },
     {
       "headline": "I just went to a game convention in Toronto and here’s what I got check description for prices",
@@ -19592,18 +19630,18 @@
       "timestamp": "2026-11-08 01:16 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Hulk and Deus Ex",
+      "headline": "Thread on /v/ naming Deus Ex and The Hulk",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751158372",
-      "matched_game": "The Hulk",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "The Hulk",
-        "Deus Ex"
+        "Deus Ex",
+        "The Hulk"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338837,40 +338875,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 00:00 UTC"
-    },
-    {
-      "headline": "Issue with dock",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xfhs1r/issue_with_dock/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 23:59 UTC"
-    },
-    {
-      "headline": "Which of these two should I buy?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfhqx6/which_of_these_two_should_i_buy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-25 23:58 UTC"
     }
   ]
 }
