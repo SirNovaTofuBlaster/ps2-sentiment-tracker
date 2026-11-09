@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 00:55:27 UTC",
+  "last_updated": "2026-11-09 00:58:06 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -169,6 +169,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-09 00:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751219361",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 00:44 UTC"
     },
@@ -530,6 +549,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-09 00:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jade Cocoon 2 and Dark Cloud",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751217282",
+      "matched_game": "Jade Cocoon 2",
+      "matched_games": [
+        "Jade Cocoon 2",
+        "Dark Cloud"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 00:08 UTC"
     },
     {
       "headline": "ps2 browser glitch",
@@ -2107,20 +2146,20 @@
       "timestamp": "2026-11-08 22:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Odin Sphere, The Bard's Tale and 1 more",
+      "headline": "Thread on /v/ naming Odin Sphere, The Bard's Tale, Metal Gear Solid 3: Snake Eater and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751210734",
-      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_game": "Odin Sphere",
       "matched_games": [
-        "Resident Evil Code: Veronica X",
         "Odin Sphere",
         "The Bard's Tale",
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Resident Evil Code: Veronica X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9639,15 +9678,17 @@
       "timestamp": "2026-11-08 15:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Final Fantasy XII",
+      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts, Final Fantasy XII and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751189645",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Kingdom Hearts II",
       "matched_games": [
-        "Resident Evil 4",
-        "Final Fantasy XII"
+        "Kingdom Hearts II",
+        "Kingdom Hearts",
+        "Final Fantasy XII",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -338598,40 +338639,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-26 00:59 UTC"
-    },
-    {
-      "headline": "A promotional sales flyer for the Boot Hill arcade video game released by Midway Manufacturing Co. in 1977.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xfj1hw/a_promotional_sales_flyer_for_the_boot_hill/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 00:56 UTC"
-    },
-    {
-      "headline": "Phantom Blade Zero Reviews Just Beat Every Soulslike In 2026",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/phantom-blade-zero-review-roundup-score/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 00:56 UTC"
     }
   ]
 }
