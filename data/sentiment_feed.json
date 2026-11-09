@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 02:51:55 UTC",
+  "last_updated": "2026-11-09 03:05:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -160,14 +160,15 @@
       "timestamp": "2026-11-09 02:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Silent Hill 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751224223",
       "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Silent Hill 3"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -13108,17 +13109,18 @@
       "timestamp": "2026-11-08 13:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Deus Ex and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751185008",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338429,129 +338431,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 03:06 UTC"
-    },
-    {
-      "headline": "$135 Worth of Gamecube Games",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/Zq_PZywtQ1o",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 03:04 UTC",
-      "views": 7781
-    },
-    {
-      "headline": "Me and my wife are looking for fun/cozy co-op games that are free",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xfll7q/me_and_my_wife_are_looking_for_funcozy_coop_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 03:00 UTC"
-    },
-    {
-      "headline": "Who buys Handhelds?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xfllql/who_buys_handhelds/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 03:00 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750368094",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
-      "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:59 UTC"
-    },
-    {
-      "headline": "Is the Shine Megami Tensei series considered the dark souls of JRPGs?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xflj36/is_the_shine_megami_tensei_series_considered_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:57 UTC"
-    },
-    {
-      "headline": "Top 6 RARE Horror Games to Play this October from a Legally INSANE Gamer (Halloween Special 2026)",
-      "source": "YouTube: Legally Insane Gamer",
-      "source_type": "youtube",
-      "feed": "youtube:https://www.youtube.com/@legallyinsanegamer",
-      "link": "https://www.youtube.com/watch?v=PVlCdAstaMU",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:53 UTC",
-      "views": 3151
-    },
-    {
-      "headline": "poured a few droplets on pc by accident",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xflf05/poured_a_few_droplets_on_pc_by_accident/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:51 UTC"
     }
   ]
 }
