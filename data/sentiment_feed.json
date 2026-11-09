@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 18:01:22 UTC",
+  "last_updated": "2026-11-09 18:04:06 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -210,13 +210,14 @@
       "timestamp": "2026-11-09 17:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Thing",
+      "headline": "Thread on /v/ naming Half-Life and The Thing",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751261301",
-      "matched_game": "The Thing",
+      "matched_game": "Half-Life",
       "matched_games": [
+        "Half-Life",
         "The Thing"
       ],
       "match_score": 100,
@@ -3151,19 +3152,20 @@
       "timestamp": "2026-11-09 15:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Silent Hill 2 and Silent Hill 3",
+      "headline": "Thread on /v/ naming Deus Ex, Silent Hill 3, Silent Hill 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751254291",
-      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Grand Theft Auto: Vice City",
+        "Deus Ex",
+        "Silent Hill 3",
         "Silent Hill 2",
-        "Silent Hill 3"
+        "Grand Theft Auto: Vice City"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4418,6 +4420,27 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 14:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Grand Theft Auto: Vice City and Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751251841",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 14:45 UTC"
     },
     {
       "headline": "Exterminauts Is Like Helldivers 2 Starring Home Depot Dads",
@@ -337406,91 +337429,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 18:04 UTC"
-    },
-    {
-      "headline": "Taiwan Haul",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1xg4bs3/taiwan_haul/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 18:03 UTC"
-    },
-    {
-      "headline": "How to open the sealed stone in Final Fantasy Resonance",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/final-fantasy-resonance-how-to-open-sealed-stone/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 18:03 UTC"
-    },
-    {
-      "headline": "Guide: Modern Warfare 4's Best Guns In Multiplayer",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/guides/modern-warfare-4-best-guns-meta-mw4",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-26 18:03 UTC"
-    },
-    {
-      "headline": "\"We've finally found the strength to SEEK A WAY OUT of the dark prison we've been trapped in\" - Kotaro Uchikoshi on CRASH KEYS, ARGs, Zero Escape, Too Kyo Games, movies, coffee, and much more",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xg4a4x/weve_finally_found_the_strength_to_seek_a_way_out/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 18:02 UTC"
-    },
-    {
-      "headline": "[Skill Up] - I strongly recommend: Phantom Blade Zero (Review)",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xg49bb/skill_up_i_strongly_recommend_phantom_blade_zero/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 18:01 UTC"
     }
   ]
 }
