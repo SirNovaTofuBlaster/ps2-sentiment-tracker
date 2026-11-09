@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 01:11:47 UTC",
+  "last_updated": "2026-11-09 01:25:52 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -207,6 +207,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 00:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jackie Chan Adventures",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751219000",
+      "matched_game": "Jackie Chan Adventures",
+      "matched_games": [
+        "Jackie Chan Adventures"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 00:38 UTC"
     },
     {
       "headline": "Cree la interfaz de PS2 para PC",
@@ -947,18 +966,18 @@
       "timestamp": "2026-11-08 23:42 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III and Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751215747",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
-        "Grand Theft Auto III",
-        "Grand Theft Auto: San Andreas"
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1152,6 +1171,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 23:29 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751214982",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-08 23:27 UTC"
     },
     {
       "headline": "Trying to get into dragon quest games but i’m underwhelmed so far, but am I liking dqv but i feel like that is because it feels more like earthbound and because of emulator features",
@@ -2716,6 +2754,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-08 21:29 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751208869",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-08 21:29 UTC"
     },
@@ -29507,6 +29564,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-07 16:48 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life and Area 51",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751129440",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life",
+        "Area 51"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-07 16:48 UTC"
     },
@@ -338366,135 +338443,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 01:25 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Final Fantasy X and Kingdom Hearts II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750363537",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts",
-        "Final Fantasy X",
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 01:23 UTC"
-    },
-    {
-      "headline": "JOYTECH PS2 Screens - Is There Anyone That Repairs These?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xfjmkf/joytech_ps2_screens_is_there_anyone_that_repairs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 01:23 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750363480",
-      "matched_game": "Kingdom Hearts II",
-      "matched_games": [
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 01:22 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750363417",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 01:20 UTC"
-    },
-    {
-      "headline": "Shadow of the Colossus native PC port: community fork now has 60 FPS, FSR 3.1/DLSS and ultrawide",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfjk2f/shadow_of_the_colossus_native_pc_port_community/",
-      "matched_game": "Shadow of the Colossus",
-      "matched_games": [
-        "Shadow of the Colossus"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 01:20 UTC"
-    },
-    {
-      "headline": "Sonic X Shadow Generations sales top three million",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/sonic-x-shadow-generations-sales-top-three-million",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 01:18 UTC"
-    },
-    {
-      "headline": "Co-op game with high difficulty",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xfjfwq/coop_game_with_high_difficulty/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 01:15 UTC"
     }
   ]
 }
