@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 14:13:18 UTC",
+  "last_updated": "2026-11-09 14:15:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1749,6 +1749,25 @@
       "timestamp": "2026-11-09 12:08 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Silent Hill 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751245517",
+      "matched_game": "Silent Hill 3",
+      "matched_games": [
+        "Silent Hill 3"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 12:08 UTC"
+    },
+    {
       "headline": "When is the next Treasure Hour in Fortnite Treasure Hunters? – Complete Power Hour event schedule",
       "source": "Destructoid",
       "source_type": "news",
@@ -2348,6 +2367,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-09 11:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751244521",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 11:37 UTC"
     },
@@ -338316,40 +338354,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 14:16 UTC"
-    },
-    {
-      "headline": "S.T.A.L.K.E.R. 2: Heart of Chornobyl — The Zone Lookout | Update 2.1",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xfy01i/stalker_2_heart_of_chornobyl_the_zone_lookout/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 14:14 UTC"
-    },
-    {
-      "headline": "Crashes in the GPU (LiveKernelEvent 141 & Blue Screen 7f)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfy0br/crashes_in_the_gpu_livekernelevent_141_blue/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 14:14 UTC"
     }
   ]
 }
