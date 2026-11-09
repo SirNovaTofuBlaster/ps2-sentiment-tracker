@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 10:41:35 UTC",
+  "last_updated": "2026-11-09 10:55:33 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -936,14 +936,15 @@
       "timestamp": "2026-11-09 09:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Crazy Taxi",
+      "headline": "Thread on /v/ naming Crazy Taxi and Persona 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751240031",
       "matched_game": "Crazy Taxi",
       "matched_games": [
-        "Crazy Taxi"
+        "Crazy Taxi",
+        "Persona 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1722,6 +1723,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-09 07:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Ar Tonelico",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751237723",
+      "matched_game": "Ar Tonelico",
+      "matched_games": [
+        "Ar Tonelico"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 07:57 UTC"
     },
     {
       "headline": "Steam dock not working at all",
@@ -338671,127 +338691,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 10:56 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750382563",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 10:52 UTC"
-    },
-    {
-      "headline": "This came with unexpected goodies.",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xftibf/this_came_with_unexpected_goodies/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 10:51 UTC"
-    },
-    {
-      "headline": "Came with unexpected goodie’s!",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xfth9v/came_with_unexpected_goodies/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 10:50 UTC"
-    },
-    {
-      "headline": "Cleaning the contacts in your carts",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xftgwa/cleaning_the_contacts_in_your_carts/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 10:49 UTC"
-    },
-    {
-      "headline": "Rockstar lo confirma: Lucía tendrá en GTA 6 un monitor de tobillo que forma 'parte de la narrativa'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026299015/rockstar-lo-confirma-lucia-tendra-en-gta-6-un-monitor-de-tobillo-que-forma-parte-de-la-narrativa/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 10:48 UTC"
-    },
-    {
-      "headline": "Legendary PC Game Diablo Has Been Ported To The Game Boy Advance",
-      "source": "Retro Dodo",
-      "source_type": "news",
-      "feed": "https://retrododo.com/feed/",
-      "link": "https://retrododo.com/legendary-pc-game-diablo-has-been-ported-to-the-game-boy-advance/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 10:43 UTC"
-    },
-    {
-      "headline": "3D printed vertical mount",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xftd5f/3d_printed_vertical_mount/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 10:43 UTC"
     }
   ]
 }
