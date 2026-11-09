@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 23:48:32 UTC",
+  "last_updated": "2026-11-09 23:59:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 01:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751284143",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 23:51 UTC"
     },
     {
       "headline": "Samsung Odyssey G5 (G50F)?",
@@ -3476,15 +3495,15 @@
       "timestamp": "2026-11-09 20:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Half-Life",
+      "headline": "Thread on /v/ naming Half-Life and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751271825",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Half-Life",
       "matched_games": [
-        "Kingdom Hearts",
-        "Half-Life"
+        "Half-Life",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3700,6 +3719,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 20:16 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X-2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751270707",
+      "matched_game": "Final Fantasy X-2",
+      "matched_games": [
+        "Final Fantasy X-2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337521,202 +337559,6 @@
       "hype": 0,
       "timestamp": "2026-10-27 00:00 UTC",
       "views": 13816
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Silent Hill 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750422364",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2",
-        "Silent Hill 3"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:57 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Persona 3 FES",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750422410",
-      "matched_game": "Persona 3 FES",
-      "matched_games": [
-        "Persona 3 FES"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:57 UTC"
-    },
-    {
-      "headline": "Wifi speeds so much worse than before",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xgdbwk/wifi_speeds_so_much_worse_than_before/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:56 UTC"
-    },
-    {
-      "headline": "Task manager not responding",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgda0p/task_manager_not_responding/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:54 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Curse: The Eye of Isis",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750422191",
-      "matched_game": "Curse: The Eye of Isis",
-      "matched_games": [
-        "Curse: The Eye of Isis"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:54 UTC"
-    },
-    {
-      "headline": "Is Coolmaster elite AIO 240mm humming normal?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgd9ac/is_coolmaster_elite_aio_240mm_humming_normal/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:53 UTC"
-    },
-    {
-      "headline": "Happy Birthday Big Boy",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xgd95w/happy_birthday_big_boy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:53 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Burnout Revenge",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750422129",
-      "matched_game": "Burnout Revenge",
-      "matched_games": [
-        "Burnout Revenge"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:52 UTC"
-    },
-    {
-      "headline": "Resin/Hard Mouse and Keyboard Pads",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgd5dz/resinhard_mouse_and_keyboard_pads/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:48 UTC"
-    },
-    {
-      "headline": "Dumping on builds only having DDR4 RAM instead of DDR5 is some first-world problems for real!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgd4tu/dumping_on_builds_only_having_ddr4_ram_instead_of/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:48 UTC"
-    },
-    {
-      "headline": "Controller using some sort of M&K configuration in Gaming Mode",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xgd5b3/controller_using_some_sort_of_mk_configuration_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:48 UTC"
     }
   ]
 }
