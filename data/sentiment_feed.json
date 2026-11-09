@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-09 09:06:41 UTC",
+  "last_updated": "2026-11-09 09:15:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Crazy Taxi",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751240031",
+      "matched_game": "Crazy Taxi",
+      "matched_games": [
+        "Crazy Taxi"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 09:14 UTC"
+    },
     {
       "headline": "6 Modern Fantasy Books That Rival The Lord of the Rings",
       "source": "Polygon.com",
@@ -998,6 +1017,26 @@
       "is_digital_only": false,
       "sentiment": 50,
       "hype": 1,
+      "timestamp": "2026-11-09 06:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751235032",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X",
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
       "timestamp": "2026-11-09 06:44 UTC"
     },
     {
@@ -3606,7 +3645,7 @@
       "timestamp": "2026-11-09 02:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3 and Silent Hill 4: The Room",
+      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3, Silent Hill 4: The Room and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -3615,7 +3654,8 @@
       "matched_games": [
         "Silent Hill 2",
         "Silent Hill 3",
-        "Silent Hill 4: The Room"
+        "Silent Hill 4: The Room",
+        "Killer 7"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -19548,15 +19588,15 @@
       "timestamp": "2026-11-08 10:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Playboy: The Mansion and The Sims",
+      "headline": "Thread on /v/ naming The Sims and Playboy: The Mansion",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751179234",
-      "matched_game": "Playboy: The Mansion",
+      "matched_game": "The Sims",
       "matched_games": [
-        "Playboy: The Mansion",
-        "The Sims"
+        "The Sims",
+        "Playboy: The Mansion"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338700,40 +338740,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 09:15 UTC"
-    },
-    {
-      "headline": "Gameranx on 19th Nov",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xfrt6o/gameranx_on_19th_nov/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 09:12 UTC"
-    },
-    {
-      "headline": "Inspired by my beloved Bravo's 100 Scariest Movie Moments TV special, what are the 100 scariest video game moments? What moment in gaming got you the most?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xfrqyo/inspired_by_my_beloved_bravos_100_scariest_movie/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 09:08 UTC"
     }
   ]
 }
