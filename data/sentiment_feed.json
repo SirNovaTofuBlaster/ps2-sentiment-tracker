@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 05:15:51 UTC",
+  "last_updated": "2026-11-09 05:27:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -916,13 +916,14 @@
       "timestamp": "2026-11-09 03:13 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Midnight Club 2",
+      "headline": "Thread on /v/ naming Max Payne and Midnight Club 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751226580",
-      "matched_game": "Midnight Club 2",
+      "matched_game": "Max Payne",
       "matched_games": [
+        "Max Payne",
         "Midnight Club 2"
       ],
       "match_score": 100,
@@ -4874,18 +4875,18 @@
       "timestamp": "2026-11-08 21:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Okami and Monster Hunter",
+      "headline": "Thread on /v/ naming Monster Hunter and Okami",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751210142",
-      "matched_game": "Okami",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Okami",
-        "Monster Hunter"
+        "Monster Hunter",
+        "Okami"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6121,20 +6122,20 @@
       "timestamp": "2026-11-08 20:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Suikoden III, Final Fantasy XII, Yakuza 2 and 1 more",
+      "headline": "Thread on /v/ naming Final Fantasy XII, Yakuza 2, Medal of Honor Frontline and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751205763",
-      "matched_game": "Suikoden III",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
-        "Suikoden III",
         "Final Fantasy XII",
         "Yakuza 2",
-        "Medal of Honor Frontline"
+        "Medal of Honor Frontline",
+        "Suikoden III"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338263,128 +338264,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 05:33 UTC"
-    },
-    {
-      "headline": "When I get to desktop there is a static blip",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfo8ki/when_i_get_to_desktop_there_is_a_static_blip/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 05:25 UTC"
-    },
-    {
-      "headline": "Peak gaming",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfo7ad/peak_gaming/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 05:23 UTC"
-    },
-    {
-      "headline": "A gallery of late 80's Mario merchandise, back when he had red overalls and a blue shirt",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xfo6sh/a_gallery_of_late_80s_mario_merchandise_back_when/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 05:22 UTC"
-    },
-    {
-      "headline": "675: Nick Limon: Bioware closed, Mass Effect canceled, Steam Next Fest, Project Helix price points, Call of Duty Modern Warfare 4, Gears of War E-Day, Castlevania Belmont's Curse, Chained Beasts",
-      "source": "Podcast: DLC",
-      "source_type": "podcast",
-      "feed": "https://audioboom.com/channels/5104635.rss",
-      "link": "https://audioboom.com/posts/8969020",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 05:22 UTC"
-    },
-    {
-      "headline": "Is there any way to close this ?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfo3ns/is_there_any_way_to_close_this/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 05:17 UTC"
-    },
-    {
-      "headline": "Happy 26th Anniversary to playStation 2 system it was release on this day october 26, 2000 anyone would like to share their memory how you own this console ?",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1xfo2o4/happy_26th_anniversary_to_playstation_2_system_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 05:15 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter and Van Helsing",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750373025",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter",
-        "Van Helsing"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 05:15 UTC"
     }
   ]
 }
