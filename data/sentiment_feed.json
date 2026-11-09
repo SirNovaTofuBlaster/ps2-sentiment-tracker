@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 22:46:33 UTC",
+  "last_updated": "2026-11-09 22:49:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1044,6 +1044,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-09 21:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shrek 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751276535",
+      "matched_game": "Shrek 2",
+      "matched_games": [
+        "Shrek 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 21:47 UTC"
     },
@@ -2153,17 +2172,18 @@
       "timestamp": "2026-11-09 20:47 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dragon Quest VIII: Journey of the Cursed King",
+      "headline": "Thread on /v/ naming Giants: Citizen Kabuto and Dragon Quest VIII: Journey of the Cursed King",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751272705",
-      "matched_game": "Dragon Quest VIII: Journey of the Cursed King",
+      "matched_game": "Giants: Citizen Kabuto",
       "matched_games": [
+        "Giants: Citizen Kabuto",
         "Dragon Quest VIII: Journey of the Cursed King"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3062,6 +3082,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-09 19:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751269589",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 19:58 UTC"
     },
@@ -4037,6 +4076,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 19:16 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Final Fantasy X",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12923075",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337485,42 +337543,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 22:50 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Area 51",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/585746991",
-      "matched_game": "Area 51",
-      "matched_games": [
-        "Area 51"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 22:48 UTC"
-    },
-    {
-      "headline": "WoW: Forever Just Got Another Major Racial Ability Shakeup Before Launch",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/wow-forever-just-got-a-major-racial-ability-shakeup-just-before-launch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 22:48 UTC"
     }
   ]
 }
