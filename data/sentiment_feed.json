@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 00:58:06 UTC",
+  "last_updated": "2026-11-09 01:00:19 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -144,6 +144,23 @@
       "source_type": "reddit",
       "feed": "reddit:games",
       "link": "https://www.reddit.com/r/Games/comments/1xrdyml/bolt_of_whalington_orca_studio_just_launched_the/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-09 00:45 UTC"
+    },
+    {
+      "headline": "Warhammer Blood Bowl has been delayed into early 2027",
+      "source": "PCGamer latest",
+      "source_type": "news",
+      "feed": "https://www.pcgamer.com/rss/",
+      "link": "https://www.pcgamer.com/games/sports/warhammer-blood-bowl-has-been-delayed-into-2027/",
       "matched_game": null,
       "matched_games": [],
       "match_score": 0,
@@ -1872,6 +1889,23 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 22:31 UTC"
+    },
+    {
+      "headline": "[Let’s Talk] Zelda: Ocarina of Time remake impressions",
+      "source": "Nintendo Everything",
+      "source_type": "news",
+      "feed": "https://nintendoeverything.com/feed",
+      "link": "https://nintendoeverything.com/lets-talk-zelda-ocarina-of-time-remake-impressions/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": true,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 1,
+      "timestamp": "2026-11-08 22:30 UTC"
     },
     {
       "headline": "My collection of the first 3 Nintendo Console Generations",
@@ -338601,44 +338635,6 @@
       "hype": 0,
       "timestamp": "2026-10-26 01:00 UTC",
       "views": 2407
-    },
-    {
-      "headline": "EA in 2026 post merger, ACTUALLY might be the most evil company, unlike years past.",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xfj45d/ea_in_2026_post_merger_actually_might_be_the_most/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 00:59 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Shinobi, Devil May Cry and God of War",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750362410",
-      "matched_game": "Shinobi",
-      "matched_games": [
-        "Shinobi",
-        "Devil May Cry",
-        "God of War"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 00:59 UTC"
     }
   ]
 }
