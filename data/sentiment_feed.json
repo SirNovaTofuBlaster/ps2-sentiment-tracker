@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-11-09 02:25:39 UTC",
+  "last_updated": "2026-11-09 02:36:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Van Helsing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751224468",
+      "matched_game": "Van Helsing",
+      "matched_games": [
+        "Van Helsing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 02:31 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751224223",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 02:26 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Kingdom Hearts",
       "source": "4chan /v/",
@@ -904,14 +942,15 @@
       "timestamp": "2026-11-09 00:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jackie Chan Adventures",
+      "headline": "Thread on /v/ naming Jackie Chan Adventures and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751219000",
       "matched_game": "Jackie Chan Adventures",
       "matched_games": [
-        "Jackie Chan Adventures"
+        "Jackie Chan Adventures",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3226,14 +3265,15 @@
       "timestamp": "2026-11-08 21:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Monster Hunter and Okami",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751210142",
       "matched_game": "Monster Hunter",
       "matched_games": [
-        "Monster Hunter"
+        "Monster Hunter",
+        "Okami"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338449,161 +338489,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 02:36 UTC"
-    },
-    {
-      "headline": "Looking for Cases with this Vibe?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfl383/looking_for_cases_with_this_vibe/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:34 UTC"
-    },
-    {
-      "headline": "Did I get scammed?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfl2cv/did_i_get_scammed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:33 UTC"
-    },
-    {
-      "headline": "My pc build",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfl24z/my_pc_build/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:33 UTC"
-    },
-    {
-      "headline": "Looking for games where the world actually changes because of what you do",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xfl16k/looking_for_games_where_the_world_actually/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:32 UTC"
-    },
-    {
-      "headline": "Steam deck won't automatically recognize controls",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xfl0js/steam_deck_wont_automatically_recognize_controls/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:31 UTC"
-    },
-    {
-      "headline": "Just some digital only gaming systems that never quite took off over time.",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xfkzau/just_some_digital_only_gaming_systems_that_never/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:29 UTC"
-    },
-    {
-      "headline": "Do you play sequels immediately or switch between games?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xfkyz8/do_you_play_sequels_immediately_or_switch_between/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:29 UTC"
-    },
-    {
-      "headline": "Wrath Unleashed 2004 Xbox and PS2 game ported natively to PC using the Xbox version of the game. Now also has online lobbies, online play, and integration with steam. Completely vibe coded with GPT-6.1 Sol (discord below)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xfkxuz/wrath_unleashed_2004_xbox_and_ps2_game_ported/",
-      "matched_game": "Wrath Unleashed",
-      "matched_games": [
-        "Wrath Unleashed"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:27 UTC"
-    },
-    {
-      "headline": "Even Nintendo are feeding into the fomo",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xfkxbd/even_nintendo_are_feeding_into_the_fomo/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-26 02:26 UTC"
     }
   ]
 }
