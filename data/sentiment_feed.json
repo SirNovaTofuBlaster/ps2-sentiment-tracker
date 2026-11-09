@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 23:43:35 UTC",
+  "last_updated": "2026-11-09 23:46:17 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -292,6 +292,25 @@
       "timestamp": "2026-11-09 23:16 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Ratchet & Clank",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751282190",
+      "matched_game": "Ratchet & Clank",
+      "matched_games": [
+        "Ratchet & Clank"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 23:16 UTC"
+    },
+    {
       "headline": "loverboy Jensen fell for it",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -498,15 +517,16 @@
       "timestamp": "2026-11-09 23:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Godfather and God of War",
+      "headline": "Thread on /v/ naming Odin Sphere, God of War and The Godfather",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751281356",
-      "matched_game": "The Godfather",
+      "matched_game": "Odin Sphere",
       "matched_games": [
-        "The Godfather",
-        "God of War"
+        "Odin Sphere",
+        "God of War",
+        "The Godfather"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1839,17 +1859,18 @@
       "timestamp": "2026-11-09 21:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751277118",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Monster Hunter"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337696,47 +337717,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-26 23:46 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Monster Hunter",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/585752034",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:45 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Final Fantasy X, Spider-Man, Big Mutha Truckers and 1 more",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12897774",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X",
-        "Spider-Man",
-        "Big Mutha Truckers",
-        "Astro Boy"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-26 23:45 UTC"
     }
   ]
 }
