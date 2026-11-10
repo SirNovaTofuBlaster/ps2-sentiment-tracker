@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 04:31:04 UTC",
+  "last_updated": "2026-11-10 04:33:17 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1129,6 +1129,23 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 02:27 UTC"
+    },
+    {
+      "headline": "Nintendo has now fixed the Switch 2 jailbreak",
+      "source": "Nintendo Everything",
+      "source_type": "news",
+      "feed": "https://nintendoeverything.com/feed",
+      "link": "https://nintendoeverything.com/nintendo-has-now-fixed-the-switch-2-jailbreak/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-10 02:25 UTC"
     },
     {
       "headline": "Dreamcast now has a port of the Star Wars Trilogy Arcade game with lightgun support too",
@@ -337901,42 +337918,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 04:33 UTC"
-    },
-    {
-      "headline": "UPDATE: most of my front panel connectors also get fucked by those rats",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgj55a/update_most_of_my_front_panel_connectors_also_get/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 04:31 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750434191",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 04:31 UTC"
     }
   ]
 }
