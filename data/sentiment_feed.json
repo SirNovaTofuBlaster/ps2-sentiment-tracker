@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 18:48:36 UTC",
+  "last_updated": "2026-11-10 18:59:38 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -220,6 +220,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-10 18:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751333019",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 18:30 UTC"
     },
@@ -339631,206 +339650,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 18:59 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Astro Boy",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750467862",
-      "matched_game": "Astro Boy",
-      "matched_games": [
-        "Astro Boy"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:57 UTC"
-    },
-    {
-      "headline": "With the RAMpocalypse, what if Sony didn't make a PS6? What if they made a PS2-2?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xh19ro/with_the_rampocalypse_what_if_sony_didnt_make_a/",
-      "matched_game": "Ape Escape: Pumped & Primed",
-      "matched_games": [
-        "Ape Escape: Pumped & Primed"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:54 UTC"
-    },
-    {
-      "headline": "Is buying a used GPU for an old and bad PC a convenient and cheap way to play games?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xh18kx/is_buying_a_used_gpu_for_an_old_and_bad_pc_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:53 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Need for Speed Underground 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750467626",
-      "matched_game": "Need for Speed Underground 2",
-      "matched_games": [
-        "Need for Speed Underground 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:53 UTC"
-    },
-    {
-      "headline": "Built a self-hosted voice/chat app because I was waiting for too much for a simple noise cancelling from TS. Mostly AI-written, roast away.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xh17o7/built_a_selfhosted_voicechat_app_because_i_was/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:52 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming God of War",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750467550",
-      "matched_game": "God of War",
-      "matched_games": [
-        "God of War"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:52 UTC"
-    },
-    {
-      "headline": "Thrift store luck, $29.99🍀",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xh15tj/thrift_store_luck_2999/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:50 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming God of War",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750467454",
-      "matched_game": "God of War",
-      "matched_games": [
-        "God of War"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:50 UTC"
-    },
-    {
-      "headline": "Real or Fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xh152a/real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:49 UTC"
-    },
-    {
-      "headline": "8Gb Internet offer, help with Compatibility",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xh14wr/8gb_internet_offer_help_with_compatibility/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:49 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 3 and Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750467347",
-      "matched_game": "Silent Hill 3",
-      "matched_games": [
-        "Silent Hill 3",
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:48 UTC"
     }
   ]
 }
