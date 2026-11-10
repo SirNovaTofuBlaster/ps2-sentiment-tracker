@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-10 04:33:17 UTC",
+  "last_updated": "2026-11-10 04:44:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751299082",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 04:36 UTC"
+    },
     {
       "headline": "Serious question: Is it normal to be told to throw out a computer or avoid anything with active cooling if you have an autoimmune condition?",
       "source": "r/pcmasterrace",
@@ -241,6 +260,26 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 04:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming ICO and Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751297394",
+      "matched_game": "ICO",
+      "matched_games": [
+        "ICO",
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 03:53 UTC"
     },
     {
       "headline": "Where do you buy PC games these days?",
@@ -337844,80 +337883,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 04:45 UTC"
-    },
-    {
-      "headline": "Can it run DOOM",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgjcfs/can_it_run_doom/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 04:43 UTC"
-    },
-    {
-      "headline": "Cyberpunk 2077 Steam Deck Help!",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xgjbns/cyberpunk_2077_steam_deck_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 04:42 UTC"
-    },
-    {
-      "headline": "The best wifey in gaming btw",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xgj7l7/the_best_wifey_in_gaming_btw/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-27 04:35 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Crouching Tiger Hidden Dragon, The Sims, Silent Hill 4: The Room and 2 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750434251",
-      "matched_game": "Crouching Tiger Hidden Dragon",
-      "matched_games": [
-        "Crouching Tiger Hidden Dragon",
-        "The Sims",
-        "Silent Hill 4: The Room",
-        "Ghost Rider",
-        "King Arthur"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 04:33 UTC"
     }
   ]
 }
