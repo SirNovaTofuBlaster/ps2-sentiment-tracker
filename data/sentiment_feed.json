@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 04:28:26 UTC",
+  "last_updated": "2026-11-10 04:31:04 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -14247,6 +14247,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-09 15:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Fatal Frame",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751254046",
+      "matched_game": "Fatal Frame",
+      "matched_games": [
+        "Fatal Frame"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-09 15:34 UTC"
     },
     {
       "headline": "I got FSR 4 working on an RX 5700xt",
@@ -337918,23 +337937,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 04:31 UTC"
-    },
-    {
-      "headline": "Game like moonlighter?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xgj4rs/game_like_moonlighter/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 04:30 UTC"
     }
   ]
 }
