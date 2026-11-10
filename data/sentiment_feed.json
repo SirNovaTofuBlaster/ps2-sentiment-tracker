@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-10 12:20:44 UTC",
+  "last_updated": "2026-11-10 12:34:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751314669",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 12:27 UTC"
+    },
     {
       "headline": "União Europeia quer proibir loot boxes e pay-to-win para menores",
       "source": "Eurogamer.pt Latest Articles Feed",
@@ -2990,7 +3009,7 @@
       "timestamp": "2026-11-10 08:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Max Payne, Yakuza 2 and 6 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Max Payne, Yakuza 2 and 7 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -3000,12 +3019,13 @@
         "Metal Gear Solid 2: Sons of Liberty",
         "Max Payne",
         "Yakuza 2",
-        "Kingdom Hearts II",
         "Kingdom Hearts",
+        "Final Fantasy XII",
         "Monster Hunter",
         "Deus Ex",
         "Grand Theft Auto: Vice City",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -13366,18 +13386,19 @@
       "timestamp": "2026-11-09 20:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life and Kingdom Hearts",
+      "headline": "Thread on /v/ naming ICO, Half-Life and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751271825",
-      "matched_game": "Half-Life",
+      "matched_game": "ICO",
       "matched_games": [
+        "ICO",
         "Half-Life",
         "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337976,93 +337997,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 12:34 UTC"
-    },
-    {
-      "headline": "Wow thank you Sony ❤️",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xgrafv/wow_thank_you_sony/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 12:33 UTC"
-    },
-    {
-      "headline": "Pokemon leaf green i picked up at comic con",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xgr7yq/pokemon_leaf_green_i_picked_up_at_comic_con/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 12:30 UTC"
-    },
-    {
-      "headline": "You Can Now Wirelessly Download Games To The ModRetro Chromatic",
-      "source": "Retro Dodo",
-      "source_type": "news",
-      "feed": "https://retrododo.com/feed/",
-      "link": "https://retrododo.com/you-can-now-wirelessly-download-games-to-the-modretro-chromatic/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 12:29 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Spider-Man",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750447623",
-      "matched_game": "Spider-Man",
-      "matched_games": [
-        "Spider-Man"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 12:28 UTC"
-    },
-    {
-      "headline": "Life is Strange makers Don't Nod face layoffs and possible insolvency, French workers union STJV state",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/life-is-strange-makers-dont-nod-face-layoffs-and-possible-insolvency-french-workers-union-stjv-state",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 12:21 UTC"
     }
   ]
 }
