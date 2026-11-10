@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 05:58:39 UTC",
+  "last_updated": "2026-11-10 06:09:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 05:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751301673",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 05:43 UTC"
     },
     {
       "headline": "Looking for CO-OP games that can also be played in single player",
@@ -738,6 +757,25 @@
       ],
       "match_score": 100,
       "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 03:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Star Wars: Racer Revenge",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751297390",
+      "matched_game": "Star Wars: Racer Revenge",
+      "matched_games": [
+        "Star Wars: Racer Revenge"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337710,59 +337748,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 06:10 UTC"
-    },
-    {
-      "headline": "God Of War 3 remastered",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xgkrgr/god_of_war_3_remastered/",
-      "matched_game": "God of War",
-      "matched_games": [
-        "God of War"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-27 06:06 UTC"
-    },
-    {
-      "headline": "Pokémon Unite Ending Service For Switch In March 2027",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/pokemon-unite-ending-service-for-switch-in-march-2027",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 06:05 UTC"
-    },
-    {
-      "headline": "Matthew Seiji Burns, writer, designer, musician (Call of Duty, Halo, Eliza).",
-      "source": "Podcast: My Perfect Console with Simon Parkin",
-      "source_type": "podcast",
-      "feed": "https://feeds.acast.com/public/shows/63b458521043e00011114396",
-      "link": "https://shows.acast.com/my-perfect-console/episodes/matthew-seiji-burns-writer-designer-musician-call-of-duty-ha",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 06:00 UTC"
     }
   ]
 }
