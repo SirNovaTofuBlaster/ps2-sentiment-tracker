@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 00:45:29 UTC",
+  "last_updated": "2026-11-10 00:56:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 01:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751287560",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 00:42 UTC"
     },
     {
       "headline": "Command prompt pop up after using Rufus",
@@ -1153,13 +1172,14 @@
       "timestamp": "2026-11-09 23:16 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Rumble Roses",
+      "headline": "Thread on /v/ naming Dead to Rights and Rumble Roses",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751282145",
-      "matched_game": "Rumble Roses",
+      "matched_game": "Dead to Rights",
       "matched_games": [
+        "Dead to Rights",
         "Rumble Roses"
       ],
       "match_score": 100,
@@ -2203,15 +2223,16 @@
       "timestamp": "2026-11-09 22:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Deus Ex",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Deus Ex and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751279115",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Deus Ex"
+        "Metal Gear Solid 3: Snake Eater",
+        "Deus Ex",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -59744,13 +59765,14 @@
       "views": 708
     },
     {
-      "headline": "Thread on /vr/ naming Half-Life",
+      "headline": "Thread on /vr/ naming Spider-Man and Half-Life",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12918908",
-      "matched_game": "Half-Life",
+      "matched_game": "Spider-Man",
       "matched_games": [
+        "Spider-Man",
         "Half-Life"
       ],
       "match_score": 100,
@@ -337652,108 +337674,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 00:56 UTC"
-    },
-    {
-      "headline": "Zelda: Ocarina Of Time Midnight Launches Announced For Nintendo New York And San Francisco Stores",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/zelda-ocarina-of-time-midnight-launches-announced-for-nintendo-new-york-and-san-francisco-stores",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-27 00:55 UTC"
-    },
-    {
-      "headline": "Games like Among us",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xgenbr/games_like_among_us/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:53 UTC"
-    },
-    {
-      "headline": "CHD Manager v1.4.0",
-      "source": "r/emulation",
-      "source_type": "reddit",
-      "feed": "reddit:emulation",
-      "link": "https://www.reddit.com/r/emulation/comments/1xgelqk/chd_manager_v140/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:52 UTC"
-    },
-    {
-      "headline": "Blood of Dawnwalker Update Gets a 15% Performance Boost!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgekuc/blood_of_dawnwalker_update_gets_a_15_performance/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:50 UTC"
-    },
-    {
-      "headline": "Picked this banger up for $20 today 🙏",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xgejnu/picked_this_banger_up_for_20_today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:49 UTC"
-    },
-    {
-      "headline": "Modern “open world” RPGs that are heavy on RPG mechanics",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xgej7s/modern_open_world_rpgs_that_are_heavy_on_rpg/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:48 UTC"
     }
   ]
 }
