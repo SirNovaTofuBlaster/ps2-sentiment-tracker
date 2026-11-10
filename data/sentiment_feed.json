@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 00:16:41 UTC",
+  "last_updated": "2026-11-10 00:27:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2710,6 +2710,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-09 21:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Red Dead Revolver",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751274951",
+      "matched_game": "Red Dead Revolver",
+      "matched_games": [
+        "Red Dead Revolver"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 21:22 UTC"
     },
@@ -166034,18 +166053,18 @@
       "views": 734
     },
     {
-      "headline": "Thread on /vrpg/ naming Deus Ex and Half-Life",
+      "headline": "Thread on /vrpg/ naming Half-Life and Deus Ex",
       "source": "4chan /vrpg/",
       "source_type": "4chan",
       "feed": "4chan:vrpg",
       "link": "https://boards.4chan.org/vrpg/thread/4147722",
-      "matched_game": "Deus Ex",
+      "matched_game": "Half-Life",
       "matched_games": [
-        "Deus Ex",
-        "Half-Life"
+        "Half-Life",
+        "Deus Ex"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337193,190 +337212,6 @@
       "hype": 0,
       "timestamp": "2026-10-27 00:28 UTC",
       "views": 57879
-    },
-    {
-      "headline": "Thread on /v/ naming God of War",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750423820",
-      "matched_game": "God of War",
-      "matched_games": [
-        "God of War"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:26 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Viewtiful Joe",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750423653",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4",
-        "Viewtiful Joe"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:24 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Soul Calibur 2, Dawn of Mana, Romancing SaGa and 1 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750423573",
-      "matched_game": "Soul Calibur 2",
-      "matched_games": [
-        "Soul Calibur 2",
-        "Dawn of Mana",
-        "Romancing SaGa",
-        "Teen Titans"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:22 UTC"
-    },
-    {
-      "headline": "Fresh from Japan",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xgdw7t/fresh_from_japan/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:20 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Kingdom Hearts and Final Fantasy X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750423447",
-      "matched_game": "Kingdom Hearts II",
-      "matched_games": [
-        "Kingdom Hearts II",
-        "Kingdom Hearts",
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:19 UTC"
-    },
-    {
-      "headline": "This pops up as pokemon platnium in my 3ds, is it real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xgdvx0/this_pops_up_as_pokemon_platnium_in_my_3ds_is_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:19 UTC"
-    },
-    {
-      "headline": "The 50 most-played Steam Next Fest demos include 7 incremental games, 4 AI disclosures, and only one instance of haystack slop",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/software/platforms/the-50-most-played-steam-next-fest-demos-include-7-incremental-games-4-ai-disclosures-and-only-one-instance-of-haystack-slop/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:18 UTC"
-    },
-    {
-      "headline": "What voltage should the pc receive",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgdv67/what_voltage_should_the_pc_receive/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:18 UTC"
-    },
-    {
-      "headline": "I managed to port Tekken Tag Kazuya into Tekken 3 on real PS1 hardware",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xgdtgw/i_managed_to_port_tekken_tag_kazuya_into_tekken_3/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:16 UTC"
-    },
-    {
-      "headline": "What rent does to a mf",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgdt0h/what_rent_does_to_a_mf/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 00:16 UTC"
     }
   ]
 }
