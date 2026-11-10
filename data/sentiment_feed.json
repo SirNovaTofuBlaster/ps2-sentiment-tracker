@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 06:22:32 UTC",
+  "last_updated": "2026-11-10 06:25:11 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,44 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 06:18 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587351607",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 06:17 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Deus Ex",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587351531",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 06:16 UTC"
     },
     {
       "headline": "Turn-Based Grand Stragegy",
@@ -337917,40 +337955,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 06:26 UTC"
-    },
-    {
-      "headline": "Advices for a first PC Build",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgl0sn/advices_for_a_first_pc_build/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 06:23 UTC"
-    },
-    {
-      "headline": "Nvidia shader cache folder exceeds the 16 GB limit",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xgl0ei/nvidia_shader_cache_folder_exceeds_the_16_gb_limit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 06:22 UTC"
     }
   ]
 }
