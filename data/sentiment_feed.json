@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 05:25:29 UTC",
+  "last_updated": "2026-11-10 05:28:06 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1376,14 +1376,15 @@
       "timestamp": "2026-11-10 02:49 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 4",
+      "headline": "Thread on /v/ naming Persona 4 and The Thing",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751294286",
       "matched_game": "Persona 4",
       "matched_games": [
-        "Persona 4"
+        "Persona 4",
+        "The Thing"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -5307,6 +5308,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-09 22:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751279571",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 22:33 UTC"
     },
@@ -337930,23 +337950,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 05:30 UTC"
-    },
-    {
-      "headline": "Pokemon UNITE to end service on March 23, 2027",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/pokemon-unite-to-end-service-on-march-23-2027",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 05:25 UTC"
     }
   ]
 }
