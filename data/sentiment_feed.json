@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-10 03:31:32 UTC",
+  "last_updated": "2026-11-10 03:34:08 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Final Fantasy XII",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12923813",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 03:30 UTC"
+    },
     {
       "headline": "The 2026 Zero-BS FPS Optimization Guide (Safe Windows & GPU Settings, No Sketchy Scripts)",
       "source": "r/pcmasterrace",
@@ -137,6 +156,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 03:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751295692",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 03:14 UTC"
     },
     {
       "headline": "Budget build, need advice",
@@ -1083,6 +1121,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-10 01:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751290413",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 01:36 UTC"
     },
@@ -7307,17 +7364,18 @@
       "timestamp": "2026-11-09 19:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Monster Hunter and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751269589",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Monster Hunter",
       "matched_games": [
+        "Monster Hunter",
         "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337719,79 +337777,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-27 03:34 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun and Search and Destroy",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/585771663",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun",
-        "Search and Destroy"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 03:33 UTC"
-    },
-    {
-      "headline": "Sometimes it helps me relax to play PS1 Wild Arms",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xgi177/sometimes_it_helps_me_relax_to_play_ps1_wild_arms/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 03:33 UTC"
-    },
-    {
-      "headline": "Alguien puede facilitarlo?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xgi0yf/alguien_puede_facilitarlo/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 03:32 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750432125",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 03:31 UTC"
     }
   ]
 }
