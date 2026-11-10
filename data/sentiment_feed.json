@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 11:07:41 UTC",
+  "last_updated": "2026-11-10 11:10:27 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -501,6 +501,25 @@
       "hype": 0,
       "timestamp": "2026-11-10 10:15 UTC",
       "views": 661
+    },
+    {
+      "headline": "Thread on /v/ naming Miami Vice",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751310450",
+      "matched_game": "Miami Vice",
+      "matched_games": [
+        "Miami Vice"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 10:15 UTC"
     },
     {
       "headline": "EA Sports FC 27 mantiene su liderato en unas ventas semanales de España con alguna sorpresa",
@@ -1935,7 +1954,7 @@
       "timestamp": "2026-11-10 08:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Max Payne, Yakuza 2 and 5 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Max Payne, Yakuza 2 and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1945,11 +1964,12 @@
         "Metal Gear Solid 2: Sons of Liberty",
         "Max Payne",
         "Yakuza 2",
-        "Deus Ex",
-        "Final Fantasy X",
+        "Kingdom Hearts II",
         "Kingdom Hearts",
         "Monster Hunter",
-        "Grand Theft Auto: Vice City"
+        "Deus Ex",
+        "Grand Theft Auto: Vice City",
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -5946,6 +5966,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-10 02:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751292862",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 02:19 UTC"
     },
@@ -338164,95 +338203,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 11:10 UTC"
-    },
-    {
-      "headline": "Far Cry 6 - The Good, The Bad, The Questionable",
-      "source": "r/patientgamers",
-      "source_type": "reddit",
-      "feed": "reddit:patientgamers",
-      "link": "https://www.reddit.com/r/patientgamers/comments/1xgpmi0/far_cry_6_the_good_the_bad_the_questionable/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 11:09 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Unreal Tournament",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750444857",
-      "matched_game": "Unreal Tournament",
-      "matched_games": [
-        "Unreal Tournament"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 11:09 UTC"
-    },
-    {
-      "headline": "Plants vs. Zombies: Replanted gratis y por tiempo limitado en Nintendo Switch Online con 'juegos de muestra'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026300016/plants-vs-zombies-replanted-gratis-y-por-tiempo-limitado-en-nintendo-switch-online-con-juegos-de-muestra/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 11:08 UTC"
-    },
-    {
-      "headline": "Más del 92 % de los juegos que vende Capcom ya son digitales",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026300015/mas-del-92-de-los-juegos-que-vende-capcom-ya-son-digitales/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 11:08 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750444779",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 11:07 UTC"
     }
   ]
 }
