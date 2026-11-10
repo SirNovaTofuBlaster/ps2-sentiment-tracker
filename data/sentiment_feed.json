@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 22:31:37 UTC",
+  "last_updated": "2026-11-10 22:34:08 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -804,6 +804,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-10 21:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jak II and Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751344961",
+      "matched_game": "Jak II",
+      "matched_games": [
+        "Jak II",
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 21:34 UTC"
     },
@@ -3621,13 +3641,14 @@
       "views": 6076
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming God of War and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751335964",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "God of War",
       "matched_games": [
+        "God of War",
         "Kingdom Hearts"
       ],
       "match_score": 100,
@@ -339887,40 +339908,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 22:34 UTC"
-    },
-    {
-      "headline": "Capcom firma el mejor semestre de su historia con ventas récord impulsadas casi en su totalidad por el formato digital",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/capcom/115186/capcom-firma-el-mejor-semestre-de-su-historia-con-ventas-record-impulsadas-casi-en-su-totalidad-por",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 22:33 UTC"
-    },
-    {
-      "headline": "Sir, i have a better question",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xh6z90/sir_i_have_a_better_question/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 22:32 UTC"
     }
   ]
 }
