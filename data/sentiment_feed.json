@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 03:07:41 UTC",
+  "last_updated": "2026-11-10 03:18:50 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -58,14 +58,15 @@
       "timestamp": "2026-11-10 02:47 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Teenage Mutant Ninja Turtles",
+      "headline": "Thread on /v/ naming Teenage Mutant Ninja Turtles and Kingdom Hearts II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751294321",
       "matched_game": "Teenage Mutant Ninja Turtles",
       "matched_games": [
-        "Teenage Mutant Ninja Turtles"
+        "Teenage Mutant Ninja Turtles",
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -925,6 +926,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-10 01:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Woody Woodpecker and Teen Titans",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751289458",
+      "matched_game": "Woody Woodpecker",
+      "matched_games": [
+        "Woody Woodpecker",
+        "Teen Titans"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 01:18 UTC"
     },
@@ -2482,6 +2503,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-09 23:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts and God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751283154",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts",
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-09 23:34 UTC"
     },
@@ -337481,74 +337522,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 03:18 UTC"
-    },
-    {
-      "headline": "Castle Crashers Remastered (#629)",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xghq82/castle_crashers_remastered_629/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-27 03:17 UTC"
-    },
-    {
-      "headline": "I really love how some PS1 games went for this dark sci-fi militaristic aesthetic with teal-colored environments.",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xghnvb/i_really_love_how_some_ps1_games_went_for_this/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-27 03:14 UTC"
-    },
-    {
-      "headline": "Short pc case",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xghnyk/short_pc_case/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 03:14 UTC"
-    },
-    {
-      "headline": "FHD monitor 23.8\" or 24.5\" PPI",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xghjj2/fhd_monitor_238_or_245_ppi/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 03:08 UTC"
     }
   ]
 }
