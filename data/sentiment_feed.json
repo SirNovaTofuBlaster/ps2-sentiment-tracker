@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 02:34:23 UTC",
+  "last_updated": "2026-11-10 02:37:01 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1077,6 +1077,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 00:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Peter Pan",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751288410",
+      "matched_game": "Peter Pan",
+      "matched_games": [
+        "Peter Pan"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 00:58 UTC"
     },
     {
       "headline": "Still struggling with stutters",
@@ -3728,7 +3747,7 @@
       "timestamp": "2026-11-09 22:26 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Zone of the Enders, Deus Ex and 1 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Deus Ex, Metal Gear Solid 3: Snake Eater and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -3736,9 +3755,9 @@
       "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
         "Metal Gear Solid 2: Sons of Liberty",
-        "Zone of the Enders",
         "Deus Ex",
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Zone of the Enders"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -337635,40 +337654,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 02:39 UTC"
-    },
-    {
-      "headline": "Why is my GPU/Graphics Card doing?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xggus9/why_is_my_gpugraphics_card_doing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 02:35 UTC"
-    },
-    {
-      "headline": "Mega Man: Dual Override reveals Tank Man, new trailer",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/mega-man-dual-override-reveals-tank-man-new-trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 02:35 UTC"
     }
   ]
 }
