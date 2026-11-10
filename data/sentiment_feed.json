@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 18:19:40 UTC",
+  "last_updated": "2026-11-10 18:30:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 18:17 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587398063",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 18:16 UTC"
     },
     {
       "headline": "Doomsday Officially Comes to Marvel Rivals With an X-Men Icon",
@@ -124,15 +143,15 @@
       "timestamp": "2026-11-10 18:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Gran Turismo 4 and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Kingdom Hearts and Gran Turismo 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751331452",
-      "matched_game": "Gran Turismo 4",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Gran Turismo 4",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Gran Turismo 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1192,13 +1211,14 @@
       "views": 1115
     },
     {
-      "headline": "Thread on /v/ naming Persona 4",
+      "headline": "Thread on /v/ naming Persona 3 and Persona 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751328439",
-      "matched_game": "Persona 4",
+      "matched_game": "Persona 3",
       "matched_games": [
+        "Persona 3",
         "Persona 4"
       ],
       "match_score": 100,
@@ -5219,6 +5239,25 @@
       "timestamp": "2026-11-10 15:05 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751321405",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 15:05 UTC"
+    },
+    {
       "headline": "\"A fight for all workers\": SAG-AFTRA throw weight behind emerging Rockstar union ahead of its GTA 6 release week vote",
       "source": "Rock Paper Shotgun Latest Articles Feed",
       "source_type": "news",
@@ -6969,18 +7008,19 @@
       "timestamp": "2026-11-10 14:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming ICO and Rally Championship",
+      "headline": "Thread on /v/ naming Shadow of the Colossus, ICO and Rally Championship",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751318507",
-      "matched_game": "ICO",
+      "matched_game": "Shadow of the Colossus",
       "matched_games": [
+        "Shadow of the Colossus",
         "ICO",
         "Rally Championship"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -9613,6 +9653,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-10 11:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Godfather and Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751313491",
+      "matched_game": "The Godfather",
+      "matched_games": [
+        "The Godfather",
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 11:52 UTC"
     },
@@ -339004,127 +339064,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 18:30 UTC"
-    },
-    {
-      "headline": "Stripped inner thread",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xh0l2w/stripped_inner_thread/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:29 UTC"
-    },
-    {
-      "headline": "Último trailer de Dune: Part Three mostra o fim da história",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/ultimo-trailer-de-dune-part-three-mostra-o-fim-da-historia",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:26 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750465916",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:25 UTC"
-    },
-    {
-      "headline": "Cyberpunk 2 Listing Hints at Multiplayer Quests in CD Projekt Red Sequel",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/cyberpunk-2-multiplayer-quests-leak-cd-projekt-red/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:23 UTC"
-    },
-    {
-      "headline": "Any suggestions?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xh0fn8/any_suggestions/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:23 UTC"
-    },
-    {
-      "headline": "Capture card for ipad bought- which app is the best ?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xh0cjo/capture_card_for_ipad_bought_which_app_is_the_best/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-27 18:20 UTC"
-    },
-    {
-      "headline": "OpenCNC 3D + RA3D Announcement Trailer",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xh0bfe/opencnc_3d_ra3d_announcement_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-27 18:19 UTC"
     }
   ]
 }
