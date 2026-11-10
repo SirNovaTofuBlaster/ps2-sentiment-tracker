@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-10 20:37:37 UTC",
+  "last_updated": "2026-11-10 20:40:11 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 20:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Fatal Frame 2: Crimson Butterfly, Persona 3 and Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751340565",
+      "matched_game": "Fatal Frame 2: Crimson Butterfly",
+      "matched_games": [
+        "Fatal Frame 2: Crimson Butterfly",
+        "Persona 3",
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 20:30 UTC"
     },
     {
       "headline": "AMD admits GPU driver bug is writing data continuously, wearing out SSDs — Radeon owner claims External Events Utility used up 1% of SSD health every month for over a year, company promises a fix soon",
@@ -1007,6 +1028,25 @@
       "hype": 1,
       "timestamp": "2026-11-10 19:32 UTC",
       "views": 4604
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751336917",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-10 19:32 UTC"
     },
     {
       "headline": "Turning my JBL into an improvised bungee",
@@ -339792,42 +339832,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-27 20:40 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Rayman: Raving Rabbids",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750473693",
-      "matched_game": "Rayman: Raving Rabbids",
-      "matched_games": [
-        "Rayman: Raving Rabbids"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-27 20:39 UTC"
-    },
-    {
-      "headline": "Revelan el gigantesco tamaño de descarga de GTA 6 en PS5: requerirá más de 200 GB",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/grand-theft-auto-vi/115180/revelan-el-gigantesco-tamano-de-descarga-de-gta-6-en-ps5-requerira-mas-de-200-gb",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-27 20:37 UTC"
     }
   ]
 }
