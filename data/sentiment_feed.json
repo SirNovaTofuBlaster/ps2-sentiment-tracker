@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 12:25:25 UTC",
+  "last_updated": "2026-11-11 12:33:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -50,6 +50,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 12:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751384118",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 12:15 UTC"
     },
@@ -4001,6 +4020,26 @@
       "timestamp": "2026-11-11 06:36 UTC"
     },
     {
+      "headline": "Thread on /v/ naming God of War and God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751372832",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 06:36 UTC"
+    },
+    {
       "headline": "Zelda: Ocarina of Time sells over 5.2 million copies in first 4 days, highest global-sales for any Nintendo-published Switch 2 game",
       "source": "Nintendo Everything",
       "source_type": "news",
@@ -4908,6 +4947,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 05:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751369545",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 05:03 UTC"
     },
     {
       "headline": "Any software tips to make my PC run quieter/cooler without losing performance?",
@@ -339942,168 +340000,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 12:38 UTC"
-    },
-    {
-      "headline": "GOD OF WAR 2🤩🤔",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/QOmq2VJIaV0",
-      "matched_game": "God of War II",
-      "matched_games": [
-        "God of War II"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 12:31 UTC",
-      "views": 1407
-    },
-    {
-      "headline": "Will the Resident Evil Series Be Over in the Next 10 Years? Of Course Not",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/10/will-the-resident-evil-series-be-over-in-the-next-10-years-of-course-not",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 12:30 UTC"
-    },
-    {
-      "headline": "\"We basically rewrote the entire State of Decay game\": Undead Labs spent years trying to make State of Decay 3 into a full-blown zombie apocalypse MMO",
-      "source": "Rock Paper Shotgun Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.rockpapershotgun.com/feed/",
-      "link": "https://www.rockpapershotgun.com/we-basically-rewrote-the-entire-state-of-decay-game-undead-labs-spent-years-trying-to-make-state-of-decay-3-into-a-full-blown-zombie-apocalypse-mmo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 12:30 UTC"
-    },
-    {
-      "headline": "Performance of phantom blade 0 on rtx 4060?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhmqqq/performance_of_phantom_blade_0_on_rtx_4060/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 12:30 UTC"
-    },
-    {
-      "headline": "Burnout Revenge Recomp Out NOW and SO GOOD!",
-      "source": "YouTube: Video Game Esoterica",
-      "source_type": "youtube",
-      "feed": "youtube:UCn2pQB4jsCTLUtx2NIkCvUg",
-      "link": "https://www.youtube.com/watch?v=Xtybh8uSDFk",
-      "matched_game": "Burnout Revenge",
-      "matched_games": [
-        "Burnout Revenge"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 12:30 UTC",
-      "views": 21895
-    },
-    {
-      "headline": "Valve Knows Steam Next Fest Has An AI Slop Problem, And It’s Looking For Solutions",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/valve-knows-steam-next-fest-has-an-ai-slop-problem-and-its-looking-for-solutions/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 12:30 UTC"
-    },
-    {
-      "headline": "MORTAL KOMBAT TRILOGY",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/KIRuVWFegQY",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 12:29 UTC",
-      "views": 2936
-    },
-    {
-      "headline": "Looking forward to Phantom Blade 0 🥳",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xhmojw/looking_forward_to_phantom_blade_0/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 12:27 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Red Faction",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750509278",
-      "matched_game": "Red Faction",
-      "matched_games": [
-        "Red Faction"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 12:25 UTC"
     }
   ]
 }
