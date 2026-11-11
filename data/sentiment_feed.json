@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 00:25:50 UTC",
+  "last_updated": "2026-11-11 00:28:25 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -118,6 +118,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 00:14 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587431157",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 00:14 UTC"
     },
@@ -17253,18 +17272,18 @@
       "timestamp": "2026-11-10 11:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War and Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751313525",
-      "matched_game": "God of War",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "God of War",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "God of War"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339542,57 +339561,6 @@
       "hype": 0,
       "timestamp": "2026-10-28 00:30 UTC",
       "views": 2633
-    },
-    {
-      "headline": "I am proud to present my PlayStation All-Stars Battle Royale collection to you.",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1xh9o4z/i_am_proud_to_present_my_playstation_allstars/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 00:26 UTC"
-    },
-    {
-      "headline": "[Feedback wanted] Free party games where your phone is the controller",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xh9nrl/feedback_wanted_free_party_games_where_your_phone/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 00:26 UTC"
-    },
-    {
-      "headline": "I have *so* many 3.5inch bays now",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xh9o7x/i_have_so_many_35inch_bays_now/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 00:26 UTC"
     }
   ]
 }
