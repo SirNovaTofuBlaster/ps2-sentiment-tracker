@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 22:49:39 UTC",
+  "last_updated": "2026-11-11 23:00:53 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -71,13 +71,14 @@
       "timestamp": "2026-11-11 22:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Ar Tonelico",
+      "headline": "Thread on /v/ naming Fatal Frame and Ar Tonelico",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751418270",
-      "matched_game": "Ar Tonelico",
+      "matched_game": "Fatal Frame",
       "matched_games": [
+        "Fatal Frame",
         "Ar Tonelico"
       ],
       "match_score": 100,
@@ -6392,7 +6393,7 @@
       "timestamp": "2026-11-11 17:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Silent Hill 2",
+      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 2, Devil May Cry and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -6400,7 +6401,9 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Devil May Cry",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -15849,21 +15852,22 @@
       "timestamp": "2026-11-11 10:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex, Splinter Cell, Spider-Man and 2 more",
+      "headline": "Thread on /v/ naming Manhunt 2, Splinter Cell, Spider-Man and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751379841",
-      "matched_game": "Deus Ex",
+      "matched_game": "Manhunt 2",
       "matched_games": [
-        "Deus Ex",
+        "Manhunt 2",
         "Splinter Cell",
         "Spider-Man",
         "Sniper Elite",
+        "Deus Ex",
         "Hitman: Blood Money"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337949,126 +337953,6 @@
       "hype": 1,
       "timestamp": "2026-10-28 23:00 UTC",
       "views": 79555
-    },
-    {
-      "headline": "Know any under the radar PS1 games that you'd like to shout out?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xi3dqt/know_any_under_the_radar_ps1_games_that_youd_like/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 22:59 UTC"
-    },
-    {
-      "headline": "Was anyone “Team Atari?”",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xi3b9l/was_anyone_team_atari/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 22:56 UTC"
-    },
-    {
-      "headline": "I feel regarded (5090)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xi39xi/i_feel_regarded_5090/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 22:55 UTC"
-    },
-    {
-      "headline": "Digital Foundry elogia os 60fps de Phantom Blade Zero na PS5",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/digital-foundry-elogia-os-60fps-de-phantom-blade-zero-na-ps5",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 22:53 UTC"
-    },
-    {
-      "headline": "Super Battle Golf - Official Console Release Date",
-      "source": "YouTube: XBOX",
-      "source_type": "youtube",
-      "feed": "youtube:UCjBp_7RuDBUYbd1LegWEJ8g",
-      "link": "https://www.youtube.com/watch?v=m4hjvhzjV1w",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 22:52 UTC",
-      "views": 24844
-    },
-    {
-      "headline": "James Gunn confirma que Batman y Wonder Woman son los \"personajes diamante\" del DCU a pesar de su ausencia",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/dc-studios/115205/james-gunn-confirma-que-batman-y-wonder-woman-son-los-personajes-diamante-del-dcu-a-pesar-de-su-ause",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 22:51 UTC"
-    },
-    {
-      "headline": "Can you name the horror games these deeply unpleasant bathrooms are from?",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/horror/can-you-name-the-horror-game-these-deeply-unpleasant-bathrooms-are-from/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 22:50 UTC"
     }
   ]
 }
