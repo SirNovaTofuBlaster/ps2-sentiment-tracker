@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 14:40:49 UTC",
+  "last_updated": "2026-11-11 14:43:22 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -33,6 +33,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 14:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War and Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751390007",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 14:34 UTC"
     },
@@ -1176,6 +1196,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 13:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751386475",
+      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_games": [
+        "Jak and Daxter: The Precursor Legacy"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339023,75 +339062,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 14:43 UTC"
-    },
-    {
-      "headline": "Tenjutsu - Official Gameplay Trailer",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=PTyvKTPs-Ow",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 14:42 UTC",
-      "views": 13009
-    },
-    {
-      "headline": "Lost and Found Co. announced for Nintendo Switch 2 and Switch",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/lost-and-found-co-announced-for-nintendo-switch-2-and-switch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-28 14:42 UTC"
-    },
-    {
-      "headline": "Mass Effect composer wants to rescore leaked internal ME Universe trailer to \"properly represent my musical vision\"",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/mass-effect-universe-trailer-rescore-composer-n7-day",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-28 14:40 UTC"
-    },
-    {
-      "headline": "Everything We Saw At Nintendo’s October Indie World Showcase",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/nintendo-indie-world-stream-switch-2-recap-release-date-2000750498",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 14:40 UTC"
     }
   ]
 }
