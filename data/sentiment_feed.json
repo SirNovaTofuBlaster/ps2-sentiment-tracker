@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 20:22:36 UTC",
+  "last_updated": "2026-11-11 20:25:11 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -121,6 +121,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 20:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dark Cloud",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751409484",
+      "matched_game": "Dark Cloud",
+      "matched_games": [
+        "Dark Cloud"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 20:10 UTC"
     },
@@ -2156,17 +2175,18 @@
       "timestamp": "2026-11-11 18:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751403075",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338253,40 +338273,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 20:28 UTC"
-    },
-    {
-      "headline": "Places to buy PS2 games online",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xhzgyk/places_to_buy_ps2_games_online/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 20:24 UTC"
-    },
-    {
-      "headline": "Mass Effect 5 studio was reportedly told to tone down inclusivity by EA after Saudi Arabia buyout, former BioWare dev alleges, \"so as to not cause offense\"",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53706283",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 20:22 UTC"
     }
   ]
 }
