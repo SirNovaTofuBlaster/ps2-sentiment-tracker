@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 04:46:42 UTC",
+  "last_updated": "2026-11-11 04:57:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -222,6 +222,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 03:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751366786",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 03:58 UTC"
     },
@@ -2146,6 +2165,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 01:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751358710",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 01:18 UTC"
     },
@@ -77189,13 +77227,14 @@
       "timestamp": "2026-11-07 21:40 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Dark Cloud",
+      "headline": "Thread on /vr/ naming God of War and Dark Cloud",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12919821",
-      "matched_game": "Dark Cloud",
+      "matched_game": "God of War",
       "matched_games": [
+        "God of War",
         "Dark Cloud"
       ],
       "match_score": 100,
@@ -339741,94 +339780,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-28 04:57 UTC"
-    },
-    {
-      "headline": "PSA: Minecraft Switch 2 Now Available, Switch Physical Owners Get A Digital Discount",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/psa-minecraft-switch-2-now-available-switch-physical-owners-get-a-digital-discount",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 04:55 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Unreal Tournament and Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750496387",
-      "matched_game": "Unreal Tournament",
-      "matched_games": [
-        "Unreal Tournament",
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 04:52 UTC"
-    },
-    {
-      "headline": "4070 Super died and ASUS RMA’d it. Does anyone know what a “IC Chip” could’ve been?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhezwm/4070_super_died_and_asus_rmad_it_does_anyone_know/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 04:51 UTC"
-    },
-    {
-      "headline": "Day 832 of posting a Daily Screenshot from the games I've been playing",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53680264",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 04:47 UTC"
-    },
-    {
-      "headline": "[Zombie] Looking for first person shooter with Call of Duty style story campaign set in a zombie apocalypse",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xhewwn/zombie_looking_for_first_person_shooter_with_call/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 04:46 UTC"
     }
   ]
 }
