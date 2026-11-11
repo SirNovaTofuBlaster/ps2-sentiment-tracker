@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 23:18:36 UTC",
+  "last_updated": "2026-11-11 23:29:56 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1938,6 +1938,25 @@
       "views": 548
     },
     {
+      "headline": "Thread on /vr/ naming Resident Evil 4",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12927537",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 21:46 UTC"
+    },
+    {
       "headline": "Marvel Makes VisionQuest’s First Episode Free To Stream",
       "source": "Polygon.com",
       "source_type": "news",
@@ -2178,6 +2197,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 21:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Thing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751414982",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 21:35 UTC"
     },
     {
       "headline": "Crimson Desert wins 'PC Game of the Year' at the 2026 Golden Joystick Awards",
@@ -4044,15 +4082,16 @@
       "timestamp": "2026-11-11 20:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne and Spider-Man",
+      "headline": "Thread on /v/ naming The Hulk, Spider-Man and Max Payne",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751408727",
-      "matched_game": "Max Payne",
+      "matched_game": "The Hulk",
       "matched_games": [
-        "Max Payne",
-        "Spider-Man"
+        "The Hulk",
+        "Spider-Man",
+        "Max Payne"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -5765,14 +5804,15 @@
       "timestamp": "2026-11-11 18:35 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4",
+      "headline": "Thread on /vg/ naming Persona 4 and Persona 3",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/587509539",
       "matched_game": "Persona 4",
       "matched_games": [
-        "Persona 4"
+        "Persona 4",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -5869,18 +5909,19 @@
       "timestamp": "2026-11-11 18:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4 and Silent Hill 2",
+      "headline": "Thread on /v/ naming The Thing, Resident Evil 4 and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751403075",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "The Thing",
       "matched_games": [
+        "The Thing",
         "Resident Evil 4",
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -12856,6 +12897,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 14:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751388571",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 14:04 UTC"
     },
@@ -338340,276 +338400,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 23:29 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750543792",
-      "matched_game": "Kingdom Hearts II",
-      "matched_games": [
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:27 UTC"
-    },
-    {
-      "headline": "Collecting original Japanese PS1 games for display while playing burned English copies — what do you think?",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xi40hs/collecting_original_japanese_ps1_games_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:26 UTC"
-    },
-    {
-      "headline": "At what point do you think Ray Tracing will be the minimum requirement for newly released games?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xi40ey/at_what_point_do_you_think_ray_tracing_will_be/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:26 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Persona 4 and Persona 3",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/585969825",
-      "matched_game": "Persona 4",
-      "matched_games": [
-        "Persona 4",
-        "Persona 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:26 UTC"
-    },
-    {
-      "headline": "What are the games with the deepest character creation feature?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xi402y/what_are_the_games_with_the_deepest_character/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:25 UTC"
-    },
-    {
-      "headline": "Is this copy of Pokemon Diamond real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xi3ynd/is_this_copy_of_pokemon_diamond_real/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:24 UTC"
-    },
-    {
-      "headline": "New PC build, monitor randomly goes black for 5–10 seconds and comes back — anyone else experiencing this?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xi3ysj/new_pc_build_monitor_randomly_goes_black_for_510/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:24 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Persona 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750543656",
-      "matched_game": "Persona 4",
-      "matched_games": [
-        "Persona 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:24 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Silent Hill 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750543626",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2",
-        "Silent Hill 3"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:23 UTC"
-    },
-    {
-      "headline": "Front Panel cables in GPU Fan blades",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xi3xix/front_panel_cables_in_gpu_fan_blades/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:22 UTC"
-    },
-    {
-      "headline": "Ps gift card 25$ dollar 18 paypal gs",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xi3x1o/ps_gift_card_25_dollar_18_paypal_gs/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:22 UTC"
-    },
-    {
-      "headline": "How do I fix this?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xi3wd1/how_do_i_fix_this/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:21 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Half-Life",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12901796",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:21 UTC"
-    },
-    {
-      "headline": "Games with save game transfer/rewards?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xi3v7m/games_with_save_game_transferrewards/",
-      "matched_game": "Gran Turismo: Concept 2002 Tokyo-Geneva",
-      "matched_games": [
-        "Gran Turismo: Concept 2002 Tokyo-Geneva",
-        "War of the Monsters"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:20 UTC"
-    },
-    {
-      "headline": "Real or fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xi3vvy/real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 23:20 UTC"
     }
   ]
 }
