@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-11 13:43:45 UTC",
+  "last_updated": "2026-11-11 13:46:13 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587484219",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 13:44 UTC"
+    },
     {
       "headline": "High GPU Hotspot temps even after repasting",
       "source": "r/pcmasterrace",
@@ -18,6 +37,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 13:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III and Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751387209",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III",
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 13:34 UTC"
     },
     {
       "headline": "Can't update it keeps restarting",
@@ -8025,6 +8064,25 @@
       "timestamp": "2026-11-11 03:13 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751364682",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 03:13 UTC"
+    },
+    {
       "headline": "should i try and make a 50$ pc",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -11117,19 +11175,21 @@
       "timestamp": "2026-11-10 23:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Viewtiful Joe, Monster Hunter and 3 more",
+      "headline": "Thread on /v/ naming Splinter Cell, Ar Tonelico, Viewtiful Joe and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751352876",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Splinter Cell",
       "matched_games": [
-        "Kingdom Hearts",
+        "Splinter Cell",
+        "Ar Tonelico",
         "Viewtiful Joe",
         "Monster Hunter",
         "Blade 2",
         "Max Payne",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -340110,81 +340170,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 13:46 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming The Sims 2, Resident Evil 4, Indiana Jones and The Emperor's Tomb and 3 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750512719",
-      "matched_game": "The Sims 2",
-      "matched_games": [
-        "The Sims 2",
-        "Resident Evil 4",
-        "Indiana Jones and The Emperor's Tomb",
-        "Dragon Ball Z: Budokai Tenkaichi 3",
-        "Burnout 3: Takedown",
-        "Unreal Tournament"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 13:45 UTC"
-    },
-    {
-      "headline": "ProtonDB issues",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xhohju/protondb_issues/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 13:45 UTC"
-    },
-    {
-      "headline": "Nintendo Indie World October 2026 Showcase: All The Biggest Announcements",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/nintendo-indie-world-october-2026-showcase-all-the-biggest-announcements/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-28 13:45 UTC"
-    },
-    {
-      "headline": "what are most useful apps you have?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhoh7a/what_are_most_useful_apps_you_have/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 13:44 UTC"
     }
   ]
 }
