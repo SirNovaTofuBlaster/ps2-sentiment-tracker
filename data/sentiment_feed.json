@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 08:01:47 UTC",
+  "last_updated": "2026-11-11 08:04:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -389,18 +389,19 @@
       "timestamp": "2026-11-11 06:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Sniper Elite",
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X, Sniper Elite and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751373647",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Silent Hill 2",
-        "Sniper Elite"
+        "Resident Evil Code: Veronica X",
+        "Sniper Elite",
+        "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
