@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 06:07:36 UTC",
+  "last_updated": "2026-11-11 06:10:14 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1243,6 +1243,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 03:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Godzilla: Save The Earth",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751366201",
+      "matched_game": "Godzilla: Save The Earth",
+      "matched_games": [
+        "Godzilla: Save The Earth"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 03:46 UTC"
     },
@@ -339877,79 +339896,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 06:10 UTC"
-    },
-    {
-      "headline": "Casual Sport Series: Badminton PS4 no longer on Playstation store",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xhgafu/casual_sport_series_badminton_ps4_no_longer_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 06:08 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 4: The Room and Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750498689",
-      "matched_game": "Silent Hill 4: The Room",
-      "matched_games": [
-        "Silent Hill 4: The Room",
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 06:08 UTC"
-    },
-    {
-      "headline": "Does it mean 5000 series performance is also locked and can be unlocked to achieve more?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhg9gf/does_it_mean_5000_series_performance_is_also/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 06:07 UTC"
-    },
-    {
-      "headline": "Thread on /vm/ naming The Thing",
-      "source": "4chan /vm/",
-      "source_type": "4chan",
-      "feed": "4chan:vm",
-      "link": "https://boards.4chan.org/vm/thread/3125377",
-      "matched_game": "The Thing",
-      "matched_games": [
-        "The Thing"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 06:07 UTC"
     }
   ]
 }
