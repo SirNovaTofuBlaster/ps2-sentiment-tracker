@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 08:06:34 UTC",
+  "last_updated": "2026-11-11 08:17:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -4038,6 +4038,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 01:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4 and Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751359884",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4",
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 01:38 UTC"
     },
@@ -155675,13 +155695,14 @@
       "timestamp": "2026-11-04 19:43 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Half-Life",
+      "headline": "Thread on /vr/ naming TimeSplitters 2 and Half-Life",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12913876",
-      "matched_game": "Half-Life",
+      "matched_game": "TimeSplitters 2",
       "matched_games": [
+        "TimeSplitters 2",
         "Half-Life"
       ],
       "match_score": 100,
@@ -340152,98 +340173,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 08:17 UTC"
-    },
-    {
-      "headline": "🐝My latest poster art 🐝",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xhi9ay/my_latest_poster_art/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 08:16 UTC"
-    },
-    {
-      "headline": "El jefe de Epic Games carga contra Valve y asegura que Steam 'lleva años frenando los videojuegos'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026301005/el-jefe-de-epic-games-carga-contra-valve-y-asegura-que-steam-lleva-anos-frenando-los-videojuegos/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 08:16 UTC"
-    },
-    {
-      "headline": "Puzzle thriller \"The Spectrum Retreat: Redux\" heads to Switch 2 Oct. 29th, 2026",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1xhi99m/puzzle_thriller_the_spectrum_retreat_redux_heads/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 08:15 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy XII, Final Fantasy X, Silent Hill 3 and 3 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750501813",
-      "matched_game": "Final Fantasy XII",
-      "matched_games": [
-        "Final Fantasy XII",
-        "Final Fantasy X",
-        "Silent Hill 3",
-        "Kingdom Hearts II",
-        "Kingdom Hearts",
-        "Final Fantasy X-2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 08:10 UTC"
-    },
-    {
-      "headline": "PS5 slim or pro? For GTA 6",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xhi52h/ps5_slim_or_pro_for_gta_6/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 08:08 UTC"
     }
   ]
 }
