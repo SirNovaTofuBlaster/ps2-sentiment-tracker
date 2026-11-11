@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-11 04:13:31 UTC",
+  "last_updated": "2026-11-11 04:16:01 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751367368",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 04:11 UTC"
+    },
     {
       "headline": "Technical City, I'm just trying to compare processors man",
       "source": "r/pcmasterrace",
@@ -340032,41 +340051,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 04:18 UTC"
-    },
-    {
-      "headline": "Resident Evil Series Story Could End In the Next 10 Years",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/watch?v=X121sDarxRw",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 04:15 UTC",
-      "views": 192
-    },
-    {
-      "headline": "I'm trying to play a game with my roommate on separate systems using my hardware",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xheb55/im_trying_to_play_a_game_with_my_roommate_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 04:13 UTC"
     }
   ]
 }
