@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 03:16:38 UTC",
+  "last_updated": "2026-11-11 03:19:09 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -16,6 +16,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 03:13 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751364691",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 03:13 UTC"
     },
@@ -807,6 +826,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 01:51 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Bully",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751360445",
+      "matched_game": "Bully",
+      "matched_games": [
+        "Bully"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 01:50 UTC"
     },
     {
       "headline": "Advice from a lifelong gamer: dont bulk buy.",
@@ -2824,6 +2862,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-10 23:40 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Okami",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751352683",
+      "matched_game": "Okami",
+      "matched_games": [
+        "Okami"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 23:40 UTC"
     },
@@ -339651,23 +339708,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 03:21 UTC"
-    },
-    {
-      "headline": "Looking for any builds that can handle recording/streaming heavy Minecraft modpacks like gtnh or terrafirmagreg modern at a steady 30fps minimum",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhda83/looking_for_any_builds_that_can_handle/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 03:18 UTC"
     }
   ]
 }
