@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 11:49:40 UTC",
+  "last_updated": "2026-11-11 11:52:14 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,44 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 11:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shrek 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751382995",
+      "matched_game": "Shrek 2",
+      "matched_games": [
+        "Shrek 2"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 11:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Max Payne",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751382959",
+      "matched_game": "Max Payne",
+      "matched_games": [
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 11:42 UTC"
     },
     {
       "headline": "What are the current state of frame generation or DLSS?",
@@ -6208,15 +6246,15 @@
       "timestamp": "2026-11-11 02:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spawn: Armageddon and Splinter Cell",
+      "headline": "Thread on /v/ naming Splinter Cell and Spawn: Armageddon",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751362580",
-      "matched_game": "Spawn: Armageddon",
+      "matched_game": "Splinter Cell",
       "matched_games": [
-        "Spawn: Armageddon",
-        "Splinter Cell"
+        "Splinter Cell",
+        "Spawn: Armageddon"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -6432,6 +6470,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 02:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751361616",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 02:13 UTC"
     },
     {
       "headline": "Please help me identify this noise.",
@@ -340242,110 +340299,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 11:53 UTC"
-    },
-    {
-      "headline": "NVMe M.2 to use on this build? Plus a couple of questions on the motherboard and PSU",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhlwqc/nvme_m2_to_use_on_this_build_plus_a_couple_of/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 11:50 UTC"
-    },
-    {
-      "headline": "\"Dual Boot\"",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhlwq6/dual_boot/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 11:50 UTC"
-    },
-    {
-      "headline": "Do you think the fan on the outside is ugly?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhlwgc/do_you_think_the_fan_on_the_outside_is_ugly/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 11:49 UTC"
-    },
-    {
-      "headline": "Cheap Riser Cable broke my DDR5 during RAMageddon?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhlw4f/cheap_riser_cable_broke_my_ddr5_during_ramageddon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 11:49 UTC"
-    },
-    {
-      "headline": "Steam deck limited edition white start up",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xhlw3f/steam_deck_limited_edition_white_start_up/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 11:49 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Persona 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750508029",
-      "matched_game": "Persona 4",
-      "matched_games": [
-        "Persona 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 11:49 UTC"
     }
   ]
 }
