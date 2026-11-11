@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-11 07:37:42 UTC",
+  "last_updated": "2026-11-11 07:48:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751375056",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_games": [
+        "Metal Gear Solid 3: Snake Eater"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 07:39 UTC"
+    },
     {
       "headline": "Getting this pc for 85k rupees (907 dollars) is this a good deal?",
       "source": "r/pcmasterrace",
@@ -437,6 +456,26 @@
       "timestamp": "2026-11-11 06:14 UTC"
     },
     {
+      "headline": "Thread on /vr/ naming ICO and Shadow of the Colossus",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12925904",
+      "matched_game": "ICO",
+      "matched_games": [
+        "ICO",
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 06:14 UTC"
+    },
+    {
       "headline": "I need help to find a blower style heatsink for my nvidia V100",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -628,13 +667,14 @@
       "timestamp": "2026-11-11 05:42 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751370842",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Silent Hill 2"
       ],
       "match_score": 100,
@@ -2628,6 +2668,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 02:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Splinter Cell",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751362580",
+      "matched_game": "Splinter Cell",
+      "matched_games": [
+        "Splinter Cell"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 02:32 UTC"
     },
@@ -339551,54 +339610,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 07:48 UTC"
-    },
-    {
-      "headline": "Everything",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhhsj1/everything/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 07:45 UTC"
-    },
-    {
-      "headline": "PS2 Elimination Tournament round 17 tiebreaker",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xhhrbx/ps2_elimination_tournament_round_17_tiebreaker/",
-      "matched_game": "SOCOM",
-      "matched_games": [
-        "SOCOM",
-        "Metal Arms: Glitch in the System",
-        "Marvel: Ultimate Alliance",
-        "Prince of Persia: The Two Thrones",
-        "Prince of Persia: Sands of Time",
-        "The Incredible Hulk: Ultimate Destruction",
-        "Twisted Metal Black",
-        "Red Faction 2",
-        "Ridge Racer V",
-        "The Warriors",
-        "Gradius V",
-        "SOCOM: U.S. Navy SEALs",
-        "Smuggler's Run"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 07:43 UTC"
     }
   ]
 }
