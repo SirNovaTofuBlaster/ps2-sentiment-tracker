@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 03:21:22 UTC",
+  "last_updated": "2026-11-11 03:32:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -5373,6 +5373,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-10 21:07 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Spider-Man",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12925215",
+      "matched_game": "Spider-Man",
+      "matched_games": [
+        "Spider-Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 21:07 UTC"
     },
@@ -339620,111 +339639,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 03:32 UTC"
-    },
-    {
-      "headline": "Silent Hill 3 PS2 Find",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/Hb_RSckkKEs",
-      "matched_game": "Silent Hill 3",
-      "matched_games": [
-        "Silent Hill 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 03:31 UTC",
-      "views": 5065
-    },
-    {
-      "headline": "Where the hell is Sonic Adventure 3?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xhdi9o/where_the_hell_is_sonic_adventure_3/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 03:30 UTC"
-    },
-    {
-      "headline": "Fan Speeds Too High",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhdhus/fan_speeds_too_high/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 03:29 UTC"
-    },
-    {
-      "headline": "Just a quick question",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhdduj/just_a_quick_question/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 03:24 UTC"
-    },
-    {
-      "headline": "Wow shout out to Nate",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xhdcrv/wow_shout_out_to_nate/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 03:22 UTC"
-    },
-    {
-      "headline": "Windows search fixed?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhdc51/windows_search_fixed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 03:21 UTC"
     }
   ]
 }
