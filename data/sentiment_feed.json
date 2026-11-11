@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 15:37:45 UTC",
+  "last_updated": "2026-11-11 15:40:24 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -7945,18 +7945,19 @@
       "timestamp": "2026-11-11 06:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming King's Field IV, Sniper Elite, Silent Hill 2 and 2 more",
+      "headline": "Thread on /v/ naming Persona 4, Sniper Elite, Silent Hill 2 and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751373647",
-      "matched_game": "King's Field IV",
+      "matched_game": "Persona 4",
       "matched_games": [
-        "King's Field IV",
+        "Persona 4",
         "Sniper Elite",
         "Silent Hill 2",
         "Resident Evil Code: Veronica X",
-        "Half-Life"
+        "Half-Life",
+        "King's Field IV"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -9531,6 +9532,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 04:23 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751367647",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 04:17 UTC"
     },
     {
       "headline": "The Forbidden OS",
@@ -338434,59 +338454,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-28 15:40 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750518329",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-28 15:38 UTC"
-    },
-    {
-      "headline": "PlayStation Plus Free Games For November 2026 Revealed",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/playstation-plus-essential-free-games-for-november-2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 15:38 UTC"
-    },
-    {
-      "headline": "Meccha Chameleon 4.2.0 update out now, patch notes – Team Battle, new maps, more",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/meccha-chameleon-4-2-0-update-out-now-patch-notes-team-battle-new-maps-more/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 15:37 UTC"
     }
   ]
 }
