@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 10:52:40 UTC",
+  "last_updated": "2026-11-11 10:55:11 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -4223,6 +4223,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-11 04:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751367165",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-11 04:06 UTC"
     },
@@ -10700,16 +10719,16 @@
       "timestamp": "2026-11-10 21:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Unreal Tournament, God of War and Shadow of the Colossus",
+      "headline": "Thread on /v/ naming God of War, Shadow of the Colossus and Unreal Tournament",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751342978",
-      "matched_game": "Unreal Tournament",
+      "matched_game": "God of War",
       "matched_games": [
-        "Unreal Tournament",
         "God of War",
-        "Shadow of the Colossus"
+        "Shadow of the Colossus",
+        "Unreal Tournament"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -340501,74 +340520,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-28 10:55 UTC"
-    },
-    {
-      "headline": "Well this is concerning…(my dongle is crunching)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhktx3/well_this_is_concerningmy_dongle_is_crunching/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 10:54 UTC"
-    },
-    {
-      "headline": "Conan Exiles Enhanced también llegará a consolas: será una actualización gratuita en PS5 y Xbox Series",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026301016/conan-exiles-enhanced-tambien-llegara-a-consolas-sera-una-actualizacion-gratuita-en-ps5-y-xbox-series/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 10:54 UTC"
-    },
-    {
-      "headline": "the Nintendo PlayStation2",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xhktbh/the_nintendo_playstation2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 10:53 UTC"
-    },
-    {
-      "headline": "What's up, folks? Can my personal computer run GTAVI?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xhkta0/whats_up_folks_can_my_personal_computer_run_gtavi/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-28 10:53 UTC"
     }
   ]
 }
