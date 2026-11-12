@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12 05:31:40 UTC",
+  "last_updated": "2026-11-12 05:39:56 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -57,6 +57,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-12 05:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751439029",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 04:56 UTC"
     },
     {
       "headline": "Current Climate",
@@ -337835,57 +337854,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 05:39 UTC"
-    },
-    {
-      "headline": "My day job is banking architecture. My personal Godot project is a quiet house I actually want to spend my evenings in.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xibkay/my_day_job_is_banking_architecture_my_personal/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 05:37 UTC"
-    },
-    {
-      "headline": "PC masters assemble [ Help / Guide ]",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xibj6o/pc_masters_assemble_help_guide/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 05:35 UTC"
-    },
-    {
-      "headline": "Does thermalright make 140mm reverse fan in white",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xibiqy/does_thermalright_make_140mm_reverse_fan_in_white/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 05:34 UTC"
     }
   ]
 }
