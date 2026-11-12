@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12 20:07:46 UTC",
+  "last_updated": "2026-11-12 20:10:27 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -3203,6 +3203,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-12 17:59 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751472157",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 17:59 UTC"
     },
@@ -11705,17 +11724,18 @@
       "timestamp": "2026-11-12 13:53 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming Iron Man and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751457968",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Iron Man",
       "matched_games": [
+        "Iron Man",
         "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339841,78 +339861,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-29 20:10 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Dokapon Kingdom",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750596000",
-      "matched_game": "Dokapon Kingdom",
-      "matched_games": [
-        "Dokapon Kingdom"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 20:09 UTC"
-    },
-    {
-      "headline": "Duskbloods Delayed to 2027 | Game Mess Mornings 10/29/26",
-      "source": "YouTube: Giant Bomb",
-      "source_type": "youtube",
-      "feed": "youtube:UCmeds0MLhjfkjD_5acPnFlQ",
-      "link": "https://www.youtube.com/watch?v=fN6FGwffsWc",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 20:09 UTC",
-      "views": 9971
-    },
-    {
-      "headline": "The Hollow DAY 8 JUMPSCARE",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/watch?v=hicnRTg0yC0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 20:08 UTC",
-      "views": 628
-    },
-    {
-      "headline": "Collecting for GTA is out of hand",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xiuoqp/collecting_for_gta_is_out_of_hand/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 20:07 UTC"
     }
   ]
 }
