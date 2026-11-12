@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-12 23:14:52 UTC",
+  "last_updated": "2026-11-12 23:29:01 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751492764",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 23:12 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
@@ -75,14 +94,15 @@
       "timestamp": "2026-11-12 22:58 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Top Gun",
+      "headline": "Thread on /vg/ naming Top Gun and Gallop Racer 2004",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/587650228",
       "matched_game": "Top Gun",
       "matched_games": [
-        "Top Gun"
+        "Top Gun",
+        "Gallop Racer 2004"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -247,19 +267,21 @@
       "timestamp": "2026-11-12 22:47 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Getaway, Metal Gear Solid 2: Sons of Liberty and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X, The Getaway, Metal Gear Solid 2: Sons of Liberty and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751491204",
-      "matched_game": "The Getaway",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
         "The Getaway",
         "Metal Gear Solid 2: Sons of Liberty",
-        "Final Fantasy X"
+        "Burnout 3",
+        "Jak II"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1635,6 +1657,26 @@
       "timestamp": "2026-11-12 21:54 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Final Fantasy XI and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751487698",
+      "matched_game": "Final Fantasy XI",
+      "matched_games": [
+        "Final Fantasy XI",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 21:53 UTC"
+    },
+    {
       "headline": "Show us your skins",
       "source": "r/SteamDeck",
       "source_type": "reddit",
@@ -1910,6 +1952,25 @@
       "timestamp": "2026-11-12 21:40 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Ratchet & Clank",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751486862",
+      "matched_game": "Ratchet & Clank",
+      "matched_games": [
+        "Ratchet & Clank"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 21:40 UTC"
+    },
+    {
       "headline": "25 Original XBOX Games Available Today on PC via XBOX Backward Compatibility",
       "source": "r/pcgaming",
       "source_type": "reddit",
@@ -1993,6 +2054,26 @@
       "sentiment": 35,
       "hype": 0,
       "timestamp": "2026-11-12 21:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex and Splinter Cell",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751486559",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex",
+        "Splinter Cell"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 21:35 UTC"
     },
     {
       "headline": "2006 Matel Hyperscan",
@@ -13930,6 +14011,25 @@
       "timestamp": "2026-11-12 14:53 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Ape Escape 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751461186",
+      "matched_game": "Ape Escape 3",
+      "matched_games": [
+        "Ape Escape 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 14:53 UTC"
+    },
+    {
       "headline": "Elon Musk says \"would be an honor\" to hire Jensen Huang",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -19783,6 +19883,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 10:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming SoulCalibur II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751450113",
+      "matched_game": "SoulCalibur II",
+      "matched_games": [
+        "SoulCalibur II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 10:33 UTC"
     },
     {
       "headline": "Assassination game a bit more realistic but from both sides with planning",
@@ -127908,15 +128027,16 @@
       "timestamp": "2026-11-07 21:40 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming God of War and Dark Cloud",
+      "headline": "Thread on /vr/ naming LEGO Star Wars, Dark Cloud and God of War",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12919821",
-      "matched_game": "God of War",
+      "matched_game": "LEGO Star Wars",
       "matched_games": [
-        "God of War",
-        "Dark Cloud"
+        "LEGO Star Wars",
+        "Dark Cloud",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -340589,265 +340709,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 23:29 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750606509",
-      "matched_game": "Grand Theft Auto III",
-      "matched_games": [
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:28 UTC"
-    },
-    {
-      "headline": "Looking for PC game with great-feeling fundamental combat (with meaningful build diversity a plus, but not absolutely required)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xizq0e/looking_for_pc_game_with_greatfeeling_fundamental/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:28 UTC"
-    },
-    {
-      "headline": "Buying my first PC",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xizq1p/buying_my_first_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:28 UTC"
-    },
-    {
-      "headline": "Was this a good deal at $420?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xizpe9/was_this_a_good_deal_at_420/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:28 UTC"
-    },
-    {
-      "headline": "Looking for a game that’s like The Last Of Us and DayZ combined if possible. Post apocalyptic, open world, looting type. On Xbox or PS5 please.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xizn6t/looking_for_a_game_thats_like_the_last_of_us_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:25 UTC"
-    },
-    {
-      "headline": "My first ever pc died. I fixed it, and learned a new skill!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xizna5/my_first_ever_pc_died_i_fixed_it_and_learned_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:25 UTC"
-    },
-    {
-      "headline": "Sir Patrick Stewart passed away at the age of 86. Here are just a few of his roles... #rip",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/shorts/TIdhvr4jR7A",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:24 UTC",
-      "views": 327296
-    },
-    {
-      "headline": "Cooling Advice",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xizj9r/cooling_advice/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:20 UTC"
-    },
-    {
-      "headline": "Threads of Time - Release Window Trailer",
-      "source": "YouTube: XBOX",
-      "source_type": "youtube",
-      "feed": "youtube:UCjBp_7RuDBUYbd1LegWEJ8g",
-      "link": "https://www.youtube.com/watch?v=D9Fci30mKpM",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:20 UTC",
-      "views": 36532
-    },
-    {
-      "headline": "How do I stop this annoying file explorer",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xizilc/how_do_i_stop_this_annoying_file_explorer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:19 UTC"
-    },
-    {
-      "headline": "My build is complete!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xizfhd/my_build_is_complete/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:16 UTC"
-    },
-    {
-      "headline": "SSD Not being recognized and I can’t figure out why. Any tips?",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1xizfxb/ssd_not_being_recognized_and_i_cant_figure_out/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:16 UTC"
-    },
-    {
-      "headline": "Assassin's Creed Valhalla tendrá modo New Game+ seis años después de su lanzamiento",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/assassins-creed-2020/115220/assassins-creed-valhalla-tendra-modo-new-game-seis-anos-despues-de-su-lanzamiento",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:15 UTC"
-    },
-    {
-      "headline": "por favor criador coloque a opção de português . obrigado",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xizdro/por_favor_criador_coloque_a_opção_de_português/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:14 UTC"
-    },
-    {
-      "headline": "The perils of upgrading from a PS4",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xizdp1/the_perils_of_upgrading_from_a_ps4/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:14 UTC"
     }
   ]
 }
