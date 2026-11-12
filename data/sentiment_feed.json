@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12 06:08:44 UTC",
+  "last_updated": "2026-11-12 06:22:57 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -15,6 +15,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 05:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751440996",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -70,6 +89,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-12 05:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751440820",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 05:47 UTC"
     },
@@ -263,15 +301,16 @@
       "timestamp": "2026-11-12 05:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Wreckless: The Yakuza Missions and Splinter Cell",
+      "headline": "Thread on /v/ naming Fatal Frame, Splinter Cell and Wreckless: The Yakuza Missions",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751439626",
-      "matched_game": "Wreckless: The Yakuza Missions",
+      "matched_game": "Fatal Frame",
       "matched_games": [
-        "Wreckless: The Yakuza Missions",
-        "Splinter Cell"
+        "Fatal Frame",
+        "Splinter Cell",
+        "Wreckless: The Yakuza Missions"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -487,6 +526,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-12 04:42 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Midnight Club and Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751438462",
+      "matched_game": "Midnight Club",
+      "matched_games": [
+        "Midnight Club",
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 04:42 UTC"
     },
@@ -1563,7 +1622,7 @@
       "timestamp": "2026-11-12 02:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak II, Jak 3, Jak X and 3 more",
+      "headline": "Thread on /v/ naming Jak II, Grand Theft Auto III, Jak 3 and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1571,11 +1630,11 @@
       "matched_game": "Jak II",
       "matched_games": [
         "Jak II",
+        "Grand Theft Auto III",
         "Jak 3",
         "Jak X",
         "Scaler",
-        "Vexx",
-        "Grand Theft Auto III"
+        "Vexx"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -337871,217 +337930,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 06:24 UTC"
-    },
-    {
-      "headline": "i wanna turn this area into a setup area but i have no idea about pcs and i just want good graphics and lots of storage (i just need an idea for a prebuilt pc)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xicakt/i_wanna_turn_this_area_into_a_setup_area_but_i/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:21 UTC"
-    },
-    {
-      "headline": "PlayStation Partner Awards 2026 Japan Asia set for December 3",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/playstation-partner-awards-2026-japan-asia-set-for-december-3",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:20 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Max Payne",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750560167",
-      "matched_game": "Max Payne",
-      "matched_games": [
-        "Max Payne"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:19 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750560159",
-      "matched_game": "Kingdom Hearts II",
-      "matched_games": [
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:19 UTC"
-    },
-    {
-      "headline": "New Grand Theft Auto 6 Gameplay Revealed During Latest South Park Episode",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xic8ie/new_grand_theft_auto_6_gameplay_revealed_during/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:18 UTC"
-    },
-    {
-      "headline": "Is there any way of getting games onto my HDD without removing it?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xic4o6/is_there_any_way_of_getting_games_onto_my_hdd/",
-      "matched_game": "The Thing",
-      "matched_games": [
-        "The Thing"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:11 UTC"
-    },
-    {
-      "headline": "Kane Parsons Confirms He Has Met With Valve to Collaborate, But Won't Make Something If It Can't Be Done Well",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xic4iq/kane_parsons_confirms_he_has_met_with_valve_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:11 UTC"
-    },
-    {
-      "headline": "I'm looking for games similar to Crack the Pack, Fishing Inc, Scritchy Scratchy, and Bills Must Be Paid. Any recommendations?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xic3q6/im_looking_for_games_similar_to_crack_the_pack/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:10 UTC"
-    },
-    {
-      "headline": "Mods for Stardew Valley not working",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xic3t0/mods_for_stardew_valley_not_working/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:10 UTC"
-    },
-    {
-      "headline": "Is this a good starter pc for almost exclusively pcvr?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xic3ii/is_this_a_good_starter_pc_for_almost_exclusively/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:09 UTC"
-    },
-    {
-      "headline": "Upgrade or hold fast?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xic3bs/upgrade_or_hold_fast/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:09 UTC"
-    },
-    {
-      "headline": "Playing with my 3DO Longbox 'D'  for the first time in over a decade...",
-      "source": "YouTube: PeteDorr",
-      "source_type": "youtube",
-      "feed": "youtube:UCeTvRtfRFyWXdO_ZbyArPjA",
-      "link": "https://www.youtube.com/watch?v=AKI2rX0Iwd0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 06:08 UTC",
-      "views": 4089
     }
   ]
 }
