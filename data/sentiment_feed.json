@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12 21:37:41 UTC",
+  "last_updated": "2026-11-12 21:48:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -71,14 +71,15 @@
       "timestamp": "2026-11-12 21:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "headline": "Thread on /v/ naming Shadow of the Colossus and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751485475",
       "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "Shadow of the Colossus"
+        "Shadow of the Colossus",
+        "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -2704,18 +2705,20 @@
       "timestamp": "2026-11-12 19:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy X-2",
+      "headline": "Thread on /v/ naming Romancing SaGa, Final Fantasy X-2, Final Fantasy X and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751477335",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Romancing SaGa",
       "matched_games": [
+        "Romancing SaGa",
+        "Final Fantasy X-2",
         "Final Fantasy X",
-        "Final Fantasy X-2"
+        "Final Fantasy XII"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -339665,127 +339668,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 21:48 UTC"
-    },
-    {
-      "headline": "'None of these people have ever made a game,' BioWare co-founder Greg Zeschuk says of game industry executives: 'They just don't know how it works'",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/gaming-industry/none-of-these-people-have-ever-made-a-game-bioware-co-founder-greg-zeschuk-says-of-game-industry-executives-they-just-dont-know-how-it-works/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 21:47 UTC"
-    },
-    {
-      "headline": "Haven't used the PS4 in years but it still makes me sad to take the SSD for my current Rig.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xix8ys/havent_used_the_ps4_in_years_but_it_still_makes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 21:46 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750601457",
-      "matched_game": "Final Fantasy XII",
-      "matched_games": [
-        "Final Fantasy XII"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 21:45 UTC"
-    },
-    {
-      "headline": "RIP to Patrick Stewart. His voice in Lands of Lore: Throne of Chaos made a lot of mine and my brother's childhood.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xix59b/rip_to_patrick_stewart_his_voice_in_lands_of_lore/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 21:42 UTC"
-    },
-    {
-      "headline": "PC build for my wife",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xix534/pc_build_for_my_wife/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 21:42 UTC"
-    },
-    {
-      "headline": "Looking for a new FPS (single player or coop)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xix2cv/looking_for_a_new_fps_single_player_or_coop/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 21:39 UTC"
-    },
-    {
-      "headline": "PC Stands",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xix0vp/pc_stands/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 21:37 UTC"
     }
   ]
 }
