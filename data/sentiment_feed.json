@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12 04:55:34 UTC",
+  "last_updated": "2026-11-12 04:58:07 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1122,6 +1122,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-12 02:44 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jak 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751433601",
+      "matched_game": "Jak 3",
+      "matched_games": [
+        "Jak 3"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 02:44 UTC"
     },
@@ -14469,13 +14488,14 @@
       "timestamp": "2026-11-11 16:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Second Sight",
+      "headline": "Thread on /v/ naming God of War and Second Sight",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751395376",
-      "matched_game": "Second Sight",
+      "matched_game": "God of War",
       "matched_games": [
+        "God of War",
         "Second Sight"
       ],
       "match_score": 100,
