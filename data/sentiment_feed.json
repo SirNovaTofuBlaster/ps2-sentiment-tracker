@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-11-12 10:42:23 UTC",
+  "last_updated": "2026-11-12 10:53:42 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751450818",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 10:50 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Deus Ex",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587587997",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 10:44 UTC"
+    },
     {
       "headline": "\"One of those ways where you can use AI ethically\": CDPR have modified Geralt's Polish voice in The Witcher 3: Songs of the Past with genAI, due to actor's stroke",
       "source": "Rock Paper Shotgun Latest Articles Feed",
@@ -67,6 +105,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-12 10:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751450156",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 10:34 UTC"
     },
@@ -338461,112 +338518,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 10:53 UTC"
-    },
-    {
-      "headline": "PES 2014 🇮🇹",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/txTn9ZijqXo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 10:50 UTC",
-      "views": 2562
-    },
-    {
-      "headline": "Pick Up A Limited Edition Replica Of The Sonic the Hedghog Mega Drive Cartridge For Under £30",
-      "source": "Retro Dodo",
-      "source_type": "news",
-      "feed": "https://retrododo.com/feed/",
-      "link": "https://retrododo.com/pick-up-a-limited-edition-replica-of-the-sonic-the-hedghog-mega-drive-cartridge-for-under-30/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 10:50 UTC"
-    },
-    {
-      "headline": "Strange sound before spinning the disk",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xiglal/strange_sound_before_spinning_the_disk/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 10:46 UTC"
-    },
-    {
-      "headline": "Pokémon Legends: Z-A's Latest Mystery Gift Distribution Is Now Live",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/10/pokemon-legends-z-as-latest-mystery-gift-distribution-is-now-live",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 10:45 UTC"
-    },
-    {
-      "headline": "Eternia Remastered (asking for titles wanting to see remastered)",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xigk4k/eternia_remastered_asking_for_titles_wanting_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 2,
-      "timestamp": "2026-10-29 10:44 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Area 51",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750567420",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Area 51"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 10:42 UTC"
     }
   ]
 }
