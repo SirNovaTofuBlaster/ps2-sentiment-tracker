@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-12 01:40:41 UTC",
+  "last_updated": "2026-11-12 01:51:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751430190",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 01:38 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Final Fantasy X",
       "source": "4chan /v/",
@@ -5690,6 +5709,25 @@
       "hype": 0,
       "timestamp": "2026-11-11 20:33 UTC",
       "views": 2263
+    },
+    {
+      "headline": "Thread on /v/ naming SoulCalibur II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751411030",
+      "matched_game": "SoulCalibur II",
+      "matched_games": [
+        "SoulCalibur II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 20:33 UTC"
     },
     {
       "headline": "Preciso de ajuda com OPL I",
@@ -16192,16 +16230,16 @@
       "timestamp": "2026-11-11 13:16 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kuri Kuri Mix, Eternal Ring and King's Field IV",
+      "headline": "Thread on /v/ naming King's Field IV, Eternal Ring and Kuri Kuri Mix",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751386441",
-      "matched_game": "Kuri Kuri Mix",
+      "matched_game": "King's Field IV",
       "matched_games": [
-        "Kuri Kuri Mix",
+        "King's Field IV",
         "Eternal Ring",
-        "King's Field IV"
+        "Kuri Kuri Mix"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -338419,89 +338457,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-29 01:51 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Cowboy Bebop, Final Fantasy X and Grandia II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750550602",
-      "matched_game": "Cowboy Bebop",
-      "matched_games": [
-        "Cowboy Bebop",
-        "Final Fantasy X",
-        "Grandia II"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 01:50 UTC"
-    },
-    {
-      "headline": "Phantom Blade Zero is available now on Steam",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xi78z5/phantom_blade_zero_is_available_now_on_steam/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 01:50 UTC"
-    },
-    {
-      "headline": "I think it's a good bye for a 8 long years friend",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xi77m8/i_think_its_a_good_bye_for_a_8_long_years_friend/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 01:48 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Spider-Man, NHL 2001, Smuggler's Run and 7 more",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12901991",
-      "matched_game": "Spider-Man",
-      "matched_games": [
-        "Spider-Man",
-        "NHL 2001",
-        "Smuggler's Run",
-        "Final Fantasy X",
-        "SSX",
-        "Dynasty Warriors 2",
-        "Armored Core 2",
-        "Midnight Club",
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Street Fighter EX3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 01:41 UTC"
     }
   ]
 }
