@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12 22:01:55 UTC",
+  "last_updated": "2026-11-12 22:04:36 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -498,6 +498,25 @@
       "hype": 0,
       "timestamp": "2026-11-12 21:30 UTC",
       "views": 1069
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751486209",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 21:30 UTC"
     },
     {
       "headline": "25 Original XBOX Games Available Today on PC via XBOX Backward Compatibility",
@@ -2316,6 +2335,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-12 20:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming King Arthur",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751481069",
+      "matched_game": "King Arthur",
+      "matched_games": [
+        "King Arthur"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 20:13 UTC"
     },
     {
       "headline": "Games Will Have A Physical Footprint Forever, Take-Two Boss Says, But It’ll Be “Very Small”",
@@ -4519,6 +4557,25 @@
       "timestamp": "2026-11-12 18:53 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Home Alone",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751475713",
+      "matched_game": "Home Alone",
+      "matched_games": [
+        "Home Alone"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 18:53 UTC"
+    },
+    {
       "headline": "This is legit, right?",
       "source": "r/gameverifying",
       "source_type": "reddit",
@@ -6039,17 +6096,18 @@
       "timestamp": "2026-11-12 17:59 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751472157",
-      "matched_game": "Half-Life",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -20338,7 +20396,7 @@
       "timestamp": "2026-11-12 07:47 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry, Viewtiful Joe, God Hand and 4 more",
+      "headline": "Thread on /v/ naming Devil May Cry, Viewtiful Joe, God Hand and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -20348,10 +20406,11 @@
         "Devil May Cry",
         "Viewtiful Joe",
         "God Hand",
+        "Spider-Man",
+        "Resident Evil 4",
         "Devil May Cry 3: Dante's Awakening",
         "Chaos Legion",
-        "Urban Reign",
-        "Resident Evil 4"
+        "Urban Reign"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -340383,44 +340442,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 22:04 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy X, Final Fantasy X-2 and Final Fantasy XII",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750602293",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X",
-        "Final Fantasy X-2",
-        "Final Fantasy XII"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 22:02 UTC"
-    },
-    {
-      "headline": "Anyone know an actual good god simulator?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xixmjq/anyone_know_an_actual_good_god_simulator/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 22:01 UTC"
     }
   ]
 }
