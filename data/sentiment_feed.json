@@ -1,7 +1,46 @@
 {
-  "last_updated": "2026-11-12 05:11:49 UTC",
+  "last_updated": "2026-11-12 05:25:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751439715",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 05:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Splinter Cell and Wreckless: The Yakuza Missions",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751439626",
+      "matched_game": "Splinter Cell",
+      "matched_games": [
+        "Splinter Cell",
+        "Wreckless: The Yakuza Missions"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 05:12 UTC"
+    },
     {
       "headline": "Current Climate",
       "source": "r/pcmasterrace",
@@ -1126,17 +1165,22 @@
       "timestamp": "2026-11-12 02:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak 3",
+      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy, Kingdom Hearts, Scaler and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751433601",
-      "matched_game": "Jak 3",
+      "matched_game": "Jak and Daxter: The Precursor Legacy",
       "matched_games": [
-        "Jak 3"
+        "Jak and Daxter: The Precursor Legacy",
+        "Kingdom Hearts",
+        "Scaler",
+        "Vexx",
+        "Jak 3",
+        "Jak X"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -337861,77 +337905,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 05:28 UTC"
-    },
-    {
-      "headline": "One of India’s biggest National Dailies: Videogames as Philosophical works (and Art)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xibc11/one_of_indias_biggest_national_dailies_videogames/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 05:23 UTC"
-    },
-    {
-      "headline": "Chakan The Forever Man",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xibazp/chakan_the_forever_man/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 05:21 UTC"
-    },
-    {
-      "headline": "Talos Principle 2 base price increased from $29.99 to $39.99",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xib74u/talos_principle_2_base_price_increased_from_2999/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 05:15 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750558261",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-29 05:15 UTC"
     }
   ]
 }
