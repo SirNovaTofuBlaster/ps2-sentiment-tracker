@@ -10,7 +10,7 @@
  },
  "searches": {
   "day": "2026-11-12",
-  "used": 2965
+  "used": 3032
  },
  "games": {
   ".hack//G.U. Vol. 1 Rebirth Premium Edition": {
@@ -983,7 +983,7 @@
    }
   },
   "Aggressive Inline": {
-   "level": "dormant",
+   "level": "normal",
    "mentions": 0,
    "US": {
     "checked": "2026-11-12T02:04Z",
@@ -997,6 +997,7 @@
      "median": 14.99
     },
     "recorded": "2026-11-12",
+    "steady": true,
     "week": {
      "checked": "2026-11-05T01:42Z",
      "median": 13.49
@@ -1031,23 +1032,21 @@
      "median": 9.95
     },
     "recorded": "2026-11-10",
-    "slow": true,
     "week": {
      "checked": "2026-11-04T10:20Z",
      "median": 9.09
     }
    },
    "FR": {
-    "checked": "2026-11-09T14:49Z",
-    "copies": 8,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 9,
     "lowest": 5.8,
-    "median": 9.6,
+    "median": 10.8,
     "postage": 4.2,
-    "listed": 8,
-    "recorded": "2026-11-09",
-    "slow": true,
+    "listed": 9,
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-03T14:20Z",
+     "checked": "2026-11-06T14:17Z",
      "median": 9.6
     }
    },
@@ -1059,14 +1058,13 @@
     "postage": 5.95,
     "listed": 7,
     "recorded": "2026-11-10",
-    "slow": true,
     "week": {
      "checked": "2026-11-04T07:51Z",
      "median": 10.79
     }
    },
    "ES": {
-    "checked": "2026-11-08T02:07Z",
+    "checked": "2026-11-12T20:07Z",
     "unmatched": true
    }
   },
@@ -3772,41 +3770,41 @@
     }
    },
    "DE": {
-    "checked": "2026-11-09T19:32Z",
-    "copies": 2,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 3,
     "lowest": 79.99,
     "median": 79.99,
     "postage": 0.0,
-    "listed": 4,
-    "recorded": "2026-11-09",
+    "listed": 5,
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-03T18:46Z",
+     "checked": "2026-11-06T19:03Z",
      "median": 79.99
     }
    },
    "FR": {
-    "checked": "2026-11-09T19:32Z",
-    "copies": 7,
-    "lowest": 40.0,
-    "median": 47.0,
-    "postage": 3.0,
-    "listed": 9,
-    "recorded": "2026-11-09",
+    "checked": "2026-11-12T20:07Z",
+    "copies": 6,
+    "lowest": 45.0,
+    "median": 50.5,
+    "postage": 3.25,
+    "listed": 7,
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-03T18:46Z",
+     "checked": "2026-11-06T19:03Z",
      "median": 46.0
     }
    },
    "IT": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 2,
     "lowest": 59.9,
     "median": 62.7,
     "postage": 0.0,
     "listed": 4,
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-03T18:46Z",
+     "checked": "2026-11-06T19:03Z",
      "median": 65.5
     }
    },
@@ -3822,6 +3820,44 @@
      "checked": "2026-11-04T18:24Z",
      "median": 130.0
     }
+   }
+  },
+  "ATV Off-Road Fury 2": {
+   "level": "normal",
+   "mentions": 1,
+   "US": {
+    "checked": "2026-11-12T20:07Z",
+    "unmatched": true
+   },
+   "UK": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 1,
+    "lowest": 6.66,
+    "median": 6.66,
+    "postage": 0.0,
+    "listed": 62,
+    "recorded": "2026-11-12"
+   },
+   "DE": {
+    "checked": "2026-11-12T20:07Z",
+    "unmatched": true
+   },
+   "FR": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 2,
+    "lowest": 5.39,
+    "median": 7.02,
+    "postage": 3.99,
+    "listed": 80,
+    "recorded": "2026-11-12"
+   },
+   "IT": {
+    "checked": "2026-11-12T20:07Z",
+    "unmatched": true
+   },
+   "ES": {
+    "checked": "2026-11-12T20:07Z",
+    "unmatched": true
    }
   },
   "ATV Off-Road Fury 4": {
@@ -3891,7 +3927,7 @@
   },
   "ATV Offroad Fury": {
    "level": "normal",
-   "mentions": 1,
+   "mentions": 2,
    "US": {
     "checked": "2026-11-11T01:22Z",
     "copies": 34,
@@ -4134,13 +4170,14 @@
      "median": 40.0
     },
     "recorded": "2026-11-12",
+    "steady": true,
     "week": {
      "checked": "2026-11-05T00:06Z",
      "median": 40.0
     }
    },
    "UK": {
-    "checked": "2026-11-12T02:04Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 12,
     "lowest": 44.38,
     "median": 72.66,
@@ -4152,7 +4189,7 @@
     },
     "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-04T23:04Z",
+     "checked": "2026-11-05T16:54Z",
      "median": 76.11
     }
    },
@@ -7042,7 +7079,7 @@
    "level": "normal",
    "mentions": 1,
    "US": {
-    "checked": "2026-11-12T02:04Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 9,
     "lowest": 34.95,
     "median": 53.99,
@@ -7054,8 +7091,8 @@
     },
     "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-04T10:20Z",
-     "median": 59.47
+     "checked": "2026-11-05T09:50Z",
+     "median": 49.5
     }
    },
    "UK": {
@@ -7446,18 +7483,17 @@
    "level": "normal",
    "mentions": 0,
    "US": {
-    "checked": "2026-11-12T02:04Z",
-    "copies": 100,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 101,
     "lowest": 7.95,
     "median": 14.97,
     "postage": 6.68,
-    "listed": 135,
+    "listed": 136,
     "complete": {
      "copies": 53,
      "median": 14.99
     },
     "recorded": "2026-11-12",
-    "steady": true,
     "week": {
      "checked": "2026-11-04T01:56Z",
      "median": 14.99
@@ -12292,19 +12328,23 @@
    "level": "normal",
    "mentions": 0,
    "US": {
-    "checked": "2026-11-10T20:24Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 160,
     "lowest": 1.0,
     "median": 5.99,
     "postage": 6.19,
-    "listed": 280,
+    "listed": 279,
     "truncated": true,
     "complete": {
      "copies": 68,
-     "median": 6.0
+     "median": 5.99
     },
-    "recorded": "2026-11-10",
-    "steady": true
+    "recorded": "2026-11-12",
+    "steady": true,
+    "week": {
+     "checked": "2026-11-08T19:57Z",
+     "median": 5.99
+    }
    },
    "UK": {
     "checked": "2026-11-12T12:48Z",
@@ -12350,13 +12390,13 @@
     "steady": true
    },
    "ES": {
-    "checked": "2026-11-08T19:57Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 0,
     "lowest": null,
     "median": null,
     "postage": null,
     "listed": 0,
-    "recorded": "2026-11-08",
+    "recorded": "2026-11-12",
     "steady": true
    }
   },
@@ -13357,31 +13397,43 @@
     "recorded": "2026-11-12"
    },
    "DE": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 1,
     "lowest": 44.9,
     "median": 44.9,
     "postage": 0.0,
     "listed": 1,
-    "recorded": "2026-11-09"
+    "recorded": "2026-11-12",
+    "week": {
+     "checked": "2026-11-09T19:32Z",
+     "median": 44.9
+    }
    },
    "FR": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 2,
     "lowest": 31.9,
     "median": 37.1,
     "postage": 5.68,
     "listed": 2,
-    "recorded": "2026-11-09"
+    "recorded": "2026-11-12",
+    "week": {
+     "checked": "2026-11-09T19:32Z",
+     "median": 37.1
+    }
    },
    "IT": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 8,
     "lowest": 15.94,
     "median": 41.05,
     "postage": 6.5,
     "listed": 8,
-    "recorded": "2026-11-09"
+    "recorded": "2026-11-12",
+    "week": {
+     "checked": "2026-11-09T19:32Z",
+     "median": 41.05
+    }
    },
    "ES": {
     "checked": "2026-11-09T19:32Z",
@@ -14191,7 +14243,7 @@
    "mentions": 2,
    "surging_until": "2026-11-14T16:18Z",
    "US": {
-    "checked": "2026-11-12T18:57Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 142,
     "lowest": 4.99,
     "median": 12.99,
@@ -14209,7 +14261,7 @@
     }
    },
    "UK": {
-    "checked": "2026-11-12T18:57Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 31,
     "lowest": 9.0,
     "median": 23.95,
@@ -19503,12 +19555,12 @@
    "level": "normal",
    "mentions": 2,
    "US": {
-    "checked": "2026-11-12T12:48Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 17,
     "lowest": 40.0,
     "median": 174.99,
     "postage": 5.99,
-    "listed": 91,
+    "listed": 90,
     "new": {
      "copies": 20,
      "lowest": 25.0,
@@ -19525,20 +19577,20 @@
     }
    },
    "UK": {
-    "checked": "2026-11-12T12:48Z",
-    "copies": 16,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 17,
     "lowest": 64.99,
-    "median": 82.86,
+    "median": 81.82,
     "postage": 3.11,
-    "listed": 57,
+    "listed": 58,
     "new": {
      "copies": 1,
      "lowest": 650.0,
      "median": 650.0
     },
     "complete": {
-     "copies": 9,
-     "median": 72.99
+     "copies": 10,
+     "median": 72.49
     },
     "recorded": "2026-11-12",
     "week": {
@@ -25268,7 +25320,7 @@
   },
   "Grand Theft Auto: San Andreas": {
    "level": "staple",
-   "mentions": 14,
+   "mentions": 13,
    "US": {
     "checked": "2026-11-11T07:09Z",
     "copies": 108,
@@ -28297,47 +28349,47 @@
    "mentions": 3,
    "pinned": true,
    "US": {
-    "checked": "2026-11-12T02:04Z",
-    "copies": 14,
-    "lowest": 450.0,
-    "median": 836.64,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 15,
+    "lowest": 80.0,
+    "median": 825.0,
     "postage": 6.68,
-    "listed": 23,
+    "listed": 24,
     "new": {
-     "copies": 2,
-     "lowest": 1383.21,
-     "median": 2116.58
+     "copies": 3,
+     "lowest": 850.0,
+     "median": 1383.21
     },
     "complete": {
-     "copies": 9,
-     "median": 825.0
+     "copies": 10,
+     "median": 812.5
     },
     "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-05T01:42Z",
-     "median": 767.5
+     "checked": "2026-11-05T19:20Z",
+     "median": 825.0
     }
    },
    "UK": {
-    "checked": "2026-11-12T02:04Z",
-    "copies": 6,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 7,
     "lowest": 224.3,
-    "median": 239.7,
-    "postage": 5.84,
-    "listed": 6,
+    "median": 235.0,
+    "postage": 5.88,
+    "listed": 7,
     "new": {
-     "copies": 4,
-     "lowest": 12.94,
-     "median": 1381.15
+     "copies": 3,
+     "lowest": 715.6,
+     "median": 2046.7
     },
     "complete": {
-     "copies": 5,
-     "median": 235.0
+     "copies": 6,
+     "median": 232.25
     },
     "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-05T01:42Z",
-     "median": 259.99
+     "checked": "2026-11-05T19:20Z",
+     "median": 275.15
     }
    },
    "DE": {
@@ -30599,12 +30651,12 @@
    "level": "normal",
    "mentions": 1,
    "US": {
-    "checked": "2026-11-12T02:04Z",
-    "copies": 21,
-    "lowest": 40.0,
-    "median": 69.99,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 19,
+    "lowest": 59.99,
+    "median": 70.0,
     "postage": 6.68,
-    "listed": 23,
+    "listed": 21,
     "complete": {
      "copies": 12,
      "median": 75.2
@@ -30612,15 +30664,15 @@
     "recorded": "2026-11-12"
    },
    "UK": {
-    "checked": "2026-11-12T02:04Z",
-    "copies": 13,
-    "lowest": 21.0,
-    "median": 24.62,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 12,
+    "lowest": 21.49,
+    "median": 24.79,
     "postage": 2.7,
-    "listed": 15,
+    "listed": 14,
     "complete": {
-     "copies": 5,
-     "median": 21.5
+     "copies": 4,
+     "median": 22.82
     },
     "recorded": "2026-11-12"
    },
@@ -33322,41 +33374,41 @@
     }
    },
    "DE": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 5,
     "lowest": 21.99,
     "median": 29.99,
     "postage": 0.0,
     "listed": 10,
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-03T18:46Z",
+     "checked": "2026-11-06T19:03Z",
      "median": 29.99
     }
    },
    "FR": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 8,
     "lowest": 17.99,
     "median": 45.73,
     "postage": 3.95,
     "listed": 21,
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-03T18:46Z",
-     "median": 46.45
+     "checked": "2026-11-06T19:03Z",
+     "median": 45.73
     }
    },
    "IT": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 15,
     "lowest": 14.9,
     "median": 20.0,
     "postage": 5.95,
     "listed": 19,
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-03T18:46Z",
+     "checked": "2026-11-06T19:03Z",
      "median": 20.0
     }
    },
@@ -37195,6 +37247,68 @@
     "steady": true
    }
   },
+  "Mat Hoffman's Pro BMX 2": {
+   "level": "normal",
+   "mentions": 0,
+   "US": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 56,
+    "lowest": 6.0,
+    "median": 13.24,
+    "postage": 6.68,
+    "listed": 88,
+    "complete": {
+     "copies": 19,
+     "median": 13.47
+    },
+    "recorded": "2026-11-12"
+   },
+   "UK": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 6,
+    "lowest": 7.25,
+    "median": 15.96,
+    "postage": 0.0,
+    "listed": 21,
+    "recorded": "2026-11-12"
+   },
+   "DE": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 3,
+    "lowest": 14.95,
+    "median": 19.99,
+    "postage": 0.0,
+    "listed": 10,
+    "recorded": "2026-11-12"
+   },
+   "FR": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "listed": 0,
+    "recorded": "2026-11-12"
+   },
+   "IT": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "listed": 0,
+    "recorded": "2026-11-12"
+   },
+   "ES": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 0,
+    "lowest": null,
+    "median": null,
+    "postage": null,
+    "listed": 0,
+    "recorded": "2026-11-12"
+   }
+  },
   "Matrix, The: Path of Neo": {
    "level": "normal",
    "mentions": 3,
@@ -38155,18 +38269,17 @@
    "level": "normal",
    "mentions": 0,
    "US": {
-    "checked": "2026-11-11T06:07Z",
-    "copies": 37,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 38,
     "lowest": 12.99,
-    "median": 24.99,
-    "postage": 6.83,
-    "listed": 84,
+    "median": 25.0,
+    "postage": 6.82,
+    "listed": 85,
     "complete": {
      "copies": 12,
      "median": 26.6
     },
-    "recorded": "2026-11-11",
-    "steady": true,
+    "recorded": "2026-11-12",
     "week": {
      "checked": "2026-11-06T19:03Z",
      "median": 24.99
@@ -38186,39 +38299,39 @@
     }
    },
    "DE": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 6,
     "lowest": 29.9,
     "median": 29.99,
     "postage": 1.0,
     "listed": 9,
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "week": {
      "checked": "2026-11-06T19:03Z",
      "median": 29.99
     }
    },
    "FR": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 9,
     "lowest": 26.99,
     "median": 32.9,
     "postage": 4.0,
     "listed": 14,
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "week": {
      "checked": "2026-11-06T19:03Z",
      "median": 32.9
     }
    },
    "IT": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 12,
     "lowest": 21.49,
     "median": 32.4,
     "postage": 6.5,
     "listed": 14,
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "week": {
      "checked": "2026-11-06T19:03Z",
      "median": 32.4
@@ -40737,6 +40850,7 @@
      "median": 12.49
     },
     "recorded": "2026-11-12",
+    "steady": true,
     "week": {
      "checked": "2026-11-05T03:54Z",
      "median": 13.32
@@ -41463,31 +41577,27 @@
    }
   },
   "Musashi Samurai Legend": {
-   "level": "underrated",
+   "level": "normal",
    "mentions": 0,
-   "sites": [
-    "US",
-    "UK"
-   ],
    "US": {
-    "checked": "2026-11-12T03:06Z",
-    "copies": 15,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 16,
     "lowest": 27.5,
-    "median": 48.0,
-    "postage": 7.0,
-    "listed": 41,
+    "median": 46.5,
+    "postage": 6.84,
+    "listed": 42,
     "complete": {
-     "copies": 12,
-     "median": 49.95
+     "copies": 13,
+     "median": 49.9
     },
     "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-04T05:33Z",
+     "checked": "2026-11-05T05:16Z",
      "median": 45.0
     }
    },
    "UK": {
-    "checked": "2026-11-12T03:06Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 5,
     "lowest": 44.95,
     "median": 52.7,
@@ -41499,9 +41609,45 @@
     },
     "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-04T05:33Z",
-     "median": 119.99
+     "checked": "2026-11-05T05:16Z",
+     "median": 86.35
     }
+   },
+   "DE": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 5,
+    "lowest": 34.99,
+    "median": 39.95,
+    "postage": 0.0,
+    "listed": 5,
+    "recorded": "2026-11-12"
+   },
+   "FR": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 5,
+    "lowest": 26.7,
+    "median": 55.0,
+    "postage": 4.49,
+    "listed": 14,
+    "recorded": "2026-11-12"
+   },
+   "IT": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 6,
+    "lowest": 31.8,
+    "median": 44.95,
+    "postage": 5.48,
+    "listed": 7,
+    "recorded": "2026-11-12"
+   },
+   "ES": {
+    "checked": "2026-11-12T20:07Z",
+    "copies": 5,
+    "lowest": 25.95,
+    "median": 35.9,
+    "postage": 5.0,
+    "listed": 5,
+    "recorded": "2026-11-12"
    }
   },
   "Music 3000": {
@@ -45240,7 +45386,7 @@
    "level": "normal",
    "mentions": 0,
    "US": {
-    "checked": "2026-11-12T02:04Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 20,
     "lowest": 7.99,
     "median": 35.94,
@@ -45253,12 +45399,12 @@
     "recorded": "2026-11-12"
    },
    "UK": {
-    "checked": "2026-11-12T02:04Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 2,
     "lowest": 24.98,
     "median": 31.04,
     "postage": 1.47,
-    "listed": 17,
+    "listed": 18,
     "recorded": "2026-11-12"
    },
    "DE": {
@@ -51469,21 +51615,20 @@
     }
    },
    "UK": {
-    "checked": "2026-11-11T17:47Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 20,
     "lowest": 15.99,
     "median": 20.75,
     "postage": 0.0,
-    "listed": 23,
+    "listed": 25,
     "complete": {
      "copies": 6,
      "median": 18.58
     },
-    "recorded": "2026-11-11",
-    "steady": true,
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-03T20:12Z",
-     "median": 21.5
+     "checked": "2026-11-05T19:20Z",
+     "median": 20.75
     }
    },
    "DE": {
@@ -54654,6 +54799,7 @@
      "median": 25.47
     },
     "recorded": "2026-11-12",
+    "steady": true,
     "week": {
      "checked": "2026-11-05T12:22Z",
      "median": 24.99
@@ -55920,21 +56066,20 @@
     }
    },
    "UK": {
-    "checked": "2026-11-11T04:58Z",
-    "copies": 40,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 38,
     "lowest": 5.45,
     "median": 11.04,
     "postage": 2.7,
-    "listed": 52,
+    "listed": 50,
     "complete": {
-     "copies": 20,
-     "median": 10.47
+     "copies": 18,
+     "median": 11.04
     },
-    "recorded": "2026-11-11",
-    "steady": true,
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-04T04:08Z",
-     "median": 10.88
+     "checked": "2026-11-05T03:54Z",
+     "median": 10.95
     }
    },
    "DE": {
@@ -56737,7 +56882,7 @@
   },
   "Shin Megami Tensei: Digital Devil Saga": {
    "level": "normal",
-   "mentions": 1,
+   "mentions": 2,
    "US": {
     "checked": "2026-11-12T14:13Z",
     "copies": 24,
@@ -57624,13 +57769,13 @@
     }
    },
    "ES": {
-    "checked": "2026-11-08T19:57Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 2,
     "lowest": 9.99,
     "median": 9.99,
     "postage": 1.85,
     "listed": 2,
-    "recorded": "2026-11-08",
+    "recorded": "2026-11-12",
     "week": {
      "checked": "2026-11-04T19:32Z",
      "median": 9.99
@@ -58437,7 +58582,7 @@
    }
   },
   "Silpheed: The Lost Planet": {
-   "level": "normal",
+   "level": "dormant",
    "mentions": 0,
    "US": {
     "checked": "2026-11-12T12:48Z",
@@ -58451,7 +58596,6 @@
      "median": 25.99
     },
     "recorded": "2026-11-12",
-    "steady": true,
     "week": {
      "checked": "2026-11-05T00:06Z",
      "median": 24.99
@@ -58482,6 +58626,7 @@
     "postage": 0.8,
     "listed": 23,
     "recorded": "2026-11-11",
+    "slow": true,
     "week": {
      "checked": "2026-11-05T01:42Z",
      "median": 12.0
@@ -58495,6 +58640,7 @@
     "postage": 4.0,
     "listed": 22,
     "recorded": "2026-11-11",
+    "slow": true,
     "week": {
      "checked": "2026-11-05T01:42Z",
      "median": 26.95
@@ -58508,6 +58654,7 @@
     "postage": 2.5,
     "listed": 14,
     "recorded": "2026-11-11",
+    "slow": true,
     "week": {
      "checked": "2026-11-05T01:42Z",
      "median": 30.49
@@ -58521,7 +58668,8 @@
     "postage": null,
     "listed": 0,
     "recorded": "2026-11-11",
-    "steady": true
+    "steady": true,
+    "slow": true
    }
   },
   "Simpsons Road Rage": {
@@ -64220,10 +64368,10 @@
    "level": "normal",
    "mentions": 0,
    "US": {
-    "checked": "2026-11-12T02:04Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 8,
     "lowest": 130.0,
-    "median": 241.0,
+    "median": 236.0,
     "postage": 6.27,
     "listed": 12,
     "new": {
@@ -64237,12 +64385,12 @@
     },
     "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-04T05:16Z",
+     "checked": "2026-11-05T12:22Z",
      "median": 249.99
     }
    },
    "UK": {
-    "checked": "2026-11-12T02:04Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 3,
     "lowest": 31.9,
     "median": 189.99,
@@ -64255,7 +64403,7 @@
     },
     "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-04T05:16Z",
+     "checked": "2026-11-05T12:22Z",
      "median": 189.99
     }
    },
@@ -67171,7 +67319,7 @@
    }
   },
   "Test Drive: Off-Road: Wide Open": {
-   "level": "dormant",
+   "level": "normal",
    "mentions": 0,
    "US": {
     "checked": "2026-11-12T00:55Z",
@@ -67185,6 +67333,7 @@
      "median": 10.0
     },
     "recorded": "2026-11-12",
+    "steady": true,
     "week": {
      "checked": "2026-11-03T02:44Z",
      "median": 9.99
@@ -67207,8 +67356,7 @@
     "postage": null,
     "listed": 0,
     "recorded": "2026-11-10",
-    "steady": true,
-    "slow": true
+    "steady": true
    },
    "FR": {
     "checked": "2026-11-10T05:13Z",
@@ -67222,8 +67370,7 @@
     "postage": null,
     "listed": 0,
     "recorded": "2026-11-10",
-    "steady": true,
-    "slow": true
+    "steady": true
    },
    "ES": {
     "checked": "2026-11-10T05:13Z",
@@ -67233,7 +67380,6 @@
     "postage": 3.0,
     "listed": 1,
     "recorded": "2026-11-10",
-    "slow": true,
     "week": {
      "checked": "2026-11-02T04:05Z",
      "median": 5.0
@@ -69775,37 +69921,37 @@
     }
    },
    "DE": {
-    "checked": "2026-11-09T19:32Z",
-    "copies": 69,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 71,
     "lowest": 6.9,
     "median": 17.99,
     "postage": 0.0,
-    "listed": 173,
+    "listed": 172,
     "complete": {
-     "copies": 5,
-     "median": 16.99
+     "copies": 6,
+     "median": 17.99
     },
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "week": {
      "checked": "2026-11-05T08:39Z",
      "median": 17.99
     }
    },
    "FR": {
-    "checked": "2026-11-09T19:32Z",
-    "copies": 29,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 31,
     "lowest": 9.5,
     "median": 20.43,
     "postage": 2.99,
-    "listed": 72,
-    "recorded": "2026-11-09",
+    "listed": 74,
+    "recorded": "2026-11-12",
     "week": {
      "checked": "2026-11-06T08:24Z",
      "median": 21.41
     }
    },
    "IT": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 54,
     "lowest": 6.9,
     "median": 18.93,
@@ -69815,7 +69961,7 @@
      "copies": 4,
      "median": 23.97
     },
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "week": {
      "checked": "2026-11-05T08:39Z",
      "median": 18.95
@@ -72730,7 +72876,7 @@
    }
   },
   "Ty the Tasmanian Tiger 2: Bush Rescue": {
-   "level": "normal",
+   "level": "dormant",
    "mentions": 0,
    "US": {
     "checked": "2026-11-12T16:24Z",
@@ -72744,27 +72890,25 @@
      "median": 11.97
     },
     "recorded": "2026-11-12",
-    "steady": true,
     "week": {
      "checked": "2026-11-04T16:13Z",
      "median": 10.5
     }
    },
    "UK": {
-    "checked": "2026-11-11T01:22Z",
-    "copies": 24,
+    "checked": "2026-11-12T20:07Z",
+    "copies": 25,
     "lowest": 3.15,
-    "median": 6.52,
-    "postage": 1.82,
-    "listed": 37,
+    "median": 6.51,
+    "postage": 1.55,
+    "listed": 39,
     "complete": {
      "copies": 12,
      "median": 5.56
     },
-    "recorded": "2026-11-11",
-    "steady": true,
+    "recorded": "2026-11-12",
     "week": {
-     "checked": "2026-11-03T02:44Z",
+     "checked": "2026-11-05T02:52Z",
      "median": 6.51
     }
    },
@@ -72776,7 +72920,8 @@
     "postage": null,
     "listed": 0,
     "recorded": "2026-11-10",
-    "steady": true
+    "steady": true,
+    "slow": true
    },
    "FR": {
     "checked": "2026-11-10T05:13Z",
@@ -72786,7 +72931,8 @@
     "postage": null,
     "listed": 0,
     "recorded": "2026-11-10",
-    "steady": true
+    "steady": true,
+    "slow": true
    },
    "IT": {
     "checked": "2026-11-10T05:13Z",
@@ -72796,6 +72942,7 @@
     "postage": 0.0,
     "listed": 1,
     "recorded": "2026-11-10",
+    "slow": true,
     "week": {
      "checked": "2026-11-04T04:08Z",
      "median": 27.9
@@ -72809,7 +72956,8 @@
     "postage": null,
     "listed": 0,
     "recorded": "2026-11-10",
-    "steady": true
+    "steady": true,
+    "slow": true
    }
   },
   "UEFA Champions League": {
@@ -75392,33 +75540,33 @@
     "recorded": "2026-11-12"
    },
    "DE": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 0,
     "lowest": null,
     "median": null,
     "postage": null,
-    "listed": 4,
-    "recorded": "2026-11-09",
+    "listed": 3,
+    "recorded": "2026-11-12",
     "steady": true
    },
    "FR": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 0,
     "lowest": null,
     "median": null,
     "postage": null,
     "listed": 0,
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "steady": true
    },
    "IT": {
-    "checked": "2026-11-09T19:32Z",
+    "checked": "2026-11-12T20:07Z",
     "copies": 0,
     "lowest": null,
     "median": null,
     "postage": null,
     "listed": 1,
-    "recorded": "2026-11-09",
+    "recorded": "2026-11-12",
     "steady": true
    },
    "ES": {
