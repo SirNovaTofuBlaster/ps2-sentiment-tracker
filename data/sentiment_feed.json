@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-12 23:03:44 UTC",
+  "last_updated": "2026-11-12 23:14:52 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751492434",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 23:06 UTC"
+    },
     {
       "headline": "Slay The Spire 2’s Latest Update Adds A New Character, Two New Modes, And A Byrdpip Evolution!",
       "source": "Kotaku",
@@ -224,6 +243,27 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-12 22:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Getaway, Metal Gear Solid 2: Sons of Liberty and Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751491204",
+      "matched_game": "The Getaway",
+      "matched_games": [
+        "The Getaway",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 22:47 UTC"
     },
@@ -888,14 +928,15 @@
       "timestamp": "2026-11-12 22:25 UTC"
     },
     {
-      "headline": "Thread on /v/ naming ICO",
+      "headline": "Thread on /v/ naming ICO and Shadow of the Colossus",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751489420",
       "matched_game": "ICO",
       "matched_games": [
-        "ICO"
+        "ICO",
+        "Shadow of the Colossus"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -23246,17 +23287,19 @@
       "timestamp": "2026-11-12 06:10 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming God Hand, Resident Evil 4 and Ape Escape 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751441404",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "God Hand",
       "matched_games": [
-        "Resident Evil 4"
+        "God Hand",
+        "Resident Evil 4",
+        "Ape Escape 3"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -340805,125 +340848,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 23:14 UTC"
-    },
-    {
-      "headline": "My PS4 Playstation Hits collection, The 2nd Rabbit Hole I am in.",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1xiza58/my_ps4_playstation_hits_collection_the_2nd_rabbit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:10 UTC"
-    },
-    {
-      "headline": "What would you pair with a 3070 ti?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xiz97f/what_would_you_pair_with_a_3070_ti/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:08 UTC"
-    },
-    {
-      "headline": "Zelda! Added to the collection!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xiz6pl/zelda_added_to_the_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:06 UTC"
-    },
-    {
-      "headline": "Underwater Exploration Games Similar to Subnautica or Endless Ocean?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xiz74y/underwater_exploration_games_similar_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:06 UTC"
-    },
-    {
-      "headline": "Steam deck won't go to sleep",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xiz7bm/steam_deck_wont_go_to_sleep/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:06 UTC"
-    },
-    {
-      "headline": "Two computers SSDs into one PC?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xiz569/two_computers_ssds_into_one_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:04 UTC"
-    },
-    {
-      "headline": "Hideo Kojima sorprende a sus fans apareciendo vestido de unicornio rosa en su estudio",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/hideo-kojima/115219/hideo-kojima-sorprende-a-sus-fans-apareciendo-vestido-de-unicornio-rosa-en-su-estudio",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 23:04 UTC"
     }
   ]
 }
