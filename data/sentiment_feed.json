@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12 15:22:43 UTC",
+  "last_updated": "2026-11-12 15:25:23 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -412,6 +412,25 @@
       "hype": 0,
       "timestamp": "2026-11-12 15:04 UTC",
       "views": 291
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751461814",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 15:04 UTC"
     },
     {
       "headline": "Warhammer 40,000: Dark Heresy I getting a Physical Release VIA Silver Lining (Switch 2, PS5). Releases Apr 30th 2027",
@@ -18914,22 +18933,23 @@
       "views": 20253
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X-2, Grand Theft Auto: San Andreas, Max Payne and 3 more",
+      "headline": "Thread on /v/ naming Breath of Fire: Dragon Quarter, Grand Theft Auto: San Andreas, Max Payne and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751412417",
-      "matched_game": "Final Fantasy X-2",
+      "matched_game": "Breath of Fire: Dragon Quarter",
       "matched_games": [
-        "Final Fantasy X-2",
+        "Breath of Fire: Dragon Quarter",
         "Grand Theft Auto: San Andreas",
         "Max Payne",
         "Metal Gear Solid 3: Snake Eater",
         "Half-Life",
-        "Beyond Good and Evil"
+        "Beyond Good and Evil",
+        "Final Fantasy X-2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -338904,108 +338924,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-29 15:25 UTC"
-    },
-    {
-      "headline": "Advice on primary/secondary slots.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xin0lk/advice_on_primarysecondary_slots/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 15:24 UTC"
-    },
-    {
-      "headline": "Vendas das Xbox Series em queda livre nos EUA",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/vendas-das-xbox-series-em-queda-livre-nos-eua",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 15:24 UTC"
-    },
-    {
-      "headline": "My ps2 games on opl any games you recommend for me",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1ximzri/my_ps2_games_on_opl_any_games_you_recommend_for_me/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 15:23 UTC"
-    },
-    {
-      "headline": "Проблема с обновлением геймпада xbox",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1ximzmw/проблема_с_обновлением_геймпада_xbox/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 15:23 UTC"
-    },
-    {
-      "headline": "I’ve taken about 3 months off the game to lock in and get a promotion now that I have said promotion I’m rewarding myself with a game. It’s either Blood of the Dawnwalker or Control Resonant which do you suggest ?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1ximyl3/ive_taken_about_3_months_off_the_game_to_lock_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 15:22 UTC"
-    },
-    {
-      "headline": "Is the GPU cooked?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1ximy9h/is_the_gpu_cooked/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-29 15:22 UTC"
     }
   ]
 }
