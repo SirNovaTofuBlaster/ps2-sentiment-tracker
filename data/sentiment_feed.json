@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12 05:52:32 UTC",
+  "last_updated": "2026-11-12 05:55:13 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -243,15 +243,15 @@
       "timestamp": "2026-11-12 05:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Splinter Cell and Wreckless: The Yakuza Missions",
+      "headline": "Thread on /v/ naming Wreckless: The Yakuza Missions and Splinter Cell",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751439626",
-      "matched_game": "Splinter Cell",
+      "matched_game": "Wreckless: The Yakuza Missions",
       "matched_games": [
-        "Splinter Cell",
-        "Wreckless: The Yakuza Missions"
+        "Wreckless: The Yakuza Missions",
+        "Splinter Cell"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1524,19 +1524,19 @@
       "timestamp": "2026-11-12 02:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy, Kingdom Hearts, Scaler and 3 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Jak II, Jak 3 and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751433601",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Jak and Daxter: The Precursor Legacy",
-        "Kingdom Hearts",
-        "Scaler",
-        "Vexx",
+        "Grand Theft Auto III",
+        "Jak II",
         "Jak 3",
-        "Jak X"
+        "Jak X",
+        "Scaler",
+        "Vexx"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -3049,6 +3049,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-12 00:56 UTC"
+    },
+    {
+      "headline": "Thread on /vm/ naming Reservoir Dogs, Grand Theft Auto: San Andreas and Grand Theft Auto III",
+      "source": "4chan /vm/",
+      "source_type": "4chan",
+      "feed": "4chan:vm",
+      "link": "https://boards.4chan.org/vm/thread/3184671",
+      "matched_game": "Reservoir Dogs",
+      "matched_games": [
+        "Reservoir Dogs",
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-12 00:55 UTC"
     },
     {
       "headline": "Best way to fix",
