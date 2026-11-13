@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-13 06:07:41 UTC",
+  "last_updated": "2026-11-13 06:21:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -448,6 +448,25 @@
       "timestamp": "2026-11-13 04:48 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Sonic Heroes",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751511668",
+      "matched_game": "Sonic Heroes",
+      "matched_games": [
+        "Sonic Heroes"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-13 04:46 UTC"
+    },
+    {
       "headline": "CÓDIGO REGIONAL INCORRECTO - PELICULAS UMD",
       "source": "r/playstation",
       "source_type": "reddit",
@@ -554,13 +573,14 @@
       "timestamp": "2026-11-13 04:37 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of Rome",
+      "headline": "Thread on /v/ naming Max Payne and Shadow of Rome",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751511128",
-      "matched_game": "Shadow of Rome",
+      "matched_game": "Max Payne",
       "matched_games": [
+        "Max Payne",
         "Shadow of Rome"
       ],
       "match_score": 100,
@@ -341563,113 +341583,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-10-30 06:26 UTC"
-    },
-    {
-      "headline": "Deal of the century?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xj7tcb/deal_of_the_century/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 06:20 UTC"
-    },
-    {
-      "headline": "Thread on /vrpg/ naming Metal Gear Solid 2: Sons of Liberty and Final Fantasy X",
-      "source": "4chan /vrpg/",
-      "source_type": "4chan",
-      "feed": "4chan:vrpg",
-      "link": "https://boards.4chan.org/vrpg/thread/4143423",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
-      "matched_games": [
-        "Metal Gear Solid 2: Sons of Liberty",
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-30 06:18 UTC"
-    },
-    {
-      "headline": "Did you know, Assetto Corsa has a Speed Racer mod?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xj7pv4/did_you_know_assetto_corsa_has_a_speed_racer_mod/",
-      "matched_game": "Speed Racer",
-      "matched_games": [
-        "Speed Racer"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 06:14 UTC"
-    },
-    {
-      "headline": "Controller recommendations for pc/console?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xj7ovc/controller_recommendations_for_pcconsole/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 06:12 UTC"
-    },
-    {
-      "headline": "[Trails of Cold Steel III] I made a free Inventory Editor for PC (Open Source, RU/EN)",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xj7nua/trails_of_cold_steel_iii_i_made_a_free_inventory/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 06:11 UTC"
-    },
-    {
-      "headline": "All hardware companies will stop making a morbillion a year and go back to only billions per year",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xj7mfa/all_hardware_companies_will_stop_making_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 06:08 UTC"
     }
   ]
 }
