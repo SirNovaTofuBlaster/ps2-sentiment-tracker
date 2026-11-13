@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-13 19:52:42 UTC",
+  "last_updated": "2026-11-13 19:55:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -153,6 +153,26 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-13 19:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751549934",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-13 19:39 UTC"
     },
@@ -343291,57 +343311,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 19:55 UTC"
-    },
-    {
-      "headline": "Single player games for PC like Lego Fortnite: Odyssey?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xjpjn2/single_player_games_for_pc_like_lego_fortnite/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 19:54 UTC"
-    },
-    {
-      "headline": "La Catrina monumental del Zócalo de la CDMX rompe Récord Guinness y desata una ola de memes",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/entretenimiento/115226/la-catrina-monumental-del-zocalo-de-la-cdmx-rompe-record-guinness-y-desata-una-ola-de-memes",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 19:54 UTC"
-    },
-    {
-      "headline": "Help a fellow Garchomp lover",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xjpive/help_a_fellow_garchomp_lover/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-30 19:53 UTC"
     }
   ]
 }
