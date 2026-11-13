@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-13 22:43:51 UTC",
+  "last_updated": "2026-11-13 22:46:26 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -4670,18 +4670,19 @@
       "timestamp": "2026-11-13 18:37 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Midnight Club, Grand Theft Auto III and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751546226",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Midnight Club",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Grand Theft Auto III"
+        "Midnight Club",
+        "Grand Theft Auto III",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -343161,57 +343162,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 22:46 UTC"
-    },
-    {
-      "headline": "👋 Welcome to r/PS2HCTP_Game_Club - Introduce Yourself and Read First!",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1xjtsd2/welcome_to_rps2hctp_game_club_introduce_yourself/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 22:45 UTC"
-    },
-    {
-      "headline": "I got a steam deck for my birthday",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xjtsfe/i_got_a_steam_deck_for_my_birthday/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 22:45 UTC"
-    },
-    {
-      "headline": "neo-pi: bare-metal Neo Geo (MVS/AES) emulator for Raspberry Pi 3 and 4",
-      "source": "r/emulation",
-      "source_type": "reddit",
-      "feed": "reddit:emulation",
-      "link": "https://www.reddit.com/r/emulation/comments/1xjtr0e/neopi_baremetal_neo_geo_mvsaes_emulator_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 22:44 UTC"
     }
   ]
 }
