@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-13 03:48:31 UTC",
+  "last_updated": "2026-11-13 03:59:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751508697",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-13 03:47 UTC"
+    },
     {
       "headline": "Romancing Saga 2: Revenge of the Seven, First game in the Franchise",
       "source": "r/JRPG",
@@ -128,14 +147,16 @@
       "timestamp": "2026-11-13 03:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Spider-Man, Kingdom Hearts and Spider-Man 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751507671",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Spider-Man",
       "matched_games": [
-        "Kingdom Hearts"
+        "Spider-Man",
+        "Kingdom Hearts",
+        "Spider-Man 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -421,17 +442,18 @@
       "timestamp": "2026-11-13 03:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751506339",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341445,95 +341467,6 @@
       "hype": 0,
       "timestamp": "2026-10-30 04:00 UTC",
       "views": 3052
-    },
-    {
-      "headline": "Received Empty Box today",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xj5den/received_empty_box_today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 03:58 UTC"
-    },
-    {
-      "headline": "I really need help",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xj59fy/i_really_need_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 03:52 UTC"
-    },
-    {
-      "headline": "Games that play well on mobile/tablet?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xj58cv/games_that_play_well_on_mobiletablet/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 03:51 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750618217",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-30 03:49 UTC"
-    },
-    {
-      "headline": "Should i continue playing Persona 3 Reload?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xj5682/should_i_continue_playing_persona_3_reload/",
-      "matched_game": "Persona 3",
-      "matched_games": [
-        "Persona 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 03:48 UTC"
     }
   ]
 }
