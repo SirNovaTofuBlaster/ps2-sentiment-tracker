@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-13 11:19:46 UTC",
+  "last_updated": "2026-11-13 11:22:22 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -69,6 +69,44 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-13 11:12 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587702102",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-13 11:12 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Hitman: Blood Money",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751525182",
+      "matched_game": "Hitman: Blood Money",
+      "matched_games": [
+        "Hitman: Blood Money"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-13 11:11 UTC"
     },
     {
       "headline": "Microsoft is struggling to fix a prolonged systems outage that has hindered access to online service",
@@ -1824,17 +1862,18 @@
       "timestamp": "2026-11-13 08:54 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Final Fantasy X, Legend of Kay and 1 more",
+      "headline": "Thread on /v/ naming Winx Club, Final Fantasy X, Legend of Kay and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751520631",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Winx Club",
       "matched_games": [
-        "Silent Hill 2",
+        "Winx Club",
         "Final Fantasy X",
         "Legend of Kay",
-        "Shadow of the Colossus"
+        "Shadow of the Colossus",
+        "Silent Hill 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -10943,14 +10982,14 @@
       "timestamp": "2026-11-12 22:28 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751489860",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
-        "Final Fantasy X"
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -342825,57 +342864,6 @@
       "sentiment": 40,
       "hype": 0,
       "timestamp": "2026-10-30 11:22 UTC"
-    },
-    {
-      "headline": "My Chemical Romance and Lauren Tsai Team Up for Short Movie Featuring Hideo Kojima",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/my-chemical-romance-mcr-lauren-tsai-short-film-kojima-cameo/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 11:20 UTC"
-    },
-    {
-      "headline": "People can no longer tell the difference between a disc based media and a game key card",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xjcmdk/people_can_no_longer_tell_the_difference_between/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": true,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 11:19 UTC"
-    },
-    {
-      "headline": "In 1997, when Steve Jobs poached a developer Microsoft desperately wanted, Microsoft's CTO had a whole, iced salmon delivered to Jobs' doorstep, Godfather style. Here are 3 of my favorite bizarre true stories from tech & gaming history.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xjcmlr/in_1997_when_steve_jobs_poached_a_developer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-30 11:19 UTC"
     }
   ]
 }
