@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-13 04:16:40 UTC",
+  "last_updated": "2026-11-13 04:19:31 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -3102,6 +3102,23 @@
       "match_score": 92,
       "match_method": "variant",
       "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-13 00:02 UTC"
+    },
+    {
+      "headline": "CORE 545: The One Before GTA VI",
+      "source": "Podcast: CORE - Core Gaming for Core Gamers",
+      "source_type": "podcast",
+      "feed": "https://feeds.acast.com/public/shows/6500f421d570420011d0e34b",
+      "link": "https://shows.acast.com/core-a-heroes-of-the-storm-podcast/episodes/core-545-the-one-before-gta-vi",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
@@ -341325,25 +341342,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 04:19 UTC"
-    },
-    {
-      "headline": "Bug character disappears whenever I open a door (Haunting Ground)",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xj5qrb/bug_character_disappears_whenever_i_open_a_door/",
-      "matched_game": "Haunting Ground",
-      "matched_games": [
-        "Haunting Ground"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-10-30 04:18 UTC"
     }
   ]
 }
