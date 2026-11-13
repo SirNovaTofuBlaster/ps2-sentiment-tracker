@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-13 03:43:41 UTC",
+  "last_updated": "2026-11-13 03:46:16 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -109,6 +109,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-13 03:27 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751507671",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-13 03:25 UTC"
     },
     {
       "headline": "Does Super Mario World runs poorly on snesticle PS2?",
@@ -26447,14 +26466,14 @@
         "Devil May Cry",
         "Viewtiful Joe",
         "God Hand",
-        "Ben 10: Protector of Earth",
         "Devil May Cry 3: Dante's Awakening",
         "Chaos Legion",
         "Urban Reign",
         "Resident Evil 4",
         "Spider-Man",
         "Metal Gear Solid 2: Sons of Liberty",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Ben 10: Protector of Earth"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -341481,23 +341500,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 03:48 UTC"
-    },
-    {
-      "headline": "What’s the most frustrating part about buying PC parts online?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xj53g7/whats_the_most_frustrating_part_about_buying_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 03:44 UTC"
     }
   ]
 }
