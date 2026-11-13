@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-13 06:34:43 UTC",
+  "last_updated": "2026-11-13 06:37:20 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -766,6 +766,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-13 05:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Crazy Golf",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751512260",
+      "matched_game": "Crazy Golf",
+      "matched_games": [
+        "Crazy Golf"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-13 04:58 UTC"
     },
     {
       "headline": "Steam Deck Boot Menu Bug",
@@ -341921,40 +341940,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-30 06:51 UTC"
-    },
-    {
-      "headline": "A way to remove unpurchased games from \"My Library\"",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xj82ii/a_way_to_remove_unpurchased_games_from_my_library/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 06:36 UTC"
-    },
-    {
-      "headline": "Shut down screen doesn’t show",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xj81d5/shut_down_screen_doesnt_show/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 06:34 UTC"
     }
   ]
 }
