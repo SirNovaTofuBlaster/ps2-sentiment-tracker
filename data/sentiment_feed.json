@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-13 12:16:49 UTC",
+  "last_updated": "2026-11-13 12:19:28 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-13 12:08 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Need for Speed Underground 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751527140",
+      "matched_game": "Need for Speed Underground 2",
+      "matched_games": [
+        "Need for Speed Underground 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-13 12:07 UTC"
     },
     {
       "headline": "r/JRPG Weekly Free Talk, Quick Questions, Suggestion Request and Media Thread",
@@ -935,6 +954,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-13 11:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751525024",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-13 11:05 UTC"
     },
     {
       "headline": "Turbine fans ?",
@@ -2529,18 +2567,18 @@
       "timestamp": "2026-11-13 09:13 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X and ESPN NFL 2K5",
+      "headline": "Thread on /v/ naming ESPN NFL 2K5 and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751521296",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "ESPN NFL 2K5",
       "matched_games": [
-        "Final Fantasy X",
-        "ESPN NFL 2K5"
+        "ESPN NFL 2K5",
+        "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4093,19 +4131,20 @@
       "timestamp": "2026-11-13 07:09 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 3, Silent Hill 2 and Silent Hill 4: The Room",
+      "headline": "Thread on /v/ naming Shadow the Hedgehog, Silent Hill 2, Silent Hill 3 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751517437",
-      "matched_game": "Silent Hill 3",
+      "matched_game": "Shadow the Hedgehog",
       "matched_games": [
-        "Silent Hill 3",
+        "Shadow the Hedgehog",
         "Silent Hill 2",
+        "Silent Hill 3",
         "Silent Hill 4: The Room"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -342850,76 +342889,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 12:19 UTC"
-    },
-    {
-      "headline": "Strange issue with steam deck touch screen/possibly in game mouse controls",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xjdtq5/strange_issue_with_steam_deck_touch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 12:18 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Van Helsing",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750633685",
-      "matched_game": "Van Helsing",
-      "matched_games": [
-        "Van Helsing"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-30 12:18 UTC"
-    },
-    {
-      "headline": "Fake PS5 emulators on GitHub spread password-stealing malware, AnyPS5 and KytyPS5 impersonated",
-      "source": "r/emulation",
-      "source_type": "reddit",
-      "feed": "reddit:emulation",
-      "link": "https://www.reddit.com/r/emulation/comments/1xjdshf/fake_ps5_emulators_on_github_spread/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 12:17 UTC"
-    },
-    {
-      "headline": "Sword of the Sea lançado de surpresa na Switch 2",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/sword-of-the-sea-lancado-de-surpresa-na-switch-2",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 12:16 UTC"
     }
   ]
 }
