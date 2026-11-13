@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-13 05:13:40 UTC",
+  "last_updated": "2026-11-13 05:24:42 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -108,6 +108,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-13 04:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751510959",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_games": [
+        "Devil May Cry 3: Dante's Awakening"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-13 04:32 UTC"
     },
@@ -2152,16 +2171,18 @@
       "timestamp": "2026-11-13 01:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming SoulCalibur II, Sonic Unleashed and Need for Speed Most Wanted",
+      "headline": "Thread on /v/ naming Red Dead Revolver, Sonic Unleashed, Need for Speed Most Wanted and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751502581",
-      "matched_game": "SoulCalibur II",
+      "matched_game": "Red Dead Revolver",
       "matched_games": [
-        "SoulCalibur II",
+        "Red Dead Revolver",
         "Sonic Unleashed",
-        "Need for Speed Most Wanted"
+        "Need for Speed Most Wanted",
+        "SoulCalibur II",
+        "Rock Band 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -10064,6 +10085,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-12 19:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751478609",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 19:36 UTC"
     },
@@ -341400,77 +341440,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-30 05:24 UTC"
-    },
-    {
-      "headline": "Y'all loved my Haunted Arcade ROM switcher -- here's some hardcore arcade gameplay (sorry I'm not a professional tuber). No I'm not ready to share any files, yet.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xj6vls/yall_loved_my_haunted_arcade_rom_switcher_heres/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-30 05:22 UTC"
-    },
-    {
-      "headline": "With price ballooning for 5080",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xj6sqe/with_price_ballooning_for_5080/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 05:17 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming One Piece: Grand Battle",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750621137",
-      "matched_game": "One Piece: Grand Battle",
-      "matched_games": [
-        "One Piece: Grand Battle"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-30 05:17 UTC"
-    },
-    {
-      "headline": "My First Ever Playthrough of Metro 2033 - It just got a \"Next-Gen\" Update TODAY on PS5!",
-      "source": "YouTube: PeteDorr",
-      "source_type": "youtube",
-      "feed": "youtube:UCeTvRtfRFyWXdO_ZbyArPjA",
-      "link": "https://www.youtube.com/watch?v=xBvPnSHJHsw",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-30 05:14 UTC",
-      "views": 3808
     }
   ]
 }
