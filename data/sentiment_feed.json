@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 15:49:43 UTC",
+  "last_updated": "2026-11-14 15:52:16 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -637,6 +637,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 14:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751600097",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 14:52 UTC"
     },
     {
       "headline": "How do i use the playstation app in mongolia",
@@ -2191,6 +2211,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-14 13:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751596372",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 13:16 UTC"
     },
     {
       "headline": "Are these specs worth it for the price?",
@@ -342667,57 +342706,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 15:52 UTC"
-    },
-    {
-      "headline": "We are at peak insanity, +800 in a year",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkdnff/we_are_at_peak_insanity_800_in_a_year/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 15:50 UTC"
-    },
-    {
-      "headline": "What Call of duty games have splitscreen printed on disc?",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xkdn2d/what_call_of_duty_games_have_splitscreen_printed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 15:49 UTC"
-    },
-    {
-      "headline": "It is worth it to mount a fan underneath your gpu even though your case doesn't support it",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkdn1w/it_is_worth_it_to_mount_a_fan_underneath_your_gpu/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 15:49 UTC"
     }
   ]
 }
