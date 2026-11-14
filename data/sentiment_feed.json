@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-14 23:01:42 UTC",
+  "last_updated": "2026-11-14 23:12:56 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751627387",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 23:01 UTC"
+    },
     {
       "headline": "Forage and fight for ingredients in a magical 1960s Italy and whip up some tasty meals Cooking Mama style in The Snackbar at the End of the World",
       "source": "Rock Paper Shotgun Latest Articles Feed",
@@ -18,6 +37,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 22:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751626814",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 22:52 UTC"
     },
     {
       "headline": "Thread on /vr/ naming The Godfather",
@@ -555,6 +593,25 @@
       "views": 353
     },
     {
+      "headline": "Thread on /v/ naming Ar Tonelico",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751623563",
+      "matched_game": "Ar Tonelico",
+      "matched_games": [
+        "Ar Tonelico"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 22:00 UTC"
+    },
+    {
       "headline": "[ Removed by Reddit ]",
       "source": "r/gamingsuggestions",
       "source_type": "reddit",
@@ -985,6 +1042,25 @@
       "timestamp": "2026-11-14 21:24 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Crash Twinsanity",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751621378",
+      "matched_game": "Crash Twinsanity",
+      "matched_games": [
+        "Crash Twinsanity"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 21:24 UTC"
+    },
+    {
       "headline": "ESCAPE MR FAST FOOD Thanksgiving 2026 Event",
       "source": "YouTube: Video Game News",
       "source_type": "youtube",
@@ -1122,7 +1198,7 @@
       "timestamp": "2026-11-14 21:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3 and Silent Hill 4: The Room",
+      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 4: The Room and Silent Hill 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1130,8 +1206,8 @@
       "matched_game": "Silent Hill 2",
       "matched_games": [
         "Silent Hill 2",
-        "Silent Hill 3",
-        "Silent Hill 4: The Room"
+        "Silent Hill 4: The Room",
+        "Silent Hill 3"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -2401,18 +2477,18 @@
       "timestamp": "2026-11-14 19:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3 and Deus Ex",
+      "headline": "Thread on /v/ naming Deus Ex and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751616060",
-      "matched_game": "Persona 3",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Persona 3",
-        "Deus Ex"
+        "Deus Ex",
+        "Persona 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5542,15 +5618,15 @@
       "timestamp": "2026-11-14 17:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751607195",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy XII",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -341686,186 +341762,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 23:12 UTC"
-    },
-    {
-      "headline": "playstations safe mode",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xko3e8/playstations_safe_mode/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:11 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy XII, Kingdom Hearts II, Final Fantasy X and 1 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750729278",
-      "matched_game": "Final Fantasy XII",
-      "matched_games": [
-        "Final Fantasy XII",
-        "Kingdom Hearts II",
-        "Final Fantasy X",
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:11 UTC"
-    },
-    {
-      "headline": "Andy Weir's New Time-Travel Sci-fi Thriller Officially Arrives Nov. 5",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/andy-weir-benjamin-percy-exoplanet-sci-fi-audiobook/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:09 UTC"
-    },
-    {
-      "headline": "Why should I get ps2 instead of emulator?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xko1uy/why_should_i_get_ps2_instead_of_emulator/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:09 UTC"
-    },
-    {
-      "headline": "Give it up. The data centers are thirsty",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xko14g/give_it_up_the_data_centers_are_thirsty/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:08 UTC"
-    },
-    {
-      "headline": "Happy 24th Anniversary to BloodRayne",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xknzkw/happy_24th_anniversary_to_bloodrayne/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:06 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750728901",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:03 UTC"
-    },
-    {
-      "headline": "Control your Tag Duel Partner - Yu gi oh GX Tag Force 1",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xknw80/control_your_tag_duel_partner_yu_gi_oh_gx_tag/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:02 UTC"
-    },
-    {
-      "headline": "5 Must-Play Nintendo Switch 2 Games Coming in November 2026",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/new-nintendo-switch-games-november-2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:01 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Deus Ex and Persona 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750728776",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex",
-        "Persona 3"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:01 UTC"
     }
   ]
 }
