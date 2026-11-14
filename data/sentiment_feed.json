@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 06:24:21 UTC",
+  "last_updated": "2026-11-14 06:35:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2472,18 +2472,18 @@
       "timestamp": "2026-11-14 02:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751571363",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Kingdom Hearts",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -342622,57 +342622,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 06:38 UTC"
-    },
-    {
-      "headline": "Steam deck dolphin emu wii problem",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xk3045/steam_deck_dolphin_emu_wii_problem/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 06:32 UTC"
-    },
-    {
-      "headline": "Adding another 32G ram",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xk2yre/adding_another_32g_ram/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 06:30 UTC"
-    },
-    {
-      "headline": "My New Nintendo 3DS XL in near-mint condition!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xk2vnu/my_new_nintendo_3ds_xl_in_nearmint_condition/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 06:24 UTC"
     }
   ]
 }
