@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-14 19:13:41 UTC",
+  "last_updated": "2026-11-14 19:24:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751613813",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 19:16 UTC"
+    },
     {
       "headline": "Thread on /vg/ naming Deus Ex",
       "source": "4chan /vg/",
@@ -20,6 +39,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-14 19:09 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751613410",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 19:08 UTC"
     },
     {
       "headline": "Thread on /v/ naming Persona 4",
@@ -107,6 +145,26 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-14 18:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus and Red Faction",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751611803",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus",
+        "Red Faction"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 18:39 UTC"
     },
     {
       "headline": "Is Gabe hiding something from us?",
@@ -3666,6 +3724,25 @@
       "timestamp": "2026-11-14 15:09 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751600652",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 15:04 UTC"
+    },
+    {
       "headline": "Ubisoft Is Reportedly Bringing A Beloved Series Back After Nearly Two Decades",
       "source": "Polygon.com",
       "source_type": "news",
@@ -6768,18 +6845,19 @@
       "timestamp": "2026-11-14 11:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shrek 2, The Warriors, Silent Hill 2 and 2 more",
+      "headline": "Thread on /v/ naming Blade 2, Silent Hill 2, Star Wars Battlefront II and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751592732",
-      "matched_game": "Shrek 2",
+      "matched_game": "Blade 2",
       "matched_games": [
-        "Shrek 2",
-        "The Warriors",
+        "Blade 2",
         "Silent Hill 2",
         "Star Wars Battlefront II",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Shrek 2",
+        "The Warriors"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -341660,182 +341738,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 19:24 UTC"
-    },
-    {
-      "headline": "The new setup",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/53828889",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:20 UTC"
-    },
-    {
-      "headline": "The Need for Speed: Special Edition – Remastered",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xkiv84/the_need_for_speed_special_edition_remastered/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-31 19:19 UTC"
-    },
-    {
-      "headline": "Trouble signing in on ps4",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xkiv09/trouble_signing_in_on_ps4/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:19 UTC"
-    },
-    {
-      "headline": "Phantasy Star Universe",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/YdrcWsP3dN0",
-      "matched_game": "Phantasy Star Universe",
-      "matched_games": [
-        "Phantasy Star Universe"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:19 UTC",
-      "views": 1181
-    },
-    {
-      "headline": "٣١ تشرين الأول، ٢٠٢٦",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/-9a0fKNhMfQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:19 UTC",
-      "views": 2464
-    },
-    {
-      "headline": "Bungie’s new leadership finally understands what Destiny fans want—after we spent years shouting it at them",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/bungies-new-leadership-finally-understands-what-destiny-fans-want-after-we-spent-years-shouting-it-at-them/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:16 UTC"
-    },
-    {
-      "headline": "NFC Credit Card Controller",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xkisjp/nfc_credit_card_controller/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:16 UTC"
-    },
-    {
-      "headline": "half life 1 rtx mod freezing on unfocus",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkisd6/half_life_1_rtx_mod_freezing_on_unfocus/",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:16 UTC"
-    },
-    {
-      "headline": "Persona 5 Series Reaches 15.5 Million Sales - Persona Central",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xkirji/persona_5_series_reaches_155_million_sales/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:15 UTC"
-    },
-    {
-      "headline": "Looking to update my build.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkiqbq/looking_to_update_my_build/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:13 UTC"
     }
   ]
 }
