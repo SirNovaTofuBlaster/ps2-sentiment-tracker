@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-14 23:41:52 UTC",
+  "last_updated": "2026-11-14 23:55:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Champions of Norrath",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751630029",
+      "matched_game": "Champions of Norrath",
+      "matched_games": [
+        "Champions of Norrath"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 23:44 UTC"
+    },
     {
       "headline": "Some GTA 6 Box Copies Reported To Have Download Code Issues With No Disc To Fall Back On",
       "source": "Kotaku",
@@ -243,17 +262,18 @@
       "timestamp": "2026-11-14 23:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751627387",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -866,13 +886,14 @@
       "timestamp": "2026-11-14 22:13 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Ratchet & Clank",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Ratchet & Clank",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751624464",
-      "matched_game": "Ratchet & Clank",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Ratchet & Clank"
       ],
       "match_score": 100,
@@ -1719,16 +1740,16 @@
       "timestamp": "2026-11-14 21:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Crash Twinsanity, Looney Toons: Back in Action and Donald Duck Goin' Quackers",
+      "headline": "Thread on /v/ naming Looney Toons: Back in Action, Donald Duck Goin' Quackers and Crash Twinsanity",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751621378",
-      "matched_game": "Crash Twinsanity",
+      "matched_game": "Looney Toons: Back in Action",
       "matched_games": [
-        "Crash Twinsanity",
         "Looney Toons: Back in Action",
-        "Donald Duck Goin' Quackers"
+        "Donald Duck Goin' Quackers",
+        "Crash Twinsanity"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -4522,20 +4543,21 @@
       "timestamp": "2026-11-14 18:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex, Red Faction, Shadow of the Colossus and 1 more",
+      "headline": "Thread on /v/ naming Monster Hunter, Red Faction, Shadow of the Colossus and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751611803",
-      "matched_game": "Deus Ex",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "Deus Ex",
+        "Monster Hunter",
         "Red Faction",
         "Shadow of the Colossus",
-        "Persona 3"
+        "Persona 3",
+        "Deus Ex"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341868,182 +341890,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 23:56 UTC"
-    },
-    {
-      "headline": "Fan Curve Help",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkoygi/fan_curve_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:54 UTC"
-    },
-    {
-      "headline": "I built Greendex to track GPU, RAM, and SSD prices daily",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkoy7b/i_built_greendex_to_track_gpu_ram_and_ssd_prices/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:54 UTC"
-    },
-    {
-      "headline": "PC turns on (fans/lights run) but no display, frequent crashes during gaming or OCCT power test (550W PSU concern)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkoxvi/pc_turns_on_fanslights_run_but_no_display/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:53 UTC"
-    },
-    {
-      "headline": "Collection - 4 years flipping",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xkownu/collection_4_years_flipping/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:52 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750731087",
-      "matched_game": "Resident Evil Code: Veronica X",
-      "matched_games": [
-        "Resident Evil Code: Veronica X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:48 UTC"
-    },
-    {
-      "headline": "incremental/idlers that have to do with books or studying or use it to gain skills?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xkot7p/incrementalidlers_that_have_to_do_with_books_or/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:47 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750730931",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:45 UTC"
-    },
-    {
-      "headline": "The Myth of Consent",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xkoq0g/the_myth_of_consent/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:42 UTC"
-    },
-    {
-      "headline": "How To Trap Sam Altman",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkopv5/how_to_trap_sam_altman/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:42 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Dynasty Warriors 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750730807",
-      "matched_game": "Dynasty Warriors 3",
-      "matched_games": [
-        "Dynasty Warriors 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:42 UTC"
     }
   ]
 }
