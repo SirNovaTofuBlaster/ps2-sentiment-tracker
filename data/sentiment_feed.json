@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-14 08:47:22 UTC",
+  "last_updated": "2026-11-14 08:57:57 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751587597",
+      "matched_game": "Resident Evil Code: Veronica X",
+      "matched_games": [
+        "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 08:43 UTC"
+    },
     {
       "headline": "Un analista lo tiene claro: The Elder Scrolls 6 jamás podrá ocupar el inmenso vacío que deje GTA 6",
       "source": "Vandal",
@@ -1892,6 +1911,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 04:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Phantasy Star Universe, Sonic Riders and Sonic Unleashed",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751577115",
+      "matched_game": "Phantasy Star Universe",
+      "matched_games": [
+        "Phantasy Star Universe",
+        "Sonic Riders",
+        "Sonic Unleashed"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 04:02 UTC"
     },
     {
       "headline": "prebuilt or build a pc?",
@@ -342751,57 +342791,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 08:57 UTC"
-    },
-    {
-      "headline": "La cocina, el terror psicológico y los rituales se dan la mano en este juego gratis que triunfa en Steam",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026304003/la-cocina-el-terror-psicologico-y-los-rituales-se-dan-la-mano-en-este-juego-gratis-que-triunfa-en-steam/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 08:56 UTC"
-    },
-    {
-      "headline": "Anthropic tells Claude to stop remaking video games",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xk57cl/anthropic_tells_claude_to_stop_remaking_video/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 08:53 UTC"
-    },
-    {
-      "headline": "All endings in Probably Stolen and how to unlock them",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/all-endings-in-probably-stolen-and-how-to-unlock-them/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 08:49 UTC"
     }
   ]
 }
