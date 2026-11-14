@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 19:37:49 UTC",
+  "last_updated": "2026-11-14 19:40:21 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -7720,22 +7720,23 @@
       "timestamp": "2026-11-14 11:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Blade 2, Silent Hill 2, Star Wars Battlefront II and 3 more",
+      "headline": "Thread on /v/ naming Ford Racing 2, Silent Hill 2, Star Wars Battlefront II and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751592732",
-      "matched_game": "Blade 2",
+      "matched_game": "Ford Racing 2",
       "matched_games": [
-        "Blade 2",
+        "Ford Racing 2",
         "Silent Hill 2",
         "Star Wars Battlefront II",
         "Resident Evil 4",
         "Shrek 2",
-        "The Warriors"
+        "The Warriors",
+        "Blade 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -342455,23 +342456,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 19:40 UTC"
-    },
-    {
-      "headline": "So... Finally joining the PC gaming crowd properly",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkjc88/so_finally_joining_the_pc_gaming_crowd_properly/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 19:39 UTC"
     }
   ]
 }
