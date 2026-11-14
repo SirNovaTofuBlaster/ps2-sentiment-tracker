@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 04:25:35 UTC",
+  "last_updated": "2026-11-14 04:28:13 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -483,17 +483,18 @@
       "timestamp": "2026-11-14 03:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming The Hobbit and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751575237",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "The Hobbit",
       "matched_games": [
+        "The Hobbit",
         "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -25155,7 +25156,7 @@
       "timestamp": "2026-11-13 04:54 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Deus Ex, Half-Life, Shadow the Hedgehog and 2 more",
+      "headline": "Thread on /vr/ naming Deus Ex, Half-Life, Spider-Man and 3 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -25164,6 +25165,7 @@
       "matched_games": [
         "Deus Ex",
         "Half-Life",
+        "Spider-Man",
         "Shadow the Hedgehog",
         "No One Lives Forever",
         "The Incredibles"
@@ -342839,57 +342841,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 04:28 UTC"
-    },
-    {
-      "headline": "What’s wrong with my game?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xk0w0q/whats_wrong_with_my_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 04:26 UTC"
-    },
-    {
-      "headline": "Gaming carts/tables with wheels",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xk0vme/gaming_cartstables_with_wheels/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 04:26 UTC"
-    },
-    {
-      "headline": "Final Fantasy XIV: Evercold expansion delayed to February 23, 2027",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/10/final-fantasy-xiv-evercold-expansion-delayed-to-february-23-2027",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 04:25 UTC"
     }
   ]
 }
