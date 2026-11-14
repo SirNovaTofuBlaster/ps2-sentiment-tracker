@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 06:19:33 UTC",
+  "last_updated": "2026-11-14 06:22:09 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1029,18 +1029,18 @@
       "timestamp": "2026-11-14 03:59 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Max Payne and Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Grand Theft Auto III and Max Payne",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751576662",
-      "matched_game": "Max Payne",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Max Payne",
-        "Grand Theft Auto III"
+        "Grand Theft Auto III",
+        "Max Payne"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -13922,13 +13922,14 @@
       "timestamp": "2026-11-13 16:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Persona 4 and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751539837",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Persona 4",
       "matched_games": [
+        "Persona 4",
         "Kingdom Hearts"
       ],
       "match_score": 100,
