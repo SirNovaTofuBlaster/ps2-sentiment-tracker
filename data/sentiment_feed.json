@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 08:13:34 UTC",
+  "last_updated": "2026-11-14 08:15:59 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -189,6 +189,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 07:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751585309",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 07:34 UTC"
     },
     {
       "headline": "Did I just witness my graphics chip die?",
@@ -343016,23 +343035,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 08:15 UTC"
-    },
-    {
-      "headline": "Underrated controller, I don't listen to her music but the controller is awesome",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xk4lfg/underrated_controller_i_dont_listen_to_her_music/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-31 08:13 UTC"
     }
   ]
 }
