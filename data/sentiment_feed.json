@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 13:03:19 UTC",
+  "last_updated": "2026-11-14 13:14:42 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -169,6 +169,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-14 12:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751595000",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-14 12:37 UTC"
     },
@@ -4684,6 +4703,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 05:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life and Star Wars Battlefront II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751580106",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life",
+        "Star Wars Battlefront II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 05:10 UTC"
     },
     {
       "headline": "Scph-39001 disc drive wont close",
@@ -343156,92 +343195,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 13:15 UTC"
-    },
-    {
-      "headline": "7700 to 9800X3D or wait for Zen 6?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xk9scr/7700_to_9800x3d_or_wait_for_zen_6/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 13:08 UTC"
-    },
-    {
-      "headline": "Fightbox R10 Pro: Sub 1ms USB Stick, Spinner & Trackball",
-      "source": "YouTube: RetroRGB",
-      "source_type": "youtube",
-      "feed": "youtube:UCLPIbBCKVH2uKGm5C4sOkew",
-      "link": "https://www.youtube.com/watch?v=VmjvweSZhdw",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 13:05 UTC",
-      "views": 9905
-    },
-    {
-      "headline": "Dark Souls 2 and Dark Souls 3's online servers are temporarily going dark, FromSoftware announces",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xk9ppc/dark_souls_2_and_dark_souls_3s_online_servers_are/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-31 13:05 UTC"
-    },
-    {
-      "headline": "PS1 laser ideal OHM for laser health?",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xk9pcr/ps1_laser_ideal_ohm_for_laser_health/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 13:04 UTC"
-    },
-    {
-      "headline": "Dark Souls 2 and Dark Souls 3's online servers are temporarily going dark, FromSoftware announces",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xk9pa1/dark_souls_2_and_dark_souls_3s_online_servers_are/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-31 13:04 UTC"
     }
   ]
 }
