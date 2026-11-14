@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-14 05:27:24 UTC",
+  "last_updated": "2026-11-14 05:38:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587789963",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 05:32 UTC"
+    },
     {
       "headline": "Upgrade help - worth it? And if so, what?",
       "source": "r/pcmasterrace",
@@ -3988,6 +4007,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-13 23:48 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751564202",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-13 23:48 UTC"
     },
@@ -23000,14 +23038,15 @@
       "timestamp": "2026-11-13 08:54 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Final Fantasy X, Legend of Kay and 7 more",
+      "headline": "Thread on /v/ naming Secret Weapons Over Normandy, Star Wars: StarFighter, Final Fantasy X and 10 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751520631",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Secret Weapons Over Normandy",
       "matched_games": [
-        "Kingdom Hearts II",
+        "Secret Weapons Over Normandy",
+        "Star Wars: StarFighter",
         "Final Fantasy X",
         "Legend of Kay",
         "Shadow of the Colossus",
@@ -23016,10 +23055,12 @@
         "Shrek 2",
         "The Arcade",
         "The Warriors",
-        "Blade 2"
+        "Blade 2",
+        "Kingdom Hearts II",
+        "TimeSplitters 2"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -342773,95 +342814,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 05:38 UTC"
-    },
-    {
-      "headline": "Could you recommend some PS5 games that match my tastes?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xk241w/could_you_recommend_some_ps5_games_that_match_my/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 05:37 UTC"
-    },
-    {
-      "headline": "Ubisoft Says No More Assassin's Creed Remakes Planned For Now",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/QtL4XWrnkwQ",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-31 05:37 UTC",
-      "views": 1152
-    },
-    {
-      "headline": "Original Call of Duty Modern Warfare 2 Port Leaked",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/WNdD16CFDgc",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-10-31 05:37 UTC",
-      "views": 520
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750686251",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-31 05:31 UTC"
-    },
-    {
-      "headline": "Help with my fans",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xk1zkm/help_with_my_fans/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 05:29 UTC"
     }
   ]
 }
