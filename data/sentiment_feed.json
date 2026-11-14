@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 14:52:41 UTC",
+  "last_updated": "2026-11-14 14:55:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2725,18 +2725,19 @@
       "timestamp": "2026-11-14 11:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Star Wars Battlefront II",
+      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 2 and Star Wars Battlefront II",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751592732",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Silent Hill 2",
         "Star Wars Battlefront II"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -343120,59 +343121,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-10-31 14:55 UTC"
-    },
-    {
-      "headline": "Happy Halloween, from my second favorite horror game on the platform, Obscure!",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xkc9so/happy_halloween_from_my_second_favorite_horror/",
-      "matched_game": "Obscure",
-      "matched_games": [
-        "Obscure"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-31 14:54 UTC"
-    },
-    {
-      "headline": "I am so back. (End of October btw)",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xkc9mt/i_am_so_back_end_of_october_btw/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 14:54 UTC"
-    },
-    {
-      "headline": "Seagate HDD question?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xkc8py/seagate_hdd_question/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 14:53 UTC"
     }
   ]
 }
