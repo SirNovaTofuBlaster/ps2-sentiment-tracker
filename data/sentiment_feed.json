@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 17:43:49 UTC",
+  "last_updated": "2026-11-14 17:46:26 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -3453,14 +3453,15 @@
       "timestamp": "2026-11-14 13:45 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Top Gun",
+      "headline": "Thread on /vg/ naming Top Gun and Gallop Racer",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/587814269",
       "matched_game": "Top Gun",
       "matched_games": [
-        "Top Gun"
+        "Top Gun",
+        "Gallop Racer"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -8679,6 +8680,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-14 05:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Destroy All Humans!",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751581486",
+      "matched_game": "Destroy All Humans!",
+      "matched_games": [
+        "Destroy All Humans!"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-14 05:47 UTC"
     },
@@ -32561,6 +32581,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-13 08:45 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Final Fantasy XII",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12930128",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-13 08:45 UTC"
     },
@@ -341786,58 +341825,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 17:46 UTC"
-    },
-    {
-      "headline": "MMA-like game with a good story on PC or Switch.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xkgizi/mmalike_game_with_a_good_story_on_pc_or_switch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 17:45 UTC"
-    },
-    {
-      "headline": "Escape Mr Fast Food ORIGINAL SCARYLAND Full Game + Jumpscares",
-      "source": "YouTube: Video Game News",
-      "source_type": "youtube",
-      "feed": "youtube:UCitsvZeConV2Im24BVFH8hg",
-      "link": "https://www.youtube.com/watch?v=JYZQWfqn1S0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 17:45 UTC",
-      "views": 1021
-    },
-    {
-      "headline": "Gow (2018) or Elden ring",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xkgiga/gow_2018_or_elden_ring/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 17:44 UTC"
     }
   ]
 }
