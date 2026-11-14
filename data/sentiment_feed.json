@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 23:25:44 UTC",
+  "last_updated": "2026-11-14 23:28:30 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -205,6 +205,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-14 22:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751627108",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-14 22:56 UTC"
     },
@@ -1331,6 +1350,26 @@
       "timestamp": "2026-11-14 21:47 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Persona 3 and Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751622774",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3",
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 21:47 UTC"
+    },
+    {
       "headline": "My current PS3 collection",
       "source": "r/gamecollecting",
       "source_type": "reddit",
@@ -1572,14 +1611,16 @@
       "timestamp": "2026-11-14 21:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Crash Twinsanity",
+      "headline": "Thread on /v/ naming Crash Twinsanity, Looney Toons: Back in Action and Donald Duck Goin' Quackers",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751621378",
       "matched_game": "Crash Twinsanity",
       "matched_games": [
-        "Crash Twinsanity"
+        "Crash Twinsanity",
+        "Looney Toons: Back in Action",
+        "Donald Duck Goin' Quackers"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3587,6 +3628,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-14 19:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Rock Band",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751614342",
+      "matched_game": "Rock Band",
+      "matched_games": [
+        "Rock Band"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-14 19:25 UTC"
     },
@@ -342015,40 +342075,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 23:29 UTC"
-    },
-    {
-      "headline": "Pokemon black japanese cartridge. Real or Fake?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xkoezq/pokemon_black_japanese_cartridge_real_or_fake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:27 UTC"
-    },
-    {
-      "headline": "Help for DS Pokémon games",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xkod3t/help_for_ds_pokémon_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:25 UTC"
     }
   ]
 }
