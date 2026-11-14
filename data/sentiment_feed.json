@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 12:34:39 UTC",
+  "last_updated": "2026-11-14 12:45:40 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -88,17 +88,18 @@
       "timestamp": "2026-11-14 12:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Devil May Cry and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751594247",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Devil May Cry",
       "matched_games": [
+        "Devil May Cry",
         "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -2841,6 +2842,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 08:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dragon Quest VIII: Journey of the Cursed King",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751586294",
+      "matched_game": "Dragon Quest VIII: Journey of the Cursed King",
+      "matched_games": [
+        "Dragon Quest VIII: Journey of the Cursed King"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 08:02 UTC"
     },
     {
       "headline": "/r/NintendoSwitch's Daily Question Thread (11/14/2026)",
@@ -343021,163 +343041,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 12:45 UTC"
-    },
-    {
-      "headline": "Looking for recommendations for PS5!",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xk9919/looking_for_recommendations_for_ps5/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 12:43 UTC"
-    },
-    {
-      "headline": "Why no one suing big companies + AI for the global shortage they do?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xk97zi/why_no_one_suing_big_companies_ai_for_the_global/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 12:41 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750697998",
-      "matched_game": "Resident Evil Code: Veronica X",
-      "matched_games": [
-        "Resident Evil Code: Veronica X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-31 12:41 UTC"
-    },
-    {
-      "headline": "UK PAL Gungrave (PS2) manual has Bear Walken and Balladbird Lee labels swapped - is this a known misprint?",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xk9718/uk_pal_gungrave_ps2_manual_has_bear_walken_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 12:40 UTC"
-    },
-    {
-      "headline": "Is this copy of Emerald real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xk96wh/is_this_copy_of_emerald_real/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 12:40 UTC"
-    },
-    {
-      "headline": "Don't underestimate their greed",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xk94au/dont_underestimate_their_greed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 12:36 UTC"
-    },
-    {
-      "headline": "Smt nocturne",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xk946m/smt_nocturne/",
-      "matched_game": "Shin Megami Tensei: Nocturne",
-      "matched_games": [
-        "Shin Megami Tensei: Nocturne"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 12:36 UTC"
-    },
-    {
-      "headline": "The last mile on Strike Wings",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xk92hd/the_last_mile_on_strike_wings/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 12:34 UTC"
-    },
-    {
-      "headline": "Issues with steam crashing",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xk92nj/issues_with_steam_crashing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 12:34 UTC"
     }
   ]
 }
