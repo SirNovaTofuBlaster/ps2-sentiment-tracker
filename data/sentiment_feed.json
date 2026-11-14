@@ -1,7 +1,24 @@
 {
-  "last_updated": "2026-11-14 14:55:18 UTC",
+  "last_updated": "2026-11-14 14:57:31 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Halo: Campaign Evolved is getting Firefight as a free update, though I'm not sure it'll do much to change the remake's fortunes",
+      "source": "PCGamer latest",
+      "source_type": "news",
+      "feed": "https://www.pcgamer.com/rss/",
+      "link": "https://www.pcgamer.com/games/halo/halo-campaign-evolved-is-getting-firefight-as-a-free-update-though-im-not-sure-itll-do-much-to-change-the-remakes-fortunes/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": true,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 1,
+      "timestamp": "2026-11-14 14:49 UTC"
+    },
     {
       "headline": "Guys this is finally happening",
       "source": "r/pcmasterrace",
@@ -240,6 +257,42 @@
       "hype": 0,
       "timestamp": "2026-11-14 14:30 UTC",
       "views": 12
+    },
+    {
+      "headline": "Crazy Taxi Makes a Stop in India for the Final Leg of Its World Tour",
+      "source": "Push Square",
+      "source_type": "news",
+      "feed": "https://www.pushsquare.com/feeds/latest",
+      "link": "https://www.pushsquare.com/news/2026/11/crazy-taxi-makes-a-stop-in-india-for-the-final-leg-of-its-world-tour",
+      "matched_game": "Crazy Taxi",
+      "matched_games": [
+        "Crazy Taxi"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-14 14:30 UTC"
+    },
+    {
+      "headline": "Big Walk's AI Controversy Overshadows a Remarkable Creative Achievement",
+      "source": "Polygon.com",
+      "source_type": "news",
+      "feed": "https://www.polygon.com/rss/index.xml",
+      "link": "https://www.polygon.com/big-walk-house-house-interview/",
+      "matched_game": null,
+      "matched_games": [],
+      "match_score": 0,
+      "match_method": null,
+      "matched_in": null,
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-14 14:30 UTC"
     },
     {
       "headline": "My First Build!",
@@ -343065,62 +343118,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-10-31 14:58 UTC"
-    },
-    {
-      "headline": "Is Crimson Desert the best open world game of this decade?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xkcbgy/is_crimson_desert_the_best_open_world_game_of/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-10-31 14:56 UTC"
-    },
-    {
-      "headline": "DF Direct Q+A: Helix 2028 \"Delay\"...? Xbox's Review Problem Fixed? Will Switch 2 DLSS Improve?",
-      "source": "YouTube: Digital Foundry",
-      "source_type": "youtube",
-      "feed": "youtube:UC9PBzalIcEQCsiIkq36PyUA",
-      "link": "https://www.youtube.com/watch?v=bfz5lFEoGj8",
-      "matched_game": "Kill Switch",
-      "matched_games": [
-        "Kill Switch"
-      ],
-      "match_score": 91,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 14:56 UTC",
-      "views": 122175
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750703654",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-10-31 14:55 UTC"
     }
   ]
 }
