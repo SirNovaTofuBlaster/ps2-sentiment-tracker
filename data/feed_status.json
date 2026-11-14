@@ -479,7 +479,7 @@
     "ok": false
   },
   "https://nintendoeverything.com/feed": {
-    "latest": "2026-11-14 05:50 UTC",
+    "latest": "2026-11-14 06:50 UTC",
     "ok": true
   },
   "https://pinecast.com/feed/the-minnmax-show": {
@@ -575,7 +575,7 @@
     "ok": true
   },
   "https://vandal.elespanol.com/xml.cgi": {
-    "latest": "2026-11-13 18:15 UTC",
+    "latest": "2026-11-14 08:15 UTC",
     "ok": true
   },
   "https://www.destructoid.com/feed/": {
@@ -599,8 +599,10 @@
     "ok": true
   },
   "https://www.nintendolife.com/feeds/latest": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-11-14 08:46 UTC",
     "latest": "2026-11-14 06:00 UTC",
-    "ok": true
+    "ok": false
   },
   "https://www.patreon.com/public-rss/80117?show=800722": {
     "latest": "2026-11-12 16:10 UTC",
@@ -619,8 +621,10 @@
     "ok": true
   },
   "https://www.pushsquare.com/feeds/latest": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-11-14 08:46 UTC",
     "latest": "2026-11-14 02:30 UTC",
-    "ok": true
+    "ok": false
   },
   "https://www.rockpapershotgun.com/feed/": {
     "latest": "2026-11-14 08:00 UTC",
@@ -643,8 +647,10 @@
     "ok": true
   },
   "https://www.timeextension.com/feed": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-11-14 08:46 UTC",
     "latest": "2026-11-13 17:00 UTC",
-    "ok": true
+    "ok": false
   },
   "https://www.vg247.com/feed": {
     "latest": "2026-06-02 08:41 UTC",
