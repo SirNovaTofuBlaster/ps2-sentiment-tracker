@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-11-15 18:30:37 UTC",
+  "last_updated": "2026-11-15 18:41:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Deus Ex and Half-Life",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12934467",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex",
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 18:33 UTC"
+    },
     {
       "headline": "Has anyone built a custom Steam Machine?",
       "source": "r/SteamDeck",
@@ -5557,6 +5577,27 @@
       "timestamp": "2026-11-15 13:31 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Spider-Man 2, Spider-Man and The Thing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751665010",
+      "matched_game": "Spider-Man 2",
+      "matched_games": [
+        "Spider-Man 2",
+        "Spider-Man",
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 13:29 UTC"
+    },
+    {
       "headline": "entire PC freezing on games",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -9146,14 +9187,15 @@
       "timestamp": "2026-11-15 08:00 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Pro Evolution Soccer",
+      "headline": "Thread on /vg/ naming Pro Evolution Soccer and The Thing",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/587906123",
       "matched_game": "Pro Evolution Soccer",
       "matched_games": [
-        "Pro Evolution Soccer"
+        "Pro Evolution Soccer",
+        "The Thing"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -22097,6 +22139,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 17:17 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751607241",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 17:15 UTC"
     },
     {
       "headline": "Thread on /v/ naming Final Fantasy XII and Final Fantasy X",
@@ -289552,14 +289613,15 @@
       "timestamp": "2026-11-03 21:52 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Starcraft: Ghost, Prince of Persia: Sands of Time, Castlevania: Curse of Darkness and 11 more",
+      "headline": "Thread on /vr/ naming Project Zero II, Fatal Frame, Prince of Persia: Sands of Time and 13 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12912067",
-      "matched_game": "Starcraft: Ghost",
+      "matched_game": "Project Zero II",
       "matched_games": [
-        "Starcraft: Ghost",
+        "Project Zero II",
+        "Fatal Frame",
         "Prince of Persia: Sands of Time",
         "Castlevania: Curse of Darkness",
         "Burnout 3: Takedown",
@@ -289572,7 +289634,8 @@
         "Second Sight",
         "Silent Scope",
         "Burnout",
-        "V-Rally 3"
+        "V-Rally 3",
+        "Starcraft: Ghost"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -342029,216 +342092,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 18:41 UTC"
-    },
-    {
-      "headline": "PC turning on after shutdown/sleep",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlarwe/pc_turning_on_after_shutdownsleep/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:39 UTC"
-    },
-    {
-      "headline": "Games cryptic, and very difficult, but not in the reflexes sense",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xlappp/games_cryptic_and_very_difficult_but_not_in_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:37 UTC"
-    },
-    {
-      "headline": "Best players for FC 27 Luiz Legacy Evolution",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/best-players-for-fc-27-luiz-legacy-evolution/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:37 UTC"
-    },
-    {
-      "headline": "CD Projekt Red Has Now Hired Three Warhorse Studios Leads Since November 2025",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xlapg8/cd_projekt_red_has_now_hired_three_warhorse/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:36 UTC"
-    },
-    {
-      "headline": "Edicts of the Truthsinger: The Orb of Artemagus - Triple Cerberus Studios - Investigative Detective Game in a Fantasy Setting",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xlap4c/edicts_of_the_truthsinger_the_orb_of_artemagus/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:36 UTC"
-    },
-    {
-      "headline": "can someone please help fix my frametime spikes",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlapdf/can_someone_please_help_fix_my_frametime_spikes/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:36 UTC"
-    },
-    {
-      "headline": "Just discovered streaming to my 4K tv!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlaou4/just_discovered_streaming_to_my_4k_tv/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:36 UTC"
-    },
-    {
-      "headline": "Assassins creed black flag remake or assassins creed odyssey",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xlao6c/assassins_creed_black_flag_remake_or_assassins/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-01 18:35 UTC"
-    },
-    {
-      "headline": "Just finished completing Sly 2 for the first time!",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xlalw2/just_finished_completing_sly_2_for_the_first_time/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:33 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming EverQuest: Online Adventures",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750773114",
-      "matched_game": "EverQuest: Online Adventures",
-      "matched_games": [
-        "EverQuest: Online Adventures"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:33 UTC"
-    },
-    {
-      "headline": "A preview of what is, as far as is known, the first multiplayer mode for the game BLACK (PS2/XBOX)!",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1xlalfk/a_preview_of_what_is_as_far_as_is_known_the_first/",
-      "matched_game": "Black",
-      "matched_games": [
-        "Black"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:32 UTC"
-    },
-    {
-      "headline": "A preview of what is, as far as is known, the first multiplayer mode for the game BLACK (PS2/XBOX)!",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xlajgk/a_preview_of_what_is_as_far_as_is_known_the_first/",
-      "matched_game": "Black",
-      "matched_games": [
-        "Black"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 18:30 UTC"
     }
   ]
 }
