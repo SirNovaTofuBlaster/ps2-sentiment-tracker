@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15 01:35:50 UTC",
+  "last_updated": "2026-11-15 01:49:56 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -258,6 +258,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-15 01:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Astro Boy and Gradius V",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751634989",
+      "matched_game": "Astro Boy",
+      "matched_games": [
+        "Astro Boy",
+        "Gradius V"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 00:59 UTC"
     },
     {
       "headline": "I bought a USB drive with OPL and some games installed, but I don't know how to add more games",
@@ -1788,16 +1808,16 @@
       "timestamp": "2026-11-14 23:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Metal Gear Solid 2: Sons of Liberty and Silent Hill 2",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Silent Hill 2 and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751627387",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
         "Metal Gear Solid 2: Sons of Liberty",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -2210,6 +2230,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-14 22:26 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751625212",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 22:25 UTC"
     },
     {
       "headline": "Games for tablet",
@@ -5037,15 +5076,17 @@
       "timestamp": "2026-11-14 19:40 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Sonic Heroes and Shadow the Hedgehog",
+      "headline": "Thread on /v/ naming Sonic Unleashed, Shadow the Hedgehog, Sonic Heroes and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751615170",
-      "matched_game": "Sonic Heroes",
+      "matched_game": "Sonic Unleashed",
       "matched_games": [
+        "Sonic Unleashed",
+        "Shadow the Hedgehog",
         "Sonic Heroes",
-        "Shadow the Hedgehog"
+        "Sonic Riders"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -341965,178 +342006,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 01:49 UTC"
-    },
-    {
-      "headline": "Looking for games similar to zafehouse diaries and others",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xkr6r8/looking_for_games_similar_to_zafehouse_diaries/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:48 UTC"
-    },
-    {
-      "headline": "I'm Forced To Get Rid Of My Whole Collection :(",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xkr3up/im_forced_to_get_rid_of_my_whole_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:44 UTC"
-    },
-    {
-      "headline": "Games where you get excited to unlock new characters",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xkr3n6/games_where_you_get_excited_to_unlock_new/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:44 UTC"
-    },
-    {
-      "headline": "I found some problems with known programs people use",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkr3u4/i_found_some_problems_with_known_programs_people/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:44 UTC"
-    },
-    {
-      "headline": "Ok need some help.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xkr3yd/ok_need_some_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:44 UTC"
-    },
-    {
-      "headline": "About the zelda pro controller with the stand on Playasia",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xkr24p/about_the_zelda_pro_controller_with_the_stand_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:41 UTC"
-    },
-    {
-      "headline": "Opa, rapaziada, eu queria juntar juntar progamadores para fazer um projeto, para recriar um cloud gaming de ps2, com jogos atuais, utilizando a nuvem pelos sevidores.",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1xkr153/opa_rapaziada_eu_queria_juntar_juntar/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:40 UTC"
-    },
-    {
-      "headline": "All I did was take out half my RAM...",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkr144/all_i_did_was_take_out_half_my_ram/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:40 UTC"
-    },
-    {
-      "headline": "I was playing silent hill 2 remake for the fourth time, and my pc so laggy and the graphics r eh what do I do?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkr0eb/i_was_playing_silent_hill_2_remake_for_the_fourth/",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-01 01:39 UTC"
-    },
-    {
-      "headline": "Little tutorial i put together to get 'Syndicate Plus' up and running with some custom controls on the Deck LCD 256gb Via GoG/Heroic 👍🏻",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xkqyhd/little_tutorial_i_put_together_to_get_syndicate/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:36 UTC"
     }
   ]
 }
