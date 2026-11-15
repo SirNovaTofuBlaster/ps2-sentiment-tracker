@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15 01:52:41 UTC",
+  "last_updated": "2026-11-15 02:03:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-15 01:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751636807",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 01:29 UTC"
     },
     {
       "headline": "Thread on /vg/ naming Top Gun",
@@ -824,14 +843,15 @@
       "timestamp": "2026-11-15 00:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy X-2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751632368",
       "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy X-2"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -341920,75 +341940,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 02:03 UTC"
-    },
-    {
-      "headline": "Is 4K PC gaming now a rich mans hobby or do I need to pull myself up by my bootstraps?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkrdyh/is_4k_pc_gaming_now_a_rich_mans_hobby_or_do_i/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:59 UTC"
-    },
-    {
-      "headline": "How do you guys get the fastest internet possible (Australia)?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkrdtm/how_do_you_guys_get_the_fastest_internet_possible/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:59 UTC"
-    },
-    {
-      "headline": "Minecraft - The Consequences Will Be DIRE!",
-      "source": "YouTube: VanossGaming",
-      "source_type": "youtube",
-      "feed": "youtube:UCKqH_9mk1waLgBiL2vT5b9g",
-      "link": "https://www.youtube.com/watch?v=z-2dNh3ycCo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:57 UTC",
-      "views": 1623219
-    },
-    {
-      "headline": "Has mechanism gaming pillow helped you or is it better to just get a regular pillow",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xkrarn/has_mechanism_gaming_pillow_helped_you_or_is_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 01:54 UTC"
     }
   ]
 }
