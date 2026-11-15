@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15 09:00:19 UTC",
+  "last_updated": "2026-11-15 09:11:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -518,6 +518,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-15 07:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751653957",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 07:55 UTC"
     },
     {
       "headline": "Roomies - Haroldware Games - Co-op life sim where up to 8 friends share one house",
@@ -1486,15 +1505,15 @@
       "timestamp": "2026-11-15 05:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Prince of Persia: Warrior Within, FIFA '07, Guitar Hero and 10 more",
+      "headline": "Thread on /v/ naming Shadow the Hedgehog, Devil May Cry 3, Guitar Hero and 12 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751649897",
-      "matched_game": "Prince of Persia: Warrior Within",
+      "matched_game": "Shadow the Hedgehog",
       "matched_games": [
-        "Prince of Persia: Warrior Within",
-        "FIFA '07",
+        "Shadow the Hedgehog",
+        "Devil May Cry 3",
         "Guitar Hero",
         "Jak II",
         "God of War",
@@ -1502,10 +1521,12 @@
         "Grand Theft Auto: San Andreas",
         "Burnout 3",
         "Devil May Cry",
-        "Shadow the Hedgehog",
         "Kingdom Hearts",
         "Chaos Legion",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Prince of Persia: Warrior Within",
+        "FIFA '07",
+        "Twisted Metal Black"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -7169,17 +7190,18 @@
       "timestamp": "2026-11-14 22:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "headline": "Thread on /v/ naming Dora the Explorer and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751625921",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Dora the Explorer",
       "matched_games": [
+        "Dora the Explorer",
         "Final Fantasy XII"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -12728,6 +12750,26 @@
       "hype": 1,
       "timestamp": "2026-11-14 17:40 UTC",
       "views": 52564
+    },
+    {
+      "headline": "Thread on /v/ naming Ridge Racer V and Devil May Cry 3: Dante's Awakening",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751608782",
+      "matched_game": "Ridge Racer V",
+      "matched_games": [
+        "Ridge Racer V",
+        "Devil May Cry 3: Dante's Awakening"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 17:40 UTC"
     },
     {
       "headline": "Fallout: London Is An Absolute Nightmare - This Is Why",
@@ -343379,163 +343421,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 09:13 UTC"
-    },
-    {
-      "headline": "Kaiju Ace - GTGD - Fight colossal kaiju with fighter jets",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xkyijg/kaiju_ace_gtgd_fight_colossal_kaiju_with_fighter/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 09:10 UTC"
-    },
-    {
-      "headline": "20 Years Later, The Departed's Best Line Is Still One Of The Greatest Quotes In Gangster Movie History",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/best-quote-gangster-movie-the-departed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 70,
-      "hype": 0,
-      "timestamp": "2026-11-01 09:09 UTC"
-    },
-    {
-      "headline": "/r/NintendoSwitch Sunday Show Off Thread (11/01/2026)",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1xkyfsq/rnintendoswitch_sunday_show_off_thread_11012026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 09:05 UTC"
-    },
-    {
-      "headline": "Forget Jason Statham, the Best Action Movie of the Last 30 Years Is Back on Netflix",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/air-force-one-harrison-ford-netflix-november-2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-01 09:04 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750750821",
-      "matched_game": "Resident Evil Code: Veronica X",
-      "matched_games": [
-        "Resident Evil Code: Veronica X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 09:01 UTC"
-    },
-    {
-      "headline": "Sam Altman",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkydm6/sam_altman/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 09:01 UTC"
-    },
-    {
-      "headline": "Any Metal Gear fans around",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xkyd2s/any_metal_gear_fans_around/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 09:00 UTC"
-    },
-    {
-      "headline": "24 Years Later, the Funniest Lord of the Rings Movie Quote Is Still a Legendary Fantasy Line",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/funniest-lord-of-the-rings-quote-meats-back-on-the-menu-boys-histry/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 09:00 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Half-Life",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750750803",
-      "matched_game": "Half-Life",
-      "matched_games": [
-        "Half-Life"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 09:00 UTC"
     }
   ]
 }
