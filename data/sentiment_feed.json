@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15 15:10:38 UTC",
+  "last_updated": "2026-11-15 15:21:42 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1458,6 +1458,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-15 12:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751663787",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-15 12:54 UTC"
     },
@@ -5923,17 +5942,19 @@
       "timestamp": "2026-11-15 05:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Just Cause",
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Just Cause and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751648249",
-      "matched_game": "Just Cause",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
       "matched_games": [
-        "Just Cause"
+        "Devil May Cry 3: Dante's Awakening",
+        "Just Cause",
+        "God of War"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -50339,6 +50360,25 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-11-13 08:20 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Frogger: The Great Quest",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12930058",
+      "matched_game": "Frogger: The Great Quest",
+      "matched_games": [
+        "Frogger: The Great Quest"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-13 08:17 UTC"
     },
     {
       "headline": "Huge Deal",
@@ -341783,169 +341823,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 15:24 UTC"
-    },
-    {
-      "headline": "What do y'all think",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xl5osp/what_do_yall_think/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 15:20 UTC"
-    },
-    {
-      "headline": "Fuck.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xl5orm/fuck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 15:20 UTC"
-    },
-    {
-      "headline": "Advancing Fronts - Agematon - Modern Warfare-Themed Sandbox Grand Strategy",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xl5oq7/advancing_fronts_agematon_modern_warfarethemed/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 15:20 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Persona 4, Persona 3, Persona 3 FES and 1 more",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/586378162",
-      "matched_game": "Persona 4",
-      "matched_games": [
-        "Persona 4",
-        "Persona 3",
-        "Persona 3 FES",
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 15:17 UTC"
-    },
-    {
-      "headline": "Crash Bandicoot: The Wrath of Cortex – PS2 Game Running on PSP! 🤯",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xl5m4u/crash_bandicoot_the_wrath_of_cortex_ps2_game/",
-      "matched_game": "Crash Bandicoot: The Wrath of Cortex",
-      "matched_games": [
-        "Crash Bandicoot: The Wrath of Cortex"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 15:17 UTC"
-    },
-    {
-      "headline": "Tomb Raider 1 - PS1 Original vs. PS2 Remake (Anniversary) | Full Game Comparison | Side by Side",
-      "source": "YouTube: NeoGamer - The Video Game Archive",
-      "source_type": "youtube",
-      "feed": "youtube:UCDC7X5gNh2LxQ2PnN_OKD5g",
-      "link": "https://www.youtube.com/watch?v=cy4gNnSfCzA",
-      "matched_game": "Tomb Raider: Anniversary",
-      "matched_games": [
-        "Tomb Raider: Anniversary"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-01 15:15 UTC",
-      "views": 4502
-    },
-    {
-      "headline": "New Fortnite Item Makes Everything on the Item Shop Completely Free",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/fortnite-pirate-item-shop-access-token-free-how-to-get/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 15:14 UTC"
-    },
-    {
-      "headline": "Bubsy 3D PSxMemCard save icon",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xl5jhj/bubsy_3d_psxmemcard_save_icon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 15:14 UTC"
-    },
-    {
-      "headline": "Our fourth Robot Master reveal, Cook Man preps you for a full course meal of kitchen kung fu! When he's cooking up a storm, don't get in his way unless you want to risk being served on a silver platter!🍴#MegaManDO",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1xl5i22/our_fourth_robot_master_reveal_cook_man_preps_you/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 15:12 UTC"
     }
   ]
 }
