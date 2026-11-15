@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15 07:01:33 UTC",
+  "last_updated": "2026-11-15 07:04:06 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -86,6 +86,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-15 06:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751651036",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 06:30 UTC"
     },
     {
       "headline": "OMG the legends are true!",
@@ -13659,15 +13678,15 @@
       "timestamp": "2026-11-14 14:57 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Iron Man and Spider-Man",
+      "headline": "Thread on /v/ naming Spider-Man and Iron Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751600282",
-      "matched_game": "Iron Man",
+      "matched_game": "Spider-Man",
       "matched_games": [
-        "Iron Man",
-        "Spider-Man"
+        "Spider-Man",
+        "Iron Man"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -342789,94 +342808,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-01 07:07 UTC"
-    },
-    {
-      "headline": "Stop buying RAM you selfish gamers",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkwkbt/stop_buying_ram_you_selfish_gamers/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 07:03 UTC"
-    },
-    {
-      "headline": "Black Lake Official Gameplay Teaser Trailer Released",
-      "source": "YouTube: Mithrie - Gaming News",
-      "source_type": "youtube",
-      "feed": "youtube:UCDbiEgV3Y7JQtaftgN7lyPw",
-      "link": "https://www.youtube.com/shorts/pguhoGK-2ss",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 07:03 UTC",
-      "views": 425
-    },
-    {
-      "headline": "Day 836 of posting a Daily Screenshot from the games I've been playing",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53844992",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 07:03 UTC"
-    },
-    {
-      "headline": "Thread on /vm/ naming Monster Hunter",
-      "source": "4chan /vm/",
-      "source_type": "4chan",
-      "feed": "4chan:vm",
-      "link": "https://boards.4chan.org/vm/thread/3142856",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 07:02 UTC"
-    },
-    {
-      "headline": "Deep Corp vs TurmOil",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xkwiwd/deep_corp_vs_turmoil/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 07:01 UTC"
     }
   ]
 }
