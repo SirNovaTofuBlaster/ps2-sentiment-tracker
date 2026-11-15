@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15 19:22:46 UTC",
+  "last_updated": "2026-11-15 19:25:24 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -737,6 +737,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-15 18:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751680379",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-15 18:38 UTC"
     },
@@ -2625,6 +2644,25 @@
       "matched_game": "Grandia II",
       "matched_games": [
         "Grandia II"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 17:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751675108",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -342290,60 +342328,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 19:26 UTC"
-    },
-    {
-      "headline": "better pc for home server?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlbx42/better_pc_for_home_server/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 19:24 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming The Thing and Odin Sphere",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750775954",
-      "matched_game": "The Thing",
-      "matched_games": [
-        "The Thing",
-        "Odin Sphere"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 19:23 UTC"
-    },
-    {
-      "headline": "Upshot to the 5090 being discontinued? My teen no longer expects — or even feels the need for — an upgrade to his rig. Thank God. (We are so fucked.)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlbvcm/upshot_to_the_5090_being_discontinued_my_teen_no/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 19:22 UTC"
     }
   ]
 }
