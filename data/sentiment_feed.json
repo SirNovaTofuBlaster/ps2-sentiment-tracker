@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15 20:24:41 UTC",
+  "last_updated": "2026-11-15 20:35:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -88,7 +88,7 @@
       "timestamp": "2026-11-15 20:16 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 4 and Marc Ecko's Getting Up: Contents Under Pressure",
+      "headline": "Thread on /v/ naming Persona 4, Marc Ecko's Getting Up: Contents Under Pressure, Tony Hawk's Underground 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -96,7 +96,28 @@
       "matched_game": "Persona 4",
       "matched_games": [
         "Persona 4",
-        "Marc Ecko's Getting Up: Contents Under Pressure"
+        "Marc Ecko's Getting Up: Contents Under Pressure",
+        "Tony Hawk's Underground 2",
+        "Metal Gear Solid 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 20:16 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751686269",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1194,13 +1215,14 @@
       "timestamp": "2026-11-15 19:18 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 4",
+      "headline": "Thread on /v/ naming Xenosaga Episode III and Persona 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751682703",
-      "matched_game": "Persona 4",
+      "matched_game": "Xenosaga Episode III",
       "matched_games": [
+        "Xenosaga Episode III",
         "Persona 4"
       ],
       "match_score": 100,
@@ -1933,7 +1955,7 @@
         "Secret Agent Clank"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -342528,142 +342550,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 20:35 UTC"
-    },
-    {
-      "headline": "Blue battery icon?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xldmfe/blue_battery_icon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 20:32 UTC"
-    },
-    {
-      "headline": "Quick question about not getting a game before it comes off of the ps store.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xldl7k/quick_question_about_not_getting_a_game_before_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 20:31 UTC"
-    },
-    {
-      "headline": "Strategy games with deep political competition, where power has to be earned and cannot be taken for granted.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xldjg4/strategy_games_with_deep_political_competition/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 20:29 UTC"
-    },
-    {
-      "headline": "WhatsApp is one of Windows 11's worst apps, eating 2GB of RAM, like a web browser, and Microsoft's years of neglect of WinUI have only made things worse",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xldivy/whatsapp_is_one_of_windows_11s_worst_apps_eating/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-11-01 20:28 UTC"
-    },
-    {
-      "headline": "He has the means to literally be part of the solution.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xldis3/he_has_the_means_to_literally_be_part_of_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 20:28 UTC"
-    },
-    {
-      "headline": "Will this cable work on my psu and GPU ?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xldgk0/will_this_cable_work_on_my_psu_and_gpu/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 20:25 UTC"
-    },
-    {
-      "headline": "Anybody else go through a Shuttle phase?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xldg58/anybody_else_go_through_a_shuttle_phase/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 20:25 UTC"
-    },
-    {
-      "headline": "After almost exactly 6 years, it's over.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xldfea/after_almost_exactly_6_years_its_over/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 20:24 UTC"
     }
   ]
 }
