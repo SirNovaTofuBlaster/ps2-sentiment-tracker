@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15 06:09:18 UTC",
+  "last_updated": "2026-11-15 06:20:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2196,6 +2196,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-15 02:23 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751639869",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 02:22 UTC"
     },
     {
       "headline": "PS2 9000 Disc Drive Malfunction",
@@ -5587,7 +5606,7 @@
       "timestamp": "2026-11-14 22:13 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4, Ratchet & Clank, Silent Hill 2 and 4 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 2, Ratchet & Clank and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -5595,12 +5614,14 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4",
-        "Ratchet & Clank",
         "Silent Hill 2",
+        "Ratchet & Clank",
         "Metal Gear Solid 3: Snake Eater",
         "Final Fantasy X",
         "Shadow of the Colossus",
-        "ICO"
+        "ICO",
+        "Rocky",
+        "Romancing SaGa"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -343027,149 +343048,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 06:20 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Red Dead Revolver",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750746667",
-      "matched_game": "Red Dead Revolver",
-      "matched_games": [
-        "Red Dead Revolver"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 06:19 UTC"
-    },
-    {
-      "headline": "STEINS;GATE RE:BOOT Steel book edition",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xkvu8y/steinsgate_reboot_steel_book_edition/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 06:18 UTC"
-    },
-    {
-      "headline": "Logan Paul's Company Was Just Found Guilty Of Fraud",
-      "source": "YouTube: Karl Jobst",
-      "source_type": "youtube",
-      "feed": "youtube:UC3ltptWa0xfrDweghW94Acg",
-      "link": "https://www.youtube.com/watch?v=4_l0mzTlSQ0",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 06:16 UTC",
-      "views": 1470339
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750746508",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 06:14 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming King's Field IV",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750746415",
-      "matched_game": "King's Field IV",
-      "matched_games": [
-        "King's Field IV"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 06:11 UTC"
-    },
-    {
-      "headline": "Future looks bleak",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkvpwl/future_looks_bleak/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 06:10 UTC"
-    },
-    {
-      "headline": "Steam Overlay is showing a large difference in GPU utilization compared to their respective in-game Overlay.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkvpqz/steam_overlay_is_showing_a_large_difference_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 06:10 UTC"
-    },
-    {
-      "headline": "Oh Sam COME GET ME",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkvp3s/oh_sam_come_get_me/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 06:09 UTC"
     }
   ]
 }
