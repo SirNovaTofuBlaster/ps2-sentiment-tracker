@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-15 23:10:46 UTC",
+  "last_updated": "2026-11-15 23:13:19 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587977754",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 23:12 UTC"
+    },
     {
       "headline": "How do PC gamers feel about GTA 6 not dropping on PC next week?",
       "source": "r/pcmasterrace",
@@ -2431,7 +2450,7 @@
       "timestamp": "2026-11-15 20:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Metal Gear Solid 2: Sons of Liberty, Splinter Cell and 2 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Deus Ex, Metal Gear Solid 2: Sons of Liberty and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -2439,9 +2458,9 @@
       "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
         "Metal Gear Solid 3: Snake Eater",
+        "Deus Ex",
         "Metal Gear Solid 2: Sons of Liberty",
         "Splinter Cell",
-        "Deus Ex",
         "Kingdom Hearts"
       ],
       "match_score": 100,
@@ -3452,6 +3471,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-15 19:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751684845",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-15 19:52 UTC"
     },
@@ -342430,108 +342468,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 23:15 UTC"
-    },
-    {
-      "headline": "Pls help me :(",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlhe1j/pls_help_me/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 23:12 UTC"
-    },
-    {
-      "headline": "Thank you Sam Altman",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlhe1d/thank_you_sam_altman/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 23:12 UTC"
-    },
-    {
-      "headline": "Super Metroid Has Been Brought to the Game Boy Advance, and It Runs at 60 FPS",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53878651",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 23:12 UTC"
-    },
-    {
-      "headline": "Super Metroid Has Been Brought to the Game Boy Advance, and It Runs at 60 FPS",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/53878652",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 23:12 UTC"
-    },
-    {
-      "headline": "Black 2 and White 2 legit or not?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xlhczf/black_2_and_white_2_legit_or_not/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 23:11 UTC"
-    },
-    {
-      "headline": "Mann Versus Zombies - Gameplay Trailer",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xlhc51/mann_versus_zombies_gameplay_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 23:10 UTC"
     }
   ]
 }
