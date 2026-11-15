@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-14 23:58:41 UTC",
+  "last_updated": "2026-11-15 00:09:52 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 23:50 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming ICO",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12933058",
+      "matched_game": "ICO",
+      "matched_games": [
+        "ICO"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-14 23:46 UTC"
     },
     {
       "headline": "Thread on /v/ naming Champions of Norrath",
@@ -313,18 +332,19 @@
       "timestamp": "2026-11-14 23:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Metal Gear Solid 2: Sons of Liberty and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751627387",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Metal Gear Solid 3: Snake Eater",
       "matched_games": [
-        "Silent Hill 2",
-        "Metal Gear Solid 2: Sons of Liberty"
+        "Metal Gear Solid 3: Snake Eater",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -386,13 +406,14 @@
       "timestamp": "2026-11-14 22:53 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life",
+      "headline": "Thread on /v/ naming Unreal Tournament and Half-Life",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751626814",
-      "matched_game": "Half-Life",
+      "matched_game": "Unreal Tournament",
       "matched_games": [
+        "Unreal Tournament",
         "Half-Life"
       ],
       "match_score": 100,
@@ -341780,131 +341801,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 00:09 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Scooby Doo! Mystery Mayhem",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750732050",
-      "matched_game": "Scooby Doo! Mystery Mayhem",
-      "matched_games": [
-        "Scooby Doo! Mystery Mayhem"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 00:07 UTC"
-    },
-    {
-      "headline": "Whats your oldest console?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xkp8ke/whats_your_oldest_console/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 00:07 UTC"
-    },
-    {
-      "headline": "Showa American Story director talks about the game's progress, preserving cultural references in localization, and the easy mode \"even a cat could beat\"",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xkp8fg/showa_american_story_director_talks_about_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 00:07 UTC"
-    },
-    {
-      "headline": "I bought my new computer do you like it?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkp8ey/i_bought_my_new_computer_do_you_like_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 00:07 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Metal Gear Solid 3: Snake Eater, Yakuza and Yakuza 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750731809",
-      "matched_game": "Metal Gear Solid 3: Snake Eater",
-      "matched_games": [
-        "Metal Gear Solid 3: Snake Eater",
-        "Yakuza",
-        "Yakuza 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 00:02 UTC"
-    },
-    {
-      "headline": "Rumour: Days Gone Dev to Announce and Launch New PS5 Game in 2027",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/11/rumour-days-gone-dev-to-announce-and-launch-new-ps5-game-in-2027",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-01 00:00 UTC"
-    },
-    {
-      "headline": "Trackpad pressure sensitivity issue",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xkp1wh/trackpad_pressure_sensitivity_issue/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-10-31 23:59 UTC"
     }
   ]
 }
