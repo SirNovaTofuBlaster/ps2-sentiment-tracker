@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-15 05:37:47 UTC",
+  "last_updated": "2026-11-15 05:51:42 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -20,6 +20,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-15 05:23 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Just Cause",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751648249",
+      "matched_game": "Just Cause",
+      "matched_games": [
+        "Just Cause"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 05:15 UTC"
     },
     {
       "headline": "Ay ay ay we're cooked",
@@ -474,6 +493,25 @@
       "matched_game": "Shadow of the Colossus",
       "matched_games": [
         "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 04:24 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751646062",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1169,20 +1207,20 @@
       "timestamp": "2026-11-15 03:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Bard's Tale, Devil May Cry, King's Field IV and 1 more",
+      "headline": "Thread on /v/ naming Deus Ex, Devil May Cry, King's Field IV and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751642198",
-      "matched_game": "Bard's Tale",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Bard's Tale",
+        "Deus Ex",
         "Devil May Cry",
         "King's Field IV",
-        "Deus Ex"
+        "Bard's Tale"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -342735,147 +342773,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 05:51 UTC"
-    },
-    {
-      "headline": "Remade Gargoyle's Quest in Godot, playable demo out now",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xkve1a/remade_gargoyles_quest_in_godot_playable_demo_out/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:50 UTC"
-    },
-    {
-      "headline": "Rant.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkvca2/rant/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:47 UTC"
-    },
-    {
-      "headline": "PS Remote Play login window is completely blank on Windows 11 (Tried all common fixes)",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xkvc17/ps_remote_play_login_window_is_completely_blank/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:46 UTC"
-    },
-    {
-      "headline": "Let's Play Need For Speed Most Wanted 2005 (PS2) - Challenge Mode Part 4",
-      "source": "YouTube: Jimbo Gaming PlayStation 2 ",
-      "source_type": "youtube",
-      "feed": "youtube:UCXspo7eyvzUh2k9d4JGLNRg",
-      "link": "https://www.youtube.com/watch?v=dLSxA_6VZC8",
-      "matched_game": "Need for Speed Most Wanted",
-      "matched_games": [
-        "Need for Speed Most Wanted"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:46 UTC",
-      "views": 878
-    },
-    {
-      "headline": "Round Up: Pikmin Day 2026 - Updates, Demo And New Animated Shorts",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/11/round-up-pikmin-day-2026-updates-demo-and-new-animated-shorts",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:45 UTC"
-    },
-    {
-      "headline": "PS5 - PSX SoundScope",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xkv8ua/ps5_psx_soundscope/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:40 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming God of War",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750745548",
-      "matched_game": "God of War",
-      "matched_games": [
-        "God of War"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:38 UTC"
-    },
-    {
-      "headline": "A Memorial to Studios Past",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xkv71r/a_memorial_to_studios_past/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:37 UTC"
     }
   ]
 }
