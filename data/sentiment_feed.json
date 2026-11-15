@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-15 05:23:42 UTC",
+  "last_updated": "2026-11-15 05:37:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Top Gun",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/587897347",
+      "matched_game": "Top Gun",
+      "matched_games": [
+        "Top Gun"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 05:23 UTC"
+    },
     {
       "headline": "Ay ay ay we're cooked",
       "source": "r/pcmasterrace",
@@ -1150,15 +1169,17 @@
       "timestamp": "2026-11-15 03:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming King's Field IV and Devil May Cry",
+      "headline": "Thread on /v/ naming Bard's Tale, Devil May Cry, King's Field IV and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751642198",
-      "matched_game": "King's Field IV",
+      "matched_game": "Bard's Tale",
       "matched_games": [
+        "Bard's Tale",
+        "Devil May Cry",
         "King's Field IV",
-        "Devil May Cry"
+        "Deus Ex"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -342855,127 +342876,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-01 05:37 UTC"
-    },
-    {
-      "headline": "Does 24gb of vram really make a difference for gamers compared to 16gb?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkv5zr/does_24gb_of_vram_really_make_a_difference_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:35 UTC"
-    },
-    {
-      "headline": "Made a retro NES \"living room\" in the browser: cartridge shelf, CRT TV static, phone touch controls. Vibe Coded project.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xkv445/made_a_retro_nes_living_room_in_the_browser/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:32 UTC"
-    },
-    {
-      "headline": "9 Years Later, Jon Bernthal’s Action Series Is a Masterpiece From Start to Finish",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/jon-bernthal-punisher-action-masterpiece-marvel-disney-plus/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:30 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Winx Club",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750745316",
-      "matched_game": "Winx Club",
-      "matched_games": [
-        "Winx Club"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:30 UTC"
-    },
-    {
-      "headline": "Which should I get? Onimusha, Phantom blade, sekiro or Control resonant?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xkv1ur/which_should_i_get_onimusha_phantom_blade_sekiro/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:29 UTC"
-    },
-    {
-      "headline": "Built an interactive Minecraft Shaders live wallpaper that auto-pauses during gaming (0% CPU impact, ~60MB RAM)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkv24r/built_an_interactive_minecraft_shaders_live/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:29 UTC"
-    },
-    {
-      "headline": "My precious (sensitive version)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xkuzyb/my_precious_sensitive_version/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-01 05:25 UTC"
     }
   ]
 }
