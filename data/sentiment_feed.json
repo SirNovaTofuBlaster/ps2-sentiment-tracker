@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 20:09:32 UTC",
+  "last_updated": "2026-11-16 20:20:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -10809,19 +10809,22 @@
       "timestamp": "2026-11-16 11:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Okami, LEGO Star Wars and Mercenaries 2: World in Flames",
+      "headline": "Thread on /v/ naming Burnout 3, LEGO Star Wars, Mercenaries 2: World in Flames and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751728751",
-      "matched_game": "Okami",
+      "matched_game": "Burnout 3",
       "matched_games": [
-        "Okami",
+        "Burnout 3",
         "LEGO Star Wars",
-        "Mercenaries 2: World in Flames"
+        "Mercenaries 2: World in Flames",
+        "Okami",
+        "Shadow Hearts: Covenant",
+        "Shadow Hearts"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -17358,20 +17361,21 @@
       "timestamp": "2026-11-16 02:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Shadow the Hedgehog, Final Fantasy X and 1 more",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Shadow the Hedgehog, Final Fantasy X and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751708405",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
+        "Kingdom Hearts",
         "Shadow the Hedgehog",
         "Final Fantasy X",
-        "Monster Hunter"
+        "Monster Hunter",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341746,146 +341750,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 20:22 UTC"
-    },
-    {
-      "headline": "Do you care that discs are being taken away in the future?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xm88g7/do_you_care_that_discs_are_being_taken_away_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:17 UTC"
-    },
-    {
-      "headline": "I'll take 2X128GB please.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xm87sk/ill_take_2x128gb_please/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:16 UTC"
-    },
-    {
-      "headline": "Former Xbox Exec Shares Her Side Of The Story After Mysterious Depature",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/former-xbox-exec-shares-her-side-of-the-story-after-mysterious-depature/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:16 UTC"
-    },
-    {
-      "headline": "A Warning For Those Thinking of Buying A RedDragon Peripheral",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xm84yi/a_warning_for_those_thinking_of_buying_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:13 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750839298",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:13 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750839272",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:13 UTC"
-    },
-    {
-      "headline": "Don’t mind my shitty cuts, but I built a pc In a variety pack cracker/cookie tin from the Philippines",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xm83t0/dont_mind_my_shitty_cuts_but_i_built_a_pc_in_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:12 UTC"
-    },
-    {
-      "headline": "PS5 won't restart after update",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xm82ef/ps5_wont_restart_after_update/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:11 UTC"
     }
   ]
 }
