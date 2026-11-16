@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 21:58:37 UTC",
+  "last_updated": "2026-11-16 22:01:19 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-17 01:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751759340",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 21:58 UTC"
     },
     {
       "headline": "Twilight Predicted Robert Pattinson Would Play James Bond",
@@ -530,6 +549,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-16 21:24 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751757352",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 21:23 UTC"
     },
     {
       "headline": "I think I got my dad hooked on Microcenter",
@@ -1415,7 +1453,7 @@
       "timestamp": "2026-11-16 20:46 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Devil May Cry 2, Devil May Cry and 1 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Devil May Cry, Metal Gear Solid 3: Snake Eater and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1423,9 +1461,9 @@
       "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
         "Metal Gear Solid 2: Sons of Liberty",
-        "Devil May Cry 2",
         "Devil May Cry",
-        "Metal Gear Solid 3: Snake Eater"
+        "Metal Gear Solid 3: Snake Eater",
+        "Devil May Cry 2"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -3024,6 +3062,26 @@
       "timestamp": "2026-11-16 19:25 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Teenage Mutant Ninja Turtles and Home Alone",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751750859",
+      "matched_game": "Teenage Mutant Ninja Turtles",
+      "matched_games": [
+        "Teenage Mutant Ninja Turtles",
+        "Home Alone"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 19:25 UTC"
+    },
+    {
       "headline": "Keyboard sucks so bad.",
       "source": "r/SteamDeck",
       "source_type": "reddit",
@@ -3457,17 +3515,18 @@
       "timestamp": "2026-11-16 19:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry",
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751749968",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
       "matched_games": [
+        "Devil May Cry 3: Dante's Awakening",
         "Devil May Cry"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341867,126 +341926,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 22:01 UTC"
-    },
-    {
-      "headline": "Did Claude Kill Recomps and Decomps? The Future of Recomps Explained",
-      "source": "YouTube: Video Game Esoterica",
-      "source_type": "youtube",
-      "feed": "youtube:UCn2pQB4jsCTLUtx2NIkCvUg",
-      "link": "https://www.youtube.com/watch?v=XV5sTe5XWM4",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 22:00 UTC",
-      "views": 44523
-    },
-    {
-      "headline": "GOG Explains How One Of The Most Important PC Games Ever Made Is Trapped In Licensing Hell",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/gog-explains-how-one-of-the-most-important-pc-games-ever-made-is-trapped-in-licensing-hell-2000752406",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 22:00 UTC"
-    },
-    {
-      "headline": "2024's Best Action Game Is (Mostly) Just as Good in Stunning Switch 2 Port",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/stellar-blade-nintendo-switch-2-impressions/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-02 22:00 UTC"
-    },
-    {
-      "headline": "Review: Stellar Blade: Complete Edition (Switch 2) - Perfectly Playable, Despite Drawbacks",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/reviews/nintendo-switch-2/stellar-blade-complete-edition",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-02 22:00 UTC"
-    },
-    {
-      "headline": "Stellar Blade: Complete Edition review for Nintendo Switch 2",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/stellar-blade-complete-edition-review-for-nintendo-switch-2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 22:00 UTC"
-    },
-    {
-      "headline": "Looking for a non pvp game to play with friend",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xmaw9p/looking_for_a_non_pvp_game_to_play_with_friend/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 21:59 UTC"
-    },
-    {
-      "headline": "Clean none rgb",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmavz4/clean_none_rgb/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 21:59 UTC"
     }
   ]
 }
