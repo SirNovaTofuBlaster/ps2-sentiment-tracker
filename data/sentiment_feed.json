@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 08:40:46 UTC",
+  "last_updated": "2026-11-16 08:43:24 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -222,6 +222,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-16 08:10 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Astro Boy and Gradius V",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12935652",
+      "matched_game": "Astro Boy",
+      "matched_games": [
+        "Astro Boy",
+        "Gradius V"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 08:09 UTC"
     },
     {
       "headline": "Should I buy blood of dawnwalker",
@@ -1684,22 +1704,23 @@
       "timestamp": "2026-11-16 05:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry, Silent Hill 2, Deus Ex and 3 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Silent Hill 2, Deus Ex and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751716407",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
-        "Devil May Cry",
+        "Metal Gear Solid 2: Sons of Liberty",
         "Silent Hill 2",
         "Deus Ex",
         "Hitman 2: Silent Assassin",
         "Monster Hunter",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Devil May Cry"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -7987,7 +8008,7 @@
       "timestamp": "2026-11-15 20:49 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Metal Gear Solid 2, Splinter Cell and 1 more",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Metal Gear Solid 3: Snake Eater, Metal Gear Solid 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -7995,9 +8016,9 @@
       "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
         "Metal Gear Solid 2: Sons of Liberty",
+        "Metal Gear Solid 3: Snake Eater",
         "Metal Gear Solid 2",
-        "Splinter Cell",
-        "Metal Gear Solid 3: Snake Eater"
+        "Splinter Cell"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -342212,57 +342233,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 08:44 UTC"
-    },
-    {
-      "headline": "Will a 9070xt fit in here?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xls0gw/will_a_9070xt_fit_in_here/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:42 UTC"
-    },
-    {
-      "headline": "Question for you guys",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xls099/question_for_you_guys/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:42 UTC"
-    },
-    {
-      "headline": "How to overcome control issues when running fangames?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xls0af/how_to_overcome_control_issues_when_running/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:42 UTC"
     }
   ]
 }
