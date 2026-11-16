@@ -352,8 +352,10 @@
     "ok": true
   },
   "http://bicbp-radio.com/retro-blissed?format=rss": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-11-16 17:50 UTC",
     "latest": "2026-07-01 10:00 UTC",
-    "ok": true
+    "ok": false
   },
   "http://feeds.feedburner.com/GamingIlluminaughtyPodcast": {
     "latest": "2026-11-09 18:02 UTC",
@@ -388,7 +390,7 @@
     "ok": true
   },
   "https://audioboom.com/channels/5081747.rss": {
-    "latest": "2026-11-09 07:00 UTC",
+    "latest": "2026-11-16 14:01 UTC",
     "ok": true
   },
   "https://audioboom.com/channels/5104635.rss": {
@@ -464,7 +466,7 @@
     "ok": true
   },
   "https://feeds.acast.com/public/shows/c78baeb1-14c1-497c-bbfb-350cecd87107": {
-    "latest": "2026-11-14 15:00 UTC",
+    "latest": "2026-11-16 13:05 UTC",
     "ok": true
   },
   "https://feeds.acast.com/public/shows/vgc-a-video-games-podcast": {
