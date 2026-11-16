@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 22:55:34 UTC",
+  "last_updated": "2026-11-16 22:58:12 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -563,6 +563,25 @@
       "matched_game": "The Sims",
       "matched_games": [
         "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 22:04 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Time Crisis 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751759658",
+      "matched_game": "Time Crisis 2",
+      "matched_games": [
+        "Time Crisis 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -15808,6 +15827,25 @@
       "timestamp": "2026-11-16 09:43 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Shinobi",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751724909",
+      "matched_game": "Shinobi",
+      "matched_games": [
+        "Shinobi"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 09:41 UTC"
+    },
+    {
       "headline": "Ubisoft estaría planeando un nuevo Rainbow Six Vegas, según un rumor: la subsaga volvería 20 años después",
       "source": "Vandal",
       "source_type": "news",
@@ -22839,7 +22877,7 @@
       "timestamp": "2026-11-15 22:56 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Resident Evil 4, God Hand and Haunting Ground",
+      "headline": "Thread on /vr/ naming Resident Evil 4, Haunting Ground and God Hand",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
@@ -22847,8 +22885,8 @@
       "matched_game": "Resident Evil 4",
       "matched_games": [
         "Resident Evil 4",
-        "God Hand",
-        "Haunting Ground"
+        "Haunting Ground",
+        "God Hand"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -341539,23 +341577,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 22:59 UTC"
-    },
-    {
-      "headline": "South Of Midnight Director Says He Doesn't Think Xbox Should Have Funded It; “I told people during development that somebody is going to say one day, ‘The money tap, we’re closing those floodgates.’ And that’s going to have really traumatic results downstream.”",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xmcbc7/south_of_midnight_director_says_he_doesnt_think/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 22:57 UTC"
     }
   ]
 }
