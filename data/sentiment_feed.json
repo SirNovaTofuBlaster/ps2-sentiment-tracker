@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-16 10:34:44 UTC",
+  "last_updated": "2026-11-16 10:37:16 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751726510",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 10:36 UTC"
+    },
     {
       "headline": "Underated Masterpiece",
       "source": "r/playstation",
@@ -310,6 +329,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-16 10:12 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Okami",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751725840",
+      "matched_game": "Okami",
+      "matched_games": [
+        "Okami"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 10:12 UTC"
     },
@@ -342401,23 +342439,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-02 10:38 UTC"
-    },
-    {
-      "headline": "Reinstalling windows - what do I need to back up?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlts8w/reinstalling_windows_what_do_i_need_to_back_up/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 10:35 UTC"
     }
   ]
 }
