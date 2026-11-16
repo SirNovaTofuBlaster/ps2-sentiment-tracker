@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 12:28:32 UTC",
+  "last_updated": "2026-11-16 12:31:07 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -978,6 +978,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-16 11:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Unreal Tournament",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751727361",
+      "matched_game": "Unreal Tournament",
+      "matched_games": [
+        "Unreal Tournament"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 11:06 UTC"
     },
@@ -2091,13 +2110,14 @@
       "timestamp": "2026-11-16 09:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming God Hand and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751725448",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "God Hand",
       "matched_games": [
+        "God Hand",
         "Silent Hill 2"
       ],
       "match_score": 100,
@@ -342392,93 +342412,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 12:31 UTC"
-    },
-    {
-      "headline": "Housemarque Issues Saros PS5 Patch for Bug Fixes, Update Out Now",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/11/housemarque-issues-saros-ps5-patch-for-bug-fixes-update-out-now",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-11-02 12:30 UTC"
-    },
-    {
-      "headline": "Google's Ocarina Of Time Easter Egg Will Transport You Back To The Internet Of Old",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/11/googles-ocarina-of-time-easter-egg-will-transport-you-back-to-the-internet-of-old",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 12:30 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Rule of Rose",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750817213",
-      "matched_game": "Rule of Rose",
-      "matched_games": [
-        "Rule of Rose"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-02 12:30 UTC"
-    },
-    {
-      "headline": "With actual shortages in components and material I think the marked should be segmented so for AI there is concrete amount of resources that can be used... We can limit them, just need yo unite and create petitions to governments as it is we who are in possession of all this, not corporations.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlvuyx/with_actual_shortages_in_components_and_material/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 12:28 UTC"
-    },
-    {
-      "headline": "GTX 1080ti USB stick",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlvuhk/gtx_1080ti_usb_stick/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 12:28 UTC"
     }
   ]
 }
