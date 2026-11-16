@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 02:06:41 UTC",
+  "last_updated": "2026-11-16 02:17:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -35,6 +35,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-16 02:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751707114",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 01:58 UTC"
     },
     {
       "headline": "Swivlo - 3two7 Studio - An arrow puzzle where one move can change the board",
@@ -1478,13 +1497,14 @@
       "timestamp": "2026-11-15 23:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Crash Twinsanity",
+      "headline": "Thread on /v/ naming Taz Wanted and Crash Twinsanity",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751697009",
-      "matched_game": "Crash Twinsanity",
+      "matched_game": "Taz Wanted",
       "matched_games": [
+        "Taz Wanted",
         "Crash Twinsanity"
       ],
       "match_score": 100,
@@ -4213,19 +4233,21 @@
       "timestamp": "2026-11-15 20:35 UTC"
     },
     {
-      "headline": "Thread on /v/ naming TimeSplitters: Future Perfect, The Shield and God Hand",
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, The Shield, God Hand and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751687468",
-      "matched_game": "TimeSplitters: Future Perfect",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
-        "TimeSplitters: Future Perfect",
+        "Metal Gear Solid 2: Sons of Liberty",
         "The Shield",
-        "God Hand"
+        "God Hand",
+        "TimeSplitters: Future Perfect",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -342151,108 +342173,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 02:20 UTC"
-    },
-    {
-      "headline": "Samurai Maiden (#633)",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xll9ln/samurai_maiden_633/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:16 UTC"
-    },
-    {
-      "headline": "Nioh 3 or Onimusha 3?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xll87p/nioh_3_or_onimusha_3/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:14 UTC"
-    },
-    {
-      "headline": "Mario Kart World, Showcasing Open World Part Running On PC In 45-50 FPS (Switch 2 Emulation)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xll64x/mario_kart_world_showcasing_open_world_part/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:12 UTC"
-    },
-    {
-      "headline": "Phantom Blade Zero has sold over 4 million copies in just 72 hours!",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xll3s6/phantom_blade_zero_has_sold_over_4_million_copies/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:09 UTC"
-    },
-    {
-      "headline": "PC instantly Turn off when trying to game",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xll2vh/pc_instantly_turn_off_when_trying_to_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:07 UTC"
-    },
-    {
-      "headline": "Footage of what sure looks like a Persona 1 remake has leaked",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/rpg/footage-of-what-sure-looks-like-a-persona-1-remake-has-leaked/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 2,
-      "timestamp": "2026-11-02 02:06 UTC"
     }
   ]
 }
