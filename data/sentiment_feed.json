@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 20:04:36 UTC",
+  "last_updated": "2026-11-16 20:07:14 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -731,6 +731,25 @@
       "timestamp": "2026-11-16 19:26 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751750894",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 19:26 UTC"
+    },
+    {
       "headline": "Heroic is deleting all shortcuts when I try to add one",
       "source": "r/SteamDeck",
       "source_type": "reddit",
@@ -1230,14 +1249,16 @@
       "timestamp": "2026-11-16 19:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "headline": "Thread on /v/ naming Shadow of the Colossus, Metal Gear Solid 2: Sons of Liberty and SSX Tricky",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751749686",
       "matched_game": "Shadow of the Colossus",
       "matched_games": [
-        "Shadow of the Colossus"
+        "Shadow of the Colossus",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "SSX Tricky"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -341797,60 +341818,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 20:07 UTC"
-    },
-    {
-      "headline": "And 1 streetball",
-      "source": "r/playstation2",
-      "source_type": "reddit",
-      "feed": "reddit:playstation2",
-      "link": "https://www.reddit.com/r/playstation2/comments/1xm7xp7/and_1_streetball/",
-      "matched_game": "And 1 Streetball",
-      "matched_games": [
-        "And 1 Streetball"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:06 UTC"
-    },
-    {
-      "headline": "The new Dual Screen to get: Retroid Pocket Duo",
-      "source": "YouTube: WULFF DEN",
-      "source_type": "youtube",
-      "feed": "youtube:UCr613nJgA50o8DUUT00qHvw",
-      "link": "https://www.youtube.com/watch?v=lxK0MNE38MI",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:05 UTC",
-      "views": 266646
-    },
-    {
-      "headline": "He came all the way to our house",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xm7vqd/he_came_all_the_way_to_our_house/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 20:04 UTC"
     }
   ]
 }
