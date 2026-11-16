@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 02:01:47 UTC",
+  "last_updated": "2026-11-16 02:04:25 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -35,6 +35,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-16 01:54 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts II",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751706818",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 01:52 UTC"
     },
     {
       "headline": "Component-to-HDMI Options. Upscalers.",
@@ -1913,6 +1932,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-15 22:41 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dokapon Kingdom and Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751694764",
+      "matched_game": "Dokapon Kingdom",
+      "matched_games": [
+        "Dokapon Kingdom",
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 22:40 UTC"
     },
     {
       "headline": "Just came back from the London Gaming Market",
@@ -342217,57 +342256,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 02:04 UTC"
-    },
-    {
-      "headline": "If Skyrim's survival mode and Kenshi had a baby... (Steam Deck)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xlkzlh/if_skyrims_survival_mode_and_kenshi_had_a_baby/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:03 UTC"
-    },
-    {
-      "headline": "Hello all My name is Evans and im building a day trading simulation game and need your help to make sure it is the best it can be. Prop Desk is the name of the game.",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xlkzgk/hello_all_my_name_is_evans_and_im_building_a_day/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:03 UTC"
-    },
-    {
-      "headline": "Splatoon 3 Splatoween 2026 Splatfest results",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/splatoon-3-splatoween-2026-splatfest-results/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:02 UTC"
     }
   ]
 }
