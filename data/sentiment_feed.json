@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 05:49:32 UTC",
+  "last_updated": "2026-11-16 05:52:13 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -156,17 +156,19 @@
       "timestamp": "2026-11-16 05:33 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2",
+      "headline": "Thread on /v/ naming Deus Ex, Silent Hill 2 and Hitman 2: Silent Assassin",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751716407",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Silent Hill 2"
+        "Deus Ex",
+        "Silent Hill 2",
+        "Hitman 2: Silent Assassin"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -396,6 +398,27 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-16 05:02 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War, Grand Theft Auto: San Andreas and Red Faction",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751715621",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "Grand Theft Auto: San Andreas",
+        "Red Faction"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 05:02 UTC"
     },
@@ -638,6 +661,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-16 04:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Crash of the Titans and Crash Twinsanity",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751714649",
+      "matched_game": "Crash of the Titans",
+      "matched_games": [
+        "Crash of the Titans",
+        "Crash Twinsanity"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 04:39 UTC"
     },
     {
       "headline": "Are we ready for GTAVI or what?",
@@ -1052,7 +1095,7 @@
       "timestamp": "2026-11-16 03:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow the Hedgehog, Black and Sonic Heroes",
+      "headline": "Thread on /v/ naming Shadow the Hedgehog, Sonic Heroes and Black",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1060,8 +1103,8 @@
       "matched_game": "Shadow the Hedgehog",
       "matched_games": [
         "Shadow the Hedgehog",
-        "Black",
-        "Sonic Heroes"
+        "Sonic Heroes",
+        "Black"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -267917,6 +267960,25 @@
       "hype": 1,
       "timestamp": "2026-11-05 05:14 UTC",
       "views": 1024
+    },
+    {
+      "headline": "Thread on /vr/ naming R Racing Evolution",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12914892",
+      "matched_game": "R Racing Evolution",
+      "matched_games": [
+        "R Racing Evolution"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-05 05:11 UTC"
     },
     {
       "headline": "I forked Zelda: TOTK Recomp to support older CPUs and got it running on a Phenom II X6 + RX 580!",
