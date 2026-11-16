@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 08:45:40 UTC",
+  "last_updated": "2026-11-16 08:56:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1325,17 +1325,18 @@
       "timestamp": "2026-11-16 06:16 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "headline": "Thread on /v/ naming Devil May Cry and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751718130",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Devil May Cry",
       "matched_games": [
+        "Devil May Cry",
         "Final Fantasy XII"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -5737,6 +5738,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-15 23:16 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Viewtiful Joe",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751696847",
+      "matched_game": "Viewtiful Joe",
+      "matched_games": [
+        "Viewtiful Joe"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-15 23:16 UTC"
     },
@@ -121491,6 +121511,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 10:10 UTC"
+    },
+    {
+      "headline": "Thread on /vrpg/ naming Final Fantasy X",
+      "source": "4chan /vrpg/",
+      "source_type": "4chan",
+      "feed": "4chan:vrpg",
+      "link": "https://boards.4chan.org/vrpg/thread/4154373",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-11 10:08 UTC"
     },
     {
       "headline": "Thrasher present Skate And Destroy total score sharing",
@@ -342157,133 +342196,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 08:56 UTC"
-    },
-    {
-      "headline": "Intel is shifting production away from regular PC CPUs and putting more focus on server chips because AI demand is going crazy.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xls6s4/intel_is_shifting_production_away_from_regular_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:54 UTC"
-    },
-    {
-      "headline": "HWAT! That boy ain't right!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xls6qw/hwat_that_boy_aint_right/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:54 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy XI, Final Fantasy XII, Final Fantasy X and 2 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750810570",
-      "matched_game": "Final Fantasy XI",
-      "matched_games": [
-        "Final Fantasy XI",
-        "Final Fantasy XII",
-        "Final Fantasy X",
-        "Kingdom Hearts",
-        "Persona 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:51 UTC"
-    },
-    {
-      "headline": "Steam Survey - October 2026 shows an uptick for the Linux user share",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xls25n/steam_survey_october_2026_shows_an_uptick_for_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:46 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Naruto: Ultimate Ninja",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750810445",
-      "matched_game": "Naruto: Ultimate Ninja",
-      "matched_games": [
-        "Naruto: Ultimate Ninja"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:46 UTC"
-    },
-    {
-      "headline": "How long are you willing to wait in queue for a multiplayer (not 1v1) match with optimal connection and matchmaking?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xls1sx/how_long_are_you_willing_to_wait_in_queue_for_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:45 UTC"
-    },
-    {
-      "headline": "Un directivo de Xbox tajante con la IA: asegura que los estudios que no la usen 'no deberían estar en la industria'",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026306005/un-directivo-de-xbox-tajante-con-la-ia-asegura-que-los-estudios-que-no-la-usen-no-deberian-estar-en-la-industria/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 08:45 UTC"
     }
   ]
 }
