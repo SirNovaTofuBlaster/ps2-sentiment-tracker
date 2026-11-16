@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 07:43:41 UTC",
+  "last_updated": "2026-11-16 07:46:21 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-16 07:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751720785",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 07:34 UTC"
     },
     {
       "headline": "Is she really that busy?",
@@ -995,6 +1014,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-16 05:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Suffering",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751716612",
+      "matched_game": "The Suffering",
+      "matched_games": [
+        "The Suffering"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 05:31 UTC"
     },
     {
       "headline": "Influential Warhammer miniature designer Aly Morrison has died",
@@ -7163,16 +7201,18 @@
       "timestamp": "2026-11-15 20:47 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Dead or Alive 2, Crazy Taxi and Marvel vs. Capcom 2",
+      "headline": "Thread on /vr/ naming Teenage Mutant Ninja Turtles, Sega Genesis Collection, Marvel vs. Capcom 2 and 2 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12934704",
-      "matched_game": "Dead or Alive 2",
+      "matched_game": "Teenage Mutant Ninja Turtles",
       "matched_games": [
+        "Teenage Mutant Ninja Turtles",
+        "Sega Genesis Collection",
+        "Marvel vs. Capcom 2",
         "Dead or Alive 2",
-        "Crazy Taxi",
-        "Marvel vs. Capcom 2"
+        "Crazy Taxi"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -7405,7 +7445,7 @@
         "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341970,60 +342010,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 07:48 UTC"
-    },
-    {
-      "headline": "Ready to play , after complete all GTA series from ps1 untill now",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xlr4j3/ready_to_play_after_complete_all_gta_series_from/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 07:44 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts and Devil May Cry",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750808859",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts",
-        "Devil May Cry"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-02 07:44 UTC"
-    },
-    {
-      "headline": "FREE FIRE MAX | Códigos de hoy lunes 2 de noviembre de 2026 - Recompensas gratis",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026306002/free-fire-max-codigos-de-hoy-lunes-2-de-noviembre-de-2026-recompensas-gratis/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 07:44 UTC"
     }
   ]
 }
