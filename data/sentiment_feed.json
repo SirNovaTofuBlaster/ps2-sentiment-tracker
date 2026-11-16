@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 00:37:50 UTC",
+  "last_updated": "2026-11-16 00:51:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -447,6 +447,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-15 23:21 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Crash Twinsanity",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751697009",
+      "matched_game": "Crash Twinsanity",
+      "matched_games": [
+        "Crash Twinsanity"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 23:19 UTC"
     },
     {
       "headline": "Is this platinum real?",
@@ -1397,17 +1416,20 @@
       "timestamp": "2026-11-15 22:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening",
+      "headline": "Thread on /v/ naming The Warriors, Urban Reign, God Hand and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751692680",
-      "matched_game": "Devil May Cry 3: Dante's Awakening",
+      "matched_game": "The Warriors",
       "matched_games": [
+        "The Warriors",
+        "Urban Reign",
+        "God Hand",
         "Devil May Cry 3: Dante's Awakening"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -15051,6 +15073,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-15 08:08 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Devil May Cry",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12933556",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 08:05 UTC"
     },
     {
       "headline": "/r/NintendoSwitch's Daily Question Thread (11/15/2026)",
@@ -342052,110 +342093,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 00:51 UTC"
-    },
-    {
-      "headline": "Legit Check: Pokemon Firered, Leafgreen, Crystal, and Silver",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xljfol/legit_check_pokemon_firered_leafgreen_crystal_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 00:47 UTC"
-    },
-    {
-      "headline": "Are you able to trade foreign games in the US & Canada?",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/53880814",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 00:45 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Final Fantasy X",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12908367",
-      "matched_game": "Final Fantasy X",
-      "matched_games": [
-        "Final Fantasy X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-02 00:41 UTC"
-    },
-    {
-      "headline": "The PS1 Collection 12 years",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xlj9vy/the_ps1_collection_12_years/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 00:39 UTC"
-    },
-    {
-      "headline": "The PS1 Collection 12 years",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1xlj9zb/the_ps1_collection_12_years/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 00:39 UTC"
-    },
-    {
-      "headline": "MARIO KART WORLD running on a 8GB RAM mediocre PC!(Unstable, but somehow playable...?)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xlj9tp/mario_kart_world_running_on_a_8gb_ram_mediocre/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 00:39 UTC"
     }
   ]
 }
