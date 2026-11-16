@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 23:52:35 UTC",
+  "last_updated": "2026-11-16 23:55:06 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -37,6 +37,25 @@
       "timestamp": "2026-11-17 00:00 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751766031",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 23:52 UTC"
+    },
+    {
       "headline": "The Bazaar 2026 Update - Game Ends Live Service Model",
       "source": "r/Games",
       "source_type": "reddit",
@@ -50,6 +69,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-16 23:47 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Def Jam Vendetta",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751765702",
+      "matched_game": "Def Jam Vendetta",
+      "matched_games": [
+        "Def Jam Vendetta"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 23:47 UTC"
     },
@@ -478,6 +516,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-16 23:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751763527",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 23:11 UTC"
     },
@@ -2592,17 +2649,18 @@
       "timestamp": "2026-11-16 21:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Blade 2",
+      "headline": "Thread on /v/ naming God Hand and Blade 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751756285",
-      "matched_game": "Blade 2",
+      "matched_game": "God Hand",
       "matched_games": [
+        "God Hand",
         "Blade 2"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -27974,18 +28032,19 @@
       "timestamp": "2026-11-15 19:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 4 and Xenosaga Episode III",
+      "headline": "Thread on /v/ naming Final Fantasy X, Persona 4 and Xenosaga Episode III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751682703",
-      "matched_game": "Persona 4",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
+        "Final Fantasy X",
         "Persona 4",
         "Xenosaga Episode III"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341753,76 +341812,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 23:55 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750851606",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-02 23:54 UTC"
-    },
-    {
-      "headline": "untitled.jpeg",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmdn5k/untitledjpeg/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 23:53 UTC"
-    },
-    {
-      "headline": "Looking for advice on storing/displaying games?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xmdmq7/looking_for_advice_on_storingdisplaying_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 23:52 UTC"
-    },
-    {
-      "headline": "First try!!",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xmdm5a/first_try/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 23:52 UTC"
     }
   ]
 }
