@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 02:58:33 UTC",
+  "last_updated": "2026-11-16 03:01:10 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -753,6 +753,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-16 01:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751705738",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 01:33 UTC"
     },
@@ -18946,6 +18965,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-15 04:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dokapon Kingdom",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751646734",
+      "matched_game": "Dokapon Kingdom",
+      "matched_games": [
+        "Dokapon Kingdom"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 04:38 UTC"
     },
     {
       "headline": "Nvidia Fallout, Nintendo Black Friday, GTA 6 Week, Xbox Turns 25 | Spawncast #488",
@@ -69725,6 +69763,27 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-13 00:08 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Shadow the Hedgehog, Sonic Unleashed and Sonic Heroes",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12929346",
+      "matched_game": "Shadow the Hedgehog",
+      "matched_games": [
+        "Shadow the Hedgehog",
+        "Sonic Unleashed",
+        "Sonic Heroes"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-13 00:08 UTC"
     },
@@ -342195,59 +342254,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 03:02 UTC"
-    },
-    {
-      "headline": "Phantom Blade Zero sales top four million in 72 hours",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/11/phantom-blade-zero-sales-top-four-million-in-72-hours",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:59 UTC"
-    },
-    {
-      "headline": "Games with worlds that feel alive",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xlm4fv/games_with_worlds_that_feel_alive/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:59 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Sonic Heroes",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12908548",
-      "matched_game": "Sonic Heroes",
-      "matched_games": [
-        "Sonic Heroes"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-02 02:58 UTC"
     }
   ]
 }
