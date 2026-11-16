@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16 00:07:46 UTC",
+  "last_updated": "2026-11-16 00:10:27 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -101,6 +101,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-15 23:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751699384",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-15 23:58 UTC"
     },
@@ -3567,6 +3586,25 @@
       ],
       "match_score": 100,
       "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-15 20:07 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751685670",
+      "matched_game": "Silent Hill 3",
+      "matched_games": [
+        "Silent Hill 3"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -342393,23 +342431,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-02 00:10 UTC"
-    },
-    {
-      "headline": "Bought a PS5 a week ago, 10/24 here’s a picture the day I got it !",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xlinku/bought_a_ps5_a_week_ago_1024_heres_a_picture_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-02 00:09 UTC"
     }
   ]
 }
