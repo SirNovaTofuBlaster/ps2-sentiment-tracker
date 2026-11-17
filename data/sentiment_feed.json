@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 19:21:50 UTC",
+  "last_updated": "2026-11-17 19:36:01 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-18 01:00 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Monster Hunter",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/588172117",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 19:23 UTC"
     },
     {
       "headline": "Thread on /v/ naming Sniper Elite",
@@ -382,6 +401,28 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-17 18:28 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty, Shadow of the Colossus, ICO and 1 more",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751810965",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Shadow of the Colossus",
+        "ICO",
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-17 18:28 UTC"
     },
@@ -1117,6 +1158,25 @@
       "views": 535
     },
     {
+      "headline": "Thread on /v/ naming Virtual On Marz",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751808434",
+      "matched_game": "Virtual On Marz",
+      "matched_games": [
+        "Virtual On Marz"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 17:49 UTC"
+    },
+    {
       "headline": "With tank controls and one health remaining, I had to use save state to beat this bastard",
       "source": "r/psx",
       "source_type": "reddit",
@@ -1689,6 +1749,27 @@
       "hype": 0,
       "timestamp": "2026-11-17 17:13 UTC",
       "views": 52061
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4, Silent Hill 2 and God of War",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751806046",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4",
+        "Silent Hill 2",
+        "God of War"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 17:13 UTC"
     },
     {
       "headline": "The Game Awards 2026 nominees announced, full list – Zelda: Ocarina of Time nominated for Game of the Year and more",
@@ -14415,7 +14496,7 @@
       "timestamp": "2026-11-17 04:22 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4, Silent Hill 2, Persona 3 and 1 more",
+      "headline": "Thread on /vg/ naming Persona 4, Silent Hill 2, Persona 3 and 2 more",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -14425,7 +14506,8 @@
         "Persona 4",
         "Silent Hill 2",
         "Persona 3",
-        "Resident Evil Code: Veronica X"
+        "Resident Evil Code: Veronica X",
+        "God Hand"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -28061,6 +28143,25 @@
       "timestamp": "2026-11-16 16:12 UTC"
     },
     {
+      "headline": "Thread on /v/ naming The Thing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751740026",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 16:11 UTC"
+    },
+    {
       "headline": "Best Modular Controller?",
       "source": "r/pcmasterrace",
       "source_type": "reddit",
@@ -30861,17 +30962,18 @@
       "timestamp": "2026-11-16 14:26 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Alone in the Dark",
+      "headline": "Thread on /vr/ naming Resident Evil 4 and Alone in the Dark",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12936404",
-      "matched_game": "Alone in the Dark",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
+        "Resident Evil 4",
         "Alone in the Dark"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -340021,230 +340123,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 19:37 UTC"
-    },
-    {
-      "headline": "Anyone help with a charging issue? Takes 3+ hours to go from 10% to 80",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xn2qu7/anyone_help_with_a_charging_issue_takes_3_hours/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:35 UTC"
-    },
-    {
-      "headline": "The Curse Of Star Wars Battlefront 3",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/the-curse-of-star-wars-battlefront-3/",
-      "matched_game": "Star Wars Battlefront",
-      "matched_games": [
-        "Star Wars Battlefront"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:34 UTC"
-    },
-    {
-      "headline": "Problems with Intel XMP?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xn2qhs/problems_with_intel_xmp/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:34 UTC"
-    },
-    {
-      "headline": "Silica [Release Trailer]",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xn2onr/silica_release_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:32 UTC"
-    },
-    {
-      "headline": "WoW: Forever Won’t Get More Class Balance Changes Any Time Soon",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/wow-forever-wont-get-more-class-balance-changes-any-time-soon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:31 UTC"
-    },
-    {
-      "headline": "Someone Just Figured Out How To Recruit A Previously Unrecruitable Party Member In A Nearly 30-Year-Old RPG",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/someone-just-figured-out-how-to-recruit-a-previously-unrecruitable-party-member-in-a-nearly-30-year-old-rpg-2000752817",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:30 UTC"
-    },
-    {
-      "headline": "Spending Thousands on the Most Expensive Video Games",
-      "source": "YouTube: Phoenix Resale",
-      "source_type": "youtube",
-      "feed": "youtube:UCYWd5Q-C8M-OeDzKo86CAeg",
-      "link": "https://www.youtube.com/watch?v=NPiQSSdIsZw",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:29 UTC",
-      "views": 66075
-    },
-    {
-      "headline": "GTA 6 Is Getting A Physical Map–Here’s How To Get One For Free Or Very Cheap",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/gta-6-is-getting-a-physical-map-heres-how-to-get-one-for-free-or-very-cheap/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:28 UTC"
-    },
-    {
-      "headline": "The Elder Scrolls 6 is still a long way off, Bethesda warns: 'It'll be some time before we're ready to share more'",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/the-elder-scrolls/the-elder-scrolls-6-is-still-a-long-way-off-bethesda-warns-itll-be-some-time-before-were-ready-to-share-more/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:27 UTC"
-    },
-    {
-      "headline": "Is the current model of HP's Omen 45l good?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xn2hg4/is_the_current_model_of_hps_omen_45l_good/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:25 UTC"
-    },
-    {
-      "headline": "English Translation for Cradle Of Nightmare Released - Has Anyone Played or Have Insight On the Game?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xn2gq1/english_translation_for_cradle_of_nightmare/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:24 UTC"
-    },
-    {
-      "headline": "Happened on the 50th boot up, is my 5070ti failing?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xn2ebl/happened_on_the_50th_boot_up_is_my_5070ti_failing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:22 UTC"
-    },
-    {
-      "headline": "Godzilla cobra vida en un colosal set de bloques articulado con más de 5,000 piezas",
-      "source": "IGN Latinoamérica",
-      "source_type": "news",
-      "feed": "https://latam.ign.com/feed.xml",
-      "link": "https://latam.ign.com/lego/115243/godzilla-cobra-vida-en-un-colosal-set-de-bloques-articulado-con-mas-de-5000-piezas",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 19:21 UTC"
     }
   ]
 }
