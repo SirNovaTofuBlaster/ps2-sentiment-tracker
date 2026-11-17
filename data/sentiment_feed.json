@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-17 14:07:44 UTC",
+  "last_updated": "2026-11-17 14:10:18 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751797098",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 14:08 UTC"
+    },
     {
       "headline": "The Blood of Dawnwalker Update 1.2 adds New Game+ (replay the full story after the Epilogue while keeping your level, skills, and inventory; level cap raised to 100 with rebalanced enemies and NG+ gear) plus combat health/ability tweaks and smoother terrain movement",
       "source": "r/pcgaming",
@@ -50,6 +69,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-17 14:01 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751796775",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-17 14:01 UTC"
     },
@@ -7516,14 +7554,16 @@
       "timestamp": "2026-11-17 04:22 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4",
+      "headline": "Thread on /vg/ naming Persona 4, Silent Hill 2 and Persona 3",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
       "link": "https://boards.4chan.org/vg/thread/588110295",
       "matched_game": "Persona 4",
       "matched_games": [
-        "Persona 4"
+        "Persona 4",
+        "Silent Hill 2",
+        "Persona 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -342147,76 +342187,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-03 14:10 UTC"
-    },
-    {
-      "headline": "Review: The Legend of Zelda: Ocarina of Time remake is superb, streamlined and safe",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1xmtwf2/review_the_legend_of_zelda_ocarina_of_time_remake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-03 14:09 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Need for Speed Underground 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750881478",
-      "matched_game": "Need for Speed Underground 2",
-      "matched_games": [
-        "Need for Speed Underground 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-03 14:09 UTC"
-    },
-    {
-      "headline": "Mike Flanagan thinks 'Warhammer is a fascinating world' but can't tell us anything else about the upcoming Warhammer 40,000 project because 'Henry Cavill would be furious'",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/movies-tv/mike-flanagan-thinks-warhammer-is-a-fascinating-world-but-cant-tell-us-anything-else-about-the-upcoming-warhammer-40-000-project-because-henry-cavill-would-be-furious/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 14:08 UTC"
-    },
-    {
-      "headline": "Bill & Ted’s Excellent Adventure: Arcade announced for Nintendo Switch",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/bill-teds-excellent-adventure-arcade-announced-for-nintendo-switch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-03 14:07 UTC"
     }
   ]
 }
