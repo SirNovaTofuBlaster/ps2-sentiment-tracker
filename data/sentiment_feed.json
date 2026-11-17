@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 08:25:37 UTC",
+  "last_updated": "2026-11-17 08:28:07 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1350,6 +1350,25 @@
       "timestamp": "2026-11-17 05:35 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751781102",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 05:35 UTC"
+    },
+    {
       "headline": "I would like to file a request for finding weird JRPG reviewers",
       "source": "r/JRPG",
       "source_type": "reddit",
@@ -1435,15 +1454,16 @@
       "timestamp": "2026-11-17 05:29 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man and Odin Sphere",
+      "headline": "Thread on /v/ naming Spider-Man 2, Odin Sphere and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751780790",
-      "matched_game": "Spider-Man",
+      "matched_game": "Spider-Man 2",
       "matched_games": [
-        "Spider-Man",
-        "Odin Sphere"
+        "Spider-Man 2",
+        "Odin Sphere",
+        "Spider-Man"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -1606,6 +1626,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-17 05:05 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Superman Returns",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751780095",
+      "matched_game": "Superman Returns",
+      "matched_games": [
+        "Superman Returns"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-17 05:05 UTC"
     },
@@ -4338,15 +4377,15 @@
       "timestamp": "2026-11-17 01:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dark Cloud 2 and Dark Cloud",
+      "headline": "Thread on /v/ naming Dark Cloud and Dark Cloud 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751771207",
-      "matched_game": "Dark Cloud 2",
+      "matched_game": "Dark Cloud",
       "matched_games": [
-        "Dark Cloud 2",
-        "Dark Cloud"
+        "Dark Cloud",
+        "Dark Cloud 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -341839,57 +341878,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 08:29 UTC"
-    },
-    {
-      "headline": "Phantom Blade goes so HARD",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xmnj7u/phantom_blade_goes_so_hard/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 08:26 UTC"
-    },
-    {
-      "headline": "I was looking forward to buying new Ram today then I saw the prices...",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmniws/i_was_looking_forward_to_buying_new_ram_today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 08:26 UTC"
-    },
-    {
-      "headline": "2 years sober gift to myself",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmni9v/2_years_sober_gift_to_myself/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 08:25 UTC"
     }
   ]
 }
