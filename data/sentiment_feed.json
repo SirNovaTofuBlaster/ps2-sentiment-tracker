@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 03:16:41 UTC",
+  "last_updated": "2026-11-17 03:27:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -637,6 +637,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-17 01:45 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751772002",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-17 01:45 UTC"
     },
@@ -341299,96 +341318,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-03 03:27 UTC"
-    },
-    {
-      "headline": "First steam deck mod",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xmi96x/first_steam_deck_mod/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:26 UTC"
-    },
-    {
-      "headline": "error code 0x0000009f",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmi7zk/error_code_0x0000009f/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:25 UTC"
-    },
-    {
-      "headline": "Smackdown Shut your Mouth while some no way out 2004 goes down",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xmi6mb/smackdown_shut_your_mouth_while_some_no_way_out/",
-      "matched_game": "WWE SmackDown! Shut Your Mouth",
-      "matched_games": [
-        "WWE SmackDown! Shut Your Mouth"
-      ],
-      "match_score": 93,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:23 UTC"
-    },
-    {
-      "headline": "A visually impressive game with 2D graphics and 3D effects on the PS2 version of KOF '96 Re-Bout.",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xmi4ax/a_visually_impressive_game_with_2d_graphics_and/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:20 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Shadow of the Colossus and ICO",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750860501",
-      "matched_game": "Shadow of the Colossus",
-      "matched_games": [
-        "Shadow of the Colossus",
-        "ICO"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:20 UTC"
     }
   ]
 }
