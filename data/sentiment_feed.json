@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 10:19:37 UTC",
+  "last_updated": "2026-11-17 10:22:08 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -3746,6 +3746,25 @@
       "timestamp": "2026-11-17 03:57 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Yakuza",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751777415",
+      "matched_game": "Yakuza",
+      "matched_games": [
+        "Yakuza"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 03:55 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming Half-Life, Resident Evil 4 and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -5735,7 +5754,7 @@
       "timestamp": "2026-11-17 01:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Dark Cloud and Dark Cloud 2",
+      "headline": "Thread on /v/ naming Dark Cloud, Dark Chronicle and Dark Cloud 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -5743,6 +5762,7 @@
       "matched_game": "Dark Cloud",
       "matched_games": [
         "Dark Cloud",
+        "Dark Chronicle",
         "Dark Cloud 2"
       ],
       "match_score": 100,
@@ -341753,76 +341773,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 10:22 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Outbreak",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750873737",
-      "matched_game": "Resident Evil Outbreak",
-      "matched_games": [
-        "Resident Evil Outbreak"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-03 10:21 UTC"
-    },
-    {
-      "headline": "Thanks, Sam",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmpcs1/thanks_sam/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 10:20 UTC"
-    },
-    {
-      "headline": "PC Keeps shutting down randomly (Help)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmpcjd/pc_keeps_shutting_down_randomly_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 10:20 UTC"
-    },
-    {
-      "headline": "I Made Three Different Puzzle Games, and It Changed How I Think About Game Design",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xmpc8k/i_made_three_different_puzzle_games_and_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 10:19 UTC"
     }
   ]
 }
