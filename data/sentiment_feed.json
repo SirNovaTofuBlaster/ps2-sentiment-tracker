@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 06:31:38 UTC",
+  "last_updated": "2026-11-17 06:34:12 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -13597,22 +13597,26 @@
       "views": 921138
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Red Faction 2, The Sniper 2 and 3 more",
+      "headline": "Thread on /v/ naming Devil May Cry 3: Dante's Awakening, Kingdom Hearts, Red Faction 2 and 7 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751741893",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Devil May Cry 3: Dante's Awakening",
       "matched_games": [
+        "Devil May Cry 3: Dante's Awakening",
         "Kingdom Hearts",
         "Red Faction 2",
         "The Sniper 2",
         "Special Forces",
         "Monster Hunter",
-        "Half-Life"
+        "Half-Life",
+        "Ninjabread Man",
+        "Turok Evolution",
+        "Drakengard 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -15539,6 +15543,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-16 15:39 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751738419",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 15:38 UTC"
     },
     {
       "headline": "Book Nook launches December 1 for PC, later for Switch",
