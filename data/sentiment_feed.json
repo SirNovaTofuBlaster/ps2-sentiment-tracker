@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 00:49:37 UTC",
+  "last_updated": "2026-11-17 00:52:08 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -154,6 +154,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-17 00:37 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Need for Speed Underground 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751768775",
+      "matched_game": "Need for Speed Underground 2",
+      "matched_games": [
+        "Need for Speed Underground 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-17 00:37 UTC"
     },
@@ -2090,15 +2109,15 @@
       "timestamp": "2026-11-16 22:16 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy XII and Final Fantasy X",
+      "headline": "Thread on /v/ naming Final Fantasy X and Final Fantasy XII",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751760250",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy XII",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -15964,6 +15983,25 @@
       "timestamp": "2026-11-16 11:38 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Romancing SaGa",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751728337",
+      "matched_game": "Romancing SaGa",
+      "matched_games": [
+        "Romancing SaGa"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 11:35 UTC"
+    },
+    {
       "headline": "Pillars of Eternity 2 75% offer",
       "source": "r/playstation",
       "source_type": "reddit",
@@ -26922,21 +26960,24 @@
       "timestamp": "2026-11-15 20:47 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Teenage Mutant Ninja Turtles, Sega Genesis Collection, Marvel vs. Capcom 2 and 2 more",
+      "headline": "Thread on /vr/ naming Metal Gear Solid 2: Sons of Liberty, Final Fantasy X, Resident Evil 4 and 5 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12934704",
-      "matched_game": "Teenage Mutant Ninja Turtles",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
       "matched_games": [
-        "Teenage Mutant Ninja Turtles",
-        "Sega Genesis Collection",
+        "Metal Gear Solid 2: Sons of Liberty",
+        "Final Fantasy X",
+        "Resident Evil 4",
         "Marvel vs. Capcom 2",
         "Dead or Alive 2",
-        "Crazy Taxi"
+        "Crazy Taxi",
+        "Teenage Mutant Ninja Turtles",
+        "Sega Genesis Collection"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341384,40 +341425,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-03 00:53 UTC"
-    },
-    {
-      "headline": "Pokemon platinum real?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xmexsu/pokemon_platinum_real/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 00:51 UTC"
-    },
-    {
-      "headline": "final Final fantasy (for me)",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xmexvw/final_final_fantasy_for_me/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 00:51 UTC"
     }
   ]
 }
