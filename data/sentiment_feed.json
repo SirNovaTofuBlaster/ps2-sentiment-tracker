@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 02:59:44 UTC",
+  "last_updated": "2026-11-17 03:13:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -137,6 +137,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-17 02:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751773648",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 02:24 UTC"
     },
     {
       "headline": "What's going on here?",
@@ -1680,13 +1699,14 @@
       "timestamp": "2026-11-17 00:37 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Need for Speed Underground 2",
+      "headline": "Thread on /v/ naming Shadow the Hedgehog and Need for Speed Underground 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751768775",
-      "matched_game": "Need for Speed Underground 2",
+      "matched_game": "Shadow the Hedgehog",
       "matched_games": [
+        "Shadow the Hedgehog",
         "Need for Speed Underground 2"
       ],
       "match_score": 100,
@@ -341352,91 +341372,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-03 03:20 UTC"
-    },
-    {
-      "headline": "MHWILD's Terrible Launch Optimization Actually Saved Me a Fortune",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmhycp/mhwilds_terrible_launch_optimization_actually/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:12 UTC"
-    },
-    {
-      "headline": "How often do you wake up in bed with your deck in ur hands?",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xmhyns/how_often_do_you_wake_up_in_bed_with_your_deck_in/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:12 UTC"
-    },
-    {
-      "headline": "Online multiplayer where everyone has a role/job?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xmhtu2/online_multiplayer_where_everyone_has_a_rolejob/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:06 UTC"
-    },
-    {
-      "headline": "steam deck cooling mods",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xmhqaw/steam_deck_cooling_mods/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:01 UTC"
-    },
-    {
-      "headline": "Advice on trying to upgrade an Alienware PC",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmhoxl/advice_on_trying_to_upgrade_an_alienware_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 03:00 UTC"
     }
   ]
 }
