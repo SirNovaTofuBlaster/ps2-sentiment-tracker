@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 06:34:12 UTC",
+  "last_updated": "2026-11-17 06:47:40 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -25767,6 +25767,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-16 03:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Ratchet & Clank",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751711668",
+      "matched_game": "Ratchet & Clank",
+      "matched_games": [
+        "Ratchet & Clank"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 03:30 UTC"
     },
@@ -341809,99 +341828,6 @@
       "hype": 0,
       "timestamp": "2026-11-03 06:49 UTC",
       "views": 232
-    },
-    {
-      "headline": "Any quests guide for the The 7th Dragon for DS?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xmly9k/any_quests_guide_for_the_the_7th_dragon_for_ds/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 06:46 UTC"
-    },
-    {
-      "headline": "I think i am due for a repaste...",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmltvh/i_think_i_am_due_for_a_repaste/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 06:39 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming God of War",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750867261",
-      "matched_game": "God of War",
-      "matched_games": [
-        "God of War"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-03 06:38 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Special Forces and Ghost Rider",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12910960",
-      "matched_game": "Special Forces",
-      "matched_games": [
-        "Special Forces",
-        "Ghost Rider"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-03 06:37 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Splinter Cell and Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750867185",
-      "matched_game": "Splinter Cell",
-      "matched_games": [
-        "Splinter Cell",
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-03 06:36 UTC"
     }
   ]
 }
