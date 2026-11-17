@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 09:22:34 UTC",
+  "last_updated": "2026-11-17 09:25:03 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2023,16 +2023,16 @@
       "timestamp": "2026-11-17 05:29 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man 2, Spider-Man and Odin Sphere",
+      "headline": "Thread on /v/ naming Spider-Man, Odin Sphere and Spider-Man 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751780790",
-      "matched_game": "Spider-Man 2",
+      "matched_game": "Spider-Man",
       "matched_games": [
-        "Spider-Man 2",
         "Spider-Man",
-        "Odin Sphere"
+        "Odin Sphere",
+        "Spider-Man 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -11835,6 +11835,25 @@
         "Devil May Cry 3: Dante's Awakening",
         "Kingdom Hearts",
         "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 19:08 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751749946",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -341760,57 +341779,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 09:27 UTC"
-    },
-    {
-      "headline": "What's the closest you've gotten to the end of a game but still whiffed it entirely?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xmofr9/whats_the_closest_youve_gotten_to_the_end_of_a/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 09:23 UTC"
-    },
-    {
-      "headline": "I hate it when this happens",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmofu2/i_hate_it_when_this_happens/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 09:23 UTC"
-    },
-    {
-      "headline": "PSA for anyone searching K5 PRO on Alibaba: the pink putty sold under that title is a different product",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmoenw/psa_for_anyone_searching_k5_pro_on_alibaba_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 09:22 UTC"
     }
   ]
 }
