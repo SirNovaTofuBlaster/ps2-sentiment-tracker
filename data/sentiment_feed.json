@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 20:36:45 UTC",
+  "last_updated": "2026-11-17 20:49:50 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -261,14 +261,15 @@
       "timestamp": "2026-11-17 19:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Metal Gear Solid 3: Snake Eater",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751815321",
       "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -314,6 +315,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-17 19:35 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Battlestar Galactica",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751814904",
+      "matched_game": "Battlestar Galactica",
+      "matched_games": [
+        "Battlestar Galactica"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 19:33 UTC"
     },
     {
       "headline": "How Grand Theft Auto 6 Can Be Nominated At The Game Awards Despite Not Being Out Yet",
@@ -770,6 +790,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-17 18:34 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751811130",
+      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_games": [
+        "Jak and Daxter: The Precursor Legacy"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 18:31 UTC"
     },
     {
       "headline": "UK's Health Service Issues Warning Over GTA 6, Urges Players to Take Care of Their Hands",
@@ -6336,22 +6375,24 @@
       "timestamp": "2026-11-17 14:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God Hand, Deus Ex, The Getaway and 3 more",
+      "headline": "Thread on /v/ naming Final Fantasy X, Deus Ex, The Getaway and 5 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751798627",
-      "matched_game": "God Hand",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "God Hand",
+        "Final Fantasy X",
         "Deus Ex",
         "The Getaway",
         "Monster Hunter",
         "Armored Core 2",
-        "Kingdom Hearts II"
+        "Kingdom Hearts II",
+        "God Hand",
+        "Max Payne"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -21587,6 +21628,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-16 21:01 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Alone in the Dark",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12936923",
+      "matched_game": "Alone in the Dark",
+      "matched_games": [
+        "Alone in the Dark"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 21:01 UTC"
     },
@@ -339150,180 +339210,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 20:49 UTC"
-    },
-    {
-      "headline": "Xbox’s Arkane Studios Attracts Multiple Bidders, Including Ubisoft",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xn4ok4/xboxs_arkane_studios_attracts_multiple_bidders/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:47 UTC"
-    },
-    {
-      "headline": "Steamdeck setup",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xn4ok6/steamdeck_setup/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:47 UTC"
-    },
-    {
-      "headline": "Croc 2 Kingdom of the Gobbos review for Nintendo Switch",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/croc-2-kingdom-of-the-gobbos-review-for-nintendo-switch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:45 UTC"
-    },
-    {
-      "headline": "Playing some good ole' Mega Man X2. What was the point of the sandstorm generator in Overdrive Ostrich's level?",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xn4mbm/playing_some_good_ole_mega_man_x2_what_was_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:44 UTC"
-    },
-    {
-      "headline": "Looking for an actual playable version of Liberty City Stories",
-      "source": "r/ps2homebrew",
-      "source_type": "reddit",
-      "feed": "reddit:ps2homebrew",
-      "link": "https://www.reddit.com/r/ps2homebrew/comments/1xn4lo4/looking_for_an_actual_playable_version_of_liberty/",
-      "matched_game": "Grand Theft Auto: Liberty City Stories",
-      "matched_games": [
-        "Grand Theft Auto: Liberty City Stories"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:43 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750903898",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:43 UTC"
-    },
-    {
-      "headline": "Figured out where all the steamdecks went",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xn4io9/figured_out_where_all_the_steamdecks_went/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:40 UTC"
-    },
-    {
-      "headline": "WoW Forever Beta Patch Notes (Nov. 3, 2026) – What’s coming before release?",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/wow-forever-beta-patch-notes-nov-3-2026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:38 UTC"
-    },
-    {
-      "headline": "Repair shop in Vegas recommendations?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xn4fdu/repair_shop_in_vegas_recommendations/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:37 UTC"
-    },
-    {
-      "headline": "Am I underestimating the capabilities of my PC, or is Elden Ring that undemanding?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xn4esx/am_i_underestimating_the_capabilities_of_my_pc_or/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 20:36 UTC"
     }
   ]
 }
