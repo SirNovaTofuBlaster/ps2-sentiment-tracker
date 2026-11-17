@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-17 16:01:42 UTC",
+  "last_updated": "2026-11-17 16:04:21 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Devil May Cry",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751802154",
+      "matched_game": "Devil May Cry",
+      "matched_games": [
+        "Devil May Cry"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 15:57 UTC"
+    },
     {
       "headline": "Control: Resonant is Remedy's weakest game so far",
       "source": "r/Games",
@@ -845,7 +864,7 @@
       "timestamp": "2026-11-17 15:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3, Half-Life and Max Payne",
+      "headline": "Thread on /v/ naming Persona 3, Ridge Racer V, Splinter Cell and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -853,6 +872,9 @@
       "matched_game": "Persona 3",
       "matched_games": [
         "Persona 3",
+        "Ridge Racer V",
+        "Splinter Cell",
+        "Killer 7",
         "Half-Life",
         "Max Payne"
       ],
@@ -1562,17 +1584,18 @@
       "timestamp": "2026-11-17 14:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy",
+      "headline": "Thread on /v/ naming Drakengard 2 and Jak and Daxter: The Precursor Legacy",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751798241",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_game": "Drakengard 2",
       "matched_games": [
+        "Drakengard 2",
         "Jak and Daxter: The Precursor Legacy"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3331,6 +3354,25 @@
       "timestamp": "2026-11-17 13:09 UTC"
     },
     {
+      "headline": "Thread on /v/ naming RPG Maker 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751794693",
+      "matched_game": "RPG Maker 2",
+      "matched_games": [
+        "RPG Maker 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-17 13:07 UTC"
+    },
+    {
       "headline": "Chances are, this was your first Pearl Harbour in Gaming!",
       "source": "r/ps2",
       "source_type": "reddit",
@@ -3764,15 +3806,16 @@
       "timestamp": "2026-11-17 12:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Destroy All Humans! 2 and Half-Life",
+      "headline": "Thread on /v/ naming Final Fantasy X, Half-Life and Destroy All Humans! 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751794073",
-      "matched_game": "Destroy All Humans! 2",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Destroy All Humans! 2",
-        "Half-Life"
+        "Final Fantasy X",
+        "Half-Life",
+        "Destroy All Humans! 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -341021,58 +341064,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 16:05 UTC"
-    },
-    {
-      "headline": "Is this red thingy supposed to be here? Should I just remove it. 6 years old console",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xmwwge/is_this_red_thingy_supposed_to_be_here_should_i/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 16:03 UTC"
-    },
-    {
-      "headline": "Mike tricks Andy in Marvel Tōkon #sponsored",
-      "source": "YouTube: Kinda Funny Games",
-      "source_type": "youtube",
-      "feed": "youtube:UCT6QFE3peNry9PdO5uGj96g",
-      "link": "https://www.youtube.com/shorts/tWeXyu7mWxs",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 16:02 UTC",
-      "views": 11171
-    },
-    {
-      "headline": "Hyperkin Is Finally Launching The Mega95 Handheld \"Very Soon\"",
-      "source": "Retro Dodo",
-      "source_type": "news",
-      "feed": "https://retrododo.com/feed/",
-      "link": "https://retrododo.com/hyperkin-is-finally-launching-the-mega95-handheld-very-soon/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-03 16:01 UTC"
     }
   ]
 }
