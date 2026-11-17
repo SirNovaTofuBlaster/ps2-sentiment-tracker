@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 01:46:35 UTC",
+  "last_updated": "2026-11-17 01:49:12 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -118,6 +118,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-17 01:33 UTC"
+    },
+    {
+      "headline": "Thread on /vg/ naming Pro Evolution Soccer",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/588096121",
+      "matched_game": "Pro Evolution Soccer",
+      "matched_games": [
+        "Pro Evolution Soccer"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-17 01:33 UTC"
     },
@@ -7640,6 +7659,25 @@
       "timestamp": "2026-11-16 18:35 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751748208",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 18:35 UTC"
+    },
+    {
       "headline": "Behind the Mic: The Voices of Castlevania: Belmont’s Curse",
       "source": "YouTube: Konami",
       "source_type": "youtube",
@@ -8099,6 +8137,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-16 18:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751746779",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 18:11 UTC"
     },
@@ -341264,40 +341321,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 01:50 UTC"
-    },
-    {
-      "headline": "Finally retiring my trusty Logitech G15 keyboard",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmg5wc/finally_retiring_my_trusty_logitech_g15_keyboard/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 01:48 UTC"
-    },
-    {
-      "headline": "I dread video game bosses now.",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xmg4l3/i_dread_video_game_bosses_now/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 01:46 UTC"
     }
   ]
 }
