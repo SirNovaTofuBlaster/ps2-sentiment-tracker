@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 12:13:42 UTC",
+  "last_updated": "2026-11-17 12:16:11 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -2321,6 +2321,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-17 09:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751788123",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-17 09:33 UTC"
     },
@@ -4897,17 +4916,18 @@
       "timestamp": "2026-11-17 05:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Superman Returns",
+      "headline": "Thread on /v/ naming Shrek 2 and Superman Returns",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751780095",
-      "matched_game": "Superman Returns",
+      "matched_game": "Shrek 2",
       "matched_games": [
+        "Shrek 2",
         "Superman Returns"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341842,97 +341862,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-03 12:16 UTC"
-    },
-    {
-      "headline": "PS Store Black Friday Sale Begins Tomorrow with Thousands of PS5 Deals",
-      "source": "Push Square",
-      "source_type": "news",
-      "feed": "https://www.pushsquare.com/feeds/latest",
-      "link": "https://www.pushsquare.com/news/2026/11/ps-store-black-friday-sale-begins-tomorrow-with-thousands-of-ps5-deals",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 12:15 UTC"
-    },
-    {
-      "headline": "Cosy Witch RPG 'Witchbrook' Will Support Crossplay Between Switch 1 & 2 At Launch",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/11/cosy-witch-rpg-witchbrook-will-support-crossplay-between-switch-1-and-2-at-launch",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 12:15 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 4: The Room and Silent Hill 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750877273",
-      "matched_game": "Silent Hill 4: The Room",
-      "matched_games": [
-        "Silent Hill 4: The Room",
-        "Silent Hill 3"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-03 12:15 UTC"
-    },
-    {
-      "headline": "Brew & Dash coming to Nintendo Switch 2 and Switch",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/brew-dash-coming-to-nintendo-switch-2-and-switch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 12:14 UTC"
-    },
-    {
-      "headline": "Game works on other emulators but not PCSX2",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xmrdii/game_works_on_other_emulators_but_not_pcsx2/",
-      "matched_game": "Black",
-      "matched_games": [
-        "Black",
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 12:13 UTC"
     }
   ]
 }
