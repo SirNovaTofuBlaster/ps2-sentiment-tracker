@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-17 02:19:39 UTC",
+  "last_updated": "2026-11-17 02:30:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -325,6 +325,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-17 01:27 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Dark Cloud",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751771207",
+      "matched_game": "Dark Cloud",
+      "matched_games": [
+        "Dark Cloud"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-17 01:27 UTC"
     },
@@ -2404,6 +2423,25 @@
       "timestamp": "2026-11-16 23:03 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751762992",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-16 23:03 UTC"
+    },
+    {
       "headline": "Support for uk orders?",
       "source": "r/playstation",
       "source_type": "reddit",
@@ -3807,6 +3845,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-16 21:36 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751758115",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-16 21:36 UTC"
     },
@@ -29872,19 +29929,19 @@
       "timestamp": "2026-11-15 19:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Final Fantasy X, Persona 4 and Xenosaga Episode III",
+      "headline": "Thread on /v/ naming Persona 4, Xenosaga Episode III and Final Fantasy X",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751682703",
-      "matched_game": "Final Fantasy X",
+      "matched_game": "Persona 4",
       "matched_games": [
-        "Final Fantasy X",
         "Persona 4",
-        "Xenosaga Episode III"
+        "Xenosaga Episode III",
+        "Final Fantasy X"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341071,110 +341128,6 @@
       "hype": 0,
       "timestamp": "2026-11-03 02:30 UTC",
       "views": 61737
-    },
-    {
-      "headline": "Suikoden series on PCSX2",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/53924247",
-      "matched_game": "Suikoden IV",
-      "matched_games": [
-        "Suikoden IV"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 02:27 UTC"
-    },
-    {
-      "headline": "Man tipping culture is getting out of hand...",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmh06q/man_tipping_culture_is_getting_out_of_hand/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 02:27 UTC"
-    },
-    {
-      "headline": "Marketplace Grab!",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xmgz9u/marketplace_grab/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 02:26 UTC"
-    },
-    {
-      "headline": "Coop games with persistent world",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xmgynb/coop_games_with_persistent_world/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 02:25 UTC"
-    },
-    {
-      "headline": "Need help deciding",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xmgxjb/need_help_deciding/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 02:23 UTC"
-    },
-    {
-      "headline": "Who actually asked for this???",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xmgxau/who_actually_asked_for_this/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-03 02:23 UTC"
     }
   ]
 }
