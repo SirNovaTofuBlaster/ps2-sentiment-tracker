@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-18 07:47:26 UTC",
+  "last_updated": "2026-11-18 07:58:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -160,6 +160,27 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-18 05:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming WALL-E, Kingdom Hearts and Peter Pan",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751845961",
+      "matched_game": "WALL-E",
+      "matched_games": [
+        "WALL-E",
+        "Kingdom Hearts",
+        "Peter Pan"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-18 05:38 UTC"
     },
     {
       "headline": "Thread on /v/ naming Half-Life",
@@ -3387,13 +3408,14 @@
       "timestamp": "2026-11-17 19:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry",
+      "headline": "Thread on /v/ naming Iron Man and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751815397",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Iron Man",
       "matched_games": [
+        "Iron Man",
         "Devil May Cry"
       ],
       "match_score": 100,
@@ -333821,108 +333843,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-04 07:58 UTC"
-    },
-    {
-      "headline": "videogioco ambientato a Bolzano, che ne pensate?:)",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xniip7/videogioco_ambientato_a_bolzano_che_ne_pensate/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-04 07:57 UTC"
-    },
-    {
-      "headline": "Cracked open Alien 3 on the NES and ripped full maps of all 12 levels straight from the ROM — turns out you never see a huge chunk of them",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xnigzl/cracked_open_alien_3_on_the_nes_and_ripped_full/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-04 07:54 UTC"
-    },
-    {
-      "headline": "Is this controller legit?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xnigot/is_this_controller_legit/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-04 07:54 UTC"
-    },
-    {
-      "headline": "Here's gears of war eday running at 1080p 60fps on a Ryzen 5 5500 + RTX 3050.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xnifma/heres_gears_of_war_eday_running_at_1080p_60fps_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-04 07:52 UTC"
-    },
-    {
-      "headline": "Is Premium Edition Games shutting down?",
-      "source": "r/LimitedPrintGames",
-      "source_type": "reddit",
-      "feed": "reddit:limitedprintgames",
-      "link": "https://www.reddit.com/r/LimitedPrintGames/comments/1xniffo/is_premium_edition_games_shutting_down/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-04 07:51 UTC"
-    },
-    {
-      "headline": "GTA 6 ya ha vendido casi 8 millones de copias y todavía quedan dos semanas para su lanzamiento",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026308002/gta-6-ya-ha-generado-mas-de-750-millones-de-dolares-en-reservas-y-todavia-quedan-dos-semanas-para-su-lanzamiento/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-04 07:47 UTC"
     }
   ]
 }
