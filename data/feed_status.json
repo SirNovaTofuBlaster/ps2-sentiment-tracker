@@ -416,7 +416,7 @@
     "ok": true
   },
   "https://feed.podbean.com/thecomputergameshow/feed.xml": {
-    "latest": "2026-11-11 05:05 UTC",
+    "latest": "2026-11-18 05:05 UTC",
     "ok": true
   },
   "https://feeds.acast.com/public/shows/62309929e9119100173fd370": {
@@ -594,8 +594,10 @@
     "ok": true
   },
   "https://rss.libsyn.com/shows/214193/destinations/1551167.xml": {
+    "error": "ConnectionError",
+    "failing_since": "2026-11-18 09:46 UTC",
     "latest": "2026-09-27 03:56 UTC",
-    "ok": true
+    "ok": false
   },
   "https://rss.libsyn.com/shows/23257/destinations/32444.xml": {
     "latest": "2026-11-02 21:55 UTC",
