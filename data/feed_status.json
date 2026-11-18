@@ -530,7 +530,7 @@
     "ok": true
   },
   "https://kotaku.com/rss": {
-    "latest": "2026-11-18 11:10 UTC",
+    "latest": "2026-11-18 11:45 UTC",
     "ok": true
   },
   "https://latam.ign.com/feed.xml": {
@@ -538,12 +538,16 @@
     "ok": true
   },
   "https://lemmy.world/feeds/c/games.xml?sort=New": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-11-18 11:50 UTC",
     "latest": "2026-11-18 04:13 UTC",
-    "ok": true
+    "ok": false
   },
   "https://lemmy.world/feeds/c/retrogaming.xml?sort=New": {
+    "error": "HTTP 503",
+    "failing_since": "2026-11-18 11:50 UTC",
     "latest": "2026-11-18 09:49 UTC",
-    "ok": true
+    "ok": false
   },
   "https://news.xbox.com/en-us/feed/": {
     "error": "HTTP 403",
@@ -650,7 +654,7 @@
     "ok": true
   },
   "https://vandal.elespanol.com/xml.cgi": {
-    "latest": "2026-11-18 11:07 UTC",
+    "latest": "2026-11-18 11:43 UTC",
     "ok": true
   },
   "https://www.destructoid.com/feed/": {
@@ -658,15 +662,15 @@
     "ok": true
   },
   "https://www.eurogamer.net/feed": {
-    "latest": "2026-11-18 11:00 UTC",
+    "latest": "2026-11-18 11:33 UTC",
     "ok": true
   },
   "https://www.eurogamer.pt/feed": {
-    "latest": "2026-11-18 11:02 UTC",
+    "latest": "2026-11-18 11:49 UTC",
     "ok": true
   },
   "https://www.gamespot.com/feeds/mashup/": {
-    "latest": "2026-11-18 11:00 UTC",
+    "latest": "2026-11-18 11:26 UTC",
     "ok": true
   },
   "https://www.gematsu.com/feed": {
@@ -674,7 +678,7 @@
     "ok": true
   },
   "https://www.nintendolife.com/feeds/latest": {
-    "latest": "2026-11-18 10:30 UTC",
+    "latest": "2026-11-18 11:45 UTC",
     "ok": true
   },
   "https://www.patreon.com/public-rss/80117?show=800722": {
@@ -682,7 +686,7 @@
     "ok": true
   },
   "https://www.pcgamer.com/rss/": {
-    "latest": "2026-11-18 11:06 UTC",
+    "latest": "2026-11-18 11:41 UTC",
     "ok": true
   },
   "https://www.podserve.fm/series/rss/826/triangle-squared-a-playstation-podcast.rss": {
@@ -698,7 +702,7 @@
     "ok": true
   },
   "https://www.rockpapershotgun.com/feed/": {
-    "latest": "2026-11-18 10:18 UTC",
+    "latest": "2026-11-18 11:31 UTC",
     "ok": true
   },
   "https://www.spreaker.com/show/5008213/episodes/feed": {
@@ -718,7 +722,7 @@
     "ok": true
   },
   "https://www.timeextension.com/feed": {
-    "latest": "2026-11-18 10:00 UTC",
+    "latest": "2026-11-18 11:30 UTC",
     "ok": true
   },
   "https://www.vg247.com/feed": {
