@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-19 03:06:35 UTC",
+  "last_updated": "2026-11-19 03:16:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -109,6 +109,25 @@
       "hype": 0,
       "timestamp": "2026-11-19 02:42 UTC",
       "views": 1070
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751924094",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-19 02:31 UTC"
     },
     {
       "headline": "If you somehow get 6 stars in GTA 6, there is only one way to lose the cops. #gta6 #gameplay #ign",
@@ -309,19 +328,20 @@
       "views": 2214
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Kingdom Hearts and Dark Cloud 2",
+      "headline": "Thread on /v/ naming Deus Ex, Kingdom Hearts, Dark Cloud 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751920726",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Grand Theft Auto III",
+        "Deus Ex",
         "Kingdom Hearts",
-        "Dark Cloud 2"
+        "Dark Cloud 2",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -324092,93 +324112,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-05 03:17 UTC"
-    },
-    {
-      "headline": "Jai besoin d'aide",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xo83tf/jai_besoin_daide/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 03:13 UTC"
-    },
-    {
-      "headline": "Age verification in Australia",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xo829v/age_verification_in_australia/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 03:11 UTC"
-    },
-    {
-      "headline": "Monolith Soft details its involvement with Zelda: Ocarina of Time remake",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/monolith-soft-details-its-involvement-with-zelda-ocarina-of-time-remake/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-05 03:10 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming The Thing",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/750981340",
-      "matched_game": "The Thing",
-      "matched_games": [
-        "The Thing"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-05 03:08 UTC"
-    },
-    {
-      "headline": "Only one pop corn",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xo7yen/only_one_pop_corn/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 03:06 UTC"
     }
   ]
 }
