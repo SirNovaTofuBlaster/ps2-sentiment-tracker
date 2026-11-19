@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-19 14:41:22 UTC",
+  "last_updated": "2026-11-19 14:51:50 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-19 17:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751960417",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-19 14:45 UTC"
     },
     {
       "headline": "Let's Play GTA IV (PS3) - Part 10",
@@ -87,6 +106,45 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-19 14:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Miami Vice and Grand Theft Auto: Vice City",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751959542",
+      "matched_game": "Miami Vice",
+      "matched_games": [
+        "Miami Vice",
+        "Grand Theft Auto: Vice City"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-19 14:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751958832",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-19 14:22 UTC"
     },
     {
       "headline": "GTA 6 EN DIRECTO: Todas las noticias, curiosidades y descubrimientos del día de lanzamiento",
@@ -826,17 +884,18 @@
       "views": 29
     },
     {
-      "headline": "Thread on /v/ naming Resident Evil 4",
+      "headline": "Thread on /v/ naming Persona 4 and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751954517",
-      "matched_game": "Resident Evil 4",
+      "matched_game": "Persona 4",
       "matched_games": [
+        "Persona 4",
         "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -7938,6 +7997,25 @@
       "hype": 0,
       "timestamp": "2026-11-18 20:12 UTC",
       "views": 500
+    },
+    {
+      "headline": "Thread on /vr/ naming Turok Evolution",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12940841",
+      "matched_game": "Turok Evolution",
+      "matched_games": [
+        "Turok Evolution"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-18 20:12 UTC"
     },
     {
       "headline": "Homura Hime coming to PS5 in 2027",
@@ -318109,184 +318187,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-05 14:52 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751004064",
-      "matched_game": "Resident Evil Code: Veronica X",
-      "matched_games": [
-        "Resident Evil Code: Veronica X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:50 UTC"
-    },
-    {
-      "headline": "Final Fantasy Resonance conquista os japoneses",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/final-fantasy-resonance-conquista-os-japoneses",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:49 UTC"
-    },
-    {
-      "headline": "FIFA Street 2: Brazilian League 2026 Mod (PS2) — 20 Clubs, 320 Players & Full PT-BR Translation",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xoki4o/fifa_street_2_brazilian_league_2026_mod_ps2_20/",
-      "matched_game": "FIFA Street 2",
-      "matched_games": [
-        "FIFA Street 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:47 UTC"
-    },
-    {
-      "headline": "Weird stuttering in games",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xokhjh/weird_stuttering_in_games/",
-      "matched_game": "The Getaway: Black Monday",
-      "matched_games": [
-        "The Getaway: Black Monday",
-        "Gran Turismo 4",
-        "The Getaway"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:47 UTC"
-    },
-    {
-      "headline": "Would you guys buy it?",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xokhzv/would_you_guys_buy_it/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:47 UTC"
-    },
-    {
-      "headline": "How to unlock the true ending in Phantom Blade Zero",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/phantom-blade-zero-true-ending-final-battle-how-to-unlock-requirements/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:45 UTC"
-    },
-    {
-      "headline": "My short review - Donkey Kong Bananza",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1xokg05/my_short_review_donkey_kong_bananza/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:45 UTC"
-    },
-    {
-      "headline": "Battle net launcher vs GeForce Now for WoW Forever",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xokfzv/battle_net_launcher_vs_geforce_now_for_wow_forever/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:45 UTC"
-    },
-    {
-      "headline": "How to get full Tactical Effectiveness in Football Manager 27",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/how-to-get-full-tactical-effectiveness-in-football-manager-27/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:44 UTC"
-    },
-    {
-      "headline": "Hogwarts Legacy traz o novo NVIDIA DLSS 5 para o GeForce NOW",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/hogwarts-legacy-traz-o-novo-nvidia-dlss-5-para-o-geforce-now",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 14:42 UTC"
     }
   ]
 }
