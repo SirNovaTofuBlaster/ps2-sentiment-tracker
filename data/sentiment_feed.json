@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-19 03:16:47 UTC",
+  "last_updated": "2026-11-19 03:30:52 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1059,17 +1059,20 @@
       "timestamp": "2026-11-18 23:43 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Max Payne, Grand Theft Auto: San Andreas, Grand Theft Auto: Vice City and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751912161",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Max Payne",
       "matched_games": [
-        "Grand Theft Auto: San Andreas"
+        "Max Payne",
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -60658,15 +60661,14 @@
       "timestamp": "2026-11-15 20:47 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Guitar Hero, Rock Band, Marvel vs. Capcom 2 and 7 more",
+      "headline": "Thread on /vr/ naming Resident Evil Code: Veronica X, Marvel vs. Capcom 2, Dead or Alive 2 and 8 more",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12934704",
-      "matched_game": "Guitar Hero",
+      "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
-        "Guitar Hero",
-        "Rock Band",
+        "Resident Evil Code: Veronica X",
         "Marvel vs. Capcom 2",
         "Dead or Alive 2",
         "Crazy Taxi",
@@ -60674,10 +60676,12 @@
         "Sega Genesis Collection",
         "Metal Gear Solid 2: Sons of Liberty",
         "Final Fantasy X",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Guitar Hero",
+        "Rock Band"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -324044,74 +324048,6 @@
       "hype": 0,
       "timestamp": "2026-11-05 03:31 UTC",
       "views": 10128
-    },
-    {
-      "headline": "JRPG music appreciation post! Which ones are your favorite?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xo8cuz/jrpg_music_appreciation_post_which_ones_are_your/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-05 03:26 UTC"
-    },
-    {
-      "headline": "Godzilla: Destroy All Monsters Melee Remastered | Official Launch Trailer",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xo8b8e/godzilla_destroy_all_monsters_melee_remastered/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-05 03:24 UTC"
-    },
-    {
-      "headline": "How do I actually back up my computer if it or my gpu were to die?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xo89wp/how_do_i_actually_back_up_my_computer_if_it_or_my/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 03:22 UTC"
-    },
-    {
-      "headline": "Did I damage my PlayStation? Incorrect Shutdown.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xo86ci/did_i_damage_my_playstation_incorrect_shutdown/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 03:17 UTC"
     }
   ]
 }
