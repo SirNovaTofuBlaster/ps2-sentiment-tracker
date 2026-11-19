@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-19 22:21:11 UTC",
+  "last_updated": "2026-11-19 22:31:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -617,6 +617,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-19 20:56 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X-2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751987647",
+      "matched_game": "Final Fantasy X-2",
+      "matched_games": [
+        "Final Fantasy X-2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-19 20:52 UTC"
     },
     {
       "headline": "Doom level designer Sandy Petersen on Gabe Newell: 'With Steam he is literally guarding the gates of Hell'",
@@ -1682,6 +1701,25 @@
       ],
       "match_score": 100,
       "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-19 18:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sopranos",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751977984",
+      "matched_game": "The Sopranos",
+      "matched_games": [
+        "The Sopranos"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -24048,7 +24086,7 @@
       "timestamp": "2026-11-18 01:20 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Pro Evolution Soccer and Half-Life",
+      "headline": "Thread on /vg/ naming Pro Evolution Soccer, Half-Life and LEGO Star Wars",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -24056,7 +24094,8 @@
       "matched_game": "Pro Evolution Soccer",
       "matched_games": [
         "Pro Evolution Soccer",
-        "Half-Life"
+        "Half-Life",
+        "LEGO Star Wars"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -312384,127 +312423,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-05 22:31 UTC"
-    },
-    {
-      "headline": "One Of The Coolest New Features In The Ocarina Of Time Remake Is Equal Parts Impressive And Hysterical",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/legend-zelda-ocarina-of-time-microphone-songs-instruments-2000754324",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-05 22:30 UTC"
-    },
-    {
-      "headline": "Air Combat Black Label",
-      "source": "r/PlaystationCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:playstationcollectors",
-      "link": "https://www.reddit.com/r/PlaystationCollectors/comments/1xowb1h/air_combat_black_label/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 22:28 UTC"
-    },
-    {
-      "headline": "Harvest Moon: Mineral Town Expanded — Would anyone be interested in a community-driven GBA enhancement project?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xowbdx/harvest_moon_mineral_town_expanded_would_anyone/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 22:28 UTC"
-    },
-    {
-      "headline": "Retro console game advice",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xow98c/retro_console_game_advice/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 22:26 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Monster Hunter",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751027434",
-      "matched_game": "Monster Hunter",
-      "matched_games": [
-        "Monster Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-05 22:24 UTC"
-    },
-    {
-      "headline": "Microsoft is betting on native WinUI over web app slop, Electron and other frameworks across Windows 11, and even its non-inbox apps, such as PowerToys, are moving to WinUI.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xow6ou/microsoft_is_betting_on_native_winui_over_web_app/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 22:23 UTC"
-    },
-    {
-      "headline": "My viddy games so far.",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xow5de/my_viddy_games_so_far/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 22:21 UTC"
     }
   ]
 }
