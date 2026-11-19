@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-19 04:03:12 UTC",
+  "last_updated": "2026-11-19 04:13:52 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -69,6 +69,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-19 03:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751926298",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-19 03:06 UTC"
     },
@@ -888,6 +907,25 @@
       "hype": 0,
       "timestamp": "2026-11-19 00:19 UTC",
       "views": 66709
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751915180",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-19 00:19 UTC"
     },
     {
       "headline": "Here's how to get a free rocket launcher early in GTA 6! #gta6 #rocketlauncher #free #gaming #ign",
@@ -2348,7 +2386,7 @@
         "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -7556,18 +7594,19 @@
       "timestamp": "2026-11-18 14:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex and Armored Core: Last Raven",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Armored Core: Last Raven and Deus Ex",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751869614",
-      "matched_game": "Deus Ex",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
-        "Deus Ex",
-        "Armored Core: Last Raven"
+        "Grand Theft Auto: San Andreas",
+        "Armored Core: Last Raven",
+        "Deus Ex"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -283456,7 +283495,7 @@
       "timestamp": "2026-11-06 17:18 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Kingdom Hearts, Kingdom Hearts II, The Incredibles and 4 more",
+      "headline": "Thread on /vg/ naming Kingdom Hearts, Kingdom Hearts II, The Incredibles and 5 more",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -283469,7 +283508,8 @@
         "Spider-Man",
         "Iron Man",
         "Resident Evil Code: Veronica X",
-        "God of War"
+        "God of War",
+        "Dark Cloud 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -323627,94 +323667,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-05 04:13 UTC"
-    },
-    {
-      "headline": "GTA 6 Rakes in Over $750 Million in Preorders 2 Weeks Ahead of Release Date",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xo98lh/gta_6_rakes_in_over_750_million_in_preorders_2/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 04:11 UTC"
-    },
-    {
-      "headline": "If I purchase GTA 6 from the New Zealand region store on the PS5, will it only be available in English, or can I choose other",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xo978r/if_i_purchase_gta_6_from_the_new_zealand_region/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 04:09 UTC"
-    },
-    {
-      "headline": "New to PS2 Collecting. What Games Should I Add to My Collection?",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xo94r7/new_to_ps2_collecting_what_games_should_i_add_to/",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "WWE SmackDown! Here Comes the Pain"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 04:05 UTC"
-    },
-    {
-      "headline": "Introduction (Mega Man 3 OST)",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xo93ha/introduction_mega_man_3_ost/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 04:03 UTC"
-    },
-    {
-      "headline": "Blood of the Dawn walker or silent hill town fall (sale)",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xo932p/blood_of_the_dawn_walker_or_silent_hill_town_fall/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-05 04:03 UTC"
     }
   ]
 }
