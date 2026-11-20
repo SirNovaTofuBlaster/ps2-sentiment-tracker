@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 09:50:17 UTC",
+  "last_updated": "2026-11-20 09:52:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -107,17 +107,18 @@
       "timestamp": "2026-11-20 09:04 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752030247",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -159,6 +160,25 @@
       "hype": 0,
       "timestamp": "2026-11-20 09:00 UTC",
       "views": 2
+    },
+    {
+      "headline": "Thread on /v/ naming The Warriors",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752030049",
+      "matched_game": "The Warriors",
+      "matched_games": [
+        "The Warriors"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 08:55 UTC"
     },
     {
       "headline": "All Magazines, Books, And Comics In GTA 6",
@@ -306907,40 +306927,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 09:52 UTC"
-    },
-    {
-      "headline": "This is NOSTRA, the turn-based RPG I'm building with RPG Maker MZ",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xp8ysl/this_is_nostra_the_turnbased_rpg_im_building_with/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 09:51 UTC"
-    },
-    {
-      "headline": "A Nintendo Switch 2 poderá receber mais remakes",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/a-nintendo-switch-2-podera-receber-mais-remakes",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-06 09:50 UTC"
     }
   ]
 }
