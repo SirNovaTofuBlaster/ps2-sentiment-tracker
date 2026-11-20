@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 16:29:14 UTC",
+  "last_updated": "2026-11-20 16:31:51 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -337,15 +337,16 @@
       "timestamp": "2026-11-20 15:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Grand Theft Auto III and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752050340",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Grand Theft Auto III"
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -1081,6 +1082,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-20 14:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752046869",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 14:52 UTC"
     },
     {
       "headline": "I Can Speak Whale! quest walkthrough in Disney Dreamlight Valley The Keepsake Sea",
@@ -2114,6 +2134,25 @@
       "timestamp": "2026-11-20 12:36 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752038948",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 12:36 UTC"
+    },
+    {
       "headline": "GTA 6’s Console Wars Are Already Over, And Xbox Lost",
       "source": "GameSpot - All Content",
       "source_type": "news",
@@ -2763,13 +2802,14 @@
       "timestamp": "2026-11-20 11:34 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man",
+      "headline": "Thread on /v/ naming The Arcade and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752036147",
-      "matched_game": "Spider-Man",
+      "matched_game": "The Arcade",
       "matched_games": [
+        "The Arcade",
         "Spider-Man"
       ],
       "match_score": 100,
@@ -303310,61 +303350,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 16:31 UTC"
-    },
-    {
-      "headline": "Where Link’s Green Hat Actually Came From",
-      "source": "YouTube: Retro Handhelds",
-      "source_type": "youtube",
-      "feed": "youtube:UC3IYhdamzjvEJ9CwkQa4RAw",
-      "link": "https://www.youtube.com/shorts/c72bPlRyWlo",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 16:30 UTC",
-      "views": 6342
-    },
-    {
-      "headline": "Marvel’s Guardians of the Galaxy: Encore Edition launch trailer – action adventure game returns for Nintendo Switch 2 release",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/marvels-guardians-of-the-galaxy-encore-edition-launch-trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 16:30 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Blade 2 and Yakuza",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12917148",
-      "matched_game": "Blade 2",
-      "matched_games": [
-        "Blade 2",
-        "Yakuza"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-06 16:29 UTC"
     }
   ]
 }
