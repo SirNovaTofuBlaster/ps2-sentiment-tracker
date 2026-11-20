@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-20 06:59:16 UTC",
+  "last_updated": "2026-11-20 07:01:59 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752025026",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 06:48 UTC"
+    },
     {
       "headline": "Playing Samson on PS5 (Temu GTA6)",
       "source": "YouTube: PeteDorr",
@@ -19,6 +38,25 @@
       "hype": 0,
       "timestamp": "2026-11-20 06:38 UTC",
       "views": 3281
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752023251",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 06:11 UTC"
     },
     {
       "headline": "53 Years Later, The Greatest Closing Line In Sci-Fi History Is Still The Best Book Quote Of The 1970s",
@@ -144,6 +182,26 @@
       "hype": 0,
       "timestamp": "2026-11-20 05:35 UTC",
       "views": 2194
+    },
+    {
+      "headline": "Thread on /v/ naming Area 51 and Indigo Prophecy",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752021409",
+      "matched_game": "Area 51",
+      "matched_games": [
+        "Area 51",
+        "Indigo Prophecy"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 05:32 UTC"
     },
     {
       "headline": "Dynasty Warriors 3: Complete Edition Remastered Gets A New Switch 2 Update",
@@ -499,18 +557,18 @@
       "timestamp": "2026-11-20 03:32 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Call of Duty 3 and Resident Evil 4",
+      "headline": "Thread on /v/ naming Resident Evil 4 and Call of Duty 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752014492",
-      "matched_game": "Call of Duty 3",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Call of Duty 3",
-        "Resident Evil 4"
+        "Resident Evil 4",
+        "Call of Duty 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -308099,23 +308157,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 07:01 UTC"
-    },
-    {
-      "headline": "Free Talk Friday!",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xp6ded/free_talk_friday/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 07:00 UTC"
     }
   ]
 }
