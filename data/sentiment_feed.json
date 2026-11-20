@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 18:10:06 UTC",
+  "last_updated": "2026-11-20 18:12:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -39,7 +39,7 @@
       "timestamp": "2026-11-20 17:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Driver: Parallel Lines, The Simpsons: Hit & Run, The Godfather and 1 more",
+      "headline": "Thread on /v/ naming Driver: Parallel Lines, The Simpsons: Hit & Run, The Godfather and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -49,7 +49,9 @@
         "Driver: Parallel Lines",
         "The Simpsons: Hit & Run",
         "The Godfather",
-        "The Getaway"
+        "The Getaway",
+        "True Crime: Streets of LA",
+        "Just Cause"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -278,6 +280,25 @@
       ],
       "match_score": 100,
       "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 17:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Fight Club",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752055257",
+      "matched_game": "Fight Club",
+      "matched_games": [
+        "Fight Club"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -551,6 +572,25 @@
       "timestamp": "2026-11-20 17:00 UTC"
     },
     {
+      "headline": "Thread on /v/ naming The Thing",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752054969",
+      "matched_game": "The Thing",
+      "matched_games": [
+        "The Thing"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 16:59 UTC"
+    },
+    {
       "headline": "Nintendo exige haber jugado 10 horas al remake de Zelda Ocarina of Time para comprar las ocarinas en su tienda",
       "source": "Vandal",
       "source_type": "news",
@@ -770,6 +810,25 @@
       "matched_game": "Resident Evil Code: Veronica X",
       "matched_games": [
         "Resident Evil Code: Veronica X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 16:31 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752052987",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -1026,6 +1085,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-20 16:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752051470",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 16:08 UTC"
     },
     {
       "headline": "Is the “Lost Mail” Trend a Scam?",
@@ -301429,40 +301507,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 18:14 UTC"
-    },
-    {
-      "headline": "Genshin Player : Should I try Persona 5 or Metaphor : ReFantazio first ?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xpjt20/genshin_player_should_i_try_persona_5_or_metaphor/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 18:11 UTC"
-    },
-    {
-      "headline": "War is over! See you in Leonida! 🔥🌴🌊",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xpjrzw/war_is_over_see_you_in_leonida/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 18:10 UTC"
     }
   ]
 }
