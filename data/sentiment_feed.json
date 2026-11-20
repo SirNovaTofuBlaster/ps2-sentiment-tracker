@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 00:17:01 UTC",
+  "last_updated": "2026-11-20 00:27:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -157,7 +157,7 @@
         "Grand Theft Auto: Vice City"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -351,6 +351,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-19 23:14 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Godfather",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751997742",
+      "matched_game": "The Godfather",
+      "matched_games": [
+        "The Godfather"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-19 23:13 UTC"
     },
     {
       "headline": "Thread on /v/ naming Okami",
@@ -2200,20 +2219,20 @@
       "timestamp": "2026-11-19 19:29 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Max Payne, Warriors Orochi and 1 more",
+      "headline": "Thread on /v/ naming Max Payne, Warriors Orochi, Silent Hill 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751980765",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Max Payne",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
         "Max Payne",
         "Warriors Orochi",
-        "Silent Hill 2"
+        "Silent Hill 2",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -311199,96 +311218,6 @@
       "hype": 0,
       "timestamp": "2026-11-06 00:27 UTC",
       "views": 20406
-    },
-    {
-      "headline": "Thinking about pulling the trigger on a steamdeck",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xoyyd5/thinking_about_pulling_the_trigger_on_a_steamdeck/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 00:26 UTC"
-    },
-    {
-      "headline": "GTA 6 ad in República Station, São Paulo, Brazil",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xoyv5j/gta_6_ad_in_república_station_são_paulo_brazil/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 00:22 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751032949",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-06 00:22 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Suikoden III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751032805",
-      "matched_game": "Suikoden III",
-      "matched_games": [
-        "Suikoden III"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-06 00:19 UTC"
-    },
-    {
-      "headline": "Sony Reveals Wolverine Sales Figures, Updates Financial Forecast - IGN Daily Fix",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=8AbFC6DjNys",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 00:17 UTC",
-      "views": 61919
     }
   ]
 }
