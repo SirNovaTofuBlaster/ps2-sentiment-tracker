@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 10:33:13 UTC",
+  "last_updated": "2026-11-20 10:35:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -35,6 +35,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-20 10:19 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752032865",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 10:10 UTC"
     },
     {
       "headline": "Baldur's Gate 3 amplía los mods en consola con 12 nuevos contenidos que modifican gameplay y cosméticos",
@@ -306830,23 +306849,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-06 10:35 UTC"
-    },
-    {
-      "headline": "My first OLED has finally arrived! Alienware AW3426DW + RX 9070 XT — what settings, tips and tricks should I know before setting it up?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xp9ne6/my_first_oled_has_finally_arrived_alienware/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 10:34 UTC"
     }
   ]
 }
