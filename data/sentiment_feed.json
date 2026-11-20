@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 09:36:06 UTC",
+  "last_updated": "2026-11-20 09:38:33 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1097,6 +1097,25 @@
       "matched_game": "Dark Cloud 2",
       "matched_games": [
         "Dark Cloud 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 04:10 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752016987",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -307040,40 +307059,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 09:38 UTC"
-    },
-    {
-      "headline": "Gran Turismo 7 próximo dos 13 milhões de cópias vendidas",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/gran-turismo-7-proximo-dos-13-milhoes-de-copias-vendidas",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 09:37 UTC"
-    },
-    {
-      "headline": "God of War Ragnarok es el juego de PlayStation que más dinero ha generado esta generación, según un analista",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026310011/god-of-war-ragnarok-es-el-juego-de-playstation-que-mas-dinero-ha-generado-esta-generacion-segun-un-analista/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 09:37 UTC"
     }
   ]
 }
