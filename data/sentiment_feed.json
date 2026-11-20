@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 18:23:12 UTC",
+  "last_updated": "2026-11-20 18:26:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -395,6 +395,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 60,
+      "hype": 0,
+      "timestamp": "2026-11-20 17:15 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Miami Vice",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752055942",
+      "matched_game": "Miami Vice",
+      "matched_games": [
+        "Miami Vice"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-20 17:15 UTC"
     },
@@ -301411,42 +301430,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 18:26 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Rule of Rose",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751072224",
-      "matched_game": "Rule of Rose",
-      "matched_games": [
-        "Rule of Rose"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-06 18:25 UTC"
-    },
-    {
-      "headline": "Arcane Whispers: The Last Stand releases today!",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xpk4ji/arcane_whispers_the_last_stand_releases_today/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 18:23 UTC"
     }
   ]
 }
