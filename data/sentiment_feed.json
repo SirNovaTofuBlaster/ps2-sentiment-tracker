@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 17:12:02 UTC",
+  "last_updated": "2026-11-20 17:14:33 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -313,6 +313,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-20 16:22 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752052178",
+      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_games": [
+        "Grand Theft Auto: Vice City"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 16:19 UTC"
     },
     {
       "headline": "How to get Paul Walker’s Fast and Furious car in GTA 6",
@@ -3115,13 +3134,14 @@
       "timestamp": "2026-11-20 11:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Devil May Cry",
+      "headline": "Thread on /v/ naming Monster Hunter and Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752036606",
-      "matched_game": "Devil May Cry",
+      "matched_game": "Monster Hunter",
       "matched_games": [
+        "Monster Hunter",
         "Devil May Cry"
       ],
       "match_score": 100,
@@ -302416,23 +302436,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 17:15 UTC"
-    },
-    {
-      "headline": "The Best Warzone Perks May Surprise You After The MW4 Overhaul",
-      "source": "GameSpot - All Content",
-      "source_type": "news",
-      "feed": "https://www.gamespot.com/feeds/mashup/",
-      "link": "https://www.gamespot.com/articles/the-best-warzone-perks-may-surprise-you-after-the-mw4-overhaul/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-06 17:12 UTC"
     }
   ]
 }
