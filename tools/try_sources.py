@@ -138,6 +138,35 @@ def try_board(session, job, matcher, ps2_keys):
     return Counter(game for item in items for game in item["matched_games"])
 
 
+BROWSER_NAME = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
+
+
+def probe_reddit(url):
+    """Reddit answered 404 to a feed it has always served: say which kind of request gets through from
+    this machine. One request each, spaced out; prints status, size and server only (and the first words of
+    an error page, which is Reddit's own text)."""
+    one = url.split("/new/")[0].split("/r/")[1].split("+")[0]
+    tries = [
+        ("same address, feed-reader name", url, READER_NAME),
+        ("same address, browser name", url, BROWSER_NAME),
+        ("no /new", f"https://www.reddit.com/r/{one}/.rss", scraper.USER_AGENT),
+        ("old.reddit.com", f"https://old.reddit.com/r/{one}/new/.rss?limit=25", scraper.USER_AGENT),
+        ("the .json listing", f"https://www.reddit.com/r/{one}/new.json?limit=5", scraper.USER_AGENT),
+        ("the subreddit's about page", f"https://www.reddit.com/r/{one}/about.json", scraper.USER_AGENT),
+        ("the home page's feed", "https://www.reddit.com/.rss", scraper.USER_AGENT),
+    ]
+    say("  probe: which requests does Reddit answer from here?")
+    for label, address, agent in tries:
+        time.sleep(8)
+        try:
+            got = requests.get(address, timeout=scraper.REQUEST_TIMEOUT, headers={"User-Agent": agent})
+            head = " ".join(got.text[:70].split()) if got.status_code >= 400 else ""
+            say(f"    {label}: HTTP {got.status_code}, {len(got.content)} bytes, {got.headers.get('content-type', '?')}, "
+                f"server {got.headers.get('server', '?')}" + (f", starts: {head}" if head else ""))
+        except requests.RequestException as error:
+            say(f"    {label}: {scraper.feed_error(error)}")
+
+
 def main():
     wanted = set(sys.argv[1:]) or set(scraper.SOURCE_TYPES) - scraper.CORE_TYPES
     unknown = wanted - set(scraper.SOURCE_TYPES)
@@ -146,6 +175,7 @@ def main():
     config = scraper.load_config()
     ps2_keys = {scraper.source_key(s) for s in config["sources"] if s["enabled"] and s["role"] == scraper.PS2_ROLE}
     failed, games, last_board, last_reddit = [], Counter(), None, None
+    probed_reddit = False
     with requests.Session() as session:
         session.headers["User-Agent"] = scraper.USER_AGENT
         matcher = scraper.TitleMatcher(scraper.load_ps2_titles(session))
@@ -170,6 +200,9 @@ def main():
             except (requests.RequestException, ValueError) as error:
                 failed.append(job["sources"][0]["name"])
                 say(f"  FAILED: {scraper.feed_error(error)}")
+                if job["type"] == "reddit" and not probed_reddit and scraper.feed_error(error) == "HTTP 404":
+                    probed_reddit = True
+                    probe_reddit(job["url"])
                 if job["type"] != scraper.BOARD_TYPE and scraper.feed_error(error) == "HTTP 403":
                     # Is it this machine that is refused, or the name the scraper gives? One more
                     # request under a plain feed-reader name tells the two apart.
