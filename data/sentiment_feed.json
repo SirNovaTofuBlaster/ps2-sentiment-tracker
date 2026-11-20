@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-20 12:27:03 UTC",
+  "last_updated": "2026-11-20 12:29:36 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Kingdom Hearts",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/588449627",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 12:22 UTC"
+    },
     {
       "headline": "Total War: Warhammer 40,000 breaks the game into star system mini-campaigns, each with their own stories and objectives",
       "source": "Eurogamer.net Latest Articles Feed",
@@ -209,6 +228,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-20 11:46 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752036597",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 11:45 UTC"
     },
     {
       "headline": "GTA 6 day-one sales are enormous, estimates suggest, making previous $2 billion opening weekend predictions seem conservative",
@@ -1394,15 +1432,16 @@
       "timestamp": "2026-11-20 09:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 2 and Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Persona 4, Grand Theft Auto: San Andreas and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752030247",
-      "matched_game": "Silent Hill 2",
+      "matched_game": "Persona 4",
       "matched_games": [
-        "Silent Hill 2",
-        "Grand Theft Auto: San Andreas"
+        "Persona 4",
+        "Grand Theft Auto: San Andreas",
+        "Silent Hill 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -9708,16 +9747,17 @@
       "timestamp": "2026-11-19 15:55 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life, Monster Hunter and The Arcade",
+      "headline": "Thread on /v/ naming God Hand, Monster Hunter, The Arcade and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751965214",
-      "matched_game": "Half-Life",
+      "matched_game": "God Hand",
       "matched_games": [
-        "Half-Life",
+        "God Hand",
         "Monster Hunter",
-        "The Arcade"
+        "The Arcade",
+        "Half-Life"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -305927,41 +305967,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 12:29 UTC"
-    },
-    {
-      "headline": "Square Enix accidentally botches a Nier: Automata update, balloons required file size from 50GB to 366GB on PC",
-      "source": "Eurogamer.net Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.net/feed",
-      "link": "https://www.eurogamer.net/square-enix-nier-automata-update-required-file-size-366gb",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 12:28 UTC"
-    },
-    {
-      "headline": "محل علاء الدين يوم الجمعه",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/ryHRwixHyMk",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 12:28 UTC",
-      "views": 1394
     }
   ]
 }
