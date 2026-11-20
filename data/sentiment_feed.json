@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 15:18:11 UTC",
+  "last_updated": "2026-11-20 15:20:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -543,6 +543,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-20 13:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752042984",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 13:48 UTC"
     },
     {
       "headline": "God Hand Recomp Out NOW! The Weirdest PS2 Game is Here",
@@ -1163,6 +1182,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-20 12:33 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God Hand",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752038684",
+      "matched_game": "God Hand",
+      "matched_games": [
+        "God Hand"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 12:31 UTC"
     },
     {
       "headline": "GTA 6 Too Dark? Here's How to Fix It on PS5",
@@ -2746,17 +2784,18 @@
       "timestamp": "2026-11-20 09:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3",
+      "headline": "Thread on /v/ naming Final Fantasy XII and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752031187",
-      "matched_game": "Persona 3",
+      "matched_game": "Final Fantasy XII",
       "matched_games": [
+        "Final Fantasy XII",
         "Persona 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3943,7 +3982,7 @@
       "timestamp": "2026-11-20 04:54 UTC"
     },
     {
-      "headline": "Thread on /vg/ naming Persona 4 and Persona 3 FES",
+      "headline": "Thread on /vg/ naming Persona 4, Persona 3 FES and Resident Evil 4",
       "source": "4chan /vg/",
       "source_type": "4chan",
       "feed": "4chan:vg",
@@ -3951,7 +3990,8 @@
       "matched_game": "Persona 4",
       "matched_games": [
         "Persona 4",
-        "Persona 3 FES"
+        "Persona 3 FES",
+        "Resident Evil 4"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
