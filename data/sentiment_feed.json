@@ -1,7 +1,46 @@
 {
-  "last_updated": "2026-11-20 03:21:42 UTC",
+  "last_updated": "2026-11-20 03:35:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vr/ naming Monster Hunter and Max Payne",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12943573",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter",
+        "Max Payne"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 03:24 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752014252",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 03:22 UTC"
+    },
     {
       "headline": "Thread on /vg/ naming Pro Evolution Soccer",
       "source": "4chan /vg/",
@@ -2806,15 +2845,16 @@
       "timestamp": "2026-11-19 20:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming God of War and Soul Calibur 2",
+      "headline": "Thread on /v/ naming Tales of the Abyss, Soul Calibur 2 and God of War",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751986440",
-      "matched_game": "God of War",
+      "matched_game": "Tales of the Abyss",
       "matched_games": [
-        "God of War",
-        "Soul Calibur 2"
+        "Tales of the Abyss",
+        "Soul Calibur 2",
+        "God of War"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -3348,22 +3388,23 @@
       "timestamp": "2026-11-19 19:29 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Warriors Orochi, Silent Hill 2 and 3 more",
+      "headline": "Thread on /v/ naming Resident Evil 4, Warriors Orochi, Silent Hill 2 and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/751980765",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Grand Theft Auto III",
+        "Resident Evil 4",
         "Warriors Orochi",
         "Silent Hill 2",
         "Grand Theft Auto: San Andreas",
         "Max Payne",
-        "Half-Life"
+        "Half-Life",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3877,6 +3918,25 @@
       "matched_game": "The Sopranos",
       "matched_games": [
         "The Sopranos"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-19 18:43 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/751977982",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -18143,6 +18203,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-18 17:07 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Final Fantasy X",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12940489",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-18 17:04 UTC"
     },
     {
       "headline": "Finally, You Can Now Update Your Analogue 3D Via WiFi",
@@ -186776,15 +186855,15 @@
       "timestamp": "2026-11-11 10:10 UTC"
     },
     {
-      "headline": "Thread on /vrpg/ naming Final Fantasy XII and Final Fantasy X",
+      "headline": "Thread on /vrpg/ naming Final Fantasy X and Final Fantasy XII",
       "source": "4chan /vrpg/",
       "source_type": "4chan",
       "feed": "4chan:vrpg",
       "link": "https://boards.4chan.org/vrpg/thread/4154373",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy XII",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -309514,143 +309593,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-06 03:36 UTC"
-    },
-    {
-      "headline": "Don't give me Hope",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xp2qs3/dont_give_me_hope/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 03:32 UTC"
-    },
-    {
-      "headline": "SoulStream Saga: Chapter 1 - Official Localization Update Trailer | Endix Expo Fall 2026",
-      "source": "YouTube: IGN",
-      "source_type": "youtube",
-      "feed": "youtube:UCKy1dAqELo0zrOtPkf0eTMw",
-      "link": "https://www.youtube.com/watch?v=QUOEmfZfPu8",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 03:30 UTC",
-      "views": 23776
-    },
-    {
-      "headline": "Why the heck is a freakin' SUBSCRIPTION needed to access a freaking DEMO?! 😡",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xp2oge/why_the_heck_is_a_freakin_subscription_needed_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 03:29 UTC"
-    },
-    {
-      "headline": "Curious to see how you guys justify buying games that are 85%+ cheaper digitally than a physical copy?",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xp2mpk/curious_to_see_how_you_guys_justify_buying_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 03:27 UTC"
-    },
-    {
-      "headline": "Pc Fully Crashing to Backlit Screen",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xp2ks2/pc_fully_crashing_to_backlit_screen/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 03:24 UTC"
-    },
-    {
-      "headline": "What 5070 for Iracing ?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xp2kgr/what_5070_for_iracing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 03:23 UTC"
-    },
-    {
-      "headline": "It’s time to fight back the RAM crisis",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xp2jvi/its_time_to_fight_back_the_ram_crisis/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 03:23 UTC"
-    },
-    {
-      "headline": "9070 or 5070 with ryzen 7 5700x?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xp2j73/9070_or_5070_with_ryzen_7_5700x/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 03:22 UTC"
     }
   ]
 }
