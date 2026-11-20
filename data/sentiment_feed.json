@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 17:26:10 UTC",
+  "last_updated": "2026-11-20 17:28:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -535,6 +535,25 @@
       "timestamp": "2026-11-20 16:22 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Persona 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752052204",
+      "matched_game": "Persona 4",
+      "matched_games": [
+        "Persona 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-20 16:20 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming Grand Theft Auto: Vice City",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -973,16 +992,16 @@
       "timestamp": "2026-11-20 15:50 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Grand Theft Auto III and Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Grand Theft Auto: San Andreas and Grand Theft Auto: Vice City",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752050340",
-      "matched_game": "Grand Theft Auto: Vice City",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Grand Theft Auto: Vice City",
         "Grand Theft Auto III",
-        "Grand Theft Auto: San Andreas"
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto: Vice City"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -302353,40 +302372,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 17:28 UTC"
-    },
-    {
-      "headline": "Computer crashes and restarts while gaming",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xpio9q/computer_crashes_and_restarts_while_gaming/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 17:27 UTC"
-    },
-    {
-      "headline": "For some it is bliss - for the rest, it's pure annoyance (to say the least)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xpio03/for_some_it_is_bliss_for_the_rest_its_pure/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 17:27 UTC"
     }
   ]
 }
