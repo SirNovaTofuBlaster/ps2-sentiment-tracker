@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-20 20:17:12 UTC",
+  "last_updated": "2026-11-20 20:20:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -3709,13 +3709,14 @@
       "views": 2966
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Grand Theft Auto III and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752047129",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
+        "Grand Theft Auto III",
         "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
@@ -3852,17 +3853,18 @@
       "timestamp": "2026-11-20 14:41 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Plan",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and The Plan",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752046073",
-      "matched_game": "The Plan",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
+        "Grand Theft Auto: San Andreas",
         "The Plan"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -6725,14 +6727,14 @@
       "timestamp": "2026-11-20 09:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Mummy, Grand Theft Auto: San Andreas, Silent Hill 2 and 7 more",
+      "headline": "Thread on /v/ naming Monster Hunter, Grand Theft Auto: San Andreas, Silent Hill 2 and 8 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752030247",
-      "matched_game": "The Mummy",
+      "matched_game": "Monster Hunter",
       "matched_games": [
-        "The Mummy",
+        "Monster Hunter",
         "Grand Theft Auto: San Andreas",
         "Silent Hill 2",
         "Persona 4",
@@ -6741,7 +6743,8 @@
         "Ford Racing 3",
         "Grand Theft Auto: Vice City",
         "Shrek 2",
-        "The Warriors"
+        "The Warriors",
+        "The Mummy"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -300139,64 +300142,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-06 20:20 UTC"
-    },
-    {
-      "headline": "With the Democrats winning the house, will this eventually have any impact on PC part prices?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xpn0vn/with_the_democrats_winning_the_house_will_this/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 20:18 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Shadow the Hedgehog, Special Forces, Resident Evil Code: Veronica X and 1 more",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12917838",
-      "matched_game": "Shadow the Hedgehog",
-      "matched_games": [
-        "Shadow the Hedgehog",
-        "Special Forces",
-        "Resident Evil Code: Veronica X",
-        "Spy Hunter"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-06 20:17 UTC"
-    },
-    {
-      "headline": "Romancing Saga The Minstrel song or Revenge of the Seven as a starting point?",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xpmzy8/romancing_saga_the_minstrel_song_or_revenge_of/",
-      "matched_game": "Romancing SaGa",
-      "matched_games": [
-        "Romancing SaGa"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-06 20:17 UTC"
     }
   ]
 }
