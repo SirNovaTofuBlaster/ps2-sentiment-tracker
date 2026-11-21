@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-21 22:20:11 UTC",
+  "last_updated": "2026-11-21 22:31:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752155175",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-21 22:25 UTC"
+    },
     {
       "headline": "Star Wars' New Jedi Order Era is Officially Moving Forward",
       "source": "Polygon.com",
@@ -1623,6 +1642,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-21 17:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Just Cause",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752137074",
+      "matched_game": "Just Cause",
+      "matched_games": [
+        "Just Cause"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-21 17:29 UTC"
     },
     {
       "headline": "Fãs de GTA 6 vingam-se e dão notas zero a Zelda no Metacritic",
@@ -4286,23 +4324,25 @@
       "timestamp": "2026-11-21 11:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming The Hobbit, Resident Evil 4, Burnout 3 and 4 more",
+      "headline": "Thread on /v/ naming Shrek 2, The Warriors, Resident Evil 4 and 6 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752116635",
-      "matched_game": "The Hobbit",
+      "matched_game": "Shrek 2",
       "matched_games": [
-        "The Hobbit",
+        "Shrek 2",
+        "The Warriors",
         "Resident Evil 4",
         "Burnout 3",
         "Silent Hill 2",
         "Persona 4",
         "An American Tail",
-        "Grand Theft Auto: San Andreas"
+        "Grand Theft Auto: San Andreas",
+        "The Hobbit"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -285678,148 +285718,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 22:31 UTC"
-    },
-    {
-      "headline": "Looking for a game with fun loot and build variety",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xqiqfu/looking_for_a_game_with_fun_loot_and_build_variety/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 22:28 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming Grand Theft Auto: San Andreas",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12919893",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-07 22:27 UTC"
-    },
-    {
-      "headline": "I just got over Nightmare In Dream Land. What is this code above the The End screen?",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/54120891",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 22:26 UTC"
-    },
-    {
-      "headline": "PSX exclusive games",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xqio59/psx_exclusive_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 22:25 UTC"
-    },
-    {
-      "headline": "What are a bunch of must have/helpful/good apps & programs that I should check out for Windows 11 in general, but also for gaming and productivity? Also what are some options I should turn on and turn off to have a better PC experiance? Tell me your secrets please!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xqio7h/what_are_a_bunch_of_must_havehelpfulgood_apps/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 22:25 UTC"
-    },
-    {
-      "headline": "AMD YOU WERE SUPPOSED TO DESTROY THE SITH NOT JOIN THEM. You have let me down.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xqimaj/amd_you_were_supposed_to_destroy_the_sith_not/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 22:22 UTC"
-    },
-    {
-      "headline": "My Gigabyte 5080 AORUS Master died after 1 year, your thoughts?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xqim0g/my_gigabyte_5080_aorus_master_died_after_1_year/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 22:22 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts, Half-Life and Max Payne",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751148075",
-      "matched_game": "Kingdom Hearts",
-      "matched_games": [
-        "Kingdom Hearts",
-        "Half-Life",
-        "Max Payne"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-07 22:21 UTC"
     }
   ]
 }
