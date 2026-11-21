@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-21 03:16:39 UTC",
+  "last_updated": "2026-11-21 03:30:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -199,6 +199,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-21 02:25 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Half-Life",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752094470",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-21 02:25 UTC"
     },
@@ -296530,116 +296549,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 03:30 UTC"
-    },
-    {
-      "headline": "10 Essential GBA Games Still Disappointingly Missing From Nintendo Switch Online",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/game-boy-advance-games-missing-nintendo-switch-online/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-11-07 03:29 UTC"
-    },
-    {
-      "headline": "I am still playing Nioh.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xpwbcq/i_am_still_playing_nioh/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 03:27 UTC"
-    },
-    {
-      "headline": "Super Mario RPG (Super Famicom JRPG #10) — Thirty Years Later: A Wonderful First Half, a Weaker Second Half",
-      "source": "r/JRPG",
-      "source_type": "reddit",
-      "feed": "reddit:jrpg",
-      "link": "https://www.reddit.com/r/JRPG/comments/1xpwbd8/super_mario_rpg_super_famicom_jrpg_10_thirty/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 03:27 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Deus Ex",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751099991",
-      "matched_game": "Deus Ex",
-      "matched_games": [
-        "Deus Ex"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-07 03:25 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Dark Cloud 2, Phantom Brave and Kingdom Hearts",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751099843",
-      "matched_game": "Dark Cloud 2",
-      "matched_games": [
-        "Dark Cloud 2",
-        "Phantom Brave",
-        "Kingdom Hearts"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-07 03:22 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751099589",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-07 03:16 UTC"
     }
   ]
 }
