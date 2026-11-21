@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-21 10:47:33 UTC",
+  "last_updated": "2026-11-21 10:58:35 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming King Arthur",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752116115",
+      "matched_game": "King Arthur",
+      "matched_games": [
+        "King Arthur"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-21 10:46 UTC"
+    },
     {
       "headline": "Ex de Nintendo confiesan que la saga Zelda 'cada vez se hacía más pequeña' antes de Breath of the Wild",
       "source": "Vandal",
@@ -831,16 +850,16 @@
       "timestamp": "2026-11-21 06:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Resident Evil 4 and Half-Life",
+      "headline": "Thread on /v/ naming Resident Evil 4, Half-Life and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752105641",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Resident Evil 4",
       "matched_games": [
-        "Grand Theft Auto III",
         "Resident Evil 4",
-        "Half-Life"
+        "Half-Life",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -293666,79 +293685,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-07 10:58 UTC"
-    },
-    {
-      "headline": "We're LIVE! Our 10th annual Extra Life charity stream for Duke Children's is happening now",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1xq3phq/were_live_our_10th_annual_extra_life_charity/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 10:56 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming The Thing",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751115237",
-      "matched_game": "The Thing",
-      "matched_games": [
-        "The Thing"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-07 10:55 UTC"
-    },
-    {
-      "headline": "BULLY",
-      "source": "YouTube: ANGEL PS2",
-      "source_type": "youtube",
-      "feed": "youtube:UCgHPug_ZesHYlCA-Jc25VgQ",
-      "link": "https://www.youtube.com/shorts/3ZPBnbpOV_U",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 10:51 UTC",
-      "views": 2984
-    },
-    {
-      "headline": "Silent Hill 2 Remake Has a Great Black Friday Deal, Proving That Sony Does Offer Good Digital Sales",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xq3m2w/silent_hill_2_remake_has_a_great_black_friday/",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 1,
-      "timestamp": "2026-11-07 10:50 UTC"
     }
   ]
 }
