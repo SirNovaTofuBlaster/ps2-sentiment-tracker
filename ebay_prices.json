@@ -1,0 +1,357 @@
+{
+  "fetched_at": "2026-11-21T21:06:06Z",
+  "what": "Asking prices of used Buy It Now listings still for sale on eBay. Not sold prices.",
+  "source": "eBay Browse API",
+  "markets": {
+    "EBAY_US": {
+      "label": "US",
+      "site": "www.ebay.com",
+      "currency": "USD"
+    },
+    "EBAY_GB": {
+      "label": "UK",
+      "site": "www.ebay.co.uk",
+      "currency": "GBP"
+    },
+    "EBAY_DE": {
+      "label": "DE",
+      "site": "www.ebay.de",
+      "currency": "EUR"
+    },
+    "EBAY_FR": {
+      "label": "FR",
+      "site": "www.ebay.fr",
+      "currency": "EUR"
+    },
+    "EBAY_IT": {
+      "label": "IT",
+      "site": "www.ebay.it",
+      "currency": "EUR"
+    },
+    "EBAY_ES": {
+      "label": "ES",
+      "site": "www.ebay.es",
+      "currency": "EUR"
+    }
+  },
+  "searches_used": 6,
+  "stopped_early": "",
+  "games": [
+    {
+      "title": "Cabela's Dangerous Hunts",
+      "level": "dormant",
+      "search": "cabelas dangerous hunts",
+      "queries": [
+        "cabelas dangerous hunts"
+      ],
+      "left_out_if_named": [
+        "cabelas dangerous hunts 2",
+        "cabelas dangerous hunts 2009"
+      ],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=cabelas%20dangerous%20hunts%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "none",
+          "platform_filter": "keyword",
+          "on_ebay": 0,
+          "fetched": 0,
+          "truncated": false,
+          "counted": 0,
+          "skipped": {},
+          "skipped_examples": {}
+        }
+      }
+    },
+    {
+      "title": "Captain Scarlet",
+      "level": "dormant",
+      "search": "captain scarlet",
+      "queries": [
+        "captain scarlet"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=captain%20scarlet%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 3,
+          "fetched": 3,
+          "truncated": false,
+          "counted": 3,
+          "skipped": {},
+          "skipped_examples": {},
+          "lowest": 19.9,
+          "median": 19.95,
+          "postage_known": 3,
+          "median_postage": 4.0,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "Captain Scarlet Blast! - Playstation 2 Juego para Ps2",
+              "price": 19.9,
+              "postage": 4.0,
+              "condition": "En muy buen estado",
+              "listed": "2021-01-09T17:17:07.000Z",
+              "url": "https://www.ebay.es/itm/154284395033"
+            },
+            {
+              "title": "Captain Scarlet Blast! - Playstation 2 Juego para Ps2 Manual Perfecto Estado",
+              "price": 19.95,
+              "postage": 8.45,
+              "condition": "Como nuevo",
+              "listed": "2025-07-31T12:53:59.000Z",
+              "url": "https://www.ebay.es/itm/127279456487"
+            },
+            {
+              "title": "Captain Scarlet Blast! - Playstation 2 Juego para Ps2 - 3T",
+              "price": 21.9,
+              "postage": 4.0,
+              "condition": "En muy buen estado",
+              "listed": "2021-01-09T17:16:14.000Z",
+              "url": "https://www.ebay.es/itm/284142787309"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "Cy Girls",
+      "level": "dormant",
+      "search": "cy girls",
+      "queries": [
+        "cy girls"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_DE": {
+          "search_url": "https://www.ebay.de/sch/i.html?_nkw=cy%20girls%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 6,
+          "fetched": 6,
+          "truncated": false,
+          "counted": 4,
+          "skipped": {
+            "incomplete": 2
+          },
+          "skipped_examples": {
+            "incomplete": [
+              "PS2 / Sony Playstation 2 - Cy Girls nur CD",
+              "Sony Playstation 2 PS2 PAL OVP CY Girls Gut ohne Anleitung"
+            ]
+          },
+          "lowest": 10.0,
+          "median": 26.88,
+          "postage_known": 4,
+          "median_postage": 0.9,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "Cy Girls - Sony Playstation 2 - PS2 - PAL",
+              "price": 10.0,
+              "postage": 1.8,
+              "condition": "Gut",
+              "listed": "2026-11-20T20:57:22.000Z",
+              "url": "https://www.ebay.de/itm/377662853527"
+            },
+            {
+              "title": "CY Girls CG - PlayStation 2 /PS 2 - SEHR GUT -",
+              "price": 16.95,
+              "postage": 0.0,
+              "condition": "Sehr gut",
+              "listed": "2026-09-29T18:43:19.000Z",
+              "url": "https://www.ebay.de/itm/366700088822"
+            },
+            {
+              "title": "Cy Girls (Sony PlayStation 2) PS2 Spiel Komplett",
+              "price": 36.8,
+              "postage": 0.0,
+              "condition": "Sehr gut",
+              "listed": "2026-10-31T22:28:27.000Z",
+              "url": "https://www.ebay.de/itm/168829375866"
+            },
+            {
+              "title": "CY GIRLS playstation 2 PS2 Spiel Game",
+              "price": 49.0,
+              "postage": 6.19,
+              "condition": "Gut",
+              "listed": "2026-05-10T19:23:24.000Z",
+              "url": "https://www.ebay.de/itm/168366376314"
+            }
+          ]
+        },
+        "EBAY_FR": {
+          "search_url": "https://www.ebay.fr/sch/i.html?_nkw=cy%20girls%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 5,
+          "fetched": 5,
+          "truncated": false,
+          "counted": 4,
+          "skipped": {
+            "not_a_copy": 1
+          },
+          "skipped_examples": {
+            "not_a_copy": [
+              "Jeu Playstation 2 PS2 le magazine démo 46 Rise to Honour Sonic cy girls turttl"
+            ]
+          },
+          "lowest": 49.0,
+          "median": 57.45,
+          "postage_known": 4,
+          "median_postage": 2.0,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "CY Girls PS2 Promo Version",
+              "price": 49.0,
+              "postage": 3.99,
+              "condition": "Très bon état",
+              "listed": "2023-06-09T07:57:21.000Z",
+              "url": "https://www.ebay.fr/itm/175764288285"
+            },
+            {
+              "title": "Cy Girls CG PS2 Complet FR",
+              "price": 49.95,
+              "postage": 0.0,
+              "condition": "Bon état",
+              "listed": "2026-03-18T10:25:55.000Z",
+              "url": "https://www.ebay.fr/itm/147210582129"
+            },
+            {
+              "title": "Jeu Rare CY Girls complet sur Playstation 2 - PS2 FR TTBE",
+              "price": 64.95,
+              "postage": 0.0,
+              "condition": "Très bon état",
+              "listed": "2025-01-19T12:58:51.000Z",
+              "url": "https://www.ebay.fr/itm/226554531617"
+            },
+            {
+              "title": "Konami CY Girls Sony PlayStation 2 PS2 PROMO",
+              "price": 103.66,
+              "postage": 5.2,
+              "condition": "Très bon état",
+              "listed": "2026-09-17T10:59:26.000Z",
+              "url": "https://www.ebay.fr/itm/158301607407"
+            }
+          ]
+        },
+        "EBAY_IT": {
+          "search_url": "https://www.ebay.it/sch/i.html?_nkw=cy%20girls%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 3,
+          "fetched": 3,
+          "truncated": false,
+          "counted": 3,
+          "skipped": {},
+          "skipped_examples": {},
+          "lowest": 29.99,
+          "median": 33.3,
+          "postage_known": 3,
+          "median_postage": 6.0,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "CY GIRLS PS2 - OTTIME CONDIZIONI",
+              "price": 29.99,
+              "postage": 7.99,
+              "condition": "Ottime condizioni",
+              "listed": "2023-10-27T09:32:59.000Z",
+              "url": "https://www.ebay.it/itm/175991407058"
+            },
+            {
+              "title": "CY Girls | Ps2 Ita completo con 2 dischi come nuovo",
+              "price": 33.3,
+              "postage": 6.0,
+              "condition": "Come nuovo",
+              "listed": "2026-10-16T15:02:33.000Z",
+              "url": "https://www.ebay.it/itm/327407834559"
+            },
+            {
+              "title": "CG Cy Girls PS2 Playstation 2 Promo Disc Not For Resale Completo",
+              "price": 37.0,
+              "postage": 0.0,
+              "condition": "Ottime condizioni",
+              "listed": "2026-10-21T20:12:00.000Z",
+              "url": "https://www.ebay.it/itm/287663732202"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "title": "King of Fighters 2003",
+      "level": "dormant",
+      "search": "king of fighters 2003",
+      "queries": [
+        "king of fighters 2003"
+      ],
+      "left_out_if_named": [],
+      "markets": {
+        "EBAY_ES": {
+          "search_url": "https://www.ebay.es/sch/i.html?_nkw=king%20of%20fighters%202003%20ps2&_sacat=139973&LH_ItemCondition=2750%7C3000%7C4000%7C5000&LH_BIN=1&LH_PrefLoc=1",
+          "currency": "EUR",
+          "status": "ok",
+          "platform_filter": "keyword",
+          "on_ebay": 6,
+          "fetched": 6,
+          "truncated": false,
+          "counted": 3,
+          "skipped": {
+            "import": 3
+          },
+          "skipped_examples": {
+            "import": [
+              "The King of Fighters 2003 Playstation 2 Ps2 NTSC-J",
+              "The King of Fighters 2003 PS2 japones NTSC-J - PlayStation 2 completo con manual",
+              "THE KING OF FIGHTERS 2003 PLAYSTATION 2 PS2 JAPAN USED"
+            ]
+          },
+          "lowest": 26.99,
+          "median": 29.95,
+          "postage_known": 3,
+          "median_postage": 6.0,
+          "confirmed_counted": 0,
+          "confirmed_median": null,
+          "listings": [
+            {
+              "title": "KING OF FIGHTERS 2003 KOF ps2 Pal España Playstation 2",
+              "price": 26.99,
+              "postage": 4.99,
+              "condition": "En muy buen estado",
+              "listed": "2021-01-31T12:55:07.000Z",
+              "url": "https://www.ebay.es/itm/274666627025"
+            },
+            {
+              "title": "PLAY STATION 2 PS2 KING OF FIGHTERS 2003 BUEN ESTADO PAL ESPAÑA",
+              "price": 29.95,
+              "postage": 6.0,
+              "condition": "En buen estado",
+              "listed": "2024-05-29T12:21:19.000Z",
+              "url": "https://www.ebay.es/itm/266835943563"
+            },
+            {
+              "title": "THE KING OF FIGHTERS 2003 DE SNK - PLAYMORE PARA LA SONY PS2 USADO BUEN ESTADO",
+              "price": 99.99,
+              "postage": 9.96,
+              "condition": "En buen estado",
+              "listed": "2025-06-14T08:18:10.000Z",
+              "url": "https://www.ebay.es/itm/167586691756"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
