@@ -522,8 +522,10 @@
     "ok": true
   },
   "https://retrorpg.net/?feed=podcast": {
+    "error": "ConnectTimeout",
+    "failing_since": "2026-11-21 06:50 UTC",
     "latest": "2026-10-31 09:13 UTC",
-    "ok": true
+    "ok": false
   },
   "https://rss.art19.com/get-played": {
     "latest": "2026-11-16 09:00 UTC",
@@ -662,7 +664,7 @@
     "ok": true
   },
   "https://www.spreaker.com/show/6639255/episodes/feed": {
-    "latest": "2026-11-14 03:01 UTC",
+    "latest": "2026-11-21 03:38 UTC",
     "ok": true
   },
   "https://www.timeextension.com/feed": {
