@@ -487,8 +487,10 @@
     "ok": true
   },
   "https://gamesnostalgia.com/rss2.xml": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-11-21 02:20 UTC",
     "latest": "2026-11-18 21:38 UTC",
-    "ok": true
+    "ok": false
   },
   "https://kotaku.com/rss": {
     "latest": "2026-11-21 00:30 UTC",
@@ -649,11 +651,11 @@
     "ok": true
   },
   "https://www.polygon.com/rss/index.xml": {
-    "latest": "2026-11-21 01:28 UTC",
+    "latest": "2026-11-21 02:15 UTC",
     "ok": true
   },
   "https://www.pushsquare.com/feeds/latest": {
-    "latest": "2026-11-21 01:00 UTC",
+    "latest": "2026-11-21 02:00 UTC",
     "ok": true
   },
   "https://www.rockpapershotgun.com/feed/": {
