@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-22 05:03:21 UTC",
+  "last_updated": "2026-11-22 05:14:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming The Sopranos",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752177153",
+      "matched_game": "The Sopranos",
+      "matched_games": [
+        "The Sopranos"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-22 05:05 UTC"
+    },
     {
       "headline": "Honda Accord Euro R (CL7) from Kaido Racer #ps2 #shorts",
       "source": "YouTube: Jimbo Gaming PlayStation 2 ",
@@ -113,6 +132,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-22 04:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Silent Hill 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752175184",
+      "matched_game": "Silent Hill 2",
+      "matched_games": [
+        "Silent Hill 2"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-22 04:21 UTC"
     },
     {
       "headline": "Best players for FC 27 Cutting Edge Evolution",
@@ -282132,59 +282170,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 05:14 UTC"
-    },
-    {
-      "headline": "How screwed am I?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xqqina/how_screwed_am_i/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-08 05:12 UTC"
-    },
-    {
-      "headline": "I never noticed my Bios ID",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xqqhxp/i_never_noticed_my_bios_id/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-08 05:11 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Soul Calibur 3",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751169172",
-      "matched_game": "Soul Calibur 3",
-      "matched_games": [
-        "Soul Calibur 3"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-08 05:04 UTC"
     }
   ]
 }
