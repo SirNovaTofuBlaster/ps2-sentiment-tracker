@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-22 02:09:13 UTC",
+  "last_updated": "2026-11-22 02:20:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -132,17 +132,19 @@
       "timestamp": "2026-11-22 01:15 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Soul Calibur 2",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Soul Calibur 2 and Resident Evil 4",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752165620",
-      "matched_game": "Soul Calibur 2",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Soul Calibur 2"
+        "Grand Theft Auto III",
+        "Soul Calibur 2",
+        "Resident Evil 4"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -341,6 +343,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-22 00:40 UTC"
+    },
+    {
+      "headline": "Thread on /vr/ naming Altered Beast",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12947223",
+      "matched_game": "Altered Beast",
+      "matched_games": [
+        "Altered Beast"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-22 00:36 UTC"
     },
     {
       "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
@@ -2579,6 +2600,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-21 17:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752137496",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-21 17:35 UTC"
     },
     {
       "headline": "How to steal the BF Bandito in GTA 6",
@@ -82120,14 +82160,15 @@
       "timestamp": "2026-11-16 11:12 UTC"
     },
     {
-      "headline": "Thread on /vrpg/ naming Half-Life",
+      "headline": "Thread on /vrpg/ naming Half-Life and Bad Boys 2",
       "source": "4chan /vrpg/",
       "source_type": "4chan",
       "feed": "4chan:vrpg",
       "link": "https://boards.4chan.org/vrpg/thread/4159220",
       "matched_game": "Half-Life",
       "matched_games": [
-        "Half-Life"
+        "Half-Life",
+        "Bad Boys 2"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -283632,74 +283673,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-08 02:20 UTC"
-    },
-    {
-      "headline": "A Holy Land?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xqndgb/a_holy_land/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-08 02:17 UTC"
-    },
-    {
-      "headline": "Path of Exile 2's game director thinks a death recap will finally allow us players to complain about the right things",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/games/rpg/path-of-exile-2s-game-director-thinks-a-death-recap-will-finally-allow-us-players-to-complain-about-the-right-things/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-08 02:13 UTC"
-    },
-    {
-      "headline": "Hey y’all, I did some digging around in some old stuff today…",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xqn8nm/hey_yall_i_did_some_digging_around_in_some_old/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-08 02:10 UTC"
-    },
-    {
-      "headline": "Most whimsical games that aren’t cozy games?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xqn83g/most_whimsical_games_that_arent_cozy_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-08 02:09 UTC"
     }
   ]
 }
