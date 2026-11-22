@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-22 06:02:26 UTC",
+  "last_updated": "2026-11-22 06:12:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -992,7 +992,7 @@
         "Altered Beast"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1242,13 +1242,14 @@
       "timestamp": "2026-11-21 23:47 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Red Faction and Monster Hunter",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752160421",
-      "matched_game": "Monster Hunter",
+      "matched_game": "Red Faction",
       "matched_games": [
+        "Red Faction",
         "Monster Hunter"
       ],
       "match_score": 100,
@@ -281852,91 +281853,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-08 06:13 UTC"
-    },
-    {
-      "headline": "My first ever PC build!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xqrhq2/my_first_ever_pc_build/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-08 06:10 UTC"
-    },
-    {
-      "headline": "Normals has a Showcase section for your games, with feedback",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/54146815",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-08 06:08 UTC"
-    },
-    {
-      "headline": "Best Retro Surfing Game?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xqrgan/best_retro_surfing_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-08 06:08 UTC"
-    },
-    {
-      "headline": "Ps plus sale time",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xqrf0c/ps_plus_sale_time/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-08 06:05 UTC"
-    },
-    {
-      "headline": "GPU works perfectly in bottom PCIe slot but stops being detected in top slot after shutdown or restart",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xqrcyf/gpu_works_perfectly_in_bottom_pcie_slot_but_stops/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-08 06:02 UTC"
     }
   ]
 }
