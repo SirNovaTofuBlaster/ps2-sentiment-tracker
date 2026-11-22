@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-21 23:58:04 UTC",
+  "last_updated": "2026-11-22 00:00:35 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752160446",
+      "matched_game": "Resident Evil 4",
+      "matched_games": [
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-21 23:47 UTC"
+    },
     {
       "headline": "Wizards of the Coast to pass full AI copyright payout to D&D writers",
       "source": "PCGamer latest",
@@ -198,6 +217,25 @@
       "hype": 0,
       "timestamp": "2026-11-21 22:25 UTC",
       "views": 403
+    },
+    {
+      "headline": "Thread on /v/ naming Unlimited SaGa",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752155075",
+      "matched_game": "Unlimited SaGa",
+      "matched_games": [
+        "Unlimited SaGa"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-21 22:24 UTC"
     },
     {
       "headline": "Star Wars' New Jedi Order Era is Officially Moving Forward",
@@ -537,17 +575,20 @@
       "timestamp": "2026-11-21 21:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Dora the Explorer, Grand Theft Auto: San Andreas, Grand Theft Auto: Vice City and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752151176",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Dora the Explorer",
       "matched_games": [
-        "Grand Theft Auto: San Andreas"
+        "Dora the Explorer",
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -284800,23 +284841,6 @@
       "hype": 0,
       "timestamp": "2026-11-08 00:00 UTC",
       "views": 114128
-    },
-    {
-      "headline": "The trifecta",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xqkm2m/the_trifecta/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-07 23:58 UTC"
     }
   ]
 }
