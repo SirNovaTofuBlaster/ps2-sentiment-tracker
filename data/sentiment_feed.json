@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-23 06:14:40 UTC",
+  "last_updated": "2026-11-23 06:28:35 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Final Fantasy XII",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752255742",
+      "matched_game": "Final Fantasy XII",
+      "matched_games": [
+        "Final Fantasy XII"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-23 06:24 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Half-Life",
       "source": "4chan /v/",
@@ -95,6 +114,25 @@
       "hype": 0,
       "timestamp": "2026-11-23 05:15 UTC",
       "views": 1
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752252739",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-23 05:08 UTC"
     },
     {
       "headline": "Let's Play GTA IV (PS3) - Part 13",
@@ -208,18 +246,19 @@
       "timestamp": "2026-11-23 04:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Urban Chaos: Riot Response and God Hand",
+      "headline": "Thread on /v/ naming Shadow of the Colossus, Urban Chaos: Riot Response and God Hand",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752249972",
-      "matched_game": "Urban Chaos: Riot Response",
+      "matched_game": "Shadow of the Colossus",
       "matched_games": [
+        "Shadow of the Colossus",
         "Urban Chaos: Riot Response",
         "God Hand"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -302,7 +341,7 @@
       "timestamp": "2026-11-23 02:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Urban Reign, Tekken 5, Death by Degrees and 2 more",
+      "headline": "Thread on /v/ naming Urban Reign, Tekken 5 and Death by Degrees",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -311,9 +350,7 @@
       "matched_games": [
         "Urban Reign",
         "Tekken 5",
-        "Death by Degrees",
-        "Kingdom Hearts",
-        "Devil May Cry"
+        "Death by Degrees"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -266924,110 +266961,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-09 06:28 UTC"
-    },
-    {
-      "headline": "The Legend of Zelda: Ocarina of Time Remake on Rtx 4070 5700X3D | 25% FPS GAIN Latest Update",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xrkdq4/the_legend_of_zelda_ocarina_of_time_remake_on_rtx/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-09 06:24 UTC"
-    },
-    {
-      "headline": "PS2 Splinter Cell: Chaos Theory Online Beta Server is Live! (Help Preserve Classic Multiplayer)",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xrkcvj/ps2_splinter_cell_chaos_theory_online_beta_server/",
-      "matched_game": "Splinter Cell",
-      "matched_games": [
-        "Splinter Cell"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-09 06:22 UTC"
-    },
-    {
-      "headline": "In Market for new headset",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xrkc2b/in_market_for_new_headset/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 06:21 UTC"
-    },
-    {
-      "headline": "The new destroyer of ports",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xrkatr/the_new_destroyer_of_ports/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 06:19 UTC"
-    },
-    {
-      "headline": "Upgraded my cooling game with a totally-not-illegal* CPU cooler",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xrkaeg/upgraded_my_cooling_game_with_a_totallynotillegal/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 06:18 UTC"
-    },
-    {
-      "headline": "Identification help",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xrk9fj/identification_help/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 06:17 UTC"
     }
   ]
 }
