@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-23 07:01:59 UTC",
+  "last_updated": "2026-11-23 07:11:40 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -353,19 +353,19 @@
       "timestamp": "2026-11-23 04:06 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Shadow of the Colossus, Urban Chaos: Riot Response and God Hand",
+      "headline": "Thread on /v/ naming Urban Chaos: Riot Response, God Hand and Shadow of the Colossus",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752249972",
-      "matched_game": "Shadow of the Colossus",
+      "matched_game": "Urban Chaos: Riot Response",
       "matched_games": [
-        "Shadow of the Colossus",
         "Urban Chaos: Riot Response",
-        "God Hand"
+        "God Hand",
+        "Shadow of the Colossus"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -448,16 +448,16 @@
       "timestamp": "2026-11-23 02:58 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Urban Reign, Tekken 5 and Death by Degrees",
+      "headline": "Thread on /v/ naming Tekken 5, Death by Degrees and Urban Reign",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752246586",
-      "matched_game": "Urban Reign",
+      "matched_game": "Tekken 5",
       "matched_games": [
-        "Urban Reign",
         "Tekken 5",
-        "Death by Degrees"
+        "Death by Degrees",
+        "Urban Reign"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -615,6 +615,26 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-23 02:06 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War and Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752244070",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-23 02:04 UTC"
     },
     {
       "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and The Arcade",
@@ -266604,57 +266624,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-09 07:12 UTC"
-    },
-    {
-      "headline": "EA Revives 25 Classic PC Games, Including Wing Commander and Road Rash",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xrl4jo/ea_revives_25_classic_pc_games_including_wing/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-09 07:09 UTC"
-    },
-    {
-      "headline": "LG: Which TVs work well with Xbox Series X for gaming? Two Testers Wanted for the LG G6 65” in Different Gaming Environments",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xrl2fg/lg_which_tvs_work_well_with_xbox_series_x_for/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 07:05 UTC"
-    },
-    {
-      "headline": "Item SecureD a Gold Possession",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xrl0yj/item_secured_a_gold_possession/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 07:02 UTC"
     }
   ]
 }
