@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-23 01:18:27 UTC",
+  "last_updated": "2026-11-23 01:27:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -130,6 +130,25 @@
       "timestamp": "2026-11-23 00:45 UTC"
     },
     {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752238846",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-23 00:35 UTC"
+    },
+    {
       "headline": "Thread on /vg/ naming Pro Evolution Soccer",
       "source": "4chan /vg/",
       "source_type": "4chan",
@@ -147,6 +166,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-23 00:31 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming TXR Drift 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752238315",
+      "matched_game": "TXR Drift 2",
+      "matched_games": [
+        "TXR Drift 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-23 00:26 UTC"
     },
     {
       "headline": "Thread on /v/ naming Monster Hunter",
@@ -1895,20 +1933,20 @@
       "timestamp": "2026-11-22 18:02 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III, Grand Theft Auto: San Andreas, Resident Evil 4 and 1 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Grand Theft Auto III, Resident Evil 4 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752212183",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
-        "Grand Theft Auto III",
         "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto III",
         "Resident Evil 4",
         "Area 51"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -269353,96 +269391,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-09 01:27 UTC"
-    },
-    {
-      "headline": "Mod de traduccion en español de thug2",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xress9/mod_de_traduccion_en_español_de_thug2/",
-      "matched_game": "Need for Speed Underground 2",
-      "matched_games": [
-        "Need for Speed Underground 2",
-        "Tony Hawk Underground",
-        "Tony Hawk's Underground 2"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 01:26 UTC"
-    },
-    {
-      "headline": "Playstation TV Pickup",
-      "source": "YouTube: Retro Video Game Pickups",
-      "source_type": "youtube",
-      "feed": "youtube:UC6W4xz9_OdWf2kF_yL7UbEQ",
-      "link": "https://www.youtube.com/shorts/xVbbjoUwG8E",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 01:26 UTC",
-      "views": 7420
-    },
-    {
-      "headline": "Seamless co op story games",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xrerv4/seamless_co_op_story_games/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 01:25 UTC"
-    },
-    {
-      "headline": "A few product recommendations based on my experiencs",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1xreqde/a_few_product_recommendations_based_on_my/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 01:23 UTC"
-    },
-    {
-      "headline": "Metal Gear Solid: A Gem and a Dilemma",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xremrf/metal_gear_solid_a_gem_and_a_dilemma/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-09 01:18 UTC"
     }
   ]
 }
