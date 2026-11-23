@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-23 11:31:03 UTC",
+  "last_updated": "2026-11-23 11:32:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -963,19 +963,19 @@
       "timestamp": "2026-11-23 08:30 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy, Jak 3 and Jak II",
+      "headline": "Thread on /v/ naming Jak II, Jak 3 and Jak and Daxter: The Precursor Legacy",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752260424",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_game": "Jak II",
       "matched_games": [
-        "Jak and Daxter: The Precursor Legacy",
+        "Jak II",
         "Jak 3",
-        "Jak II"
+        "Jak and Daxter: The Precursor Legacy"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1895,7 +1895,7 @@
       "timestamp": "2026-11-23 02:36 UTC"
     },
     {
-      "headline": "Thread on /v/ naming King's Field IV, Deus Ex and Forever Kingdom",
+      "headline": "Thread on /v/ naming King's Field IV, 24: The Game, Deus Ex and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1903,6 +1903,7 @@
       "matched_game": "King's Field IV",
       "matched_games": [
         "King's Field IV",
+        "24: The Game",
         "Deus Ex",
         "Forever Kingdom"
       ],
