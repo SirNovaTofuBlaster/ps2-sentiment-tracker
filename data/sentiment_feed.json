@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-24 06:49:11 UTC",
+  "last_updated": "2026-11-24 06:50:35 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1252,6 +1252,25 @@
       "views": 15478
     },
     {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752316449",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-24 00:48 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming Splinter Cell",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -2497,19 +2516,20 @@
       "timestamp": "2026-11-23 21:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts II, Fight Club and The Bouncer",
+      "headline": "Thread on /v/ naming Kingdom Hearts, Kingdom Hearts II, Fight Club and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752303330",
-      "matched_game": "Kingdom Hearts II",
+      "matched_game": "Kingdom Hearts",
       "matched_games": [
+        "Kingdom Hearts",
         "Kingdom Hearts II",
         "Fight Club",
         "The Bouncer"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
