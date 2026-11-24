@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-24 16:52:40 UTC",
+  "last_updated": "2026-11-24 16:55:13 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-24 16:51 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752359130",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-24 16:44 UTC"
     },
     {
       "headline": "Bungie Officially Shows Off Marathon’s Most Exciting Update Feature",
@@ -1107,15 +1126,16 @@
       "views": 55
     },
     {
-      "headline": "Thread on /v/ naming Fatal Frame and Resident Evil 4",
+      "headline": "Thread on /v/ naming Silent Hill 2, Resident Evil 4 and Fatal Frame",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752353691",
-      "matched_game": "Fatal Frame",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
-        "Fatal Frame",
-        "Resident Evil 4"
+        "Silent Hill 2",
+        "Resident Evil 4",
+        "Fatal Frame"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -245907,93 +245927,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-10 16:55 UTC"
-    },
-    {
-      "headline": "GTA 6 is the ‘most pre-ordered game in PlayStation history’ despite the fact it’s locked at 30FPS, even on PS5 Pro",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/gta-6-is-the-most-pre-ordered-game-in-playstation-history-despite-the-fact-its-locked-at-30fps-even-on-ps5-pro/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 16:53 UTC"
-    },
-    {
-      "headline": "‘AMDLSS5’ gets Nvidia’s neural rendering running on AMD graphics cards and claims 64% better performance than other mods",
-      "source": "PCGamer latest",
-      "source_type": "news",
-      "feed": "https://www.pcgamer.com/rss/",
-      "link": "https://www.pcgamer.com/hardware/graphics-cards/amdlss5-gets-nvidias-neural-rendering-running-on-amd-graphics-cards-and-claims-64-percent-better-performance-than-other-mods/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 16:53 UTC"
-    },
-    {
-      "headline": "Getting started with emulating without breaking my Steam Deck",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xss1wm/getting_started_with_emulating_without_breaking/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 16:53 UTC"
-    },
-    {
-      "headline": "Marvel Rivals - Official Doomsday Season 11 Trailer",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xss1w0/marvel_rivals_official_doomsday_season_11_trailer/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 16:53 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751327045",
-      "matched_game": "Grand Theft Auto III",
-      "matched_games": [
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-10 16:52 UTC"
     }
   ]
 }
