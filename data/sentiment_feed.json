@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-24 23:28:54 UTC",
+  "last_updated": "2026-11-24 23:37:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -35,6 +35,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-25 00:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752386084",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-24 23:27 UTC"
     },
     {
       "headline": "GTA 6 IRL",
@@ -288,13 +307,14 @@
       "timestamp": "2026-11-24 22:45 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3",
+      "headline": "Thread on /v/ naming Persona 4 and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752382745",
-      "matched_game": "Persona 3",
+      "matched_game": "Persona 4",
       "matched_games": [
+        "Persona 4",
         "Persona 3"
       ],
       "match_score": 100,
@@ -240506,164 +240526,6 @@
       "hype": 1,
       "timestamp": "2026-11-10 23:37 UTC",
       "views": 44760
-    },
-    {
-      "headline": "Are there any games out there with combat mechanics similar to Skyforge?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xt2b1d/are_there_any_games_out_there_with_combat/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 23:36 UTC"
-    },
-    {
-      "headline": "Mouse Work, The Switch 2 Game Using Joy-Con Mouse Controls, Arrives This December",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/11/mouse-work-the-switch-2-game-using-joy-con-mouse-controls-arrives-this-december",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 23:35 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751352259",
-      "matched_game": "Grand Theft Auto: San Andreas",
-      "matched_games": [
-        "Grand Theft Auto: San Andreas",
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-10 23:33 UTC"
-    },
-    {
-      "headline": "Hey I have a budget of 2.6k I want a 5080 9800 x3d build can someone give me good recommendations I want a prebuilt",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xt27yg/hey_i_have_a_budget_of_26k_i_want_a_5080_9800_x3d/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 23:33 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming SSX Tricky",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751352136",
-      "matched_game": "SSX Tricky",
-      "matched_games": [
-        "SSX Tricky"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-10 23:31 UTC"
-    },
-    {
-      "headline": "Killing Floor Studio Cofounder Blames Spiraling Layoffs On ‘Woke Leftists’",
-      "source": "Kotaku",
-      "source_type": "news",
-      "feed": "https://kotaku.com/rss",
-      "link": "https://kotaku.com/killing-floor-studio-cofounder-blames-spiraling-layoffs-on-woke-leftists-2000755642",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 23:30 UTC"
-    },
-    {
-      "headline": "Sony deita fora anos de trabalho e cancela Fairgame$",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/sony-deita-fora-anos-de-trabalho-e-cancela-fairgame",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 23:30 UTC"
-    },
-    {
-      "headline": "All Emperor’s Tarot Cards in Warhammer Survivors explained (Power Ups)",
-      "source": "Destructoid",
-      "source_type": "news",
-      "feed": "https://www.destructoid.com/feed/",
-      "link": "https://www.destructoid.com/all-emperors-tarot-cards-in-warhammer-survivors-explained-power-ups/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 23:29 UTC"
-    },
-    {
-      "headline": "I just found my End-Game optical drive, it reads nearly everything!",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xt24tj/i_just_found_my_endgame_optical_drive_it_reads/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 23:29 UTC"
     }
   ]
 }
