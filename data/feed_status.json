@@ -1,7 +1,7 @@
 {
   "4chan:v": {
-    "latest": "2026-11-24 06:21 UTC",
-    "modified": "Tue, 24 Nov 2026 06:22:27 GMT",
+    "latest": "2026-11-24 06:33 UTC",
+    "modified": "Tue, 24 Nov 2026 06:36:04 GMT",
     "ok": true,
     "threads": {
       "752245615": {
@@ -27,6 +27,15 @@
         "modified": "Tue, 24 Nov 2026 05:42:43 GMT",
         "replies": 156
       },
+      "752303330": {
+        "games": [
+          "Kingdom Hearts II",
+          "Fight Club",
+          "The Bouncer"
+        ],
+        "modified": "Tue, 24 Nov 2026 06:32:49 GMT",
+        "replies": 119
+      },
       "752320283": {
         "games": [
           "Final Fantasy X"
@@ -41,28 +50,14 @@
         "modified": "Tue, 24 Nov 2026 05:43:19 GMT",
         "replies": 25
       },
-      "752326320": {
-        "games": [
-          "Grand Theft Auto III"
-        ],
-        "modified": "Tue, 24 Nov 2026 04:55:22 GMT",
-        "replies": 21
-      },
       "752327384": {
         "games": [
           "Silent Hill 2",
           "Silent Hill 3",
           "Silent Hill 4: The Room"
         ],
-        "modified": "Tue, 24 Nov 2026 06:20:33 GMT",
-        "replies": 23
-      },
-      "752328126": {
-        "games": [
-          "Grand Theft Auto: San Andreas"
-        ],
-        "modified": "Tue, 24 Nov 2026 06:20:24 GMT",
-        "replies": 10
+        "modified": "Tue, 24 Nov 2026 06:35:01 GMT",
+        "replies": 25
       },
       "752330194": {
         "games": [
@@ -75,7 +70,7 @@
   },
   "4chan:vg": {
     "latest": "2026-11-24 06:19 UTC",
-    "modified": "Tue, 24 Nov 2026 06:22:35 GMT",
+    "modified": "Tue, 24 Nov 2026 06:36:15 GMT",
     "ok": true,
     "threads": {
       "588173473": {
@@ -111,8 +106,8 @@
       },
       "588630203": {
         "games": [],
-        "modified": "Tue, 24 Nov 2026 06:21:27 GMT",
-        "replies": 632
+        "modified": "Tue, 24 Nov 2026 06:33:17 GMT",
+        "replies": 634
       },
       "588639834": {
         "games": [
@@ -131,29 +126,29 @@
           "Silent Hill 2",
           "Persona 3"
         ],
-        "modified": "Tue, 24 Nov 2026 05:57:44 GMT",
-        "replies": 416
+        "modified": "Tue, 24 Nov 2026 06:27:05 GMT",
+        "replies": 418
       },
       "588724801": {
         "games": [
           "Pro Evolution Soccer 2014"
         ],
-        "modified": "Tue, 24 Nov 2026 06:13:22 GMT",
-        "replies": 656
+        "modified": "Tue, 24 Nov 2026 06:30:48 GMT",
+        "replies": 657
       },
       "588732527": {
         "games": [
           "Monster Hunter",
           "Resident Evil 4"
         ],
-        "modified": "Tue, 24 Nov 2026 06:20:13 GMT",
-        "replies": 351
+        "modified": "Tue, 24 Nov 2026 06:33:32 GMT",
+        "replies": 357
       }
     }
   },
   "4chan:vm": {
     "latest": "2026-11-24 04:28 UTC",
-    "modified": "Tue, 24 Nov 2026 06:21:40 GMT",
+    "modified": "Tue, 24 Nov 2026 06:36:24 GMT",
     "ok": true,
     "threads": {
       "3196008": {
@@ -167,12 +162,12 @@
   },
   "4chan:vmg": {
     "latest": "2026-11-23 05:40 UTC",
-    "modified": "Tue, 24 Nov 2026 06:22:36 GMT",
+    "modified": "Tue, 24 Nov 2026 06:32:52 GMT",
     "ok": true
   },
   "4chan:vr": {
     "latest": "2026-11-24 06:19 UTC",
-    "modified": "Tue, 24 Nov 2026 06:19:57 GMT",
+    "modified": "Tue, 24 Nov 2026 06:35:16 GMT",
     "ok": true,
     "threads": {
       "12927804": {
@@ -283,7 +278,7 @@
   },
   "4chan:vrpg": {
     "latest": "2026-11-24 03:19 UTC",
-    "modified": "Tue, 24 Nov 2026 06:22:26 GMT",
+    "modified": "Tue, 24 Nov 2026 06:35:38 GMT",
     "ok": true,
     "threads": {
       "4155832": {
@@ -335,7 +330,7 @@
   },
   "4chan:vst": {
     "latest": "2026-11-23 17:56 UTC",
-    "modified": "Tue, 24 Nov 2026 06:20:52 GMT",
+    "modified": "Tue, 24 Nov 2026 06:27:00 GMT",
     "ok": true
   },
   "http://bicbp-radio.com/retro-blissed?format=rss": {
@@ -535,8 +530,10 @@
     "ok": true
   },
   "https://lemmy.world/feeds/c/retrogaming.xml?sort=New": {
+    "error": "ReadTimeout",
+    "failing_since": "2026-11-24 06:38 UTC",
     "latest": "2026-11-24 00:18 UTC",
-    "ok": true
+    "ok": false
   },
   "https://news.xbox.com/en-us/feed/": {
     "error": "HTTP 403",
@@ -645,7 +642,7 @@
     "ok": true
   },
   "https://www.destructoid.com/feed/": {
-    "latest": "2026-11-23 22:44 UTC",
+    "latest": "2026-11-24 06:22 UTC",
     "ok": true
   },
   "https://www.eurogamer.net/feed": {
@@ -661,7 +658,7 @@
     "ok": true
   },
   "https://www.gematsu.com/feed": {
-    "latest": "2026-11-24 03:15 UTC",
+    "latest": "2026-11-24 06:20 UTC",
     "ok": true
   },
   "https://www.nintendolife.com/feeds/latest": {
