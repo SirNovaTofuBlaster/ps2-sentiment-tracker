@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-24 07:18:44 UTC",
+  "last_updated": "2026-11-24 07:32:40 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -297,16 +297,16 @@
       "timestamp": "2026-11-24 04:17 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Silent Hill 3, Silent Hill 4: The Room and Silent Hill 2",
+      "headline": "Thread on /v/ naming Silent Hill 2, Silent Hill 3 and Silent Hill 4: The Room",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752327384",
-      "matched_game": "Silent Hill 3",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Silent Hill 3",
-        "Silent Hill 4: The Room",
-        "Silent Hill 2"
+        "Silent Hill 4: The Room"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -4390,20 +4390,20 @@
       "timestamp": "2026-11-23 18:05 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Area 51, Grand Theft Auto: San Andreas, The Hulk and 1 more",
+      "headline": "Thread on /v/ naming The Hulk, Grand Theft Auto: San Andreas, Grand Theft Auto III and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752290135",
-      "matched_game": "Area 51",
+      "matched_game": "The Hulk",
       "matched_games": [
-        "Area 51",
-        "Grand Theft Auto: San Andreas",
         "The Hulk",
-        "Grand Theft Auto III"
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto III",
+        "Area 51"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -252805,86 +252805,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-10 07:34 UTC"
-    },
-    {
-      "headline": "PS2 Elimination Tournament round 25 (54-50)",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xsgs5i/ps2_elimination_tournament_round_25_5450/",
-      "matched_game": "Ace Combat 4: Shattered Skies",
-      "matched_games": [
-        "Ace Combat 4: Shattered Skies",
-        "Ace Combat 5: The Unsung War",
-        "Gran Turismo: Concept 2002 Tokyo-Geneva",
-        "Burnout 2: Point of Impact",
-        "Shadow of the Colossus",
-        "Burnout Revenge",
-        "Burnout 3",
-        "Half-Life"
-      ],
-      "match_score": 92,
-      "match_method": "variant",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 07:31 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Persona 3 and Persona 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751305098",
-      "matched_game": "Persona 3",
-      "matched_games": [
-        "Persona 3",
-        "Persona 4"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-10 07:22 UTC"
-    },
-    {
-      "headline": "Chill one handed games for a long commute on Android?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xsglo6/chill_one_handed_games_for_a_long_commute_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 07:20 UTC"
-    },
-    {
-      "headline": "Mario Kart world is in a semi playable state on Steam Deck.",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xsgkfi/mario_kart_world_is_in_a_semi_playable_state_on/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-10 07:18 UTC"
     }
   ]
 }
