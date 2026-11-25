@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-25 06:37:42 UTC",
+  "last_updated": "2026-11-25 06:53:33 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -57,6 +57,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-25 05:55 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Manhunt 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752406243",
+      "matched_game": "Manhunt 2",
+      "matched_games": [
+        "Manhunt 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-25 05:39 UTC"
     },
     {
       "headline": "Thread on /v/ naming Grand Theft Auto III",
@@ -236502,95 +236521,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 06:53 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/587461703",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-11 06:50 UTC"
-    },
-    {
-      "headline": "Finally downloading 🤞🏽",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xtay5o/finally_downloading/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-11 06:50 UTC"
-    },
-    {
-      "headline": "Thread on /vg/ naming Top Gun",
-      "source": "4chan /vg/",
-      "source_type": "4chan",
-      "feed": "4chan:vg",
-      "link": "https://boards.4chan.org/vg/thread/587461653",
-      "matched_game": "Top Gun",
-      "matched_games": [
-        "Top Gun"
-      ],
-      "match_score": 100,
-      "match_method": "exact",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-11 06:49 UTC"
-    },
-    {
-      "headline": "Disney's Legendary 218-Episode Sci-Fi Series Is the Perfect Anti-'Lanterns' Binge",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/lanterns-x-files-binge/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-11 06:49 UTC"
-    },
-    {
-      "headline": "\"It's Terrific\" - Take-Two Boss Acknowledges Zelda Remake's High Score Ahead Of GTA VI Launch",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/11/its-terrific-take-two-boss-acknowledges-zelda-remakes-high-score-ahead-of-gta-vi-launch",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-11 06:45 UTC"
     }
   ]
 }
