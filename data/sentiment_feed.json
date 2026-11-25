@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-25 04:18:58 UTC",
+  "last_updated": "2026-11-25 04:27:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1305,17 +1305,18 @@
       "views": 237
     },
     {
-      "headline": "Thread on /v/ naming Persona 3",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Persona 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752384196",
-      "matched_game": "Persona 3",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
+        "Grand Theft Auto: San Andreas",
         "Persona 3"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3088,6 +3089,25 @@
       "hype": 0,
       "timestamp": "2026-11-24 19:22 UTC",
       "views": 33349
+    },
+    {
+      "headline": "Thread on /v/ naming Persona 3",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752369248",
+      "matched_game": "Persona 3",
+      "matched_games": [
+        "Persona 3"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-24 19:22 UTC"
     },
     {
       "headline": "Depois de GTA 6, Sony aposta em The Witcher 4",
@@ -237582,40 +237602,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-11 04:29 UTC"
-    },
-    {
-      "headline": "Did anyone else play Stimpy’s invention 😂",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xt8czt/did_anyone_else_play_stimpys_invention/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-11 04:24 UTC"
-    },
-    {
-      "headline": "My Miku-themed (Almost Maxed Out) 2017 DDR3 Build",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xt8bz9/my_mikuthemed_almost_maxed_out_2017_ddr3_build/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-11 04:23 UTC"
     }
   ]
 }
