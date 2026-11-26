@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-26 06:21:13 UTC",
+  "last_updated": "2026-11-26 06:30:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -148,14 +148,15 @@
       "timestamp": "2026-11-26 05:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Monster Hunter",
+      "headline": "Thread on /v/ naming Monster Hunter and Silent Hill 3",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752483443",
       "matched_game": "Monster Hunter",
       "matched_games": [
-        "Monster Hunter"
+        "Monster Hunter",
+        "Silent Hill 3"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -182,6 +183,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-26 05:03 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752482972",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-26 05:02 UTC"
     },
     {
       "headline": "10 Classic Books Worth Reading Over and Over",
@@ -221579,91 +221599,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-12 06:30 UTC"
-    },
-    {
-      "headline": "Romance visual novel Renai, Hajimemashite coming to PS5, PS4, and Switch on March 25, 2027 in Japan",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/11/romance-visual-novel-renai-hajimemashite-coming-to-ps5-ps4-and-switch-on-march-25-2027-in-japan",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 06:29 UTC"
-    },
-    {
-      "headline": "1st PlayAsia Order",
-      "source": "r/NSCollectors",
-      "source_type": "reddit",
-      "feed": "reddit:nscollectors",
-      "link": "https://www.reddit.com/r/NSCollectors/comments/1xu5ilh/1st_playasia_order/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 06:28 UTC"
-    },
-    {
-      "headline": "Times when retro games had weird names",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xu5ir7/times_when_retro_games_had_weird_names/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 06:28 UTC"
-    },
-    {
-      "headline": "Need help with verifying age",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xu5i86/need_help_with_verifying_age/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 06:27 UTC"
-    },
-    {
-      "headline": "Jensen Huang right now:",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xu5er5/jensen_huang_right_now/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 06:21 UTC"
     }
   ]
 }
