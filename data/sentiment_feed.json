@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-26 03:36:44 UTC",
+  "last_updated": "2026-11-26 03:50:41 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -522,6 +522,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-26 00:51 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752469127",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-26 00:46 UTC"
     },
     {
       "headline": "Nintendo Restocks Metroid Dread Physical Copies Ahead Of Metroid Ravenous Launch",
@@ -9095,16 +9114,16 @@
       "timestamp": "2026-11-25 09:24 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Max Payne and Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Max Payne and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752414056",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto III",
         "Max Payne",
-        "Grand Theft Auto III"
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -222712,201 +222731,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-12 03:51 UTC"
-    },
-    {
-      "headline": "Good Playstation VR games for a 12 year old boy",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xu2lic/good_playstation_vr_games_for_a_12_year_old_boy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:48 UTC"
-    },
-    {
-      "headline": "Thread on /vr/ naming War of the Monsters",
-      "source": "4chan /vr/",
-      "source_type": "4chan",
-      "feed": "4chan:vr",
-      "link": "https://boards.4chan.org/vr/thread/12927950",
-      "matched_game": "War of the Monsters",
-      "matched_games": [
-        "War of the Monsters"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:48 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Final Fantasy XII",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751436284",
-      "matched_game": "Final Fantasy XII",
-      "matched_games": [
-        "Final Fantasy XII"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:47 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil 4",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751436265",
-      "matched_game": "Resident Evil 4",
-      "matched_games": [
-        "Resident Evil 4"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:47 UTC"
-    },
-    {
-      "headline": "My small collection",
-      "source": "r/gamecollecting",
-      "source_type": "reddit",
-      "feed": "reddit:gamecollecting",
-      "link": "https://www.reddit.com/r/gamecollecting/comments/1xu2jkw/my_small_collection/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:45 UTC"
-    },
-    {
-      "headline": "Skyrim Celebrates 15 Years Of Adventure With Switch eShop Sale, Get 60% Off",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/11/skyrim-celebrates-15-years-of-adventure-with-switch-eshop-sale-get-60percent-off",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:45 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Resident Evil Code: Veronica X",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751436129",
-      "matched_game": "Resident Evil Code: Veronica X",
-      "matched_games": [
-        "Resident Evil Code: Veronica X"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:43 UTC"
-    },
-    {
-      "headline": "More Games Should Be 30FPS*",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xu2h04/more_games_should_be_30fps/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:41 UTC"
-    },
-    {
-      "headline": "This is a totally normal thing to do right?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xu2g62/this_is_a_totally_normal_thing_to_do_right/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:40 UTC"
-    },
-    {
-      "headline": "I had an incredibly bizarre dream where Sony paid Sega to team up to run aggressive ads to attempt to eliminate the N64's threat from the market. Nintendo sued, won, and they got to make ports of 3 Sony and 3 Sega games.",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xu2f72/i_had_an_incredibly_bizarre_dream_where_sony_paid/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:39 UTC"
-    },
-    {
-      "headline": "What We Know About Every Assassin’s Creed Project in Active Development",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/assassins-creed-games-all-updates/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 03:37 UTC"
     }
   ]
 }
