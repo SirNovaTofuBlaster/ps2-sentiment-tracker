@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-26 09:14:55 UTC",
+  "last_updated": "2026-11-26 09:23:38 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -52,6 +52,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-26 08:58 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Fatal Frame",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752491676",
+      "matched_game": "Fatal Frame",
+      "matched_games": [
+        "Fatal Frame"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-26 08:41 UTC"
     },
     {
       "headline": "Este estudio español retrasó su metroidvania para evitar a Silksong, pero ahora temen coincidir con su DLC gratuito",
@@ -2235,15 +2254,15 @@
       "timestamp": "2026-11-25 22:27 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Area 51 and Deus Ex",
+      "headline": "Thread on /v/ naming Deus Ex and Area 51",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752459649",
-      "matched_game": "Area 51",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Area 51",
-        "Deus Ex"
+        "Deus Ex",
+        "Area 51"
       ],
       "match_score": 100,
       "match_method": "exact",
@@ -219866,167 +219885,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-12 09:24 UTC"
-    },
-    {
-      "headline": "Top 100 Atari 2600 Games: #61 & #62",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xu8as8/top_100_atari_2600_games_61_62/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 09:22 UTC"
-    },
-    {
-      "headline": "Has anyone seen/ tried this ANR (Apex Neural Rendering) thing?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xu8b0z/has_anyone_seen_tried_this_anr_apex_neural/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 09:22 UTC"
-    },
-    {
-      "headline": "Humble Bundle Undergoes A Vibecoded-Looking Redesign, Forgets To Implement Full Account Security",
-      "source": "r/Games",
-      "source_type": "reddit",
-      "feed": "reddit:games",
-      "link": "https://www.reddit.com/r/Games/comments/1xu8a8o/humble_bundle_undergoes_a_vibecodedlooking/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 09:21 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2, Resident Evil 4, Fatal Frame and 2 more",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751447584",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2",
-        "Resident Evil 4",
-        "Fatal Frame",
-        "Silent Hill 3",
-        "Silent Hill 4: The Room"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-12 09:18 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751447492",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-12 09:16 UTC"
-    },
-    {
-      "headline": "Las mejores ofertas de Nintendo Switch y Switch 2 en la eShop de esta semana (12/11/2026)",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026316010/las-mejores-ofertas-de-nintendo-switch-y-switch-2-en-la-eshop-de-esta-semana-12112026/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 09:16 UTC"
-    },
-    {
-      "headline": "Microsoft admits people don't want AI in search, releases new tools to let you turn it off on Bing: \"Users want to have the option to choose whether or not AI is involved\"",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xu87a9/microsoft_admits_people_dont_want_ai_in_search/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 09:15 UTC"
-    },
-    {
-      "headline": "The base PS5 will use “Spatial Upscaling” to upscale the GTA6 1440p res to 4K. Can anyone explain what spatial upscaling is?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xu870a/the_base_ps5_will_use_spatial_upscaling_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 09:15 UTC"
-    },
-    {
-      "headline": "The Spectrum Retreat: Redux coming to PS5, Xbox Series, and PC on November 26",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/11/the-spectrum-retreat-redux-coming-to-ps5-xbox-series-and-pc-on-november-26",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 09:15 UTC"
     }
   ]
 }
