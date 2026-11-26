@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-26 10:13:02 UTC",
+  "last_updated": "2026-11-26 10:21:40 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -978,17 +978,18 @@
       "timestamp": "2026-11-26 05:03 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Deus Ex and Grand Theft Auto: San Andreas",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752482972",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3305,19 +3306,20 @@
       "timestamp": "2026-11-25 21:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Unreal Tournament, Sniper Elite, Grand Theft Auto III and 3 more",
+      "headline": "Thread on /v/ naming Grandia II, Grand Theft Auto III, Deus Ex and 4 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752454392",
-      "matched_game": "Unreal Tournament",
+      "matched_game": "Grandia II",
       "matched_games": [
-        "Unreal Tournament",
-        "Sniper Elite",
+        "Grandia II",
         "Grand Theft Auto III",
         "Deus Ex",
         "Shin Megami Tensei: Nocturne",
-        "Metal Gear Solid 2"
+        "Metal Gear Solid 2",
+        "Unreal Tournament",
+        "Sniper Elite"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -219350,78 +219352,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 10:21 UTC"
-    },
-    {
-      "headline": "Psycho-Sleuth has me thinking about what “difficulty” means in a mystery game",
-      "source": "r/pcgaming",
-      "source_type": "reddit",
-      "feed": "reddit:pcgaming",
-      "link": "https://www.reddit.com/r/pcgaming/comments/1xu962k/psychosleuth_has_me_thinking_about_what/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 10:17 UTC"
-    },
-    {
-      "headline": "New Limited-Time Pokémon Champions Distribution Is Now Available",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/11/new-limited-time-pokemon-champions-distribution-is-now-available",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 10:15 UTC"
-    },
-    {
-      "headline": "Naughty Dog lo confirma: Jak and Daxter ha sido una de las principales fuentes de inspiración para Intergalactic",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026316015/naughty-dog-lo-confirma-jak-and-daxter-ha-sido-una-de-las-principales-fuentes-de-inspiracion-para-intergalactic/",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
-      "matched_games": [
-        "Jak and Daxter: The Precursor Legacy"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "title",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 10:14 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751449440",
-      "matched_game": "Grand Theft Auto III",
-      "matched_games": [
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-12 10:13 UTC"
     }
   ]
 }
