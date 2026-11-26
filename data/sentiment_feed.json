@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-26 00:34:14 UTC",
+  "last_updated": "2026-11-26 00:43:48 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -115,6 +115,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-26 00:07 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Shadow of the Colossus",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752466501",
+      "matched_game": "Shadow of the Colossus",
+      "matched_games": [
+        "Shadow of the Colossus"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-26 00:05 UTC"
     },
     {
       "headline": "Denny’s Posts Statement Celebrating Jensen Huang’s Return As Nvidia CEO: ‘Some Things You Just Don’t Take Off The Menu’",
@@ -1100,14 +1119,17 @@
       "timestamp": "2026-11-25 21:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Shin Megami Tensei: Nocturne, Metal Gear Solid 2, Grand Theft Auto III and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752454392",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Shin Megami Tensei: Nocturne",
       "matched_games": [
-        "Grand Theft Auto III"
+        "Shin Megami Tensei: Nocturne",
+        "Metal Gear Solid 2",
+        "Grand Theft Auto III",
+        "Deus Ex"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -224224,112 +224246,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-12 00:44 UTC"
-    },
-    {
-      "headline": "What's the best ps1 game ever?",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xtyqoi/whats_the_best_ps1_game_ever/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-12 00:41 UTC"
-    },
-    {
-      "headline": "Found this gem in grandpa's basement. He used to play it back in the day",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xtyp0j/found_this_gem_in_grandpas_basement_he_used_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 00:39 UTC"
-    },
-    {
-      "headline": "Flickering vertical white lines on Gigabyte M27UP",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xtyoy7/flickering_vertical_white_lines_on_gigabyte_m27up/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 00:38 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Beyond Good and Evil, Metal Gear Solid 3: Snake Eater and Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751426697",
-      "matched_game": "Beyond Good and Evil",
-      "matched_games": [
-        "Beyond Good and Evil",
-        "Metal Gear Solid 3: Snake Eater",
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-12 00:37 UTC"
-    },
-    {
-      "headline": "RAGE is better than you think...",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xtyn5z/rage_is_better_than_you_think/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 00:36 UTC"
-    },
-    {
-      "headline": "Arch Linux yay version troubleshooting",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xtymj4/arch_linux_yay_version_troubleshooting/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 00:35 UTC"
     }
   ]
 }
