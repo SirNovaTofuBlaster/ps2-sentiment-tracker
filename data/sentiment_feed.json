@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-26 05:32:45 UTC",
+  "last_updated": "2026-11-26 05:46:44 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vg/ naming Monster Hunter",
+      "source": "4chan /vg/",
+      "source_type": "4chan",
+      "feed": "4chan:vg",
+      "link": "https://boards.4chan.org/vg/thread/589052361",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-26 05:33 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Monster Hunter",
       "source": "4chan /v/",
@@ -127,6 +146,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-26 04:57 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Final Fantasy X",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752480953",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-26 04:17 UTC"
     },
     {
       "headline": "Mouse P.I. For Hire Teases DLC Announcement, Taking Place Next Week",
@@ -1945,13 +1983,14 @@
       "views": 122
     },
     {
-      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "headline": "Thread on /v/ naming Monster Hunter and Kingdom Hearts",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752457987",
-      "matched_game": "Kingdom Hearts",
+      "matched_game": "Monster Hunter",
       "matched_games": [
+        "Monster Hunter",
         "Kingdom Hearts"
       ],
       "match_score": 100,
@@ -221886,57 +221925,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-12 05:47 UTC"
-    },
-    {
-      "headline": "We're set till launch day",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xu4s7n/were_set_till_launch_day/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 05:45 UTC"
-    },
-    {
-      "headline": "Random: Yes, Young Link Is Still Quicker When He Rolls About In Ocarina's Remake",
-      "source": "Nintendo Life",
-      "source_type": "news",
-      "feed": "https://www.nintendolife.com/feeds/latest",
-      "link": "https://www.nintendolife.com/news/2026/11/random-yes-young-link-is-still-quicker-when-he-rolls-about-in-ocarinas-remake",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": true,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-12 05:45 UTC"
-    },
-    {
-      "headline": "Someone check Jensen's PC",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xu4m9t/someone_check_jensens_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 05:36 UTC"
     }
   ]
 }
