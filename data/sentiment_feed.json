@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-26 12:08:18 UTC",
+  "last_updated": "2026-11-26 12:17:49 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -262,6 +262,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-26 11:11 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Da Vinci Code",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752496648",
+      "matched_game": "The Da Vinci Code",
+      "matched_games": [
+        "The Da Vinci Code"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-26 11:03 UTC"
     },
     {
       "headline": "20 Years Ago, The Sopranos PS2 Game Sank So GTA 6 Could Swim",
@@ -1122,19 +1141,20 @@
       "timestamp": "2026-11-26 08:23 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Jak and Daxter: The Precursor Legacy, Kingdom Hearts II and Winx Club",
+      "headline": "Thread on /v/ naming Blade 2, Winx Club, Jak and Daxter: The Precursor Legacy and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752490927",
-      "matched_game": "Jak and Daxter: The Precursor Legacy",
+      "matched_game": "Blade 2",
       "matched_games": [
+        "Blade 2",
+        "Winx Club",
         "Jak and Daxter: The Precursor Legacy",
-        "Kingdom Hearts II",
-        "Winx Club"
+        "Kingdom Hearts II"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -7065,6 +7085,25 @@
       "is_remaster_rumor": false,
       "is_digital_only": false,
       "sentiment": 50,
+      "hype": 0,
+      "timestamp": "2026-11-25 16:38 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752435510",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-25 16:38 UTC"
     },
@@ -72839,14 +72878,15 @@
       "timestamp": "2026-11-19 01:18 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Spider-Man",
+      "headline": "Thread on /vr/ naming Spider-Man and Outlaw Golf",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12941269",
       "matched_game": "Spider-Man",
       "matched_games": [
-        "Spider-Man"
+        "Spider-Man",
+        "Outlaw Golf"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -217871,91 +217911,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-12 12:17 UTC"
-    },
-    {
-      "headline": "Hay un proyecto 'secreto' con los Rabbids, según el actor de los populares personajes de Ubisoft",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026316024/hay-un-proyecto-secreto-con-los-rabbids-segun-el-actor-de-los-populares-personajes-de-ubisoft/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 12:16 UTC"
-    },
-    {
-      "headline": "Unnamed 15 kHz monitor from aliexpress, could be fine?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xub97j/unnamed_15_khz_monitor_from_aliexpress_could_be/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 12:15 UTC"
-    },
-    {
-      "headline": "Picross S Climax announced for Nintendo Switch 2, Switch [update: trailer]",
-      "source": "Nintendo Everything",
-      "source_type": "news",
-      "feed": "https://nintendoeverything.com/feed",
-      "link": "https://nintendoeverything.com/picross-s-climax-announced-for-nintendo-switch-2-switch/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-12 12:15 UTC"
-    },
-    {
-      "headline": "Legit Pokemon Platinum?",
-      "source": "r/gameverifying",
-      "source_type": "reddit",
-      "feed": "reddit:gameverifying",
-      "link": "https://www.reddit.com/r/gameverifying/comments/1xub5g5/legit_pokemon_platinum/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 12:10 UTC"
-    },
-    {
-      "headline": "So it's now Nvidia and no longer nVidia?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xub5w7/so_its_now_nvidia_and_no_longer_nvidia/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-12 12:10 UTC"
     }
   ]
 }
