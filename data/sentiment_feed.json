@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-27 10:15:00 UTC",
+  "last_updated": "2026-11-27 10:24:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -902,6 +902,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-27 05:02 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Monster Hunter",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752559824",
+      "matched_game": "Monster Hunter",
+      "matched_games": [
+        "Monster Hunter"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 05:01 UTC"
     },
     {
       "headline": "Stephen King's Psychological Thriller Officially Says Goodbye to Streaming",
@@ -197998,57 +198017,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-13 10:25 UTC"
-    },
-    {
-      "headline": "Question for you guys about windows 11",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xv4btd/question_for_you_guys_about_windows_11/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 10:23 UTC"
-    },
-    {
-      "headline": "Gigabyte a520m-k v2 and ryzen 5 3400g",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xv4avg/gigabyte_a520mk_v2_and_ryzen_5_3400g/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 10:21 UTC"
-    },
-    {
-      "headline": "Windows update problem",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xv488n/windows_update_problem/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 10:17 UTC"
     }
   ]
 }
