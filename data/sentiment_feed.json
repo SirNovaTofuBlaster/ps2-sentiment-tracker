@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-27 09:17:06 UTC",
+  "last_updated": "2026-11-27 09:26:42 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -125,19 +125,19 @@
       "timestamp": "2026-11-27 08:21 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Harvey Birdman: Attorney at Law, Silent Hill 2 and Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Harvey Birdman: Attorney at Law and Silent Hill 2",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752567337",
-      "matched_game": "Harvey Birdman: Attorney at Law",
+      "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
+        "Grand Theft Auto: San Andreas",
         "Harvey Birdman: Attorney at Law",
-        "Silent Hill 2",
-        "Grand Theft Auto: San Andreas"
+        "Silent Hill 2"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -146,14 +146,15 @@
       "timestamp": "2026-11-27 08:20 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752567264",
       "matched_game": "Grand Theft Auto: San Andreas",
       "matched_games": [
-        "Grand Theft Auto: San Andreas"
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -1271,15 +1272,15 @@
       "timestamp": "2026-11-27 01:28 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Grand Theft Auto III, Resident Evil 4 and 1 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto III, Grand Theft Auto: San Andreas, Resident Evil 4 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752548985",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Grand Theft Auto III",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
         "Grand Theft Auto III",
+        "Grand Theft Auto: San Andreas",
         "Resident Evil 4",
         "Cowboy Bebop"
       ],
@@ -198507,74 +198508,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-13 09:27 UTC"
-    },
-    {
-      "headline": "Day 848 of posting a Daily Screenshot from the games I've been playing",
-      "source": "Forum: Lemmy games",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/games.xml?sort=New",
-      "link": "https://lemmy.world/post/54353194",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 09:23 UTC"
-    },
-    {
-      "headline": "Freezes when I try to setup memory card",
-      "source": "r/PCSX2",
-      "source_type": "reddit",
-      "feed": "reddit:pcsx2",
-      "link": "https://www.reddit.com/r/PCSX2/comments/1xv3cys/freezes_when_i_try_to_setup_memory_card/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 09:22 UTC"
-    },
-    {
-      "headline": "Microsoft brings 21 more original Xbox games to PC, expands library to 25",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xv3b26/microsoft_brings_21_more_original_xbox_games_to/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 09:18 UTC"
-    },
-    {
-      "headline": "Halo: Campaign Evolved recibirá el modo cooperativo Tiroteo con una actualización gratuita este invierno",
-      "source": "Vandal",
-      "source_type": "news",
-      "feed": "https://vandal.elespanol.com/xml.cgi",
-      "link": "https://vandal.elespanol.com/noticia/2026317011/halo-campaign-evolved-recibira-el-modo-cooperativo-tiroteo-con-una-actualizacion-gratuita-este-invierno/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 09:18 UTC"
     }
   ]
 }
