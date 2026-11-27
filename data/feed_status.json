@@ -391,10 +391,8 @@
     "ok": true
   },
   "https://blast-processing.com/feeds/posts/default": {
-    "error": "ReadTimeout",
-    "failing_since": "2026-11-27 21:15 UTC",
     "latest": "2024-02-07 05:48 UTC",
-    "ok": false
+    "ok": true
   },
   "https://blog.playstation.com/feed/": {
     "latest": "2026-11-27 17:01 UTC",
@@ -651,7 +649,7 @@
     "ok": true
   },
   "https://www.destructoid.com/feed/": {
-    "latest": "2026-11-27 21:05 UTC",
+    "latest": "2026-11-27 21:44 UTC",
     "ok": true
   },
   "https://www.eurogamer.net/feed": {
@@ -901,8 +899,10 @@
     "ok": true
   },
   "youtube:UC1tyWJZ-mPWch81I2UW7cQg": {
+    "error": "HTTP 503",
+    "failing_since": "2026-11-27 21:44 UTC",
     "latest": "2026-11-24 21:30 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UC1wdop56K-ORxh37G6-fs7A": {
     "latest": "2026-11-21 01:30 UTC",
@@ -1089,8 +1089,10 @@
     "ok": true
   },
   "youtube:UCPke0SGE7FGIuhnGurf9qQA": {
+    "error": "HTTP 503",
+    "failing_since": "2026-11-27 21:44 UTC",
     "latest": "2026-11-27 14:00 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UCRBkeMoYX02w-0qVIKNkruw": {
     "latest": "2026-11-21 20:07 UTC",
@@ -1129,8 +1131,10 @@
     "ok": true
   },
   "youtube:UCTdwY9mYjI9mbuLJ7Zx2How": {
+    "error": "HTTP 503",
+    "failing_since": "2026-11-27 21:44 UTC",
     "latest": "2026-10-25 00:07 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UCVdDUN69YsAXPxh2y71sMtQ": {
     "latest": "2026-10-21 20:38 UTC",
@@ -1145,8 +1149,10 @@
     "ok": true
   },
   "youtube:UCW_sIU3MaWW5cXSjGqNIvbw": {
+    "error": "HTTP 503",
+    "failing_since": "2026-11-27 21:44 UTC",
     "latest": "2026-11-27 16:11 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UCWoSKWs8h6lFdiEDAjuIfpA": {
     "latest": "2026-10-30 13:00 UTC",
@@ -1161,8 +1167,10 @@
     "ok": true
   },
   "youtube:UCYWd5Q-C8M-OeDzKo86CAeg": {
+    "error": "HTTP 503",
+    "failing_since": "2026-11-27 21:44 UTC",
     "latest": "2026-11-03 19:29 UTC",
-    "ok": true
+    "ok": false
   },
   "youtube:UCYzPXprvl5Y-Sf0g4vX-m6g": {
     "latest": "2026-11-27 18:24 UTC",
@@ -1249,7 +1257,7 @@
     "ok": true
   },
   "youtube:UCitsvZeConV2Im24BVFH8hg": {
-    "latest": "2026-11-27 16:30 UTC",
+    "latest": "2026-11-27 21:00 UTC",
     "ok": true
   },
   "youtube:UCjBp_7RuDBUYbd1LegWEJ8g": {
