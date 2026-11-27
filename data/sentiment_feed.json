@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-27 14:06:10 UTC",
+  "last_updated": "2026-11-27 14:13:54 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -18,6 +18,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-27 14:30 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Iron Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752581448",
+      "matched_game": "Iron Man",
+      "matched_games": [
+        "Iron Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 14:04 UTC"
     },
     {
       "headline": "AYANEO's Popular Pocket Air Mini Is Back To $99 For Black Friday",
@@ -54,6 +73,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-27 13:53 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752580682",
+      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_games": [
+        "Grand Theft Auto: San Andreas"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 13:49 UTC"
     },
     {
       "headline": "'Life Has Been a Whirlwind': GTA 6's Lucia Actress Says Thank You to Fans",
@@ -495,6 +533,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-27 12:18 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752576390",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 12:16 UTC"
     },
     {
       "headline": "The Streamer’s Alt Account Labyrinth launches January 29, 2027 for PC, later for Switch",
@@ -2209,18 +2266,20 @@
       "timestamp": "2026-11-27 06:49 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Persona 3 FES and Tekken 4",
+      "headline": "Thread on /v/ naming God of War, Spider-Man, Tekken 4 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752563987",
-      "matched_game": "Persona 3 FES",
+      "matched_game": "God of War",
       "matched_games": [
-        "Persona 3 FES",
-        "Tekken 4"
+        "God of War",
+        "Spider-Man",
+        "Tekken 4",
+        "Persona 3 FES"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -3368,6 +3427,26 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-27 00:41 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Deus Ex and Crazy Taxi",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752545925",
+      "matched_game": "Deus Ex",
+      "matched_games": [
+        "Deus Ex",
+        "Crazy Taxi"
+      ],
+      "match_score": 100,
+      "match_method": "exact",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 00:34 UTC"
     },
     {
       "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty and Metal Gear Solid 3: Snake Eater",
@@ -21169,15 +21248,15 @@
       "timestamp": "2026-11-25 07:47 UTC"
     },
     {
-      "headline": "Thread on /vrpg/ naming Final Fantasy XII and Final Fantasy X",
+      "headline": "Thread on /vrpg/ naming Final Fantasy X and Final Fantasy XII",
       "source": "4chan /vrpg/",
       "source_type": "4chan",
       "feed": "4chan:vrpg",
       "link": "https://boards.4chan.org/vrpg/thread/4171337",
-      "matched_game": "Final Fantasy XII",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Final Fantasy XII",
-        "Final Fantasy X"
+        "Final Fantasy X",
+        "Final Fantasy XII"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -195171,93 +195250,6 @@
       "sentiment": 50,
       "hype": 1,
       "timestamp": "2026-11-13 14:14 UTC"
-    },
-    {
-      "headline": "Armored Vector 3:FPS | Play FREE in browser!",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xv8xn5/armored_vector_3fps_play_free_in_browser/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 14:12 UTC"
-    },
-    {
-      "headline": "Liberty City, Los Santos and Vice City. Vacation, anyone?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xv8xpr/liberty_city_los_santos_and_vice_city_vacation/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 14:12 UTC"
-    },
-    {
-      "headline": "The 25 Best Switch 2 Games",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/best-switch-2-games-now/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-13 14:11 UTC"
-    },
-    {
-      "headline": "Hi, I'm Onat, co-founder of Slow Bros. and director & composer of Harold Halibut, our handmade adventure that just launched on Nintendo Switch 2. AMA!",
-      "source": "r/NintendoSwitch",
-      "source_type": "reddit",
-      "feed": "reddit:nintendoswitch",
-      "link": "https://www.reddit.com/r/NintendoSwitch/comments/1xv8u33/hi_im_onat_cofounder_of_slow_bros_and_director/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 14:08 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Kingdom Hearts II",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751532059",
-      "matched_game": "Kingdom Hearts II",
-      "matched_games": [
-        "Kingdom Hearts II"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-13 14:07 UTC"
     }
   ]
 }
