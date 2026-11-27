@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-27 22:43:16 UTC",
+  "last_updated": "2026-11-27 22:54:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Crash Twinsanity",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752615371",
+      "matched_game": "Crash Twinsanity",
+      "matched_games": [
+        "Crash Twinsanity"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 22:48 UTC"
+    },
     {
       "headline": "Thread on /vg/ naming Home Alone",
       "source": "4chan /vg/",
@@ -22,14 +41,15 @@
       "timestamp": "2026-11-27 22:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man 3",
+      "headline": "Thread on /v/ naming Spider-Man 3 and Spider-Man",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752614647",
       "matched_game": "Spider-Man 3",
       "matched_games": [
-        "Spider-Man 3"
+        "Spider-Man 3",
+        "Spider-Man"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -111,6 +131,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-27 22:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Spider-Man 2",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752613334",
+      "matched_game": "Spider-Man 2",
+      "matched_games": [
+        "Spider-Man 2"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 22:18 UTC"
     },
     {
       "headline": "Skate is dropping seasons and season passes in favor of 'regular, agile content updates'",
@@ -292,19 +331,20 @@
       "timestamp": "2026-11-27 21:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex, Enter the Matrix and Kingdom Hearts",
+      "headline": "Thread on /v/ naming Devil May Cry 3, Deus Ex, Enter the Matrix and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752610435",
-      "matched_game": "Deus Ex",
+      "matched_game": "Devil May Cry 3",
       "matched_games": [
+        "Devil May Cry 3",
         "Deus Ex",
         "Enter the Matrix",
         "Kingdom Hearts"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1935,19 +1975,21 @@
       "timestamp": "2026-11-27 17:44 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Just Cause, Grand Theft Auto: San Andreas and Grand Theft Auto III",
+      "headline": "Thread on /v/ naming Deus Ex, Grand Theft Auto: San Andreas, Grand Theft Auto III and 2 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752595103",
-      "matched_game": "Just Cause",
+      "matched_game": "Deus Ex",
       "matched_games": [
-        "Just Cause",
+        "Deus Ex",
         "Grand Theft Auto: San Andreas",
-        "Grand Theft Auto III"
+        "Grand Theft Auto III",
+        "Just Cause",
+        "Metal Gear Solid 3: Snake Eater"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -4705,6 +4747,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-27 13:32 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Gitaroo Man",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752579541",
+      "matched_game": "Gitaroo Man",
+      "matched_games": [
+        "Gitaroo Man"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 13:24 UTC"
     },
     {
       "headline": "Can the Witcher 4 Live up to GTA 6?",
@@ -187349,159 +187410,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-13 22:54 UTC"
-    },
-    {
-      "headline": "Blizzard Officially Responds to Disappointed Overwatch Fans Over Hero 55",
-      "source": "Polygon.com",
-      "source_type": "news",
-      "feed": "https://www.polygon.com/rss/index.xml",
-      "link": "https://www.polygon.com/overwatch-new-hero-55-hudson-damage-dps-blizzard/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 35,
-      "hype": 0,
-      "timestamp": "2026-11-13 22:53 UTC"
-    },
-    {
-      "headline": "Looking for games on Steam for low-end PC",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xvma9x/looking_for_games_on_steam_for_lowend_pc/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 22:50 UTC"
-    },
-    {
-      "headline": "How are you guys dealing with GTA6 FOMO?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvm9zw/how_are_you_guys_dealing_with_gta6_fomo/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 22:49 UTC"
-    },
-    {
-      "headline": "Top fan config",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvm9zf/top_fan_config/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 22:49 UTC"
-    },
-    {
-      "headline": "About to play some rockband 4 on this Friday evening with the wife, probably pour a drink too",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvm9l9/about_to_play_some_rockband_4_on_this_friday/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 22:49 UTC"
-    },
-    {
-      "headline": "Not Everyone Gets to Live Their Childhood Dreams, But Seeing Others Live Theirs Makes Me Happy ❤️",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvm8ps/not_everyone_gets_to_live_their_childhood_dreams/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 22:48 UTC"
-    },
-    {
-      "headline": "Seriously, I'd like to know who is paying this sort of money?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvm879/seriously_id_like_to_know_who_is_paying_this_sort/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 22:47 UTC"
-    },
-    {
-      "headline": "[Build & Airflow Mod] Custom-cooled Cooler Master HAF 912 Advanced — Ryzen 7 5700X & RX 5700 XT under full load (No RGB, pure static pressure)",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvm5ez/build_airflow_mod_customcooled_cooler_master_haf/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 22:44 UTC"
-    },
-    {
-      "headline": "Novo vídeo gameplay de Fable foi muito mal recebido",
-      "source": "Eurogamer.pt Latest Articles Feed",
-      "source_type": "news",
-      "feed": "https://www.eurogamer.pt/feed",
-      "link": "https://www.eurogamer.pt/novo-video-gameplay-de-fable-foi-muito-mal-recebido",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-13 22:43 UTC"
     }
   ]
 }
