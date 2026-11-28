@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-28 06:35:46 UTC",
+  "last_updated": "2026-11-28 06:49:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -590,17 +590,18 @@
       "timestamp": "2026-11-28 02:28 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "headline": "Thread on /v/ naming Silent Hill 2 and Metal Gear Solid 2: Sons of Liberty",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752627909",
-      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_game": "Silent Hill 2",
       "matched_games": [
+        "Silent Hill 2",
         "Metal Gear Solid 2: Sons of Liberty"
       ],
       "match_score": 100,
-      "match_method": "alias",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1496,16 +1497,16 @@
       "timestamp": "2026-11-27 22:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto: San Andreas, Grand Theft Auto: Vice City, Grand Theft Auto III and 1 more",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Grand Theft Auto III, Grand Theft Auto: San Andreas and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752615419",
-      "matched_game": "Grand Theft Auto: San Andreas",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
-        "Grand Theft Auto: San Andreas",
         "Grand Theft Auto: Vice City",
         "Grand Theft Auto III",
+        "Grand Theft Auto: San Andreas",
         "The Sims"
       ],
       "match_score": 100,
@@ -9872,6 +9873,25 @@
       "hype": 0,
       "timestamp": "2026-11-27 00:51 UTC",
       "views": 24209
+    },
+    {
+      "headline": "Thread on /vr/ naming Half-Life",
+      "source": "4chan /vr/",
+      "source_type": "4chan",
+      "feed": "4chan:vr",
+      "link": "https://boards.4chan.org/vr/thread/12956238",
+      "matched_game": "Half-Life",
+      "matched_games": [
+        "Half-Life"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 00:51 UTC"
     },
     {
       "headline": "Thread on /v/ naming Half-Life",
@@ -182987,74 +183007,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 06:50 UTC"
-    },
-    {
-      "headline": "I gots the stick drift",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvvoxt/i_gots_the_stick_drift/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 06:48 UTC"
-    },
-    {
-      "headline": "How much of a pain is using a motherboard ARGB sync controller with the wired Lian Li wired FLEX series compared to the normal wired UNI series? I hate LCD so no LCDs what so ever",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvvkrq/how_much_of_a_pain_is_using_a_motherboard_argb/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 06:41 UTC"
-    },
-    {
-      "headline": "Need help choosing a good game development computer",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvvjyd/need_help_choosing_a_good_game_development/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 06:40 UTC"
-    },
-    {
-      "headline": "I honestly can’t wait to play this next week",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvvh32/i_honestly_cant_wait_to_play_this_next_week/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 06:35 UTC"
     }
   ]
 }
