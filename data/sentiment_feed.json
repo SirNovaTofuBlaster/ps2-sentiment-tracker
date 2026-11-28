@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-28 04:39:46 UTC",
+  "last_updated": "2026-11-28 04:53:47 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -116,6 +116,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-28 03:51 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Kingdom Hearts",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752632782",
+      "matched_game": "Kingdom Hearts",
+      "matched_games": [
+        "Kingdom Hearts"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-28 03:36 UTC"
     },
     {
       "headline": "Thread on /v/ naming Deus Ex",
@@ -307,6 +326,25 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-28 02:28 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Metal Gear Solid 2: Sons of Liberty",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752627909",
+      "matched_game": "Metal Gear Solid 2: Sons of Liberty",
+      "matched_games": [
+        "Metal Gear Solid 2: Sons of Liberty"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-28 02:10 UTC"
     },
     {
       "headline": "Tomodachi Life: Living The Dream Soundtrack Added To Nintendo Music, Here's Every Song Included",
@@ -1454,13 +1492,14 @@
       "views": 145
     },
     {
-      "headline": "Thread on /v/ naming Unreal Tournament",
+      "headline": "Thread on /v/ naming Resident Evil: Dead Aim and Unreal Tournament",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752611897",
-      "matched_game": "Unreal Tournament",
+      "matched_game": "Resident Evil: Dead Aim",
       "matched_games": [
+        "Resident Evil: Dead Aim",
         "Unreal Tournament"
       ],
       "match_score": 100,
@@ -183569,110 +183608,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 04:53 UTC"
-    },
-    {
-      "headline": "Audio issues on Steam Deck LCD",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xvtlgn/audio_issues_on_steam_deck_lcd/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:50 UTC"
-    },
-    {
-      "headline": "RPCS3 troubleshooting I am trying to run a game and it's giving me an error. I tried figuring it out the emu deck",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xvtlcy/rpcs3_troubleshooting_i_am_trying_to_run_a_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:50 UTC"
-    },
-    {
-      "headline": "Will my new Retrotink work with my SupaBoy?",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xvtj5g/will_my_new_retrotink_work_with_my_supaboy/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:46 UTC"
-    },
-    {
-      "headline": "Psu upgrade for a dell tower",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvthpl/psu_upgrade_for_a_dell_tower/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:44 UTC"
-    },
-    {
-      "headline": "Has anyone played Reanimal?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvthpg/has_anyone_played_reanimal/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:44 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Guitar Hero: Aerosmith",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751578928",
-      "matched_game": "Guitar Hero: Aerosmith",
-      "matched_games": [
-        "Guitar Hero: Aerosmith"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:41 UTC"
     }
   ]
 }
