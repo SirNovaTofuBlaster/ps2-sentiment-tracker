@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-28 02:03:06 UTC",
+  "last_updated": "2026-11-28 02:16:20 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -321,6 +321,26 @@
       "views": 29
     },
     {
+      "headline": "Thread on /v/ naming Kingdom Hearts II and Ty the Tasmanian Tiger",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752623723",
+      "matched_game": "Kingdom Hearts II",
+      "matched_games": [
+        "Kingdom Hearts II",
+        "Ty the Tasmanian Tiger"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-28 01:00 UTC"
+    },
+    {
       "headline": "Thread on /v/ naming Devil May Cry",
       "source": "4chan /v/",
       "source_type": "4chan",
@@ -444,6 +464,26 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-28 00:23 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming God of War and Resident Evil 4",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752620705",
+      "matched_game": "God of War",
+      "matched_games": [
+        "God of War",
+        "Resident Evil 4"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-28 00:12 UTC"
     },
     {
       "headline": "Thread on /v/ naming Half-Life",
@@ -831,7 +871,7 @@
       "timestamp": "2026-11-27 22:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man 3, Spider-Man 2, Spider-Man and 1 more",
+      "headline": "Thread on /v/ naming Spider-Man 3, Spider-Man, Spider-Man 2 and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -839,8 +879,8 @@
       "matched_game": "Spider-Man 3",
       "matched_games": [
         "Spider-Man 3",
-        "Spider-Man 2",
         "Spider-Man",
+        "Spider-Man 2",
         "Ultimate Spider-Man"
       ],
       "match_score": 100,
@@ -2535,14 +2575,14 @@
       "timestamp": "2026-11-27 18:08 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex, Grand Theft Auto: San Andreas, Grand Theft Auto III and 6 more",
+      "headline": "Thread on /v/ naming Final Fantasy X, Grand Theft Auto: San Andreas, Grand Theft Auto III and 7 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752596493",
-      "matched_game": "Deus Ex",
+      "matched_game": "Final Fantasy X",
       "matched_games": [
-        "Deus Ex",
+        "Final Fantasy X",
         "Grand Theft Auto: San Andreas",
         "Grand Theft Auto III",
         "Shin Megami Tensei: Digital Devil Saga",
@@ -2550,10 +2590,11 @@
         "Resident Evil 4",
         "Red Faction",
         "Final Fantasy X-2",
-        "Kingdom Hearts"
+        "Kingdom Hearts",
+        "Deus Ex"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "alias",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -36362,14 +36403,15 @@
       "timestamp": "2026-11-24 11:03 UTC"
     },
     {
-      "headline": "Thread on /vr/ naming Manhunt 2",
+      "headline": "Thread on /vr/ naming Manhunt 2 and Grand Theft Auto: San Andreas",
       "source": "4chan /vr/",
       "source_type": "4chan",
       "feed": "4chan:vr",
       "link": "https://boards.4chan.org/vr/thread/12951624",
       "matched_game": "Manhunt 2",
       "matched_games": [
-        "Manhunt 2"
+        "Manhunt 2",
+        "Grand Theft Auto: San Andreas"
       ],
       "match_score": 100,
       "match_method": "fuzzy",
@@ -184979,161 +185021,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 02:16 UTC"
-    },
-    {
-      "headline": "Making too many mistakes and dying too many times makes me want to give up on a game",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xvqnsg/making_too_many_mistakes_and_dying_too_many_times/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 02:15 UTC"
-    },
-    {
-      "headline": "PS5 having an invisible use of storage within the games and apps section.",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvqmwk/ps5_having_an_invisible_use_of_storage_within_the/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 02:14 UTC"
-    },
-    {
-      "headline": "NVIDIA Allegedly Engineered Scarcity By Funding AI Startups To Buy Its GPUs",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvqjor/nvidia_allegedly_engineered_scarcity_by_funding/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 02:10 UTC"
-    },
-    {
-      "headline": "Just finished Parasite Eve for PS1 using an emulator",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xvqjex/just_finished_parasite_eve_for_ps1_using_an/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 02:09 UTC"
-    },
-    {
-      "headline": "Just finished Parasite Eve for PS1 using an emulator",
-      "source": "r/psx",
-      "source_type": "reddit",
-      "feed": "reddit:psx",
-      "link": "https://www.reddit.com/r/psx/comments/1xvqjiy/just_finished_parasite_eve_for_ps1_using_an/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 02:09 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Silent Hill 2",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751571846",
-      "matched_game": "Silent Hill 2",
-      "matched_games": [
-        "Silent Hill 2"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-14 02:08 UTC"
-    },
-    {
-      "headline": "Id Software devs laid off by Microsoft form their own studio Hidden Horses and don't hold back in their announcement: \"It really felt like an attack\"",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvqfo3/id_software_devs_laid_off_by_microsoft_form_their/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-14 02:04 UTC"
-    },
-    {
-      "headline": "Elon Musk Says Petition To Bring Jensen Huang Back To NVIDIA Is Underway And He'll Sign It",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvqeym/elon_musk_says_petition_to_bring_jensen_huang/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 02:03 UTC"
-    },
-    {
-      "headline": "Should I get a water cooler",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvqexn/should_i_get_a_water_cooler/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 02:03 UTC"
     }
   ]
 }
