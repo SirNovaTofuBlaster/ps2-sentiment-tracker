@@ -1,7 +1,26 @@
 {
-  "last_updated": "2026-11-28 04:30:15 UTC",
+  "last_updated": "2026-11-28 04:39:46 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /v/ naming Grand Theft Auto III",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752635238",
+      "matched_game": "Grand Theft Auto III",
+      "matched_games": [
+        "Grand Theft Auto III"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-28 04:25 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Resident Evil 4",
       "source": "4chan /v/",
@@ -41,17 +60,18 @@
       "timestamp": "2026-11-28 04:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Guitar Hero",
+      "headline": "Thread on /v/ naming Deus Ex and Guitar Hero",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752634298",
-      "matched_game": "Guitar Hero",
+      "matched_game": "Deus Ex",
       "matched_games": [
+        "Deus Ex",
         "Guitar Hero"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -183653,91 +183673,6 @@
       "sentiment": null,
       "hype": 0,
       "timestamp": "2026-11-14 04:41 UTC"
-    },
-    {
-      "headline": "The DOS Space Sim That Got a Review and Never Came Out",
-      "source": "r/retrogaming",
-      "source_type": "reddit",
-      "feed": "reddit:retrogaming",
-      "link": "https://www.reddit.com/r/retrogaming/comments/1xvtdwn/the_dos_space_sim_that_got_a_review_and_never/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:38 UTC"
-    },
-    {
-      "headline": "Super Meat Boy Again+ announced for PC",
-      "source": "Gematsu",
-      "source_type": "news",
-      "feed": "https://www.gematsu.com/feed",
-      "link": "https://www.gematsu.com/2026/11/super-meat-boy-again-announced-for-pc",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 1,
-      "timestamp": "2026-11-14 04:36 UTC"
-    },
-    {
-      "headline": "Chances of DDoS For GTA Premiere",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvtcly/chances_of_ddos_for_gta_premiere/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:36 UTC"
-    },
-    {
-      "headline": "The DOS Space Sim That Got a Review and Never Came Out",
-      "source": "Forum: Lemmy retrogaming",
-      "source_type": "forum",
-      "feed": "https://lemmy.world/feeds/c/retrogaming.xml?sort=New",
-      "link": "https://lemmy.world/post/54385414",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:34 UTC"
-    },
-    {
-      "headline": "I'm debating if I want to buy a better gpu or go with cheapest gpu like rtx 5060 and rx 9060.",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvt868/im_debating_if_i_want_to_buy_a_better_gpu_or_go/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 04:30 UTC"
     }
   ]
 }
