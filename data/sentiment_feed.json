@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-28 12:04:05 UTC",
+  "last_updated": "2026-11-28 12:06:39 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -35,6 +35,25 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-28 11:00 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming Tales of the Abyss",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752648747",
+      "matched_game": "Tales of the Abyss",
+      "matched_games": [
+        "Tales of the Abyss"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-28 10:57 UTC"
     },
     {
       "headline": "The cancelled Doom 4 was 'actually a fun game', according to a former id Software developer, but it had one big problem",
@@ -180317,23 +180336,6 @@
       "sentiment": 60,
       "hype": 0,
       "timestamp": "2026-11-14 12:07 UTC"
-    },
-    {
-      "headline": "CPU Upgrade von Ryzen 5 5500 auf Ryzen 7 5700X?",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xw0ttn/cpu_upgrade_von_ryzen_5_5500_auf_ryzen_7_5700x/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 12:05 UTC"
     }
   ]
 }
