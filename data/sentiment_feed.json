@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-28 07:33:09 UTC",
+  "last_updated": "2026-11-28 07:46:36 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -285,22 +285,22 @@
       "timestamp": "2026-11-28 04:07 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Half-Life, ICO, Shadow of the Colossus and 3 more",
+      "headline": "Thread on /v/ naming ICO, Shadow of the Colossus, Guitar Hero and 3 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752634298",
-      "matched_game": "Half-Life",
+      "matched_game": "ICO",
       "matched_games": [
-        "Half-Life",
         "ICO",
         "Shadow of the Colossus",
         "Guitar Hero",
         "Deus Ex",
-        "Max Payne"
+        "Max Payne",
+        "Half-Life"
       ],
       "match_score": 100,
-      "match_method": "fuzzy",
+      "match_method": "exact",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -1596,7 +1596,7 @@
       "timestamp": "2026-11-27 22:39 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Spider-Man 3, Spider-Man, Spider-Man 2 and 1 more",
+      "headline": "Thread on /v/ naming Spider-Man 3, Spider-Man 2, Spider-Man and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
@@ -1604,8 +1604,8 @@
       "matched_game": "Spider-Man 3",
       "matched_games": [
         "Spider-Man 3",
-        "Spider-Man",
         "Spider-Man 2",
+        "Spider-Man",
         "Ultimate Spider-Man"
       ],
       "match_score": 100,
@@ -182515,76 +182515,6 @@
       "hype": 0,
       "timestamp": "2026-11-14 07:47 UTC",
       "views": 2876
-    },
-    {
-      "headline": "Jedi knight: Jedi outcast and time Splitter problem",
-      "source": "r/gaming",
-      "source_type": "reddit",
-      "feed": "reddit:gaming",
-      "link": "https://www.reddit.com/r/gaming/comments/1xvwmov/jedi_knight_jedi_outcast_and_time_splitter_problem/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 07:45 UTC"
-    },
-    {
-      "headline": "CE-30005-8 PS4 SLIM",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvwl9s/ce300058_ps4_slim/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 07:42 UTC"
-    },
-    {
-      "headline": "Como estão os troféus de vocês?",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvwjfw/como_estão_os_troféus_de_vocês/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 07:39 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto III",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751585309",
-      "matched_game": "Grand Theft Auto III",
-      "matched_games": [
-        "Grand Theft Auto III"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-14 07:34 UTC"
     }
   ]
 }
