@@ -1,7 +1,45 @@
 {
-  "last_updated": "2026-11-28 03:41:50 UTC",
+  "last_updated": "2026-11-28 03:55:45 UTC",
   "total_tracked_feeds": 255,
   "items": [
+    {
+      "headline": "Thread on /vrpg/ naming Final Fantasy X",
+      "source": "4chan /vrpg/",
+      "source_type": "4chan",
+      "feed": "4chan:vrpg",
+      "link": "https://boards.4chan.org/vrpg/thread/4174502",
+      "matched_game": "Final Fantasy X",
+      "matched_games": [
+        "Final Fantasy X"
+      ],
+      "match_score": 100,
+      "match_method": "alias",
+      "matched_in": "title",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-28 03:52 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Hobbit",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752633626",
+      "matched_game": "The Hobbit",
+      "matched_games": [
+        "The Hobbit"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-28 03:51 UTC"
+    },
     {
       "headline": "Thread on /v/ naming Deus Ex",
       "source": "4chan /v/",
@@ -985,15 +1023,16 @@
       "timestamp": "2026-11-27 22:52 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Grand Theft Auto III and Grand Theft Auto: San Andreas",
+      "headline": "Thread on /v/ naming Grand Theft Auto: Vice City, Grand Theft Auto: San Andreas and Grand Theft Auto III",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752615419",
-      "matched_game": "Grand Theft Auto III",
+      "matched_game": "Grand Theft Auto: Vice City",
       "matched_games": [
-        "Grand Theft Auto III",
-        "Grand Theft Auto: San Andreas"
+        "Grand Theft Auto: Vice City",
+        "Grand Theft Auto: San Andreas",
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
       "match_method": "alias",
@@ -183865,111 +183904,6 @@
       "hype": 0,
       "timestamp": "2026-11-14 03:57 UTC",
       "views": 336
-    },
-    {
-      "headline": "Thread on /v/ naming Grand Theft Auto III and Max Payne",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751576662",
-      "matched_game": "Grand Theft Auto III",
-      "matched_games": [
-        "Grand Theft Auto III",
-        "Max Payne"
-      ],
-      "match_score": 100,
-      "match_method": "alias",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-14 03:52 UTC"
-    },
-    {
-      "headline": "Slow charging temporary fix",
-      "source": "r/SteamDeck",
-      "source_type": "reddit",
-      "feed": "reddit:steamdeck",
-      "link": "https://www.reddit.com/r/SteamDeck/comments/1xvsfrx/slow_charging_temporary_fix/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 03:47 UTC"
-    },
-    {
-      "headline": "the new ball x pit dlc is great",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvsfcq/the_new_ball_x_pit_dlc_is_great/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-14 03:46 UTC"
-    },
-    {
-      "headline": "R.I.P I7 14700KF 5/25 to 11/26",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvsf1o/rip_i7_14700kf_525_to_1126/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 03:45 UTC"
-    },
-    {
-      "headline": "What's your favorite under rated indie game?",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xvsdpq/whats_your_favorite_under_rated_indie_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 60,
-      "hype": 0,
-      "timestamp": "2026-11-14 03:43 UTC"
-    },
-    {
-      "headline": "My ram just died suddenly",
-      "source": "r/pcmasterrace",
-      "source_type": "reddit",
-      "feed": "reddit:pcmasterrace",
-      "link": "https://www.reddit.com/r/pcmasterrace/comments/1xvsdie/my_ram_just_died_suddenly/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 03:43 UTC"
     }
   ]
 }
