@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-28 00:40:02 UTC",
+  "last_updated": "2026-11-28 00:50:43 UTC",
   "total_tracked_feeds": 255,
   "items": [
     {
@@ -1622,6 +1622,25 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-27 19:20 UTC"
+    },
+    {
+      "headline": "Thread on /v/ naming The Sims",
+      "source": "4chan /v/",
+      "source_type": "4chan",
+      "feed": "4chan:v",
+      "link": "https://boards.4chan.org/v/thread/752601585",
+      "matched_game": "The Sims",
+      "matched_games": [
+        "The Sims"
+      ],
+      "match_score": 100,
+      "match_method": "fuzzy",
+      "matched_in": "body",
+      "is_remaster_rumor": false,
+      "is_digital_only": false,
+      "sentiment": null,
+      "hype": 0,
+      "timestamp": "2026-11-27 19:19 UTC"
     },
     {
       "headline": "Vehículos en GTA 6",
@@ -5322,18 +5341,20 @@
       "timestamp": "2026-11-27 13:00 UTC"
     },
     {
-      "headline": "Thread on /v/ naming Deus Ex and Resident Evil 4",
+      "headline": "Thread on /v/ naming The Warriors, Resident Evil 4, Deus Ex and 1 more",
       "source": "4chan /v/",
       "source_type": "4chan",
       "feed": "4chan:v",
       "link": "https://boards.4chan.org/v/thread/752578275",
-      "matched_game": "Deus Ex",
+      "matched_game": "The Warriors",
       "matched_games": [
+        "The Warriors",
+        "Resident Evil 4",
         "Deus Ex",
-        "Resident Evil 4"
+        "Grand Theft Auto III"
       ],
       "match_score": 100,
-      "match_method": "exact",
+      "match_method": "fuzzy",
       "matched_in": "body",
       "is_remaster_rumor": false,
       "is_digital_only": false,
@@ -185870,93 +185891,6 @@
       "sentiment": 50,
       "hype": 0,
       "timestamp": "2026-11-14 00:52 UTC"
-    },
-    {
-      "headline": "Thread on /v/ naming Gradius V",
-      "source": "4chan /v/",
-      "source_type": "4chan",
-      "feed": "4chan:v",
-      "link": "https://boards.4chan.org/v/thread/751567794",
-      "matched_game": "Gradius V",
-      "matched_games": [
-        "Gradius V"
-      ],
-      "match_score": 100,
-      "match_method": "fuzzy",
-      "matched_in": "body",
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": null,
-      "hype": 0,
-      "timestamp": "2026-11-14 00:49 UTC"
-    },
-    {
-      "headline": "A game like rust but without PTSD",
-      "source": "r/gamingsuggestions",
-      "source_type": "reddit",
-      "feed": "reddit:gamingsuggestions",
-      "link": "https://www.reddit.com/r/gamingsuggestions/comments/1xvowoe/a_game_like_rust_but_without_ptsd/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 00:48 UTC"
-    },
-    {
-      "headline": "I haven’t played a new game in 2 years. Where should I start?",
-      "source": "r/ShouldIbuythisgame",
-      "source_type": "reddit",
-      "feed": "reddit:shouldibuythisgame",
-      "link": "https://www.reddit.com/r/ShouldIbuythisgame/comments/1xvov16/i_havent_played_a_new_game_in_2_years_where/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 00:46 UTC"
-    },
-    {
-      "headline": "Find a game",
-      "source": "r/ps2",
-      "source_type": "reddit",
-      "feed": "reddit:ps2",
-      "link": "https://www.reddit.com/r/ps2/comments/1xvots4/find_a_game/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 00:44 UTC"
-    },
-    {
-      "headline": "3rd controller ordered",
-      "source": "r/playstation",
-      "source_type": "reddit",
-      "feed": "reddit:playstation",
-      "link": "https://www.reddit.com/r/playstation/comments/1xvotk4/3rd_controller_ordered/",
-      "matched_game": null,
-      "matched_games": [],
-      "match_score": 0,
-      "match_method": null,
-      "matched_in": null,
-      "is_remaster_rumor": false,
-      "is_digital_only": false,
-      "sentiment": 50,
-      "hype": 0,
-      "timestamp": "2026-11-14 00:44 UTC"
     }
   ]
 }
